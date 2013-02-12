@@ -47,5 +47,6 @@ echo $contents; } ?>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
+<p> 양경훈 책임님 보이시나요????  으흐.... </p>
 </body>
 </html>
