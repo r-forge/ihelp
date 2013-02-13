@@ -46,9 +46,5 @@ echo $contents; } ?>
 <p> No content added. (What about this? 에에??) </p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
-
-<p> 양경훈 책임님 보이시나요????  으흐....  in Korean </p>
-<p> Can you see this comment?  in English </p>
-<p> 엡데이트 되는데 시간이 얼마나 걸렸는지 기억이 안나네.... 지금은 5시 18분 </p>
 </body>
 </html>
