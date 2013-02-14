@@ -19,7 +19,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 
 		<meta name="author" content="Chel Hee Lee" />
-		<meta name="keywords" content="R, Statistical Computing with R in Korean, Korean language support in R, Introduction to R, 한국어 지원, 통계학, 통계, 튜토리얼, 수치해석, R 교육, Chel Hee Lee, 이철희, gnustats, gnustats@gmail.com, chl948, chl948@mail.usask.ca, Biostatistics, 의학통계, Statistical methodology, imprecise probability theory" />
+		<meta name="keywords" content="R, Statistical Computing with R in Korean, Korean language support in R, Introduction to R, 한국어 지원, 통계학, 통계, 튜토리얼, 수치해석, R 교육, Chel Hee Lee, 이철희, gnustats, gnustats@gmail.com, chl948, chl948@mail.usask.ca, Biostatistics, 의학통계, Statistical methodology, imprecise probability theory, R Development Translation Teams, open statistics, R 한글" />
 
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
