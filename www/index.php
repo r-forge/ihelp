@@ -50,18 +50,19 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> R (>=2.1.0) 을 사용하는 한국어 사용자님들에게 도움이 되기를 바랍니다. </p>
+<p> R (>=2.1.0) 을 사용하는 한국어 사용자님들에게 도움이 되기를 바랍니다. <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>  </p>
 
 <p> 업데이트 일시: 2013-FEB-13 부터 매일 밤 자정 </p>
 
+<p> 아래의 튜토리얼은 여러분들의 질문을 통하여 그 내용이 추가 및 업데이트 될 것입니다.  질문을 남기고 싶으신 분들은 <a href="https://r-forge.r-project.org/forum/forum.php?forum_id=4393" target="_blank"> 포럼에 질문남기기</a> 기능을 이용해 주시길 부탁드립니다 </p>
 <ul>
 <li> 데이터 조작 및 관리 </li>
-<li>  </li>
+<li> 통계학 </li>
 <li>  </li>
 <li>  </li>
 </ul>
 
-<p> 현재 R-3.0.0 한국어 지원 작업중입니다 (2013-FEB-13, <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>) </p>
+<p> R (>= 3.0.0)의 한국어 지원 프로그레스를 확인하거나 참여하고 싶으신 분들은 <a href="https://r-forge.r-project.org/mail/?group_id=1352" target="_blank"> 메일링 리스트 </a> 에 가입해 주시면 됩니다 </p>
 
 <p> 본 프로젝트에 참여를 희망하시는 분들은 gnustats at gmail dot com 으로 문의를 부탁드립니다 </p>
 
@@ -70,6 +71,8 @@ echo $contents; } ?>
 <p> 페이스북 바로가기 (원활한 운영을 위한 조성우 amun83 at gmail dot com 님의 협조에 감사 드립니다) </p>
 
 
+<!--
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+-->
 </body>
 </html>
