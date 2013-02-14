@@ -50,7 +50,7 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> R (>=2.1.0) 을 사용하는 한국어 사용자님들에게 도움이 되기를 바랍니다.  </p>
+<p> R (>=2.1.0) 을 사용하는 한국어 사용자님들에게 도움이 되기를 바랍니다. </p>
 
 <p> 업데이트 일시: 2013-FEB-13 부터 매일 밤 자정 </p>
 
@@ -61,9 +61,14 @@ echo $contents; } ?>
 <li>  </li>
 </ul>
 
-<p> 현재 R-3.0.0 한국어 지원 작업중입니다 (2013-FEB-13) </p>
+<p> 현재 R-3.0.0 한국어 지원 작업중입니다 (2013-FEB-13, <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>) </p>
 
-<p> Contact info: gnustats at gmail dot com </p>
+<p> 본 프로젝트에 참여를 희망하시는 분들은 gnustats at gmail dot com 으로 문의를 부탁드립니다 </p>
+
+<p> Korean R Users Group (KRUG):  2012년 01월부터 한국 R 사용자님들의 보다 나은 편의를 위하여 이전의 도메인 http://www.openstatistics.net 대신 새로운 도메인 http://www.r-project.kr 으로 변경되었음을 알려드리며, KRUG를 이끌어 나가주시는 커미티 위원님들께 감사의 말씀을 올립니다. <p>
+
+<p> 페이스북 바로가기 (원활한 운영을 위한 조성우 amun83 at gmail dot com 님의 협조에 감사 드립니다) </p>
+
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 </body>
