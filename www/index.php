@@ -16,6 +16,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
 
   <head>
+
+
+		<meta name="author" content="Chel Hee Lee" />
+		<meta name="keywords" content="R, Statistical Computing with R in Korean, Korean language support in R, Introduction to R, 한국어 지원, 통계학, 통계, 튜토리얼, 수치해석, R 교육, Chel Hee Lee, 이철희, gnustats, gnustats@gmail.com, chl948, chl948@mail.usask.ca, Biostatistics, 의학통계, Statistical methodology, imprecise probability theory" />
+
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><?php echo $group_name; ?></title>
 	<link href="http://<?php echo $themeroot; ?>styles/estilo1.css" rel="stylesheet" type="text/css" />
@@ -24,11 +30,12 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <body>
 
 <!-- R-Forge Logo -->
+<!-- 
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
 <tr><td>
 <a href="http://r-forge.r-project.org/"><img src="http://<?php echo $themeroot; ?>/imagesrf/logo.png" border="0" alt="R-Forge Logo" /> </a> </td> </tr>
 </table>
-
+-->
 
 <!-- get project title  -->
 <!-- own website starts here, the following may be changed as you like -->
@@ -53,6 +60,8 @@ echo $contents; } ?>
 <li>  </li>
 <li>  </li>
 </ul>
+
+<p> 현재 R-3.0.0 한국어 지원 작업중입니다 (2013-FEB-13) </p>
 
 <p> Contact info: gnustats at gmail dot com </p>
 
