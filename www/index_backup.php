@@ -43,16 +43,7 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> R (>=2.1.0) 을 사용하는 한국어 사용자님들에게 도움이 되기를 바랍니다.  </p>
-
-<p> 업데이트 일시: 2013-FEB-13 부터 매일 밤 자정 </p>
-
-<ul>
-<li> 데이터 조작 및 관리 </li>
-<li>  </li>
-<li>  </li>
-<li>  </li>
-</ul>
+<p> No content added. (What about this? 에에??) </p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 </body>
