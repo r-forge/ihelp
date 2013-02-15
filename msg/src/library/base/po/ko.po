@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: R 3.0.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2013-02-05 07:27+0000\n"
-"PO-Revision-Date: 2013-02-13 19:42-0600\n"
+"PO-Revision-Date: 2013-02-14 22:23-0600\n"
 "Last-Translator: Chel Hee Lee <gnustats@gmail.com>\n"
 "Language-Team: Korean <gnustats@gmail.com>\n"
 "Language: ko\n"
@@ -705,7 +705,7 @@ msgstr "경고: '%s'는 알 수 없는 옵션입니다\n"
 #: src/unix/system.c:372
 #, c-format
 msgid "ARGUMENT '%s' __ignored__\n"
-msgstr ""
+msgstr "인자 '%s'는 무시되었습니다\n"
 
 #: src/gnuwin32/system.c:1086
 #: src/unix/system.c:379
@@ -1177,7 +1177,7 @@ msgstr "'log'함수는 1개 혹은 2개의 인자들을 필요로 하지만 %d�
 #: src/main/array.c:1431
 #, c-format
 msgid "'data' must be of a vector type, was '%s'"
-msgstr ""
+msgstr "'data'는 반드시 벡터형이어야 하지만 '%s'입니다"
 
 #: src/main/array.c:94
 #: src/main/array.c:102
@@ -1247,11 +1247,11 @@ msgstr "'allocArray': 'dims'에 의하여 지정된 요소들의 개수가 너�
 #: src/main/array.c:438
 #, c-format
 msgid "a matrix-like object is required as argument to '%s'"
-msgstr ""
+msgstr "행렬과 같은 객체가 인자로서 '%s'에 전달되어져야 합니다"
 
 #: src/main/array.c:652
 msgid "requires numeric/complex matrix/vector arguments"
-msgstr ""
+msgstr "수치 또는 복소수형태의 행렬 혹은 벡터 인자가 요구됩니다"
 
 #: src/main/array.c:742
 #: src/main/array.c:746
@@ -1320,17 +1320,17 @@ msgstr ""
 #: src/main/attrib.c:72
 #, c-format
 msgid "row names must be 'character' or 'integer', not '%s'"
-msgstr ""
+msgstr "행 이름은 반드시 '문자형' 또는 '정수형'이어야 하는데 '%s'입니다"
 
 #: src/main/attrib.c:124
 #, c-format
 msgid "getAttrib: invalid type (%s) for TAG"
-msgstr ""
+msgstr "getAttrib: TAG이 잘못된 유형 %s를 가집니다"
 
 #: src/main/attrib.c:378
 #, c-format
 msgid "invalid type (%s) for 'names': must be vector"
-msgstr ""
+msgstr "'names'는 반드시 벡터이어야 하는데 잘못된 유형 %s를 가지고 있습니다"
 
 #: src/main/attrib.c:381
 #, c-format
@@ -1339,23 +1339,23 @@ msgstr ""
 
 #: src/main/attrib.c:386
 msgid "names() applied to a non-vector"
-msgstr ""
+msgstr "names()가 벡터가 아닌 객체에 적용되었습니다"
 
 #: src/main/attrib.c:394
 msgid "invalid time series parameters specified"
-msgstr ""
+msgstr "시계열 파라미터가 잘못 지정되었습니다"
 
 #: src/main/attrib.c:408
 msgid "'tsp' attribute must be numeric"
-msgstr ""
+msgstr "'tsp'의 속성은 반드시 숫자이어야 합니다"
 
 #: src/main/attrib.c:414
 msgid "'tsp' attribute must be numeric of length three"
-msgstr ""
+msgstr "'tsp'의 속성은 반드시 길이가 3인 숫자들로 이루어져야 합니다"
 
 #: src/main/attrib.c:431
 msgid "cannot assign 'tsp' to zero-length vector"
-msgstr ""
+msgstr "길이가 0인 벡터에 'tsp'를 부여할 수 없습니다"
 
 #: src/main/attrib.c:462
 msgid "attempt to set invalid 'comment' attribute"
@@ -1363,7 +1363,7 @@ msgstr ""
 
 #: src/main/attrib.c:510
 msgid "adding class \"factor\" to an invalid object"
-msgstr ""
+msgstr "유효하지 않은 객체에 클래스 \"factor\"를 추가하고 있습니다"
 
 #: src/main/attrib.c:518
 msgid "attempt to set invalid 'class' attribute"
@@ -1372,12 +1372,12 @@ msgstr ""
 #: src/main/attrib.c:773
 #, c-format
 msgid "class '%s' has no 'names' slot"
-msgstr ""
+msgstr "클래스 '%s'는 아무런 'names' 슬롯을 가지지 않습니다"
 
 #: src/main/attrib.c:775
 #, c-format
 msgid "class '%s' has no 'names' slot; assigning a names attribute will create an invalid object"
-msgstr ""
+msgstr "클래스 '%s'는 아무런 'names' 슬롯을 가지지 않기 때문에 names 속성을 부여하는 것은 잘못된 객체를 생성하게 할 것입니다"
 
 #: src/main/attrib.c:778
 #, c-format
@@ -1386,36 +1386,36 @@ msgstr ""
 
 #: src/main/attrib.c:808
 msgid "incompatible 'names' argument"
-msgstr ""
+msgstr "'names' 인자는 함께 사용될 수 없습니다"
 
 #: src/main/attrib.c:863
 #, c-format
 msgid "invalid type (%s) to set 'names' attribute"
-msgstr ""
+msgstr "%s는 'names' 속성을 설정하는데 유효한 유형이 아닙니다"
 
 #: src/main/attrib.c:934
 msgid "'dimnames' applied to non-array"
-msgstr ""
+msgstr "'dimnames'가 배열이 아닌 객체에 적용되었습니다"
 
 #: src/main/attrib.c:939
 msgid "'dimnames' must be a list"
-msgstr ""
+msgstr "'dimnames'은 반드시 리스트이어야 합니다"
 
 #: src/main/attrib.c:942
 #: src/main/attrib.c:965
 #, c-format
 msgid "length of 'dimnames' [%d] must match that of 'dims' [%d]"
-msgstr ""
+msgstr "'dimnames'의 길이 [%d]는 반드시 'dims'의 길이 [%d]와 같아야 합니다"
 
 #: src/main/attrib.c:971
 #, c-format
 msgid "invalid type (%s) for 'dimnames' (must be a vector)"
-msgstr ""
+msgstr "%s는 'dimnames'에 올바른 유형이 아닙니다 (이는 반드시 벡터이어야 합니다)"
 
 #: src/main/attrib.c:974
 #, c-format
 msgid "length of 'dimnames' [%d] not equal to array extent"
-msgstr ""
+msgstr "'dimnames'의 길이 [%d]가 배열의 크기와 같지 않습니다"
 
 #: src/main/attrib.c:1046
 #: src/main/builtin.c:75
@@ -1459,11 +1459,11 @@ msgstr ""
 
 #: src/main/attrib.c:1168
 msgid "attributes must be a list or NULL"
-msgstr ""
+msgstr "속성들은 반드시 리스트 또는 NULL이어야 합니다"
 
 #: src/main/attrib.c:1173
 msgid "attributes must be named"
-msgstr ""
+msgstr "속성들은 반드시 이름이 주어져야 합니다"
 
 #: src/main/attrib.c:1177
 #, c-format
