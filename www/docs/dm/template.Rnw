@@ -1,0 +1,55 @@
+
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage[tableposition=top]{caption}
+\usepackage{ifthen}
+\usepackage[utf8]{inputenc}
+\usepackage{kotex}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf, .png, .jpg, .eps}
+\usepackage{color}
+\usepackage{epsfig}
+
+\begin{document}
+
+\title{An Sweave Demo (한글)}
+\author{Charles J. Geyer}
+\maketitle
+
+
+Plots get a little more complicated.  First we make something to plot
+(simulate regression data).
+<<reg>>=
+n <- 50
+x <- seq(1, n)
+a.true <- 3
+b.true <- 1.5
+y.true <- a.true + b.true * x
+s.true <- 17.3
+y <- y.true + s.true * rnorm(n)
+out1 <- lm(y ~ x)
+summary(out1)
+@
+
+\begin{figure}
+\begin{center}
+<<label=fig2,fig=TRUE,echo=FALSE>>=
+library(cairoDevice)
+# names(postscriptFonts())
+out3 <- lm(y ~ x + I(x^2) + I(x^3))
+par(family="Korea1deb")
+plot(x, y, xlab="한글", ylab="한글", main="한글")
+# title(main="표준정규분포곡선", family="Korea1deb", font.main=1, col.main="blue")
+text(20,20, "아라비안 나이트")
+curve(predict(out3, newdata=data.frame(x=x)), add = TRUE)
+@
+\end{center}
+\caption{Scatter Plot with Regression Line}
+\label{fig:one}
+\end{figure}
+
+
+\end{document}
+
