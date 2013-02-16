@@ -6,58 +6,59 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <STYLE type="text/css">
 <!--
-	p {margin: 0; padding: 0;}	.ft00{font-size:23px;font-family:Times;color:#000000;}
-	.ft01{font-size:15px;font-family:Times;color:#000000;}
-	.ft02{font-size:11px;font-family:Times;color:#000000;}
-	.ft03{font-size:6px;font-family:Times;color:#000000;}
-	.ft04{font-size:12px;font-family:Times;color:#000000;}
-	.ft05{font-size:19px;font-family:Times;color:#000000;}
-	.ft06{font-size:8px;font-family:Times;color:#000000;}
-	.ft07{font-size:9px;font-family:Times;color:#000000;}
-	.ft08{font-size:12px;line-height:17px;font-family:Times;color:#000000;}
+	p {margin: 0; padding: 0;}	.ft00{font-size:104px;font-family:Times;color:#bfbfbf;}
+	.ft01{font-size:23px;font-family:Times;color:#000000;}
+	.ft02{font-size:15px;font-family:Times;color:#000000;}
+	.ft03{font-size:11px;font-family:Times;color:#000000;}
+	.ft04{font-size:6px;font-family:Times;color:#000000;}
+	.ft05{font-size:12px;font-family:Times;color:#000000;}
+	.ft06{font-size:19px;font-family:Times;color:#000000;}
+	.ft07{font-size:8px;font-family:Times;color:#000000;}
+	.ft08{font-size:9px;font-family:Times;color:#000000;}
 -->
 </STYLE>
 </HEAD>
 <BODY bgcolor="#A0A0A0" vlink="blue" link="blue">
 <DIV id="page1-div" style="position:relative;width:918px;height:1188px;">
 <IMG width="918" height="1188" src="introSweave001.png" alt="background image"/>
-<P style="position:absolute;top:168px;left:367px;white-space:nowrap" class="ft00">Sweave&#160;튜토리얼</P>
-<P style="position:absolute;top:217px;left:408px;white-space:nowrap" class="ft01">Chel&#160;Hee&#160;Lee</P>
-<P style="position:absolute;top:252px;left:390px;white-space:nowrap" class="ft01">February&#160;15,&#160;2013</P>
-<P style="position:absolute;top:309px;left:429px;white-space:nowrap" class="ft02">Abstract</P>
-<P style="position:absolute;top:331px;left:166px;white-space:nowrap" class="ft02">본&#160;문서는&#160;R와&#160;Sweave를&#160;이용하여&#160;자동으로&#160;pdf&#160;형식&#160;또는&#160;html&#160;형식의&#160;통계리포트를&#160;자동&#160;생성하는</P>
-<P style="position:absolute;top:347px;left:145px;white-space:nowrap" class="ft02">방법에&#160;대한&#160;튜토리얼을&#160;제공합니다.&#160;(L</P>
-<P style="position:absolute;top:349px;left:378px;white-space:nowrap" class="ft03">A</P>
-<P style="position:absolute;top:348px;left:384px;white-space:nowrap" class="ft02">TEX와&#160;관련된&#160;내용은&#160;포함되지&#160;않습니다).</P>
-<P style="position:absolute;top:373px;left:130px;white-space:nowrap" class="ft04">개발을&#160;담당하고&#160;계신&#160;분은&#160;Prof.&#160;Friedrich&#160;Leisch&#160;(University&#160;of&#160;Boku,&#160;Austria)&#160;입니다.</P>
-<P style="position:absolute;top:419px;left:108px;white-space:nowrap" class="ft05">1</P>
-<P style="position:absolute;top:417px;left:144px;white-space:nowrap" class="ft05">필</P>
-<P style="position:absolute;top:417px;left:166px;white-space:nowrap" class="ft05">수요소&#160;및&#160;작동원리</P>
-<P style="position:absolute;top:453px;left:130px;white-space:nowrap" class="ft04">•&#160;BASE&#160;R&#160;시스템을&#160;설치하면&#160;기본적으로&#160;Sweave&#160;기능들을&#160;사용할&#160;수&#160;있습니다.</P>
-<P style="position:absolute;top:482px;left:130px;white-space:nowrap" class="ft04">•&#160;L</P>
-<P style="position:absolute;top:486px;left:149px;white-space:nowrap" class="ft06">A</P>
-<P style="position:absolute;top:486px;left:156px;white-space:nowrap" class="ft04">TEX에&#160;대한&#160;기본&#160;지식을&#160;가지고&#160;계셔야&#160;합니다&#160;(한국어&#160;문서를&#160;만들기&#160;때문에&#160;꼭&#160;아래의&#160;패키지들을</P>
-<P style="position:absolute;top:503px;left:145px;white-space:nowrap" class="ft04">프리앰블에&#160;넣어주셔야&#160;합니다).</P>
-<P style="position:absolute;top:544px;left:145px;white-space:nowrap" class="ft08">\usepackage[utf8]{inputenc}<br/>\usepackage{kotex}</P>
-<P style="position:absolute;top:606px;left:108px;white-space:nowrap" class="ft05">2</P>
-<P style="position:absolute;top:604px;left:144px;white-space:nowrap" class="ft05">스텝-바이-스텝&#160;따라하기</P>
-<P style="position:absolute;top:644px;left:108px;white-space:nowrap" class="ft04">.Rnw을&#160;작성하기:</P>
-<P style="position:absolute;top:683px;left:108px;white-space:nowrap" class="ft04">R에서&#160;.Rnw파일&#160;컴파일하기:</P>
-<P style="position:absolute;top:713px;left:433px;white-space:nowrap" class="ft04">R&#160;code</P>
-<P style="position:absolute;top:735px;left:109px;white-space:nowrap" class="ft07">S&#160;w&#160;e&#160;a&#160;v&#160;e&#160;(&#160;&#34;&#160;f&#160;i&#160;l&#160;e&#160;n&#160;a&#160;m&#160;e&#160;.&#160;R&#160;n&#160;w&#160;&#34;&#160;,&#160;pdf&#160;=&#160;TRUE&#160;,&#160;eps&#160;=&#160;FALSE&#160;,&#160;r&#160;e&#160;s&#160;u&#160;l&#160;t&#160;s&#160;=&#160;&#34;&#160;v&#160;e&#160;r&#160;b&#160;a&#160;t&#160;i&#160;m&#160;&#34;&#160;)</P>
-<P style="position:absolute;top:781px;left:130px;white-space:nowrap" class="ft04">코드를&#160;컴파일하면&#160;아래</P>
-<P style="position:absolute;top:780px;left:290px;white-space:nowrap" class="ft04">와&#160;같은&#160;내용이&#160;나올것입니다&#160;(무시하세요).</P>
-<P style="position:absolute;top:819px;left:108px;white-space:nowrap" class="ft04">생</P>
-<P style="position:absolute;top:819px;left:123px;white-space:nowrap" class="ft04">성된&#160;.tex파일을&#160;pdflatex를&#160;이용하여&#160;다시&#160;컴파일하기:</P>
-<P style="position:absolute;top:865px;left:108px;white-space:nowrap" class="ft05">3</P>
-<P style="position:absolute;top:865px;left:144px;white-space:nowrap" class="ft05">HTML&#160;보고서&#160;생성하기</P>
-<P style="position:absolute;top:901px;left:130px;white-space:nowrap" class="ft04">주의:&#160;.Rnw내에&#160;L</P>
-<P style="position:absolute;top:903px;left:240px;white-space:nowrap" class="ft06">A</P>
-<P style="position:absolute;top:902px;left:246px;white-space:nowrap" class="ft04">TEX와&#160;HTML을&#160;혼용하여&#160;사용할&#160;수는&#160;없습니다.</P>
-<P style="position:absolute;top:947px;left:108px;white-space:nowrap" class="ft05">4</P>
-<P style="position:absolute;top:945px;left:144px;white-space:nowrap" class="ft05">추가&#160;계획</P>
-<P style="position:absolute;top:983px;left:130px;white-space:nowrap" class="ft04">현재&#160;R은&#160;Latin-1&#160;를&#160;지원해오고&#160;있습니다.&#160;한국어&#160;사용자들의&#160;불편함을&#160;덜고자&#160;연구중에&#160;있습니다.</P>
-<P style="position:absolute;top:1070px;left:455px;white-space:nowrap" class="ft04">1</P>
+<P style="position:absolute;top:773px;left:244px;white-space:nowrap" class="ft00">D</P>
+<P style="position:absolute;top:720px;left:297px;white-space:nowrap" class="ft00">RAF</P>
+<P style="position:absolute;top:572px;left:445px;white-space:nowrap" class="ft00">T</P>
+<P style="position:absolute;top:499px;left:518px;white-space:nowrap" class="ft00">(v</P>
+<P style="position:absolute;top:436px;left:581px;white-space:nowrap" class="ft00">.0.</P>
+<P style="position:absolute;top:364px;left:653px;white-space:nowrap" class="ft00">3)</P>
+<P style="position:absolute;top:199px;left:367px;white-space:nowrap" class="ft01">Sweave&#160;튜토리얼</P>
+<P style="position:absolute;top:253px;left:408px;white-space:nowrap" class="ft02">Chel&#160;Hee&#160;Lee</P>
+<P style="position:absolute;top:290px;left:390px;white-space:nowrap" class="ft02">February&#160;15,&#160;2013</P>
+<P style="position:absolute;top:351px;left:429px;white-space:nowrap" class="ft03">Abstract</P>
+<P style="position:absolute;top:378px;left:166px;white-space:nowrap" class="ft03">본&#160;문서는&#160;R와&#160;Sweave를&#160;이용하여&#160;자동으로&#160;pdf&#160;형식&#160;또는&#160;html&#160;형식의&#160;통계리포트를&#160;자동&#160;생성하는</P>
+<P style="position:absolute;top:398px;left:145px;white-space:nowrap" class="ft03">방법에&#160;대한&#160;튜토리얼을&#160;제공합니다.&#160;(L</P>
+<P style="position:absolute;top:399px;left:378px;white-space:nowrap" class="ft04">A</P>
+<P style="position:absolute;top:399px;left:384px;white-space:nowrap" class="ft03">TEX와&#160;관련된&#160;내용은&#160;포함되지&#160;않습니다).</P>
+<P style="position:absolute;top:428px;left:130px;white-space:nowrap" class="ft05">개발을&#160;담당하고&#160;계신&#160;분은&#160;Prof.&#160;Friedrich&#160;Leisch&#160;(University&#160;of&#160;Boku,&#160;Austria)&#160;입니다.&#160;본&#160;문서에&#160;대한</P>
+<P style="position:absolute;top:451px;left:108px;white-space:nowrap" class="ft05">문의,&#160;수정,&#160;및&#160;제안사항에&#160;대해서는&#160;<a href="mailto:gnustats@gmail.com">gnustats@gmail.com&#160;</a>또는&#160;공개포럼&#160;및&#160;메일링&#160;리스트를&#160;이용해주시길</P>
+<P style="position:absolute;top:474px;left:108px;white-space:nowrap" class="ft05">부탁드립니다.</P>
+<P style="position:absolute;top:526px;left:108px;white-space:nowrap" class="ft06">1</P>
+<P style="position:absolute;top:524px;left:144px;white-space:nowrap" class="ft06">필</P>
+<P style="position:absolute;top:524px;left:166px;white-space:nowrap" class="ft06">수요소&#160;및&#160;작동원리</P>
+<P style="position:absolute;top:564px;left:130px;white-space:nowrap" class="ft05">•&#160;BASE&#160;R&#160;시스템을&#160;설치하면&#160;기본적으로&#160;Sweave&#160;기능들을&#160;사용할&#160;수&#160;있습니다.</P>
+<P style="position:absolute;top:598px;left:130px;white-space:nowrap" class="ft05">•&#160;L</P>
+<P style="position:absolute;top:602px;left:149px;white-space:nowrap" class="ft07">A</P>
+<P style="position:absolute;top:602px;left:156px;white-space:nowrap" class="ft05">TEX에&#160;대한&#160;기본&#160;지식을&#160;가지고&#160;계셔야&#160;합니다&#160;(한국어&#160;문서를&#160;만들기&#160;때문에&#160;꼭&#160;아래의&#160;패키지들을</P>
+<P style="position:absolute;top:623px;left:145px;white-space:nowrap" class="ft05">프리앰블에&#160;넣어주셔야&#160;합니다).</P>
+<P style="position:absolute;top:669px;left:145px;white-space:nowrap" class="ft05">\usepackage[utf8]{inputenc}</P>
+<P style="position:absolute;top:691px;left:145px;white-space:nowrap" class="ft05">\usepackage{kotex}</P>
+<P style="position:absolute;top:742px;left:108px;white-space:nowrap" class="ft06">2</P>
+<P style="position:absolute;top:740px;left:144px;white-space:nowrap" class="ft06">스텝-바이-스텝&#160;따라하기</P>
+<P style="position:absolute;top:785px;left:108px;white-space:nowrap" class="ft05">.Rnw을&#160;작성하기:</P>
+<P style="position:absolute;top:828px;left:108px;white-space:nowrap" class="ft05">R에서&#160;.Rnw파일&#160;컴파일하기:</P>
+<P style="position:absolute;top:862px;left:433px;white-space:nowrap" class="ft05">R&#160;code</P>
+<P style="position:absolute;top:886px;left:109px;white-space:nowrap" class="ft08">S&#160;w&#160;e&#160;a&#160;v&#160;e&#160;(&#160;&#34;&#160;f&#160;i&#160;l&#160;e&#160;n&#160;a&#160;m&#160;e&#160;.&#160;R&#160;n&#160;w&#160;&#34;&#160;,&#160;pdf&#160;=&#160;TRUE&#160;,&#160;eps&#160;=&#160;FALSE&#160;,&#160;r&#160;e&#160;s&#160;u&#160;l&#160;t&#160;s&#160;=&#160;&#34;&#160;v&#160;e&#160;r&#160;b&#160;a&#160;t&#160;i&#160;m&#160;&#34;&#160;)</P>
+<P style="position:absolute;top:937px;left:130px;white-space:nowrap" class="ft05">코드를&#160;컴파일하면&#160;아래</P>
+<P style="position:absolute;top:936px;left:290px;white-space:nowrap" class="ft05">와&#160;같은&#160;내용이&#160;나올것입니다&#160;(무시하세요).</P>
+<P style="position:absolute;top:979px;left:108px;white-space:nowrap" class="ft05">생</P>
+<P style="position:absolute;top:979px;left:123px;white-space:nowrap" class="ft05">성된&#160;.tex파일을&#160;pdflatex를&#160;이용하여&#160;다시&#160;컴파일하기:</P>
+<P style="position:absolute;top:1092px;left:455px;white-space:nowrap" class="ft05">1</P>
 </DIV>
 </BODY>
 </HTML>
