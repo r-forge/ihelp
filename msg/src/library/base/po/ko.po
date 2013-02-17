@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: R 3.0.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2013-02-05 07:27+0000\n"
-"PO-Revision-Date: 2013-02-16 20:44-0600\n"
+"PO-Revision-Date: 2013-02-16 21:09-0600\n"
 "Last-Translator: Chel Hee Lee <gnustats@gmail.com>\n"
 "Language-Team: Korean <gnustats@gmail.com>\n"
 "Language: ko\n"
@@ -6772,12 +6772,12 @@ msgstr "%d는 '%s'에서 구현되지 않은 유형입니다"
 #: src/main/util.c:292
 #, c-format
 msgid "unimplemented type '%s' in '%s'\n"
-msgstr ""
+msgstr "'%s'은 '%s'에서 구현되지 않은 유형입니다\n"
 
 #: src/main/util.c:294
 #, c-format
 msgid "unimplemented type (%d) in '%s'\n"
-msgstr ""
+msgstr "%d은 '%s'에서 구현되지 않은 유형입니다\n"
 
 #: src/main/util.c:419
 msgid "invalid tag in name extraction"
@@ -6787,15 +6787,13 @@ msgstr ""
 #, c-format
 msgid "%d argument passed to .Internal(%s) which requires %d"
 msgid_plural "%d arguments passed to .Internal(%s) which requires %d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%3$d를 필요로 하는 .Internal(%2$s)에 인자 %1$d가 전달되었습니다"
 
 #: src/main/util.c:435
 #, c-format
 msgid "%d argument passed to '%s' which requires %d"
 msgid_plural "%d arguments passed to '%s' which requires %d"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%3$d를 필요로 하는 '%2$s'에 인자 %1$d가 전달되었습니다"
 
 #: src/main/util.c:450
 #, c-format
@@ -6813,11 +6811,11 @@ msgstr ""
 
 #: src/main/util.c:581
 msgid "'all.x' must be TRUE or FALSE"
-msgstr ""
+msgstr "'all.x'는 반드시 TRUE 또는 FALSE이어야 합니다"
 
 #: src/main/util.c:583
 msgid "'all.y' must be TRUE or FALSE"
-msgstr ""
+msgstr "'all.y'는 반드시 TRUE 또는 FALSE이어야 합니다"
 
 #: src/main/util.c:695
 msgid "missing value is invalid"
@@ -6826,7 +6824,7 @@ msgstr ""
 #: src/main/util.c:704
 #: src/main/util.c:711
 msgid "cannot change working directory"
-msgstr ""
+msgstr "작업디렉토리를 변경할 수 없습니다"
 
 #: src/main/util.c:730
 #: src/main/util.c:764
@@ -6843,11 +6841,11 @@ msgstr ""
 #: src/main/util.c:813
 #: src/main/util.c:853
 msgid "path too long"
-msgstr ""
+msgstr "경로가 너무 깁니다"
 
 #: src/main/util.c:967
 msgid "only the first character of 'quote' will be used"
-msgstr ""
+msgstr "오로지 'quote'의 첫번째 문자만이 사용될 것입니다"
 
 #: src/main/util.c:1037
 msgid "a character vector 'value' expected"
@@ -7039,7 +7037,7 @@ msgstr ""
 #: src/modules/X11/devX11.c:1343
 #, c-format
 msgid "could not open PNG file '%s'"
-msgstr ""
+msgstr "PNG 파일 '%s'를 열 수 없습니다"
 
 #: src/modules/X11/devX11.c:1355
 msgid "no jpeg support in this version of R"
@@ -7052,7 +7050,7 @@ msgstr ""
 #: src/modules/X11/devX11.c:1369
 #, c-format
 msgid "could not open JPEG file '%s'"
-msgstr ""
+msgstr "JPEG 파일 '%s'를 열 수 없습니다"
 
 #: src/modules/X11/devX11.c:1381
 msgid "no tiff support in this version of R"
@@ -7095,7 +7093,7 @@ msgstr ""
 
 #: src/modules/X11/devX11.c:1584
 msgid "unable to create X11 window"
-msgstr ""
+msgstr "X11창을 생성할 수 없습니다"
 
 #: src/modules/X11/devX11.c:1719
 #, c-format
@@ -7108,11 +7106,11 @@ msgstr ""
 
 #: src/modules/X11/devX11.c:1755
 msgid "invalid font specification"
-msgstr ""
+msgstr "폰트지정이 잘못되었습니다"
 
 #: src/modules/X11/devX11.c:1795
 msgid "font family not found in X11 font database"
-msgstr ""
+msgstr "X11 폰트 데이터베이스에서 폰트페밀리를 찾을 수 없습니다"
 
 #: src/modules/X11/devX11.c:1834
 #, c-format
@@ -7122,16 +7120,16 @@ msgstr ""
 #: src/modules/X11/devX11.c:1955
 #, c-format
 msgid "could not open file '%s'"
-msgstr ""
+msgstr "파일 '%s'를 열 수 없습니다"
 
 #: src/modules/X11/devX11.c:2185
 #, c-format
 msgid "%s not available for this device"
-msgstr ""
+msgstr "이 장치에서 %s를 사용할 수 없습니다"
 
 #: src/modules/X11/devX11.c:2330
 msgid "Unable to create XImage"
-msgstr ""
+msgstr "XImage를 생성할 수 없습니다"
 
 #: src/modules/X11/devX11.c:2529
 msgid "attempt to use the locator after dev.hold()"
@@ -7140,11 +7138,11 @@ msgstr ""
 #: src/modules/X11/devX11.c:3111
 #, c-format
 msgid "unable to start device %s"
-msgstr ""
+msgstr "장치 %s를 시작할 수 없습니다"
 
 #: src/modules/X11/devX11.c:3138
 msgid "invalid 'width' or 'height'"
-msgstr ""
+msgstr "'width' 또는 'height'가 잘못되었습니다"
 
 #: src/modules/X11/devX11.c:3145
 msgid "invalid colortype passed to X11 driver"
@@ -7160,12 +7158,12 @@ msgstr ""
 
 #: src/modules/X11/devX11.c:3251
 msgid "not an open X11cairo device"
-msgstr ""
+msgstr "X11cairo 장치를 열 수 없습니다"
 
 #: src/modules/X11/devX11.c:3260
 #, c-format
 msgid "cannot open file '%s'"
-msgstr ""
+msgstr "파일 '%s'를 열 수 없습니다"
 
 #: src/modules/X11/devX11.c:3277
 msgid "savePlot() is not supported on this build"
@@ -7206,7 +7204,7 @@ msgstr ""
 #: src/modules/internet/internet.c:339
 #, c-format
 msgid "cannot open URL '%s', reason '%s'"
-msgstr ""
+msgstr "URL '%s'를 열 수 없습니다.  그 이유는 '%s'입니다"
 
 #: src/modules/internet/internet.c:346
 #: src/modules/internet/internet.c:372
@@ -7446,33 +7444,33 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:400
 #, c-format
 msgid "error [%d] from Lapack 'dgecon()'"
-msgstr ""
+msgstr "Lapack의 함수 'dgecon()'로부터 에러 [%d]가 발생했습니다"
 
 #: src/modules/lapack/Lapack.c:420
 #: src/modules/lapack/Lapack.c:452
 #: src/modules/lapack/Lapack.c:502
 msgid "'A' must be a *square* matrix"
-msgstr ""
+msgstr "'A'는 반드시 정방행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:434
 #, c-format
 msgid "error [%d] from Lapack 'dtrcon()'"
-msgstr ""
+msgstr "Lapack의 함수 'dtrcon()'로부터 에러 [%d]가 발생하였습니다"
 
 #: src/modules/lapack/Lapack.c:449
 #: src/modules/lapack/Lapack.c:498
 msgid "'A' must be a complex matrix"
-msgstr ""
+msgstr "'A'는 반드시 복소수 행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:470
 #, c-format
 msgid "error [%d] from Lapack 'zgetrf()'"
-msgstr ""
+msgstr "Lapack의 함수 'zgetrf()'으로부터 에러 [%d]가 발생했습니다"
 
 #: src/modules/lapack/Lapack.c:478
 #, c-format
 msgid "error [%d] from Lapack 'zgecon()'"
-msgstr ""
+msgstr "Lapack의 함수 'zgecon()'으로부터 에러 [%d]가 발생했습니다"
 
 #: src/modules/lapack/Lapack.c:482
 #: src/modules/lapack/Lapack.c:517
@@ -7489,12 +7487,12 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:514
 #, c-format
 msgid "error [%d] from Lapack 'ztrcon()'"
-msgstr ""
+msgstr "Lapack의 함수 'ztrcon()'로부터 에러 [%d]가 발생했습니다"
 
 #: src/modules/lapack/Lapack.c:530
 #: src/modules/lapack/Lapack.c:600
 msgid "'a' must be a complex matrix"
-msgstr ""
+msgstr "'a'는 반드시 복소수 행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:533
 #: src/modules/lapack/Lapack.c:1035
@@ -7505,7 +7503,7 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:1037
 #, c-format
 msgid "'a' (%d x %d) must be square"
-msgstr ""
+msgstr "'a'은 반드시 %d 행 %d열의 정방행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:541
 #: src/modules/lapack/Lapack.c:1043
@@ -7532,7 +7530,7 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:660
 #: src/modules/lapack/Lapack.c:705
 msgid "'b' must be a complex matrix"
-msgstr ""
+msgstr "'b'는 반드시 복소수 행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:668
 #: src/modules/lapack/Lapack.c:714
@@ -7548,11 +7546,11 @@ msgstr ""
 
 #: src/modules/lapack/Lapack.c:748
 msgid "matrices of 2^31 or more elements are not supported"
-msgstr ""
+msgstr "2^31 이상의 구성원소를 가지는 행렬은 지원되지 않습니다"
 
 #: src/modules/lapack/Lapack.c:808
 msgid "'x' must be a square complex matrix"
-msgstr ""
+msgstr "'x'은 반드시 복소수형 정방행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:919
 #: src/modules/lapack/Lapack.c:993
@@ -7560,16 +7558,16 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:1106
 #: src/modules/lapack/Lapack.c:1237
 msgid "'a' must be a numeric matrix"
-msgstr ""
+msgstr "'a'는 수치형 행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:926
 #: src/modules/lapack/Lapack.c:1242
 msgid "'a' must be a square matrix"
-msgstr ""
+msgstr "'a'는 반드시 정방행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:927
 msgid "'a' must have dims > 0"
-msgstr ""
+msgstr "'a'은 반드시 양수인 dims를 가져야 합니다"
 
 #: src/modules/lapack/Lapack.c:939
 #, c-format
@@ -7582,17 +7580,17 @@ msgstr ""
 
 #: src/modules/lapack/Lapack.c:980
 msgid "'size' argument must be a positive integer"
-msgstr ""
+msgstr "'size' 인자는 반드시 양의 정수이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:995
 #, c-format
 msgid "'size' cannot exceed ncol(x) = %d"
-msgstr ""
+msgstr "'size'는 열의 개수 %d를 초과할 수 없습니다"
 
 #: src/modules/lapack/Lapack.c:996
 #, c-format
 msgid "'size' cannot exceed nrow(x) = %d"
-msgstr ""
+msgstr "'size'는 행의 개수 %d를 초과할 수 없습니다"
 
 #: src/modules/lapack/Lapack.c:1008
 #, c-format
@@ -7612,11 +7610,11 @@ msgstr ""
 #: src/modules/lapack/Lapack.c:1166
 #: src/modules/lapack/Lapack.c:1204
 msgid "'b' must be a numeric matrix"
-msgstr ""
+msgstr "'b'는 반드시 수치형 행렬이어야 합니다"
 
 #: src/modules/lapack/Lapack.c:1238
 msgid "argument 'logarithm' must be logical"
-msgstr ""
+msgstr "'logarithm' 인자는 반드시 논리적이어야 합니다"
 
 #: src/nmath/bessel_i.c:69
 msgid "bessel_i allocation error"
@@ -7795,7 +7793,7 @@ msgstr ""
 
 #: src/unix/dynload.c:240
 msgid "cannot get working directory!"
-msgstr ""
+msgstr "작업 디렉토리를 얻을 수 없습니다!"
 
 #: src/unix/sys-std.c:131
 msgid "interrupt handler must not return"
@@ -7809,7 +7807,7 @@ msgstr ""
 #: src/unix/sys-std.c:1252
 #, c-format
 msgid "problem in saving the history file '%s'"
-msgstr ""
+msgstr "작업기록 파일 '%s'를 저장하는데 문제가 발생했습니다"
 
 #: src/unix/sys-std.c:1159
 #, c-format
@@ -7817,6 +7815,8 @@ msgid ""
 "Cannot open file '%s': %s\n"
 "\n"
 msgstr ""
+"파일 '%s'를 열 수 없습니다: %s\n"
+"\n"
 
 #: src/unix/sys-std.c:1223
 #: src/unix/sys-std.c:1246
@@ -7847,7 +7847,7 @@ msgstr ""
 
 #: src/unix/sys-unix.c:254
 msgid "'intern' must be logical and not NA"
-msgstr ""
+msgstr "'intern'은 반드시 논리적이어야 하며 NA이어서는 안됩니다"
 
 #: src/unix/sys-unix.c:266
 #, c-format
@@ -7862,20 +7862,20 @@ msgstr ""
 #: src/unix/sys-unix.c:288
 #, c-format
 msgid "error in running command: '%s'"
-msgstr ""
+msgstr "다음 명령어를 실행하는데 에러가 발생하였습니다: '%s'"
 
 #: src/unix/sys-unix.c:290
 msgid "error in running command"
-msgstr ""
+msgstr "명령을 실행하는 도중 에러가 발생하였습니다"
 
 #: src/unix/sys-unix.c:294
 #, c-format
 msgid "running command '%s' had status %d and error message '%s'"
-msgstr ""
+msgstr "명령 '%s'의 실행으로 상태 %d가 되고, 에러 메시지 '%s'를 가집니다"
 
 #: src/unix/sys-unix.c:399
 msgid "Sys.info() is not implemented on this system"
-msgstr ""
+msgstr "이 시스템에서 Sys.info()는 구현되지 않았습니다"
 
 #: src/unix/system.c:250
 #, c-format
@@ -7885,12 +7885,12 @@ msgstr ""
 #: src/unix/system.c:268
 #, c-format
 msgid "WARNING: unknown gui '%s', using X11\n"
-msgstr ""
+msgstr "경고: 알수없는 gui '%s'이므로 X11을 사용합니다\n"
 
 #: src/unix/system.c:271
 #, c-format
 msgid "WARNING: unknown gui '%s', using none\n"
-msgstr ""
+msgstr "경고: 알 수 없는 gui '%s'이므로, 아무것도 사용하지 않습니다\n"
 
 #: src/unix/system.c:381
 msgid "creating temporary file for '-e' failed"
