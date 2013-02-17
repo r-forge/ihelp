@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: R 3.0.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2013-02-05 07:27+0000\n"
-"PO-Revision-Date: 2013-02-16 17:47-0600\n"
+"PO-Revision-Date: 2013-02-16 19:06-0600\n"
 "Last-Translator: Chel Hee Lee <gnustats@gmail.com>\n"
 "Language-Team: Korean <gnustats@gmail.com>\n"
 "Language: ko\n"
@@ -2403,7 +2403,7 @@ msgstr "지원되지 않는 모드입니다"
 
 #: src/main/connections.c:2882
 msgid "'con' is not a textConnection"
-msgstr ""
+msgstr "'con'은 textConnection이 아닙니다"
 
 #: src/main/connections.c:2885
 msgid "'con' is not an output textConnection"
@@ -2411,7 +2411,7 @@ msgstr ""
 
 #: src/main/connections.c:2959
 msgid "sockets are not available on this system"
-msgstr ""
+msgstr "이 시스템에서는 소켓을 사용할 수 없습니다"
 
 #: src/main/connections.c:3027
 #: src/main/connections.c:3076
@@ -2424,31 +2424,31 @@ msgstr ""
 #: src/main/connections.c:3428
 #: src/main/connections.c:5158
 msgid "'con' is not a connection"
-msgstr ""
+msgstr "'con'은 연결이 아닙니다"
 
 #: src/main/connections.c:3030
 msgid "cannot open standard connections"
-msgstr ""
+msgstr "표준 연결을 열 수 없습니다"
 
 #: src/main/connections.c:3032
 msgid "connection is already open"
-msgstr ""
+msgstr "연결이 이미 열려 있습니다"
 
 #: src/main/connections.c:3065
 msgid "unknown 'rw' value"
-msgstr ""
+msgstr "알 수 없는 'rw' 값입니다"
 
 #: src/main/connections.c:3136
 msgid "cannot close standard connections"
-msgstr ""
+msgstr "표준 연결을 닫을 수 없습니다"
 
 #: src/main/connections.c:3139
 msgid "cannot close 'output' sink connection"
-msgstr ""
+msgstr "'output' sink 연결을 닫을 수 없습니다"
 
 #: src/main/connections.c:3141
 msgid "cannot close 'message' sink connection"
-msgstr ""
+msgstr "'message' sink 연결을 닫을 수 없습니다"
 
 #: src/main/connections.c:3161
 #: src/main/connections.c:4881
@@ -2460,7 +2460,7 @@ msgstr "연결이 열려 있지 않습니다"
 #: src/main/connections.c:3257
 #: src/main/connections.c:3269
 msgid "line longer than buffer size"
-msgstr ""
+msgstr "행이 버퍼사이즈보다 길어지고 있습니다"
 
 #: src/main/connections.c:3337
 #: src/main/connections.c:3339
@@ -2473,17 +2473,17 @@ msgstr ""
 #: src/main/serialize.c:1933
 #: src/main/source.c:272
 msgid "cannot read from this connection"
-msgstr ""
+msgstr "이 연결로부터 읽을수 없습니다"
 
 #: src/main/connections.c:3351
 #: src/main/connections.c:3373
 msgid "cannot allocate buffer in readLines"
-msgstr ""
+msgstr "readLines에 버퍼를 할당할 수 없습니다"
 
 #: src/main/connections.c:3400
 #, c-format
 msgid "incomplete final line found on '%s'"
-msgstr ""
+msgstr "'%s'에서 완전하지 않은 마지막 라인이 발견되었습니다"
 
 #: src/main/connections.c:3406
 msgid "too few lines read in readLines"
@@ -2491,7 +2491,7 @@ msgstr ""
 
 #: src/main/connections.c:3509
 msgid "incomplete string at end of file has been discarded"
-msgstr ""
+msgstr "파일의 끝에 있는 완전하지 않은 문자열이 제거되었습니다"
 
 #: src/main/connections.c:3515
 msgid "null terminator not found: breaking string at 10000 bytes"
@@ -2529,7 +2529,7 @@ msgstr ""
 
 #: src/main/connections.c:3820
 msgid "'x' is not an atomic vector type"
-msgstr ""
+msgstr "'x'는 기본벡터유형이 아닙니다"
 
 #: src/main/connections.c:3826
 msgid "can only write to a binary connection"
@@ -3631,7 +3631,7 @@ msgstr ""
 #: src/main/envir.c:3481
 #, c-format
 msgid "unknown encoding: %d"
-msgstr ""
+msgstr "알수없는 인코딩입니다: %d"
 
 #: src/main/envir.c:3501
 #, c-format
@@ -3655,13 +3655,13 @@ msgstr ""
 #: src/main/errors.c:355
 #, c-format
 msgid "Warning: %s\n"
-msgstr ""
+msgstr "경고: %s\n"
 
 #: src/main/errors.c:358
 #: src/main/errors.c:360
 #, c-format
 msgid "Warning in %s : %s\n"
-msgstr ""
+msgstr "%s에서 경고가 발생했습니다 : %s\n"
 
 #: src/main/errors.c:362
 #, c-format
@@ -3669,28 +3669,29 @@ msgid ""
 "Warning in %s :\n"
 "  %s\n"
 msgstr ""
+"%s에서 다음과 같은 경고가 발생했습니다 :\n"
+"  %s\n"
 
 #: src/main/errors.c:425
 #: src/main/errors.c:444
 #: src/main/errors.c:592
 msgid "Lost warning messages\n"
-msgstr ""
+msgstr "경고메시지들이 손실되었습니다\n"
 
 #: src/main/errors.c:456
 msgid "Warning message:\n"
 msgid_plural "Warning messages:\n"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "경고메시지(들):\n"
 
 #: src/main/errors.c:511
 #, c-format
 msgid "There were %d warnings (use warnings() to see them)\n"
-msgstr ""
+msgstr "%d건의 경고들이 있습니다 (warnings()를 이용하여 이들을 확인해주세요)\n"
 
 #: src/main/errors.c:514
 #, c-format
 msgid "There were %d or more warnings (use warnings() to see the first %d)\n"
-msgstr ""
+msgstr "%d건 이상의 경고들이 있습니다 (warnings()을 이용하여 처음 %d건의 경고들을 확인하세요)\n"
 
 #: src/main/errors.c:583
 msgid "Error during wrapup: "
@@ -3698,7 +3699,7 @@ msgstr ""
 
 #: src/main/errors.c:608
 msgid "Error in "
-msgstr ""
+msgstr "다음에 오류가 있습니다"
 
 #: src/main/errors.c:609
 #, c-format
@@ -3714,7 +3715,7 @@ msgstr "에러: "
 #: src/main/errors.c:686
 #: src/main/errors.c:1307
 msgid "In addition: "
-msgstr ""
+msgstr "추가정보:"
 
 #: src/main/errors.c:807
 msgid "invalid option \"error\"\n"
@@ -3722,7 +3723,7 @@ msgstr ""
 
 #: src/main/errors.c:889
 msgid "Execution halted\n"
-msgstr ""
+msgstr "실행이 정지되었습니다\n"
 
 #: src/main/errors.c:1027
 msgid "'msg1' must be a character string"
@@ -3753,12 +3754,12 @@ msgstr ""
 
 #: src/main/errors.c:1181
 msgid "invalid number of arguments"
-msgstr ""
+msgstr "인수의 개수가 잘못되었습니다"
 
 #: src/main/errors.c:1182
 #: src/main/logic.c:171
 msgid "invalid argument type"
-msgstr ""
+msgstr "인자의 유형이 잘못되었습니다"
 
 #: src/main/errors.c:1184
 msgid "time-series/vector length mismatch"
@@ -3770,11 +3771,11 @@ msgstr ""
 
 #: src/main/errors.c:1188
 msgid "unknown error (report this!)"
-msgstr ""
+msgstr "알 수 없는 에러입니다 (이것을 보고해주세요!)"
 
 #: src/main/errors.c:1200
 msgid "unknown warning (report this!)"
-msgstr ""
+msgstr "알 수 없는 경고입니다 (이것을 보고해주세요!)"
 
 #: src/main/errors.c:1271
 msgid "No function to return from, jumping to top level"
@@ -3815,7 +3816,7 @@ msgstr ""
 
 #: src/main/errors.c:1837
 msgid "error message must be a character string"
-msgstr ""
+msgstr "에러메시지는 반드시 문자열이어야 합니다"
 
 #: src/main/eval.c:272
 #, c-format
@@ -5230,17 +5231,17 @@ msgstr "'%s'는 이미 존재합니다"
 #: src/main/platform.c:2143
 #, c-format
 msgid "cannot create dir '%s', reason '%s'"
-msgstr ""
+msgstr "디렉토리 '%s'를 만들 수 없습니다. 그 이유는 '%s'입니다"
 
 #: src/main/platform.c:2189
 #, c-format
 msgid "'%ls' already exists"
-msgstr ""
+msgstr "'%ls'은 이미 존재합니다"
 
 #: src/main/platform.c:2193
 #, c-format
 msgid "cannot create dir '%ls', reason '%s'"
-msgstr ""
+msgstr "디렉토리 '%ls'를 만들 수 없습니다. 그 이유는 '%s'입니다. "
 
 #: src/main/platform.c:2208
 #: src/main/platform.c:2365
@@ -5261,36 +5262,36 @@ msgstr ""
 #: src/main/platform.c:2236
 #, c-format
 msgid "problem creating directory %ls: %s"
-msgstr ""
+msgstr "디렉토리 %ls를 생성하는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2255
 #, c-format
 msgid "problem reading dir %ls: %s"
-msgstr ""
+msgstr "디렉토리 %ls를 읽는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2273
 #, c-format
 msgid "problem copying %ls to %ls: %s"
-msgstr ""
+msgstr "%ls를 %ls로 복사하는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2403
 #, c-format
 msgid "problem creating directory %s: %s"
-msgstr ""
+msgstr "디렉토리 %s를 생성하는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2422
 #, c-format
 msgid "problem reading directory %s: %s"
-msgstr ""
+msgstr "디렉토리 %s를 읽는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2443
 #, c-format
 msgid "problem copying %s to %s: %s"
-msgstr ""
+msgstr "%s를 %s로 복사하는데 문제가 발생했습니다: %s"
 
 #: src/main/platform.c:2566
 msgid "'mode' must be of length at least one"
-msgstr ""
+msgstr "'mode'의 길이는 반드시 최소한 1이상이어야 합니다"
 
 #: src/main/platform.c:2633
 msgid "insufficient OS support on this platform"
@@ -5303,11 +5304,11 @@ msgstr ""
 
 #: src/main/plot3d.c:196
 msgid "all z values are equal"
-msgstr ""
+msgstr "모든 z 값들이 동일합니다"
 
 #: src/main/plot3d.c:198
 msgid "all z values are NA"
-msgstr ""
+msgstr "모든 z 값들이 NA입니다"
 
 #: src/main/plotmath.c:333
 msgid "invalid math style encountered"
