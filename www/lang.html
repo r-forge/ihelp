@@ -10,18 +10,40 @@
 <body>
 
 <h2> Language Support (Korean) </h2>	
-	<p> R (>=2.1.0)의 한국어 지원은 <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>에 의해 진행되고 있습니다.  본 <a href="lang.html" target="body"> <strong> Language Support </strong> </a>페이지 페이지는 R (>=2.1.0)의 한국어 지원 프로세스와 방법, 그리고 진행사항들을 기술합니다  이에 대한 내용은 <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> R 한국어 지원 메일링 리스트</a>을 통해 확인하실 수 있으며, 해당 메일링의 가입은 ihelp-translators@lists.r-forge.r-project.org로 메일을 보낸다면 자동으로 이루어집니다.  또한, 모든 쓰레드는 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 알카이브</a>를 통해 확인이 가능합니다  </p> 
+	<p> 
+	R (>=2.1.0)의 한국어 지원은 <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>에 의해 진행 및 관리가 되고 있습니다.   
+	본 <a href="lang.html" target="body"> <strong> Language Support </strong> </a>페이지에서는 한국어 지원의 과정이 어떻게 이루어지며, 참여방법에 대해서 기술합니다. 
+	진행사항에 대한 내용은 <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> R 한국어 지원 메일링 리스트</a>을 통해 확인하실 수 있으며, 이 메일링의 가입은 ihelp-translators@lists.r-forge.r-project.org로 메일을 보낸다면 자동으로 이루어집니다.  
+	또한, 이 메일링에 대한 모든 쓰레드를 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 알카이브</a>를 통해 확인해 보실 수 있습니다. 
+	</p> 
 	
-	<p> iHELP 프로젝트는 크게 아래와 같은 사항에 대해서 진행중입니다
-		<li> R 메시지 한글 번역 </li>
-		<li> R Documentation의 한국어판 제공 </li>
-		<li> R 한국어 관련 버그리포팅 </li>
-		<li> R 도움말 파일 제공 </li>
+	<p> iHELP 프로젝트는 크게 아래와 같은 부분에 있어서 한국어 지원을 진행 중이며, 프로젝트에 참여를 희망하시는 분들께서는 gnustats@gmail.com으로 문의를 부탁드립니다. 
+		<li> R 메시지 </li>
+		<li> R Documentation </li>
+		<li> R 버그리포팅 </li>
+		<li> R 도움말 파일 </li>
 	</p>
 
 
-<h3> R 메시지의 한글 번역 작업 지침과 품질관리 프로그램 </h3>
-	<p> iHELP 프로젝트 참여자는 다음의 작업방법을 따라주시길 부탁드립니다. 또한, 이와 연관된 작업이 요구하는 기술적 요구사항들 (즉, 수정, 설치, 그리고 확인)은 개인이 스스로 해결할 수 있어야 합니다.  그러나, 여기에서 필요한 모든 기술적 내용을 제공하고자 합니다.  단, 아래의 작업지침이 지켜지지 않거나 올바르게 번역되지 않은 메시지에 대해서는 notification 없이 삭제가 됨을 알려드립니다. </p>
+<h3> R 메시지의 한국어 지원 작업지침 및 품질관리 검증 프로그램 </h3>
+	<p> 
+	iHELP 프로젝트에서 <strong> R 메시지에 대한 한국어 지원 작업은 영어로 된 R을 한국어 사용자가 모국어로서 편리하고 더 빠른 작업을 돕기 위한 환경을 제공하기 위한 하나의 옵션을 제공하는 것입니다.  따라서 올바르고 정확한 메시지 번역이 요구되어 집니다 </strong>.
+	아쉽게도 R의 한국어 지원은 초기에 잠시 이루어졌다가 R-2.8.x 버전때까지 담당자의 부재로 인하여 많은 기계적 퍼지가 누적됨으로서 한국어버전의 R을 사용하는데 많은 어려움이 있었습니다. 
+	R-2.9.x 버전부터 R-2.15.x까지는 R에서 사용되는 한국어 용어에 대한 데이터 베이스 구축과 번역된 메시지들에 대해서 품질관리 검증 프로그램이 진행되었습니다. 
+	그리고 R-3.0.0 부터는 기존의 퍼지를 모두 제거하기 위하여 언어파일 전체를 모두 초기화한뒤 올바르게 검증된 메시지들만 추가하여 배포하고자 합니다 (R-3.0.0 부터의 모든 작업 진행사항은 ihelp-translators 메일링 리스트와 알카이브를 이용하여 그 내용을 확인하시길 부탁드립니다).
+	</p>
+	
+	<p>
+		품질관리는 아래와 같은 기준으로 이루어집니다.
+		<li> 언어파일 초기화 이후 모든 메시지를 R의 소스코드내에서 확인작업을 한뒤, R의 도움말 파일과 함께 그 사용의 여부가 일치하는지를 봅니다. </li>
+		<li> 메시지들은 보통 에러, 경고, 그리고 다음 지시사항에 관련되어 있습다. </li>
+		<li> C로 짜여진 소스, R로 짜여진 소스, 그리고 인터페이스와 관련된 부분으로부터 생성됩니다. </li>
+	</p>
+	
+	
+	 
+	  
+	iHELP 프로젝트 참여자는 다음의 작업방법을 따라주시길 부탁드립니다. 또한, 이와 연관된 작업이 요구하는 기술적 요구사항들 (즉, 수정, 설치, 그리고 확인)은 개인이 스스로 해결할 수 있어야 합니다.  그러나, 여기에서 필요한 모든 기술적 내용을 제공하고자 합니다.  단, 아래의 작업지침이 지켜지지 않거나 올바르게 번역되지 않은 메시지에 대해서는 notification 없이 삭제가 됨을 알려드립니다. </p>
 	
 	<p> 이 작업지침은 R(&ge;3.0.0) 부터 적용되며, 그 이전 버전들인 R(&le; 2.15.3)에는 적용되지 않습니다 (ihelp-translators 메일링 리스트를 참고하세요) </p>
 	
@@ -36,14 +58,16 @@
 	
 	<p> 이러한 작업을 위해서는 Fedora 그룹에서는 PoEdit를 추천합니다. </p>
 	
-	<p> 파일을 열어보면 메시지 번역은 아래와 같은 형식을 가지고 있음을 알 수 있습니다. </p>
+	<li> 파일을 열어보면 메시지 번역은 아래와 같은 형식을 가지고 있음을 알 수 있습니다. </p>
 	
 	<pre>
 	msgid "영어로 된 본래의 메시지가 있습니다"
 	msgstr ""
 	</pre>
 	
-	<p> 현재 2013년 2월 18일 R-3.0.0 을 위한 한국어 파일은 초기화 되어 있기 때문에 msgstr 부분은 아무런 메시지도 없이 "" 라고 되어 있습니다.  msgid 에 있는 영어원문에 해당하는 올바른 한국어 번역을 아래와 같이 합니다.  </p>
+	<p> R-3.0.0 을 위한 한국어 파일 (현재 2013년 2월 18일)은 초기화 되어 있기 때문에 msgstr 부분은 아무런 메시지도 없이 "" 라고 되어 있습니다. </p> 
+	
+	<li> msgid 에 있는 영어원문에 해당하는 올바른 한국어 번역을 아래와 같이 합니다.  </li>
 	
 	<p> 일반적인 설명을 위해 파일의 맨 처음 세가지 메시지를 이용하여 유형별로 설명합니다. </p>
 
