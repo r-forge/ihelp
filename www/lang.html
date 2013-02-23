@@ -28,7 +28,7 @@
 <table>
 	<th> 서브 카테고리 </th>
 	<tr>
-		<td> <a href="#"> 메지시 작업 </a> </td>
+		<td> <a href="lang.html"> 메지시 작업 </a> </td>
 	</tr>
 	<tr>
 		<td> <a href="#"> Documentation </a> </td>
@@ -43,21 +43,64 @@
 </aside>
 
 <article>
-<p> Modified on 2013-FEB-18 <br> Chel Hee Lee </p>
+<p> Modified on 2013-FEB-22 <br> Chel Hee Lee </p>
 	<p> 
 	R (>=2.1.0)의 한국어 지원은 <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>에 의해 진행 및 관리가 되고 있습니다.   
-	본 <a href="lang.html"> <strong> Language Support </strong> </a>페이지에서는 한국어 지원의 과정이 어떻게 이루어지며, 참여방법에 대해서 기술합니다. 
-	진행사항에 대한 내용은 <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> R 한국어 지원 메일링 리스트</a>을 통해 확인하실 수 있으며, 이 메일링의 가입은 ihelp-translators@lists.r-forge.r-project.org로 메일을 보낸다면 자동으로 이루어집니다.  
+	본 <a href="lang.html"> <strong> Language Support (Korean) </strong> </a>페이지에서는 한국어 지원의 과정이 어떻게 이루어지며, 참여방법에 대해서 기술합니다. 
+	진행사항에 대한 내용은 <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> R 한국어 지원 메일링 리스트</a>을 통해 확인하실 수 있으며, 이 메일링의 가입은 <a href="ihelp-translators@lists.r-forge.r-project.org"> ihelp-translators@lists.r-forge.r-project.org </a>로 메일을 보낸다면 자동으로 이루어집니다.  
 	또한, 이 메일링에 대한 모든 쓰레드를 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 알카이브</a>를 통해 확인해 보실 수 있습니다. 
 	</p> 
 	
-	<p> iHELP 프로젝트는 크게 아래와 같은 부분에 있어서 한국어 지원을 진행 중이며, 프로젝트에 참여를 희망하시는 분들께서는 <a href="mailto:gnustats@gmail.com"> gnustats@gmail.com </a>로 문의를 부탁드립니다. 
+	<p> iHELP 프로젝트는 크게 아래와 같은 부분에 있어서 한국어 지원을 진행 중이며, 프로젝트에 참여를 희망하시는 분들께서는 <a href="mailto:gnustats@korea.gnu.org"> gnustats@korea.gnu.org </a>로 문의를 부탁드립니다. 
 		<li> R 메시지 </li>
 		<li> R Documentation </li>
-		<li> R 버그리포팅 </li>
 		<li> R 도움말 파일 </li>
+		<li> R 버그리포팅 </li>
 	</p>
 
+	<p>
+		iHELP 프로젝트은 R 베이스 시스템을 구성하는 Standard packages (표준 패키지)를 관리하며, Recommended packages (추천 패키지)들를 지원합니다.
+		이들의 목록은 아래와 같으며, 그 외의 다른 패키지들 (즉, contributed packages)는 관리대상이 아닙니다.  
+		그러나, 기여자들의 참여와 요구에 따라 일부 Rcmdr와 같은 contributed package 역시 관리에 포함이 됩니다.  
+		
+		<table>
+		<th> <td> 패키지명 </td> <td> 설명 </td></th>
+		<tr><td> base </td> <td> R의 기본함수들과 R 2.0.0 이전의 데이터셋들</td></tr>
+		<tr><td> compiler </td> <td> R 2.13.0에 추가된 R 바이트 코드 컴파일러 </td></tr>
+		<tr><td> datasets </td> <td> R 2.0.0에 추가된 R 기본 데이터셋들 </td></tr>
+		<tr><td> grDevices </td> <td> R 2.0.0에 추가된 base와 graphics에 사용되는 그래픽스 장치들. </td></tr>
+		<tr><td> graphics </td> <td> 기본그래픽스에 필요한 R 함수들. </td></tr>
+		<tr><td> grid </td> <td> 그래픽 레이아웃과 인터랙션에 필요한 함수들. </td></tr>
+		<tr><td> methods</td> <td> Green book에 기술된 것과 같이 R객체들에 미리 정의되어 있는 메소들과 클래스들, 추가로 다른 프로그래밍 도구들. </td></tr>
+		<tr><td> parallel </td> <td> R 2.14.0에 추가된 포킹, 소켓, 그리고 난수생성등을 포함하여 병렬컴퓨팅을 위한 도구들.</td></tr>
+		<tr><td> splines </td> <td> 회귀 스플라인 함수들과 클래스들. </td></tr>
+		<tr><td> stats </td> <td> R 통계 함수들. </td></tr>
+		<tr><td> stats4</td> <td> S4 클래스로 작성된 통계함수들 </td></tr>
+		<tr><td> tcltk </td> <td> Tcl/Tk GUI 요소들 </td></tr>
+		<tr><td> tools </td> <td> 패키지 개발과 관리에 필요한 도구들 </td></tr>
+		<tr><td> utils</td> <td> R 유틸리티 함수들 </td></tr>
+		</table>
+				
+		<table>
+		<th><td></td><td></td></th>
+		<tr><td>KernSmooth</td><td> M. P. Wand과  M. C. Jones이 1995년에 쓴 책 “Kernel Smoothing”에 기술된 커널 스무딩과 밀도추정을 위한 함수들.</td></tr>
+		<tr><td>MASS</td><td> Venables과 Ripley가 쓴“Modern Applied Statistics with S” 책의 주요 패키지들에 포함되어 있는 함수들과 데이터셋들 </td></tr>
+		<tr><td>Matrix</td><td> 행렬연산에 관계된 패키지 (R 2.9.0 또는 이후 버전에 권장됨) </td></tr>
+		<tr><td>boot</td><td> A. C. Davison과 D. V. Hinkley가 1997년에 쓴 책 “Bootstrap Methods and Their Applications” (Cambridge University 출판)에서 소개된 부스트래핑에 관계된 함수들과 데이터셋들 </td></tr>
+		<tr><td>class</td><td> 클래시피케이션을 위한 함수들 (k-nearest neighbor and LVQ).</td></tr>
+		<tr><td>cluster</td><td>클러스트 분석을 위한 함수들.</td></tr>
+		<tr><td>codetools</td><td>코드분석을 도구들. (R 2.5.0 이후 버전에 권장됨.)</td></tr>
+		<tr><td>foreign</td><td> Minitab, S, SAS, SPSS, Stata, Systat와 같은 통계전문 소프트웨어들에 의해 저장된 데이터를 읽고 쓰기위한 함수들</td></tr>
+		<tr><td>lattice</td><td> Trellis Graphics 함수들의 구현에 필요한 Lattice 그래픽스.</td></tr>
+		<tr><td>mgcv</td><td> Routines for GAMs and other generalized ridge regression problems with multiple smoothing parameter selection by GCV or UBRE.</td></tr>
+		<tr><td>nlme</td><td> 가우시안 선형 그리고 비선형 혼합모델들을 적합하고 비교하는데 필요하 함수들.</td></tr>
+		<tr><td>nnet</td><td>Software for single hidden layer perceptrons (“feed-forward neural networks”), and for multinomial log-linear models. </td></tr>
+		<tr><td>rpart</td><td> 재귀적 파티셔닝과 회귀트리.</td></tr>
+		<tr><td>spatial</td><td> W. Venables와 B. Ripley가 쓴 책 “Modern Applied Statistics with S”에 있는 kriging과  point pattern 분석에 필요한 함수들</td></tr>
+		<tr><td>survival</td><td> penalized likelihood외에도 생존분석에 필요한 함수들.</td></tr>
+		</table>
+
+	</p>
 
 <h3> R 메시지의 한국어 지원 작업지침 및 품질관리 검증 프로그램 </h3>
 	<p> 
