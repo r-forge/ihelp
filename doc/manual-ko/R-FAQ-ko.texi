@@ -90,7 +90,8 @@ Kurt Hornik                      @*
 @top R FAQ
 @ifhtml
 @html
-<h2>Frequently Asked Questions on R</h2>
+@c <h2>Frequently Asked Questions on R</h2>
+<h2> R 에 관하여 자주 물어보는 질문들 </h2>
 <h2>Version @value{FAQ_VERSION}</h2>
 <h2>ISBN @value{FAQ_ISBN}</h2>
 <address>Kurt Hornik</address>
@@ -113,10 +114,12 @@ Kurt Hornik                      @*
 @end menu
 
 @node Introduction, R Basics, Top, Top
-@chapter Introduction
+@c @chapter Introduction
+@chapter 소개
 
-This document contains answers to some of the most frequently asked
-questions about R.
+@c This document contains answers to some of the most frequently asked
+@c questions about R.
+이 문서는 R에 관하여 가장 많이 자주 물어보는 질문들에 대해서 정리한 문서입니다.
 
 @menu
 * Legalese::                    
@@ -129,37 +132,47 @@ questions about R.
 @node Legalese, Obtaining this document, Introduction, Introduction
 @section Legalese
 
-This document is copyright @copyright{} 1998--@value{FAQ_YEAR} by Kurt
-Hornik.
+@c This document is copyright @copyright{} 1998--@value{FAQ_YEAR} by Kurt
+@c Hornik.
+이 문서에 대한 저작권은 @copyright{} 1998--@value{FAQ_YEAR} 이래로 Kurt Hornik에게 있습니다. 
 
-This document is free software; you can redistribute it and/or modify it
-under the terms of the @acronym{GNU} General Public License as published
-by the Free Software Foundation; either version 2, or (at your option)
-any later version.
+@c This document is free software; you can redistribute it and/or modify it
+@c under the terms of the @acronym{GNU} General Public License as published
+@c by the Free Software Foundation; either version 2, or (at your option)
+@c any later version.
 
-This document is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-@acronym{GNU} General Public License for more details.
+그리고 이 문서는 자유소프트웨어이므로, 자유소프트웨어 재단 (Free Software Foundation)에 의해서 배포되는 @acronym{GNU} 일반공중라이센스 (General Public License) 버전 2 또는 그 이후의 버전들을 통하여 수정 및 재배포를 할 수 있습니다. 
 
-Copies of the @acronym{GNU} General Public License versions are
-available at
+@c This document is distributed in the hope that it will be useful, but
+@c WITHOUT ANY WARRANTY; without even the implied warranty of
+@c MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+@c @acronym{GNU} General Public License for more details.
+
+이 문서가 사용자에게 유용하길 바라는 희망에서 배포되고 있으나, 어떤 상업적 형태로서의 보증 또는 특수한 목적에 적합 등 그 어떠한 형태의 보증도 하지 않고 있음을 알려드립니다 (문장 참... 어색함).
+보다 자세한 사항들은 @acronym{GNU} 일반공증라이센스를 참조하시길 부탁드립니다. 
+
+@c Copies of the @acronym{GNU} General Public License versions are
+@c available at
+@acronym{GNU} 일반공증라이센스의 사본들을 아래의 주소로부터 찾으실 수 있습니다.
 
 @display
 @url{http://www.R-project.org/Licenses/}
 @end display
 
 
+
 @node Obtaining this document, Citing this document, Legalese, Introduction
 @section Obtaining this document
 
-The latest version of this document is always available from
+@c The latest version of this document is always available from
+이문서의 가장 최신 버전은 항상 아래의 주소에서 확인이 가능합니다. 
 
 @display
 @url{http://CRAN.R-project.org/doc/FAQ/}
 @end display
 
-From there, you can obtain versions converted to
+@c From there, you can obtain versions converted to
+또한,  
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.txt,, plain
 @acronym{ASCII} text},
 @c @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.dvi.gz,, DVI},
@@ -167,19 +180,25 @@ From there, you can obtain versions converted to
 info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.pdf,, PDF},
 @c @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.ps.gz,, PostScript}
-as well as the @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.texi,,
-Texinfo source} used for creating all these formats using the
-@url{http://texinfo.org/, @acronym{GNU} Texinfo system}.
+@c as well as the 
+그리고 이렇게 다양한 형식의 문서들을 생성하기 위해 사용된 
+@url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.texi,,Texinfo source} 
+@c used for creating all these formats using the
+를 얻을 수 있습니다.
+@c @url{http://texinfo.org/, @acronym{GNU} Texinfo system}.
 
-You can also obtain the R @acronym{FAQ} from the @file{doc/FAQ}
-subdirectory of a @CRAN{} site (@pxref{What is CRAN?}).
+@c You can also obtain the R @acronym{FAQ} from the @file{doc/FAQ}
+@c subdirectory of a @CRAN{} site (@pxref{What is CRAN?}).
+그외에도 R @acronym{FAQ}를 @CRAN{} 사이트 (@pxref{What is CRAN?} 참조)의 하위디렉토리 @file{doc/FAQ}에서 찾을 수 있습니다.
 
 @node Citing this document, Notation, Obtaining this document, Introduction
 @section Citing this document
 
-In publications, please refer to this @acronym{FAQ} as Hornik
-(@value{FAQ_YEAR}), ``The R @acronym{FAQ}'', and give the above,
-@emph{official} @acronym{URL} and the ISBN @value{FAQ_ISBN}:
+@c In publications, please refer to this @acronym{FAQ} as Hornik
+@c (@value{FAQ_YEAR}), ``The R @acronym{FAQ}'', and give the above,
+@c @emph{official} @acronym{URL} and the ISBN @value{FAQ_ISBN}:
+
+이 @acronym{FAQ}를 인용하고자 할때는 Hornik (@value{FAQ_YEAR}), ``The R @acronym{FAQ}''라고 하주시고, 위에서 언급한대로 @emph{공식적인} @acronym{URL} 과 ISBN @value{FAQ_ISBN}을 기재하면 됩니다:
 
 @example
 @group
@@ -197,24 +216,31 @@ In publications, please refer to this @acronym{FAQ} as Hornik
 @node Notation, Feedback, Citing this document, Introduction
 @section Notation
 
-Everything should be pretty standard.  @samp{R>} is used for the R
-prompt, and a @samp{$} for the shell prompt (where applicable).
+@c Everything should be pretty standard.  @samp{R>} is used for the R
+@c prompt, and a @samp{$} for the shell prompt (where applicable).
+이 문서에서는 거의 표준에 가까운 기호들을 사용합니다.  @samp{R>} 은 R 프롬프트를 나타나는데 사용되고, @samp{$}는 쉘프롬프트를 나타내는데 사용됩니다.
 
 @node Feedback,  , Notation, Introduction
 @section Feedback
 
-Feedback via email to @email{Kurt.Hornik@@R-project.org} is of course
-most welcome.
+@c Feedback via email to @email{Kurt.Hornik@@R-project.org} is of course
+@c most welcome.
+피드백은 @email{Kurt.Hornik@@R-project.org}로 보내주시면 감사드리겠습니다. 
 
-In particular, note that I do not have access to Windows or Macintosh
-systems.  Features specific to the Windows and Mac OS X ports of R are
-described in the
-@url{http://CRAN.R-project.org/bin/windows/base/rw-FAQ.html, ``R for
-Windows @acronym{FAQ}''} and the
-@url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac
-OS X @acronym{FAQ}''}.  If you have information on Macintosh or Windows
-systems that you think should be added to this document, please let me
-know.
+@c In particular, note that I do not have access to Windows or Macintosh
+@c systems.  Features specific to the Windows and Mac OS X ports of R are
+@c described in the
+@c @url{http://CRAN.R-project.org/bin/windows/base/rw-FAQ.html, ``R for
+@c Windows @acronym{FAQ}''} and the
+@c @url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac
+@c OS X @acronym{FAQ}''}.  If you have information on Macintosh or Windows
+@c systems that you think should be added to this document, please let me
+@c know.
+
+다음의 내용에 대해서 알아주셨으면 합니다.  이 문서의 작성자는 윈도우즈 또는 맥킨토시 시스템을 가지고 있지 않습니다.  따라서, 윈도우즈 또는 맥 OS X와 관련된 특별한 내용에 대해서는 
+@url{http://CRAN.R-project.org/bin/windows/base/rw-FAQ.html, ``R for Windows @acronym{FAQ}''} 와
+@url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac OS X @acronym{FAQ}''}을 참고 부탁드립니다.
+만약 맥킨토시와 윈도우즈와 관련된 정보라도 당신이 생각하기에 이 문서에 필요하다면, 저에게 꼭 알려주셨으면 합니다. 
 
 @c <FIXME>
 @c Should we maybe have direct links inside the R tree to the various
@@ -244,10 +270,12 @@ know.
 @node What is R?, What machines does R run on?, R Basics, R Basics
 @section What is R?
 
-R is a system for statistical computation and graphics.  It consists of
-a language plus a run-time environment with graphics, a debugger, access
-to certain system functions, and the ability to run programs stored in
-script files.
+@c R is a system for statistical computation and graphics.  It consists of
+@c a language plus a run-time environment with graphics, a debugger, access
+@c to certain system functions, and the ability to run programs stored in
+@c script files.
+
+R 은 통계 계산 및 그래픽을 위한 시스템으로서, 프로그래밍 언어, 그래픽스 실행환경, 디버거, 특정시스템에 대한 접근과 함께 스크립트 파일로 저장된 프로그램등을 실행시키는 요소들로 구성되어 있습니다. 
 
 The design of R has been heavily influenced by two existing languages:
 Becker, Chambers & Wilks' S (@pxref{What is S?}) and Sussman's
