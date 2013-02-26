@@ -2354,30 +2354,37 @@ dir /opt/R/src/unix
 @c reading in data files.  This should no longer happen.
 
 @node How can I set components of a list to NULL?, How can I save my workspace?, R Miscellanea, R Miscellanea
-@section How can I set components of a list to NULL?
+@c @section How can I set components of a list to NULL?
+@section 어떻게 해야 list의 구성요소들을 NULL로 지정할 수 있을까요?
 
-You can use
-
+@c You can use
+먼저 아래의 코드를 보세요.
 @example
 x[i] <- list(NULL)
 @end example
 
+@c @noindent
+@c to set component @code{i} of the list @code{x} to @code{NULL}, similarly
+@c for named components.  Do not set @code{x[i]} or @code{x[[i]]} to
+@c @code{NULL}, because this will remove the corresponding component from
+@c the list.
 @noindent
-to set component @code{i} of the list @code{x} to @code{NULL}, similarly
-for named components.  Do not set @code{x[i]} or @code{x[[i]]} to
-@code{NULL}, because this will remove the corresponding component from
-the list.
+이것은 리스트 @code{x}의 @code{i}번째 구성요소를 @code{NULL}로 지정하게 해줍니다. 이름이 주어져 있는 구성요소 역시 이와 같은 방식으로 할 수 있습니다. 그러나, @code{x[i]} 또는 @code{x[[i]]}를 @code{NULL}의 값을 대입하지는 마시길 바랍니다.  그 이유는 이러한 대입은 해당 구성요소 자체를 리스트로부터 삭제합니다. 
 
-For dropping the row names of a matrix @code{x}, it may be easier to use
-@code{rownames(x) <- NULL}, similarly for column names.
+@c For dropping the row names of a matrix @code{x}, it may be easier to use
+@c @code{rownames(x) <- NULL}, similarly for column names.
+행렬 @code{x}의 행의 이름들을 없애기 위해서는 @code{rownames(x) <- NULL}를 하세요.  이러한 방법은 열의 이름들을 없애는데에도 유사하게 적용됩니다.
 
 @node How can I save my workspace?, How can I clean up my workspace?, How can I set components of a list to NULL?, R Miscellanea
-@section How can I save my workspace?
+@c @section How can I save my workspace?
+@section 어떻게 하면 현재 나의 작업공간을 저장할 수 있나요? 
 
-@code{save.image()} saves the objects in the user's @code{.GlobalEnv} to
-the file @file{.RData} in the R startup directory.  (This is also what
-happens after @kbd{q("yes")}.)  Using @code{save.image(@var{file})} one
-can save the image under a different name.
+@c @code{save.image()} saves the objects in the user's @code{.GlobalEnv} to
+@c the file @file{.RData} in the R startup directory.  (This is also what
+@c happens after @kbd{q("yes")}.)  Using @code{save.image(@var{file})} one
+@c can save the image under a different name.
+@code{save.image()} 함수는 사용자의 @code{.GlobalEnv}에 있는 객체들을 @file{.RData}의 형식으로 R의 스타트업 디렉토리에 저장합니다. (이것은 @kbd{q("yes")}과 동일합니다.)  @code{save.image(@var{file})}을 이용하여 다른 이름으로 저장하는 할 수도 있습니다. 
+
 
 @node How can I clean up my workspace?, How can I get eval() and D() to work?, How can I save my workspace?, R Miscellanea
 @section How can I clean up my workspace?
