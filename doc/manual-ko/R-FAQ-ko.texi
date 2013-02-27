@@ -2387,18 +2387,23 @@ x[i] <- list(NULL)
 
 
 @node How can I clean up my workspace?, How can I get eval() and D() to work?, How can I save my workspace?, R Miscellanea
-@section How can I clean up my workspace?
+@c @section How can I clean up my workspace?
+@section 어떻게 해야 나의 작업공간을 깨끗하게 할 수 있을까요?
 
-To remove all objects in the currently active environment (typically
-@code{.GlobalEnv}), you can do
+@c To remove all objects in the currently active environment (typically
+@c @code{.GlobalEnv}), you can do
+
+현재 활성화 되어있는 프로그래밍 환경 (주로 @code{.GlobalEnv}를 의미함)에 있는 모든 객체를 지우려고 한다면 다음과 같이 하면 됩니다.
 
 @example
 rm(list = ls(all = TRUE))
 @end example
 
 @noindent
-(Without @option{all = TRUE}, only the objects with names not starting
-with a @samp{.} are removed.)
+@c (Without @option{all = TRUE}, only the objects with names not starting
+@c with a @samp{.} are removed.)
+
+(만약 @option{all = TRUE}을 사용하지 않는다면, @samp{.}으로 시작하지 않는 객체들만이 삭제됩니다.)
 
 @node How can I get eval() and D() to work?, Why do my matrices lose dimensions?, How can I clean up my workspace?, R Miscellanea
 @section How can I get eval() and D() to work?
