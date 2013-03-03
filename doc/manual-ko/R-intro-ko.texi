@@ -259,54 +259,78 @@ R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 �
 @node Related software and documentation, R and statistics, The R environment, Introduction and preliminaries
 @section Related software and documentation
 
-@R{} can be regarded as an implementation of the @Sl{} language which
-was developed at Bell Laboratories by Rick Becker, John Chambers and
-Allan Wilks, and also forms the basis of the @SPLUS{} systems.
+@c @R{} can be regarded as an implementation of the @Sl{} language which
+@c was developed at Bell Laboratories by Rick Becker, John Chambers and
+@c Allan Wilks, and also forms the basis of the @SPLUS{} systems.
 
-The evolution of the @Sl{} language is characterized by four books by
-John Chambers and coauthors.  For @R{}, the basic reference is @emph{The
-New @Sl{} Language: A Programming Environment for Data Analysis and
-Graphics} by Richard A.@: Becker, John M.@: Chambers and Allan R.@:
-Wilks.  The new features of the 1991 release of @Sl{}
+@c The evolution of the @Sl{} language is characterized by four books by
+@c John Chambers and coauthors.  For @R{}, the basic reference is @emph{The
+@c New @Sl{} Language: A Programming Environment for Data Analysis and
+@c Graphics} by Richard A.@: Becker, John M.@: Chambers and Allan R.@:
+@c Wilks.  The new features of the 1991 release of @Sl{}
 @c (@Sl{} version 3) JMC says the 1988 version is S3.
-are covered in @emph{Statistical Models in @Sl{}} edited by John M.@:
-Chambers and Trevor J.@: Hastie.  The formal methods and classes of the
-@pkg{methods} package are based on those described in @emph{Programming
-with Data} by John M.@: Chambers.  @xref{References}, for precise
-references.
+@c are covered in @emph{Statistical Models in @Sl{}} edited by John M.@:
+@c Chambers and Trevor J.@: Hastie.  The formal methods and classes of the
+@c @pkg{methods} package are based on those described in @emph{Programming
+@c with Data} by John M.@: Chambers.  @xref{References}, for precise
+@c references.
 
-There are now a number of books which describe how to use @R{} for data
-analysis and statistics, and documentation for @Sl{}/@SPLUS{} can
-typically be used with @R{}, keeping the differences between the @Sl{}
-implementations in mind.  @xref{What documentation exists for R?, , ,
-R-FAQ, The R statistical system FAQ}.
+@c There are now a number of books which describe how to use @R{} for data
+@c analysis and statistics, and documentation for @Sl{}/@SPLUS{} can
+@c typically be used with @R{}, keeping the differences between the @Sl{}
+@c implementations in mind.  @xref{What documentation exists for R?, , ,
+@c R-FAQ, The R statistical system FAQ}.
+
+@R{}을 Bell 연구실에서 근무하던 Rick Becker, John Chambers 그리고 Allan Wilks에 의해 개발되어 @SPLUS{} 시스템의 기반을 형성한 @Sl{} 언어의 구현물이라고 생각하셔도 괜찮습니다. 
+
+@Sl{}언어의 진화과정은 John Chambers와 그의 동료들이 쓴 네 권의 책에 의해서 정리될 수 있습니다.
+@R{}의 가장 기본적인 참고자료라고 한다면 Richard A.@: Becker, John M.@: Chambers 그리고 Allan R.@: Wilks가 저술한 @emph{The New @Sl{} Language: A Programming Environment for Data Analysis and Graphics}라는 책을 들 수 있습니다. 
+1991년에 릴리즈된 @Sl{}의 새로운 기능들에 대해서는 John M.@: Chambers와 Trevor J.@: Hastie가 편집한 @emph{Statistical Models in @Sl{}}이라는 책을 참고하시길 바랍니다. 
+@pkg{methods} 패키지의 method(메소드)와 class(클래스)들은 John M.@: Chambers가 저술한 @emph{Programming with Data}에서 찾아 볼 수 있습니다. 
+더 정확한 참고자료들은 @xref{References}를 살펴보세요.
+
+현재 @R{}을 이용한 데이터 분석과 통계학에 관련된 많은 서적들이 나와 있으며, @Sl{}/@SPLUS{}를 위한 문서들 역시 @R{}을 사용하는데 도움이 될 것입니다. 
+그러나, 반드시  @Sl{}과 @${}은 다르게 구현이 되어 있다는 것을 반드시 기억하고 계셔야 합니다.
+더 자세한 사항은 @xref{What documentation exists for R?, , , R-FAQ, The R statistical system FAQ}을 참고하시길 바랍니다. 
 
 @node R and statistics, R and the window system, Related software and documentation, Introduction and preliminaries
 @section R and statistics
 @cindex Packages
 
-Our introduction to the @R{} environment did not mention
-@emph{statistics}, yet many people use @R{} as a statistics system.  We
-prefer to think of it of an environment within which many classical and
-modern statistical techniques have been implemented.  A few of these are
-built into the base @R{} environment, but many are supplied as
-@emph{packages}.  There are about 25 packages supplied with @R{} (called
-``standard'' and ``recommended'' packages) and many more are available
-through the @acronym{CRAN} family of Internet sites (via
-@uref{http://CRAN.R-project.org}) and elsewhere.  More details on
-packages are given later (@pxref{Packages}).
+@c Our introduction to the @R{} environment did not mention
+@c @emph{statistics}, yet many people use @R{} as a statistics system.  We
+@c prefer to think of it of an environment within which many classical and
+@c modern statistical techniques have been implemented.  A few of these are
+@c built into the base @R{} environment, but many are supplied as
+@c @emph{packages}.  There are about 25 packages supplied with @R{} (called
+@c ``standard'' and ``recommended'' packages) and many more are available
+@c through the @acronym{CRAN} family of Internet sites (via
+@c @uref{http://CRAN.R-project.org}) and elsewhere.  More details on
+@c packages are given later (@pxref{Packages}).
 
-Most classical statistics and much of the latest methodology is
-available for use with @R{}, but users may need to be prepared to do a
-little work to find it.
+@c Most classical statistics and much of the latest methodology is
+@c available for use with @R{}, but users may need to be prepared to do a
+@c little work to find it.
 
-There is an important difference in philosophy between @Sl{} (and hence
-@R{}) and the other main statistical systems.  In @Sl{} a statistical
-analysis is normally done as a series of steps, with intermediate
-results being stored in objects.  Thus whereas SAS and SPSS will give
-copious output from a regression or discriminant analysis, @R{} will
-give minimal output and store the results in a fit object for subsequent
-interrogation by further @R{} functions.
+@c There is an important difference in philosophy between @Sl{} (and hence
+@c @R{}) and the other main statistical systems.  In @Sl{} a statistical
+@c analysis is normally done as a series of steps, with intermediate
+@c results being stored in objects.  Thus whereas SAS and SPSS will give
+@c copious output from a regression or discriminant analysis, @R{} will
+@c give minimal output and store the results in a fit object for subsequent
+@c interrogation by further @R{} functions.
+
+@R{}의 개발환경에 대한 이 안내서에서는 @emph{statistics}(통계학)을 다루고 있지 않지만, 많은 독자들은 @R{}을 통계시스템으로서 사용합니다. 
+우리는 독자들이 @R{}을 과거부터 현대에 이르기까지 개발되어온 많은 통계학적 방법론들이 구현되어 있는 하나의 개발환경이라고 생각해주었으면 합니다. 
+이들중 일부는 기본 @R{} 개발환경내에 포함되어 있으나, 대부분은 @emph{packages}(패키지들)의 형태로 제공이 됩니다. 
+@R{}은 ``standard''(기본) 혹은 ``recommended''(추천) 패키지라고 불리는 총 25개의 패키지들과 함께 제공되며, 더 많은 패키지들을 인터넷 저장소인 @acronym{CRAN}을 통하여 @uref{http://CRAN.R-project.org}) 얻을 수 있습니다. 
+더 자세한 내용은 (@pxref{Packages}) 부분에서 설명합니다.
+
+가장 고전적인 통계적 방법부터 최근에 개발된 대부분의 통계적 방법들을 @R{}과 함께 사용할 수 있으나, 이들을 찾기 위해서는 다소의 노력이 필요할 수 있습니다. 
+
+독자들은 @Sl{} (여기에서는 @R{})이 다른 주요 통계시스템들과는 근본적으로 다르다는 점을 반드시 인지하고 있어야 합니다. 
+예를들면, @Sl{}에서는 통계적 분석을 일련의 절차를 통해서 할 수 있게 되어 있으며, 중간과정마다 얻어진 결과물을 객체라는 중간매체에 저장해 둡니다. 
+따라서, SAS 또는 SPSS가 회귀분석 또는 판별분석을 수행하여 한 번에 방대한 양의 결과를 제공하는 것과는 달리, @R{}은 최소한의 결과물만으르 제공하고, 더 자세한 중간 수행과정 및 결과를 확인하고 싶다면 추가적인 @R{} 함수들을 이용해야 합니다. 
 
 @node R and the window system, Using R interactively, R and statistics, Introduction and preliminaries
 @section R and the window system
