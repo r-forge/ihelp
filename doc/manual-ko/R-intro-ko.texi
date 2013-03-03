@@ -475,7 +475,7 @@ $ R
 @c example @code{solve}, the command is
 
 @R{}은 UNIX에서 @code{man}이라는 명령어를 도움말 기능을 사용하는 것과 유사한 기능을 제공하고 있습니다. 
-예를들어, @code{solve}라는 함수와 같이 어떤 특정한 이름을 가지고 있는 함수들에 대한 도움말을 보고자 한다면 다음의 명령어를 이용해보세요.
+예를들어, @code{solve}라는 함수와 같이 어떤 특정한 이름을 가지고 있는 함수들에 대한 도움말을 보고자 한다면 다음의 명령어(즉, 함수)를 이용해보세요.
 
 @example
 > help(solve)
@@ -495,20 +495,24 @@ $ R
 @c This is also necessary for a few words with syntactic meaning including
 @c @code{if}, @code{for} and @code{function}.
 
-special character (특수문자)의 기능들을 알고 싶을 때에는 반드시 큰 따옴표 혹은 작은 따옴표를 함께 사용하여 ``문자열''의 형식을 갖추어야 합니다. 
-이것은 또한 @code{if}, @code{for} 그리고 @code{function}과 같이 문법적 의미를 포함하는 
-
+아래와 같이 special character (특수문자)의 기능들을 알고 싶을 때에는 반드시 큰 따옴표 혹은 작은 따옴표를 함께 사용하여 ``character string(문자열)''의 형식을 갖추어 검색을 하도록 합니다.
+이러한 형식을 갖추어야 할 또 다른 경우는 @code{if}, @code{for} 그리고 @code{function}과 같은 @R{}의 예약어 또는 문법에 해당하는 내용을 검색하고자 할 때입니다.
 
 @example
 > help("[[")
 @end example
 
-Either form of quote mark may be used to escape the other, as in the
-string @code{"It's important"}.  Our convention is to use
-double quote marks for preference.
+@c Either form of quote mark may be used to escape the other, as in the
+@c string @code{"It's important"}.  Our convention is to use
+@c double quote marks for preference.
 
-On most @R{} installations help is available in @HTML{} format by
-running
+일반적으로 두 가지 종류의 따옴표를 이용할 수 있으나, 큰 따옴표를 사용하는 것을 권장합니다.
+그 이유는 @code{"It's important"}와 같은 경우도 있을 수 있기 때문입니다.
+
+@c On most @R{} installations help is available in @HTML{} format by
+@c running
+
+대부분의 경우 @R{}을 설치할때 @HTML{}형식의 도움말이 함께 설치되며, 아래와 같은 함수를 이용하여 해당기능을 이용할 수 있습니다. 
 
 @example
 > help.start()
@@ -516,43 +520,49 @@ running
 @findex help.start
 
 @noindent
-which will launch a Web browser that allows the help pages to be browsed
-with hyperlinks.  On UNIX, subsequent help requests are sent to the
-@HTML{}-based help system.  The `Search Engine and Keywords' link in the
-page loaded by @code{help.start()} is particularly useful as it is
-contains a high-level concept list which searches though available
-functions.  It can be a great way to get your bearings quickly and to
-understand the breadth of what @R{} has to offer.
+@c which will launch a Web browser that allows the help pages to be browsed
+@c with hyperlinks.  On UNIX, subsequent help requests are sent to the
+@c @HTML{}-based help system.  The `Search Engine and Keywords' link in the
+@c page loaded by @code{help.start()} is particularly useful as it is
+@c contains a high-level concept list which searches though available
+@c functions.  It can be a great way to get your bearings quickly and to
+@c understand the breadth of what @R{} has to offer.
 
-
+위의 함수를 입력하면, 하이퍼링크로 서로 연결이 되어 있어 도움말을 탐색할 수 있는 @HTML{} 기반의 도움말 시스템을 위한 웹브라우저가 실행되게 됩니다. 
+최초 @code{help.start()}에 의해서 로딩된 'Search Engine and Keywords'라는 링크가 나타는 페이지가 특히 유용한데 현재 이용가능한 함수들을 모두 보여주는 고차원 (high-level) 개념들에 대한 목록을 포함하고 있기 때문입니다.
+이것은 자신이 @R{}시스템에 대한 이해정도를 확인하고 @R{}이 제공해 줄 수 있는 것이 무엇인지 확인이 가능하도록 해줍니다.
 
 @findex help.search
-The @code{help.search} command (alternatively @code{??}) 
-allows searching for help in various
-ways. For example,
+@c The @code{help.search} command (alternatively @code{??}) 
+@c allows searching for help in various
+@c ways. For example,
+
+@code{help.search} 명령어 (또 다른 표현으로 @code{??})는 좀 더 다양한 방식으로 도움말을 검색합니다. 
+예를들어, 아래와 같이 입력해보세요.
 
 @example
 > ??solve
 @end example
 @findex ??
 
-Try @code{?help.search} for details and more examples.
+더 자세한 내용과 예제들을 확인해보고 싶으시다면 @code{?help.search}를 이용하여 확인하시길 바랍니다.
 
-The examples on a help topic can normally be run by
+특별히 찾고자 하는 도움말 주제와 연관된 예제들은 아래와 같은 방법으로 실행할 수가 있습니다. 
 
 @example
 > example(@var{topic})
 @end example
 @findex example
 
-Windows versions of @R{} have other optional help systems: use
+윈도우즈 버전의 @R{}은 또 다른 방법의 도움말 시스템을 가지고 있습니다. 이에 대해서 알고 싶으시다면 다음과 같이 @code{help}의 도움말을 살펴보시길 부탁드립니다.
+@c Windows versions of @R{} have other optional help systems: use
 
 @example
 > ?help
 @end example
 
 @noindent
-for further details.
+@c for further details.
 
 @node R commands; case sensitivity etc, Recall and correction of previous commands, Getting help, Introduction and preliminaries
 @section R commands, case sensitivity, etc.
