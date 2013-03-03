@@ -378,14 +378,19 @@ R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 �
 따라서, 사용자가 원한다면 @R{}의 프롬프트를 다른 모양으로 변경하여 사용할 수 있도록 해두었습니다.
 이 문서에서는 내용의 명확성을 위해서 유닉스의 쉘 프롬프트를 @samp{@code{$}}라는 표시를 이용하도록 하겠습니다. 
 
-In using @R{} under UNIX the suggested procedure for the first occasion
-is as follows:
+@c In using @R{} under UNIX the suggested procedure for the first occasion
+@c is as follows:
+
+유닉스내에서 @R{}을 사용하기 위해서는 먼저 아래의 과정들을 따라 해주시길 권장합니다.
 
 @enumerate
 @item
-Create a separate sub-directory, say @file{work}, to hold data files on
-which you will use @R{} for this problem.  This will be the working
-directory whenever you use @R{} for this particular problem.
+@c Create a separate sub-directory, say @file{work}, to hold data files on
+@c which you will use @R{} for this problem.  This will be the working
+@c directory whenever you use @R{} for this particular problem.
+
+먼저 아래와 같이 @R{}에서 사용할 데이터 파일들을 저장할 장소를 위한 @file{work}라는 별도의 서브 디렉토리를 생성합니다. 
+그리고, 이곳이 바로 데이터와 관련하여 @R{}을 사용하게 될 working directory (워킹 디렉토리 또는 작업디렉토리)라고 합니다. 
 
 @example
 $ mkdir work
@@ -393,85 +398,106 @@ $ cd work
 @end example
 
 @item
-Start the @R{} program with the command
+@c Start the @R{} program with the command
 
+아래의 명령어를 이용하여 @R{}프로그램을 시작하세요.
 @example
 $ R
 @end example
 
 @item
-At this point @R{} commands may be issued (see later).
+@c At this point @R{} commands may be issued (see later).
+이제부터 @R{} 명령어들을 이용하여 작업을 할 수 있습니다.
 
 @item
-To quit the @R{} program the command is
+@c To quit the @R{} program the command is
+@R{} 프로그램을 종료하기 위해서는 다음의 명령어를 사용합니다. 
 
 @example
 > q()
 @end example
 
-At this point you will be asked whether you want to save the data from
-your @R{} session.  On some systems this will bring up a dialog box, and
-on others you will receive a text prompt to which you can respond
-@kbd{yes}, @kbd{no} or @kbd{cancel} (a single letter abbreviation will
-do) to save the data before quitting, quit without saving, or return to
-the @R{} session.  Data which is saved will be available in future @R{}
-sessions.
+@c At this point you will be asked whether you want to save the data from
+@c your @R{} session.  On some systems this will bring up a dialog box, and
+@c on others you will receive a text prompt to which you can respond
+@c @kbd{yes}, @kbd{no} or @kbd{cancel} (a single letter abbreviation will
+@c do) to save the data before quitting, quit without saving, or return to
+@c the @R{} session.  Data which is saved will be available in future @R{}
+@c sessions.
 
+이처럼 종료명령어를 사용했을때에는 @R{}프로그램은 현재 @R{}세션에서 작업하던 데이터를 종료전에 저장할 것인지 아닌지에 대한 @kbd{yes}(예), @kbd{no}(아니요) 혹은 명령을 취소하고 다시 @R{}세션으로 돌아갈 것인지에 대한 @kbd{cancel} (취소)를 할 것인지를 물어볼 것입니다. 
+이 저장여부에 대한 메시지는 일부 시스템에서는 대화창을 통해 보여질 수도 있고, 종료명령어 다음줄에 텍스트 형식으로 나타날 수도 있습니다. 
+만약, 저장을 선택한다면 저장된 데이터는 다음번에 @R{}을 실행하였을때 다시 사용할 수 있습니다. 
 @end enumerate
 
-Further @R{} sessions are simple.
-
+@c Further @R{} sessions are simple.
+새로운 @R{}세션을 시작하는 것은 간단합니다. 
 @enumerate
 
 @item
-Make @file{work} the working directory and start the program as before:
-
+@c Make @file{work} the working directory and start the program as before:
+@file{work}이라는 작업 (혹은 워킹) 디렉토리를 만들고 위에서 했던 것과 같이 아래의 명령을 이용하여 프로그램을 시작하면 됩니다. 
 @example
 $ cd work
 $ R
 @end example
 
 @item
-Use the @R{} program, terminating with the @code{q()} command at the end
-of the session.
+@c Use the @R{} program, terminating with the @code{q()} command at the end
+@c of the session.
 
+@R{}프로그램을 사용하고 난뒤에 세션의 끝에서 @code{q()} 명령어를 이용하여 종료할 수 있습니다.  
 @end enumerate
 
-To use @R{} under Windows the procedure to
-follow is basically the same.  Create a folder as the working directory,
-and set that in the @file{Start In} field in your @R{} shortcut.
-Then launch @R{} by double clicking on the icon.
+@c To use @R{} under Windows the procedure to
+@c follow is basically the same.  Create a folder as the working directory,
+@c and set that in the @file{Start In} field in your @R{} shortcut.
+@c Then launch @R{} by double clicking on the icon.
+
+윈도우즈에서 @R{}을 사용하는 방법은 기본적으로 유닉스에서의 사용방법과 동일합니다.
+먼저 워킹 디렉토리에 해당하는 폴더를 생성하고, @file{Start In} 메뉴에서 @R{} 바로가기를 바탕화면에 생성합니다.
+그런 다음부터는 바탕화면의 바로가기 아이콘을 이용하여 @R{}을 실행시킬 수 있습니다. 
 
 @section An introductory session
 
-Readers wishing to get a feel for @R{} at a computer before proceeding
-are strongly advised to work through the introductory session
-given in @ref{A sample session}.
+@c Readers wishing to get a feel for @R{} at a computer before proceeding
+@c are strongly advised to work through the introductory session
+@c given in @ref{A sample session}.
+
+다음의 내용들을 읽어보기 전에 @R{}에 대해서 좀 더 친숙해보고자 하는 독자들은 @ref{A sample session}에 있는 기초세션을 따라 입력해 봄으로서 어떤식으로 작동하는지 알아보기를 강력히 권장합니다. 
 
 @node Getting help, R commands; case sensitivity etc, Using R interactively, Introduction and preliminaries
 @section Getting help with functions and features
 @findex help
 
-@R{} has an inbuilt help facility similar to the @code{man} facility of
-UNIX.  To get more information on any specific named function, for
-example @code{solve}, the command is
+@c @R{} has an inbuilt help facility similar to the @code{man} facility of
+@c UNIX.  To get more information on any specific named function, for
+@c example @code{solve}, the command is
+
+@R{}은 UNIX에서 @code{man}이라는 명령어를 도움말 기능을 사용하는 것과 유사한 기능을 제공하고 있습니다. 
+예를들어, @code{solve}라는 함수와 같이 어떤 특정한 이름을 가지고 있는 함수들에 대한 도움말을 보고자 한다면 다음의 명령어를 이용해보세요.
 
 @example
 > help(solve)
 @end example
 @findex help
 
-An alternative is
+@c An alternative is
+아래와 같은 방법으로도 동일한 도움말 기능을 사용할 수 있습니다. 
 
 @example
 > ?solve
 @end example
 @findex ?
 
-For a feature specified by special characters, the argument must be
-enclosed in double or single quotes, making it a ``character string'':
-This is also necessary for a few words with syntactic meaning including
-@code{if}, @code{for} and @code{function}.
+@c For a feature specified by special characters, the argument must be
+@c enclosed in double or single quotes, making it a ``character string'':
+@c This is also necessary for a few words with syntactic meaning including
+@c @code{if}, @code{for} and @code{function}.
+
+special character (특수문자)의 기능들을 알고 싶을 때에는 반드시 큰 따옴표 혹은 작은 따옴표를 함께 사용하여 ``문자열''의 형식을 갖추어야 합니다. 
+이것은 또한 @code{if}, @code{for} 그리고 @code{function}과 같이 문법적 의미를 포함하는 
+
 
 @example
 > help("[[")
