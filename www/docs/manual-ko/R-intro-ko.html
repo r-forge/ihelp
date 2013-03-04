@@ -810,66 +810,58 @@ R 2.13.0 이전버전들은 표현식의 길이가 256바이트를 넘을 수 �
 <a name="Vectors-and-assignment-1"></a>
 <h2 class="section">2.1 Vectors and assignment</h2>
 
-<p>R operates on named <em>data structures</em>.  The simplest such
-structure is the numeric <em>vector</em>, which is a single entity
-consisting of an ordered collection of numbers.  To set up a vector
-named <code>x</code>, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
-6.4 and 21.7, use the R command
+
+<p>R은 소위 말하는 <em>data structures</em>(데이터 구조)를 기반으로 작동합니다.
+가장 단순한 구조는 일련의 숫자들이 오름차순의 형태로 하나로 묶여있는 수치형(numeric) <em>vector</em>(벡터)입니다.
+예를들어, 10.4, 5.6, 3.1, 6.4, 그리고 21.7 이라는 일련의 숫자로 구성된 <code>x</code>라는 이름을 가진 벡터를 생성하기 위해서는 다음과 같은 R 명령어를 입력합니다
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; x &lt;- c(10.4, 5.6, 3.1, 6.4, 21.7)
 </pre></td></tr></table>
 <a name="index-c"></a>
 <a name="index-vector"></a>
 
-<p>This is an <em>assignment</em> statement using the <em>function</em>
-<code>c()</code> which in this context can take an arbitrary number of vector
-<em>arguments</em> and whose value is a vector got by concatenating its
-arguments end to end.<a name="DOCF6" href="#FOOT6">(6)</a>
+
+<p>위에서 사용된 표현식을 <em>assignment statement</em>(할당문) 이라고 하며, <code>c()</code>라는 <em>function</em>(함수)를 이용하여 입력되어진 임의의 벡터들을 묶어 다시 하나의 벡터로 만들어 주는 역할을 하고 있습니다.
+이때 함수 <code>c()</code>내에서 컴마로 구분된 하나하나를 구성요소를 <em>arguments</em>(입력인자 또는 인자)라고 하고, 이 예제에서는 숫자 하나 하나가 각각의 길이가 1인 벡터로 간주되었습니다.
+<a name="DOCF6" href="#FOOT6">(6)</a>
 </p>
-<p>A number occurring by itself in an expression is taken as a vector of
-length one.
-</p>
-<p>Notice that the assignment operator (&lsquo;<samp><code>&lt;-</code></samp>&rsquo;), which consists
-of the two characters &lsquo;<samp><code>&lt;</code></samp>&rsquo; (&ldquo;less than&rdquo;) and
-&lsquo;<samp><code>-</code></samp>&rsquo; (&ldquo;minus&rdquo;) occurring strictly side-by-side and it
-&lsquo;points&rsquo; to the object receiving the value of the expression.
-In most contexts the &lsquo;<samp><code>=</code></samp>&rsquo; operator can be used as an alternative.
+
+
+<p>또한, 띄어쓰기 없이 &lsquo;<samp><code>&lt;</code></samp>&rsquo;(좌측이 우측보다 작음을 표시하는 수학적 기호) 와 &lsquo;<samp><code>-</code></samp>&rsquo;(마이너스 기호)를 한데 묶어 사용된 @sampl{<code>&lt;-</code>}라는 기호는 할당연산자(assignment operator)라고 불리며, 표현식에 의해 생성된 값을 넘겨받는 객체를 지시 (또는 지정)하도록 한다는 것을 의미합니다. 
+많은 경우에 이를 &lsquo;<samp><code>=</code></samp>&rsquo; 연산자를 이용하여 나타내기도 합니다.
 <a name="index-Assignment"></a>
 </p>
-<p>Assignment can also be made using the function <code>assign()</code>.  An
-equivalent way of making the same assignment as above is with:
+
+<p>할당이라는 것은 또한 <code>assign()</code> 함수를 통해 이루어질 수 있습니다.
+위에서 수행한 동일한 연산을 아래와 같은 방법으로 수행할 수 있습니다.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; assign(&quot;x&quot;, c(10.4, 5.6, 3.1, 6.4, 21.7))
 </pre></td></tr></table>
 
-<p>The usual operator, <code>&lt;-</code>, can be thought of as a syntactic
-short-cut to this.
+<p>독자는 할당연산자 <code>&lt;-</code>를 단순히 <code>assign()</code>함수에 문법적으로 상응하는 손쉬운 방법(short-cut)으로 생각하셔도 좋습니다.
 </p>
-<p>Assignments can also be made in the other direction, using the obvious
-change in the assignment operator.  So the same assignment could be made
-using
+
+<p>또한, 기호의 방향을 바꾸어 아래와 같은 방법으로 할당문을 표현할 수 있습니다.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; c(10.4, 5.6, 3.1, 6.4, 21.7) -&gt; x
 </pre></td></tr></table>
 
-<p>If an expression is used as a complete command, the value is printed
-<em>and lost</em><a name="DOCF7" href="#FOOT7">(7)</a>.  So now if we
-were to use the command
+
+<p>만약 아래와 같이 할당연산자의 사용없이 표현식 자체만으로 완전한 형태의 명령문 형식으로 사용된다면 결과물은 출력이되나, <em>값들을 저장하지 안ㅎ고 잃어버리게 됩니다</em><a name="DOCF7" href="#FOOT7">(7)</a>.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; 1/x
 </pre></td></tr></table>
 
-<p>the reciprocals of the five values would be printed at the terminal (and
-the value of <code>x</code>, of course, unchanged).
+
+<p>만약, 위의 명령문을 실행한다면 <code>x</code>를 구성하는 다섯개의 숫자들에 대한 각각의 역수들을 터미널에 보여줄 것입니다 (물론, <code>x</code>의 값은 변하지 않습니다).
 </p>
-<p>The further assignment
+<p>이제 할당연산자를 적용해보도록 합니다.
+다음의 할당문은 2개의 <code>x</code>벡터사이에 0 이 끼워진 형태로 총 11개의 구성요소로 이루어진 <code>y</code>라는 새로운 벡터를 생성해냅니다.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; y &lt;- c(x, 0, x)
 </pre></td></tr></table>
 
-<p>would create a vector <code>y</code> with 11 entries consisting of two copies
-of <code>x</code> with a zero in the middle place.
-</p>
+
 <hr size="6">
 <a name="Vector-arithmetic"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -10349,12 +10341,9 @@ Second edition.  Duxbury Press, Belmont, CA.
 </p><h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
 <p>유닉스 시스템에서 &ldquo;dot&rdquo;으로 시작하는 파일명은 파일목록을 출력시 일반적으로 파일을 <em>보여지지 않습니다</em>.
 </p><h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
-<p>With other than vector types of argument,
-such as <code>list</code> mode arguments, the action of <code>c()</code> is rather
-different.  See <a href="#Concatenating-lists">Concatenating lists</a>.
+<p><code>list</code>형과 같은 벡터형의 인자가 아닌 데이터형에 대해서는 <code>c()</code>함수는 다소 다르게 동작합니다. <a href="#Concatenating-lists">Concatenating lists</a>를 참고하하시길 바랍니다.
 </p><h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
-<p>Actually, it is still available as
-<code>.Last.value</code> before any other statements are executed.
+<p>실제로 이 값은 어떠한 명령문이라도 추후에 실행되지 않았다면 <code>.Last.value</code>를 통하여 확인할 수 있습니다.
 </p><h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
 <p><code>paste(..., collapse=<var>ss</var>)</code> joins the
 arguments into a single character string putting <var>ss</var> in between.

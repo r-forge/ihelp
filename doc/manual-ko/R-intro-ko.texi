@@ -793,11 +793,15 @@ UNIX상에서는 이러한 기능들을 사용자의 취향에 따라 매우 손
 @node Vectors and assignment, Vector arithmetic, Simple manipulations numbers and vectors, Simple manipulations numbers and vectors
 @section Vectors and assignment
 
-@R{} operates on named @emph{data structures}.  The simplest such
-structure is the numeric @emph{vector}, which is a single entity
-consisting of an ordered collection of numbers.  To set up a vector
-named @code{x}, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
-6.4 and 21.7, use the @R{} command
+@c @R{} operates on named @emph{data structures}.  The simplest such
+@c structure is the numeric @emph{vector}, which is a single entity
+@c consisting of an ordered collection of numbers.  To set up a vector
+@c named @code{x}, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
+@c 6.4 and 21.7, use the @R{} command
+
+@R{}은 소위 말하는 @emph{data structures}(데이터 구조)를 기반으로 작동합니다.
+가장 단순한 구조는 일련의 숫자들이 오름차순의 형태로 하나로 묶여있는 수치형(numeric) @emph{vector}(벡터)입니다.
+예를들어, 10.4, 5.6, 3.1, 6.4, 그리고 21.7 이라는 일련의 숫자로 구성된 @code{x}라는 이름을 가진 벡터를 생성하기 위해서는 다음과 같은 @R{} 명령어를 입력합니다
 
 @example
 > x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
@@ -805,66 +809,85 @@ named @code{x}, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
 @findex c
 @findex vector
 
-This is an @emph{assignment} statement using the @emph{function}
-@code{c()} which in this context can take an arbitrary number of vector
-@emph{arguments} and whose value is a vector got by concatenating its
-arguments end to end.@footnote{With other than vector types of argument,
-such as @code{list} mode arguments, the action of @code{c()} is rather
-different.  See @ref{Concatenating lists}.}
+@c This is an @emph{assignment} statement using the @emph{function}
+@c @code{c()} which in this context can take an arbitrary number of vector
+@c @emph{arguments} and whose value is a vector got by concatenating its
+@c arguments end to end.@footnote{With other than vector types of argument,
+@c such as @code{list} mode arguments, the action of @code{c()} is rather
+@c different.  See @ref{Concatenating lists}.}
 
-A number occurring by itself in an expression is taken as a vector of
-length one.
+위에서 사용된 표현식을 @emph{assignment statement}(할당문) 이라고 하며, @code{c()}라는 @emph{function}(함수)를 이용하여 입력되어진 임의의 벡터들을 묶어 다시 하나의 벡터로 만들어 주는 역할을 하고 있습니다.
+이때 함수 @code{c()}내에서 컴마로 구분된 하나하나를 구성요소를 @emph{arguments}(입력인자 또는 인자)라고 하고, 이 예제에서는 숫자 하나 하나가 각각의 길이가 1인 벡터로 간주되었습니다.
+@footnote{@code{list}형과 같은 벡터형의 인자가 아닌 데이터형에 대해서는 @code{c()}함수는 다소 다르게 동작합니다. @ref{Concatenating lists}를 참고하하시길 바랍니다.}
 
-Notice that the assignment operator (@samp{@code{<-}}), which consists
-of the two characters @samp{@code{<}} (``less than'') and
-@samp{@code{-}} (``minus'') occurring strictly side-by-side and it
-`points' to the object receiving the value of the expression.
-In most contexts the @samp{@code{=}} operator can be used as an alternative.
+@c A number occurring by itself in an expression is taken as a vector of
+@c length one.
+
+@c Notice that the assignment operator (@samp{@code{<-}}), which consists
+@c of the two characters @samp{@code{<}} (``less than'') and
+@c @samp{@code{-}} (``minus'') occurring strictly side-by-side and it
+@c `points' to the object receiving the value of the expression.
+@c In most contexts the @samp{@code{=}} operator can be used as an alternative.
 @c In this text, the assignment operator is printed as @samp{<-}, rather
 @c than ``@code{<-}''.
+
+또한, 띄어쓰기 없이 @samp{@code{<}}(좌측이 우측보다 작음을 표시하는 수학적 기호) 와 @samp{@code{-}}(마이너스 기호)를 한데 묶어 사용된 @sampl{@code{<-}}라는 기호는 할당연산자(assignment operator)라고 불리며, 표현식에 의해 생성된 값을 넘겨받는 객체를 지시 (또는 지정)하도록 한다는 것을 의미합니다. 
+많은 경우에 이를 @samp{@code{=}} 연산자를 이용하여 나타내기도 합니다.
 @cindex Assignment
 
-Assignment can also be made using the function @code{assign()}.  An
-equivalent way of making the same assignment as above is with:
+@c Assignment can also be made using the function @code{assign()}.  An
+@c equivalent way of making the same assignment as above is with:
+
+할당이라는 것은 또한 @code{assign()} 함수를 통해 이루어질 수 있습니다.
+위에서 수행한 동일한 연산을 아래와 같은 방법으로 수행할 수 있습니다.
 
 @example
 > assign("x", c(10.4, 5.6, 3.1, 6.4, 21.7))
 @end example
 
 @noindent
-The usual operator, @code{<-}, can be thought of as a syntactic
-short-cut to this.
+@c The usual operator, @code{<-}, can be thought of as a syntactic
+@c short-cut to this.
+독자는 할당연산자 @code{<-}를 단순히 @code{assign()}함수에 문법적으로 상응하는 손쉬운 방법(short-cut)으로 생각하셔도 좋습니다.
 
-Assignments can also be made in the other direction, using the obvious
-change in the assignment operator.  So the same assignment could be made
-using
+@c Assignments can also be made in the other direction, using the obvious
+@c change in the assignment operator.  So the same assignment could be made
+@c using
+
+또한, 기호의 방향을 바꾸어 아래와 같은 방법으로 할당문을 표현할 수 있습니다.
 
 @example
 > c(10.4, 5.6, 3.1, 6.4, 21.7) -> x
 @end example
 
-If an expression is used as a complete command, the value is printed
-@emph{and lost}@footnote{Actually, it is still available as
-@code{.Last.value} before any other statements are executed.}.  So now if we
-were to use the command
+@c If an expression is used as a complete command, the value is printed
+@c @emph{and lost}@footnote{Actually, it is still available as
+@c @code{.Last.value} before any other statements are executed.}.  So now if we
+@c were to use the command
+
+만약 아래와 같이 할당연산자의 사용없이 표현식 자체만으로 완전한 형태의 명령문 형식으로 사용된다면 결과물은 출력이되나, @emph{값들을 저장하지 안ㅎ고 잃어버리게 됩니다}@footnote{실제로 이 값은 어떠한 명령문이라도 추후에 실행되지 않았다면 @code{.Last.value}를 통하여 확인할 수 있습니다.}.
 
 @example
 > 1/x
 @end example
 
 @noindent
-the reciprocals of the five values would be printed at the terminal (and
-the value of @code{x}, of course, unchanged).
+@c the reciprocals of the five values would be printed at the terminal (and
+@c the value of @code{x}, of course, unchanged).
 
-The further assignment
+만약, 위의 명령문을 실행한다면 @code{x}를 구성하는 다섯개의 숫자들에 대한 각각의 역수들을 터미널에 보여줄 것입니다 (물론, @code{x}의 값은 변하지 않습니다).
+
+@c The further assignment
+이제 할당연산자를 적용해보도록 합니다.
+다음의 할당문은 2개의 @code{x}벡터사이에 0 이 끼워진 형태로 총 11개의 구성요소로 이루어진 @code{y}라는 새로운 벡터를 생성해냅니다.
 
 @example
 > y <- c(x, 0, x)
 @end example
 
 @noindent
-would create a vector @code{y} with 11 entries consisting of two copies
-of @code{x} with a zero in the middle place.
+@c would create a vector @code{y} with 11 entries consisting of two copies
+@c of @code{x} with a zero in the middle place.
 
 @node Vector arithmetic, Generating regular sequences, Vectors and assignment, Simple manipulations numbers and vectors
 @section Vector arithmetic
