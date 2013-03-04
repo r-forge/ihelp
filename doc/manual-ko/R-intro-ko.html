@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Created on March 3, 2013 by texi2html 1.82
+<!-- Created on March 4, 2013 by texi2html 1.82
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -17,7 +17,7 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2html 1.82">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="keywords" content="R Korean introduction to R, 한국어, R, GNU R, 한글, 번역, 통계, statistical computing in R, 통계분석, R 소개, R 입문">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -113,7 +113,7 @@ approved by the R Core Team.
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Packages">13. Packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                    
 </td></tr>
-<tr><td align="left" valign="top"><a href="#A-sample-session">A. A sample session</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
+<tr><td align="left" valign="top"><a href="#A-sample-session">A. A 샘플 세션</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
 </td></tr>
 <tr><td align="left" valign="top"><a href="#Invoking-R">B. Invoking R</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">                  
 </td></tr>
@@ -476,7 +476,7 @@ R프로그램을 사용하고 난뒤에 세션의 끝에서 <code>q()</code> 명
 <h2 class="section">1.6 An introductory session</h2>
 
 
-<p>다음의 내용들을 읽어보기 전에 R에 대해서 좀 더 친숙해보고자 하는 독자들은 <a href="#A-sample-session">A sample session</a>에 있는 기초세션을 따라 입력해 봄으로서 어떤식으로 작동하는지 알아보기를 강력히 권장합니다. 
+<p>다음의 내용들을 읽어보기 전에 R에 대해서 좀 더 친숙해보고자 하는 독자들은 <a href="#A-sample-session">A 샘플 세션</a>에 있는 기초세션을 따라 입력해 봄으로서 어떤식으로 작동하는지 알아보기를 강력히 권장합니다. 
 </p>
 <hr size="6">
 <a name="Getting-help"></a>
@@ -6700,47 +6700,41 @@ packages <a href="http://CRAN.R-project.org/package=rpart"><strong>rpart</strong
 <a name="Graphical-procedures"></a>
 <h1 class="chapter">12. Graphical procedures</h1>
 
-<p>Graphical facilities are an important and extremely versatile component
-of the R environment.  It is possible to use the facilities to
-display a wide variety of statistical graphs and also to build entirely
-new types of graph.
+
+<p>R(개발)환경의 중요하고도 매우 다양한 역할을 수행하는 요소는 바로 그래픽 기능입니다. 
+이를 통해 다양한 종류의 통계 그래프를 보여줄 수 있으며, 완전히 새로운 종류의 그래프를 만들어 낼 수도 있습니다.
 </p>
-<p>The graphics facilities can be used in both interactive and batch modes, but in
-most cases, interactive use is more productive.  Interactive use is also
-easy because at startup time R initiates a graphics <em>device
-driver</em> which opens a special <em>graphics window</em> for the display of
-interactive graphics.  Although this is done automatically, it is useful
-to know that the command used is <code>X11()</code> under UNIX,
-<code>windows()</code> under Windows and <code>quartz()</code> under Mac OS X.
+
+<p>그래픽 기능들은 대화식(interactive)처리방식과 배치(batch)처리방식이 있습니다.
+대부분의 경우에는 대화식 처리방식을 이용하는 것이 더욱 효과적이며 사용하기 쉽습니다.
+그 이유는 R이 시작할때 대화식 그래픽처리를 위한 특수한 <em>graphics window</em>(그래픽 윈도우)를 열어주는 <em>device driver</em>(장치드라이버)를 자동으로 초기화 시켜주기 때문입니다.  
+물론 그래픽 장치드라이버가 자동 초기화되기는 하지만, 이러한 기능을 수행하는 명령어를 알아두면 더욱 편리한 사용을 할 수 있습니다.
+UNIX에서는 <code>X11()</code>, 윈도우즈에서는 <code>windows()</code>, 그리고 Mac OS X에서는 <code>quartz()</code>입니다.
 </p>
-<p>Once the device driver is running, R plotting commands can be used to
-produce a variety of graphical displays and to create entirely new kinds
-of display.
+
+<p>장치드라이버가 실행이 되면, R 플랏팅 명령어들은 다양한 종류의 그래픽처리 및 새로운 종류의 그래프를 생성하기 위해서 사용될 수 있습니다.
 </p>
-<p>Plotting commands are divided into three basic groups:
+<p>플랏팅 명령어들은 다음과 같이 크게 세 영역으로 나뉘어 집니다:
 </p>
 <ul>
 <li>
-<strong>High-level</strong> plotting functions create a new plot on the graphics
-device, possibly with axes, labels, titles and so on.
+<strong>High-level</strong>(하이레벨) 플랏팅 함수들은 그래픽 장치에 축, 라벨, 제목등과 함께 새로운 플랏을 생성합니다. 
 </li><li>
-<strong>Low-level</strong> plotting functions add more information to an
-existing plot, such as extra points, lines and labels.
+<strong>Low-level</strong>(로우레벨) 플랏팅 함수들은 이미 존재하는 플랏에 점, 선, 라벨들을 추가하여 좀 더 많은 정보들을 표현할 수 있도록 합니다. 
 </li><li>
-<strong>Interactive</strong> graphics functions allow you interactively add
-information to, or extract information from, an existing plot, using a
-pointing device such as a mouse.
+<strong>Interactive</strong>(대화형) 그래픽 함수들은 마우스와 같은 포인팅 장치(pointing device)를 이용하여 이미 생성된 플랏에 정보를 추가하거나 또는 추출해 냅니다.
 </li></ul>
 
-<p>In addition, R maintains a list of <em>graphical parameters</em> which
-can be manipulated to customize your plots.
+
+<p>또한, R은 사용자가 원하는대로 플랏을 수정 및 변경할 수 있도록 <em>graphical parameters</em>(그래픽 파라미터)들의 목록을 제공해주고 있습니다.
 </p>
-<p>This manual only describes what are known as &lsquo;base&rsquo; graphics.  A
-separate graphics sub-system in package <strong>grid</strong> coexists with base &ndash;
-it is more powerful but harder to use.  There is a recommended package
-<a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a> which builds on <strong>grid</strong> and provides ways to produce
-multi-panel plots akin to those in the <em>Trellis</em> system in S.
+
+<p>이 안내서에서는 &lsquo;base&rsquo; 그래픽이라고 알려진 것들에 대해서만 다룹니다.
+base 그래픽와는 별개로 <strong>grid</strong> 패키지 내에 있는 별도의 그래픽 서브-시스템이 존재합니다. 
+이 시스템은 좀 더 강력한 그래픽 기능들을 제공하지만, 사용에 다소 어려움이 있습니다.
+또한, <strong>grid</strong>를 기반으로 하는 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a>라는 추천패키지도 있는데, 이는 S에서 <em>Trellis</em>(트렐리스)라는 시스템이 제공하는 다중패널 플랏과 같은 고급 그래픽처리가 가능한 함수들을 포함하고 있습니다.
 </p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#High_002dlevel-plotting-commands">12.1 High-level plotting commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
 </td></tr>
@@ -8222,52 +8216,51 @@ of surfaces.
 <h1 class="chapter">13. Packages</h1>
 <a name="index-Packages-1"></a>
 
-<p>All R functions and datasets are stored in <em>packages</em>.  Only
-when a package is loaded are its contents available.  This is done both
-for efficiency (the full list would take more memory and would take
-longer to search than a subset), and to aid package developers, who are
-protected from name clashes with other code.  The process of developing
-packages is described in <a href="R-exts.html#Creating-R-packages">(R-exts)Creating R packages</a> section &lsquo;Creating R packages&rsquo; in <cite>Writing R Extensions</cite>.  Here, we will describe them
-from a user&rsquo;s point of view.
+
+<p>모든 R 함수들과 데이터셋들은 <em>packages</em>(패키지)안에 저장되어 있습니다. 
+따라서, 패키지가 로드되었을때만 패키지 안의 내용들을 사용할 수 있습니다.
+이러한 패키지 시스템은 전체리스트를 사용하지 않으므로 메모리의 사용량이 적고 필요시 검색에도 훨씬 적은 시간이 걸리므로 메모리사용에서 효율적이라고 할 수 있습니다. 
+또한, 이러한 시스템은 다른 코드들과 이름이 충돌이 나는 것을 자연스레 방지해 줌으로서 패키지 개발자의 편의를 고려했다고 볼 수 있습니다. 
+패키지를 개발하는 과정에 대해서는 <a href="R-exts.html#Creating-R-packages">(R-exts)Creating R packages</a> section &lsquo;Creating R packages&rsquo; in <cite>Writing R Extensions</cite>를 살펴보시길 바랍니다.
+여기에서 우리는 사용자 측면에 대해서만 이야기 할 것입니다.
 </p>
-<p>To see which packages are installed at your site, issue the command
+<p>어떤 패키지들이 사용자의 사이트(site)에 설치되어 있는지 알고 싶다면 다음의 명령어를 아무런 인자없이 입력해보세요.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; library()
 </pre></td></tr></table>
 
-<p>with no arguments.  To load a particular package (e.g., the <a href="http://CRAN.R-project.org/package=boot"><strong>boot</strong></a>
-package containing functions from Davison &amp; Hinkley (1997)), use a
-command like
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">&gt; library(boot)
+
+<p>Davison &amp; Hinkley (1997)가 작성한 함수들을 포함하고 있는 <a href="http://CRAN.R-project.org/package=boot"><strong>boot</strong></a>와 같은 어떤 특정한 패키지를 설치하고자 한다면, 아래와 같이 명령어를 입력하면 됩니다. 
+</p><table><tr><td>&nbsp;</td><td><pre class="example">&gt; library(boot)
 </pre></td></tr></table>
 
-<p>Users connected to the Internet can use the <code>install.packages()</code>
-and <code>update.packages()</code> functions (available through the
-<code>Packages</code> menu in the Windows and RAqua GUIs, see <a href="R-admin.html#Installing-packages">(R-admin)Installing packages</a> section &lsquo;Installing packages&rsquo; in <cite>R Installation and Administration</cite>) to install and
-update packages.
+
+<p>인터넷에 연결되어 있는 사용자라면 <code>install.packages()</code>와 <code>update.packages()</code> 함수들을 이용하여 패키지를 설치하거나 업데이트 할 수 있습니다. 
+윈도우즈와 RAqua GUI에서는 <code>Packages</code> 메뉴를 통하여 위의 기능들을 이용할 수 있습니다. 
+see <a href="R-admin.html#Installing-packages">(R-admin)Installing packages</a> section &lsquo;Installing packages&rsquo; in <cite>R Installation and Administration</cite>)를 참고하시길 바랍니다.
 </p>
-<p>To see which packages are currently loaded, use
+<p>현재 로드되어 있는 패키지들을 확인하고 싶다면 아래의 명령어를 이용해보세요.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; search()
 </pre></td></tr></table>
 
-<p>to display the search list.  Some packages may be loaded but not
-available on the search list (see section <a href="#Namespaces">Namespaces</a>): these will be
-included in the list given by
+
+<p>이것은 검색리스트(search list)를 보여줄 것입니다.
+일부 패키지들은 아마도 로드되었지만 검색리스트에서 보여지지 않을 수 도 있습니다.
+이에 대해서는 see section <a href="#Namespaces">Namespaces</a>를 참고하시길 바랍니다.
+이들은 다음의 명령어를 통해서 확인이 가능합니다.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; loadedNamespaces()
 </pre></td></tr></table>
 
 
-<p>To see a list of all available help topics in an installed package,
-use
+<p>설치된 패키지에 있는 이용이 가능한 모든 도움말 주제들의 목록을 확인해 보고 싶다면 아래의 명령어를 이용하세요.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; help.start()
 </pre></td></tr></table>
 
-<p>to start the <acronym>HTML</acronym> help system, and then navigate to the package
-listing in the <code>Reference</code> section.
+
+<p>이 명령어는 <acronym>HTML</acronym> 도움말 시스템을 시작할 것이고, <code>Reference</code>섹션에서 패키지 목록들을 탐색하시면 됩니다.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Standard-packages">13.1 Standard packages</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           
@@ -8299,11 +8292,11 @@ listing in the <code>Reference</code> section.
 <a name="Standard-packages-1"></a>
 <h2 class="section">13.1 Standard packages</h2>
 
-<p>The standard (or <em>base</em>) packages are considered part of the R
-source code.  They contain the basic functions that allow R to work,
-and the datasets and standard statistical and graphical functions that
-are described in this manual.  They should be automatically available in
-any R installation.  See <a href="R-FAQ.html#Which-add_002don-packages-exist-for-R_003f">(R-FAQ)Which add-on packages exist for R?</a> section &lsquo;R packages&rsquo; in <cite>R FAQ</cite>, for a complete list.
+
+<p>표준 (또는 <em>base</em>) 패키지들은 R 소스코드의 중요한 부분입니다.
+이들은 R이 작업을 할 수 있도록 해주는 기본 함수들과 데이터셋, 그리고 표준 통계분석 및 이 문서에서 설명된 그래픽 함수들이 포함되어 있습니다.
+이러한 표준 패키지들은 R 설치시에 자동으로 사용이 가능합니다.
+모든 표준패키지 목록을 알고 싶으시다면 See <a href="R-FAQ.html#Which-add_002don-packages-exist-for-R_003f">(R-FAQ)Which add-on packages exist for R?</a> section &lsquo;R packages&rsquo; in <cite>R FAQ</cite>를 참고하시길 바랍니다.
 </p>
 <hr size="6">
 <a name="Contributed-packages-and-CRAN"></a>
@@ -8327,17 +8320,12 @@ any R installation.  See <a href="R-FAQ.html#Which-add_002don-packages-exist-for
 <h2 class="section">13.2 Contributed packages and <acronym>CRAN</acronym></h2>
 <a name="index-CRAN"></a>
 
-<p>There are thousands of contributed packages for R, written by many
-different authors.  Some of these packages implement specialized
-statistical methods, others give access to data or hardware, and others
-are designed to complement textbooks.  Some (the <em>recommended</em>
-packages) are distributed with every binary distribution of R.  Most
-are available for download from <acronym>CRAN</acronym>
-(<a href="http://CRAN.R-project.org/">http://CRAN.R-project.org/</a> and its mirrors) and other
-repositories such as Bioconductor (<a href="http://www.bioconductor.org/">http://www.bioconductor.org/</a>)
-and Omegahat (<a href="http://www.omegahat.org/">http://www.omegahat.org/</a>).  The <em>R FAQ</em>
-contains a list of CRAN packages current at the time of release, but the
-collection of available packages changes very frequently.
+
+<p>R은 무수히 많은 개발자들에 의해 작성된 매우 방대한 양의 기여된 패키지(contributed package)들이 있습니다. 
+이들 중 일부는 특수한 통계방법들을 구현하였고, 또다른 일부는 데이터 또는 하드웨어에 대한 접근과 관련이 있으며, 그 외의 다른 패키지들은 어떤 참고서 혹은 교과서의 부록이기도 합니다.
+일부 <em>recommended</em> (권장)패키지들은 R의 바이너리 배포판과 함께 배포됩니다.
+대부분은 <acronym>CRAN</acronym>(<a href="http://CRAN.R-project.org/">http://CRAN.R-project.org/</a>과 미러)와 Bioconductor (<a href="http://www.bioconductor.org/">http://www.bioconductor.org/</a>) 그리고 Omegahat (<a href="http://www.omegahat.org/">http://www.omegahat.org/</a>)과 같은 저장소들을 통해서 얻을 수 있습니다.
+<em>R FAQ</em>는 가장 최근에 릴리즈된 CRAN 패키지들의 목록을 포함하고 있지만, 이용가능한 패키지들의 목록이 매우 자주 변경됩니다.
 </p>
 <hr size="6">
 <a name="Namespaces"></a>
@@ -8363,38 +8351,35 @@ collection of available packages changes very frequently.
 <a name="index-_003a_003a"></a>
 <a name="index-_003a_003a_003a"></a>
 
-<p>Packages can have <em>namespaces</em>, and currently all of the base and
-recommended packages do except the <code>datasets</code> package.  Namespaces
-do three things: they allow the package writer to hide functions and
-data that are meant only for internal use, they prevent functions from
-breaking when a user (or other package writer) picks a name that clashes
-with one in the package, and they provide a way to refer to an object
-within a particular package.
-</p>
-<p>For example, <code>t()</code> is the transpose function in R, but users
-might define their own function named <code>t</code>.  Namespaces prevent
-the user&rsquo;s definition from taking precedence, and breaking every
-function that tries to transpose a matrix.
-</p>
-<p>There are two operators that work with namespaces.  The double-colon
-operator <code>::</code> selects definitions from a particular namespace.
-In the example above, the transpose function will always be available
-as <code>base::t</code>, because it is defined in the <code>base</code> package.
-Only functions that are exported from the package can be retrieved in
-this way.
-</p>
-<p>The triple-colon operator <code>:::</code> may be seen in a few places in R
-code: it acts like the double-colon operator but also allows access to
-hidden objects.  Users are more likely to use the <code>getAnywhere()</code>
-function, which searches multiple packages.
-</p>
-<p>Packages are often inter-dependent, and loading one may cause others to
-be automatically loaded.  The colon operators described above will also
-cause automatic loading of the associated package.  When packages with
-namespaces are loaded automatically they are not added to the search
-list.
+
+<p>패키지들은 <em>namespaces</em>(네임스페이스)를 가질 수 있으며, 현재 <code>datasets</code> 패키지를 제외한 base와 권장 패키지들 모두가 네임스페이스를 가지고 있습니다. 
+네임스페이스는 주로 다음의 세가지 역할을 수행합니다.
+첫째는 패키지 작성자가 내부적 사용만을 목적으로 개발하고자 하는 함수들과 데이터들을 숨길 수 있도록 합니다. 
+둘째는 사용자 혹은 다른 패키지 작성자가 R의 함수명과 동일한 이름을 가지는 함수명을 사용하고자 할때 동일한 함수명으로 인한 충돌로 인하여 사용자가 사용하고자 하는 함수의 작동이 중단되는 것을 방지할 수 있도록 해줍니다.
+마지막으로 특정패키지 내의 객체를 지칭하는데 사용될 수 있습니다.
 </p>
 
+<p>예를 들면, <code>t()</code>라는 함수는 R에서 행렬을 전치하는데 사용되어 집니다.  
+그러나, 사용자는 아마도 <code>t</code>라는 동일한 이름을 가진 자신만의 고유한 함수를 만들었을수도 있습니다.
+네임스페이스는 사용자가 작성한 함수가 우선권을 가지는 것을 막아주고, 행렬을 전치하고자 하는 모든 함수를 중단하게 합니다.
+</p>
+
+<p>네임스페이스와 함께 사용되는 두개의 연산자들이 있습니다. 
+하나는 더블콜론(double-colon) 연산자 <code>::</code>이며, 이는 특정한 네임스페이스로부터 정의되어 있는 함수를 불러옵니다.
+위의 예제를 다시 살펴보면, 전치함수는 <code>base</code>패키지 안에 정의되어 있기 때문에 항상 <code>base::t</code>를 이용하여 사용이 가능합니다.
+용할 수 있습니다.
+패키지에서 내보내어진 함수들만이 이러한 방법으로 검색되어 질 수 있습니다.
+</p>
+
+<p>트리플-콜론(triple-colon) 연산자 <code>:::</code>가 R 코드내에서 여러 곳에서 사용된 것을 보았을 것입니다.
+이것은 더블-콜론 연산자와 비슷하게 기능을 수행하며 또한 숨겨진 객체에 대한 접근을 허락합니다.
+그퍼나, 여러개의 패키지들을 검색할 수 있는 특징때문에 사용자는 <code>getAnywhere()</code> 함수를 더 자주 이용할 것입니다.
+</p>
+
+<p>패키지들은 서로 상호의존적(inter-dependent)이며, 하나를 로딩할 때 자동으로 다른 것들을 함께 로딩될 수 있습니다.
+위에서 설명한 콜론연산자들은 또한 연관된 자동패키지들을 로딩하기도 합니다.
+네임스페이스가 있는 패키지들이 자동으로 로드될때 이들은 검색목록에 추가되지 않습니다.
+</p>
 <hr size="6">
 <a name="A-sample-session"></a>
 <table cellpadding="1" cellspacing="1" border="0">
@@ -8413,277 +8398,275 @@ list.
 <td valign="middle" align="left">[<a href="#Function-and-variable-index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="A-sample-session-1"></a>
-<h1 class="appendix">A. A sample session</h1>
+<a name="A-_c0d8_d50c-_c138_c158"></a>
+<h1 class="appendix">A. A 샘플 세션</h1>
 
-<p>The following session is intended to introduce to you some features of
-the R environment by using them.  Many features of the system will be
-unfamiliar and puzzling at first, but this puzzlement will soon
-disappear.
+
+<p>다음 세션은 R (개발)환경의 일부 기능을 독자가 따라해 봄으로서 쉽게 알 수 있도록 준비한 섹션입니다.
+시스템의 많은 기능들이 처음에는 익숙하지 않고 혼잡스러울 수 있으나, 이러한 어려움들은 차차 사라지게 될 것입니다.
 </p>
 <dl compact="compact">
 <dt><code></code></dt>
-<dd><p>Start R appropriately for your platform (see section <a href="#Invoking-R">Invoking R</a>).
+<dd><p>R을 실행시켜보세요 (사용자의 플랫폼별로 다를 수 있으니 see section <a href="#Invoking-R">Invoking R</a>를 참조하시길 바랍니다).
 </p>
-<p>The R program begins, with a banner.
+<p>R 프로그램이 시작되면 배너가 보일 것입니다.
 </p>
-<p>(Within R code, the prompt on the left hand side will not be shown to
-avoid confusion.)
+<p>R 코드를 표시할 때는 독자들의 혼돈을 피하기 위해서 왼쪽에 있는 프롬프트는 표시하지 않습니다.
 </p>
 </dd>
 <dt> <code>help.start()</code></dt>
-<dd><p>Start the <acronym>HTML</acronym> interface to on-line help (using a web browser
-available at your machine).  You should briefly explore the features of
-this facility with the mouse.
+<dd>
+<p>이 명령어를 치면 온라인 도움말을 사용자의 환경에서 사용이 가능한 인터넷 브라우저를 이용하여 <acronym>HTML</acronym>인터페이스를 시작하게 됩니다. 
+마우스를 이용하여 단순히 어떻게 운영하는 것인지 간단히 살펴보시길 바랍니다.
 </p>
-<p>Iconify the help window and move on to the next part.
+<p>다음으로 넘어가기 위해서 도움말 창을 작게 만듭니다.
 </p>
 </dd>
 <dt> <code>x &lt;- rnorm(50)</code></dt>
 <dt> <code>y &lt;- rnorm(x)</code></dt>
-<dd><p>Generate two pseudo-random normal vectors of <em>x</em>- and
-<em>y</em>-coordinates.
+<dd><p>이것은 <em>x</em>와 <em>y</em>라는 두개의 벡터를 생성하는 것을 의미하는데, 이것은 추후에 플랏을 그리는데 사용할 좌표의 정보입니다. 
+<em>x</em>는 표준정규분포로부터 발생시킨 50개의 난수들을 열벡터의 형식으로 가지고 있으며, <em>y</em> 역시 <em>x</em>와 같은 길이만큼의 난수를 표준정규분포로부터 가지게 됩니다.
 </p>
 </dd>
 <dt> <code>plot(x, y)</code></dt>
-<dd><p>Plot the points in the plane.  A graphics window will appear automatically.
+<dd><p><em>x</em>와 <em>y</em>로 이루어진 좌표들을 평면공간에 플랏하도록 합니다.
+그래픽 창이 자동으로 보여질 것입니다.
 </p>
 </dd>
 <dt> <code>ls()</code></dt>
-<dd><p>See which R objects are now in the R workspace.
+<dd><p>R 워크스페이스 (즉, 작업공간)에 어떠한 R 객체들이 있는지 확인해 보도록 합니다.
 </p>
 </dd>
 <dt> <code>rm(x, y)</code></dt>
-<dd><p>Remove objects no longer needed. (Clean up).
+<dd><p>더 이상 필요가 없는 객체들을 삭제하도록 합니다.
 </p>
 </dd>
 <dt> <code>x &lt;- 1:20</code></dt>
-<dd><p>Make <em>x = (1, 2, &hellip;, 20)</em>.
+<dd><p><em>x = (1, 2, &hellip;, 20)</em>를 생성합니다.
 </p>
 </dd>
 <dt> <code>w &lt;- 1 + sqrt(x)/2</code></dt>
-<dd><p>A &lsquo;weight&rsquo; vector of standard deviations.
+<dd><p>표준편차를 이용한 &lsquo;가중치&rsquo;벡터를 생성합니다.
 </p>
 </dd>
 <dt> <code>dummy &lt;- data.frame(x=x, y= x + rnorm(x)*w)</code></dt>
 <dt> <code>dummy</code></dt>
-<dd><p>Make a <em>data frame</em> of two columns, <em>x</em> and <em>y</em>, and look
-at it.
+<dd><p><em>x</em>와 <em>y</em>의 두개의 열로 이루어진 <em>data frame</em>(데이터프레임)을 생성합니다.
+그리고 나서 이를 살펴볼 수 있습니다.
 </p>
 </dd>
 <dt> <code>fm &lt;- lm(y ~ x, data=dummy)</code></dt>
 <dt> <code>summary(fm)</code></dt>
-<dd><p>Fit a simple linear regression and look at the
-analysis.  With <code>y</code> to the left of the tilde,
-we are modelling <em>y</em> dependent on <em>x</em>.
-</p>
+<dd>
+<p>단순선형회귀분석을 실행하고 그 분석결과를 살펴봅니다.
+틸데표시 좌측에 있는 <code>y</code>를 우리는 <em>x</em>를 이용하여 모델한 것입니다.
+</p> 
 </dd>
 <dt> <code>fm1 &lt;- lm(y ~ x, data=dummy, weight=1/w^2)</code></dt>
 <dt> <code>summary(fm1)</code></dt>
-<dd><p>Since we know the standard deviations, we can do a weighted regression.
+<dd><p>우리는 표준편차를 알고 있기 때문에, 가중회귀분석을 수행합니다.
+그리고 그 결과를 봅니다
 </p>
 </dd>
 <dt> <code>attach(dummy)</code></dt>
-<dd><p>Make the columns in the data frame visible as variables.
+<dd><p>데이터프레임내에 있는 열들을 일반적인 변수와 같이 접근할 수 있도록 해줍니다.
 </p>
 </dd>
 <dt> <code>lrf &lt;- lowess(x, y)</code></dt>
-<dd><p>Make a nonparametric local regression function.
+<dd><p>비모수 국지회귀함수를 수행합니다.
 </p>
 </dd>
 <dt> <code>plot(x, y)</code></dt>
-<dd><p>Standard point plot.
+<dd><p>표준적 방법으로 <em>x</em>와 <em>y</em> 포인트들을 플랏합니다.
 </p>
 </dd>
 <dt> <code>lines(x, lrf$y)</code></dt>
-<dd><p>Add in the local regression.
+<dd><p>포인트를 플랏한 그래픽에 회귀분석으로부터 나온 결과를 이용하여 회귀곡선을 그립니다.
 </p>
 </dd>
 <dt> <code>abline(0, 1, lty=3)</code></dt>
-<dd><p>The true regression line: (intercept 0, slope 1).
+<dd><p>그래픽에 기울기가 1이고 절편이 0인 실제 회귀분석곡선을 추가적으로 그려넣습니다.
 </p>
 </dd>
 <dt> <code>abline(coef(fm))</code></dt>
-<dd><p>Unweighted regression line.
+<dd><p>위에서 단순선형회귀분석을 한 결과가 저장된 <em>fm</em>로부터 기울기와 절편에 해당하는 회귀계수들을 이용하여 회귀곡선을 그리도록 합니다.
 </p>
 </dd>
 <dt> <code>abline(coef(fm1), col = &quot;red&quot;)</code></dt>
-<dd><p>Weighted regression line.
+<dd><p>위에서 가중회귀분석을 한 결과가 저장된 <em>fm1</em>로부터 기울기와 절편에 해당하는 회귀계수들을 이용하여 회귀곡선을 빨간색으로 그려넣습니다.
 </p>
 </dd>
 <dt> <code>detach()</code></dt>
-<dd><p>Remove data frame from the search path.
+<dd><p>검색경로(search path)로부터 데이터프레임을 제거합니다.
 </p>
 </dd>
 <dt> <code>plot(fitted(fm), resid(fm),</code></dt>
 <dt> <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlab=&quot;Fitted values&quot;,</code></dt>
 <dt> <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylab=&quot;Residuals&quot;,</code></dt>
 <dt> <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main=&quot;Residuals vs Fitted&quot;)</code></dt>
-<dd><p>A standard regression diagnostic plot to check for heteroscedasticity.
-Can you see it?
+<dd><p>이분산성(heteroscedasticity)을 확인하기 위해서 표준회귀 진단플랏을 그립니다.
+보입니까? 
 </p>
 </dd>
 <dt> <code>qqnorm(resid(fm), main=&quot;Residuals Rankit Plot&quot;)</code></dt>
-<dd><p>A normal scores plot to check for skewness, kurtosis and outliers.  (Not
-very useful here.)
+<dd><p>비대칭도(skewness), 첨도(kurtosis), 그리고 이상치(outliers)를 찾기 위해서 정규스코어플랏(normal score plot)을 생성합니다.
+(실제로 여기에서는 별로 유용하지 않습니다).
 </p>
 </dd>
 <dt> <code>rm(fm, fm1, lrf, x, dummy)</code></dt>
-<dd><p>Clean up again.
+<dd><p>다시 불필요한 객체들을 삭제합니다.
 </p></dd>
 </dl>
 
-<p>The next section will look at data from the classical experiment of
-Michelson to measure the speed of light.  This dataset is available in
-the <code>morley</code> object, but we will read it to illustrate the
-<code>read.table</code> function.
+
+<p>다음 섹션에서는 Michelson이 빛의 속도를 측정하기 위해서 사용했던 실험으로부터 모은 데이터를 살펴보도록 하겠습니다.
+이 데이터셋은 <code>morley</code> 객체에서 이용이 가능하지만, 여기에서는 <code>read.table</code>함수를 어떻게 사용하는가를 보여주기 위해서 데이터를 불러 오도록 해보겠습니다.
 </p>
 <dl compact="compact">
 <dt> <code>filepath &lt;- system.file(&quot;data&quot;, &quot;morley.tab&quot; , package=&quot;datasets&quot;)</code></dt>
 <dt> <code>filepath</code></dt>
-<dd><p>Get the path to the data file.
+<dd>
+<p>데이터 파일이 들어있는 경로에 대한 정보를 먼저 얻습니다.
 </p>
 </dd>
 <dt> <code>file.show(filepath)</code></dt>
-<dd><p>Optional.  Look at the file.
+<dd><p>(선택적 사항) 파일의 내용을 봅니다
 </p>
 </dd>
 <dt> <code>mm &lt;- read.table(filepath)</code></dt>
 <dt> <code>mm</code></dt>
-<dd><p>Read in the Michelson data as a data frame, and look at it.
-There are five experiments (column <code>Expt</code>) and each has 20 runs
-(column <code>Run</code>) and <code>sl</code> is the recorded speed of light,
-suitably coded.
+<dd>
+<p>Michelson의 데이터를 데이터프레임으로서 읽어들이고, 이를 확인해 봅니다.
+이 데이터셋은 <code>Expt</code>라는 열로부터 5번의 실험들이 있었으며, <code>Run</code>이라는 열로부터 각각 20번씩 수행되었음을 알 수 있습니다.
+그리고 <code>sl</code>에는 빛의 속도가 입력되어 있습니다.
 </p>
 </dd>
 <dt> <code>mm$Expt &lt;- factor(mm$Expt)</code></dt>
 <dt> <code>mm$Run &lt;- factor(mm$Run)</code></dt>
-<dd><p>Change <code>Expt</code> and <code>Run</code> into factors.
+<dd><p><code>Expt</code>와 <code>Run</code>에 있는 데이터의 종류를 요인(factor)으로 변경합니다.
 </p>
 </dd>
 <dt> <code>attach(mm)</code></dt>
-<dd><p>Make the data frame visible at position 3 (the default).
+<dd><p>데이터프레임을 포지션 3 (기본값)에서 볼 수 있도록 합니다. 
 </p>
 </dd>
 <dt> <code>plot(Expt, Speed, main=&quot;Speed of Light Data&quot;, xlab=&quot;Experiment No.&quot;)</code></dt>
-<dd><p>Compare the five experiments with simple boxplots.
+<dd><p>박스플랏(boxplot)을 이용하여 5개의 실험들을 비교해보도록 합니다.
 </p>
 </dd>
 <dt> <code>fm &lt;- aov(Speed ~ Run + Expt, data=mm)</code></dt>
 <dt> <code>summary(fm)</code></dt>
-<dd><p>Analyze as a randomized block, with &lsquo;runs&rsquo; and &lsquo;experiments&rsquo; as factors.
+<dd><p>&lsquo;runs&rsquo;와 &lsquo;experiments&rsquo;를 요인으로 놓은 상태에서 랜덤마이즈된 블락(randomized block)으로서 분석을 합니다.
 </p>
 </dd>
 <dt> <code>fm0 &lt;- update(fm, . ~ . - Run)</code></dt>
 <dt> <code>anova(fm0, fm)</code></dt>
-<dd><p>Fit the sub-model omitting &lsquo;runs&rsquo;, and compare using a formal analysis
-of variance.
+<dd><p>&lsquo;runs&rsquo;를 삭제한 서브모델을 적합한 다음에 이전의 분산분석(analysis of variance)와 비교를 해봅니다.
 </p>
 </dd>
 <dt> <code>detach()</code></dt>
 <dt> <code>rm(fm, fm0)</code></dt>
-<dd><p>Clean up before moving on.
+<dd><p>다음 분석으로 넘어가기 전에 불필요한 객체들을 삭제합니다.
 </p>
 </dd>
 </dl>
 
-<p>We now look at some more graphical features: contour and image plots.
+<p>우리는 이제 contour(컨투어 또는 등고선)와 image(이미지) 플랏이라는 그래픽 기능에 대해서 좀 더 알아보도록 할 것입니다.
 </p>
 <dl compact="compact">
 <dt> <code>x &lt;- seq(-pi, pi, len=50)</code></dt>
 <dt> <code>y &lt;- x</code></dt>
-<dd><p><em>x</em> is a vector of 50 equally spaced values in
-the interval [-pi\, pi].
-<em>y</em> is the same.
+<dd><p><em>x</em>는 
+</p>
+<p>[-pi\, pi] 구간을 50등분한 값을 가지고 있는 벡터입니다.
+</p>
+<p><em>y</em>는 <em>x</em>와 동일한 벡터입니다.
 </p>
 </dd>
 <dt> <code>f &lt;- outer(x, y, function(x, y) cos(y)/(1 + x^2))</code></dt>
-<dd><p><em>f</em> is a square matrix, with rows and columns indexed by <em>x</em>
-and <em>y</em> respectively, of values of the function
-cos(y)/(1 + x^2).
+<dd><p><em>f</em>는 <em>x</em>와 <em>y</em>를 각각 행과 열로 가지는 정방행렬이며, 이 행렬의 원소는 <em>x</em>의 원소와 <em>y</em>의 원소의 쌍을 이용하여 함수 cos(y)/(1 + x^2)@end ifnottex를 통해 얻어집니다.
 </p>
 </dd>
 <dt> <code>oldpar &lt;- par(no.readonly = TRUE)</code></dt>
 <dt> <code>par(pty=&quot;s&quot;)</code></dt>
-<dd><p>Save the plotting parameters and set the plotting region to &ldquo;square&rdquo;.
+<dd><p>현재의 플랏팅 파라미터들을 저장하고 플랏팅지역 (plotting region)을 &ldquo;square&rdquo;로 정합니다.
 </p>
 </dd>
 <dt> <code>contour(x, y, f)</code></dt>
 <dt> <code>contour(x, y, f, nlevels=15, add=TRUE)</code></dt>
-<dd><p>Make a contour map of <em>f</em>; add in more lines for more detail.
+<dd><p><em>f</em>의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨을 보여지도록 합니다.
 </p>
 </dd>
 <dt> <code>fa &lt;- (f-t(f))/2</code></dt>
-<dd><p><code>fa</code> is the &ldquo;asymmetric part&rdquo; of <em>f</em>.  (<code>t()</code> is
-transpose).
+<dd><p><code>fa</code>는 <em>f</em>의 &ldquo;asymmetric part&rdquo;(비대칭 부분)입니다 (여기에서 <code>t()</code>는 행렬의 전치를 의미합니다).
 </p>
 </dd>
 <dt> <code>contour(x, y, fa, nlevels=15)</code></dt>
-<dd><p>Make a contour plot, &hellip;
+<dd><p>컨투어 플랏을 생성합니다.
 </p>
 </dd>
 <dt> <code>par(oldpar)</code></dt>
-<dd><p>&hellip; and restore the old graphics parameters.
+<dd><p>이전의 그래픽 파라미터들을 원상태로 되돌립니다.
 </p>
 </dd>
 <dt> <code>image(x, y, f)</code></dt>
 <dt> <code>image(x, y, fa)</code></dt>
-<dd><p>Make some high density image plots, (of which you can get
-hardcopies if you wish), &hellip;
+<dd>
+<p>이미지 플랏을 생성합니다.
 </p>
 </dd>
 <dt> <code>objects(); rm(x, y, f, fa)</code></dt>
-<dd><p>&hellip; and clean up before moving on.
-</p></dd>
+<dd><p>어떤 객체들이 워크스페이스에 있는지 확인한 뒤, 다음 분석을 수행하기 전에 불필요한 객체들을 제거합니다.
+</p>
+</dd>
 </dl>
 
-<p>R can do complex arithmetic, also.
+<p>R은 또한 복소수 연산을 수행할 수 있습니다.
 </p>
 <dl compact="compact">
 <dt> <code>th &lt;- seq(-pi, pi, len=100)</code></dt>
 <dt> <code>z &lt;- exp(1i*th)</code></dt>
-<dd><p><code>1i</code> is used for the complex number <em>i</em>.
+<dd><p><code>1i</code>는 복소수 <em>i</em>를 나타내는데 사용됩니다.
 </p>
 </dd>
 <dt> <code>par(pty=&quot;s&quot;)</code></dt>
 <dt> <code>plot(z, type=&quot;l&quot;)</code></dt>
-<dd><p>Plotting complex arguments means plot imaginary versus real parts.  This
-should be a circle.
+<dd>
+<p>허수와 실수부분을 플랏하도록 합니다.  
+이것은 반드시 원의 모양이 나와야 합니다.
 </p>
 </dd>
 <dt> <code>w &lt;- rnorm(100) + rnorm(100)*1i</code></dt>
-<dd><p>Suppose we want to sample points within the unit circle.  One method
-would be to take complex numbers with standard normal real and imaginary
-parts &hellip;
+<dd><p>단위 원(unit circle)내에서 어떤 포인트들을 샘플링해야 한다고 가정해 봅니다. 
+이를 위한 한 가지 방법은 아마도 실수와 허수부분에 각각 표준정규분포로부터 난수를 생성하는 것입니다.
 </p>
 </dd>
 <dt> <code>w &lt;- ifelse(Mod(w) &gt; 1, 1/w, w)</code></dt>
-<dd><p>&hellip; and to map any outside the circle onto their reciprocal.
+<dd><p>원 밖에 놓인 값들만을 골라 그들의 역수에 맵핑시키도록 합니다.
 </p>
 </dd>
 <dt> <code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch=&quot;+&quot;,xlab=&quot;x&quot;, ylab=&quot;y&quot;)</code></dt>
 <dt> <code>lines(z)</code></dt>
 <dt><code></code></dt>
-<dd><p>All points are inside the unit circle, but the distribution is not
-uniform.
+<dd><p>단위원(unit circle)내에 모든 점들이 있지만, 균일분포(uniform distribution)가 아님을 알 수 있습니다.
 </p>
 </dd>
 <dt> <code>w &lt;- sqrt(runif(100))*exp(2*pi*runif(100)*1i)</code></dt>
 <dt> <code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch=&quot;+&quot;, xlab=&quot;x&quot;, ylab=&quot;y&quot;)</code></dt>
 <dt> <code>lines(z)</code></dt>
 <dt><code></code></dt>
-<dd><p>The second method uses the uniform distribution.  The points should now
-look more evenly spaced over the disc.
+<dd><p>두번째 방법으로는 균일분포를 이용하는 것입니다.
+이 점들은 반드시 디스크에 균등하게 퍼져 있어 보여야 합니다.
 </p>
 </dd>
 <dt> <code>rm(th, w, z)</code></dt>
-<dd><p>Clean up again.
+<dd><p>다시 불필요한 객체들을 제거 하도록 합니다.
 </p>
 </dd>
 <dt> <code>q()</code></dt>
-<dd><p>Quit the R program.  You will be asked if you want to save the R
-workspace, and for an exploratory session like this, you probably do not
-want to save it.
+<dd><p>R 프로그램을 종료합니다.
+이때,  R 작업공간 (또는 워크스페이스)를 저장하고 싶은지에 대해서 물어보게 될 것입니다.
+그리고, 기초사용에 대한 설명을 목적으로 하는 세션이므로 꼭 저장하실 필요는 없습니다.
 </p></dd>
 </dl>
 
@@ -8708,8 +8691,9 @@ want to save it.
 <a name="Invoking-R-1"></a>
 <h1 class="appendix">B. Invoking R</h1>
 
-<p>Users of R on Windows or Mac OS X should read the OS-specific section
-first, but command-line use is also supported.
+
+<p>윈도우즈와 Mac OS X에서 R을 사용하는 유저들은 반드시 운영체제와 관련된 설명부분을 먼저 읽어보시길 바랍니다. 
+명령어라인 (command-line)사용 역시 지원됩니다.
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Invoking-R-from-the-command-line">B.1 Invoking R from the command line</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
@@ -10656,7 +10640,7 @@ meta key is available.
     <li><a name="toc-Contributed-packages-and-CRAN-1" href="#Contributed-packages-and-CRAN">13.2 Contributed packages and <acronym>CRAN</acronym></a></li>
     <li><a name="toc-Namespaces-1" href="#Namespaces">13.3 Namespaces</a></li>
   </ul></li>
-  <li><a name="toc-A-sample-session-1" href="#A-sample-session">A. A sample session</a></li>
+  <li><a name="toc-A-_c0d8_d50c-_c138_c158" href="#A-sample-session">A. A 샘플 세션</a></li>
   <li><a name="toc-Invoking-R-1" href="#Invoking-R">B. Invoking R</a>
   <ul class="toc">
     <li><a name="toc-Invoking-R-from-the-command-line-1" href="#Invoking-R-from-the-command-line">B.1 Invoking R from the command line</a></li>
@@ -10685,7 +10669,7 @@ meta key is available.
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Chel Hee Lee</em> on <em>March 3, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Chel Hee Lee</em> on <em>March 4, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -10787,7 +10771,7 @@ meta key is available.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Chel Hee Lee</em> on <em>March 3, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Chel Hee Lee</em> on <em>March 4, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 
