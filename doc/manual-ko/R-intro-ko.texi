@@ -1057,19 +1057,24 @@ sqrt(-17+0i)
 @section Generating regular sequences
 @cindex Regular sequences
 
-@R{} has a number of facilities for generating commonly used sequences
-of numbers.  For example @code{1:30} is the vector @code{c(1, 2,
-@dots{}, 29, 30)}.
+@c @R{} has a number of facilities for generating commonly used sequences
+@c of numbers.  For example @code{1:30} is the vector @code{c(1, 2,
+@c @dots{}, 29, 30)}.
+@R{}은 시퀀스(sequence 또는 수열)을 생성하는 다양한 방법을 제공하고 있습니다.
+예를들면, @code{1:30}이라는 명령어는 @code{c(1, 2, @dots, 29, 30)}이라는 벡터를 생성합니다. 
 @c <NOTE>
 @c Info cannot handle ':' as an index entry.
 @ifnotinfo
 @findex :
 @end ifnotinfo
 @c </NOTE>
-The colon operator has high priority within an expression, so, for
-example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}.
-Put @code{n <- 10} and compare the sequences @code{1:n-1} and
-@code{1:(n-1)}.
+@c The colon operator has high priority within an expression, so, for
+@c example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}.
+@c Put @code{n <- 10} and compare the sequences @code{1:n-1} and
+@c @code{1:(n-1)}.
+콜론(colon) 연산자는 어떤 표현식보다도 최우선으로 처리됩니다. 
+예를들면, @code{2*1:15}은 @code{c(2, 4, @dots{}, 28, 30)}이라는 벡터를 생성합니다. 
+그럼, @code{n <- 10}을 입력하고 난뒤에 @code{1:n-1}과 @code{1:(n-1)}로부터 생성되는 두개의 벡터들을 비교해보시길 바랍니다.
 
 The construction @code{30:1} may be used to generate a sequence
 backwards.
