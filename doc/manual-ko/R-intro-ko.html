@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Created on March 5, 2013 by texi2html 1.82
+<!-- Created on March 6, 2013 by texi2html 1.82
 texi2html was written by: 
             Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -884,138 +884,105 @@ R 2.13.0 이전버전들은 표현식의 길이가 256바이트를 넘을 수 �
 <a name="Vector-arithmetic-1"></a>
 <h2 class="section">2.2 Vector arithmetic</h2>
 
-<p>Vectors can be used in arithmetic expressions, in which case the
-operations are performed element by element.  Vectors occurring in the
-same expression need not all be of the same length.  If they are not,
-the value of the expression is a vector with the same length as the
-longest vector which occurs in the expression.  Shorter vectors in the
-expression are <em>recycled</em> as often as need be (perhaps
-fractionally) until they match the length of the longest vector.  In
-particular a constant is simply repeated.  So with the above assignments
-the command
-</p>
-<p>벡터 (vector) 는 요소 (element) 단위의 산술 연산에 활용될 수 있습니다. 이때, 꼭 벡터의 길이 (length)가
-같을 필요는 없습니다. 여기에서 길이란 벡터를 구성하는 요소의 개수입니다. 만약, 길이가 다르다면 상대
-적으로 짧은 길이를 가지는 벡터는 길이가 긴 벡터와의 길이를 맞추기 위해서 자동으로 recycled (반복)되
-어지게 됩니다. 만약, 벡터와 벡터의 길이가 1개인 상수 (constant)간의 연산시에는 상수를 벡터의 길이만
-큼 늘여 맞춘후에 요소단위로 연산을 수행합니다.
-위의 명령어에 대하여 R은 다음과 같이 연산을 수행합니다. R 따라서 x 는 2.2배 반복될 것입니다. x 앞에
-있는 상수 2 는 11 번 반복된 후 각각의 요소끼리 연산 된 후, y 와의 연산을 수행합니다. 마지막으로 상수
-1 역시 11번 반복 된 후 이전 연산의 결과와 새로운 연산을 요소 단위로 수행한 뒤 그 결과를 v 에 할당합니
-다.
-기초 산술 연산자는 +, -, *, / 그리고 ^ (자승) 입니다. 또한, R은 log, exp, sin, cos, tan, sqrt 와 같은 수학
-에서 자주 쓰이는 모든 산술에 관계된 함수를 제공합니다.
-max 와 min는 벡터가 가지는 요소들을 확인하여 최대값과 최소값을 알려주는 함수입니다.
-range 는 주어진 벡터 x 의 최소값과 최대값을 알려주는 c(min(x), max(x)) 형식으로 알려주는 함수입니
-다. length(x) 는 벡터 x의 길이, 즉, 요소의 개수를 알려주는 함수 입니다. sum(x) 는 x의 모든 요소들을 더
-한 값을 알려주는 함수이고, prod(x) 는 x의 모든 요소들을 곱한 값을 알려주는 함수입니다. mean(x) 는 벡
-터 x가 가지는 모든 요소들에 대한 평균 (sample mean)을 알려주는 함수이며, sum(x)/length(x)와 동일한
-값을 가집니다. 또한, var(x) 는 벡터 x 가 가지는 모든 요소들에 대한 분산 (sample variance)을 알려주는
-함수이고, 아래와 같은 연산을 통하여 얻은 값과 동일합니다.
-만약, var() 함수에서 괄호안에 받아들이는 인자가 n-by-p 크기의 행렬이라면, var() 은 p-by-p 크기의
-공분산 (sample covariance matrix) 를 계산해줍니다. 여기에서 n-by-p 라는 것은 n개의 관측대상들로부
-터 p개의 독립변수를 측정한 값들을 모아 놓은 값들의 모임을 수학적으로 표현한 것이며, p 개의 독립변수
-를 가졌다고 하고, 각각의 독립변수들은 n 개의 관측치를 가졌다고 해석합니다.
-sort(x) 는 벡터 x를 인수로 받아 x 의 모든 요소들을 오름차순 (ascending order, 즉 작은 거에서 큰거로)
-으로 재 배열하여 얻어진 벡터를 돌려줍니다. 만약, 인자로 사용된 x 벡터가 오름차순으로 정렬된 순서를
-알고 싶을 경우에 order() 혹은 sort.list()란 함수를 사용하면 알 수 있습니다. pmax 와 pmin 이라는 함수는
-여러개의 벡터로부터 각각의 포지션에서 병렬 (parallel) 으로 max 와 min 을 이용한 최대 최소값을 알려줍
-니다. 대부분의 경우 사용자들은 수치형 벡터 (numeric vector) 에 사용되는 요소가 정수(integer), 실수
-(real), 혹은 복소수 (complex) 인지를 신경쓰지 않습니다. R 은 내부적으로 입력된 벡터가 실수라면
-double형 실수로, 복소수라면 double 형 복소수로 연산을 수행합니다. 단, 복소수를 연산을 수행하고자 할
-때는 복소수 부분을 정확히 명시해 주서야 합니다. 다음의 예는 이러한 경우를 보여줍니다.
-루트안에 음수가 사용되었으므로, R 은 NaN 이라는 경고를 해줄 것입니다. 여기에서 NaN 은 Not a
-Number (숫자가 아냥) 이라는 메시지입니다.
-루트안에 정확하게 복소수를 표현해 준다면 R 은 에러없이 연산을 수행합니다.
-</p>
 
+<p>벡터(vector)는 요소단위(element by element)의 산술연산 표현식(arithmetic expression)에서 이용됩니다. 
+이 때, 같은 표현식 내의 벡터가 꼭 같은 길이를 가질 필요는 없습니다.
+만약, 길이가 다르다면 상대적으로 짧은 길이를 가지는 벡터는 긴 벡터의 길이를 맞추기 위해서 그 구성요소를 재활용(<em>recycled</em> 또는 리사이클링)하게 됩니다. 
+특히, 벡터의 길이가 하나인 상수(constant)를 사용한 경우에는 다른 벡터의 길이만큼 상수를 반복하여 길이를 맞춘 뒤 요소단위의 연산을 수행하게 됩니다. 
+위의 예제를 활용하여 다음의 다음의 명령문을 수행한다면 R은 제일 먼저 <code>x</code>의 길이를 <code>y</code>에 맞추기 위해서 그 구성요소를 2.2배만큼 리사이클링합니다. 
+그리고, <code>x</code>앞에 있는 상수 2를 각 요소별로 곱한뒤에 (즉, 11번의 연산이 필요합니다), <code>y</code>의 더하기 연산을 요소단위별로 수행합니다.
+마지막으로 상수 <code>1</code> 역시 11번 리사이클링된 후 이전의 결과와 새로운 더하기 연산을 요소단위로 수행한 뒤 그 결과를 <code>v</code>에 할당하게 됩니다. 
+따라서, <code>v</code>의 길이는 11이어야 합니다.
+</p> 
 <a name="index-Recycling-rule"></a>
 
 <table><tr><td>&nbsp;</td><td><pre class="example">&gt; v &lt;- 2*x + y + 1
 </pre></td></tr></table>
 
-<p>generates a new vector <code>v</code> of length 11 constructed by adding
-together, element by element, <code>2*x</code> repeated 2.2 times, <code>y</code>
-repeated just once, and <code>1</code> repeated 11 times.
-</p>
+
+
 <a name="index-Arithmetic-functions-and-operators"></a>
-<p>The elementary arithmetic operators are the usual <code>+</code>, <code>-</code>,
-<code>*</code>, <code>/</code> and <code>^</code> for raising to a power.
+
+<p>R에서 제공하는 요소단위의 기초연산자는 <code>+</code>(더하기), <code>-</code>(빼기), <code>*</code>(곱하기), <code>/</code>(나누기), 그리고 <code>^</code>(자승)입니다.
+</p>
 <a name="index-_002b"></a>
 <a name="index-_002d"></a>
 <a name="index-_002a"></a>
 <a name="index-_002f"></a>
 <a name="index-_005e"></a>
-In addition all of the common arithmetic functions are available.
-<code>log</code>, <code>exp</code>, <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code>,
-and so on, all have their usual meaning.
+
+
+<p>R은 또한 일반적인 수학적 연산에 자주 사용되는 <code>log</code>, <code>exp</code>, <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>sqrt</code>와 같은 함수를 제공하며, 이들의 의미는 수학에서 사용하는 것과 동일합니다. 
+</p>
 <a name="index-log"></a>
 <a name="index-exp"></a>
 <a name="index-sin"></a>
 <a name="index-cos"></a>
 <a name="index-tan"></a>
 <a name="index-sqrt"></a>
-<code>max</code> and <code>min</code> select the largest and smallest elements of a
-vector respectively.
+
+
+<p><code>max</code>와 <code>min</code>는 벡터의 구성요소들 중에서 가장 큰 값과 작은 값을 알려주는 함수입니다. 
+</p>
 <a name="index-max"></a>
 <a name="index-min"></a>
-<code>range</code> is a function whose value is a vector of length two, namely
-<code>c(min(x), max(x))</code>.
+
+<p><code>range</code>는 주어진 벡터 <code>x</code>의 최소값과 최대값을 <code>c(min(x), max(x))</code>의 형태로 알려주며, 함수명 그대로 범위를 구하고자 할 때 사용됩니다.
+</p>
 <a name="index-range"></a>
-<code>length(x)</code> is the number of elements in <code>x</code>,
+
+<p><code>length(x)</code>는 벡터의 <code>x</code>의 구성요소가 몇 개인가를 알려주며, 이를 보통 <code>x</code>의 길이라고 합니다.
+</p>
 <a name="index-length"></a>
-<code>sum(x)</code> gives the total of the elements in <code>x</code>,
+
+<p><code>sum(x)</code>는 <code>x</code>의 모든 구성요소들의 합을 구하고자 할 때 사용하고, 
+</p>
 <a name="index-sum"></a>
-and <code>prod(x)</code> their product.
+
+<p><code>prod(x)</code>는 모든 구성요소들의 곱을 구할 때 이용됩니다.
 <a name="index-prod"></a>
 </p>
-<p>Two statistical functions are <code>mean(x)</code> which calculates the sample
-mean, which is the same as <code>sum(x)/length(x)</code>,
+
+<p>통계에서 자주 이용되는 평균과 분산을 계산해 주는 함수들도 제공됩니다.
+샘플평균(sample mean)은 <code>sum(x)/length(x)</code>을 통해 얻을 수 있는데, 이를 <code>mean(x)</code>를 사용하여 그 값을 구할 수 있습니다. 
 <a name="index-mean"></a>
-and <code>var(x)</code> which gives
-</p>
-<table><tr><td>&nbsp;</td><td><pre class="example">sum((x-mean(x))^2)/(length(x)-1)
+그리고, 샘플분산(sample variance)은 아래와 같은 공식을 통해서 얻을 수 있는데, 이 역시 <code>var(x)</code>를 사용하여 보다 편리하게 값을 구할 수 있습니다. 
+</p><table><tr><td>&nbsp;</td><td><pre class="example">sum((x-mean(x))^2)/(length(x)-1)
 </pre></td></tr></table>
 <a name="index-var"></a>
 
-<p>or sample variance.  If the argument to <code>var()</code> is an
-<em>n</em>-by-<em>p</em> matrix the value is a <em>p</em>-by-<em>p</em> sample
-covariance matrix got by regarding the rows as independent
-<em>p</em>-variate sample vectors.
+<p>만약, <code>var()</code>에 사용되는 입력인자(argument)가 <em>n</em>-by-<em>p</em> 크기의 행렬이라면, <em>p</em>개의 변수들에 대한 <em>n</em>개의 관측치를 갖는 데이터로 인식되어 <em>p</em>-by-<em>p</em>크기의 샘플 공분산 행렬(sample covariance matrix)를 알려줍니다. 
 </p>
-<p><code>sort(x)</code> returns a vector of the same size as <code>x</code> with the
-elements arranged in increasing order; however there are other more
-flexible sorting facilities available (see <code>order()</code> or
-<code>sort.list()</code> which produce a permutation to do the sorting).
+<p><code>sort(x)</code>는 벡터 <code>x</code>를 인수로 받아 <code>x</code>의 모든 구성요소들을 오름차순(increasing order, 즉, 작은 값에서 큰 값의 순서로) 재배열하여 <code>x</code>와 같은 길이의 벡터를 돌려주게 되며, 보다 유용한 정렬기능들도 제공이 됩니다.
+예를들면, 인자로 사용된 <code>x</code> 벡터의 정렬된 순서를 확인하고 할 때는 <code>order()</code> 또는 <code>sort.list()</code>를 사용할 수도 있습니다.
+</p>
 <a name="index-sort"></a>
 <a name="index-order"></a>
+
+
+<p><code>max</code>와 <code>min</code>에 여러개의 벡터가 입력인수로 사용되었을지라도, 이들을 구성하는 모든 구성요소들중에서 최대값과 최소값을 찾아줍니다.
+만약, 주어진 여러개의 입력인자들로부터 대한 최대값과 최소값을 병렬적(<em>parallel</em>)로 찾고자 한다면 <code>pmax</code>와 <code>pmin</code> 함수들을 이용할 수 있으며, 반환되는 벡터의 길이는 입력 인자중에서 가장 길이가 긴 벡터와 동일합니다. 
 </p>
-<p>Note that <code>max</code> and <code>min</code> select the largest and smallest
-values in their arguments, even if they are given several vectors.  The
-<em>parallel</em> maximum and minimum functions <code>pmax</code> and
-<code>pmin</code> return a vector (of length equal to their longest argument)
-that contains in each element the largest (smallest) element in that
-position in any of the input vectors.
 <a name="index-pmax"></a>
 <a name="index-pmin"></a>
+
+
+<p>대부분의 경우 사용자들은 수치형 벡터(numeric vector)를 구성하는 &ldquo;numbers&rdquo;(숫자)들의 종류가 정수(integer), 실수(real) 또는 허수(complex)인지 신경을 쓰지 않습니다. 
+R은 내부적으로 입력된 벡터가 실수라면 double precision을 가지는 실수로, 복소수라면 double precision을 가지는 복소수 연산을 수행하게 됩니다. 
 </p>
-<p>For most purposes the user will not be concerned if the &ldquo;numbers&rdquo; in a
-numeric vector are integers, reals or even complex.  Internally
-calculations are done as double precision real numbers, or double
-precision complex numbers if the input data are complex.
-</p>
-<p>To work with complex numbers, supply an explicit complex part.  Thus
+<p>단, 복소수를 다루게 된다면, 어느 부분이 허수부분(copmlex part)인지를 정확히 명시해주어야 합니다. 
+그렇지 않고 아래와 같이 사용한다면 <code>NaN</code>이라는 값과 경고(warning) 메시지를 보게 될 것입니다. 
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">sqrt(-17)
 </pre></td></tr></table>
 
-<p>will give <code>NaN</code> and a warning, but
+
+<p>따라서, 아래와 같이 사용을 해야지만 복소수 연산을 올바르게 수행하게 됩니다. 
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">sqrt(-17+0i)
 </pre></td></tr></table>
 
-<p>will do the computations as complex numbers.
-</p>
+
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Generating-regular-sequences">2.3 Generating regular sequences</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -10695,7 +10662,7 @@ meta key is available.
 </tr></table>
 <h1>About This Document</h1>
 <p>
-  This document was generated by <em>Chel Hee Lee</em> on <em>March 5, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Chel Hee Lee</em> on <em>March 6, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
 </p>
 <p>
   The buttons in the navigation panels have the following meaning:
@@ -10797,7 +10764,7 @@ meta key is available.
 <hr size="1">
 <p>
  <font size="-1">
-  This document was generated by <em>Chel Hee Lee</em> on <em>March 5, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Chel Hee Lee</em> on <em>March 6, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 
