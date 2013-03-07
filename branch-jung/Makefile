@@ -1,0 +1,6 @@
+tohtml:
+	texi2html R-data-ko.texi
+
+update:
+	rsync -auv ./R-data-ko.html ../doc/manual-ko/
+
