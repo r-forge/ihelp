@@ -624,7 +624,7 @@ msgstr ""
 #: src/main/connections.c:1109
 #: src/main/connections.c:1123
 msgid "allocation of pipe connection failed"
-msgstr "파이프 연결의 할당에 실패했습니다"
+msgstr "파이프 연결 할당을 할 수 없습니다"
 
 # CHL20130305
 #: src/gnuwin32/run.c:790
@@ -1716,45 +1716,54 @@ msgstr "'%s'는 슬롯이름에 유효한 타입이 아닙니다"
 msgid "'name' must be non-null character string"
 msgstr "'name'은 반드시 NULL이 아닌 문자열이어야 합니다"
 
+# CHL20130306
 #: src/main/attrib.c:1558
 #: src/main/attrib.c:1629
 #: src/main/attrib.c:1666
 msgid "invalid type or length for slot name"
 msgstr "슬롯이름의 유형 또는 길이가 잘못되었습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1592
 #, c-format
 msgid "cannot get a slot (\"%s\") from an object of type \"%s\""
 msgstr "유형 \"%2$s\"를 가지는 객체로부터 슬롯 (\"%1$s\")를 얻을 수 없습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1603
 #, c-format
 msgid "no slot of name \"%s\" for this object of class \"%s\""
 msgstr "클래스 \"%2$s\"를 가지는 이 객체에는 \"%1$s\" 이름을 가진 슬롯이 없습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1620
 msgid "attempt to set slot on NULL object"
 msgstr "NULL 객체에 슬롯을 지정하려고 했습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1661
 msgid "formal classes cannot be used without the 'methods' package"
-msgstr "'methods' 패키지없이 포멀클래스(formal classes)는 사용할 수 없습니다"
+msgstr "'methods' 패키지없이 formal classes를 사용할 수 없습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1673
 #, c-format
 msgid "trying to get slot \"%s\" from an object of a basic class (\"%s\") with no slots"
 msgstr "슬롯이 없는 기본 클래스 (\"%2$s\")로부터 슬롯 \"%1$s\"를 가져오려 했습니다"
 
+# CHL20130306
 #: src/main/attrib.c:1677
 #, c-format
 msgid "trying to get slot \"%s\" from an object (class \"%s\") that is not an S4 object "
 msgstr "S4 객체가 아닌 클래스 \"%2$s\"인 객체로부터 슬롯 \"%1$s\"를 가져오려했습니다"
 
+# CHL20130306
 #: src/main/bind.c:153
 #, c-format
 msgid "resulting vector exceeds vector length limit in '%s'"
-msgstr ""
+msgstr "'%s'내에서 초래된 벡터는 벡터의 길이제한을 넘어섭니다"
 
+# CHL20130306
 #: src/main/bind.c:281
 #: src/main/bind.c:317
 #: src/main/bind.c:366
@@ -1762,20 +1771,24 @@ msgstr ""
 #: src/main/bind.c:467
 #, c-format
 msgid "type '%s' is unimplemented in '%s'"
-msgstr "'%s'라는 유형은 아직 '%s'에서 구현되지 않았습니다"
+msgstr "타입 '%s'는 아직 '%s'에서 구현되지 않았습니다"
 
+# CHL20130306
 #: src/main/bind.c:670
 msgid "repeated formal argument 'recursive'"
-msgstr "형식인자 'recursive'가 반복되었습니다"
+msgstr "형식인자 'recursive'가 반복됩니다"
 
+# CHL20130306
 #: src/main/bind.c:681
 msgid "repeated formal argument 'use.names'"
-msgstr "형식인자 'use.names'가 반복되었습니다"
+msgstr "형식인자 'use.names'가 반복됩니다"
 
+# CHL20130306
 #: src/main/bind.c:878
 msgid "argument not a list"
 msgstr "리스트가 아닌 인자입니다"
 
+# CHL20130306
 #: src/main/bind.c:1022
 #: src/main/eval.c:2510
 #: src/main/eval.c:2519
@@ -1788,36 +1801,43 @@ msgstr "리스트가 아닌 인자입니다"
 msgid "class name too long in '%s'"
 msgstr "'%s'내에 있는 클래스명이 너무 깁니다"
 
+# CHL20130306
 #: src/main/bind.c:1097
 msgid "cannot create a matrix from these types"
-msgstr "이러한 유형으로부터는 행렬을 작성할 수 없습니다"
+msgstr "이러한 유형들로는 행렬을 작성할 수 없습니다"
 
+# CHL20130306
 #: src/main/bind.c:1167
 #, c-format
 msgid "number of rows of matrices must match (see arg %d)"
-msgstr "행렬들의 행들의 수는 반드시 일치해야 합니다 (인자 %d를 참고하세요)"
+msgstr "각각의 행렬이 가진 행의 개수는 반드시 서로 일치해야 합니다 (인자 %d를 참고하세요)"
 
+# CHL20130306
 #: src/main/bind.c:1411
 #, c-format
 msgid "number of columns of matrices must match (see arg %d)"
-msgstr "행렬들의 열들의 수가 반드시 일치해야 합니다 (인자 %d를 참고하세요)"
+msgstr "각각의 행렬이 가진 열의 개수는 반드시 서로 일치해야 합니다 (인자 %d를 참고하세요)"
 
+# CHL20130306
 #: src/main/builtin.c:43
 msgid "vector size cannot be NA"
 msgstr "벡터의 크기는 NA일 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:49
 #: src/main/builtin.c:57
 #: src/main/sort.c:1274
 msgid "vector size cannot be NA/NaN"
 msgstr "벡터의 크기는 NA 또는 NaN 일 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:50
 #: src/main/builtin.c:58
 #: src/main/sort.c:1275
 msgid "vector size cannot be infinite"
 msgstr "벡터의 크기는 무한할 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:51
 #: src/main/builtin.c:59
 #: src/main/builtin.c:909
@@ -1825,6 +1845,7 @@ msgstr "벡터의 크기는 무한할 수 없습니다"
 msgid "vector size specified is too large"
 msgstr "지정된 벡터의 크기가 너무 큽니다"
 
+# CHL20130306
 #: src/main/builtin.c:84
 #: src/main/builtin.c:93
 #: src/main/builtin.c:293
@@ -1858,33 +1879,40 @@ msgstr "지정된 벡터의 크기가 너무 큽니다"
 #: src/main/saveload.c:2351
 #: src/main/serialize.c:2639
 msgid "use of NULL environment is defunct"
-msgstr "NULL 환경의 사용은 더이상 지원되지 않습니다"
+msgstr "NULL environment의 사용은 더이상 지원되지 않습니다"
 
+# CHL20130306
 #: src/main/builtin.c:306
 msgid "replacement object is not an environment"
-msgstr "대체객체는 환경이 아닙니다"
+msgstr "대체객체는 environment가 아닙니다"
 
+# CHL20130306
 #: src/main/builtin.c:331
 msgid "'enclos' must be an environment"
-msgstr "'enclos'는 반드시 환경이어야 합니다"
+msgstr "'enclos'는 반드시 environment이어야 합니다"
 
+# CHL20130306
 #: src/main/builtin.c:352
 #: src/main/builtin.c:370
 msgid "argument is not an environment"
-msgstr "인자는 환경이 아닙니다"
+msgstr "인자는 environment가 아닙니다"
 
+# CHL20130306
 #: src/main/builtin.c:354
 msgid "the empty environment has no parent"
-msgstr "비어있는 환경은 모체를 가지지 않습니다"
+msgstr "비어있는 environment는 모체를 가지지 않습니다"
 
+# CHL20130306
 #: src/main/builtin.c:372
 msgid "can not set parent of the empty environment"
-msgstr "빈환경의 모체를 설정할 수 없습니다"
+msgstr "비어있는 environment는 모체를 지정할 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:380
 msgid "'parent' is not an environment"
-msgstr "'parent'는 환경이 아닙니다"
+msgstr "'parent'는 environment가 아닙니다"
 
+# CHL20130306
 #: src/main/builtin.c:520
 #: src/main/connections.c:3451
 #: src/main/connections.c:3828
@@ -1900,44 +1928,52 @@ msgstr "'parent'는 환경이 아닙니다"
 msgid "cannot write to this connection"
 msgstr "이 연결에 쓰기를 할 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:525
 #: src/main/builtin.c:555
 #, c-format
 msgid "invalid '%s' specification"
-msgstr "'%s' 지정이 잘못되었습니다"
+msgstr "'%s' 지정이 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/builtin.c:542
 msgid "non-positive 'fill' argument will be ignored"
 msgstr "양수가 아닌 'fill' 인자는 무시되어질 것입니다"
 
+# CHL20130306
 #: src/main/builtin.c:617
 #, c-format
 msgid "argument %d (type '%s') cannot be handled by 'cat'"
-msgstr "'%2$s' 유형의 인자 %1$d은 'cat'에 의하여 처리될 수 없습니다"
+msgstr "타입 '%2$s'인 인자 %1$d는 'cat'에 의하여 다루어 질 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:756
 #, c-format
 msgid "vector: cannot make a vector of mode '%s'."
-msgstr "벡터: 유형이 '%s'인 벡터를 만들 수 없습니다."
+msgstr "벡터: 모드가 '%s'인 벡터를 만들 수 없습니다."
 
+# CHL20130306
 #: src/main/builtin.c:782
 msgid "cannot set length of non-vector"
 msgstr "벡터가 아닌 것은 길이를 지정할 수 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:890
 #: src/main/builtin.c:900
 #: src/main/options.c:630
 msgid "invalid argument"
-msgstr "잘못된 인자입니다"
+msgstr "유효하지 않은 인자입니다"
 
+# CHL20130306
 #: src/main/builtin.c:892
 #: src/main/builtin.c:902
 #: src/main/builtin.c:904
 #: src/main/character.c:366
 #: src/main/coerce.c:2681
 msgid "invalid value"
-msgstr "값이 잘못되었습니다"
+msgstr "유효하지 않은 값입니다"
 
+# CHL20130306
 #: src/main/builtin.c:935
 #: src/main/coerce.c:2398
 #: src/main/coerce.c:2439
@@ -1952,20 +1988,24 @@ msgstr "값이 잘못되었습니다"
 msgid "'...' used in an incorrect context"
 msgstr "'...'가 잘못된 맥락에서 사용되었습니다"
 
+# CHL20130306
 #: src/main/builtin.c:956
 #, c-format
 msgid "duplicate 'switch' defaults: '%s' and '%s'"
-msgstr "'switch'의 기본값으로 '%s'와 '%s'가 중복됩니다"
+msgstr "'switch'의 기본값으로 '%1$s'와 '%2$s'가 중복됩니다"
 
+# CHL20130306
 #: src/main/builtin.c:989
 msgid "'EXPR' is missing"
 msgstr "'EXPR'이 없습니다"
 
+# CHL20130306
 #: src/main/builtin.c:993
 #: src/main/eval.c:4914
 msgid "EXPR must be a length 1 vector"
 msgstr "EXPR은 반드시 길이가 1인 벡터이어야 합니다"
 
+# CHL20130306
 #: src/main/character.c:105
 #: src/main/character.c:108
 #: src/main/character.c:132
@@ -1974,192 +2014,233 @@ msgstr "EXPR은 반드시 길이가 1인 벡터이어야 합니다"
 msgid "'%s' requires a character vector"
 msgstr "'%s'은 문자형 벡터를 필요로 합니다"
 
+# CHL20130306
 #: src/main/character.c:164
 #, c-format
 msgid "number of characters is not computable for element %d in \"bytes\" encoding"
-msgstr ""
+msgstr "요소 %d에 대한 글자의 개수를 \"bytes\" 인코딩으로는 계산을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/character.c:169
 #: src/main/character.c:197
 #: src/main/character.c:651
 #: src/main/character.c:748
 #, c-format
 msgid "invalid multibyte string %d"
-msgstr "%d는 잘못된 멀티바이트 문자열입니다"
+msgstr "유효하지 않은 멀티바이트 문자열 %d입니다"
 
+# CHL20130306
 #: src/main/character.c:185
 #, c-format
 msgid "width is not computable for element %d in \"bytes\" encoding"
-msgstr ""
+msgstr "요소 %d에 대한 너비를 \"bytes\" 인코딩으로는 계산을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/character.c:263
 msgid "extracting substrings from a non-character object"
 msgstr "문자형이 아닌 객체로부터 부분문자열들을 추출하려고 했습니다"
 
+# CHL20130306
 #: src/main/character.c:268
 #: src/main/character.c:363
 msgid "invalid substring arguments"
-msgstr "부분문자열 인자들이 잘못되었습니다"
+msgstr "유효하지 않은 부분문자열 인자들입니다"
 
+# CHL20130306
 #: src/main/character.c:358
 msgid "replacing substrings in a non-character object"
 msgstr "문자형이 아닌 객체에서 부분문자열들을 대체합니다"
 
+# CHL20130306
 #: src/main/character.c:551
 msgid "the first argument must be a character vector"
 msgstr "첫번째 인자는 반드시 문자형 벡터이어야 합니다"
 
+# CHL20130306
 #: src/main/character.c:568
 msgid "abbreviate used with non-ASCII chars"
 msgstr "아스키 문자가 아닌 것을 사용한 약어입니다"
 
+# CHL20130306
 #: src/main/character.c:589
 msgid "non-character names"
 msgstr "문자로 이루어지지 않은 이름들입니다"
 
+# CHL20130306
 #: src/main/character.c:694
 #: src/main/grep.c:159
 msgid "non-character argument"
-msgstr "문자형이 아닌 인자입니다"
+msgstr "문자형을 가지지 않는 인자입니다"
 
+# CHL20130306
 #: src/main/character.c:803
 #, c-format
 msgid "decreasing range specification ('%lc-%lc')"
 msgstr "범위지정을 축소합니다 ('%lc-%lc')"
 
+# CHL20130306
 #: src/main/character.c:889
 #, c-format
 msgid "decreasing range specification ('%c-%c')"
 msgstr "범위지정을 축소합니다 ('%c-%c')"
 
+# CHL20130306
 #: src/main/character.c:1077
 msgid "invalid UTF-8 string 'old'"
-msgstr "'old'는 잘못된 UTF-8 문자열입니다"
+msgstr "유효하지 않은 UTF-8 문자열 'old'입니다"
 
+# CHL20130306
 #: src/main/character.c:1083
 msgid "invalid multibyte string 'old'"
-msgstr "'old'는 잘못된 멀티바이트 문자열입니다"
+msgstr "유효하지 않은 멀티바이트 문자열 'old'입니다"
 
+# CHL20130306
 #: src/main/character.c:1096
 msgid "invalid UTF-8 string 'new'"
-msgstr "'new'는 잘못된 UTF-8 문자열입니다"
+msgstr "유효하지 않은 UTF-8 문자열 'new'입니다"
 
+# CHL20130306
 #: src/main/character.c:1102
 msgid "invalid multibyte string 'new'"
-msgstr "'new'는 잘못된 멀티바이트 문자열입니다"
+msgstr "유효하지 않은 멀티바이트 문자열 'new'입니다"
 
+# CHL20130306
 #: src/main/character.c:1130
 #: src/main/character.c:1219
 msgid "'old' is longer than 'new'"
-msgstr "'old'가 'new' 보다 깁니다"
+msgstr "'old'의 길이가 'new'의 길이보다 깁니다"
 
+# CHL20130306
 #: src/main/character.c:1162
 #, c-format
 msgid "invalid input multibyte string %d"
-msgstr "멀티바이트 문자열 %d는 잘못된 입력입니다"
+msgstr "유효하지 않은 멀티바이트 문자열 %d가 입력되었습니다"
 
+# CHL20130306
 #: src/main/character.c:1269
 msgid "strtrim() requires a character vector"
 msgstr "strtrim()는 문자형 벡터를 필요로 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:32
 msgid "invalid 'mode' argument"
-msgstr "인자 'mode'가 잘못되었습니다"
+msgstr "유효하지 않은 'mode' 인자입니다"
 
+# CHL20130306
 #: src/main/coerce.c:33
 msgid "applies only to lists and vectors"
 msgstr "오로지 리스트와 벡터에만 적용됩니다"
 
+# CHL20130306
 #: src/main/coerce.c:77
 #: src/main/errors.c:1196
 msgid "NAs introduced by coercion"
-msgstr "강제변환에 의해 생성된 NA 입니다"
+msgstr "강제형변환에 의해 생성된 NA 입니다"
 
+# CHL20130306
 #: src/main/coerce.c:79
 #: src/main/errors.c:1197
 msgid "inaccurate integer conversion in coercion"
-msgstr "강제변환중 부정확한 정수변환이 발생했습니다"
+msgstr "강제형변환중 부정확한 정수변환이 발생했습니다"
 
+# CHL20130306
 #: src/main/coerce.c:81
 #: src/main/errors.c:1198
 msgid "imaginary parts discarded in coercion"
-msgstr "강제변환중에 허수부분이 버려졌습니다"
+msgstr "강제형변환중에 허수부분이 버려졌습니다"
 
+# CHL20130306
 #: src/main/coerce.c:83
 msgid "out-of-range values treated as 0 in coercion to raw"
-msgstr ""
+msgstr "강제형변환중 범위밖의 값들은 0으로 처리됩니다"
 
+# CHL20130306
 #: src/main/coerce.c:413
 #, c-format
 msgid "invalid data of mode '%s' (too short)"
-msgstr ""
+msgstr "유효하지 않은 데이터의 모드 '%s'입니다 (너무 짧습니다)"
 
+# CHL20130306
 #: src/main/coerce.c:1015
 #, c-format
 msgid "'pairlist' object cannot be coerced to type '%s'"
-msgstr "'pairlist' 객체는 유형 '%s'로 강제변환될 수 없습니다"
+msgstr "'pairlist' 객체는 유형 '%s'로 강제형변환될 수 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1133
 #, c-format
 msgid "(list) object cannot be coerced to type '%s'"
-msgstr "리스트 객체는 형식 '%s'로 강제변환 될 수 없습니다"
+msgstr "(리스트) 객체는 유형 '%s'로 강제형변환 될 수 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1156
 #, c-format
 msgid "(symbol) object cannot be coerced to type '%s'"
-msgstr "기호 객체는 형식 '%s'로 강제변환 될 수 없습니다"
+msgstr "(기호) 객체는 유형 '%s'로 강제형변환 될 수 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1172
 #: src/main/coerce.c:1487
 msgid "no method for coercing this S4 class to a vector"
-msgstr "이 S4 클래스르르 벡터로 강제변환하는 방법은 없습니다"
+msgstr "본 S4 클래스를 벡터로 강제형변환하는 방법은 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1231
 msgid "environments cannot be coerced to other types"
-msgstr "환경들은 다른 유형으로 강제변환될 수 없습니다"
+msgstr "environment들은 다른 유형으로 강제형변환될 수 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1378
 msgid "attempting to coerce non-factor"
-msgstr "요인이 아닌 것으로 강제변환을 시도합니다"
+msgstr "요인이 아닌 것으로 강제형변환을 시도하고 있습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1535
 msgid "list argument expected"
 msgstr "리스트 인자가 와야합니다"
 
+# CHL20130306
 #: src/main/coerce.c:1543
 #: src/main/eval.c:5080
 msgid "invalid environment"
-msgstr "잘못된 환경입니다"
+msgstr "유효하지 않은 environment입니다"
 
+# CHL20130306
 #: src/main/coerce.c:1547
 msgid "argument must have length at least 1"
-msgstr "인자는 반드시 최소 길이가 1 이어야 합니다"
+msgstr "인자는 반드시 길이가 최소 1 이어야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:1569
 msgid "invalid body for function"
-msgstr "함수에 대한 내용이 잘못되었습니다"
+msgstr "함수에 대한 내용이 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1592
 msgid "invalid length 0 argument"
-msgstr "길이가 0인 잘못된 인자입니다"
+msgstr "길이가 0인 유효하지 않은 인자입니다"
 
+# CHL20130306
 #: src/main/coerce.c:1607
 msgid "invalid argument list"
-msgstr "인자 목록이 잘못되었습니다"
+msgstr "인자 목록이 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/coerce.c:1922
 msgid "type \"single\" unimplemented in R"
-msgstr "유형 \"single\"은 R에서 구현되지 않았습니다"
+msgstr "타입 \"single\"은 R에서 구현되지 않았습니다"
 
 #: src/main/coerce.c:1924
 msgid "unimplemented predicate"
 msgstr ""
 
+# CHL20130306
 #: src/main/coerce.c:2071
 #, c-format
 msgid "%s() applied to non-(list or vector) of type '%s'"
-msgstr "%s()가 유형은 '%s'이나, 리스트 또는 벡터가 아닌 것에 적용되었습니다"
+msgstr "%s()는 유형이 '%s'인 (리스트 또는 벡터)가 아닌 것에 적용되었습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2137
 #: src/main/coerce.c:2200
 #: src/main/coerce.c:2268
@@ -2167,107 +2248,132 @@ msgstr "%s()가 유형은 '%s'이나, 리스트 또는 벡터가 아닌 것에 �
 msgid "default method not implemented for type '%s'"
 msgstr "유형 '%s'에 대한 기본메소드는 구현되지 않았습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2286
 msgid "'name' is missing"
-msgstr "'name'가 없습니다"
+msgstr "'name'이 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2293
 msgid "first argument must be a character string"
 msgstr "첫번째 인자는 반드시 문자열이어야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:2326
 msgid "'what' must be a character string or a function"
 msgstr "'what'은 반드시 문자열 또는 함수이어야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:2329
 msgid "'args' must be a list"
 msgstr "'args'는 반드시 리스트이어야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:2332
 msgid "'envir' must be an environment"
-msgstr "'envir'는 반드시 환경이어야 합니다"
+msgstr "'envir'는 반드시 environmnet이어야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:2487
 msgid "invalid environment specified"
-msgstr "지정된 환경이 잘못되었습니다"
+msgstr "지정된 environment는 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2552
 msgid "Setting class(x) to NULL;   result will no longer be an S4 object"
-msgstr "class(x)를 NULL로 설정하기 때문에 결과는 더이상 S4 객체가 아닙니다"
+msgstr "class(x)를 NULL로 설정했기 때문에 결과는 더이상 S4 객체가 아닙니다"
 
+# CHL20130306
 #: src/main/coerce.c:2555
 #, c-format
 msgid "Setting class(x) to multiple strings (\"%s\", \"%s\", ...); result will no longer be an S4 object"
-msgstr "class(x)를 다중문자열 (\"%s\", \"%s\", ...)로 설정하기 때문에 결과는 더이상 S4 객체가 아닙니다"
+msgstr "class(x)를 다중문자열 (\"%s\", \"%s\", ...)로 설정했기 때문에 결과는 더이상 S4 객체가 아닙니다"
 
+# CHL20130306
 #: src/main/coerce.c:2557
 #, c-format
 msgid "Setting class(x) to \"%s\" sets attribute to NULL; result will no longer be an S4 object"
 msgstr "\"%s\"에 class(x)를 설정하는 것은 속성을 NULL로 변경하는 것이므로, 결과는 더이상 S4 객체가 아닙니다"
 
+# CHL20130306
 #: src/main/coerce.c:2589
 msgid "invalid replacement object to be a class string"
 msgstr "클래스 문자열에 대체할 객체가 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2610
 #, c-format
 msgid "\"%s\" can only be set as the class if the object has this type; found \"%s\""
 msgstr "\"%s\"는 오로지 객체가 이 유형을 가지고 있을 때만 클래스로서 설정되지만, 유형 \"%s\"입니다"
 
+# CHL20130306
 #: src/main/coerce.c:2628
 #, c-format
 msgid "invalid to set the class to matrix unless the dimension attribute is of length 2 (was %d)"
 msgstr "차원속성이 길이가 2가 아닌이상은 행렬에 클래스를 부여할 수 없는데, %d 입니다"
 
+# CHL20130306
 #: src/main/coerce.c:2636
 msgid "cannot set class to \"array\" unless the dimension attribute has length > 0"
 msgstr "차원속성의 길이가 0 보다 크지 않다면 배열에 클래스를 설정할 수 없습니다"
 
+# CHL20130306
 #: src/main/coerce.c:2672
 msgid "'value' must be non-null character string"
 msgstr "'value'는 반드시 NULL 문자열이 아니여야 합니다"
 
+# CHL20130306
 #: src/main/coerce.c:2685
 msgid "invalid to change the storage mode of a factor"
-msgstr "요인의 저장모드 변경이 잘못되었습니다"
+msgstr "요인에 대한 저장모드 변경이 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/complex.c:126
 msgid "invalid complex unary operator"
-msgstr "잘못된 복소수 단항 연산자입니다"
+msgstr "유효하지 않은 복소수 단항 연산자입니다"
 
+# CHL20130306
 #: src/main/complex.c:260
 msgid "unimplemented complex operation"
 msgstr "구현되지 않은 복소수 연산입니다"
 
+# CHL20130306
 #: src/main/complex.c:363
 msgid "non-numeric argument to function"
-msgstr ""
+msgstr "함수에 수치가 아닌 인자가 주어졌습니다"
 
+# CHL20130306
 #: src/main/complex.c:824
 msgid "invalid polynomial coefficient"
-msgstr ""
+msgstr "유효하지 않은 다항계수입니다"
 
+# CHL20130306
 #: src/main/complex.c:829
 msgid "root finding code failed"
-msgstr ""
+msgstr "근을 찾는 코드에 문제가 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:153
 msgid "all connections are in use"
-msgstr "모든 연결들이 사용중입니다"
+msgstr "모든 커넥션들이 사용중입니다"
 
+# CHL20130306
 #: src/main/connections.c:164
 msgid "connection not found"
-msgstr "연결을 찾을 수 없습니다"
+msgstr "커넥션을 찾을 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:175
 msgid "invalid connection"
-msgstr "잘못된 연결입니다"
+msgstr "유효하지 않은 커넥션입니다"
 
+# CHL20130306
 #: src/main/connections.c:207
 #, c-format
 msgid "closing unused connection %d (%s)\n"
-msgstr "사용되지 않는 연결 %d (%s)를 닫습니다\n"
+msgstr "사용되지 않는 커넥션 %d (%s)를 닫습니다\n"
 
+# CHL20130306
 #: src/main/connections.c:232
 #: src/main/sysutils.c:616
 #: src/main/sysutils.c:801
@@ -2279,8 +2385,9 @@ msgstr "사용되지 않는 연결 %d (%s)를 닫습니다\n"
 #: src/main/sysutils.c:1293
 #, c-format
 msgid "unsupported conversion from '%s' to '%s'"
-msgstr "'%s'에서 '%s'로의 변환은 지원되지 않습니다"
+msgstr "'%1$s'에서 '%2$s'로의 변환은 지원되지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:288
 #: src/main/connections.c:304
 #: src/main/connections.c:455
@@ -2290,27 +2397,31 @@ msgstr "'%s'에서 '%s'로의 변환은 지원되지 않습니다"
 #: src/main/connections.c:485
 #, c-format
 msgid "%s not enabled for this connection"
-msgstr "이 연결에서는 %s를 할 수 없습니다"
+msgstr "이 커넥션에서 %s를 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:334
 #: src/main/connections.c:351
 #: src/main/connections.c:2683
 msgid "printing of extremely long output is truncated"
-msgstr "지나치게 긴 결과물의 출력은 잘려집니다"
+msgstr "너무 긴 결과물의 출력은 잘려지게 됩니다"
 
+# CHL20130306
 #: src/main/connections.c:374
 msgid "invalid char string in output conversion"
-msgstr "출력변환을 하는 동안 잘못된 문자열을 찾았습니다"
+msgstr "출력변환에서 유효하지 않은 문자열이 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:438
 #, c-format
 msgid "invalid input found on input connection '%s'"
-msgstr "입력연결 '%s'에 잘못된 입력을 찾았습니다"
+msgstr "입력 커넥션 '%s'에서 유효하지 않은 입력을 찾았습니다"
 
+# CHL20130306
 #: src/main/connections.c:579
 #, c-format
 msgid "cannot open file '%ls': %s"
-msgstr "파일 '%ls'을 열 수 없습니다: %s"
+msgstr "파일 '%ls'를 열 수 없습니다: %s"
 
 #: src/main/connections.c:690
 msgid "connection is not open for reading"
@@ -2320,47 +2431,56 @@ msgstr ""
 msgid "connection is not open for writing"
 msgstr ""
 
+# CHL20130306
 #: src/main/connections.c:733
 #: src/main/connections.c:1998
 msgid "can only truncate connections open for writing"
-msgstr ""
+msgstr "쓰기를 위한 목적으로만 열린 커넥션을 중단할 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:737
 #: src/main/connections.c:739
 msgid "file truncation failed"
-msgstr ""
+msgstr "파일잘라내기에 실패했습니다"
 
+# CHL20130306
 #: src/main/connections.c:741
 msgid "file truncation unavailable on this platform"
-msgstr ""
+msgstr "이 플랫폼에서는 파일 잘라내기를 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:787
 #: src/main/connections.c:791
 #: src/main/connections.c:797
 #: src/main/connections.c:814
 msgid "allocation of file connection failed"
-msgstr ""
+msgstr "파일 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:864
 #, c-format
 msgid "cannot create fifo '%s', reason '%s'"
 msgstr "fifo '%s'를 생성할 수 없습니다. 그 이유는 '%s'입니다"
 
+# CHL20130306
 #: src/main/connections.c:870
 #, c-format
 msgid "'%s' exists but is not a fifo"
 msgstr "'%s'는 존재하지만 fifo이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:884
 #, c-format
 msgid "fifo '%s' is not ready"
 msgstr "fifo '%s'가 준비되어 있지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:885
 #, c-format
 msgid "cannot open fifo '%s'"
 msgstr "fifo '%s'를 열 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:926
 #: src/main/connections.c:937
 #: src/main/connections.c:1300
@@ -2375,13 +2495,15 @@ msgstr "fifo '%s'를 열 수 없습니다"
 msgid "too large a block specified"
 msgstr "지정된 블록이 너무 큽니다"
 
+# CHL20130306
 #: src/main/connections.c:946
 #: src/main/connections.c:950
 #: src/main/connections.c:956
 #: src/main/connections.c:972
 msgid "allocation of fifo connection failed"
-msgstr ""
+msgstr "fifo 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:991
 #: src/main/connections.c:1146
 #: src/main/connections.c:1767
@@ -2390,10 +2512,12 @@ msgstr ""
 msgid "only first element of 'description' argument used"
 msgstr "'description' 인자의 첫번째 요소만이 사용되었습니다"
 
+# CHL20130306
 #: src/main/connections.c:1008
 msgid "fifo(\"\") only supports open = \"w+\" and open = \"w+b\": using the former"
 msgstr "fifo(\"\")는 오로지 open = \"w+\"와 open = \"w+b\"만을 지원합니다.  전자를 사용합니다"
 
+# CHL20130306
 #: src/main/connections.c:1022
 #: src/main/connections.c:1183
 #: src/main/connections.c:1833
@@ -2418,160 +2542,189 @@ msgstr "fifo(\"\")는 오로지 open = \"w+\"와 open = \"w+b\"만을 지원합�
 #: src/main/serialize.c:2161
 #: src/main/source.c:265
 msgid "cannot open the connection"
-msgstr "연결을 열 수 없습니다"
+msgstr "커넥션을 열 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1037
 msgid "fifo connections are not available on this system"
-msgstr "이 시스템에서 fifo 연결들은 이용가능하지 않습니다"
+msgstr "이 시스템에서 fifo 커넥션들은 사용가능하지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:1066
 #, c-format
 msgid "cannot pipe() cmd '%ls': %s"
-msgstr ""
+msgstr "pipe() 명령 '%ls'를 할 수 없습니다: %s"
 
+# CHL20130306
 #: src/main/connections.c:1073
 #, c-format
 msgid "cannot open pipe() cmd '%s': %s"
-msgstr ""
+msgstr "pipe() 명령 '%s'를 열 수 없습니다: %s"
 
+# CHL20130306
 #: src/main/connections.c:1240
 #: src/main/connections.c:1560
 #, c-format
 msgid "cannot open compressed file '%s', probable reason '%s'"
 msgstr "압축된 파일 '%s'를 열 수 없습니다.  그 이유는 아마도 '%s'입니다"
 
+# CHL20130306
 #: src/main/connections.c:1280
 msgid "whence = \"end\" is not implemented for gzfile connections"
-msgstr "whence = \"end\"는 gzfile 연결에 대해서는 구현되지 않았습니다"
+msgstr "whence = \"end\"는 gzfile 커넥션에 대해서는 구현되지 않았습니다"
 
+# CHL20130306
 #: src/main/connections.c:1285
 msgid "seek on a gzfile connection returned an internal error"
-msgstr "gzfile 연결을 탐색하는 동안 내부에러가 발생했습니다"
+msgstr "gzfile 커넥션을 탐색하는 동안 내부에러가 발생했습니다"
 
+# CHL20130306
 #: src/main/connections.c:1319
 #: src/main/connections.c:1323
 #: src/main/connections.c:1329
 #: src/main/connections.c:1346
 msgid "allocation of gzfile connection failed"
-msgstr ""
+msgstr "gzfile 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1375
 #, c-format
 msgid "cannot open bzip2-ed file '%s', probable reason '%s'"
-msgstr ""
+msgstr "bzip2으로 된 파일 '%s'를 열 수 없습니다, 아마도 '%s'때문입니다"
 
+# CHL20130306
 #: src/main/connections.c:1384
 #, c-format
 msgid "file '%s' appears not to be compressed by bzip2"
-msgstr ""
+msgstr "파일 '%s'는 bzip2로 압축되지 않은 것 같습니다"
 
+# CHL20130306
 #: src/main/connections.c:1393
 #, c-format
 msgid "initializing bzip2 compression for file '%s' failed"
-msgstr ""
+msgstr "파일 '%s'를 bzip2 압축에 대한 초기설정을 하는데 실패했습니다"
 
+# CHL20130306
 #: src/main/connections.c:1447
 msgid "allocation of overflow buffer for bzfile failed"
-msgstr ""
+msgstr "bzfile에 대한 오버플로우 버퍼할당을 할 수 없습니다"
 
 #: src/main/connections.c:1454
 #, c-format
 msgid "file '%s' has trailing content that appears not to be compressed by bzip2"
-msgstr ""
+msgstr "파일 '%s'는 bzip2로 압축되지 않은 것 같은 긴 분량의 내용을 가지고 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:1500
 #: src/main/connections.c:1504
 #: src/main/connections.c:1510
 #: src/main/connections.c:1527
 msgid "allocation of bzfile connection failed"
-msgstr ""
+msgstr "bzfile 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1573
 #: src/main/connections.c:5663
 #, c-format
 msgid "cannot initialize lzma decoder, error %d"
-msgstr ""
+msgstr "lzma 디코더를 초기화 할 수 없습니다, 에러 %d입니다"
 
+# CHL20130306
 #: src/main/connections.c:1589
 #, c-format
 msgid "cannot initialize lzma encoder, error %d"
-msgstr ""
+msgstr "lzma 인코더를 초기화 할 수 없습니다, 에러 %d입니다"
 
+# CHL20130306
 #: src/main/connections.c:1717
 #: src/main/connections.c:1721
 #: src/main/connections.c:1727
 #: src/main/connections.c:1745
 msgid "allocation of xzfile connection failed"
-msgstr ""
+msgstr "xzfile 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1804
 #, c-format
 msgid "this is a %s-compressed file which this build of R does not support"
-msgstr ""
+msgstr "이것은 이 빌드의 R이 지원하지 않는 %s로 압축된 파일입니다"
 
+# CHL20130306
 #: src/main/connections.c:1899
 #: src/modules/X11/devX11.c:3375
 msgid "memory allocation to copy clipboard failed"
-msgstr ""
+msgstr "클립보드에 복사하는 필요한 메모리 할당에 실패했습니다"
 
+# CHL20130306
 #: src/main/connections.c:1904
 #: src/modules/X11/devX11.c:3354
 #: src/modules/X11/devX11.c:3359
 msgid "clipboard cannot be opened or contains no text"
-msgstr ""
+msgstr "클리보드를 열 수 없거나 아무런 텍스트도 포함하고 있지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:1915
 msgid "memory allocation to open clipboard failed"
-msgstr ""
+msgstr "클립보드를 열기 위한 메모리 할당에 실패했습니다"
 
 #: src/main/connections.c:1943
 msgid "unable to open the clipboard"
 msgstr "클립보드를 열 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1947
 msgid "unable to write to the clipboard"
-msgstr "클립보드에 쓸 수 없습니다"
+msgstr "클립보드에 기록을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:1987
 msgid "attempt to seek outside the range of the clipboard"
-msgstr ""
+msgstr "클립보드의 범위를 넘어 검색을 시도합니다"
 
+# CHL20130306
 #: src/main/connections.c:2030
 msgid "clipboard connection is open for reading only"
-msgstr ""
+msgstr "클립보드 커넥션이 읽기 전용으로 열려 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:2050
 msgid "clipboard buffer is full and output lost"
-msgstr ""
+msgstr "클립보드 버퍼가 가득차서 출력이 손실되었습니다"
 
+# CHL20130306
 #: src/main/connections.c:2071
 msgid "'mode' for the clipboard must be 'r' or 'w'"
-msgstr ""
+msgstr "클립보드에 대한 'mode'는 반드시 'r' 또는 'w'이어야 합니다"
 
+# CHL20130306
 #: src/main/connections.c:2074
 msgid "'mode' for the clipboard must be 'r' on Unix"
-msgstr ""
+msgstr "Unix에서 클립보드에 대한 'mode'는 반드시 'r'이어야 합니다"
 
+# CHL20130306
 #: src/main/connections.c:2077
 #: src/main/connections.c:2083
 #: src/main/connections.c:2089
 #: src/main/connections.c:2106
 msgid "allocation of clipboard connection failed"
-msgstr ""
+msgstr "클립보드 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:2175
 #: src/main/connections.c:2179
 #: src/main/connections.c:2185
 msgid "allocation of terminal connection failed"
-msgstr ""
+msgstr "터미널 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:2318
 msgid "attempting to add too many elements to raw vector"
-msgstr ""
+msgstr "원래의 벡터에 너무 많은 요소들을 추가하려고 합니다"
 
+# CHL20130306
 #: src/main/connections.c:2370
 msgid "attempt to seek outside the range of the raw connection"
-msgstr ""
+msgstr "원래 커넥션의 범위를 넘어 검색을 시도합니다"
 
 #: src/main/connections.c:2381
 #: src/main/connections.c:2385
@@ -2580,26 +2733,31 @@ msgstr ""
 msgid "allocation of raw connection failed"
 msgstr ""
 
+# CHL20130306
 #: src/main/connections.c:2470
 msgid "'con' is not a rawConnection"
 msgstr "'con'은 rawConnection이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:2473
 msgid "'con' is not an output rawConnection"
-msgstr ""
+msgstr "'con'은 출력 rawConnection이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:2510
 msgid "too many characters for text connection"
-msgstr ""
+msgstr "텍스트 커넥션에 너무 많은 문자들이 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:2515
 msgid "cannot allocate memory for text connection"
-msgstr ""
+msgstr "텍스트 커넥션에 메모리를 할당 할 수 없습니다"
 
 #: src/main/connections.c:2563
 msgid "seek is not relevant for text connection"
 msgstr ""
 
+# CHL20130306
 #: src/main/connections.c:2571
 #: src/main/connections.c:2575
 #: src/main/connections.c:2581
@@ -2610,28 +2768,34 @@ msgstr ""
 #: src/main/connections.c:2802
 #: src/main/connections.c:2808
 msgid "allocation of text connection failed"
-msgstr ""
+msgstr "텍스트 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:2756
 msgid "text connection: appending to a non-existent char vector"
-msgstr ""
+msgstr "텍스트 커넥션: 존재하지 않는 문자형 벡터에 추가하려고 합니다"
 
+# CHL20130306
 #: src/main/connections.c:2860
 msgid "unsupported mode"
 msgstr "지원되지 않는 모드입니다"
 
+# CHL20130306
 #: src/main/connections.c:2882
 msgid "'con' is not a textConnection"
 msgstr "'con'은 textConnection이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:2885
 msgid "'con' is not an output textConnection"
-msgstr ""
+msgstr "'con'은 출력 textConnection이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:2959
 msgid "sockets are not available on this system"
 msgstr "이 시스템에서는 소켓을 사용할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3027
 #: src/main/connections.c:3076
 #: src/main/connections.c:3087
@@ -2645,42 +2809,51 @@ msgstr "이 시스템에서는 소켓을 사용할 수 없습니다"
 msgid "'con' is not a connection"
 msgstr "'con'은 연결이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:3030
 msgid "cannot open standard connections"
-msgstr "표준 연결을 열 수 없습니다"
+msgstr "표준 커넥션들을 열 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3032
 msgid "connection is already open"
-msgstr "연결이 이미 열려 있습니다"
+msgstr "커넥션은 이미 열려 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:3065
 msgid "unknown 'rw' value"
 msgstr "알 수 없는 'rw' 값입니다"
 
+# CHL20130306
 #: src/main/connections.c:3136
 msgid "cannot close standard connections"
-msgstr "표준 연결을 닫을 수 없습니다"
+msgstr "표준 커넥션들을 닫을 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3139
 msgid "cannot close 'output' sink connection"
-msgstr "'output' sink 연결을 닫을 수 없습니다"
+msgstr "'output' sink 커넥션을 닫을 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3141
 msgid "cannot close 'message' sink connection"
-msgstr "'message' sink 연결을 닫을 수 없습니다"
+msgstr "'message' sink 커넥션을 닫을 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3161
 #: src/main/connections.c:4881
 #: src/main/serialize.c:1931
 #: src/main/serialize.c:1939
 msgid "connection is not open"
-msgstr "연결이 열려 있지 않습니다"
+msgstr "커넥션이 열려 있지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:3257
 #: src/main/connections.c:3269
 msgid "line longer than buffer size"
 msgstr "행이 버퍼사이즈보다 길어지고 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:3337
 #: src/main/connections.c:3339
 #: src/main/connections.c:3612
@@ -2692,22 +2865,26 @@ msgstr "행이 버퍼사이즈보다 길어지고 있습니다"
 #: src/main/serialize.c:1933
 #: src/main/source.c:272
 msgid "cannot read from this connection"
-msgstr "이 연결로부터 읽을수 없습니다"
+msgstr "이 커넥션으로부터 읽을수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3351
 #: src/main/connections.c:3373
 msgid "cannot allocate buffer in readLines"
-msgstr "readLines에 버퍼를 할당할 수 없습니다"
+msgstr "readLines내에서 버퍼를 할당할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3400
 #, c-format
 msgid "incomplete final line found on '%s'"
-msgstr "'%s'에서 완전하지 않은 마지막 라인이 발견되었습니다"
+msgstr "'%s'에서 불완전한 마지막 행이 발견되었습니다"
 
+# CHL20130306
 #: src/main/connections.c:3406
 msgid "too few lines read in readLines"
-msgstr ""
+msgstr "readLines로 불러들이는 행의 수가 너무 적습니다"
 
+# CHL20130306
 #: src/main/connections.c:3509
 msgid "incomplete string at end of file has been discarded"
 msgstr "파일의 끝에 있는 완전하지 않은 문자열이 제거되었습니다"
@@ -2716,15 +2893,18 @@ msgstr "파일의 끝에 있는 완전하지 않은 문자열이 제거되었습
 msgid "null terminator not found: breaking string at 10000 bytes"
 msgstr ""
 
+# CHL20130306
 #: src/main/connections.c:3580
 msgid "can only read from a binary connection"
-msgstr ""
+msgstr "바이너리 커넥션으로는 오로지 읽을 수 밖에 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3629
 #: src/main/connections.c:3936
 msgid "size changing is not supported for complex vectors"
-msgstr ""
+msgstr "복소수형 벡터들의 크기 변경은 지원되지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:3667
 #: src/main/connections.c:3685
 #: src/main/connections.c:3711
@@ -2736,202 +2916,248 @@ msgstr ""
 #: src/main/connections.c:4021
 #, c-format
 msgid "size %d is unknown on this machine"
-msgstr ""
+msgstr "이 시스템에서 크기 %d를 알 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:3696
 msgid "raw is always of size 1"
-msgstr ""
+msgstr "raw는 항상 사이즈가 1 입니다"
 
+# CHL20130306
 #: src/main/connections.c:3719
 msgid "'signed = FALSE' is only valid for integers of sizes 1 and 2"
-msgstr ""
+msgstr "'signed = FALSE'는 사이즈가 1과 2인 정수들에 대해서만 유효합니다"
 
+# CHL20130306
 #: src/main/connections.c:3820
 msgid "'x' is not an atomic vector type"
-msgstr "'x'는 기본벡터유형이 아닙니다"
+msgstr "'x'는 atomic 벡터유형이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:3826
 msgid "can only write to a binary connection"
-msgstr ""
+msgstr "바이너리 커넥션에 쓰기만을 할 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:3845
 msgid "only 2^31-1 bytes can be written to a raw vector"
-msgstr ""
+msgstr "오직 2^31-1 바이트만이 raw 벡터에 쓰여질 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:3847
 msgid "only 2^31-1 bytes can be written in a single writeBin() call"
-msgstr ""
+msgstr "오직 2^31-1 바이트만이 한 번의 writeBin() 호출에 쓰여질 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:3896
 #: src/main/connections.c:4049
 #: src/main/connections.c:4330
 #: src/main/connections.c:4370
 msgid "problem writing to connection"
-msgstr ""
+msgstr "커녁센에 쓰기 문제가 발생했습니다"
 
+# CHL20130306
 #: src/main/connections.c:3941
 msgid "size changing is not supported for raw vectors"
-msgstr ""
+msgstr "raw 벡터들에 대해서 크기변경은 지원되지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:4084
 #: src/main/connections.c:4088
 #: src/main/connections.c:4127
 msgid "invalid UTF-8 input in readChar()"
-msgstr ""
+msgstr "readChar()에 유효하지 않은 UTF-8 입력입니다"
 
+# CHL20130306
 #: src/main/connections.c:4194
 msgid "can only read in bytes in a non-UTF-8 MBCS locale"
-msgstr ""
+msgstr "UTF-8가 아닌 MBCS 로케일에서만 바이트로만 읽을 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:4266
 msgid "'object' is too short"
-msgstr ""
+msgstr "'object'가 너무 짧습니다"
 
+# CHL20130306
 #: src/main/connections.c:4319
 msgid "writeChar: more bytes requested than are in the string - will zero-pad"
-msgstr ""
+msgstr "writeChar: 문자열내에 있는 것보다 더 많은 바이트가 요구되어 집니다 - will zero-pad"
 
+# CHL20130306
 #: src/main/connections.c:4344
 msgid "writeChar: more characters requested than are in the string - will zero-pad"
-msgstr ""
+msgstr "writeChar: 문자열내에 있는 것보다 더 많은 문자들이 요구되어 집니다 - will zero-pad"
 
+# CHL20130306
 #: src/main/connections.c:4398
 msgid "maximum number of pushback lines exceeded"
-msgstr ""
+msgstr "푸쉬백 라인들의 최대값을 초과했습니다"
 
+# CHL20130306
 #: src/main/connections.c:4404
 #: src/main/connections.c:4408
 #: src/main/connections.c:4444
 #: src/main/connections.c:4450
 msgid "could not allocate space for pushback"
-msgstr ""
+msgstr "푸쉬백을 위한 공간을 할당할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:4435
 msgid "can only push back on open readable connections"
-msgstr ""
+msgstr "읽기가 가능한 열린 커넥션에서만 푸쉬백을 할 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:4437
 msgid "can only push back on text-mode connections"
-msgstr ""
+msgstr "텍스트 모드 커넥션에서만 푸쉬백을 할 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:4497
 #: src/main/connections.c:4567
 msgid "sink stack is full"
-msgstr ""
+msgstr "sink 스택이 꽉 찼습니다"
 
+# CHL20130306
 #: src/main/connections.c:4500
 msgid "cannot switch output to stdin"
-msgstr ""
+msgstr "출력을 stdin으로 전환할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:4527
 msgid "no sink to remove"
-msgstr ""
+msgstr "제거할 sink가 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:4649
 msgid "there is no connection NA"
-msgstr ""
+msgstr "NA이라는 커넥션은 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:4651
 #, c-format
 msgid "there is no connection %d"
-msgstr ""
+msgstr "%d라는 커넥션은 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:4786
 msgid "file(\"\") only supports open = \"w+\" and open = \"w+b\": using the former"
-msgstr ""
+msgstr "파일(\"\")은 오로지 open = \"w+\"과 open = \"w+b\"만을 지원합니다: 전자의 것을 사용합니다"
 
+# CHL20130306
 #: src/main/connections.c:4840
 #: src/modules/internet/internet.c:115
 #: src/modules/internet/internet.c:569
 msgid "unsupported URL scheme"
-msgstr ""
+msgstr "지원되지 않는 URG scheme입니다"
 
+# CHL20130306
 #: src/main/connections.c:4923
 msgid "file stream does not have gzip magic number"
-msgstr ""
+msgstr "파일 스트림은 gzip 매직넘버를 가지고 있지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:4934
 msgid "file stream does not have valid gzip header"
-msgstr ""
+msgstr "파일 스트림은 유효한 gzip 헤더를 가지고 있지 않습니다"
 
+# CHL20130306
 #: src/main/connections.c:4999
 msgid "writing error whilst flushing 'gzcon' connection"
-msgstr ""
+msgstr "'gzcon' 커넥션을 플러싱 하는 동안에 쓰기 에러가 발생했습니다"
 
+# CHL20130306
 #: src/main/connections.c:5101
 #, c-format
 msgid "crc error %x %x\n"
-msgstr ""
+msgstr "crc 에러 %x %x\n"
 
+# CHL20130306
 #: src/main/connections.c:5128
 msgid "write error on 'gzcon' connection"
-msgstr ""
+msgstr "'gzcon' 커넥션에 쓰기 에러가 발생했습니다"
 
+# CHL20130306
 #: src/main/connections.c:5162
 msgid "'level' must be one of 0 ... 9"
-msgstr ""
+msgstr "'level'은 반드시 0 ... 9 중 하나이어야 합니다"
 
+# CHL20130306
 #: src/main/connections.c:5165
 msgid "'allowNonCompression' must be TRUE or FALSE"
-msgstr ""
+msgstr "'allowNonCompression'은 반드시 TRUE 또는 FALSE이어야 합니다"
 
+# CHL20130306
 #: src/main/connections.c:5168
 msgid "this is already a 'gzcon' connection"
-msgstr ""
+msgstr "이미 'gzcon' 커넥션입니다"
 
+# CHL20130306
 #: src/main/connections.c:5174
 msgid "can only use read- or write- binary connections"
-msgstr ""
+msgstr "읽기 또는 쓰기를 위한 바이너리 커넥션들만을 사용할 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:5177
 msgid "using a text-mode 'file' connection may not work correctly"
-msgstr ""
+msgstr "텍스트 모드 'file' 커넥션을 이용하는 것은 제대로 작동하지 않을 수 있습니다"
 
+# CHL20130306
 #: src/main/connections.c:5180
 msgid "cannot create a 'gzcon' connection from a writable textConnection; maybe use rawConnection"
-msgstr ""
+msgstr "쓰기가 가능한 textConnection으로부터 'gzcon' 커넥션을 생성할 수 없습니다.  아마도 rawConnection을 사용해야 할 것 같습니다"
 
+# CHL20130306
 #: src/main/connections.c:5183
 #: src/main/connections.c:5187
 #: src/main/connections.c:5194
 #: src/main/connections.c:5208
 msgid "allocation of 'gzcon' connection failed"
-msgstr ""
+msgstr "'gzcon' 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/connections.c:5368
 msgid "not a list of sockets"
-msgstr ""
+msgstr "소켓들의 목록이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:5373
 msgid "bad write indicators"
-msgstr ""
+msgstr "잘못된 쓰기 지시자들입니다"
 
+# CHL20130306
 #: src/main/connections.c:5384
 msgid "not a socket connection"
-msgstr ""
+msgstr "소켓 커넥션이 아닙니다"
 
+# CHL20130306
 #: src/main/connections.c:5607
 msgid "unknown compression, assuming none"
-msgstr ""
+msgstr "알 수 없는 종류의 압축이 사용되었으므로 압축되지 않을 것으로 가정합니다"
 
+# CHL20130306
 #: src/main/context.c:126
 msgid ""
 "bad target context--should NEVER happen;\n"
 "please bug.report() [R_run_onexits]"
 msgstr ""
+"bad target context--일어날 수 없는 없는 상황입니다;\n"
+"bug.report() 해주세요 [R_run_onexits]"
 
+# CHL20130306
 #: src/main/context.c:280
 msgid "no loop for break/next, jumping to top level"
-msgstr ""
+msgstr "break/next에 대한 루프가 없으므로 최상위레벨로 이동합니다"
 
+# CHL20130306
 #: src/main/context.c:288
 msgid "no function to return from, jumping to top level"
-msgstr ""
+msgstr "되돌아가야 할 함수가 없으므로 최상위레벨로 이동합니다"
 
 #: src/main/context.c:300
 msgid "target context is not on the stack"
 msgstr ""
 
+# CHL20130306
 #: src/main/context.c:322
 #: src/main/context.c:338
 #: src/main/context.c:405
@@ -2939,68 +3165,81 @@ msgstr ""
 #: src/main/context.c:438
 #: src/main/context.c:450
 msgid "not that many frames on the stack"
-msgstr ""
+msgstr "스택에 그렇게 많은 프레임들이 있지 않습니다"
 
+# CHL20130306
 #: src/main/context.c:355
 msgid "only positive values of 'n' are allowed"
-msgstr ""
+msgstr "'n'에는 오로지 양의 값들만이 허용됩니다"
 
+# CHL20130306
 #: src/main/context.c:476
 msgid "no function to restart"
-msgstr ""
+msgstr "재시작을 할 함수가 없습니다"
 
+# CHL20130306
 #: src/main/context.c:513
 msgid "number of contexts must be positive"
-msgstr ""
+msgstr "컨텍스트의 개수는 반드시 양수이어야 합니다"
 
+# CHL20130306
 #: src/main/context.c:526
 msgid "no browser context to query"
-msgstr ""
+msgstr "쿼리를 위한 브라우저 컨텍스트가 없습니다"
 
 #: src/main/context.c:544
 msgid "not that many calls to browser are active"
 msgstr ""
 
+# CHL20130306
 #: src/main/context.c:558
 msgid "not that many functions on the call stack"
-msgstr ""
+msgstr "호출 스택에 그렇게 많은 함수들이 있지는 않습니다"
 
+# CHL20130306
 #: src/main/context.c:643
 msgid "internal error in 'do_sys'"
-msgstr ""
+msgstr "'do_sys'에서 내부오류가 발생했습니다"
 
+# CHL20130306
 #: src/main/cum.c:49
 msgid "integer overflow in 'cumsum'; use 'cumsum(as.numeric(.))'"
-msgstr ""
+msgstr "'cumsum'에서 정수형 오버플로우가 발생했으므로 'cumsum(as.numeric(.))'을 사용해주세요"
 
+# CHL20130306
 #: src/main/cum.c:178
 msgid "'cummin' not defined for complex numbers"
-msgstr ""
+msgstr "복소수들에 대해서는 'cummin'이 정의되어 있지 않습니다"
 
+# CHL20130306
 #: src/main/cum.c:181
 msgid "'cummax' not defined for complex numbers"
-msgstr ""
+msgstr "복소수들에 대해서는 'cummax'가 정의되어 있지 않습니다"
 
+# CHL20130306
 #: src/main/cum.c:206
 #: src/main/cum.c:230
 msgid "unknown cumxxx function"
-msgstr ""
+msgstr "알 수 없는 cumxxx 함수입니다"
 
+# CHL20130306
 #: src/main/datetime.c:598
 #: src/main/datetime.c:606
 #: src/main/datetime.c:620
 #: src/main/datetime.c:625
 msgid "problem with setting timezone"
-msgstr ""
+msgstr "시간대를 설정하는 도중 문제가 발생했습니다"
 
+# CHL20130306
 #: src/main/datetime.c:610
 msgid "cannot set timezones on this system"
-msgstr ""
+msgstr "이 시스템에서는 시간대를 설정할 수 없습니다"
 
+# CHL20130306
 #: src/main/datetime.c:632
 #: src/main/datetime.c:634
 msgid "problem with unsetting timezone"
-msgstr ""
+msgstr "시간대가 설정되어 있지 않아서 생긴 문제입니다"
 
 #: src/main/datetime.c:770
 #: src/main/datetime.c:772
@@ -3010,74 +3249,89 @@ msgstr ""
 msgid "zero-length component in non-empty \"POSIXlt\" structure"
 msgstr ""
 
+# CHL20130306
 #: src/main/dcf.c:85
 #: src/main/dcf.c:152
 #: src/main/dcf.c:230
 msgid "could not allocate memory for 'read.dcf'"
-msgstr ""
+msgstr "'read.dcf'에 메모리를 할당할 수 없습니다"
 
+# CHL20130306
 #: src/main/dcf.c:127
 #, c-format
 msgid "Found continuation line starting '%s ...' at begin of record."
-msgstr ""
+msgstr "레코드의 시작에서 '%s ...'로 시작하는 컨티뉴에이션 라인을 발견했습니다"
 
+# CHL20130306
 #: src/main/dcf.c:259
 #, c-format
 msgid "Line starting '%s ...' is malformed!"
-msgstr ""
+msgstr "'%s ...'로 시작하는 줄은 잘 못 되었습니다"
 
+# CHL20130306
 #: src/main/debug.c:45
 msgid "argument must be a closure"
-msgstr ""
+msgstr "인자는 반드시 클로우져이어야 합니다"
 
+# CHL20130306
 #: src/main/debug.c:76
 msgid "argument must be a function"
-msgstr ""
+msgstr "인자는 반드시 함수이어야 합니다"
 
+# CHL20130306
 #: src/main/debug.c:132
 #: src/main/debug.c:166
 #: src/main/debug.c:224
 msgid "argument must not be a function"
-msgstr ""
+msgstr "인자는 반드시 함수가 아니어야 합니다"
 
+# CHL20130306
 #: src/main/debug.c:135
 msgid "cannot trace NULL"
-msgstr ""
+msgstr "NULL을 추적할 수는 없습니다"
 
+# CHL20130306
 #: src/main/debug.c:139
 msgid "'tracemem' is not useful for promise and environment objects"
-msgstr ""
+msgstr "'tracemem'은 promise와 environment 객체들에 대해서는 유용하지 않습니다"
 
+# CHL20130306
 #: src/main/debug.c:142
 msgid "'tracemem' is not useful for weak reference or external pointer objects"
-msgstr ""
+msgstr "'tracemem'은 weak reference 또는 외부 포인터 객체들에 대해서는 유용하지 않습니다"
 
+# CHL20130306
 #: src/main/debug.c:148
 #: src/main/debug.c:171
 msgid "R was not compiled with support for memory profiling"
-msgstr ""
+msgstr "R이 메모리 프로파일 지원기능과 함께 컴파일 되지 않았었습니다"
 
+# CHL20130306
 #: src/main/deparse.c:152
 #: src/main/sprintf.c:213
 #: src/main/sprintf.c:245
 msgid "too few arguments"
-msgstr ""
+msgstr "인자들의 수가 너무 적습니다"
 
+# CHL20130306
 #: src/main/deparse.c:159
 msgid "invalid 'cutoff' value for 'deparse', using default"
-msgstr ""
+msgstr "'deparse'에 대한 'cutoff'의 값이 유효하지 않으므로 기본값을 이용합니다"
 
+# CHL20130306
 #: src/main/deparse.c:247
 msgid "deparse of an S4 object will not be source()able"
-msgstr ""
+msgstr "S4객체의 deparse는 source() 할 수 없는 것 같습니다"
 
+# CHL20130306
 #: src/main/deparse.c:249
 msgid "deparse may be incomplete"
-msgstr ""
+msgstr "deparse는 아마도 불완전한 것 같습니다"
 
+# CHL20130306
 #: src/main/deparse.c:251
 msgid "deparse may be not be source()able in R < 2.7.0"
-msgstr ""
+msgstr "deparse는 R < 2.7.0 에서는 source()할 수 없는 것 같습니다"
 
 #: src/main/deparse.c:369
 #: src/main/deparse.c:461
@@ -3085,18 +3339,22 @@ msgstr ""
 msgid "wrote too few characters"
 msgstr ""
 
+# CHL20130306
 #: src/main/deparse.c:391
 msgid "character arguments expected"
-msgstr ""
+msgstr "문자형 인자들이 와야 합니다"
 
+# CHL20130306
 #: src/main/deparse.c:394
 msgid "zero-length argument"
-msgstr ""
+msgstr "길이가 0인 인수입니다"
 
+# CHL20130306
 #: src/main/deparse.c:401
 msgid "'opts' should be small non-negative integer"
-msgstr ""
+msgstr "'opts'는 반드시 음이 아닌 작은 정수이어야 합니다"
 
+# CHL20130306
 #: src/main/deparse.c:411
 #: src/main/envir.c:1696
 #: src/main/envir.c:1778
@@ -3108,81 +3366,96 @@ msgstr ""
 #: src/main/serialize.c:2657
 #, c-format
 msgid "object '%s' not found"
-msgstr ""
+msgstr "객체 '%s'를 찾을 수 없습니다"
 
 #: src/main/deparse.c:1422
 msgid "badly formed function expression"
 msgstr ""
 
+# CHL20130306
 #: src/main/devices.c:44
 msgid "the base graphics system is not registered"
-msgstr ""
+msgstr "base 그래픽스 시스템이 등록되지 않았습니다"
 
+# CHL20130306
 #: src/main/devices.c:165
 #: src/main/devices.c:172
 msgid "no active or default device"
-msgstr ""
+msgstr "활성화 된 장치가 없거나 기본 장치가 없습니다"
 
+# CHL20130306
 #: src/main/devices.c:385
 #: src/main/devices.c:447
 msgid "too many open devices"
-msgstr ""
+msgstr "너무 많은 장치들이 열려 있습니다"
 
+# CHL20130306
 #: src/main/devices.c:474
 msgid "not enough memory to allocate device (in GEcreateDevDesc)"
-msgstr ""
+msgstr "(GEcreateDevDesc에서) 장치 분배에 할당할 충분한 메모리가 없습니다"
 
+# CHL20130306
 #: src/main/devices.c:515
 msgid "Hit <Return> to see next plot: "
-msgstr ""
+msgstr "다음 플랏을 보기 위해서는 <Return>키를 치세요"
 
+# CHL20130306
 #: src/main/dotcode.c:112
 #: src/main/dotcode.c:142
 msgid "NULL value passed as symbol address"
-msgstr ""
+msgstr "NULL 값이 심볼주소로서 전달됐습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:133
 #, c-format
 msgid "Unimplemented type %d in createRSymbolObject"
-msgstr ""
+msgstr "createRSymbolObject에 구현되지 않은 타입 %d가 있습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:147
 #: src/main/dotcode.c:236
 #, c-format
 msgid "symbol '%s' is too long"
-msgstr ""
+msgstr "심볼 '%s'는 너무 깁니다"
 
+# CHL20130306
 #: src/main/dotcode.c:159
 msgid "first argument must be a string (of length 1) or native symbol reference"
-msgstr ""
+msgstr "첫번째 인자는 반드시 길이가 1인 문자열이거나 native symbol reference 이어야 합니다"
 
+# CHL20130306
 #: src/main/dotcode.c:201
 #: src/main/dotcode.c:561
 msgid "too many arguments in foreign function call"
-msgstr ""
+msgstr "외부 함수호출에서 너무 많은 인수들이 있습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:213
 msgid "PACKAGE = \"\" is invalid"
-msgstr ""
+msgstr "PACKAGE = \"\"는 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:267
 #: src/main/dotcode.c:272
 #: src/main/dotcode.c:277
 #: src/main/dotcode.c:282
 #, c-format
 msgid "\"%s\" not available for %s() for package \"%s\""
-msgstr ""
+msgstr "패키지 \"%3$s\"에서 \"%1$s\"는 %2$s() 목적으로 사용가능하지 않습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:287
 #, c-format
 msgid "%s symbol name \"%s\" not in DLL for package \"%s\""
-msgstr ""
+msgstr "패키지 \"%3$s\"에는 %1$s 심볼 이름 \"%2$s\"가 DLL에 없습니다 "
 
+# CHL20130306
 #: src/main/dotcode.c:292
 #, c-format
 msgid "%s symbol name \"%s\" not in load table"
-msgstr ""
+msgstr "%1$s 심볼 이름 \"%2$s\"은 로드테이블에 없습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:346
 #: src/main/dotcode.c:350
 #: src/main/dotcode.c:360
@@ -3190,66 +3463,78 @@ msgstr ""
 #: src/main/dotcode.c:432
 #, c-format
 msgid "'%s' used more than once"
-msgstr ""
+msgstr "'%s'는 한번이상 사용되었습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:356
 msgid "DLL name is too long"
-msgstr ""
+msgstr "DLL 이름이 너무 깁니다"
 
+# CHL20130306
 #: src/main/dotcode.c:401
 msgid "PACKAGE argument must be a single character string"
-msgstr ""
+msgstr "패키지 인자는 반드시 한개의 문자열이어야 합니다"
 
+# CHL20130306
 #: src/main/dotcode.c:407
 msgid "PACKAGE argument is too long"
-msgstr ""
+msgstr "패키지 인자가 너무 깁니다"
 
+# CHL20130306
 #: src/main/dotcode.c:472
 msgid "no arguments supplied"
-msgstr ""
+msgstr "제공된 인자가 없습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:473
 #: src/main/seq.c:906
 msgid "too many arguments"
-msgstr ""
+msgstr "너무 많은 인자들이 있습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:510
 #: src/main/dotcode.c:552
 #: src/main/dotcode.c:1395
 msgid "'.NAME' is missing"
 msgstr "'.NAME'이 없습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:519
 #: src/main/dotcode.c:568
 #: src/main/dotcode.c:1416
 #, c-format
 msgid "Incorrect number of arguments (%d), expecting %d for '%s'"
-msgstr ""
+msgstr "'%3$s'에 대해서는 인수의 개수가 %2$d이어야 하는데 %1$d개입니다"
 
+# CHL20130306
 #: src/main/dotcode.c:1225
 #: src/main/dotcode.c:2274
 msgid "too many arguments, sorry"
-msgstr ""
+msgstr "인자가 너무 많습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:1259
 #: src/main/dotcode.c:1276
 #: src/main/engine.c:2988
 msgid "invalid graphics state"
-msgstr ""
+msgstr "그래픽 상태가 올바르지 않습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:1355
 msgid "NULL value for DLLInfoReference when looking for DLL"
-msgstr ""
+msgstr "DLL을 찾는 도중에 DLLInfoReference에서 NULL 값이 발견되었습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:1456
 #, c-format
 msgid "wrong type for argument %d in call to %s"
-msgstr ""
+msgstr "%2$s를 호출할때 인자 %1$d의 타입이 잘못되었습니다"
 
+# CHL20130306
 #: src/main/dotcode.c:1468
 #, c-format
 msgid "explicit request not to duplicate arguments in call to '%s', but argument %d is of the wrong type (%d != %d)"
-msgstr ""
+msgstr "'%1$s' 호출시에 중복된 인자들을 사용하지 말라는 요청에도 불구하고, 인자 %2$d의 타입이 잘못되었습니다 (%3$d != %4$d)"
 
 #: src/main/dotcode.c:1491
 #, c-format
@@ -3304,139 +3589,168 @@ msgstr ""
 msgid "type \"%s\" not supported in interlanguage calls"
 msgstr ""
 
+# CHL20130306
 #: src/main/dotcode.c:2602
 #, c-format
 msgid "mode '%s' is not supported in call_R"
-msgstr ""
+msgstr "모드 '%s'는 call_R에서 지원되지 않습니다"
 
 #: src/main/dounzip.c:171
 #, c-format
 msgid " not overwriting file '%s"
 msgstr ""
 
+# CHL20130306
 #: src/main/dounzip.c:256
 #, c-format
 msgid "zip file '%s' cannot be opened"
-msgstr ""
+msgstr "zip 파일 '%s'를 열 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:310
 msgid "invalid zip name argument"
-msgstr ""
+msgstr "zip 이름 인수가 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:313
 #: src/main/dounzip.c:406
 msgid "zip path is too long"
-msgstr ""
+msgstr "zip 경로가 너무 깁니다"
 
+# CHL20130306
 #: src/main/dounzip.c:330
 msgid "'exdir' is too long"
-msgstr ""
+msgstr "'exdir'이 너무 깁니다"
 
+# CHL20130306
 #: src/main/dounzip.c:333
 msgid "'exdir' does not exist"
-msgstr ""
+msgstr "'exdir'이 존재하지 않습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:361
 msgid "requested file not found in the zip file"
-msgstr ""
+msgstr "요청된 파일을 zip 파일로부터 찾을 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:364
 msgid "zip file is corrupt"
 msgstr "손상된 zip 파일입니다"
 
+# CHL20130306
 #: src/main/dounzip.c:367
 msgid "CRC error in zip file"
-msgstr ""
+msgstr "zip 파일에서 CRC 에러입니다"
 
+# CHL20130306
 #: src/main/dounzip.c:374
 msgid "write error in extracting from zip file"
-msgstr ""
+msgstr "zip 파일로부터 추출중 쓰기 에러가 발생했습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:377
 #, c-format
 msgid "error %d in extracting from zip file"
-msgstr ""
+msgstr "zip 파일로부터 추출중 에러 %d가 발생했습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:401
 msgid "unz connections can only be opened for reading"
-msgstr ""
+msgstr "unz 커넥션은 오로지 읽기위해서만 열립니다"
 
+# CHL20130306
 #: src/main/dounzip.c:412
 msgid "invalid description of 'unz' connection"
-msgstr ""
+msgstr "'unz' 커넥션의 설명이 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:418
 #, c-format
 msgid "cannot open zip file '%s'"
-msgstr ""
+msgstr "zip 파일 '%s'를 열 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:422
 #, c-format
 msgid "cannot locate file '%s' in zip file '%s'"
-msgstr ""
+msgstr "zip 파일 '%2$s'내에 파일 '%1$s'를 위치시킬 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:466
 msgid "printing not enabled for this connection"
-msgstr ""
+msgstr "이 커넥션에서는 프린팅을 사용할 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:473
 msgid "write not enabled for this connection"
-msgstr ""
+msgstr "이 커넥션에서는 쓰기를 할 수 없습니다"
 
+# CHL20130306
 #: src/main/dounzip.c:493
 #: src/main/dounzip.c:497
 #: src/main/dounzip.c:503
 #: src/main/dounzip.c:520
 msgid "allocation of 'unz' connection failed"
-msgstr ""
+msgstr "'unz' 커넥션 할당을 할 수 없습니다"
 
+# CHL20130306
 #: src/main/dstruct.c:89
 msgid "invalid formal arguments for 'function'"
-msgstr ""
+msgstr "'function'에 대한 formal arguments들이 유효하지 않습니다"
 
 #: src/main/dstruct.c:99
 msgid "invalid body argument for 'function'"
 msgstr ""
 
+# CHL20130306
 #: src/main/edit.c:110
 msgid "invalid argument to edit()"
-msgstr ""
+msgstr "edit()에 전달되는 인수가 유효하지 않습니다"
 
+# CHL20130306
 #: src/main/edit.c:121
 #: src/main/saveload.c:2066
 msgid "unable to open file"
 msgstr "파일을 열 수 없습니다"
 
+# CHL20130306
 #: src/main/edit.c:134
 msgid "argument 'editor' type not valid"
-msgstr ""
+msgstr "인자 'editor' 타입이 올바르지 않습니다"
 
+# CHL20130306
 #: src/main/edit.c:136
 msgid "argument 'editor' is not set"
-msgstr ""
+msgstr "인자 'editor'가 설정되어 있지 않습니다"
 
+# CHL20130306
 #: src/main/edit.c:141
 msgid "'title' must be a string"
 msgstr "'title'은 반드시 문자열이어야 합니다"
 
+# CHL20130306
 #: src/main/edit.c:159
 #, c-format
 msgid "unable to run editor '%s'"
-msgstr ""
+msgstr "에디터 '%s'를 실행할 수 없습니다"
 
+# CHL20130306
 #: src/main/edit.c:161
 msgid "editor ran but returned error status"
-msgstr ""
+msgstr "에디터가 실행됐지만 에러상태를 반환했습니다"
 
+# CHL20130306
 #: src/main/edit.c:171
 #, c-format
 msgid "problem with running editor %s"
-msgstr ""
+msgstr "에디터 %s를 실행중 문제가 발생했습니다"
 
+# CHL20130306
 #: src/main/edit.c:189
 msgid "unable to open file to read"
-msgstr ""
+msgstr "읽기 위해서 파일을 열 수 없습니다"
 
+# CHL20130306
 #: src/main/edit.c:196
 #, c-format
 msgid ""
@@ -3445,25 +3759,33 @@ msgid ""
 " x <- edit()\n"
 " to recover"
 msgstr ""
+"%s가 %d번째 라인에서 발생했습니다\n"
+" 다음과 같은 명령어를 이용하여 복구해보세요\n"
+" x <- edit()\n"
+" "
 
 #: src/main/engine.c:40
 msgid "Graphics API version mismatch"
 msgstr ""
 
+# CHL20130306
 #: src/main/engine.c:113
 #: src/main/engine.c:118
 #: src/main/engine.c:182
 msgid "unable to allocate memory (in GEregister)"
-msgstr ""
+msgstr "(GEregister에서) 메모리를 할당할 수 없습니다"
 
+# CHL20130306
 #: src/main/engine.c:153
 msgid "too many graphics systems registered"
-msgstr ""
+msgstr "너무 많은 그래픽 시스템들이 등록되어 있습니다"
 
+# CHL20130306
 #: src/main/engine.c:206
 msgid "no graphics system to unregister"
-msgstr ""
+msgstr "등록을 해제할 그래픽 시스템이 없습니다"
 
+# CHL20130306
 #: src/main/engine.c:443
 #: src/main/engine.c:448
 #: src/main/engine.c:456
@@ -3471,7 +3793,7 @@ msgstr ""
 #: src/main/engine.c:477
 #: src/modules/X11/devX11.c:1157
 msgid "invalid line end"
-msgstr ""
+msgstr "라인의 끝이 잘못되었습니다"
 
 #: src/main/engine.c:508
 #: src/main/engine.c:513
@@ -3482,6 +3804,7 @@ msgstr ""
 msgid "invalid line join"
 msgstr ""
 
+# CHL20130306
 #: src/main/engine.c:761
 #: src/main/engine.c:865
 #: src/main/engine.c:1098
@@ -3489,19 +3812,21 @@ msgstr ""
 #: src/main/engine.c:1328
 #: src/main/engine.c:1392
 msgid "'lwd' must be non-negative and finite"
-msgstr ""
+msgstr "'lwd'는 반드시 음이 아니며 유한해야 합니다"
 
+# CHL20130306
 #: src/main/engine.c:798
 msgid "out of memory while clipping polyline"
-msgstr ""
+msgstr "polyline을 클립핑하는 동안에 메모리가 부족해졌습니다"
 
 #: src/main/engine.c:1386
 msgid "path rendering is not implemented for this device"
 msgstr ""
 
+# CHL20130306
 #: src/main/engine.c:1406
 msgid "Invalid graphics path"
-msgstr ""
+msgstr "유효하지 않은 그래픽 경로입니다"
 
 #: src/main/engine.c:1425
 msgid "raster rendering is not implemented for this device"
@@ -7401,12 +7726,13 @@ msgstr ""
 msgid "cannot allocate memory for X11Routines structure"
 msgstr ""
 
+# CHL20130306
 #: src/modules/internet/internet.c:188
 #: src/modules/internet/internet.c:192
 #: src/modules/internet/internet.c:198
 #: src/modules/internet/internet.c:210
 msgid "allocation of url connection failed"
-msgstr ""
+msgstr "url 커넥션 할당을 할 수 없습니다"
 
 #: src/modules/internet/internet.c:286
 msgid "only first element of 'url' argument used"
@@ -7573,12 +7899,13 @@ msgstr ""
 msgid "too many redirects, aborting ..."
 msgstr ""
 
+# CHL20130306
 #: src/modules/internet/sockconn.c:177
 #: src/modules/internet/sockconn.c:181
 #: src/modules/internet/sockconn.c:187
 #: src/modules/internet/sockconn.c:200
 msgid "allocation of socket connection failed"
-msgstr ""
+msgstr "소켓 커넥션 할당을 할 수 없습니다"
 
 #: src/modules/lapack/Lapack.c:48
 #: src/modules/lapack/Lapack.c:67
