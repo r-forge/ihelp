@@ -3928,7 +3928,7 @@ msgstr "라인 타입이 유효하지 않습니다: 0의 값은 허용되지 않
 #: src/main/engine.c:3145
 #: src/main/engine.c:3152
 msgid "invalid line type"
-msgstr "유효하지 않은 라인 타입입니다"
+msgstr "라인 타입이 유효하지 않습니다"
 
 # CHL20130306
 #: src/main/envir.c:113
@@ -3972,20 +3972,21 @@ msgstr "'%s'에 대한 인자는 environment가 아닙니다"
 #: src/main/envir.c:1253
 #, c-format
 msgid "the ... list does not contain %d elements"
-msgstr "... 목록은 %d 구성요소를 가지고 있지 않습니다"
+msgstr "... 목록은 %d개의 구성요소들을 가지고 있지 않습니다"
 
 #: src/main/envir.c:1255
 #, c-format
 msgid "..%d used in an incorrect context, no ... to look in"
 msgstr ""
 
+# CHL20130307
 #: src/main/envir.c:1328
 #: src/main/envir.c:1774
 #: src/main/eval.c:512
 #: src/main/eval.c:3439
 #, c-format
 msgid "argument \"%s\" is missing, with no default"
-msgstr ""
+msgstr "기본값이 없는 인수 \"%s\"가 누락되어 있습니다"
 
 # CHL20130306
 #: src/main/envir.c:1333
@@ -3993,9 +3994,10 @@ msgstr ""
 msgid "could not find function \"%s\""
 msgstr "함수 \"%s\"를 찾을 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1356
 msgid "cannot assign values in the empty environment"
-msgstr ""
+msgstr "비어있는 environment에는 값을 부여할 수 없습니다"
 
 # CHL20130306
 #: src/main/envir.c:1362
@@ -4003,117 +4005,144 @@ msgstr ""
 msgid "cannot assign variables to this database"
 msgstr "이 데이터베이스에 변수를 부여할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1514
 #, c-format
 msgid "cannot add binding of '%s' to the base environment"
-msgstr ""
+msgstr "바인딩 '%s'를 base environment에 추가할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1543
 msgid "only the first element is used as variable name"
-msgstr ""
+msgstr "오로지 첫번째 요소만이 변수명으로 사용됩니다"
 
+# CHL20130307
 #: src/main/envir.c:1575
 msgid "first argument must be a named list"
-msgstr ""
+msgstr "첫번째 인자는 반드시 named list이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:1580
 msgid "names(x) must be a character vector of the same length as x"
-msgstr ""
+msgstr "names(x)는 반드시 x와 같은 길이를 가지는 문자형 벡터이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:1583
 msgid "'envir' argument must be an environment"
-msgstr ""
+msgstr "'envir' 인자는 반드시 environment이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:1612
 msgid "cannot remove variables from base namespace"
-msgstr ""
+msgstr "base 네임스페이스로부터 변수들을 제거 할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1614
 msgid "cannot remove variables from the base environment"
-msgstr ""
+msgstr "base environment로부터 변수들을 제거 할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1616
 msgid "cannot remove variables from the empty environment"
-msgstr ""
+msgstr "비어 있는 environment로부터 변수들을 제거 할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1624
 msgid "cannot remove variables from this database"
-msgstr ""
+msgstr "이 데이터베이스로부터 변수들을 제거 할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1781
 #, c-format
 msgid "object '%s' of mode '%s' was not found"
 msgstr "모드 '%2$s'를 가지는 객체 '%1$s'를 찾을 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:1853
 #, c-format
 msgid "invalid name in position %d"
-msgstr ""
+msgstr "위치 %d에 유효하지 않은 이름이 존재합니다"
 
+# CHL20130307
 #: src/main/envir.c:1859
 msgid "second argument must be an environment"
-msgstr ""
+msgstr "두번째 인자는 반드시 environment이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:1867
 #: src/main/envir.c:1875
 #, c-format
 msgid "wrong length for '%s' argument"
-msgstr ""
+msgstr "'%s' 인수의 길이가 잘못되었습니다"
 
+# CHL20130307
 #: src/main/envir.c:1994
 msgid "invalid use of 'missing'"
-msgstr ""
+msgstr "'missing'의 사용이 올바르지 않습니다"
 
+# CHL20130307
 #: src/main/envir.c:2019
 msgid "'missing' can only be used for arguments"
-msgstr ""
+msgstr "'missing'은 인자들에 대해서만 사용할 수 있습니다"
 
+# CHL20130307
 #: src/main/envir.c:2100
 msgid "'pos' must be an integer"
-msgstr ""
+msgstr "'pos'는 반드시 정수이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:2114
 msgid "all elements of a list must be named"
-msgstr ""
+msgstr "리스트의 모든 구성요소들에는 반드시 이름이 주어져야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:2137
 msgid "'attach' only works for lists, data frames and environments"
-msgstr ""
+msgstr "'attach'는 리스트, 데이터프레임, 그리고 environment에서만 작동하도록 되어 있습니다"
 
+# CHL20130307
 #: src/main/envir.c:2220
 msgid "detaching \"package:base\" is not allowed"
-msgstr ""
+msgstr "\"package:base\"를 분리해 내는 것은 허용되지 않습니다"
 
+# CHL20130307
 #: src/main/envir.c:2521
 #: src/main/envir.c:2576
 msgid "argument must be an environment"
-msgstr ""
+msgstr "인자는 반드시 environment이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:2580
 msgid "arguments must be symbolic"
-msgstr ""
+msgstr "인자들은 반드시 심볼릭이어야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:2701
 msgid "no enclosing environment"
-msgstr ""
+msgstr "enclosing environment가 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:2751
 #, c-format
 msgid "no item called \"%s\" on the search list"
-msgstr ""
+msgstr "\"%s\"라고 하는 항목은 검색목록에 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:2774
 msgid "using 'as.environment(NULL)' is defunct"
-msgstr ""
+msgstr "'as.environment(NULL)'의 사용은 더 이상 지원하지 않습니다"
 
+# CHL20130307
 #: src/main/envir.c:2780
 msgid "S4 object does not extend class \"environment\""
-msgstr ""
+msgstr "S4 객체는 클래스 \"environment\"를 확장하지 않습니다"
 
+# CHL20130307
 #: src/main/envir.c:2795
 msgid "invalid object for 'as.environment'"
-msgstr ""
+msgstr "'as.environment'에 유효하지 않은 객체입니다"
 
+# CHL20130307
 #: src/main/envir.c:2821
 #: src/main/envir.c:2849
 #: src/main/envir.c:2878
@@ -4122,8 +4151,9 @@ msgstr ""
 #: src/main/envir.c:2957
 #: src/main/envir.c:2978
 msgid "not an environment"
-msgstr ""
+msgstr "environment가 아닙니다"
 
+# CHL20130307
 #: src/main/envir.c:2873
 #: src/main/envir.c:2894
 #: src/main/envir.c:2915
@@ -4131,7 +4161,7 @@ msgstr ""
 #: src/main/envir.c:2973
 #: src/main/envir.c:3072
 msgid "not a symbol"
-msgstr ""
+msgstr "심볼이 아닙니다"
 
 #: src/main/envir.c:2886
 #: src/main/envir.c:2907
@@ -4141,6 +4171,7 @@ msgstr ""
 msgid "no binding for \"%s\""
 msgstr ""
 
+# CHL20130307
 #: src/main/envir.c:2917
 msgid "not a function"
 msgstr "함수가 아닙니다"
@@ -4150,87 +4181,104 @@ msgstr "함수가 아닙니다"
 msgid "symbol already has a regular binding"
 msgstr ""
 
+# CHL20130307
 #: src/main/envir.c:2927
 #: src/main/envir.c:2943
 msgid "cannot change active binding if binding is locked"
-msgstr ""
+msgstr "바인딩이 잠겨있다면 활성화 되어 있는 바인딩을 변경할 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:3031
 msgid "unknown op"
-msgstr ""
+msgstr "알 수 없는 op입니다"
 
+# CHL20130307
 #: src/main/envir.c:3076
 msgid "cannot unbind a locked binding"
-msgstr ""
+msgstr "잠겨있는 바인딩을 떼어낼 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:3078
 msgid "cannot unbind an active binding"
-msgstr ""
+msgstr "활성화 되어 있는 바인딩을 떼어낼 수 없습니다"
 
+# CHL20130307
 #: src/main/envir.c:3213
 msgid "bad namespace name"
-msgstr ""
+msgstr "잘못된 네임스페이스명입니다"
 
+# CHL20130307
 #: src/main/envir.c:3225
 msgid "namespace already registered"
-msgstr ""
+msgstr "이미 등록되어 있는 네임스페이스입니다"
 
+# CHL20130307
 #: src/main/envir.c:3237
 msgid "namespace not registered"
-msgstr ""
+msgstr "등록되어 있지 않은 네임스페이스입니다1"
 
+# CHL20130307
 #: src/main/envir.c:3284
 msgid "bad import environment argument"
-msgstr ""
+msgstr "불러오기 environment 인자가 잘못되었습니다"
 
+# CHL20130307
 #: src/main/envir.c:3289
 msgid "bad export environment argument"
-msgstr ""
+msgstr "내보내기 environment 인자가 잘못되었습니다"
 
+# CHL20130307
 #: src/main/envir.c:3293
 msgid "length of import and export names must match"
-msgstr ""
+msgstr "불러오기와 내보내기의 이름들의 길이는 반드시 일치해야 합니다"
 
+# CHL20130307
 #: src/main/envir.c:3316
 #, c-format
 msgid "exported symbol '%s' has no value"
-msgstr ""
+msgstr "내보내어진 심볼 '%s'이 값을 가지고 있지 않습니다"
 
+# CHL20130307
 #: src/main/envir.c:3481
 #, c-format
 msgid "unknown encoding: %d"
 msgstr "알수없는 인코딩입니다: %d"
 
+# CHL20130307
 #: src/main/envir.c:3501
 #, c-format
 msgid "embedded nul in string: '%s'"
-msgstr ""
+msgstr "문자열에 nul이 포함되어 있습니다: '%s'"
 
 #: src/main/errors.c:174
 #: src/main/errors.c:211
 msgid "interrupts suspended; signal ignored"
 msgstr ""
 
+# CHL20130307
 #: src/main/errors.c:314
 msgid "invalid option \"warning.expression\""
-msgstr ""
+msgstr "유효하지 않은 옵션 \"warning.expression\"입니다"
 
 #: src/main/errors.c:344
 #, c-format
 msgid "(converted from warning) %s"
 msgstr ""
 
+# CHL20130307
 #: src/main/errors.c:355
 #, c-format
 msgid "Warning: %s\n"
 msgstr "경고: %s\n"
 
+# CHL20130307
 #: src/main/errors.c:358
 #: src/main/errors.c:360
 #, c-format
 msgid "Warning in %s : %s\n"
-msgstr "%s에서 경고가 발생했습니다 : %s\n"
+msgstr "%1$s에서 경고가 발생했습니다 : %2$s\n"
 
+# CHL20130307
 #: src/main/errors.c:362
 #, c-format
 msgid ""
@@ -4240,85 +4288,98 @@ msgstr ""
 "%s에서 다음과 같은 경고가 발생했습니다 :\n"
 "  %s\n"
 
+# CHL20130307
 #: src/main/errors.c:425
 #: src/main/errors.c:444
 #: src/main/errors.c:592
 msgid "Lost warning messages\n"
 msgstr "경고메시지들이 손실되었습니다\n"
 
+# CHL20130307
 #: src/main/errors.c:456
 msgid "Warning message:\n"
 msgid_plural "Warning messages:\n"
-msgstr[0] "경고메시지(들):\n"
+msgstr[0] "경고메시지:\n"
 
+# CHL20130307
 #: src/main/errors.c:511
 #, c-format
 msgid "There were %d warnings (use warnings() to see them)\n"
-msgstr "%d건의 경고들이 있습니다 (warnings()를 이용하여 이들을 확인해주세요)\n"
+msgstr "%d건의 경고들이 있습니다 (이들을 확인하기 위해서는 warnings()를 이용하세요)\n"
 
+# CHL20130307
 #: src/main/errors.c:514
 #, c-format
 msgid "There were %d or more warnings (use warnings() to see the first %d)\n"
-msgstr "%d건 이상의 경고들이 있습니다 (warnings()을 이용하여 처음 %d건의 경고들을 확인하세요)\n"
+msgstr "%d건 이상의 경고들이 있습니다 (처음 %d건의 경고들을 확인하기 위해서는 warnings()를 이용하세요)\n"
 
 #: src/main/errors.c:583
 msgid "Error during wrapup: "
 msgstr ""
 
+# CHL20130307
 #: src/main/errors.c:608
 msgid "Error in "
 msgstr "다음에 오류가 있습니다"
 
+# CHL20130307
 #: src/main/errors.c:609
 #, c-format
 msgid " (from %s) : "
-msgstr ""
+msgstr " (%s로부터) : "
 
+# CHL20130307
 #: src/main/errors.c:660
 #: src/main/errors.c:666
 #, c-format
 msgid "Error: "
 msgstr "에러: "
 
+# CHL20130307
 #: src/main/errors.c:686
 #: src/main/errors.c:1307
 msgid "In addition: "
-msgstr "추가정보:"
+msgstr "추가정보: "
 
+# CHL20130307
 #: src/main/errors.c:807
 msgid "invalid option \"error\"\n"
-msgstr ""
+msgstr "유효하지 않은 옵션 \"error\"입니다\n"
 
+# CHL20130307
 #: src/main/errors.c:889
 msgid "Execution halted\n"
 msgstr "실행이 정지되었습니다\n"
 
+# CHL20130307
 #: src/main/errors.c:1027
 msgid "'msg1' must be a character string"
 msgstr "'msg1'은 반드시 문자열이어야 합니다"
 
+# CHL20130307
 #: src/main/errors.c:1029
 msgid "'msg2' must be a character string"
 msgstr "'msg2'는 반드시 문자열이어야 합니다"
 
+# CHL20130307
 #: src/main/errors.c:1125
 msgid " [invalid string in stop(.)]"
-msgstr ""
+msgstr " [유효하지 않은 문자열이 stop(.)내에 있습니다]"
 
 #: src/main/errors.c:1151
 msgid " [invalid string in warning(.)]"
-msgstr ""
+msgstr " [유효하지 않은 문자열이 warning(.)내에 있습니다]"
 
 #: src/main/errors.c:1166
 #, c-format
 msgid "incorrect number of arguments to \"%s\""
-msgstr ""
+msgstr "\"%s\"에 인자의 개수가 잘못되었습니다"
 
 #: src/main/errors.c:1172
 #: src/main/errors.c:1187
 #, c-format
 msgid "unimplemented feature in %s"
-msgstr ""
+msgstr "%s에서는 구현되지 않은 기능입니다"
 
 #: src/main/errors.c:1181
 msgid "invalid number of arguments"
@@ -4327,15 +4388,15 @@ msgstr "인수의 개수가 잘못되었습니다"
 #: src/main/errors.c:1182
 #: src/main/logic.c:171
 msgid "invalid argument type"
-msgstr "인자의 유형이 잘못되었습니다"
+msgstr "잘못된 인자의 유형입니다"
 
 #: src/main/errors.c:1184
 msgid "time-series/vector length mismatch"
-msgstr ""
+msgstr "시계열/벡터의 길이가 일치하지 않습니다"
 
 #: src/main/errors.c:1185
 msgid "incompatible arguments"
-msgstr ""
+msgstr "적합하지 않은 인자들입니다"
 
 #: src/main/errors.c:1188
 msgid "unknown error (report this!)"
@@ -4347,7 +4408,7 @@ msgstr "알 수 없는 경고입니다 (이것을 보고해주세요!)"
 
 #: src/main/errors.c:1271
 msgid "No function to return from, jumping to top level"
-msgstr ""
+msgstr "반환될 함수가 없기 때문에 최상위레벨로 이동합니다"
 
 #: src/main/errors.c:1287
 msgid "top level inconsistency?"
@@ -4368,11 +4429,11 @@ msgstr ""
 #: src/main/errors.c:1717
 #: src/main/errors.c:1733
 msgid "bad error message"
-msgstr ""
+msgstr "잘못된 에러 메시지입니다"
 
 #: src/main/errors.c:1775
 msgid "bad restart"
-msgstr ""
+msgstr "잘못된 재시작입니다"
 
 #: src/main/errors.c:1807
 msgid "restart not on stack"
@@ -4389,12 +4450,12 @@ msgstr "에러메시지는 반드시 문자열이어야 합니다"
 #: src/main/eval.c:272
 #, c-format
 msgid "source files skipped by Rprof; please increase '%s'"
-msgstr ""
+msgstr "Rprof에 의해서 건너뛴 소스파일들이므로 '%s'를 증가시켜주세요"
 
 #: src/main/eval.c:292
 #, c-format
 msgid "Rprof: cannot open profile file '%s'"
-msgstr ""
+msgstr "Rprof: 프로필 파일 '%s'를 열 수 없습니다"
 
 #: src/main/eval.c:382
 msgid "R profiling is not available on this system"
@@ -4415,12 +4476,12 @@ msgstr ""
 #: src/main/eval.c:514
 #: src/main/eval.c:3440
 msgid "argument is missing, with no default"
-msgstr ""
+msgstr "기본값이 없는 인수가 누락되어 있습니다"
 
 #: src/main/eval.c:615
 #: src/main/eval.c:4437
 msgid "attempt to apply non-function"
-msgstr ""
+msgstr "함수가 아닌것에 적용하려고 합니다"
 
 #: src/main/eval.c:638
 #, c-format
@@ -4430,20 +4491,20 @@ msgstr ""
 #: src/main/eval.c:1094
 #, c-format
 msgid "could not find symbol \"%s\" in environment of the generic function"
-msgstr ""
+msgstr "제네릭 함수의 environment에서 심볼 \"%s\"를 찾을 수 없습니다"
 
 #: src/main/eval.c:1112
 #, c-format
 msgid "symbol \"%s\" not in environment of method"
-msgstr ""
+msgstr "method의 environment에서 심볼 \"%s\"를 찾을 수 없습니다"
 
 #: src/main/eval.c:1222
 msgid "the condition has length > 1 and only the first element will be used"
-msgstr ""
+msgstr "length > 1 이라는 조건이 있고, 첫번째 요소만이 사용될 것입니다"
 
 #: src/main/eval.c:1239
 msgid "missing value where TRUE/FALSE needed"
-msgstr ""
+msgstr "TRUE/FALSE가 필요한 곳에 값이 없습니다"
 
 #: src/main/eval.c:1240
 msgid "argument is not interpretable as logical"
@@ -4451,89 +4512,89 @@ msgstr ""
 
 #: src/main/eval.c:1241
 msgid "argument is of length zero"
-msgstr ""
+msgstr "인자의 길이가 0입니다"
 
 #: src/main/eval.c:1314
 msgid "non-symbol loop variable"
-msgstr ""
+msgstr "심볼이 아닌 루프 변수입니다"
 
 #: src/main/eval.c:1405
 #: src/main/eval.c:4205
 msgid "invalid for() loop sequence"
-msgstr ""
+msgstr "유효한 for() 루프 시퀀스가 아닙니다"
 
 #: src/main/eval.c:1534
 msgid "multi-argument returns are not permitted"
-msgstr ""
+msgstr "다중인자 반환은 허용되지 않습니다"
 
 #: src/main/eval.c:1583
 msgid "invalid (NULL) left side of assignment"
-msgstr ""
+msgstr "할당문의 좌변이 유효하지 않습니다 (NULL입니다)"
 
 #: src/main/eval.c:1605
 msgid "target of assignment expands to non-language object"
-msgstr ""
+msgstr "대입의 대상이 비언어적 객체로 확장됩니다"
 
 #: src/main/eval.c:1651
 #, c-format
 msgid "overlong name in '%s'"
-msgstr ""
+msgstr "'%s'에 너무 긴 이름이 있습니다"
 
 #: src/main/eval.c:1713
 msgid "cannot do complex assignments in base namespace"
-msgstr ""
+msgstr "base 네임스페이스에서는 복소수 대입을 할 수 없습니다"
 
 #: src/main/eval.c:1715
 msgid "cannot do complex assignments in base environment"
-msgstr ""
+msgstr "base environment에서는 복소수 대입을 할 수 없습니다"
 
 #: src/main/eval.c:1752
 #: src/main/eval.c:1779
 msgid "invalid function in complex assignment"
-msgstr ""
+msgstr "복소수 대입에 유효하지 않은 함수가 있습니다"
 
 #: src/main/eval.c:1857
 msgid "invalid (do_set) left-hand side to assignment"
-msgstr ""
+msgstr "대입에 유효하지 않은 (do_set) 좌변입니다"
 
 #: src/main/eval.c:1872
 msgid "invalid assignment left-hand side"
-msgstr ""
+msgstr "대입에 유효하지 않은 좌변입니다"
 
 #: src/main/eval.c:1937
 #, c-format
 msgid "argument %d is empty"
-msgstr ""
+msgstr "인자 %d는 비어있습니다"
 
 #: src/main/eval.c:1940
 #, c-format
 msgid "'%s' is missing"
-msgstr "'%s'가 없습니다"
+msgstr "'%s'가 누락되어 있습니다"
 
 #: src/main/eval.c:2090
 msgid "invalid formal argument list for \"function\""
-msgstr ""
+msgstr "\"function\"에 유효하지 않은 formal argument 목록입니다"
 
 #: src/main/eval.c:2146
 #: src/main/eval.c:2177
 #: src/main/eval.c:2182
 #, c-format
 msgid "invalid '%s' argument of type '%s'"
-msgstr ""
+msgstr "타입이 '%2$s'인 유효하지 않은 인자 '%1$s'입니다"
 
 #: src/main/eval.c:2174
 msgid "numeric 'envir' arg not of length one"
-msgstr ""
+msgstr "길이가 1이 아닌 수치형 'envir' 인자입니다"
 
 #: src/main/eval.c:2198
 #: src/main/eval.c:2220
 msgid "restarts not supported in 'eval'"
-msgstr ""
+msgstr "'eval'에서 지원되는 재실행기능이 아닙니다"
 
 #: src/main/eval.c:2277
 #: src/main/eval.c:2290
 msgid "'Recall' called from outside a closure"
-msgstr ""
+msgstr "클로저 외부로부터 호출된 'Recall'입니다"
 
 #: src/main/eval.c:2383
 msgid "value in '...' is not a promise"
@@ -4543,17 +4604,17 @@ msgstr ""
 #: src/main/objects.c:714
 #, c-format
 msgid "call name too long in '%s'"
-msgstr ""
+msgstr "'%s'에 있는 호출명이 너무 깁니다"
 
 #: src/main/eval.c:2593
 #, c-format
 msgid "generic name too long in '%s'"
-msgstr ""
+msgstr "'%s'에 있는 제네릭 이름이 너무 깁니다"
 
 #: src/main/eval.c:2656
 #, c-format
 msgid "Incompatible methods (\"%s\", \"%s\") for \"%s\""
-msgstr ""
+msgstr "\"%3$s\"에 호환되는 메소드들이 아닙니다 (\"%1$s\", \"%2$s\")"
 
 #: src/main/eval.c:2720
 msgid "dispatch error in group dispatch"
@@ -4562,60 +4623,60 @@ msgstr ""
 #: src/main/eval.c:3033
 #, c-format
 msgid "\"%s\" is not a %s function"
-msgstr ""
+msgstr "\"%s\"는 %s 함수가 아닙니다"
 
 #: src/main/eval.c:3226
 msgid "node stack overflow"
-msgstr ""
+msgstr "노드 스택 오버플로우입니다"
 
 #: src/main/eval.c:3232
 msgid "integer stack overflow"
-msgstr ""
+msgstr "정수형 스택 오버플로우입니다"
 
 #: src/main/eval.c:3286
 msgid "bad opcode"
-msgstr ""
+msgstr "잘못된 opcode입니다"
 
 #: src/main/eval.c:4028
 #, c-format
 msgid "invalid %s type in 'x %s y'"
-msgstr ""
+msgstr "'x %s y'에 유효하지 않은 %s 타입입니다"
 
 #: src/main/eval.c:4107
 msgid "bytecode version mismatch; using eval"
-msgstr ""
+msgstr "바이트코드 버전이 일치하지 않으므로 eval을 사용합니다"
 
 #: src/main/eval.c:4112
 msgid "bytecode version is too old"
-msgstr ""
+msgstr "바이트코드 버전이 너무 오래되었습니다"
 
 #: src/main/eval.c:4113
 msgid "bytecode version is too new"
-msgstr ""
+msgstr "바이트코드 버전이 너무 앞서 있습니다"
 
 #: src/main/eval.c:4147
 msgid "byte code version mismatch"
-msgstr ""
+msgstr "바이트 코드 버전이 불일치합니다"
 
 #: src/main/eval.c:4273
 msgid "invalid sequence argument in for loop"
-msgstr ""
+msgstr "for 루프에 유효하지 않은 시퀀스 인자가 있습니다"
 
 #: src/main/eval.c:4419
 #: src/main/names.c:1131
 #, c-format
 msgid "there is no .Internal function '%s'"
-msgstr ""
+msgstr ".Internal 함수 '%s'는 없습니다"
 
 #: src/main/eval.c:4526
 #: src/main/eval.c:4851
 #: src/main/eval.c:4893
 msgid "bad function"
-msgstr ""
+msgstr "잘못된 함수입니다"
 
 #: src/main/eval.c:4541
 msgid "not a BUILTIN function"
-msgstr ""
+msgstr "BUILTIN 함수가 아닙니다"
 
 #: src/main/eval.c:4918
 msgid "numeric EXPR required for 'switch' without named alternatives"
