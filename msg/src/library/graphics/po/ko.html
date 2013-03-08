@@ -1,378 +1,624 @@
-<pre>[English] ""
+<pre># Korean translation for R graphics package
+# src/library/graphics/po/ko.po
+# Copyright (C) 1995-2013 The R Core Team
+# This file is distributed under the same license as the R graphics package.
+# R Development Translation Team - Korean
+# Chel Hee Lee &lt;<a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>&gt;, 2008-2013.
+# Chel Hee Lee &lt;<a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>&gt;, 2008-2013.
+#
+[English] ""
 [한국어] ""
+"Project-Id-Version: R 3.0.0\n"
 
+#: base.c:38
 [English] "no base graphics system is registered"
 [한국어] "등록된 기본 그래픽스 시스템이 없습니다"
 
+#: base.c:328
+#: base.c:335
+#: base.c:343
 [English] "the base graphics system is not registered"
 [한국어] "등록된 기본 그래픽스 시스템이 없습니다"
 
+#: graphics.c:289
+#, c-format
 [English] "bad units specified in '%s'"
 [한국어] "'%s'에 지정된 기본단위들이 올바르지 않습니다"
 
+#: graphics.c:1778
+#: graphics.c:1800
 [English] "attempt to plot on null device"
 [한국어] "존재하지 않는 장치(null device)에 플랏을 시도합니다"
 
+#: graphics.c:1830
 [English] "outer margins too large (figure region too small)"
 [한국어] "외부 여백이 너무 커서 실제 그림 영역이 너무 작습니다"
 
+#: graphics.c:1832
 [English] "figure region too large"
 [한국어] "그림 영역이 너무 큽니다"
 
+#: graphics.c:1834
 [English] "figure margins too large"
 [한국어] "그림의 여백이 너무 큽니다"
 
+#: graphics.c:1836
 [English] "plot region too large"
 [한국어] "플랏 영역이 너무 큽니다"
 
+#: graphics.c:1883
+#, c-format
 [English] "relative range of values (%4.0f * EPS) is small (axis %d)"
 [한국어] ""
 
+#: graphics.c:1935
+#, c-format
 [English] "nonfinite axis limits [GScale(%g,%g,%d, .); log=%d]"
 [한국어] "축의 한계가 유한하지 않습니다 [GScale(%g,%g,%d, .); log=%d]"
 
+#: graphics.c:1965
+#, c-format
 [English] "axis style \"%c\" unimplemented"
 [한국어] "축의 스타일 \"%c\"은 구현되지 않았습니다"
 
+#: graphics.c:2203
 [English] "no graphics device is active"
 [한국어] "활성화 된 그래픽스 장치가 없습니다"
 
+#: graphics.c:2398
 [English] "plot.new has not been called yet"
 [한국어] "plot.new는 아직까지 호출되지 않았습니다"
 
+#: graphics.c:2400
 [English] "invalid graphics state"
 [한국어] "그래픽스 상태가 잘못되었습니다"
 
+#: graphics.c:2561
 [English] "No graphics device is active"
 [한국어] "활성화된 그래픽스 장치가 없습니다"
 
+#: graphics.c:3020
 [English] "zero-length arrow is of indeterminate angle and so skipped"
 [한국어] "길이가 0인 arrow는 angle을 정할 수 없기 때문에 넘어갑니다"
 
+#: graphics.c:3101
+#, c-format
 [English] "invalid par(\"bty\") = '%c'; no box() drawn"
 [한국어] ""
 
+#: graphics.c:3118
 [English] "invalid argument to GBox"
 [한국어] ""
 
+#: graphics.c:3363
 [English] "metric information not available for this device"
 [한국어] ""
 
+#: par-common.c:138
 [English] "graphical parameter 'family' has a maximum length of 200 bytes"
 [한국어] "그래픽 파라미터 'family'는 최대 200바이트의 길이를 가질 수 있습니다"
 
+#: par.c:158
+#, c-format
 [English] "invalid value specified for graphical parameter \"%s\""
 [한국어] "그래픽 파라미터 \"%s\"에 지정된 값이 잘못되었습니다"
 
+#: par.c:165
+#, c-format
 [English] "graphical parameter \"%s\" has the wrong length"
 [한국어] "그래픽 파라미터 \"%s\"가 잘못된 길이를 가지고 있습니다"
 
+#: par.c:260
+#: par.c:670
+#, c-format
 [English] "graphical parameter \"%s\" cannot be set"
 [한국어] "그래픽 파라미터 \"%s\"를 정할 수 없습니다"
 
+#: par.c:432
 [English] "parameter \"mfg\" has the wrong length"
 [한국어] "매개변수 \"mfg\"의 길이가 잘못되었습니다"
 
+#: par.c:440
 [English] "parameter \"i\" in \"mfg\" is out of range"
 [한국어] ""
 
+#: par.c:442
 [English] "parameter \"j\" in \"mfg\" is out of range"
 [한국어] ""
 
+#: par.c:447
 [English] "value of 'nr' in \"mfg\" is wrong and will be ignored"
 [한국어] "\"mfg\"안의 'nr'의 값이 잘못되었으므로 무시될 것입니다"
 
+#: par.c:449
 [English] "value of 'nc' in \"mfg\" is wrong and will be ignored"
 [한국어] "\"mfg\"내 'nc'의 값이 잘못되었으므로 무시될 것입니다"
 
+#: par.c:475
 [English] "calling par(new=TRUE) with no plot"
 [한국어] ""
 
+#: par.c:662
+#: par.c:1046
+#, c-format
 [English] "graphical parameter \"%s\" is obsolete"
 [한국어] "그래픽 파라미터 \"%s\"는 쓸모가 없습니다"
 
+#: par.c:666
+#: par.c:1050
+#, c-format
 [English] "\"%s\" is not a graphical parameter"
 [한국어] "\"%s\"는 그래픽 매개변수가 아닙니다"
 
+#: par.c:1103
 [English] "invalid argument passed to par()"
 [한국어] "par()에 전달된 인자가 잘못되었습니다"
 
+#: par.c:1147
+#, c-format
 [English] "too many rows in layout, limit %d"
 [한국어] "레이아웃내에 너무 많은 행이 있습니다 (최대 %d입니다)"
 
+#: par.c:1153
+#, c-format
 [English] "too many columns in layout, limit %d"
 [한국어] "레이아웃내에 너무 많은 열들이 있습니다 (최대 %d입니다)"
 
+#: par.c:1155
+#, c-format
 [English] "too many cells in layout, limit %d"
 [한국어] "레이아웃내에 너무 많은 셀들이 있습니다 (최대 %d개입니다)"
 
+#: plot.c:75
 [English] "invalid color specification"
 [한국어] "색상지정이 잘못되었습니다"
 
+#: plot.c:141
 [English] "only NA allowed in logical plotting symbol"
 [한국어] ""
 
+#: plot.c:143
 [English] "invalid plotting symbol"
 [한국어] "플랏 기호가 잘못되었습니다"
 
+#: plot.c:232
 [English] "invalid font specification"
 [한국어] "글꼴지정이 잘못되었습니다"
 
+#: plot.c:291
+#: plot.c:305
+#: plot.c:496
+#: plot.c:501
+#: plot.c:2124
+#: plot.c:2131
+#: plot.c:3148
+#: plot.c:3150
+#: plot.c:3152
+#: plot.c:3304
+#: plot3d.c:1155
+#: plot3d.c:1159
+#: plot3d.c:1161
+#: plot3d.c:1895
+#, c-format
 [English] "invalid '%s' value"
 [한국어] "'%s'의 값이 잘못되었습니다"
 
+#: plot.c:308
+#, c-format
 [English] "invalid 'vfont' value [typeface %d]"
 [한국어] "'vfont'의 값이 잘못되었습니다 [typeface %d]"
 
+#: plot.c:332
+#, c-format
 [English] "invalid 'vfont' value [typeface = %d, fontindex = %d]"
 [한국어] "'vfont'의 값이 잘못되었습니다 [typeface = %d, fontindex = %d]"
 
+#: plot.c:406
 [English] "invalid graphics parameter"
 [한국어] "그래픽 파라미터가 잘못되었습니다"
 
+#: plot.c:492
 [English] "at least 3 arguments required"
 [한국어] "최소한 3개의 인자가 필요합니다"
 
+#: plot.c:507
 [English] "\"log=\" specification must be character"
 [한국어] "\"log=\"의 지정은 반드시 문자이어야 합니다"
 
+#: plot.c:518
+#, c-format
 [English] "invalid \"log=%s\" specification"
 [한국어] "\"log=%s\" 지정이 잘못되었습니다"
 
+#: plot.c:533
 [English] "NAs not allowed in 'xlim'"
 [한국어] "'xlim'은 NA를 가질 수 없습니다"
 
+#: plot.c:539
 [English] "need finite 'xlim' values"
 [한국어] "'xlim'은 오로지 유한한 값들만을 사용할 수 있습니다"
 
+#: plot.c:545
 [English] "NAs not allowed in 'ylim'"
 [한국어] "'ylim'는 NA를 가질 수 없습니다"
 
+#: plot.c:551
 [English] "need finite 'ylim' values"
 [한국어] "'ylim'에는 유한한 값들만을 사용할 수 있습니다"
 
+#: plot.c:557
 [English] "Logarithmic axis must have positive limits"
 [한국어] ""
 
+#: plot.c:679
 [English] "invalid type for axis labels"
 [한국어] "축 레이블의 유형이 잘못되었습니다"
 
+#: plot.c:780
+#: plot.c:1313
+#: plot.c:1634
+#: plot.c:1699
+#: plot.c:1774
+#: plot.c:1840
+#: plot.c:1913
+#: plot.c:2008
+#: plot.c:2084
+#: plot.c:2362
+#: plot.c:2536
+#: plot.c:2752
+#: plot.c:3286
+#: plot.c:3413
+#: plot.c:3489
+#: plot.c:3655
+#: plot.c:3935
+#: plot3d.c:1864
 [English] "too few arguments"
 [한국어] ""
 
+#: plot.c:791
+#, c-format
 [English] "invalid axis number %d"
 [한국어] "%d는 잘못된 축번호입니다"
 
+#: plot.c:881
 [English] "'hadj' must be of length one"
 [한국어] "'hadj'의 길이는 반드시 1이어야 합니다"
 
+#: plot.c:888
+#: plot.c:2096
+#: plot.c:2373
+#: plot.c:2379
+#: plot.c:2386
+#: plot.c:2394
+#: plot.c:2401
+#: plot.c:2408
+#: plot.c:2415
+#: plot.c:2422
+#: plot.c:2430
+#: plot.c:2437
+#: plot.c:3155
+#, c-format
 [English] "zero-length '%s' specified"
 [한국어] "길이가 0인 '%s'가 주어졌습니다"
 
+#: plot.c:957
 [English] "'labels' is supplied and not 'at'"
 [한국어] "'labels'만 주어지고 'at'은 주어지지 않았습니다"
 
+#: plot.c:961
+#, c-format
 [English] "'at' and 'labels' lengths differ, %d != %d"
 [한국어] "'at'의 길이는 %d인데, 'labels'의 길이는 %d입니다"
 
+#: plot.c:978
 [English] "no locations are finite"
 [한국어] ""
 
+#: plot.c:1329
 [English] "invalid plotting structure"
 [한국어] "플롯팅 구조가 잘못되었습니다"
 
+#: plot.c:1331
+#, c-format
 [English] "'x' and 'y' lengths differ in %s()"
 [한국어] "%s()에 있는 'x'와 'y'의 길이가 다릅니다"
 
+#: plot.c:1342
+#, c-format
 [English] "plot type '%s' will be truncated to first character"
 [한국어] ""
 
+#: plot.c:1346
+#: plot.c:3013
 [English] "invalid plot type"
 [한국어] "플롯 유형이 잘못되었습니다"
 
+#: plot.c:1546
+#, c-format
 [English] "invalid plot type '%c'"
 [한국어] ""
 
+#: plot.c:1589
 [English] "invalid first argument"
 [한국어] "첫번째 인자가 잘못되었습니다"
 
+#: plot.c:1596
 [English] "invalid second argument"
 [한국어] "두번째 인자가 잘못되었습니다"
 
+#: plot.c:1604
 [English] "invalid third argument"
 [한국어] "세번째 인자가 잘못되었습니다"
 
+#: plot.c:1612
 [English] "invalid fourth argument"
 [한국어] "네번째 인자가 잘못되었습니다"
 
+#: plot.c:1620
 [English] "cannot mix zero-length and non-zero-length coordinates"
 [한국어] "길이가 0인 좌표와 길이가 0이 아닌 좌표는 함께 사용될 수 없습니다"
 
+#: plot.c:1926
 [English] "invalid arrow head length"
 [한국어] "화살표 머리부분의 길이가 잘못되었습니다"
 
+#: plot.c:1931
 [English] "invalid arrow head angle"
 [한국어] "화살표 머리부분의 각도가 잘못되었습니다"
 
+#: plot.c:1936
 [English] "invalid arrow head specification"
 [한국어] ""
 
+#: plot.c:2170
 [English] "no coordinates were supplied"
 [한국어] "좌표가 제공되지 않았습니다"
 
+#: plot.c:2793
 [English] "invalid a=, b= specification"
 [한국어] ""
 
+#: plot.c:2802
 [English] "'a' and 'b' must be finite"
 [한국어] "'a'와 'b'는 반드시 유한해야 합니다"
 
+#: plot.c:2937
+#: plot.c:4055
+#: plot.c:4059
+#: plot.c:4062
+#: plot.c:4082
+#: plot.c:4086
+#: plot.c:4089
+#: plot3d.c:1077
+#: plot3d.c:1081
+#: plot3d.c:1086
+#: plot3d.c:1090
+#: plot3d.c:1094
+#: plot3d.c:1098
+#: stem.c:159
+#: stem.c:160
+#: stem.c:162
+#: stem.c:163
+#: stem.c:209
+#: stem.c:210
+#, c-format
 [English] "invalid '%s' argument"
 [한국어] "'%s' 인자가 잘못되었습니다"
 
+#: plot.c:3008
+#: plot.c:3144
+#, c-format
 [English] "invalid number of points in %s"
 [한국어] "%s에 있는 점들의 개수가 잘못되었습니다"
 
+#: plot.c:3146
 [English] "incorrect argument type"
 [한국어] "인자의 유형이 잘못되었습니다"
 
+#: plot.c:3158
 [English] "different argument lengths"
 [한국어] "인자의 길이들이 다릅니다"
 
+#: plot.c:3160
 [English] "more 'labels' than points"
 [한국어] "점의 개수보다 'labels'의 수가 더 많습니다"
 
+#: plot.c:3209
+#, c-format
 [English] "warning: no point within %.2f inches\n"
 [한국어] ""
 
+#: plot.c:3215
 [English] "warning: nearest point already identified\n"
 [한국어] ""
 
+#: plot.c:3297
 [English] "invalid units"
 [한국어] ""
 
+#: plot.c:3473
+#: plot.c:3580
 [English] "invalid dendrogram input"
 [한국어] ""
 
+#: plot.c:3637
 [English] "invalid symbol parameter vector"
 [한국어] ""
 
+#: plot.c:3660
 [English] "invalid symbol coordinates"
 [한국어] ""
 
+#: plot.c:3668
 [English] "x/y/parameter length mismatch"
 [한국어] ""
 
+#: plot.c:3687
 [English] "invalid circles data"
 [한국어] ""
 
+#: plot.c:3689
+#: plot.c:3710
+#: plot.c:3735
+#: plot.c:3765
 [English] "invalid symbol parameter"
 [한국어] ""
 
+#: plot.c:3708
 [English] "invalid squares data"
 [한국어] ""
 
+#: plot.c:3733
 [English] "invalid rectangles data (need 2 columns)"
 [한국어] ""
 
+#: plot.c:3763
 [English] "invalid stars data"
 [한국어] ""
 
+#: plot.c:3805
 [English] "invalid thermometers data (need 3 or 4 columns)"
 [한국어] ""
 
+#: plot.c:3808
+#, c-format
 [English] "invalid 'thermometers[, %s]'"
 [한국어] ""
 
+#: plot.c:3811
+#, c-format
 [English] "'thermometers[, %s]' not in [0,1] -- may look funny"
 [한국어] ""
 
+#: plot.c:3814
 [English] "invalid 'thermometers[, 1:2]'"
 [한국어] ""
 
+#: plot.c:3853
 [English] "invalid 'boxplots' data (need 5 columns)"
 [한국어] ""
 
+#: plot.c:3862
 [English] "'boxplots[, 5]' outside [0,1] -- may look funny"
 [한국어] ""
 
+#: plot.c:3864
 [English] "invalid 'boxplots[, 1:4]'"
 [한국어] ""
 
+#: plot.c:3910
 [English] "invalid symbol type"
 [한국어] ""
 
+#: plot.c:3948
+#: plot.c:3950
+#: plot.c:3955
+#: plot.c:3957
+#, c-format
 [English] "incorrect length for '%s' argument"
 [한국어] ""
 
+#: plot3d.c:181
+#: plot3d.c:1921
 [English] "insufficient 'x' or 'y' values"
 [한국어] ""
 
+#: plot3d.c:185
+#: plot3d.c:1924
 [English] "dimension mismatch"
 [한국어] ""
 
+#: plot3d.c:193
+#: plot3d.c:1927
 [English] "no contour values"
 [한국어] ""
 
+#: plot3d.c:255
 [English] "invalid x / y values or limits"
 [한국어] ""
 
+#: plot3d.c:257
 [English] "invalid contour levels: must be strictly increasing"
 [한국어] ""
 
+#: plot3d.c:1041
+#: plot3d.c:1054
 [English] "Axis orientation not calculated"
 [한국어] ""
 
+#: plot3d.c:1074
 [English] "too few parameters"
 [한국어] ""
 
+#: plot3d.c:1104
 [English] "invalid 'x' limits"
 [한국어] ""
 
+#: plot3d.c:1106
 [English] "invalid 'y' limits"
 [한국어] ""
 
+#: plot3d.c:1108
 [English] "invalid 'z' limits"
 [한국어] ""
 
+#: plot3d.c:1129
 [English] "'xlab' must be a character vector of length 1"
 [한국어] "'xlab'은 반드시 길이가 1인 문자형 벡터이어야 합니다"
 
+#: plot3d.c:1131
 [English] "'ylab' must be a character vector of length 1"
 [한국어] "'ylab'은 반드시 길이가 1인 문자형 벡터이어야 합니다"
 
+#: plot3d.c:1133
 [English] "'zlab' must be a character vector of length 1"
 [한국어] "'zlab'은 반드시 길이가 1인 문자형 벡터이어야 합니다"
 
+#: plot3d.c:1153
 [English] "invalid viewing parameters"
 [한국어] ""
 
+#: plot3d.c:1171
+#: plot3d.c:1175
+#, c-format
 [English] "invalid '%s' specification"
 [한국어] "'%s' 지정이 잘못되었습니다"
 
+#: plot3d.c:1521
+#, c-format
 [English] "contour(): circular/long seglist -- set %s &gt; %d?"
 [한국어] ""
 
+#: plot3d.c:1931
 [English] "missing 'x' values"
 [한국어] "'x' 값들이 없습니다"
 
+#: plot3d.c:1933
 [English] "increasing 'x' values expected"
 [한국어] ""
 
+#: plot3d.c:1938
 [English] "missing 'y' values"
 [한국어] "'y' 값들이 없습니다"
 
+#: plot3d.c:1940
 [English] "increasing 'y' values expected"
 [한국어] ""
 
+#: plot3d.c:1945
 [English] "invalid NA contour values"
 [한국어] ""
 
+#: plot3d.c:1957
 [English] "all z values are equal"
 [한국어] "모든 z 값들이 동일합니다"
 
+#: plot3d.c:1959
 [English] "all z values are NA"
 [한국어] "모든 z 값들이 NA입니다"
 
+#: stem.c:156
+#, c-format
 [English] "long vector '%s' is not supported"
 [한국어] ""
 
