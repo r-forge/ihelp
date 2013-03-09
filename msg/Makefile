@@ -44,3 +44,9 @@ html2www:
 updateGK:
 	rsync -auv ./../www/* gnustats@korea.gnu.org:./www/
 
+all:
+	make tohtml
+	make html2www
+	make updateGK
+#	svn commit
+	
