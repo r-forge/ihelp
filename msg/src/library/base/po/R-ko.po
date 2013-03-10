@@ -48,10 +48,10 @@ msgid "argument to 'La.svd' must be numeric or complex"
 msgstr "'La.svd'의 입력인수는 반드시 수치형 혹은 복소수형이어야 합니다"
 
 msgid "infinite or missing values in 'x'"
-msgstr "'x'의 값이 무한이거나, 결측되어 있습니다"
+msgstr "'x'에 무한한 값이 있거나 결측치가 있습니다"
 
 msgid "a dimension is zero"
-msgstr "차원이 제로 (0) 입니다"
+msgstr "차원이 0입니다"
 
 msgid "'nu' must be 0, nrow(x) or ncol(x)"
 msgstr "'nu'는 반드시 0, nrow(x) 또는 ncol(x)이어야 합니다. "
@@ -87,7 +87,7 @@ msgid "dim(X) must have a positive length"
 msgstr "dim(X)는 반드시 양의 값을 가지는 길이를 가져야 합니다"
 
 msgid "'X' must have named dimnames"
-msgstr ""
+msgstr "'X'는 반드시 named dimnames를 가져야 합니다"
 
 msgid "not all elements of 'MARGIN' are names of dimensions"
 msgstr ""
@@ -105,13 +105,13 @@ msgid "*** 'pos=1' is not possible; setting 'pos=2' for now."
 msgstr "*** 'pos=1'은 불가능하므로 임시적으로 'pos=2'로 설정합니다."
 
 msgid "*** Note that 'pos=1' will give an error in the future"
-msgstr ""
+msgstr "*** 'pos=1'은 나중에 에러를 줄 것입니다"
 
 msgid "file '%s' not found"
 msgstr "파일 '%s'을 찾을 수 없습니다"
 
 msgid "invalid 'name' argument"
-msgstr "'name' 인자가 잘못되었습니다"
+msgstr "유효한 'name' 인자가 아닙니다"
 
 msgid "package %s is required by %s, which may no longer work correctly"
 msgstr "패키지 %1$s는 %2$s를 필요로 하기 때문에 더 이상 올바르게 작동하지 않을 수 있습니다"
@@ -124,9 +124,12 @@ msgid ""
 "  call: %s\n"
 "  error: %s"
 msgstr ""
+"%s가 %s()에서 '%s'때문에 실패했습니다:\n"
+"  호출: %s\n"
+"  에러: %s"
 
 msgid "%s namespace cannot be unloaded:"
-msgstr ""
+msgstr "%s 네임스페이스는 언로드 될 수 없습니다:"
 
 msgid "%s converted to character string"
 msgstr "%s는 문자열로 변환되었습니다"
@@ -156,31 +159,31 @@ msgid "non-matrix argument to 'chol'"
 msgstr "'chol'에 행렬이 아닌 인자가 전달되었습니다"
 
 msgid "invalid nrow(x)"
-msgstr "nrow(x)가 잘못되었습니다"
+msgstr "유효하지 않은 nrow(x)입니다"
 
 msgid "too large a matrix for LINPACK"
 msgstr "LINPACK에 너무 큰 행렬입니다"
 
 msgid "matrix not positive definite"
-msgstr "행렬이 양정치(positive definite)가 아닙니다"
+msgstr "행렬이 positive definite가 아닙니다"
 
 msgid "'x' must be an array of at least two dimensions"
 msgstr "'x'는 반드시 최소 2차원 배열이어야 합니다"
 
 msgid "invalid 'dims'"
-msgstr "'dims'의 정보가 잘못되었습니다"
+msgstr "유효하지 않은 'dims'가 아닙니다"
 
 msgid "bad handler specification"
-msgstr "핸들러 지정이 부적절합니다"
+msgstr "잘못된 핸들러 지정입니다"
 
 msgid "no 'restart' '%s' found"
 msgstr "'restart' '%s'를 찾을 수 없습니다"
 
 msgid "not an interactive session"
-msgstr "인터랙티브 세션이 아닙니다"
+msgstr "대화형 세션이 아닙니다"
 
 msgid "not a valid restart specification"
-msgstr ""
+msgstr "유효한 재시작 지정이 아닙니다"
 
 msgid "argument 'where' of length 0"
 msgstr "인자 'where'의 길이가 0입니다"
@@ -204,13 +207,13 @@ msgid "'timeout' must be NULL or a non-negative number"
 msgstr "'timeout'은 반드시 NULL 또는 음이 아닌 수이어야 합니다"
 
 msgid "'from' must be raw or character"
-msgstr ""
+msgstr "'from'은 반드시 raw 또는 문자이어야 합니다"
 
 msgid "'x' must be numeric"
 msgstr "'x'은 반드시 수치형이어야 합니다"
 
 msgid "invalid number of intervals"
-msgstr "구간의 개수가 잘못되었습니다"
+msgstr "유효하지 않은 구간의 개수입니다"
 
 msgid "'breaks' are not unique"
 msgstr "'breaks'의 값들이 고유하지 않습니다"
@@ -219,7 +222,7 @@ msgid "lengths of 'breaks' and 'labels' differ"
 msgstr "'breaks'의 길이와 'labels'의 길이가 다릅니다"
 
 msgid "invalid 'row.names' length"
-msgstr "'row.names'의 길이가 잘못되었습니다"
+msgstr "유효하지 않은 'row.names'의 길이입니다"
 
 msgid "duplicate 'row.names' are not allowed"
 msgstr "중복되는 'row.names'의 값은 허용되지 않습니다"
@@ -231,7 +234,7 @@ msgid "invalid 'dimnames' given for data frame"
 msgstr "데이터프레임에 잘못된 'dimnames'이 주어졌습니다"
 
 msgid "cannot coerce class \"%s\" to a data.frame"
-msgstr "클래스  \"%s\"를 data.frame으로 강제변환 할 수 없습니다"
+msgstr "클래스  \"%s\"를 data.frame으로 강제형변환 할 수 없습니다"
 
 msgid "options(\"stringsAsFactors\") not set to TRUE or FALSE"
 msgstr "options(\"stringsAsFactors\")의 값이 TRUE 또는 FALSE로 지정되어 있지 않습니다"
@@ -240,7 +243,7 @@ msgid "mismatch of row names in arguments of 'data.frame', item %d"
 msgstr ""
 
 msgid "some row.names duplicated: %s --> row.names NOT used"
-msgstr ""
+msgstr "일부 row.names가 중복됩니다: %s --> row.names 는 사용되지 않았습니다"
 
 msgid "row names contain missing values"
 msgstr "행 이름들이 결측값들을 가지고 있습니다"
@@ -255,7 +258,7 @@ msgid "'row.names' should specify one of the variables"
 msgstr "'row.names'은 변수들중 하나를 지정해야만 합니다"
 
 msgid "row names supplied are of the wrong length"
-msgstr ""
+msgstr "제공된 행의 이름들의 길이가 잘못되었습니다"
 
 msgid "row names were found from a short variable and have been discarded"
 msgstr ""
@@ -288,7 +291,7 @@ msgid "need 0, 1, or 2 subscripts"
 msgstr ""
 
 msgid "missing values are not allowed in subscripted assignments of data frames"
-msgstr ""
+msgstr "데이터 프레임에서 첨자를 이용한 대입에서는 결측치는 허용되지 않습니다"
 
 msgid "non-existent rows not allowed"
 msgstr ""
@@ -300,16 +303,16 @@ msgid "new columns would leave holes after existing columns"
 msgstr ""
 
 msgid "duplicate subscripts for columns"
-msgstr ""
+msgstr "열을 지정하는 첨자들이 중복됩니다"
 
 msgid "only valid calls are x[[j]] <- value or x[[i,j]] <- value"
-msgstr ""
+msgstr "유효한 호출들은 x[[j]] <- value 또는 x[[i,j]] <- value 입니다"
 
 msgid "replacing element in non-existent column: %s"
 msgstr ""
 
 msgid "only a single element should be replaced"
-msgstr ""
+msgstr "한개의 구성요소만이 교체되어져야 합니다"
 
 msgid "names do not match previous names"
 msgstr ""

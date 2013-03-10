@@ -1,5 +1,45 @@
 src_path=./src/library
 
+po2mo:
+	rm -rf $(src_path)/*/po/*.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/ko.po -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/R-ko.po -o R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/RGui-ko.po -o RGui-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/compiler/po/R-ko.po -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/graphics/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/graphics/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/grDevices/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/grDevices/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/grid/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/grid/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/methods/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/methods/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/parallel/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/parallel/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/splines/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/splines/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/stats/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/stats/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/stats4/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/tcltk/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/tcltk/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/tools/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/tools/po/R-ko -o R-ko.mo
+
+	msgfmt -cfv --statistics $(src_path)/utils/po/ko -o ko.mo
+	msgfmt -cfv --statistics $(src_path)/utils/po/R-ko -o R-ko.mo
+
 po2html:
 	echo "\n\n# LAST REVISION: `date` \n" > tmp.txt 
 	cat $(filename).po >> tmp.txt
@@ -47,6 +87,7 @@ updateGK:
 	rsync -auv ./../www/* gnustats@korea.gnu.org:./www/
 
 all:
+	make po2mo
 	make tohtml
 	make html2www
 	make updateGK
