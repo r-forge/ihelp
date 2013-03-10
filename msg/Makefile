@@ -1,7 +1,9 @@
 src_path=./src/library
 
 po2html:
-	cat $(filename).po > tmp.txt
+	echo "\n\n# LAST REVISION: `date` \n" > tmp.txt 
+	cat $(filename).po >> tmp.txt
+#	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^rO]/d' -e '/^" *POT/d' tmp.txt > tmp2.txt
 	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^r]/d' tmp.txt > tmp2.txt
 	sed -e 's/msgid/[English]/g' tmp2.txt > en.txt
 	sed -e 's/msgstr/[한국어]/g' en.txt > ko.txt
