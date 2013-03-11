@@ -133,7 +133,7 @@ updateGK:
 	rsync -auv ./../www/* gnustats@korea.gnu.org:./www/
 
 all:
-	make updatePOT
+#	make updatePOT
 	make po2mo
 	make convert2HTML
 	make html2www
