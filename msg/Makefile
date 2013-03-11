@@ -95,7 +95,6 @@ po2html:
 	sed -e 's/msgstr/[한국어]/g' $(filename)-en.txt > $(filename)-ko.txt
 	dwww-txt2html --utf8 $(filename)-ko.txt > $(filename).html
 	rm $(filename)*.txt
-	
 
 convert2HTML:
 	rm -rf $(src_path)/*/po/*.html
@@ -134,7 +133,7 @@ updateGK:
 	rsync -auv ./../www/* gnustats@korea.gnu.org:./www/
 
 all:
-#	make updatePOT
+	make updatePOT
 	make po2mo
 	make convert2HTML
 	make html2www
