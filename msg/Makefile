@@ -1,44 +1,29 @@
 src_path=./src/library
 
+#	$ svn checkout https://svn.r-project.org/R/trunk
+# ~/Documents/R-Project/trunk/
+# $ cd trunk
+# $ ./tools/rsync-recommended
+
+updatePOT:
+	tar -zcvf ko-from-trunk.tar.gz ../../trunk/src/library/*/po/*.pot
+	tar -zxvf ko-from-trunk.tar.gz 
+	cp -ir trunk/src/* src/
+
+	msgmerge -vUN $(src_path)/base/po/ko.po $(src_path)/base/po/R.pot
+	msgmerge -vUN $(src_path)/base/po/R-ko.po $(src_path)/base/po/R-base.pot
+	msgmerge -vUN $(src_path)/base/po/RGui-ko.po $(src_path)/base/po/RGui.pot
+
+	
+# msgfmt -c --statistics -o [R-]ko.gmo [R-]ko.po
+# library(tools)
+# checkPoFiles("ko", "./ko-po")"
+
 po2mo:
 	rm -rf $(src_path)/*/po/*.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/ko.po -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/R-ko.po -o R-ko.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/RGui-ko.po -o RGui-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/compiler/po/R-ko.po -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/graphics/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/graphics/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/grDevices/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/grDevices/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/grid/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/grid/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/methods/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/methods/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/parallel/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/parallel/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/splines/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/splines/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/stats/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/stats/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/stats4/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/tcltk/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/tcltk/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/tools/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/tools/po/R-ko -o R-ko.mo
-
-	msgfmt -cfv --statistics $(src_path)/utils/po/ko -o ko.mo
-	msgfmt -cfv --statistics $(src_path)/utils/po/R-ko -o R-ko.mo
+	msgfmt -cfv --statistics -o $(src_path)/base/po/ko.mo $(src_path)/base/po/ko.po
+	msgfmt -cfv --statistics -o $(src_path)/base/po/R-ko.mo $(src_path)/base/po/R-ko.po
+	msgfmt -cfv --statistics -o $(src_path)/base/po/RGui-ko.mo $(src_path)/base/po/RGui-ko.po
 
 po2html:
 	echo "\n\n# LAST REVISION: `date` \n" > tmp.txt 
@@ -48,9 +33,9 @@ po2html:
 	sed -e 's/msgid/[English]/g' tmp2.txt > en.txt
 	sed -e 's/msgstr/[한국어]/g' en.txt > ko.txt
 	dwww-txt2html --utf8 ko.txt > $(filename).html
-	rm *.txt
+	rm -rf $(src_path)/*/po/*.txt
 
-tohtml:
+makeHTML:
 	rm -rf $(src_path)/*/po/*.html
 	make po2html filename=$(src_path)/base/po/ko
 	make po2html filename=$(src_path)/base/po/R-ko
@@ -93,3 +78,4 @@ all:
 	make updateGK
 #	svn commit
 	
+
