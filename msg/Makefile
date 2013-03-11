@@ -87,14 +87,14 @@ po2mo:
 #	
 #
 po2html:
-	echo "\n\n# LAST REVISION: `date` \n" > tmp.txt 
-	cat $(filename).po >> tmp.txt
+	echo "\n\n# LAST REVISION: `date` \n" > $(filename)-tmp.txt 
+	cat $(filename).po >> $(filename)-tmp.txt
 #	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^rO]/d' -e '/^" *POT/d' tmp.txt > tmp2.txt
-	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^r]/d' tmp.txt > tmp2.txt
-	sed -e 's/msgid/[English]/g' tmp2.txt > en.txt
-	sed -e 's/msgstr/[한국어]/g' en.txt > $(filename).txt
-	dwww-txt2html --utf8 ko.txt > $(filename).html
-	rm $(filename).txt
+	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^r]/d' $(filename)-tmp.txt > $(filename)-tmp2.txt
+	sed -e 's/msgid/[English]/g' $(filename)-tmp2.txt > $(filename)-en.txt
+	sed -e 's/msgstr/[한국어]/g' $(filename)-en.txt > $(filename)-ko.txt
+	dwww-txt2html --utf8 $(filename)-ko.txt > $(filename).html
+	rm $(filename)*.txt
 	
 
 convert2HTML:
