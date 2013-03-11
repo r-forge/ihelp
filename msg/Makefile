@@ -9,7 +9,9 @@ updatePOT:
 #	tar -zcvf ko-from-trunk.tar.gz ../../trunk/src/library/*/po/*.pot
 	tar -zcvf ko-from-R-devel.tar.gz ../../R-devel/src/library/*/po/*.pot
 	tar -zxvf ko-from-R-devel.tar.gz 
-	cp -ir R-devel/src/* src/
+#	cp -ir R-devel/src/* src/
+	cp -r R-devel/src/* src/
+	rm -rf R-devel
 
 	msgmerge -vUN $(src_path)/base/po/ko.po $(src_path)/base/po/R.pot
 	msgmerge -vUN $(src_path)/base/po/R-ko.po $(src_path)/base/po/R-base.pot
