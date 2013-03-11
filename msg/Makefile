@@ -87,7 +87,7 @@ po2mo:
 #	
 #
 po2html:
-	echo "\n\n# LAST REVISION: `date` \n" > $(filename)-tmp.txt 
+	echo "\n# LAST REVISION: `date` \n# Note: 본파일은 현시간의 R 개발버전과는 하루 (또는 길게 이틀)간의 차이가 있습니다\n" > $(filename)-tmp.txt 
 	cat $(filename).po >> $(filename)-tmp.txt
 #	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^rO]/d' -e '/^" *POT/d' tmp.txt > tmp2.txt
 	sed -e '/^# *CHL/d' -e '/^" *[^P]/d' -e '/^" *P[^r]/d' $(filename)-tmp.txt > $(filename)-tmp2.txt
