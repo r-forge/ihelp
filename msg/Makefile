@@ -43,43 +43,43 @@ updatePOT:
 
 po2mo:
 	rm -rf $(src_path)/*/po/*.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/ko.po -o $(src_path)/base/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/R-ko.po -o $(src_path)/base/po/R-ko.mo
-	msgfmt -cfv --statistics $(src_path)/base/po/RGui-ko.po -o $(src_path)/base/po/RGui-ko.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/ko.po -o $(src_path)/base/po/R.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/R-ko.po -o $(src_path)/base/po/R-base.mo
+	msgfmt -cfv --statistics $(src_path)/base/po/RGui-ko.po -o $(src_path)/base/po/RGui.mo
 
-	msgfmt -cfv --statistics $(src_path)/compiler/po/R-ko.po -o $(src_path)/compiler/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/compiler/po/R-ko.po -o $(src_path)/compiler/po/R-compiler.mo
 
-	msgfmt -cfv --statistics $(src_path)/graphics/po/ko -o $(src_path)/graphics/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/graphics/po/R-ko -o $(src_path)/graphics/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/graphics/po/ko -o $(src_path)/graphics/po/graphics.mo
+	msgfmt -cfv --statistics $(src_path)/graphics/po/R-ko -o $(src_path)/graphics/po/R-graphics.mo
 
-	msgfmt -cfv --statistics $(src_path)/grDevices/po/ko -o $(src_path)/grDevices/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/grDevices/po/R-ko -o $(src_path)/grDevices/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/grDevices/po/ko -o $(src_path)/grDevices/po/grDevices.mo
+	msgfmt -cfv --statistics $(src_path)/grDevices/po/R-ko -o $(src_path)/grDevices/po/R-grDevices.mo
 
-	msgfmt -cfv --statistics $(src_path)/grid/po/ko -o $(src_path)/grid/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/grid/po/R-ko -o $(src_path)/grid/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/grid/po/ko -o $(src_path)/grid/po/grid.mo
+	msgfmt -cfv --statistics $(src_path)/grid/po/R-ko -o $(src_path)/grid/po/R-grid.mo
 
-	msgfmt -cfv --statistics $(src_path)/methods/po/ko -o $(src_path)/methods/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/methods/po/R-ko -o $(src_path)/methods/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/methods/po/ko -o $(src_path)/methods/po/methods.mo
+	msgfmt -cfv --statistics $(src_path)/methods/po/R-ko -o $(src_path)/methods/po/R-methods.mo
 
-	msgfmt -cfv --statistics $(src_path)/parallel/po/ko -o $(src_path)/parallel/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/parallel/po/R-ko -o $(src_path)/parallel/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/parallel/po/ko -o $(src_path)/parallel/po/parallel.mo
+	msgfmt -cfv --statistics $(src_path)/parallel/po/R-ko -o $(src_path)/parallel/po/R-parallel.mo
 
-	msgfmt -cfv --statistics $(src_path)/splines/po/ko -o $(src_path)/splines/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/splines/po/R-ko -o $(src_path)/splines/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/splines/po/ko -o $(src_path)/splines/po/splines.mo
+	msgfmt -cfv --statistics $(src_path)/splines/po/R-ko -o $(src_path)/splines/po/R-splines.mo
 
-	msgfmt -cfv --statistics $(src_path)/stats/po/ko -o $(src_path)/stats/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/stats/po/R-ko -o $(src_path)/stats/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/stats/po/ko -o $(src_path)/stats/po/stats.mo
+	msgfmt -cfv --statistics $(src_path)/stats/po/R-ko -o $(src_path)/stats/po/R-stats.mo
 
-	msgfmt -cfv --statistics $(src_path)/stats4/po/R-ko -o $(src_path)/stats4/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/stats4/po/R-ko -o $(src_path)/stats4/po/R-stats4.mo
 
-	msgfmt -cfv --statistics $(src_path)/tcltk/po/ko -o $(src_path)/tcltk/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/tcltk/po/R-ko -o $(src_path)/tcltk/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/tcltk/po/ko -o $(src_path)/tcltk/po/tcltk.mo
+	msgfmt -cfv --statistics $(src_path)/tcltk/po/R-ko -o $(src_path)/tcltk/po/R-tcltk.mo
 
-	msgfmt -cfv --statistics $(src_path)/tools/po/ko -o $(src_path)/tools/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/tools/po/R-ko -o $(src_path)/tools/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/tools/po/ko -o $(src_path)/tools/po/tools.mo
+	msgfmt -cfv --statistics $(src_path)/tools/po/R-ko -o $(src_path)/tools/po/R-tools.mo
 
-	msgfmt -cfv --statistics $(src_path)/utils/po/ko -o $(src_path)/utils/po/ko.mo
-	msgfmt -cfv --statistics $(src_path)/utils/po/R-ko -o $(src_path)/utils/po/R-ko.mo
+	msgfmt -cfv --statistics $(src_path)/utils/po/ko -o $(src_path)/utils/po/utils.mo
+	msgfmt -cfv --statistics $(src_path)/utils/po/R-ko -o $(src_path)/utils/po/R-utils.mo
 
 # installPOMO:
 #	

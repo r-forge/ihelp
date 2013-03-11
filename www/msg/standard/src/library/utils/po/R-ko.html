@@ -1,11 +1,11 @@
 <pre>
 
-# LAST REVISION: Sun Mar 10 12:45:49 CST 2013 
+# LAST REVISION: Sun Mar 10 20:57:14 CST 2013 
 
-# Korean translation for R utils package
-# src/library/utils/po/R-ko.po
+# Korean translation for R base package
+# src/library/base/po/R-ko.po
 # Copyright (C) 1995-2013 The R Core Team
-# This file is distributed under the same license as the R utils package.
+# This file is distributed under the same license as the R base package.
 # R Development Translation Team - Korean
 # Chel Hee Lee &lt;<a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>&gt;, 2008-2013.
 # Chel Hee Lee &lt;<a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>&gt;, 2008-2013.
@@ -14,1054 +14,1544 @@
 [한국어] ""
 "Project-Id-Version: R 3.0.0\n"
 
-[English] ""
+[English] "'%s' is defunct."
+[한국어] "'%s'는 제거되었습니다."
+
+[English] "Use '%s' instead."
+[한국어] "대신 '%s'를 사용하세요."
+
+[English] "See help(\"Defunct\") and help(\"%s-defunct\")."
+[한국어] "help(\"Defunct\")와 help(\"%s-defunct\")을 입력하여 관련도움말을 확인해주세요."
+
+[English] "See help(\"Defunct\")"
+[한국어] "help(\"Defunct\")을 입력하여 관련도움말을 확인해주세요."
+
+[English] "'%s' is deprecated."
+[한국어] "'%s'은 제거되었습니다."
+
+[English] "See help(\"Deprecated\") and help(\"%s-deprecated\")."
+[한국어] "help(\"Deprecated\")와 help(\"%s-deprecated\")를 입력하여 관련 도움말을 확인해주세요."
+
+[English] "See help(\"Deprecated\")"
+[한국어] "help(\"Deprecated\")을 입력하여 관련 도움말을 확인해주세요."
+
+[English] "argument to 'La.svd' must be numeric or complex"
+[한국어] "'La.svd'의 입력인수는 반드시 수치형 혹은 복소수형이어야 합니다"
+
+[English] "infinite or missing values in 'x'"
+[한국어] "'x'에 무한한 값이 있거나 결측치가 있습니다"
+
+[English] "a dimension is zero"
+[한국어] "차원이 0입니다"
+
+[English] "'nu' must be 0, nrow(x) or ncol(x)"
+[한국어] "'nu'는 반드시 0, nrow(x) 또는 ncol(x)이어야 합니다. "
+
+[English] "'nv' must be 0, nrow(x) or ncol(x)"
+[한국어] "'nv'는 반드시 0, nrow(x) 또는 ncol(x)이어야 합니다"
+
+[English] "second argument must be a list"
+[한국어] "두번째 인수는 반드시 리스트이어야 합니다"
+
+[English] "'iconvlist' is not available on this system"
+[한국어] "이 시스템에서 'iconvlist'는 사용가능하지 않습니다"
+
+[English] "'kind' must be a character string of length 1 (RNG to be used)."
+[한국어] "'kind'는 반드시 길이가 1인 문자열이어야 합니다 (난수생성방법 지정에 이용됩니다)."
+
+[English] "'%s' is not a valid abbreviation of an RNG"
+[한국어] "'%s'는 올바른 난수생성방법의 약자가 아닙니다"
+
+[English] "'normal.kind' must be a character string of length 1"
+[한국어] "'normal.kind'는 반드시 길이가 1인 문자열이어야 합니다"
+
+[English] "'%s' is not a valid choice"
+[한국어] "'%s'는 유효한 선택이 아닙니다"
+
+[English] "malformed version string"
 [한국어] ""
 
-[English] "no documentation for %s found in package %s"
-[한국어] "%s에 대한 문서를 패키지 %s내에서 찾을 수 없습니다"
+[English] "target is %s, current is %s"
+[한국어] "타겟은 %s이지만, 현재는 %s 입니다"
 
-[English] "document not found"
-[한국어] "문서를 찾을 수 없습니다"
+[English] "dim(X) must have a positive length"
+[한국어] "dim(X)는 반드시 양의 값을 가지는 길이를 가져야 합니다"
 
-[English] "A search query has been submitted to %s"
-[한국어] "서치쿼리가 %s에 전달되었습니다"
+[English] "'X' must have named dimnames"
+[한국어] "'X'는 반드시 named dimnames를 가져야 합니다"
 
-[English] "The results page should open in your browser shortly"
-[한국어] "곧 브라우저에서 결과를 확인할 수 있습니다"
-
-[English] "reference to unknown chunk %s"
-[한국어] "알 수 없는 chunk %s를 참조합니다"
-
-[English] "no Sweave file with name %s found"
-[한국어] "%s이라는 이름을 가진 Sweave 파일이 없습니다"
-
-[English] "%d Sweave files for basename %s found"
-[한국어] "basename %2$s에 대한 %1$d Sweave 파일들을 찾았습니다"
-
-[English] "more than one syntax specification found, using the first one"
-[한국어] "한개이상의 구문지정 (syntax specification)이 있었기 때문에 첫번째 것을 사용합니다"
-
-[English] "object %s does not have class \"SweaveSyntax\""
-[한국어] "객체 %s는 클래스 \"SweaveSyntax\"를 가지지 않습니다"
-
-[English] "recursive Sweave input %s in stack"
-[한국어] "스택에 반복되는 Sweave 입력 %s가 있습니다"
-
-[English] "target syntax not of class %s"
-[한국어] "클래스 %s가 아닌 target syntax입니다"
-
-[English] "target syntax contains no translation table"
-[한국어] "target syntax는 번역테이블을 포함하고 있지 않습니다"
-
-[English] ""
+[English] "not all elements of 'MARGIN' are names of dimensions"
 [한국어] ""
 
-[English] "Warning: unknown option %s"
-[한국어] "경고: 알수없는 옵션 %s입니다"
+[English] "'dims' cannot be of length 0"
+[한국어] "'dims'의 길이는 0이 될 수 없습니다"
 
-[English] "Created PDF document %s"
-[한국어] "PDF 문서 %s가 생성되었습니다"
+[English] "'dim' specifies too large an array"
+[한국어] "너무 큰 배열이 'dim'에 의해 지정되었습니다"
 
-[English] "Compacting PDF document"
-[한국어] "PDF 문서를 생성합니다"
+[English] "incorrect value for 'MARGIN'"
+[한국어] "'MARGIN'에 대한 값이 잘못되었습니다"
 
-[English] "path to %s contains spaces,"
-[한국어] "%s로의 파일경로에 공백들이 있습니다,"
+[English] "*** 'pos=1' is not possible; setting 'pos=2' for now."
+[한국어] "*** 'pos=1'은 불가능하므로 임시적으로 'pos=2'로 설정합니다."
 
-[English] "this may cause problems when running LaTeX"
-[한국어] "이것은 LaTeX를 실행할때 문제를 야기할 수 있습니다"
-
-[English] "the output file '%s' has disappeared"
-[한국어] "출력결과를 포함한 파일 '%s'가 사라졌습니다"
-
-[English] "invalid value for %s : %s"
-[한국어] "%1$s에 대한 값이 잘못되었습니다 : %2$s"
-
-[English] "value of 'results' option should be lowercase"
-[한국어] "'results' 옵션에 대한 값은 반드시 소문자이어야 합니다"
-
-[English] "value of 'strip.white' option should be lowercase"
-[한국어] "'strip.white' 옵션의 값은 반드시 소문자이어야 합니다"
-
-[English] "elements of 'what' after the first will be ignored"
-[한국어] "첫번째 이후의 모든 'what'의 요소들은 무시될 것입니다"
-
-[English] "No suitable spell-checker program found"
-[한국어] "적절한 스펠링체크르 찾지 못했습니다"
-
-[English] "Filter '%s' is not available."
-[한국어] "필터 '%s'는 사용가능하지 않습니다"
-
-[English] "Invalid 'filter' argument."
-[한국어] "유효한 'filter' 인자가 아닙니다."
-
-[English] ""
-[한국어] ""
-
-[English] "Processing file %s"
-[한국어] "파일 %s를 처리중입니다"
-
-[English] ""
-[한국어] ""
-
-[English] "No suitable spell check program found."
-[한국어] "적절한 스펠링 프로그램을 찾지 못했습니다."
-
-[English] ""
-[한국어] ""
-
-[English] "No vignettes found by %s"
-[한국어] "%s에 의해 발견된 비니에트가 없습니다"
-
-[English] "Package %s: DESCRIPTION file not found"
-[한국어] "패키지 %s 내에서 DESCRIPTION 파일을 찾을 수 없습니다"
-
-[English] "'file' must be NULL, a character string or a connection"
-[한국어] "'file'은 반드시 NULL, 문자열, 또는 연결이어야 합니다"
-
-[English] "bad argument"
-[한국어] "잘못된 인자입니다"
-
-[English] "Not all arguments are of the same length, the following need to be recycled: %s"
-[한국어] "모든 인자들이 같은 길이를 가지지 않기 때문에 다음의 부분들이 재사용되어져야 합니다: %s"
-
-[English] "Use either %s or %s/%s but not both."
-[한국어] "%1$s와 %2$s/%3$s 두가지를 함께 사용하지 말고, 하나만 이용하세요."
-
-[English] "It is recommended to use %s instead of %s."
-[한국어] "%2$s 대신에 %1$s를 사용하는 것이 권장됩니다."
-
-[English] "Use either %s or %s but not both."
-[한국어] "%1$s와 %2$s 두가지를 함께 사용하지 말고, 하나만 이용하세요."
-
-[English] "It is recommended to use %s/%s instead of %s/%s/%s."
-[한국어] "%3$s/%4$s/%5$s 대신에 %1$s/%2$s를 사용하는 것이 권장됩니다."
-
-[English] "method is only applicable to %s objects"
-[한국어] "%s 객체에만 적용이 가능한 메소드입니다"
-
-[English] "all arguments must be of class %s"
-[한국어] "몬든 인자들은 반드시 클래스 %s이어야 합니다"
-
-[English] "all fields have to be named"
-[한국어] "모든 항목들에는 이름이 주어져야 합니다"
-
-[English] "%s has to be one of %s"
-[한국어] "%1$s는 %2$s 중에 하나이어야 합니다"
-
-[English] "subscript out of bounds"
-[한국어] "첨자가 범위를 벗어났습니다"
-
-[English] "%s should be one of %s"
-[한국어] "%1$s는 %2$s 중 하나이어야 합니다"
-
-[English] "A BibTeX entry for LaTeX users is"
-[한국어] "LaTeX 사용자들을 위한 BibTeX 항목은 다음과 같습니다"
-
-[English] ""
-[한국어] ""
-
-[English] "package %s not found"
-[한국어] "패키지 %s를 찾을 수 없습니다"
-
-[English] "broken installation, no CITATION file in the base package."
-[한국어] "설치시 문제로 인하여 base 패키지 내에 CITATION 파일이 없습니다."
-
-[English] "no date field in DESCRIPTION file of package %s"
-[한국어] "패키지 %s에 있는 DESCRIPTION 파일에 날짜(date) 항목이 없습니다"
-
-[English] "could not determine year for %s from package DESCRIPTION file"
-[한국어] "패키지 내 DESCRIPTION 파일로부터 %s에 대한 년도를 알 수 없습니다"
-
-[English] "To cite package %s in publications use:"
-[한국어] "패키지 %s를 출판의 목적으로 인용하고자 한다면 다음과 같이 사용하세요:"
-
-[English] "ATTENTION: This citation information has been auto-generated from the package DESCRIPTION file and may need manual editing, see %s."
-[한국어] "주의: 이 인용에 대한 정보는 패키지 DESCRIPTION 파일로부터 자동생성되었으며 일부 수정이 필요할 수도 있습니다. %s를 참고하세요."
-
-[English] "'FUN' must be a function or NULL"
-[한국어] "'FUN'은 반드시 함수 또는 NULL이어야 합니다"
-
-[English] "cannot handle S4 methods yet"
-[한국어] "S4 메소드를 아직 처리할 수 없습니다"
-
-[English] "'package' must be a character string or NULL"
-[한국어] "'package'는 반드시 문자열 또는 NULL이어야 합니다"
-
-[English] "datasets have been moved from package 'base' to package 'datasets'"
-[한국어] "데이터셋들이 'base' 패키지에서 'datasets' 패키지로 이동되었습니다"
-
-[English] "datasets have been moved from package 'stats' to package 'datasets'"
-[한국어] "데이터셋들이 'stats' 패키지에서 'datasets' 패키지로 이동되었습니다"
-
-[English] "data index for package %s is invalid and will be ignored"
-[한국어] "패키지 %s에 있는 데이터 인덱스가 잘못되었기 때문에 무시될 것입니다"
-
-[English] "file 'filelist' is missing for directory %s"
-[한국어] "파일 'filelist'이 디렉토리 %s에 빠져있습니다"
-
-[English] "data set %s not found"
-[한국어] "데이터셋 %s을 찾을 수 없습니다"
-
-[English] "only 'html = TRUE' is supported on this platform"
-[한국어] "이 플랫폼에서는 오로지 'html = TRUE'만이 지원됩니다"
-
-[English] "kind '%s' not yet implemented"
-[한국어] "유형 '%s'는 아직 구현되지 않았습니다"
-
-[English] "wrong number of table row entries"
-[한국어] "테이블 열의 개수가 잘못되었습니다"
-
-[English] "wrong argument to 'dataentry'"
-[한국어] "'dataentry'에 잘못된 인자가 전달되었습니다"
-
-[English] "could not restore type information"
-[한국어] "유형에 관련된 정보를 복구할 수 없습니다"
-
-[English] "'modes' argument ignored"
-[한국어] "'modes' 인자가 무시되었습니다"
-
-[English] "'names' argument ignored"
-[한국어] "'names'인자가 무시되었습니다"
-
-[English] "could not restore variables properly"
-[한국어] "변수들을 올바르게 복구할 수 없었습니다"
-
-[English] "did not assign() anything"
-[한국어] "어떠한 것도 assign()하지 않습니다"
-
-[English] "Browsing in the environment with call:"
-[한국어] ""
-
-[English] "'dump' is not an object of class %s"
-[한국어] "'dump'는 클래스 %s의 객체가 아닙니다"
-
-[English] "Message:"
-[한국어] "메시지:"
-
-[English] "Available environments had calls:"
-[한국어] "사용가능한 environments가 다음의 호출을 가집니다:"
-
-[English] "Enter an environment number, or 0 to exit"
-[한국어] "환경번호를 입력하시거나, 종료하기 위해서는 0을 입력하세요"
-
-[English] "recover called non-interactively; frames dumped, use debugger() to view"
-[한국어] ""
-
-[English] "No suitable frames for recover()"
-[한국어] "recover() 사용을 위한 적합한 프레임들이 없습니다"
-
-[English] "No demo found for topic %s"
-[한국어] "주제 %s와 관련된 데모를 찾을 수 없습니다"
-
-[English] ""
-[한국어] ""
-
-[English] "invalid 'data' argument"
-[한국어] "'data' 인자가 잘못되었습니다"
-
-[English] "invalid 'modes' argument"
-[한국어] "'modes' 인자가 잘못되었습니다"
-
-[English] "invalid 'x' argument"
-[한국어] "'x' 인자가 잘못되었습니다"
-
-[English] "can only handle vector and factor elements"
-[한국어] "벡터와 요인의 구성요소들만을 처리할 수 있습니다"
-
-[English] "invalid factor levels in '%s'"
-[한국어] "'%s'에 요인의 수준이 유효하지 않습니다"
-
-[English] "added factor levels in '%s'"
-[한국어] "'%s'에 요인의 수준이 추가되었습니다"
-
-[English] "edited row names contain duplicates and will be ignored"
-[한국어] "편집된 열의 이름들이 중복되었기 때문에 무시될 것입니다"
-
-[English] "invalid input matrix"
-[한국어] "입력된 행렬이 올바르지 않습니다"
-
-[English] "class of 'name' will be discarded"
-[한국어] "'name'에 주어진 클래스가 제거 될 것입니다"
-
-[English] "cannot edit NULL row names"
-[한국어] "열의 이름이 NULL이면 편집할 수 없습니다"
-
-[English] "no help found for %s"
-[한국어] "%s에 대한 도움말을 찾을 수 없습니다"
-
-[English] "%s has a help file but no examples"
-[한국어] "%s에 대한 도움말이 있지만 예제는 없습니다"
-
-[English] "test '%s' is not available"
-[한국어] "테스트 '%s'는 사용할 수 없습니다"
-
-[English] "Line number missing"
-[한국어] "라인넘버가 없습니다"
-
-[English] "'fix' requires a name"
-[한국어] "'fix'는 이름을 필요로 합니다"
-
-[English] "too many list items (at most up to %d)"
-[한국어] "리스트 항목들이 너무 많습니다 (최대 %d개 까지입니다)"
-
-[English] "non-vector columns will be ignored"
-[한국어] "벡터가 아닌 열들은 무시될 것입니다"
-
-[English] "at least one vector element is required"
-[한국어] "최소한 한개이상의 벡터를 구성하는 요소가 필요합니다"
-
-[English] "non-vector elements will be ignored"
-[한국어] "벡터가 아닌 구성요소들은 무시될 것입니다"
-
-[English] "'form' must be a two-sided formula"
-[한국어] "'form'은 반드시 양변을 가지고 있는 formula이어야 합니다"
-
-[English] "'form' must be a two-sided formula with one term on each side"
-[한국어] "'form'은 반드시 각 변에 하나의 항을 가진 양변이 있는 formula입니다"
-
-[English] "'topic' should be a name, length-one character vector or reserved word"
-[한국어] "'topic'은 반드시 이름, 길이가 하나인 문자벡터, 또는 예약어이어야 합니다"
-
-[English] "No documentation for %s in specified packages and libraries:"
-[한국어] "다음과 같이  지정된 패키지들과 라이브러리들에서 %s에 대한 문서를 찾을 수 없습니다:"
-
-[English] "you could try %s"
-[한국어] "%s를 시도해보세요"
-
-[English] "Help for topic %s is not in any loaded package but can be found in the following packages:"
-[한국어] "주제 %s와 관련된 도움말은 로드된 패키지로부터 찾을 수 없으나, 다음의 패키지들로부터 찾을 수 있습니다:"
-
-[English] "Package"
-[한국어] "패키지"
-
-[English] "Library"
-[한국어] "라이브러리"
-
-[English] "Help on topic %s was found in the following packages:"
-[한국어] "주제 %s에 대한 도움말을 다음의 패키지들로부터 찾았습니다:"
-
-[English] "Choose one"
-[한국어] "하나를 선택하세요"
-
-[English] "Using the first match ..."
-[한국어] "첫번째로 일치하는 것을 사용합니다 ..."
-
-[English] "HTML help is unavailable"
-[한국어] "HTML 형식의 도움말이 이용가능하지 않습니다"
-
-[English] "R Help on %s"
-[한국어] "%s에 대한 R 도움말입니다"
-
-[English] "invalid %s argument"
-[한국어] "%s 인자는 잘못되었습니다"
-
-[English] "package %s exists but was not installed under R &gt;= 2.10.0 so help cannot be accessed"
-[한국어] "패키지 %s는 존재하지만 R &gt;= 2.10.0 에서는 설치되지 않았기 때문에 도움말을 열 수 없습니다"
-
-[English] "creation of %s failed"
-[한국어] "%s의 생성이 실패했습니다"
-
-[English] "Saving help page to %s"
-[한국어] "도움말 페이지를 %s에 저장합니다"
-
-[English] "argument %s must be a single character string"
-[한국어] "인자 %s는 반드시 한개의 문자열이어야 합니다"
-
-[English] "incorrect field specification"
-[한국어] "항목지정이 잘못되었습니다"
-
-[English] "do not know what to search"
-[한국어] "무엇을 검색해야할지 모릅니다"
-
-[English] "incorrect type specification"
-[한국어] "유형지정이 잘못되었습니다"
-
-[English] "argument 'help.db' is deprecated"
-[한국어] "인수 'help.db'가 누락되었습니다"
-
-[English] "could not find package %s"
-[한국어] "패키지 %s를 찾을 수 없었습니다"
-
-[English] "package %s has empty hsearch data - strangely"
-[한국어] "패키지 %s는 비어있는 hsearch data를 가집니다 - 이상합니다"
-
-[English] "removing all entries with invalid multi-byte character data"
-[한국어] "잘못된 멀티바이트 문자데이터를 가진 모든 항목들을 제거합니다"
-
-[English] "no information in the database for package %s: need 'rebuild = TRUE'?"
-[한국어] "패키지 %s에 대한 정보가 데이터베이스에 없습니다: 'rebuild = TRUE'가 필요한가요?"
-
-[English] "incorrect 'agrep' specification"
-[한국어] "'agrep' 지정이 잘못되었습니다"
-
-[English] "invalid browser name, check options(\"browser\")."
-[한국어] "브라우저 이름이 잘못되었습니다. options(\"browser\")을 확인해보세요."
-
-[English] "help.start() requires the HTTP server to be running"
-[한국어] "help.start()는 HTTP 서버가 실행되어야만 이용할 수 있습니다"
-
-[English] ""
-[한국어] ""
-
-[English] "If the browser launched by '%s' is already running, it is *not* restarted, and you must switch to its window."
-[한국어] "만약 '%s'에 의하여 시작된 브라우저가 이미 실행중이라면, 다시 재시작되지 않을 것을 것입니다.  따라서, 당신은 반드시 해당 윈도우로 전환해야 합니다"
-
-[English] "Otherwise, be patient ..."
-[한국어] "만약 그렇지 않다면, 조금만 더 기다려보세요 ..."
-
-[English] "'url' must be a non-empty character string"
-[한국어] "'url'은 반드시 비어있지 않은 문자열이어야 합니다"
-
-[English] "'browser' must be a non-empty character string"
-[한국어] "'browser'는 반드시 비어있지 않은 문자열이어야 합니다"
-
-[English] "no package '%s' was found"
-[한국어] "패키지 '%s'를 찾을 수 없습니다"
-
-[English] "metadata of package '%s' is corrupt"
-[한국어] "패키지 '%s'의 메타데이터가 손상되었습니다"
-
-[English] "DESCRIPTION file of package '%s' is corrupt"
-[한국어] "패키지 '%s'의 DESCRIPTION 파일이 손상되었습니다"
-
-[English] "'DESCRIPTION' file has an 'Encoding' field and re-encoding is not possible"
-[한국어] "'DESCRIPTION' 파일은 'Encoding' 항목을 가지고 있는데, 이는 재인코딩이 불가능합니다"
-
-[English] "DESCRIPTION file of package '%s' is missing or broken"
-[한국어] "패키지 '%s'의 DESCRIPTION 파일이 없거나 손상되었습니다"
-
-[English] "cannot update HTML package index"
-[한국어] "HTML 패키지 인덱스를 업데이트 할 수 없습니다"
-
-[English] "done"
-[한국어] "완료"
-
-[English] "menu() cannot be used non-interactively"
-[한국어] "menu()는 인터랙티브하게 사용할 수 없습니다"
-
-[English] "Enter an item from the menu, or 0 to exit"
-[한국어] "메뉴로부터 해당항목을 누르거나, 종료하려면 0을 입력하세요"
-
-[English] "invalid query"
-[한국어] "잘못된 쿼리입니다"
-
-[English] "'%s' is a formal generic function; S3 methods will not likely be found"
-[한국어] "'%s'은 형식적인 제네릭 함수이므로 S3 메소드를 아마 찾을 수 없을 것입니다"
-
-[English] "no function '%s' is visible"
-[한국어] "함수 '%s'는 볼 수 없습니다"
-
-[English] "function '%s' appears not to be generic"
-[한국어] "함수 '%s'는 제네릭처럼 나타나지 않을 것입니다"
-
-[English] "generic function '%s' dispatches methods for generic '%s'"
-[한국어] "제네릭 '%2$s'에 대해서 제네릭 함수 '%1$s'는 메소드들을 디스패치합니다"
-
-[English] "must supply 'generic.function' or 'class'"
-[한국어] "'generic.function' 또는 'class'를 반드시 제공해야 합니다"
-
-[English] "no function '%s' could be found"
-[한국어] "함수 '%s'를 찾을 수 없습니다"
-
-[English] "S3 method '%s' not found"
-[한국어] "S3 메소드 '%s'를 찾을 수 없습니다"
-
-[English] "environment specified is not a package"
-[한국어] "지정된 환경은 패키지가 아닙니다"
-
-[English] "changing locked binding for %s in %s whilst loading %s"
-[한국어] ""
-
-[English] "changing locked binding for %s in %s"
-[한국어] ""
-
-[English] "'fixInNamespace' requires a name"
-[한국어] "'fixInNamespace'은 이름을 필요로 합니다"
-
-[English] "only numeric indices can be used"
-[한국어] "오로지 숫자형 색인만을 사용할 수 있습니다"
-
-[English] "cannot create directory '%s'"
-[한국어] "디렉토리 '%s'를 생성할 수 없습니다"
-
-[English] "'code_files' must be a character vector"
-[한국어] "'code_files'은 반드시 문자형 벡터이어야 합니다"
-
-[English] "'list' must be a character vector naming R objects"
-[한국어] "'list'는 반드시 R 객체들을 이름지어주는 문자형 벡터이어야 합니다"
-
-[English] "no R objects specified or available"
-[한국어] "지정되거나 사용할 수 있는 R 객체들이 없습니다"
-
-[English] "directory '%s' already exists"
-[한국어] "디렉토리 '%s'가 이미 존재합니다"
-
-[English] "generic functions and other S4 objects (e.g., '%s') cannot be dumped; use the 'code_files' argument"
-[한국어] "제네릭 함수들과 다른 S4 객체들 (즉, '%s')는 덤프되어질 수 없으므로, 'code_files'인자를 사용하세요"
-
-[English] "unable to access index for repository %s"
-[한국어] "저장소 %s에 대한 인덱스에 접근할 수 없습니다"
-
-[English] "invalid 'filters' argument."
-[한국어] "'filters' 인자가 잘못되었습니다"
-
-[English] "package '%s' in library '%s' will not be updated"
-[한국어] "라이브러리 '%2$s'내에 있는 패키지 '%1$s'은 업데이트 되지 않을 것입니다"
-
-[English] "invalid 'oldPkgs'; must be a character vector or a result from old.packages()"
-[한국어] "유효하지 않은 'oldPkgs'입니다.  반드시 문자형 벡터이거나 old.packages()으로부터 나온 결과이어야 합니다"
-
-[English] "ill-formed 'instPkgs' matrix"
-[한국어] " 올바르게 구성되지 않은 'instPkgs' 행렬입니다"
-
-[English] "no installed packages for (invalid?) 'lib.loc=%s'"
-[한국어] "'lib.loc=%s'에 설치된 패키지들이 없습니다"
-
-[English] "no new packages are available"
-[한국어] "새로운 패키지들을 사용할 수 없습니다"
-
-[English] "metadata of %s is corrupt"
-[한국어] "메타데이터 %s가 손상되었습니다"
-
-[English] "'priority' must be character or NULL"
-[한국어] "'priority'는 반드시 문자이거나 NULL이어야 합니다"
-
-[English] "Updating HTML index of packages in '.Library'"
-[한국어] "'.Library'내 HTML 패키지 목록을 업데이트 하고 있습니다"
-
-[English] "'destdir' is not a directory"
-[한국어] "'destdir'는 디렉토리가 아닙니다"
-
-[English] "no package %s at the repositories"
-[한국어] "저장소들로부터 패키지 %s를 찾을 수 없습니다"
-
-[English] "package %s does not exist on the local repository"
-[한국어] "지역저장소에는 패키지 %s가 존재하지 않습니다"
-
-[English] "download of package %s failed"
-[한국어] "패키지 %s를 다운로드 하는데 실패했습니다"
-
-[English] "--- Please select a CRAN mirror for use in this session ---"
-[한국어] "--- 현재 세션에서 사용할 CRAN 미러를 선택해 주세요 ---"
-
-[English] "trying to use CRAN without setting a mirror"
-[한국어] "미러 설정을 하지 않고서는 CRAN을 사용할 수 없습니다"
-
-[English] "cannot choose a CRAN mirror non-interactively"
-[한국어] "비대화식으로 CRAN 미러를 선택할 수 없습니다"
-
-[English] "cannot choose a BioC mirror non-interactively"
-[한국어] "비대화식으로 BioC 미러를 선택할 수 없습니다"
-
-[English] "cannot set repositories non-interactively"
-[한국어] "비대화식으로 저장소드을 설정할 수 없습니다"
-
-[English] "--- Please select repositories for use in this session ---"
-[한국어] "--- 현재 세션에서 사용할 저장소를 선택해주세요 ---"
-
-[English] "%s must be supplied"
-[한국어] "%s는 반드시 주어져야 합니다"
-
-[English] "every package depends on at least one other"
-[한국어] "모든 패키지는 최소한 한 개이상의 다른 패키지들과 의존관계에 놓여있습니다"
-
-[English] "packages %s are mutually dependent"
-[한국어] "패키지 %s는 서로 상호의존관계에 있습니다"
-
-[English] ""
-[한국어] ""
-
-[English] "no packages were specified"
-[한국어] "아무런 패키지들도 지정되지 않았습니다"
-
-[English] "'lib = \"%s\"' is not writable"
-[한국어] "'lib = \"%s\"'는 기록이 가능하지 않습니다"
-
-[English] "unable to install packages"
-[한국어] "패키지들을 설치할 수 없습니다"
-
-[English] "unable to create %s"
-[한국어] "%s를 생성할 수 없습니다"
-
-[English] "inferring 'repos = NULL' from the file name"
-[한국어] "파일이름으로부터 'repos = NULL'임을 알 수 있습니다"
-
-[English] "type == \"both\" can only be used on Windows or a CRAN build for Mac OS X"
-[한국어] "type == \"both\"는 오로지 윈도우즈에서만 사용되거나 Mac OS X에 대한 CRAN 빌드입니다"
-
-[English] "type == \"both\" cannot be used if 'available' or 'contriburl' is specified"
-[한국어] "type == \"both\" 은 만약 'available' 또는 'contriburl'이 지정되지 않았다면 사용할 수 없습니다"
-
-[English] "type == \"both\" cannot be used with 'repos = NULL'"
-[한국어] "type == \"both\"은 'repos = NULL'과 함께 사용될 수 없습니다"
-
-[English] "Do you want to attempt to install these from sources?"
-[한국어] "이것들을 소스들로부터 설치를 시도하길 원하시나요?"
-
-[English] "source repository is unavailable to check versions"
-[한국어] "소스저장소는 버전을 체크할 수 없습니다"
-
-[English] "cannot install MacOS X binary packages on Windows"
-[한국어] "MacOS X 바이너리 패키지들을 윈도우즈에 설치할 수 없습니다"
-
-[English] "cannot install MacOS X binary packages on this platform"
-[한국어] "이 플랫폼에서는 MacOS X 바이너리 패키지들을  설치할 수 없습니다"
-
-[English] "cannot install Windows binary packages on this platform"
-[한국어] "이 플랫폼에서는 윈도우즈 바이너리 패키지들을 설치할 수 없습니다"
-
-[English] ""
-[한국어] ""
-
-[English] "system (cmd0): %s"
-[한국어] "시스템 (cmd0): %s"
-
-[English] "installation of package %s had non-zero exit status"
-[한국어] "패키지 %s의 설치가 0이 아닌 종료상태를 가졌습니다"
-
-[English] "%d): succeeded '%s'"
-[한국어] ""
-
-[English] "unable to create temporary directory %s"
-[한국어] "임시 디렉토리 %s를 생성할 수 없습니다"
-
-[English] "foundpkgs: %s"
-[한국어] "발견된 패키지들: %s"
-
-[English] "files: %s"
-[한국어] "파일들: %s"
-
-[English] ""
-[한국어] ""
-
-[English] ""
-[한국어] ""
-
-[English] "The namespace for package \"%s\" is locked; no changes in the global variables list may be made."
-[한국어] "패키지 \"%s\"에 대한 네임스페이스가 잠겨있어, 전역변수목록에는 어떠한 변화도 만들어지지 않을 것입니다"
-
-[English] "no object named '%s' to show"
-[한국어] "보여줄 '%s'이라는 이름을 가진 객체가 없습니다"
-
-[English] "'file' must be \"\" or an open connection object"
-[한국어] "'file'은 반드시 \"\" 또는 연결이 열려있는 객체이어야 합니다"
-
-[English] "must have 'max' &gt; 'min'"
-[한국어] "반드시 'max'는  'min'보다 큰 값을 가져야 합니다"
-
-[English] "'pb' is not from class %s"
-[한국어] "'pb'는 클래스 %s로부터 나온것이 아닙니다"
-
-[English] "cannot determine a usable name"
-[한국어] "사용가능한 이름을 결정할 수 없습니다"
-
-[English] "Created file named %s."
-[한국어] "%s이라는 이름을 가진 파일을 생성하였습니다."
-
-[English] "Edit the file and move it to the appropriate directory."
-[한국어] "파일을 편집한 뒤 적절한 디렉토리로 이동시켜주세요."
-
-[English] "no documentation of type %s and topic %s (or error in processing help)"
-[한국어] "유형 %s와 주제 %s에 대한 문서가 없습니다 (또는 도움말 처리에 문제가 있습니다)"
-
-[English] "the object of class %s in the function call %s could not be used as a documentation topic"
-[한국어] "함수호출 %2$s 내에 있는 클래스 %1$s의 객체는 문서의 주제로서 사용될 수 없습니다"
-
-[English] "no methods for %s and no documentation for it as a function"
-[한국어] "%s에 대한 메소드들이 없으며 함수로서 이와 관련된 문서들도 없습니다"
-
-[English] "error in trying to evaluate the expression for argument %s (%s)"
-[한국어] "인자 %s (%s)에 대한 표현식을 평가하려는데 에러가 발생했습니다"
-
-[English] "no method defined for function %s and signature %s"
-[한국어] "함수 %s와 signature %s에 정의된 메소드가 없습니다"
-
-[English] "no documentation for function %s and signature %s"
-[한국어] "함수 %s와 signature %s에 대한 문서가 없습니다"
-
-[English] "No DIF data on clipboard"
-[한국어] "클립보드에 DIF 데이터가 없습니다"
-
-[English] "file had no lines"
-[한국어] "아무런 라인이 없는 파일입니다"
-
-[English] "row and column counts not found"
-[한국어] "행과 열의 개수를 찾을 수 없습니다"
-
-[English] "More rows than specified in header; maybe use 'transpose=TRUE'"
-[한국어] "헤더내에 지정된 것보다 더 많은 수의 행들이 있습니다.  'transpose=TRUE'를 사용해보세요"
-
-[English] "Unrecognized special data value"
-[한국어] "인식할 수 없는 특수한 데이터 값입니다"
-
-[English] "More columns than specified in header; maybe use 'transpose=TRUE'"
-[한국어] "헤더내에 지정된 것보다 더 많은 수의 열들이 있습니다. 'transpose=TRUE'를 사용해보세요"
-
-[English] "Unrecognized value indicator"
-[한국어] ""
-
-[English] "no lines available in input"
-[한국어] "입력에 가능한 라인들이 없습니다"
-
-[English] "header and 'col.names' are of different lengths"
-[한국어] "헤더와 'col.names'의 길이들이 서로 다릅니다"
-
-[English] "more columns than column names"
-[한국어] "열의 개수가 열의 이름들보다 많습니다"
-
-[English] "more column names than columns"
-[한국어] "열의 이름들이 열의 개수보다 많습니다"
-
-[English] "rows are empty: giving up"
-[한국어] "행들이 비어있으므로 중단합니다"
-
-[English] "not all columns named in 'colClasses' exist"
-[한국어] "'colClasses'내에 명명되어 있는 모든 열들이 존재하지 않습니다"
-
-[English] "invalid numeric 'as.is' expression"
-[한국어] "유효하지 않은 수치형 'as.is' 표현식입니다"
-
-[English] "not all columns named in 'as.is' exist"
-[한국어] "'as.is'내에 명명되어 있는 모든 열들이 존재하지 않습니다"
-
-[English] "'as.is' has the wrong length %d  != cols = %d"
-[한국어] "'as.is'는 열의 개수 %2$d와 다른 잘못된 길이 %1$d를 가집니다"
-
-[English] "invalid 'row.names' specification"
-[한국어] "'row.names' 지정이 잘못되었습니다"
-
-[English] "invalid 'row.names' length"
-[한국어] "'row.names' 길이가 잘못되었습니다"
-
-[English] "duplicate 'row.names' are not allowed"
-[한국어] "중복된 'row.names'는 허용되지 않습니다"
-
-[English] "missing values in 'row.names' are not allowed"
-[한국어] "'row.names'에 누락된 값들은 허용되지 않습니다"
-
-[English] "missing lengths for some fields"
-[한국어] ""
-
-[English] "invalid format"
-[한국어] "잘못된 형식입니다"
-
-[English] "transfer failure"
-[한국어] "전송 실패"
-
-[English] "%s option must be a length one character vector or NULL"
-[한국어] "%s 옵션은 반드시 길이가 1 인 문자형 벡터 또는 NULL이어야 합니다"
-
-[English] "'file' must be a character string or connection"
-[한국어] "'file'은 반드시 문자열 또는 연결이어야 합니다"
-
-[English] "empty beginning of file"
-[한국어] ""
-
-[English] "first five rows are empty: giving up"
-[한국어] "처음 다섯줄들이 비어 있기 때문에 중단합니다"
-
-[English] "relist() requires recursively unlisted objects."
-[한국어] ""
-
-[English] "The 'flesh' argument does not contain a skeleton attribute."
-[한국어] ""
-
-[English] "Either ensure you unlist a relistable object, or specify the skeleton separately."
-[한국어] ""
-
-[English] "cannot coerce 'x' to roman"
-[한국어] "'x'를 roman으로 강제변환을 할 수 없습니다"
-
-[English] "no valid packages were specified"
-[한국어] "유효한 패키지들이 지정되지 않았습니다"
-
-[English] "invalid 'socket' argument"
-[한국어] "'socket' 인자가 잘못되었습니다"
-
-[English] "'port' must be integer of length 1"
-[한국어] "'port'는 반드시 길이가 1인 정수이어야 합니다"
-
-[English] "'host' must be character of length 1"
-[한국어] "'host'는 반드시 길이가 1인 문자이어야 합니다"
-
-[English] "can only receive calls on local machine"
-[한국어] "오로지 로컬머신에서만 호출을 받을 수 있습니다"
-
-[English] "socket not established"
-[한국어] "소켓이 연결되지 않았습니다"
-
-[English] "str.data.frame() called with non-data.frame -- coercing to one."
-[한국어] "데이터 프레임이 아닌 것과 함께 호출된 str.data.frame()이므로 1로 강제형변환합니다"
-
-[English] "invalid options(\"str\") -- using defaults instead"
-[한국어] "options(\"str\")이 잘못되어 기본값을 사용합니다"
-
-[English] "invalid components in options(\"str\"): %s"
-[한국어] "options(\"str\")내 다음과 같은 구성요소들이 잘못되었습니다: %s"
-
-[English] "'str.default': 'le' is NA, so taken as 0"
-[한국어] "'str.default': 'le'는 NA이므로 0으로 처리됩니다"
-
-[English] "'object' does not have valid levels()"
-[한국어] "'object'는 올바른 levels()들을 가지고 있지 않습니다"
-
-[English] "'digits' and 'digits.d' are both specified and the latter is not used"
-[한국어] "'digits'와 'digits.d' 모두 지정되지 않았기 때문에 후자는 사용되지 않습니다"
-
-[English] "no lines found in %s"
-[한국어] "%s에서 발견된 라인들은 없습니다"
-
-[English] "profile does not contain memory information"
-[한국어] "프로파일은 메모리 정보를 포함하지 않습니다"
-
-[English] "profile does not contain line information"
-[한국어] "프로파일은 라인정보를 포함하지 않습니다"
-
-[English] "no events were recorded"
-[한국어] "어떠한 이벤트들도 기록되지 않았습니다"
-
-[English] "invalid 'tarfile' argument"
-[한국어] "'tarfile' 인자가 잘못되었습니다"
-
-[English] "'compressed' must be logical or character"
-[한국어] "'compressed'는 반드시 논리값 또는 문자이어야 합니다"
-
-[English] "failed to create directory %s"
-[한국어] "디렉토리 %s를 생성하는데 실패했습니다"
-
-[English] "invalid octal digit"
-[한국어] "유효하지 않은 10진 자릿입니다"
-
-[English] "'tarfile' must be a character string or a connection"
-[한국어] "'tarfile'은 반드시 문자열 또는 연결이어야 합니다"
-
-[English] "incomplete block on file"
-[한국어] "파일에 완성되지 않은 블럭이 있습니다"
-
-[English] "invalid name field in tarball"
-[한국어] "tarball 내에 잘못된 이름 항목이 있습니다"
-
-[English] "checksum error for entry '%s'"
-[한국어] "엔트리 '%s'에 대한 checksum 에러가 발생했습니다"
-
-[English] "failed to copy %s to %s"
-[한국어] "%s를 %s로 복사하는데 실패했습니다"
-
-[English] "unsupported entry type"
-[한국어] "지원되지 않는 엔트리 타입입니다"
+[English] "*** Note that 'pos=1' will give an error in the future"
+[한국어] "*** 'pos=1'은 나중에 에러를 줄 것입니다"
 
 [English] "file '%s' not found"
-[한국어] "파일 '%s'를 찾을 수 없습니다"
+[한국어] "파일 '%s'을 찾을 수 없습니다"
 
-[English] "file size is limited to 8GB"
-[한국어] "파일크기는 8GB로 제한되어 있습니다"
+[English] "invalid 'name' argument"
+[한국어] "유효한 'name' 인자가 아닙니다"
 
-[English] ""
-[한국어] ""
+[English] "package %s is required by %s, which may no longer work correctly"
+[한국어] "패키지 %1$s는 %2$s를 필요로 하기 때문에 더 이상 올바르게 작동하지 않을 수 있습니다"
 
-[English] "vignette %s not found"
-[한국어] "비니에트 %s를 찾을 수 없습니다"
-
-[English] "vignette %s has no PDF"
-[한국어] "비니에트 %s는 PDF를 가지지 않습니다"
-
-[English] "select.list() cannot be used non-interactively"
-[한국어] "select.list()는 비대화식으로 사용될 수 없습니다"
-
-[English] "'title' must be NULL or a length-1 character vector"
-[한국어] "'title'은 반드시 NULL 또는 길이가 1인 문자형 벡터이어야 합니다"
-
-[English] "Enter one or more numbers separated by spaces, or an empty line to cancel"
-[한국어] "하나 또는 그 이상의 숫자를 공백을 이용하여 입력하거나, 취소를 하고자 한다면 빈 라인을 입력해주세요"
-
-[English] "Invalid input, please try again"
-[한국어] "잘못된 입력입니다.  다시 시도해 주세요"
-
-[English] "'quote' must be 'TRUE', 'FALSE' or numeric"
-[한국어] "'quote'는 반드시 'TRUE', 'FALSE' 또는 숫자이어야 합니다"
-
-[English] "invalid numbers in 'quote'"
-[한국어] "'quote' 내에 잘못된 숫자들이 있습니다"
-
-[English] "invalid 'quote' specification"
-[한국어] "'quote' 지정이 잘못되었습니다"
-
-[English] "'col.names = NA' makes no sense when 'row.names = FALSE'"
-[한국어] "'col.names = NA'이라는 것은 'row.names = FALSE'일때에 아무런 의미를 가지지 않습니다"
-
-[English] "invalid 'col.names' specification"
-[한국어] "'col.names' 지정이 잘못되었습니다"
-
-[English] "appending column names to file"
-[한국어] "열의 이름들을 파일에 추가합니다"
-
-[English] "attempt to set '%s' ignored"
-[한국어] "'%s'로 설정하고자 하는 시도가 무시되었습니다"
-
-[English] "'unzip' must be a single character string"
-[한국어] "'unzip'은 반드시 단일 문자열이어야 합니다"
-
-[English] "'files' must a character vector specifying one or more filepaths"
-[한국어] "'files'은 반드시 한개 이상의 파일패스들을 지정하는 문자형 벡터이어야 합니다"
-
-[English] "cannot find program to open 'mailto:' URIs: reverting to 'method=\"none\"'"
-[한국어] ""
-
-[English] "Using the browser to open a mailto: URI"
-[한국어] "브라우저를 이용하여 mailto: URI를 엽니다"
-
-[English] "must specify 'address'"
-[한국어] "'address'를 반드시 지정해야 합니다"
-
-[English] "'subject' is missing"
-[한국어] "'subject'가 없습니다"
-
-[English] "'ccaddress' must be of length 1"
-[한국어] "'ccaddress'는 반드시 길이가 1이어야 합니다"
-
-[English] "no download method found"
-[한국어] "다운로드 메소드를 찾을 수 없습니다"
-
-[English] "download had nonzero exit status"
-[한국어] "다운로드가 0 이 아닌 종료상태를 가졌습니다"
-
-[English] "'tar' returned non-zero exit code %d"
-[한국어] "'tar'는 0 이 아닌 종료코드 %d를 반환했습니다"
-
-[English] "file %s is not an OS X binary package"
-[한국어] "파일 %s는 OS X 바이너리 패키지입니다"
-
-[English] "package %s successfully unpacked and MD5 sums checked"
-[한국어] "패키지 %s를 성공적으로 압축해제하였고 MD5 sums 이 확인되었습니다"
+[English] "package %s is required by %s so will not be detached"
+[한국어] "패키지 %1$s은 %2$s가 필요하기 때문에 분리되어지지 않을 것입니다"
 
 [English] ""
 [한국어] ""
 
-[English] "ERROR: failed to create lock directory %s"
-[한국어] "에러: 잠긴 디렉토리 %s를 생성하는데 실패했습니다"
+[English] "%s namespace cannot be unloaded:"
+[한국어] "%s 네임스페이스는 언로드 될 수 없습니다:"
 
-[English] "restored %s"
-[한국어] "%s를 복구하였습니다"
+[English] "%s converted to character string"
+[한국어] "%s는 문자열로 변환되었습니다"
 
-[English] "unable to move temporary installation %s to %s"
-[한국어] "임시 설치 %s를 %s로 이동할 수 없습니다"
+[English] "replaced regular expression pattern '[' by  '\\\\['"
+[한국어] "정규표현패턴 '[' 은  '\\\\[' 으로 대체되었습니다"
 
-[English] "cannot remove prior installation of package %s"
-[한국어] "패키지 %s의 이전설치를 삭제할 수 없습니다"
+[English] "replaced '[&lt;-' by '\\\\[&lt;-' in regular expression pattern"
+[한국어] "정규표현패턴 '[&lt;-' 은 '\\\\[&lt;-' 으로 대체되었습니다"
+
+[English] "'value' must be a list"
+[한국어] "'value'는 반드시 리스트이어야 합니다"
+
+[English] "an object with that name already exists"
+[한국어] "해당이름을 가진 객체가 이미 존재합니다"
+
+[English] "autoloader did not find '%s' in '%s'"
+[한국어] "오토로더는 '%s'를 '%s'에서 찾지 못했습니다"
+
+[English] "complex matrices not permitted at present"
+[한국어] "복소수 행렬은 현재 허용되지 않습니다"
+
+[English] "non-square matrix in 'chol'"
+[한국어] "'chol'에 비정방행렬이 존재합니다"
+
+[English] "non-matrix argument to 'chol'"
+[한국어] "'chol'에 행렬이 아닌 인자가 전달되었습니다"
+
+[English] "invalid nrow(x)"
+[한국어] "유효하지 않은 nrow(x)입니다"
+
+[English] "too large a matrix for LINPACK"
+[한국어] "LINPACK에 너무 큰 행렬입니다"
+
+[English] "matrix not positive definite"
+[한국어] "행렬이 positive definite가 아닙니다"
+
+[English] "'x' must be an array of at least two dimensions"
+[한국어] "'x'는 반드시 최소 2차원 배열이어야 합니다"
+
+[English] "invalid 'dims'"
+[한국어] "유효하지 않은 'dims'가 아닙니다"
+
+[English] "bad handler specification"
+[한국어] "잘못된 핸들러 지정입니다"
+
+[English] "no 'restart' '%s' found"
+[한국어] "'restart' '%s'를 찾을 수 없습니다"
+
+[English] "not an interactive session"
+[한국어] "대화형 세션이 아닙니다"
+
+[English] "not a valid restart specification"
+[한국어] "유효한 재시작 지정이 아닙니다"
+
+[English] "argument 'where' of length 0"
+[한국어] "인자 'where'의 길이가 0입니다"
+
+[English] "argument 'object' must deparse to a single character string"
+[한국어] ""
+
+[English] "'origin' must be one of 'start', 'current' or 'end'"
+[한국어] "'origin'은 반드시 'start', 'current' 또는 'end' 중 하나이어야 합니다"
+
+[English] "can only truncate an open connection"
+[한국어] "오로지 열려 있는 커넥션을 자를 수만 있습니다"
+
+[English] "can only write vector objects"
+[한국어] "오로지 벡터 객체들을 기록할 수만 있습니다"
+
+[English] "can only write character objects"
+[한국어] "오로지 문자형 객체들을 기록할 수만 있습니다"
+
+[English] "'timeout' must be NULL or a non-negative number"
+[한국어] "'timeout'은 반드시 NULL 또는 음이 아닌 수이어야 합니다"
+
+[English] "'from' must be raw or character"
+[한국어] "'from'은 반드시 raw 또는 문자이어야 합니다"
+
+[English] "'x' must be numeric"
+[한국어] "'x'은 반드시 수치형이어야 합니다"
+
+[English] "invalid number of intervals"
+[한국어] "유효하지 않은 구간의 개수입니다"
+
+[English] "'breaks' are not unique"
+[한국어] "'breaks'의 값들이 고유하지 않습니다"
+
+[English] "lengths of 'breaks' and 'labels' differ"
+[한국어] "'breaks'의 길이와 'labels'의 길이가 다릅니다"
+
+[English] "invalid 'row.names' length"
+[한국어] "유효하지 않은 'row.names'의 길이입니다"
+
+[English] "duplicate 'row.names' are not allowed"
+[한국어] "중복되는 'row.names'의 값은 허용되지 않습니다"
+
+[English] "missing values in 'row.names' are not allowed"
+[한국어] "'row.names'에는 결측값이 허용되지 않습니다"
+
+[English] "invalid 'dimnames' given for data frame"
+[한국어] "데이터프레임에 잘못된 'dimnames'이 주어졌습니다"
+
+[English] "cannot coerce class \"%s\" to a data.frame"
+[한국어] "클래스  \"%s\"를 data.frame으로 강제형변환 할 수 없습니다"
+
+[English] "options(\"stringsAsFactors\") not set to TRUE or FALSE"
+[한국어] "options(\"stringsAsFactors\")의 값이 TRUE 또는 FALSE로 지정되어 있지 않습니다"
+
+[English] "mismatch of row names in arguments of 'data.frame', item %d"
+[한국어] ""
+
+[English] "some row.names duplicated: %s --&gt; row.names NOT used"
+[한국어] "일부 row.names가 중복됩니다: %s --&gt; row.names 는 사용되지 않았습니다"
+
+[English] "row names contain missing values"
+[한국어] "행 이름들이 결측값들을 가지고 있습니다"
+
+[English] "duplicate row.names: %s"
+[한국어] "중복되는 row.names의 값들은 다음과 같습니다: %s"
+
+[English] "arguments imply differing number of rows: %s"
+[한국어] ""
+
+[English] "'row.names' should specify one of the variables"
+[한국어] "'row.names'은 변수들중 하나를 지정해야만 합니다"
+
+[English] "row names supplied are of the wrong length"
+[한국어] "제공된 행의 이름들의 길이가 잘못되었습니다"
+
+[English] "row names were found from a short variable and have been discarded"
+[한국어] ""
+
+[English] "named arguments other than 'drop' are discouraged"
+[한국어] ""
+
+[English] "'drop' argument will be ignored"
+[한국어] "인자 'drop'은 무시되어질 것입니다"
+
+[English] "undefined columns selected"
+[한국어] "정의하지 않은 열들이 선택되었습니다"
+
+[English] "named arguments other than 'exact' are discouraged"
+[한국어] ""
+
+[English] "named arguments are discouraged"
+[한국어] ""
+
+[English] "number of items to replace is not a multiple of replacement length"
+[한국어] ""
+
+[English] "'value' is the wrong length"
+[한국어] "'value'의 길이가 잘못되었습니다"
+
+[English] "unsupported matrix index in replacement"
+[한국어] ""
+
+[English] "need 0, 1, or 2 subscripts"
+[한국어] ""
+
+[English] "missing values are not allowed in subscripted assignments of data frames"
+[한국어] "데이터 프레임에서 첨자를 이용한 대입에서는 결측치는 허용되지 않습니다"
+
+[English] "non-existent rows not allowed"
+[한국어] ""
+
+[English] "column name \"\" cannot match any column"
+[한국어] ""
+
+[English] "new columns would leave holes after existing columns"
+[한국어] ""
+
+[English] "duplicate subscripts for columns"
+[한국어] "열을 지정하는 첨자들이 중복됩니다"
+
+[English] "only valid calls are x[[j]] &lt;- value or x[[i,j]] &lt;- value"
+[한국어] "유효한 호출들은 x[[j]] &lt;- value 또는 x[[i,j]] &lt;- value 입니다"
+
+[English] "replacing element in non-existent column: %s"
+[한국어] ""
+
+[English] "only a single element should be replaced"
+[한국어] "한개의 구성요소만이 교체되어져야 합니다"
+
+[English] "names do not match previous names"
+[한국어] ""
+
+[English] "numbers of columns of arguments do not match"
+[한국어] ""
+
+[English] "invalid list argument: all variables should have the same length"
+[한국어] ""
+
+[English] "data frame with 0 columns and %d rows"
+[한국어] "행의 개수가 %d이고 열의 개수가 0인 데이터 프레임입니다"
+
+[English] "&lt;0 rows&gt; (or 0-length row.names)"
+[한국어] ""
+
+[English] "non-numeric variable in data frame:"
+[한국어] ""
+
+[English] "only defined for equally-sized data frames"
+[한국어] "동일한 사이즈의 데이터 프레임들에 대해서만 정의되어집니다"
+
+[English] "list of length %d not meaningful"
+[한국어] "의미가 없는 길이 %d인 리스트입니다"
+
+[English] "only defined on a data frame with all numeric variables"
+[한국어] "모든 변수가 숫자형인 데이터 프레임에 대해서만 정의되어 집니다"
+
+[English] "character string is not in a standard unambiguous format"
+[한국어] "문자열이 표준서식을 따르지 않습니다"
+
+[English] "'origin' must be supplied"
+[한국어] "'origin'이 반드시 주어져야 합니다"
+
+[English] "do not know how to convert '%s' to class %s"
+[한국어] "'%s'를 클래스 %s로 어떻게 변환하는지 알지 못합니다"
+
+[English] "'%s' is not a \"date\" object"
+[한국어] "'%s'는 \"date\" 객체가 아닙니다"
+
+[English] "'%s' is not a \"dates\" object"
+[한국어] "'%s'는 \"dates\" 객체가 아닙니다"
+
+[English] "binary + is not defined for \"Date\" objects"
+[한국어] ""
+
+[English] "can only subtract from \"Date\" objects"
+[한국어] ""
+
+[English] "unary - is not defined for \"Date\" objects"
+[한국어] ""
+
+[English] "can only subtract numbers from \"Date\" objects"
+[한국어] ""
+
+[English] "unary %s not defined for \"Date\" objects"
+[한국어] ""
+
+[English] "%s not defined for \"Date\" objects"
+[한국어] ""
+
+[English] "'from' must be specified"
+[한국어] "'from'은 반드시 지정되어야 합니다"
+
+[English] "'from' must be a \"Date\" object"
+[한국어] "'from'은 반드시 \"Date\" 객체이어야 합니다"
+
+[English] "'from' must be of length 1"
+[한국어] "'from'은 반드시 길이가 1이어야 합니다"
+
+[English] "'to' must be a \"Date\" object"
+[한국어] "'to'는 반드시 \"Date\" 객체이어야 합니다"
+
+[English] "'to' must be of length 1"
+[한국어] "'to'는 반드시 길이가 1 이어야 합니다"
+
+[English] "'length.out' must be of length 1"
+[한국어] "'length.out'은 반드시 길이가 1 이어야 합니다"
+
+[English] "exactly two of 'to', 'by' and 'length.out' / 'along.with' must be specified"
+[한국어] "정확하게 두개의 'to', 'by' 그리고 'length.out' / 'along.with'가 반드시 지정되어야 합니다"
+
+[English] "'by' must be of length 1"
+[한국어] "'by'는 반드시 길이가 1이어야 합니다"
+
+[English] "invalid 'by' string"
+[한국어] "'by' 문자열이 잘못되었습니다"
+
+[English] "invalid string for 'by'"
+[한국어] ""
+
+[English] "invalid mode for 'by'"
+[한국어] ""
+
+[English] "'by' is NA"
+[한국어] "'by'는 NA입니다"
+
+[English] "'x' must be a date-time object"
+[한국어] "'x'는 반드시 날짜-시간 객체이어야 합니다"
+
+[English] "invalid specification of 'breaks'"
+[한국어] "'breaks' 지정이 잘못되었습니다"
+
+[English] "'origin' must be of length one"
+[한국어] "'origin'의 길이는 반드시 1이어야 합니다"
+
+[English] "'lag' and 'differences' must be integers &gt;= 1"
+[한국어] "'lag'과 'differences'는 반드시 1 이상의 정수여야 합니다"
+
+[English] "wrong class"
+[한국어] "잘못된 클래스입니다"
+
+[English] "binary '+' is not defined for \"POSIXt\" objects"
+[한국어] ""
+
+[English] "can only subtract from \"POSIXt\" objects"
+[한국어] ""
+
+[English] "unary '-' is not defined for \"POSIXt\" objects"
+[한국어] "단항연산자 '-'는 \"POSIXt\" 객체들에 대해서 정의되어 있지 않습니다"
+
+[English] "can only subtract numbers from \"POSIXt\" objects"
+[한국어] ""
+
+[English] "unary '%s' not defined for \"POSIXt\" objects"
+[한국어] ""
+
+[English] "'%s' not defined for \"POSIXt\" objects"
+[한국어] ""
+
+[English] "'tzone' attributes are inconsistent"
+[한국어] ""
+
+[English] "'tim' is not character or numeric"
+[한국어] "'tim'은 문자 또는 숫자가 아닙니다"
+
+[English] "need explicit units for numeric conversion"
+[한국어] ""
+
+[English] "invalid units specified"
+[한국어] ""
+
+[English] "unary '%s' not defined for \"difftime\" objects"
+[한국어] ""
+
+[English] "'%s' not defined for \"difftime\" objects"
+[한국어] ""
+
+[English] "both arguments of * cannot be \"difftime\" objects"
+[한국어] ""
+
+[English] "second argument of / cannot be a \"difftime\" object"
+[한국어] ""
+
+[English] "'from' must be a \"POSIXt\" object"
+[한국어] "'from'은 반드시 \"POSIXt\" 객체이어야 합니다"
+
+[English] "'to' must be a \"POSIXt\" object"
+[한국어] "'to'는 반드시 \"POSIXt\" 객체이어야 합니다"
+
+[English] "'file' must be a character string or connection"
+[한국어] "'file'은 반드시 문자열 또는 커넥션이어야 합니다"
 
 [English] ""
 [한국어] ""
 
-[English] "'memory.size()' is Windows-specific"
-[한국어] "'memory.size()'는 윈도우즈 전용입니다"
+[English] ""
+[한국어] ""
 
-[English] "'memory.limit()' is Windows-specific"
-[한국어] "'memory.limit()'은 윈도우즈 전용입니다"
+[English] "'x' must be a square matrix"
+[한국어] "'x'는 반드시 정방행렬이어야 합니다"
 
-[English] "method 'mailx' is Unix-only"
-[한국어] "메소드 'mailx'는 유닉스에서만 사용할 수 있습니다"
+[English] "'determinant' not currently defined for complex matrices"
+[한국어] ""
+
+[English] "'nrow' or 'ncol' cannot be specified when 'x' is a matrix"
+[한국어] "'nrow' 또는 'ncol'는 'x'가 행렬일때 지정될 수 없습니다"
+
+[English] "'x' is an array, but not one-dimensional."
+[한국어] "'x'는 배열이지만 1차원이 아닙니다."
+
+[English] "only matrix diagonals can be replaced"
+[한국어] ""
+
+[English] "replacement diagonal has wrong length"
+[한국어] ""
+
+[English] "MARGIN = %d is invalid for dim = %d"
+[한국어] ""
+
+[English] "must pass a package name, %s or %s object"
+[한국어] ""
+
+[English] "No DLL currently loaded with name or path %s"
+[한국어] ""
+
+[English] "multiple DLLs match '%s'. Using '%s'"
+[한국어] ""
+
+[English] "must specify DLL via a %s object. See getLoadedDLLs()"
+[한국어] ""
+
+[English] "function is not in a namespace, so cannot locate associated DLL"
+[한국어] ""
+
+[English] "looking for DLL for native routine call, but no DLLs in namespace of call"
+[한국어] ""
+
+[English] "0 x 0 matrix"
+[한국어] "0 행 0 열 행렬입니다"
+
+[English] "non-square matrix in 'eigen'"
+[한국어] ""
+
+[English] "invalid 'labels'; length %d should be 1 or %d"
+[한국어] ""
+
+[English] "number of levels differs"
+[한국어] ""
+
+[English] "not meaningful for factors"
+[한국어] ""
+
+[English] "level sets of factors are different"
+[한국어] ""
+
+[English] "invalid factor level, NA generated"
+[한국어] ""
+
+[English] "'%s' is not meaningful for ordered factors"
+[한국어] ""
+
+[English] "'%s' not defined for ordered factors"
+[한국어] ""
+
+[English] "'%s' is only meaningful for ordered factors if all arguments have the same level sets"
+[한국어] ""
+
+[English] "no files to copy to"
+[한국어] ""
+
+[English] "attempt to copy a directory to itself"
+[한국어] ""
+
+[English] "more 'from' files than 'to' files"
+[한국어] ""
+
+[English] "'recursive' will be ignored as 'to' is not a single existing directory"
+[한국어] ""
+
+[English] "file can not be copied both 'from' and 'to'"
+[한국어] ""
+
+[English] "no files to link from"
+[한국어] ""
+
+[English] "no files/directory to link to"
+[한국어] ""
+
+[English] "no files to link to"
+[한국어] ""
+
+[English] "'package' must be of length 1"
+[한국어] "'package'는 반드시 길이가 1이어야 합니다"
+
+[English] "no file found"
+[한국어] ""
+
+[English] "invalid 'path' argument"
+[한국어] ""
+
+[English] "invalid 'time' argument"
+[한국어] ""
+
+[English] "'vec' contains NAs"
+[한국어] "'vec'는 NA 값들을 포함합니다"
+
+[English] "'vec' must be sorted non-decreasingly"
+[한국어] ""
+
+[English] "using the first element of 'value' of type \"expression\""
+[한국어] ""
+
+[English] "'mode' must be \"double\" (\"real\"), \"integer\" or \"character\""
+[한국어] ""
+
+[English] "coercing argument to \"character\" for format=\"s\""
+[한국어] ""
+
+[English] "'format' must be one of {\"f\",\"e\",\"E\",\"g\",\"G\", \"fg\", \"s\"}"
+[한국어] ""
+
+[English] "'digits' reduced to %d"
+[한국어] ""
+
+[English] "'flag' can contain only '0+- #'"
+[한국어] ""
+
+[English] "corrupt data frame: columns will be truncated or padded with NAs"
+[한국어] ""
+
+[English] "'zero.print' has length &gt; 1"
+[한국어] "'zero.print'는 길이가 1 보다 커야합니다"
+
+[English] "'zero.print' must be character, logical or NULL"
+[한국어] "'zero.print'는 반드시 문자, 논리값, 또는 NULL이어야 합니다"
+
+[English] "'subset' must be logical"
+[한국어] ""
+
+[English] "value for %s not found"
+[한국어] ""
+
+[English] "all arguments must be named"
+[한국어] ""
+
+[English] "match distance components must be non-negative"
+[한국어] ""
+
+[English] "unknown match distance components ignored"
+[한국어] ""
+
+[English] "unknown cost components ignored"
+[한국어] ""
+
+[English] "cost components must be non-negative"
+[한국어] ""
+
+[English] "%s and %s must have the same length"
+[한국어] "%s와 %s는 반드시 같은 길이를 가져야 합니다"
+
+[English] "need non-overlapping matches for %s"
+[한국어] ""
+
+[English] "missing replacement values are not allowed"
+[한국어] ""
+
+[English] "must have replacement values for matches"
+[한국어] ""
+
+[English] "value does not provide any replacement values"
+[한국어] ""
+
+[English] "must have replacements for non-matches"
+[한국어] ""
+
+[English] "must have replacements for matches"
+[한국어] ""
+
+[English] "norm '%s' currently always uses exact = FALSE"
+[한국어] ""
+
+[English] "triangular matrix should be square"
+[한국어] ""
+
+[English] "'object' must be a list"
+[한국어] "'object'는 반드시 리스트이어야 합니다"
+
+[English] "package %s has not been installed properly"
+[한국어] ""
+
+[English] "package %s was built before R 3.0.0: please re-install it"
+[한국어] ""
+
+[English] "This is R %s, package %s needs %s %s"
+[한국어] ""
+
+[English] "package %s was built under R version %s"
+[한국어] ""
+
+[English] "package %s was built for %s"
+[한국어] ""
+
+[English] "package %s is not installed for 'arch = %s'"
+[한국어] ""
+
+[English] "package %s has a license that you need to accept in an interactive session"
+[한국어] ""
+
+[English] "package %s has a license that you need to accept after viewing"
+[한국어] ""
 
 [English] ""
 [한국어] ""
 
-[English] "zip file %s not found"
-[한국어] "zip 파일 %s를 찾을 수 없습니다"
+[English] "license for package %s not accepted"
+[한국어] ""
 
-[English] "failed to create %s"
-[한국어] "%s를 생성하는데 실패했습니다"
+[English] "Attaching package: %s"
+[한국어] ""
 
-[English] "there is no 'libs' directory in package %s"
-[한국어] "패키지 %s내에 'libs'이라는 디렉토리가 없습니다"
+[English] "'verbose' and 'quietly' are both true; being verbose then .."
+[한국어] ""
 
-[English] "winDialog() cannot be used non-interactively"
-[한국어] "winDialog()는 인터랙티브하게 사용되어져야 합니다"
+[English] "invalid package name"
+[한국어] "패키지 이름이 잘못되었습니다"
 
-[English] "winDialogString() cannot be used non-interactively"
-[한국어] "winDialogString()는 인터랙티브하게 사용되어져야 합니다"
+[English] "there is no package called %s"
+[한국어] "%s이라고 불리는 패키지가 없습니다"
 
-[English] "%d occurrence in %s"
-[English]_plural "%d occurrences in %s"
-[한국어][0] "%d는 %s내에서 발생하였습니다"
+[English] "no library trees found in 'lib.loc'"
+[한국어] ""
 
-[English] "Invalid role specification: %s."
-[English]_plural "Invalid role specifications: %s."
-[한국어][0] "역할지정이 잘못되었습니다: %s."
+[English] "%s is not a valid installed package"
+[한국어] ""
 
-[English] "A bibentry of bibtype %s has to specify the field: %s"
-[English]_plural "A bibentry of bibtype %s has to specify the fields: %s"
+[English] "%s not found on search path, using pos = 2"
+[한국어] ""
+
+[English] "package or namespace load failed for %s"
+[한국어] ""
+
+[English] "package %s does not have a namespace and should be re-installed"
+[한국어] "패키지 %s는 네임스페이스를 가지고 있지 않으며, 반드시 재설치 되어야 합니다"
+
+[English] "package %s already present in search()"
+[한국어] ""
+
+[English] "'DESCRIPTION' has an 'Encoding' field and re-encoding is not possible"
+[한국어] ""
+
+[English] "%sPackages in library %s:"
+[한국어] ""
+
+[English] "no packages found"
+[한국어] "패키지들을 찾을 수 없습니다"
+
+[English] "R packages available"
+[한국어] ""
+
+[English] "DLL %s not found: maybe not installed for this architecture?"
+[한국어] ""
+
+[English] "shared object %s not found"
+[한국어] "공유된 객체 %s를 찾을 수 없습니다"
+
+[English] "DLL %s already loaded"
+[한국어] "DLL %s는 이미 로드되었습니다"
+
+[English] "shared object '%s' already loaded"
+[한국어] "공유된 객체 '%s'는 이미 로드되었습니다"
+
+[English] "now dyn.load(\"%s\") ..."
+[한국어] ""
+
+[English] "no DLL was specified"
+[한국어] ""
+
+[English] "no shared object was specified"
+[한국어] ""
+
+[English] "DLL %s was not loaded"
+[한국어] "DLL %s가 로드되지 않았습니다"
+
+[English] "shared object %s was not loaded"
+[한국어] ""
+
+[English] "DLL %s not found"
+[한국어] "DLL %s를 찾을 수 없습니다"
+
+[English] "shared object '%s' not found"
+[한국어] ""
+
+[English] "now dyn.unload(\"%s\") ..."
+[한국어] ""
+
+[English] "Loading required package: %s"
+[한국어] ""
+
+[English] "none of the packages are loaded"
+[한국어] ""
+
+[English] ""
+[한국어] ""
+
+[English] "Further information is available in the following vignettes in directory %s:"
+[한국어] ""
+
+[English] "Description:"
+[한국어] ""
+
+[English] "Index:"
+[한국어] ""
+
+[English] "Information on package %s"
+[한국어] ""
+
+[English] "Documentation for package %s"
+[한국어] ""
+
+[English] "package %s required by %s could not be found"
+[한국어] ""
+
+[English] "package %s %s was found, but %s %s is required by %s"
+[한국어] ""
+
+[English] "package %s could not be loaded"
+[한국어] ""
+
+[English] "package %s %s is loaded, but %s %s is required by %s"
+[한국어] ""
+
+[English] "empty (zero-byte) input file"
+[한국어] ""
+
+[English] "input has been corrupted, with LF replaced by CR"
+[한국어] ""
+
+[English] "bad 'file' argument"
+[한국어] ""
+
+[English] "'file' must be specified"
+[한국어] ""
+
+[English] "nothing specified to be save()d"
+[한국어] ""
+
+[English] "'file' must be non-empty string"
+[한국어] ""
+
+[English] "'compress' must be logical or character"
+[한국어] ""
+
+[English] "'compress = \"%s\"' is invalid"
+[한국어] ""
+
+[English] "bad file argument"
+[한국어] ""
+
+[English] "can only save to a binary connection"
+[한국어] ""
+
+[English] "image could not be renamed and is left in %s"
+[한국어] ""
+
+[English] "[Previously saved workspace restored]"
+[한국어] ""
+
+[English] "Attempting to load the environment %s"
+[한국어] ""
+
+[English] "Specified environment not found: using '.GlobalEnv' instead"
+[한국어] ""
+
+[English] "invalid 'category' argument"
+[한국어] ""
+
+[English] "must specify names of formal arguments for 'vectorize'"
+[한국어] ""
+
+[English] "'arg' must be NULL or a character vector"
+[한국어] ""
+
+[English] "'arg' must be of length 1"
+[한국어] ""
+
+[English] "'arg' must be of length &gt;= 1"
+[한국어] ""
+
+[English] "'arg' should be one of %s"
+[한국어] ""
+
+[English] "there is more than one match in 'match.arg'"
+[한국어] ""
+
+[English] "no match"
+[한국어] ""
+
+[English] "'input' must have length 1"
+[한국어] ""
+
+[English] "'input' and 'target' must be character vectors"
+[한국어] ""
+
+[English] "'%s' is not a function, character or symbol"
+[한국어] ""
+
+[English] "found non-function '%s'"
+[한국어] ""
+
+[English] "attempt to set 'rownames' on an object with no dimensions"
+[한국어] ""
+
+[English] "attempt to set 'colnames' on an object with less than two dimensions"
+[한국어] ""
+
+[English] "argument is not numeric or logical: returning NA"
+[한국어] ""
+
+[English] "'trim' must be numeric of length one"
+[한국어] ""
+
+[English] "trimmed means are not defined for complex data"
+[한국어] ""
+
+[English] "'by' must match numbers of columns"
+[한국어] ""
+
+[English] "'by' must match number of columns"
+[한국어] ""
+
+[English] "'by' must specify one or more columns as numbers, names or logical"
+[한국어] ""
+
+[English] "'by.x' and 'by.y' specify different numbers of columns"
+[한국어] ""
+
+[English] "additional arguments ignored in message()"
+[한국어] ""
+
+[English] "tracing functions requires the 'methods' package, but unable to load the 'methods' namespace"
+[한국어] ""
+
+[English] "invalid to change the storage mode of a factor"
+[한국어] ""
+
+[English] "'%s' is not an exported object from 'namespace:%s'"
+[한국어] ""
+
+[English] "namespace is already attached"
+[한국어] ""
+
+[English] "%s not found"
+[한국어] ""
+
+[English] "namespace %s %s is already loaded, but %s %s is required"
+[한국어] ""
+
+[English] "namespace %s is already sealed in 'loadNamespace'"
+[한국어] ""
+
+[English] "failed to assign RegisteredNativeSymbol for %s to %s since %s is already defined in the %s namespace"
+[한국어] ""
+
+[English] "failed to assign NativeSymbolInfo for %s to %s since %s is already defined in the %s namespace"
+[한국어] ""
+
+[English] "failed to assign NativeSymbolInfo for %s since %s is already defined in the %s namespace"
+[한국어] ""
+
+[English] "package %s does not have a namespace"
+[한국어] ""
+
+[English] "namespace %s %s is being loaded, but %s %s is required"
+[한국어] ""
+
+[English] "unable to load R code in package %s"
+[한국어] ""
+
+[English] "'exportClassPattern' specified in 'NAMESPACE' but no matching classes in package %s"
+[한국어] ""
+
+[English] "in package %s classes %s were specified for export but not defined"
+[한국어] ""
+
+[English] "no function found corresponding to methods exports from %s for: %s"
+[한국어] ""
+
+[English] "in %s methods for export not found: %s"
+[한국어] ""
+
+[English] "multiple methods tables found for %s"
+[한국어] ""
+
+[English] "failed to find metadata object for %s"
+[한국어] ""
+
+[English] "in package %s methods %s were specified for export but not defined"
+[한국어] ""
+
+[English] "Loading required namespace: %s"
+[한국어] ""
+
+[English] "not loading a namespace"
+[한국어] ""
+
+[English] "namespace %s is imported by %s so cannot be unloaded"
+[한국어] ""
+
+[English] "not a namespace"
+[한국어] ""
+
+[English] "operation not allowed on base namespace"
+[한국어] ""
+
+[English] "duplicate import names %s"
+[한국어] ""
+
+[English] "replacing local value with import %s when loading %s"
+[한국어] ""
+
+[English] "cannot import into a sealed namespace"
+[한국어] ""
+
+[English] "replacing previous import %s when loading %s"
+[한국어] ""
+
+[English] "invalid import target"
+[한국어] ""
+
+[English] "found methods to import for function %s but not the generic itself"
+[한국어] ""
+
+[English] "No methods found in \"%s\" for requests: %s"
+[한국어] ""
+
+[English] "requested methods not found in environment/package %s: %s"
+[한국어] ""
+
+[English] "No generic function found corresponding to requested imported methods for \"%s\" from package \"%s\" (malformed exports?)"
+[한국어] ""
+
+[English] "cannot add to exports of a sealed namespace"
+[한국어] ""
+
+[English] "undefined exports: %s"
+[한국어] ""
+
+[English] "package %s has no 'NAMESPACE' file"
+[한국어] ""
+
+[English] "empty name in directive '%s' in 'NAMESPACE' file"
+[한국어] ""
+
+[English] "duplicated symbol names %s in useDynLib(\"%s\")"
+[한국어] ""
+
+[English] "bad 'S3method' directive: %s"
+[한국어] ""
+
+[English] "too many 'S3method' directives"
+[한국어] ""
+
+[English] "unknown namespace directive: %s"
+[한국어] ""
+
+[English] "S3 method %s was declared but not found"
+[한국어] ""
+
+[English] "bad method"
+[한국어] ""
+
+[English] "object '%s' not found whilst loading namespace '%s'"
+[한국어] ""
+
+[English] "'%s' is not implemented yet"
+[한국어] ""
+
+[English] "argument '%s' is not used (yet)"
+[한국어] ""
+
+[English] "'x' cannot be coerced to class \"octmode\""
+[한국어] ""
+
+[English] "'x' cannot be coerced to class \"hexmode\""
+[한국어] ""
+
+[English] "using ... with FUN = \"*\" is an error"
+[한국어] ""
+
+[English] "no arguments"
+[한국어] ""
+
+[English] "an argument will be fractionally recycled"
+[한국어] ""
+
+[English] "invalid ncol(x)"
+[한국어] ""
+
+[English] "first argument must be a QR decomposition"
+[한국어] ""
+
+[English] "invalid nrow(qr$qr)"
+[한국어] ""
+
+[English] "invalid ncol(qr$qr)"
+[한국어] ""
+
+[English] "invalid ncol(qr$rank)"
+[한국어] ""
+
+[English] "invalid ncol(y)"
+[한국어] ""
+
+[English] "'qr' and 'y' must have the same number of rows"
+[한국어] ""
+
+[English] "exact singularity in 'qr.coef'"
+[한국어] ""
+
+[English] "argument is not a QR decomposition"
+[한국어] ""
+
+[English] "invalid NCOL(y)"
+[한국어] ""
+
+[English] "not implemented for complex 'qr'"
+[한국어] ""
+
+[English] "not supported for LAPACK QR"
+[한국어] ""
+
+[English] "'k' is too large"
+[한국어] ""
+
+[English] "need larger value of 'ncol' as pivoting occurred"
+[한국어] ""
+
+[English] "invalid NCOL(R)"
+[한국어] ""
+
+[English] "'x' must be an atomic vector"
+[한국어] ""
+
+[English] "invalid 'rle' structure"
+[한국어] ""
+
+[English] "... must contain names or character strings"
+[한국어] ""
+
+[English] "incorrect length for 'group'"
+[한국어] ""
+
+[English] "missing values for 'group'"
+[한국어] ""
+
+[English] "not a data frame"
+[한국어] ""
+
+[English] "length of 'center' must equal the number of columns of 'x'"
+[한국어] ""
+
+[English] "length of 'scale' must equal the number of columns of 'x'"
+[한국어] ""
+
+[English] "either specify 'nmax' or 'n', but not both."
+[한국어] ""
+
+[English] "argument 'length.out' must be of length 1"
+[한국어] ""
+
+[English] "first element used of 'length.out' argument"
+[한국어] ""
+
+[English] "invalid (to - from)/by in seq(.)"
+[한국어] ""
+
+[English] "wrong sign in 'by' argument"
+[한국어] ""
+
+[English] "'by' argument is much too small"
+[한국어] ""
+
+[English] "length must be non-negative number"
+[한국어] ""
+
+[English] "too many arguments"
+[한국어] ""
+
+[English] "'compress' is ignored unless 'file' is a file name"
+[한국어] ""
+
+[English] "'connection' must be a connection"
+[한국어] ""
+
+[English] "'file' must be NULL or an already open connection"
+[한국어] ""
+
+[English] "cannot split the message connection"
+[한국어] ""
+
+[English] "'file' must be NULL, a connection or a character string"
+[한국어] ""
+
+[English] "this is the \"qr\" method for the generic function solve()"
+[한국어] ""
+
+[English] "singular matrix 'a' in 'solve'"
+[한국어] ""
+
+[English] "only square matrices can be inverted"
+[한국어] ""
+
+[English] "solve.default called with a \"qr\" object: use 'qr.solve'"
+[한국어] ""
+
+[English] "singular matrix 'a' in solve"
+[한국어] ""
+
+[English] ""
+[한국어] ""
+
+[English] "'index.return' only for non-factors"
+[한국어] ""
+
+[English] "'x' must be atomic"
+[한국어] ""
+
+[English] "'index.return' only for 'na.last = NA'"
+[한국어] ""
+
+[English] "unsupported options for partial sorting"
+[한국어] ""
+
+[English] "non-finite 'partial'"
+[한국어] ""
+
+[English] "argument lengths differ"
+[한국어] ""
+
+[English] ""
+[한국어] ""
+
+[English] "method = \"quick\" is only for numeric 'x'"
+[한국어] ""
+
+[English] "method = \"radix\" is only for integer 'x'"
+[한국어] ""
+
+[English] "'local' must be TRUE, FALSE or an environment"
+[한국어] ""
+
+[English] "'echo' must be logical"
+[한국어] ""
+
+[English] "'verbose' is TRUE, 'echo' not; ... coercing 'echo &lt;- TRUE'"
+[한국어] ""
+
+[English] "unable to find a plausible encoding"
+[한국어] ""
+
+[English] "encoding = \"%s\" chosen"
+[한국어] ""
+
+[English] "'chdir = TRUE' makes no sense for a URL"
+[한국어] ""
+
+[English] "cannot 'chdir' as current directory is unknown"
+[한국어] ""
+
+[English] "'chdir = TRUE' makes no sense for a connection"
+[한국어] ""
+
+[English] "'%s' is not an existing file"
+[한국어] ""
+
+[English] "Timestamp of %s has changed"
+[한국어] ""
+
+[English] "additional arguments ignored in stop()"
+[한국어] ""
+
+[English] "additional arguments ignored in warning()"
+[한국어] ""
+
+[English] "incorrect value for 'x'"
+[한국어] ""
+
+[English] "'x' and 'y' must have the same length"
+[한국어] ""
+
+[English] "incorrect values of 'indent' and 'width'"
+[한국어] ""
+
+[English] "probably wrong encoding in names(.) of column"
+[한국어] ""
+
+[English] ","
+[한국어] ""
+
+[English] "STATS is longer than the extent of 'dim(x)[MARGIN]'"
+[한국어] ""
+
+[English] "STATS does not recycle exactly across MARGIN"
+[한국어] ""
+
+[English] "length(STATS) or dim(STATS) do not match dim(x)[MARGIN]"
+[한국어] ""
+
+[English] "nothing to tabulate"
+[한국어] ""
+
+[English] "all arguments must have the same length"
+[한국어] ""
+
+[English] "attempt to make a table with &gt;= 2^31 elements"
+[한국어] ""
+
+[English] "'object' must inherit from class %s"
+[한국어] ""
+
+[English] "'x' must inherit from class %s"
+[한국어] ""
+
+[English] "cannot coerce to a table"
+[한국어] ""
+
+[English] "'x' is not an array"
+[한국어] ""
+
+[English] "'bin' must be numeric or a factor"
+[한국어] ""
+
+[English] "invalid value of 'nbins'"
+[한국어] ""
+
+[English] "'INDEX' is of length zero"
+[한국어] ""
+
+[English] "arguments must have same length"
+[한국어] ""
+
+[English] "handler must be a function"
+[한국어] ""
+
+[English] "no such element '%s'"
+[한국어] ""
+
+[English] "Removing %s"
+[한국어] ""
+
+[English] "Registering 'evaluate' as low-level callback"
+[한국어] ""
+
+[English] "user"
+[한국어] ""
+
+[English] "system"
+[한국어] ""
+
+[English] "elapsed"
+[한국어] ""
+
+[English] "'width' must be positive"
+[한국어] ""
+
+[English] "No traceback available"
+[한국어] ""
+
+[English] "invalid version specification %s"
+[한국어] ""
+
+[English] "wrong argument"
+[한국어] ""
+
+[English] "invalid 'value'"
+[한국어] ""
+
+[English] "unary '%s' not defined for \"numeric_version\" objects"
+[한국어] ""
+
+[English] "'%s' not defined for \"numeric_version\" objects"
+[한국어] ""
+
+[English] "%s not defined for \"numeric_version\" objects"
+[한국어] ""
+
+[English] "&lt;0 elements&gt;"
+[한국어] ""
+
+[English] "invalid 'digits'"
+[한국어] ""
+
+[English] "arguments 'show.output.on.console', 'minimized' and 'invisible' are for Windows only"
+[한국어] ""
+
+[English] "'intern' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'ignore.stdout' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'ignore.stderr' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'wait' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'input' must be a character vector or 'NULL'"
+[한국어] ""
+
+[English] "arguments 'minimized' and 'invisible' are for Windows only"
+[한국어] ""
+
+[English] "setting stdout = TRUE"
+[한국어] ""
+
+[English] "'stdout' must be of length 1"
+[한국어] ""
+
+[English] "'stderr' must be of length 1"
+[한국어] ""
+
+[English] "'which' was not found on this platform"
+[한국어] ""
+
+[English] "fewer 'from' files than 'to' files"
+[한국어] ""
+
+[English] "link '%s' already exists"
+[한국어] ""
+
+[English] "failed to create directory for link '%s"
+[한국어] ""
+
+[English] "'show.output.on.console' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'minimized' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'invisible' must be TRUE or FALSE"
+[한국어] ""
+
+[English] "'%s' could not be run"
+[한국어] ""
+
+[English] "'%s' execution failed with error code %d"
+[한국어] ""
+
+[English] "-l option without value"
+[한국어] ""
+
+[English] "ERROR: no packages specified"
+[한국어] ""
+
+[English] "Removing from library"
+[한국어] ""
+
+[English] "ERROR: cannot cd to directory"
+[한국어] ""
+
+[English] "ERROR: no permission to remove from directory"
+[한국어] ""
+
+[English] "deparse option %s is not recognized"
+[English]_plural "deparse options %s are not recognized"
 [한국어][0] ""
-
-[English] "class discarded from column %s"
-[English]_plural "classes discarded from columns %s"
-[한국어][0] ""
-
-[English] "matched %d object."
-[English]_plural "matched %d objects."
-[한국어][0] ""
-
-[English] "object '%s' not found"
-[English]_plural "objects '%s' not found"
-[한국어][0] "객체 '%s'를 찾을 수 없습니다"
+[한국어][1] ""
 
 [English] ""
 [English]_plural ""
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "package %s is not available (for %s)"
-[English]_plural "packages %s are not available (for %s)"
-[한국어][0] "패키지 %s (들)은 사용가능하지 않습니다 (그 이유는 %s 입니다)"
-
-[English] "dependency %s is not available"
-[English]_plural "dependencies %s are not available"
+[English] "invalid 'row.names', length %d for a data frame with %d row"
+[English]_plural "invalid 'row.names', length %d for a data frame with %d rows"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "also installing the dependency %s"
-[English]_plural "also installing the dependencies %s"
+[English] "supplied %d row name for %d rows"
+[English]_plural "supplied %d row names for %d rows"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] ""
-[English]_plural ""
+[English] "replacement has %d row, data has %d"
+[English]_plural "replacement has %d rows, data has %d"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "'lib' element %s is not a writable directory"
-[English]_plural "'lib' elements %s are not writable directories"
-[한국어][0] "'lib'의 구성요소 %s는 쓰기가 가능한 디렉토리가 아닙니다"
-
-[English] "There is a binary version available but the source version is later"
-[English]_plural "There are binary versions available but the source versions are later"
+[English] "replacement has %d item, need %d"
+[English]_plural "replacement has %d items, need %d"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "Do you want to install from sources the package which need compilation?"
-[English]_plural "Do you want to install from sources the packages which need compilation?"
-[한국어][0] "컴파일이 필요한 패키지를 소스로부터 직접 설치하기를 원하시나요?"
-
-[English] "Package which are only available in source form, and may need compilation of C/C++/Fortran"
-[English]_plural "Packages which are only available in source form, and may need compilation of C/C++/Fortran"
-[한국어][0] "오로지 소스의 형태로만 패키지가 제공되므로,  C/C++/Fortran 의 컴파일이 필요할 수 있습니다"
-
-[English] "installing the source package %s"
-[English]_plural "installing the source packages %s"
+[English] "replacement element %d is a matrix/data frame of %d row, need %d"
+[English]_plural "replacement element %d is a matrix/data frame of %d rows, need %d"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "package %s is available as a source package but not as a binary"
-[English]_plural "packages %s are available as source packages but not as binaries"
+[English] "replacement element %d has %d row, need %d"
+[English]_plural "replacement element %d has %d rows, need %d"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "There is a binary version available (and will be installed) but the source version is later"
-[English]_plural "There are binary versions available (and will be installed) but the source versions are later"
+[English] "replacement element %d has %d row to replace %d rows"
+[English]_plural "replacement element %d has %d rows to replace %d rows"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "last record incomplete, %d line discarded"
-[English]_plural "last record incomplete, %d lines discarded"
-[한국어][0] "마지막 레코드가 완성되지 않아 %d 번째 라인은 삭제되었습니다"
-
-[English] "invalid roman numeral: %s"
-[English]_plural "invalid roman numerals: %s"
+[English] "%d row in value to replace %d rows"
+[English]_plural "%d rows in value to replace %d rows"
 [한국어][0] ""
+[한국어][1] ""
 
-[English] "package %s is in use and will not be installed"
-[English]_plural "packages %s are in use and will not be installed"
-[한국어][0] "패키지 %s가 사용중이므로 설치되지 않을 것입니다"
+[English] "replacement data has %d row to replace %d rows"
+[English]_plural "replacement data has %d rows to replace %d rows"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "provided %d variable to replace %d variables"
+[English]_plural "provided %d variables to replace %d variables"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "library %s contains no packages"
+[English]_plural "libraries %s contain no packages"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "package %s is not loaded"
+[English]_plural "packages %s are not loaded"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "there is no package called"
+[English]_plural "there are no packages called"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "object %s not found"
+[English]_plural "objects %s not found"
+[한국어][0] "객체 %s를 찾을 수 없습니다"
+
+[English] "'by' must specify a uniquely valid column"
+[English]_plural "'by' must specify uniquely valid columns"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "Function found when exporting methods from the namespace %s which is not S4 generic: %s"
+[English]_plural "Functions found when exporting methods from the namespace %s which are not S4 generic: %s"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "class %s is not exported by 'namespace:%s'"
+[English]_plural "classes %s are not exported by 'namespace:%s'"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "object %s is not exported by 'namespace:%s'"
+[English]_plural "objects %s are not exported by 'namespace:%s'"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "previous export '%s' is being replaced"
+[English]_plural "previous exports '%s' are being replaced"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "S3 method %s was declared in NAMESPACE but not found"
+[English]_plural "S3 methods %s were declared in NAMESPACE but not found"
+[한국어][0] ""
+[한국어][1] ""
+
+[English] "extra argument %s will be disregarded"
+[English]_plural "extra arguments %s will be disregarded"
+[한국어][0] "추가적인 인자 %s는 고려되지 않을 것입니다"
+
+[English] "%s is not TRUE"
+[English]_plural "%s are not all TRUE"
+[한국어][0] "%s는 TRUE가 아닙니다"
+
+[English] "Warning message:\n"
+[English]_plural "Warning messages:\n"
+[한국어][0] "경고 메시지:\n"
 
 </pre>
