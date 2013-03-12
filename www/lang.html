@@ -26,7 +26,7 @@
 <aside>
 <table>
 	<th> 서브 카테고리 </th>
-	<tr> <td> <a href="lang_msg.html"> 메지시 작업 </a> </td>	</tr>
+	<tr> <td> <a href="lang_msg.html"> 메지시 품질관리 프로그램 </a> </td>	</tr>
 	<tr> <td> <a href="lang_msg_worked.html"> 메지시 작업현황 </a> </td> </tr>
 	<tr> <td> <a href="lang_doc.html"> 매뉴얼 작업현황 </a> </td> </tr>
 	<tr> <td> <a href="#"> 도움말 작업 </a> </td> </tr>
@@ -35,36 +35,38 @@
 </aside>
 
 <article>
-<p> Modified on 2013-MAR-01 <br> Chel Hee Lee </p>
+<p> Modified on 2013-MAR-12 <br> by Chel Hee Lee </p>
 
 	<h2> 소개 </h2>
 	<p> 
-	R (>=2.1.0)의 한국어 지원은 <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>에 의해 진행 및 관리가 되고 있습니다.   
-	본 <a href="lang.html"> <strong> Language Support (Korean) </strong> </a>페이지에서는 한국어 지원의 과정이 어떻게 이루어지며, 참여방법에 대해서 기술합니다. 
+	R (>=2.1.0)의 한국어 지원이란 <strong> 영문으로 되어 있는 R을 한국어 사용자 모국어로 사용이 편리하도록 하는 도와주는 하나의 옵션을 제공하는 것</strong>을 의미하며, 이는 <a href="http://developer.r-project.org/TranslationTeams.html" target="_blank"> R Development Translation Teams </a>에 의해 진행되고 있습니다. 
+	본 <a href="lang.html"> <strong> Language Support (Korean) </strong> </a>페이지에서는 어떠한 종류의 한국어 지원이 이루어 지고 있으며, 이에 대한 참여방법, 그리고 작업 진행현황에 대한 기록을 주 목적으로 하고 있습니다. 
+	더 자세한 사항들은 좌측의 서브페이지 링크들을 눌러 내용을 확인해 주시길 부탁드립니다.
+	</p> 
+
+<!--
 	진행사항에 대한 내용은 <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> R 한국어 지원 메일링 리스트</a>을 통해 확인하실 수 있으며, 이 메일링의 가입은 <a href="ihelp-translators@lists.r-forge.r-project.org"> ihelp-translators@lists.r-forge.r-project.org </a>로 메일을 보낸다면 자동으로 이루어집니다.  
 	또한, 이 메일링에 대한 모든 쓰레드를 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 알카이브</a>를 통해 확인해 보실 수 있습니다. 
-	</p> 
+-->
 	
-	<h3> 참여희망 및 참여조건 </h3>
+	<h3> 알고 있으면 참여활동에 도움이 되는 것들 </h3>
 	
-	<p> iHELP 프로젝트는 크게 아래와 같은 부분에 있어서 한국어 지원을 진행 중입니다.  또한, 영어에 대한 것은 큰 조건이 아니지만, 본 작업을 위해서는 반드시 다음의 기준을 만족해야 합니다.
+	<p> 한국어 지원은 크게 아래와 같은 부분이며, 알고 계신다면 참여 활동에 도움이 되는 부분들을 함께 나열하였습니다. 
+
 	<table>
-		<tr> <td width="200"> 영역 </td> <td> 최소 조건 </td></tr>
-		<tr> <td> R 메시지 </td> <td> C언어에 대한 기초지식이 있는 분 </td> </tr> 
-		<tr> <td> R Documentation </td> <td> R을 이용하여 패키지를 개발해 본적이 있는 분 </td> </tr>
-		<tr> <td> R 도움말 파일 </td> <td> TeX에 대한 지식이 있으신 분  </td> </tr>
+		<tr> <td width="200"> 작업영역 </td> <td> 도움이 되는 요소 </td></tr>
+		<tr> <td> R 메시지 작업 </td> <td> C언어의 기초지식 </td> </tr> 
+		<tr> <td> R 기술문서 번역 </td> <td> R 패키지 작성에 대한 경험 </td> </tr>
+		<tr> <td> R 도움말 파일작업 </td> <td> (La)TeX에 대한 기초지식 </td> </tr>
 		<tr> <td> R 버그리포팅 </td> <td> 없음 </td> </tr>
 	</table>	
-	
-	그리고, 기초적인 리눅스 (또는 유닉스) 사용에 익숙하며, svn 사용이 가능하시면 더욱 좋습니다.  
-	프로젝트에 참여를 희망하시는 분들께서는 <a href="mailto:gnustats@korea.gnu.org" target="_blank"> 관리자에게 이메일</a>을 보내주시면 감사드리겠습니다.
 	</p>
 
 
-	<h2> 관리의 범위 </h2>
+	<h2> 본 지원과 관련되어 있는 패키지들의 범위 </h2>
 	<p>
-		iHELP 프로젝트은 R 베이스 시스템을 구성하는 Standard packages (표준 패키지)를 관리하며, Recommended packages (추천 패키지)들를 지원합니다.
-		이들의 목록은 아래와 같으며, 그 외의 다른 패키지들 (즉, contributed packages)는 관리대상이 아닙니다.  
+		한국어 지원은 배포되는 R의 베이스를 구성하는 Standard packages (표준 패키지)와 이 베이스와 함께 권장되는 Recommended packages (추천 패키지)들에 국한되어 있습니다.
+		이들의 목록은 아래와 같으며, 그 외의 다른 패키지들 (즉, contributed packages)는 우리의 범주를 넘어섭니다.
 	</p>
 	
 		<h3> 표준 (Standard) 패키지들 </h3>
@@ -85,8 +87,10 @@
 		<tr><td> utils</td> <td> R 유틸리티 함수들 </td></tr>
 		</table>
 				
-		<h3> 권장 (Recommended) 패키지들 </h3>
-		<p> 주의:  권장 패키지들은 매 배포별로 포함되는 패키지들의 종류와 버전이 다릅니다.  이는 <a href="mailto:gnustats@korea.gnu.org" target="_blank"> 이메일로 문의</a>해주세요 </p>
+		<h3> 추천 (Recommended) 패키지들 </h3>
+		<p> <strong> 주의 </strong>: 
+		추천 패키지들은 매 배포별로 포함되는 패키지들의 종류와 버전이 다릅니다.  
+		</p>
 		
 		<table>
 		<tr><td>KernSmooth</td><td> M. P. Wand과  M. C. Jones이 1995년에 쓴 책 “Kernel Smoothing”에 기술된 커널 스무딩과 밀도추정을 위한 함수들.</td></tr>
@@ -107,9 +111,18 @@
 		</table>
 
 	<h3> 연계된 Contributed Packages </h3>
+	
+	<p>
+	위에서 표준과 추천 패키지들만 다룬다고 하였으나, 개발자의 요청아래 이곳 iHELP에서 직접 관리될 수 있습니다. 
+	이러한 경우에는 패키지를 담당하실 분은 <a href="mailto:gnustats@korea.gnu.org" target="_blank"> 페이지 관리자 </a>에게로 문의를 부탁드립니다.
+	이에 해당하는 패키지들은 아래와 같습니다.
+	</p>
+	
 	<table>
 		<tr> <td> 패키지명 </td> <td> 담당자 </td> <td> </td> </tr>
-		<tr> <td> RSiena </td> <td> <a href="mailto:gnustats@korea.gnu.org" target="_blank"> 참여신청하기 </a> </td> <td> </td> </tr>
+		<tr> <td> RSiena </td> <td>  </td> <td> </td> </tr>
+		<tr> <td> 의뢰신청 접수됨 </td> <td> </td> <td> </td> </tr>
+		<tr> <td> 의뢰신청 접수됨 </td> <td> </td> <td> </td> </tr>
 	</table>
 
 </article>
