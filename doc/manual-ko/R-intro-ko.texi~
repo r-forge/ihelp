@@ -102,7 +102,7 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 수상을 받은 적이 있는 S 시스템과 유사하므로 ``GNU S''라고도 불리우고, 매우 다양한 분야에 걸친 통계분석 및 그래픽 기능들을 제공합니다.  
 예를들면, 선형 및 비선형 모델링, 다양한 통계 테스트들, 시계열분석, 클래시피케이션, 그리고 클러스터링 등이 있습니다.
 이 문서는 R을 시작하는 분들에게 반드시 필요한 기본적인 데이터형에 대한 이해, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽에 대한 정보를 제공합니다.
-현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 01일에 이루어졌습니다.
+현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 14일에 이루어졌습니다.
 @c 서문 의역완료 on 2013-MAR-01 
 
 @value{ISBN-intro}
@@ -1057,361 +1057,478 @@ sqrt(-17+0i)
 @section Generating regular sequences
 @cindex Regular sequences
 
-@R{} has a number of facilities for generating commonly used sequences
-of numbers.  For example @code{1:30} is the vector @code{c(1, 2,
-@dots{}, 29, 30)}.
+@c @R{} has a number of facilities for generating commonly used sequences
+@c of numbers.  For example @code{1:30} is the vector @code{c(1, 2,
+@c @dots{}, 29, 30)}.
+@R{}은 시퀀스(sequence 또는 수열)을 생성하는 다양한 방법을 제공하고 있습니다.
+예를들면, @code{1:30}이라는 명령어는 @code{c(1, 2, @dots, 29, 30)}이라는 벡터를 생성합니다. 
 @c <NOTE>
 @c Info cannot handle ':' as an index entry.
 @ifnotinfo
 @findex :
 @end ifnotinfo
 @c </NOTE>
-The colon operator has high priority within an expression, so, for
-example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}.
-Put @code{n <- 10} and compare the sequences @code{1:n-1} and
-@code{1:(n-1)}.
+@c The colon operator has high priority within an expression, so, for
+@c example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}.
+@c Put @code{n <- 10} and compare the sequences @code{1:n-1} and
+@c @code{1:(n-1)}.
+콜론(colon) 연산자는 어떤 표현식보다도 최우선으로 처리됩니다. 
+예를들면, @code{2*1:15}은 @code{c(2, 4, @dots{}, 28, 30)}이라는 벡터를 생성합니다. 
+그럼, @code{n <- 10}을 입력하고 난뒤에 @code{1:n-1}과 @code{1:(n-1)}로부터 생성되는 두개의 벡터들을 비교해보시길 바랍니다.
 
-The construction @code{30:1} may be used to generate a sequence
-backwards.
+@c The construction @code{30:1} may be used to generate a sequence
+@c backwards.
+
+만약 @code{30:1}이라는 명령을 통하여 역순으로 나열된 수열 역시 생성할 수 있습니다.
 
 @findex seq
-The function @code{seq()} is a more general facility for generating
-sequences.  It has five arguments, only some of which may be specified
-in any one call.  The first two arguments, if given, specify the
-beginning and end of the sequence, and if these are the only two
-arguments given the result is the same as the colon operator.  That is
-@code{seq(2,10)} is the same vector as @code{2:10}.
+@c The function @code{seq()} is a more general facility for generating
+@c sequences.  It has five arguments, only some of which may be specified
+@c in any one call.  The first two arguments, if given, specify the
+@c beginning and end of the sequence, and if these are the only two
+@c arguments given the result is the same as the colon operator.  That is
+@c @code{seq(2,10)} is the same vector as @code{2:10}.
 
-Parameters to @code{seq()}, and to many other @R{} functions, can also
-be given in named form, in which case the order in which they appear is
-irrelevant.  The first two parameters may be named
-@code{from=@var{value}} and @code{to=@var{value}}; thus
-@code{seq(1,30)}, @code{seq(from=1, to=30)} and @code{seq(to=30,
-from=1)} are all the same as @code{1:30}.  The next two parameters to
-@code{seq()} may be named @code{by=@var{value}} and
-@code{length=@var{value}}, which specify a step size and a length for
-the sequence respectively.  If neither of these is given, the default
-@code{by=1} is assumed.
+@code{seq()}라는 함수는 수열을 좀 더 일반적인 방식으로 생성하는 기능을 가지고 있습니다. 
+@code{seq()}는 5개의 인자를 가지고 있는데, 이중의 일부만을 가지고도 다양한 수열의 생성이 가능합니다.
+먼저, 처음 두개의 인자는 수열의 처음과 마지막 값을 지정합니다.
+이 두 개의 인자마나 지정된다면, 콜론 연산자를 사용한 것과 동일한 벡터를 생성합니다. 
+즉, @code{seq(2,10)}에 의하여 생성된 수열은 @code{2:10}으로부터 생성된 수열과 동일합니다. 
 
-For example
+@c Parameters to @code{seq()}, and to many other @R{} functions, can also
+@c be given in named form, in which case the order in which they appear is
+@c irrelevant.  The first two parameters may be named
+@c @code{from=@var{value}} and @code{to=@var{value}}; thus
+@c @code{seq(1,30)}, @code{seq(from=1, to=30)} and @code{seq(to=30,
+@c from=1)} are all the same as @code{1:30}.  The next two parameters to
+@c @code{seq()} may be named @code{by=@var{value}} and
+@c @code{length=@var{value}}, which specify a step size and a length for
+@c the sequence respectively.  If neither of these is given, the default
+@c @code{by=1} is assumed.
+
+@R{}에 사용되는 다른 많은 함수들과 같이 함수 @code{seq()}에 넘겨지는 파라미터들은 named form(즉, 인자의 이름과 이에 해당하는 파라미터의 값을 사용하고자 하는 함수에 함께 쓰는것)의 형태로 사용됩니다. 
+위에서 사용한 예제 @code{seq(1,30)}를 이용하여 다시 설명하면, @code{seq()}의 처음 두 파라미터들은 처음 시작값 @code{from=@var{value}}을 의미하고, 마지막 값 @code{to=@var{value}}을 의미하기 때문에, @code{seq(1,30)}, @code{seq(from=1, to=30)}, @code{seq(to=30, from=1)} 모두 @code{1:30}으로부터 생성된 수열과 동일한 수열을 생성합니다.  
+@code{seq()}의 다음 두개의 인자들은 @code{by=@var{value}}와 @code{length=@var{value}}입니다. 
+@code{by=@var{value}}는 나열되어질 숫자들간의 차이 (step size)를 지정하며, @code{length=@var{value}}는 나열되어질 숫자들 사이의 구간의 개수(length)를 지정하게 됩니다. 
+만약, 이 두가지 모두 지정되어지지 않는다면, 기본적으로  @code{by=1}로 가정한 상태에서 수열을 생성하게 됩니다. 
+
+@c For example
+
+다음의 예를 살펴봅니다.
 
 @example
 > seq(-5, 5, by=.2) -> s3
 @end example
 
 @noindent
-generates in @code{s3} the vector @code{c(-5.0, -4.8, -4.6, @dots{},
-4.6, 4.8, 5.0)}.  Similarly
+@c generates in @code{s3} the vector @code{c(-5.0, -4.8, -4.6, @dots{},
+@c 4.6, 4.8, 5.0)}.  Similarly
+
+위의 명령어는 @code{c(-5.0, -4.8, -4.6, @dots{}, 4.6, 4.8, 5.0)}이라는 수열을 생성한 뒤, 이를 @code{s3}이라는 이름을 가진 벡터형 객체로서 저장하라는 의미입니다.
+이와 비슷한 논리로 아래와 같이 @code{s3}와 같은 수열을 가지는 @code{s4}를 생성할 수 있습니다. 
 
 @example
 > s4 <- seq(length=51, from=-5, by=.2)
 @end example
 
 @noindent
-generates the same vector in @code{s4}.
+@c generates the same vector in @code{s4}.
 
-The fifth parameter may be named @code{along=@var{vector}}, which if
-used must be the only parameter, and creates a sequence @code{1, 2,
-@dots{}, length(@var{vector})}, or the empty sequence if the vector is
-empty (as it can be).
+@c The fifth parameter may be named @code{along=@var{vector}}, which if
+@c used must be the only parameter, and creates a sequence @code{1, 2,
+@c @dots{}, length(@var{vector})}, or the empty sequence if the vector is
+@c empty (as it can be).
 
-A related function is @code{rep()}
+@code{seq()} 함수의 다섯번째 인자는 @code{along=@var{vector}}입니다.
+만약 다른 인자들에 대한 입력없이 독립적으로 사용된다면 @code{1, 2, @dots{}, length(@var{vector})}이라는 수열을 생성하게 됩니다. 
+
+@c A related function is @code{rep()}
 @findex rep
-which can be used for replicating an object in various complicated ways.
-The simplest form is
+@c which can be used for replicating an object in various complicated ways.
+@c The simplest form is
+
+@code{seq()}유사한 함수로서 다양한 방법으로 객체를 반복하는데 사용될 수 있는 @code{rep()}라는 함수가 있습니다. 
+이 함수에 대한 가장 간단한 형태는 아래와 같습니다.
 
 @example
 > s5 <- rep(x, times=5)
 @end example
 
 @noindent
-which will put five copies of @code{x} end-to-end in @code{s5}.  Another
-useful version is
+@c which will put five copies of @code{x} end-to-end in @code{s5}.  Another
+@c useful version is
+
+위의 명령어는 @code{x}라는 벡터를 5번 반복하여 나열함으로서 생성한 객체에 @code{s5}에 두는 것입니다.
+이에 대한 또다른 사용법을 아래의 예제를 통해 알 수 있습니다. 
 
 @example
 > s6 <- rep(x, each=5)
 @end example
 
 @noindent
-which repeats each element of @code{x} five times before moving on to
-the next.
+@c which repeats each element of @code{x} five times before moving on to
+@c the next.
+
+이것은 @code{x}란 벡터가 가지고 있는 각각의 요소들을 5번씩 반복하여 생성한 수열을 의미합니다. 
 
 @node Logical vectors, Missing values, Generating regular sequences, Simple manipulations numbers and vectors
 @section Logical vectors
 
-As well as numerical vectors, @R{} allows manipulation of logical
-quantities.  The elements of a logical vector can have the values
-@code{TRUE}, @code{FALSE}, and @code{NA} (for ``not available'', see
-below).  The first two are often abbreviated as @code{T} and @code{F},
-respectively.  Note however that @code{T} and @code{F} are just
-variables which are set to @code{TRUE} and @code{FALSE} by default, but
-are not reserved words and hence can be overwritten by the user.  Hence,
-you should always use @code{TRUE} and @code{FALSE}.
+@c As well as numerical vectors, @R{} allows manipulation of logical
+@c quantities.  The elements of a logical vector can have the values
+@c @code{TRUE}, @code{FALSE}, and @code{NA} (for ``not available'', see
+@c below).  The first two are often abbreviated as @code{T} and @code{F},
+@c respectively.  Note however that @code{T} and @code{F} are just
+@c variables which are set to @code{TRUE} and @code{FALSE} by default, but
+@c are not reserved words and hence can be overwritten by the user.  Hence,
+@c you should always use @code{TRUE} and @code{FALSE}.
+수치형 벡터 외에도 @R{}은 논리값에 대한 조작이 가능합니다.
+논리형 벡터는 그 구성요소의 값들이 @code{TRUE}, @code{FALSE}, 그리고 @code{NA} (즉 ``not available'' - 이용가능하지 않아 유용하지 않음)을 가지는 것을 의미합니다.
+처음 두 개의 값들을 각각 @code{T}와 @code{F}라는 약어로도 표기하기도 합니다. 
+그러나, 예약어가 아닌 기본값인 @code{TRUE}와 @code{FALSE}를 가지는 변수명으로서의 @code{T}와 @code{F}를 사용할 수도 있어 사용자가 사용자가 사용하는 동일한 변수명에 의해서 덮여씌여질 수도 있습니다. 
+따라서, 논리값을 표현할 때에는 @code{TRUE}와 @code{FALSE}라고 완전하게 사용해야 합니다. 
 @findex FALSE
 @findex TRUE
 @findex F
 @findex T
 
 Logical vectors are generated by @emph{conditions}.  For example
+논리형 벡터는 조건문 (@emph{conditions})에 의해서 생성됩니다.
+예를 들면, 아래의 명령문과 같이 @code{x}라는 벡터의 구성요소들을 13 보다 크다는 조건을 만족한다면 @code{TRUE}라는 논리값을 생성하고, 그렇지 않다면 @code{FALSE}라는 논리값을 저장하는 새로운 벡터를 생성하여 @code{temp}에 대입할 수 있습니다. 
 
 @example
 > temp <- x > 13
 @end example
 
 @noindent
-sets @code{temp} as a vector of the same length as @code{x} with values
-@code{FALSE} corresponding to elements of @code{x} where the condition
-is @emph{not} met and @code{TRUE} where it is.
+@c sets @code{temp} as a vector of the same length as @code{x} with values
+@c @code{FALSE} corresponding to elements of @code{x} where the condition
+@c is @emph{not} met and @code{TRUE} where it is.
 
-The logical operators are @code{<}, @code{<=}, @code{>}, @code{>=},
-@code{==} for exact equality and @code{!=} for inequality.
+@c The logical operators are @code{<}, @code{<=}, @code{>}, @code{>=},
+@c @code{==} for exact equality and @code{!=} for inequality.
+논리연산자로는 @code{<} (작음), @code{<=} (작거나 같음), @code{>} (큼), @code{>=} (크거나 같음), @code{==} (같음), 그리고 @code{!=} (다름)가 있습니다. 
 @findex <
 @findex <=
 @findex >
 @findex >=
 @findex ==
 @findex !=
-In addition if @code{c1} and @code{c2} are logical expressions, then
-@w{@code{c1 & c2}} is their intersection (@emph{``and''}), @w{@code{c1 | c2}}
-is their union (@emph{``or''}), and @code{!c1} is the negation of
-@code{c1}.
+@c In addition if @code{c1} and @code{c2} are logical expressions, then
+@c @w{@code{c1 & c2}} is their intersection (@emph{``and''}), @w{@code{c1 | c2}}
+@c is their union (@emph{``or''}), and @code{!c1} is the negation of
+@c @code{c1}.
+또한, @code{c1}과 @code{c2}라는 논리적 표현이 있다면, @w{@code{c1 & c2}}는 (@emph{``and''})를 나타내는 교집합을 @w{@code{c1 | c2}}는 (@emph{``or''})를 나타내는 합집합을 나타내며, @code{!c1}는 @code{c1}이 아닌 차집합을 나타낼 수 있습니다.  
 @findex !
 @findex |
 @findex &
 
-Logical vectors may be used in ordinary arithmetic, in which case they
-are @emph{coerced} into numeric vectors, @code{FALSE} becoming @code{0}
-and @code{TRUE} becoming @code{1}.  However there are situations where
-logical vectors and their coerced numeric counterparts are not
-equivalent, for example see the next subsection.
+@c Logical vectors may be used in ordinary arithmetic, in which case they
+@c are @emph{coerced} into numeric vectors, @code{FALSE} becoming @code{0}
+@c and @code{TRUE} becoming @code{1}.  However there are situations where
+@c logical vectors and their coerced numeric counterparts are not
+@c equivalent, for example see the next subsection.
+
+논리값을 가지는 벡터들은 일반적인 산술연산에 사용될 수도 있습니다.
+이것은 논리형 벡터를 강제적으로 수치형 벡터로 변환하게 되는데, @code{FALSE}는 @code{0}으로 @code{TRUE}는 @code{1}로 변환됩니다. 
+이러한 변환을 @emph{coerced}(강제형변환)이라고 합니다. 
+그런데, 이러한 논리형 벡터들과 강제형변환된 수치형 벡터들이 방금 설명한 것과 같이 동작하지 않는 경우가 있다는 점을 알고 있어야 하며, 이러한 예제는 다음섹션에서 보도록 하겠습니다. 
 
 @node Missing values, Character vectors, Logical vectors, Simple manipulations numbers and vectors
 @section Missing values
 @cindex Missing values
 
-In some cases the components of a vector may not be completely
-known.  When an element or value is ``not available'' or a ``missing
-value'' in the statistical sense, a place within a vector may be
-reserved for it by assigning it the special value @code{NA}.
+@c In some cases the components of a vector may not be completely
+@c known.  When an element or value is ``not available'' or a ``missing
+@c value'' in the statistical sense, a place within a vector may be
+@c reserved for it by assigning it the special value @code{NA}.
+가끔 벡터의 구성요소들에 대해서 완전하게 알 수 없는 경우가 있습니다.
+통계학적 의미에서 이러한 구성요소 또는 값들은 ``not available'' (사용이 가능하지 않음) 또는 ``missing value''(결측치 혹은 누락된 값)인 경우, 이들을 벡터내에서 @code{NA}라는 특수한 값을 이용하여 표시합니다. 
 @findex NA
-In general any operation on an @code{NA} becomes an @code{NA}.  The
-motivation for this rule is simply that if the specification of an
-operation is incomplete, the result cannot be known and hence is not
-available.
-
+@c In general any operation on an @code{NA} becomes an @code{NA}.  The
+@c motivation for this rule is simply that if the specification of an
+@c operation is incomplete, the result cannot be known and hence is not
+@c available.
+일반적으로 @code{NA}에 대한 연산의 결과는 @code{NA}가 됩니다.
+이러한 규칙을 만들게 된 동기는 단순히 만약 연산에 대한 지정이 완전하지 않다면 그 연산결과를 알 수 없거나 이용가능하지 않기 때문입니다. 
 @findex is.na
-The function @code{is.na(x)} gives a logical vector of the same size as
-@code{x} with value @code{TRUE} if and only if the corresponding element
-in @code{x} is @code{NA}.
+@c The function @code{is.na(x)} gives a logical vector of the same size as
+@c @code{x} with value @code{TRUE} if and only if the corresponding element
+@c in @code{x} is @code{NA}.
+함수 @code{is.na(x)}는 @code{x}의 각 구성요소가 가지는 값이 @code{NA}인지를 확인하여 만약 그렇다면 @code{TRUE}를, 그렇지 않다면 @code{FALSE}를 가지는 새로운 벡터를 생성하게 됩니다. 
+따라서, 생성된 벡터의 길이는 @code{x}와 같아야 하며, 이는 아래의 명령문을 통해 확인해 볼 수 있습니다. 
 
 @example
 > z <- c(1:3,NA);  ind <- is.na(z)
 @end example
 
-Notice that the logical expression @code{x == NA} is quite different
-from @code{is.na(x)} since @code{NA} is not really a value but a marker
-for a quantity that is not available.  Thus @code{x == NA} is a vector
-of the same length as @code{x} @emph{all} of whose values are @code{NA}
-as the logical expression itself is incomplete and hence undecidable.
+@c Notice that the logical expression @code{x == NA} is quite different
+@c from @code{is.na(x)} since @code{NA} is not really a value but a marker
+@c for a quantity that is not available.  Thus @code{x == NA} is a vector
+@c of the same length as @code{x} @emph{all} of whose values are @code{NA}
+@c as the logical expression itself is incomplete and hence undecidable.
 
-Note that there is a second kind of ``missing'' values which are
-produced by numerical computation, the so-called @emph{Not a Number},
-@code{NaN},
+그러나, @code{NA}라는 것은 실제로 단순히 벡터를 구성하는 요소에 값이 사용가능한지에 대한 마커일 뿐이기 때문에 @code{x == NA}이라는 논리적 표현식은 @code{is.na(x)}와의 결과와는 다르다는 것을 아셔야 합니다. 
+따라서, @code{x == NA}는 벡터 @code{x}와 길이는 같지만 그 구성요소  @emph{모두}가 @code{NA}값을 가지게 됩니다. 
+그 이유는 논리적 표현식 자체가 @code{==}라는 연산을 수행하기에는 불완전하고 결정할 수 없기 때문입니다. 
+
+@c Note that there is a second kind of ``missing'' values which are
+@c produced by numerical computation, the so-called @emph{Not a Number},
+@c @code{NaN},
 @findex NaN
-values.  Examples are
+@c values.  Examples are
+또한 수치연산의 결과로서 발생하는 ``missing''이라는 의미의 @code{NaN}은 @emph{Not a Number}(숫자가 아님)이라고 하며, 다음의 두 예제를 통해서 알 수 있습니다. 
 
 @example
 > 0/0
 @end example
 
 @noindent
-or
+또는 
 
 @example
 > Inf - Inf
 @end example
 
 @noindent
-which both give @code{NaN} since the result cannot be defined sensibly.
+@c which both give @code{NaN} since the result cannot be defined sensibly.
+위의 두가지 경우 모두 수학적 정의에 따라 계산을 수행할 수 없기 때문에 @code{NaN}이라는 결과를 주게 됩니다. 
 
-In summary, @code{is.na(xx)} is @code{TRUE} @emph{both} for @code{NA}
-and @code{NaN} values.  To differentiate these, @code{is.nan(xx)} is only
-@code{TRUE} for @code{NaN}s.
+@c In summary, @code{is.na(xx)} is @code{TRUE} @emph{both} for @code{NA}
+@c and @code{NaN} values.  To differentiate these, @code{is.nan(xx)} is only
+@c @code{TRUE} for @code{NaN}s.
 @findex is.nan
+요약해보면, @code{is.na(xx)}는 @code{NA}와 @code{NaN}라는 두가지 경우 모두 @code{TRUE} 값을 돌려줍니다.
+그러나, @code{is.nan(xx)}은 오로지 값이 @code{NaN}일때만 @code{TRUE}가 됩니다. 
 
-Missing values are sometimes printed as @code{<NA>} when character
-vectors are printed without quotes.
+@c Missing values are sometimes printed as @code{<NA>} when character
+@c vectors are printed without quotes.
+어떤 경우에는 이렇게 알 수 없는 값들에 대해서 @code{<NA>}로 표시가 되는 경우가 있는데 이는 문자형 벡터가 사용되었기 때문입니다. 
 
 @node Character vectors, Index vectors, Missing values, Simple manipulations numbers and vectors
 @section Character vectors
 @cindex Character vectors
 
-Character quantities and character vectors are used frequently in @R{},
-for example as plot labels.  Where needed they are denoted by a sequence
-of characters delimited by the double quote character, e.g.,
-@code{"x-values"}, @code{"New iteration results"}.
+@c Character quantities and character vectors are used frequently in @R{},
+@c for example as plot labels.  Where needed they are denoted by a sequence
+@c of characters delimited by the double quote character, e.g.,
+@c @code{"x-values"}, @code{"New iteration results"}.
+문자 또는 문자열은 주로 @R{}에서 플랏의 라벨들에 자주 사용되며, @code{"x-values"} 또는 @code{"New iteration results"}와 문자열의 앞과 뒤쪽에 큰 따옴표를 붙여줌으로서 이를 표시하도록 합니다.
 
-Character strings are entered using either matching double (@code{"}) or
-single (@code{'}) quotes, but are printed using double quotes (or
-sometimes without quotes).  They use C-style escape sequences, using
-@code{\} as the escape character, so @code{\\} is entered and printed as
-@code{\\}, and inside double quotes @code{"} is entered as @code{\"}.
-Other useful escape sequences are @code{\n}, newline, @code{\t}, tab and
-@code{\b}, backspace---see @command{?Quotes} for a full list.
+@c Character strings are entered using either matching double (@code{"}) or
+@c single (@code{'}) quotes, but are printed using double quotes (or
+@c sometimes without quotes).  They use C-style escape sequences, using
+@c @code{\} as the escape character, so @code{\\} is entered and printed as
+@c @code{\\}, and inside double quotes @code{"} is entered as @code{\"}.
+@c Other useful escape sequences are @code{\n}, newline, @code{\t}, tab and
+@c @code{\b}, backspace---see @command{?Quotes} for a full list.
 
-Character vectors may be concatenated into a vector by the @code{c()}
-function; examples of their use will emerge frequently.
+실은 큰 따옴표 (@code{"}) 말고도 작은 따옴표 (@code{'})도 문자열을 사용하기 위해서 이용될 수 있으나 이 문자열에 대한 출력은 큰 따옴표를 이용하여 보여지게 됩니다 (어떤 경우에는 큰 따옴표가 보이지 않을 때도 있습니다).
+이 문자열에서는 @code{\}를 사용하는 C 언어의 이스케이프 시퀀스(escape sequence)를 이용하여 문자열을 처리합니다. 
+따라서, 출력에 @code{\\}를 나타내기 위해서는 문자열 내에 @code{\\}을 사용하고, 큰 따옴표 @code{"}를 출력하기 위해서는 @code{\"}를 문자열 내에 사용하도록 합니다. 
+또다른 유용한 이스케이프 시퀀스들로는 @code{\n}이 있는데 이는 새로운 행(즉, 개행)을 나타내고, @code{\t}는 탭(tab)을, @code{\b}는 백스페이스에 사용됩니다. 
+만약, 이에 대한 전체 목록을 확인하고 싶으시다면 @command{?Quotes}이라고 입력해 보시길 바랍니다. 
+
+@c Character vectors may be concatenated into a vector by the @code{c()}
+@c function; examples of their use will emerge frequently.
+문자형 벡터들은 @code{c()}라는 함수를 이용하여 새로운 문자열 벡터를 만들어 낼 수도 있습니다. 
+이에 대한 예제는 앞으로 자주 보게 될 것입니다. 
 @findex c
 
 @findex paste
-The @code{paste()} function takes an arbitrary number of arguments and
-concatenates them one by one into character strings.  Any numbers given
-among the arguments are coerced into character strings in the evident
-way, that is, in the same way they would be if they were printed.  The
-arguments are by default separated in the result by a single blank
-character, but this can be changed by the named parameter,
-@code{sep=@var{string}}, which changes it to @code{@var{string}},
-possibly empty.
+@c The @code{paste()} function takes an arbitrary number of arguments and
+@c concatenates them one by one into character strings.  Any numbers given
+@c among the arguments are coerced into character strings in the evident
+@c way, that is, in the same way they would be if they were printed.  The
+@c arguments are by default separated in the result by a single blank
+@c character, but this can be changed by the named parameter,
+@c @code{sep=@var{string}}, which changes it to @code{@var{string}},
+@c possibly empty.
 
-For example
-
+@code{paste()} 함수는 임의의 개수의 인자들을 입력받아, 이들을 한데 묶어 하나의 문자열을 생성해줍니다.
+이 때, 주어진 인자들중에서 만약 숫자형이 있을지라도 문자형으로 강제형변환이 이루어짐을 알아두셔야 합니다. 
+또한, 출력시에는 기본적으로 입력된 인자들 사이에 한개의 빈공간 (white space 또는 blank character)을 넣어 각 인자들을 구분하여 보여지도록 합니다. 
+이렇게 화이트 스페이스를 이용한 문자열 출력은 @code{sep=@var{string}}을 통하여 변경이 가능하며, 다음의 예제에서 보는 바와 같이 @code{@var{string}}은 아무것도 입력되지 않은 빈상태임을 표현할 수도 있습니다.  
+@c For example
 @example
 > labs <- paste(c("X","Y"), 1:10, sep="")
 @end example
 
 @noindent
-makes @code{labs} into the character vector
+@c makes @code{labs} into the character vector
+
+위에서 사용된 명령문에서 @code{paste()}라는 함수는 @code{c("X", "Y")}라는 문자형 벡터와 @code{1:10}이라는 숫자형 벡터를 한데 묶을 것인데, 두 벡터의 길이가 다르므로 @code{c("X", "Y")}는 5번 반복되게 될 것입니다. 
+또한, 구분자가 @code{sep=""}되어 있으므로 두 문자열사이에 아무런 공백이 없을 것입니다. 
+따라서, 위의 명령문의 수행은 아래의 명령문을 수행한 것과 동일합니다. 
 
 @example
 c("X1", "Y2", "X3", "Y4", "X5", "Y6", "X7", "Y8", "X9", "Y10")
 @end example
 
-Note particularly that recycling of short lists takes place here too;
-thus @code{c("X", "Y")} is repeated 5 times to match the sequence
-@code{1:10}.
+@c Note particularly that recycling of short lists takes place here too;
+@c thus @code{c("X", "Y")} is repeated 5 times to match the sequence
+@c @code{1:10}.
+
 @footnote{@code{paste(..., collapse=@var{ss})} joins the
 arguments into a single character string putting @var{ss} in between.
 There are more tools for character manipulation, see the help
 for @code{sub} and @code{substring}.}
 
+@footnote{@code{paste(..., collapse=@var{ss})}라고 하게되면 인자들 사이에 @var{ss}를 넣어 하나의 문자열을 만듭니다.
+문자열을 다루는 도구들에 대해서 더 많은 것을 알고 싶으시다면 @code{sub}와 @code{substring}를 살펴보시길 바랍니다.}
+
 @node Index vectors, Other types of objects, Character vectors, Simple manipulations numbers and vectors
 @section Index vectors; selecting and modifying subsets of a data set
 @cindex Indexing vectors
 
-Subsets of the elements of a vector may be selected by appending to the
-name of the vector an @emph{index vector} in square brackets.  More
-generally any expression that evaluates to a vector may have subsets of
-its elements similarly selected by appending an index vector in square
-brackets immediately after the expression.
+@c Subsets of the elements of a vector may be selected by appending to the
+@c name of the vector an @emph{index vector} in square brackets.  More
+@c generally any expression that evaluates to a vector may have subsets of
+@c its elements similarly selected by appending an index vector in square
+@c brackets immediately after the expression.
+
+벡터의 구성요소들은 벡터의 이름 바로뒤에 열린 대괄호를 사용하여 @emph{index vector}(인덱스 벡터)을 이용하여 부분적으로 선택할 수 있습니다.
+여기에서 인덱스 벡터란 대괄호 내부에 쓰여지는 벡터의 이름입니다.
+좀 더 일반적으로, 벡터를 결과적으로 생성하게 되는 어떠한 표현식에 대한 구성요소들을 부분선택하고자 할때 역시 벡터의 경우에서 설명한 것과 유사한 방법이 사용될 수 있습니다. 
+즉, 표현식 바로뒤에 대괄호와 인덱스 벡터를 사용하시면 됩니다. 
 
 @c FIXME: Add a forward reference to  subset()  here
 @c FIXME  and  add a paragraph about subset() {which needs to come after
 @c FIXME  data frames ...
 
-Such index vectors can be any of four distinct types.
+@c Such index vectors can be any of four distinct types.
+이러한 인덱스 벡터에는 다음과 같은 네가지 유형이 있습니다. 
 
 @enumerate
 
 @item
-@strong{A logical vector}.  In this case the index vector must be of the
-same length as the vector from which elements are to be selected.
-Values corresponding to @code{TRUE} in the index vector are selected and
-those corresponding to @code{FALSE} are omitted.  For example
+@c @strong{A logical vector}.  In this case the index vector must be of the
+@c same length as the vector from which elements are to be selected.
+@c Values corresponding to @code{TRUE} in the index vector are selected and
+@c those corresponding to @code{FALSE} are omitted.  For example
 
+@strong{논리형 벡터}.  이 경우는 인덱스 벡터는 반드시 선택되어질 구성요소를 가지고 있는 벡터의 길이와 같아야 합니다. 
+인덱스 벡터에서 @code{TRUE}에 상응하는 요소들만이 선택되고, @code{FALSE}에 상응하는 요소들은 제거되어 질 것입니다. 
+예를 들면 다음과 같습니다. 
+아래의 명령문은 @code{x}의 값이 빠져있지 않은 요소들만을 포함하는 객체 @code{y}를 생성할 것입니다. 
+만약 @code{x}에 정말로 결측으로 표현된 값들이 있다면  @code{y}의 길이는 @code{x}보다 짧을 것입니다. 
 @example
 > y <- x[!is.na(x)]
 @end example
 
 @noindent
-creates (or re-creates) an object @code{y} which will contain the
-non-missing values of @code{x}, in the same order.  Note that if
-@code{x} has missing values, @code{y} will be shorter than @code{x}.
-Also
+@c creates (or re-creates) an object @code{y} which will contain the
+@c non-missing values of @code{x}, in the same order.  Note that if
+@c @code{x} has missing values, @code{y} will be shorter than @code{x}.
+@c Also
+
+다음은 또 다른 예제입니다. 
+아래의 명령어는 @code{x}에 결측값들이 없고 양수인 @code{x}의 구성요소들만을 모아 이들에 1을 더하여 얻어진 객체 @code{z}를 생성합니다.
 
 @example
 > (x+1)[(!is.na(x)) & x>0] -> z
 @end example
 
 @noindent
-creates an object @code{z} and places in it the values of the vector
-@code{x+1} for which the corresponding value in @code{x} was both
-non-missing and positive.
+@c creates an object @code{z} and places in it the values of the vector
+@c @code{x+1} for which the corresponding value in @code{x} was both
+@c non-missing and positive.
 
 @item
-@strong{A vector of positive integral quantities}.  In this case the
-values in the index vector must lie in the set @{1, 2, @dots{},
-@code{length(x)}@}.  The corresponding elements of the vector are
-selected and concatenated, @emph{in that order}, in the result.  The
-index vector can be of any length and the result is of the same length
-as the index vector.  For example @code{x[6]} is the sixth component of
-@code{x} and
+@c @strong{A vector of positive integral quantities}.  In this case the
+@c values in the index vector must lie in the set @{1, 2, @dots{},
+@c @code{length(x)}@}.  The corresponding elements of the vector are
+@c selected and concatenated, @emph{in that order}, in the result.  The
+@c index vector can be of any length and the result is of the same length
+@c as the index vector.  For example @code{x[6]} is the sixth component of
+@c @code{x} and
+
+@strong{양의 값만을 가지는 벡터}.  이 경우의 인덱스벡터는 반드시 @{1, 2, @dots{}, @code{length(x)}@} 범위내에 있어야 합니다.
+인덱스벡터에 @emph{주어진 순서}대로 선택된 뒤 묶여지게 됩니다. 
+이로부터 나온 결과의 벡터는 인덱스 벡터의 길이와 동일하며, 인덱스 벡터의 길이에 대한 선택은 임의적입니다. 
+예를 들어, @code{x[6]}는 @code{x}의 여섯번째 구성요소를 나타내며, 다음과 같이 사용하는 것은 만약 @code{x}의 길이가 10보다 작지만 않다면, @code{x}가 가진 구성요소중 처음 10개의 요소들을 선택하게 됩니다. 
 
 @example
 > x[1:10]
 @end example
 
 @noindent
-selects the first 10 elements of @code{x} (assuming @code{length(x)} is
-not less than 10).  Also
+@c selects the first 10 elements of @code{x} (assuming @code{length(x)} is
+@c not less than 10).  Also
+
+또한, 아래와 같이 사용하는 것 (거의 이렇게 사용하는 적은 없지만)은  @code{"x", "y", "y", "x"}가 4번씩 반복되어 구성되어진 총 길이가 16인 문자형 벡터를 생성하게 됩니다. 
 
 @example
 > c("x","y")[rep(c(1,2,2,1), times=4)]
 @end example
 
 @noindent
-(an admittedly unlikely thing to do) produces a character vector of
-length 16 consisting of @code{"x", "y", "y", "x"} repeated four times.
+@c (an admittedly unlikely thing to do) produces a character vector of
+@c length 16 consisting of @code{"x", "y", "y", "x"} repeated four times.
 
 @item
-@strong{A vector of negative integral quantities}.  Such an index vector
-specifies the values to be @emph{excluded} rather than included.  Thus
+@c @strong{A vector of negative integral quantities}.  Such an index vector
+@c specifies the values to be @emph{excluded} rather than included.  Thus
+@strong{음의 값만을 가지는 벡터}.  이 경우의 인덱스 벡터는 선택된 요소들을 포함하기 보다는 @emph{제외}라는 목적으로 사용됩니다. 
+따라서, 아래와 같이 사용하는 것은 @code{x}의 처음 5개의 요소들이 제외된 @code{x}의 벡터를 @code{y}에 대입하라는 의미가 됩니다. 
 
 @example
 > y <- x[-(1:5)]
 @end example
 
 @noindent
-gives @code{y} all but the first five elements of @code{x}.
+@c gives @code{y} all but the first five elements of @code{x}.
 
 @item
-@strong{A vector of character strings}.  This possibility only applies
-where an object has a @code{names} attribute to identify its components.
-In this case a sub-vector of the names vector may be used in the same way
-as the positive integral labels in item 2 further above.
-
+@c @strong{A vector of character strings}.  This possibility only applies
+@c where an object has a @code{names} attribute to identify its components.
+@c In this case a sub-vector of the names vector may be used in the same way
+@c as the positive integral labels in item 2 further above.
+@strong{문자열 벡터}. 이 경우는 객체의 각 구성요소들이 @code{names}라는 속성을 가지고 있을 때에만 이용이 가능합니다. 
+이때, @code{names}를 한 데 묶어 나열한 벡터를 네임벡터 (names vector)하며, 위에서 설명한 바 있는 양의 값만을 가지는 인덱스 벡터와 동일한 방식으로 작동하게 됩니다.
+다음의 예제를 살펴보면, @code{fruit}이라는 수치형 벡터에 @code{names()} 라는 함수를 이용하여 각각의 구성요소에 @code{"orange", "banana", "apple", "peach"}라는 @code{names} 속성을 부여했습니다.
+만약, @code{fruit} 벡터의 세번째와 첫번째 요소를 선택하고자 할 때, @code{[c("apple","orange")]}라고 하면 됩니다.
+  
 @example
 > fruit <- c(5, 10, 1, 20)
 > names(fruit) <- c("orange", "banana", "apple", "peach")
 > lunch <- fruit[c("apple","orange")]
 @end example
 
-The advantage is that alphanumeric @emph{names} are often easier to
-remember than @emph{numeric indices}.  This option is particularly
-useful in connection with data frames, as we shall see later.
+@c The advantage is that alphanumeric @emph{names} are often easier to
+@c remember than @emph{numeric indices}.  This option is particularly
+@c useful in connection with data frames, as we shall see later.
 
+이렇게 @emph{names}속성을 이용하는 것은 @emph{수치형 인덱스}를 이용하여 그 구성요소들을 찾아내는 것보다 종종 편리한 경우가 있습니다. 
+이 옵션은 추후에 보게될 데이터 프레임과 연관이 있습니다. 
 @end enumerate
 
-An indexed expression can also appear on the receiving end of an
-assignment, in which case the assignment operation is performed
-@emph{only on those elements of the vector}.  The expression must be of
-the form @code{vector[@var{index_vector}]} as having an arbitrary
-expression in place of the vector name does not make much sense here.
+@c An indexed expression can also appear on the receiving end of an
+@c assignment, in which case the assignment operation is performed
+@c @emph{only on those elements of the vector}.  The expression must be of
+@c the form @code{vector[@var{index_vector}]} as having an arbitrary
+@c expression in place of the vector name does not make much sense here.
 
-For example
+인덱스를 활용한 표현식은 또한 벡터의 결과를 할당을 받게 되는 대입문의 마지막에 나타나기도 합니다. 
+이 경우는 주로 대입문이 사용되는 벡터의 그 자신에게 적용됩니다. 
+아래의 예제는 @code{x}에 결측값이 있는 위치를 확인하여 이 위치에 해당하는 @code{x}의 값들 (즉, 결측값)을 0으로 대체하는 방법을 알려줍니다. 
+@c For example
 
 @example
 > x[is.na(x)] <- 0
 @end example
 
 @noindent
-replaces any missing values in @code{x} by zeros and
+@c replaces any missing values in @code{x} by zeros and
 
+아래의 예제를 살펴보면 @code{y}의 값들중 0 보다 작은 값들의 위치를 찾아 이 위치에 상응하는 @code{y}의 값의 부호를 바꾸어줍니다.
 @example
 > y[y < 0] <- -y[y < 0]
 @end example
 
 @noindent
-has the same effect as
+@c has the same effect as
+결과적으로 위의 예제는 아래와 같은 명령문을 수행한 것과 동일합니다. 
 
 @example
 > y <- abs(y)
@@ -1419,6 +1536,12 @@ has the same effect as
 
 @node Other types of objects,  , Index vectors, Simple manipulations numbers and vectors
 @section Other types of objects
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 Vectors are the most important type of object in @R{}, but there are
 several others which we will meet more formally in later sections.
@@ -1564,8 +1687,6 @@ consult the different help files to become familiar with them.
 @node Changing the length of an object, Getting and setting attributes, The intrinsic attributes mode and length, Objects
 @section Changing the length of an object
 
-An ``empty'' object may still have a mode.  For example
-
 @example
 > e <- numeric()
 @end example
@@ -1648,6 +1769,21 @@ All objects in @R{} have a @emph{class}, reported by the function
 @code{"numeric"}, @code{"logical"}, @code{"character"} or @code{"list"},
 but @code{"matrix"}, @code{"array"}, @code{"factor"} and
 @code{"data.frame"} are other possible values.
+객체가 가지는 이러한 클래스란 개념은 컴퓨터 사이언스에서 소위 말하는 메소드라는 개념과 함께 객체지
+향 (an object-oriented) 스타일의 프로그래밍을 가능하도록 해줍니다. 2 예를 들어, 사용자가 "data.frame"
+이라는 클래스를 가진 객체를 그래픽적으로 출력하고자 plot() 이라는 함수를 이용한다면, 그 객체는 plot()
+이라는 함수내에서 미리 정해져 있는 방식대로 데이터를 불러 들여와지고, 이 불러들여온 데이터를 어떻게
+시각화 할 것인지 미리 정해놓은 규칙대로 그래픽 처리를 할 것입니다. 또한, generic 타입의 summary() 함
+수의 결과물 출력은 객체가 가지는 클래스에 따라서 매우 달라집니다. 만약, winter 라는 객체가 데이터프
+레임이라는 클래스를 가지고 있다면, 데이터프레임이라는 클래스 내에 미리 정해놓은 출력방식을 따라서
+결과를 보여줄 것입니다.
+데이터 프레임이란 클래스는 리스트 형식의 데이터벡터를 입력받아, 이를 행렬의 형식으로 변환후 변수명
+과 함께 출력하도록 약속되어 있습니다. 따라서, 아래와 같이 unclass()라는 함수를 이용한다면, 클래스내
+에 정의되어 있는 출력형식을 더 이상 따르지 않고, 본래의 리스트 형식으로 출력하게 됩니다. 즉, 행렬의
+형식으로 변환하고 변수명과 함께 출력하라는 클래스 내의 출력형식에 대한 규칙을 무시하게 됩니다.
+이런 클래스의 활용은 매우 특수한 경우에만 사용되지만, 현재로서는 단순히 클래스와 generic 함수라는 개
+념에만 익숙해지시면 됩니다. 우리는 이것들에 대해서 조금 더 다룰 예정이지만, R 에서도 어려운 내용에
+해당하므로 이 문서에서 자세히 다루지는 않을 것입니다. Object orientation.
 
 A special attribute known as the @emph{class} of the object is used to
 allow for an object-oriented style@footnote{A different style using
