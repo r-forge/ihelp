@@ -1,15 +1,16 @@
+# input = filename
 htmlDIR = ../../www/docs/manual-ko
  
-update:
-	cp -r *.html $(htmlDIR)/
+html2www:
+	rsync -auv *.html $(htmlDIR)/
 
-add:
-	sed 's/utf-8">/utf-8"><meta name="keywords" content="R Korean introduction to R, 한국어, R, GNU R, 한글, 번역, 통계, statistical computing in R, 통계분석, R 소개, R 입문">/g' R-intro-ko.html > tmp.html
-	cat tmp.html > R-intro-ko.html
-	rm tmp.html
+createHTML:
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-intro-ko.html R-intro-ko.texi
+	rsync -auv ./../../branch-jung/R-data-ko.texi ./
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-data-ko.html R-data-ko.texi
+#	texi2html $(input).texi --html --no-split --css-include=Rman.css
 
-tohtml:
-	texi2html $(input).texi
-
-cleanhtml:
-	rm R-intro-ko.html
+all:
+	rm *.html *.*~
+	make createHTML
+	make html2www
