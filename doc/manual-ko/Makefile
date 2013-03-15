@@ -12,6 +12,6 @@ createHTML:
 #	texi2html $(input).texi --html --no-split --css-include=Rman.css
 
 all:
-	rm *.html *.*~
+	rm -rf *.html *.*~
 	make createHTML
 	make html2www
