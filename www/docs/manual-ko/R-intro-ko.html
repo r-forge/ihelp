@@ -1796,55 +1796,83 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 벡터는 empty(아무런 구성요소가 없이 비어있는 상태)일 수 있음에도 불구하고 모드를 가질 수 있습니다. 
 예를들어, 비어있는 문자열은 <code>character(0)</code>이며, 비어있는 수치형 벡터는 <code>numeric(0)</code>입니다.
 
-   <p>R also operates on objects called <em>lists</em>, which are of mode
-<em>list</em>.  These are ordered sequences of objects which individually
-can be of any mode.  <em>lists</em> are known as &ldquo;recursive&rdquo; rather than
-atomic structures since their components can themselves be lists in
-their own right.
+<!-- @R{} also operates on objects called @emph{lists}, which are of mode -->
+<!-- @emph{list}.  These are ordered sequences of objects which individually -->
+<!-- can be of any mode.  @emph{lists} are known as ``recursive'' rather than -->
+<!-- atomic structures since their components can themselves be lists in -->
+<!-- their own right. -->
+   <p>R은 또한 <em>list</em>(리스트)라는 모드를 가지고 있는 <em>lists</em>(리스트)라고 불리는 객체를 특정한 방식으로 조작하고 있습니다. 
+이것은 모든 구성요소가 동일한 모드를 가지지 않는 일련의 순서에 의해서 정리된 시퀀스입니다. 
+<em>lists</em>(리스트)는 또한 atomic structure (가장 근본적인 기본구조)이기 보다는 &ldquo;recursive&rdquo;(재귀적) 구조를 가집니다. 
+그 이유는 이 객체의 구성요소 자체가 리스트가 될 수 있기 때문입니다.
 
-   <p>The other recursive structures are those of mode <em>function</em> and
-<em>expression</em>.  Functions are the objects that form part of the R
-system along with similar user written functions, which we discuss in
-some detail later.  Expressions as objects form an
-advanced part of R which will not be discussed in this guide, except
-indirectly when we discuss <em>formulae</em> used with modeling in R.
+<!-- The other recursive structures are those of mode @emph{function} and -->
+<!-- @emph{expression}.  Functions are the objects that form part of the @R{} -->
+<!-- system along with similar user written functions, which we discuss in -->
+<!-- some detail later.  Expressions as objects form an -->
+<!-- advanced part of @R{} which will not be discussed in this guide, except -->
+<!-- indirectly when we discuss @emph{formulae} used with modeling in @R{}. -->
+   <p>또 다른 재귀적 구조는 모드가 <em>function</em>(함수) 또는 <em>expression</em>(표현식)으로부터 찾을 수 있습니다. 
+함수의 경우는 나중에 설명하게 될 사용자 정의 함수와 함께 R시스템의 부분을 구성하는 객체이기 때문이며,
+표현식의 경우는 R에서 모델링을 할때 사용하는 <em>formulae</em>(모델식)을 언급하면서 간접적으로 얘기할 때를 제외하고는 이 문서에서는 설명하지 않지만 이 또한 R시스템의 고급적 부분을 형성하는 객체이기 때문입니다.
 
-   <p>By the <em>mode</em> of an object we mean the basic type of its
-fundamental constituents.  This is a special case of a &ldquo;property&rdquo;
-of an object.  Another property of every object is its <em>length</em>.  The
-functions <code>mode(</code><var>object</var><code>)</code> and <code>length(</code><var>object</var><code>)</code> can be
-used to find out the mode and length of any defined structure
+<!-- By the @emph{mode} of an object we mean the basic type of its -->
+<!-- fundamental constituents.  This is a special case of a ``property'' -->
+<!-- of an object.  Another property of every object is its @emph{length}.  The -->
+<!-- functions @code{mode(@var{object})} and @code{length(@var{object})} can be -->
+<!-- used to find out the mode and length of any defined structure -->
+<!-- @footnote{Note however that @code{length(@var{object})} does not always -->
+<!-- contain intrinsic useful information, e.g., when @code{@var{object}} is a -->
+<!-- function.}. -->
+   <p>객체의 <em>mode</em>(모드)는 우리가 다루는 객체를 구성하는 요소들에 대한 기본형(basic type)을 알 수 있습니다. 
+모든 객체에 있는 또 다른 속성은 <em>length</em>(길이)입니다. 
+<code>mode(</code><var>object</var><code>)</code>와 <code>mode(</code><var>object</var><code>)</code>라는 명령어를 통하여 객체에 정의된 구조의 모드와 길이를 알 수 있습니다. 
 <a rel="footnote" href="#fn-11" name="fnd-11"><sup>11</sup></a>.
 
-   <p>Further properties of an object are usually provided by
-<code>attributes(</code><var>object</var><code>)</code>, see <a href="#Getting-and-setting-attributes">Getting and setting attributes</a>. 
-Because of this, <em>mode</em> and <em>length</em> are also called &ldquo;intrinsic
-attributes&rdquo; of an object. 
+<!-- Further properties of an object are usually provided by -->
+<!-- @code{attributes(@var{object})}, see @ref{Getting and setting attributes}. -->
+<!-- Because of this, @emph{mode} and @emph{length} are also called ``intrinsic -->
+<!-- attributes'' of an object. -->
+   <p>객체에 대한 더 많은 속성들은 <code>attributes(</code><var>object</var><code>)</code>를 통해서 알 있으며, <a href="#Getting-and-setting-attributes">Getting and setting attributes</a>를 참고하시길 바랍니다. 
+이러한 이유로 <em>mode</em>(모드)와 <em>length</em>(길이)는 객체의 &ldquo;intrinsic attributes&rdquo;(본질적 속성들)이라고도 합니다. 
 <a name="index-mode-72"></a><a name="index-length-73"></a>
-For example, if <code>z</code> is a complex vector of length 100, then in an
-expression <code>mode(z)</code> is the character string <code>"complex"</code> and
-<code>length(z)</code> is <code>100</code>.
+<!-- For example, if @code{z} is a complex vector of length 100, then in an -->
+<!-- expression @code{mode(z)} is the character string @code{"complex"} and -->
+<!-- @code{length(z)} is @code{100}. -->
 
-   <p>R caters for changes of mode almost anywhere it could be considered
-sensible to do so, (and a few where it might not be).  For example with
+   <p>예를들어, 만약 <code>z</code>가 길이가 100인 복소수형 벡터라고 한다면, <code>mode(z)</code>는 문자열 <code>"complex"</code>(복소수)이고 <code>length(z)</code>은 <code>100</code>입니다. 
+<!-- @R{} caters for changes of mode almost anywhere it could be considered -->
+<!-- sensible to do so, (and a few where it might not be).  For example with -->
+R은 어디에서든지 모드를 변경할 수 있도록 해줍니다. 
+아래의 예제를 보도록 합니다.
 
 <pre class="example">     &gt; z &lt;- 0:9
 </pre>
-   <p class="noindent">we could put
+   <p class="noindent"><!-- we could put -->
+위에서 생성한 0 부터 9까지의 숫자로 된 수열 <code>z</code>는 아래와 같이 <code>c("0", "1", "2", ..., "9")</code>와 문자로 된 벡터로 변환할 수 있습니다.
 
 <pre class="example">     &gt; digits &lt;- as.character(z)
 </pre>
-   <p class="noindent">after which <code>digits</code> is the character vector <code>c("0", "1", "2",
-..., "9")</code>.  A further <em>coercion</em>, or change of mode,
-reconstructs the numerical vector again:
+   <p class="noindent"><!-- after which @code{digits} is the character vector @code{c("0", "1", "2", -->
+<!-- @dots{}, "9")}.  A further @emph{coercion}, or change of mode, -->
+<!-- reconstructs the numerical vector again: -->
+수치형 벡터로의 <em>coercion</em>(강제형변환) 또는 모드의 변환은 아래에서 보이는 것과 같이 다시 한 번 이루어질 수 있습니다.
 
 <pre class="example">     &gt; d &lt;- as.integer(digits)
 </pre>
-   <p class="noindent">Now <code>d</code> and <code>z</code> are the same.<a rel="footnote" href="#fn-12" name="fnd-12"><sup>12</sup></a>  There is a
-large collection of functions of the form <code>as.</code><var>something</var><code>()</code>
-for either coercion from one mode to another, or for investing an object
-with some other attribute it may not already possess.  The reader should
-consult the different help files to become familiar with them.
+   <p class="noindent"><!-- Now @code{d} and @code{z} are the same.@footnote{In general, coercion -->
+<!-- from numeric to character and back again will not be exactly reversible, -->
+<!-- because of roundoff errors in the character representation.}  There is a -->
+<!-- large collection of functions of the form @code{as.@var{something}()} -->
+<!-- for either coercion from one mode to another, or for investing an object -->
+<!-- with some other attribute it may not already possess.  The reader should -->
+<!-- consult the different help files to become familiar with them. -->
+
+   <p>이제 <code>d</code>와 <code>z</code>는 동일한 벡터임을 확인하실 수 있을 것입니다. 
+<a rel="footnote" href="#fn-12" name="fnd-12"><sup>12</sup></a>
+이와 같이 형의 변환을 도와주는 강제형변환 기능은 <code>as.</code><var>something</var> 형태의 함수로서 이루어지며,
+객체가 어떤 속성을 가지고 있는가 혹은 없는가에 확인하기 위한 방대한 양의 함수들이 제공되고 있습니다. 
+이러한 함수들의 사용에 익숙해지기 위해서는 도움말 파일을 참고하시길 부탁드립니다.
 
 <!-- </FIXME> -->
 <div class="node">
@@ -8163,13 +8191,10 @@ for <code>sub</code> and <code>substring</code>.</p>
 
    <p class="footnote"><small>[<a name="fn-10" href="#fnd-10">10</a>]</small> <em>numeric</em>(수치형) 모드라는 것은 실제로는 <em>integer</em>(정수형)과 <em>double</em> precision (배정밀도)라는 두가지의 다른 모드가 합쳐진 것입니다</p>
 
-   <p class="footnote"><small>[<a name="fn-11" href="#fnd-11">11</a>]</small> Note however that <code>length(</code><var>object</var><code>)</code> does not always
-contain intrinsic useful information, e.g., when <var>object</var> is a
-function.</p>
+   <p class="footnote"><small>[<a name="fn-11" href="#fnd-11">11</a>]</small> 그러나, <code>length(</code><var>object</var><code>)</code>가 항상 본질적인 정보를 포함하는 것은 아닙니다.  <var>object</var>의 경우가 이에 해당합니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-12" href="#fnd-12">12</a>]</small> In general, coercion
-from numeric to character and back again will not be exactly reversible,
-because of roundoff errors in the character representation.</p>
+   <p class="footnote"><small>[<a name="fn-12" href="#fnd-12">12</a>]</small> 일반적으로 숫자에서 문자로의 강제형변환 한 뒤 다시 숫자로 변경할때에는 본래의 숫자와 완전히 똑같지 않습니다. 
+그 이유는 문자로서 표현될때의 roundoff errors(반올림 오차)때문입니다.</p>
 
    <p class="footnote"><small>[<a name="fn-13" href="#fnd-13">13</a>]</small> A different style using
 `formal' or `S4' classes is provided in package <code>methods</code>.</p>

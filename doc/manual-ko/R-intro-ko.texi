@@ -1645,70 +1645,98 @@ for @code{sub} and @code{substring}.}
 벡터는 empty(아무런 구성요소가 없이 비어있는 상태)일 수 있음에도 불구하고 모드를 가질 수 있습니다. 
 예를들어, 비어있는 문자열은 @code{character(0)}이며, 비어있는 수치형 벡터는 @code{numeric(0)}입니다. 
 
-@R{} also operates on objects called @emph{lists}, which are of mode
-@emph{list}.  These are ordered sequences of objects which individually
-can be of any mode.  @emph{lists} are known as ``recursive'' rather than
-atomic structures since their components can themselves be lists in
-their own right.
+@c @R{} also operates on objects called @emph{lists}, which are of mode
+@c @emph{list}.  These are ordered sequences of objects which individually
+@c can be of any mode.  @emph{lists} are known as ``recursive'' rather than
+@c atomic structures since their components can themselves be lists in
+@c their own right.
 
-The other recursive structures are those of mode @emph{function} and
-@emph{expression}.  Functions are the objects that form part of the @R{}
-system along with similar user written functions, which we discuss in
-some detail later.  Expressions as objects form an
-advanced part of @R{} which will not be discussed in this guide, except
-indirectly when we discuss @emph{formulae} used with modeling in @R{}.
+@R{}은 또한 @emph{list}(리스트)라는 모드를 가지고 있는 @emph{lists}(리스트)라고 불리는 객체를 특정한 방식으로 조작하고 있습니다. 
+이것은 모든 구성요소가 동일한 모드를 가지지 않는 일련의 순서에 의해서 정리된 시퀀스입니다.
+@emph{lists}(리스트)는 또한 atomic structure (가장 근본적인 기본구조)이기 보다는 ``recursive''(재귀적) 구조를 가집니다.
+그 이유는 이 객체의 구성요소 자체가 리스트가 될 수 있기 때문입니다. 
 
-By the @emph{mode} of an object we mean the basic type of its
-fundamental constituents.  This is a special case of a ``property''
-of an object.  Another property of every object is its @emph{length}.  The
-functions @code{mode(@var{object})} and @code{length(@var{object})} can be
-used to find out the mode and length of any defined structure
-@footnote{Note however that @code{length(@var{object})} does not always
-contain intrinsic useful information, e.g., when @code{@var{object}} is a
-function.}.
+@c The other recursive structures are those of mode @emph{function} and
+@c @emph{expression}.  Functions are the objects that form part of the @R{}
+@c system along with similar user written functions, which we discuss in
+@c some detail later.  Expressions as objects form an
+@c advanced part of @R{} which will not be discussed in this guide, except
+@c indirectly when we discuss @emph{formulae} used with modeling in @R{}.
 
-Further properties of an object are usually provided by
-@code{attributes(@var{object})}, see @ref{Getting and setting attributes}.
-Because of this, @emph{mode} and @emph{length} are also called ``intrinsic
-attributes'' of an object.
+또 다른 재귀적 구조는 모드가 @emph{function}(함수) 또는 @emph{expression}(표현식)으로부터 찾을 수 있습니다.
+함수의 경우는 나중에 설명하게 될 사용자 정의 함수와 함께 @R{}시스템의 부분을 구성하는 객체이기 때문이며,
+표현식의 경우는 @R{}에서 모델링을 할때 사용하는 @emph{formulae}(모델식)을 언급하면서 간접적으로 얘기할 때를 제외하고는 이 문서에서는 설명하지 않지만 이 또한 @R{}시스템의 고급적 부분을 형성하는 객체이기 때문입니다.
+
+@c By the @emph{mode} of an object we mean the basic type of its
+@c fundamental constituents.  This is a special case of a ``property''
+@c of an object.  Another property of every object is its @emph{length}.  The
+@c functions @code{mode(@var{object})} and @code{length(@var{object})} can be
+@c used to find out the mode and length of any defined structure
+@c @footnote{Note however that @code{length(@var{object})} does not always
+@c contain intrinsic useful information, e.g., when @code{@var{object}} is a
+@c function.}.
+객체의 @emph{mode}(모드)는 우리가 다루는 객체를 구성하는 요소들에 대한 기본형(basic type)을 알 수 있습니다.
+모든 객체에 있는 또 다른 속성은 @emph{length}(길이)입니다. 
+@code{mode(@var{object})}와 @code{mode(@var{object})}라는 명령어를 통하여 객체에 정의된 구조의 모드와 길이를 알 수 있습니다. 
+@footnote{그러나, @code{length(@var{object})}가 항상 본질적인 정보를 포함하는 것은 아닙니다.  @code{@var{object}}의 경우가 이에 해당합니다.}.
+
+
+@c Further properties of an object are usually provided by
+@c @code{attributes(@var{object})}, see @ref{Getting and setting attributes}.
+@c Because of this, @emph{mode} and @emph{length} are also called ``intrinsic
+@c attributes'' of an object.
+객체에 대한 더 많은 속성들은 @code{attributes(@var{object})}를 통해서 알 있으며, @ref{Getting and setting attributes}를 참고하시길 바랍니다.
+이러한 이유로 @emph{mode}(모드)와 @emph{length}(길이)는 객체의 ``intrinsic attributes''(본질적 속성들)이라고도 합니다.
 @findex mode
 @findex length
 
-For example, if @code{z} is a complex vector of length 100, then in an
-expression @code{mode(z)} is the character string @code{"complex"} and
-@code{length(z)} is @code{100}.
+@c For example, if @code{z} is a complex vector of length 100, then in an
+@c expression @code{mode(z)} is the character string @code{"complex"} and
+@c @code{length(z)} is @code{100}.
 
-@R{} caters for changes of mode almost anywhere it could be considered
-sensible to do so, (and a few where it might not be).  For example with
+예를들어, 만약 @code{z}가 길이가 100인 복소수형 벡터라고 한다면, @code{mode(z)}는 문자열 @code{"complex"}(복소수)이고 @code{length(z)}은 @code{100}입니다.
+@c @R{} caters for changes of mode almost anywhere it could be considered
+@c sensible to do so, (and a few where it might not be).  For example with
+@R{}은 어디에서든지 모드를 변경할 수 있도록 해줍니다. 
+아래의 예제를 보도록 합니다.
 
 @example
 > z <- 0:9
 @end example
 
 @noindent
-we could put
-
+@c we could put
+위에서 생성한 0 부터 9까지의 숫자로 된 수열 @code{z}는 아래와 같이 @code{c("0", "1", "2", @dots{}, "9")}와 문자로 된 벡터로 변환할 수 있습니다.
+ 
 @example
 > digits <- as.character(z)
 @end example
 
 @noindent
-after which @code{digits} is the character vector @code{c("0", "1", "2",
-@dots{}, "9")}.  A further @emph{coercion}, or change of mode,
-reconstructs the numerical vector again:
+@c after which @code{digits} is the character vector @code{c("0", "1", "2",
+@c @dots{}, "9")}.  A further @emph{coercion}, or change of mode,
+@c reconstructs the numerical vector again:
+수치형 벡터로의 @emph{coercion}(강제형변환) 또는 모드의 변환은 아래에서 보이는 것과 같이 다시 한 번 이루어질 수 있습니다. 
 
 @example
 > d <- as.integer(digits)
 @end example
 
 @noindent
-Now @code{d} and @code{z} are the same.@footnote{In general, coercion
-from numeric to character and back again will not be exactly reversible,
-because of roundoff errors in the character representation.}  There is a
-large collection of functions of the form @code{as.@var{something}()}
-for either coercion from one mode to another, or for investing an object
-with some other attribute it may not already possess.  The reader should
-consult the different help files to become familiar with them.
+@c Now @code{d} and @code{z} are the same.@footnote{In general, coercion
+@c from numeric to character and back again will not be exactly reversible,
+@c because of roundoff errors in the character representation.}  There is a
+@c large collection of functions of the form @code{as.@var{something}()}
+@c for either coercion from one mode to another, or for investing an object
+@c with some other attribute it may not already possess.  The reader should
+@c consult the different help files to become familiar with them.
+
+이제 @code{d}와 @code{z}는 동일한 벡터임을 확인하실 수 있을 것입니다.
+@footnote{일반적으로 숫자에서 문자로의 강제형변환 한 뒤 다시 숫자로 변경할때에는 본래의 숫자와 완전히 똑같지 않습니다. 
+그 이유는 문자로서 표현될때의 roundoff errors(반올림 오차)때문입니다.}  
+이와 같이 형의 변환을 도와주는 강제형변환 기능은 @code{as.@var{something}} 형태의 함수로서 이루어지며, 
+객체가 어떤 속성을 가지고 있는가 혹은 없는가에 확인하기 위한 방대한 양의 함수들이 제공되고 있습니다.
+이러한 함수들의 사용에 익숙해지기 위해서는 도움말 파일을 참고하시길 부탁드립니다.
 
 @c </FIXME>
 
