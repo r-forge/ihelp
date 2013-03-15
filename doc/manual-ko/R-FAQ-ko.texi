@@ -1,7 +1,7 @@
 \input texinfo
 @c %**start of header
 @setfilename R-FAQ.info
-@settitle R FAQ
+@settitle R FAQ (한국어 버전)
 @setchapternewpage on
 @set FAQ_YEAR 2013
 @set FAQ_DATE @value{FAQ_YEAR}-02-08
@@ -19,9 +19,10 @@
 @c </COMMENT>
 @set FAQ_ISBN 3-900051-08-9
 @set R_ISBN 3-900051-07-0
-@documentlanguage en
-@documentencoding ISO-8859-1
+@c @documentlanguage en
+@c @documentencoding ISO-8859-1
 @c %**end of header
+@c @documentlanguage utf-8
 
 @dircategory Programming
 @direntry
@@ -68,6 +69,7 @@ FORTRAN
 @subtitle Version @value{FAQ_VERSION}
 @subtitle ISBN @value{FAQ_ISBN}
 @author Kurt Hornik
+
 @end titlepage
 
 @ifinfo
@@ -77,7 +79,6 @@ Frequently Asked Questions on R  @*
 Version @value{FAQ_VERSION}      @*
 ISBN @value{FAQ_ISBN}            @*
 Kurt Hornik                      @*
-
 @sp 2
 @end ifinfo
 
@@ -95,6 +96,8 @@ Kurt Hornik                      @*
 <h2>Version @value{FAQ_VERSION}</h2>
 <h2>ISBN @value{FAQ_ISBN}</h2>
 <address>Kurt Hornik</address>
+<address>The Korean R Development Translation Team </address>
+<address>@email{gnustats@@korea.gnu.org}</address>
 <p><p><hr><p>
 @end html
 @end ifhtml
@@ -287,7 +290,7 @@ R 은 통계 계산 및 그래픽을 위한 시스템으로서, 프로그래밍 
 R의 디자인은 Becker, Chambers & Wilks의 S (@pxref{What is S?})와 Sussman's @url{http://www.cs.indiana.edu/scheme-repository/home.html,
 Scheme}으로부터 크게 영향을 받았습니다. 
 따라서, 결과적으로 보이는 R 언어는 S와 매우 흡사하지만, 근본적인 구현방법과 시맨틱은 Scheme 으로부터 유래되었습니다. 
-더 자세한 사항은 @xref{What are the differences between R and S?}에서 확인하실 수 있습니다.
+@xref{What are the differences between R and S?}.
 
 The core of R is an interpreted computer language which allows branching
 and looping as well as modular programming using functions.  Most of the
