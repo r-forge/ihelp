@@ -1944,32 +1944,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 
 <h3 class="section">3.3 Getting and setting attributes</h3>
 
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
 <p><a name="index-attr-74"></a><a name="index-attributes-75"></a>
-The function <code>attributes(</code><var>object</var><code>)</code>
-<a name="index-attributes-76"></a>returns a list of all the non-intrinsic attributes currently defined for
-that object.  The function <code>attr(</code><var>object</var><code>, </code><var>name</var><code>)</code>
-<a name="index-attr-77"></a>can be used to select a specific attribute.  These functions are rarely
-used, except in rather special circumstances when some new attribute is
-being created for some particular purpose, for example to associate a
-creation date or an operator with an R object.  The concept, however,
-is very important.
+<!-- The function @code{attributes(@var{object})} -->
+<!-- @findex attributes -->
+<!-- returns a list of all the non-intrinsic attributes currently defined for -->
+<!-- that object.  The function @code{attr(@var{object}, @var{name})} -->
+<!-- @findex attr -->
+<!-- can be used to select a specific attribute.  These functions are rarely -->
+<!-- used, except in rather special circumstances when some new attribute is -->
+<!-- being created for some particular purpose, for example to associate a -->
+<!-- creation date or an operator with an @R{} object.  The concept, however, -->
+<!-- is very important. -->
 
-   <p>Some care should be exercised when assigning or deleting attributes
-since they are an integral part of the object system used in R.
+   <p>함수 <code>attributes(</code><var>object</var><code>)</code>는 현재 정의되어 있는 객체들의 모든 속성들의 목록을 보여줍니다. 
+<a name="index-attributes-76"></a>단, 이 속성들은 본질적으로 내재되어 있는 것들이 아닙니다. 
+함수 <code>attr(</code><var>object</var><code>, </code><var>name</var><code>)</code>은 특정한 속성을 선택하는데 사용되어 집니다. 
+<a name="index-attr-77"></a>그러나, R객체에 날짜 및 연산자의 결합과 같은 어떤 새로운 속성이 어떤 특정한 목적으로 생성되는 것과 같은 특별한 경우가 아니라면 이러한 함수들은 거의 사용되지 않습니다. 
+그러나, 이 속성에 대한 개념은 매우 중요합니다.
 
-   <p>When it is used on the left hand side of an assignment it can be used
-either to associate a new attribute with <var>object</var> or to
-change an existing one.  For example
+<!-- Some care should be exercised when assigning or deleting attributes -->
+<!-- since they are an integral part of the object system used in @R{}. -->
+   <p>속성을 새로이 추가하거나 삭제할때는 사용의 주의가 매우 요구되어 집니다. 
+그 이유는 R에서 사용되는 객체 시스템의 주요한 부분이기 때문입니다.
+
+<!-- When it is used on the left hand side of an assignment it can be used -->
+<!-- either to associate a new attribute with @code{@var{object}} or to -->
+<!-- change an existing one.  For example -->
+   <p>대입문의 좌측에 <var>object</var>를 이용하여 새로운 속성을 연결하거나 존재하는 속성을 변경할 수 있습니다. 
+다음의 예제는 <code>z</code>라는 벡터의 크기가 10행 10열이라는 행렬로 다루라는 의미입니다.
 
 <pre class="example">     &gt; attr(z, "dim") &lt;- c(10,10)
 </pre>
-   <p class="noindent">allows R to treat <code>z</code> as if it were a 10-by-10 matrix.
+   <p class="noindent"><!-- allows @R{} to treat @code{z} as if it were a 10-by-10 matrix. -->
 
 <div class="node">
 <a name="The-class-of-an-object"></a>
@@ -1982,36 +1988,58 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 <h3 class="section">3.4 The class of an object</h3>
 
 <p><a name="index-Classes-78"></a>
-All objects in R have a <em>class</em>, reported by the function
-<code>class</code>.  For simple vectors this is just the mode, for example
-<code>"numeric"</code>, <code>"logical"</code>, <code>"character"</code> or <code>"list"</code>,
-but <code>"matrix"</code>, <code>"array"</code>, <code>"factor"</code> and
-<code>"data.frame"</code> are other possible values.
+<!-- All objects in @R{} have a @emph{class}, reported by the function -->
+<!-- @code{class}.  For simple vectors this is just the mode, for example -->
+<!-- @code{"numeric"}, @code{"logical"}, @code{"character"} or @code{"list"}, -->
+<!-- but @code{"matrix"}, @code{"array"}, @code{"factor"} and -->
+<!-- @code{"data.frame"} are other possible values. -->
 
-   <p>A special attribute known as the <em>class</em> of the object is used to
-allow for an object-oriented style<a rel="footnote" href="#fn-13" name="fnd-13"><sup>13</sup></a> of
-programming in R.  For example if an object has class
-<code>"data.frame"</code>, it will be printed in a certain way, the
-<code>plot()</code> function will display it graphically in a certain way, and
-other so-called generic functions such as <code>summary()</code> will react to
-it as an argument in a way sensitive to its class.
+   <p>R에 존재하는 모든 객체들은 <em>class</em>(클래스)라는 것을 가집니다. 
+이는 함수 <code>class</code>의 사용으로 확인할 수 있습니다. 
+간단한 벡터의 예를 들어보면, <code>"numeric"</code>, <code>"logical"</code>, <code>"character"</code> 또는 <code>"list"</code>와 같이 이것은 단순하게 벡터의 모드라는 것을 알 수 있습니다. 
+그러나, <code>"matrix"</code>, <code>"array"</code>, <code>"factor"</code> 그리고 <code>"data.frame"</code>는 다른 값들을 가집니다.
 
-   <p>To remove temporarily the effects of class, use the function
-<code>unclass()</code>. 
-<a name="index-unclass-79"></a>For example if <code>winter</code> has the class <code>"data.frame"</code> then
+<!-- A special attribute known as the @emph{class} of the object is used to -->
+<!-- allow for an object-oriented style@footnote{A different style using -->
+<!-- `formal' or `S4' classes is provided in package @code{methods}.} of -->
+<!-- programming in @R{}.  For example if an object has class -->
+<!-- @code{"data.frame"}, it will be printed in a certain way, the -->
+<!-- @code{plot()} function will display it graphically in a certain way, and -->
+<!-- other so-called generic functions such as @code{summary()} will react to -->
+<!-- it as an argument in a way sensitive to its class. -->
+   <p>객체의 <em>class</em>(클래스)로서 알려진 특별한 속성은 R의 object-oriented style (객체지향스타일) 프로그래밍에서 사용됩니다 <a rel="footnote" href="#fn-13" name="fnd-13"><sup>13</sup></a>. 
+예를들면, 만약 객체가 <code>"data.frame"</code>를 가진다고 할때,
+이 객체에 <code>plot()</code> 함수의 이용은 이 객체는 <code>plot()</code>내에 미리 정해져 있는 특정한 방식대로 데이터를 불러와 해당 클래스에 정의되어 있는대로 시각화처리를 하게 됩니다. 
+또한, 일명 <code>summary()</code>라고 불리는 제네릭 함수가 사용될 때 객체가 가지고 있는 클래스를 인자의 형태로 받아, 이에 따라 정의되어 있는대로 결과물에 대한 요약을 보여주게 됩니다.
 
+<!-- To remove temporarily the effects of class, use the function -->
+<!-- @code{unclass()}. -->
+   <p><a name="index-unclass-79"></a><!-- For example if @code{winter} has the class @code{"data.frame"} then -->
+
+   <p>클래스의 미치는 영향을 일시적으로 제거하기 위해서는 <code>unclass()</code>라는 함수를 사용하면 됩니다. 
+예를들어 만약 <code>winter</code>라는 객체가 클래스 <code>"data.frame"</code>(데이터 프레임)을 가지고 있다면, 아래의 명령문은 행렬처럼 보이기 보다는 데이터 프레임의 형식에 맞춰 결과를 보여주게 됩니다.
 <pre class="example">     &gt; winter
 </pre>
-   <p class="noindent">will print it in data frame form, which is rather like a matrix, whereas
-
+   <p class="noindent"><!-- will print it in data frame form, which is rather like a matrix, whereas -->
+반면에 아래와 같은 명령문을 수행하게 된다면 본래 가지고 있던 리스트의 형식으로 출력되게 됩니다.
 <pre class="example">     &gt; unclass(winter)
 </pre>
-   <p class="noindent">will print it as an ordinary list.  Only in rather special situations do
-you need to use this facility, but one is when you are learning to come
-to terms with the idea of class and generic functions.
+   <p class="noindent"><!-- will print it as an ordinary list.  Only in rather special situations do -->
+<!-- you need to use this facility, but one is when you are learning to come -->
+<!-- to terms with the idea of class and generic functions. -->
 
-   <p>Generic functions and classes will be discussed further in <a href="#Object-orientation">Object orientation</a>, but only briefly.
+   <p>이러한 클래스의 활용은 매우 특수한 경우에 사용할 수 있으나, 지금은 단순히 클래스와 제네릭 함수의 개념에만 익숙해지시면 됩니다.
 
+<!-- Generic functions and classes will be discussed further in @ref{Object -->
+<!-- orientation}, but only briefly. -->
+   <p>이것들에 대해서 <a href="#Object-orientation">Object orientation</a>에서 더 자세히 살펴보게 되겠지만, 여기에서는 간단히 마치도록 합니다.
+
+<!-- ======================================================================================================================================= -->
+<!-- ======================================================================================================================================= -->
+<!-- ======================================================================================================================================= -->
+<!-- ======================================================================================================================================= -->
+<!-- ======================================================================================================================================= -->
+<!-- ======================================================================================================================================= -->
 <div class="node">
 <a name="Factors"></a>
 <p><hr>
@@ -8213,8 +8241,7 @@ for <code>sub</code> and <code>substring</code>.</p>
    <p class="footnote"><small>[<a name="fn-12" href="#fnd-12">12</a>]</small> 일반적으로 숫자에서 문자로의 강제형변환 한 뒤 다시 숫자로 변경할때에는 본래의 숫자와 완전히 똑같지 않습니다. 
 그 이유는 문자로서 표현될때의 roundoff errors(반올림 오차)때문입니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-13" href="#fnd-13">13</a>]</small> A different style using
-`formal' or `S4' classes is provided in package <code>methods</code>.</p>
+   <p class="footnote"><small>[<a name="fn-13" href="#fnd-13">13</a>]</small> `formal' 또는 `S4' 클래스들을 사용하는 다른 종류의 스타일들은 패키지 <code>methods</code>내에서 제공되어지고 있습니다.</p>
 
    <p class="footnote"><small>[<a name="fn-14" href="#fnd-14">14</a>]</small> Readers should note
 that there are eight states and territories in Australia, namely the

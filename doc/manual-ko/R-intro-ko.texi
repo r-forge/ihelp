@@ -1805,83 +1805,113 @@ for @code{sub} and @code{substring}.}
 
 @node Getting and setting attributes, The class of an object, Changing the length of an object, Objects
 @section Getting and setting attributes
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-
 @findex attr
 @findex attributes
 
-The function @code{attributes(@var{object})}
+@c The function @code{attributes(@var{object})}
+@c @findex attributes
+@c returns a list of all the non-intrinsic attributes currently defined for
+@c that object.  The function @code{attr(@var{object}, @var{name})}
+@c @findex attr
+@c can be used to select a specific attribute.  These functions are rarely
+@c used, except in rather special circumstances when some new attribute is
+@c being created for some particular purpose, for example to associate a
+@c creation date or an operator with an @R{} object.  The concept, however,
+@c is very important.
+
+함수 @code{attributes(@var{object})}는 현재 정의되어 있는 객체들의 모든 속성들의 목록을 보여줍니다.
 @findex attributes
-returns a list of all the non-intrinsic attributes currently defined for
-that object.  The function @code{attr(@var{object}, @var{name})}
+단, 이 속성들은 본질적으로 내재되어 있는 것들이 아닙니다.
+함수 @code{attr(@var{object}, @var{name})}은 특정한 속성을 선택하는데 사용되어 집니다.
 @findex attr
-can be used to select a specific attribute.  These functions are rarely
-used, except in rather special circumstances when some new attribute is
-being created for some particular purpose, for example to associate a
-creation date or an operator with an @R{} object.  The concept, however,
-is very important.
+그러나, @R{}객체에 날짜 및 연산자의 결합과 같은 어떤 새로운 속성이 어떤 특정한 목적으로 생성되는 것과 같은 특별한 경우가 아니라면 이러한 함수들은 거의 사용되지 않습니다. 
+그러나, 이 속성에 대한 개념은 매우 중요합니다.
 
-Some care should be exercised when assigning or deleting attributes
-since they are an integral part of the object system used in @R{}.
+@c Some care should be exercised when assigning or deleting attributes
+@c since they are an integral part of the object system used in @R{}.
 
-When it is used on the left hand side of an assignment it can be used
-either to associate a new attribute with @code{@var{object}} or to
-change an existing one.  For example
+속성을 새로이 추가하거나 삭제할때는 사용의 주의가 매우 요구되어 집니다. 
+그 이유는 @R{}에서 사용되는 객체 시스템의 주요한 부분이기 때문입니다.
+
+@c When it is used on the left hand side of an assignment it can be used
+@c either to associate a new attribute with @code{@var{object}} or to
+@c change an existing one.  For example
+
+대입문의 좌측에 @code{@var{object}}를 이용하여 새로운 속성을 연결하거나 존재하는 속성을 변경할 수 있습니다. 
+다음의 예제는 @code{z}라는 벡터의 크기가 10행 10열이라는 행렬로 다루라는 의미입니다.
 
 @example
 > attr(z, "dim") <- c(10,10)
 @end example
 
 @noindent
-allows @R{} to treat @code{z} as if it were a 10-by-10 matrix.
+@c allows @R{} to treat @code{z} as if it were a 10-by-10 matrix.
 
 @node The class of an object,  , Getting and setting attributes, Objects
 @section The class of an object
 @cindex Classes
 
-All objects in @R{} have a @emph{class}, reported by the function
-@code{class}.  For simple vectors this is just the mode, for example
-@code{"numeric"}, @code{"logical"}, @code{"character"} or @code{"list"},
-but @code{"matrix"}, @code{"array"}, @code{"factor"} and
-@code{"data.frame"} are other possible values.
+@c All objects in @R{} have a @emph{class}, reported by the function
+@c @code{class}.  For simple vectors this is just the mode, for example
+@c @code{"numeric"}, @code{"logical"}, @code{"character"} or @code{"list"},
+@c but @code{"matrix"}, @code{"array"}, @code{"factor"} and
+@c @code{"data.frame"} are other possible values.
 
-A special attribute known as the @emph{class} of the object is used to
-allow for an object-oriented style@footnote{A different style using
-`formal' or `S4' classes is provided in package @code{methods}.} of
-programming in @R{}.  For example if an object has class
-@code{"data.frame"}, it will be printed in a certain way, the
-@code{plot()} function will display it graphically in a certain way, and
-other so-called generic functions such as @code{summary()} will react to
-it as an argument in a way sensitive to its class.
+@R{}에 존재하는 모든 객체들은 @emph{class}(클래스)라는 것을 가집니다.
+이는 함수 @code{class}의 사용으로 확인할 수 있습니다.
+간단한 벡터의 예를 들어보면, @code{"numeric"}, @code{"logical"}, @code{"character"} 또는 @code{"list"}와 같이 이것은 단순하게 벡터의 모드라는 것을 알 수 있습니다.
+그러나, @code{"matrix"}, @code{"array"}, @code{"factor"} 그리고 @code{"data.frame"}는 다른 값들을 가집니다.
 
-To remove temporarily the effects of class, use the function
-@code{unclass()}.
+@c A special attribute known as the @emph{class} of the object is used to
+@c allow for an object-oriented style@footnote{A different style using
+@c `formal' or `S4' classes is provided in package @code{methods}.} of
+@c programming in @R{}.  For example if an object has class
+@c @code{"data.frame"}, it will be printed in a certain way, the
+@c @code{plot()} function will display it graphically in a certain way, and
+@c other so-called generic functions such as @code{summary()} will react to
+@c it as an argument in a way sensitive to its class.
+
+객체의 @emph{class}(클래스)로서 알려진 특별한 속성은 @R{}의 object-oriented style (객체지향스타일) 프로그래밍에서 사용됩니다 @footnote{`formal' 또는 `S4' 클래스들을 사용하는 다른 종류의 스타일들은 패키지 @code{methods}내에서 제공되어지고 있습니다.}.
+예를들면, 만약 객체가 @code{"data.frame"}를 가진다고 할때, 
+이 객체에 @code{plot()} 함수의 이용은 이 객체는 @code{plot()}내에 미리 정해져 있는 특정한 방식대로 데이터를 불러와 해당 클래스에 정의되어 있는대로 시각화처리를 하게 됩니다. 
+또한, 일명 @code{summary()}라고 불리는 제네릭 함수가 사용될 때 객체가 가지고 있는 클래스를 인자의 형태로 받아, 이에 따라 정의되어 있는대로 결과물에 대한 요약을 보여주게 됩니다. 
+
+@c To remove temporarily the effects of class, use the function
+@c @code{unclass()}.
 @findex unclass
-For example if @code{winter} has the class @code{"data.frame"} then
+@c For example if @code{winter} has the class @code{"data.frame"} then
 
+클래스의 미치는 영향을 일시적으로 제거하기 위해서는 @code{unclass()}라는 함수를 사용하면 됩니다.
+예를들어 만약 @code{winter}라는 객체가 클래스 @code{"data.frame"}(데이터 프레임)을 가지고 있다면, 아래의 명령문은 행렬처럼 보이기 보다는 데이터 프레임의 형식에 맞춰 결과를 보여주게 됩니다. 
 @example
 > winter
 @end example
 
 @noindent
-will print it in data frame form, which is rather like a matrix, whereas
-
+@c will print it in data frame form, which is rather like a matrix, whereas
+반면에 아래와 같은 명령문을 수행하게 된다면 본래 가지고 있던 리스트의 형식으로 출력되게 됩니다.
 @example
 > unclass(winter)
 @end example
 
 @noindent
-will print it as an ordinary list.  Only in rather special situations do
-you need to use this facility, but one is when you are learning to come
-to terms with the idea of class and generic functions.
+@c will print it as an ordinary list.  Only in rather special situations do
+@c you need to use this facility, but one is when you are learning to come
+@c to terms with the idea of class and generic functions.
 
-Generic functions and classes will be discussed further in @ref{Object
-orientation}, but only briefly.
+이러한 클래스의 활용은 매우 특수한 경우에 사용할 수 있으나, 지금은 단순히 클래스와 제네릭 함수의 개념에만 익숙해지시면 됩니다.
+
+@c Generic functions and classes will be discussed further in @ref{Object
+@c orientation}, but only briefly.
+이것들에 대해서 @ref{Object orientation}에서 더 자세히 살펴보게 되겠지만, 여기에서는 간단히 마치도록 합니다.
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+
 
 @node Factors, Arrays and matrices, Objects, Top
 @chapter Ordered and unordered factors
