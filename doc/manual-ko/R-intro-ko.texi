@@ -1743,59 +1743,75 @@ for @code{sub} and @code{substring}.}
 @node Changing the length of an object, Getting and setting attributes, The intrinsic attributes mode and length, Objects
 @section Changing the length of an object
 
-
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-
 @example
 > e <- numeric()
 @end example
 
 @noindent
-makes @code{e} an empty vector structure of mode numeric.  Similarly
-@code{character()} is a empty character vector, and so on.  Once an
-object of any size has been created, new components may be added to it
-simply by giving it an index value outside its previous range.  Thus
+@c makes @code{e} an empty vector structure of mode numeric.  Similarly
+@c @code{character()} is a empty character vector, and so on.  Once an
+@c object of any size has been created, new components may be added to it
+@c simply by giving it an index value outside its previous range.  Thus
+
+위의 명령문은 @code{e}라는 수치형 모드를 가지며 아무런 구성요소도 가지지 않은 (즉, 비어있는) 벡터를 생성합니다.
+유사한 방식으로 @code{character()}은 아무런 구성요소를 가지고 있는 문자형 벡터를 생성하는데 쓰입니다.
+이렇게 하는 것은 임의의 크기를 가지는 객체를 생성하는데 쓰이며, 
+새로운 구성요소는 아래와 같이 벡터가 원래 가지고 있던 인덱스의 범위 밖의 값을 넣어줌으로서 추가할 수 있습니다. 
 
 @example
 > e[3] <- 17
 @end example
 
 @noindent
-now makes @code{e} a vector of length 3, (the first two components of
-which are at this point both @code{NA}).  This applies to any structure
-at all, provided the mode of the additional component(s) agrees with the
-mode of the object in the first place.
+@c now makes @code{e} a vector of length 3, (the first two components of
+@c which are at this point both @code{NA}).  This applies to any structure
+@c at all, provided the mode of the additional component(s) agrees with the
+@c mode of the object in the first place.
 
-This automatic adjustment of lengths of an object is used often, for
-example in the @code{scan()} function for input.  (@pxref{The scan()
-function}.)
+이제 길이가 3인 @code{e}라는 벡터가 만들어진 것입니다 (처음 두개의 구성요소들은 @code{NA}가 될 것입니다). 
+이러한 방식으로 구성요소를 추가하는 것은 새로 추가되는 구성요소의 모드가 존재하는 객체를 구성하는 객체의 모드와 일치만 한다면 어떠한 구조를 가진 객체에 모두 적용이 가능합니다. 
 
-Conversely to truncate the size of an object requires only an assignment
-to do so.  Hence if @code{alpha} is an object of length 10, then
+@c This automatic adjustment of lengths of an object is used often, for
+@c example in the @code{scan()} function for input.  (@pxref{The scan()
+@c function}.)
 
+종종 자동적으로 객체의 길이가 조정될 때가 있습니다. 
+예를들면, 입력을 받기 위한 @code{scan()}가 사용될 때입니다. 
+(@pxref{The scan() function}.)
+
+@c Conversely to truncate the size of an object requires only an assignment
+@c to do so.  Hence if @code{alpha} is an object of length 10, then
+이와는 반대로 객체의 크기를 줄이고자 한다면 단순히 대입문을 사용하면 됩니다.
+예를들어, @code{alpha}가 길이가 10인 객체라고 가정합니다.
+아래의 대입문은 @code{alpha}의 인덱스 벡터의 길이가 5인데, 이 벡터에 2를 곱하였으므로, @code{alpha}의 인덱스 벡터가 짝수에 해당하는 @code{alpha}의 구성요소들만 선택된 새로운 @code{alpha}를 생성하는 것입니다. 
+ 
 @example
 > alpha <- alpha[2 * 1:5]
 @end example
 
 @noindent
-makes it an object of length 5 consisting of just the former components
-with even index.  (The old indices are not retained, of course.)  We can
-then retain just the first three values by
+@c makes it an object of length 5 consisting of just the former components
+@c with even index.  (The old indices are not retained, of course.)  We can
+@c then retain just the first three values by
+(물론 이전에 사용한 인덱스는 더 이상 유효하지 않습니다). 
+벡터의 길이를 변경하여 처음 세가의 구성요소만을 가지는 @code{alpha}를 생성하고자 한다면 아래와 같은 방법을 사용할 수도 있습니다. 
 
 @example
 > length(alpha) <- 3
 @end example
 
 @noindent
-and vectors can be extended (by missing values) in the same way.
+@c and vectors can be extended (by missing values) in the same way.
 
 @node Getting and setting attributes, The class of an object, Changing the length of an object, Objects
 @section Getting and setting attributes
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+
 @findex attr
 @findex attributes
 
