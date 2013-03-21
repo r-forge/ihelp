@@ -2135,12 +2135,6 @@ act    nsw  nt    qld     sa tas   vic     wa
 @code{ordered()}라는 함수는 순위형 요인들을 생성하는 것외에는 @code{factor}와 다른 점은 없습니다.
 순위형과 비순위형의 다른점이라고 한다면 순위형은 레벨의 정렬된 순서대로 출력을 하게 되지만, 이로부터 적합된 선형모델을 이용하여 contrasts(대조)를 할 경우에는 다른 결과값을 산출한다는 점에서 주의를 해야합니다.
 
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
 
 @node Arrays and matrices, Lists and data frames, Factors, Top
 @chapter Arrays and matrices
@@ -2163,19 +2157,31 @@ act    nsw  nt    qld     sa tas   vic     wa
 @cindex Arrays
 @cindex Matrices
 
-An array can be considered as a multiply subscripted collection of data
-entries, for example numeric.  @R{} allows simple facilities for
-creating and handling arrays, and in particular the special case of
-matrices.
+@c An array can be considered as a multiply subscripted collection of data
+@c entries, for example numeric.  @R{} allows simple facilities for
+@c creating and handling arrays, and in particular the special case of
+@c matrices.
 
-A dimension vector is a vector of non-negative integers.  If its length is
-@math{k} then the array is @math{k}-dimensional, e.g.@ a matrix is a
-@math{2}-dimensional array.  The dimensions are indexed from one up to
-the values given in the dimension vector.
+배열(array)은 데이터 엔트리 (data entries)를 다차원 인덱스를 이용하여 표현해 낸 구조라고 생각할 수 있습니다. 
+@R{}은 이러한 배열들을 생성하고 다룰 수 있는 간편한 기능들을 제공합니다.
+행렬은 배열의 특수한 예입니다.
 
-A vector can be used by @R{} as an array only if it has a dimension
-vector as its @emph{dim} attribute.  Suppose, for example, @code{z} is a
-vector of 1500 elements.  The assignment
+@c A dimension vector is a vector of non-negative integers.  If its length is
+@c @math{k} then the array is @math{k}-dimensional, e.g.@ a matrix is a
+@c @math{2}-dimensional array.  The dimensions are indexed from one up to
+@c the values given in the dimension vector.
+
+차원벡터는 음수가 아닌 정수들로 이루어진 벡터입니다. 
+만약, 길이가 @math{k}라면, @math{k}-차원을 가지는 배열입니다.
+즉, 행렬은 @math{2}-차원 배열입니다. 
+각 차원의 인덱스는 1부터 차원벡터에 주어져 있는 값들까지 가질 수 있습니다. 
+
+@c A vector can be used by @R{} as an array only if it has a dimension
+@c vector as its @emph{dim} attribute.  Suppose, for example, @code{z} is a
+@c vector of 1500 elements.  The assignment
+
+벡터는 @R{}에서 배열의 차원을 알려주는 @emph{dim}이라는 속성이 1인 특수한 경우에 해당합니다.
+예를들어, @code{z}는 1500개의 구성요소를 가지는 벡터를 생각해 봅니다.
 
 @example
 > dim(z) <- c(3,5,100)
@@ -2183,42 +2189,63 @@ vector of 1500 elements.  The assignment
 @findex dim
 
 @noindent
-gives it the @emph{dim} attribute that allows it to be treated as a
-@math{3} by @math{5} by @math{100} array.
+@c gives it the @emph{dim} attribute that allows it to be treated as a
+@c @math{3} by @math{5} by @math{100} array.
 
-Other functions such as @code{matrix()} and @code{array()} are available
-for simpler and more natural looking assignments, as we shall see in
-@ref{The array() function}.
+위의 대입문은 @emph{dim}이라는 속성에 의해서 길이가 3이므로 3차원 데이터 구조를 가지는데, 각 차원은 @math{3}, @math{5}, @math{100}의 인덱스를 가지고 있다는 것을 의미합니다. 
 
-The values in the data vector give the values in the array in the same
-order as they would occur in FORTRAN, that is ``column major order,''
-with the first subscript moving fastest and the last subscript slowest.
+@c Other functions such as @code{matrix()} and @code{array()} are available
+@c for simpler and more natural looking assignments, as we shall see in
+@c @ref{The array() function}.
 
-For example if the dimension vector for an array, say @code{a}, is
-@code{c(3,4,2)} then there are @eqn{3 \times 4 \times 2 = 24, 3 * 4 * 2
-= 24} entries in @code{a} and the data vector holds them in the order
-@code{a[1,1,1], a[2,1,1], @dots{}, a[2,4,2], a[3,4,2]}.
+@code{matrix()}와 @code{array()}와 같이 보다 더 간편하고 자연스러운 대입을 가능하게 하는 함수들이 제공됩니다.
+@ref{The array() function}를 살펴보시길 바랍니다.
 
-Arrays can be one-dimensional: such arrays are usually treated in the
-same way as vectors (including when printing), but the exceptions can
-cause confusion.
+@c The values in the data vector give the values in the array in the same
+@c order as they would occur in FORTRAN, that is ``column major order,''
+@c with the first subscript moving fastest and the last subscript slowest.
+
+데이터 벡터에 있는 값들이 배열에 나열될때는 FORTRAN 프로그램에서 사용되는 것과 같은 ``column major order''이 이용됩니다.
+다시 말해서, 차원벡터의 첫번째 인덱스가 제일 빠르게 업데이트 되고, 마지막 인덱스가 제일 나중에 업데이트 됩니다.
+
+@c For example if the dimension vector for an array, say @code{a}, is
+@c @code{c(3,4,2)} then there are @eqn{3 \times 4 \times 2 = 24, 3 * 4 * 2
+@c = 24} entries in @code{a} and the data vector holds them in the order
+@c @code{a[1,1,1], a[2,1,1], @dots{}, a[2,4,2], a[3,4,2]}.
+
+예를들면, 만약 배열에 있는 @code{a}라는 차원벡터가 @code{c(3,4,2)}라면, @code{a}에는 총 @eqn{3 \times 4 \times 2 = 24, 3 * 4 * 2 = 24}의 데이터 엔트리들이 있을 것입니다. 
+그리고, 데이터 벡터는 @code{a[1,1,1], a[2,1,1], @dots{}, a[2,4,2], a[3,4,2]}의 순서로 이들을 기억하는 것입니다.
+
+
+@c Arrays can be one-dimensional: such arrays are usually treated in the
+@c same way as vectors (including when printing), but the exceptions can
+@c cause confusion.
+
+배열은 1차원일 수 있는데, 이들은 벡터와 같이 사용이 되기도 합니다.  그러나, 예외의 경우 사용의 혼란을 가져올 수 있습니다.
 
 @node Array indexing, Index matrices, Arrays, Arrays and matrices
 @section Array indexing.  Subsections of an array
 @cindex Indexing of and by arrays
 
-Individual elements of an array may be referenced by giving the name of
-the array followed by the subscripts in square brackets, separated by
-commas.
+@c Individual elements of an array may be referenced by giving the name of
+@c the array followed by the subscripts in square brackets, separated by
+@c commas.
 
-More generally, subsections of an array may be specified by giving a
-sequence of @emph{index vectors} in place of subscripts; however
-@emph{if any index position is given an empty index vector, then the
-full range of that subscript is taken}.
+배열의 각 구성요소들은 배열의 이름 바로뒤에 컴마로 구분된 인덱스 벡터를 포함하는 대괄호를 이용하여 표현할 수 있습니다.
 
-Continuing the previous example, @code{a[2,,]} is a @eqn{4 \times 2, 4 *
-2} array with dimension vector @code{c(4,2)} and data vector containing
-the values
+@c More generally, subsections of an array may be specified by giving a
+@c sequence of @emph{index vectors} in place of subscripts; however
+@c @emph{if any index position is given an empty index vector, then the
+@c full range of that subscript is taken}.
+
+보다 일반적으로, 배열의 일부분들은 @emph{index vectors}(인덱스 벡터)에 의해서 표현될 수 있습니다. 
+그런데, 만약 인덱스 벡터내 특정 위치이 비어있다면, 이것은 해당 첨자에 해당하는 모든 값들을 의미합니다.
+
+@c Continuing the previous example, @code{a[2,,]} is a @eqn{4 \times 2, 4 *
+@c 2} array with dimension vector @code{c(4,2)} and data vector containing
+@c the values
+
+위에서 사용한 예제를 다시 살펴보면 @code{a[2,,]}는 @code{c(4,2)} 차원벡터를 가지는 배열이며, 아래와 같은 값들을 가지고 있습니다.
 
 @example
 c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
@@ -2226,17 +2253,25 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @end example
 
 @noindent
-in that order.  @code{a[,,]} stands for the entire array, which is the
-same as omitting the subscripts entirely and using @code{a} alone.
+@c in that order.  @code{a[,,]} stands for the entire array, which is the
+@c same as omitting the subscripts entirely and using @code{a} alone.
 
-For any array, say @code{Z}, the dimension vector may be referenced
-explicitly as @code{dim(Z)} (on either side of an assignment).
+@code{a[,,]}은 @code{a} 배열 그자체를 의미합니다.
 
-Also, if an array name is given with just @emph{one subscript or index
-vector}, then the corresponding values of the data vector only are used;
-in this case the dimension vector is ignored.  This is not the case,
-however, if the single index is not a vector but itself an array, as we
-next discuss.
+@c For any array, say @code{Z}, the dimension vector may be referenced
+@c explicitly as @code{dim(Z)} (on either side of an assignment).
+
+만약, @code{Z}라고 불리는 배열이 있다면 이 배열의 차원은 @code{dim(Z)}에 의해서 확인될 수 있습니다.
+
+@c Also, if an array name is given with just @emph{one subscript or index
+@c vector}, then the corresponding values of the data vector only are used;
+@c in this case the dimension vector is ignored.  This is not the case,
+@c however, if the single index is not a vector but itself an array, as we
+@c next discuss.
+
+또한, 만약 배열의 이름 뒤에 @emph{오로지 한개의 첨자 또는 인덱스 벡터}가 함께 주어지게 된다면 이에 상응하는 데이터 벡터가 사용되게 됩니다.
+이러한 경우에는 차원벡터가 무시되는 것입니다.
+그렇지 않고, 만약 인덱스가 배열의 형태로서 주어질 경우에 대해서는 다음 섹션에서 다룰 것입니다. 
 
 @menu
 * Index matrices::
@@ -2246,10 +2281,12 @@ next discuss.
 @node Index matrices, The array() function, Array indexing, Arrays and matrices
 @section Index matrices
 
-As well as an index vector in any subscript position, a matrix may be
-used with a single @emph{index matrix} in order either to assign a vector
-of quantities to an irregular collection of elements in the array, or to
-extract an irregular collection as a vector.
+@c As well as an index vector in any subscript position, a matrix may be
+@c used with a single @emph{index matrix} in order either to assign a vector
+@c of quantities to an irregular collection of elements in the array, or to
+@c extract an irregular collection as a vector.
+
+어느 첨자의 위치에 있는 인덱스 벡터외에도 배열내에 있는 불특정 위치에 있는 구성요소들에 새로운 값을 대입하거나 값을 추출할때 @emph{index matrix}(인덱스 행렬)을 사용할 수도 있습니다. 
 
 A matrix example makes the process clear.  In the case of a doubly
 indexed array, an index matrix may be given consisting of two columns
@@ -2257,6 +2294,9 @@ and as many rows as desired.  The entries in the index matrix are the
 row and column indices for the doubly indexed array.  Suppose for
 example we have a @math{4} by @math{5} array @code{X} and we wish to do
 the following:
+
+@c 아래의 행렬의 예제를 살펴본다면 이를 더욱 확실히 알수 있습니다.
+@c 아래의 예제와 같이 배열의 크기가 @math{4} by @math{5}인 배열 @code{X}가 있다고 가정하고, 우리는 @code{X}에 대해서 다음과 같은 것을 수행하고 싶다고 합니다.
 
 @itemize @bullet
 @item
@@ -2334,6 +2374,14 @@ However a simpler direct way of producing this matrix is to use
 Index matrices must be numerical: any other form of matrix (e.g.@ a
 logical or character matrix) supplied as a matrix is treated as an
 indexing vector.
+
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 @node The array() function, The outer product of two arrays, Index matrices, Arrays and matrices
 @section The @code{array()} function
@@ -2499,6 +2547,14 @@ to be impractical.
 It is also perhaps surprising that about 1 in 20 such matrices is
 singular.
 
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+
 @node Generalized transpose of an array, Matrix facilities, The outer product of two arrays, Arrays and matrices
 @section Generalized transpose of an array
 @cindex Generalized transpose of an array
@@ -2542,6 +2598,14 @@ noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
 number of rows and columns in the matrix @code{A} respectively.
 @findex nrow
 @findex ncol
+
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 @menu
 * Multiplication::              
@@ -2611,6 +2675,14 @@ vector as the diagonal entries.  On the other hand @code{diag(M)}, where
 @sc{Matlab}.  Also, somewhat confusingly, if @code{k} is a single
 numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
 matrix!
+
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 @node Linear equations and inversion, Eigenvalues and eigenvectors, Multiplication, Matrix facilities
 @subsection Linear equations and inversion
@@ -2699,6 +2771,13 @@ eigenvectors if they are not needed by using the expression
 @end example
 
 
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+
 @node Singular value decomposition and determinants, Least squares fitting and the QR decomposition, Eigenvalues and eigenvectors, Matrix facilities
 @subsection Singular value decomposition and determinants
 @cindex Singular value decomposition
@@ -2744,6 +2823,14 @@ including the sign, and another, @code{determinant}, to give the sign
 and modulus (optionally on log scale),
 
 @c Functions will be discussed formally later in these notes.
+
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 @node Least squares fitting and the QR decomposition,  , Singular value decomposition and determinants, Matrix facilities
 @subsection Least squares fitting and the QR decomposition
@@ -2793,6 +2880,14 @@ This alternative is the older, low-level way to perform least squares
 calculations.  Although still useful in some contexts, it would now
 generally be replaced by the statistical models features, as will be
 discussed in @ref{Statistical models in R}.
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+
 
 
 @node Forming partitioned matrices, The concatenation function c() with arrays, Matrix facilities, Arrays and matrices
@@ -2868,6 +2963,14 @@ one argument, simply for this side-effect:
 There are slight differences between the two, but ultimately the choice
 between them is largely a matter of style (with the former being
 preferable).
+
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 @node Frequency tables from factors,  , The concatenation function c() with arrays, Arrays and matrices
 @section Frequency tables from factors
@@ -3056,6 +3159,13 @@ Recall that with vector objects as arguments the concatenation function
 similarly joined together all arguments into a single vector structure.
 In this case all other attributes, such as @code{dim} attributes, are
 discarded.
+
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
+@c =======================================================================================================================================
 
 
 @node Data frames,  , Constructing and modifying lists, Lists and data frames

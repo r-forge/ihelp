@@ -219,15 +219,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- more appropriate.(See the @CRANpkg{rJava} package from @acronym{CRAN} and -->
 <!-- the @pkg{SJava}, @pkg{RSPerl} and @pkg{RSPython} packages from the -->
 <!-- Omegahat project, @uref{http://www.omegahat.org}.) -->
-   <p>직접적으로 R 코드와 통합하기 위한 <code>Java</code>, <code>perl</code> 그리고 <code>python</code>과 같은 언어에서 개발된 기능을 허용하는 팩키지들이 있는데 보다 더 적절하게 이들 언어에서 도구들을 사용할 수 있도록 합니다(<acronym>CRAN</acronym>로부터 팩키지 <a href="http://CRAN.R-project.org/package=rJava"><strong>rJava</strong></a>와 the Omegahat project, <a href="http://www.omegahat.org">http://www.omegahat.org</a>로부터  팩키지 <strong>SJava</strong>, <strong>RSPerl</strong> 그리고 <strong>RSPython</strong> 참고하십시오.)
+   <p>직접적으로 R 코드와 통합하기 위한 <code>Java</code>, <code>perl</code> 그리고 <code>python</code>과 같은 언어에서 개발된 기능을 허용하는 팩키지들이 있는데 보다 더 적절하게 이들 언어에서 도구들을 사용할 수 있도록 합니다(<acronym>CRAN</acronym>로부터 팩키지 <a href="http://CRAN.R-project.org/package=rJava"><strong>rJava</strong></a>와 Omegahat 프로젝트 <a href="http://www.omegahat.org">http://www.omegahat.org</a>로부터  팩키지 <strong>SJava</strong>, <strong>RSPerl</strong> 그리고 <strong>RSPython</strong> 참고하십시오.)
 
-   <p><a name="index-Unix-tools-1"></a><a name="index-AWK-2"></a><a name="index-perl-3"></a>It is also worth remembering that R like S comes from the Unix
-tradition of small re-usable tools, and it can be rewarding to use tools
-such as <code>awk</code> and <code>perl</code> to manipulate data before import or
-after export.  The case study in Becker, Chambers &amp; Wilks (1988, Chapter
-9) is an example of this, where Unix tools were used to check and
-manipulate the data before input to S. The traditional Unix tools
-are now much more widely available, including for Windows.
+<!-- index Unix tools -->
+<!-- index AWK -->
+<!-- index perl -->
+<!-- It is also worth remembering that @R{} like @Sl{} comes from the Unix -->
+<!-- tradition of small re-usable tools, and it can be rewarding to use tools -->
+<!-- such as @code{awk} and @code{perl} to manipulate data before import or -->
+<!-- after export.  The case study in Becker, Chambers & Wilks (1988, Chapter -->
+<!-- 9) is an example of this, where Unix tools were used to check and -->
+<!-- manipulate the data before input to @Sl{}. The traditional Unix tools -->
+<!-- are now much more widely available, including for Windows. -->
+   <p>또한, R도 S처럼 작지만 재사용 가능한 여러 개의 도구(tools)를 이용하는 Unix 전통에서 출발했다는 점을 상기해 보았을 때, 데이터를 불러오기 하기 전이나 내보내기 한 후에 데이터를 조작하기 위하여 <code>awk</code>과 <code>perl</code> 같은 도구들을 사용해 볼만 합니다. Becker, Chambers &amp; Wilks (1988, Chapter 9)에 있는 사례 연구에서 S에 데이터를 입력하기 전에 여러 Unix 도구(tool)들을 데이터를 검증하고 조작하는 데 사용한 것이 그 예가 될 수 있을 것입니다. 전통적인 Unix 도구(tool)들이 이제는 Windows를 포함한 다양한 시스템에서 더욱 많이 사용되고 있습니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Imports">Imports</a>
@@ -246,7 +250,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 <h3 class="section">1.1 Imports</h3>
 
-<p><a name="index-scan-4"></a>
+<p><a name="index-scan-1"></a>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Encodings">Encodings</a>
@@ -294,7 +298,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Imports">Imports</a>
 
 <h4 class="subsection">1.1.1 Encodings</h4>
 
-<p><a name="index-Encodings-5"></a>
+<p><a name="index-Encodings-2"></a>
 Unless the file to be imported from is entirely in ASCII, it is usually
 necessary to know how it was encoded.  For text files, a good way to
 find out something about its structure is the <samp><span class="command">file</span></samp>
@@ -340,21 +344,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 <h3 class="section">1.2 Export to text files</h3>
 
-<p><a name="index-Exporting-to-a-text-file-6"></a>
+<p><a name="index-Exporting-to-a-text-file-3"></a>
 Exporting results from R is usually a less contentious task, but
 there are still a number of pitfalls.  There will be a target
 application in mind, and normally a text file will be the most
 convenient interchange vehicle.  (If a binary file is required, see
 <a href="#Binary-files">Binary files</a>.)
 
-   <p><a name="index-cat-7"></a>Function <code>cat</code> underlies the functions for exporting data.  It
+   <p><a name="index-cat-4"></a>Function <code>cat</code> underlies the functions for exporting data.  It
 takes a <code>file</code> argument, and the <code>append</code> argument allows a
 text file to be written via successive calls to <code>cat</code>.  Better,
 especially if this is to be done many times, is to open a <code>file</code>
 connection for writing or appending, and <code>cat</code> to that connection,
 then <code>close</code> it.
 
-   <p><a name="index-write-8"></a><a name="index-write_002etable-9"></a>The most common task is to write a matrix or data frame to file as a
+   <p><a name="index-write-5"></a><a name="index-write_002etable-6"></a>The most common task is to write a matrix or data frame to file as a
 rectangular grid of numbers, possibly with row and column labels.  This
 can be done by the functions <code>write.table</code> and <code>write</code>. 
 Function <code>write</code> just writes out a matrix or vector in a specified
@@ -367,7 +371,7 @@ labels.
 data frame to a text file.
 
      <ol type=1 start=1>
-<a name="index-format-10"></a><li><strong>Precision</strong>
+<a name="index-format-7"></a><li><strong>Precision</strong>
 
      <p>Most of the conversions of real/complex numbers done by these functions
 is to full precision, but those by <code>write</code> are governed by the
@@ -388,7 +392,7 @@ is what <code>write.table</code> will provide if argument <code>col.names = NA</
 is specified.  Excel is one such system.
 
      <li><strong>Separator</strong>
-<a name="index-CSV-files-11"></a><a name="index-comma-separated-values-12"></a><a name="index-write_002ecsv-13"></a><a name="index-write_002ecsv2-14"></a>
+<a name="index-CSV-files-8"></a><a name="index-comma-separated-values-9"></a><a name="index-write_002ecsv-10"></a><a name="index-write_002ecsv2-11"></a>
 A common field separator to use in the file is a comma, as that is
 unlikely to appear in any of the fields in English-speaking countries. 
 Such files are known as CSV (comma separated values) files, and wrapper
@@ -406,13 +410,13 @@ is targeted at.
 options.
 
      <li><strong>Missing values</strong>
-<a name="index-Missing-values-15"></a>
+<a name="index-Missing-values-12"></a>
 By default missing values are output as <code>NA</code>, but this may be
 changed by argument <code>na</code>.  Note that <code>NaN</code>s are treated as
 <code>NA</code> by <code>write.table</code>, but not by <code>cat</code> nor <code>write</code>.
 
      <li><strong>Quoting strings</strong>
-<a name="index-Quoting-strings-16"></a>
+<a name="index-Quoting-strings-13"></a>
 By default strings are quoted (including the row and column names). 
 Argument <code>quote</code> controls if  character and factor variables are
 quoted: some programs, for example <strong>Mondrian</strong>, do not accept quoted
@@ -435,7 +439,7 @@ useful forms are
      <p class="noindent">The second is the form of escape commonly used by spreadsheets.
 
      <li><strong>Encodings</strong>
-<a name="index-Encodings-17"></a>
+<a name="index-Encodings-14"></a>
 Text files do not contain metadata on their encodings, so for non-ASCII
 data the file needs to be targetted to the application intended to read
 it.  All of these functions can write to a <em>connection</em> which
@@ -453,16 +457,16 @@ of Mac OS).
 
         </ol>
 
-   <p><a name="index-write_002ematrix-18"></a>Function <code>write.matrix</code> in package <a href="http://CRAN.R-project.org/package=MASS"><strong>MASS</strong></a> provides a
+   <p><a name="index-write_002ematrix-15"></a>Function <code>write.matrix</code> in package <a href="http://CRAN.R-project.org/package=MASS"><strong>MASS</strong></a> provides a
 specialized interface for writing matrices, with the option of writing
 them in blocks and thereby reducing memory usage.
 
-   <p><a name="index-sink-19"></a>It is possible to use <code>sink</code> to divert the standard R output to
+   <p><a name="index-sink-16"></a>It is possible to use <code>sink</code> to divert the standard R output to
 a file, and thereby capture the output of (possibly implicit)
 <code>print</code> statements.  This is not usually the most efficient route,
 and the <code>options(width)</code> setting may need to be increased.
 
-   <p><a name="index-write_002eforeign-20"></a>Function <code>write.foreign</code> in package <a href="http://CRAN.R-project.org/package=foreign"><strong>foreign</strong></a> uses
+   <p><a name="index-write_002eforeign-17"></a>Function <code>write.foreign</code> in package <a href="http://CRAN.R-project.org/package=foreign"><strong>foreign</strong></a> uses
 <code>write.table</code> to produce a text file and also writes a code file
 that will read this text file into another statistical package. There is
 currently support for export to <code>SAS</code>, <code>SPSS</code> and <code>Stata</code>.
@@ -477,7 +481,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 <h3 class="section">1.3 XML</h3>
 
-<p><a name="index-XML-21"></a>
+<p><a name="index-XML-18"></a>
 When reading data from text files, it is the responsibility of the user
 to know and to specify the conventions used to create that file,
 e.g. the comment character, whether a header line is present, the value
@@ -525,7 +529,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">2 Spreadsheet-like data</h2>
 
-<p><a name="index-Spreadsheet_002dlike-data-22"></a>
+<p><a name="index-Spreadsheet_002dlike-data-19"></a>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Variations-on-read_002etable">Variations on read.table</a>
@@ -553,7 +557,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.1 Variations on <code>read.table</code></h3>
 
-<p><a name="index-read_002etable-23"></a>
+<p><a name="index-read_002etable-20"></a>
 The function <code>read.table</code> is the most convenient way to read in a
 rectangular grid of data.  Because of the many possibilities, there are
 several other functions that call <code>read.table</code> but change a group
@@ -602,7 +606,7 @@ that the choice of separator affects the input of quoted strings.
 <code>sep = "\t"</code>.
 
      <li><strong>Quoting</strong>
-<a name="index-Quoting-strings-24"></a>
+<a name="index-Quoting-strings-21"></a>
 By default character strings can be quoted by either &lsquo;<samp><span class="samp">"</span></samp>&rsquo; or
 &lsquo;<samp><span class="samp">'</span></samp>&rsquo;, and in each case all the characters up to a matching quote are
 taken as part of the character string.  The set of valid quoting
@@ -626,7 +630,7 @@ example
      <p class="noindent">This does not work with the default separator.
 
      <li><strong>Missing values</strong>
-<a name="index-Missing-values-25"></a>
+<a name="index-Missing-values-22"></a>
 By default the file is assumed to contain the character string <code>NA</code>
 to represent missing values, but this can be changed by the argument
 <code>na.strings</code>, which is a vector of one or more character
@@ -731,7 +735,7 @@ not accept them.  So faced with a file which <samp><span class="command">file</s
 OS 10.5 (Leopard) did not.
         </ol>
 
-   <p><a name="index-read_002ecsv-26"></a><a name="index-read_002ecsv2-27"></a><a name="index-read_002edelim-28"></a><a name="index-read_002edelim2-29"></a><a name="index-CSV-files-30"></a><a name="index-Sys_002elocaleconv-31"></a><a name="index-locales-32"></a>Convenience functions <code>read.csv</code> and <code>read.delim</code> provide
+   <p><a name="index-read_002ecsv-23"></a><a name="index-read_002ecsv2-24"></a><a name="index-read_002edelim-25"></a><a name="index-read_002edelim2-26"></a><a name="index-CSV-files-27"></a><a name="index-Sys_002elocaleconv-28"></a><a name="index-locales-29"></a>Convenience functions <code>read.csv</code> and <code>read.delim</code> provide
 arguments to <code>read.table</code> appropriate for CSV and tab-delimited
 files exported from spreadsheets in English-speaking locales.  The
 variations <code>read.csv2</code> and <code>read.delim2</code> are appropriate for
@@ -750,7 +754,7 @@ message will usually be of the form
 <pre class="example">     Error in read.table("files.dat", header = TRUE) :
              more columns than column names
 </pre>
-   <p><a name="index-count_002efields-33"></a>
+   <p><a name="index-count_002efields-30"></a>
 This may give enough information to find the problem, but the auxiliary
 function <code>count.fields</code> can be useful to investigate further.
 
@@ -773,21 +777,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.2 Fixed-width-format files</h3>
 
-<p><a name="index-Fixed_002dwidth_002dformat-files-34"></a>
+<p><a name="index-Fixed_002dwidth_002dformat-files-31"></a>
 Sometimes data files have no field delimiters but have fields in
 pre-specified columns.  This was very common in the days of punched
 cards, and is still sometimes used to save file space.
 
-   <p><a name="index-read_002efwf-35"></a>Function <code>read.fwf</code> provides a simple way to read such files,
+   <p><a name="index-read_002efwf-32"></a>Function <code>read.fwf</code> provides a simple way to read such files,
 specifying a vector of field widths.  The function reads the file into
 memory as whole lines, splits the resulting character strings, writes
 out a temporary tab-separated file and then calls <code>read.table</code>. 
 This is adequate for small files, but for anything more complicated we
 recommend using the facilities of a language like <code>perl</code> to
 pre-process the file. 
-<a name="index-perl-36"></a>
+<a name="index-perl-33"></a>
 
-   <p><a name="index-read_002efortran-37"></a>Function <code>read.fortran</code> is a similar function for fixed-format files,
+   <p><a name="index-read_002efortran-34"></a>Function <code>read.fortran</code> is a similar function for fixed-format files,
 using Fortran-style column specifications.
 
 <div class="node">
@@ -802,11 +806,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.3 Data Interchange Format (DIF)</h3>
 
-<p><a name="index-Data-Interchange-Format-_0028DIF_0029-38"></a>
+<p><a name="index-Data-Interchange-Format-_0028DIF_0029-35"></a>
 An old format sometimes used for spreadsheet-like data is DIF, or Data Interchange
 format.
 
-   <p><a name="index-read_002eDIF-39"></a>Function <code>read.DIF</code> provides a simple way to read such files.  It takes
+   <p><a name="index-read_002eDIF-36"></a>Function <code>read.DIF</code> provides a simple way to read such files.  It takes
 arguments similar to <code>read.table</code> for assigning types to each of the columns.
 
    <p>On Windows, spreadsheet programs often store spreadsheet data copied to
@@ -826,7 +830,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.4 Using <code>scan</code> directly</h3>
 
-<p><a name="index-scan-40"></a>
+<p><a name="index-scan-37"></a>
 Both <code>read.table</code> and <code>read.fwf</code> use <code>scan</code> to read the
 file, and then process the results of <code>scan</code>.  They are very
 convenient, but sometimes it is better to use <code>scan</code> directly.
@@ -845,7 +849,7 @@ complex, and are usually specified by an example, e.g. <code>0</code>,
    <p class="noindent">returns a list with three components and discards the fourth column in
 the file.
 
-   <p><a name="index-readLines-41"></a>There is a function <code>readLines</code> which will be more convenient if
+   <p><a name="index-readLines-38"></a>There is a function <code>readLines</code> which will be more convenient if
 all you want is to read whole lines into R for further processing.
 
    <p>One common use of <code>scan</code> is to read in a large matrix.  Suppose
@@ -904,7 +908,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.5 Re-shaping data</h3>
 
-<p><a name="index-Re_002dshaping-data-42"></a>
+<p><a name="index-Re_002dshaping-data-39"></a>
 Sometimes spreadsheet data is in a compact format that gives the
 covariates for each subject followed by all the observations on that
 subject.  R's modelling functions need observations in a single
@@ -923,7 +927,7 @@ measurements
    <p class="noindent">There are two covariates and up to four measurements on each subject. 
 The data were exported from Excel as a file <samp><span class="file">mr.csv</span></samp>.
 
-   <p><a name="index-stack-43"></a>We can use <code>stack</code> to help manipulate these data to give a single
+   <p><a name="index-stack-40"></a>We can use <code>stack</code> to help manipulate these data to give a single
 response.
 
 <pre class="example">     zz &lt;- read.csv("mr.csv", strip.white = TRUE)
@@ -942,10 +946,10 @@ response.
      X11        P 23646  50333  V2
      ...
 </pre>
-   <p><a name="index-unstack_002e-44"></a>Function <code>unstack</code> goes in the opposite direction, and may be
+   <p><a name="index-unstack_002e-41"></a>Function <code>unstack</code> goes in the opposite direction, and may be
 useful for exporting data.
 
-   <p><a name="index-reshape-45"></a>Another way to do this is to use the function
+   <p><a name="index-reshape-42"></a>Another way to do this is to use the function
 <code>reshape</code>, by
 
 <pre class="example">     &gt; reshape(zz, idvar="id",timevar="var",
@@ -980,7 +984,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 
 <h3 class="section">2.6 Flat contingency tables</h3>
 
-<p><a name="index-Flat-contingency-tables-46"></a>
+<p><a name="index-Flat-contingency-tables-43"></a>
 Displaying higher-dimensional contingency tables in array form typically
 is rather inconvenient.  In categorical data analysis, such information
 is often represented in the form of bordered two-dimensional arrays with
@@ -990,7 +994,7 @@ corresponding to the cell counts.  These rows and columns are typically
 with the obvious convention that rows are read from top to bottom and
 columns are read from left to right.  In R, such &ldquo;flat&rdquo; contingency
 tables can be created using <code>ftable</code>,
-<a name="index-ftable-47"></a>which creates objects of class <code>"ftable"</code> with an appropriate print
+<a name="index-ftable-44"></a>which creates objects of class <code>"ftable"</code> with an appropriate print
 method.
 
    <p>As a simple example, consider the R standard data set
@@ -1012,7 +1016,7 @@ data as a 3-dimensional array.
 
    <p>There is also a function <code>read.ftable</code> for reading in flat-like
 contingency tables from files. 
-<a name="index-read_002eftable-48"></a>This has additional arguments for dealing with variants on how exactly
+<a name="index-read_002eftable-45"></a>This has additional arguments for dealing with variants on how exactly
 the information on row and column variables names and levels is
 represented.  The help page for <code>read.ftable</code> has some useful
 examples.  The flat tables can be converted to standard contingency
@@ -1035,7 +1039,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">3 Importing from other statistical systems</h2>
 
-<p><a name="index-Importing-from-other-statistical-systems-49"></a>
+<p><a name="index-Importing-from-other-statistical-systems-46"></a>
 In this chapter we consider the problem of reading a binary data file
 written by another statistical system.  This is often best avoided, but
 may be unavoidable if the originating system is not available.
@@ -1068,14 +1072,14 @@ some cases these functions may require substantially less memory than
 <code>read.table</code> would. <code>write.foreign</code> (See <a href="#Export-to-text-files">Export to text files</a>) provides an export mechanism with support currently for
 <code>SAS</code>, <code>SPSS</code> and <code>Stata</code>.
 
-   <p><a name="index-EpiInfo-50"></a><a name="index-EpiData-51"></a><a name="index-read_002eepiinfo-52"></a>EpiInfo versions 5 and 6 stored data in a  self-describing fixed-width
+   <p><a name="index-EpiInfo-47"></a><a name="index-EpiData-48"></a><a name="index-read_002eepiinfo-49"></a>EpiInfo versions 5 and 6 stored data in a  self-describing fixed-width
 text format. <code>read.epiinfo</code> will read these <samp><span class="file">.REC</span></samp> files into
 an R data frame. EpiData also produces data in this format.
 
-   <p><a name="index-Minitab-53"></a><a name="index-read_002emtp-54"></a>Function <code>read.mtp</code> imports a `Minitab Portable Worksheet'.  This
+   <p><a name="index-Minitab-50"></a><a name="index-read_002emtp-51"></a>Function <code>read.mtp</code> imports a `Minitab Portable Worksheet'.  This
 returns the components of the worksheet as an R list.
 
-   <p><a name="index-SAS-55"></a><a name="index-read_002export-56"></a>Function <code>read.xport</code> reads a file in SAS Transport (XPORT) format
+   <p><a name="index-SAS-52"></a><a name="index-read_002export-53"></a>Function <code>read.xport</code> reads a file in SAS Transport (XPORT) format
 and return a list of data frames.  If SAS is available on your system,
 function <code>read.ssd</code> can be used to create and run a SAS script that
 saves a SAS permanent dataset (<samp><span class="file">.ssd</span></samp> or <samp><span class="file">.sas7bdat</span></samp>) in
@@ -1085,7 +1089,7 @@ running SAS.)  For those without access to SAS but running on Windows,
 the SAS System Viewer (a zero-cost download) can be used to open SAS
 datasets and export them to e.g. <samp><span class="file">.csv</span></samp> format.
 
-   <p><a name="index-S_002dPLUS-57"></a><a name="index-read_002eS-58"></a><a name="index-data_002erestore-59"></a>
+   <p><a name="index-S_002dPLUS-54"></a><a name="index-read_002eS-55"></a><a name="index-data_002erestore-56"></a>
 Function <code>read.S</code> which can read binary objects produced by S-PLUS
 3.x, 4.x or 2000 on (32-bit) Unix or Windows (and can read them on a
 different OS).  This is able to read many but not all S objects: in
@@ -1103,7 +1107,7 @@ S-PLUS 5.x and later you may need to use <code>dump(..., oldStyle=T)</code>,
 and to read in very large objects it may be preferable to use the dump
 file as a batch script rather than use the <code>source</code> function.
 
-   <p><a name="index-SPSS-60"></a><a name="index-SPSS-Data-Entry-61"></a><a name="index-read_002espss-62"></a>Function <code>read.spss</code> can read files created by the `save' and
+   <p><a name="index-SPSS-57"></a><a name="index-SPSS-Data-Entry-58"></a><a name="index-read_002espss-59"></a>Function <code>read.spss</code> can read files created by the `save' and
 `export' commands in <acronym>SPSS</acronym>.  It returns a list with one
 component for each variable in the saved data set. <acronym>SPSS</acronym>
 variables with value labels are optionally converted to R factors.
@@ -1117,14 +1121,14 @@ export the data in an ordinary <acronym>SPSS</acronym> format.
 with differences in the formats: <code>read.spss</code> may or may not be able
 to handle these.
 
-   <p><a name="index-Stata-63"></a><a name="index-read_002edta-64"></a><a name="index-write_002edta-65"></a>Stata <samp><span class="file">.dta</span></samp> files are a binary file format. Files from versions 5
+   <p><a name="index-Stata-60"></a><a name="index-read_002edta-61"></a><a name="index-write_002edta-62"></a>Stata <samp><span class="file">.dta</span></samp> files are a binary file format. Files from versions 5
 up to 11 of Stata can be read and written by functions <code>read.dta</code>
 and <code>write.dta</code>.  Stata variables with value labels are optionally
 converted to (and from) R factors.  Stata version 12 by default
 writes `format-115 datasets': <code>read.dta</code> currently may not be able
 to read those.
 
-   <p><a name="index-Systat-66"></a><a name="index-read_002esystat-67"></a><code>read.systat</code> reads those Systat <code>SAVE</code> files that are
+   <p><a name="index-Systat-63"></a><a name="index-read_002esystat-64"></a><code>read.systat</code> reads those Systat <code>SAVE</code> files that are
 rectangular data files (<code>mtype = 1</code>) written on little-endian
 machines (such as from Windows).  These have extension <samp><span class="file">.sys</span></samp>
 or (more recently) <samp><span class="file">.syd</span></samp>.
@@ -1139,7 +1143,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Importing-from-other-statistical-syste
 
 <h3 class="section">3.2 Octave</h3>
 
-<p><a name="index-Octave-68"></a><a name="index-read_002eoctave-69"></a>
+<p><a name="index-Octave-65"></a><a name="index-read_002eoctave-66"></a>
 Octave is a numerical linear algebra system
 (<a href="http://www.octave.org">http://www.octave.org</a>), and function <code>read.octave</code> in
 package <a href="http://CRAN.R-project.org/package=foreign"><strong>foreign</strong></a> can read in files in Octave text data format
@@ -1160,7 +1164,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">4 Relational databases</h2>
 
-<p><a name="index-Relational-databases-70"></a><a name="index-DBMS-71"></a>
+<p><a name="index-Relational-databases-67"></a><a name="index-DBMS-68"></a>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Why-use-a-database_003f">Why use a database?</a>
@@ -1247,7 +1251,7 @@ with the Open Source MySQL and PostgreSQL having more and more high-end
 features, and free `express' versions being made available for the
 commercial DBMSs.
 
-   <p><a name="index-ODBC-72"></a><a name="index-Open-Database-Connectivity-73"></a>There are other commonly used data sources, including spreadsheets,
+   <p><a name="index-ODBC-69"></a><a name="index-Open-Database-Connectivity-70"></a>There are other commonly used data sources, including spreadsheets,
 non-relational databases and even text files (possibly compressed). 
 Open Database Connectivity (<acronym>ODBC</acronym>) is a standard to use all of
 these data sources.  It originated on Windows (see
@@ -1279,7 +1283,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Overview-of-RDBMSs">Overview of RDBMSs
 
 <h4 class="subsection">4.2.1 <acronym>SQL</acronym> queries</h4>
 
-<p><a name="index-SQL-queries-74"></a>
+<p><a name="index-SQL-queries-71"></a>
 The more comprehensive R interfaces generate <acronym>SQL</acronym> behind the
 scenes for common operations, but direct use of <acronym>SQL</acronym> is needed
 for complex operations in all.  Conventionally <acronym>SQL</acronym> is written
@@ -1434,7 +1438,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-interface-packages">R interface pack
 
 <h4 class="subsection">4.3.1 Packages using DBI</h4>
 
-<p><a name="index-MySQL-database-system-75"></a>
+<p><a name="index-MySQL-database-system-72"></a>
 Package <a href="http://CRAN.R-project.org/package=RMySQL"><strong>RMySQL</strong></a> on <acronym>CRAN</acronym> provides an interface to the
 MySQL database system (see <a href="http://www.mysql.com">http://www.mysql.com</a> and Dubois,
 2000).  The description here applies to version <code>0.5-0</code>: earlier
@@ -1448,7 +1452,7 @@ MySQL was originally a `light and lean' database.  (It preserves the
 case of names where the operating file system is case-sensitive, so not
 on Windows.)
 
-   <p><a name="index-dbDriver-76"></a><a name="index-dbConnect-77"></a><a name="index-dbDisconnect-78"></a>The call <code>dbDriver("MySQL")</code> returns a database connection manager
+   <p><a name="index-dbDriver-73"></a><a name="index-dbConnect-74"></a><a name="index-dbDisconnect-75"></a>The call <code>dbDriver("MySQL")</code> returns a database connection manager
 object, and then a call to <code>dbConnect</code> opens a database connection
 which can subsequently be closed by a call to the generic function
 <code>dbDisconnect</code>.  Use <code>dbDriver("Oracle")</code>,
@@ -1456,19 +1460,19 @@ which can subsequently be closed by a call to the generic function
 DBMSs and packages <a href="http://CRAN.R-project.org/package=ROracle"><strong>ROracle</strong></a>, <a href="http://CRAN.R-project.org/package=RPostgreSQL"><strong>RPostgreSQL</strong></a> or <a href="http://CRAN.R-project.org/package=RSQLite"><strong>RSQLite</strong></a>
 respectively.
 
-   <p><a name="index-dbSendQuery-79"></a><a name="index-dbClearResult-80"></a><a name="index-dbGetQuery-81"></a><acronym>SQL</acronym> queries can be sent by either <code>dbSendQuery</code> or
+   <p><a name="index-dbSendQuery-76"></a><a name="index-dbClearResult-77"></a><a name="index-dbGetQuery-78"></a><acronym>SQL</acronym> queries can be sent by either <code>dbSendQuery</code> or
 <code>dbGetQuery</code>.  <code>dbGetquery</code> sends the query and retrieves the
 results as a data frame.  <code>dbSendQuery</code> sends the query and returns
 an object of class inheriting from <code>"DBIResult"</code> which can be used
 to retrieve the results, and subsequently used in a call to
 <code>dbClearResult</code> to remove the result.
 
-   <p><a name="index-fetch-82"></a>Function <code>fetch</code> is used to retrieve some or all of the rows in the
+   <p><a name="index-fetch-79"></a>Function <code>fetch</code> is used to retrieve some or all of the rows in the
 query result, as a list.  The function <code>dbHasCompleted</code> indicates if
 all the rows have been fetched, and <code>dbGetRowCount</code> returns the
 number of rows in the result.
 
-   <p><a name="index-dbReadTable-83"></a><a name="index-dbWriteTable-84"></a><a name="index-dbExistsTable-85"></a><a name="index-dbRemoveTable-86"></a>These are convenient interfaces to read/write/test/delete tables in the
+   <p><a name="index-dbReadTable-80"></a><a name="index-dbWriteTable-81"></a><a name="index-dbExistsTable-82"></a><a name="index-dbRemoveTable-83"></a>These are convenient interfaces to read/write/test/delete tables in the
 database.  <code>dbReadTable</code> and <code>dbWriteTable</code> copy to and from
 an R data frame, mapping the row names of the data frame to the field
 <code>row_names</code> in the <code>MySQL</code> table.
@@ -1517,7 +1521,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-interface-packages">R interface pack
 
 <h4 class="subsection">4.3.2 Package RODBC</h4>
 
-<p><a name="index-ODBC-87"></a><a name="index-Open-Database-Connectivity-88"></a>
+<p><a name="index-ODBC-84"></a><a name="index-Open-Database-Connectivity-85"></a>
 Package <a href="http://CRAN.R-project.org/package=RODBC"><strong>RODBC</strong></a> on <acronym>CRAN</acronym> provides an interface to database
 sources supporting an <acronym>ODBC</acronym> interface.  This is very widely
 available, and allows the same R code to access different database
@@ -1535,7 +1539,7 @@ an <acronym>ODBC</acronym> Driver Manager such as unixODBC
 this is pre-installed in Mac OS X) and an installed driver for your
 database system.
 
-   <p><a name="index-Excel-89"></a><a name="index-g_t_002exls-90"></a><a name="index-Dbase-91"></a><a name="index-g_t_002edbf-92"></a>Windows provides drivers not just for DBMSs but also for Excel
+   <p><a name="index-Excel-86"></a><a name="index-g_t_002exls-87"></a><a name="index-Dbase-88"></a><a name="index-g_t_002edbf-89"></a>Windows provides drivers not just for DBMSs but also for Excel
 (<samp><span class="file">.xls</span></samp>) spreadsheets, DBase (<samp><span class="file">.dbf</span></samp>) files and even text
 files.  (The named applications do <em>not</em> need to be
 installed. Which file formats are supported depends on the the versions
@@ -1550,25 +1554,25 @@ will also read earlier versions).
 provide ODBC interfaces to Access databases (including Access 2007/2010)
 and to Excel spreadsheets (not including Excel 2007/2010).
 
-   <p><a name="index-odbcConnect-93"></a><a name="index-odbcDriverConnect-94"></a><a name="index-odbcGetInfo-95"></a>Many simultaneous connections are possible.  A connection is opened by a
+   <p><a name="index-odbcConnect-90"></a><a name="index-odbcDriverConnect-91"></a><a name="index-odbcGetInfo-92"></a>Many simultaneous connections are possible.  A connection is opened by a
 call to <code>odbcConnect</code> or <code>odbcDriverConnect</code> (which on the
 Windows GUI allows a database to be selected via dialog boxes) which
 returns a handle used for subsequent access to the database.  Printing a
 connection will provide some details of the ODBC connection, and calling
 <code>odbcGetInfo</code> will give details on the client and server.
 
-   <p><a name="index-odbcClose-96"></a><a name="index-close-97"></a>A connection is closed by a call to <code>close</code> or <code>odbcClose</code>,
+   <p><a name="index-odbcClose-93"></a><a name="index-close-94"></a>A connection is closed by a call to <code>close</code> or <code>odbcClose</code>,
 and also (with a warning) when not R object refers to it and at the end
 of an R session.
 
-   <p><a name="index-sqlTables-98"></a>Details of the tables on a connection can be found using
+   <p><a name="index-sqlTables-95"></a>Details of the tables on a connection can be found using
 <code>sqlTables</code>.
 
-   <p><a name="index-sqlFetch-99"></a><a name="index-sqlSave-100"></a>Function <code>sqlSave</code> copies an R data frame to a table in the
+   <p><a name="index-sqlFetch-96"></a><a name="index-sqlSave-97"></a>Function <code>sqlSave</code> copies an R data frame to a table in the
 database, and <code>sqlFetch</code> copies a table in the database to an R
 data frame.
 
-   <p><a name="index-sqlQuery-101"></a><a name="index-sqlCopy-102"></a><a name="index-odbcQuery-103"></a><a name="index-sqlGetResults-104"></a><a name="index-sqlFetchMore-105"></a>An <acronym>SQL</acronym> query can be sent to the database by a call to
+   <p><a name="index-sqlQuery-98"></a><a name="index-sqlCopy-99"></a><a name="index-odbcQuery-100"></a><a name="index-sqlGetResults-101"></a><a name="index-sqlFetchMore-102"></a>An <acronym>SQL</acronym> query can be sent to the database by a call to
 <code>sqlQuery</code>.  This returns the result in an R data frame. 
 (<code>sqlCopy</code> sends a query to the database and saves the result as a
 table in the database.)  A finer level of control is attained by first
@@ -1576,7 +1580,7 @@ calling <code>odbcQuery</code> and then <code>sqlGetResults</code> to fetch the
 results.  The latter can be used within a loop to retrieve a limited
 number of rows at a time, as can function <code>sqlFetchMore</code>.
 
-   <p><a name="index-PostgreSQL-database-system-106"></a>Here is an example using PostgreSQL, for which the <acronym>ODBC</acronym> driver
+   <p><a name="index-PostgreSQL-database-system-103"></a>Here is an example using PostgreSQL, for which the <acronym>ODBC</acronym> driver
 maps column and data frame names to lower case.  We use a database
 <code>testdb</code> we created earlier, and had the DSN (data source name) set
 up in <samp><span class="file">~/.odbc.ini</span></samp> under <code>unixODBC</code>.  Exactly the same code
@@ -1584,7 +1588,7 @@ worked using MyODBC to access a MySQL database under Linux or Windows
 (where MySQL also maps names to lowercase).  Under Windows,
 <acronym>DSN</acronym>s are set up in the <acronym>ODBC</acronym> applet in the Control
 Panel (`Data Sources (ODBC)' in the `Administrative Tools' section). 
-<a name="index-MySQL-database-system-107"></a>
+<a name="index-MySQL-database-system-104"></a>
 <pre class="smallexample">     &gt; library(RODBC)
      ## tell it to map names to l/case
      &gt; channel &lt;- odbcConnect("testdb", uid="ripley", case="tolower")
@@ -1619,7 +1623,7 @@ Panel (`Data Sources (ODBC)' in the `Administrative Tools' section).
      ## close the connection
      &gt; odbcClose(channel)
 </pre>
-   <p><a name="index-Excel-108"></a><a name="index-g_t_002exls-109"></a><a name="index-odbcConnectExcel-110"></a>As a simple example of using <acronym>ODBC</acronym> under Windows with a Excel
+   <p><a name="index-Excel-105"></a><a name="index-g_t_002exls-106"></a><a name="index-odbcConnectExcel-107"></a>As a simple example of using <acronym>ODBC</acronym> under Windows with a Excel
 spreadsheet, we can read from a spreadsheet by
 
 <pre class="smallexample">     &gt; library(RODBC)
@@ -1756,7 +1760,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">5 Binary files</h2>
 
-<p><a name="index-Binary-files-111"></a>
+<p><a name="index-Binary-files-108"></a>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Binary-data-formats">Binary data formats</a>
@@ -1777,8 +1781,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Binary-files">Binary files</a>
 
 <h3 class="section">5.1 Binary data formats</h3>
 
-<p><a name="index-hdf5-112"></a><a name="index-Hierarchical-Data-Format-113"></a>
-<a name="index-netCDF-114"></a><a name="index-network-Common-Data-Form-115"></a>
+<p><a name="index-hdf5-109"></a><a name="index-Hierarchical-Data-Format-110"></a>
+<a name="index-netCDF-111"></a><a name="index-network-Common-Data-Form-112"></a>
 Packages <a href="http://CRAN.R-project.org/package=hdf5"><strong>hdf5</strong></a>, <a href="http://CRAN.R-project.org/package=h5r"><strong>h5r</strong></a>, Bioconductor's <strong>rhdf5</strong>,
 <a href="http://CRAN.R-project.org/package=RNetCDF"><strong>RNetCDF</strong></a>, <a href="http://CRAN.R-project.org/package=ncdf"><strong>ncdf</strong></a> and <a href="http://CRAN.R-project.org/package=ncdf4"><strong>ncdf4</strong></a> on <acronym>CRAN</acronym> provide
 interfaces to <acronym>NASA</acronym>'s HDF5 (Hierarchical Data Format, see
@@ -1811,7 +1815,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Binary-files">Binary files</a>
 
 <h3 class="section">5.2 dBase files (DBF)</h3>
 
-<p><a name="index-dBase-116"></a><a name="index-DBF-files-117"></a><code>dBase</code> was a DOS program written by Ashton-Tate and later owned by
+<p><a name="index-dBase-113"></a><a name="index-DBF-files-114"></a><code>dBase</code> was a DOS program written by Ashton-Tate and later owned by
 Borland which has a binary flat-file format that became popular, with
 file extension <samp><span class="file">.dbf</span></samp>.  It has been adopted for the 'Xbase' family
 of databases, covering dBase, Clipper, FoxPro and their Windows
@@ -1822,13 +1826,13 @@ data frame.  The data itself is stored in text format, and can include
 character, logical and numeric fields, and other types in later versions
 (see <a href="http://clicketyclick.dk/docs/data_types.html">http://clicketyclick.dk/docs/data_types.html</a>).
 
-   <p><a name="index-read_002edbf-118"></a><a name="index-write_002edbf-119"></a>Functions <code>read.dbf</code> and <code>write.dbf</code> provide ways to read and
+   <p><a name="index-read_002edbf-115"></a><a name="index-write_002edbf-116"></a>Functions <code>read.dbf</code> and <code>write.dbf</code> provide ways to read and
 write basic DBF files on all R platforms.  For Windows users
 <code>odbcConnectDbase</code> in package <a href="http://CRAN.R-project.org/package=RODBC"><strong>RODBC</strong></a> provides more
 comprehensive facilities to read DBF files <em>via</em> Microsoft's dBase
 ODBC driver (and the Visual FoxPro driver can also be used via
 <code>odbcDriverConnect</code>). 
-<a name="index-odbcConnectDbase-120"></a>
+<a name="index-odbcConnectDbase-117"></a>
 <div class="node">
 <a name="Image-files"></a>
 <p><hr>
@@ -1888,7 +1892,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="chapter">7 Connections</h2>
 
-<p><a name="index-Connections-121"></a><em>Connections</em> are used in R in the sense of Chambers (1998) and
+<p><a name="index-Connections-118"></a><em>Connections</em> are used in R in the sense of Chambers (1998) and
 Ripley (2001), a set of functions to replace the use of file names by a
 flexible interface to file-like objects.
 
@@ -1911,26 +1915,26 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Connections">Connections</a>
 
 <h3 class="section">7.1 Types of connections</h3>
 
-<p><a name="index-Connections-122"></a>
-<a name="index-file-123"></a><a name="index-File-connections-124"></a>The most familiar type of connection will be a file, and file
+<p><a name="index-Connections-119"></a>
+<a name="index-file-120"></a><a name="index-File-connections-121"></a>The most familiar type of connection will be a file, and file
 connections are created by function <code>file</code>.  File connections can
 (if the OS will allow it for the particular file) be opened for reading
 or writing or appending, in text or binary mode.  In fact, files can be
 opened for both reading and writing, and R keeps a separate file
 position for reading and writing.
 
-   <p><a name="index-open-125"></a><a name="index-close-126"></a>Note that by default a connection is not opened when it is created.  The
+   <p><a name="index-open-122"></a><a name="index-close-123"></a>Note that by default a connection is not opened when it is created.  The
 rule is that a function using a connection should open a connection
 (needed) if the connection is not already open, and close a connection
 after use if it opened it.  In brief, leave the connection in the state
 you found it in.   There are generic functions <code>open</code> and
 <code>close</code> with methods to explicitly open and close connections.
 
-   <p><a name="index-gzfile-127"></a><a name="index-bzfile-128"></a><a name="index-Compressed-files-129"></a>Files compressed via the algorithm used by <code>gzip</code> can be used as
+   <p><a name="index-gzfile-124"></a><a name="index-bzfile-125"></a><a name="index-Compressed-files-126"></a>Files compressed via the algorithm used by <code>gzip</code> can be used as
 connections created by the function <code>gzfile</code>, whereas files
 compressed by <code>bzip2</code> can be used via <code>bzfile</code>.
 
-   <p><a name="index-Terminal-connections-130"></a><a name="index-stdin-131"></a><a name="index-stdout-132"></a><a name="index-stderr-133"></a>Unix programmers are used to dealing with special files <code>stdin</code>,
+   <p><a name="index-Terminal-connections-127"></a><a name="index-stdin-128"></a><a name="index-stdout-129"></a><a name="index-stderr-130"></a>Unix programmers are used to dealing with special files <code>stdin</code>,
 <code>stdout</code> and <code>stderr</code>.   These exist as <em>terminal
 connections</em> in R.  They may be normal files, but they might also
 refer to input from and output to a GUI console.  (Even with the standard
@@ -1946,7 +1950,7 @@ by <code>sink, type="message")</code>.  Note carefully the language used here:
 the connections cannot be re-directed, but output can be sent to other
 connections.
 
-   <p><a name="index-Text-connections-134"></a><a name="index-textConnection-135"></a><em>Text connections</em> are another source of input.  They allow R
+   <p><a name="index-Text-connections-131"></a><a name="index-textConnection-132"></a><em>Text connections</em> are another source of input.  They allow R
 character vectors to be read as if the lines were being read from a text
 file.  A text connection is created and opened by a call to
 <code>textConnection</code>, which copies the current contents of the
@@ -1960,7 +1964,7 @@ workspace.  The connection is opened by the call to
 connection are available in the R object.  Closing the connection
 writes any remaining output to a final element of the character vector.
 
-   <p><a name="index-Pipe-connections-136"></a><a name="index-pipe-137"></a><em>Pipes</em> are a special form of file that connects to another
+   <p><a name="index-Pipe-connections-133"></a><a name="index-pipe-134"></a><em>Pipes</em> are a special form of file that connects to another
 process, and pipe connections are created by the function <code>pipe</code>. 
 Opening a pipe connection for writing (it makes no sense to append to a
 pipe) runs an OS command, and connects its standard input to whatever
@@ -1968,12 +1972,12 @@ R then writes to that connection.  Conversely, opening a pipe
 connection for input runs an OS command and makes its standard output
 available for R input from that connection.
 
-   <p><a name="index-URL-connections-138"></a><a name="index-url-139"></a><acronym>URL</acronym>s of types &lsquo;<samp><span class="samp">http://</span></samp>&rsquo;, &lsquo;<samp><span class="samp">ftp://</span></samp>&rsquo; and &lsquo;<samp><span class="samp">file://</span></samp>&rsquo;
+   <p><a name="index-URL-connections-135"></a><a name="index-url-136"></a><acronym>URL</acronym>s of types &lsquo;<samp><span class="samp">http://</span></samp>&rsquo;, &lsquo;<samp><span class="samp">ftp://</span></samp>&rsquo; and &lsquo;<samp><span class="samp">file://</span></samp>&rsquo;
 can be read from using the function <code>url</code>.  For convenience,
 <code>file</code> will also accept these as the file specification and call
 <code>url</code>.
 
-   <p><a name="index-Sockets-140"></a><a name="index-socketConnection-141"></a>Sockets can also be used as connections via function
+   <p><a name="index-Sockets-137"></a><a name="index-socketConnection-138"></a>Sockets can also be used as connections via function
 <code>socketConnection</code> on platforms which support Berkeley-like sockets
 (most Unix systems, Linux and Windows).  Sockets can be written to or
 read from, and both client and server sockets can be used.
@@ -1989,8 +1993,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Connections">Connections</a>
 
 <h3 class="section">7.2 Output to connections</h3>
 
-<p><a name="index-Connections-142"></a>
-<a name="index-cat-143"></a><a name="index-write-144"></a><a name="index-write_002etable-145"></a><a name="index-sink-146"></a>We have described functions <code>cat</code>, <code>write</code>, <code>write.table</code>
+<p><a name="index-Connections-139"></a>
+<a name="index-cat-140"></a><a name="index-write-141"></a><a name="index-write_002etable-142"></a><a name="index-sink-143"></a>We have described functions <code>cat</code>, <code>write</code>, <code>write.table</code>
 and <code>sink</code> as writing to a file, possibly appending to a file if
 argument <code>append = TRUE</code>, and this is what they did prior to R
 version 1.2.0.
@@ -2005,7 +2009,7 @@ makes it possible to write to pipes, which was implemented earlier in a
 limited way via the syntax <code>file = "|cmd"</code> (which can still be
 used).
 
-   <p><a name="index-writeLines-147"></a>There is a function <code>writeLines</code> to write complete text lines
+   <p><a name="index-writeLines-144"></a>There is a function <code>writeLines</code> to write complete text lines
 to a connection.
 
    <p>Some simple examples are
@@ -2045,7 +2049,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Connections">Connections</a>
 
 <h3 class="section">7.3 Input from connections</h3>
 
-<p><a name="index-scan-148"></a><a name="index-read_002etable-149"></a><a name="index-readLines-150"></a>The basic functions to read from connections are <code>scan</code> and
+<p><a name="index-scan-145"></a><a name="index-read_002etable-146"></a><a name="index-readLines-147"></a>The basic functions to read from connections are <code>scan</code> and
 <code>readLines</code>.  These take a character string argument and open a
 file connection for the duration of the function call, but explicitly
 opening a file connection allows a file to be read sequentially in
@@ -2071,7 +2075,7 @@ in particular <code>read.table</code>.
      # Then read this by
      scan(pipe("sed -e s/,$// data"), sep=",")
 </pre>
-   <p><a name="index-URL-connections-151"></a>For convenience, if the <code>file</code> argument specifies a FTP or HTTP
+   <p><a name="index-URL-connections-148"></a>For convenience, if the <code>file</code> argument specifies a FTP or HTTP
 <acronym>URL</acronym>, the <acronym>URL</acronym> is opened for reading via <code>url</code>. 
 Specifying files via &lsquo;<samp><span class="samp">file://foo.bar</span></samp>&rsquo; is also allowed.
 
@@ -2089,7 +2093,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Input-from-connections">Input from con
 
 <h4 class="subsection">7.3.1 Pushback</h4>
 
-<p><a name="index-pushBack_002e-152"></a><a name="index-Pushback-on-a-connection-153"></a>C programmers may be familiar with the <code>ungetc</code> function to push
+<p><a name="index-pushBack_002e-149"></a><a name="index-Pushback-on-a-connection-150"></a>C programmers may be familiar with the <code>ungetc</code> function to push
 back a character onto a text input stream.  R connections have the
 same idea in a more powerful way, in that an (essentially) arbitrary
 number of lines of text can be pushed back onto a connection via a call
@@ -2101,7 +2105,7 @@ pushbacks and finally reads from the connection itself.  Once a
 pushbacked line is read completely, it is cleared.  The number of
 pending lines pushed back can be found via a call to
 <code>pushBackLength</code>. 
-<a name="index-pushBackLength-154"></a>
+<a name="index-pushBackLength-151"></a>
 A simple example will show the idea.
 
 <pre class="example">     &gt; zz &lt;- textConnection(LETTERS)
@@ -2129,20 +2133,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Connections">Connections</a>
 
 <h3 class="section">7.4 Listing and manipulating connections</h3>
 
-<p><a name="index-Connections-155"></a>
-<a name="index-showConnections-156"></a>A summary of all the connections currently opened by the user can be
+<p><a name="index-Connections-152"></a>
+<a name="index-showConnections-153"></a>A summary of all the connections currently opened by the user can be
 found by <code>showConnections()</code>, and a summary of all connections,
 including closed and terminal connections, by <code>showConnections(all
 = TRUE)</code>
 
-   <p><a name="index-seek-157"></a><a name="index-isSeekable-158"></a>The generic function <code>seek</code> can be used to read and (on some
+   <p><a name="index-seek-154"></a><a name="index-isSeekable-155"></a>The generic function <code>seek</code> can be used to read and (on some
 connections) reset the current position for reading or writing. 
 Unfortunately it depends on OS facilities which may be unreliable
 (e.g. with text files under Windows).  Function <code>isSeekable</code>
 reports if <code>seek</code> can change the position on the connection
 given by its argument.
 
-   <p><a name="index-truncate-159"></a>The function <code>truncate</code> can be used to truncate a file opened for
+   <p><a name="index-truncate-156"></a>The function <code>truncate</code> can be used to truncate a file opened for
 writing at its current position.  It works only for <code>file</code>
 connections, and is not implemented on all platforms.
 
@@ -2156,8 +2160,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Connections">Connections</a>
 
 <h3 class="section">7.5 Binary connections</h3>
 
-<p><a name="index-Binary-files-160"></a>
-<a name="index-readBin-161"></a><a name="index-writeBin-162"></a>Functions <code>readBin</code> and <code>writeBin</code> read to and write from
+<p><a name="index-Binary-files-157"></a>
+<a name="index-readBin-158"></a><a name="index-writeBin-159"></a>Functions <code>readBin</code> and <code>writeBin</code> read to and write from
 binary connections.  A connection is opened in binary mode by appending
 <code>"b"</code> to the mode specification, that is using mode <code>"rb"</code> for
 reading, and mode <code>"wb"</code> or <code>"ab"</code> (where appropriate) for
@@ -2205,7 +2209,7 @@ numbers.  This can be done using the <code>size</code> argument, which
 can lose precision, and should not be attempted for vectors containing
 <code>NA</code>'s.
 
-   <p><a name="index-readChar-163"></a><a name="index-writeChar-164"></a>Character strings are read and written in C format, that is as a string
+   <p><a name="index-readChar-160"></a><a name="index-writeChar-161"></a>Character strings are read and written in C format, that is as a string
 of bytes terminated by a zero byte.  Functions <code>readChar</code> and
 <code>writeChar</code> provide greater flexibility.
 
@@ -2281,7 +2285,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Network-interfaces">Network interfaces
 
 <h3 class="section">8.1 Reading from sockets</h3>
 
-<p><a name="index-Sockets-165"></a>Base R comes with some facilities to communicate <em>via</em>
+<p><a name="index-Sockets-162"></a>Base R comes with some facilities to communicate <em>via</em>
 <acronym>BSD</acronym> sockets on systems that support them (including the common
 Linux, Unix and Windows ports of R).  One potential problem with
 using sockets is that these facilities are often blocked for security
@@ -2289,7 +2293,7 @@ reasons or to force the use of Web caches, so these functions may be
 more useful on an intranet than externally.  For new projects it
 is suggested that socket connections are used instead.
 
-   <p><a name="index-make_002esocket-166"></a><a name="index-read_002esocket-167"></a><a name="index-write_002esocket-168"></a><a name="index-close_002esocket-169"></a>The earlier low-level interface is given by functions <code>make.socket</code>,
+   <p><a name="index-make_002esocket-163"></a><a name="index-read_002esocket-164"></a><a name="index-write_002esocket-165"></a><a name="index-close_002esocket-166"></a>The earlier low-level interface is given by functions <code>make.socket</code>,
 <code>read.socket</code>, <code>write.socket</code> and <code>close.socket</code>.
 
 <div class="node">
@@ -2321,7 +2325,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Network-interfaces">Network interfaces
 
 <h3 class="section">8.3 <acronym>CORBA</acronym> interface</h3>
 
-<p><a name="index-CORBA-170"></a>
+<p><a name="index-CORBA-167"></a>
 <acronym>CORBA</acronym> (Common Object Request Broker Architecture) is similar
 to <acronym>DCOM</acronym>, allowing applications to call methods, or operations,
 in server objects running in other applications, potentially programmed
@@ -2370,7 +2374,7 @@ an Excel spreadsheet'.  This chapter collects together advice and
 options given earlier.  Note that most of the advice is for pre-Excel
 2007 spreadsheets and not the later <samp><span class="file">.xlsx</span></samp> format.
 
-   <p><a name="index-read_002ecsv-171"></a><a name="index-read_002edelim-172"></a><a name="index-read_002eDIF-173"></a><a name="index-read_002etable-174"></a><a name="index-readClipboard-175"></a>The first piece of advice is to avoid doing so if possible!  If you have
+   <p><a name="index-read_002ecsv-168"></a><a name="index-read_002edelim-169"></a><a name="index-read_002eDIF-170"></a><a name="index-read_002etable-171"></a><a name="index-readClipboard-172"></a>The first piece of advice is to avoid doing so if possible!  If you have
 access to Excel, export the data you want from Excel in tab-delimited or
 comma-separated form, and use <code>read.delim</code> or <code>read.csv</code> to
 import it into R.  (You may need to use <code>read.delim2</code> or
@@ -2393,7 +2397,7 @@ files can contain many sheets, and the sheets can contain formulae,
 macros and so on.  Not all readers can read other than the first sheet,
 and may be confused by other contents of the file.
 
-   <p><a name="index-odbcConnectExcel-176"></a><a name="index-odbcConnectExcel2007-177"></a>Windows users (of 32-bit R) can use <code>odbcConnectExcel</code> in
+   <p><a name="index-odbcConnectExcel-173"></a><a name="index-odbcConnectExcel2007-174"></a>Windows users (of 32-bit R) can use <code>odbcConnectExcel</code> in
 package <a href="http://CRAN.R-project.org/package=RODBC"><strong>RODBC</strong></a>.  This can select rows and columns from any of the
 sheets in an Excel spreadsheet file (at least from Excel 97&ndash;2003,
 depending on your ODBC drivers: by calling <code>odbcConnect</code> directly
@@ -2403,28 +2407,28 @@ earlier ones (provided the drivers are installed, including with 64-bit
 Windows R: see <a href="#RODBC">RODBC</a>).  Mac users can also use <a href="http://CRAN.R-project.org/package=RODBC"><strong>RODBC</strong></a> if
 they have a suitable driver (e.g. that from Actual Technologies).
 
-   <p><a name="index-read_002exls-178"></a><code>Perl</code> users have contributed a module
+   <p><a name="index-read_002exls-175"></a><code>Perl</code> users have contributed a module
 <code>OLE::SpreadSheet::ParseExcel</code> and a program <code>xls2csv.pl</code> to
 convert Excel 95&ndash;2003 spreadsheets to CSV files.  Package <a href="http://CRAN.R-project.org/package=gdata"><strong>gdata</strong></a>
 provides a basic wrapper in its <code>read.xls</code> function.  With suitable
 <code>Perl</code> modules installed this function can also read Excel 2007
 spreadsheets.
 
-   <p><a name="index-xlsReadWrite-179"></a>32-bit Windows package <a href="http://CRAN.R-project.org/package=xlsReadWrite"><strong>xlsReadWrite</strong></a> from
+   <p><a name="index-xlsReadWrite-176"></a>32-bit Windows package <a href="http://CRAN.R-project.org/package=xlsReadWrite"><strong>xlsReadWrite</strong></a> from
 <a href="http://www.swissr.org/">http://www.swissr.org/</a> and CRAN has a function <code>read.xls</code> to
 read <samp><span class="file">.xls</span></samp> files (based on a third-party non-Open-Source Delphi
 component).
 
-   <p><a name="index-dataframes2xls-180"></a><a name="index-WriteXLS-181"></a>Packages <a href="http://CRAN.R-project.org/package=dataframes2xls"><strong>dataframes2xls</strong></a> and <a href="http://CRAN.R-project.org/package=WriteXLS"><strong>WriteXLS</strong></a> each contain a function
+   <p><a name="index-dataframes2xls-177"></a><a name="index-WriteXLS-178"></a>Packages <a href="http://CRAN.R-project.org/package=dataframes2xls"><strong>dataframes2xls</strong></a> and <a href="http://CRAN.R-project.org/package=WriteXLS"><strong>WriteXLS</strong></a> each contain a function
 to <em>write</em> one or more data frames to an <samp><span class="file">.xls</span></samp> file, using
 Python and Perl respectively.  Another version of <code>write.xls</code> in
 available in package <a href="http://CRAN.R-project.org/package=xlsReadWrite"><strong>xlsReadWrite</strong></a>.
 
-   <p><a name="index-xlsx-182"></a><a name="index-RExcelXML-183"></a>Two packages which can read and and manipulate Excel 2007/10
+   <p><a name="index-xlsx-179"></a><a name="index-RExcelXML-180"></a>Two packages which can read and and manipulate Excel 2007/10
 spreadsheets but not earlier formats are <a href="http://CRAN.R-project.org/package=xlsx"><strong>xlsx</strong></a> (which requires
 Java) and the Omegahat package <strong>RExcelXML</strong>.
 
-   <p><a name="index-XLConnect-184"></a>Package <a href="http://CRAN.R-project.org/package=XLConnect"><strong>XLConnect</strong></a> can read, write and manipulate both Excel
+   <p><a name="index-XLConnect-181"></a>Package <a href="http://CRAN.R-project.org/package=XLConnect"><strong>XLConnect</strong></a> can read, write and manipulate both Excel
 97&ndash;2003 and Excel 2007/10 spreadsheets, requiring Java.
 
 <div class="node">
@@ -2481,123 +2485,123 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="unnumbered">Function and variable index</h2>
 
 <ul class="index-vr" compact>
-<li><a href="#index-bzfile-128"><code>bzfile</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-cat-143"><code>cat</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-cat-7"><code>cat</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-close-126"><code>close</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-close-97"><code>close</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-close_002esocket-169"><code>close.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
-<li><a href="#index-count_002efields-33"><code>count.fields</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-dataframes2xls-180"><code>dataframes2xls</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-data_002erestore-59"><code>data.restore</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-dbClearResult-80"><code>dbClearResult</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbConnect-77"><code>dbConnect</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbDisconnect-78"><code>dbDisconnect</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbDriver-76"><code>dbDriver</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbExistsTable-85"><code>dbExistsTable</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-g_t_002edbf-92"><code>.dbf</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-dbGetQuery-81"><code>dbGetQuery</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbReadTable-83"><code>dbReadTable</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbRemoveTable-86"><code>dbRemoveTable</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbSendQuery-79"><code>dbSendQuery</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-dbWriteTable-84"><code>dbWriteTable</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-fetch-82"><code>fetch</code></a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-file-123"><code>file</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-format-10"><code>format</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-ftable-47"><code>ftable</code></a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
-<li><a href="#index-gzfile-127"><code>gzfile</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-hdf5-112"><code>hdf5</code></a>: <a href="#Binary-data-formats">Binary data formats</a></li>
-<li><a href="#index-isSeekable-158"><code>isSeekable</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
-<li><a href="#index-make_002esocket-166"><code>make.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
-<li><a href="#index-netCDF-114"><code>netCDF</code></a>: <a href="#Binary-data-formats">Binary data formats</a></li>
-<li><a href="#index-odbcClose-96"><code>odbcClose</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-odbcConnect-93"><code>odbcConnect</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-odbcConnectDbase-120"><code>odbcConnectDbase</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
-<li><a href="#index-odbcConnectExcel-176"><code>odbcConnectExcel</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-odbcConnectExcel-110"><code>odbcConnectExcel</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-odbcConnectExcel2007-177"><code>odbcConnectExcel2007</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-odbcDriverConnect-94"><code>odbcDriverConnect</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-odbcGetInfo-95"><code>odbcGetInfo</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-odbcQuery-103"><code>odbcQuery</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-open-125"><code>open</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-pipe-137"><code>pipe</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-pushBack_002e-152"><code>pushBack.</code></a>: <a href="#Pushback">Pushback</a></li>
-<li><a href="#index-pushBackLength-154"><code>pushBackLength</code></a>: <a href="#Pushback">Pushback</a></li>
-<li><a href="#index-readBin-161"><code>readBin</code></a>: <a href="#Binary-connections">Binary connections</a></li>
-<li><a href="#index-readChar-163"><code>readChar</code></a>: <a href="#Binary-connections">Binary connections</a></li>
-<li><a href="#index-readClipboard-175"><code>readClipboard</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002ecsv-171"><code>read.csv</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002ecsv-26"><code>read.csv</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-read_002ecsv2-27"><code>read.csv2</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-read_002edbf-118"><code>read.dbf</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
-<li><a href="#index-read_002edelim-172"><code>read.delim</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002edelim-28"><code>read.delim</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-read_002edelim2-29"><code>read.delim2</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-read_002eDIF-173"><code>read.DIF</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002eDIF-39"><code>read.DIF</code></a>: <a href="#Data-Interchange-Format-_0028DIF_0029">Data Interchange Format (DIF)</a></li>
-<li><a href="#index-read_002edta-64"><code>read.dta</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002eepiinfo-52"><code>read.epiinfo</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002efortran-37"><code>read.fortran</code></a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
-<li><a href="#index-read_002eftable-48"><code>read.ftable</code></a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
-<li><a href="#index-read_002efwf-35"><code>read.fwf</code></a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
-<li><a href="#index-readLines-150"><code>readLines</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
-<li><a href="#index-readLines-41"><code>readLines</code></a>: <a href="#Using-scan-directly">Using scan directly</a></li>
-<li><a href="#index-read_002emtp-54"><code>read.mtp</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002eoctave-69"><code>read.octave</code></a>: <a href="#Octave">Octave</a></li>
-<li><a href="#index-read_002eS-58"><code>read.S</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002esocket-167"><code>read.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
-<li><a href="#index-read_002espss-62"><code>read.spss</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002esystat-67"><code>read.systat</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-read_002etable-174"><code>read.table</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002etable-149"><code>read.table</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
-<li><a href="#index-read_002etable-23"><code>read.table</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-read_002exls-178"><code>read.xls</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-read_002export-56"><code>read.xport</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-reshape-45"><code>reshape</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
-<li><a href="#index-RExcelXML-183"><code>RExcelXML</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-scan-148"><code>scan</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
-<li><a href="#index-scan-40"><code>scan</code></a>: <a href="#Using-scan-directly">Using scan directly</a></li>
-<li><a href="#index-scan-4"><code>scan</code></a>: <a href="#Imports">Imports</a></li>
-<li><a href="#index-seek-157"><code>seek</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
-<li><a href="#index-showConnections-156"><code>showConnections</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
-<li><a href="#index-sink-146"><code>sink</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-sink-19"><code>sink</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-socketConnection-141"><code>socketConnection</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-sqlCopy-102"><code>sqlCopy</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlFetch-99"><code>sqlFetch</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlFetchMore-105"><code>sqlFetchMore</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlGetResults-104"><code>sqlGetResults</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlQuery-101"><code>sqlQuery</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlSave-100"><code>sqlSave</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-sqlTables-98"><code>sqlTables</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-stack-43"><code>stack</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
-<li><a href="#index-stderr-133"><code>stderr</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-stdin-131"><code>stdin</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-stdout-132"><code>stdout</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Sys_002elocaleconv-31"><code>Sys.localeconv</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-textConnection-135"><code>textConnection</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-truncate-159"><code>truncate</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
-<li><a href="#index-unstack_002e-44"><code>unstack.</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
-<li><a href="#index-url-139"><code>url</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-write-144"><code>write</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-write-8"><code>write</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-writeBin-162"><code>writeBin</code></a>: <a href="#Binary-connections">Binary connections</a></li>
-<li><a href="#index-writeChar-164"><code>writeChar</code></a>: <a href="#Binary-connections">Binary connections</a></li>
-<li><a href="#index-write_002ecsv-13"><code>write.csv</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-write_002ecsv2-14"><code>write.csv2</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-write_002edbf-119"><code>write.dbf</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
-<li><a href="#index-write_002edta-65"><code>write.dta</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-write_002eforeign-20"><code>write.foreign</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-writeLines-147"><code>writeLines</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-write_002ematrix-18"><code>write.matrix</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-write_002esocket-168"><code>write.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
-<li><a href="#index-write_002etable-145"><code>write.table</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-write_002etable-9"><code>write.table</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-WriteXLS-181"><code>WriteXLS</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-XLConnect-184"><code>XLConnect</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-g_t_002exls-90"><code>.xls</code></a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-xlsReadWrite-179"><code>xlsReadWrite</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
-<li><a href="#index-xlsx-182"><code>xlsx</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-bzfile-125"><code>bzfile</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-cat-140"><code>cat</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-cat-4"><code>cat</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-close-123"><code>close</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-close-94"><code>close</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-close_002esocket-166"><code>close.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
+<li><a href="#index-count_002efields-30"><code>count.fields</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-dataframes2xls-177"><code>dataframes2xls</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-data_002erestore-56"><code>data.restore</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-dbClearResult-77"><code>dbClearResult</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbConnect-74"><code>dbConnect</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbDisconnect-75"><code>dbDisconnect</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbDriver-73"><code>dbDriver</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbExistsTable-82"><code>dbExistsTable</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-g_t_002edbf-89"><code>.dbf</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-dbGetQuery-78"><code>dbGetQuery</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbReadTable-80"><code>dbReadTable</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbRemoveTable-83"><code>dbRemoveTable</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbSendQuery-76"><code>dbSendQuery</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-dbWriteTable-81"><code>dbWriteTable</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-fetch-79"><code>fetch</code></a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-file-120"><code>file</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-format-7"><code>format</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-ftable-44"><code>ftable</code></a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
+<li><a href="#index-gzfile-124"><code>gzfile</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-hdf5-109"><code>hdf5</code></a>: <a href="#Binary-data-formats">Binary data formats</a></li>
+<li><a href="#index-isSeekable-155"><code>isSeekable</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
+<li><a href="#index-make_002esocket-163"><code>make.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
+<li><a href="#index-netCDF-111"><code>netCDF</code></a>: <a href="#Binary-data-formats">Binary data formats</a></li>
+<li><a href="#index-odbcClose-93"><code>odbcClose</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-odbcConnect-90"><code>odbcConnect</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-odbcConnectDbase-117"><code>odbcConnectDbase</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
+<li><a href="#index-odbcConnectExcel-173"><code>odbcConnectExcel</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-odbcConnectExcel-107"><code>odbcConnectExcel</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-odbcConnectExcel2007-174"><code>odbcConnectExcel2007</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-odbcDriverConnect-91"><code>odbcDriverConnect</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-odbcGetInfo-92"><code>odbcGetInfo</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-odbcQuery-100"><code>odbcQuery</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-open-122"><code>open</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-pipe-134"><code>pipe</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-pushBack_002e-149"><code>pushBack.</code></a>: <a href="#Pushback">Pushback</a></li>
+<li><a href="#index-pushBackLength-151"><code>pushBackLength</code></a>: <a href="#Pushback">Pushback</a></li>
+<li><a href="#index-readBin-158"><code>readBin</code></a>: <a href="#Binary-connections">Binary connections</a></li>
+<li><a href="#index-readChar-160"><code>readChar</code></a>: <a href="#Binary-connections">Binary connections</a></li>
+<li><a href="#index-readClipboard-172"><code>readClipboard</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002ecsv-168"><code>read.csv</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002ecsv-23"><code>read.csv</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-read_002ecsv2-24"><code>read.csv2</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-read_002edbf-115"><code>read.dbf</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
+<li><a href="#index-read_002edelim-169"><code>read.delim</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002edelim-25"><code>read.delim</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-read_002edelim2-26"><code>read.delim2</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-read_002eDIF-170"><code>read.DIF</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002eDIF-36"><code>read.DIF</code></a>: <a href="#Data-Interchange-Format-_0028DIF_0029">Data Interchange Format (DIF)</a></li>
+<li><a href="#index-read_002edta-61"><code>read.dta</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002eepiinfo-49"><code>read.epiinfo</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002efortran-34"><code>read.fortran</code></a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
+<li><a href="#index-read_002eftable-45"><code>read.ftable</code></a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
+<li><a href="#index-read_002efwf-32"><code>read.fwf</code></a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
+<li><a href="#index-readLines-147"><code>readLines</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
+<li><a href="#index-readLines-38"><code>readLines</code></a>: <a href="#Using-scan-directly">Using scan directly</a></li>
+<li><a href="#index-read_002emtp-51"><code>read.mtp</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002eoctave-66"><code>read.octave</code></a>: <a href="#Octave">Octave</a></li>
+<li><a href="#index-read_002eS-55"><code>read.S</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002esocket-164"><code>read.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
+<li><a href="#index-read_002espss-59"><code>read.spss</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002esystat-64"><code>read.systat</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-read_002etable-171"><code>read.table</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002etable-146"><code>read.table</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
+<li><a href="#index-read_002etable-20"><code>read.table</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-read_002exls-175"><code>read.xls</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-read_002export-53"><code>read.xport</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-reshape-42"><code>reshape</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
+<li><a href="#index-RExcelXML-180"><code>RExcelXML</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-scan-145"><code>scan</code></a>: <a href="#Input-from-connections">Input from connections</a></li>
+<li><a href="#index-scan-37"><code>scan</code></a>: <a href="#Using-scan-directly">Using scan directly</a></li>
+<li><a href="#index-scan-1"><code>scan</code></a>: <a href="#Imports">Imports</a></li>
+<li><a href="#index-seek-154"><code>seek</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
+<li><a href="#index-showConnections-153"><code>showConnections</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
+<li><a href="#index-sink-143"><code>sink</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-sink-16"><code>sink</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-socketConnection-138"><code>socketConnection</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-sqlCopy-99"><code>sqlCopy</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlFetch-96"><code>sqlFetch</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlFetchMore-102"><code>sqlFetchMore</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlGetResults-101"><code>sqlGetResults</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlQuery-98"><code>sqlQuery</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlSave-97"><code>sqlSave</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-sqlTables-95"><code>sqlTables</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-stack-40"><code>stack</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
+<li><a href="#index-stderr-130"><code>stderr</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-stdin-128"><code>stdin</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-stdout-129"><code>stdout</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-Sys_002elocaleconv-28"><code>Sys.localeconv</code></a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-textConnection-132"><code>textConnection</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-truncate-156"><code>truncate</code></a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
+<li><a href="#index-unstack_002e-41"><code>unstack.</code></a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
+<li><a href="#index-url-136"><code>url</code></a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-write-141"><code>write</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-write-5"><code>write</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-writeBin-159"><code>writeBin</code></a>: <a href="#Binary-connections">Binary connections</a></li>
+<li><a href="#index-writeChar-161"><code>writeChar</code></a>: <a href="#Binary-connections">Binary connections</a></li>
+<li><a href="#index-write_002ecsv-10"><code>write.csv</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-write_002ecsv2-11"><code>write.csv2</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-write_002edbf-116"><code>write.dbf</code></a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
+<li><a href="#index-write_002edta-62"><code>write.dta</code></a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-write_002eforeign-17"><code>write.foreign</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-writeLines-144"><code>writeLines</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-write_002ematrix-15"><code>write.matrix</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-write_002esocket-165"><code>write.socket</code></a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
+<li><a href="#index-write_002etable-142"><code>write.table</code></a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-write_002etable-6"><code>write.table</code></a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-WriteXLS-178"><code>WriteXLS</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-XLConnect-181"><code>XLConnect</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-g_t_002exls-87"><code>.xls</code></a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-xlsReadWrite-176"><code>xlsReadWrite</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
+<li><a href="#index-xlsx-179"><code>xlsx</code></a>: <a href="#Reading-Excel-spreadsheets">Reading Excel spreadsheets</a></li>
    </ul><div class="node">
 <a name="Concept-index"></a>
 <p><hr>
@@ -2611,71 +2615,68 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 
 <ul class="index-cp" compact>
-<li><a href="#index-AWK-2">AWK</a>: <a href="#Introduction">Introduction</a></li>
-<li><a href="#index-Binary-files-160">Binary files</a>: <a href="#Binary-connections">Binary connections</a></li>
-<li><a href="#index-Binary-files-111">Binary files</a>: <a href="#Binary-files">Binary files</a></li>
-<li><a href="#index-comma-separated-values-12">comma separated values</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-Compressed-files-129">Compressed files</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Connections-155">Connections</a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
-<li><a href="#index-Connections-142">Connections</a>: <a href="#Output-to-connections">Output to connections</a></li>
-<li><a href="#index-Connections-122">Connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Connections-121">Connections</a>: <a href="#Connections">Connections</a></li>
-<li><a href="#index-CORBA-170">CORBA</a>: <a href="#CORBA-interface">CORBA interface</a></li>
-<li><a href="#index-CSV-files-30">CSV files</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-CSV-files-11">CSV files</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-Data-Interchange-Format-_0028DIF_0029-38">Data Interchange Format (DIF)</a>: <a href="#Data-Interchange-Format-_0028DIF_0029">Data Interchange Format (DIF)</a></li>
-<li><a href="#index-Dbase-91">Dbase</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-dBase-116">dBase</a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
-<li><a href="#index-DBF-files-117">DBF files</a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
-<li><a href="#index-DBMS-71">DBMS</a>: <a href="#Relational-databases">Relational databases</a></li>
-<li><a href="#index-Encodings-17">Encodings</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-Encodings-5">Encodings</a>: <a href="#Encodings">Encodings</a></li>
-<li><a href="#index-EpiData-51">EpiData</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-EpiInfo-50">EpiInfo</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Excel-89">Excel</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-Exporting-to-a-text-file-6">Exporting to a text file</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-File-connections-124">File connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Fixed_002dwidth_002dformat-files-34">Fixed-width-format files</a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
-<li><a href="#index-Flat-contingency-tables-46">Flat contingency tables</a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
-<li><a href="#index-Hierarchical-Data-Format-113">Hierarchical Data Format</a>: <a href="#Binary-data-formats">Binary data formats</a></li>
-<li><a href="#index-Importing-from-other-statistical-systems-49">Importing from other statistical systems</a>: <a href="#Importing-from-other-statistical-systems">Importing from other statistical systems</a></li>
-<li><a href="#index-locales-32">locales</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-Minitab-53">Minitab</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Missing-values-25">Missing values</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-Missing-values-15">Missing values</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-MySQL-database-system-107">MySQL database system</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-MySQL-database-system-75">MySQL database system</a>: <a href="#DBI">DBI</a></li>
-<li><a href="#index-network-Common-Data-Form-115">network Common Data Form</a>: <a href="#Binary-data-formats">Binary data formats</a></li>
-<li><a href="#index-Octave-68">Octave</a>: <a href="#Octave">Octave</a></li>
-<li><a href="#index-ODBC-87">ODBC</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-ODBC-72">ODBC</a>: <a href="#Overview-of-RDBMSs">Overview of RDBMSs</a></li>
-<li><a href="#index-Open-Database-Connectivity-88">Open Database Connectivity</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-Open-Database-Connectivity-73">Open Database Connectivity</a>: <a href="#Overview-of-RDBMSs">Overview of RDBMSs</a></li>
-<li><a href="#index-perl-36">perl</a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
-<li><a href="#index-perl-3">perl</a>: <a href="#Introduction">Introduction</a></li>
-<li><a href="#index-Pipe-connections-136">Pipe connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-PostgreSQL-database-system-106">PostgreSQL database system</a>: <a href="#RODBC">RODBC</a></li>
-<li><a href="#index-Pushback-on-a-connection-153">Pushback on a connection</a>: <a href="#Pushback">Pushback</a></li>
-<li><a href="#index-Quoting-strings-24">Quoting strings</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
-<li><a href="#index-Quoting-strings-16">Quoting strings</a>: <a href="#Export-to-text-files">Export to text files</a></li>
-<li><a href="#index-Relational-databases-70">Relational databases</a>: <a href="#Relational-databases">Relational databases</a></li>
-<li><a href="#index-Re_002dshaping-data-42">Re-shaping data</a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
-<li><a href="#index-SAS-55">SAS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Sockets-165">Sockets</a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
-<li><a href="#index-Sockets-140">Sockets</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-S_002dPLUS-57">S-PLUS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Spreadsheet_002dlike-data-22">Spreadsheet-like data</a>: <a href="#Spreadsheet_002dlike-data">Spreadsheet-like data</a></li>
-<li><a href="#index-SPSS-60">SPSS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-SPSS-Data-Entry-61">SPSS Data Entry</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-SQL-queries-74">SQL queries</a>: <a href="#SQL-queries">SQL queries</a></li>
-<li><a href="#index-Stata-63">Stata</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Systat-66">Systat</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
-<li><a href="#index-Terminal-connections-130">Terminal connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Text-connections-134">Text connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-Unix-tools-1">Unix tools</a>: <a href="#Introduction">Introduction</a></li>
-<li><a href="#index-URL-connections-151">URL connections</a>: <a href="#Input-from-connections">Input from connections</a></li>
-<li><a href="#index-URL-connections-138">URL connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
-<li><a href="#index-XML-21">XML</a>: <a href="#XML">XML</a></li>
+<li><a href="#index-Binary-files-157">Binary files</a>: <a href="#Binary-connections">Binary connections</a></li>
+<li><a href="#index-Binary-files-108">Binary files</a>: <a href="#Binary-files">Binary files</a></li>
+<li><a href="#index-comma-separated-values-9">comma separated values</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-Compressed-files-126">Compressed files</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-Connections-152">Connections</a>: <a href="#Listing-and-manipulating-connections">Listing and manipulating connections</a></li>
+<li><a href="#index-Connections-139">Connections</a>: <a href="#Output-to-connections">Output to connections</a></li>
+<li><a href="#index-Connections-119">Connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-Connections-118">Connections</a>: <a href="#Connections">Connections</a></li>
+<li><a href="#index-CORBA-167">CORBA</a>: <a href="#CORBA-interface">CORBA interface</a></li>
+<li><a href="#index-CSV-files-27">CSV files</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-CSV-files-8">CSV files</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-Data-Interchange-Format-_0028DIF_0029-35">Data Interchange Format (DIF)</a>: <a href="#Data-Interchange-Format-_0028DIF_0029">Data Interchange Format (DIF)</a></li>
+<li><a href="#index-Dbase-88">Dbase</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-dBase-113">dBase</a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
+<li><a href="#index-DBF-files-114">DBF files</a>: <a href="#dBase-files-_0028DBF_0029">dBase files (DBF)</a></li>
+<li><a href="#index-DBMS-68">DBMS</a>: <a href="#Relational-databases">Relational databases</a></li>
+<li><a href="#index-Encodings-14">Encodings</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-Encodings-2">Encodings</a>: <a href="#Encodings">Encodings</a></li>
+<li><a href="#index-EpiData-48">EpiData</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-EpiInfo-47">EpiInfo</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Excel-86">Excel</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-Exporting-to-a-text-file-3">Exporting to a text file</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-File-connections-121">File connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-Fixed_002dwidth_002dformat-files-31">Fixed-width-format files</a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
+<li><a href="#index-Flat-contingency-tables-43">Flat contingency tables</a>: <a href="#Flat-contingency-tables">Flat contingency tables</a></li>
+<li><a href="#index-Hierarchical-Data-Format-110">Hierarchical Data Format</a>: <a href="#Binary-data-formats">Binary data formats</a></li>
+<li><a href="#index-Importing-from-other-statistical-systems-46">Importing from other statistical systems</a>: <a href="#Importing-from-other-statistical-systems">Importing from other statistical systems</a></li>
+<li><a href="#index-locales-29">locales</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-Minitab-50">Minitab</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Missing-values-22">Missing values</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-Missing-values-12">Missing values</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-MySQL-database-system-104">MySQL database system</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-MySQL-database-system-72">MySQL database system</a>: <a href="#DBI">DBI</a></li>
+<li><a href="#index-network-Common-Data-Form-112">network Common Data Form</a>: <a href="#Binary-data-formats">Binary data formats</a></li>
+<li><a href="#index-Octave-65">Octave</a>: <a href="#Octave">Octave</a></li>
+<li><a href="#index-ODBC-84">ODBC</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-ODBC-69">ODBC</a>: <a href="#Overview-of-RDBMSs">Overview of RDBMSs</a></li>
+<li><a href="#index-Open-Database-Connectivity-85">Open Database Connectivity</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-Open-Database-Connectivity-70">Open Database Connectivity</a>: <a href="#Overview-of-RDBMSs">Overview of RDBMSs</a></li>
+<li><a href="#index-perl-33">perl</a>: <a href="#Fixed_002dwidth_002dformat-files">Fixed-width-format files</a></li>
+<li><a href="#index-Pipe-connections-133">Pipe connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-PostgreSQL-database-system-103">PostgreSQL database system</a>: <a href="#RODBC">RODBC</a></li>
+<li><a href="#index-Pushback-on-a-connection-150">Pushback on a connection</a>: <a href="#Pushback">Pushback</a></li>
+<li><a href="#index-Quoting-strings-21">Quoting strings</a>: <a href="#Variations-on-read_002etable">Variations on read.table</a></li>
+<li><a href="#index-Quoting-strings-13">Quoting strings</a>: <a href="#Export-to-text-files">Export to text files</a></li>
+<li><a href="#index-Relational-databases-67">Relational databases</a>: <a href="#Relational-databases">Relational databases</a></li>
+<li><a href="#index-Re_002dshaping-data-39">Re-shaping data</a>: <a href="#Re_002dshaping-data">Re-shaping data</a></li>
+<li><a href="#index-SAS-52">SAS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Sockets-162">Sockets</a>: <a href="#Reading-from-sockets">Reading from sockets</a></li>
+<li><a href="#index-Sockets-137">Sockets</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-S_002dPLUS-54">S-PLUS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Spreadsheet_002dlike-data-19">Spreadsheet-like data</a>: <a href="#Spreadsheet_002dlike-data">Spreadsheet-like data</a></li>
+<li><a href="#index-SPSS-57">SPSS</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-SPSS-Data-Entry-58">SPSS Data Entry</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-SQL-queries-71">SQL queries</a>: <a href="#SQL-queries">SQL queries</a></li>
+<li><a href="#index-Stata-60">Stata</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Systat-63">Systat</a>: <a href="#EpiInfo-Minitab-SAS-S_002dPLUS-SPSS-Stata-Systat">EpiInfo Minitab SAS S-PLUS SPSS Stata Systat</a></li>
+<li><a href="#index-Terminal-connections-127">Terminal connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-Text-connections-131">Text connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-URL-connections-148">URL connections</a>: <a href="#Input-from-connections">Input from connections</a></li>
+<li><a href="#index-URL-connections-135">URL connections</a>: <a href="#Types-of-connections">Types of connections</a></li>
+<li><a href="#index-XML-18">XML</a>: <a href="#XML">XML</a></li>
    </ul><div class="footnote">
 <hr>
 <a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Currently not available from
