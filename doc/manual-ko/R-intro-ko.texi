@@ -98,11 +98,12 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 @c The current version of this document is @value{VERSION}.
 
-이 문서는 통계계산 및 그래픽를 위한 언어이며 환경이기도 한 R에 대한 기초안내서 입니다.
-R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 수상을 받은 적이 있는 S 시스템과 유사하므로 ``GNU S''라고도 불리우고, 매우 다양한 분야에 걸친 통계분석 및 그래픽 기능들을 제공합니다.  
-예를들면, 선형 및 비선형 모델링, 다양한 통계 테스트들, 시계열분석, 클래시피케이션, 그리고 클러스터링 등이 있습니다.
+이 문서는 통계계산 및 그래픽를 위한 언어이며 환경이기도 한 R에 대한 기초안내서 입니다. R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 수상을 받은 적이 있는 S 시스템과 유사하므로 ``GNU S''라고도 불리우고, 매우 다양한 분야에 걸친 통계분석 및 그래픽 기능들을 제공합니다. 예를들면, 선형 및 비선형 모델링, 다양한 통계 테스트들, 시계열분석, 클래시피케이션, 그리고 클러스터링 등이 있습니다.
+
 이 문서는 R을 시작하는 분들에게 반드시 필요한 기본적인 데이터형에 대한 이해, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽에 대한 정보를 제공합니다.
+
 현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 14일에 이루어졌습니다.
+
 @c 서문 의역완료 on 2013-MAR-01 
 
 @value{ISBN-intro}
@@ -172,8 +173,8 @@ R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 �
 @c been digested.
 
 만약 독자가 @R{}을 처음 접하는 것이라면 @R{}이 어떻게 동작하는가에 대한 즉각적인 이해를 가지기 위하여 Appendix A를 가장 먼저 보기를 권합니다.
-많은 사용자들은 @R{}이 가진 그래픽 기능들 때문에 이를 사용하곤 합니다. 
-따라서, 그래픽 관련주제들을 @ref{Graphics}에 따로 모아 독자가 필요할때마다 쉽게 찾아볼 수 있도록 하였습니다. 
+
+많은 사용자들은 @R{}이 가진 그래픽 기능들 때문에 이를 사용하곤 합니다. 따라서, 그래픽 관련주제들을 @ref{Graphics}에 따로 모아 독자가 필요할때마다 쉽게 찾아볼 수 있도록 하였습니다. 
 
 @menu
 * Introduction and preliminaries::
@@ -629,6 +630,7 @@ UNIX를 기반으로 하는 다른 패키지들과 같이 @emph{case sensitive}(
 @c command is syntactically complete.  This prompt may be changed by the
 @c user.  We will generally omit the continuation prompt
 @c and indicate continuation by simple indenting.
+
 이 프롬프트의 기호를 continuation (컨티뉴에이션) 프롬프트라고 하고, 이는 사용자에 의해서 변경될 수 있습니다. 
 이 문서에서는 컨티뉴에이션 프롬프트를 사용하지 않고 단순히 인덴팅 (한 문자를 들여씀)을 이용하여 명령어가 계속 이어짐을 표현할 것입니다.
 
@@ -637,7 +639,7 @@ UNIX를 기반으로 하는 다른 패키지들과 같이 @emph{case sensitive}(
 @c some will silently discard the excess and some will use it as the start
 @c of the next line.} to about 4095 bytes (not characters).
 
-콘솔내에서 입력할 수 있는 대략 4095바이트입니다 @footnote{일부 콘솔들은 이 크기 이상이 입력될 경우에 더 이상 입력할 수 없거나, 자동으로 그 이상되는 범위의 명령어들을 잘라내는 경우도 있습니다.  어떤 경우에는 이 부분을 명령어의 새로운 시작으로 받아들일 수 있다는 점에 유의하시길 바랍니다}.
+콘솔내에서 입력할 수 있는 명령어 라인은 대략 4095바이트입니다 @footnote{일부 콘솔들은 이 크기 이상이 입력될 경우에 더 이상 입력할 수 없거나, 자동으로 그 이상되는 범위의 명령어들을 잘라내는 경우도 있습니다.  어떤 경우에는 이 부분을 명령어의 새로운 시작으로 받아들일 수 있다는 점에 유의하시길 바랍니다}.
 
 @node Recall and correction of previous commands, Executing commands from or diverting output to a file, R commands; case sensitivity etc, Introduction and preliminaries
 @section Recall and correction of previous commands
@@ -2309,7 +2311,8 @@ In this case we need a @math{3} by @math{2} subscript array, as in the
 following example.
 
 @example
-> x <- array(1:20, dim=c(4,5))   # @r{Generate a 4 by 5 array.}
+> x <- array(1:20, dim=c(4,5))   # 4행 5열로 구성된 2차원 배열을 생성합니다. 
+                                 @c @r{Generate a 4 by 5 array.}
 > x
      [,1] [,2] [,3] [,4] [,5]
 [1,]    1    5    9   13   17
@@ -2317,14 +2320,17 @@ following example.
 [3,]    3    7   11   15   19
 [4,]    4    8   12   16   20
 > i <- array(c(1:3,3:1), dim=c(3,2))
-> i                             # @r{@code{i} is a 3 by 2 index array.}
+> i                             # i 이라는 3행 2열의 인덱스행렬을 생성했습니다.
+                                 @c @r{@code{i} is a 3 by 2 index array.}
      [,1] [,2]
 [1,]    1    3
 [2,]    2    2
 [3,]    3    1
-> x[i]                          # @r{Extract those elements}
+> x[i]                          # 인덱스행렬에 해당하는 값만 뽑아냅니다
+                                @c @r{Extract those elements}
 [1] 9 6 3
-> x[i] <- 0                     # @r{Replace those elements by zeros.}
+> x[i] <- 0                     # 인덱스 행렬에 해당하는 값들을 0으로 교체합니다.
+                                @c @r{Replace those elements by zeros.}
 > x
      [,1] [,2] [,3] [,4] [,5]
 [1,]    1    5    0   13   17
@@ -2334,17 +2340,20 @@ following example.
 >
 @end example
 @noindent
-Negative indices are not allowed in index matrices.  @code{NA} and zero
-values are allowed: rows in the index matrix containing a zero are
-ignored, and rows containing an @code{NA} produce an @code{NA} in the
-result.
+@c Negative indices are not allowed in index matrices.  @code{NA} and zero
+@c values are allowed: rows in the index matrix containing a zero are
+@c ignored, and rows containing an @code{NA} produce an @code{NA} in the
+@c result.
 
+인덱스 행렬에서 음의 값을 지시자 (index) 를 사용할 수는 없지만, @code{NA} 와 영(0) 은 사용할 수 있습니다. 만약,인덱스 행렬이 0을 포함하고 있는 행이 있다면 이는 무시 될 것이고, @code{NA}를 포함하고 있다면 모두 @code{NA}를 출력할 것입니다.
 
-As a less trivial example, suppose we wish to generate an (unreduced)
-design matrix for a block design defined by factors @code{blocks}
-(@code{b} levels) and @code{varieties} (@code{v} levels).  Further
-suppose there are @code{n} plots in the experiment.  We could proceed as
-follows:
+@c As a less trivial example, suppose we wish to generate an (unreduced)
+@c design matrix for a block design defined by factors @code{blocks}
+@c (@code{b} levels) and @code{varieties} (@code{v} levels).  Further
+@c suppose there are @code{n} plots in the experiment.  We could proceed as
+@c follows:
+
+다소 쉬운 예제는 아니지만 , @code{b} 개의 레벨이 있는 @code{blocks} 이라는 요인과 @code{v} 개의 레벨이 있는 @code{varieties} 라는 요인을 이용하여, @code{n}개의 플랏에 적용될 실험에 사용될 디자인 매트릭스는 다음의 절차를 통하여 얻어질 수 있습니다.
 
 @example
 > Xb <- matrix(0, n, b)
@@ -2356,25 +2365,30 @@ follows:
 > X <- cbind(Xb, Xv)
 @end example
 
-To construct the incidence matrix, @code{N} say, we could use
+@c To construct the incidence matrix, @code{N} say, we could use
+
+만약 N 이라는 the incidence matrix (인시던스 매트릭스)를 생성하고자 한다면 다음과 같이 하면 됩니다.
 
 @example
 > N <- crossprod(Xb, Xv)
 @end example
 @findex crossprod
 
-However a simpler direct way of producing this matrix is to use
-@code{table()}:
+@c However a simpler direct way of producing this matrix is to use
+
+위와 동일한 인시던스 매트릭스는 @code{table()} 이라는 함수를 이용하면 더욱 쉽게 생성할 수 있습니다.
+
 @findex table
 
 @example
 > N <- table(blocks, varieties)
 @end example
 
-Index matrices must be numerical: any other form of matrix (e.g.@ a
-logical or character matrix) supplied as a matrix is treated as an
-indexing vector.
+@c Index matrices must be numerical: any other form of matrix (e.g.@ a
+@c logical or character matrix) supplied as a matrix is treated as an
+@c indexing vector.
 
+인덱스 행렬은 반드시 수치형으로 구성되어야 합니다.
 
 @c =======================================================================================================================================
 @c =======================================================================================================================================
@@ -2387,20 +2401,26 @@ indexing vector.
 @section The @code{array()} function
 @findex array
 
-As well as giving a vector structure a @code{dim} attribute, arrays can
-be constructed from vectors by the @code{array} function, which has the
-form
+@c As well as giving a vector structure a @code{dim} attribute, arrays can
+@c be constructed from vectors by the @code{array} function, which has the
+@c form
+
+배열은 벡터에 @code{dim} 이라는 속성을 부여하여 얻는 방법외에도, 아래와 같은 방법으로 @code{array} 라는 함수를 이용하여 생성할 수 있습니다.
 
 @example
 > Z <- array(@var{data_vector}, @var{dim_vector})
 @end example
 
-For example, if the vector @code{h} contains 24 or fewer, numbers then
-the command
+@c For example, if the vector @code{h} contains 24 or fewer, numbers then
+@c the command
+
+예를 들어 벡터 @code{h}가 24개의 수치형 원소를 가진다면, 아래의 명령어는 3행 4열로 구성된 2개의 행렬을 나란히 3차원 공간에 배열 한 뒤 이를 Z 에 할당했음을 의미합니다.
 
 @example
 > Z <- array(h, dim=c(3,4,2))
 @end example
+
+위에서는 배열 @code{Z} 를 array() 란 함수를 이용하였으나, 아래의 명령어는 벡터 @code{h}의 속성을 조정하여 동일한 배열 @code{Z}를 생성함을 보여줍니다.
 
 @noindent
 would use @code{h} to set up @math{3} by @math{4} by @math{2} array in
@@ -2410,10 +2430,13 @@ would use @code{h} to set up @math{3} by @math{4} by @math{2} array in
 > Z <- h ; dim(Z) <- c(3,4,2)
 @end example
 
-However if @code{h} is shorter than 24, its values are recycled from the
-beginning again to make it up to size 24 (@pxref{The recycling rule})
-but @code{dim(h) <- c(3,4,2)} would signal an error about mismatching
-length.
+@c However if @code{h} is shorter than 24, its values are recycled from the
+@c beginning again to make it up to size 24 (@pxref{The recycling rule})
+@c but @code{dim(h) <- c(3,4,2)} would signal an error about mismatching
+@c length.
+
+그런데, 만약 벡터 @code{h} 가 24개보다 적은 수의 원소를 가진다면, 24개라고 지정된 배열의 크기를 맞추기 위해서 벡터 @code{h}의 첫번째 원소부터 재사용되게 됩니다. 이것에 대해서는 (see @pxref{The recycling rule}). 그러나, @code{dim(h) <- c(3,4,2)} 와 같이 속성을 조정하고자 할 때에는 에러를 보여줄 것입니다.
+
 As an extreme but common example
 
 @example
@@ -2423,15 +2446,21 @@ As an extreme but common example
 @noindent
 makes @code{Z} an array of all zeros.
 
-At this point @code{dim(Z)} stands for the dimension vector
-@code{c(3,4,2)}, and @code{Z[1:24]} stands for the data vector as it was
-in @code{h}, and @code{Z[]} with an empty subscript or @code{Z} with no
-subscript stands for the entire array as an array.
+@c At this point @code{dim(Z)} stands for the dimension vector
+@c @code{c(3,4,2)}, and @code{Z[1:24]} stands for the data vector as it was
+@c in @code{h}, and @code{Z[]} with an empty subscript or @code{Z} with no
+@c subscript stands for the entire array as an array.
 
-Arrays may be used in arithmetic expressions and the result is an array
-formed by element-by-element operations on the data vector.  The
-@code{dim} attributes of operands generally need to be the same, and
-this becomes the dimension vector of the result.  So if @code{A},
+다음은 배열 @code{dim(Z)}의 모든 원소가 0 이라는 값을 가지는 특수한 경우입니다. 여기에서의 dim(Z) 는 차원벡터를 의미하고, @code{Z[1:24]} 는 @code{h} 와 동일한 데이터벡터를 의미합니다. @code{Z[]}와 같이 아무런 서브스크립트를 가지지 않거나 단순히 @code{Z}라고 배열이름을 사용하는 것은 배열 전체를 의미합니다.
+
+@c Arrays may be used in arithmetic expressions and the result is an array
+@c formed by element-by-element operations on the data vector.  The
+@c @code{dim} attributes of operands generally need to be the same, and
+@c this becomes the dimension vector of the result.  
+
+배열에서의 산술연산은 기본적으로 배열을 구성하는 원소단위에서 이루어집니다. 이때, 각각의 배열이 가지는 dim 이라는 차원속성이 모두 동일해야 하며, 동일한 차원의 결과값을 얻을 수 있게 됩니다. 따라서 아래의 명령문은 A, B, 그리고 C 가 모두 같은 dim 차원속성을 가지고 있다는 전제하에서, 원소단위의 연산을 수행한뒤 D 에 할당함을 의미합니다. 그러나, 배열과 벡터가 혼합된 경우의 연산을 수행할 경우에는 많은 주의가 요구됩니다.
+
+So if @code{A},
 @code{B} and @code{C} are all similar arrays, then
 
 @example
@@ -2439,10 +2468,10 @@ this becomes the dimension vector of the result.  So if @code{A},
 @end example
 
 @noindent
-makes @code{D} a similar array with its data vector being the result of
-the given element-by-element operations.  However the precise rule
-concerning mixed array and vector calculations has to be considered a
-little more carefully.
+@c makes @code{D} a similar array with its data vector being the result of
+@c the given element-by-element operations.  However the precise rule
+@c concerning mixed array and vector calculations has to be considered a
+@c little more carefully.
 
 @menu
 * The recycling rule::          
@@ -2452,10 +2481,12 @@ little more carefully.
 @subsection Mixed vector and array arithmetic.  The recycling rule
 @cindex Recycling rule
 
-The precise rule affecting element by element mixed calculations with
-vectors and arrays is somewhat quirky and hard to find in the
-references.  From experience we have found the following to be a reliable
-guide.
+@c The precise rule affecting element by element mixed calculations with
+@c vectors and arrays is somewhat quirky and hard to find in the
+@c references.  From experience we have found the following to be a reliable
+@c guide.
+
+벡터와 배열이 혼합된 연산을 수행하는 것을 설명하기에는 다소 복잡하지만, 우리의 경험으로 아래와 같은 내용을 알려드립니다.
 
 @itemize @bullet
 @item
@@ -2474,36 +2505,45 @@ been precipitated, the result is an array structure with the common
 @code{dim} attribute of its array operands.
 @end itemize
 
+수식연산은 기본적으로 좌에서 우로 진행합니다. 만약, 연산에 이용되는 벡터들의 길이가 서로 다를 경우,길이가 짧은 벡터는 원소를 재사용하여 길이가 긴 벡터의 길이 만큼 맞추게 됩니다. 만약, 동일한 dim 속성을 가지지 않는 배열끼리 연산될 경우에는 에러가 출력됩니다. 만약, 벡터의 길이가 행렬과 배열의 길이 보다 큰 경우에도 에러가 출력됩니다.
+
 @node The outer product of two arrays, Generalized transpose of an array, The array() function, Arrays and matrices
 @section The outer product of two arrays
 @cindex Outer products of arrays
 
-An important operation on arrays is the @emph{outer product}.  If
-@code{a} and @code{b} are two numeric arrays, their outer product is an
-array whose dimension vector is obtained by concatenating their two
-dimension vectors (order is important), and whose data vector is got by
-forming all possible products of elements of the data vector of @code{a}
-with those of @code{b}.  The outer product is formed by the special
-operator @code{%o%}:
+@c An important operation on arrays is the @emph{outer product}.  If
+@c @code{a} and @code{b} are two numeric arrays, their outer product is an
+@c array whose dimension vector is obtained by concatenating their two
+@c dimension vectors (order is important), and whose data vector is got by
+@c forming all possible products of elements of the data vector of @code{a}
+@c with those of @code{b}.  The outer product is formed by the special
+@c operator @code{%o%}:
+
+배열의 연산에서 가장 중요한 것은 %o% 라는 연산자기호를 이용하여 연산을 수행하는 외적(outer product)이라는 것입니다. 예를 들어 a와 b 라는 두개의 수치형 배열이 있다면, 외적(outer product)의 결과로 얻어지는 차원속성은 c(dim(a), dim(b)) 이고, 데이터 벡터는 a 의 모든 원소와 b 의 모든 원소로 얻어진 모든 조합의 곱입니다.
+
 @findex %o%
 
 @example
 > ab <- a %o% b
 @end example
 
-An alternative is
+@c An alternative is
+
+다음은 outer()란 함수를 이용하여 동일한 외적(outer product) 연산을 수행하는 것입니다.
 
 @example
 > ab <- outer(a, b, "*")
 @end example
 @findex outer
 
-The multiplication function can be replaced by an arbitrary function of
-two variables.  For example if we wished to evaluate the function
-@eqn{f(x; y) = \cos(y)/(1 + x^2), f(x; y) = cos(y)/(1 + x^2)}
-over a regular grid of values with @math{x}- and @math{y}-coordinates
-defined by the @R{} vectors @code{x} and @code{y} respectively, we could
-proceed as follows:
+@c The multiplication function can be replaced by an arbitrary function of
+@c two variables.  For example if we wished to evaluate the function
+@c @eqn{f(x; y) = \cos(y)/(1 + x^2), f(x; y) = cos(y)/(1 + x^2)}
+@c over a regular grid of values with @math{x}- and @math{y}-coordinates
+@c defined by the @R{} vectors @code{x} and @code{y} respectively, we could
+@c proceed as follows:
+
+outer product 는 두개의 변수를 가지고 있는 임의의 함수에 대한 결과값을 연산하고자 할때 유용하게 사용됩니다. 예를 들어, x- 와 y- 좌표평면상에 있는 모든 좌표에 대하여 f(x;y)=cos(y)/(1+x^2) 라는 함수가 가질 수 있는 모든 값은 다음의 명령을 수행함으로서 쉽게 얻을 수 있습니다.
 
 @example
 > f <- function(x, y) cos(y)/(1 + x^2)
@@ -2518,10 +2558,12 @@ functions}.
 
 @subsubheading An example: Determinants of 2 by 2 single-digit matrices
 
-As an artificial but cute example, consider the determinants of @math{2}
-by @math{2} matrices @math{[a, b; c, d]} where each entry is a
-non-negative integer in the range @math{0, 1, @dots{}, 9}, that is a
-digit.
+@c As an artificial but cute example, consider the determinants of @math{2}
+@c by @math{2} matrices @math{[a, b; c, d]} where each entry is a
+@c non-negative integer in the range @math{0, 1, @dots{}, 9}, that is a
+@c digit.
+
+다소 인위적이긴 하지만 이해가 쉬운 예를 하나 들어보겠습니다. 먼저, [a, b; c,d] 라는 2행 2열의 행렬이 있다고 가정합니다. 그리고, 0 부터 9까지 정수가 각각의 원소 a, b, c, d에 할당될 확률은 균등하며, 독립적으로 할당됩니다. 이때, ad-bc 라는 행렬계수 (determinant) 의 분포를 구하고자 한다면, 다음과 같이 두번의 outer() 함수를 사용함으로 해결할 수 있습니다.
 
 The problem is to find the determinants, @math{ad - bc}, of all possible
 matrices of this form and represent the frequency with which each value
@@ -2544,6 +2586,8 @@ to numeric in order to recover the range of the determinant values.  The
 discussed in @ref{Loops and conditional execution}, is so inefficient as
 to be impractical.
 
+여기에서 한가지 주의 할 점은 fr 이라는 상대도수표에서 행렬계수가 가지는 범위를 나타내는 name 이라는 속성을 수치형으로 강제변환해야 한다는 것입니다. 가장 확실한 방법은 for 라는 반복문을 이용하는 것인데, 이것은 비효율적이므로 실용적이지 못합니다. 그러나, 반복문에 대해서는 Loops and conditional execution 에서 다루어 질 것입니다.
+
 It is also perhaps surprising that about 1 in 20 such matrices is
 singular.
 
@@ -2559,16 +2603,18 @@ singular.
 @section Generalized transpose of an array
 @cindex Generalized transpose of an array
 
-The function @code{aperm(a, perm)}
-@findex aperm
-may be used to permute an array, @code{a}.  The argument @code{perm}
-must be a permutation of the integers @math{@{1, @dots{}, k@}}, where
-@math{k} is the number of subscripts in @code{a}.  The result of the
-function is an array of the same size as @code{a} but with old dimension
-given by @code{perm[j]} becoming the new @code{j}-th dimension.  The
-easiest way to think of this operation is as a generalization of
-transposition for matrices.  Indeed if @code{A} is a matrix, (that is, a
-doubly subscripted array) then @code{B} given by
+@c The function @code{aperm(a, perm)}
+@c @findex aperm
+@c may be used to permute an array, @code{a}.  The argument @code{perm}
+@c must be a permutation of the integers @math{@{1, @dots{}, k@}}, where
+@c @math{k} is the number of subscripts in @code{a}.  The result of the
+@c function is an array of the same size as @code{a} but with old dimension
+@c given by @code{perm[j]} becoming the new @code{j}-th dimension.  The
+@c easiest way to think of this operation is as a generalization of
+@c transposition for matrices.  Indeed if @code{A} is a matrix, (that is, a
+@c doubly subscripted array) then @code{B} given by
+
+aperm(a, perm) 이라는 함수는 배열의 차원을 재배열하는 역할을 합니다. 이것의 가장 쉬운예제는 행렬의 전치를 들 수 있습니다. 행렬 A의 차원벡터 dim(A)는 c(1,2) 이므로, 이것의 순서를 c(2,1) 로 바꾸는 것은 행렬 A를 전치 (transpose) 한 t(A) 와 동일한 결과를 줍니다. (즉, B <- t(A)).
 
 @example
 > B <- aperm(A, c(2,1))
@@ -2590,12 +2636,15 @@ is available, so we could have used @code{B <- t(A)}.
  @eqn{@strong{x}@strong{x}^T, x x'}
 @end macro
 
-As noted above, a matrix is just an array with two subscripts.  However
-it is such an important special case it needs a separate discussion.
-@R{} contains many operators and functions that are available only for
-matrices.  For example @code{t(X)} is the matrix transpose function, as
-noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
-number of rows and columns in the matrix @code{A} respectively.
+@c As noted above, a matrix is just an array with two subscripts.  However
+@c it is such an important special case it needs a separate discussion.
+@c @R{} contains many operators and functions that are available only for
+@c matrices.  For example @code{t(X)} is the matrix transpose function, as
+@c noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
+@c number of rows and columns in the matrix @code{A} respectively.
+
+위에서 언급했던것과 같이, 행렬은 단순히 2개의 서브스크립트로 이루어진 배열의 특수한 경우입니다. R은 다양하고 풍부한 행렬의 연산기능을 제공하고 있습니다. 예를 들면, t(X) 는 행렬 X 의 전치입니다. 함수 nrow(A) 과 ncol(A) 은 행렬 A 의 행의 개수와 열의 개수를 알려줍니다.
+
 @findex nrow
 @findex ncol
 
@@ -2621,29 +2670,40 @@ number of rows and columns in the matrix @code{A} respectively.
 @cindex Matrix multiplication
 The operator @code{%*%} is used for matrix multiplication.
 @findex %*%
-An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be
-used as an @math{n}-vector if in the context such is appropriate.
-Conversely, vectors which occur in matrix multiplication expressions are
-automatically promoted either to row or column vectors, whichever is
-multiplicatively coherent, if possible, (although this is not always
-unambiguously possible, as we see later).
 
-If, for example, @code{A} and @code{B} are square matrices of the same
-size, then
+@c An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be
+@c used as an @math{n}-vector if in the context such is appropriate.
+@c Conversely, vectors which occur in matrix multiplication expressions are
+@c automatically promoted either to row or column vectors, whichever is
+@c multiplicatively coherent, if possible, (although this is not always
+@c unambiguously possible, as we see later).
+
+@c If, for example, @code{A} and @code{B} are square matrices of the same
+@c size, then
+
+%*% 라는 연산자는 행렬의 곱에 사용됩니다. 본래 1개의 행 또는 1개의 열로 구성된 행렬은 정확히 말하면, n 개의 요소를 가진 행 벡터 혹은 열벡터입니다. 그러나, 행렬곱셈에서 사용되는 벡터는 수학적 표현이 논리적으로 정확하다면 행 혹은 열벡터로 적절하게 변경되어 연산을 수행합니다.
+
+만약, A 와 B 가 정방행렬이라면, 다음의 표현은 원소단위의 곱을 수행합니다.
 
 @example
 > A * B
 @end example
 
 @noindent
-is the matrix of element by element products and
+
+@c is the matrix of element by element products and
+
+그러나, 다음의 표현은 원소의 곱이 아닌 행렬곱셈을 의미합니다.
 
 @example
 > A %*% B
 @end example
 
 @noindent
-is the matrix product.  If @code{x} is a vector, then
+
+@c is the matrix product.  If @code{x} is a vector, then
+
+만약, 아래와 같이 행렬곱셈에서 사용되는 x가 벡터라면 스칼라 값을 돌려주는 이차(quadratic)연산을 수행합니다.
 
 @example
 > x %*% A %*% x
@@ -2661,21 +2721,24 @@ result.  The matrix @xxT{} may be calculated either by @code{cbind(x)
 respectively.}
 
 @findex crossprod
-The function @code{crossprod()} forms ``crossproducts'', meaning that
-@code{crossprod(X, y)} is the same as @code{t(X) %*% y} but the
-operation is more efficient.  If the second argument to
-@code{crossprod()} is omitted it is taken to be the same as the first.
+@c The function @code{crossprod()} forms ``crossproducts'', meaning that
+@c @code{crossprod(X, y)} is the same as @code{t(X) %*% y} but the
+@c operation is more efficient.  If the second argument to
+@c @code{crossprod()} is omitted it is taken to be the same as the first.
 
 @findex diag
-The meaning of @code{diag()} depends on its argument.  @code{diag(v)},
-where @code{v} is a vector, gives a diagonal matrix with elements of the
-vector as the diagonal entries.  On the other hand @code{diag(M)}, where
-@code{M} is a matrix, gives the vector of main diagonal entries of
-@code{M}.  This is the same convention as that used for @code{diag()} in
-@sc{Matlab}.  Also, somewhat confusingly, if @code{k} is a single
-numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
-matrix!
+@c The meaning of @code{diag()} depends on its argument.  @code{diag(v)},
+@c where @code{v} is a vector, gives a diagonal matrix with elements of the
+@c vector as the diagonal entries.  On the other hand @code{diag(M)}, where
+@c @code{M} is a matrix, gives the vector of main diagonal entries of
+@c @code{M}.  This is the same convention as that used for @code{diag()} in
+@c @sc{Matlab}.  Also, somewhat confusingly, if @code{k} is a single
+@c numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
+@c matrix!
 
+crossprod() 이라는 함수는 연산속도가 더 효율적이라는 점만 제외한다면 t(X)%*%y 와 동일한 연산을 수행합니다. 만약, 두번째 인자와 첫번째 인자와 동일하다면 두번째 인자는 생략해도 무방합니다.
+
+diag() 라는 함수가 v 라는 벡터를 인자를 가진다면 대각원소가 v인 대각 행렬을 생성합니다. 하지만, diag() 의 인자가 M 이라는 행렬이라면, 행렬 M 의 대각원소를 출력하게 됩니다. 이것은 Matlab 에서 사용되는 diag() 이라는 함수의 기능과 동일합니다. 다소 혼돈스러울 수도 있으나, diag() 의 인자가 k라는 스칼라라면 k 행 k열을 가지는 단위행렬 (identity matrix) 를 생성합니다.
 
 @c =======================================================================================================================================
 @c =======================================================================================================================================
@@ -2689,37 +2752,45 @@ matrix!
 
 @cindex Linear equations
 @findex solve
-Solving linear equations is the inverse of matrix multiplication.
-When after
+@c Solving linear equations is the inverse of matrix multiplication.
+@c When after
+
+다음의 표현과 같은 선형 방정식이 존재할 때, A 의 계수값들과 b 의 값을 미리 알고 있다고 가정한다면, x를 찾아내는 것을 선형방정식의 해를 찾는다고 합니다.
 
 @example
 > b <- A %*% x
 @end example
 
 @noindent
-only @code{A} and @code{b} are given, the vector @code{x} is the
-solution of that linear equation system.  In @R{},
+@c only @code{A} and @code{b} are given, the vector @code{x} is the
+@c solution of that linear equation system.  In @R{},
+
+R 은 다음의 명령어를 통하여 선형방정식의 해 x 를 구합니다.
 
 @example
 > solve(A,b)
 @end example
 
 @noindent
-solves the system, returning @code{x} (up to some accuracy loss).
-Note that in linear algebra, formally
-@eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}}
-where
-@eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of
-@eqn{@strong{A},@code{A}}, which can be computed by
+@c solves the system, returning @code{x} (up to some accuracy loss).
+@c Note that in linear algebra, formally
+@c @eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}}
+@c where
+@c @eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of
+@c @eqn{@strong{A},@code{A}}, which can be computed by
+
+즉, 이것은 x = A^@{-1@} %*% b 입니다. 여기에서 A^@{-1@} 은 A 의 역행렬이며, 다음의 명령어를 수행하여 얻을 수 있습니다.
 
 @example
 solve(A)
 @end example
 
 @noindent
-but rarely is needed.  Numerically, it is both inefficient and
-potentially unstable to compute @code{x <- solve(A) %*% b} instead of
-@code{solve(A,b)}.
+@c but rarely is needed.  Numerically, it is both inefficient and
+@c potentially unstable to compute @code{x <- solve(A) %*% b} instead of
+@c @code{solve(A,b)}.
+
+하지만, 위와 같이 역행렬을 이용하여 x <- solve(A) %*% b 와 같은 연산을 하는 것은 solve(A,b) 라는 함수를 이용하는 것보다 비효율적입니다.
 
 The quadratic form @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*%
 x} @ } which is used in multivariate computations, should be computed by
@@ -2734,37 +2805,45 @@ computing the inverse of @code{A}.
 @cindex Eigenvalues and eigenvectors
 
 @findex eigen
-The function @code{eigen(Sm)} calculates the eigenvalues and
-eigenvectors of a symmetric matrix @code{Sm}.  The result of this
-function is a list of two components named @code{values} and
-@code{vectors}.  The assignment
+@c The function @code{eigen(Sm)} calculates the eigenvalues and
+@c eigenvectors of a symmetric matrix @code{Sm}.  The result of this
+@c function is a list of two components named @code{values} and
+@c @code{vectors}.  The assignment
+
+eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 기저벡터 (eigenvectors) 를 계산해줍니다. 예를들어, 아래와 같이 이 함수를 적용한 결과는 values 라는 기저값으로 구성된 벡터와 vectors 라는 기저벡터로 구성된 행렬을 반환하는 리스트의 형식을 가지고 있습니다. 따라서 기저값은 ev$val을, 기저벡터는 ev$vec을 통하여 얻을 수 있습니다.
 
 @example
 > ev <- eigen(Sm)
 @end example
 
 @noindent
-will assign this list to @code{ev}.  Then @code{ev$val} is the vector of
-eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of
-corresponding eigenvectors.  Had we only needed the eigenvalues we could
-have used the assignment:
+@c will assign this list to @code{ev}.  Then @code{ev$val} is the vector of
+@c eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of
+@c corresponding eigenvectors.  Had we only needed the eigenvalues we could
+@c have used the assignment:
+
+만약 사용자가 단순히 기저값만을 원한다면 아래와 같이 표현할 수 있습니다. 즉, evals 은 기저값에 대한 결과만을 가지게 되고 기저벡터에 대한 결과는 저장되지 않습니다.
 
 @example
 > evals <- eigen(Sm)$values
 @end example
 
 @noindent
-@code{evals} now holds the vector of eigenvalues and the second
-component is discarded.  If the expression
+@c @code{evals} now holds the vector of eigenvalues and the second
+@c component is discarded.  If the expression
+
+만약 아래와 같이 단순히 함수를 적용하는 것은 기저값과 기저벡터의 결과를 동시에 출력해줍니다.
 
 @example
 > eigen(Sm)
 @end example
 
 @noindent
-is used by itself as a command the two components are printed, with
-their names.  For large matrices it is better to avoid computing the
-eigenvectors if they are not needed by using the expression
+@c is used by itself as a command the two components are printed, with
+@c their names.  For large matrices it is better to avoid computing the
+@c eigenvectors if they are not needed by using the expression
+
+행렬의 크기가 크고, 기저벡터보다는 기저값만 요구될 경우 연산속도를 높이기 위해서 아래와 같이 사용할 수도 있습니다.
 
 @example
 > evals <- eigen(Sm, only.values = TRUE)$values
@@ -2794,6 +2873,11 @@ elements.  The result of @code{svd(M)} is actually a list of three
 components named @code{d}, @code{u} and @code{v}, with evident meanings.
 
 If @code{M} is in fact square, then, it is not hard to see that
+
+svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 the singular value decomposion 을 수행합니다. 이 함수로부터 세가지의 결과를 얻어낼 수 있습니다. 첫번째는 M 행렬의 열을 기초
+로 한 orthonormal matrix U이고, 두번째는 M 행렬의 행을 기초로 한 orthonormal matrix V 이며, 세번째는 M = U %*% D %*% t(V)라는 조건을 만족하는 D 라는 대각행렬 계산해냅니다. svd(M) 의 실제 계산 결과는 위의 세가지를 한데 묶은 리스트의 형식으로 d, u, v 라는 이름으로 저장되어집니다.
+
+예를 들어 행렬 M의 행렬계수(determinant)의 절대값을 구하고자 한다면, singular value decomposition을 이용하여 아래와 같이 쉽게 얻을 수있습니다.
 
 @example
 > absdetM <- prod(svd(M)$d)
@@ -7623,6 +7707,8 @@ $-\pi\leq x \leq \pi$ 구간을 50등분한 값을 가지고 있는 벡터입니
 
 When working at a command line on UNIX or Windows, the command @samp{R}
 can be used both for starting the main @R{} program in the form
+
+
 
 @display
 @code{R} [@var{options}] [@code{<}@var{infile}] [@code{>}@var{outfile}],
