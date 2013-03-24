@@ -2752,37 +2752,45 @@ diag() 라는 함수가 v 라는 벡터를 인자를 가진다면 대각원소�
 
 @cindex Linear equations
 @findex solve
-Solving linear equations is the inverse of matrix multiplication.
-When after
+@c Solving linear equations is the inverse of matrix multiplication.
+@c When after
+
+다음의 표현과 같은 선형 방정식이 존재할 때, A 의 계수값들과 b 의 값을 미리 알고 있다고 가정한다면, x를 찾아내는 것을 선형방정식의 해를 찾는다고 합니다.
 
 @example
 > b <- A %*% x
 @end example
 
 @noindent
-only @code{A} and @code{b} are given, the vector @code{x} is the
-solution of that linear equation system.  In @R{},
+@c only @code{A} and @code{b} are given, the vector @code{x} is the
+@c solution of that linear equation system.  In @R{},
+
+R 은 다음의 명령어를 통하여 선형방정식의 해 x 를 구합니다.
 
 @example
 > solve(A,b)
 @end example
 
 @noindent
-solves the system, returning @code{x} (up to some accuracy loss).
-Note that in linear algebra, formally
-@eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}}
-where
-@eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of
-@eqn{@strong{A},@code{A}}, which can be computed by
+@c solves the system, returning @code{x} (up to some accuracy loss).
+@c Note that in linear algebra, formally
+@c @eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}}
+@c where
+@c @eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of
+@c @eqn{@strong{A},@code{A}}, which can be computed by
+
+즉, 이것은 x = A^{-1} %*% b 입니다. 여기에서 A^{-1} 은 A 의 역행렬이며, 다음의 명령어를 수행하여 얻을 수 있습니다.
 
 @example
 solve(A)
 @end example
 
 @noindent
-but rarely is needed.  Numerically, it is both inefficient and
-potentially unstable to compute @code{x <- solve(A) %*% b} instead of
-@code{solve(A,b)}.
+@c but rarely is needed.  Numerically, it is both inefficient and
+@c potentially unstable to compute @code{x <- solve(A) %*% b} instead of
+@c @code{solve(A,b)}.
+
+하지만, 위와 같이 역행렬을 이용하여 x <- solve(A) %*% b 와 같은 연산을 하는 것은 solve(A,b) 라는 함수를 이용하는 것보다 비효율적입니다.
 
 The quadratic form @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*%
 x} @ } which is used in multivariate computations, should be computed by
