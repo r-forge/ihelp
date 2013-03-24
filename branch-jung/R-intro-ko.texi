@@ -2805,37 +2805,45 @@ computing the inverse of @code{A}.
 @cindex Eigenvalues and eigenvectors
 
 @findex eigen
-The function @code{eigen(Sm)} calculates the eigenvalues and
-eigenvectors of a symmetric matrix @code{Sm}.  The result of this
-function is a list of two components named @code{values} and
-@code{vectors}.  The assignment
+@c The function @code{eigen(Sm)} calculates the eigenvalues and
+@c eigenvectors of a symmetric matrix @code{Sm}.  The result of this
+@c function is a list of two components named @code{values} and
+@c @code{vectors}.  The assignment
+
+eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 기저벡터 (eigenvectors) 를 계산해줍니다. 예를들어, 아래와 같이 이 함수를 적용한 결과는 values 라는 기저값으로 구성된 벡터와 vectors 라는 기저벡터로 구성된 행렬을 반환하는 리스트의 형식을 가지고 있습니다. 따라서 기저값은 ev$val을, 기저벡터는 ev$vec을 통하여 얻을 수 있습니다.
 
 @example
 > ev <- eigen(Sm)
 @end example
 
 @noindent
-will assign this list to @code{ev}.  Then @code{ev$val} is the vector of
-eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of
-corresponding eigenvectors.  Had we only needed the eigenvalues we could
-have used the assignment:
+@c will assign this list to @code{ev}.  Then @code{ev$val} is the vector of
+@c eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of
+@c corresponding eigenvectors.  Had we only needed the eigenvalues we could
+@c have used the assignment:
+
+만약 사용자가 단순히 기저값만을 원한다면 아래와 같이 표현할 수 있습니다. 즉, evals 은 기저값에 대한 결과만을 가지게 되고 기저벡터에 대한 결과는 저장되지 않습니다.
 
 @example
 > evals <- eigen(Sm)$values
 @end example
 
 @noindent
-@code{evals} now holds the vector of eigenvalues and the second
-component is discarded.  If the expression
+@c @code{evals} now holds the vector of eigenvalues and the second
+@c component is discarded.  If the expression
+
+만약 아래와 같이 단순히 함수를 적용하는 것은 기저값과 기저벡터의 결과를 동시에 출력해줍니다.
 
 @example
 > eigen(Sm)
 @end example
 
 @noindent
-is used by itself as a command the two components are printed, with
-their names.  For large matrices it is better to avoid computing the
-eigenvectors if they are not needed by using the expression
+@c is used by itself as a command the two components are printed, with
+@c their names.  For large matrices it is better to avoid computing the
+@c eigenvectors if they are not needed by using the expression
+
+행렬의 크기가 크고, 기저벡터보다는 기저값만 요구될 경우 연산속도를 높이기 위해서 아래와 같이 사용할 수도 있습니다.
 
 @example
 > evals <- eigen(Sm, only.values = TRUE)$values
