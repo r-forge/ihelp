@@ -2636,12 +2636,15 @@ is available, so we could have used @code{B <- t(A)}.
  @eqn{@strong{x}@strong{x}^T, x x'}
 @end macro
 
-As noted above, a matrix is just an array with two subscripts.  However
-it is such an important special case it needs a separate discussion.
-@R{} contains many operators and functions that are available only for
-matrices.  For example @code{t(X)} is the matrix transpose function, as
-noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
-number of rows and columns in the matrix @code{A} respectively.
+@c As noted above, a matrix is just an array with two subscripts.  However
+@c it is such an important special case it needs a separate discussion.
+@c @R{} contains many operators and functions that are available only for
+@c matrices.  For example @code{t(X)} is the matrix transpose function, as
+@c noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
+@c number of rows and columns in the matrix @code{A} respectively.
+
+위에서 언급했던것과 같이, 행렬은 단순히 2개의 서브스크립트로 이루어진 배열의 특수한 경우입니다. R은 다양하고 풍부한 행렬의 연산기능을 제공하고 있습니다. 예를 들면, t(X) 는 행렬 X 의 전치입니다. 함수 nrow(A) 과 ncol(A) 은 행렬 A 의 행의 개수와 열의 개수를 알려줍니다.
+
 @findex nrow
 @findex ncol
 
@@ -2667,29 +2670,40 @@ number of rows and columns in the matrix @code{A} respectively.
 @cindex Matrix multiplication
 The operator @code{%*%} is used for matrix multiplication.
 @findex %*%
-An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be
-used as an @math{n}-vector if in the context such is appropriate.
-Conversely, vectors which occur in matrix multiplication expressions are
-automatically promoted either to row or column vectors, whichever is
-multiplicatively coherent, if possible, (although this is not always
-unambiguously possible, as we see later).
 
-If, for example, @code{A} and @code{B} are square matrices of the same
-size, then
+@c An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be
+@c used as an @math{n}-vector if in the context such is appropriate.
+@c Conversely, vectors which occur in matrix multiplication expressions are
+@c automatically promoted either to row or column vectors, whichever is
+@c multiplicatively coherent, if possible, (although this is not always
+@c unambiguously possible, as we see later).
+
+@c If, for example, @code{A} and @code{B} are square matrices of the same
+@c size, then
+
+%*% 라는 연산자는 행렬의 곱에 사용됩니다. 본래 1개의 행 또는 1개의 열로 구성된 행렬은 정확히 말하면, n 개의 요소를 가진 행 벡터 혹은 열벡터입니다. 그러나, 행렬곱셈에서 사용되는 벡터는 수학적 표현이 논리적으로 정확하다면 행 혹은 열벡터로 적절하게 변경되어 연산을 수행합니다.
+
+만약, A 와 B 가 정방행렬이라면, 다음의 표현은 원소단위의 곱을 수행합니다.
 
 @example
 > A * B
 @end example
 
 @noindent
-is the matrix of element by element products and
+
+@c is the matrix of element by element products and
+
+그러나, 다음의 표현은 원소의 곱이 아닌 행렬곱셈을 의미합니다.
 
 @example
 > A %*% B
 @end example
 
 @noindent
-is the matrix product.  If @code{x} is a vector, then
+
+@c is the matrix product.  If @code{x} is a vector, then
+
+만약, 아래와 같이 행렬곱셈에서 사용되는 x가 벡터라면 스칼라 값을 돌려주는 이차(quadratic)연산을 수행합니다.
 
 @example
 > x %*% A %*% x
@@ -2707,21 +2721,24 @@ result.  The matrix @xxT{} may be calculated either by @code{cbind(x)
 respectively.}
 
 @findex crossprod
-The function @code{crossprod()} forms ``crossproducts'', meaning that
-@code{crossprod(X, y)} is the same as @code{t(X) %*% y} but the
-operation is more efficient.  If the second argument to
-@code{crossprod()} is omitted it is taken to be the same as the first.
+@c The function @code{crossprod()} forms ``crossproducts'', meaning that
+@c @code{crossprod(X, y)} is the same as @code{t(X) %*% y} but the
+@c operation is more efficient.  If the second argument to
+@c @code{crossprod()} is omitted it is taken to be the same as the first.
 
 @findex diag
-The meaning of @code{diag()} depends on its argument.  @code{diag(v)},
-where @code{v} is a vector, gives a diagonal matrix with elements of the
-vector as the diagonal entries.  On the other hand @code{diag(M)}, where
-@code{M} is a matrix, gives the vector of main diagonal entries of
-@code{M}.  This is the same convention as that used for @code{diag()} in
-@sc{Matlab}.  Also, somewhat confusingly, if @code{k} is a single
-numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
-matrix!
+@c The meaning of @code{diag()} depends on its argument.  @code{diag(v)},
+@c where @code{v} is a vector, gives a diagonal matrix with elements of the
+@c vector as the diagonal entries.  On the other hand @code{diag(M)}, where
+@c @code{M} is a matrix, gives the vector of main diagonal entries of
+@c @code{M}.  This is the same convention as that used for @code{diag()} in
+@c @sc{Matlab}.  Also, somewhat confusingly, if @code{k} is a single
+@c numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
+@c matrix!
 
+crossprod() 이라는 함수는 연산속도가 더 효율적이라는 점만 제외한다면 t(X)%*%y 와 동일한 연산을 수행합니다. 만약, 두번째 인자와 첫번째 인자와 동일하다면 두번째 인자는 생략해도 무방합니다.
+
+diag() 라는 함수가 v 라는 벡터를 인자를 가진다면 대각원소가 v인 대각 행렬을 생성합니다. 하지만, diag() 의 인자가 M 이라는 행렬이라면, 행렬 M 의 대각원소를 출력하게 됩니다. 이것은 Matlab 에서 사용되는 diag() 이라는 함수의 기능과 동일합니다. 다소 혼돈스러울 수도 있으나, diag() 의 인자가 k라는 스칼라라면 k 행 k열을 가지는 단위행렬 (identity matrix) 를 생성합니다.
 
 @c =======================================================================================================================================
 @c =======================================================================================================================================
