@@ -4385,27 +4385,33 @@ R 은 벡터라이즈(vectorized) 된 버전의 if/else 조건문인 ifelse 라�
 @subsection Repetitive execution: @code{for} loops, @code{repeat} and @code{while}
 @findex for
 
-There is also a @code{for} loop construction which has the form
+@c There is also a @code{for} loop construction which has the form
+
+다음은 for를 이용한 반복문에 대한 형식입니다.
 
 @example
 > for (@code{@var{name}} in @var{expr_1}) @var{expr_2}
 @end example
 
-@noindent
-where @code{@var{name}} is the loop variable.  @var{expr_1} is a
-vector expression, (often a sequence like @code{1:20}), and
-@var{expr_2} is often a grouped expression with its sub-expressions
-written in terms of the dummy @emph{name}.  @var{expr_2} is repeatedly
-evaluated as @var{name} ranges through the values in the vector result
-of @var{expr_1}.
+@c @noindent
+@c where @code{@var{name}} is the loop variable.  @var{expr_1} is a
+@c vector expression, (often a sequence like @code{1:20}), and
+@c @var{expr_2} is often a grouped expression with its sub-expressions
+@c written in terms of the dummy @emph{name}.  @var{expr_2} is repeatedly
+@c evaluated as @var{name} ranges through the values in the vector result
+@c of @var{expr_1}.
 
-As an example, suppose @code{ind} is a vector of class indicators and we
-wish to produce separate plots of @code{y} versus @code{x} within
-classes.  One possibility here is to use @code{coplot()},@footnote{to be
-discussed later, or use @code{xyplot} from package @CRANpkg{lattice}.}
-which will produce an array of plots corresponding to each level of the
-factor.  Another way to do this, now putting all plots on the one
-display, is as follows:
+name은 1:20 과 같이 벡터로서 표현된 expr_1에 정의된 범위내에서 expr_2라는 표현식의 반복을 통제하는 지시자, 즉, 루프 변수(loop variable) 입니다. expr_2 은 종종 그룹화된 표현식으로 오는 경우가 있습니다.
+
+@c As an example, suppose @code{ind} is a vector of class indicators and we
+@c wish to produce separate plots of @code{y} versus @code{x} within
+@c classes.  One possibility here is to use @code{coplot()},@footnote{to be
+@c discussed later, or use @code{xyplot} from package @CRANpkg{lattice}.}
+@c which will produce an array of plots corresponding to each level of the
+@c factor.  Another way to do this, now putting all plots on the one
+@c display, is as follows:
+
+예를들어, ind가 그룹멤버쉽을 나타낸다고 가정할때 그룹별로 y 와 x의 관계를 살펴 볼 수 있는 플랏(plot)을 생성하고 싶은 경우를 생각해 봅시다. 이것을 수행하기 위한 한가지 옵션은 어떤 특정요인이 가지고 있는 레벨별로 플랏을 생성해주는 함수 coplot(),5 을 이용하는 것입니다. 아래의 코드는 coplot() 을 사용하지 않고도 이를 수행하는 방법을 보여줍니다.
 
 @example
 > xc <- split(x, ind)
@@ -4416,20 +4422,23 @@ display, is as follows:
   @}
 @end example
 
-@findex split
+@c @findex split
+@c (Note the function @code{split()} which produces a list of vectors
+@c obtained by splitting a larger vector according to the classes specified
+@c by a factor.  This is a useful function, mostly used in connection
+@c with boxplots.  See the @code{help} facility for further details.)
 
-(Note the function @code{split()} which produces a list of vectors
-obtained by splitting a larger vector according to the classes specified
-by a factor.  This is a useful function, mostly used in connection
-with boxplots.  See the @code{help} facility for further details.)
+위의 코드에서 사용된 split() 이란 함수는 데이터를 특정요인이 가지는 레벨별로 분리해 낸 뒤, 각각의 레벨별 데이터를 컴포넌트로 가지는 리스트를 생성하는 기능을 가지고 있습니다. 이것은 주로 박스플랏과 함께 사용되는데 매우 유용한 함수입니다. 더 자세한 사항은 도움말 기능을 이용하시길 바랍니다.
 
-@quotation
-@strong{Warning}: @code{for()} loops are used in @R{} code much less
-often than in compiled languages.  Code that takes a `whole object' view
-is likely to be both clearer and faster in @R{}.
-@end quotation
+@c @quotation
+@c @strong{Warning}: @code{for()} loops are used in @R{} code much less
+@c often than in compiled languages.  Code that takes a `whole object' view
+@c is likely to be both clearer and faster in @R{}.
+@c @end quotation
 
-Other looping facilities include the
+@c Other looping facilities include the
+
+R을 이용하여 프로그래밍을 할때 for() 를 이용한 반복문은 자주 사용되지 않습니다. 그 이유는 전체 데이터를 이용하여 벡터라이징 테크닉을 적절히 활용하는 것이 for() 를 이용한 반복문보다도 더 빠른 연산속도를 가지며, 프로그래머의 입장에서 프로그램을 직관적으로 읽기 쉽고 이해가 빠르게 도와줍니다. R 은 반복기능에 있어서 다음과 같은 repeat 와 while 이라는 기능을 제공하고 있습니다.
 
 @example
 > repeat @var{expr}
@@ -4447,18 +4456,21 @@ statement and the
 @noindent
 statement.
 
-The @code{break} statement can be used to terminate any loop, possibly
-abnormally.  This is the only way to terminate @code{repeat} loops.
-@findex break
+@c The @code{break} statement can be used to terminate any loop, possibly
+@c abnormally.  This is the only way to terminate @code{repeat} loops.
+@c @findex break
 
 The @code{next} statement can be used to discontinue one particular
 cycle and skip to the ``next''.
 @findex next
 
-Control statements are most often used in connection with
-@emph{functions} which are discussed in @ref{Writing your own
-functions}, and where more examples will emerge.
+break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만, 중요한 차이가 있습니다. break 는 반복문을 무조건 중단하고 반복문 이후의 명령들을 실행하고자 할때 쓰입니다. 따라서 repeat 을 사용하여 expr을반복하던 중, 이를 중단하고자 할때는 break 이라는 명령문을 사용하면 됩니다. 그러나, next 라는 명령어는 현재 진행하고 있는 반복 단계만을 건너뛰고 다음 단계의 반복단계로 넘어가라는 의미입니다.
 
+@c Control statements are most often used in connection with
+@c @emph{functions} which are discussed in @ref{Writing your own
+@c functions}, and where more examples will emerge.
+
+실제로 프로그램의 흐름을 제어하는 것은 대개 사용자정의함수를 작성할때 다루어집니다. 이에 관련된 예제들에 대해서는 Writing your own functions 에서 다룰 것입니다.
 
 @node Writing your own functions, Statistical models in R, Loops and conditional execution, Top
 @chapter Writing your own functions
