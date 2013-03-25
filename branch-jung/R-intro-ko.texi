@@ -3525,9 +3525,11 @@ directory, all of which have variables named @code{x}, @code{y} and
 @findex search
 @cindex Search path
 
-The function @code{search} shows the current search path and so is
-a very useful way to keep track of which data frames and lists (and
-packages) have been attached and detached.  Initially it gives
+@c The function @code{search} shows the current search path and so is
+@c a very useful way to keep track of which data frames and lists (and
+@c packages) have been attached and detached.  Initially it gives
+
+아래에서 사용된 search 라는 함수는 현재의 객체탐색경로를 보여줌으로서 사용자가 현재 연결하여 작업하고 있는 데이터 프레임 및 리스트를 확인할 수 있도록 해줍니다. 만약, 어떠한 객체도 연결되지 않았다면 아래와 같은 결과를 보여줍니다. 여기에서 .GlobalEnv 이라는 것은 현재 작업하고 있는 워크 스페이스를 의미합니다.
 
 @example
 > search()
@@ -3537,7 +3539,9 @@ packages) have been attached and detached.  Initially it gives
 where @code{.GlobalEnv} is the workspace.@footnote{See the on-line help
 for @code{autoload} for the meaning of the second term.}
 
-After @code{lentils} is attached we have
+@c After @code{lentils} is attached we have
+
+만약 lentils 이라는 데이터 프레임이 연결되었다면, 아래와 같은 결과를 보여지게 됩니다.
 
 @example
 > search()
@@ -3546,12 +3550,16 @@ After @code{lentils} is attached we have
 [1] "u" "v" "w"
 @end example
 
-@noindent
-and as we see @code{ls} (or @code{objects}) can be used to examine the
-contents of any position on the search path.
+@c @noindent
+@c and as we see @code{ls} (or @code{objects}) can be used to examine the
+@c contents of any position on the search path.
 
-Finally, we detach the data frame and confirm it has been removed from
-the search path.
+ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프레임이라는 어떤 객체가 있는지 확인해 볼 수 있습니다. 여기에서 함수 ls() 안에 사용된 인자 2 이라는 것은 2단계 탐색경로를 의미하는 것입니다.
+
+@c Finally, we detach the data frame and confirm it has been removed from
+@c the search path.
+
+마지막으로 사용하고 있던 lentils 라는 데이터 프레임을 탐색경로로부터 연결해제를 한다면 아래와 같은 결과를 볼 수 있습니다.
 
 @example
 > detach("lentils")
@@ -3563,22 +3571,26 @@ the search path.
 @chapter Reading data from files
 @cindex Reading data from files
 
-Large data objects will usually be read as values from external files
-rather than entered during an @R{} session at the keyboard.  @R{} input
-facilities are simple and their requirements are fairly strict and even
-rather inflexible.  There is a clear presumption by the designers of
-@R{} that you will be able to modify your input files using other tools,
-such as file editors or Perl@footnote{Under UNIX, the utilities Sed or
-Awk can be used.} to fit in with the requirements of @R{}.  Generally
-this is very simple.
+@c Large data objects will usually be read as values from external files
+@c rather than entered during an @R{} session at the keyboard.  @R{} input
+@c facilities are simple and their requirements are fairly strict and even
+@c rather inflexible.  There is a clear presumption by the designers of
+@c @R{} that you will be able to modify your input files using other tools,
+@c such as file editors or Perl@footnote{Under UNIX, the utilities Sed or
+@c Awk can be used.} to fit in with the requirements of @R{}.  Generally
+@c this is very simple.
 
-If variables are to be held mainly in data frames, as we strongly
-suggest they should be, an entire data frame can be read directly with
-the @code{read.table()} function.  There is also a more primitive input
-function, @code{scan()}, that can be called directly.
+@c If variables are to be held mainly in data frames, as we strongly
+@c suggest they should be, an entire data frame can be read directly with
+@c the @code{read.table()} function.  There is also a more primitive input
+@c function, @code{scan()}, that can be called directly.
 
-For more details on importing data into @R{} and also exporting data,
-see the @emph{R Data Import/Export} manual.
+@c For more details on importing data into @R{} and also exporting data,
+@c see the @emph{R Data Import/Export} manual.
+
+용량이 큰 데이터는 키보드로 입력하는 것보다는 외부에 저장되어 있는 데이터파일을 현재 작업하고 있는 R 세션으로 불러들이는 것이 편리하고 빠른 방법입니다. R 의 입력기능은 간단하지만, 다소 불편한 점이 없는 것은 아닙니다. R 의 개발자는 사용자가 파일 에디터 혹은 Perl 이라는 프로그래밍 언어를 이용하여 R이 데이터를 읽어들일수 있는 형식으로 변경할 수 있을 것이라는 가정하에 입력기능을 개발하였습니다. 번거로워 보이지만, 실제로 이 과정은 매우 간단합니다. 우리는 R이 데이터를 쉽게 불러올 수 있도록 사용자가 데이터 파일을 데이터프레임과 같은 형식을 가지도록 편집하는 것을 권장합니다. 만약, 데이터가 데이터 프레임과 같이 정리가 되어 있다면 read.table() 이라는 함수를 이용하여 데이터 파일안에 있는 모든 데이터를 R 세션내로 불러들일 수 있습니다. read.table() 외에도 scan() 이라는 함수를 이용하여 직접적으로 불러올 수 도 있습니다.
+
+데이터의 입출력에 관한 더 자세한 사항에 대해서는 R Data Import/Export 이라는 문서를 참조하시길 바랍니다.
 
 @menu
 * The read.table() function::   
