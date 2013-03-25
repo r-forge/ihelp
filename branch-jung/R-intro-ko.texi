@@ -3475,25 +3475,27 @@ original list or data frame is unchanged.
 @node Working with data frames, Attaching arbitrary lists, attach() and detach(), Data frames
 @subsection Working with data frames
 
-A useful convention that allows you to work with many different problems
-comfortably together in the same working directory is
+@c A useful convention that allows you to work with many different problems
+@c comfortably together in the same working directory is
 
-@itemize @bullet
-@item
-gather together all variables for any well defined and separate problem
-in a data frame under a suitably informative name;
-@item
-when working with a problem attach the appropriate data frame at
-@w{position 2}, and use the working directory at @w{level 1} for
-operational quantities and temporary variables;
-@item
-before leaving a problem, add any variables you wish to keep for future
-reference to the data frame using the @code{$} form of assignment, and
-then @code{detach()};
-@item
-finally remove all unwanted variables from the working directory and
-keep it as clean of left-over temporary variables as possible.
-@end itemize
+@c @itemize @bullet
+@c @item
+@c gather together all variables for any well defined and separate problem
+@c in a data frame under a suitably informative name;
+@c @item
+@c when working with a problem attach the appropriate data frame at
+@c @w{position 2}, and use the working directory at @w{level 1} for
+@c operational quantities and temporary variables;
+@c @item
+@c before leaving a problem, add any variables you wish to keep for future
+@c reference to the data frame using the @code{$} form of assignment, and
+@c then @code{detach()};
+@c @item
+@c finally remove all unwanted variables from the working directory and
+@c keep it as clean of left-over temporary variables as possible.
+@c @end itemize
+
+만약 여러분들이 여러 가지 분석작업을 동일한 워킹 디렉토리에서 수행하고 있다면, 아래에 나열한 몇 가지 방법들이 오류를 최소화하는데 도움이 될 것입니다. 문제를 세분화하여, 문제별로 의미가 분명한 데이터 프레임의 이름을 부여하고, 데이터 프레임내에 정의된 변수들도 그 의미를 쉽게 알수있는 변수명을 사용하도록 합니다. 특정 데이터 프레임을 position 2 로 이동시켜 작업을 하되, 임시변수의 생성 및 연산은 position 1 에서 수행하도록 합니다. position 2 에서의 특정 데이터 프레임과 연관된 연산이 끝났다면 $ 를 이용하여 그 연산결과를 저장한뒤 detach()를 이용하여 position 1 으로 돌아옵니다. 마지막으로 워킹 디렉토리에 있는 임시적으로 사용했던 변수들은 모두 삭제하도록 합니다.
 
 In this way it is quite simple to work with many problems in the same
 directory, all of which have variables named @code{x}, @code{y} and
