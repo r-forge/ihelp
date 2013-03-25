@@ -3945,19 +3945,21 @@ R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는
 @c done in @R{}.
 
 R이 어떻게 난수 생성을 하는가에 대해서 알고 싶으시다면 온라인 도움말 RNG (random number
-generator의 약자) 를 참고해주세요.
+generator의 약자)를 참고해주세요.
 
 @node  Examining the distribution of a set of data, One- and two-sample tests, R as a set of statistical tables, Probability distributions
 @section Examining the distribution of a set of data
 
-Given a (univariate) set of data we can examine its distribution in a
-large number of ways.  The simplest is to examine the numbers.  Two
-slightly different summaries are given by @code{summary} and
-@code{fivenum}
-@findex summary
-@findex fivenum
-and a display of the numbers by @code{stem} (a ``stem and leaf'' plot).
-@findex stem
+@c Given a (univariate) set of data we can examine its distribution in a
+@c large number of ways.  The simplest is to examine the numbers.  Two
+@c slightly different summaries are given by @code{summary} and
+@c @code{fivenum}
+@c @findex summary
+@c @findex fivenum
+@c and a display of the numbers by @code{stem} (a ``stem and leaf'' plot).
+@c @findex stem
+
+우리는 많은 방법을 통하여 주어진 (일변량) 데이터의 분포를 확인해 볼 수 있습니다. 가장 쉬운 방법은 summary 혹은 fivenum이라는 함수를 이용하여 수치적 요약정보를 보는 것입니다. 혹은 stem 이라는 함수를 이용하여 줄기-잎 그림을 통하여 확인해 볼수도 있습니다.
 
 @example
 > attach(faithful)
@@ -3990,9 +3992,11 @@ and a display of the numbers by @code{stem} (a ``stem and leaf'' plot).
   50 | 0370
 @end example
 
-A stem-and-leaf plot is like a histogram, and @R{} has a function
-@code{hist} to plot histograms.
-@findex hist
+@c A stem-and-leaf plot is like a histogram, and @R{} has a function
+@c @code{hist} to plot histograms.
+@c @findex hist
+
+실은 줄기-잎 그림은 R 에서 제공하는 hist라는 함수가 제공하는 히스토그램과 비슷합니다.
 
 @example
 > hist(eruptions)
@@ -4002,31 +4006,37 @@ A stem-and-leaf plot is like a histogram, and @R{} has a function
 > rug(eruptions) # @r{show the actual data points}
 @end example
 
-@findex density
-@cindex Density estimation
-More elegant density plots can be made by @code{density}, and we added a
-line produced by @code{density} in this example.  The bandwidth
-@code{bw} was chosen by trial-and-error as the default gives too much
-smoothing (it usually does for ``interesting'' densities).  (Better
-automated methods of bandwidth choice are available, and in this example
-@code{bw = "SJ"} gives a good result.)
+@c @findex density
+@c @cindex Density estimation
+@c More elegant density plots can be made by @code{density}, and we added a
+@c line produced by @code{density} in this example.  The bandwidth
+@c @code{bw} was chosen by trial-and-error as the default gives too much
+@c smoothing (it usually does for ``interesting'' densities).  (Better
+@c automated methods of bandwidth choice are available, and in this example
+@c @code{bw = "SJ"} gives a good result.)
+
+위의 예제에서 사용된 것과 같이 히스토그램보다 좀 더 정교한 확률분포를 살펴보기 위해서 density라는 함수에 의해서 계산되는 밀도플랏 (density plot) 을 함께 사용하는 것이 좋습니다. density 함수가 가지는 인자중에서 bw 이라는 bandwidth (한국말모름) 가지는 0.1 이라는 값은 기본으로 설정된 값이 너무 smoothing 이 되어서 trial-and-error 에 의해서 정해진 것입니다. (Bandwidth의 선택에 있어서 자동화된 방법이 있는데, bw='SJ' 를 이용해보시길 바랍니다).
 
 @c @iftex
 @c @image{images/hist,9cm} @c deleted by Chel Hee Lee
 @c @end iftex
 
-We can plot the empirical cumulative distribution function by using the
-function @code{ecdf}.
-@findex ecdf
-@cindex Empirical CDFs
+@c We can plot the empirical cumulative distribution function by using the
+@c function @code{ecdf}.
+@c @findex ecdf
+@c @cindex Empirical CDFs
+
+확률분포를 확인해보기 위해서 우리는 또한 ecdf 라는 함수에 의해서 얻어지는 empirical cumulative distribution function (정확한 한국말 모름)을 이용해 볼 수 있습니다.
 
 @example
 > plot(ecdf(eruptions), do.points=FALSE, verticals=TRUE)
 @end example
 
-This distribution is obviously far from any standard distribution.
-How about the right-hand mode, say eruptions of longer than 3 minutes?
-Let us fit a normal distribution and overlay the fitted CDF.
+@c This distribution is obviously far from any standard distribution.
+@c How about the right-hand mode, say eruptions of longer than 3 minutes?
+@c Let us fit a normal distribution and overlay the fitted CDF.
+
+당연히 empirical 누적분포는 그 어떠한 표준분포를 따르지 않습니다. 하지만, 화산폭발이 3분이상 지속될 경우에 대한 분포는 어떨까요? 3분이상의 데이터으로부터의 생성된 empirical 누적분포를 만들어 본뒤 그 위에 정규분포와 오버레이시켜서 비교해 봅니다.
 
 @example
 > long <- eruptions[eruptions > 3]
@@ -4039,20 +4049,24 @@ Let us fit a normal distribution and overlay the fitted CDF.
 @c @image{images/ecdf,9cm} @c deleted by Chel Hee Lee 
 @c @end iftex
 
-Quantile-quantile (Q-Q) plots can help us examine this more carefully.
-@cindex Quantile-quantile plots
-@findex qqnorm
-@findex qqline
+@c Quantile-quantile (Q-Q) plots can help us examine this more carefully.
+@c @cindex Quantile-quantile plots
+@c @findex qqnorm
+@c @findex qqline
+
+퀀타일-퀀타일 (Q-Q) 플랏을 이용하여 화산폭발 3분이상의 데이터에 대한 정규성을 검토해보는 것도 도움이 됩니다.
 
 @example
 par(pty="s")       # arrange for a square figure region
 qqnorm(long); qqline(long)
 @end example
 
-@noindent
-which shows a reasonable fit but a shorter right tail than one would
-expect from a normal distribution.  Let us compare this with some
-simulated data from a @math{t} distribution
+@c @noindent
+@c which shows a reasonable fit but a shorter right tail than one would
+@c expect from a normal distribution.  Let us compare this with some
+@c simulated data from a @math{t} distribution
+
+Q-Q 플랏으로부터 정규성을 보임을 확인할 수 있었지만, 오른쪽 꼬리 부분이 생각보다 정규분포를 따르지 않는 것 같습니다. 그럼 이것을 t분포로부터 생성된 난수의 분포와는 어떤 관계를 가질까요?
 
 @iftex
 @c @image{images/QQ,7cm} @c deleted by Chel Hee Lee 
@@ -4063,20 +4077,24 @@ x <- rt(250, df = 5)
 qqnorm(x); qqline(x)
 @end example
 
-@noindent
-which will usually (if it is a random sample) show longer tails than
-expected for a normal.  We can make a Q-Q plot against the generating
-distribution by
+@c @noindent
+@c which will usually (if it is a random sample) show longer tails than
+@c expected for a normal.  We can make a Q-Q plot against the generating
+@c distribution by
+
+t분포로부터 얻어진 난수의 분포가 정규분포보다도 더 긴 꼬리를 가짐을 볼 수 있습니다.
 
 @example
 qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
 qqline(x)
 @end example
 
-Finally, we might want a more formal test of agreement with normality
-(or not).  @R{} provides the Shapiro-Wilk test
-@cindex Shapiro-Wilk test
-@findex shapiro.test
+@c Finally, we might want a more formal test of agreement with normality
+@c (or not).  @R{} provides the Shapiro-Wilk test
+@c @cindex Shapiro-Wilk test
+@c @findex shapiro.test
+
+아마도 그 다음 과정은 R이 제공하는 Shpiro-Wilk 라는 테스트를 통하여 이 분포가 정규성을 얼마나 따르는지 확인하는 것입니다.
 
 @example
 > shapiro.test(long)
@@ -4091,6 +4109,8 @@ W = 0.9793, p-value = 0.01052
 and the Kolmogorov-Smirnov test
 @cindex Kolmogorov-Smirnov test
 @findex ks.test
+
+Shpiro-Wilk 라는 테스트 외에도 Kolmogorov-Smirnov 라는 테스트를 이용하여 정규성을 확인해 볼 수 있습니다.
 
 @example
 > ks.test(long, "pnorm", mean = mean(long), sd = sqrt(var(long)))
