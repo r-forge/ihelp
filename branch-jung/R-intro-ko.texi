@@ -4319,17 +4319,19 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @section Grouped expressions
 @cindex Grouped expressions
 
-@R{} is an expression language in the sense that its only command type
-is a function or expression which returns a result.  Even an assignment
-is an expression whose result is the value assigned, and it may be used
-wherever any expression may be used; in particular multiple assignments
-are possible.
+@c @R{} is an expression language in the sense that its only command type
+@c is a function or expression which returns a result.  Even an assignment
+@c is an expression whose result is the value assigned, and it may be used
+@c wherever any expression may be used; in particular multiple assignments
+@c are possible.
 
-Commands may be grouped together in braces, @code{@{@var{expr_1};
-@var{@dots{}}; @var{expr_m}@}}, in which case the value of the group
-is the result of the last expression in the group evaluated.  Since such
-a group is also an expression it may, for example, be itself included in
-parentheses and used a part of an even larger expression, and so on.
+@c Commands may be grouped together in braces, @code{@{@var{expr_1};
+@c @var{@dots{}}; @var{expr_m}@}}, in which case the value of the group
+@c is the result of the last expression in the group evaluated.  Since such
+@c a group is also an expression it may, for example, be itself included in
+@c parentheses and used a part of an even larger expression, and so on.
+
+R은 결과값을 반환하는 함수를 사용하고, 이 결과를 재사용할 수 있도록 표현식에 할당하며, 이 표현식이 다시 재사용될 수 있다는 점에서 표현식을 기반으로 하는 언어라고 할 수 있습니다. 특히 다중 할당도 가능하다는 것이 특징입니다. 또한, {expr_1; ...; expr_m} 와 같이 여러개의 명령어들을 중괄호로 한데 묶어 이것을 또한 표현식으로도 사용할 수 있습니다 이것을 그룹화된 표현식이라고 하고, 이 그룹화된 표현식의 결과는 그룹내의 맨 마지막 명령문이 실행되었을때 얻어지게 됩니다. 이렇게 그룹화된 표현식 역시 괄호안의 일부분 혹은 더 큰 표현식의 일부분으로도 사용될 수 있습니다.
 
 @node Control statements,  , Grouped expressions, Loops and conditional execution
 @section Control statements
