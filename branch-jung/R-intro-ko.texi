@@ -4755,21 +4755,26 @@ returning the n'th unmatched argument.
 @node Assignment within functions, More advanced examples, The three dots argument, Writing your own functions
 @section Assignments within functions
 
-Note that @emph{any ordinary assignments done within the function are
-local and temporary and are lost after exit from the function}.  Thus
-the assignment @code{X <- qr(X)} does not affect the value of the
-argument in the calling program.
+@c Note that @emph{any ordinary assignments done within the function are
+@c local and temporary and are lost after exit from the function}.  Thus
+@c the assignment @code{X <- qr(X)} does not affect the value of the
+@c argument in the calling program.
 
-To understand completely the rules governing the scope of @R{} assignments
-the reader needs to be familiar with the notion of an evaluation
-@emph{frame}.  This is a somewhat advanced, though hardly difficult,
-topic and is not covered further here.
+@c To understand completely the rules governing the scope of @R{} assignments
+@c the reader needs to be familiar with the notion of an evaluation
+@c @emph{frame}.  This is a somewhat advanced, though hardly difficult,
+@c topic and is not covered further here.
 
-If global and permanent assignments are intended within a function, then
-either the ``superassignment'' operator, @code{<<-} or the function
-@code{assign()} can be used.  See the @code{help} document for details.
-@SPLUS{} users should be aware that @code{<<-} has different semantics
-in @R{}.  These are discussed further in @ref{Scope}.
+@c If global and permanent assignments are intended within a function, then
+@c either the ``superassignment'' operator, @code{<<-} or the function
+@c @code{assign()} can be used.  See the @code{help} document for details.
+
+함수 내부에서 사용되는 변수가 가지는 어떠한 값이라도 그 값들은 함수 내부에서만 유효합니다. 이렇게 변수가 가지는 값이 지정된 함수 내부에서만 사용되는것을 지역할당(local assignment) 이라고 합니다. 이것을 이해하기 위해서는 R시스템내에서 할당범위 (the scope of assignment)라는 개념을 이해해야만 하며, 이것은 이 안내서의 수준을 벗어나므로 설명하지 않겠습니다. 그러나, 함수 내부에서 연산된 어떤 값을 함수 외부 및 작성하는 프로그램 전체에서 사용하고 싶다면, <<- 이라는 “superassignment" 이라는 연산자를 사용하거나, assign() 이라는 함수를 이용하시면 됩니다. 이렇게 변수가 가지는 값이 특정 함수내에서 국한되지 않고 전체에서 활용되는 개념을 전역할당 (global assignment 혹은 permanent assignment) 라고 합니다. 이것에 대한 더 자세한 사항은 도움말을 참조하시길 바랍니다.
+
+@c @SPLUS{} users should be aware that @code{<<-} has different semantics
+@c in @R{}.  These are discussed further in @ref{Scope}.
+
+S-Plus 사용자는 <<- 라는 연산자가 R 에서 다른 의미로 사용된다는 점을 반드시 알고 있어야 합니다. 이러한 다른 점들은 Scope 에서 다루어집니다.
 
 @node More advanced examples, Scope, Assignment within functions, Writing your own functions
 @section More advanced examples
