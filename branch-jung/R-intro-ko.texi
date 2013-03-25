@@ -4131,13 +4131,17 @@ sample.)
 @section One- and two-sample tests
 @cindex One- and two-sample tests
 
-So far we have compared a single sample to a normal distribution.  A
-much more common operation is to compare aspects of two samples.  Note
-that in @R{}, all ``classical'' tests including the ones used below are
-in package @pkg{stats} which is normally loaded.
+@c So far we have compared a single sample to a normal distribution.  A
+@c much more common operation is to compare aspects of two samples.  Note
+@c that in @R{}, all ``classical'' tests including the ones used below are
+@c in package @pkg{stats} which is normally loaded.
 
-Consider the following sets of data on the latent heat of the fusion of
-ice (@emph{cal/gm}) from Rice (1995, p.490)
+지금까지 우리는 하나의 샘플을 정규분포와 비교해 보았습니다. 두개의 샘플을 비교하고자 한다면 더 많은 작업이 요구되나, 많은 작업이 공통적으로 적용되므로 많은 중복작업을 하는것과 같습니다. 다음의 예제에 사용되는 통계적 테스트를 포함하여 모든 전형적인 통계테스트는 기본적으로 stats 이라는 패키지에 포함되어 있습니다.
+
+@c Consider the following sets of data on the latent heat of the fusion of
+@c ice (@emph{cal/gm}) from Rice (1995, p.490)
+
+1995년에 Rice가 the latent heat of the fusion of ice 에 대해서 연구한 논문의 490 쪽에 게재된 내용입니다. 다음 두개의 데이터셋이 주어졌습니다.
 
 @example
 Method A: 79.98 80.04 80.02 80.04 80.03 80.03 80.04 79.97
@@ -4145,8 +4149,10 @@ Method A: 79.98 80.04 80.02 80.04 80.03 80.03 80.04 79.97
 Method B: 80.02 79.94 79.98 79.97 79.97 80.03 79.95 79.97
 @end example
 
-@noindent
-Boxplots provide a simple graphical comparison of the two samples.
+@c @noindent
+@c Boxplots provide a simple graphical comparison of the two samples.
+
+박스플랏 (boxplot) 은 두개의 샘플에 대한 정보를 시각적으로 비교해 줍니다.
 
 @c NOTE scan() from stdin is not parse()able, hence not source()able
 @c Hence ./R-intro.R uses c(..)
@@ -4163,18 +4169,22 @@ boxplot(A, B)
 @findex boxplot
 @cindex Box plots
 
-@noindent
-which indicates that the first group tends to give higher results than
-the second.
+@c @noindent
+@c which indicates that the first group tends to give higher results than
+@c the second.
+
+첫번째 그룹이 두번째 그룹보다 더 높은 결과를 보여주는 것같습니다.
 
 @iftex
 @c @image{images/ice,7cm} @c deleted by Chel Hee Lee
 @end iftex
 
-To test for the equality of the means of the two examples, we can use
-an @emph{unpaired} @math{t}-test by
-@cindex Student's @math{t} test
-@findex t.test
+@c To test for the equality of the means of the two examples, we can use
+@c an @emph{unpaired} @math{t}-test by
+@c @cindex Student's @math{t} test
+@c @findex t.test
+
+각각의 데이터의 평균이 일치하는가를 테스트 하기 위해서 우리는 아래와 같이 unpaired t-테스트를 수행해 봅니다.
 
 @example
 > t.test(A, B)
@@ -4191,12 +4201,14 @@ mean of x mean of y
  80.02077  79.97875
 @end example
 
-@noindent
-which does indicate a significant difference, assuming normality.  By
-default the @R{} function does not assume equality of variances in the
-two samples (in contrast to the similar @SPLUS{} @code{t.test}
-function).  We can use the F test to test for equality in the variances,
-provided that the two samples are from normal populations.
+@c @noindent
+@c which does indicate a significant difference, assuming normality.  By
+@c default the @R{} function does not assume equality of variances in the
+@c two samples (in contrast to the similar @SPLUS{} @code{t.test}
+@c function).  We can use the F test to test for equality in the variances,
+@c provided that the two samples are from normal populations.
+
+테스트의 결과는 평균의 차이가 정규분포를 따른다고 가정할때 그 평균의 차이는 통계적으로 의미가 있음을 나타내고 있습니다. 여기에서 한가지 알아야 할 점은 R 은 기본적으로 두 데이터의 분산이 같다고 가정하지 않는다는 것입니다. 이것은 S-Plus 에서 제공하는 t.test 와 동일합니다. 따라서 우리는 두 데이터의 분산이 같은지에 대해서 F-테스트를 시행해 봅니다. 이때, 두 데이터는 정규분포로부터 얻어진 샘플이라고 가정해야 합니다.
 
 @example
 > var.test(A, B)
@@ -4214,9 +4226,11 @@ ratio of variances
 @end example
 @findex var.test
 
-@noindent
-which shows no evidence of a significant difference, and so we can use
-the classical @math{t}-test that assumes equality of the variances.
+@c @noindent
+@c which shows no evidence of a significant difference, and so we can use
+@c the classical @math{t}-test that assumes equality of the variances.
+
+테스트의 결과는 두 데이터의 분산은 통계학적으로 차이가 없음을 의미하므로, 우리는 두 데이터의 분산이 같다고 가정하는 전형적인 t-테스트를 사용해도 무방합니다.
 
 @example
 > t.test(A, B, var.equal=TRUE)
@@ -4233,9 +4247,11 @@ mean of x mean of y
  80.02077  79.97875
 @end example
 
-All these tests assume normality of the two samples.  The two-sample
-Wilcoxon (or Mann-Whitney) test only assumes a common continuous
-distribution under the null hypothesis.
+@c All these tests assume normality of the two samples.  The two-sample
+@c Wilcoxon (or Mann-Whitney) test only assumes a common continuous
+@c distribution under the null hypothesis.
+
+우리가 사용한 모든 테스트들이 두 데이터가 정규분포로부터 얻어진 샘플임을 가정하고 있습니다. 그러나 two-sample Wilcoxon 혹은 Mann-Whitney 테스트는 단순히 연속형 분포만을 가정합니다.
 
 @cindex Wilcoxon test
 @findex wilcox.test
@@ -4252,24 +4268,30 @@ Warning message:
 Cannot compute exact p-value with ties in: wilcox.test(A, B)
 @end example
 
-@noindent
-Note the warning: there are several ties in each sample, which suggests
-strongly that these data are from a discrete distribution (probably due
-to rounding).
+@c @noindent
+@c Note the warning: there are several ties in each sample, which suggests
+@c strongly that these data are from a discrete distribution (probably due
+@c to rounding).
 
-There are several ways to compare graphically the two samples.  We have
-already seen a pair of boxplots.  The following
+테스트를 수행한 결과에 경고가 있음을 알 수 있습니다. 이것은 아마도 각각의 샘플안에 동일한 값을 가지는 데이터들이 존재하기 때문일것입니다. 따라서 우리는 연속형 분포를 가정하기 보다는 데이터가 이산형분포로부터 나왔다고 생각하는게 올바를 것입니다(혹은 이것은 rounding 으로부터 나온 결과일 수 도 있습니다).
+
+@c There are several ways to compare graphically the two samples.  We have
+@c already seen a pair of boxplots.  The following
+
+두개의 샘플을 시각적으로 비교해 보는데 여러가지 방법이 있을 수 있습니다. 그 중에서 두개의 박스플랏을 동시에 비교해보는 것은 이미 해 보았습니다.
 
 @example
 > plot(ecdf(A), do.points=FALSE, verticals=TRUE, xlim=range(A, B))
 > plot(ecdf(B), do.points=FALSE, verticals=TRUE, add=TRUE)
 @end example
 
-@noindent
-will show the two empirical CDFs, and @code{qqplot} will perform a Q-Q
-plot of the two samples.  The Kolmogorov-Smirnov test is of the maximal
-vertical distance between the two ecdf's, assuming a common continuous
-distribution:
+@c @noindent
+@c will show the two empirical CDFs, and @code{qqplot} will perform a Q-Q
+@c plot of the two samples.  The Kolmogorov-Smirnov test is of the maximal
+@c vertical distance between the two ecdf's, assuming a common continuous
+@c distribution:
+
+위에서 사용된 코드는 두개의 emprical CDFs (누적확률분포)를 비교할 것입니다. 또한 qqplot함수를 이용하여 두 개의 샘플에 대한 Q-Q 플랏을 생성할 수도 있습니다. 아래의 코드는 두개의 ecdf(empirical CDF)의 차이에 대하여 Kolmogorov-Smirnov 테스트를 수행합니다.
 
 @example
 > ks.test(A, B)
