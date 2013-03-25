@@ -3603,22 +3603,26 @@ ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프�
 @section The @code{read.table()} function
 @findex read.table
 
-To read an entire data frame directly, the external file will normally
-have a special form.
+@c To read an entire data frame directly, the external file will normally
+@c have a special form.
 
-@itemize @bullet
-@item
-The first line of the file should have a @emph{name} for each variable
-in the data frame.
+데이터 프레임 전체를 한번에 불러오기 위해서는, 외부 파일이 특정한 형식을 가지고 있어야만 합니다.
 
-@item
-Each additional line of the file has as its first item a @emph{row label}
-and the values for each variable.
-@end itemize
+@c @itemize @bullet
+@c @item
+@c The first line of the file should have a @emph{name} for each variable
+@c in the data frame.
 
-If the file has one fewer item in its first line than in its second, this
-arrangement is presumed to be in force.  So the first few lines of a file
-to be read as a data frame might look as follows.
+@c @item
+@c Each additional line of the file has as its first item a @emph{row label}
+@c and the values for each variable.
+@c @end itemize
+
+@c If the file has one fewer item in its first line than in its second, this
+@c arrangement is presumed to be in force.  So the first few lines of a file
+@c to be read as a data frame might look as follows.
+
+데이터 파일내의 첫번째 줄은 데이터 프레임 안으로 불러올 데이터들의 변수명이 저장되어 있어야 합니다. 데이터 파일내의 변수명 다음 줄 부터는 행번호와 함께 변수값이 저장되어 있어야 합니다. 따라서 우리는 사용자가 데이터 파일을 아래와 같은 데이터 프레임의 형식을 갖출 것을 권장합니다.
 
 @quotation
 @cartouche
@@ -3636,20 +3640,24 @@ to be read as a data frame might look as follows.
 @end cartouche
 @end quotation
 
-By default numeric items (except row labels) are read as numeric
-variables and non-numeric variables, such as @code{Cent.heat} in the
-example, as factors.  This can be changed if necessary.
+@c By default numeric items (except row labels) are read as numeric
+@c variables and non-numeric variables, such as @code{Cent.heat} in the
+@c example, as factors.  This can be changed if necessary.
 
-The function @code{read.table()} can then be used to read the data frame
-directly
+@c The function @code{read.table()} can then be used to read the data frame
+@c directly
+
+기본적으로 R이 데이터 파일을 읽어올때, 행번호를 제외하고서 변수가 수치형 값을 가지면 수치형으로 변수가 수치형이 아니면 요인 (factor) 의 형식으로 자동변환되어 집니다. 위에 사용된 데이터 파일을 예로 들면, Price, Floor, Area, Rooms, Age 는 수치형으로 읽어들이지만, Cent.heat 라는 변수는 요인으로 읽어들입니다. 따라서 위와 같은 데이터 프레임의 형식을 가지고 있는 데이터 파일이라면 read.table() 이라는 함수를 아래와 같이 사용하여 데이터를 불러들이면 됩니다.
 
 @example
 > HousePrice <- read.table("houses.data")
 @end example
 
-Often you will want to omit including the row labels directly and use the
-default labels.  In this case the file may omit the row label column as in
-the following.
+@c Often you will want to omit including the row labels directly and use the
+@c default labels.  In this case the file may omit the row label column as in
+@c the following.
+
+아래에 보이는 것과 같이 종종 데이터 파일에는 행번호가 없는 경우가 있거나, 혹은 사용자가 행번호를 원하지 않는 경우가 존재합니다.
 
 @quotation
 @cartouche
@@ -3667,16 +3675,20 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @end cartouche
 @end quotation
 
-The data frame may then be read as
+@c The data frame may then be read as
+
+
+이런경우에는 아래와 같이 read.table() 이라는 함수를 사용할 때 header 라는 옵션을 이용하면 됩니다.
 
 @example
 > HousePrice <- read.table("houses.data", header=TRUE)
 @end example
 
-@noindent
-where the @code{header=TRUE} option specifies that the first line is a
-line of headings, and hence, by implication from the form of the file,
-that no explicit row labels are given.
+@c @noindent
+@c where the @code{header=TRUE} option specifies that the first line is a
+@c line of headings, and hence, by implication from the form of the file,
+@c that no explicit row labels are given.
+
 
 @menu
 * The scan() function::
