@@ -3159,13 +3159,17 @@ Extension to higher-way frequency tables is immediate.
 @section Lists
 @cindex Lists
 
-An @R{} @emph{list} is an object consisting of an ordered collection of
-objects known as its @emph{components}.
+@c An @R{} @emph{list} is an object consisting of an ordered collection of
+@c objects known as its @emph{components}.
 
-There is no particular need for the components to be of the same mode or
-type, and, for example, a list could consist of a numeric vector, a
-logical value, a matrix, a complex vector, a character array, a
-function, and so on.  Here is a simple example of how to make a list:
+R 에서 list 라는 것은 여러개의 컴포넌트 (components) 라고 불리는 객체들의 집합입니다. 
+
+@c There is no particular need for the components to be of the same mode or
+@c type, and, for example, a list could consist of a numeric vector, a
+@c logical value, a matrix, a complex vector, a character array, a
+@c function, and so on.  Here is a simple example of how to make a list:
+
+리스트가 벡터, 매트릭스, 혹은 배열과 구분되는 점은 컴포넌트들의 데이터형이 같지 않아도 된다는 것입니다. 예를들어, 수치형 벡터의 모든 원소는 수치형 데이터를 가져야만 했습니다. 그러나 리스트는 각각의 컴포넌트가 수치형 벡터, 논리형 벡터, 행렬, 배열, 그리고 함수로 구성될 수 있습니다. 다음은 리스트를 생성하는 간단한 예를 보여줍니다.
 
 @example
 > Lst <- list(name="Fred", wife="Mary", no.children=3,
@@ -3173,20 +3177,26 @@ function, and so on.  Here is a simple example of how to make a list:
 @end example
 @findex list
 
-Components are always @emph{numbered} and may always be referred to as
-such.  Thus if @code{Lst} is the name of a list with four components,
-these may be individually referred to as @code{Lst[[1]]},
-@code{Lst[[2]]}, @code{Lst[[3]]} and @code{Lst[[4]]}.  If, further,
-@code{Lst[[4]]} is a vector subscripted array then @code{Lst[[4]][1]} is
-its first entry.
+@c Components are always @emph{numbered} and may always be referred to as
+@c such.  Thus if @code{Lst} is the name of a list with four components,
+@c these may be individually referred to as @code{Lst[[1]]},
+@c @code{Lst[[2]]}, @code{Lst[[3]]} and @code{Lst[[4]]}.  If, further,
+@c @code{Lst[[4]]} is a vector subscripted array then @code{Lst[[4]][1]} is
+@c its first entry.
 
-If @code{Lst} is a list, then the function @code{length(Lst)} gives the
-number of (top level) components it has.
+리스트의 구성요소인 각각의 컴포넌트를 구분하는 방법은 컴포넌트 인덱스를 사용하는 것입니다. 예를 들어, 위와 같이 4개의 컴포넌트들로 구성된 리스트가 있다면, 각각의 컴포넌트는 Lst1, Lst2, Lst3, Lst4 에 의해서 엑세스 되어 집니다. 더 나아가, 마지막 네번째 컴포넌트 Lst4 의 첫번째 구성요소의 값을 알고자 한다면, Lst4[1] 이라고 하면 됩니다.
 
-Components of lists may also be @emph{named}, and in this case the
-component may be referred to either by giving the component name as a
-character string in place of the number in double square brackets, or,
-more conveniently, by giving an expression of the form
+@c If @code{Lst} is a list, then the function @code{length(Lst)} gives the
+@c number of (top level) components it has.
+
+만약 사용자가 접한 리스트가 몇개의 컴포넌트로 구성된지 모를 경우 length() 명령어를 사용하면 컴포넌트의 개수를 알수 있습니다. 위에 사용된 Lst 이라는 리스트를 예를 들면, length(Lst) 은 4란 값을 알려줍니다.
+
+@c Components of lists may also be @emph{named}, and in this case the
+@c component may be referred to either by giving the component name as a
+@c character string in place of the number in double square brackets, or,
+@c more conveniently, by giving an expression of the form
+
+리스트를 구성하는 컴포넌트들은 인덱스를 사용하여 엑세스 하는 방법외에도 일반적으로 아래와 같이 컴포넌트의 이름을 사용하여 엑세스 할 수 도 있습니다. 아래에서 name 이라는 것은 리스트의 이름에 해당되고 스트링 ($) 이라는 문자 다음에 오는 component_name 이라는 것은 컴포넌트의 이름입니다
 
 @example
 > @var{name}$@var{component_name}
@@ -3195,24 +3205,28 @@ more conveniently, by giving an expression of the form
 @noindent
 for the same thing.
 
-This is a very useful convention as it makes it easier to get the right
-component if you forget the number.
+@c This is a very useful convention as it makes it easier to get the right
+@c component if you forget the number.
 
-So in the simple example given above:
+@c So in the simple example given above:
 
-@code{Lst$name} is the same as @code{Lst[[1]]} and is the string
-@code{"Fred"},
+@c @code{Lst$name} is the same as @code{Lst[[1]]} and is the string
+@c @code{"Fred"},
 
-@code{Lst$wife} is the same as @code{Lst[[2]]} and is the string
-@code{"Mary"},
+@c @code{Lst$wife} is the same as @code{Lst[[2]]} and is the string
+@c @code{"Mary"},
 
-@code{Lst$child.ages[1]} is the same as @code{Lst[[4]][1]} and is the
-number @code{4}.
+@c @code{Lst$child.ages[1]} is the same as @code{Lst[[4]][1]} and is the
+@c number @code{4}.
 
-Additionally, one can also use the names of the list components in
-double square brackets, i.e., @code{Lst[["name"]]} is the same as
-@code{Lst$name}.  This is especially useful, when the name of the
-component to be extracted is stored in another variable as in
+이렇게 이름을 사용하는 방법은 사용자가 컴포넌트 인덱스를 일일이 기억하지 않도록 도와줍니다. 위에서 사용된 예제를 다시 보면, Lst$name 이라는 것은 Lst1와 동일하고, "Fred" 라는 값을 가집니다. Lst$wife는 Lst2와 동일하고 "Mary"라는 값을 가집니다. Lst$child.ages[1] 역시 Lst4[1] 동일하며, 4 라는 값을 가집니다.
+
+@c Additionally, one can also use the names of the list components in
+@c double square brackets, i.e., @code{Lst[["name"]]} is the same as
+@c @code{Lst$name}.  This is especially useful, when the name of the
+@c component to be extracted is stored in another variable as in
+
+추가적으로, Lst$name 과 Lst"name" 은 Lst 라는 리스트의 첫번째 컴포넌트를 엑세스 하기 위한 동일한 표현법입니다. 이것은 아래와 같이 리스트의 이름을 다른 변수에 따로 저장하여 활용 할 수 있도록 하는 아주 유용한 기능입니다.
 
 @example
 > x <- "name"; Lst[[x]]
@@ -3227,10 +3241,14 @@ The latter is a @emph{sublist of the list @code{Lst} consisting of the
 first entry only.  If it is a named list, the names are transferred to
 the sublist.}
 
-The names of components may be abbreviated down to the minimum number of
-letters needed to identify them uniquely.  Thus @code{Lst$coefficients}
-may be minimally specified as @code{Lst$coe} and @code{Lst$covariance}
-as @code{Lst$cov}.
+리스트를 활용함에 있어서 Lst1 와 Lst[1] 를 구분하는 것은 매우 중요합니다. ‘...’ 은 리스트에서 컴포넌트를 구별하기 위해서 사용되고, ‘[...]’ 은 컴포넌트가 가지는 원소들을 구분하기 위해서 사용됩니다. 그러므로, 리스트 이름뒤에는 항상 ‘...’ 이 먼저 오고, ‘[...]’ 이 나중에 와야 합니다.
+
+@c The names of components may be abbreviated down to the minimum number of
+@c letters needed to identify them uniquely.  Thus @code{Lst$coefficients}
+@c may be minimally specified as @code{Lst$coe} and @code{Lst$covariance}
+@c as @code{Lst$cov}.
+
+만약 리스트를 구성하는 컴포넌트들의 이름이 길지만, 동일한 이름이 없다면, R 은 컴포넌트들을 구분할 수 있는 약어기능을 제공합니다. 예를들면, Lst 라는 리스트가 coefficients 와 covariance 라는 두개의 컴포넌트를 가지고 있다면, 굳이 Lst$coefficients 혹은 Lst$covariance 이라는 이름을 다 사용할 필요가 없습니다. R 은 Lst$coe 와 Lst$cov 만으로도 충분히 두개의 컴포넌트를 구분해 낼 수 있습니다.
 
 The vector of names is in fact simply an attribute of the list like any
 other and may be handled as such.  Other structures besides lists may,
@@ -3239,23 +3257,29 @@ of course, similarly be given a @emph{names} attribute also.
 @node Constructing and modifying lists, Data frames, Lists, Lists and data frames
 @section Constructing and modifying lists
 
-New lists may be formed from existing objects by the function
-@code{list()}.  An assignment of the form
+@c New lists may be formed from existing objects by the function
+@c @code{list()}.  An assignment of the form
+
+만약 여러분이 이미 작업하고 있던 여러개의 객체를 가지고 있었다면, list() 라는 함수를 이용하여 새로운 리스트를 생성할 수 도 있습니다. 아래의 명령문은 object_1 이라는 객체를 첫번째 컴포넌트로 name_1 이라는 이름과 함께 사용할 것이며, 이와 같은 방법으로 m 개의 객체를 새로운 리스트를 정의하겠다는 의미입니다.
 
 @example
 > Lst <- list(@var{name_1}=@var{object_1}, @var{@dots{}}, @var{name_m}=@var{object_m})
 @end example
 
 @noindent
-sets up a list @code{Lst} of @math{m} components using @var{object_1},
-@dots{}, @var{object_m} for the components and giving them names as
-specified by the argument names, (which can be freely chosen).  If these
-names are omitted, the components are numbered only.  The components
-used to form the list are @emph{copied} when forming the new list and
-the originals are not affected.
+@c sets up a list @code{Lst} of @math{m} components using @var{object_1},
+@c @dots{}, @var{object_m} for the components and giving them names as
+@c specified by the argument names, (which can be freely chosen).  If these
+@c names are omitted, the components are numbered only.  The components
+@c used to form the list are @emph{copied} when forming the new list and
+@c the originals are not affected.
 
-Lists, like any subscripted object, can be extended by specifying
-additional components.  For example
+만약, 컴포넌트에 사용할 이름이 정해지지 않았다면, R 은 자동으로 몇 번째 컴포넌트인지 숫자를 이름으로 정합니다. 새로운 리스트가 생성될 때 기존의 객체들은 단순히 컴포넌트로서 복사 되는 것이기 때문에 새로운 리스트가 정의되어도 기존의 객체들은 아무런 영향을 받지 않습니다.
+
+@c Lists, like any subscripted object, can be extended by specifying
+@c additional components.  For example
+
+만약, 리스트에 새로운 컴포넌트를 추가하고 싶을 경우에는 아래의 명령문과 같이 서브스크립트를 이용하면 편리합니다
 
 @example
 > Lst[5] <- list(matrix=Mat)
