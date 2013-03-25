@@ -4726,14 +4726,16 @@ Generating regular sequences에서 설명했던 것과 같이 함수에 사용�
 @c The ?Reserved topic links here, so please update it
 @c if changing the node name.
 
-Another frequent requirement is to allow one function to pass on
-argument settings to another.  For example many graphics functions use
-the function @code{par()} and functions like @code{plot()} allow the
-user to pass on graphical parameters to @code{par()} to control the
-graphical output.  (@xref{The par() function}, for more details on the
-@code{par()} function.)  This can be done by including an extra
-argument, literally @samp{@dots{}}, of the function, which may then be
-passed on.  An outline example is given below.
+@c Another frequent requirement is to allow one function to pass on
+@c argument settings to another.  For example many graphics functions use
+@c the function @code{par()} and functions like @code{plot()} allow the
+@c user to pass on graphical parameters to @code{par()} to control the
+@c graphical output.  (@xref{The par() function}, for more details on the
+@c @code{par()} function.)  This can be done by including an extra
+@c argument, literally @samp{@dots{}}, of the function, which may then be
+@c passed on.  An outline example is given below.
+
+함수를 정의할 때 ‘...’ 라는 기능을 알아두면 매우 유용합니다. 예를들어, plot()과 같이 그래픽에 관련된 많은 함수들은 par() 라는 함수를 사용합니다. par()라는 함수에는 그래픽의 결과물을 정교히 조정하기 위한 방대한 양의 인자들이 포함되어 있습니다. par() 라는 함수에 대해서 자세히 알고 싶으시다면 See The par() function. 그러나 실제로는, 그래픽에 관련된 함수들은 단순히 par()라는 함수에 있는 인자를 사용함으로서 결과물의 수정 및 조정을 조정할 뿐, 이러한 역할을 위한 인자를 따로 정의하고 있지 않습니다. 이렇게 외부에 정의에 되어 있는 함수 및 객체들의 인자들을 정의하고자 하는 함수로 불러들여와 활용하고자할 때, 아래의 코드에서 보이는 것과 같이 ‘...’를 함수 선언부에 나열된 인자들의 목록뒤에 붙여주면 됩니다.
 
 @example
 fun1 <- function(data, data.frame, graph=TRUE, limit=20, ...) @{
