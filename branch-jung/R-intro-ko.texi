@@ -4346,7 +4346,9 @@ R은 결과값을 반환하는 함수를 사용하고, 이 결과를 재사용�
 @subsection Conditional execution: @code{if} statements
 @findex if
 
-The language has available a conditional construction of the form
+@c The language has available a conditional construction of the form
+
+조건문은 아래와 같은 형식을 가집니다.
 
 @example
 > if (@var{expr_1}) @var{expr_2} else @var{expr_3}
@@ -4354,25 +4356,30 @@ The language has available a conditional construction of the form
 @findex if
 @findex else
 
-@noindent
-where @var{expr_1} must evaluate to a single logical value and the
-result of the entire expression is then evident.
+@c @noindent
+@c where @var{expr_1} must evaluate to a single logical value and the
+@c result of the entire expression is then evident.
 
-@findex &&
-@findex ||
-The ``short-circuit'' operators @code{&&} and @code{||} are often used
-as part of the condition in an @code{if} statement.  Whereas @code{&}
-and @code{|} apply element-wise to vectors, @code{&&} and @code{||}
-apply to vectors of length one, and only evaluate their second argument
-if necessary.
+expr_1 은 반드시 한개의 참 혹은 거짓 이라는 논리형 값을 가져야만 합니다.
 
-@findex ifelse
-There is a vectorized version of the @code{if}/@code{else} construct,
-the @code{ifelse} function.  This has the form @code{ifelse(condition, a,
-b)} and returns a vector of the length of its longest argument, with
-elements @code{a[i]} if @code{condition[i]} is true, otherwise
-@code{b[i]}.
+@c @findex &&
+@c @findex ||
+@c The ``short-circuit'' operators @code{&&} and @code{||} are often used
+@c as part of the condition in an @code{if} statement.  Whereas @code{&}
+@c and @code{|} apply element-wise to vectors, @code{&&} and @code{||}
+@c apply to vectors of length one, and only evaluate their second argument
+@c if necessary.
 
+“short-circuit” 이라고 불리는 && 와 || 이라는 연산자는 종종 if 라는 조건문과 함께 쓰입니다.
+
+@c @findex ifelse
+@c There is a vectorized version of the @code{if}/@code{else} construct,
+@c the @code{ifelse} function.  This has the form @code{ifelse(condition, a,
+@c b)} and returns a vector of the length of its longest argument, with
+@c elements @code{a[i]} if @code{condition[i]} is true, otherwise
+@c @code{b[i]}.
+
+R 은 벡터라이즈(vectorized) 된 버전의 if/else 조건문인 ifelse 라는 함수를 제공하고 있습니다. 이것은 ifelse(condition, a, b) 의 형식을 가지고 만약 condition[i] 이 참이면 a[i]를, 거짓이면 b[i]를 결과값으로 가지게 됩니다.
 
 @node Repetitive execution,  , Conditional execution, Control statements
 @subsection Repetitive execution: @code{for} loops, @code{repeat} and @code{while}
