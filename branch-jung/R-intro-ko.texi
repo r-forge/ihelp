@@ -3839,8 +3839,8 @@ User-contributed packages can be a rich source of datasets.
 > xnew <- edit(data.frame())
 @end example
 
-@noindent
-to enter new data via the spreadsheet interface.
+@c @noindent
+@c to enter new data via the spreadsheet interface.
 
 
 @node Probability distributions, Loops and conditional execution, Reading data from files, Top
@@ -3856,17 +3856,19 @@ to enter new data via the spreadsheet interface.
 @node R as a set of statistical tables, Examining the distribution of a set of data, Probability distributions, Probability distributions
 @section R as a set of statistical tables
 
-One convenient use of @R{} is to provide a comprehensive set of
-statistical tables.  Functions are provided to evaluate the cumulative
-distribution function @eqn{P(X \le x), P(X <= x)},
-the probability density function and the quantile function (given
-@math{q}, the smallest @math{x} such that @eqn{P(X \le x) > q, P(X <= x) > q}),
-and to simulate from the distribution.
+@c One convenient use of @R{} is to provide a comprehensive set of
+@c statistical tables.  Functions are provided to evaluate the cumulative
+@c distribution function @eqn{P(X \le x), P(X <= x)},
+@c the probability density function and the quantile function (given
+@c @math{q}, the smallest @math{x} such that @eqn{P(X \le x) > q, P(X <= x) > q}),
+@c and to simulate from the distribution.
+
+R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는 것입니다. 이것은 P(X <= x)를 만족하는 누적확률계산, 주어진 확률함수로부터 밀도계산, 주어진 q에 해당하는 퀀타일 (quantile)을 계산, P(X <= x) > q)를 만족하는 x 값 찾기, 그리고 주어진 분포로부터의 난수를 생성하는데 사용되어집니다.
 
 @c @quotation
 
 @multitable{Distribution namessss}{names, names}{arguments, arguments}
-@headitem Distribution @tab @R{} name @tab additional arguments
+@headitem 확률분포 @tab @R{}함수명 @tab 필요한 인자들
 @item beta @tab @code{beta} @tab @code{shape1, shape2, ncp}
 @item binomial @tab  @code{binom} @tab @code{size, prob}
 @item Cauchy @tab @code{cauchy} @tab @code{location, scale}
@@ -3890,15 +3892,17 @@ and to simulate from the distribution.
 
 @c @end quotation
 
-@noindent
-Prefix the name given here by @samp{d} for the density, @samp{p} for the
-CDF, @samp{q} for the quantile function and @samp{r} for simulation
-(@emph{r}andom deviates).  The first argument is @code{x} for
-@code{d@var{xxx}}, @code{q} for @code{p@var{xxx}}, @code{p} for
-@code{q@var{xxx}} and @code{n} for @code{r@var{xxx}} (except for
-@code{rhyper}, @code{rsignrank} and @code{rwilcox}, for which it is
+@c @noindent
+@c Prefix the name given here by @samp{d} for the density, @samp{p} for the
+@c CDF, @samp{q} for the quantile function and @samp{r} for simulation
+@c (@emph{r}andom deviates).  The first argument is @code{x} for
+@c @code{d@var{xxx}}, @code{q} for @code{p@var{xxx}}, @code{p} for
+@c @code{q@var{xxx}} and @code{n} for @code{r@var{xxx}} (except for
+@c @code{rhyper}, @code{rsignrank} and @code{rwilcox}, for which it is
 @code{nn}).  In not quite all cases is the non-centrality parameter
 @code{ncp} currently available: see the on-line help for details.
+
+여기에 나열된 R 함수의 이름앞에 ‘d’를 붙여 사용하면 확률밀도를 구하기 위한 함수명이 되고, ‘p’ 를 붙이면 누적확률값을 구할 수 있는 함수명이 되고, ‘q’ 를 붙이면 퀀타일을 구할수 있는 함수명이 되며, ‘r’ 을 붙이는 것은 난수를 생성하는 함수명을 가지게 됩니다. 한가지 주의할 점은 R 이 제공하고 있는 모든 함수가 non-centrality parameter(비중심화 모수)를 지원하는 것은 아닙니다. 더 자세한 사항은 온라인 도움말을 참고해주세요.
 
 The @code{p@var{xxx}} and @code{q@var{xxx}} functions all have logical
 arguments @code{lower.tail} and @code{log.p} and the @code{d@var{xxx}}
