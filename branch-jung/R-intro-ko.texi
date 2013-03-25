@@ -3400,58 +3400,70 @@ and matrix structures must all have the same
 @findex attach
 @findex detach
 
-The @code{$} notation, such as @code{accountants$home}, for list
-components is not always very convenient.  A useful facility would be
-somehow to make the components of a list or data frame temporarily
-visible as variables under their component name, without the need to
-quote the list name explicitly each time.
+@c The @code{$} notation, such as @code{accountants$home}, for list
+@c components is not always very convenient.  A useful facility would be
+@c somehow to make the components of a list or data frame temporarily
+@c visible as variables under their component name, without the need to
+@c quote the list name explicitly each time.
 
-The @code{attach()} function takes a `database' such as a list or data
-frame as its argument.  Thus suppose @code{lentils} is a
-data frame with three variables @code{lentils$u}, @code{lentils$v},
-@code{lentils$w}.  The attach
+여러분은 스트링 ($) 연산자를 이미 리스트를 구성하는 개별 컴포넌트를 엑세스할때 사용해 보았습니다. 그러나, 데이터 프레임 accountants 에 정의 되어 있는 home 이라는 변수를 엑세스 하기 위해서 매번 accountants$home와 같이 사용하는것은 많은 불편함이 있습니다. 따라서 R 은 attach() 라는 함수를 제공하여 이러한 불편함을 줄이고자 했습니다.
+
+@c The @code{attach()} function takes a `database' such as a list or data
+@c frame as its argument.  Thus suppose @code{lentils} is a
+@c data frame with three variables @code{lentils$u}, @code{lentils$v},
+@c @code{lentils$w}.  The attach
+
+예를들어 lentils$u, lentils$v, lentils$w라는 세개의 변수로 구성된 lentils 이라는 데이터 프레임이 있다고 가정합니다. 아래의 명령문에 사용된 attach() 란 함수의 사용은 R의 내부탐색경로를 자동으로 position 1(워크 스페이스에 있는 객체를 검색하는 최우선 탐색경로) 에서 position 2 (워크 스페이스 내에 존재하는 특정 객체의 내부를 검색하는 차선 탐색경로)로 변경하는 역할을 수행합니다. 따라서, attach(lentils) 라는 명령은 워크스페이스 내의 특정한 lentils 라는 데이터 프레임의 내부에서 이용되고 있는 u, v, w 이라는 객체들을 데이터 프레임의 이름없이 사용할 수 있도록 해줍니다. (만약, 전산지식이 있는 분이시라면 네이스페이스의 개념으로 이해하시는 것이 편리합니다).
 
 @example
 > attach(lentils)
 @end example
 
-@noindent
-places the data frame in the search path at @w{position 2}, and provided
-there are no variables @code{u}, @code{v} or @code{w} in @w{position 1},
-@code{u}, @code{v} and @code{w} are available as variables from the data
-frame in their own right.  At this point an assignment such as
+@c @noindent
+@c places the data frame in the search path at @w{position 2}, and provided
+@c there are no variables @code{u}, @code{v} or @code{w} in @w{position 1},
+@c @code{u}, @code{v} and @code{w} are available as variables from the data
+@c frame in their own right.  At this point an assignment such as
+
+attach() 를 사용하기 전에 반드시 알아야 할 점이 있습니다. 예를들어, 아래의 명령은 lentils 내 에 정의되어 있는 변수 v 와 w 를 이용하여 연산을 수행한 결과를 u 에 할당할 것을 의미합니다. 그러나 연산결과는 데이터 프레임 lentils 내에 정의된 u 에 저장되지 않습니다. 연산결과의 할당은 최우선 탐색경로 position 1로 재변경되어 새로운 u 라는 벡터를 생성해 내기 때문입니다.
 
 @example
 > u <- v+w
 @end example
 
-@noindent
-does not replace the component @code{u} of the data frame, but rather
-masks it with another variable @code{u} in the working directory at
-@w{position 1} on the search path.  To make a permanent change to the
-data frame itself, the simplest way is to resort once again to the
-@code{$} notation:
+@c @noindent
+@c does not replace the component @code{u} of the data frame, but rather
+@c masks it with another variable @code{u} in the working directory at
+@c @w{position 1} on the search path.  To make a permanent change to the
+@c data frame itself, the simplest way is to resort once again to the
+@c @code{$} notation:
+
+만약, lentils 라는 데이터 프레임내에 있는 u 라는 변수에 연산결과를 할당하고 싶다면 반드시 아래의 명령문에서 보이는 것과 같이 $ 연산자를 사용하여야 합니다. 그러나, 변경된 u 의 값들은 lentils 라는 데이터 프레임이 detach() 라는 함수가 사용될 때까지는 육안으로 확인할 수 없습니다.
 
 @example
 > lentils$u <- v+w
 @end example
 
-However the new value of component @code{u} is not visible until the
-data frame is detached and attached again.
+@c However the new value of component @code{u} is not visible until the
+@c data frame is detached and attached again.
 
-To detach a data frame, use the function
+@c To detach a data frame, use the function
+
+아래의 detach() 란 함수는 현재 사용하고 있는 특정 데이터 프레임에 대한 탐색경로 position 2 를 position 1 로 재변경을 해주는 역할을 합니다.
 
 @example
 > detach()
 @end example
 
-More precisely, this statement detaches from the search path the entity
-currently at @w{position 2}.  Thus in the present context the variables
-@code{u}, @code{v} and @code{w} would be no longer visible, except under
-the list notation as @code{lentils$u} and so on.  Entities at positions
-greater than 2 on the search path can be detached by giving their number
-to @code{detach}, but it is much safer to always use a name, for example
-by @code{detach(lentils)} or @code{detach("lentils")}
+@c More precisely, this statement detaches from the search path the entity
+@c currently at @w{position 2}.  Thus in the present context the variables
+@c @code{u}, @code{v} and @code{w} would be no longer visible, except under
+@c the list notation as @code{lentils$u} and so on.  Entities at positions
+@c greater than 2 on the search path can be detached by giving their number
+@c to @code{detach}, but it is much safer to always use a name, for example
+@c by @code{detach(lentils)} or @code{detach("lentils")}
+
+여러 개의 데이터의 프레임을 동시에 attach()라는 함수를 이용하여 사용할 수 있기 때문에 detach(lentils) 혹은 ("lentils") 라고 데이터 프레임의 이름을 정확히 명시하는게 프로그래밍의 오류를 줄이는 방법입니다.
 
 @quotation Note
 In @R{} lists and data frames can only be attached at position 2 or
