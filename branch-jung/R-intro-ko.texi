@@ -3812,22 +3812,28 @@ User-contributed packages can be a rich source of datasets.
 @node Editing data,  , Accessing builtin datasets, Reading data from files
 @section Editing data
 
-@findex edit
-When invoked on a data frame or matrix, @code{edit} brings up a separate
-spreadsheet-like environment for editing.  This is useful for making
-small changes once a data set has been read.  The command
+@c @findex edit
+@c When invoked on a data frame or matrix, @code{edit} brings up a separate
+@c spreadsheet-like environment for editing.  This is useful for making
+@c small changes once a data set has been read.  The command
+
+만약 사용자가 데이터 프레임이나 행렬의 일부내용을 수정 및 편집을 하고 싶을때 edit 이라는 함수는 윈도우즈 기반의 스프레드시트 형식의 편집기능을 제공해 주므로 매우 편리하게 작업을 할 수 있습니다.
 
 @example
 > xnew <- edit(xold)
 @end example
 
-@noindent
-will allow you to edit your data set @code{xold}, and on completion the
-changed object is assigned to @code{xnew}.  If you want to alter the
-original dataset @code{xold}, the simplest way is to use
-@code{fix(xold)}, which is equivalent to @code{xold <- edit(xold)}.
+@c @noindent
+@c will allow you to edit your data set @code{xold}, and on completion the
+@c changed object is assigned to @code{xnew}.  If you want to alter the
+@c original dataset @code{xold}, the simplest way is to use
+@c @code{fix(xold)}, which is equivalent to @code{xold <- edit(xold)}.
 
-Use
+위에서 사용된 edit() 이라는 함수는 xold 이라는 데이터셋을 편집한 뒤, 편집된 새로운 내용을 xnew 라는 데이터셋으로 저장한다는 의미입니다. 만약, 사용자가 xold 라는 원본 데이터셋 자체를 변경하고자 한다면 fix(xold) 라는 함수를 이용하시길 바랍니다. 이것은 xold <- edit(xold) 와 동일한 표현입니다.
+
+만약에 여러분이 비어있는 데이터 프레임으로부터 윈도우즈 기반의 스프레드시트를 통하여 새로운 데이터셋을 생성하고자 한다면 아래에서 보여지는 것과 같이 명령어를 입력하시면 됩니다.
+
+@c Use
 
 @example
 > xnew <- edit(data.frame())
