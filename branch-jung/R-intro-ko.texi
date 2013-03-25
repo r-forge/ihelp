@@ -3279,7 +3279,7 @@ of course, similarly be given a @emph{names} attribute also.
 @c Lists, like any subscripted object, can be extended by specifying
 @c additional components.  For example
 
-만약, 리스트에 새로운 컴포넌트를 추가하고 싶을 경우에는 아래의 명령문과 같이 서브스크립트를 이용하면 편리합니다
+만약, 리스트에 새로운 컴포넌트를 추가하고 싶을 경우에는 아래의 명령문과 같이 서브스크립트를 이용하면 편리합니다.
 
 @example
 > Lst[5] <- list(matrix=Mat)
@@ -3294,9 +3294,11 @@ of course, similarly be given a @emph{names} attribute also.
 @cindex Concatenating lists
 
 @findex c
-When the concatenation function @code{c()} is given list arguments, the
-result is an object of mode list also, whose components are those of the
-argument lists joined together in sequence.
+@c When the concatenation function @code{c()} is given list arguments, the
+@c result is an object of mode list also, whose components are those of the
+@c argument lists joined together in sequence.
+
+만약 여러개의 리스트를 한데 묶고 싶다면 아래와 같이 함수 c() 를 이용하면 사용된 인자의 순서대로 한데 묶인 새로운 리스트를 생성해 줍니다.
 
 @example
 > list.ABC <- c(list.A, list.B, list.C)
