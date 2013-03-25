@@ -4788,26 +4788,30 @@ S-Plus 사용자는 <<- 라는 연산자가 R 에서 다른 의미로 사용된�
 @node Efficiency factors in block designs, Dropping all names in a printed array, More advanced examples, More advanced examples
 @subsection Efficiency factors in block designs
 
-As a more complete, if a little pedestrian, example of a function,
-consider finding the efficiency factors for a block design.  (Some
-aspects of this problem have already been discussed in @ref{Index
-matrices}.)
+@c As a more complete, if a little pedestrian, example of a function,
+@c consider finding the efficiency factors for a block design.  (Some
+@c aspects of this problem have already been discussed in @ref{Index
+@c matrices}.)
 
-A block design is defined by two factors, say @code{blocks} (@code{b}
-levels) and @code{varieties} (@code{v} levels).  If @math{R} and
-@math{K} are the @math{v} by @math{v} and @math{b} by @math{b}
-@emph{replications} and @emph{block size} matrices, respectively, and
-@math{N} is the @math{b} by @math{v} incidence matrix, then the
-efficiency factors are defined as the eigenvalues of the matrix
-@ifnottex
-E = I_v - R^@{-1/2@}N'K^@{-1@}NR^@{-1/2@} = I_v - A'A, where
-A = K^@{-1/2@}NR^@{-1/2@}.
-@end ifnottex
-@tex
-$$E = I_v - R^{-1/2}N^T K^{-1}NR^{-1/2} = I_v - A^T A,$$
-where $A = K^{-1/2}NR^{-1/2}$.
-@end tex
-One way to write the function is given below.
+함수에 대해서 좀 더 자세히 다루기 위해서 이번에는 블락 디자인에서 사용되는 효율성요인(efficiency factor)을 찾아보도록 하겠습니다. 이 문제에 대한 일부의 내용은 이미 Index matrices에서 다룬바 있습니다.
+
+@c A block design is defined by two factors, say @code{blocks} (@code{b}
+@c levels) and @code{varieties} (@code{v} levels).  If @math{R} and
+@c @math{K} are the @math{v} by @math{v} and @math{b} by @math{b}
+@c @emph{replications} and @emph{block size} matrices, respectively, and
+@c @math{N} is the @math{b} by @math{v} incidence matrix, then the
+@c efficiency factors are defined as the eigenvalues of the matrix
+@c @ifnottex
+@c E = I_v - R^@{-1/2@}N'K^@{-1@}NR^@{-1/2@} = I_v - A'A, where
+@c A = K^@{-1/2@}NR^@{-1/2@}.
+@c @end ifnottex
+@c @tex
+@c $$E = I_v - R^{-1/2}N^T K^{-1}NR^{-1/2} = I_v - A^T A,$$
+@c where $A = K^{-1/2}NR^{-1/2}$.
+@c @end tex
+@c One way to write the function is given below.
+
+b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 요인을 이용한 블락 디자인을 생각해 봅시다. 만약 R과 K이 각각 v행 v열을 가진 replications 행렬과 b행 b열을 가진 block size 행렬이라고 합시다. 효율성요인(efficiency factor)은 아래와 같은 행렬의 기저값들 (eigenvalues)로 정의될 수 있습니다. E = I_v - R^{-1/2}N'K^{-1}NR^{-1/2} = I_v - A'A, 여기에서 A = K^{-1/2}NR^{-1/2} 입니다. 효율성 요인을 산출하는 함수를 작성하는 것은 다음과 같습니다.
 
 @example
 > bdeff <- function(blocks, varieties) @{
@@ -4824,13 +4828,17 @@ One way to write the function is given below.
 @}
 @end example
 
-It is numerically slightly better to work with the singular value
-decomposition on this occasion rather than the eigenvalue routines.
+@c It is numerically slightly better to work with the singular value
+@c decomposition on this occasion rather than the eigenvalue routines.
 
-The result of the function is a list giving not only the efficiency
-factors as the first component, but also the block and variety canonical
-contrasts, since sometimes these give additional useful qualitative
-information.
+실제로 이경우에는 the singular value decomposition 을 이용하는 것이 기저값 (eigenvalue)를 이용한 방법보다 보다 나은 연산결과를 줍니다.
+
+@c The result of the function is a list giving not only the efficiency
+@c factors as the first component, but also the block and variety canonical
+@c contrasts, since sometimes these give additional useful qualitative
+@c information.
+
+위에서 작성된 함수는 효율성 요인(인자)만을 결과값으로 돌려주는 것만이 아니라 block 과 variety 라는 요인의 정준대비(canonical contrast) 또한 알려줍니다. 그 이유는 이 두가지 결과값들이 때때로 유용한 질적 정보를 제공하기 때문입니다.
 
 @node Dropping all names in a printed array, Recursive numerical integration, Efficiency factors in block designs, More advanced examples
 @subsection Dropping all names in a printed array
