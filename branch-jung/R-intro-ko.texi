@@ -3761,20 +3761,24 @@ detailed in the manuals.
 @cindex Accessing builtin datasets
 @findex data
 
-Around 100 datasets are supplied with @R{} (in package @pkg{datasets}),
-and others are available in packages (including the recommended packages
-supplied with @R{}).  To see the list of datasets currently available
-use
+@c Around 100 datasets are supplied with @R{} (in package @pkg{datasets}),
+@c and others are available in packages (including the recommended packages
+@c supplied with @R{}).  To see the list of datasets currently available
+@c use
+
+R 은 기본적으로 대략 100여개의 데이터셋을 datasets 이라는 패키지를 통하여 제공하고 있습니다. 만약 R 이 제공하는 데이터셋의 목록을 확인하고 싶으시다면 아래의 명령어를 이용하면 됩니다.
 
 @example
 data()
 @end example
 
-@noindent
-As from @R{} version 2.0.0 all the datasets supplied with @R{} are
-available directly by name.  However, many packages still use the
-earlier convention in which @code{data} was also used to load datasets
-into @R{}, for example
+@c @noindent
+@c As from @R{} version 2.0.0 all the datasets supplied with @R{} are
+@c available directly by name.  However, many packages still use the
+@c earlier convention in which @code{data} was also used to load datasets
+@c into @R{}, for example
+
+R-2.0.0 버전부터 제공되는 모든 데이터셋은 아래에서 보여지는 것과 같이 데이터셋의 이름을 통하여 바로 엑세스 할 수 있습니다.
 
 @example
 data(infert)
@@ -3788,16 +3792,20 @@ help for the object to see what to expect.
 
 @subsection Loading data from other R packages
 
-To access data from a particular package, use the @code{package}
-argument, for example
+@c To access data from a particular package, use the @code{package}
+@c argument, for example
+
+만약 특정 패키지 안에서 사용되는 데이터셋에 대해서 알고 싶으시다면 아래에 보이는 것과 같이 data() 함수 내에 있는 package 라는 인자를 이용하시면 됩니다.
 
 @example
 data(package="rpart")
 data(Puromycin, package="datasets")
 @end example
 
-If a package has been attached by @code{library}, its datasets are
-automatically included in the search.
+@c If a package has been attached by @code{library}, its datasets are
+@c automatically included in the search.
+
+만약 특정 패키지를 library 라는 함수를 통해서 현재 작업하고 있는 워크스페이스에 연결시켰다면, 패키지에 포함된 데이터셋들은 자동으로 연결되어 검색되어집니다.
 
 User-contributed packages can be a rich source of datasets.
 
