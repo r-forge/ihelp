@@ -2993,11 +2993,13 @@ discussed in @ref{Statistical models in R}.
 @findex cbind
 @findex rbind
 
-As we have already seen informally, matrices can be built up from other
-vectors and matrices by the functions @code{cbind()} and @code{rbind()}.
-Roughly @code{cbind()} forms matrices by binding together matrices
-horizontally, or column-wise, and @code{rbind()} vertically, or
-row-wise.
+@c As we have already seen informally, matrices can be built up from other
+@c vectors and matrices by the functions @code{cbind()} and @code{rbind()}.
+@c Roughly @code{cbind()} forms matrices by binding together matrices
+@c horizontally, or column-wise, and @code{rbind()} vertically, or
+@c row-wise.
+
+위에서도 잠깐 언급했었지만, cbind() 와 rbind() 이라는 함수는 벡터와 행렬을 열방향 혹은 행방향으로 묶어 새로운 행렬을 생성할 때 이용됩니다.
 
 In the assignment
 
@@ -3006,23 +3008,29 @@ In the assignment
 @end example
 
 @noindent
-the arguments to @code{cbind()} must be either vectors of any length, or
-matrices with the same column size, that is the same number of rows.
-The result is a matrix with the concatenated arguments @var{arg_1},
-@var{arg_2}, @dots{} forming the columns.
+@c the arguments to @code{cbind()} must be either vectors of any length, or
+@c matrices with the same column size, that is the same number of rows.
+@c The result is a matrix with the concatenated arguments @var{arg_1},
+@c @var{arg_2}, @dots{} forming the columns.
+
+위에서 사용된 cbind() 라는 함수는 임의의 크기를 가진 벡터나 행렬을 인자로 가질 수 있으나, 모든 인자들의 행의 길이는 같아야만 합니다.
 
 If some of the arguments to @code{cbind()} are vectors they may be
 shorter than the column size of any matrices present, in which case they
 are cyclically extended to match the matrix column size (or the length
 of the longest vector if no matrices are given).
 
-The function @code{rbind()} does the corresponding operation for rows.
-In this case any vector argument, possibly cyclically extended, are of
-course taken as row vectors.
+@c The function @code{rbind()} does the corresponding operation for rows.
+@c In this case any vector argument, possibly cyclically extended, are of
+@c course taken as row vectors.
 
-Suppose @code{X1} and @code{X2} have the same number of rows.  To
-combine these by columns into a matrix @code{X}, together with an
-initial column of @code{1}s we can use
+rbind()이라는 함수역시 cbind() 라는 함수와 사용방법은 동일하지만, 모든 인자들의 열의 길이는 같아야만 합니다.
+
+@c Suppose @code{X1} and @code{X2} have the same number of rows.  To
+@c combine these by columns into a matrix @code{X}, together with an
+@c initial column of @code{1}s we can use
+
+예를 들어, X1 과 X2 이라는 두 행렬이 같은 행의 길이를 가지고 있다고 가정합니다. 아래의 명령문은 1 이란 인자는 X1 이 가진 행의 길이만큼 1 을 리사이클링 시켜서 1 이라는 열벡터를 생성한뒤, 1, X1, X2 를 열방향으로 한데 묶어 X 라는 새로운 벡터를 생성시켜 줍니다.
 
 @example
 > X <- cbind(1, X1, X2)
