@@ -3334,7 +3334,7 @@ discarded.
 @c Matrices, lists, and data frames provide as many variables to the new
 @c data frame as they have columns, elements, or variables, respectively.
 
-데이터 프레임에 입력될 수 있는 자료는 반드시 (수치형, 문자형, 혹은 논리형) 벡터, 수치형 행렬, 리스트, 또는 다른 데이터 프레임이어야만 합니다. 데이터 프레임을 구성하는 각각의 열은 변수로 인식되므로, 새로운 데이터 프레임은 입력되는 행렬의 열, 리스트의 컴포넌트, 혹은 데이터 프레임의 변수의 개수만큼 자동으로 확장되어 생성되어 집니다. 데이터 프레임에 입력되는 수치형, 문자형, 그리고 논리형 벡터는 모두 요인으로 강제변환되어지고, 입력된 벡터내에 중복되지 않은 값들이 요인의 레벨로 간주되어 집니다. 데이터프레임 내에 있는 모든 변수 (즉, 벡터) 는 동일한 길이를 가져야 합니다. 데이터 프레임을 단순히 추가적인 모드와 속성을 가진 행렬로 보아도 무방합니다. 행렬에서 인덱스 벡터와 인덱스 행렬을 이용하여 행렬의 서브셋을 구한 것과 동일한 방법으로 데이터프레임의 일부분을 서브셋 할 수 있습니다.
+데이터 프레임에 입력될 수 있는 자료는 반드시 (수치형, 문자형, 혹은 논리형) 벡터, 수치형 행렬, 리스트, 또는 다른 데이터 프레임이어야만 합니다. 데이터 프레임을 구성하는 각각의 열은 변수로 인식되므로, 새로운 데이터 프레임은 입력되는 행렬의 열, 리스트의 컴포넌트, 혹은 데이터 프레임의 변수의 개수만큼 자동으로 확장되어 생성되어 집니다. 데이터 프레임에 입력되는 수치형, 문자형, 그리고 논리형 벡터는 모두 요인으로 강제변환되어지고, 입력된 벡터내에 중복되지 않은 값들이 요인의 레벨로 간주되어 집니다.  
 
 @item
 Numeric vectors, logicals and factors are included as is, and by
@@ -3342,16 +3342,23 @@ default@footnote{Conversion of character columns to factors is
 overridden using the @code{stringsAsFactors} argument to the
 @code{data.frame()} function.} character vectors are coerced to be
 factors, whose levels are the unique values appearing in the vector.
-@item
-Vector structures appearing as variables of the data frame must all have
-the @emph{same length}, and matrix structures must all have the same
-@emph{row size}.
-@end itemize
 
-A data frame may for many purposes be regarded as a matrix with columns
-possibly of differing modes and attributes.  It may be displayed in
-matrix form, and its rows and columns extracted using matrix indexing
-conventions.
+@c @item
+@c Vector structures appearing as variables of the data frame must all have
+@c the @emph{same length}, 
+
+and matrix structures must all have the same
+@emph{row size}.
+@c @end itemize
+
+데이터프레임 내에 있는 모든 변수 (즉, 벡터) 는 동일한 길이를 가져야 합니다.
+
+@c A data frame may for many purposes be regarded as a matrix with columns
+@c possibly of differing modes and attributes.  It may be displayed in
+@c matrix form, and its rows and columns extracted using matrix indexing
+@c conventions.
+
+데이터 프레임을 단순히 추가적인 모드와 속성을 가진 행렬로 보아도 무방합니다. 행렬에서 인덱스 벡터와 인덱스 행렬을 이용하여 행렬의 서브셋을 구한 것과 동일한 방법으로 데이터프레임의 일부분을 서브셋 할 수 있습니다.
 
 @menu
 * Making data frames::          
