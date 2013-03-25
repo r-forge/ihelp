@@ -3089,33 +3089,41 @@ matrix respectively.
 @section Frequency tables from factors
 @cindex Tabulation
 
-Recall that a factor defines a partition into groups.  Similarly a pair
-of factors defines a two way cross classification, and so on.
-@findex table
-The function @code{table()} allows frequency tables to be calculated
-from equal length factors.  If there are @math{k} factor arguments,
-the result is a @math{k}-way array of frequencies.
+@c Recall that a factor defines a partition into groups.  Similarly a pair
+@c of factors defines a two way cross classification, and so on.
+@c @findex table
+@c The function @code{table()} allows frequency tables to be calculated
+@c from equal length factors.  If there are @math{k} factor arguments,
+@c the result is a @math{k}-way array of frequencies.
 
-Suppose, for example, that @code{statef} is a factor giving the state
-code for each entry in a data vector.  The assignment
+위에서 요인 (factor) 라는 것은 데이터를 요인이 가진 레벨에 따라서 분류할 때 사용한다고 했습니다. 만약 2개의 요인이 존재한다면 2차원 분류 (two way cross classification) 가 가능할 것이고, 더 나아가 k 개의 요인이 있다면 k-차원의 분류가 가능할 것입니다.
+
+@c Suppose, for example, that @code{statef} is a factor giving the state
+@c code for each entry in a data vector.  The assignment
+
+함수 table() 은 배열을 이용하여 이러한 분류가 가능하도록 도와줍니다. 예를 들어, 여러개의 레벨을 가진 지역코드란 요인에 대한 정보가 statef 에 저장되어 있다면, 다음의 코드는 지역코드별 도수분포를 statefr에 저장하게 됩니다. 이때 각 레벨별 도수는 레벨이 가진 이름순으로 정렬됩니다.
 
 @example
 > statefr <- table(statef)
 @end example
 
 @noindent
-gives in @code{statefr} a table of frequencies of each state in the
-sample.  The frequencies are ordered and labelled by the @code{levels}
-attribute of the factor.  This simple case is equivalent to, but more
-convenient than,
+@c gives in @code{statefr} a table of frequencies of each state in the
+@c sample.  The frequencies are ordered and labelled by the @code{levels}
+@c attribute of the factor.  This simple case is equivalent to, but more
+@c convenient than,
+
+이와 동일한 역할을 수행하는 또 다른 편리한 방법은 아래와 같습니다.
 
 @example
 > statefr <- tapply(statef, statef, length)
 @end example
 
-Further suppose that @code{incomef} is a factor giving a suitably
-defined ``income class'' for each entry in the data vector, for example
-with the @code{cut()} function:
+@c Further suppose that @code{incomef} is a factor giving a suitably
+@c defined ``income class'' for each entry in the data vector, for example
+@c with the @code{cut()} function:
+
+지역별 코드의 경우에는 데이터값이 이산형이지만, 소득수준의 경우는 연속형의 데이터를 가집니다. 이런 경우, 소득수준에 대한 구간을 나누는 편리한 방법은 아래와 같이 cut() 이라는 함수를 사용하는 것입니다.
 
 @example
 > factor(cut(incomes, breaks = 35+10*(0:7))) -> incomef
