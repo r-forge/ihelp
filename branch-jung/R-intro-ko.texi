@@ -4650,13 +4650,17 @@ and so on.
 @cindex Named arguments
 @cindex Default values
 
-As first noted in @ref{Generating regular sequences}, if arguments to
-called functions are given in the ``@code{@var{name}=@var{object}}''
-form, they may be given in any order.  Furthermore the argument sequence
-may begin in the unnamed, positional form, and specify named arguments
-after the positional arguments.
+@c As first noted in @ref{Generating regular sequences}, if arguments to
+@c called functions are given in the ``@code{@var{name}=@var{object}}''
+@c form, they may be given in any order.  Furthermore the argument sequence
+@c may begin in the unnamed, positional form, and specify named arguments
+@c after the positional arguments.
 
-Thus if there is a function @code{fun1} defined by
+Generating regular sequences에서 설명했던 것과 같이 함수에 사용되는 인자들은 “name=object” 와 같은 형식을 가지고 있으며, 이렇게 함수를 정의할때 인자의 이름을 굳이 정의하는 것은 프로그래밍의 논리적 오류를 줄이고자 하는 노력이라고 보시면 됩니다.
+
+@c Thus if there is a function @code{fun1} defined by
+
+예를들어, 아래와 같이 정의된 fun1 이라는 함수가 있다고 가정합니다.
 
 @example
 > fun1 <- function(data, data.frame, graph, limit) @{
@@ -4664,8 +4668,10 @@ Thus if there is a function @code{fun1} defined by
   @}
 @end example
 
-@noindent
-then the function may be invoked in several ways, for example
+@c @noindent
+@c then the function may be invoked in several ways, for example
+
+위에서 정의된 함수는 아래와 같이 세가지 방법으로 사용이 가능합니다.
 
 @example
 > ans <- fun1(d, df, TRUE, 20)
@@ -4673,38 +4679,46 @@ then the function may be invoked in several ways, for example
 > ans <- fun1(data=d, limit=20, graph=TRUE, data.frame=df)
 @end example
 
-@noindent
-are all equivalent.
+@c @noindent
+@c are all equivalent.
 
-In many cases arguments can be given commonly appropriate default
-values, in which case they may be omitted altogether from the call when
-the defaults are appropriate.  For example, if @code{fun1} were defined
-as
+@c In many cases arguments can be given commonly appropriate default
+@c values, in which case they may be omitted altogether from the call when
+@c the defaults are appropriate.  For example, if @code{fun1} were defined
+@c as
+
+그런데, R 에서 제공하는 모든 함수들은 아래에서 보여지는 것과 같이 함수를 정의할 때 함수의 인자에 기본값이라는 것을 부여합니다.
 
 @example
 > fun1 <- function(data, data.frame, graph=TRUE, limit=20) @{ @dots{} @}
 @end example
 
-@noindent
-it could be called as
+@c @noindent
+@c it could be called as
+
+이처럼 함수의 인자에 대해 기본값이 미리 정의되어 있기 때문에 아래와 같이 함수의 모든 인자를 입력하지 않아도 함수는 기본값을 이용하여 연산을 수행하게 됩니다.
 
 @example
 > ans <- fun1(d, df)
 @end example
 
-@noindent
-which is now equivalent to the three cases above, or as
+@c @noindent
+@c which is now equivalent to the three cases above, or as
+
+아래의 코드는 limit 라는 인자의 기본값을 20 에서 10 으로 바꾸어서 실행하라는 의미입니다.
 
 @example
 > ans <- fun1(d, df, limit=10)
 @end example
 
-@noindent
-which changes one of the defaults.
+@c @noindent
+@c which changes one of the defaults.
 
-It is important to note that defaults may be arbitrary expressions, even
-involving other arguments to the same function; they are not restricted
-to be constants as in our simple example here.
+@c It is important to note that defaults may be arbitrary expressions, even
+@c involving other arguments to the same function; they are not restricted
+@c to be constants as in our simple example here.
+
+인자에 주어지는 기본값이 여기 예제에서 사용된 것과 같이 굳이 상수를 가질 필요는 없으며, 그 어떠한 표현식을 사용해도 무방합니다.
 
 @node The three dots argument, Assignment within functions, Named arguments and defaults, Writing your own functions
 @section The @samp{@dots{}} argument
