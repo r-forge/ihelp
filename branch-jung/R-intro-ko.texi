@@ -3698,42 +3698,52 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @section The @code{scan()} function
 @findex scan
 
-Suppose the data vectors are of equal length and are to be read in
-parallel.  Further suppose that there are three vectors, the first of
-mode character and the remaining two of mode numeric, and the file is
-@file{input.dat}.  The first step is to use @code{scan()} to read in the
-three vectors as a list, as follows
+@c Suppose the data vectors are of equal length and are to be read in
+@c parallel.  Further suppose that there are three vectors, the first of
+@c mode character and the remaining two of mode numeric, and the file is
+@c @file{input.dat}.  The first step is to use @code{scan()} to read in the
+@c three vectors as a list, as follows
+
+먼저 input.dat 이라는 데이터 파일이 길이가 같은 세개의 벡터를 가지고 있다고 가정합니다. 또한, 이 세개의 벡터중 하나는 문자형이고, 나머지 두개는 수치형이라고 가정합니다. 아래의 코드는 scan() 함수를 이용하여 input.dat 이라는 데이터 파일을 읽어들이는 방법을 보여주고 있습니다.
 
 @example
 > inp <- scan("input.dat", list("",0,0))
 @end example
 
-The second argument is a dummy list structure that establishes the mode
-of the three vectors to be read.  The result, held in @code{inp}, is a
-list whose components are the three vectors read in.  To separate the
-data items into three separate vectors, use assignments like
+@c The second argument is a dummy list structure that establishes the mode
+@c of the three vectors to be read.  The result, held in @code{inp}, is a
+@c list whose components are the three vectors read in.  To separate the
+@c data items into three separate vectors, use assignments like
+
+위에서 보이는 것과 같이 scan() 함수의 두번째 인자는 리스트라는 형식을 요구합니다. 또한, 이 리스트의 인자는 세개의 변수가 가지는 데이터형을 지정합니다. 큰 따옴표는 문자형을 의미하고, 0 이란 수치형을 의미합니다. 따라서, scan() 함수를 통해서 불러들인 input.dat 데이터 파일은 inp 이라는 리스트에 데이터를 저장하게 되므로 아래와 같은 방법으로 각각의 변수를 엑세스 할 수 있습니다.
 
 @example
 > label <- inp[[1]]; x <- inp[[2]]; y <- inp[[3]]
 @end example
 
-More conveniently, the dummy list can have named components, in which
-case the names can be used to access the vectors read in.  For example
+@c More conveniently, the dummy list can have named components, in which
+@c case the names can be used to access the vectors read in.  For example
+
+위에서 소개한 방법보다 더 편한 방법은 아래의 코드에서 보이는 것과 같이 리스트를 통해 불러올때 인자에 바로 이름을 부여하는 것입니다.
 
 @example
 > inp <- scan("input.dat", list(id="", x=0, y=0))
 @end example
 
-If you wish to access the variables separately they may either be
-re-assigned to variables in the working frame:
+@c If you wish to access the variables separately they may either be
+@c re-assigned to variables in the working frame:
+
+이처럼 불러들어온 데이터가 리스트 형이므로 아래와 같은 방법으로 각각의 변수를 엑세스 할 수 있습니다.
 
 @example
 > label <- inp$id; x <- inp$x; y <- inp$y
 @end example
 
-@noindent
-or the list may be attached at @w{position 2} of the search path
+@c @noindent
+@c or the list may be attached at @w{position 2} of the search path
 (@pxref{Attaching arbitrary lists}).
+
+또는 inp 이라는 리스트를 제 2 탐색경로 (즉, position 2) 에 연결시켜 엑세스 할 수도 있습니다(see Attaching arbitrary lists).
 
 If the second argument is a single value and not a list, a single vector
 is read in, all components of which must be of the same mode as the
