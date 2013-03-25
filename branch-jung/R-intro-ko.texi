@@ -3044,32 +3044,39 @@ matrix respectively.
 @node The concatenation function c() with arrays, Frequency tables from factors, Forming partitioned matrices, Arrays and matrices
 @section The concatenation function, @code{c()}, with arrays
 
-It should be noted that whereas @code{cbind()} and @code{rbind()} are
-concatenation functions that respect @code{dim} attributes, the basic
-@code{c()} function does not, but rather clears numeric objects of all
-@code{dim} and @code{dimnames} attributes.  This is occasionally useful
-in its own right.
+@c It should be noted that whereas @code{cbind()} and @code{rbind()} are
+@c concatenation functions that respect @code{dim} attributes, the basic
+@c @code{c()} function does not, but rather clears numeric objects of all
+@c @code{dim} and @code{dimnames} attributes.  This is occasionally useful
+@c in its own right.
 
-The official way to coerce an array back to a simple vector object is to
-use @code{as.vector()}
+만약, cbind()와 rbind() 이라는 함수가 행렬의 dim 속성을 기초로 여러개의 행렬을 한데 묶어준다고 한다면, c() 이라는 함수는 dim 과 dimnames 라는 속성을 모두 무시한채 결합을 수행한다고 할 수 있습니다. c() 를 이용하는 것이 때때로 더 유용한 경우가 있습니다.
+
+@c The official way to coerce an array back to a simple vector object is to
+@c use @code{as.vector()}
+
+원래 이렇게 속성들을 무시하고, 배열을 단순 벡터로 강제변환하는 방법은 아래와 같이 as.vector()이라는 함수를 이용하는 것입니다.
 
 @example
 > vec <- as.vector(X)
 @end example
 @findex as.vector
 
-However a similar result can be achieved by using @code{c()} with just
-one argument, simply for this side-effect:
+@c However a similar result can be achieved by using @code{c()} with just
+@c one argument, simply for this side-effect:
+
+위에서 얻은 동일한 결과를 아래와 같이 c()라는 함수를 이용해서도 얻을 수 있습니다. 
 
 @example
 > vec <- c(X)
 @end example
 @findex c
 
-There are slight differences between the two, but ultimately the choice
-between them is largely a matter of style (with the former being
-preferable).
+@c There are slight differences between the two, but ultimately the choice
+@c between them is largely a matter of style (with the former being
+@c preferable).
 
+실은 약간 다른 점은 있으나, 어느 것을 사용하는가는 프로그래밍 스타일의 차이일 뿐입니다 .
 
 @c =======================================================================================================================================
 @c =======================================================================================================================================
