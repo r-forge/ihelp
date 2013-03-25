@@ -3371,24 +3371,29 @@ and matrix structures must all have the same
 @node Making data frames, attach() and detach(), Data frames, Data frames
 @subsection Making data frames
 
-Objects satisfying the restrictions placed on the columns (components)
-of a data frame may be used to form one using the function
-@code{data.frame}:
-@findex data.frame
+@c Objects satisfying the restrictions placed on the columns (components)
+@c of a data frame may be used to form one using the function
+@c @code{data.frame}:
+@c @findex data.frame
+
+데이터 프레임은 아래의 명령문에서 보여지는 바와 같이 data.frame이라는 함수내에 데이터 프레임에서 사용될 각각의 열에 대한 변수명과 이에 상응하는 데이터 벡터를 지정함으로서 생성할수 있습니다. 위의 예제에서 사용된 statef 는 이산형 데이터를 가지는 벡터이고, incomes 는 연속형 데이터를 가지는 벡터, 그리고 incomef는 구간화 된 값을 가지는 벡터입니다. 따라서 새로이 생성될 데이터 프레임 accountants은 home, loot, 그리고 shot 이라는 세가지 변수를 가질 것인데, home 이라는 변수는 statef의 데이터가, loot라는 변수에는 incomes의 데이터가, 그리고 shot 이라는 변수에는 incomef 이라는 데이터 벡터가 이용될 것이라는 것을 의미하게 됩니다.
+
 
 @example
 > accountants <- data.frame(home=statef, loot=incomes, shot=incomef)
 @end example
 
-A list whose components conform to the restrictions of a data frame may
-be @emph{coerced} into a data frame using the function
-@code{as.data.frame()}
-@findex as.data.frame
+@c A list whose components conform to the restrictions of a data frame may
+@c be @emph{coerced} into a data frame using the function
+@c @code{as.data.frame()}
+@c @findex as.data.frame
 
-The simplest way to construct a data frame from scratch is to use the
-@code{read.table()} function to read an entire data frame from an
-external file.  This is discussed further in @ref{Reading data from
-files}.
+@c The simplest way to construct a data frame from scratch is to use the
+@c @code{read.table()} function to read an entire data frame from an
+@c external file.  This is discussed further in @ref{Reading data from
+@c files}.
+
+만약 사용자가 이미 벡터로 구성된 리스트를 가지고 있다면, as.data.frame() 이라는 함수를 이용하여 리스트를 데이터 프레임의 형식으로 강제변환 시킬 수 있습니다. 데이터 프레임을 생성하는 가장 편리한 방법은 read.table() 이라는 함수를 이용하여 컴퓨터에 저장되어 있는 데이터 파일을 불러들어오는 것입니다. 이것에 대해서는 Reading data from files 에서 자세히 소개합니다.
 
 @node attach() and detach(), Working with data frames, Making data frames, Data frames
 @subsection @code{attach() and @code{detach()}}
