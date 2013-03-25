@@ -4473,34 +4473,44 @@ break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만
 @chapter Writing your own functions
 @cindex Writing functions
 
-As we have seen informally along the way, the @R{} language allows the
-user to create objects of mode @emph{function}.  These are true @R{}
-functions that are stored in a special internal form and may be used in
-further expressions and so on.  In the process, the language gains
-enormously in power, convenience and elegance, and learning to write
-useful functions is one of the main ways to make your use of @R{}
-comfortable and productive.
+@c As we have seen informally along the way, the @R{} language allows the
+@c user to create objects of mode @emph{function}.  These are true @R{}
+@c functions that are stored in a special internal form and may be used in
+@c further expressions and so on.  In the process, the language gains
+@c enormously in power, convenience and elegance, and learning to write
+@c useful functions is one of the main ways to make your use of @R{}
+@c comfortable and productive.
 
-It should be emphasized that most of the functions supplied as part of
-the @R{} system, such as @code{mean()}, @code{var()},
-@code{postscript()} and so on, are themselves written in @R{} and thus
-do not differ materially from user written functions.
+R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 function(함수)라는 모드를 가진 객체를 생성할 수 있도록 지원합니다. 이처럼 R이 사전에 미리 제공하는 함수들은 built-in (내장) 함수라고 하며, 사용자가 직접 정의하는 함수를 사용자 정의함수라고 합니다. 사용자 정의 함수를 작성하는 것은 여러분들이 R을 더 효율적으로, 기능적으로, 그리고 생산적인 통계분석처리를 할 수 있도록 도와줍니다.
 
-A function is defined by an assignment of the form
+@c It should be emphasized that most of the functions supplied as part of
+@c the @R{} system, such as @code{mean()}, @code{var()},
+@c @code{postscript()} and so on, are themselves written in @R{} and thus
+@c do not differ materially from user written functions.
+
+실제로 R시스템에 미리 내장되어 있는 많은 함수들 중의 대부분은 사용자 정의 함수입니다. 예를 들면, mean(), var(), postscript() 과 같은 것들이 대표적인 경우입니다.
+
+@c A function is defined by an assignment of the form
+
+다음은 함수를 정의하는 방법입니다.
 
 @example
 > @var{name} <- function(@var{arg_1}, @var{arg_2}, @dots{}) @var{expression}
 @end example
 @findex function
 
-@noindent
-The @var{expression} is an @R{} expression, (usually a grouped
-expression), that uses the arguments, @var{arg_i}, to calculate a value.
-The value of the expression is the value returned for the function.
+@c @noindent
+@c The @var{expression} is an @R{} expression, (usually a grouped
+@c expression), that uses the arguments, @var{arg_i}, to calculate a value.
+@c The value of the expression is the value returned for the function.
 
-A call to the function then usually takes the form
-@code{@var{name}(@var{expr_1}, @var{expr_2}, @dots{})} and may occur
-anywhere a function call is legitimate.
+위에서 사용된 expression 이란 arg_1, arg_2, ..., 을 이용하여 작성되는 R의 표현식 혹은 그룹화된 표현식입니다. 또한, name이라는 함수가 arg_1, arg_2, ..., 라는 인자들을 이용하여 expression 을 수행함으로 얻어진 최종적인 결과는 name 함수의 반환값이라고 합니다.
+
+@c A call to the function then usually takes the form
+@c @code{@var{name}(@var{expr_1}, @var{expr_2}, @dots{})} and may occur
+@c anywhere a function call is legitimate.
+
+사용자가 정의한 함수를 사용하는 방법은 일반적인 내장함수를 사용하는 것과 동일하며, R 시스템 어느 곳에서나 name(expr_1, expr_2, ...)이라고 명령하면 됩니다.
 
 @menu
 * Simple examples::             
