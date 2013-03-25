@@ -3504,17 +3504,21 @@ directory, all of which have variables named @code{x}, @code{y} and
 @node Attaching arbitrary lists, Managing the search path, Working with data frames, Data frames
 @subsection Attaching arbitrary lists
 
-@code{attach()} is a generic function that allows not only directories
-and data frames to be attached to the search path, but other classes of
-object as well.  In particular any object of mode @code{"list"} may be
-attached in the same way:
+@c @code{attach()} is a generic function that allows not only directories
+@c and data frames to be attached to the search path, but other classes of
+@c object as well.  In particular any object of mode @code{"list"} may be
+@c attached in the same way:
+
+실제로 attach() 는 제네릭 함수 (generic function) 이므로 데이터 프레임을 특정탐색경로에 연결하는 작업 외에도 다른 크래스의 객체와의 연결에도 사용이 가능합니다. 특히 객체의 모드가 "list" 이라면 데이터 프레임과 동일한 방법으로 사용이 됩니다.
 
 @example
 > attach(any.old.list)
 @end example
 
-Anything that has been attached can be detached by @code{detach}, by
-position number or, preferably, by name.
+@c Anything that has been attached can be detached by @code{detach}, by
+@c position number or, preferably, by name.
+
+즉, attach() 에 의해서 연결된 리스트형의 객체는 detach 라는 함수에 의해서 그 연결이 종료됩니다.
 
 @node Managing the search path,  , Attaching arbitrary lists, Data frames
 @subsection Managing the search path
