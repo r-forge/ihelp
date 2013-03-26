@@ -6085,32 +6085,38 @@ R은 GLM에서 사용되는 종속변수 y의 분포가 gaussian, binomial, pois
 @subsection The @code{glm()} function
 @findex glm
 
-Since the distribution of the response depends on the stimulus variables
-through a single linear function @emph{only}, the same mechanism as was
-used for linear models can still be used to specify the linear part of a
-generalized model.  The family has to be specified in a different way.
+@c Since the distribution of the response depends on the stimulus variables
+@c through a single linear function @emph{only}, the same mechanism as was
+@c used for linear models can still be used to specify the linear part of a
+@c generalized model.  The family has to be specified in a different way.
 
-The @R{} function to fit a generalized linear model is @code{glm()}
-which uses the form
+@c The @R{} function to fit a generalized linear model is @code{glm()}
+@c which uses the form
+
+GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관계로 설명하므로, 선형회귀분석에서 모델을 적합하는데 사용된 방식이 GLM에서도 선형관계를 설명하는데 이용될 수 있습니다. R은 GLM 을 수행하기 위해서 아래와 같은 형식을 가지는 glm()이라는 함수를 제공하고 있습니다. 함수의 이용방법은 family라는 클래스를 지정하는 것을 제외하고는 lm()의 사용방식과 동일합니다.
 
 @example
 > @var{fitted.model} <- glm(@var{formula}, family=@var{family.generator}, data=@var{data.frame})
 @end example
 
-The only new feature is the @var{family.generator}, which is the
-instrument by which the family is described.  It is the name of a
-function that generates a list of functions and expressions that
-together define and control the model and estimation process.  Although
-this may seem a little complicated at first sight, its use is quite
-simple.
+@c The only new feature is the @var{family.generator}, which is the
+@c instrument by which the family is described.  It is the name of a
+@c function that generates a list of functions and expressions that
+@c together define and control the model and estimation process.  Although
+@c this may seem a little complicated at first sight, its use is quite
+@c simple.
 
-The names of the standard, supplied family generators are given under
-``Family Name'' in the table in @ref{Families}.  Where there is a choice
-of links, the name of the link may also be supplied with the family
-name, in parentheses as a parameter.  In the case of the @code{quasi}
-family, the variance function may also be specified in this way.
+@c The names of the standard, supplied family generators are given under
+@c ``Family Name'' in the table in @ref{Families}.  Where there is a choice
+@c of links, the name of the link may also be supplied with the family
+@c name, in parentheses as a parameter.  In the case of the @code{quasi}
+@c family, the variance function may also be specified in this way.
 
-Some examples make the process clear.
+여기에서 family를 지정하기 위해서 family.generator라는 인자가 사용되는데, 이것은 GLM이 모형을 정의하고 추정하는 그 모든 과정을 수행하기 위해 필요한 제네릭함수들을 불러오기 위해서 사용됩니다. 이는 매우 복잡한 것같이 생각되지만, 실제로 family의 이름만을 결정하면 되기 때문에 매우 GLM을 매우 간편하게 수행할 수 있도록 해줍니다. 여기에서 family.generator가 가질 수 있는 이름은 Families이라는 섹션에서 우리가 family에 대해서 언급할 때 사용한 표에 “Family Name”이라는 열에 나열되어 있습니다. 또한 이 표는 각 family에서 사용이 가능한 링크함수들에 대해서도 나열하고 있습니다. glm()함수를 사용시, 특정 링크 함수의 사용은 family.generator의 이름뒤에 괄호와 함께 링크함수의 이름을 지정해 줌으로 사용이 가능합니다. quasi family의 경우, variance function 역시 같은 방법으로 지정하게 됩니다.
+
+@c Some examples make the process clear.
+
+아래의 예제는 여러분이 glm()함수를 이용하여 GLM 을 수행하는 방법을 보다 쉽게 이해할 수 있도록 도와줄 것입니다.
 
 @subsubheading The @code{gaussian} family
 
