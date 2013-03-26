@@ -4894,23 +4894,29 @@ no.dimnames <- function(a) @{
 @node Recursive numerical integration,  , Dropping all names in a printed array, More advanced examples
 @subsection Recursive numerical integration
 
-Functions may be recursive, and may themselves define functions within
-themselves.  Note, however, that such functions, or indeed variables,
-are not inherited by called functions in higher evaluation frames as
-they would be if they were on the search path.
+@c Functions may be recursive, and may themselves define functions within
+@c themselves.  Note, however, that such functions, or indeed variables,
+@c are not inherited by called functions in higher evaluation frames as
+@c they would be if they were on the search path.
 
-The example below shows a naive way of performing one-dimensional
-numerical integration.  The integrand is evaluated at the end points of
-the range and in the middle.  If the one-panel trapezium rule answer is
-close enough to the two panel, then the latter is returned as the value.
-Otherwise the same process is recursively applied to each panel.  The
-result is an adaptive integration process that concentrates function
-evaluations in regions where the integrand is farthest from linear.
-There is, however, a heavy overhead, and the function is only
-competitive with other algorithms when the integrand is both smooth and
-very difficult to evaluate.
+함수는 재귀적인 용법으로도 사용할 수 있으며, 또한 정의하고자 하는 함수 내부에 필요한 함수를 정의하고 사용할 수 있습니다. 이렇게 정의하고자 하는 함수 내부에서 새로이 정의된 함수들은 제1탐색경로에서 검색될 수 있는 객체로 인식되지 않는다는 점에 명심해야 합니다. 정의하고자 하는 함수 내부에서 새로이 정의된 함수의 사용범위는 단순히 정의하고자 하는 함수 내부로만 제한됩니다.
 
-The example is also given partly as a little puzzle in @R{} programming.
+@c The example below shows a naive way of performing one-dimensional
+@c numerical integration.  The integrand is evaluated at the end points of
+@c the range and in the middle.  If the one-panel trapezium rule answer is
+@c close enough to the two panel, then the latter is returned as the value.
+@c Otherwise the same process is recursively applied to each panel.  The
+@c result is an adaptive integration process that concentrates function
+@c evaluations in regions where the integrand is farthest from linear.
+@c There is, however, a heavy overhead, and the function is only
+@c competitive with other algorithms when the integrand is both smooth and
+@c very difficult to evaluate.
+
+아래의 예제는 1개의 변수만을 가지는 함수를 적분하는 가장 기초적인 방법에 대해서 다루고 있습니다. 적분을 하는 기본 개념은 먼저 적분하고자 하는 범위의 양쪽 끝점과 그 중간점에 해당하는 함수들의 값을 얻어낸 후, 사다리꼴 공식을 이용하여 단일 패널에서 얻어진 결과가 이중패널에서 얻어진 결과와 매우 유사할 경우 이중패널로부터 얻어진 결과를 적분값으로 결정합니다. 만약, 그렇지 않다면 각각의 패널에 위에서 묘사한 프로세스를 다시 적용하되 값의 변화가 없을때까지 반복합니다.
+
+@c The example is also given partly as a little puzzle in @R{} programming.
+
+이 예제는 R프로그래밍을 하는데 있어서 다소 복잡한 부분에 해당하므로 이해가 어려울 수 도 있습니다.
 
 @example
 area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
