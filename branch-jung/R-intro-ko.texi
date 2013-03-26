@@ -5514,26 +5514,35 @@ response는 종속변수가 1개로 이루어진 열벡터가 될 수도 있고,
 
 formula operators는 GLIM 혹은 Genstat 에서 사용되는 Wilkinson과 Rogers라는 연산자의 개념과 유사합니다. 그러나 다른점이 있다면 GLIM이나 Genstat에서는 ‘.’이라는 연산자를 사용하지만 이것은 R에서는 ‘:’이라는 심볼을 사용합니다. 그 이유는 ‘.’심볼은 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
 
-다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는
-formula operators들에 대해서 정리한 것입니다.
+다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는 formula operators들에 대해서 정리한 것입니다.
 
 
 @table @code
 @item @var{Y} ~ @var{M}
-@var{Y} is modeled as @var{M}.
+@c @var{Y} is modeled as @var{M}.
+
+~ (틸다)는 Y를 M에서 정의된 모델에 관계시킨다는 의미입니다. 여기에서 M 이라는 것은 model formula에서 정의한 모델의 약자로 기억하시는 것이 편리합니다.
 
 @item @var{M_1} + @var{M_2}
-Include @var{M_1} and @var{M_2}.
+@c Include @var{M_1} and @var{M_2}.
+
++ (플러스)는 model formula 작성시, 설명 변수 M_1과 또 다른 설명변수 M_2를 동시에 포함하겠다는 의미입니다.
 
 @item @var{M_1} - @var{M_2}
 Include @var{M_1} leaving out terms of @var{M_2}.
+
+- (마이너스)는 model formula 정의시, 설명변수 M_1은 포함하되 M_2는 포함시키지 않는다는 의미입니다.
 
 @item @var{M_1} : @var{M_2}
 The tensor product of @var{M_1} and @var{M_2}.  If both terms are
 factors, then the ``subclasses'' factor.
 
+: (세미콜론)은 model formula 정의시 , M_1과 M_2의 tensor product에 해당하는 모든 값을 활용한다는 의미입니다. 만약, M_1과 M_2가 요인이라면, tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들입니다.
+
 @item @var{M_1} %in% @var{M_2}
-Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
+@c Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
+
+이것은 위의 tensor product 와 동일한 표현입니다
 
 @item @var{M_1} * @var{M_2}
 @code{@var{M_1} + @var{M_2} + @var{M_1}:@var{M_2}}.
@@ -5542,22 +5551,26 @@ Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
 @code{@var{M_1} + @var{M_2} %in% @var{M_1}}.
 
 @item @var{M}^@var{n}
-All terms in @var{M} together with ``interactions'' up to order @var{n}
+@c All terms in @var{M} together with ``interactions'' up to order @var{n}
+
+M의 모든 항들이 n차의 상호작용항(interactions)들과 함께 사용되었다는 의미입니다.  
 
 @item I(@var{M})
-Insulate @var{M}.  Inside @var{M} all operators have their normal
-arithmetic meaning, and that term appears in the model matrix.
+@c Insulate @var{M}.  Inside @var{M} all operators have their normal
+@c arithmetic meaning, and that term appears in the model matrix.
 @end table
 
-Note that inside the parentheses that usually enclose function arguments
-all operators have their normal arithmetic meaning.  The function
-@code{I()} is an identity function used to allow terms in model formulae
-to be defined using arithmetic operators.
+@c Note that inside the parentheses that usually enclose function arguments
+@c all operators have their normal arithmetic meaning.  The function
+@c @code{I()} is an identity function used to allow terms in model formulae
+@c to be defined using arithmetic operators.
 
-Note particularly that the model formulae specify the @emph{columns
-of the model matrix}, the specification of the parameters being
-implicit.  This is not the case in other contexts, for example in
-specifying nonlinear models.
+@c Note particularly that the model formulae specify the @emph{columns
+@c of the model matrix}, the specification of the parameters being
+@c implicit.  This is not the case in other contexts, for example in
+@c specifying nonlinear models.
+
+I() 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모형구성(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들은 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 따라서, model formula 정의시 사용되는 + 혹은 - 라는 연산자는 모형연산자(model operators)로서 설명변수를 모형구성(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, model formula를 구성하는 한개의 항에 사용된 I(M_1+M_2)이라는 것은 변수 M_1과 변수 M_2를 활용한 그 수학적 결과를 하나의 변수로서 모형구성(model formula)에 이용하겠다는 의미입니다. 모형구성(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
 
 @menu
 * Contrasts::                   
