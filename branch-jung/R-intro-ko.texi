@@ -4950,9 +4950,11 @@ area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
 @section Scope
 @cindex Scope
 
-The discussion in this section is somewhat more technical than in other
-parts of this document.  However, it details one of the major differences
-between @SPLUS{} and @R{}.
+@c The discussion in this section is somewhat more technical than in other
+@c parts of this document.  However, it details one of the major differences
+@c between @SPLUS{} and @R{}.
+
+이번 섹션에서 다루어질 내용은 이 문서의 다른 부분들보다는 다소 기술적인 부분에 해당합니다. 그러나, 이 부분은 R과 S-Plus를 구분짓는 많은 다른 점들중에서 함수와 관련된 부분에 대해서 기술합니다.
 
 The symbols which occur in the body of a function can be divided into
 three classes; formal parameters, local variables and free variables.
@@ -4965,6 +4967,8 @@ formal parameters or local variables are called free variables.  Free
 variables become local variables if they are assigned to.  Consider the
 following function definition.
 
+먼저 함수의 본체에 사용되는 심볼에는 formal parameters, local variables(지역변수), 그리고 free variables (자유변수) 라는 세가지 종류가 있습니다. formal parameters 라는 것은 함수 선언시 아직 값이 부여되지 않은 인자들의 목록을 의미합니다. 따라서 formal parameters는 실제로 함수가 사용될 때 함수가 받아들이는 인자의 값을 가지게 됩니다. 이에 반해, 지역변수라는 것은 함수 본체에서 사용된 표현식의 결과값들을 가지게 됩니다. 만약, 어떤 변수가 formal parameters도 아니고 지역변수도 아닌 경우, 이러한 변수를 바로 자유변수라고 합니다. 그러나, 상황에 따라서 자유변수에 값이 부여될 경우 이는 지역변수가 되기도 합니다. 더 정확한 개념의 이해를 위해서 다음의 예제를 살펴봅시다.
+
 @example
 f <- function(x) @{
   y <- 2*x
@@ -4974,12 +4978,16 @@ f <- function(x) @{
 @}
 @end example
 
-In this function, @code{x} is a formal parameter, @code{y} is a local
-variable and @code{z} is a free variable.
+@c In this function, @code{x} is a formal parameter, @code{y} is a local
+@c variable and @code{z} is a free variable.
 
-In @R{} the free variable bindings are resolved by first looking in the
-environment in which the function was created.  This is called
-@emph{lexical scope}.  First we define a function called @code{cube}.
+여기 정의되어 있는 f 란 함수는 x 라는 formal parameter 를 가지고, y 란 지역변수를 가지는데 반해, z 라는 것은 자유변수입니다.
+
+@c In @R{} the free variable bindings are resolved by first looking in the
+@c environment in which the function was created.  This is called
+@c @emph{lexical scope}.  First we define a function called @code{cube}.
+
+R에서 자유변수에 대한 값의 할당은 변수가 관리가 되고 있는 함수에 우선권이 부여되며, 이것을 렉시컬 스코프 (lexical scope)라고 합니다. 이해를 돕기 위해서 먼저 cube라는 함수를 정의해봅니다.
 
 @example
 cube <- function(n) @{
@@ -4988,16 +4996,18 @@ cube <- function(n) @{
 @}
 @end example
 
-The variable @code{n} in the function @code{sq} is not an argument to that
-function.  Therefore it is a free variable and the scoping rules must be
-used to ascertain the value that is to be associated with it.  Under static
-scope (@SPLUS{}) the value is that associated with a global variable named
-@code{n}.  Under lexical scope (@R{}) it is the parameter to the function
-@code{cube} since that is the active binding for the variable @code{n} at
-the time the function @code{sq} was defined.  The difference between
-evaluation in @R{} and evaluation in @SPLUS{} is that @SPLUS{} looks for a
-global variable called @code{n} while @R{} first looks for a variable
-called @code{n} in the environment created when @code{cube} was invoked.
+@c The variable @code{n} in the function @code{sq} is not an argument to that
+@c function.  Therefore it is a free variable and the scoping rules must be
+@c used to ascertain the value that is to be associated with it.  Under static
+@c scope (@SPLUS{}) the value is that associated with a global variable named
+@c @code{n}.  Under lexical scope (@R{}) it is the parameter to the function
+@c @code{cube} since that is the active binding for the variable @code{n} at
+@c the time the function @code{sq} was defined.  The difference between
+@c evaluation in @R{} and evaluation in @SPLUS{} is that @SPLUS{} looks for a
+@c global variable called @code{n} while @R{} first looks for a variable
+@c called @code{n} in the environment created when @code{cube} was invoked.
+
+sq라는 함수 안에 있는 변수 n 은 인자가 아니므로 자유변수이며, 이 자유변수가 어떠한 값을 가져야 하는가에 대해서 스코핑 규칙 (scoping rules)이 적용됩니다. 스태틱 스코핑 규칙을 가지는 S-Plus 에서는 자유변수가 가지는 값은 n 이라는 이름을 가진 전역변수 (global variable)에 의해서 그 값이 결정됩니다. 이에 반해, 렉시컬 스코핑 규칙을 가지는 R은 자유변수에 cube라는 함수가 실행될 때 가지는 인자의 값을 할당 합니다. 그 이유는 n은 sq라는 함수가 정의되기 '바로 이전에' cube라는 함수의 내부에서 정의되어 관리되는 변수이기 때문입니다. 이것은 R과 S-Plus를 구분짓는 큰 특징들중의 하나 입니다. 즉, R의 기본적인 스코핑 규칙은 전역변수에 의한 관리가 아닌 지역에 촛점을 맞춘 렉시컬 스코핑을 따르게 됩니다.
 
 @example
 ## @r{first evaluation in S}
@@ -5012,7 +5022,10 @@ R> cube(2)
 [1] 8
 @end example
 
-Lexical scope can also be used to give functions @emph{mutable state}.
+@c Lexical scope can also be used to give functions @emph{mutable state}.
+
+렉시컬 스코핑은 또한 변수가 가지는 값을 자동으로 변경 (mutable state) 해주기도 합니다.
+
 In the following example we show how @R{} can be used to mimic a bank
 account.  A functioning bank account needs to have a balance or total, a
 function for making withdrawals, a function for making deposits and a
@@ -5037,6 +5050,10 @@ mimics the behavior in @SPLUS{} since in @SPLUS{} this operator always
 creates or assigns to a global variable.}.  Only when @code{<<-} has
 been used in a function that was returned as the value of another
 function will the special behavior described here occur.
+
+다음의 예제는 R의 렉시컬 스코핑이 얼마나 효율적으로 은행계좌를 구현할 수 있는가를 보여줍니다. 은행계좌를 구현하기 위해서는 총계 (balance 혹은 total), 출금 (withdrawal), 입금 (deposits), 그리고 현재잔고(current balance)이 필요합니다. 먼저, 출급, 입금, 그리고 잔고에 대한 함수를 먼저 만든 뒤, 이를 리스트형식으로 한데 묶어 account 라는 함수를 정의합니다. account라는 함수가 실제적으로 실행되었을때 total라는 파라미터는 특정한 값을 가진 인자가 되어 리스트에 정의되어 있는 출금, 입금, 그리고 잔고라는 함수에 그 값을 전달하게 됩니다. 그 이유는 바로 total이라는 인자는 account라는 함수에 의해서 정의되어 관리되는 변수이기 때문입니다.
+
+아래의 코드에서 total이라는 변수와 연관된 값의 변화를 위해서 특별한 할당 연산자인 <<-를 사용하였습니다. 이 연산자의 역할은 입금, 출금, 잔액이라는 함수내부의 total이라는변수의 값을 변경하는 것이 아니라, account 라는 함수내에 정의되어 관리되어지는 total이라는 변수의 값을 변경하는 것입니다. 만약, 이연산자를 사용하였으나 가장 상위에 정의된 함수 혹은 프로그램 전역에서도 total 이라는 변수를 찾을수가 없다면, total 이라는 변수는 새로이 생성이 되고, 새로이 생성된 변수에 그 값을 부여하게 됩니다.
 
 @example
 open.account <- function(total) @{
