@@ -5314,8 +5314,10 @@ R은 여러분들이 일반적인 통계모형을 개발하는데 도움을 주�
 @section Defining statistical models; formulae
 @cindex Formulae
 
-The template for a statistical model is a linear regression model with
-independent, homoscedastic errors
+@c The template for a statistical model is a linear regression model with
+@c independent, homoscedastic errors
+
+선형 회귀 모델 (linear regression model)은 다음과 같은 일반적인 형식을 가집니다.
 
 @ifnottex
 @display
@@ -5330,7 +5332,12 @@ $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
    \qquad i = 1, @dots{}, n
 $$
 @end tex
-In matrix terms this would be written
+
+이때 e_i란 오차항 (error term) 을 의미하며, 오차항은 평균이 0이고 분산이 sigma^2인 정규분포를 따르되 각 관측치는 독립 (independent) 이며 동질적 (homoscedastic) 입니다. 그리고 이것을 오차항 (e_i) 은 NID(0, sigma^2)을 따른다고 씁니다. 독립이란 말의 의미는 i번째 관측치는 i번째 관측치가 아닌 다른 관측치들과 관계가 없으며, 동질적이란 말의 의미는 모든 관측치가 같은 분포로부터 얻어졌다는 것입니다.
+
+@c In matrix terms this would be written
+
+위에서 표현된 회귀분석의 일반식은 개개의 관측치를 기준으로 쓰여졌다면, 아래에 보이는 수식은 모든 관측치들에 대해여 행렬의 형식으로 표현한 것입니다. 
 
 @ifnottex
 @display
@@ -5341,22 +5348,30 @@ y = X @ beta + e
 $$ y = X \beta + e $$
 @end tex
 
-@noindent
-where the @math{y} is the response vector, @math{X} is the @emph{model
-matrix} or @emph{design matrix} and has columns
-@math{x_0, x_1, @dots{}, x_p},
-the determining variables.  Very often @math{x_0}
-will be a column of ones defining an @emph{intercept} term.
+@c @noindent
+@c where the @math{y} is the response vector, @math{X} is the @emph{model
+@c matrix} or @emph{design matrix} and has columns
+@c @math{x_0, x_1, @dots{}, x_p},
+@c the determining variables.  Very often @math{x_0}
+@c will be a column of ones defining an @emph{intercept} term.
+
+따라서 y는 모든 관측치를 한개의 열벡터의 형식을 가진 종속변수(response variable 혹은 outcome variable) 이라고 하고, X은 회귀분석의 모델을 정의하는 행렬로서 모델 매트릭스(model matrix) 혹은 디자인매트릭스(design matrix)라고 합니다. 이 디자인 매트릭스는 그 사이즈가 n행 p열로 정의되는데, 각 열은 p개의 설명변수(explanatory variable)로서 x_0, x_1, ..., x_p 표시합니다. 일반적으로 x_0 은 상수항(intercept term)으로서 x_0라는 열 벡터의 모든 구성요소가 1로 이루어진 것으로 정의합니다.
 
 @subsubheading Examples
 
 Before giving a formal specification, a few examples may usefully set
 the picture.
 
-Suppose @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{} are
-numeric variables, @code{X} is a matrix and @code{A}, @code{B},
-@code{C}, @dots{} are factors.  The following formulae on the left
-side below specify statistical models as described on the right.
+여기에서 다루는 내용은 사용자가 R을 이용하여 통계분석의 수행시 필요한 정보를 담고 있습니다.
+
+@c Suppose @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{} are
+@c numeric variables, @code{X} is a matrix and @code{A}, @code{B},
+@c @code{C}, @dots{} are factors.  The following formulae on the left
+@c side below specify statistical models as described on the right.
+
+먼저 y, x, x0, x1, ... 가 모두 수치형 열벡터라고 가정합니다. 또한, X 는 행렬이고, A, B, C, ... 는 요인 들(factors)을 나타낸다고 가정합니다.
+
+그럼 이제부터 선형 회귀 모형 (linear equation 혹은 model formula)을 정의해봅니다. (역자는 model formula라는 영문을 그대로 사용할 것입니다. 그 이유는 model formula가 R에서 내부적으로 통일된 용어이기 때문입니다).
 
 @table @code
 @item y ~ x
