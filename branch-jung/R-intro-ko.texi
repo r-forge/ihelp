@@ -5840,21 +5840,23 @@ lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나,
 @node ANOVA tables,  , Analysis of variance and model comparison, Analysis of variance and model comparison
 @subsection ANOVA tables
 
-Note also that the analysis of variance table (or tables) are for a
-sequence of fitted models.  The sums of squares shown are the decrease
-in the residual sums of squares resulting from an inclusion of
-@emph{that term} in the model at @emph{that place} in the sequence.
-Hence only for orthogonal experiments will the order of inclusion be
-inconsequential.
+@c Note also that the analysis of variance table (or tables) are for a
+@c sequence of fitted models.  The sums of squares shown are the decrease
+@c in the residual sums of squares resulting from an inclusion of
+@c @emph{that term} in the model at @emph{that place} in the sequence.
+@c Hence only for orthogonal experiments will the order of inclusion be
+@c inconsequential.
 
-For multistratum experiments the procedure is first to project the
-response onto the error strata, again in sequence, and to fit the mean
-model to each projection.  For further details, see Chambers & Hastie
-(1992).
+@c For multistratum experiments the procedure is first to project the
+@c response onto the error strata, again in sequence, and to fit the mean
+@c model to each projection.  For further details, see Chambers & Hastie
+@c (1992).
 
-A more flexible alternative to the default full ANOVA table is to
-compare two or more models directly using the @code{anova()} function.
-@findex anova
+@c A more flexible alternative to the default full ANOVA table is to
+@c compare two or more models directly using the @code{anova()} function.
+@c @findex anova
+
+aov()란 함수는 여러개의 적합된 모델에 대한 분산분석표를 제공해 줍니다. 일반적으로 항을 하나씩 추가함으로서 얻어지는 여러개의 적합된 모델의 Sum of Squares (SS)은 잔차제곱의 합이 감소함을 보여줍니다. 특히, orthogonal experiment (한국말 모름)의 경우에는 항을 추가하는 순서가 중요하지 않습니다. Multistratum experiments (한국말 모름)의 경우 역시 종속변수의 값을 오차항이 가지는 계층에 순차적으로 mean model 을 영사시켜 나감으로서 분산분석이 가능해집니다. 이에 대한 자세한 사항은 Chambers & Hastie (1992)의 책을 참고하시길 바랍니다. 이러한 통계분석이 요구될 경우 한개의 모델에 대한 적합결과를 완전한 분산분석표를 통하여 보는 것보다 2개 혹은 그 이상의 모델을 아래와 같이 anova()함수를 이용하여 종합적으로 한번에 비교해 본다면 매우 편리할 것입니다. 그러나 이러한 방법을 취하는 것은 단순히 모형에 대한 이해를 구조화함으로서 적합한 모델을 손쉽게 찾기 위한 방법 이외의 다른 목적이 없다는 것을 사용자는 반드시 인지하고 있어야 합니다.
 
 @example
 > anova(@var{fitted.model.1}, @var{fitted.model.2}, @dots{})
