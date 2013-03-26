@@ -5409,7 +5409,7 @@ on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
 
-이것은 종속변수 y를 설명변수 x의 다항식 (polynomial) 으로서 설명하고자 하는 polynomial regression (정확한 한국말 모름)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
+이것은 종속변수 y를 설명변수 x의 다항식(polynomial)으로서 설명하고자 하는 다항회귀분석(polynomial regression)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
 
 @itemx y ~ 1 + x + I(x^2)
 @c Polynomial regression of @math{y} on @math{x} of degree 2.  The first
@@ -5580,10 +5580,12 @@ I() 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모형�
 @subsection Contrasts
 @cindex Contrasts
 
-We need at least some idea how the model formulae specify the columns of
-the model matrix.  This is easy if we have continuous variables, as each
-provides one column of the model matrix (and the intercept will provide
-a column of ones if included in the model).
+@c We need at least some idea how the model formulae specify the columns of
+@c the model matrix.  This is easy if we have continuous variables, as each
+@c provides one column of the model matrix (and the intercept will provide
+@c a column of ones if included in the model).
+
+우리는 model formula가 포함하는 항들이 디자인 매트릭스가 가지고 있는 열과 어떠한 관계를 가지고 있는지에 대한 최소한의 지식을 가지고 있어야만 합니다. 만약, 연속형 데이터를 가지는 변수들만 있을 경우 이 관계에 대해서 생각하는것은 단순히 개개의 항들이 각각의 열들에 상응하기 때문에 어렵지 않습니다.
 
 @cindex Factors
 @cindex Ordered factors
@@ -5595,6 +5597,8 @@ to contrast the response at each level with that at the first.)  For
 @emph{ordered} factors the @math{k - 1} columns are the orthogonal
 polynomials on @math{1, @dots{}, k}, omitting the constant term.
 
+그러나, k개의 레벨로 구성된 A라는 요인을 모델하고자 할 경우에는 model formula와 디자인 매트릭스와의 관계는 순서형 요인인지 아닌지에 따라서 크게 달라집니다. 만약 순서형 요인이 아닌 경우 (unordered factor), 디자인 매트릭스의 각 열은 요인의 레벨에 해당하게 됩니다. 따라서 두번째 열부터 마지막 k번째 열까지는 요인의 레벨을 나타내는 지시자 (indicator)로서 모델을 표현하게 됩니다 (만약 이 표현이 익숙하지 않다면 더미변수의 생성으로 생각하시길 바랍니다). 이러한 관계는 통계분석의 결과에 대해서 각 레벨에 해당하는 통계치는 첫번째 레벨에 해당하는 통계치에 대해서 상대적이란 해석을 하도록 만듭니다. 이와 다르게, 순서형 요인(ordered factor)인 경우에는 k-1개의 열들은 상수항을 제외한 1, ...,k에 해당하는 직교다항식(orthogonal polynomials)을 의미하게 됩니다.
+
 Although the answer is already complicated, it is not the whole story.
 First, if the intercept is omitted in a model that contains a factor
 term, the first such term is encoded into @math{k} columns giving the
@@ -5602,38 +5606,44 @@ indicators for all the levels.  Second, the whole behavior can be
 changed by the @code{options} setting for @code{contrasts}.  The default
 setting in @R{} is
 
+그러나 우리는 model formula와 디자인매트릭스의 관계에 대해서 모두 다 다룬것은 아닙니다. 먼저 요인을 포함하고 있지만 인터셉트가 없는 모델을 생각해 볼 수가 있습니다. 이 경우 첫번째 항은 k개의 열들이 요인의 레벨을 나타낼수 있도록 변형되어져야 합니다. 또 다른 경우는 주어진 모델의 전체적인 선형변환과 관계되는 contrasts (한국말모름)을 수행하는 방식이 R과 S-Plus가 서로 다르다는 점입니다. R은 기본적으로 아래와 같이 보이는대로 contr.treatment이라는 contrast 방식을 사용합니다.
+
 @example
 options(contrasts = c("contr.treatment", "contr.poly"))
 @end example
 
 @noindent
-The main reason for mentioning this is that @R{} and @Sl{} have
-different defaults for unordered factors, @Sl{} using Helmert
-contrasts.  So if you need to compare your results to those of a textbook
-or paper which used @SPLUS{}, you will need to set
+@c The main reason for mentioning this is that @R{} and @Sl{} have
+@c different defaults for unordered factors, @Sl{} using Helmert
+@c contrasts.  So if you need to compare your results to those of a textbook
+@c or paper which used @SPLUS{}, you will need to set
+
+이에 반해 S는 아래에서 보이는 것과 같이 contr.helmert라는 contrast방식을 사용하기 때문에, 만약 순서형이 아닌 요인을 가진 모델이 있다면 R과 S-Plus는 서로 다른 값을 줍니다. 사용자가 S-Plus를 기초로 하여 쓰여진 책이나 논문을 사용하여 R에서 확인해 보고자 한다면 contrast에 대한 옵션을 아래와 같이 contr.helmert를 선택해주어야 합니다.
 
 @example
 options(contrasts = c("contr.helmert", "contr.poly"))
 @end example
 
 @noindent
-This is a deliberate difference, as treatment contrasts (@R{}'s default)
-are thought easier for newcomers to interpret.
+@c This is a deliberate difference, as treatment contrasts (@R{}'s default)
+@c are thought easier for newcomers to interpret.
 
-We have still not finished, as the contrast scheme to be used can be set
-for each term in the model using the functions @code{contrasts} and
+@c We have still not finished, as the contrast scheme to be used can be set
+@c for each term in the model using the functions @code{contrasts} and
 @code{C}.
 @findex contrasts
 @findex C
 
-We have not yet considered interaction terms: these generate the
-products of the columns introduced for their component terms.
+@c We have not yet considered interaction terms: these generate the
+@c products of the columns introduced for their component terms.
 
-Although the details are complicated, model formulae in @R{} will
-normally generate the models that an expert statistician would expect,
-provided that marginality is preserved.  Fitting, for example, a model
-with an interaction but not the corresponding main effects will in
-general lead to surprising results, and is for experts only.
+@c Although the details are complicated, model formulae in @R{} will
+@c normally generate the models that an expert statistician would expect,
+@c provided that marginality is preserved.  Fitting, for example, a model
+@c with an interaction but not the corresponding main effects will in
+@c general lead to surprising results, and is for experts only.
+
+이렇게 R이 S-Plus와 다른 contrast방식을 사용하는 이유는 R을 처음 접하는 사용자들에 해석상의 편의를 제공하기 위해서 입니다. 그러나, 디자인 매트릭스의 선형변환을 수행하는 contrast라는 함수와 C라는 함수를 아직 우리는 다루지 않았습니다. 또한 우리는 열들의 곱으로서 표현되는 교차항 (interaction terms)에 대해서도 다루지 않았습니다. 이러한 세부사항들은 너무 복잡하므로 여기에서 다루기는 적합하지 않지만, R은 통계전문가들이 요구하는 복잡한 모형을 모델할 수 있도록 많은 기능적요소들을 제공합니다.
 
 
 @node Linear models, Generic functions for extracting model information, Formulae for statistical models, Statistical models in R
