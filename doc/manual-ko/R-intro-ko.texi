@@ -2,7 +2,7 @@
 
 @c %**start of header
 @setfilename R-intro.info
-@settitle An Introduction to R
+@settitle An Introduction to R in Korean (2013.03.25)
 @setchapternewpage on
 @c %**end of header
 
@@ -60,7 +60,7 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c </NOTE>
 
 @titlepage
-@title An Introduction to R (한국어 사용자를 위한 R 입문서)
+@title An Introduction to R
 @subtitle Notes on @R{}: A Programming Environment for Data Analysis and Graphics
 @subtitle Version @value{VERSION}
 @author W. N. Venables, D. M. Smith
@@ -83,7 +83,8 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c @end ifnothtml
 
 @ifnottex
-@node Top, Preface, (dir), (dir)
+@c @node Top, Preface, (dir), (dir)
+@node Top, Acknowledgement, (dir), (dir)
 @top An Introduction to R
 
 @c This is an introduction to R (``GNU S''), a language and environment for
@@ -102,7 +103,7 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 이 문서는 R을 시작하는 분들에게 반드시 필요한 기본적인 데이터형에 대한 이해, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽에 대한 정보를 제공합니다.
 
-현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 14일에 이루어졌습니다.
+현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 25일에 이루어졌습니다.
 
 @c 서문 의역완료 on 2013-MAR-01 
 
@@ -115,7 +116,8 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @end ifnottex
 
 @menu
-* Preface::                     
+* Acknowledgement::
+* Preface::
 * Introduction and preliminaries::  
 * Simple manipulations numbers and vectors::  
 * Objects::                     
@@ -137,7 +139,27 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 * References::                  
 @end menu
 
-@node Preface, Introduction and preliminaries, Top, Top
+
+@node Acknowledgement, Preface, Top, Top
+@unnumbered Acknowledgement
+
+이 한국어 문서는 @emph{The R Development Translation Teams}의 이철희에 의해서 번역되고 관리되고 있습니다.
+@R{}의 빠른 변화를 반영하고자 현재 최신 버전의 @value{VERSION}에 맞게 문서의 수정과 갱신이 수시로 이루어지고 있습니다.
+또한, 본래의 영문 문서와는 다소 다르게 전산학 또는 통계학이 전공이 아닌 독자들을 위하여 전문용어에 대한 개념풀이와 해석을 덧붙임으로서 보다 쉽게 전달하고자 노력하였습니다.
+본 한국어 문서에 대한 제안사항 및 정정, 그리고 보다 나은 표현 및 추가설명에 대한 내용을 @email{gnustats@@korea.gnu.org}으로 보내주시면 매우 감사드리겠습니다.
+
+이 문서에 대한 가장 최초의 직역버전은 @R{}-2.9.1를 기초로 2009년 07월에 이루어졌으면, 매년 버전이 업데이트 됨에도 불구하고 이 문서가 현재까지도 잘 관리될 수 있도록 관심과 기여를 해주셨던 분들에게 감사의 말씀을 올립니다.
+의도적이 아닌 관리상의 누락으로 이 문서에 기여하신 분들의 성함이 빠져있을 수 있습니다.
+꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
+
+@itemize @bullet
+@item 이세연, 이화여자대학교, 2009
+@item 주이진, 이화여자대학교, 2009
+@item 정우준, 홍익대학교, 2009-2013
+@item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
+@end itemize
+
+@node Preface, Introduction and preliminaries, Acknowledgement, Top
 @unnumbered Preface
 
 @c This introduction to @R{} is derived from an original set of notes
@@ -156,9 +178,6 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 본래 @R{}에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 @Sl{}와 @SPLUS{}에 대하여 작성한 노트를 토대로 하고 있습니다.
 그러나, @R{}과 @Sl{} 사이의 다른 점들을 반영하기 위하여 우리는 원래 노트의 내용에 적절한 수정을 가하고 일부의 내용들을 더욱 보강하였습니다.
 이렇게 원래의 노트에 대한 수정과 재배포를 수락하고, @R{}을 지지해주는 Bill Venables (그리고 David Smith)에게 우리는 깊은 감사의 뜻을 전합니다. 
-
-이 한국어 문서는 R Development Translation Teams의 이철희에 의해서 번역되었으며, @R{}의 빠른 변화를 충분히 반영하되 사용의 혼돈을 줄이고 전산학 또는 통계학이 전공이 아닌 독자들을 위하여 전문용어에 대한 개념풀이와 해석을 덧붙임으로서 @R{}이 가진 기능들을 한국어 독자들에게 맞추어 쉽게 전달하고자 하였습니다. 
-본 한국어 문서에 대한 제안사항 및 정정에 관련된 내용을 @email{gnustats@@korea.gnu.org}으로 보내주시면 매우 감사드리겠습니다.
 
 @c @subheading Suggestions to the reader
 @subheading 처음 접하는 사용자에게 
@@ -4843,11 +4862,13 @@ b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 �
 @node Dropping all names in a printed array, Recursive numerical integration, Efficiency factors in block designs, More advanced examples
 @subsection Dropping all names in a printed array
 
-For printing purposes with large matrices or arrays, it is often useful
-to print them in close block form without the array names or numbers.
-Removing the @code{dimnames} attribute will not achieve this effect, but
-rather the array must be given a @code{dimnames} attribute consisting of
-empty strings.  For example to print a matrix, @code{X}
+@c For printing purposes with large matrices or arrays, it is often useful
+@c to print them in close block form without the array names or numbers.
+@c Removing the @code{dimnames} attribute will not achieve this effect, but
+@c rather the array must be given a @code{dimnames} attribute consisting of
+@c empty strings.  For example to print a matrix, @code{X}
+
+사이즈가 큰 행렬 혹은 배열의 출력이 주목적인 경우, 행렬과 배열의 구성요소의 위치를 알려주는 행, 열, 혹은 차원에 대한 정보를 나타내지 않고 오로지 데이터값만을 출력하는 것이 유용한 경우가 있습니다. 이런 경우에는 dimnames 이라는 속성이 가지는 문자열값들을 초기화 시켜주면 됩니다. 예를 들어 행렬 X를 행과 열의 정보 없이 데이터만 출력하고자 할 경우, 아래와 같이 코드를 작성하시면 됩니다.
 
 @example
 > temp <- X
@@ -4855,10 +4876,12 @@ empty strings.  For example to print a matrix, @code{X}
 > temp; rm(temp)
 @end example
 
-This can be much more conveniently done using a function,
-@code{no.dimnames()}, shown below, as a ``wrap around'' to achieve the
-same result.  It also illustrates how some effective and useful user
-functions can be quite short.
+@c This can be much more conveniently done using a function,
+@c @code{no.dimnames()}, shown below, as a ``wrap around'' to achieve the
+@c same result.  It also illustrates how some effective and useful user
+@c functions can be quite short.
+
+우리는 또한 이와 같은 기능을 아래와 같이 no.dimnames()이라는 사용자정의 함수를 작성함으로서 수행할 수 도 있습니다. 이것은 또한 이러한 유용한 기능을 위한 사용자정의함수가 꼭 길지 않아도 됨을 잘 보여주고 있습니다.
 
 @example
 no.dimnames <- function(a) @{
@@ -4873,36 +4896,46 @@ no.dimnames <- function(a) @{
 @}
 @end example
 
-With this function defined, an array may be printed in close format
-using
+@c With this function defined, an array may be printed in close format
+@c using
+
+위와 같이 정의된 함수는 아래와 같이 사용함으로서 배열이 가지는 데이터 값들만 출력해낼수 있습니다.
 
 @example
 > no.dimnames(X)
 @end example
 
-This is particularly useful for large integer arrays, where patterns are
-the real interest rather than the values.
+@c This is particularly useful for large integer arrays, where patterns are
+@c the real interest rather than the values.
+
+이번 섹션에서 다룬 내용은 배열 데이터 값 자체 보다 배열의 값들이 가지는 패턴을 분석하고자 할때 더 유용하므로 주로 사이즈가 큰 정수형 배열을 다룰때 사용됩니다
 
 @node Recursive numerical integration,  , Dropping all names in a printed array, More advanced examples
 @subsection Recursive numerical integration
 
-Functions may be recursive, and may themselves define functions within
-themselves.  Note, however, that such functions, or indeed variables,
-are not inherited by called functions in higher evaluation frames as
-they would be if they were on the search path.
+@c Functions may be recursive, and may themselves define functions within
+@c themselves.  Note, however, that such functions, or indeed variables,
+@c are not inherited by called functions in higher evaluation frames as
+@c they would be if they were on the search path.
 
-The example below shows a naive way of performing one-dimensional
-numerical integration.  The integrand is evaluated at the end points of
-the range and in the middle.  If the one-panel trapezium rule answer is
-close enough to the two panel, then the latter is returned as the value.
-Otherwise the same process is recursively applied to each panel.  The
-result is an adaptive integration process that concentrates function
-evaluations in regions where the integrand is farthest from linear.
-There is, however, a heavy overhead, and the function is only
-competitive with other algorithms when the integrand is both smooth and
-very difficult to evaluate.
+함수는 재귀적인 용법으로도 사용할 수 있으며, 또한 정의하고자 하는 함수 내부에 필요한 함수를 정의하고 사용할 수 있습니다. 이렇게 정의하고자 하는 함수 내부에서 새로이 정의된 함수들은 제1탐색경로에서 검색될 수 있는 객체로 인식되지 않는다는 점에 명심해야 합니다. 정의하고자 하는 함수 내부에서 새로이 정의된 함수의 사용범위는 단순히 정의하고자 하는 함수 내부로만 제한됩니다.
 
-The example is also given partly as a little puzzle in @R{} programming.
+@c The example below shows a naive way of performing one-dimensional
+@c numerical integration.  The integrand is evaluated at the end points of
+@c the range and in the middle.  If the one-panel trapezium rule answer is
+@c close enough to the two panel, then the latter is returned as the value.
+@c Otherwise the same process is recursively applied to each panel.  The
+@c result is an adaptive integration process that concentrates function
+@c evaluations in regions where the integrand is farthest from linear.
+@c There is, however, a heavy overhead, and the function is only
+@c competitive with other algorithms when the integrand is both smooth and
+@c very difficult to evaluate.
+
+아래의 예제는 1개의 변수만을 가지는 함수를 적분하는 가장 기초적인 방법에 대해서 다루고 있습니다. 적분을 하는 기본 개념은 먼저 적분하고자 하는 범위의 양쪽 끝점과 그 중간점에 해당하는 함수들의 값을 얻어낸 후, 사다리꼴 공식을 이용하여 단일 패널에서 얻어진 결과가 이중패널에서 얻어진 결과와 매우 유사할 경우 이중패널로부터 얻어진 결과를 적분값으로 결정합니다. 만약, 그렇지 않다면 각각의 패널에 위에서 묘사한 프로세스를 다시 적용하되 값의 변화가 없을때까지 반복합니다.
+
+@c The example is also given partly as a little puzzle in @R{} programming.
+
+이 예제는 R프로그래밍을 하는데 있어서 다소 복잡한 부분에 해당하므로 이해가 어려울 수 도 있습니다.
 
 @example
 area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
@@ -4936,9 +4969,11 @@ area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
 @section Scope
 @cindex Scope
 
-The discussion in this section is somewhat more technical than in other
-parts of this document.  However, it details one of the major differences
-between @SPLUS{} and @R{}.
+@c The discussion in this section is somewhat more technical than in other
+@c parts of this document.  However, it details one of the major differences
+@c between @SPLUS{} and @R{}.
+
+이번 섹션에서 다루어질 내용은 이 문서의 다른 부분들보다는 다소 기술적인 부분에 해당합니다. 그러나, 이 부분은 R과 S-Plus를 구분짓는 많은 다른 점들중에서 함수와 관련된 부분에 대해서 기술합니다.
 
 The symbols which occur in the body of a function can be divided into
 three classes; formal parameters, local variables and free variables.
@@ -4951,6 +4986,8 @@ formal parameters or local variables are called free variables.  Free
 variables become local variables if they are assigned to.  Consider the
 following function definition.
 
+먼저 함수의 본체에 사용되는 심볼에는 formal parameters, local variables(지역변수), 그리고 free variables (자유변수) 라는 세가지 종류가 있습니다. formal parameters 라는 것은 함수 선언시 아직 값이 부여되지 않은 인자들의 목록을 의미합니다. 따라서 formal parameters는 실제로 함수가 사용될 때 함수가 받아들이는 인자의 값을 가지게 됩니다. 이에 반해, 지역변수라는 것은 함수 본체에서 사용된 표현식의 결과값들을 가지게 됩니다. 만약, 어떤 변수가 formal parameters도 아니고 지역변수도 아닌 경우, 이러한 변수를 바로 자유변수라고 합니다. 그러나, 상황에 따라서 자유변수에 값이 부여될 경우 이는 지역변수가 되기도 합니다. 더 정확한 개념의 이해를 위해서 다음의 예제를 살펴봅시다.
+
 @example
 f <- function(x) @{
   y <- 2*x
@@ -4960,12 +4997,16 @@ f <- function(x) @{
 @}
 @end example
 
-In this function, @code{x} is a formal parameter, @code{y} is a local
-variable and @code{z} is a free variable.
+@c In this function, @code{x} is a formal parameter, @code{y} is a local
+@c variable and @code{z} is a free variable.
 
-In @R{} the free variable bindings are resolved by first looking in the
-environment in which the function was created.  This is called
-@emph{lexical scope}.  First we define a function called @code{cube}.
+여기 정의되어 있는 f 란 함수는 x 라는 formal parameter 를 가지고, y 란 지역변수를 가지는데 반해, z 라는 것은 자유변수입니다.
+
+@c In @R{} the free variable bindings are resolved by first looking in the
+@c environment in which the function was created.  This is called
+@c @emph{lexical scope}.  First we define a function called @code{cube}.
+
+R에서 자유변수에 대한 값의 할당은 변수가 관리가 되고 있는 함수에 우선권이 부여되며, 이것을 렉시컬 스코프 (lexical scope)라고 합니다. 이해를 돕기 위해서 먼저 cube라는 함수를 정의해봅니다.
 
 @example
 cube <- function(n) @{
@@ -4974,16 +5015,18 @@ cube <- function(n) @{
 @}
 @end example
 
-The variable @code{n} in the function @code{sq} is not an argument to that
-function.  Therefore it is a free variable and the scoping rules must be
-used to ascertain the value that is to be associated with it.  Under static
-scope (@SPLUS{}) the value is that associated with a global variable named
-@code{n}.  Under lexical scope (@R{}) it is the parameter to the function
-@code{cube} since that is the active binding for the variable @code{n} at
-the time the function @code{sq} was defined.  The difference between
-evaluation in @R{} and evaluation in @SPLUS{} is that @SPLUS{} looks for a
-global variable called @code{n} while @R{} first looks for a variable
-called @code{n} in the environment created when @code{cube} was invoked.
+@c The variable @code{n} in the function @code{sq} is not an argument to that
+@c function.  Therefore it is a free variable and the scoping rules must be
+@c used to ascertain the value that is to be associated with it.  Under static
+@c scope (@SPLUS{}) the value is that associated with a global variable named
+@c @code{n}.  Under lexical scope (@R{}) it is the parameter to the function
+@c @code{cube} since that is the active binding for the variable @code{n} at
+@c the time the function @code{sq} was defined.  The difference between
+@c evaluation in @R{} and evaluation in @SPLUS{} is that @SPLUS{} looks for a
+@c global variable called @code{n} while @R{} first looks for a variable
+@c called @code{n} in the environment created when @code{cube} was invoked.
+
+sq라는 함수 안에 있는 변수 n 은 인자가 아니므로 자유변수이며, 이 자유변수가 어떠한 값을 가져야 하는가에 대해서 스코핑 규칙 (scoping rules)이 적용됩니다. 스태틱 스코핑 규칙을 가지는 S-Plus 에서는 자유변수가 가지는 값은 n 이라는 이름을 가진 전역변수 (global variable)에 의해서 그 값이 결정됩니다. 이에 반해, 렉시컬 스코핑 규칙을 가지는 R은 자유변수에 cube라는 함수가 실행될 때 가지는 인자의 값을 할당 합니다. 그 이유는 n은 sq라는 함수가 정의되기 '바로 이전에' cube라는 함수의 내부에서 정의되어 관리되는 변수이기 때문입니다. 이것은 R과 S-Plus를 구분짓는 큰 특징들중의 하나 입니다. 즉, R의 기본적인 스코핑 규칙은 전역변수에 의한 관리가 아닌 지역에 촛점을 맞춘 렉시컬 스코핑을 따르게 됩니다.
 
 @example
 ## @r{first evaluation in S}
@@ -4998,7 +5041,10 @@ R> cube(2)
 [1] 8
 @end example
 
-Lexical scope can also be used to give functions @emph{mutable state}.
+@c Lexical scope can also be used to give functions @emph{mutable state}.
+
+렉시컬 스코핑은 또한 변수가 가지는 값을 자동으로 변경 (mutable state) 해주기도 합니다.
+
 In the following example we show how @R{} can be used to mimic a bank
 account.  A functioning bank account needs to have a balance or total, a
 function for making withdrawals, a function for making deposits and a
@@ -5023,6 +5069,10 @@ mimics the behavior in @SPLUS{} since in @SPLUS{} this operator always
 creates or assigns to a global variable.}.  Only when @code{<<-} has
 been used in a function that was returned as the value of another
 function will the special behavior described here occur.
+
+다음의 예제는 R의 렉시컬 스코핑이 얼마나 효율적으로 은행계좌를 구현할 수 있는가를 보여줍니다. 은행계좌를 구현하기 위해서는 총계 (balance 혹은 total), 출금 (withdrawal), 입금 (deposits), 그리고 현재잔고(current balance)이 필요합니다. 먼저, 출급, 입금, 그리고 잔고에 대한 함수를 먼저 만든 뒤, 이를 리스트형식으로 한데 묶어 account 라는 함수를 정의합니다. account라는 함수가 실제적으로 실행되었을때 total라는 파라미터는 특정한 값을 가진 인자가 되어 리스트에 정의되어 있는 출금, 입금, 그리고 잔고라는 함수에 그 값을 전달하게 됩니다. 그 이유는 바로 total이라는 인자는 account라는 함수에 의해서 정의되어 관리되는 변수이기 때문입니다.
+
+아래의 코드에서 total이라는 변수와 연관된 값의 변화를 위해서 특별한 할당 연산자인 <<-를 사용하였습니다. 이 연산자의 역할은 입금, 출금, 잔액이라는 함수내부의 total이라는변수의 값을 변경하는 것이 아니라, account 라는 함수내에 정의되어 관리되어지는 total이라는 변수의 값을 변경하는 것입니다. 만약, 이연산자를 사용하였으나 가장 상위에 정의된 함수 혹은 프로그램 전역에서도 total 이라는 변수를 찾을수가 없다면, total 이라는 변수는 새로이 생성이 되고, 새로이 생성된 변수에 그 값을 부여하게 됩니다.
 
 @example
 open.account <- function(total) @{
@@ -5061,36 +5111,45 @@ ross$withdraw(500)
 @section Customizing the environment
 @cindex Customizing the environment
 
-Users can customize their environment in several different ways.  There
-is a site initialization file and every directory can have its own
-special initialization file.  Finally, the special functions
-@code{.First} and @code{.Last} can be used.
+@c Users can customize their environment in several different ways.  There
+@c is a site initialization file and every directory can have its own
+@c special initialization file.  Finally, the special functions
+@c @code{.First} and @code{.Last} can be used.
 
-The location of the site initialization file is taken from the value of
-the @env{R_PROFILE} environment variable.  If that variable is unset,
-the file @file{Rprofile.site} in the @R{} home subdirectory @file{etc} is
-used.  This file should contain the commands that you want to execute
-every time @R{} is started under your system.  A second, personal,
-profile file named @file{.Rprofile}@footnote{So it is hidden under
-UNIX.} can be placed in any directory.  If @R{} is invoked in that
-directory then that file will be sourced.  This file gives individual
-users control over their workspace and allows for different startup
-procedures in different working directories.  If no @file{.Rprofile}
-file is found in the startup directory, then @R{} looks for a
-@file{.Rprofile} file in the user's home directory and uses that (if it
-exists).  If the environment variable @env{R_PROFILE_USER} is set, the
-file it points to is used instead of the @file{.Rprofile} files.
+사용자는 사용자의 작업환경을 여러가지 방법으로 커스터마이징 할 수 있습니다. 먼저, 사이트 초기화 파일이라는 것이 있고, 각각의 디렉토리마다 특정역할을 하는 초기화 파일이 있습니다. 그리고, 이들과 연관된 특수한 함수 .First와 .Last라는 함수가 있습니다.
 
-Any function named @code{.First()} in either of the two profile files or
-in the @file{.RData} image has a special status.  It is automatically
-performed at the beginning of an @R{} session and may be used to
-initialize the environment.  For example, the definition in the example
-below alters the prompt to @code{$} and sets up various other useful
-things that can then be taken for granted in the rest of the session.
+@c The location of the site initialization file is taken from the value of
+@c the @env{R_PROFILE} environment variable.  If that variable is unset,
+@c the file @file{Rprofile.site} in the @R{} home subdirectory @file{etc} is
+@c used.  This file should contain the commands that you want to execute
+@c every time @R{} is started under your system.  A second, personal,
+@c profile file named @file{.Rprofile}@footnote{So it is hidden under
+@c UNIX.} can be placed in any directory.  If @R{} is invoked in that
+@c directory then that file will be sourced.  This file gives individual
+@c users control over their workspace and allows for different startup
+@c procedures in different working directories.  If no @file{.Rprofile}
+@c file is found in the startup directory, then @R{} looks for a
+@c @file{.Rprofile} file in the user's home directory and uses that (if it
+@c exists).  If the environment variable @env{R_PROFILE_USER} is set, the
+@c file it points to is used instead of the @file{.Rprofile} files.
 
-Thus, the sequence in which files are executed is, @file{Rprofile.site},
-the user profile, @file{.RData} and then @code{.First()}.  A definition
-in later files will mask definitions in earlier files.
+주로 패키지의 다운로드에 관련된 저장소에 대한 정보와 연관이 있는 사이트 초기화 파일의 위치는
+R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아무런 값이 정해지지 앟았다면 R의 홈 디렉토리의 서브들 중에서 etc라는 디렉토리 내에 있는 Rprofile.site이라는 파일이 대신 사용되어 집니다. 두번째로 사용자의 워크스페이스 관리, 프로그램 사용도중 워킹 디렉토리 변경, 그리고 프로그램 시작시 워킹디렉토리의 설정에 대한 내용은 R_PROFILE_USER라는 환경변수의 값에 정해지는데, 만약 이러한 환경변수의 값이 정해지지 않았다면, .Rprofile이라는 파일을 찾게 됩니다. 주로 이 사용자에 대한 프로파일은 R 스타트업 디렉토리에 존재하지만 실제로 R홈 디렉토리내의 어떠한 서브에 위치해도 관계는 없습니다 . 만약, .Rprofile이 스타트업 디렉토리에서 발견되지 않는다는 R은 사용자의 홈디렉토리에서 .Rprofile 이라는 것을 찾을 것입니다(만약 존재할 경우에만 해당합니다).
+
+@c Any function named @code{.First()} in either of the two profile files or
+@c in the @file{.RData} image has a special status.  It is automatically
+@c performed at the beginning of an @R{} session and may be used to
+@c initialize the environment.  For example, the definition in the example
+@c below alters the prompt to @code{$} and sets up various other useful
+@c things that can then be taken for granted in the rest of the session.
+
+사이트 프로파일, 사용자 프로파일, 그리고 .RData라는 이미지 내부에 .First()라고 이름이 붙은 함수들은 특정한 값을 가지고 있습니다. 이것들은 R세션이 시작할 때 자동으로 작업환경을 초기화할 때 사용되게 됩니다. 아래의 코드를 살펴 보신다면 더 빠른 이해를 가지실 수 있습니다. 예를들어, 아래에 있는 .First 라는 함수의 정의중 prompt 라는 옵션을 $ 에서 다른 심볼로 바꾸어 준다면, 여러분은 R을 사용하는 세션내내 사용자가 변경한 심볼을 이용하여 prompt를 사용하게 됩니다.
+
+@c Thus, the sequence in which files are executed is, @file{Rprofile.site},
+@c the user profile, @file{.RData} and then @code{.First()}.  A definition
+@c in later files will mask definitions in earlier files.
+
+일반적으로 사용자의 환경설정을 위한 파일의 실행순서는 Rprofiles.site, 그리고 사용자 프로파일, .RData, 그리고 .First() 입니다.
 
 @example
 > .First <- function() @{
@@ -5105,8 +5164,10 @@ in later files will mask definitions in earlier files.
 @end example
 @findex .First
 
-Similarly a function @code{.Last()}, if defined, is (normally) executed
-at the very end of the session.  An example is given below.
+@c Similarly a function @code{.Last()}, if defined, is (normally) executed
+@c at the very end of the session.  An example is given below.
+
+위의 .First()와 유사하게 .Last()라는 함수가 정의된다면 아래와 같습니다. 그리고 이것은 보통 세션이 종료될 때 사용될 것입니다.
 
 @example
 > .Last <- function() @{
@@ -5129,41 +5190,54 @@ the class of the argument itself}.  If the argument lacks any @code{class}
 attribute, or has a class not catered for specifically by the generic
 function in question, there is always a @emph{default action} provided.
 
-An example makes things clearer.  The class mechanism offers the user
-the facility of designing and writing generic functions for special
-purposes.  Among the other generic functions are @code{plot()} for
-displaying objects graphically, @code{summary()} for summarizing
-analyses of various types, and @code{anova()} for comparing statistical
-models.
+객체에 대한 클래스라는 것은 generic (제네릭)함수가 어떻게 그 객체를 처리할 것인지 대한 정보를 제공합니다. 즉, 제네릭 함수라는 것이 객체에 대한 클래스정보를 인자로 가지기 때문에 만약 클래스 정보가 없거나, 혹은 제네릭 함수내에서 해당 클래스에 대한 처리방법이 정의되지 않았다면 default action(기본 행동)을 수행하게 됩니다.
 
-The number of generic functions that can treat a class in a specific way
-can be quite large.  For example, the functions that can accommodate in
-some fashion objects of class @code{"data.frame"} include
+@c An example makes things clearer.  The class mechanism offers the user
+@c the facility of designing and writing generic functions for special
+@c purposes.  Among the other generic functions are @code{plot()} for
+@c displaying objects graphically, @code{summary()} for summarizing
+@c analyses of various types, and @code{anova()} for comparing statistical
+@c models.
+
+이러한 클래스 메커니즘은 사용자가 제네릭 함수를 디자인하고 새로 정의할 수 있도록 도와줍니다. 단편적인 예로 plot() 이라는 제네릭 함수는 여러가지 객체의 종류에 따른 다양한 시각화 방법을 제공하고, summary()라는 함수는 다양한 종류의 객체에 대한 통계분석의 결과를 요약해 줍니다. 또한 anova()라는 제네릭 함수는 통계 모델을 비교할 때 사용됩니다.
+
+@c The number of generic functions that can treat a class in a specific way
+@c can be quite large.  For example, the functions that can accommodate in
+@c some fashion objects of class @code{"data.frame"} include
+
+클래스를 특정한 방법으로 처리하는 제네릭 함수의 종류는 매우 많습니다. 예를 들어, 데이터프레임이라는 클래스의 객체를 처리하고자 한다면 아래와 같은 처리방법들에 대해서 포함하고 있을 것입니다.
 
 @example
 [     [[<-    any    as.matrix
 [<-   mean    plot   summary
 @end example
 
-@findex methods
-A currently complete list can be got by using the @code{methods()}
-function:
+@c @findex methods
+@c A currently complete list can be got by using the @code{methods()}
+@c function:
+
+따라서 어떤 처리방법들이 제네릭 함수안에 구현되어 있는지를 확인하고 싶으시다면 아래와 같이
+methods()라는 함수를 클래스명과 함께 이용하시길 바랍니다.
 
 @example
 > methods(class="data.frame")
 @end example
 
-Conversely the number of classes a generic function can handle can also
-be quite large.  For example the @code{plot()} function has a default
-method and variants for objects of classes @code{"data.frame"},
-@code{"density"}, @code{"factor"}, and more.  A complete list can be got
-again by using the @code{methods()} function:
+@c Conversely the number of classes a generic function can handle can also
+@c be quite large.  For example the @code{plot()} function has a default
+@c method and variants for objects of classes @code{"data.frame"},
+@c @code{"density"}, @code{"factor"}, and more.  A complete list can be got
+@c again by using the @code{methods()} function:
+
+이와 반대로, 제네릭 함수가 처리해 낼 수 있는 클래스의 종류 또한 많습니다. 예를 들어, plot()이라는 함수는 기본적으로 default method이라는 처리방식을 가지며, "data.frame", "density", "factor", 그 밖의 클래스들로부터 파생되어진 다양한 종류의 객체들을 처리할 수 있습니다. 만약, 어떠한 종류의 객체들을 처리할 수 있는지 확인해 보고 싶으시다면 아래와 같이 methods()를 함수의 이름과 함께 사용하시면 됩니다.
 
 @example
 > methods(plot)
 @end example
 
-For many generic functions the function body is quite short, for example
+@c For many generic functions the function body is quite short, for example
+
+일반적으로 제네릭 함수의 본체는 아래에서 보는 것과 같이 매우 짧습니다. 여기에서 UseMethod라는 메시지는 coef라는 함수가 제네릭 함수임을 의미하는 것입니다.
 
 @example
 > coef
@@ -5171,9 +5245,11 @@ function (object, ...)
 UseMethod("coef")
 @end example
 
-@noindent
-The presence of @code{UseMethod} indicates this is a generic function.
-To see what methods are available we can use @code{methods()}
+@c @noindent
+@c The presence of @code{UseMethod} indicates this is a generic function.
+@c To see what methods are available we can use @code{methods()}
+
+따라서 coef라는 제네릭 함수에 대한 처리방식에 대한 내용을 확인하고 싶으시다면 methods()를 사용하시면 됩니다.
 
 @example
 > methods(coef)
@@ -5183,9 +5259,11 @@ To see what methods are available we can use @code{methods()}
    Non-visible functions are asterisked
 @end example
 
-@noindent
-In this example there are six methods, none of which can be seen by
-typing its name.  We can read these by either of
+@c @noindent
+@c In this example there are six methods, none of which can be seen by
+@c typing its name.  We can read these by either of
+
+위의 예제는 6가지의 처리방식이 있으나, 위에서 보는 바와 같이 메소드들이 어떻게 작성되었는지에 대해서는 보여지지 않는다고 *를 이용하여 표기하고 있습니다. 그러나, 우리는 이러한 메소드들에 대한 알고리즘의 구현방법을 아래와 같이 확인할 수 있는 함수를 제공합니다.
 
 @findex getAnywhere
 @findex getS3method
@@ -5212,9 +5290,10 @@ function (object, ...)
 @end example
 
 
-The reader is referred to the @emph{R Language Definition} for a more
-complete discussion of this mechanism.
+@c The reader is referred to the @emph{R Language Definition} for a more
+@c complete discussion of this mechanism.
 
+이 섹션의 내용을 더 정확히 이해하기 위해서는 우리는 사용자가 R Language Definition라는 문서를 참고하길 바랍니다.
 
 @node Statistical models in R, Graphics, Writing your own functions, Top
 @chapter Statistical models in R
@@ -5226,14 +5305,18 @@ variance.  Later we make some rather more ambitious presumptions, namely
 that something is known about generalized linear models and nonlinear
 regression.
 
+이번 세션에서 다루어지는 내용은 여러분이 회귀분석 (regression analysis) 혹은 분산분석 (analysis of variance)를 어느 정도 알고 있다고 가정한 상태에서 작성되었습니다. 그리고 이 섹션의 후반부에서는 여러분들이 일반 선형화 모델 (generalised linear model)과 비선형 모델 (nonlinear model) 을 이미 알고 있다고 전제합니다.
+
 The requirements for fitting statistical models are sufficiently well
 defined to make it possible to construct general tools that apply in a
 broad spectrum of problems.
 
-@R{} provides an interlocking suite of facilities that make fitting
-statistical models very simple.  As we mention in the introduction, the
-basic output is minimal, and one needs to ask for the details by calling
-extractor functions.
+@c @R{} provides an interlocking suite of facilities that make fitting
+@c statistical models very simple.  As we mention in the introduction, the
+@c basic output is minimal, and one needs to ask for the details by calling
+@c extractor functions.
+
+R은 여러분들이 일반적인 통계모형을 개발하는데 도움을 주고자 다양한 기능을 제공하고 있습니다. 이 문서의 처음부분에서 언급한 것과 같이 R은 최소한의 결과물만을 제공하기 때문에, 분석에 대한 더욱 상세한 내용이 필요한 경우에는 분석결과의 출력에 관련된 출력함수 (extractor functions)들을 이용하여 확인하셔야 합니다.
 
 @menu
 * Formulae for statistical models::  
@@ -5250,8 +5333,10 @@ extractor functions.
 @section Defining statistical models; formulae
 @cindex Formulae
 
-The template for a statistical model is a linear regression model with
-independent, homoscedastic errors
+@c The template for a statistical model is a linear regression model with
+@c independent, homoscedastic errors
+
+선형 회귀 모델 (linear regression model)은 다음과 같은 일반적인 형식을 가집니다.
 
 @ifnottex
 @display
@@ -5266,7 +5351,12 @@ $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
    \qquad i = 1, @dots{}, n
 $$
 @end tex
-In matrix terms this would be written
+
+이때 e_i란 오차항 (error term) 을 의미하며, 오차항은 평균이 0이고 분산이 sigma^2인 정규분포를 따르되 각 관측치는 독립 (independent) 이며 동질적 (homoscedastic) 입니다. 그리고 이것을 오차항 (e_i) 은 NID(0, sigma^2)을 따른다고 씁니다. 독립이란 말의 의미는 i번째 관측치는 i번째 관측치가 아닌 다른 관측치들과 관계가 없으며, 동질적이란 말의 의미는 모든 관측치가 같은 분포로부터 얻어졌다는 것입니다.
+
+@c In matrix terms this would be written
+
+위에서 표현된 회귀분석의 일반식은 개개의 관측치를 기준으로 쓰여졌다면, 아래에 보이는 수식은 모든 관측치들에 대해여 행렬의 형식으로 표현한 것입니다. 
 
 @ifnottex
 @display
@@ -5277,38 +5367,57 @@ y = X @ beta + e
 $$ y = X \beta + e $$
 @end tex
 
-@noindent
-where the @math{y} is the response vector, @math{X} is the @emph{model
-matrix} or @emph{design matrix} and has columns
-@math{x_0, x_1, @dots{}, x_p},
-the determining variables.  Very often @math{x_0}
-will be a column of ones defining an @emph{intercept} term.
+@c @noindent
+@c where the @math{y} is the response vector, @math{X} is the @emph{model
+@c matrix} or @emph{design matrix} and has columns
+@c @math{x_0, x_1, @dots{}, x_p},
+@c the determining variables.  Very often @math{x_0}
+@c will be a column of ones defining an @emph{intercept} term.
+
+따라서 y는 모든 관측치를 한개의 열벡터의 형식을 가진 종속변수(response variable 혹은 outcome variable) 이라고 하고, X은 회귀분석의 모델을 정의하는 행렬로서 모델 매트릭스(model matrix) 혹은 디자인매트릭스(design matrix)라고 합니다. 이 디자인 매트릭스는 그 사이즈가 n행 p열로 정의되는데, 각 열은 p개의 설명변수(explanatory variable)로서 x_0, x_1, ..., x_p 표시합니다. 일반적으로 x_0 은 상수항(intercept term)으로서 x_0라는 열 벡터의 모든 구성요소가 1로 이루어진 것으로 정의합니다.
 
 @subsubheading Examples
 
 Before giving a formal specification, a few examples may usefully set
 the picture.
 
-Suppose @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{} are
-numeric variables, @code{X} is a matrix and @code{A}, @code{B},
-@code{C}, @dots{} are factors.  The following formulae on the left
-side below specify statistical models as described on the right.
+여기에서 다루는 내용은 사용자가 R을 이용하여 통계분석의 수행시 필요한 정보를 담고 있습니다.
+
+@c Suppose @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{} are
+@c numeric variables, @code{X} is a matrix and @code{A}, @code{B},
+@c @code{C}, @dots{} are factors.  The following formulae on the left
+@c side below specify statistical models as described on the right.
+
+먼저 y, x, x0, x1, ... 가 모두 수치형 열벡터라고 가정합니다. 또한, X 는 행렬이고, A, B, C, ... 는 요인 들(factors)을 나타낸다고 가정합니다.
+
+그럼 이제부터 선형 회귀 모형 (linear equation 혹은 model formula)을 정의해봅니다. (역자는 model formula라는 영문을 그대로 사용할 것입니다. 그 이유는 model formula가 R에서 내부적으로 통일된 용어이기 때문입니다).
 
 @table @code
 @item y ~ x
 @itemx y ~ 1 + x
-Both imply the same simple linear regression model of @math{y} on
-@math{x}.  The first has an implicit intercept term, and the second an
-explicit one.
+@c Both imply the same simple linear regression model of @math{y} on
+@c @math{x}.  The first has an implicit intercept term, and the second an
+@c explicit one.
+
+두가지 표현 모두 종속변수 y를 x 라는 한개의 설명변수를 이용하여 설명하고자 하는 단순선
+형회귀분석입니다. 가장 기본적인 수학적 모델이 인터셉트를 포함하므로 R은 기본적으로 분
+석을 수행할 때 인터셉트를 포함한다고 가정합니다.
 
 @item y ~ 0 + x
 @itemx y ~ -1 + x
 @itemx y ~ x - 1
-Simple linear regression of @math{y} on @math{x} through the origin
-(that is, without an intercept term).
+@c Simple linear regression of @math{y} on @math{x} through the origin
+@c (that is, without an intercept term).
+
+세가지 표현 모두 단순선형회귀 모형을 나타내지만 인터셉트항을 가지고 있지 않을 경우에
+사용합니다.
 
 @item log(y) ~ x1 + x2
 Multiple regression of the transformed variable,
+
+log(y)에 의해 변환된 종속변수의 값을 2개의 설명변수 x1 과 x2를 이용하여 설명하고자 하
+는 다중회귀분석(multiple regression)입니다.
+
 @ifnottex
 log(y),
 @end ifnottex
@@ -5318,10 +5427,15 @@ $\log(y)$,
 on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
+
+이것은 종속변수 y를 설명변수 x의 다항식(polynomial)으로서 설명하고자 하는 다항회귀분석(polynomial regression)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
+
 @itemx y ~ 1 + x + I(x^2)
-Polynomial regression of @math{y} on @math{x} of degree 2.  The first
-form uses orthogonal polynomials, and the second uses explicit powers,
-as basis.
+@c Polynomial regression of @math{y} on @math{x} of degree 2.  The first
+@c form uses orthogonal polynomials, and the second uses explicit powers,
+@c as basis.
+
+이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
 
 @item y ~ X + poly(x,2)
 Multiple regression @math{y} with model matrix consisting of the matrix
@@ -5334,6 +5448,10 @@ classes determined by @math{A}.
 @item y ~ A + x
 Single classification analysis of covariance model of @math{y}, with
 classes determined by @math{A}, and with covariate @math{x}.
+
+이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
+
+model formula 에 사용되는 ~ (틸다) 라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가지고 있습니다. 그 이유는 수학과 같이 정확한 함수적 관계가 있지 않기 때문입니다. 따라서, R 에서 사용하는 일반 선형모형은 다음과 같은 model formula 의 형식을 가집니다.
 
 @item y ~ A*B
 @itemx y ~ A + B + A:B
@@ -5408,22 +5526,42 @@ inevitable change is that the operator @samp{@code{.}} becomes
 The notation is summarized below (based on Chambers & Hastie, 1992,
 p.29):
 
+각각의 항들에 대한 설명은 다음과 같습니다. 
+
+response는 종속변수가 1개로 이루어진 열벡터가 될 수도 있고, 혹은 여러개의 종속변수들로
+이루어진 행렬이 될 수도 있습니다. op_i이라는 것은 + 혹은 -이라는 연산자를 의미합니다. 연산자 +는 설명변수 term_i를 회귀분석에 포함시킨다느느 의미이고 -는 포함시키지 않는다는 의미입니다. term_i라는 것은 다음의 항목들중에 한가지가 될 수 있습니다. 벡터 혹은 행렬, 또는 1 요인 (factor) 요인, 벡터, 행렬등을 +와 -라는 연산자를 이용하여 복합적으로 표현한 항 위의 모든 경우들을 행렬식으로 나타낼 경우, 각각의 term_i은 디자인 매트릭스에 의해서 선형회귀분석에 포함될 것인지 말 것인지가 결정되어 집니다. 1 이라는 열벡터는 인터셉트를 의미하는데, 이 열벡터는 특별히 지정하지 않아도 항상 디자인 매트릭스에 포함되어 있다고 생각하셔야 합니다.
+
+formula operators는 GLIM 혹은 Genstat 에서 사용되는 Wilkinson과 Rogers라는 연산자의 개념과 유사합니다. 그러나 다른점이 있다면 GLIM이나 Genstat에서는 ‘.’이라는 연산자를 사용하지만 이것은 R에서는 ‘:’이라는 심볼을 사용합니다. 그 이유는 ‘.’심볼은 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
+
+다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는 formula operators들에 대해서 정리한 것입니다.
+
+
 @table @code
 @item @var{Y} ~ @var{M}
-@var{Y} is modeled as @var{M}.
+@c @var{Y} is modeled as @var{M}.
+
+~ (틸다)는 Y를 M에서 정의된 모델에 관계시킨다는 의미입니다. 여기에서 M 이라는 것은 model formula에서 정의한 모델의 약자로 기억하시는 것이 편리합니다.
 
 @item @var{M_1} + @var{M_2}
-Include @var{M_1} and @var{M_2}.
+@c Include @var{M_1} and @var{M_2}.
+
++ (플러스)는 model formula 작성시, 설명 변수 M_1과 또 다른 설명변수 M_2를 동시에 포함하겠다는 의미입니다.
 
 @item @var{M_1} - @var{M_2}
 Include @var{M_1} leaving out terms of @var{M_2}.
+
+- (마이너스)는 model formula 정의시, 설명변수 M_1은 포함하되 M_2는 포함시키지 않는다는 의미입니다.
 
 @item @var{M_1} : @var{M_2}
 The tensor product of @var{M_1} and @var{M_2}.  If both terms are
 factors, then the ``subclasses'' factor.
 
+: (세미콜론)은 model formula 정의시 , M_1과 M_2의 tensor product에 해당하는 모든 값을 활용한다는 의미입니다. 만약, M_1과 M_2가 요인이라면, tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들입니다.
+
 @item @var{M_1} %in% @var{M_2}
-Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
+@c Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
+
+이것은 위의 tensor product 와 동일한 표현입니다
 
 @item @var{M_1} * @var{M_2}
 @code{@var{M_1} + @var{M_2} + @var{M_1}:@var{M_2}}.
@@ -5432,22 +5570,26 @@ Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
 @code{@var{M_1} + @var{M_2} %in% @var{M_1}}.
 
 @item @var{M}^@var{n}
-All terms in @var{M} together with ``interactions'' up to order @var{n}
+@c All terms in @var{M} together with ``interactions'' up to order @var{n}
+
+M의 모든 항들이 n차의 상호작용항(interactions)들과 함께 사용되었다는 의미입니다.  
 
 @item I(@var{M})
-Insulate @var{M}.  Inside @var{M} all operators have their normal
-arithmetic meaning, and that term appears in the model matrix.
+@c Insulate @var{M}.  Inside @var{M} all operators have their normal
+@c arithmetic meaning, and that term appears in the model matrix.
 @end table
 
-Note that inside the parentheses that usually enclose function arguments
-all operators have their normal arithmetic meaning.  The function
-@code{I()} is an identity function used to allow terms in model formulae
-to be defined using arithmetic operators.
+@c Note that inside the parentheses that usually enclose function arguments
+@c all operators have their normal arithmetic meaning.  The function
+@c @code{I()} is an identity function used to allow terms in model formulae
+@c to be defined using arithmetic operators.
 
-Note particularly that the model formulae specify the @emph{columns
-of the model matrix}, the specification of the parameters being
-implicit.  This is not the case in other contexts, for example in
-specifying nonlinear models.
+@c Note particularly that the model formulae specify the @emph{columns
+@c of the model matrix}, the specification of the parameters being
+@c implicit.  This is not the case in other contexts, for example in
+@c specifying nonlinear models.
+
+I() 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모형구성(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들은 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 따라서, model formula 정의시 사용되는 + 혹은 - 라는 연산자는 모형연산자(model operators)로서 설명변수를 모형구성(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, model formula를 구성하는 한개의 항에 사용된 I(M_1+M_2)이라는 것은 변수 M_1과 변수 M_2를 활용한 그 수학적 결과를 하나의 변수로서 모형구성(model formula)에 이용하겠다는 의미입니다. 모형구성(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
 
 @menu
 * Contrasts::                   
@@ -5457,10 +5599,12 @@ specifying nonlinear models.
 @subsection Contrasts
 @cindex Contrasts
 
-We need at least some idea how the model formulae specify the columns of
-the model matrix.  This is easy if we have continuous variables, as each
-provides one column of the model matrix (and the intercept will provide
-a column of ones if included in the model).
+@c We need at least some idea how the model formulae specify the columns of
+@c the model matrix.  This is easy if we have continuous variables, as each
+@c provides one column of the model matrix (and the intercept will provide
+@c a column of ones if included in the model).
+
+우리는 model formula가 포함하는 항들이 디자인 매트릭스가 가지고 있는 열과 어떠한 관계를 가지고 있는지에 대한 최소한의 지식을 가지고 있어야만 합니다. 만약, 연속형 데이터를 가지는 변수들만 있을 경우 이 관계에 대해서 생각하는것은 단순히 개개의 항들이 각각의 열들에 상응하기 때문에 어렵지 않습니다.
 
 @cindex Factors
 @cindex Ordered factors
@@ -5472,6 +5616,8 @@ to contrast the response at each level with that at the first.)  For
 @emph{ordered} factors the @math{k - 1} columns are the orthogonal
 polynomials on @math{1, @dots{}, k}, omitting the constant term.
 
+그러나, k개의 레벨로 구성된 A라는 요인을 모델하고자 할 경우에는 model formula와 디자인 매트릭스와의 관계는 순서형 요인인지 아닌지에 따라서 크게 달라집니다. 만약 순서형 요인이 아닌 경우 (unordered factor), 디자인 매트릭스의 각 열은 요인의 레벨에 해당하게 됩니다. 따라서 두번째 열부터 마지막 k번째 열까지는 요인의 레벨을 나타내는 지시자 (indicator)로서 모델을 표현하게 됩니다 (만약 이 표현이 익숙하지 않다면 더미변수의 생성으로 생각하시길 바랍니다). 이러한 관계는 통계분석의 결과에 대해서 각 레벨에 해당하는 통계치는 첫번째 레벨에 해당하는 통계치에 대해서 상대적이란 해석을 하도록 만듭니다. 이와 다르게, 순서형 요인(ordered factor)인 경우에는 k-1개의 열들은 상수항을 제외한 1, ...,k에 해당하는 직교다항식(orthogonal polynomials)을 의미하게 됩니다.
+
 Although the answer is already complicated, it is not the whole story.
 First, if the intercept is omitted in a model that contains a factor
 term, the first such term is encoded into @math{k} columns giving the
@@ -5479,76 +5625,88 @@ indicators for all the levels.  Second, the whole behavior can be
 changed by the @code{options} setting for @code{contrasts}.  The default
 setting in @R{} is
 
+그러나 우리는 model formula와 디자인매트릭스의 관계에 대해서 모두 다 다룬것은 아닙니다. 먼저 요인을 포함하고 있지만 인터셉트가 없는 모델을 생각해 볼 수가 있습니다. 이 경우 첫번째 항은 k개의 열들이 요인의 레벨을 나타낼수 있도록 변형되어져야 합니다. 또 다른 경우는 주어진 모델의 전체적인 선형변환과 관계되는 contrasts (한국말모름)을 수행하는 방식이 R과 S-Plus가 서로 다르다는 점입니다. R은 기본적으로 아래와 같이 보이는대로 contr.treatment이라는 contrast 방식을 사용합니다.
+
 @example
 options(contrasts = c("contr.treatment", "contr.poly"))
 @end example
 
 @noindent
-The main reason for mentioning this is that @R{} and @Sl{} have
-different defaults for unordered factors, @Sl{} using Helmert
-contrasts.  So if you need to compare your results to those of a textbook
-or paper which used @SPLUS{}, you will need to set
+@c The main reason for mentioning this is that @R{} and @Sl{} have
+@c different defaults for unordered factors, @Sl{} using Helmert
+@c contrasts.  So if you need to compare your results to those of a textbook
+@c or paper which used @SPLUS{}, you will need to set
+
+이에 반해 S는 아래에서 보이는 것과 같이 contr.helmert라는 contrast방식을 사용하기 때문에, 만약 순서형이 아닌 요인을 가진 모델이 있다면 R과 S-Plus는 서로 다른 값을 줍니다. 사용자가 S-Plus를 기초로 하여 쓰여진 책이나 논문을 사용하여 R에서 확인해 보고자 한다면 contrast에 대한 옵션을 아래와 같이 contr.helmert를 선택해주어야 합니다.
 
 @example
 options(contrasts = c("contr.helmert", "contr.poly"))
 @end example
 
 @noindent
-This is a deliberate difference, as treatment contrasts (@R{}'s default)
-are thought easier for newcomers to interpret.
+@c This is a deliberate difference, as treatment contrasts (@R{}'s default)
+@c are thought easier for newcomers to interpret.
 
-We have still not finished, as the contrast scheme to be used can be set
-for each term in the model using the functions @code{contrasts} and
+@c We have still not finished, as the contrast scheme to be used can be set
+@c for each term in the model using the functions @code{contrasts} and
 @code{C}.
 @findex contrasts
 @findex C
 
-We have not yet considered interaction terms: these generate the
-products of the columns introduced for their component terms.
+@c We have not yet considered interaction terms: these generate the
+@c products of the columns introduced for their component terms.
 
-Although the details are complicated, model formulae in @R{} will
-normally generate the models that an expert statistician would expect,
-provided that marginality is preserved.  Fitting, for example, a model
-with an interaction but not the corresponding main effects will in
-general lead to surprising results, and is for experts only.
+@c Although the details are complicated, model formulae in @R{} will
+@c normally generate the models that an expert statistician would expect,
+@c provided that marginality is preserved.  Fitting, for example, a model
+@c with an interaction but not the corresponding main effects will in
+@c general lead to surprising results, and is for experts only.
 
+이렇게 R이 S-Plus와 다른 contrast방식을 사용하는 이유는 R을 처음 접하는 사용자들에 해석상의 편의를 제공하기 위해서 입니다. 그러나, 디자인 매트릭스의 선형변환을 수행하는 contrast라는 함수와 C라는 함수를 아직 우리는 다루지 않았습니다. 또한 우리는 열들의 곱으로서 표현되는 교차항 (interaction terms)에 대해서도 다루지 않았습니다. 이러한 세부사항들은 너무 복잡하므로 여기에서 다루기는 적합하지 않지만, R은 통계전문가들이 요구하는 복잡한 모형을 모델할 수 있도록 많은 기능적요소들을 제공합니다.
 
 @node Linear models, Generic functions for extracting model information, Formulae for statistical models, Statistical models in R
 @section Linear models
 @cindex Linear models
 
-The basic function for fitting ordinary multiple models is @code{lm()},
-and a streamlined version of the call is as follows:
+@c The basic function for fitting ordinary multiple models is @code{lm()},
+@c and a streamlined version of the call is as follows:
+
+보통 여러개의 설명변수를 가지는 선형모형을 적합하기 위한 가장 간편한 방법은 아래와 같이 lm()이라는 함수를 이용하는 것입니다.
+
 @findex lm
 
 @example
 > @var{fitted.model} <- lm(@var{formula}, data = @var{data.frame})
 @end example
 
-For example
+@c For example
+
+예를 들면, 아래의 코드는 종속변수 y를 설명변수 x1과 x2로 설명하고자 하는 다중회귀모형(multiple regression model)입니다. 이때 상수항(intercept term)이 포함되어 있다는 점에 대해서 명심하세요. 또한 lm() 함수에 사용되는 인자들 중 data=production이라는 인자는 데이터셋을 의미하는데, 이 데이터셋 인자는 attach()에 의해 변수탐색경로와 연결여부를 떠나서 반드시 입력되어야 합니다. 더 나아가서, 이 production이라는 데이터셋은 선형모형을 모델함에 있어서 필요한 모든 변수들을 포함하고 있어야 하고 반드시 데이터프레임의 형식을 가지고 있어야 합니다.
 
 @example
 > fm2 <- lm(y ~ x1 + x2, data = production)
 @end example
 
 @noindent
-would fit a multiple regression model of @math{y} on @math{x1} and
-@math{x2} (with implicit intercept term).
+@c would fit a multiple regression model of @math{y} on @math{x1} and
+@c @math{x2} (with implicit intercept term).
 
-The important (but technically optional) parameter @code{data =
-production} specifies that any variables needed to construct the model
-should come first from the @code{production} @emph{data frame}.
-@emph{This is the case regardless of whether data frame
-@code{production} has been attached on the search path or not}.
+@c The important (but technically optional) parameter @code{data =
+@c production} specifies that any variables needed to construct the model
+@c should come first from the @code{production} @emph{data frame}.
+@c @emph{This is the case regardless of whether data frame
+@c @code{production} has been attached on the search path or not}.
 
 @node Generic functions for extracting model information, Analysis of variance and model comparison, Linear models, Statistical models in R
 @section Generic functions for extracting model information
 
-The value of @code{lm()} is a fitted model object; technically a list of
-results of class @code{"lm"}.  Information about the fitted model can
-then be displayed, extracted, plotted and so on by using generic
-functions that orient themselves to objects of class @code{"lm"}.  These
-include
+@c The value of @code{lm()} is a fitted model object; technically a list of
+@c results of class @code{"lm"}.  Information about the fitted model can
+@c then be displayed, extracted, plotted and so on by using generic
+@c functions that orient themselves to objects of class @code{"lm"}.  These
+@c include
+
+함수 lm()의 사용은 적합된 선형모형의 결과를 돌려줍니다. 기술적으로 정확히 말한다면 "lm"이라는 클래스의 결과물들이 한데 묶인 리스트의 형식으로 반환됩니다. 이때, "lm"이라는 클래스의 결과물이란 적합된 선형모형의 결과를 저장하는 객체들입니다. 이렇게 lm()함수로부터 반환된 리스트는 출력에 관계된 제네릭 함수들을 이용하여 적합된 선형모형의 결과를 출력하고 시각화하는데 이용됩니다.
 
 @example
 add1    deviance   formula      predict  step
@@ -5557,40 +5715,54 @@ anova   effects    labels       proj     vcov
 coef    family     plot         residuals
 @end example
 
-A brief description of the most commonly used ones is given below.
+@c A brief description of the most commonly used ones is given below.
+
+다음은 가장 일반적으로 많이 사용되는 제네릭 함수들에 대한 설명입니다.
 
 @table @code
 @findex anova
 @item anova(@var{object_1}, @var{object_2})
-Compare a submodel with an outer model and produce an analysis of
-variance table.
+@c Compare a submodel with an outer model and produce an analysis of
+@c variance table.
+
+이것은 두개의 적합된 모델을 비교하는데 사용되며, 분산분석표를 제공합니다. 조금 더 자세히 설명하면, model formula 1을 이용하여 lm()을 수행하여 얻은 객체를 object_1 이라고 하고, model formula 2를 이용하여 얻은 객체 object_2라고 합시다. 이때 model formula 1 과 2는 반드시 동일한 데이터에 적용되어야 합니다. anova(object_1)이라고 하면 model formula 1을 이용하여 적합된 선형모형의 분산분석표를 보여줍니다. 그리고 anova(object_1, object_2)라고 하면 두 모델의 비교에 대한 분석분석표를 제공합니다.
 
 @findex coefficients
 @findex coef
 @item coef(@var{object})
-Extract the regression coefficient (matrix).
+@c Extract the regression coefficient (matrix).
 
-Long form: @code{coefficients(@var{object})}.
+@c Long form: @code{coefficients(@var{object})}.
+
+이것은 선형모형에 대한 선형계수를 행렬의 폼으로 출력시켜줍니다. 여기에서 coef()는 coefficients()라는 함수의 약어로 표현된 함수명일뿐입니다. 따라서 coefficients(object)이 원래의 사용법입니다.
 
 @findex deviance
 @item deviance(@var{object})
-Residual sum of squares, weighted if appropriate.
+@c Residual sum of squares, weighted if appropriate.
+
+이것은 deviance (한국말모름)통계량을 출력시켜줍니다. 데비언스란 제곱된 잔차(residual = 관측값 - 적합된 값)들의 합을 의미합니다.
 
 @findex formula
 @item formula(@var{object})
-Extract the model formula.
+@c Extract the model formula.
+
+이것은 적합에 사용된 선형모형 model formula를 출력합니다.
 
 @findex plot
 @item plot(@var{object})
-Produce four plots, showing residuals, fitted values and some
-diagnostics.
+@c Produce four plots, showing residuals, fitted values and some
+@c diagnostics.
+
+이것은 잔차, 적합된 값들, 그리고 모델진단을 위한 4가지 종류의 그래프를 생성해 줍니다.
 
 @findex predict
 @item predict(@var{object}, newdata=@var{data.frame})
-The data frame supplied must have variables specified with the same
-labels as the original.  The value is a vector or matrix of predicted
-values corresponding to the determining variable values in
-@var{data.frame}.
+@c The data frame supplied must have variables specified with the same
+@c labels as the original.  The value is a vector or matrix of predicted
+@c values corresponding to the determining variable values in
+@c @var{data.frame}.
+
+새로운 데이터를 적합된 모델에 적용하여 예측값을 구하며, 그 결과는 벡터 혹은 행렬이 될 수 있습니다. 이때 적용되는 새로운 데이터는 반드시 적합된 모델에 이용되었던 데이터와 같은 변수명들을 가지고 있어야 합니다.
 
 @c  @item @code{predict.gam(@var{object},}
 @c  @item @w{@ @ @ @code{newdata=@var{data.frame})}}
@@ -5602,14 +5774,18 @@ values corresponding to the determining variable values in
 
 @findex print
 @item print(@var{object})
-Print a concise version of the object.  Most often used implicitly.
+@c Print a concise version of the object.  Most often used implicitly.
+
+이것은 객체를 출력하는 함수인데, 실제로 다른 함수들 속에 정의되어 출력기능을 수행합니다.
 
 @findex residuals
 @findex resid
 @item residuals(@var{object})
-Extract the (matrix of) residuals, weighted as appropriate.
+@c Extract the (matrix of) residuals, weighted as appropriate.
 
-Short form: @code{resid(@var{object})}.
+@c Short form: @code{resid(@var{object})}.
+
+이것은 적합된 모형의 잔차를 출력해줍니다. residual()이라는 함수명이 길다고 생각되시면 단순히 residual()의 약어로 표현된 함수인 resid(object)을 사용하시면 됩니다.
 
 @findex step
 @item step(@var{object})
@@ -5617,31 +5793,39 @@ Select a suitable model by adding or dropping terms and preserving
 hierarchies.  The model with the smallest value of AIC (Akaike's An
 Information Criterion) discovered in the stepwise search is returned.
 
+이것은 단계적조사(stepwise search)라는 방법으로서 AIC(Akaike's Information Criterion)의 값을 근거로 하여 가장 데이터에 적합한 모형을 찾아주는 함수입니다. 이 방법은 자동으로 모형에 새로운 변수를 추가하거나 제거하는 과정을 반복하므로서 가장 작은 값의 AIC를 가지는 모형을 알려줍니다.
+
 @findex summary
 @item summary(@var{object})
-Print a comprehensive summary of the results of the regression analysis.
+@c Print a comprehensive summary of the results of the regression analysis.
+
+회귀분석의 결과를 간결한 형태로 요약하여 보여줍니다.
 
 @findex vcov
 @item vcov(@var{object})
-Returns the variance-covariance matrix of the main parameters of a
-fitted model object.
+@c Returns the variance-covariance matrix of the main parameters of a
+@c fitted model object.
 @end table
+
+이것은 적합된 회귀계수의 분산-공분산 (variance-covariance) 행렬을 출력해 줍니다.
 
 @node Analysis of variance and model comparison, Updating fitted models, Generic functions for extracting model information, Statistical models in R
 @section Analysis of variance and model comparison
 @cindex Analysis of variance
 
-The model fitting function @code{aov(@code{formula},
-data=@var{data.frame})}
-@findex aov
-operates at the simplest level in a very similar way to the function
-@code{lm()}, and most of the generic functions listed in the table in
-@ref{Generic functions for extracting model information} apply.
+@c The model fitting function @code{aov(@code{formula},
+@c data=@var{data.frame})}
+@c @findex aov
+@c operates at the simplest level in a very similar way to the function
+@c @code{lm()}, and most of the generic functions listed in the table in
+@c @ref{Generic functions for extracting model information} apply.
 
-It should be noted that in addition @code{aov()} allows an analysis of
-models with multiple error strata such as split plot experiments, or
-balanced incomplete block designs with recovery of inter-block
-information.  The model formula
+@c It should be noted that in addition @code{aov()} allows an analysis of
+@c models with multiple error strata such as split plot experiments, or
+@c balanced incomplete block designs with recovery of inter-block
+@c information.  The model formula
+
+lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나, 분산분석이라는 통계적 방법을 이용하여 데이터를 적합하는데 가장 손쉽게 사용되는 aov(formula, data=data.frame)이라는 함수가 있습니다. 이 함수로부터 반환되는 리스트형식의 결과는 Generic functions for extracting model information에서 설명한 제네릭 함수들을 그대로 적용하여 출력해 낼 수 있습니다. 그러나, aov()라는 함수에 대해서 반드시 강조해야할 장점이 있습니다. 그것은 split plot experiment (한국말 모름) 혹은 블럭간의 정보를 추가적으로 활용해야 하는 balanced incomplete block design (한국말모름)와 같이 에러항이 다중구조를 가지는 통계적 방법을 손쉽게 구현할 수 있다는 것입니다. 이것은 multiple stratum experiment (한국말 모름)와 같은 통계적 방법에서 error strata (한국말 모름) 때문에 생기는 에러항에 대한 복합적 다중구조를 함수 aov() 내부에서 함께 쓰이는 함수 Error()의 strata.formula라는 인자를 통하여 쉽게 정의할 수 있기 때문입니다. 가장 간단한 예로, strata.formula는 요인의 수준간 (between)와 수준내 (within) 분석이 허용하는 two strata experiment (한국말 모름)을 정의할 수 있습니다.
 
 @example
 @var{response} ~ @var{mean.formula} + Error(@var{strata.formula})
@@ -5649,22 +5833,24 @@ information.  The model formula
 @findex Error
 
 @noindent
-specifies a multi-stratum experiment with error strata defined by the
-@var{strata.formula}.  In the simplest case, @var{strata.formula} is
-simply a factor, when it defines a two strata experiment, namely between
-and within the levels of the factor.
+@c specifies a multi-stratum experiment with error strata defined by the
+@c @var{strata.formula}.  In the simplest case, @var{strata.formula} is
+@c simply a factor, when it defines a two strata experiment, namely between
+@c and within the levels of the factor.
 
-For example, with all determining variables factors, a model formula such
-as that in:
+@c For example, with all determining variables factors, a model formula such
+@c as that in:
+
+예를들어, 아래와 같은 모형은 v + n*p*k이라는 mean model (정확한 한국말 모름)과Error(farms/blocks)로 표현되는 오차항의 합으로 표현되는 실험계획임을 알 수 있는데, 여기에서 사용된 함수 Error()는 오차항에 대하여 “between farms”, “within farms”, 그리고 “within block”이라는 다중구조를 정의해 줍니다.
 
 @example
 > fm <- aov(yield ~ v + n*p*k + Error(farms/blocks), data=farm.data)
 @end example
 
 @noindent
-would typically be used to describe an experiment with mean model
-@code{v + n*p*k} and three error strata, namely ``between farms'',
-``within farms, between blocks'' and ``within blocks''.
+@c would typically be used to describe an experiment with mean model
+@c @code{v + n*p*k} and three error strata, namely ``between farms'',
+@c ``within farms, between blocks'' and ``within blocks''.
 
 @menu
 * ANOVA tables::                
@@ -5673,21 +5859,23 @@ would typically be used to describe an experiment with mean model
 @node ANOVA tables,  , Analysis of variance and model comparison, Analysis of variance and model comparison
 @subsection ANOVA tables
 
-Note also that the analysis of variance table (or tables) are for a
-sequence of fitted models.  The sums of squares shown are the decrease
-in the residual sums of squares resulting from an inclusion of
-@emph{that term} in the model at @emph{that place} in the sequence.
-Hence only for orthogonal experiments will the order of inclusion be
-inconsequential.
+@c Note also that the analysis of variance table (or tables) are for a
+@c sequence of fitted models.  The sums of squares shown are the decrease
+@c in the residual sums of squares resulting from an inclusion of
+@c @emph{that term} in the model at @emph{that place} in the sequence.
+@c Hence only for orthogonal experiments will the order of inclusion be
+@c inconsequential.
 
-For multistratum experiments the procedure is first to project the
-response onto the error strata, again in sequence, and to fit the mean
-model to each projection.  For further details, see Chambers & Hastie
-(1992).
+@c For multistratum experiments the procedure is first to project the
+@c response onto the error strata, again in sequence, and to fit the mean
+@c model to each projection.  For further details, see Chambers & Hastie
+@c (1992).
 
-A more flexible alternative to the default full ANOVA table is to
-compare two or more models directly using the @code{anova()} function.
-@findex anova
+@c A more flexible alternative to the default full ANOVA table is to
+@c compare two or more models directly using the @code{anova()} function.
+@c @findex anova
+
+aov()란 함수는 여러개의 적합된 모델에 대한 분산분석표를 제공해 줍니다. 일반적으로 항을 하나씩 추가함으로서 얻어지는 여러개의 적합된 모델의 Sum of Squares (SS)은 잔차제곱의 합이 감소함을 보여줍니다. 특히, orthogonal experiment (한국말 모름)의 경우에는 항을 추가하는 순서가 중요하지 않습니다. Multistratum experiments (한국말 모름)의 경우 역시 종속변수의 값을 오차항이 가지는 계층에 순차적으로 mean model 을 영사시켜 나감으로서 분산분석이 가능해집니다. 이에 대한 자세한 사항은 Chambers & Hastie (1992)의 책을 참고하시길 바랍니다. 이러한 통계분석이 요구될 경우 한개의 모델에 대한 적합결과를 완전한 분산분석표를 통하여 보는 것보다 2개 혹은 그 이상의 모델을 아래와 같이 anova()함수를 이용하여 종합적으로 한번에 비교해 본다면 매우 편리할 것입니다. 그러나 이러한 방법을 취하는 것은 단순히 모형에 대한 이해를 구조화함으로서 적합한 모델을 손쉽게 찾기 위한 방법 이외의 다른 목적이 없다는 것을 사용자는 반드시 인지하고 있어야 합니다.
 
 @example
 > anova(@var{fitted.model.1}, @var{fitted.model.2}, @dots{})
@@ -5703,20 +5891,24 @@ comprehend and control.
 @section Updating fitted models
 @cindex Updating fitted models
 
-The @code{update()} function is largely a convenience function that
-allows a model to be fitted that differs from one previously fitted
-usually by just a few additional or removed terms.  Its form is
-@findex update
+@c The @code{update()} function is largely a convenience function that
+@c allows a model to be fitted that differs from one previously fitted
+@c usually by just a few additional or removed terms.  Its form is
+@c @findex update
+
+아래에 예제에서 사용된 update()이라는 함수는 이전에 적합된 모형에 몇 개의 항을 추가 혹은 제거를 통하여 새로운 모형으로서 적합시키고자 할 때 매우 유용한 함수입니다.
 
 @example
 > @var{new.model} <- update(@var{old.model}, @var{new.formula})
 @end example
 
-In the @var{new.formula} the special name consisting of a period,
-@samp{@code{.}},
-@findex .
-only, can be used to stand for ``the corresponding part of the old model
-formula''.  For example,
+@c In the @var{new.formula} the special name consisting of a period,
+@c @samp{@code{.}},
+@c @findex .
+@c only, can be used to stand for ``the corresponding part of the old model
+@c formula''.  For example,
+
+앞서 언급했던 것과 같이 R은 변수명에 ‘.’을 사용하는 것을 허용하므로 위의 예제와 같 new.model이라는 변수명을 사용함에 아무런 문제가 없습니다. 그러나, 함수 update()를 사용함에 있어서 ‘.’를 사용할 때는 이전 적합시 사용한 모델의 동일한 부분을 다시 사용함을 R시스템이 내부적으로 인식하도록 하는 역할을 합니다. 좀 더 확실한 이해를 이해서 아래의 예제를 살펴봅니다.
 
 @example
 > fm05 <- lm(y ~ x1 + x2 + x3 + x4 + x5, data = production)
@@ -5724,18 +5916,22 @@ formula''.  For example,
 > smf6 <- update(fm6, sqrt(.) ~ .)
 @end example
 
-@noindent
-would fit a five variate multiple regression with variables (presumably)
-from the data frame @code{production}, fit an additional model including
-a sixth regressor variable, and fit a variant on the model where the
-response had a square root transform applied.
+@c @noindent
+@c would fit a five variate multiple regression with variables (presumably)
+@c from the data frame @code{production}, fit an additional model including
+@c a sixth regressor variable, and fit a variant on the model where the
+@c response had a square root transform applied.
+
+먼저, production이라는 데이터가 가지고 있는 5개의 설명변수를 가지고 y라는 종속변수를 설명하고자 적합된 모델의 객체가 fm05에 저장되었습니다. 이렇게 이미 적합에 사용된 모형에 새로운 6번째 설명변수를 추가하여 모형을 재적합하고 싶을 때, ‘.’를 사용합니다. 이때 data=production이라는 인자를 다시 입력할 필요는 없습니다. 그 이유는 update()이라는 함수가 이미 production이라는 데이터를 재적합을 위해서 홀딩하고 있기 때문입니다. 위의 코드의 맨 마지막라인은 square root라는 변환된 종속변수 y의 값을 6개의 설명변수로 설명하고자 하는 모델을 적합한다는 의미입니다.
 
 Note especially that if the @code{data=} argument is specified on the
 original call to the model fitting function, this information is passed on
 through the fitted model object to @code{update()} and its allies.
 
-The name @samp{.} can also be used in other contexts, but with slightly
-different meaning.  For example
+@c The name @samp{.} can also be used in other contexts, but with slightly
+@c different meaning.  For example
+
+그러나, ‘.’는 아래의 코드에서 보여지는 것과 같이 다른 용도로 사용될 수 있기 때문에 사용자에게 ‘.’를 사용함에 있어서 주의가 요구됩니다. 이것은 ‘.’가 종속변수 y를 설명함에 있어서 production이라는 데이터안에 있는 모든 변수를 다 이용하여 모형을 적합하겠다는 의미입니다.
 
 @example
 > fmfull <- lm(y ~ . , data = production)
@@ -5745,13 +5941,15 @@ different meaning.  For example
 would fit a model with response @code{y} and regressor variables
 @emph{all other variables in the data frame @code{production}}.
 
-Other functions for exploring incremental sequences of models are
-@code{add1()}, @code{drop1()} and @code{step()}.
-@findex add1
-@findex drop1
-@findex step
-The names of these give a good clue to their purpose, but for full
-details see the on-line help.
+@c Other functions for exploring incremental sequences of models are
+@c @code{add1()}, @code{drop1()} and @code{step()}.
+@c @findex add1
+@c @findex drop1
+@c @findex step
+@c The names of these give a good clue to their purpose, but for full
+@c details see the on-line help.
+
+순차적으로 여러개의 모형을 살펴보기 위한 함수로서 add1(), drop1(), 그리고 step()이라는 함수들이 있는데, 이들은 이름 그대로의 의미를 가집니다. 더 자세한 사항은 온라인 도움말을 살펴보시길 바랍니다.
 
 @node Generalized linear models, Nonlinear least squares and maximum likelihood models, Updating fitted models, Statistical models in R
 @section Generalized linear models
@@ -5763,21 +5961,27 @@ to linearity in a clean and straightforward way.  A generalized linear
 model may be described in terms of the following sequence of
 assumptions:
 
+일반화선형모델(generalized linear model)이란 정규분포를 따르지 않는 종속변수(non-normal response distributions)에 변수변환(transformation)이라는 과정을 통하여 모형의 선형성 (linearity)를 찾는 방법으로 선형모델(linear model)의 일반화라고 생각하시면 됩니다 여기에서부터 역자는 일반선형화모델을 GLM 이라는 약자를 사용하도록 하겠습니다. GLM은 아래와 같은 일련의 내용을 가정합니다.
+
 @itemize @bullet
 @item
-There is a response, @math{y}, of interest and stimulus variables
+@c There is a response, @math{y}, of interest and stimulus variables
 @ifnottex
-x_1, x_2, @dots{},
+@c x_1, x_2, @dots{},
 @end ifnottex
-@tex
-$x_1$, $x_2$, @dots{},
-@end tex
-whose values influence the distribution of the response.
+@c @tex
+@c $x_1$, $x_2$, @dots{},
+@c @end tex
+@c whose values influence the distribution of the response.
+
 
 @item
 The stimulus variables influence the distribution of @math{y} through
 @emph{a single linear function, only}.  This linear function is called
 the @emph{linear predictor}, and is usually written
+
+먼저 우리가 분석하고자 하는 y라는 반응 혹은 종속변수 (response)가 있고, 이 반응변수의 분포(distribution of response variable)에 영향을 미치는 여러개의 설명변수 (stimulus variables) x_1, x_2, ..., 이 있다고 가정합니다. 또한 우리는 설명변수들이 y라는 반응변수의 분포에 영향을 미칠때 ,이 영향이 반드시 변수간의 선형관계(a single linear function, only)를 통하여 영향을 준다고 가정합니다. 따라서, 이 영향을 linear predictor (한국말 모름)이라고 말하고 아래와 같이 표현합니다.
+
 @ifnottex
 @display
 eta = beta_1 x_1 + beta_2 x_2 + @dots{} + beta_p x_p,
@@ -5785,11 +5989,16 @@ eta = beta_1 x_1 + beta_2 x_2 + @dots{} + beta_p x_p,
 hence x_i has no influence on the distribution of @math{y} if and only if
 beta_i is zero.
 @end ifnottex
+
+그러므로, 만약 i번째의 설명변수 x_i의 선형계수 beta_i 가 0 이라면 반응변수의 분포에 어떠한 영향을 미치지 않는다는 점을 알 수 있습니다.
+
 @tex
 $$ \eta = \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p, $$
 hence $x_i$ has no influence on the distribution of @math{y} if and only
 if $\beta_i=0$.
 @end tex
+
+GLM을 사용하기 위해서는 우리는 또한 반응변수 y의 분포가 아래와 같이 표현된다고 가정을 합니다.
 
 @item
 The distribution of @math{y} is of the form
@@ -5803,6 +6012,9 @@ for all observations, @math{A} represents a prior weight, assumed known
 but possibly varying with the observations, and $\mu$ is the mean of
 @math{y}.
 @end ifnottex
+
+위에 표현된식에서 phi 란 scale parameter (스케일 파라미터)이고, 이 값은 아마도 사전에 알고 있을 수 있거나 미리 주어짐으로서 상수로서의 역할을 하게 됩니다. 또한 이 스케일 파라미터는 모든 관측치에 대해서 동일하게 적용된다고 가정합니다. A라는 것은 prior weight (사전 가중치)를 나타내는데, 이 사전 가중치는 관측치마다 모두 다를 수도 있다고 가정합니다. 그리고, $\mu$라는 것은 y의 평균값입니다. 따라서 y의 분포는 y의 평균과 스케일파라미터로서 결정된다고 가정할 수가 있게 됩니다.
+
 @tex
 $$
 f_Y(y;\mu,\varphi)
@@ -5814,8 +6026,10 @@ constant for all observations, $A$ represents a prior weight, assumed
 known but possibly varying with the observations, and $\mu$ is the mean
 of $y$.
 @end tex
-So it is assumed that the distribution of @math{y} is determined by its
-mean and possibly a scale parameter as well.
+@c So it is assumed that the distribution of @math{y} is determined by its
+@c mean and possibly a scale parameter as well.
+
+마지막으로 우리는 아래에서 표현한 것과 같이 반응변수 y의 평균과 linear predictor가 역함수 관계가 성립한다고 가정을 합니다. 그리고 이 역함수를 link function(링크함수)라고 부르며, 아래의 표현식에서 이 링크함수를 ell()로 표현하였습니다.
 
 @item
 @ifnottex
@@ -5833,12 +6047,14 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 
 @end itemize
 
-These assumptions are loose enough to encompass a wide class of models
-useful in statistical practice, but tight enough to allow the
-development of a unified methodology of estimation and inference, at
-least approximately.  The reader is referred to any of the current
-reference works on the subject for full details, such as McCullagh &
-Nelder (1989) or Dobson (1990).
+@c These assumptions are loose enough to encompass a wide class of models
+@c useful in statistical practice, but tight enough to allow the
+@c development of a unified methodology of estimation and inference, at
+@c least approximately.  The reader is referred to any of the current
+@c reference works on the subject for full details, such as McCullagh &
+@c Nelder (1989) or Dobson (1990).
+
+위에서 언급된 가정들은 매우 많아 보이지만, 실제로 이것들은 통계실무에서 사용되는 광범위한 범위의 모델을 모두 포괄할 수 있는 최소한의 가정입니다. GLM 은 이러한 최소한의 가정들을 가지고 추정(estimation)과 추론(inference)을 위한 하나의 통일된 방법을 개발할 수 있도록 도와줍니다. 만약, GLM 에 관심이 있는 독자라면 McCullagh & Nelder (1989) 과 Dobson (1990)을 찾아보시길 바랍니다. 이 두권의 책은 GLM의 거의 모든 것에 대하여 매우 상세히 설명하고 있습니다.
 
 @menu
 * Families::                    
@@ -5849,21 +6065,25 @@ Nelder (1989) or Dobson (1990).
 @subsection Families
 @cindex Families
 
-The class of generalized linear models handled by facilities supplied in
-@R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson},
-@emph{inverse gaussian} and @emph{gamma} response distributions and also
-@emph{quasi-likelihood} models where the response distribution is not
-explicitly specified.  In the latter case the @emph{variance function}
-must be specified as a function of the mean, but in other cases this
-function is implied by the response distribution.
+@c The class of generalized linear models handled by facilities supplied in
+@c @R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson},
+@c @emph{inverse gaussian} and @emph{gamma} response distributions and also
+@c @emph{quasi-likelihood} models where the response distribution is not
+@c explicitly specified.  In the latter case the @emph{variance function}
+@c must be specified as a function of the mean, but in other cases this
+@c function is implied by the response distribution.
 
-Each response distribution admits a variety of link functions to connect
-the mean with the linear predictor.  Those automatically available are
-shown in the following table:
+R은 GLM에서 사용되는 종속변수 y의 분포가 gaussian, binomial, poisson, inverse gaussian, 그리고 gamma인 경우를 모두 다룰 수 있는 기능을 제공하고 있으며, 종속변수의 분포를 함수식으로 정확히 쓸 수 없는 경우에 적용되는 quasi-likelihood (쿼시-라이클리후드) 모델 역시 지원됩니다. 일반적으로 GLM을 적합하기 위해서는 variance function (한국말 모름)을 알고 있어야 합니다. 쿼시-라이클리후드 모델이 아닌 경우에는 종속변수의 분포로부터 variance function를 알 수 있으나, 쿼시-라이클리후드 모델의 경우에는 variance function가 반드시 종속변수의 평균에 관한 함수로서 표현되어져야만 합니다.
+
+@c Each response distribution admits a variety of link functions to connect
+@c the mean with the linear predictor.  Those automatically available are
+@c shown in the following table:
+
+종속변수에 대한 각각의 분포들은 아래에 나열된 다양한 링크함수를 통하여 linear predictor와 함수적 관계를 가지게 됩니다.
 
 @quotation
 @multitable @columnfractions 0.25 0.55
-@headitem Family name @tab Link functions
+@headitem 분포명 @tab 연결 함수들
 @item @code{binomial} @tab @code{logit}, @code{probit}, @code{log}, @code{cloglog}
 @item @code{gaussian} @tab @code{identity}, @code{log}, @code{inverse}
 @item @code{Gamma} @tab @code{identity}, @code{inverse}, @code{log}
@@ -5874,71 +6094,85 @@ shown in the following table:
 @end multitable
 @end quotation
 
-The combination of a response distribution, a link function and various
-other pieces of information that are needed to carry out the modeling
-exercise is called the @emph{family} of the generalized linear model.
+@c The combination of a response distribution, a link function and various
+@c other pieces of information that are needed to carry out the modeling
+@c exercise is called the @emph{family} of the generalized linear model.
+
+위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모형에 필요한 다른 정보들과 조합은 GLM에서 family라는 클래스를 결정하게 됩니다.
 
 @node The glm() function,  , Families, Generalized linear models
 @subsection The @code{glm()} function
 @findex glm
 
-Since the distribution of the response depends on the stimulus variables
-through a single linear function @emph{only}, the same mechanism as was
-used for linear models can still be used to specify the linear part of a
-generalized model.  The family has to be specified in a different way.
+@c Since the distribution of the response depends on the stimulus variables
+@c through a single linear function @emph{only}, the same mechanism as was
+@c used for linear models can still be used to specify the linear part of a
+@c generalized model.  The family has to be specified in a different way.
 
-The @R{} function to fit a generalized linear model is @code{glm()}
-which uses the form
+@c The @R{} function to fit a generalized linear model is @code{glm()}
+@c which uses the form
+
+GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관계로 설명하므로, 선형회귀분석에서 모델을 적합하는데 사용된 방식이 GLM에서도 선형관계를 설명하는데 이용될 수 있습니다. R은 GLM 을 수행하기 위해서 아래와 같은 형식을 가지는 glm()이라는 함수를 제공하고 있습니다. 함수의 이용방법은 family라는 클래스를 지정하는 것을 제외하고는 lm()의 사용방식과 동일합니다.
 
 @example
 > @var{fitted.model} <- glm(@var{formula}, family=@var{family.generator}, data=@var{data.frame})
 @end example
 
-The only new feature is the @var{family.generator}, which is the
-instrument by which the family is described.  It is the name of a
-function that generates a list of functions and expressions that
-together define and control the model and estimation process.  Although
-this may seem a little complicated at first sight, its use is quite
-simple.
+@c The only new feature is the @var{family.generator}, which is the
+@c instrument by which the family is described.  It is the name of a
+@c function that generates a list of functions and expressions that
+@c together define and control the model and estimation process.  Although
+@c this may seem a little complicated at first sight, its use is quite
+@c simple.
 
-The names of the standard, supplied family generators are given under
-``Family Name'' in the table in @ref{Families}.  Where there is a choice
-of links, the name of the link may also be supplied with the family
-name, in parentheses as a parameter.  In the case of the @code{quasi}
-family, the variance function may also be specified in this way.
+@c The names of the standard, supplied family generators are given under
+@c ``Family Name'' in the table in @ref{Families}.  Where there is a choice
+@c of links, the name of the link may also be supplied with the family
+@c name, in parentheses as a parameter.  In the case of the @code{quasi}
+@c family, the variance function may also be specified in this way.
 
-Some examples make the process clear.
+여기에서 family를 지정하기 위해서 family.generator라는 인자가 사용되는데, 이것은 GLM이 모형을 정의하고 추정하는 그 모든 과정을 수행하기 위해 필요한 제네릭함수들을 불러오기 위해서 사용됩니다. 이는 매우 복잡한 것같이 생각되지만, 실제로 family의 이름만을 결정하면 되기 때문에 매우 GLM을 매우 간편하게 수행할 수 있도록 해줍니다. 여기에서 family.generator가 가질 수 있는 이름은 Families이라는 섹션에서 우리가 family에 대해서 언급할 때 사용한 표에 “Family Name”이라는 열에 나열되어 있습니다. 또한 이 표는 각 family에서 사용이 가능한 링크함수들에 대해서도 나열하고 있습니다. glm()함수를 사용시, 특정 링크 함수의 사용은 family.generator의 이름뒤에 괄호와 함께 링크함수의 이름을 지정해 줌으로 사용이 가능합니다. quasi family의 경우, variance function 역시 같은 방법으로 지정하게 됩니다.
+
+@c Some examples make the process clear.
+
+아래의 예제는 여러분이 glm()함수를 이용하여 GLM 을 수행하는 방법을 보다 쉽게 이해할 수 있도록 도와줄 것입니다.
 
 @subsubheading The @code{gaussian} family
 
-A call such as
+@c A call such as
+
+아래에서 보이는 것과 같이 glm()함수를 이용하여 gaussian (가우시안) family에 해당하는 문제를 해결하는 것은 lm()을 이용하여 문제를 해결하는 것과 수치적으로 아무런 차이는 없으나 비효율적입니다. 그 이유는 family.generator에 어떤 특정한 링크함수를 사용할 것인가를 알려주지 않았기 때문입니다. 또한, 사용자가 가우시안 페밀리에서 nonstandard (비표준) 링크함수를 이용하여 문제를 풀고자 할 경우, 이는 quasi 패밀리를 통하여 해결해야 합니다. 이 방법은 qausi 페밀리를 소개할때 설명하도록 하겠습니다.
 
 @example
 > fm <- glm(y ~ x1 + x2, family = gaussian, data = sales)
 @end example
 
-@noindent
-achieves the same result as
+@c @noindent
+@c achieves the same result as
 
 @example
 > fm <- lm(y ~ x1+x2, data=sales)
 @end example
 
-@noindent
-but much less efficiently.  Note how the gaussian family is not
-automatically provided with a choice of links, so no parameter is
-allowed.  If a problem requires a gaussian family with a nonstandard
-link, this can usually be achieved through the @code{quasi} family, as
-we shall see later.
+@c @noindent
+@c but much less efficiently.  Note how the gaussian family is not
+@c automatically provided with a choice of links, so no parameter is
+@c allowed.  If a problem requires a gaussian family with a nonstandard
+@c link, this can usually be achieved through the @code{quasi} family, as
+@c we shall see later.
 
 @subsubheading The @code{binomial} family
 
-Consider a small, artificial example, from Silvey (1970).
+@c Consider a small, artificial example, from Silvey (1970).
 
-On the Aegean island of Kalythos the male inhabitants suffer from a
-congenital eye disease, the effects of which become more marked with
-increasing age.  Samples of islander males of various ages were tested
-for blindness and the results recorded.  The data is shown below:
+Silvey (1970)에 등장하는 간단한 예를 살펴보도록 하겠습니다.
+
+@c On the Aegean island of Kalythos the male inhabitants suffer from a
+@c congenital eye disease, the effects of which become more marked with
+@c increasing age.  Samples of islander males of various ages were tested
+@c for blindness and the results recorded.  The data is shown below:
+
+Kalythos 라는 에게해에 있는 한 섬에는 남성들이 선천성 안질환을 가지고 있습니다. 이 안질환은 주로 나이가 들어감에 따라서 진행되어집니다. 아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다.
 
 @iftex
 @quotation
@@ -5957,66 +6191,80 @@ for blindness and the results recorded.  The data is shown below:
 @end multitable
 @end ifnottex
 
-The problem we consider is to fit both logistic and probit models to
-this data, and to estimate for each model the LD50, that is the age at
-which the chance of blindness for a male inhabitant is 50%.
+@c The problem we consider is to fit both logistic and probit models to
+@c this data, and to estimate for each model the LD50, that is the age at
+@c which the chance of blindness for a male inhabitant is 50%.
 
-If @math{y} is the number of blind at age @math{x} and @math{n} the
-number tested, both models have the form
-@ifnottex
-y ~ B(n, F(beta_0 + beta_1 x))
-@end ifnottex
-@tex
-$$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
-@end tex
-where for the probit case,
-@eqn{F(z) = \Phi(z), F(z) = Phi(z)}
-is the standard normal distribution function, and in the logit case
-(the default),
-@eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}.
-In both cases the LD50 is
-@ifnottex
-LD50 = - beta_0/beta_1
-@end ifnottex
-@tex
-$$ \hbox{LD50} = -\beta_0/\beta_1 $$
-@end tex
-that is, the point at which the argument of the distribution function is
-zero.
+우리는 이 데이터에 logistic 과 probit이라는 두가지 모델을 적합시키고 각각의 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이(LD50)를 추정하고자 합니다.
 
-The first step is to set the data up as a data frame
+@c If @math{y} is the number of blind at age @math{x} and @math{n} the
+@c number tested, both models have the form
+@c @ifnottex
+@c y ~ B(n, F(beta_0 + beta_1 x))
+@c @end ifnottex
+@c @tex
+@c $$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
+@c @end tex
+@c where for the probit case,
+@c @eqn{F(z) = \Phi(z), F(z) = Phi(z)}
+@c is the standard normal distribution function, and in the logit case
+@c (the default),
+@c @eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}.
+@c In both cases the LD50 is
+@c @ifnottex
+@c LD50 = - beta_0/beta_1
+@c @end ifnottex
+@c @tex
+@c $$ \hbox{LD50} = -\beta_0/\beta_1 $$
+@c @end tex
+@c that is, the point at which the argument of the distribution function is
+@c zero.
+
+만약 y가 연령 x에서 테스트로부터 확인한 실명한 사람의 수 n을 나타낸다면, 두 모형 모두 y ~ B(n, F(beta_0 + beta_1 x)) 이라는 형식을 가지게 됩니다. 단, probit 모델의 경우 F(z) = Phi(z) 가 표준정규분포를 따르며, R에서 디폴트로 사용되는 logit 모델인 경우에는 F(z) = e^z/(1+e^z) 입니다. 두 경우 모두, LD50은 LD50 = - beta_0/beta_1 가 되며, 이것은 분포함수 F(z)의 값을 0으로 만들어 주는 z에 해당하게 됩니다.
+
+@c The first step is to set the data up as a data frame
+
+이 문제를 접근하는 가장 첫번째 단계는 모형에서 다룰 데이터를 아래와 같이 데이터프레임의 형식을 갖도록 하는 것입니다.
 
 @example
 > kalythos <- data.frame(x = c(20,35,45,55,70), n = rep(50,5),
                          y = c(6,17,26,37,44))
 @end example
 
-To fit a binomial model using @code{glm()} there are three possibilities
-for the response:
+@c To fit a binomial model using @code{glm()} there are three possibilities
+@c for the response:
 
-@itemize @bullet
-@item
-If the response is a @emph{vector} it is assumed to hold @emph{binary}
-data, and so must be a @math{0/1} vector.
+glm()함수를 이용하여 binomial model (이항모델)을 적합하고자 한다면 아래의 세가지 경우 중 한 가지에 해당될 것입니다.
 
-@item
-If the response is a @emph{two-column matrix} it is assumed that the
-first column holds the number of successes for the trial and the second
-holds the number of failures.
+@c @itemize @bullet
+@c @item
+@c If the response is a @emph{vector} it is assumed to hold @emph{binary}
+@c data, and so must be a @math{0/1} vector.
 
-@item
-If the response is a @emph{factor}, its first level is taken as failure
-(0) and all other levels as `success' (1).
-@end itemize
+@c @item
+@c If the response is a @emph{two-column matrix} it is assumed that the
+@c first column holds the number of successes for the trial and the second
+@c holds the number of failures.
+
+@c @item
+@c If the response is a @emph{factor}, its first level is taken as failure
+@c (0) and all other levels as `success' (1).
+@c @end itemize
+
+종속변수가 0과 1만을 데이터값으로 가지는 열벡터인 경우입니다. 종속변수가 첫번째 열은 각 시행에서의 성공회수 그리고 두번째 열은 실패회수의 정보를 가지고 있는 행렬의 형식을 가지고 있을 수도 있습니다. 또한, 종속변수는 요인의 형식을 가지는 경우도 있을 수 있습니다. 이때, 요인은 두개의 레벨을 가지며, 첫번째 레벨은 실패를 의미하는 0의 값을 가지고 두번째 레벨은 성공을 의미하는 1의 값을 가질 것입니다. 
 
 Here we need the second of these conventions, so we add a matrix to our
 data frame:
+
+여기에서 우리는 두번째의 경우를 다룰 것입니다. 따라서 우리는 아래와 같은 작업을 통하여 데이터프레임에 실패의 정보를 포함하고 있는 열을 추가합니다.
 
 @example
 > kalythos$Ymat <- cbind(kalythos$y, kalythos$n - kalythos$y)
 @end example
 
-To fit the models we use
+@c To fit the models we use
+
+모형을 적합하는 방법은 아래와 같습니다.
 
 @example
 > fmp <- glm(Ymat ~ x, family = binomial(link=probit), data = kalythos)
@@ -6026,21 +6274,27 @@ To fit the models we use
 Since the logit link is the default the parameter may be omitted on the
 second call.  To see the results of each fit we could use
 
+@c 만약 아무런 링크함수를 지정하지 않는다면 R은 기본적으로 logit 링크라고 가정합니다. 적합된 @c 모형의 결과를 보기 위해서 아래와 같이 실행합니다.
+
 @example
 > summary(fmp)
 > summary(fml)
 @end example
 
-Both models fit (all too) well.  To find the LD50 estimate we can use a
-simple function:
+@c Both models fit (all too) well.  To find the LD50 estimate we can use a
+@c simple function:
+
+두 모형 모두 적합결과가 좋습니다. LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 작성합니다.
 
 @example
 > ld50 <- function(b) -b[1]/b[2]
 > ldp <- ld50(coef(fmp)); ldl <- ld50(coef(fml)); c(ldp, ldl)
 @end example
 
-The actual estimates from this data are 43.663 years and 43.601 years
-respectively.
+@c The actual estimates from this data are 43.663 years and 43.601 years
+@c respectively.
+
+이 데이터로부터의 추정치는 각각 43.663 과 43.601 입니다.
 
 @subsubheading Poisson models
 
