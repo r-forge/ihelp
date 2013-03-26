@@ -6120,34 +6120,40 @@ GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관�
 
 @subsubheading The @code{gaussian} family
 
-A call such as
+@c A call such as
+
+아래에서 보이는 것과 같이 glm()함수를 이용하여 gaussian (가우시안) family에 해당하는 문제를 해결하는 것은 lm()을 이용하여 문제를 해결하는 것과 수치적으로 아무런 차이는 없으나 비효율적입니다. 그 이유는 family.generator에 어떤 특정한 링크함수를 사용할 것인가를 알려주지 않았기 때문입니다. 또한, 사용자가 가우시안 페밀리에서 nonstandard (비표준) 링크함수를 이용하여 문제를 풀고자 할 경우, 이는 quasi 패밀리를 통하여 해결해야 합니다. 이 방법은 qausi 페밀리를 소개할때 설명하도록 하겠습니다.
 
 @example
 > fm <- glm(y ~ x1 + x2, family = gaussian, data = sales)
 @end example
 
-@noindent
-achieves the same result as
+@c @noindent
+@c achieves the same result as
 
 @example
 > fm <- lm(y ~ x1+x2, data=sales)
 @end example
 
-@noindent
-but much less efficiently.  Note how the gaussian family is not
-automatically provided with a choice of links, so no parameter is
-allowed.  If a problem requires a gaussian family with a nonstandard
-link, this can usually be achieved through the @code{quasi} family, as
-we shall see later.
+@c @noindent
+@c but much less efficiently.  Note how the gaussian family is not
+@c automatically provided with a choice of links, so no parameter is
+@c allowed.  If a problem requires a gaussian family with a nonstandard
+@c link, this can usually be achieved through the @code{quasi} family, as
+@c we shall see later.
 
 @subsubheading The @code{binomial} family
 
-Consider a small, artificial example, from Silvey (1970).
+@c Consider a small, artificial example, from Silvey (1970).
 
-On the Aegean island of Kalythos the male inhabitants suffer from a
-congenital eye disease, the effects of which become more marked with
-increasing age.  Samples of islander males of various ages were tested
-for blindness and the results recorded.  The data is shown below:
+Silvey (1970)에 등장하는 간단한 예를 살펴보도록 하겠습니다.
+
+@c On the Aegean island of Kalythos the male inhabitants suffer from a
+@c congenital eye disease, the effects of which become more marked with
+@c increasing age.  Samples of islander males of various ages were tested
+@c for blindness and the results recorded.  The data is shown below:
+
+Kalythos 라는 에게해에 있는 한 섬에는 남성들이 선천성 안질환을 가지고 있습니다. 이 안질환은 주로 나이가 들어감에 따라서 진행되어집니다. 아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다.
 
 @iftex
 @quotation
@@ -6166,66 +6172,80 @@ for blindness and the results recorded.  The data is shown below:
 @end multitable
 @end ifnottex
 
-The problem we consider is to fit both logistic and probit models to
-this data, and to estimate for each model the LD50, that is the age at
-which the chance of blindness for a male inhabitant is 50%.
+@c The problem we consider is to fit both logistic and probit models to
+@c this data, and to estimate for each model the LD50, that is the age at
+@c which the chance of blindness for a male inhabitant is 50%.
 
-If @math{y} is the number of blind at age @math{x} and @math{n} the
-number tested, both models have the form
-@ifnottex
-y ~ B(n, F(beta_0 + beta_1 x))
-@end ifnottex
-@tex
-$$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
-@end tex
-where for the probit case,
-@eqn{F(z) = \Phi(z), F(z) = Phi(z)}
-is the standard normal distribution function, and in the logit case
-(the default),
-@eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}.
-In both cases the LD50 is
-@ifnottex
-LD50 = - beta_0/beta_1
-@end ifnottex
-@tex
-$$ \hbox{LD50} = -\beta_0/\beta_1 $$
-@end tex
-that is, the point at which the argument of the distribution function is
-zero.
+우리는 이 데이터에 logistic 과 probit이라는 두가지 모델을 적합시키고 각각의 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이(LD50)를 추정하고자 합니다.
 
-The first step is to set the data up as a data frame
+@c If @math{y} is the number of blind at age @math{x} and @math{n} the
+@c number tested, both models have the form
+@c @ifnottex
+@c y ~ B(n, F(beta_0 + beta_1 x))
+@c @end ifnottex
+@c @tex
+@c $$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
+@c @end tex
+@c where for the probit case,
+@c @eqn{F(z) = \Phi(z), F(z) = Phi(z)}
+@c is the standard normal distribution function, and in the logit case
+@c (the default),
+@c @eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}.
+@c In both cases the LD50 is
+@c @ifnottex
+@c LD50 = - beta_0/beta_1
+@c @end ifnottex
+@c @tex
+@c $$ \hbox{LD50} = -\beta_0/\beta_1 $$
+@c @end tex
+@c that is, the point at which the argument of the distribution function is
+@c zero.
+
+만약 y가 연령 x에서 테스트로부터 확인한 실명한 사람의 수 n을 나타낸다면, 두 모형 모두 y ~ B(n, F(beta_0 + beta_1 x)) 이라는 형식을 가지게 됩니다. 단, probit 모델의 경우 F(z) = Phi(z) 가 표준정규분포를 따르며, R에서 디폴트로 사용되는 logit 모델인 경우에는 F(z) = e^z/(1+e^z) 입니다. 두 경우 모두, LD50은 LD50 = - beta_0/beta_1 가 되며, 이것은 분포함수 F(z)의 값을 0으로 만들어 주는 z에 해당하게 됩니다.
+
+@c The first step is to set the data up as a data frame
+
+이 문제를 접근하는 가장 첫번째 단계는 모형에서 다룰 데이터를 아래와 같이 데이터프레임의 형식을 갖도록 하는 것입니다.
 
 @example
 > kalythos <- data.frame(x = c(20,35,45,55,70), n = rep(50,5),
                          y = c(6,17,26,37,44))
 @end example
 
-To fit a binomial model using @code{glm()} there are three possibilities
-for the response:
+@c To fit a binomial model using @code{glm()} there are three possibilities
+@c for the response:
 
-@itemize @bullet
-@item
-If the response is a @emph{vector} it is assumed to hold @emph{binary}
-data, and so must be a @math{0/1} vector.
+glm()함수를 이용하여 binomial model (이항모델)을 적합하고자 한다면 아래의 세가지 경우 중 한 가지에 해당될 것입니다.
 
-@item
-If the response is a @emph{two-column matrix} it is assumed that the
-first column holds the number of successes for the trial and the second
-holds the number of failures.
+@c @itemize @bullet
+@c @item
+@c If the response is a @emph{vector} it is assumed to hold @emph{binary}
+@c data, and so must be a @math{0/1} vector.
 
-@item
-If the response is a @emph{factor}, its first level is taken as failure
-(0) and all other levels as `success' (1).
-@end itemize
+@c @item
+@c If the response is a @emph{two-column matrix} it is assumed that the
+@c first column holds the number of successes for the trial and the second
+@c holds the number of failures.
+
+@c @item
+@c If the response is a @emph{factor}, its first level is taken as failure
+@c (0) and all other levels as `success' (1).
+@c @end itemize
+
+종속변수가 0과 1만을 데이터값으로 가지는 열벡터인 경우입니다. 종속변수가 첫번째 열은 각 시행에서의 성공회수 그리고 두번째 열은 실패회수의 정보를 가지고 있는 행렬의 형식을 가지고 있을 수도 있습니다. 또한, 종속변수는 요인의 형식을 가지는 경우도 있을 수 있습니다. 이때, 요인은 두개의 레벨을 가지며, 첫번째 레벨은 실패를 의미하는 0의 값을 가지고 두번째 레벨은 성공을 의미하는 1의 값을 가질 것입니다. 
 
 Here we need the second of these conventions, so we add a matrix to our
 data frame:
+
+여기에서 우리는 두번째의 경우를 다룰 것입니다. 따라서 우리는 아래와 같은 작업을 통하여 데이터프레임에 실패의 정보를 포함하고 있는 열을 추가합니다.
 
 @example
 > kalythos$Ymat <- cbind(kalythos$y, kalythos$n - kalythos$y)
 @end example
 
-To fit the models we use
+@c To fit the models we use
+
+모형을 적합하는 방법은 아래와 같습니다.
 
 @example
 > fmp <- glm(Ymat ~ x, family = binomial(link=probit), data = kalythos)
@@ -6235,21 +6255,27 @@ To fit the models we use
 Since the logit link is the default the parameter may be omitted on the
 second call.  To see the results of each fit we could use
 
+@c 만약 아무런 링크함수를 지정하지 않는다면 R은 기본적으로 logit 링크라고 가정합니다. 적합된 @c 모형의 결과를 보기 위해서 아래와 같이 실행합니다.
+
 @example
 > summary(fmp)
 > summary(fml)
 @end example
 
-Both models fit (all too) well.  To find the LD50 estimate we can use a
-simple function:
+@c Both models fit (all too) well.  To find the LD50 estimate we can use a
+@c simple function:
+
+두 모형 모두 적합결과가 좋습니다. LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 작성합니다.
 
 @example
 > ld50 <- function(b) -b[1]/b[2]
 > ldp <- ld50(coef(fmp)); ldl <- ld50(coef(fml)); c(ldp, ldl)
 @end example
 
-The actual estimates from this data are 43.663 years and 43.601 years
-respectively.
+@c The actual estimates from this data are 43.663 years and 43.601 years
+@c respectively.
+
+이 데이터로부터의 추정치는 각각 43.663 과 43.601 입니다.
 
 @subsubheading Poisson models
 
