@@ -4843,11 +4843,13 @@ b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 �
 @node Dropping all names in a printed array, Recursive numerical integration, Efficiency factors in block designs, More advanced examples
 @subsection Dropping all names in a printed array
 
-For printing purposes with large matrices or arrays, it is often useful
-to print them in close block form without the array names or numbers.
-Removing the @code{dimnames} attribute will not achieve this effect, but
-rather the array must be given a @code{dimnames} attribute consisting of
-empty strings.  For example to print a matrix, @code{X}
+@c For printing purposes with large matrices or arrays, it is often useful
+@c to print them in close block form without the array names or numbers.
+@c Removing the @code{dimnames} attribute will not achieve this effect, but
+@c rather the array must be given a @code{dimnames} attribute consisting of
+@c empty strings.  For example to print a matrix, @code{X}
+
+사이즈가 큰 행렬 혹은 배열의 출력이 주목적인 경우, 행렬과 배열의 구성요소의 위치를 알려주는 행, 열, 혹은 차원에 대한 정보를 나타내지 않고 오로지 데이터값만을 출력하는 것이 유용한 경우가 있습니다. 이런 경우에는 dimnames 이라는 속성이 가지는 문자열값들을 초기화 시켜주면 됩니다. 예를 들어 행렬 X를 행과 열의 정보 없이 데이터만 출력하고자 할 경우, 아래와 같이 코드를 작성하시면 됩니다.
 
 @example
 > temp <- X
@@ -4855,10 +4857,12 @@ empty strings.  For example to print a matrix, @code{X}
 > temp; rm(temp)
 @end example
 
-This can be much more conveniently done using a function,
-@code{no.dimnames()}, shown below, as a ``wrap around'' to achieve the
-same result.  It also illustrates how some effective and useful user
-functions can be quite short.
+@c This can be much more conveniently done using a function,
+@c @code{no.dimnames()}, shown below, as a ``wrap around'' to achieve the
+@c same result.  It also illustrates how some effective and useful user
+@c functions can be quite short.
+
+우리는 또한 이와 같은 기능을 아래와 같이 no.dimnames()이라는 사용자정의 함수를 작성함으로서 수행할 수 도 있습니다. 이것은 또한 이러한 유용한 기능을 위한 사용자정의함수가 꼭 길지 않아도 됨을 잘 보여주고 있습니다.
 
 @example
 no.dimnames <- function(a) @{
@@ -4873,15 +4877,19 @@ no.dimnames <- function(a) @{
 @}
 @end example
 
-With this function defined, an array may be printed in close format
-using
+@c With this function defined, an array may be printed in close format
+@c using
+
+위와 같이 정의된 함수는 아래와 같이 사용함으로서 배열이 가지는 데이터 값들만 출력해낼수 있습니다.
 
 @example
 > no.dimnames(X)
 @end example
 
-This is particularly useful for large integer arrays, where patterns are
-the real interest rather than the values.
+@c This is particularly useful for large integer arrays, where patterns are
+@c the real interest rather than the values.
+
+이번 섹션에서 다룬 내용은 배열 데이터 값 자체 보다 배열의 값들이 가지는 패턴을 분석하고자 할때 더 유용하므로 주로 사이즈가 큰 정수형 배열을 다룰때 사용됩니다
 
 @node Recursive numerical integration,  , Dropping all names in a printed array, More advanced examples
 @subsection Recursive numerical integration
