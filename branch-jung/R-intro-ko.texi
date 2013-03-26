@@ -5376,18 +5376,29 @@ the picture.
 @table @code
 @item y ~ x
 @itemx y ~ 1 + x
-Both imply the same simple linear regression model of @math{y} on
-@math{x}.  The first has an implicit intercept term, and the second an
-explicit one.
+@c Both imply the same simple linear regression model of @math{y} on
+@c @math{x}.  The first has an implicit intercept term, and the second an
+@c explicit one.
+
+두가지 표현 모두 종속변수 y를 x 라는 한개의 설명변수를 이용하여 설명하고자 하는 단순선
+형회귀분석입니다. 가장 기본적인 수학적 모델이 인터셉트를 포함하므로 R은 기본적으로 분
+석을 수행할 때 인터셉트를 포함한다고 가정합니다.
 
 @item y ~ 0 + x
 @itemx y ~ -1 + x
 @itemx y ~ x - 1
-Simple linear regression of @math{y} on @math{x} through the origin
-(that is, without an intercept term).
+@c Simple linear regression of @math{y} on @math{x} through the origin
+@c (that is, without an intercept term).
+
+세가지 표현 모두 단순선형회귀 모형을 나타내지만 인터셉트항을 가지고 있지 않을 경우에
+사용합니다.
 
 @item log(y) ~ x1 + x2
 Multiple regression of the transformed variable,
+
+log(y)에 의해 변환된 종속변수의 값을 2개의 설명변수 x1 과 x2를 이용하여 설명하고자 하
+는 다중회귀분석(multiple regression)입니다.
+
 @ifnottex
 log(y),
 @end ifnottex
@@ -5397,10 +5408,15 @@ $\log(y)$,
 on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
+
+이것은 종속변수 y를 설명변수 x의 다항식 (polynomial) 으로서 설명하고자 하는 polynomial regression (정확한 한국말 모름)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
+
 @itemx y ~ 1 + x + I(x^2)
-Polynomial regression of @math{y} on @math{x} of degree 2.  The first
-form uses orthogonal polynomials, and the second uses explicit powers,
-as basis.
+@c Polynomial regression of @math{y} on @math{x} of degree 2.  The first
+@c form uses orthogonal polynomials, and the second uses explicit powers,
+@c as basis.
+
+이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
 
 @item y ~ X + poly(x,2)
 Multiple regression @math{y} with model matrix consisting of the matrix
@@ -5413,6 +5429,10 @@ classes determined by @math{A}.
 @item y ~ A + x
 Single classification analysis of covariance model of @math{y}, with
 classes determined by @math{A}, and with covariate @math{x}.
+
+이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
+
+model formula 에 사용되는 ~ (틸다) 라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가지고 있습니다. 그 이유는 수학과 같이 정확한 함수적 관계가 있지 않기 때문입니다. 따라서, R 에서 사용하는 일반 선형모형은 다음과 같은 model formula 의 형식을 가집니다.
 
 @item y ~ A*B
 @itemx y ~ A + B + A:B
@@ -5486,6 +5506,17 @@ inevitable change is that the operator @samp{@code{.}} becomes
 
 The notation is summarized below (based on Chambers & Hastie, 1992,
 p.29):
+
+각각의 항들에 대한 설명은 다음과 같습니다. 
+
+response는 종속변수가 1개로 이루어진 열벡터가 될 수도 있고, 혹은 여러개의 종속변수들로
+이루어진 행렬이 될 수도 있습니다. op_i이라는 것은 + 혹은 -이라는 연산자를 의미합니다. 연산자 +는 설명변수 term_i를 회귀분석에 포함시킨다느느 의미이고 -는 포함시키지 않는다는 의미입니다. term_i라는 것은 다음의 항목들중에 한가지가 될 수 있습니다. 벡터 혹은 행렬, 또는 1 요인 (factor) 요인, 벡터, 행렬등을 +와 -라는 연산자를 이용하여 복합적으로 표현한 항 위의 모든 경우들을 행렬식으로 나타낼 경우, 각각의 term_i은 디자인 매트릭스에 의해서 선형회귀분석에 포함될 것인지 말 것인지가 결정되어 집니다. 1 이라는 열벡터는 인터셉트를 의미하는데, 이 열벡터는 특별히 지정하지 않아도 항상 디자인 매트릭스에 포함되어 있다고 생각하셔야 합니다.
+
+formula operators는 GLIM 혹은 Genstat 에서 사용되는 Wilkinson과 Rogers라는 연산자의 개념과 유사합니다. 그러나 다른점이 있다면 GLIM이나 Genstat에서는 ‘.’이라는 연산자를 사용하지만 이것은 R에서는 ‘:’이라는 심볼을 사용합니다. 그 이유는 ‘.’심볼은 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
+
+다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는
+formula operators들에 대해서 정리한 것입니다.
+
 
 @table @code
 @item @var{Y} ~ @var{M}
