@@ -5942,21 +5942,27 @@ to linearity in a clean and straightforward way.  A generalized linear
 model may be described in terms of the following sequence of
 assumptions:
 
+일반화선형모델(generalized linear model)이란 정규분포를 따르지 않는 종속변수(non-normal response distributions)에 변수변환(transformation)이라는 과정을 통하여 모형의 선형성 (linearity)를 찾는 방법으로 선형모델(linear model)의 일반화라고 생각하시면 됩니다 여기에서부터 역자는 일반선형화모델을 GLM 이라는 약자를 사용하도록 하겠습니다. GLM은 아래와 같은 일련의 내용을 가정합니다.
+
 @itemize @bullet
 @item
-There is a response, @math{y}, of interest and stimulus variables
+@c There is a response, @math{y}, of interest and stimulus variables
 @ifnottex
-x_1, x_2, @dots{},
+@c x_1, x_2, @dots{},
 @end ifnottex
-@tex
-$x_1$, $x_2$, @dots{},
-@end tex
-whose values influence the distribution of the response.
+@c @tex
+@c $x_1$, $x_2$, @dots{},
+@c @end tex
+@c whose values influence the distribution of the response.
+
 
 @item
 The stimulus variables influence the distribution of @math{y} through
 @emph{a single linear function, only}.  This linear function is called
 the @emph{linear predictor}, and is usually written
+
+먼저 우리가 분석하고자 하는 y라는 반응 혹은 종속변수 (response)가 있고, 이 반응변수의 분포(distribution of response variable)에 영향을 미치는 여러개의 설명변수 (stimulus variables) x_1, x_2, ..., 이 있다고 가정합니다. 또한 우리는 설명변수들이 y라는 반응변수의 분포에 영향을 미칠때 ,이 영향이 반드시 변수간의 선형관계(a single linear function, only)를 통하여 영향을 준다고 가정합니다. 따라서, 이 영향을 linear predictor (한국말 모름)이라고 말하고 아래와 같이 표현합니다.
+
 @ifnottex
 @display
 eta = beta_1 x_1 + beta_2 x_2 + @dots{} + beta_p x_p,
@@ -5964,11 +5970,16 @@ eta = beta_1 x_1 + beta_2 x_2 + @dots{} + beta_p x_p,
 hence x_i has no influence on the distribution of @math{y} if and only if
 beta_i is zero.
 @end ifnottex
+
+그러므로, 만약 i번째의 설명변수 x_i의 선형계수 beta_i 가 0 이라면 반응변수의 분포에 어떠한 영향을 미치지 않는다는 점을 알 수 있습니다.
+
 @tex
 $$ \eta = \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p, $$
 hence $x_i$ has no influence on the distribution of @math{y} if and only
 if $\beta_i=0$.
 @end tex
+
+GLM을 사용하기 위해서는 우리는 또한 반응변수 y의 분포가 아래와 같이 표현된다고 가정을 합니다.
 
 @item
 The distribution of @math{y} is of the form
@@ -5982,6 +5993,9 @@ for all observations, @math{A} represents a prior weight, assumed known
 but possibly varying with the observations, and $\mu$ is the mean of
 @math{y}.
 @end ifnottex
+
+위에 표현된식에서 phi 란 scale parameter (스케일 파라미터)이고, 이 값은 아마도 사전에 알고 있을 수 있거나 미리 주어짐으로서 상수로서의 역할을 하게 됩니다. 또한 이 스케일 파라미터는 모든 관측치에 대해서 동일하게 적용된다고 가정합니다. A라는 것은 prior weight (사전 가중치)를 나타내는데, 이 사전 가중치는 관측치마다 모두 다를 수도 있다고 가정합니다. 그리고, $\mu$라는 것은 y의 평균값입니다. 따라서 y의 분포는 y의 평균과 스케일파라미터로서 결정된다고 가정할 수가 있게 됩니다.
+
 @tex
 $$
 f_Y(y;\mu,\varphi)
@@ -5993,8 +6007,10 @@ constant for all observations, $A$ represents a prior weight, assumed
 known but possibly varying with the observations, and $\mu$ is the mean
 of $y$.
 @end tex
-So it is assumed that the distribution of @math{y} is determined by its
-mean and possibly a scale parameter as well.
+@c So it is assumed that the distribution of @math{y} is determined by its
+@c mean and possibly a scale parameter as well.
+
+마지막으로 우리는 아래에서 표현한 것과 같이 반응변수 y의 평균과 linear predictor가 역함수 관계가 성립한다고 가정을 합니다. 그리고 이 역함수를 link function(링크함수)라고 부르며, 아래의 표현식에서 이 링크함수를 ell()로 표현하였습니다.
 
 @item
 @ifnottex
@@ -6012,12 +6028,14 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 
 @end itemize
 
-These assumptions are loose enough to encompass a wide class of models
-useful in statistical practice, but tight enough to allow the
-development of a unified methodology of estimation and inference, at
-least approximately.  The reader is referred to any of the current
-reference works on the subject for full details, such as McCullagh &
-Nelder (1989) or Dobson (1990).
+@c These assumptions are loose enough to encompass a wide class of models
+@c useful in statistical practice, but tight enough to allow the
+@c development of a unified methodology of estimation and inference, at
+@c least approximately.  The reader is referred to any of the current
+@c reference works on the subject for full details, such as McCullagh &
+@c Nelder (1989) or Dobson (1990).
+
+위에서 언급된 가정들은 매우 많아 보이지만, 실제로 이것들은 통계실무에서 사용되는 광범위한 범위의 모델을 모두 포괄할 수 있는 최소한의 가정입니다. GLM 은 이러한 최소한의 가정들을 가지고 추정(estimation)과 추론(inference)을 위한 하나의 통일된 방법을 개발할 수 있도록 도와줍니다. 만약, GLM 에 관심이 있는 독자라면 McCullagh & Nelder (1989) 과 Dobson (1990)을 찾아보시길 바랍니다. 이 두권의 책은 GLM의 거의 모든 것에 대하여 매우 상세히 설명하고 있습니다.
 
 @menu
 * Families::                    
