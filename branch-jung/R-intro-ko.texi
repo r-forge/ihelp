@@ -5872,20 +5872,24 @@ comprehend and control.
 @section Updating fitted models
 @cindex Updating fitted models
 
-The @code{update()} function is largely a convenience function that
-allows a model to be fitted that differs from one previously fitted
-usually by just a few additional or removed terms.  Its form is
-@findex update
+@c The @code{update()} function is largely a convenience function that
+@c allows a model to be fitted that differs from one previously fitted
+@c usually by just a few additional or removed terms.  Its form is
+@c @findex update
+
+아래에 예제에서 사용된 update()이라는 함수는 이전에 적합된 모형에 몇 개의 항을 추가 혹은 제거를 통하여 새로운 모형으로서 적합시키고자 할 때 매우 유용한 함수입니다.
 
 @example
 > @var{new.model} <- update(@var{old.model}, @var{new.formula})
 @end example
 
-In the @var{new.formula} the special name consisting of a period,
-@samp{@code{.}},
-@findex .
-only, can be used to stand for ``the corresponding part of the old model
-formula''.  For example,
+@c In the @var{new.formula} the special name consisting of a period,
+@c @samp{@code{.}},
+@c @findex .
+@c only, can be used to stand for ``the corresponding part of the old model
+@c formula''.  For example,
+
+앞서 언급했던 것과 같이 R은 변수명에 ‘.’을 사용하는 것을 허용하므로 위의 예제와 같 new.model이라는 변수명을 사용함에 아무런 문제가 없습니다. 그러나, 함수 update()를 사용함에 있어서 ‘.’를 사용할 때는 이전 적합시 사용한 모델의 동일한 부분을 다시 사용함을 R시스템이 내부적으로 인식하도록 하는 역할을 합니다. 좀 더 확실한 이해를 이해서 아래의 예제를 살펴봅니다.
 
 @example
 > fm05 <- lm(y ~ x1 + x2 + x3 + x4 + x5, data = production)
@@ -5893,18 +5897,22 @@ formula''.  For example,
 > smf6 <- update(fm6, sqrt(.) ~ .)
 @end example
 
-@noindent
-would fit a five variate multiple regression with variables (presumably)
-from the data frame @code{production}, fit an additional model including
-a sixth regressor variable, and fit a variant on the model where the
-response had a square root transform applied.
+@c @noindent
+@c would fit a five variate multiple regression with variables (presumably)
+@c from the data frame @code{production}, fit an additional model including
+@c a sixth regressor variable, and fit a variant on the model where the
+@c response had a square root transform applied.
+
+먼저, production이라는 데이터가 가지고 있는 5개의 설명변수를 가지고 y라는 종속변수를 설명하고자 적합된 모델의 객체가 fm05에 저장되었습니다. 이렇게 이미 적합에 사용된 모형에 새로운 6번째 설명변수를 추가하여 모형을 재적합하고 싶을 때, ‘.’를 사용합니다. 이때 data=production이라는 인자를 다시 입력할 필요는 없습니다. 그 이유는 update()이라는 함수가 이미 production이라는 데이터를 재적합을 위해서 홀딩하고 있기 때문입니다. 위의 코드의 맨 마지막라인은 square root라는 변환된 종속변수 y의 값을 6개의 설명변수로 설명하고자 하는 모델을 적합한다는 의미입니다.
 
 Note especially that if the @code{data=} argument is specified on the
 original call to the model fitting function, this information is passed on
 through the fitted model object to @code{update()} and its allies.
 
-The name @samp{.} can also be used in other contexts, but with slightly
-different meaning.  For example
+@c The name @samp{.} can also be used in other contexts, but with slightly
+@c different meaning.  For example
+
+그러나, ‘.’는 아래의 코드에서 보여지는 것과 같이 다른 용도로 사용될 수 있기 때문에 사용자에게 ‘.’를 사용함에 있어서 주의가 요구됩니다. 이것은 ‘.’가 종속변수 y를 설명함에 있어서 production이라는 데이터안에 있는 모든 변수를 다 이용하여 모형을 적합하겠다는 의미입니다.
 
 @example
 > fmfull <- lm(y ~ . , data = production)
@@ -5914,13 +5922,15 @@ different meaning.  For example
 would fit a model with response @code{y} and regressor variables
 @emph{all other variables in the data frame @code{production}}.
 
-Other functions for exploring incremental sequences of models are
-@code{add1()}, @code{drop1()} and @code{step()}.
-@findex add1
-@findex drop1
-@findex step
-The names of these give a good clue to their purpose, but for full
-details see the on-line help.
+@c Other functions for exploring incremental sequences of models are
+@c @code{add1()}, @code{drop1()} and @code{step()}.
+@c @findex add1
+@c @findex drop1
+@c @findex step
+@c The names of these give a good clue to their purpose, but for full
+@c details see the on-line help.
+
+순차적으로 여러개의 모형을 살펴보기 위한 함수로서 add1(), drop1(), 그리고 step()이라는 함수들이 있는데, 이들은 이름 그대로의 의미를 가집니다. 더 자세한 사항은 온라인 도움말을 살펴보시길 바랍니다.
 
 @node Generalized linear models, Nonlinear least squares and maximum likelihood models, Updating fitted models, Statistical models in R
 @section Generalized linear models
