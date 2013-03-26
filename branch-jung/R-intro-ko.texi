@@ -6046,21 +6046,25 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @subsection Families
 @cindex Families
 
-The class of generalized linear models handled by facilities supplied in
-@R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson},
-@emph{inverse gaussian} and @emph{gamma} response distributions and also
-@emph{quasi-likelihood} models where the response distribution is not
-explicitly specified.  In the latter case the @emph{variance function}
-must be specified as a function of the mean, but in other cases this
-function is implied by the response distribution.
+@c The class of generalized linear models handled by facilities supplied in
+@c @R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson},
+@c @emph{inverse gaussian} and @emph{gamma} response distributions and also
+@c @emph{quasi-likelihood} models where the response distribution is not
+@c explicitly specified.  In the latter case the @emph{variance function}
+@c must be specified as a function of the mean, but in other cases this
+@c function is implied by the response distribution.
 
-Each response distribution admits a variety of link functions to connect
-the mean with the linear predictor.  Those automatically available are
-shown in the following table:
+R은 GLM에서 사용되는 종속변수 y의 분포가 gaussian, binomial, poisson, inverse gaussian, 그리고 gamma인 경우를 모두 다룰 수 있는 기능을 제공하고 있으며, 종속변수의 분포를 함수식으로 정확히 쓸 수 없는 경우에 적용되는 quasi-likelihood (쿼시-라이클리후드) 모델 역시 지원됩니다. 일반적으로 GLM을 적합하기 위해서는 variance function (한국말 모름)을 알고 있어야 합니다. 쿼시-라이클리후드 모델이 아닌 경우에는 종속변수의 분포로부터 variance function를 알 수 있으나, 쿼시-라이클리후드 모델의 경우에는 variance function가 반드시 종속변수의 평균에 관한 함수로서 표현되어져야만 합니다.
+
+@c Each response distribution admits a variety of link functions to connect
+@c the mean with the linear predictor.  Those automatically available are
+@c shown in the following table:
+
+종속변수에 대한 각각의 분포들은 아래에 나열된 다양한 링크함수를 통하여 linear predictor와 함수적 관계를 가지게 됩니다.
 
 @quotation
 @multitable @columnfractions 0.25 0.55
-@headitem Family name @tab Link functions
+@headitem 분포명 @tab 연결 함수들
 @item @code{binomial} @tab @code{logit}, @code{probit}, @code{log}, @code{cloglog}
 @item @code{gaussian} @tab @code{identity}, @code{log}, @code{inverse}
 @item @code{Gamma} @tab @code{identity}, @code{inverse}, @code{log}
@@ -6071,9 +6075,11 @@ shown in the following table:
 @end multitable
 @end quotation
 
-The combination of a response distribution, a link function and various
-other pieces of information that are needed to carry out the modeling
-exercise is called the @emph{family} of the generalized linear model.
+@c The combination of a response distribution, a link function and various
+@c other pieces of information that are needed to carry out the modeling
+@c exercise is called the @emph{family} of the generalized linear model.
+
+위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모형에 필요한 다른 정보들과 조합은 GLM에서 family라는 클래스를 결정하게 됩니다.
 
 @node The glm() function,  , Families, Generalized linear models
 @subsection The @code{glm()} function
