@@ -6412,22 +6412,24 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @section Nonlinear least squares and maximum likelihood models
 @cindex Nonlinear least squares
 
-Certain forms of nonlinear model can be fitted by Generalized Linear
-Models (@code{glm()}).  But in the majority of cases we have to approach
-the nonlinear curve fitting problem as one of nonlinear optimization.
-@R{}'s nonlinear optimization routines are @code{optim()}, @code{nlm()}
-and (from @R{} 2.2.0) @code{nlminb()},
-@findex nlm
-@findex optim
-@findex nlminb
-which provide the functionality (and more) of @SPLUS{}'s @code{ms()} and
-@code{nlminb()}.  We seek the parameter values that minimize some index
-of lack-of-fit, and they do this by trying out various parameter values
-iteratively.  Unlike linear regression for example, there is no
-guarantee that the procedure will converge on satisfactory estimates.
-All the methods require initial guesses about what parameter values to
-try, and convergence may depend critically upon the quality of the
-starting values.
+@c Certain forms of nonlinear model can be fitted by Generalized Linear
+@c Models (@code{glm()}).  But in the majority of cases we have to approach
+@c the nonlinear curve fitting problem as one of nonlinear optimization.
+@c @R{}'s nonlinear optimization routines are @code{optim()}, @code{nlm()}
+@c and (from @R{} 2.2.0) @code{nlminb()},
+@c @findex nlm
+@c @findex optim
+@c @findex nlminb
+@c which provide the functionality (and more) of @SPLUS{}'s @code{ms()} and
+@c @code{nlminb()}.  We seek the parameter values that minimize some index
+@c of lack-of-fit, and they do this by trying out various parameter values
+@c iteratively.  Unlike linear regression for example, there is no
+@c guarantee that the procedure will converge on satisfactory estimates.
+@c All the methods require initial guesses about what parameter values to
+@c try, and convergence may depend critically upon the quality of the
+@c starting values.
+
+특정한 형식을 가지고 있는 비선형모델은 GLM (glm())에 의하여 적합될 수 있습니다. 그러나, 대부분의 비선형 모델의 경우 적합이란 문제는 수치해석측면의 최적화 문제로서 접근해야만 합니다. R은 이런 비선형 최적화 문제를 위해서 optim()과 nlm()이라는 기능을 제공하고 있습니다. 특히, R 2.2.0 버전부터는 SPlus에서 사용할 수 있었던 ms()과 nlminb()와 같은 기능의 nlminb()을 지원합니다. 이러한 함수들의 기본 동작원리는 여러가지 모수의 값을 반복적으로 적용하여 적합결여지표 (the index of lack-of-fit)의 값을 최소화하는 모수의 값을 추정하는 것입니다. 그러나, 선형회귀에서 사용되는 모수의 추정과는 달리 비선형최적화 방법을 통한 모수의 추정은 만족스러운 수준의 추정치에 수렴하지 않을 수도 있습니다. 그 이유는 여기에 사용되는 수치해석법이 모수에 대한 초기값을 지정해야 하고, 추정치에 대한 수렴이라는 과정은 시작점의 선택에 따라서 크게 달라질 수 있기 때문입니다.
 
 @menu
 * Least squares::               
