@@ -6347,45 +6347,55 @@ Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 P
 
 @subsubheading Quasi-likelihood models
 
-For all families the variance of the response will depend on the mean
-and will have the scale parameter as a multiplier.  The form of
-dependence of the variance on the mean is a characteristic of the
-response distribution; for example for the poisson distribution
-@eqn{\hbox{Var}[y] = \mu,Var(y) = mu}.
+@c For all families the variance of the response will depend on the mean
+@c and will have the scale parameter as a multiplier.  The form of
+@c dependence of the variance on the mean is a characteristic of the
+@c response distribution; for example for the poisson distribution
+@c @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}.
 
-For quasi-likelihood estimation and inference the precise response
-distribution is not specified, but rather only a link function and the
-form of the variance function as it depends on the mean.  Since
-quasi-likelihood estimation uses formally identical techniques to those
-for the gaussian distribution, this family provides a way of fitting
-gaussian models with non-standard link functions or variance functions,
-incidentally.
+GLM의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수이며, scale parameter는 단순히 multiplier이라는 공통점을 발견할 수 있을 것입니다. 분산과 평균과의 상관관계는 종속변수분포의 특징이기도 합니다. 예를 들어, 포아송 분포는 평균과 분산이 일치합니다. (즉, Var(y) = mu).
 
-For example, consider fitting the non-linear regression
-@ifnottex
-y = theta_1 z_1 / (z_2 - theta_2) + e
-@end ifnottex
-@tex
-$$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$
-@end tex
-which may be written alternatively as
-@ifnottex
-y = 1 / (beta_1 x_1 + beta_2 x_2) + e
-@end ifnottex
-@tex
-$$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
-@end tex
-where
-@ifnottex
-x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
-theta_2/theta_1.
-@end ifnottex
-@tex
-$x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and
-$\beta_2=\theta_2/\theta_1$.
-@end tex
-Supposing a suitable data frame to be set up we could fit this
-non-linear regression as
+
+@c For quasi-likelihood estimation and inference the precise response
+@c distribution is not specified, but rather only a link function and the
+@c form of the variance function as it depends on the mean.  Since
+@c quasi-likelihood estimation uses formally identical techniques to those
+@c for the gaussian distribution, this family provides a way of fitting
+@c gaussian models with non-standard link functions or variance functions,
+@c incidentally.
+
+Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분포를 찾아낸다는 것보다 다소 링크함수와 variance function이 평균과 어떤 관계를 가지고 있는지와 관련이 있습니다. quasi-likelihood를 이용한 추정은 가우시안 분포를 사용하는 경우와 동일한 방법을 사용하므로, 비표준링크함수 혹은 분산함수(variance funtion)를 이용하여 가우시안 모형의 적합을 가능하게 해줍니다.
+
+@c For example, consider fitting the non-linear regression
+@c @ifnottex
+@c y = theta_1 z_1 / (z_2 - theta_2) + e
+@c @end ifnottex
+@c @tex
+@c $$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$
+@c @end tex
+@c which may be written alternatively as
+@c @ifnottex
+@c y = 1 / (beta_1 x_1 + beta_2 x_2) + e
+@c @end ifnottex
+@c @tex
+@ $$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
+@c @end tex
+@c where
+@c @ifnottex
+@c x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
+@c theta_2/theta_1.
+@c @end ifnottex
+@c @tex
+@c $x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and
+@c $\beta_2=\theta_2/\theta_1$.
+@c @end tex
+
+예를 들어, 비선형회귀모형인 y = theta_1 z_1 / (z_2 - theta_2) + e 에 대한 적합을 생각해 봅시다. 이모형은 다시 y = 1 / (beta_1 x_1 + beta_2 x_2) + e 로도 표현이 가능하며, 이 때 x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 = theta_2/theta_1. 입니다.
+
+@c Supposing a suitable data frame to be set up we could fit this
+@c non-linear regression as
+
+만약, 사용자가 모형에 대응하는 데이터 프레임을 가지고 있다면, 위에서 정의한 비선형회귀 모형은 아래와 같이 적합될 수 있습니다.
 
 @example
 > nlfit <- glm(y ~ x1 + x2 - 1,
@@ -6393,8 +6403,10 @@ non-linear regression as
                data = biochem)
 @end example
 
-The reader is referred to the manual and the help document for further
-information, as needed.
+@c The reader is referred to the manual and the help document for further
+@c information, as needed.
+
+만약, 더 자세한 설명이 필요하다면 매뉴얼과 도움말을 이용하시길 바랍니다.
 
 @node Nonlinear least squares and maximum likelihood models, Some non-standard models, Generalized linear models, Statistical models in R
 @section Nonlinear least squares and maximum likelihood models
