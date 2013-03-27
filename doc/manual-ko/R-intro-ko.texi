@@ -8445,7 +8445,7 @@ library trees searched for add-on packages).
 
 추가적으로, R 처리과정에서 이용 가능한 메모리 제어를 위한 옵션이 있습니다(추가 정보를 원하신다면, 'Memory' 토픽 부분의 온라인 도움말을 참고하시기 바랍니다). R에 의해 사용되는 메모리 양을 제한하려 하지 않는 이상 이 옵션들을 사용해야 할 필요는 굳이 없습니다.
 
-@ @R{} accepts the following command-line options.
+@R{} accepts the following command-line options.
 
 R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
 
@@ -8462,23 +8462,29 @@ R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
 표준결과물에 대한 버전 정보를 출력하고 빠져나옴.
 
 @item --encoding=@var{enc}
-Specify the encoding to be assumed for input from the console or
-@code{stdin}.  This needs to be an encoding known to @code{iconv}: see
-its help page.  (@code{--encoding @var{enc}} is also accepted.)
+@c Specify the encoding to be assumed for input from the console or
+@c @code{stdin}.  This needs to be an encoding known to @code{iconv}: see
+@c its help page.  (@code{--encoding @var{enc}} is also accepted.)
+
+콘솔 혹은 stdin의 input을 위해서 인코딩(encoding)을 구체화해야 합니다. 이는 iconv라고 불리는 인코딩이 필요합니다. 도움말 페이지를 참조하세요. (--encoding enc도 사용될 수 있습니다.)
 
 @item RHOME
-Print the path to the @R{} ``home directory'' to standard output and
-exit successfully.  Apart from the front-end shell script and the man
-page, @R{} installation puts everything (executables, packages, etc.)
-into this directory.
+@c Print the path to the @R{} ``home directory'' to standard output and
+@c exit successfully.  Apart from the front-end shell script and the man
+@c page, @R{} installation puts everything (executables, packages, etc.)
+@c into this directory.
+
+R home directory를 표준출력과 exit을 위해서 R "home directory"에 대한 경로 출력을 합니다. front-end shell 스크립트 와 매인 페이지를 제외하고, R installation은 모든 것을 이 디렉토리 안에 포함시킵니다.
 
 @item --save
 @itemx --no-save
-Control whether data sets should be saved or not at the end of the @R{}
-session.  If neither is given in an interactive session, the user is
-asked for the desired behavior when ending the session with @kbd{q()};
-in non-interactive use one of these must be specified or implied by some
-other option (see below).
+@c Control whether data sets should be saved or not at the end of the @R{}
+@c session.  If neither is given in an interactive session, the user is
+@c asked for the desired behavior when ending the session with @kbd{q()};
+@c in non-interactive use one of these must be specified or implied by some
+@c other option (see below).
+
+데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
 
 @item --no-environ
 Do not read any user file to set environment variables.
