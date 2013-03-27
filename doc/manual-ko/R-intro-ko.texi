@@ -8487,36 +8487,50 @@ R home directory를 표준출력과 exit을 위해서 R "home directory"에 대�
 데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
 
 @item --no-environ
-Do not read any user file to set environment variables.
+@c Do not read any user file to set environment variables.
+
+환경변수 설정을 위한 유저 파일 불러오기는 하지 않습니다.
 
 @item --no-site-file
-Do not read the site-wide profile at startup.
+@c Do not read the site-wide profile at startup.
+
+startup상에서 site-wide 프로파일을 불러오지 않습니다.
 
 @item --no-init-file
-Do not read the user's profile at startup.
+@c Do not read the user's profile at startup.
+
+startup상에서 user 프로파일을 불러오지 않습니다.
 
 @item --restore
 @itemx --no-restore
 @itemx --no-restore-data
-Control whether saved images (file @file{.RData} in the directory where
-@R{} was started) should be restored at startup or not.  The default is
-to restore. (@option{--no-restore} implies all the specific
-@option{--no-restore-*} options.)
+@c Control whether saved images (file @file{.RData} in the directory where
+@c @R{} was started) should be restored at startup or not.  The default is
+@c to restore. (@option{--no-restore} implies all the specific
+@c @option{--no-restore-*} options.)
+
+저장된 이미지 파일이 startup상에서의 restore 여부를 결정합니다.(R이 시작된 디렉토리 안에 file .RData 존재) 디폴트는 restore되어야 합니다. (--no-restore는 모든 --no-restore-* 옵션들을 의미합니다.
 
 @item --no-restore-history
-Control whether the history file (normally file @file{.Rhistory} in the
-directory where @R{} was started, but can be set by the environment
-variable @env{R_HISTFILE}) should be restored at startup or not.  The
-default is to restore.
+@c Control whether the history file (normally file @file{.Rhistory} in the
+@c directory where @R{} was started, but can be set by the environment
+@c variable @env{R_HISTFILE}) should be restored at startup or not.  The
+@c default is to restore.
+
+히스토리 파일이 restore되어야 하는지 여부 결정합니다(R이 시작된 디렉토리에 일반적으로 file .Rhistory가 존재하며, 환경변수 R_HISTFILE에 의해 설정될 수 있습니다). 디폴트는 restore 되어야 합니다.
 
 @item --no-Rconsole
-(Windows only) Prevent loading the @file{Rconsole} file at startup.
+@c (Windows only) Prevent loading the @file{Rconsole} file at startup.
+
+(윈도우 환경)startup시, Rconsole 파일 로딩 예방
 
 @item --vanilla
-Combine @option{--no-save}, @option{--no-environ},
-@option{--no-site-file}, @option{--no-init-file} and
-@option{--no-restore}.  Under Windows, this also includes
-@option{--no-Rconsole}.
+@c Combine @option{--no-save}, @option{--no-environ},
+@c @option{--no-site-file}, @option{--no-init-file} and
+@c @option{--no-restore}.  Under Windows, this also includes
+@c @option{--no-Rconsole}.
+
+--no-save, --no-environ, --no-site-file, --no-init-file과 --no-restore를 결합합니다. 이는 또한 윈도우 상에서 --no-Rconcsole 포함합니다.
 
 @item -f @var{file}
 @itemx --file=@var{file}
