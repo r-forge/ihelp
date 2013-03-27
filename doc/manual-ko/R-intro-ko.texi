@@ -6323,18 +6323,22 @@ second call.  To see the results of each fit we could use
 
 @subsubheading Poisson models
 
-With the Poisson family the default link is the @code{log}, and in
-practice the major use of this family is to fit surrogate Poisson
-log-linear models to frequency data, whose actual distribution is often
-multinomial.  This is a large and important subject we will not discuss
-further here.  It even forms a major part of the use of non-gaussian
-generalized models overall.
+@c With the Poisson family the default link is the @code{log}, and in
+@c practice the major use of this family is to fit surrogate Poisson
+@c log-linear models to frequency data, whose actual distribution is often
+@c multinomial.  This is a large and important subject we will not discuss
+@c further here.  It even forms a major part of the use of non-gaussian
+@c generalized models overall.
 
-Occasionally genuinely Poisson data arises in practice and in the past
-it was often analyzed as gaussian data after either a log or a
-square-root transformation.  As a graceful alternative to the latter, a
-Poisson generalized linear model may be fitted as in the following
-example:
+Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 Poisson family는 Poisson log-linear model (포이송 로그-선형모델)을 이용하여 빈도데이터 (frequency data)를 적합하는데 사용됩니다. 역자는 추후 문서작성 방향을 고려하여 빈도데이터라는 용어보다는 카운트 데이터라고 사용할 것입니다. 실제로 이런 카운트 데이터는 주로 multinomial distribution을 따르는데, 이것은 매우 중요하고도 방대한 주제이므로 더 이상 이문서에서 다루지는 않습니다. 포이송 페밀리를 이용하는 것은 가우시안페밀리에 해당 하지 않는 GLM의 거의 모든 경우에 해당하므로 매우 중요합니다.
+
+@c Occasionally genuinely Poisson data arises in practice and in the past
+@c it was often analyzed as gaussian data after either a log or a
+@c square-root transformation.  As a graceful alternative to the latter, a
+@c Poisson generalized linear model may be fitted as in the following
+@c example:
+
+과거에는 실무에서 가끔 포이송데이터를 로그 혹은 스퀘어루트를 이용하여 변환된 데이터를 가우시안 분포를 따르는 데이터와 같이 분석을 수행하기도 했었지만, 현재는 아래와 같이 포이송 페밀리를 이용한 GLM을 수행합니다.
 
 @example
 > fmod <- glm(y ~ A + B + x, family = poisson(link=sqrt),
