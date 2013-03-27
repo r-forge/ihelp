@@ -8438,20 +8438,28 @@ library trees searched for add-on packages).
 
 마지막으로, .First()함수가 존재한다면, 실행됩니다. 이 함수는 (R 설명 마지막 부분에서 실행되었던 .Last()를 포함) 적절한 startup profile 정의(define)될 수 있고 혹은 .RData에 상주할 수가 있습니다.
 
-In addition, there are options for controlling the memory available to
-the @R{} process (see the on-line help for topic @samp{Memory} for more
-information).  Users will not normally need to use these unless they
-are trying to limit the amount of memory used by @R{}.
+@c In addition, there are options for controlling the memory available to
+@c the @R{} process (see the on-line help for topic @samp{Memory} for more
+@c information).  Users will not normally need to use these unless they
+@c are trying to limit the amount of memory used by @R{}.
 
-@R{} accepts the following command-line options.
+추가적으로, R 처리과정에서 이용 가능한 메모리 제어를 위한 옵션이 있습니다(추가 정보를 원하신다면, 'Memory' 토픽 부분의 온라인 도움말을 참고하시기 바랍니다). R에 의해 사용되는 메모리 양을 제한하려 하지 않는 이상 이 옵션들을 사용해야 할 필요는 굳이 없습니다.
+
+@ @R{} accepts the following command-line options.
+
+R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
 
 @table @option
 @item --help
 @itemx -h
-Print short help message to standard output and exit successfully.
+@c Print short help message to standard output and exit successfully.
+
+표준결과물에 대한 짧은 도움말 메시지를 출력하고 빠져나옴.
 
 @item --version
-Print version information to standard output and exit successfully.
+@c Print version information to standard output and exit successfully.
+
+표준결과물에 대한 버전 정보를 출력하고 빠져나옴.
 
 @item --encoding=@var{enc}
 Specify the encoding to be assumed for input from the console or
