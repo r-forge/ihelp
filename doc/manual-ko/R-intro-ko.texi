@@ -6378,7 +6378,7 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c y = 1 / (beta_1 x_1 + beta_2 x_2) + e
 @c @end ifnottex
 @c @tex
-@ $$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
+@c $$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
 @c @end tex
 @c where
 @c @ifnottex
@@ -6647,7 +6647,7 @@ K 0.7651
 Mixed models. mixed effect model(한국말 모름) 이란 선형 및 비선형 회귀모형 중 회귀계수의 일부가 random effect (한국말 모름)을 가지는 모델입니다. 이러한 선형 및 비선형 mixed models을 적합하기 위해서 사용자는 nlme이라는 패키지에서 제공하는 lme()과 nlme()이라는 함수를 이용하시면 됩니다. Local approximating regressions. loess()이라는 함수는 가중회귀모형을 이용하고자 하는 일부 비모수회귀모형의 적합에 사용됩니다. 이러한 회귀분석은 messy data 에 대한 특정 추세를 파악하거나, 사이즈가 큰 데이터에 대해서 데이터 리덕션 (data reduction)을 하고자 할 때 이용될 수 있습니다. loess()라는 함수는 R이 제공하는 기본패키지인 stats란 패키지에 포함되어 있습니다. Robust regression. R은 데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 안정적인 회귀모형을 적합하기 위하여 몇가지 함수를 제공하고 있습니다. 현재로서는 MASS라는 패키지에 포함되어 있는 lqs라는 함수가 다른 함수들에 비하여 이상치들의 영향을 상대적으로 적게 받는 가장 안정적인 모형을 적합해주는 것으로 알려져 있습니다. 또한 MASS패키지는 이상치에 대한 모형적합의 안정성이 lqs보다는 조금 떨어지지만 통계적으로 좀 더 나은 결과를 주는 rlm이라는 함수도 포함하고 있습니다.
 
 
-@item
+@c @item
 @cindex Additive models
 @strong{Additive models.} This technique aims to construct a regression
 function from smooth additive functions of the determining variables,
@@ -6879,7 +6879,7 @@ R은 다변량 데이터의 시각화를 위해 두가지 매우 유용한 함�
 @c intervals can be controlled with @code{given.values=} argument to
 @c @code{coplot()}---the function @code{co.intervals()} is useful for
 @c selecting intervals.  You can also use two @emph{given} variables with a
-@C command like
+@c command like
 
 이것은 c가 가지는 각각의 값별로 b에 대한 a의 산점도를 출력시켜줍니다. 만약 c가 요인이라면 이 함수는 c의 각 수준별 a와 b에 대한 산점도를 출력해주는 것입니다. 더 나아가, 이 함수는 c가 수치형 벡터일 경우 c를 구간화하여 각 구간별 a와 b에 대한 산점도를 출력할 수 있으며, 구간에 대한 조정은 given.values=이라는 인자를 조절함함으로서 이루어집니다. coplot()을 사용할 때, co.intervals()이라는 함수를 함께 사용하는 것은 구간을 선택할 때 매우 유용합니다. 또한, 아래와 같이 c와 d와 두개의 변수가 가지는 값들의 조합으로부터, 각 조합의 수준별 a와 b에 대한 산점도 출력 역시 가능합니다.
 

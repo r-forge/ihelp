@@ -6184,54 +6184,78 @@ second call.  To see the results of each fit we could use
 
 <h5 class="subsubheading">Poisson models</h5>
 
-<p>With the Poisson family the default link is the <code>log</code>, and in
-practice the major use of this family is to fit surrogate Poisson
-log-linear models to frequency data, whose actual distribution is often
-multinomial.  This is a large and important subject we will not discuss
-further here.  It even forms a major part of the use of non-gaussian
-generalized models overall.
+<!-- With the Poisson family the default link is the @code{log}, and in -->
+<!-- practice the major use of this family is to fit surrogate Poisson -->
+<!-- log-linear models to frequency data, whose actual distribution is often -->
+<!-- multinomial.  This is a large and important subject we will not discuss -->
+<!-- further here.  It even forms a major part of the use of non-gaussian -->
+<!-- generalized models overall. -->
+<p>Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 Poisson family는 Poisson log-linear model (포이송 로그-선형모델)을 이용하여 빈도데이터 (frequency data)를 적합하는데 사용됩니다. 역자는 추후 문서작성 방향을 고려하여 빈도데이터라는 용어보다는 카운트 데이터라고 사용할 것입니다. 실제로 이런 카운트 데이터는 주로 multinomial distribution을 따르는데, 이것은 매우 중요하고도 방대한 주제이므로 더 이상 이문서에서 다루지는 않습니다. 포이송 페밀리를 이용하는 것은 가우시안페밀리에 해당 하지 않는 GLM의 거의 모든 경우에 해당하므로 매우 중요합니다.
 
-   <p>Occasionally genuinely Poisson data arises in practice and in the past
-it was often analyzed as gaussian data after either a log or a
-square-root transformation.  As a graceful alternative to the latter, a
-Poisson generalized linear model may be fitted as in the following
-example:
+<!-- Occasionally genuinely Poisson data arises in practice and in the past -->
+<!-- it was often analyzed as gaussian data after either a log or a -->
+<!-- square-root transformation.  As a graceful alternative to the latter, a -->
+<!-- Poisson generalized linear model may be fitted as in the following -->
+<!-- example: -->
+   <p>과거에는 실무에서 가끔 포이송데이터를 로그 혹은 스퀘어루트를 이용하여 변환된 데이터를 가우시안 분포를 따르는 데이터와 같이 분석을 수행하기도 했었지만, 현재는 아래와 같이 포이송 페밀리를 이용한 GLM을 수행합니다.
 
 <pre class="example">     &gt; fmod &lt;- glm(y ~ A + B + x, family = poisson(link=sqrt),
                    data = worm.counts)
 </pre>
    <h5 class="subsubheading">Quasi-likelihood models</h5>
 
-<p>For all families the variance of the response will depend on the mean
-and will have the scale parameter as a multiplier.  The form of
-dependence of the variance on the mean is a characteristic of the
-response distribution; for example for the poisson distribution
-Var(y) = mu.
+<!-- For all families the variance of the response will depend on the mean -->
+<!-- and will have the scale parameter as a multiplier.  The form of -->
+<!-- dependence of the variance on the mean is a characteristic of the -->
+<!-- response distribution; for example for the poisson distribution -->
+<!-- @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}. -->
+<p>GLM의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수이며, scale parameter는 단순히 multiplier이라는 공통점을 발견할 수 있을 것입니다. 분산과 평균과의 상관관계는 종속변수분포의 특징이기도 합니다. 예를 들어, 포아송 분포는 평균과 분산이 일치합니다. (즉, Var(y) = mu).
 
-   <p>For quasi-likelihood estimation and inference the precise response
-distribution is not specified, but rather only a link function and the
-form of the variance function as it depends on the mean.  Since
-quasi-likelihood estimation uses formally identical techniques to those
-for the gaussian distribution, this family provides a way of fitting
-gaussian models with non-standard link functions or variance functions,
-incidentally.
+<!-- For quasi-likelihood estimation and inference the precise response -->
+<!-- distribution is not specified, but rather only a link function and the -->
+<!-- form of the variance function as it depends on the mean.  Since -->
+<!-- quasi-likelihood estimation uses formally identical techniques to those -->
+<!-- for the gaussian distribution, this family provides a way of fitting -->
+<!-- gaussian models with non-standard link functions or variance functions, -->
+<!-- incidentally. -->
+   <p>Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분포를 찾아낸다는 것보다 다소 링크함수와 variance function이 평균과 어떤 관계를 가지고 있는지와 관련이 있습니다. quasi-likelihood를 이용한 추정은 가우시안 분포를 사용하는 경우와 동일한 방법을 사용하므로, 비표준링크함수 혹은 분산함수(variance funtion)를 이용하여 가우시안 모형의 적합을 가능하게 해줍니다.
 
-   <p>For example, consider fitting the non-linear regression
-y = theta_1 z_1 / (z_2 - theta_2) + e
-which may be written alternatively as
-y = 1 / (beta_1 x_1 + beta_2 x_2) + e
-where
-x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
-theta_2/theta_1. 
-Supposing a suitable data frame to be set up we could fit this
-non-linear regression as
+<!-- For example, consider fitting the non-linear regression -->
+<!-- @ifnottex -->
+<!-- y = theta_1 z_1 / (z_2 - theta_2) + e -->
+<!-- @end ifnottex -->
+<!-- @tex -->
+<!-- $$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$ -->
+<!-- @end tex -->
+<!-- which may be written alternatively as -->
+<!-- @ifnottex -->
+<!-- y = 1 / (beta_1 x_1 + beta_2 x_2) + e -->
+<!-- @end ifnottex -->
+<!-- @tex -->
+<!-- $$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$ -->
+<!-- @end tex -->
+<!-- where -->
+<!-- @ifnottex -->
+<!-- x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 = -->
+<!-- theta_2/theta_1. -->
+<!-- @end ifnottex -->
+<!-- @tex -->
+<!-- $x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and -->
+<!-- $\beta_2=\theta_2/\theta_1$. -->
+<!-- @end tex -->
+   <p>예를 들어, 비선형회귀모형인 y = theta_1 z_1 / (z_2 - theta_2) + e 에 대한 적합을 생각해 봅시다. 이모형은 다시 y = 1 / (beta_1 x_1 + beta_2 x_2) + e 로도 표현이 가능하며, 이 때 x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 = theta_2/theta_1. 입니다.
+
+<!-- Supposing a suitable data frame to be set up we could fit this -->
+<!-- non-linear regression as -->
+   <p>만약, 사용자가 모형에 대응하는 데이터 프레임을 가지고 있다면, 위에서 정의한 비선형회귀 모형은 아래와 같이 적합될 수 있습니다.
 
 <pre class="example">     &gt; nlfit &lt;- glm(y ~ x1 + x2 - 1,
                     family = quasi(link=inverse, variance=constant),
                     data = biochem)
 </pre>
-   <p>The reader is referred to the manual and the help document for further
-information, as needed.
+   <!-- The reader is referred to the manual and the help document for further -->
+<!-- information, as needed. -->
+   <p>만약, 더 자세한 설명이 필요하다면 매뉴얼과 도움말을 이용하시길 바랍니다.
 
 <div class="node">
 <a name="Nonlinear-least-squares-and-maximum-likelihood-models"></a>
@@ -6245,19 +6269,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <h3 class="section">11.7 Nonlinear least squares and maximum likelihood models</h3>
 
 <p><a name="index-Nonlinear-least-squares-204"></a>
-Certain forms of nonlinear model can be fitted by Generalized Linear
-Models (<code>glm()</code>).  But in the majority of cases we have to approach
-the nonlinear curve fitting problem as one of nonlinear optimization. 
-R's nonlinear optimization routines are <code>optim()</code>, <code>nlm()</code>
-and (from R 2.2.0) <code>nlminb()</code>,
-<a name="index-nlm-205"></a><a name="index-optim-206"></a><a name="index-nlminb-207"></a>which provide the functionality (and more) of <span class="sc">S-Plus</span>'s <code>ms()</code> and
-<code>nlminb()</code>.  We seek the parameter values that minimize some index
-of lack-of-fit, and they do this by trying out various parameter values
-iteratively.  Unlike linear regression for example, there is no
-guarantee that the procedure will converge on satisfactory estimates. 
-All the methods require initial guesses about what parameter values to
-try, and convergence may depend critically upon the quality of the
-starting values.
+<!-- Certain forms of nonlinear model can be fitted by Generalized Linear -->
+<!-- Models (@code{glm()}).  But in the majority of cases we have to approach -->
+<!-- the nonlinear curve fitting problem as one of nonlinear optimization. -->
+<!-- @R{}'s nonlinear optimization routines are @code{optim()}, @code{nlm()} -->
+<!-- and (from @R{} 2.2.0) @code{nlminb()}, -->
+<!-- @findex nlm -->
+<!-- @findex optim -->
+<!-- @findex nlminb -->
+<!-- which provide the functionality (and more) of @SPLUS{}'s @code{ms()} and -->
+<!-- @code{nlminb()}.  We seek the parameter values that minimize some index -->
+<!-- of lack-of-fit, and they do this by trying out various parameter values -->
+<!-- iteratively.  Unlike linear regression for example, there is no -->
+<!-- guarantee that the procedure will converge on satisfactory estimates. -->
+<!-- All the methods require initial guesses about what parameter values to -->
+<!-- try, and convergence may depend critically upon the quality of the -->
+<!-- starting values. -->
+
+   <p>특정한 형식을 가지고 있는 비선형모델은 GLM (glm())에 의하여 적합될 수 있습니다. 그러나, 대부분의 비선형 모델의 경우 적합이란 문제는 수치해석측면의 최적화 문제로서 접근해야만 합니다. R은 이런 비선형 최적화 문제를 위해서 optim()과 nlm()이라는 기능을 제공하고 있습니다. 특히, R 2.2.0 버전부터는 SPlus에서 사용할 수 있었던 ms()과 nlminb()와 같은 기능의 nlminb()을 지원합니다. 이러한 함수들의 기본 동작원리는 여러가지 모수의 값을 반복적으로 적용하여 적합결여지표 (the index of lack-of-fit)의 값을 최소화하는 모수의 값을 추정하는 것입니다. 그러나, 선형회귀에서 사용되는 모수의 추정과는 달리 비선형최적화 방법을 통한 모수의 추정은 만족스러운 수준의 추정치에 수렴하지 않을 수도 있습니다. 그 이유는 여기에 사용되는 수치해석법이 모수에 대한 초기값을 지정해야 하고, 추정치에 대한 수렴이라는 과정은 시작점의 선택에 따라서 크게 달라질 수 있기 때문입니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Least-squares">Least squares</a>
@@ -6275,53 +6304,62 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Nonlinear-least-squares-and-maximum-li
 
 <h4 class="subsection">11.7.1 Least squares</h4>
 
-<p>One way to fit a nonlinear model is by minimizing the sum of the squared
-errors (SSE) or residuals.  This method makes sense if the observed
-errors could have plausibly arisen from a normal distribution.
+<!-- One way to fit a nonlinear model is by minimizing the sum of the squared -->
+<!-- errors (SSE) or residuals.  This method makes sense if the observed -->
+<!-- errors could have plausibly arisen from a normal distribution. -->
+<p>이렇게 비선형 모형을 적합하는 한가지 방법은 오차 혹은 잔차들의 제곱합 (the sum of the squared errors or residuals)을 최소화시키는 것입니다. 이러한 최소제곱법은 관측된 오차들이 정규분포와 유사할 경우 권장됩니다.
 
-   <p>Here is an example from Bates &amp; Watts (1988), page 51.  The data are:
+<!-- Here is an example from Bates & Watts (1988), page 51.  The data are: -->
+   <p>여기에서 우리는 Bates &amp; Watts (1988), page 51 에 수록된 예제를 하나 살펴보도록 하겠습니다 . 데이터가 아래와 같이 주어졌습니다.
 
 <pre class="example">     &gt; x &lt;- c(0.02, 0.02, 0.06, 0.06, 0.11, 0.11, 0.22, 0.22, 0.56, 0.56,
               1.10, 1.10)
      &gt; y &lt;- c(76, 47, 97, 107, 123, 139, 159, 152, 191, 201, 207, 200)
 </pre>
-   <p>The fit criterion to be minimized is:
+   <!-- The fit criterion to be minimized is: -->
+   <p>최소화 시켜야 할 적합기준을 아래와 같이 정의합니다.
 
 <pre class="example">     &gt; fn &lt;- function(p) sum((y - (p[1] * x)/(p[2] + x))^2)
 </pre>
-   <p>In order to do the fit we need initial estimates of the parameters.  One
-way to find sensible starting values is to plot the data, guess some
-parameter values, and superimpose the model curve using those values.
+   <!-- In order to do the fit we need initial estimates of the parameters.  One -->
+<!-- way to find sensible starting values is to plot the data, guess some -->
+<!-- parameter values, and superimpose the model curve using those values. -->
+   <p>모형적합을 위해서 우리는 모수에 대한 초기값이 필요합니다. 이러한 초기값을 결정하는 한가지 방법은 데이터를 플랏시켜보아 데이터와 비슷한 유사한 패턴을 생성해주는 분포의 모수를 추측해 보는 것입니다.
 
 <pre class="example">     &gt; plot(x, y)
      &gt; xfit &lt;- seq(.02, 1.1, .05)
      &gt; yfit &lt;- 200 * xfit/(0.1 + xfit)
      &gt; lines(spline(xfit, yfit))
 </pre>
-   <p>We could do better, but these starting values of 200 and 0.1 seem
-adequate.  Now do the fit:
+   <!-- We could do better, but these starting values of 200 and 0.1 seem -->
+<!-- adequate.  Now do the fit: -->
+   <p>초기값에 대해서 물론 더 나은 추측값들이 있겠지만 200 과 0.1 이 적당하다고 생각하므로 이들을 이용하여 모형을 적합시켜 보았습니다.
 
 <pre class="example">     &gt; out &lt;- nlm(fn, p = c(200, 0.1), hessian = TRUE)
 </pre>
-   <p><a name="index-nlm-208"></a>
-After the fitting, <code>out$minimum</code> is the SSE, and
-<code>out$estimate</code> are the least squares estimates of the parameters. 
-To obtain the approximate standard errors (SE) of the estimates we do:
+   <p><a name="index-nlm-205"></a>
+<!-- After the fitting, @code{out$minimum} is the SSE, and -->
+<!-- @code{out$estimate} are the least squares estimates of the parameters. -->
+<!-- To obtain the approximate standard errors (SE) of the estimates we do: -->
+
+   <p>적합된 모형으로부터 우리는 out$minimum으로부터 SSE를, out$estimate로부터 최소제곱법을 이용하여 추정된 모수의 값을 확인할 수 있습니다. 추정된 모수의 근사 표준편차는 아래와 같이 계산됩니다.
 
 <pre class="example">     &gt; sqrt(diag(2*out$minimum/(length(y) - 2) * solve(out$hessian)))
 </pre>
-   <p>The 2 in the line above represents the number of parameters.  A 95%
-confidence interval would be the parameter estimate +/- 1.96
-SE.  We can superimpose the least squares fit on a new plot:
+   <!-- The 2 in the line above represents the number of parameters.  A 95% -->
+<!-- confidence interval would be the parameter estimate @eqn{\pm, +/-} 1.96 -->
+<!-- SE.  We can superimpose the least squares fit on a new plot: -->
+   <p>위의 공식에서 사용된 숫자 2는 모수의 개수를 의미합니다. 모수의 추정치에 대한 95%의 신뢰구간을 구하기 위해서 +/- 1.96 SE 를 계산합니다. 최소제곱법으로 적합된 모형을 이용하여 새로운 플랏을 생성하여 데이터와 비교해봅니다.
 
 <pre class="example">     &gt; plot(x, y)
      &gt; xfit &lt;- seq(.02, 1.1, .05)
      &gt; yfit &lt;- 212.68384222 * xfit/(0.06412146 + xfit)
      &gt; lines(spline(xfit, yfit))
 </pre>
-   <p>The standard package <strong>stats</strong> provides much more extensive facilities
-for fitting non-linear models by least squares.  The model we have just
-fitted is the Michaelis-Menten model, so we can use
+   <!-- The standard package @pkg{stats} provides much more extensive facilities -->
+<!-- for fitting non-linear models by least squares.  The model we have just -->
+<!-- fitted is the Michaelis-Menten model, so we can use -->
+   <p>R시스템에 내장되어 있는 표준패키지인 stats는 최소제곱방식을 이용하여 비선형모형을 적합하는 방대한 양의 함수들을 제공하고 있습니다. 우리는 위에서 Michaelis-Menten방법을 이용하여 모델을 적합하였으나, 다음과 같은 방법으로도 가능합니다
 
 <pre class="example">     &gt; df &lt;- data.frame(x=x, y=y)
      &gt; fit &lt;- nls(y ~ SSmicmen(x, Vm, K), df)
@@ -6357,38 +6395,47 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Nonlinear-least-squares-and-maximum-li
 
 <h4 class="subsection">11.7.2 Maximum likelihood</h4>
 
-<p><a name="index-Maximum-likelihood-209"></a>
-Maximum likelihood is a method of nonlinear model fitting that applies
-even if the errors are not normal.  The method finds the parameter values
-which maximize the log likelihood, or equivalently which minimize the
-negative log-likelihood.  Here is an example from Dobson (1990), pp. 
-108&ndash;111.  This example fits a logistic model to dose-response data,
-which clearly could also be fit by <code>glm()</code>.  The data are:
+<p><a name="index-Maximum-likelihood-206"></a>
+<!-- Maximum likelihood is a method of nonlinear model fitting that applies -->
+<!-- even if the errors are not normal.  The method finds the parameter values -->
+<!-- which maximize the log likelihood, or equivalently which minimize the -->
+<!-- negative log-likelihood.  Here is an example from Dobson (1990), pp.@: -->
+<!-- 108-111.  This example fits a logistic model to dose-response data, -->
+<!-- which clearly could also be fit by @code{glm()}.  The data are: -->
+
+   <p>최우추정(Maximum likelihood)이라는 방법 역시 비선형모델을 적합하는데 쓰이며, 오차항이 정규분포를 따르지 않을 경우에도 이용될 수 있습니다. 이 방법의 핵심은 로그-우도(log-likelihood) 함수를 최대화 시켜주는 모수를 찾는것이며, 이것은 네가티브 로그-우도(negative log-likelihood)를 최소화 시켜주는 것과 동일합니다. 우리는 여기에서 Dobson(1990), pp.108–111 에 나오는 예제를 하나 살펴보도록 하겠습니다. 이 예제는 dose-response 데이터에 로지스틱 모형을 적합하는 것이며 glm() 함수를 활용할 수 있습니다. 데이터는 아래와 같습니다.
 
 <pre class="example">     &gt; x &lt;- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113,
               1.8369, 1.8610, 1.8839)
      &gt; y &lt;- c( 6, 13, 18, 28, 52, 53, 61, 60)
      &gt; n &lt;- c(59, 60, 62, 56, 63, 59, 62, 60)
 </pre>
-   <p>The negative log-likelihood to minimize is:
+   <!-- The negative log-likelihood to minimize is: -->
+   <p>아래와 같이 정의된 네가티브 로그-우도 함수를 최소화 하고자 합니다.
 
 <pre class="example">     &gt; fn &lt;- function(p)
         sum( - (y*(p[1]+p[2]*x) - n*log(1+exp(p[1]+p[2]*x))
                 + log(choose(n, y)) ))
 </pre>
-   <p class="noindent">We pick sensible starting values and do the fit:
+   <!-- @noindent -->
+<!-- We pick sensible starting values and do the fit: -->
+   <p>이를 수행하기 위해서 우리는 그럴듯한 초기값 (starting values)를 지정합니다.
 
 <pre class="example">     &gt; out &lt;- nlm(fn, p = c(-50,20), hessian = TRUE)
 </pre>
-   <p><a name="index-nlm-210"></a>
-After the fitting, <code>out$minimum</code> is the negative log-likelihood,
-and <code>out$estimate</code> are the maximum likelihood estimates of the
-parameters.  To obtain the approximate SEs of the estimates we do:
+   <p><a name="index-nlm-207"></a>
+<!-- @noindent -->
+<!-- After the fitting, @code{out$minimum} is the negative log-likelihood, -->
+<!-- and @code{out$estimate} are the maximum likelihood estimates of the -->
+<!-- parameters.  To obtain the approximate SEs of the estimates we do: -->
+
+   <p>적합된 모형으로부터 최소화 된 negative log-likelihood 값을 얻고자 하면 out$minimum을 이용하시고, 모수의 ML추정치를 확인하고 싶으시면 out$estimate을 통하여 얻을 수 있습니다. 추정치에 대한 근사 SE는 아래와 같이 얻어집니다.
 
 <pre class="example">     &gt; sqrt(diag(solve(out$hessian)))
 </pre>
-   <p>A 95% confidence interval would be the parameter estimate +/-
-1.96 SE.
+   <!-- A 95% confidence interval would be the parameter estimate @eqn{\pm, +/-} -->
+<!-- 1.96 SE. -->
+   <p>95% 신뢰구간은 추정된 모수값에 +/-1.96 SE 를 계산하시면 됩니다.
 
 <div class="node">
 <a name="Some-non-standard-models"></a>
@@ -6401,64 +6448,80 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 
 <h3 class="section">11.8 Some non-standard models</h3>
 
-<p>We conclude this chapter with just a brief mention of some of the other
-facilities available in R for special regression and data analysis
-problems.
+<!-- We conclude this chapter with just a brief mention of some of the other -->
+<!-- facilities available in @R{} for special regression and data analysis -->
+<!-- problems. -->
+<p>이번 장을 마무리 하기 위해서 우리는 R이 특별한 회귀모형 및 데이터 분석에 어떠한 기능을 제공하는지 간단히 정리해 보았습니다.
 
-     <ul>
-<li><a name="index-Mixed-models-211"></a><strong>Mixed models.</strong>  The recommended <a href="http://CRAN.R-project.org/package=nlme"><strong>nlme</strong></a> package provides
-functions <code>lme()</code> and <code>nlme()</code>
-<a name="index-lme-212"></a><a name="index-nlme-213"></a>for linear and non-linear mixed-effects models, that is linear and
-non-linear regressions in which some of the coefficients correspond to
-random effects.  These functions make heavy use of formulae to specify
-the models.
+<!-- @itemize @bullet -->
+<!-- @item -->
+<!-- @cindex Mixed models -->
+<!-- @strong{Mixed models.}  The recommended @CRANpkg{nlme} package provides -->
+<!-- functions @code{lme()} and @code{nlme()} -->
+<!-- @findex lme -->
+<!-- @findex nlme -->
+<!-- for linear and non-linear mixed-effects models, that is linear and -->
+<!-- non-linear regressions in which some of the coefficients correspond to -->
+<!-- random effects.  These functions make heavy use of formulae to specify -->
+<!-- the models. -->
+<!-- @item -->
+<!-- @cindex Local approximating regressions -->
+<!-- @strong{Local approximating regressions.}  The @code{loess()} -->
+<!-- @findex loess -->
+<!-- function fits a nonparametric regression by using a locally weighted -->
+<!-- regression.  Such regressions are useful for highlighting a trend in -->
+<!-- messy data or for data reduction to give some insight into a large data -->
+<!-- set. -->
+<!-- Function @code{loess} is in the standard package @pkg{stats}, together -->
+<!-- with code for projection pursuit regression. -->
+<!-- @findex loess -->
+<!-- @item -->
+<!-- @cindex Robust regression -->
+<!-- @strong{Robust regression.} There are several functions available for -->
+<!-- fitting regression models in a way resistant to the influence of extreme -->
+<!-- outliers in the data.  Function @code{lqs} -->
+<!-- @findex lqs -->
+<!-- in the recommended package @CRANpkg{MASS} provides state-of-art algorithms -->
+<!-- for highly-resistant fits.  Less resistant but statistically more -->
+<!-- efficient methods are available in packages, for example function -->
+<!-- @code{rlm} -->
+<!-- @findex rlm -->
+<!-- in package @CRANpkg{MASS}. -->
+   <p>Mixed models. mixed effect model(한국말 모름) 이란 선형 및 비선형 회귀모형 중 회귀계수의 일부가 random effect (한국말 모름)을 가지는 모델입니다. 이러한 선형 및 비선형 mixed models을 적합하기 위해서 사용자는 nlme이라는 패키지에서 제공하는 lme()과 nlme()이라는 함수를 이용하시면 됩니다. Local approximating regressions. loess()이라는 함수는 가중회귀모형을 이용하고자 하는 일부 비모수회귀모형의 적합에 사용됩니다. 이러한 회귀분석은 messy data 에 대한 특정 추세를 파악하거나, 사이즈가 큰 데이터에 대해서 데이터 리덕션 (data reduction)을 하고자 할 때 이용될 수 있습니다. loess()라는 함수는 R이 제공하는 기본패키지인 stats란 패키지에 포함되어 있습니다. Robust regression. R은 데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 안정적인 회귀모형을 적합하기 위하여 몇가지 함수를 제공하고 있습니다. 현재로서는 MASS라는 패키지에 포함되어 있는 lqs라는 함수가 다른 함수들에 비하여 이상치들의 영향을 상대적으로 적게 받는 가장 안정적인 모형을 적합해주는 것으로 알려져 있습니다. 또한 MASS패키지는 이상치에 대한 모형적합의 안정성이 lqs보다는 조금 떨어지지만 통계적으로 좀 더 나은 결과를 주는 rlm이라는 함수도 포함하고 있습니다.
 
-     <li><a name="index-Local-approximating-regressions-214"></a><strong>Local approximating regressions.</strong>  The <code>loess()</code>
-<a name="index-loess-215"></a>function fits a nonparametric regression by using a locally weighted
-regression.  Such regressions are useful for highlighting a trend in
-messy data or for data reduction to give some insight into a large data
-set.
-
-     <p>Function <code>loess</code> is in the standard package <strong>stats</strong>, together
-with code for projection pursuit regression. 
-<a name="index-loess-216"></a>
-<li><a name="index-Robust-regression-217"></a><strong>Robust regression.</strong> There are several functions available for
-fitting regression models in a way resistant to the influence of extreme
-outliers in the data.  Function <code>lqs</code>
-<a name="index-lqs-218"></a>in the recommended package <a href="http://CRAN.R-project.org/package=MASS"><strong>MASS</strong></a> provides state-of-art algorithms
-for highly-resistant fits.  Less resistant but statistically more
-efficient methods are available in packages, for example function
-<code>rlm</code>
-<a name="index-rlm-219"></a>in package <a href="http://CRAN.R-project.org/package=MASS"><strong>MASS</strong></a>.
-
-     <li><a name="index-Additive-models-220"></a><strong>Additive models.</strong> This technique aims to construct a regression
+<!-- @item -->
+   <p><a name="index-Additive-models-208"></a><strong>Additive models.</strong> This technique aims to construct a regression
 function from smooth additive functions of the determining variables,
 usually one for each determining variable.  Functions <code>avas</code> and
 <code>ace</code>
-<a name="index-avas-221"></a><a name="index-ace-222"></a>in package <a href="http://CRAN.R-project.org/package=acepack"><strong>acepack</strong></a> and functions <code>bruto</code> and <code>mars</code>
-<a name="index-bruto-223"></a><a name="index-mars-224"></a>in package <a href="http://CRAN.R-project.org/package=mda"><strong>mda</strong></a> provide some examples of these techniques in
+<a name="index-avas-209"></a><a name="index-ace-210"></a>in package <a href="http://CRAN.R-project.org/package=acepack"><strong>acepack</strong></a> and functions <code>bruto</code> and <code>mars</code>
+<a name="index-bruto-211"></a><a name="index-mars-212"></a>in package <a href="http://CRAN.R-project.org/package=mda"><strong>mda</strong></a> provide some examples of these techniques in
 user-contributed packages to R.  An extension is <strong>Generalized
 Additive Models</strong>, implemented in user-contributed packages <a href="http://CRAN.R-project.org/package=gam"><strong>gam</strong></a> and
 <a href="http://CRAN.R-project.org/package=mgcv"><strong>mgcv</strong></a>.
 
-     <li><a name="index-Tree_002dbased-models-225"></a><strong>Tree-based models.</strong> Rather than seek an explicit global linear
-model for prediction or interpretation, tree-based models seek to
-bifurcate the data, recursively, at critical points of the determining
-variables in order to partition the data ultimately into groups that are
-as homogeneous as possible within, and as heterogeneous as possible
-between.  The results often lead to insights that other data analysis
-methods tend not to yield.
+<!-- @item -->
+<!-- @cindex Tree-based models -->
+<!-- @strong{Tree-based models.} Rather than seek an explicit global linear -->
+<!-- model for prediction or interpretation, tree-based models seek to -->
+<!-- bifurcate the data, recursively, at critical points of the determining -->
+<!-- variables in order to partition the data ultimately into groups that are -->
+<!-- as homogeneous as possible within, and as heterogeneous as possible -->
+<!-- between.  The results often lead to insights that other data analysis -->
+<!-- methods tend not to yield. -->
+<!-- Models are again specified in the ordinary linear model form.  The model -->
+<!-- fitting function is @code{tree()}, -->
+<!-- @findex tree -->
+<!-- but many other generic functions such as @code{plot()} and @code{text()} -->
+<!-- are well adapted to displaying the results of a tree-based model fit in -->
+<!-- a graphical way. -->
+<!-- Tree models are available in @R{} @emph{via} the user-contributed -->
+<!-- packages @CRANpkg{rpart} and @CRANpkg{tree}. -->
+<!-- @end itemize -->
+   <p>일반적인 선형모델방법이 전체적인 데이터의 특징을 설명하고 예측할 수 있는 선형모델을 찾는데
+목적이 있다고 한다면, tree-based models (한국말 모름)은 데이터 파티션에 주 목적이 있습니다. 데이터파티셔닝이란 주어진 데이터를 여러개의 동질적인 그룹들로 나누어 주되, 각 그룹간의 이질성은 최대화 시켜주는 방법을 말합니다. 이것은 데이터를 그룹간의 차이를 가장 잘 구분할 수 있는 모형을 찾아 그 모형대로 데이터를 반복적으로 이분화함으로 이루어집니다. 이러한 데이터 파티셔닝은 종종 다른 데이터 분석법으로부터는 찾을 수 없었던 데이터가 가지고 있는 특징을 발견해 내기도 합니다. 이러한 tree-based models에 의한 데이터 파티셔닝은 tree()라는 함수를 통하여 이루어집니다. 또한 이 분석법에 의한 결과는 효율적인 시각화를 위하여 plot()과 text()와 같은 제네릭함수와 잘 호환되도록 설계되었습니다.
 
-     <p>Models are again specified in the ordinary linear model form.  The model
-fitting function is <code>tree()</code>,
-<a name="index-tree-226"></a>but many other generic functions such as <code>plot()</code> and <code>text()</code>
-are well adapted to displaying the results of a tree-based model fit in
-a graphical way.
-
-     <p>Tree models are available in R <em>via</em> the user-contributed
-packages <a href="http://CRAN.R-project.org/package=rpart"><strong>rpart</strong></a> and <a href="http://CRAN.R-project.org/package=tree"><strong>tree</strong></a>.
-
-   </ul>
+   <p>대개 데이터 파티셔닝은 rpart와 tree같은 user-contributed packages (사용자 기여 패키지)에 의해 수행됩니다.
 
 <div class="node">
 <a name="Graphics"></a>
@@ -6549,11 +6612,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
 <h3 class="section">12.1 High-level plotting commands</h3>
 
-<p>High-level plotting functions are designed to generate a complete plot
-of the data passed as arguments to the function.  Where appropriate,
-axes, labels and titles are automatically generated (unless you request
-otherwise.) High-level plotting commands always start a new plot,
-erasing the current plot if necessary.
+<!-- High-level plotting functions are designed to generate a complete plot -->
+<!-- of the data passed as arguments to the function.  Where appropriate, -->
+<!-- axes, labels and titles are automatically generated (unless you request -->
+<!-- otherwise.) High-level plotting commands always start a new plot, -->
+<!-- erasing the current plot if necessary. -->
+<p>하이레벨 플랏 함수들은 함수에 인수로서 받아들여지는 데이터에 대한 완전한 시각화 처리를 위해 고안되었습니다. 완전한 시각화 처리란 사용자가 특별히 따로 지정하지 않아도 적절한 위치에 축, 레이블, 그리고 제목들이 자동으로 생성되어짐을 말합니다. 하이레벨 플랏은 현재 그래픽 디바이스에 출력되어 있는 플랏을 지우고, 항상 새로운 플랏을 생성하는 기능을 수행합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-plot_0028_0029-function">The plot() function</a>
@@ -6574,34 +6638,44 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 
 <h4 class="subsection">12.1.1 The <code>plot()</code> function</h4>
 
-<p><a name="index-plot-227"></a>
-One of the most frequently used plotting functions in R is the
-<code>plot()</code> function.  This is a <em>generic</em> function: the type of
-plot produced is dependent on the type or <em>class</em> of the first
-argument.
+<p><a name="index-plot-213"></a>
+<!-- One of the most frequently used plotting functions in @R{} is the -->
+<!-- @code{plot()} function.  This is a @emph{generic} function: the type of -->
+<!-- plot produced is dependent on the type or @emph{class} of the first -->
+<!-- argument. -->
+
+   <p>R에서 가장 많이 사용되는 플랏함수는 plot()입니다. 이것은 제네릭 함수로서 생성되는 플랏의 형태는 함수의 첫번째 인자로서 입력받는 객체의 클래스에 의해서 결정되어 집니다.
 
      <dl>
-<dt><code>plot(</code><var>x</var><code>, </code><var>y</var><code>)</code><dt><code>plot(</code><var>xy</var><code>)</code><dd>If <var>x</var> and <var>y</var> are vectors, <code>plot(</code><var>x</var><code>, </code><var>y</var><code>)</code>
-produces a scatterplot of <var>y</var> against <var>x</var>.  The same effect can
-be produced by supplying one argument (second form) as either a list
-containing two elements <var>x</var> and <var>y</var> or a two-column matrix.
+<dt><code>plot(</code><var>x</var><code>, </code><var>y</var><code>)</code><dt><code>plot(</code><var>xy</var><code>)</code><dd><!-- If @var{x} and @var{y} are vectors, @code{plot(@var{x}, @var{y})} -->
+<!-- produces a scatterplot of @var{y} against @var{x}.  The same effect can -->
+<!-- be produced by supplying one argument (second form) as either a list -->
+<!-- containing two elements @var{x} and @var{y} or a two-column matrix. -->
 
-     <br><dt><code>plot(</code><var>x</var><code>)</code><dd>If <var>x</var> is a time series, this produces a time-series plot. If
-<var>x</var> is a numeric vector, it produces a plot of the values in the
-vector against their index in the vector.  If <var>x</var> is a complex
-vector, it produces a plot of imaginary versus real parts of the vector
-elements.
+     <p>만약, x와 y가 둘다 벡터이면 plot(x, y)라는 명령은 x에 대한 y의 산점도를 생성합니다. 두번째 명령문 역시 동일한 산점도를 출력하지만, xy라는 인자가 입력받는 데이터 형식에 주의해야합니다. 이것은 x와 y라는 변수들이 각각의 컴포넌트로 구성된 하나의 리스트 형을 입력받아야 하거나, 혹은 두 개의 열을 가지는 행렬의 형식을 입력받기를 요구함을 의미합니다.
 
-     <br><dt><code>plot(</code><var>f</var><code>)</code><dt><code>plot(</code><var>f</var><code>, </code><var>y</var><code>)</code><dd><var>f</var> is a factor object, <var>y</var> is a numeric vector.  The first form
-generates a bar plot of <var>f</var>; the second form produces boxplots of
-<var>y</var> for each level of <var>f</var>.
+     <br><dt><code>plot(</code><var>x</var><code>)</code><dd><!-- If @var{x} is a time series, this produces a time-series plot. If -->
+<!-- @var{x} is a numeric vector, it produces a plot of the values in the -->
+<!-- vector against their index in the vector.  If @var{x} is a complex -->
+<!-- vector, it produces a plot of imaginary versus real parts of the vector -->
+<!-- elements. -->
 
-     <br><dt><code>plot(</code><var>df</var><code>)</code><dt><code>plot(~ </code><var>expr</var><code>)</code><dt><code>plot(</code><var>y</var><code> ~ </code><var>expr</var><code>)</code><dd><var>df</var> is a data frame, <var>y</var> is any object, <var>expr</var> is a list
-of object names separated by `<code>+</code>' (e.g., <code>a + b + c</code>).  The
-first two forms produce distributional plots of the variables in a data
-frame (first form) or of a number of named objects (second form).  The
-third form plots <var>y</var> against every object named in <var>expr</var>. 
+     <p>만약, x가 시계열 데이터 인경우, 이 명령문은 자동으로 시계열 플랏을 생성합니다. 단, x가 수치형 벡터인 경우, 이것은 x의 인덱스에 대한 x의 값들을 플랏하게 됩니다. 만약, x가 복소수라면 이것은 실수부분에 해당하는 값에 대하여 허수의 부분에 해당하는 값들을 산점도의 형식으로 출력하게 됩니다.
+
+     <br><dt><code>plot(</code><var>f</var><code>)</code><dt><code>plot(</code><var>f</var><code>, </code><var>y</var><code>)</code><dd><!-- @var{f} is a factor object, @var{y} is a numeric vector.  The first form -->
+<!-- generates a bar plot of @var{f}; the second form produces boxplots of -->
+<!-- @var{y} for each level of @var{f}. -->
+
+     <p>만약, f가 요인이고, y가 수치형 벡터이면, 첫번째 명령어는 f에 대한 바 플랏을 생성하고, 두번째 명령어는 f가 가지는 레벨별로 y에 대한 박스플랏을 생성하게 됩니다.
+
+     <br><dt><code>plot(</code><var>df</var><code>)</code><dt><code>plot(~ </code><var>expr</var><code>)</code><dt><code>plot(</code><var>y</var><code> ~ </code><var>expr</var><code>)</code><dd><!-- @var{df} is a data frame, @var{y} is any object, @var{expr} is a list -->
+<!-- of object names separated by `@code{+}' (e.g., @code{a + b + c}).  The -->
+<!-- first two forms produce distributional plots of the variables in a data -->
+<!-- frame (first form) or of a number of named objects (second form).  The -->
+<!-- third form plots @var{y} against every object named in @var{expr}. -->
 </dl>
+
+   <p>만약, df가 데이터 프레임이고, y은 어떠한 객체가 될 수 도 있으며, expr라는 것은 a+b+c와 같이 +를 이용하여 연결된 하나의 객체들의 집합이라고 가정합시다. 첫번째 명령문은 데이터프레임의 각 변수에 대해서 다른 변수들에 대한 분포를 보여주는 산점도를 출력하고, 두번째 명령문은 expr 내에서 사용된 변수들만을 이용한 분포를 보여줍니다. 마지막 명령문은 y의 분포를 expr에 사용된 변수벼로 플랏시켜줍니다.
 
 <div class="node">
 <a name="Displaying-multivariate-data"></a>
@@ -6614,49 +6688,56 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 
 <h4 class="subsection">12.1.2 Displaying multivariate data</h4>
 
-<p>R provides two very useful functions for representing multivariate
-data.  If <code>X</code> is a numeric matrix or data frame, the command
+<!-- @R{} provides two very useful functions for representing multivariate -->
+<!-- data.  If @code{X} is a numeric matrix or data frame, the command -->
+<p>R은 다변량 데이터의 시각화를 위해 두가지 매우 유용한 함수들을 제공합니다. 만약, X가 수치형 행렬 혹은 데이터 프레임이라면, 아래의 명령문은 각각의 모든 열에 대해서 산점도 (scatterplot)을 출력합니다. 이것은 X의 한 열 혹은 변수에 대해서 다른 열들에 대한 플랏을 생성하므로, 한 화면에 총 n(n-1)개의 플랏들이 동일한 형식을 가진 행렬의 형태로 출력되게 됩니다.
 
 <pre class="example">     &gt; pairs(X)
 </pre>
-   <p><a name="index-pairs-228"></a>
-produces a pairwise scatterplot matrix of the variables defined by the
-columns of <code>X</code>, that is, every column of <code>X</code> is plotted
-against every other column of <code>X</code> and the resulting n(n-1)
-plots are arranged in a matrix with plot scales constant over the rows
-and columns of the matrix.
+   <p><a name="index-pairs-214"></a>
+<!-- @noindent -->
+<!-- produces a pairwise scatterplot matrix of the variables defined by the -->
+<!-- columns of @code{X}, that is, every column of @code{X} is plotted -->
+<!-- against every other column of @code{X} and the resulting @math{n(n-1)} -->
+<!-- plots are arranged in a matrix with plot scales constant over the rows -->
+<!-- and columns of the matrix. -->
 
-   <p>When three or four variables are involved a <em>coplot</em> may be more
-enlightening.  If <code>a</code> and <code>b</code> are numeric vectors and <code>c</code>
-is a numeric vector or factor object (all of the same length), then
-the command
+<!-- When three or four variables are involved a @emph{coplot} may be more -->
+<!-- enlightening.  If @code{a} and @code{b} are numeric vectors and @code{c} -->
+<!-- is a numeric vector or factor object (all of the same length), then -->
+<!-- the command -->
+   <p>만약, 사용자가 세개 혹은 네 개의 변수만을 이용하여 분석을 수행하는 경우 coplot이 더 효과적일 수 있습니다. 예를들어, a와 b가 수치형 벡터이고, c가 수치형 벡터 혹은 a와 b와 같은 길이를 가지는 요인벡터라면 다음의 명령어를 사용해 보시길 바랍니다.
 
 <pre class="example">     &gt; coplot(a ~ b | c)
 </pre>
-   <p><a name="index-coplot-229"></a>
-produces a number of scatterplots of <code>a</code> against <code>b</code> for given
-values of <code>c</code>.  If <code>c</code> is a factor, this simply means that
-<code>a</code> is plotted against <code>b</code> for every level of <code>c</code>.  When
-<code>c</code> is numeric, it is divided into a number of <em>conditioning
-intervals</em> and for each interval <code>a</code> is plotted against <code>b</code>
-for values of <code>c</code> within the interval.  The number and position of
-intervals can be controlled with <code>given.values=</code> argument to
-<code>coplot()</code>&mdash;the function <code>co.intervals()</code> is useful for
-selecting intervals.  You can also use two <em>given</em> variables with a
-command like
+   <p><a name="index-coplot-215"></a>
+<!-- @noindent -->
+<!-- produces a number of scatterplots of @code{a} against @code{b} for given -->
+<!-- values of @code{c}.  If @code{c} is a factor, this simply means that -->
+<!-- @code{a} is plotted against @code{b} for every level of @code{c}.  When -->
+<!-- @code{c} is numeric, it is divided into a number of @emph{conditioning -->
+<!-- intervals} and for each interval @code{a} is plotted against @code{b} -->
+<!-- for values of @code{c} within the interval.  The number and position of -->
+<!-- intervals can be controlled with @code{given.values=} argument to -->
+<!-- @code{coplot()}-the function @code{co.intervals()} is useful for -->
+<!-- selecting intervals.  You can also use two @emph{given} variables with a -->
+<!-- command like -->
+
+   <p>이것은 c가 가지는 각각의 값별로 b에 대한 a의 산점도를 출력시켜줍니다. 만약 c가 요인이라면 이 함수는 c의 각 수준별 a와 b에 대한 산점도를 출력해주는 것입니다. 더 나아가, 이 함수는 c가 수치형 벡터일 경우 c를 구간화하여 각 구간별 a와 b에 대한 산점도를 출력할 수 있으며, 구간에 대한 조정은 given.values=이라는 인자를 조절함함으로서 이루어집니다. coplot()을 사용할 때, co.intervals()이라는 함수를 함께 사용하는 것은 구간을 선택할 때 매우 유용합니다. 또한, 아래와 같이 c와 d와 두개의 변수가 가지는 값들의 조합으로부터, 각 조합의 수준별 a와 b에 대한 산점도 출력 역시 가능합니다.
 
 <pre class="example">     &gt; coplot(a ~ b | c + d)
 </pre>
-   <p class="noindent">which produces scatterplots of <code>a</code> against <code>b</code> for every joint
-conditioning interval of <code>c</code> and <code>d</code>.
-
-   <p>The <code>coplot()</code> and <code>pairs()</code> function both take an argument
-<code>panel=</code> which can be used to customize the type of plot which
-appears in each panel.  The default is <code>points()</code> to produce a
-scatterplot but by supplying some other low-level graphics function of
-two vectors <code>x</code> and <code>y</code> as the value of <code>panel=</code> you can
-produce any type of plot you wish.  An example panel function useful for
-coplots is <code>panel.smooth()</code>.
+   <!-- @noindent -->
+<!-- which produces scatterplots of @code{a} against @code{b} for every joint -->
+<!-- conditioning interval of @code{c} and @code{d}. -->
+<!-- The @code{coplot()} and @code{pairs()} function both take an argument -->
+<!-- @code{panel=} which can be used to customize the type of plot which -->
+<!-- appears in each panel.  The default is @code{points()} to produce a -->
+<!-- scatterplot but by supplying some other low-level graphics function of -->
+<!-- two vectors @code{x} and @code{y} as the value of @code{panel=} you can -->
+<!-- produce any type of plot you wish.  An example panel function useful for -->
+<!-- coplots is @code{panel.smooth()}. -->
+   <p>coplot()과 pairs()라는 함수 모두 panel=이라는 인자를 가지고 있습니다. 이 panel=이라는 인자는 각각의 패널에 어떤 종류의 플랏을 생성할 것인지를 결정하며, 그 기본형은 points()라는 산점도를 출력하는데 이용되는 함수입니다. 만약, 사용자가 산점도외의 다른 종류의 플랏을 생성하고자 한다면, x와 y라는 벡터를 이용하는 로우레벨의 그래픽 함수를 이용하면 됩니다. 예를 들어, coplot()에 사용될 있는 플랏은 panel.smooth()란 함수가 있습니다.
 
 <div class="node">
 <a name="Display-graphics"></a>
@@ -6680,26 +6761,26 @@ Some examples are:
 <!-- are ordinary numeric vectors, in which case they are plotted against the -->
 <!-- numbers @math{1, 2, 3, @dots{}}. -->
 
-     <dt><code>qqnorm(x)</code><dt><code>qqline(x)</code><dt><code>qqplot(x, y)</code><dd><a name="index-qqnorm-230"></a><a name="index-qqline-231"></a><a name="index-qqplot-232"></a>Distribution-comparison plots.  The first form plots the numeric vector
+     <dt><code>qqnorm(x)</code><dt><code>qqline(x)</code><dt><code>qqplot(x, y)</code><dd><a name="index-qqnorm-216"></a><a name="index-qqline-217"></a><a name="index-qqplot-218"></a>Distribution-comparison plots.  The first form plots the numeric vector
 <code>x</code> against the expected Normal order scores (a normal scores plot)
 and the second adds a straight line to such a plot by drawing a line
 through the distribution and data quartiles.  The third form plots the
 quantiles of <code>x</code> against those of <code>y</code> to compare their
 respective distributions.
 
-     <br><dt><code>hist(x)</code><dt><code>hist(x, nclass=</code><var>n</var><code>)</code><dt><code>hist(x, breaks=</code><var>b</var><code>, ...)</code><dd><a name="index-hist-233"></a>Produces a histogram of the numeric vector <code>x</code>.  A sensible number
+     <br><dt><code>hist(x)</code><dt><code>hist(x, nclass=</code><var>n</var><code>)</code><dt><code>hist(x, breaks=</code><var>b</var><code>, ...)</code><dd><a name="index-hist-219"></a>Produces a histogram of the numeric vector <code>x</code>.  A sensible number
 of classes is usually chosen, but a recommendation can be given with the
 <code>nclass=</code> argument.  Alternatively, the breakpoints can be
 specified exactly with the <code>breaks=</code> argument.  If the
 <code>probability=TRUE</code> argument is given, the bars represent relative
 frequencies divided by bin width instead of counts.
 
-     <br><dt><code>dotchart(x, ...)</code><dd><a name="index-dotchart-234"></a>Constructs a dotchart of the data in <code>x</code>.  In a dotchart the
+     <br><dt><code>dotchart(x, ...)</code><dd><a name="index-dotchart-220"></a>Constructs a dotchart of the data in <code>x</code>.  In a dotchart the
 y-axis gives a labelling of the data in <code>x</code> and the
 x-axis gives its value.  For example it allows easy visual
 selection of all data entries with values lying in specified ranges.
 
-     <br><dt><code>image(x, y, z, ...)</code><dt><code>contour(x, y, z, ...)</code><dt><code>persp(x, y, z, ...)</code><dd><a name="index-image-235"></a><a name="index-contour-236"></a><a name="index-persp-237"></a>Plots of three variables.  The <code>image</code> plot draws a grid of rectangles
+     <br><dt><code>image(x, y, z, ...)</code><dt><code>contour(x, y, z, ...)</code><dt><code>persp(x, y, z, ...)</code><dd><a name="index-image-221"></a><a name="index-contour-222"></a><a name="index-persp-223"></a>Plots of three variables.  The <code>image</code> plot draws a grid of rectangles
 using different colours to represent the value of <code>z</code>, the <code>contour</code>
 plot draws contour lines to represent the value of <code>z</code>, and the
 <code>persp</code> plot draws a 3D surface. 
@@ -6775,12 +6856,12 @@ current plot.
    <p>Some of the more useful low-level plotting functions are:
 
      <dl>
-<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-238"></a><a name="index-lines-239"></a>Adds points or connected lines to the current plot.  <code>plot()</code>'s
+<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-224"></a><a name="index-lines-225"></a>Adds points or connected lines to the current plot.  <code>plot()</code>'s
 <code>type=</code> argument can also be passed to these functions (and
 defaults to <code>"p"</code> for <code>points()</code> and <code>"l"</code> for
 <code>lines()</code>.)
 
-     <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-240"></a>Add text to a plot at points given by <code>x, y</code>.  Normally
+     <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-226"></a>Add text to a plot at points given by <code>x, y</code>.  Normally
 <code>labels</code> is an integer or character vector in which case
 <code>labels[i]</code> is plotted at point <code>(x[i], y[i])</code>.  The default
 is <code>1:length(x)</code>.
@@ -6793,7 +6874,7 @@ is <code>1:length(x)</code>.
 the axes, and the <code>text()</code> function supplies special characters, as
 specified by the character vector <code>names</code> for the points.
 
-     <br><dt><code>abline(a, b)</code><dt><code>abline(h=</code><var>y</var><code>)</code><dt><code>abline(v=</code><var>x</var><code>)</code><dt><code>abline(</code><var>lm.obj</var><code>)</code><dd><a name="index-abline-241"></a>Adds a line of slope <code>b</code> and intercept <code>a</code> to the current
+     <br><dt><code>abline(a, b)</code><dt><code>abline(h=</code><var>y</var><code>)</code><dt><code>abline(v=</code><var>x</var><code>)</code><dt><code>abline(</code><var>lm.obj</var><code>)</code><dd><a name="index-abline-227"></a>Adds a line of slope <code>b</code> and intercept <code>a</code> to the current
 plot.  <code>h=</code><var>y</var> may be used to specify y-coordinates for
 the heights of horizontal lines to go across a plot, and
 <code>v=</code><var>x</var> similarly for the x-coordinates for vertical
@@ -6801,11 +6882,11 @@ lines.  Also <var>lm.obj</var> may be list with a <code>coefficients</code>
 component of length 2 (such as the result of model-fitting functions,)
 which are taken as an intercept and slope, in that order.
 
-     <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-242"></a>Draws a polygon defined by the ordered vertices in (<code>x</code>, <code>y</code>)
+     <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-228"></a>Draws a polygon defined by the ordered vertices in (<code>x</code>, <code>y</code>)
 and (optionally) shade it in with hatch lines, or fill it if the
 graphics device allows the filling of figures.
 
-     <br><dt><code>legend(x, y, legend, ...)</code><dd><a name="index-legend-243"></a>Adds a legend to the current plot at the specified position.  Plotting
+     <br><dt><code>legend(x, y, legend, ...)</code><dd><a name="index-legend-229"></a>Adds a legend to the current plot at the specified position.  Plotting
 characters, line styles, colors etc., are identified with the labels in
 the character vector <code>legend</code>.  At least one other argument <var>v</var>
 (a vector the same length as <code>legend</code>) with the corresponding
@@ -6819,10 +6900,10 @@ values of the plotting unit must also be given, as follows:
 <br><dt><code>legend( , pch=</code><var>v</var><code>)</code><dd>Plotting characters (character vector)
 </dl>
 
-     <br><dt><code>title(main, sub)</code><dd><a name="index-title-244"></a>Adds a title <code>main</code> to the top of the current plot in a large font
+     <br><dt><code>title(main, sub)</code><dd><a name="index-title-230"></a>Adds a title <code>main</code> to the top of the current plot in a large font
 and (optionally) a sub-title <code>sub</code> at the bottom in a smaller font.
 
-     <br><dt><code>axis(side, ...)</code><dd><a name="index-axis-245"></a>Adds an axis to the current plot on the side given by the first argument
+     <br><dt><code>axis(side, ...)</code><dd><a name="index-axis-231"></a>Adds an axis to the current plot on the side given by the first argument
 (1 to 4, counting clockwise from the bottom.)  Other arguments control
 the positioning of the axis within or beside the plot, and tick
 positions and labels.  Useful for adding custom axes after calling
@@ -6919,7 +7000,7 @@ information to a plot using a mouse.  The simplest of these is the
 <code>locator()</code> function:
 
      <dl>
-<dt><code>locator(n, type)</code><dd><a name="index-locator-246"></a>Waits for the user to select locations on the current plot using the
+<dt><code>locator(n, type)</code><dd><a name="index-locator-232"></a>Waits for the user to select locations on the current plot using the
 left mouse button.  This continues until <code>n</code> (default 512) points
 have been selected, or another mouse button is pressed.  The
 <code>type</code> argument allows for plotting at the selected points and has
@@ -6940,7 +7021,7 @@ informative text near an outlying point, the command
 such as <code>postscript</code> does not support interactive pointing.)
 
      <dl>
-<dt><code>identify(x, y, labels)</code><dd><a name="index-identify-247"></a>Allow the user to highlight any of the points defined by <code>x</code> and
+<dt><code>identify(x, y, labels)</code><dd><a name="index-identify-233"></a>Allow the user to highlight any of the points defined by <code>x</code> and
 <code>y</code> (using the left mouse button) by plotting the corresponding
 component of <code>labels</code> nearby (or the index number of the point if
 <code>labels</code> is absent).  Returns the indices of the selected points
@@ -7012,7 +7093,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Using-graphics-parameters">Using graph
 
 <h4 class="subsection">12.4.1 Permanent changes: The <code>par()</code> function</h4>
 
-<p><a name="index-par-248"></a><a name="index-Graphics-parameters-249"></a>
+<p><a name="index-par-234"></a><a name="index-Graphics-parameters-235"></a>
 The <code>par()</code> function is used to access and modify the list of
 graphics parameters for the current graphics device.
 
@@ -7351,7 +7432,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
 <h3 class="section">12.6 Device drivers</h3>
 
-<p><a name="index-Graphics-device-drivers-250"></a>
+<p><a name="index-Graphics-device-drivers-236"></a>
 R can generate graphics (of varying levels of quality) on almost any
 type of display or printing device.  Before this can begin, however,
 R needs to be informed what type of device it is dealing with.  This
@@ -7369,14 +7450,14 @@ for a list of them all.  For example, issuing the command
 PostScript format.  Some commonly-used device drivers are:
 
      <dl>
-<dt><code>X11()</code><dd><a name="index-X11-251"></a>For use with the X11 window system on Unix-alikes
-<br><dt><code>windows()</code><dd><a name="index-windows-252"></a>For use on Windows
-<br><dt><code>quartz()</code><dd><a name="index-quartz-253"></a>For use on Mac OS X
-<br><dt><code>postscript()</code><dd><a name="index-postscript-254"></a>For printing on PostScript printers, or creating PostScript graphics
+<dt><code>X11()</code><dd><a name="index-X11-237"></a>For use with the X11 window system on Unix-alikes
+<br><dt><code>windows()</code><dd><a name="index-windows-238"></a>For use on Windows
+<br><dt><code>quartz()</code><dd><a name="index-quartz-239"></a>For use on Mac OS X
+<br><dt><code>postscript()</code><dd><a name="index-postscript-240"></a>For printing on PostScript printers, or creating PostScript graphics
 files. 
-<br><dt><code>pdf()</code><dd><a name="index-pdf-255"></a>Produces a PDF file, which can also be included into PDF files. 
-<br><dt><code>png()</code><dd><a name="index-png-256"></a>Produces a bitmap PNG file. (Not always available: see its help page.) 
-<br><dt><code>jpeg()</code><dd><a name="index-jpeg-257"></a>Produces a bitmap JPEG file, best used for <code>image</code> plots. 
+<br><dt><code>pdf()</code><dd><a name="index-pdf-241"></a>Produces a PDF file, which can also be included into PDF files. 
+<br><dt><code>png()</code><dd><a name="index-png-242"></a>Produces a bitmap PNG file. (Not always available: see its help page.) 
+<br><dt><code>jpeg()</code><dd><a name="index-jpeg-243"></a>Produces a bitmap JPEG file, best used for <code>image</code> plots. 
 (Not always available: see its help page.) 
 </dl>
 
@@ -7460,17 +7541,17 @@ meanings are as follows:
 thus extending by one the device list.  This device becomes the current
 device, to which graphics output will be sent.
 
-     <br><dt><code>dev.list()</code><dd><a name="index-dev_002elist-258"></a>Returns the number and name of all active devices.  The device at
+     <br><dt><code>dev.list()</code><dd><a name="index-dev_002elist-244"></a>Returns the number and name of all active devices.  The device at
 position 1 on the list is always the <em>null device</em> which does not
 accept graphics commands at all.
 
-     <br><dt><code>dev.next()</code><dt><code>dev.prev()</code><dd><a name="index-dev_002enext-259"></a><a name="index-dev_002eprev-260"></a>Returns the number and name of the graphics device next to, or previous
+     <br><dt><code>dev.next()</code><dt><code>dev.prev()</code><dd><a name="index-dev_002enext-245"></a><a name="index-dev_002eprev-246"></a>Returns the number and name of the graphics device next to, or previous
 to the current device, respectively.
 
-     <br><dt><code>dev.set(which=</code><var>k</var><code>)</code><dd><a name="index-dev_002eset-261"></a>Can be used to change the current graphics device to the one at position
+     <br><dt><code>dev.set(which=</code><var>k</var><code>)</code><dd><a name="index-dev_002eset-247"></a>Can be used to change the current graphics device to the one at position
 <var>k</var> of the device list.  Returns the number and label of the device.
 
-     <br><dt><code>dev.off(</code><var>k</var><code>)</code><dd><a name="index-dev_002eoff-262"></a>Terminate the graphics device at point <var>k</var> of the device list.  For
+     <br><dt><code>dev.off(</code><var>k</var><code>)</code><dd><a name="index-dev_002eoff-248"></a>Terminate the graphics device at point <var>k</var> of the device list.  For
 some devices, such as <code>postscript</code> devices, this will either print
 the file immediately or correctly complete the file for later printing,
 depending on how the device was initiated.
@@ -7494,7 +7575,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
 <h3 class="section">12.7 Dynamic graphics</h3>
 
-<p><a name="index-Dynamic-graphics-263"></a>
+<p><a name="index-Dynamic-graphics-249"></a>
 R does not have builtin capabilities for dynamic or
 interactive graphics, e.g. rotating point clouds or to &ldquo;brushing&rdquo;
 (interactively highlighting) points. However, extensive dynamic graphics
@@ -7523,7 +7604,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- @chapter Packages -->
 <h2 class="chapter">13 패키지들</h2>
 
-<p><a name="index-Packages-264"></a>
+<p><a name="index-Packages-250"></a>
 <!-- All @R{} functions and datasets are stored in @emph{packages}.  Only -->
 <!-- when a package is loaded are its contents available.  This is done both -->
 <!-- for efficiency (the full list would take more memory and would take -->
@@ -7627,7 +7708,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 
 <h3 class="section">13.2 Contributed packages and <acronym>CRAN</acronym></h3>
 
-<p><a name="index-CRAN-265"></a>
+<p><a name="index-CRAN-251"></a>
 <!-- There are thousands of contributed packages for @R{}, written by many -->
 <!-- different authors.  Some of these packages implement specialized -->
 <!-- statistical methods, others give access to data or hardware, and others -->
@@ -7656,7 +7737,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 
 <h3 class="section">13.3 Namespaces</h3>
 
-<p><a name="index-Namespace-266"></a><a name="index-g_t_003a_003a-267"></a><a name="index-g_t_003a_003a_003a-268"></a>
+<p><a name="index-Namespace-252"></a><a name="index-g_t_003a_003a-253"></a><a name="index-g_t_003a_003a_003a-254"></a>
 <!-- Packages can have @emph{namespaces}, and currently all of the base and -->
 <!-- recommended packages do except the @code{datasets} package.  Namespaces -->
 <!-- do three things: they allow the package writer to hide functions and -->
@@ -8576,8 +8657,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_007c-59"><code>|</code></a>: <a href="#Logical-vectors">Logical vectors</a></li>
 <li><a href="#index-g_t_002d-22"><code>-</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-g_t_003a-45"><code>:</code></a>: <a href="#Generating-regular-sequences">Generating regular sequences</a></li>
-<li><a href="#index-g_t_003a_003a-267"><code>::</code></a>: <a href="#Namespaces">Namespaces</a></li>
-<li><a href="#index-g_t_003a_003a_003a-268"><code>:::</code></a>: <a href="#Namespaces">Namespaces</a></li>
+<li><a href="#index-g_t_003a_003a-253"><code>::</code></a>: <a href="#Namespaces">Namespaces</a></li>
+<li><a href="#index-g_t_003a_003a_003a-254"><code>:::</code></a>: <a href="#Namespaces">Namespaces</a></li>
 <li><a href="#index-g_t_0021-58"><code>!</code></a>: <a href="#Logical-vectors">Logical vectors</a></li>
 <li><a href="#index-g_t_0021_003d-57"><code>!=</code></a>: <a href="#Logical-vectors">Logical vectors</a></li>
 <li><a href="#index-g_t_003f-4"><code>?</code></a>: <a href="#Getting-help">Getting help</a></li>
@@ -8587,18 +8668,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-g_t_0026-60"><code>&amp;</code></a>: <a href="#Logical-vectors">Logical vectors</a></li>
 <li><a href="#index-g_t_0025_002a_0025-105"><code>%*%</code></a>: <a href="#Multiplication">Multiplication</a></li>
 <li><a href="#index-g_t_002b-21"><code>+</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
-<li><a href="#index-abline-241"><code>abline</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
-<li><a href="#index-ace-222"><code>ace</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-abline-227"><code>abline</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-ace-210"><code>ace</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-anova-185"><code>anova</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-array-95"><code>array</code></a>: <a href="#The-array_0028_0029-function">The array() function</a></li>
 <li><a href="#index-as_002evector-123"><code>as.vector</code></a>: <a href="#The-concatenation-function-c_0028_0029-with-arrays">The concatenation function c() with arrays</a></li>
 <li><a href="#index-attach-132"><code>attach</code></a>: <a href="#attach_0028_0029-and-detach_0028_0029">attach() and detach()</a></li>
 <li><a href="#index-attr-74"><code>attr</code></a>: <a href="#Getting-and-setting-attributes">Getting and setting attributes</a></li>
 <li><a href="#index-attributes-75"><code>attributes</code></a>: <a href="#Getting-and-setting-attributes">Getting and setting attributes</a></li>
-<li><a href="#index-avas-221"><code>avas</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
-<li><a href="#index-axis-245"><code>axis</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-avas-209"><code>avas</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-axis-231"><code>axis</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
 <li><a href="#index-boxplot-145"><code>boxplot</code></a>: <a href="#One_002d-and-two_002dsample-tests">One- and two-sample tests</a></li>
-<li><a href="#index-bruto-223"><code>bruto</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-bruto-211"><code>bruto</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-C-182"><code>C</code></a>: <a href="#Contrasts">Contrasts</a></li>
 <li><a href="#index-c-130"><code>c</code></a>: <a href="#Concatenating-lists">Concatenating lists</a></li>
 <li><a href="#index-c-124"><code>c</code></a>: <a href="#The-concatenation-function-c_0028_0029-with-arrays">The concatenation function c() with arrays</a></li>
@@ -8607,9 +8688,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-cbind-121"><code>cbind</code></a>: <a href="#Forming-partitioned-matrices">Forming partitioned matrices</a></li>
 <li><a href="#index-coef-187"><code>coef</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-coefficients-186"><code>coefficients</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
-<li><a href="#index-contour-236"><code>contour</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-contour-222"><code>contour</code></a>: <a href="#Display-graphics">Display graphics</a></li>
 <li><a href="#index-contrasts-181"><code>contrasts</code></a>: <a href="#Contrasts">Contrasts</a></li>
-<li><a href="#index-coplot-229"><code>coplot</code></a>: <a href="#Displaying-multivariate-data">Displaying multivariate data</a></li>
+<li><a href="#index-coplot-215"><code>coplot</code></a>: <a href="#Displaying-multivariate-data">Displaying multivariate data</a></li>
 <li><a href="#index-cos-29"><code>cos</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-crossprod-106"><code>crossprod</code></a>: <a href="#Multiplication">Multiplication</a></li>
 <li><a href="#index-crossprod-93"><code>crossprod</code></a>: <a href="#Index-matrices">Index matrices</a></li>
@@ -8619,14 +8700,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-detach-133"><code>detach</code></a>: <a href="#attach_0028_0029-and-detach_0028_0029">attach() and detach()</a></li>
 <li><a href="#index-determinant-116"><code>determinant</code></a>: <a href="#Singular-value-decomposition-and-determinants">Singular value decomposition and determinants</a></li>
 <li><a href="#index-deviance-188"><code>deviance</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
-<li><a href="#index-dev_002elist-258"><code>dev.list</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
-<li><a href="#index-dev_002enext-259"><code>dev.next</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
-<li><a href="#index-dev_002eoff-262"><code>dev.off</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
-<li><a href="#index-dev_002eprev-260"><code>dev.prev</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
-<li><a href="#index-dev_002eset-261"><code>dev.set</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
+<li><a href="#index-dev_002elist-244"><code>dev.list</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
+<li><a href="#index-dev_002enext-245"><code>dev.next</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
+<li><a href="#index-dev_002eoff-248"><code>dev.off</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
+<li><a href="#index-dev_002eprev-246"><code>dev.prev</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
+<li><a href="#index-dev_002eset-247"><code>dev.set</code></a>: <a href="#Multiple-graphics-devices">Multiple graphics devices</a></li>
 <li><a href="#index-diag-107"><code>diag</code></a>: <a href="#Multiplication">Multiplication</a></li>
 <li><a href="#index-dim-91"><code>dim</code></a>: <a href="#Arrays">Arrays</a></li>
-<li><a href="#index-dotchart-234"><code>dotchart</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-dotchart-220"><code>dotchart</code></a>: <a href="#Display-graphics">Display graphics</a></li>
 <li><a href="#index-eigen-111"><code>eigen</code></a>: <a href="#Eigenvalues-and-eigenvectors">Eigenvalues and eigenvectors</a></li>
 <li><a href="#index-else-155"><code>else</code></a>: <a href="#Conditional-execution">Conditional execution</a></li>
 <li><a href="#index-Error-199"><code>Error</code></a>: <a href="#Analysis-of-variance-and-model-comparison">Analysis of variance and model comparison</a></li>
@@ -8645,29 +8726,26 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-help-2"><code>help</code></a>: <a href="#Getting-help">Getting help</a></li>
 <li><a href="#index-help_002esearch-6"><code>help.search</code></a>: <a href="#Getting-help">Getting help</a></li>
 <li><a href="#index-help_002estart-5"><code>help.start</code></a>: <a href="#Getting-help">Getting help</a></li>
-<li><a href="#index-hist-233"><code>hist</code></a>: <a href="#Display-graphics">Display graphics</a></li>
-<li><a href="#index-identify-247"><code>identify</code></a>: <a href="#Interacting-with-graphics">Interacting with graphics</a></li>
+<li><a href="#index-hist-219"><code>hist</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-identify-233"><code>identify</code></a>: <a href="#Interacting-with-graphics">Interacting with graphics</a></li>
 <li><a href="#index-if-153"><code>if</code></a>: <a href="#Conditional-execution">Conditional execution</a></li>
-<li><a href="#index-image-235"><code>image</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-image-221"><code>image</code></a>: <a href="#Display-graphics">Display graphics</a></li>
 <li><a href="#index-is_002ena-63"><code>is.na</code></a>: <a href="#Missing-values">Missing values</a></li>
 <li><a href="#index-is_002enan-65"><code>is.nan</code></a>: <a href="#Missing-values">Missing values</a></li>
-<li><a href="#index-jpeg-257"><code>jpeg</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-jpeg-243"><code>jpeg</code></a>: <a href="#Device-drivers">Device drivers</a></li>
 <li><a href="#index-ks_002etest-143"><code>ks.test</code></a>: <a href="#Examining-the-distribution-of-a-set-of-data">Examining the distribution of a set of data</a></li>
 <li><a href="#index-g_t_002eLast-169"><code>.Last</code></a>: <a href="#Customizing-the-environment">Customizing the environment</a></li>
-<li><a href="#index-legend-243"><code>legend</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-legend-229"><code>legend</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
 <li><a href="#index-length-73"><code>length</code></a>: <a href="#The-intrinsic-attributes-mode-and-length">The intrinsic attributes mode and length</a></li>
 <li><a href="#index-length-35"><code>length</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-levels-83"><code>levels</code></a>: <a href="#Factors">Factors</a></li>
-<li><a href="#index-lines-239"><code>lines</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-lines-225"><code>lines</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
 <li><a href="#index-list-128"><code>list</code></a>: <a href="#Lists">Lists</a></li>
 <li><a href="#index-lm-184"><code>lm</code></a>: <a href="#Linear-models">Linear models</a></li>
-<li><a href="#index-lme-212"><code>lme</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
-<li><a href="#index-locator-246"><code>locator</code></a>: <a href="#Interacting-with-graphics">Interacting with graphics</a></li>
-<li><a href="#index-loess-215"><code>loess</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-locator-232"><code>locator</code></a>: <a href="#Interacting-with-graphics">Interacting with graphics</a></li>
 <li><a href="#index-log-26"><code>log</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
-<li><a href="#index-lqs-218"><code>lqs</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-lsfit-119"><code>lsfit</code></a>: <a href="#Least-squares-fitting-and-the-QR-decomposition">Least squares fitting and the QR decomposition</a></li>
-<li><a href="#index-mars-224"><code>mars</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-mars-212"><code>mars</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-max-32"><code>max</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-mean-38"><code>mean</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-min-33"><code>min</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
@@ -8676,38 +8754,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-NaN-64"><code>NaN</code></a>: <a href="#Missing-values">Missing values</a></li>
 <li><a href="#index-ncol-103"><code>ncol</code></a>: <a href="#Matrix-facilities">Matrix facilities</a></li>
 <li><a href="#index-next-159"><code>next</code></a>: <a href="#Repetitive-execution">Repetitive execution</a></li>
-<li><a href="#index-nlm-210"><code>nlm</code></a>: <a href="#Maximum-likelihood">Maximum likelihood</a></li>
-<li><a href="#index-nlm-208"><code>nlm</code></a>: <a href="#Least-squares">Least squares</a></li>
-<li><a href="#index-nlm-205"><code>nlm</code></a>: <a href="#Nonlinear-least-squares-and-maximum-likelihood-models">Nonlinear least squares and maximum likelihood models</a></li>
-<li><a href="#index-nlme-213"><code>nlme</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
-<li><a href="#index-nlminb-207"><code>nlminb</code></a>: <a href="#Nonlinear-least-squares-and-maximum-likelihood-models">Nonlinear least squares and maximum likelihood models</a></li>
+<li><a href="#index-nlm-207"><code>nlm</code></a>: <a href="#Maximum-likelihood">Maximum likelihood</a></li>
+<li><a href="#index-nlm-205"><code>nlm</code></a>: <a href="#Least-squares">Least squares</a></li>
 <li><a href="#index-nrow-102"><code>nrow</code></a>: <a href="#Matrix-facilities">Matrix facilities</a></li>
 <li><a href="#index-g_t_0025o_0025-98"><code>%o%</code></a>: <a href="#The-outer-product-of-two-arrays">The outer product of two arrays</a></li>
-<li><a href="#index-optim-206"><code>optim</code></a>: <a href="#Nonlinear-least-squares-and-maximum-likelihood-models">Nonlinear least squares and maximum likelihood models</a></li>
 <li><a href="#index-order-41"><code>order</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-ordered-87"><code>ordered</code></a>: <a href="#Ordered-factors">Ordered factors</a></li>
 <li><a href="#index-outer-99"><code>outer</code></a>: <a href="#The-outer-product-of-two-arrays">The outer product of two arrays</a></li>
-<li><a href="#index-pairs-228"><code>pairs</code></a>: <a href="#Displaying-multivariate-data">Displaying multivariate data</a></li>
-<li><a href="#index-par-248"><code>par</code></a>: <a href="#The-par_0028_0029-function">The par() function</a></li>
+<li><a href="#index-pairs-214"><code>pairs</code></a>: <a href="#Displaying-multivariate-data">Displaying multivariate data</a></li>
+<li><a href="#index-par-234"><code>par</code></a>: <a href="#The-par_0028_0029-function">The par() function</a></li>
 <li><a href="#index-paste-68"><code>paste</code></a>: <a href="#Character-vectors">Character vectors</a></li>
-<li><a href="#index-pdf-255"><code>pdf</code></a>: <a href="#Device-drivers">Device drivers</a></li>
-<li><a href="#index-persp-237"><code>persp</code></a>: <a href="#Display-graphics">Display graphics</a></li>
-<li><a href="#index-plot-227"><code>plot</code></a>: <a href="#The-plot_0028_0029-function">The plot() function</a></li>
+<li><a href="#index-pdf-241"><code>pdf</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-persp-223"><code>persp</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-plot-213"><code>plot</code></a>: <a href="#The-plot_0028_0029-function">The plot() function</a></li>
 <li><a href="#index-plot-190"><code>plot</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-pmax-42"><code>pmax</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-pmin-43"><code>pmin</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
-<li><a href="#index-png-256"><code>png</code></a>: <a href="#Device-drivers">Device drivers</a></li>
-<li><a href="#index-points-238"><code>points</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
-<li><a href="#index-polygon-242"><code>polygon</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
-<li><a href="#index-postscript-254"><code>postscript</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-png-242"><code>png</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-points-224"><code>points</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-polygon-228"><code>polygon</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-postscript-240"><code>postscript</code></a>: <a href="#Device-drivers">Device drivers</a></li>
 <li><a href="#index-predict-191"><code>predict</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-print-192"><code>print</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-prod-37"><code>prod</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
-<li><a href="#index-qqline-231"><code>qqline</code></a>: <a href="#Display-graphics">Display graphics</a></li>
-<li><a href="#index-qqnorm-230"><code>qqnorm</code></a>: <a href="#Display-graphics">Display graphics</a></li>
-<li><a href="#index-qqplot-232"><code>qqplot</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-qqline-217"><code>qqline</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-qqnorm-216"><code>qqnorm</code></a>: <a href="#Display-graphics">Display graphics</a></li>
+<li><a href="#index-qqplot-218"><code>qqplot</code></a>: <a href="#Display-graphics">Display graphics</a></li>
 <li><a href="#index-qr-120"><code>qr</code></a>: <a href="#Least-squares-fitting-and-the-QR-decomposition">Least squares fitting and the QR decomposition</a></li>
-<li><a href="#index-quartz-253"><code>quartz</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-quartz-239"><code>quartz</code></a>: <a href="#Device-drivers">Device drivers</a></li>
 <li><a href="#index-range-34"><code>range</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-rbind-122"><code>rbind</code></a>: <a href="#Forming-partitioned-matrices">Forming partitioned matrices</a></li>
 <li><a href="#index-read_002etable-137"><code>read.table</code></a>: <a href="#The-read_002etable_0028_0029-function">The read.table() function</a></li>
@@ -8715,7 +8789,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-repeat-157"><code>repeat</code></a>: <a href="#Repetitive-execution">Repetitive execution</a></li>
 <li><a href="#index-resid-194"><code>resid</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-residuals-193"><code>residuals</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
-<li><a href="#index-rlm-219"><code>rlm</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-rm-13"><code>rm</code></a>: <a href="#Data-permanency-and-removing-objects">Data permanency and removing objects</a></li>
 <li><a href="#index-scan-138"><code>scan</code></a>: <a href="#The-scan_0028_0029-function">The scan() function</a></li>
 <li><a href="#index-sd-85"><code>sd</code></a>: <a href="#The-function-tapply_0028_0029-and-ragged-arrays">The function tapply() and ragged arrays</a></li>
@@ -8736,9 +8809,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-table-94"><code>table</code></a>: <a href="#Index-matrices">Index matrices</a></li>
 <li><a href="#index-tan-30"><code>tan</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-tapply-84"><code>tapply</code></a>: <a href="#The-function-tapply_0028_0029-and-ragged-arrays">The function tapply() and ragged arrays</a></li>
-<li><a href="#index-text-240"><code>text</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
-<li><a href="#index-title-244"><code>title</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
-<li><a href="#index-tree-226"><code>tree</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-text-226"><code>text</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
+<li><a href="#index-title-230"><code>title</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
 <li><a href="#index-TRUE-49"><code>TRUE</code></a>: <a href="#Logical-vectors">Logical vectors</a></li>
 <li><a href="#index-unclass-79"><code>unclass</code></a>: <a href="#The-class-of-an-object">The class of an object</a></li>
 <li><a href="#index-var-86"><code>var</code></a>: <a href="#The-function-tapply_0028_0029-and-ragged-arrays">The function tapply() and ragged arrays</a></li>
@@ -8748,8 +8820,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-vector-17"><code>vector</code></a>: <a href="#Vectors-and-assignment">Vectors and assignment</a></li>
 <li><a href="#index-while-158"><code>while</code></a>: <a href="#Repetitive-execution">Repetitive execution</a></li>
 <li><a href="#index-wilcox_002etest-149"><code>wilcox.test</code></a>: <a href="#One_002d-and-two_002dsample-tests">One- and two-sample tests</a></li>
-<li><a href="#index-windows-252"><code>windows</code></a>: <a href="#Device-drivers">Device drivers</a></li>
-<li><a href="#index-X11-251"><code>X11</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-windows-238"><code>windows</code></a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-X11-237"><code>X11</code></a>: <a href="#Device-drivers">Device drivers</a></li>
    </ul><div class="node">
 <a name="Concept-index"></a>
 <p><hr>
@@ -8765,7 +8837,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <ul class="index-cp" compact>
 <li><a href="#index-Accessing-builtin-datasets-139">Accessing builtin datasets</a>: <a href="#Accessing-builtin-datasets">Accessing builtin datasets</a></li>
-<li><a href="#index-Additive-models-220">Additive models</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-Additive-models-208">Additive models</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-Analysis-of-variance-198">Analysis of variance</a>: <a href="#Analysis-of-variance-and-model-comparison">Analysis of variance and model comparison</a></li>
 <li><a href="#index-Arithmetic-functions-and-operators-20">Arithmetic functions and operators</a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-Arrays-89">Arrays</a>: <a href="#Arrays">Arrays</a></li>
@@ -8779,13 +8851,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Concatenating-lists-129">Concatenating lists</a>: <a href="#Concatenating-lists">Concatenating lists</a></li>
 <li><a href="#index-Contrasts-178">Contrasts</a>: <a href="#Contrasts">Contrasts</a></li>
 <li><a href="#index-Control-statements-152">Control statements</a>: <a href="#Control-statements">Control statements</a></li>
-<li><a href="#index-CRAN-265">CRAN</a>: <a href="#Contributed-packages-and-CRAN">Contributed packages and CRAN</a></li>
+<li><a href="#index-CRAN-251">CRAN</a>: <a href="#Contributed-packages-and-CRAN">Contributed packages and CRAN</a></li>
 <li><a href="#index-Customizing-the-environment-167">Customizing the environment</a>: <a href="#Customizing-the-environment">Customizing the environment</a></li>
 <li><a href="#index-Data-frames-131">Data frames</a>: <a href="#Data-frames">Data frames</a></li>
 <li><a href="#index-Default-values-164">Default values</a>: <a href="#Named-arguments-and-defaults">Named arguments and defaults</a></li>
 <li><a href="#index-Determinants-114">Determinants</a>: <a href="#Singular-value-decomposition-and-determinants">Singular value decomposition and determinants</a></li>
 <li><a href="#index-Diverting-input-and-output-9">Diverting input and output</a>: <a href="#Executing-commands-from-or-diverting-output-to-a-file">Executing commands from or diverting output to a file</a></li>
-<li><a href="#index-Dynamic-graphics-263">Dynamic graphics</a>: <a href="#Dynamic-graphics">Dynamic graphics</a></li>
+<li><a href="#index-Dynamic-graphics-249">Dynamic graphics</a>: <a href="#Dynamic-graphics">Dynamic graphics</a></li>
 <li><a href="#index-Eigenvalues-and-eigenvectors-110">Eigenvalues and eigenvectors</a>: <a href="#Eigenvalues-and-eigenvectors">Eigenvalues and eigenvectors</a></li>
 <li><a href="#index-Factors-179">Factors</a>: <a href="#Contrasts">Contrasts</a></li>
 <li><a href="#index-Factors-80">Factors</a>: <a href="#Factors">Factors</a></li>
@@ -8794,8 +8866,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Generalized-linear-models-201">Generalized linear models</a>: <a href="#Generalized-linear-models">Generalized linear models</a></li>
 <li><a href="#index-Generalized-transpose-of-an-array-100">Generalized transpose of an array</a>: <a href="#Generalized-transpose-of-an-array">Generalized transpose of an array</a></li>
 <li><a href="#index-Generic-functions-171">Generic functions</a>: <a href="#Object-orientation">Object orientation</a></li>
-<li><a href="#index-Graphics-device-drivers-250">Graphics device drivers</a>: <a href="#Device-drivers">Device drivers</a></li>
-<li><a href="#index-Graphics-parameters-249">Graphics parameters</a>: <a href="#The-par_0028_0029-function">The par() function</a></li>
+<li><a href="#index-Graphics-device-drivers-236">Graphics device drivers</a>: <a href="#Device-drivers">Device drivers</a></li>
+<li><a href="#index-Graphics-parameters-235">Graphics parameters</a>: <a href="#The-par_0028_0029-function">The par() function</a></li>
 <li><a href="#index-Grouped-expressions-151">Grouped expressions</a>: <a href="#Grouped-expressions">Grouped expressions</a></li>
 <li><a href="#index-Indexing-of-and-by-arrays-92">Indexing of and by arrays</a>: <a href="#Array-indexing">Array indexing</a></li>
 <li><a href="#index-Indexing-vectors-69">Indexing vectors</a>: <a href="#Index-vectors">Index vectors</a></li>
@@ -8804,15 +8876,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Linear-equations-108">Linear equations</a>: <a href="#Linear-equations-and-inversion">Linear equations and inversion</a></li>
 <li><a href="#index-Linear-models-183">Linear models</a>: <a href="#Linear-models">Linear models</a></li>
 <li><a href="#index-Lists-127">Lists</a>: <a href="#Lists">Lists</a></li>
-<li><a href="#index-Local-approximating-regressions-214">Local approximating regressions</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-Loops-and-conditional-execution-150">Loops and conditional execution</a>: <a href="#Loops-and-conditional-execution">Loops and conditional execution</a></li>
 <li><a href="#index-Matrices-90">Matrices</a>: <a href="#Arrays">Arrays</a></li>
 <li><a href="#index-Matrix-multiplication-104">Matrix multiplication</a>: <a href="#Multiplication">Multiplication</a></li>
-<li><a href="#index-Maximum-likelihood-209">Maximum likelihood</a>: <a href="#Maximum-likelihood">Maximum likelihood</a></li>
+<li><a href="#index-Maximum-likelihood-206">Maximum likelihood</a>: <a href="#Maximum-likelihood">Maximum likelihood</a></li>
 <li><a href="#index-Missing-values-61">Missing values</a>: <a href="#Missing-values">Missing values</a></li>
-<li><a href="#index-Mixed-models-211">Mixed models</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-Named-arguments-163">Named arguments</a>: <a href="#Named-arguments-and-defaults">Named arguments and defaults</a></li>
-<li><a href="#index-Namespace-266">Namespace</a>: <a href="#Namespaces">Namespaces</a></li>
+<li><a href="#index-Namespace-252">Namespace</a>: <a href="#Namespaces">Namespaces</a></li>
 <li><a href="#index-Nonlinear-least-squares-204">Nonlinear least squares</a>: <a href="#Nonlinear-least-squares-and-maximum-likelihood-models">Nonlinear least squares and maximum likelihood models</a></li>
 <li><a href="#index-Object-orientation-172">Object orientation</a>: <a href="#Object-orientation">Object orientation</a></li>
 <li><a href="#index-Objects-70">Objects</a>: <a href="#Objects">Objects</a></li>
@@ -8820,7 +8890,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Ordered-factors-180">Ordered factors</a>: <a href="#Contrasts">Contrasts</a></li>
 <li><a href="#index-Ordered-factors-81">Ordered factors</a>: <a href="#Factors">Factors</a></li>
 <li><a href="#index-Outer-products-of-arrays-97">Outer products of arrays</a>: <a href="#The-outer-product-of-two-arrays">The outer product of two arrays</a></li>
-<li><a href="#index-Packages-264">Packages</a>: <a href="#Packages">Packages</a></li>
+<li><a href="#index-Packages-250">Packages</a>: <a href="#Packages">Packages</a></li>
 <li><a href="#index-Packages-1">Packages</a>: <a href="#R-and-statistics">R and statistics</a></li>
 <li><a href="#index-Probability-distributions-141">Probability distributions</a>: <a href="#Probability-distributions">Probability distributions</a></li>
 <li><a href="#index-QR-decomposition-118">QR decomposition</a>: <a href="#Least-squares-fitting-and-the-QR-decomposition">Least squares fitting and the QR decomposition</a></li>
@@ -8829,13 +8899,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Recycling-rule-19">Recycling rule</a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
 <li><a href="#index-Regular-sequences-44">Regular sequences</a>: <a href="#Generating-regular-sequences">Generating regular sequences</a></li>
 <li><a href="#index-Removing-objects-14">Removing objects</a>: <a href="#Data-permanency-and-removing-objects">Data permanency and removing objects</a></li>
-<li><a href="#index-Robust-regression-217">Robust regression</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-Scope-165">Scope</a>: <a href="#Scope">Scope</a></li>
 <li><a href="#index-Search-path-135">Search path</a>: <a href="#Managing-the-search-path">Managing the search path</a></li>
 <li><a href="#index-Singular-value-decomposition-112">Singular value decomposition</a>: <a href="#Singular-value-decomposition-and-determinants">Singular value decomposition and determinants</a></li>
 <li><a href="#index-Statistical-models-175">Statistical models</a>: <a href="#Statistical-models-in-R">Statistical models in R</a></li>
 <li><a href="#index-Tabulation-125">Tabulation</a>: <a href="#Frequency-tables-from-factors">Frequency tables from factors</a></li>
-<li><a href="#index-Tree_002dbased-models-225">Tree-based models</a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-Updating-fitted-models-200">Updating fitted models</a>: <a href="#Updating-fitted-models">Updating fitted models</a></li>
 <li><a href="#index-Vectors-15">Vectors</a>: <a href="#Simple-manipulations-numbers-and-vectors">Simple manipulations numbers and vectors</a></li>
 <li><a href="#index-Wilcoxon-test-148">Wilcoxon test</a>: <a href="#One_002d-and-two_002dsample-tests">One- and two-sample tests</a></li>
