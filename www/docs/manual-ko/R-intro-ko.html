@@ -76,10 +76,10 @@ p {
 <li><a name="toc_Top" href="#Top">R에 대한 소개서</a>
 <li><a name="toc_Acknowledgement" href="#Acknowledgement">감사의 말씀</a>
 <li><a name="toc_Preface" href="#Preface">서문</a>
-<li><a name="toc_Introduction-and-preliminaries" href="#Introduction-and-preliminaries">1 소개와 시작하기 전에 (의역 일정 - 2013.03.26)</a>
+<li><a name="toc_Introduction-and-preliminaries" href="#Introduction-and-preliminaries">1 소개와 시작하기 전에</a>
 <ul>
-<li><a href="#The-R-environment">1.1 R 개발환경</a>
-<li><a href="#Related-software-and-documentation">1.2 연관된 소프트웨어 및 문서들</a>
+<li><a href="#The-R-environment">1.1 R environment (개발환경)</a>
+<li><a href="#Related-software-and-documentation">1.2 관련 소프트웨어 및 유용한 문서들</a>
 <li><a href="#R-and-statistics">1.3 R 과 통계</a>
 <li><a href="#R-and-the-window-system">1.4 R 과 윈도우즈 시스템</a>
 <li><a href="#Using-R-interactively">1.5 대화식으로 사용하는 R</a>
@@ -419,7 +419,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 이렇게 원래의 노트에 대한 수정과 재배포를 수락하고, R을 지지해주는 Bill Venables (그리고 David Smith)에게 우리는 깊은 감사의 뜻을 전합니다.
 
 <!-- @subheading Suggestions to the reader -->
-<h4 class="subheading">처음 접하는 사용자에게 (의역 일정 - 2013.03.26)</h4>
+<h4 class="subheading">처음 R을 접하는 사용자에게</h4>
 
 <!-- Most @R{} novices will start with the introductory session in Appendix -->
 <!-- A.  This should give some familiarity with the style of @R{} sessions -->
@@ -428,9 +428,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- this case, @ref{Graphics} on the graphics facilities can be read at -->
 <!-- almost any time and need not wait until all the preceding sections have -->
 <!-- been digested. -->
-<p>만약 독자가 R을 처음 접하는 것이라면 R이 어떻게 동작하는가에 대한 즉각적인 이해를 가지기 위하여 Appendix A를 가장 먼저 보기를 권합니다.
-
-   <p>많은 사용자들은 R이 가진 그래픽 기능들 때문에 이를 사용하곤 합니다. 따라서, 그래픽 관련주제들을 <a href="#Graphics">Graphics</a>에 따로 모아 독자가 필요할때마다 쉽게 찾아볼 수 있도록 하였습니다.
+<p>이 문서의 독자가 R을 처음 접하는 것이라면 R이 어떻게 동작하는가에 대해서 좀 더 편안하게 익히기 위해서 Appendix A 샘플세션를 가장 먼저 살펴보시길 권장합니다. 
+일부 독자들은 R에서 제공하는 그래픽 기능들때문에 R을 사용하기도 합니다. 
+이러한 독자들을 위하여 그래픽에 관련된 주제들을 <a href="#Graphics">Graphics</a> 챕터에 따로 모아둠으로서 본 문서의 모든 내용을 순차적으로 보지 않아도 필요시에 쉽게 찾아 볼 수있도록 해두었습니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-and-preliminaries">Introduction and preliminaries</a>
@@ -446,7 +446,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter 1 Introduction and preliminaries -->
-<h2 class="chapter">1 소개와 시작하기 전에 (의역 일정 - 2013.03.26)</h2>
+<h2 class="chapter">1 소개와 시작하기 전에</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-R-environment">The R environment</a>
@@ -471,7 +471,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 </div>
 
 <!-- @section The R environment -->
-<h3 class="section">1.1 R 개발환경</h3>
+<h3 class="section">1.1 R environment (개발환경)</h3>
 
 <!-- @R{} is an integrated suite of software facilities for data -->
 <!-- manipulation, calculation and graphical display.  Among other things it -->
@@ -493,16 +493,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- input and output facilities.  (Indeed most of the system supplied -->
 <!-- functions are themselves written in the @Sl{} language.) -->
 <!-- @end itemize -->
-<p>R은 데이터의 조작 및 수치연산, 그리고 시각화를 수행할 수 있는 소프트웨어 기능들을 한데 모아 놓은 통합개발환경이라고 할 수 있으며, 특히 다음과 같은 기능들을 제공하고 있습니다.
+<p>R은 데이터의 조작 및 수치연산, 그리고 시각화를 수행할 수 있는 소프트웨어 기능들을 한데 모아놓은 통합개발환경이라고 할 수 있으며, 다음과 같은 기능들이 특화되어 있습니다.
 
      <ul>
-<li>효과적인 데이터 관리 및 저장 기능들,
-<li>배열기반의 연산을 수행하기 위한 연산자들 (행렬에 더욱 특화되어 있음),
-<li>데이터 분석에서 중간과정의 단계를 모두 확인하는데 필요한 기능들을 일관성 있게 잘 조합해 놓은 통합적 분석도구들,
-<li>데이터 분석 및 시각화된 결과물을 컴퓨터에서 확인 및 하드카피로의 출력할 수 있는 기능들,
-<li>조건문, 반복문, 사용자 정의 함수, 그리고 입출력을 관리할 수 있는 기능들을 가지고 있는 프로그래밍 언어를 제공합니다. 
-특히 이 언어는 'S'라고도 불리우며 단순하면서도 효율적이며 매우 잘 개발되어 있습니다. 
-(실제로 시스템의 대다수의 함수들은 S언어로 작성되었습니다). 
+<li>효과적인 데이터 관리 및 저장,
+<li>배열기반의 연산을 수행하기 위한 다양한 연산자의 제공 (행렬 연산에 더욱 특화되어 있음),
+<li>데이터 분석을 수행함에 있어, 중간과정의 단계를 모두 확인할 수 있는 기능들을 일관성있게 잘 조합해 놓은 통합적 분석도구를 제공,
+<li>데이터 분석으로부터 얻은 결과 및 시각화된 자료들을 컴퓨터에서 확인하거나 하드카피로의 출력기능들,
+<li>조건문, 반복문, 사용자 정의 함수, 그리고 표준 입출력을 관리할 수 있는 기능들을 가지고 있는 프로그래밍 언어의 제공를 제공합니다. 
+특히 이 언어는 'S' 이라고도 불리우며 사용하기에 단순하면서도 효율적인 이용이 가능하도록 매우 잘 개발되어 있습니다. 
+(실제로 R 시스템의 대다수의 함수들은 S언어로 작성되었습니다). 
 </ul>
 
 <!-- The term ``environment'' is intended to characterize it as a fully -->
@@ -514,15 +514,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- large collection of @emph{packages}.  However, most programs written in -->
 <!-- @R{} are essentially ephemeral, written for a single piece of data -->
 <!-- analysis. -->
-   <p>&ldquo;environment&rdquo;(인바이런먼트 또는 개발환경)라는 용어는 다른 분석소프트웨어들의 경우처럼 사용방법에 제약이 많아 유용성이 없는 도구들을 추가적으로 계속 제공하는 것과는 달리 완전하게 잘 계획되어 있는 일관성있는 시스템 자체를 지칭하고자 사용합니다. 
-<em>이 문서에서 역자는 environment라는 용어를 영문 그대로 environment라고 사용할 것입니다. 
-그 이유는 environment라는 개념은 이 소개서의 이 부분내 문맥상 개발환경이라고 이해해도 무난하지만, 이 소개서의 내용을 뛰어넘는 프로그램의 개발에서는 environment라는 용어에 대한 개념이 단순히 개발환경은 아닙니다. 
-따라서, 역자는 개념적 혼돈을 주지않기 위해서 영문 environment를 그대로 사용할 것이고, 필요시에는 추가설명을 덧붙여줄것입니다. 
-프로그래머에게 필요한 더 자세한 사항은 R language definition 문서에서 다루도록 하겠습니다</em>.
+   <p>&ldquo;environment&rdquo;(환경 또는 개발환경)라는 용어는 다른 분석소프트웨어들의 경우처럼 사용방법에 제약이 많아 유용성이 없는 도구들을 추가적으로 계속 제공받아야 하는 것과는 달리 완전하게 잘 계획되어 있는 일관성있는 시스템 자체를 지칭하고자 하는 목적으로 사용하고 있습니다.
 
-   <p>R은 시스템과 분석자간의 쌍방향 데이터 분석에 사용될 방법들을 새로이 개발하는데 사용되는 수단이라고 할 수 있습니다. 
-따라서, 방대한 양의 <em>packages</em>(패키지)에 의해서 더욱 빠르게 확장되어 개발될 수 있습니다. 
-그러나, R로 쓰여진 대부분의 프로그램들은 단 하나의 데이터 분석을 위해 개발된 프로그램들이 대다수 이므로, 범용성에 제한이 있다는 것을 기억해야 합니다.
+   <p><strong>역자는 이 문서에서 가급적이면 environment라는 용어를 영문 그대로 environment라고 사용할 것입니다. 
+그 이유는 environment 이라는 개념이 본 소개서의 이 부분에서만 문맥상 잘 개발된 통합개발환경이라고 이해해도 무난하지만, 본 소개서의 내용을 뛰어넘는 실질적인 프로그램의 개발에서는 environment라는 용어에 대한 개념은 단순하게 개발환경이라고 할 수는 없습니다. 
+따라서, 이러한 개념적 혼돈을 피하기 위해서 역자는 문맥상 environment가 다소 기술적이고 중요한 개념을 다룰 때는 영문 그대로 사용할 것이고, 부연설명을 할 것입니다. 
+그렇지 않은 경우에는 개발환경 혹은 사용자 환경이라고 생각하셔도 무난합니다. 
+프로그래머에게 필요한 사항들은 R language definition 문서에서 더 자세히 다루도록 하겠습니다</strong>.
+
+   <p>R은 시스템과 분석자가 서로 대화를 하는 방식을 통해서 데이터 분석를 수행하고, 또한 이러한 분석에 필요한 새로운 방법들을 개발하는데 사용하는 수단이라고 생각할 수 있습니다. 
+이렇게 새로이 개발되어진 방법들은 <em>package</em>(패키지)로서 개인 사용자가 배포할 수도 있으며, 다른 사용자가 개발한 패키지들을 이용하여 보다 더 빠르게 분석에 필요한 R시스템을 확장시켜 나갈 수도 있습니다. 
+그러나, R로 작성된 대부분의 프로그램들은 사용자에게 주어졌던 특수한 한 가지 데이터 분석을 위해서 개발된 것이 대다수이기 때문에, 패키지를 사용함에 있어서 이의 범용성에 제한이 있다는 것을 잊지 마셔야 합니다.
 
 <div class="node">
 <a name="Related-software-and-documentation"></a>
@@ -534,7 +536,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 </div>
 
 <!-- @section Related software and documentation -->
-<h3 class="section">1.2 연관된 소프트웨어 및 문서들</h3>
+<h3 class="section">1.2 관련 소프트웨어 및 유용한 문서들</h3>
 
 <!-- @R{} can be regarded as an implementation of the @Sl{} language which -->
 <!-- was developed at Bell Laboratories by Rick Becker, John Chambers and -->
@@ -555,13 +557,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- typically be used with @R{}, keeping the differences between the @Sl{} -->
 <!-- implementations in mind.  @xref{What documentation exists for R?, , , -->
 <!-- R-FAQ, The R statistical system FAQ}. -->
-<p>R을 Bell 연구실에서 근무하던 Rick Becker, John Chambers 그리고 Allan Wilks에 의해 개발되어 <span class="sc">S-Plus</span> 시스템의 기반을 형성한 S 언어의 구현물이라고 생각하셔도 괜찮습니다.
+<p>독자는 R을 Bell 연구실에서 근무하던 Rick Becker, John Chambers 그리고 Allan Wilks가 <span class="sc">S-Plus</span> 시스템의 구축을 위해 개발한 S 라는 언어를 이용한 일종의 다른 구현물이라고 생각하셔도 괜찮습니다.
 
-   <p>S언어의 진화과정은 John Chambers와 그의 동료들이 쓴 네 권의 책에 의해서 정리될 수 있습니다. 
-R의 가장 기본적인 참고자료라고 한다면 Richard A. Becker, John M. Chambers 그리고 Allan R. Wilks가 저술한 <em>The New S Language: A Programming Environment for Data Analysis and Graphics</em>라는 책을 들 수 있습니다. 
-1991년에 릴리즈된 S의 새로운 기능들에 대해서는 John M. Chambers와 Trevor J. Hastie가 편집한 <em>Statistical Models in S</em>이라는 책을 참고하시길 바랍니다. 
-<strong>methods</strong> 패키지의 method(메소드)와 class(클래스)들은 John M. Chambers가 저술한 <em>Programming with Data</em>에서 찾아 볼 수 있습니다. 
-더 정확한 참고자료들은 다음을 참조하세요 See <a href="#References">References</a>.
+   <p>이 S 라는 언어의 진화과정은 John Chambers와 그의 동료들이 쓴 네 권의 책에 의해서 잘 정리되어 있습니다. 
+만약, 독자에게 R의 가장 기본적인 참고자료를 권장하고자 한다면 Richard A. Becker, John M. Chambers 그리고 Allan R. Wilks가 저술한 <em>The New S Language: A Programming Environment for Data Analysis and Graphics</em>라는 책을 들 수 있습니다. 
+그리고, 1991년에 릴리즈된 S의 새로운 기능들에 대해서는 John M. Chambers와 Trevor J. Hastie가 편집한 <em>Statistical Models in S</em> 이라는 책을 참고하시길 바랍니다. 
+<strong>methods</strong> 패키지에 구현되어 있는 method(메소드)와 class(클래스)들은 John M. Chambers가 저술한 <em>Programming with Data</em>에서 찾아 볼 수 있으며, 더 구체적인 내용을 볼 수 있는 참고자료들은 <a href="#References">References</a>를 살펴보시길 바랍니다 .
 
    <p>현재 R을 이용한 데이터 분석과 통계학에 관련된 많은 서적들이 나와 있으며, S/<span class="sc">S-Plus</span>를 위한 문서들 역시 R을 사용하는데 도움이 될 것입니다. 
 그러나, 반드시  S과 R은 다르게 구현이 되어 있다는 것을 반드시 기억하고 계셔야 합니다. 
@@ -8080,26 +8081,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 <h3 class="appendixsec">B.1 Invoking R from the command line</h3>
 
-<p>When working at a command line on UNIX or Windows, the command &lsquo;<samp><span class="samp">R</span></samp>&rsquo;
-can be used both for starting the main R program in the form
+<!-- When working at a command line on UNIX or Windows, the command @samp{R} -->
+<!-- can be used both for starting the main @R{} program in the form -->
+<!-- @display -->
+<!-- @code{R} [@var{options}] [@code{<}@var{infile}] [@code{>}@var{outfile}], -->
+<!-- @end display -->
+<!-- @noindent -->
+<!-- or, via the @code{R CMD} interface, as a wrapper to various @R{} tools -->
+<!-- (e.g., for processing files in @R{} documentation format or manipulating -->
+<!-- add-on packages) which are not intended to be called ``directly''. -->
+<p>UNIX혹은 윈도우 환경의 command line 작업 시, R은 R [options] [&lt;infile]
+[&gt;outfile]의 형태 혹은 '직접적'이란 의미를 지니지 않는 다양한 R 툴에 대한
+wrapper의 역할로서, R CMD 인터페이스를 통해 사용이 될 수 있습니다.
 
-<pre class="display">     <code>R</code> [<var>options</var>] [<code>&lt;</code><var>infile</var>] [<code>&gt;</code><var>outfile</var>],
-</pre>
-   <p class="noindent">or, via the <code>R CMD</code> interface, as a wrapper to various R tools
-(e.g., for processing files in R documentation format or manipulating
-add-on packages) which are not intended to be called &ldquo;directly&rdquo;.
+<!-- At the Windows command-line, @command{Rterm.exe} is preferred to -->
+<!-- @command{R}. -->
+   <p>윈도우 상의 command-line에서, Rterm.exe는 R에 해당합니다.
 
-   <p>At the Windows command-line, <samp><span class="command">Rterm.exe</span></samp> is preferred to
-<samp><span class="command">R</span></samp>.
+<!-- You need to ensure that either the environment variable @env{TMPDIR} is -->
+<!-- unset or it points to a valid place to create temporary files and -->
+<!-- directories. -->
+   <p>환경 변수 TMPDIR이 결정되지 않거나, 일시적 파일과 디렉토리 생성을 위한 공간을 해당
+변수가 지정할 수 있도록 합니다.
 
-   <p>You need to ensure that either the environment variable <samp><span class="env">TMPDIR</span></samp> is
-unset or it points to a valid place to create temporary files and
-directories.
-
-   <p>Most options control what happens at the beginning and at the end of an
-R session.  The startup mechanism is as follows (see also the on-line
-help for topic &lsquo;<samp><span class="samp">Startup</span></samp>&rsquo; for more information, and the section below
-for some Windows-specific details).
+<!-- Most options control what happens at the beginning and at the end of an -->
+<!-- @R{} session.  The startup mechanism is as follows (see also the on-line -->
+<!-- help for topic @samp{Startup} for more information, and the section below -->
+<!-- for some Windows-specific details). -->
+   <p>대부분의 옵션들은 R의 시작과 끝을 제어합니다. 시작 메커니즘은 아래와 같이 설명이 되어 있습니다(추가 정보를 원하시면, 'startup'이라는 주제에 대한 온라인 도움말(help)을 활용해 보십시오. 윈도우 환경 관련 구체적인 설명 또한 아래 부분에 기술되어 있습니다).
 
      <ul>
 <li>Unless <samp><span class="option">--no-environ</span></samp> was given, R searches for user and site
@@ -8116,77 +8125,114 @@ a precise description.)  Variables you might want to set include
 default print command) and <samp><span class="env">R_LIBS</span></samp> (specifies the list of R
 library trees searched for add-on packages).
 
-     <li>Then R searches for the site-wide startup profile unless the command
-line option <samp><span class="option">--no-site-file</span></samp> was given.  The name of this file is
-taken from the value of the <samp><span class="env">R_PROFILE</span></samp> environment variable.  If
-that variable is unset, the default
-<samp><var>R_HOME</var><span class="file">/etc/Rprofile.site</span></samp> is used if this exists.
+     <p>&ndash;no-environ이 주어지지 않는다면, R은 유저 환경변수설정을 위해서 site files과 유저를 위해서 탐색합니다. 사이트 파일의 이름은 환경변수 R_ENVIRON에 의해 지정됩니다. 이름이 결정되지 않은 경우, 존재한다면 R_HOME/etc/Renviron.site를 활용할 수 있습니다. 유저 파일의 경우, 결정이 되었다면, 환경변수 R_ENVIRON_USER에 의해 지정이 됩니다. 그렇지 않은 경우 현재 혹은 유저의 홈 디렉토리(home directory)에 있는 file.Renviron이 탐색됩니다. 이 파일들은 'name=value' 형태의 라인들을 포함해야 합니다(좀 더 구체적인 이해를 위해서 "Startup" 도움말을 참조하십시오). 지정하고 싶은 변수들은 R_PAPERSIZE(default paper size), R_PRINTCMD (default print command)와 R_LIBS(추가 패키지를 위해 마련된 R library 트리 리스트의 세분화)를 포함해야 합니다.
 
-     <li>Then, unless <samp><span class="option">--no-init-file</span></samp> was given, R searches for a user
-profile and sources it.  The name of this file is taken from the
-environment variable <samp><span class="env">R_PROFILE_USER</span></samp>; if unset, a file called
-<samp><span class="file">.Rprofile</span></samp> in the current directory or in the user's home
-directory (in that order) is searched for.
+     <li><!-- Then @R{} searches for the site-wide startup profile unless the command -->
+<!-- line option @option{-no-site-file} was given.  The name of this file is -->
+<!-- taken from the value of the @env{R_PROFILE} environment variable.  If -->
+<!-- that variable is unset, the default -->
+<!-- @file{@var{R_HOME}/etc/Rprofile.site} is used if this exists. -->
 
-     <li>It also loads a saved workspace from file <samp><span class="file">.RData</span></samp> in the current
-directory if there is one (unless <samp><span class="option">--no-restore</span></samp> or
-<samp><span class="option">--no-restore-data</span></samp> was specified).
+     <p>그 다음, command line옵션 (&ndash;no-site-file)이 주어지지 않았다며, R이 site-wide startup profile을 탐색합니다. 이 파일의 이름은 R_PROFILE 환경 변수의 벨류(value)에서 얻을 수 있습니다. 만약 그 변수가 정해지지 않았다면, default R_HOME/etc/Rprofile.site가 존재한다면 사용될 수 있습니다.
 
-     <li>Finally, if a function <code>.First()</code> exists, it is executed.  This
-function (as well as <code>.Last()</code> which is executed at the end of the
-R session) can be defined in the appropriate startup profiles, or
-reside in <samp><span class="file">.RData</span></samp>. 
+     <li><!-- Then, unless @option{-no-init-file} was given, @R{} searches for a user -->
+<!-- profile and sources it.  The name of this file is taken from the -->
+<!-- environment variable @env{R_PROFILE_USER}; if unset, a file called -->
+<!-- @file{.Rprofile} in the current directory or in the user's home -->
+<!-- directory (in that order) is searched for. -->
+
+     <p>그 다음 &ndash;no-init-file이 없다면, R은 user profile을 탐색 및 활용합니다. 이 파일의 이름은 R_PROFILE_USER 환경변수에서 얻을 수 있습니다. 그리고, 지정되지 않았다면, 현 디렉토리나 유저의 홈 디렉토리(해당 목록)의 .Rprofile 파일을 탐색할 수 있습니다.
+
+     <li><!-- It also loads a saved workspace from file @file{.RData} in the current -->
+<!-- directory if there is one (unless @option{-no-restore} or -->
+<!-- @option{-no-restore-data} was specified). -->
+
+     <p>현 디렉토리 상의 .RData file이 존재한다면, (&ndash;norestore 혹은 &ndash;no-restore-data가 구분되어 있지 않은 경우) 해당 디렉토리에 있는 .RData 파일로부터 저장된 작업공간(workspace)을 로딩할 수 있습니다.
+
+     <li><!-- Finally, if a function @code{.First()} exists, it is executed.  This -->
+<!-- function (as well as @code{.Last()} which is executed at the end of the -->
+<!-- @R{} session) can be defined in the appropriate startup profiles, or -->
+<!-- reside in @file{.RData}. -->
 </ul>
 
-   <p>In addition, there are options for controlling the memory available to
-the R process (see the on-line help for topic &lsquo;<samp><span class="samp">Memory</span></samp>&rsquo; for more
-information).  Users will not normally need to use these unless they
-are trying to limit the amount of memory used by R.
+   <p>마지막으로, .First()함수가 존재한다면, 실행됩니다. 이 함수는 (R 설명 마지막 부분에서 실행되었던 .Last()를 포함) 적절한 startup profile 정의(define)될 수 있고 혹은 .RData에 상주할 수가 있습니다.
+
+<!-- In addition, there are options for controlling the memory available to -->
+<!-- the @R{} process (see the on-line help for topic @samp{Memory} for more -->
+<!-- information).  Users will not normally need to use these unless they -->
+<!-- are trying to limit the amount of memory used by @R{}. -->
+   <p>추가적으로, R 처리과정에서 이용 가능한 메모리 제어를 위한 옵션이 있습니다(추가 정보를 원하신다면, 'Memory' 토픽 부분의 온라인 도움말을 참고하시기 바랍니다). R에 의해 사용되는 메모리 양을 제한하려 하지 않는 이상 이 옵션들을 사용해야 할 필요는 굳이 없습니다.
 
    <p>R accepts the following command-line options.
 
+   <p>R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
+
      <dl>
-<dt><samp><span class="option">--help</span></samp><dt><samp><span class="option">-h</span></samp><dd>Print short help message to standard output and exit successfully.
+<dt><samp><span class="option">--help</span></samp><dt><samp><span class="option">-h</span></samp><dd><!-- Print short help message to standard output and exit successfully. -->
 
-     <br><dt><samp><span class="option">--version</span></samp><dd>Print version information to standard output and exit successfully.
+     <p>표준결과물에 대한 짧은 도움말 메시지를 출력하고 빠져나옴.
 
-     <br><dt><samp><span class="option">--encoding=</span><var>enc</var></samp><dd>Specify the encoding to be assumed for input from the console or
-<code>stdin</code>.  This needs to be an encoding known to <code>iconv</code>: see
-its help page.  (<code>--encoding </code><var>enc</var> is also accepted.)
+     <br><dt><samp><span class="option">--version</span></samp><dd><!-- Print version information to standard output and exit successfully. -->
 
-     <br><dt><samp><span class="option">RHOME</span></samp><dd>Print the path to the R &ldquo;home directory&rdquo; to standard output and
-exit successfully.  Apart from the front-end shell script and the man
-page, R installation puts everything (executables, packages, etc.) 
-into this directory.
+     <p>표준결과물에 대한 버전 정보를 출력하고 빠져나옴.
 
-     <br><dt><samp><span class="option">--save</span></samp><dt><samp><span class="option">--no-save</span></samp><dd>Control whether data sets should be saved or not at the end of the R
-session.  If neither is given in an interactive session, the user is
-asked for the desired behavior when ending the session with <kbd>q()</kbd>;
-in non-interactive use one of these must be specified or implied by some
-other option (see below).
+     <br><dt><samp><span class="option">--encoding=</span><var>enc</var></samp><dd><!-- Specify the encoding to be assumed for input from the console or -->
+<!-- @code{stdin}.  This needs to be an encoding known to @code{iconv}: see -->
+<!-- its help page.  (@code{-encoding @var{enc}} is also accepted.) -->
 
-     <br><dt><samp><span class="option">--no-environ</span></samp><dd>Do not read any user file to set environment variables.
+     <p>콘솔 혹은 stdin의 input을 위해서 인코딩(encoding)을 구체화해야 합니다. 이는 iconv라고 불리는 인코딩이 필요합니다. 도움말 페이지를 참조하세요. (&ndash;encoding enc도 사용될 수 있습니다.)
 
-     <br><dt><samp><span class="option">--no-site-file</span></samp><dd>Do not read the site-wide profile at startup.
+     <br><dt><samp><span class="option">RHOME</span></samp><dd><!-- Print the path to the @R{} ``home directory'' to standard output and -->
+<!-- exit successfully.  Apart from the front-end shell script and the man -->
+<!-- page, @R{} installation puts everything (executables, packages, etc.) -->
+<!-- into this directory. -->
 
-     <br><dt><samp><span class="option">--no-init-file</span></samp><dd>Do not read the user's profile at startup.
+     <p>R home directory를 표준출력과 exit을 위해서 R "home directory"에 대한 경로 출력을 합니다. front-end shell 스크립트 와 매인 페이지를 제외하고, R installation은 모든 것을 이 디렉토리 안에 포함시킵니다.
 
-     <br><dt><samp><span class="option">--restore</span></samp><dt><samp><span class="option">--no-restore</span></samp><dt><samp><span class="option">--no-restore-data</span></samp><dd>Control whether saved images (file <samp><span class="file">.RData</span></samp> in the directory where
-R was started) should be restored at startup or not.  The default is
-to restore. (<samp><span class="option">--no-restore</span></samp> implies all the specific
-<samp><span class="option">--no-restore-*</span></samp> options.)
+     <br><dt><samp><span class="option">--save</span></samp><dt><samp><span class="option">--no-save</span></samp><dd><!-- Control whether data sets should be saved or not at the end of the @R{} -->
+<!-- session.  If neither is given in an interactive session, the user is -->
+<!-- asked for the desired behavior when ending the session with @kbd{q()}; -->
+<!-- in non-interactive use one of these must be specified or implied by some -->
+<!-- other option (see below). -->
 
-     <br><dt><samp><span class="option">--no-restore-history</span></samp><dd>Control whether the history file (normally file <samp><span class="file">.Rhistory</span></samp> in the
-directory where R was started, but can be set by the environment
-variable <samp><span class="env">R_HISTFILE</span></samp>) should be restored at startup or not.  The
-default is to restore.
+     <p>데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
 
-     <br><dt><samp><span class="option">--no-Rconsole</span></samp><dd>(Windows only) Prevent loading the <samp><span class="file">Rconsole</span></samp> file at startup.
+     <br><dt><samp><span class="option">--no-environ</span></samp><dd><!-- Do not read any user file to set environment variables. -->
 
-     <br><dt><samp><span class="option">--vanilla</span></samp><dd>Combine <samp><span class="option">--no-save</span></samp>, <samp><span class="option">--no-environ</span></samp>,
-<samp><span class="option">--no-site-file</span></samp>, <samp><span class="option">--no-init-file</span></samp> and
-<samp><span class="option">--no-restore</span></samp>.  Under Windows, this also includes
-<samp><span class="option">--no-Rconsole</span></samp>.
+     <p>환경변수 설정을 위한 유저 파일 불러오기는 하지 않습니다.
+
+     <br><dt><samp><span class="option">--no-site-file</span></samp><dd><!-- Do not read the site-wide profile at startup. -->
+
+     <p>startup상에서 site-wide 프로파일을 불러오지 않습니다.
+
+     <br><dt><samp><span class="option">--no-init-file</span></samp><dd><!-- Do not read the user's profile at startup. -->
+
+     <p>startup상에서 user 프로파일을 불러오지 않습니다.
+
+     <br><dt><samp><span class="option">--restore</span></samp><dt><samp><span class="option">--no-restore</span></samp><dt><samp><span class="option">--no-restore-data</span></samp><dd><!-- Control whether saved images (file @file{.RData} in the directory where -->
+<!-- @R{} was started) should be restored at startup or not.  The default is -->
+<!-- to restore. (@option{-no-restore} implies all the specific -->
+<!-- @option{-no-restore-*} options.) -->
+
+     <p>저장된 이미지 파일이 startup상에서의 restore 여부를 결정합니다.(R이 시작된 디렉토리 안에 file .RData 존재) 디폴트는 restore되어야 합니다. (&ndash;no-restore는 모든 &ndash;no-restore-* 옵션들을 의미합니다.
+
+     <br><dt><samp><span class="option">--no-restore-history</span></samp><dd><!-- Control whether the history file (normally file @file{.Rhistory} in the -->
+<!-- directory where @R{} was started, but can be set by the environment -->
+<!-- variable @env{R_HISTFILE}) should be restored at startup or not.  The -->
+<!-- default is to restore. -->
+
+     <p>히스토리 파일이 restore되어야 하는지 여부 결정합니다(R이 시작된 디렉토리에 일반적으로 file .Rhistory가 존재하며, 환경변수 R_HISTFILE에 의해 설정될 수 있습니다). 디폴트는 restore 되어야 합니다.
+
+     <br><dt><samp><span class="option">--no-Rconsole</span></samp><dd><!-- (Windows only) Prevent loading the @file{Rconsole} file at startup. -->
+
+     <p>(윈도우 환경)startup시, Rconsole 파일 로딩 예방
+
+     <br><dt><samp><span class="option">--vanilla</span></samp><dd><!-- Combine @option{-no-save}, @option{-no-environ}, -->
+<!-- @option{-no-site-file}, @option{-no-init-file} and -->
+<!-- @option{-no-restore}.  Under Windows, this also includes -->
+<!-- @option{-no-Rconsole}. -->
+
+     <p>&ndash;no-save, &ndash;no-environ, &ndash;no-site-file, &ndash;no-init-file과 &ndash;no-restore를 결합합니다. 이는 또한 윈도우 상에서 &ndash;no-Rconcsole 포함합니다.
 
      <br><dt><samp><span class="option">-f </span><var>file</var></samp><dt><samp><span class="option">--file=</span><var>file</var></samp><dd>(not <samp><span class="command">Rgui.exe</span></samp>) Take input from <var>file</var>: &lsquo;<samp><span class="samp">-</span></samp>&rsquo; means
 <code>stdin</code>.  Implies <samp><span class="option">--no-save</span></samp> unless <samp><span class="option">--save</span></samp> has
