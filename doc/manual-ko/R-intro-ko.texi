@@ -2,7 +2,7 @@
 
 @c %**start of header
 @setfilename R-intro.info
-@settitle An Introduction to R in Korean (2013.03.25, ver.0.91)
+@settitle An Introduction to R in Korean (2013.03.25, ver.0.91 -- 현재 최종의역작업이 진행중입니다. 읽어볼 만한 질적인 수준을 가진 문서로서 준비가 되는 시점은 2013.03.31로 예상되어집니다.)
 @setchapternewpage on
 @c %**end of header
 
@@ -2190,7 +2190,8 @@ act    nsw  nt    qld     sa tas   vic     wa
 @end menu
 
 @node Arrays, Array indexing, Arrays and matrices, Arrays and matrices
-@section Arrays
+@c @section Arrays
+@section 배열
 @cindex Arrays
 @cindex Matrices
 
@@ -2199,14 +2200,18 @@ act    nsw  nt    qld     sa tas   vic     wa
 @c creating and handling arrays, and in particular the special case of
 @c matrices.
 
-배열(array)은 데이터 엔트리 (data entries)를 다차원 인덱스를 이용하여 표현해 낸 구조라고 생각할 수 있습니다. 
-@R{}은 이러한 배열들을 생성하고 다룰 수 있는 간편한 기능들을 제공합니다.
-행렬은 배열의 특수한 예입니다.
-
 @c A dimension vector is a vector of non-negative integers.  If its length is
 @c @math{k} then the array is @math{k}-dimensional, e.g.@ a matrix is a
 @c @math{2}-dimensional array.  The dimensions are indexed from one up to
 @c the values given in the dimension vector.
+
+배열(array)이라는 것은 쉽게 표현하면 다차원상에 데이터가 놓아질 수 있도록 데이터 엔트리(data entry, 데이터가 위치하는 하나하나를 공간을 의미함)를 구조화 한 것입니다.
+실제로 다차원이라는 것은 우리 머릿속에만 존재하는데, 이를 일렬로 벡터처럼 읽어들이는 컴퓨터는 이러한 다차원 개념을 표현하기 어렵습니다.
+이를 구현하기 위해서 차원벡터 (dimension vector)라는 개념을 활용합니다. 
+ 
+배열(array)이라는 것은 데이터 엔트리(data entries)에 대한 위치를 표현해 주는 첨자(subscript)의 부분에 벡터에서 사용했던 1차원 인덱스를 사용한 것과는 달리 다차원 인덱스를 이용하여 다차원 구조에 놓여있는 데이터를 표현한 것이라고 할 수 있습니다. 
+@R{}은 이러한 배열들을 생성하고 다룰 수 있는 간편한 기능들을 제공합니다.
+행렬은 배열의 특수한 예입니다.
 
 차원벡터는 음수가 아닌 정수들로 이루어진 벡터입니다. 
 만약, 길이가 @math{k}라면, @math{k}-차원을 가지는 배열입니다.
