@@ -100,13 +100,12 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 @c The current version of this document is @value{VERSION}.
 
-이 문서는 통계계산 및 그래픽를 위한 언어이며 환경이기도 한 R에 대한 기초안내서 입니다. R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래 수상을 받은 적이 있는 S 시스템과 유사하므로 ``GNU S''라고도 불리우고, 매우 다양한 분야에 걸친 통계분석 및 그래픽 기능들을 제공합니다. 예를들면, 선형 및 비선형 모델링, 다양한 통계 테스트들, 시계열분석, 클래시피케이션, 그리고 클러스터링 등이 있습니다.
+이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 수행하는 언어이며 개발환경이기도 한 @R{}에 대한 기본 안내서입니다. 
+@R{}은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래로 여러차례의 수상을 받은 적이 있는 @Sl{} 라는 시스템과 유사하기 때문에 ``GNU S''라고도 불리우며,
+선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계분석 방법들과 그래픽 기능들을 제공하고 있습니다. 
+이러한 기능을 @R{}을 시작하시는 분들이 잘 활용할 수 있도록 사용에 반드시 필요한 기본 데이터형, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽 구현에 대한 기본적인 정보가 이 문서에서 다루어질 것입니다. 
 
-이 문서는 R을 시작하는 분들에게 반드시 필요한 기본적인 데이터형에 대한 이해, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽에 대한 정보를 제공합니다.
-
-현재 이 문서의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013년 03월 25일에 이루어졌습니다.
-
-@c 서문 의역완료 on 2013-MAR-01 
+본 한글문서에 대한 영어원문의 버전은 @value{VERSION}이며, 한국어 버전의 마지막 업데이트는 2013.03.25입니다.
 
 @value{ISBN-intro}
 
@@ -145,14 +144,15 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c @unnumbered Acknowledgement
 @unnumbered 감사의 말씀
 
-이 한국어 문서는 @emph{The R Development Translation Teams}의 이철희에 의해서 번역되고 관리되고 있습니다.
-@R{}의 빠른 변화를 반영하고자 현재 최신 버전의 @value{VERSION}에 맞게 문서의 수정과 갱신이 수시로 이루어지고 있습니다.
-또한, 본래의 영문 문서와는 다소 다르게 전산학 또는 통계학이 전공이 아닌 독자들을 위하여 전문용어에 대한 개념풀이와 해석을 덧붙임으로서 보다 쉽게 전달하고자 노력하였습니다.
-본 한국어 문서에 대한 제안사항 및 정정, 그리고 보다 나은 표현 및 추가설명에 대한 내용을 @email{gnustats@@korea.gnu.org}으로 보내주시면 매우 감사드리겠습니다.
+본 한국어 문서는 @strong{The R Development Translation Teams}에서 Korean 부문의 이철희에 의해서 관리되어지고 있습니다.
+@R{}의 빠른 변화를 반영하고자 매번 새로운 배포가 이루어질 때마다, 문서의 수정과 갱신이 이루어지고 있습니다.
+그러나, @strong{이 한국어 문서는 본래의 영문 문서와는 다소 다르다는 점을 독자는 미리 알고 있어야 합니다.
+그 이유는 전산학과 통계학이 아닌 독자들을 고려하여 본래의 영문문서에서 전문용어가 아니면 특별히 이해할 수 없거나 잘 못된 이해를 가질 수 없다는 의견을 고려하여,
+이러한 전문용어들에 대한 개념풀이와 부가적인 해석을 덧붙임으로서 보다 쉽게 전달하고자 노력하고 있기 때문입니다}.
+이러한 문서의 수정과 재배포를 허락해 준 @strong{R Development Core Team}에게 감사를 드립니다.
+특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada), 그리고 David Smith에 깊은 감사의 뜻을 표현합니다.  
 
-이 문서에 대한 가장 최초의 직역버전은 @R{}-2.9.1를 기초로 2009년 07월에 이루어졌으면, 매년 버전이 업데이트 됨에도 불구하고 이 문서가 현재까지도 잘 관리될 수 있도록 관심과 기여를 해주셨던 분들에게 감사의 말씀을 올립니다.
-의도적이 아닌 관리상의 누락으로 이 문서에 기여하신 분들의 성함이 빠져있을 수 있습니다.
-꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
+본 문서에 대한 최초의 직역은 2009년 07월에 @R{}-2.9.1를 기초로 이루어졌으며, 그 이후로도 이 문서에 대한 꾸준한 변화가 반영될 수 있도록 꾸준한 관심을 가지고 기여를 해 주셨던 분들에게 감사의 말씀을 올립니다 (의도적이 아닌 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 빠져있을 수 있습니다). 
 
 @itemize @bullet
 @item 이세연, 이화여자대학교, 2009
@@ -160,6 +160,9 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @item 정우준, 홍익대학교, 2009-2013
 @item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
 @end itemize
+
+본 문서에 대한 수정 및 추가, 그리고 제안사항에 대해서는 @email{gnustats@@korea.gnu.org}로 연락해주신다면 감사드리겠습니다.
+또한, 위의 명단에서 성함이 누락되신 분이 있다면 꼭 연락을 부탁드립니다.
 
 @node Preface, Introduction and preliminaries, Acknowledgement, Top
 @c @unnumbered Preface
@@ -179,11 +182,11 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c correspondence to @email{R-core@@R-project.org}.
 
 본래 @R{}에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 @Sl{}와 @SPLUS{}에 대하여 작성한 노트를 토대로 하고 있습니다.
-그러나, @R{}과 @Sl{} 사이의 다른 점들을 반영하기 위하여 우리는 원래 노트의 내용에 적절한 수정을 가하고 일부의 내용들을 더욱 보강하였습니다.
+그러나, @R{}과 @Sl{} 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다.
 이렇게 원래의 노트에 대한 수정과 재배포를 수락하고, @R{}을 지지해주는 Bill Venables (그리고 David Smith)에게 우리는 깊은 감사의 뜻을 전합니다. 
 
 @c @subheading Suggestions to the reader
-@subheading 처음 접하는 사용자에게 
+@subheading 처음 접하는 사용자에게 (의역 일정 - 2013.03.26)
 
 @c Most @R{} novices will start with the introductory session in Appendix
 @c A.  This should give some familiarity with the style of @R{} sessions
@@ -204,7 +207,7 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 @node Introduction and preliminaries, Simple manipulations numbers and vectors, Preface, Top
 @c @chapter 1 Introduction and preliminaries
-@chapter 소개와 시작하기 전에
+@chapter 소개와 시작하기 전에 (의역 일정 - 2013.03.26)
 
 @menu
 * The R environment::           
@@ -815,7 +818,7 @@ UNIX상에서는 이러한 기능들을 사용자의 취향에 따라 매우 손
 
 @node Simple manipulations numbers and vectors, Objects, Introduction and preliminaries, Top
 @c @chapter Simple manipulations; numbers and vectors
-@chapter 기초 조작법
+@chapter 기초 조작법 (의역 일정 - 2013.03.26)
 @cindex Vectors
 
 @menu
@@ -1629,7 +1632,7 @@ for @code{sub} and @code{substring}.}
 
 @node Objects, Factors, Simple manipulations numbers and vectors, Top
 @c @chapter Objects, their modes and attributes
-@chapter 객체, 이것에 대한 속성과 모드
+@chapter 객체, 이것에 대한 속성과 모드 (의역 일정 - 2013.03.26)
 @cindex Objects
 @cindex Attributes
 
@@ -1942,7 +1945,7 @@ for @code{sub} and @code{substring}.}
 
 @node Factors, Arrays and matrices, Objects, Top
 @c @chapter Ordered and unordered factors
-@chapter 순위형과 비순위형 요인들
+@chapter 순위형과 비순위형 요인들 (의역 일정 - 2013.03.26)
 @cindex Factors
 @cindex Ordered factors
 
@@ -2174,7 +2177,7 @@ act    nsw  nt    qld     sa tas   vic     wa
 
 @node Arrays and matrices, Lists and data frames, Factors, Top
 @c @chapter Arrays and matrices
-@chapter  배열과 행렬
+@chapter  배열과 행렬 (의역 일정 - 2013.03.27)
 
 @menu
 * Arrays::                      
@@ -3188,7 +3191,7 @@ Extension to higher-way frequency tables is immediate.
 
 @node Lists and data frames, Reading data from files, Arrays and matrices, Top
 @c @chapter Lists and data frames
-@chapter 리스트와 데이터프레임
+@chapter 리스트와 데이터프레임 (의역 일정 - 2013.03.27)
 
 @menu
 * Lists::                       
@@ -3610,7 +3613,7 @@ ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프�
 
 @node Reading data from files, Probability distributions, Lists and data frames, Top
 @c @chapter Reading data from files
-@chapter 파일로부터 데이터 불러오기
+@chapter 파일로부터 데이터 불러오기 (의역 일정 - 2013.03.28)
 @cindex Reading data from files
 
 @c Large data objects will usually be read as values from external files
@@ -3887,7 +3890,7 @@ User-contributed packages can be a rich source of datasets.
 
 @node Probability distributions, Loops and conditional execution, Reading data from files, Top
 @c @chapter Probability distributions
-@chapter 확률분포
+@chapter 확률분포 (의역 일정 - 2013.03.28)
 @cindex Probability distributions
 
 @menu
@@ -4351,7 +4354,7 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 
 @node Loops and conditional execution, Writing your own functions, Probability distributions, Top
 @c @chapter Grouping, loops and conditional execution
-@chapter 그룹핑, 반복 그리고 조건적 실행 
+@chapter 그룹핑, 반복 그리고 조건적 실행  (의역 일정 - 2013.03.28)
 @cindex Loops and conditional execution
 
 @menu
@@ -4518,7 +4521,7 @@ break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만
 
 @node Writing your own functions, Statistical models in R, Loops and conditional execution, Top
 @c @chapter Writing your own functions
-@chapter 사용자 정의 함수 작성하기 
+@chapter 사용자 정의 함수 작성하기  (의역 일정 - 2013.03.28)
 @cindex Writing functions
 
 @c As we have seen informally along the way, the @R{} language allows the
@@ -5326,7 +5329,7 @@ function (object, ...)
 
 @node Statistical models in R, Graphics, Writing your own functions, Top
 @c @chapter Statistical models in R
-@chapter R에서의 통계모델들 
+@chapter R에서의 통계모델들  (의역 일정 - 2013.03.29)
 @cindex Statistical models
 
 This section presumes the reader has some familiarity with statistical
@@ -6697,7 +6700,7 @@ Additive Models}, implemented in user-contributed packages @CRANpkg{gam} and
 
 @node Graphics, Packages, Statistical models in R, Top
 @c @chapter Graphical procedures
-@chapter 그래픽 프로시져 
+@chapter 그래픽 프로시져  (의역 일정 - 2013.03.30)
 
 @c Graphical facilities are an important and extremely versatile component
 @c of the @R{} environment.  It is possible to use the facilities to
@@ -7822,7 +7825,7 @@ of surfaces.
 
 @node Packages, A sample session, Graphics, Top
 @c @chapter Packages
-@chapter 패키지들
+@chapter 패키지들 (의역 일정 - 2013.03.30)
 @cindex Packages
 
 @c All @R{} functions and datasets are stored in @emph{packages}.  Only
