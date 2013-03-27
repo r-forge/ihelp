@@ -81,9 +81,9 @@ p {
 <li><a href="#The-R-environment">1.1 R environment (개발환경)</a>
 <li><a href="#Related-software-and-documentation">1.2 관련 소프트웨어 및 유용한 문서들</a>
 <li><a href="#R-and-statistics">1.3 R 과 통계</a>
-<li><a href="#R-and-the-window-system">1.4 R 과 윈도우즈 시스템</a>
+<li><a href="#R-and-the-window-system">1.4 R 과 윈도우 시스템</a>
 <li><a href="#Using-R-interactively">1.5 대화식으로 사용하는 R</a>
-<li><a href="#Using-R-interactively">1.6 기초 소개 세션</a>
+<li><a href="#Using-R-interactively">1.6 기초 소개 세션 (다시 의역 작업 재개 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;)</a>
 <li><a href="#Getting-help">1.7 함수와 기능에 대한 도움말 사용법</a>
 <li><a href="#R-commands_003b-case-sensitivity-etc">1.8 R 명령어, 대소문자 구별 등 미리 알아두면 좋은 사항들</a>
 <li><a href="#Recall-and-correction-of-previous-commands">1.9 이전에 사용한 명령어를 다시 불러오고 교정하기</a>
@@ -562,11 +562,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
    <p>이 S 라는 언어의 진화과정은 John Chambers와 그의 동료들이 쓴 네 권의 책에 의해서 잘 정리되어 있습니다. 
 만약, 독자에게 R의 가장 기본적인 참고자료를 권장하고자 한다면 Richard A. Becker, John M. Chambers 그리고 Allan R. Wilks가 저술한 <em>The New S Language: A Programming Environment for Data Analysis and Graphics</em>라는 책을 들 수 있습니다. 
 그리고, 1991년에 릴리즈된 S의 새로운 기능들에 대해서는 John M. Chambers와 Trevor J. Hastie가 편집한 <em>Statistical Models in S</em> 이라는 책을 참고하시길 바랍니다. 
-<strong>methods</strong> 패키지에 구현되어 있는 method(메소드)와 class(클래스)들은 John M. Chambers가 저술한 <em>Programming with Data</em>에서 찾아 볼 수 있으며, 더 구체적인 내용을 볼 수 있는 참고자료들은 <a href="#References">References</a>를 살펴보시길 바랍니다 .
+<strong>methods</strong> 패키지에 구현되어 있는 method(메소드)와 class(클래스)들은 John M. Chambers가 저술한 <em>Programming with Data</em>에서 찾아 볼 수 있으며, 더 구체적인 내용을 볼 수 있는 참고자료들은 <a href="#References">References</a>를 살펴보시길 바랍니다.
 
-   <p>현재 R을 이용한 데이터 분석과 통계학에 관련된 많은 서적들이 나와 있으며, S/<span class="sc">S-Plus</span>를 위한 문서들 역시 R을 사용하는데 도움이 될 것입니다. 
-그러나, 반드시  S과 R은 다르게 구현이 되어 있다는 것을 반드시 기억하고 계셔야 합니다. 
-더 자세한 사항은 다음을 참조하세요. See <a href="R-FAQ.html#What-documentation-exists-for-R_003f">What documentation exists for R?</a>.
+   <p>현재 R을 이용한 데이터 분석과 통계학에 관련된 많은 서적들이 나와 있습니다. 
+또한, S/<span class="sc">S-Plus</span>를 위한 문서들 역시 R을 사용하는데 도움이 될 것입니다. 
+그러나, 독자는 반드시 S 과 R 은 서로 다르게 구현이 되어있다는 점은 반드시 기억하고 계셔야 합니다. 
+더 자세한 사항은 <a href="R-FAQ.html#What-documentation-exists-for-R_003f">What documentation exists for R?</a>를 참고해주시길 바랍니다.
 
 <div class="node">
 <a name="R-and-statistics"></a>
@@ -602,17 +603,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- copious output from a regression or discriminant analysis, @R{} will -->
 <!-- give minimal output and store the results in a fit object for subsequent -->
 <!-- interrogation by further @R{} functions. -->
-   <p>R의 개발환경에 대한 이 안내서에서는 <em>statistics</em>(통계학)을 다루고 있지 않지만, 많은 독자들은 R을 통계시스템으로서 사용합니다. 
-우리는 독자들이 R을 과거부터 현대에 이르기까지 개발되어온 많은 통계학적 방법론들이 구현되어 있는 하나의 개발환경이라고 생각해주었으면 합니다. 
-이들중 일부는 기본 R 개발환경내에 포함되어 있으나, 대부분은 <em>packages</em>(패키지들)의 형태로 제공이 됩니다. 
-R은 &ldquo;standard&rdquo;(기본) 혹은 &ldquo;recommended&rdquo;(추천) 패키지라고 불리는 총 25개의 패키지들과 함께 제공되며, 더 많은 패키지들을 인터넷 저장소인 <acronym>CRAN</acronym>을 통하여 <a href="http://CRAN.R-project.org">http://CRAN.R-project.org</a>) 얻을 수 있습니다. 
-더 자세한 내용은 (see <a href="#Packages">Packages</a>) 부분에서 설명합니다.
+   <p>R에 대한 본 안내서는 <em>statistics</em>(통계학) 자체를 다루고 있지는 않지만, 많은 독자들이 R을 통계시스템으로서 사용하고 있음을 알고 있습니다. 
+그러나, 우리는 독자들이 R 이라는 것을 과거로부터 현대에 이르기까지 개발되어 온 많은 통계학적 방법들을 사용할 수 있는 하나의 환경이라고 생각해주셨음 합니다. 
+이러한 많은 방법들 중 일부는 R의 기본환경내에 포함이 되어 있으나, 대부분은 <em>packages</em>(패키지)의 형태로서 제공이 되게 됩니다. 
+기본적으로 R은 &ldquo;standard&rdquo;(표준) 혹은 &ldquo;recommended&rdquo;(권장)패키지라고 불리는 총 25개의 패키지들과 함께 배포가 됩니다. 
+그 외의 패키지들은 <acronym>CRAN</acronym>이라는 인터넷 저장소를 통해서 얻을 수 있으며, 이 저장소의 주소는 <a href="http://CRAN.R-project.org">http://CRAN.R-project.org</a>)입니다. 
+패키지에 대한 더 자세한 내용은 (see <a href="#Packages">Packages</a>)에서 설명합니다.
 
-   <p>가장 고전적인 통계적 방법부터 최근에 개발된 대부분의 통계적 방법들을 R과 함께 사용할 수 있으나, 이들을 찾기 위해서는 다소의 노력이 필요할 수 있습니다.
+   <p>가장 고전적인 통계방법부터 최근에 개발된 대부분의 통계적 방법들은 R에서 사용될 수 있으나, 사용자의 목적에 맞는 필요한 패키지를 찾기 위해서는 사용자 스스로의 노력이 요구되어 집니다.
 
-   <p>독자들은 S (여기에서는 R)이 다른 주요 통계시스템들과는 근본적으로 다르다는 점을 반드시 인지하고 있어야 합니다. 
-예를들면, S에서는 통계적 분석을 일련의 절차를 통해서 할 수 있게 되어 있으며, 중간과정마다 얻어진 결과물을 객체라는 중간매체에 저장해 둡니다. 
-따라서, SAS 또는 SPSS가 회귀분석 또는 판별분석을 수행하여 한 번에 방대한 양의 결과를 제공하는 것과는 달리, R은 최소한의 결과물만으르 제공하고, 더 자세한 중간 수행과정 및 결과를 확인하고 싶다면 추가적인 R 함수들을 이용해야 합니다.
+   <p>또한, 독자들은 S (이 문서에서는 R)은 다른 주요 통계시스템들과는 분석의 결과물을 보여주는 방식이 다르다는 점을 알고 계셔야 합니다. 
+예를들면, S에서는 통계적 분석을 일련의 절차를 통하여 수행하게 되는데, 각 과정마다 얻어진 결과물을 객체라고 하는 매체에 저장을 해 둡니다. 
+따라서, SAS 또는 SPSS와 같은 분석도구가 회귀분석 또는 판별분석을 수행하여 한 번에 방대한 양의 결과를 제공하는 반면, R은 최소한의 결과만을 제공하므로 더 자세한 중간분석결과 및 수행과정을 확인하고 싶다면 이들을 확인해 볼 수 있는 추가적인 함수를 이용해야 합니다.
 
 <div class="node">
 <a name="R-and-the-window-system"></a>
@@ -624,7 +626,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 </div>
 
 <!-- @section R and the window system -->
-<h3 class="section">1.4 R 과 윈도우즈 시스템</h3>
+<h3 class="section">1.4 R 과 윈도우 시스템</h3>
 
 <!-- The most convenient way to use @R{} is at a graphics workstation running -->
 <!-- a windowing system.  This guide is aimed at users who have this -->
@@ -641,15 +643,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- will not be considered further here.  Users in difficulty should seek -->
 <!-- local expert help. -->
 <p>R을 사용하는 가장 손쉬운 방법은 윈도잉 시스템(windowing sytem, 즉 여러개의 창을 띄어줄 수 있는 시스템)을 사용하는 그래픽 워크스테이션을 이용하는 것입니다. 
-본 문서는 이러한 기능이 있는 시스템을 가진 독자를 위한 것입니다. 
-주로 X 윈도우 시스템에서의 R의 사용을 얘기할 것이지만, 이러한 설명들은 어떠한 실행된 R의 사용환경에서도 일반적으로 동일하게 적용됩니다.
+본 문서는 이러한 기능이 있는 시스템을 사용하고 있는 독자를 위해서 작성되었습니다. 
+주로 X 윈도우 시스템(유닉스와 같은 운영체제에서 사용하는 윈도윙 시스템의 이름)에서 R을 사용하는 방법을 서술하지만, 이러한 설명들은 R을 실행할 수 있는 다른 체제에서도 동일하게 적용될 수 있습니다.
 
-   <p>때때로, 대부분 사용자들은 사용자의 컴퓨터에 있는 운영체제와 직접적인 소통을 해야할 필요성을 느낄 것입니다. 
-본 문서에서는 사용자가 UNIX에서의 운영체제를 다룬다고 가정한 상태에서 작성되었습니다. 
-만약, R을 윈도우즈 혹은 Mac 운영체제에서 사용하시는 분들은 본문서에서 설명하는 사용법이 약간 다를 수 있다는 점을 인지해주셨으면 합니다.
+   <p>때때로, 사용자는 사용자의 컴퓨터에 있는 운영체제와 직접적인 소통을 해야할 경우가 있습니다. 
+이 문서는 사용자가 UNIX를 다룬다고 가정한 상태에서 작성되었으므로, 만약, 윈도우즈 혹은 Mac 에서 R을 사용하시는 분들은 본문에서 설명하는 사용법이 다소 다를 수 있다는 점을 알아주셨으면 합니다.
 
-   <p>최적화된 성능의 R을 워크스테이션에서 사용하기 위해서 설정하는 방법은 다소 기술적인 조정이 필요한 것을 제외하고는 단순하지만, 이 안내서에서는 이러한 기술적인 부분에서는 다루지 않습니다. 
-이러한 조정에 어려움이 있는 사용자는 해당분야의 전문가의 도움을 받기를 부탁드립니다.
+   <p>이러한 환경에서 최적화된 성능의 R을 사용하기 위해서는 다소 기술적인 설정이 요구되지만, 본 문서에서는 이러한 내용들을 다루지 않습니다. 
+만약, 이러한 조정에 어려움이 있는 사용자는 주변 전문가에게 도움을 요청하시길 바랍니다.
 
 <div class="node">
 <a name="Using-R-interactively"></a>
@@ -669,37 +670,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- happening.  However, as we shall see, it is easy to change to a -->
 <!-- different @R{} prompt if you wish.  We will assume that the UNIX shell -->
 <!-- prompt is @samp{@code{$}}. -->
-<p>R 프로그램을 실행시키면, 사용자의 입력을 기다리는 표시 &lsquo;<samp><code>&gt;</code></samp>&rsquo; (프롬프트라고 읽음)를 볼 수 있을 것입니다. 
-이 표시는 아마 UNIX에서의 쉘프로프트와도 동일할 수 있습니다. 
-따라서, 사용자가 원한다면 R의 프롬프트를 다른 모양으로 변경하여 사용할 수 있도록 해두었습니다. 
-이 문서에서는 내용의 명확성을 위해서 유닉스의 쉘 프롬프트를 &lsquo;<samp><code>$</code></samp>&rsquo;라는 표시를 이용하도록 하겠습니다.
+<p>R은 대화식으로 사용하는 프로그램입니다. 
+프로그램을 실행시키면 사용자의 입력을 기다리는 표시 &lsquo;<samp><code>&gt;</code></samp>&rsquo; (프롬프트)를 볼 수 있을 것입니다. 
+이 표시는 아마 UNIX에서의 쉘 프롬프트와도 동일할 수 있는데, 이는 사용자가 원한다면 R의 프롬프트를 다른 모양으로 변경하여 사용할 수 있습니다. 
+본 문서에서는 내용의 명확성을 위해서 유닉스의 쉘 프롬프트는 &lsquo;<samp><code>$</code></samp>&rsquo; (스트링)이라는 기호를 이용하여 표시합니다.
 
 <!-- In using @R{} under UNIX the suggested procedure for the first occasion -->
 <!-- is as follows: -->
-   <p>유닉스내에서 R을 사용하기 위해서는 먼저 아래의 과정들을 따라 해주시길 권장합니다.
+   <p>유닉스에서 R을 사용하기 위해서는 아래의 과정을 따라하시면 됩니다.
 
      <ol type=1 start=1>
 <li><!-- Create a separate sub-directory, say @file{work}, to hold data files on -->
 <!-- which you will use @R{} for this problem.  This will be the working -->
 <!-- directory whenever you use @R{} for this particular problem. -->
 
-     <p>먼저 아래와 같이 R에서 사용할 데이터 파일들을 저장할 장소를 위한 <samp><span class="file">work</span></samp>라는 별도의 서브 디렉토리를 생성합니다. 
-그리고, 이곳이 바로 데이터와 관련하여 R을 사용하게 될 working directory (워킹 디렉토리 또는 작업디렉토리)라고 합니다.
+     <p>제일 먼저, 아래에 보여지는 코드와 같이 R에서 사용할 데이터 파일들을 놓여질 장소인 <samp><span class="file">work</span></samp>라는 별도의 디렉토리를 생성합니다. 
+이 디렉토리를 내에서 분석을 수행하게 되는데, 이를 working directory (워킹 디렉토리 또는 작업 디렉토리)라고 합니다.
 
      <pre class="example">          $ mkdir work
           $ cd work
 </pre>
      <li><!-- Start the @R{} program with the command -->
 
-     <p>아래의 명령어를 이용하여 R프로그램을 시작하세요.
+     <p>아래의 명령어를 입력하면 R프로그램이 시작됩니다.
      <pre class="example">          $ R
 </pre>
      <li><!-- At this point @R{} commands may be issued (see later). -->
-이제부터 R 명령어들을 이용하여 작업을 할 수 있습니다.
+이제부터 R에서 제공되어지는 명령어들을 이용하여 작업을 할 수 있습니다.
 
      <li><!-- To quit the @R{} program the command is -->
-R 프로그램을 종료하기 위해서는 다음의 명령어를 사용합니다.
-
+아래의 명령어를 이용하면 R 프로그램을 종료 할 수 있습니다. 
+이때, R프로그램은 현재 R세션에서 작업하던 데이터를 저장할 것인지에 대한 여부를 <kbd>yes</kbd>(예), <kbd>no</kbd>(아니요) 혹은 이를 <kbd>cancel</kbd> (취소)하고 다시 R세션으로 돌아갈 것인지를 확인합니다. 
+이러한 메시지는 일부 시스템에 따라서 대화창으로 보여지는 경우도 있고 종료명령어 다음 줄에 텍스트의 형식으로 나타날 수도 있습니다. 
+만약, 저장을 선택한다면 데이터는 워킹 디렉토리에 저장이 되고, 다음번에 R을 실행하였을때 저장된 데이터를 불러와서 다시 사용할 수 있습니다.
      <pre class="example">          &gt; q()
 </pre>
      <!-- At this point you will be asked whether you want to save the data from -->
@@ -709,24 +712,21 @@ R 프로그램을 종료하기 위해서는 다음의 명령어를 사용합니�
      <!-- do) to save the data before quitting, quit without saving, or return to -->
      <!-- the @R{} session.  Data which is saved will be available in future @R{} -->
      <!-- sessions. -->
-     <p>이처럼 종료명령어를 사용했을때에는 R프로그램은 현재 R세션에서 작업하던 데이터를 종료전에 저장할 것인지 아닌지에 대한 <kbd>yes</kbd>(예), <kbd>no</kbd>(아니요) 혹은 명령을 취소하고 다시 R세션으로 돌아갈 것인지에 대한 <kbd>cancel</kbd> (취소)를 할 것인지를 물어볼 것입니다. 
-이 저장여부에 대한 메시지는 일부 시스템에서는 대화창을 통해 보여질 수도 있고, 종료명령어 다음줄에 텍스트 형식으로 나타날 수도 있습니다. 
-만약, 저장을 선택한다면 저장된 데이터는 다음번에 R을 실행하였을때 다시 사용할 수 있습니다.
         </ol>
 
 <!-- Further @R{} sessions are simple. -->
-   <p>새로운 R세션을 시작하는 것은 간단합니다.
+   <p>이렇게 R프로그램을 종료 한뒤에 새로운 R세션을 시작하는 것은 간단합니다.
      <ol type=1 start=1>
 
      <li><!-- Make @file{work} the working directory and start the program as before: -->
-<samp><span class="file">work</span></samp>이라는 작업 (혹은 워킹) 디렉토리를 만들고 위에서 했던 것과 같이 아래의 명령을 이용하여 프로그램을 시작하면 됩니다.
+위에서 했던 것과 같이 다시 <samp><span class="file">work</span></samp>이라는 작업 (또는 워킹) 디렉토리를 만들고 R 명령어를 입력하면 됩니다.
      <pre class="example">          $ cd work
           $ R
 </pre>
      <li><!-- Use the @R{} program, terminating with the @code{q()} command at the end -->
 <!-- of the session. -->
 
-     <p>R프로그램을 사용하고 난뒤에 세션의 끝에서 <code>q()</code> 명령어를 이용하여 종료할 수 있습니다.
+     <p>이렇게 실행시킨 R프로그램을 사용하고 난 뒤에, 세션의 끝에서 <code>q()</code> 명령어를 이용하면 종료할 수 있습니다.
         </ol>
 
 <!-- To use @R{} under Windows the procedure to -->
@@ -735,10 +735,10 @@ R 프로그램을 종료하기 위해서는 다음의 명령어를 사용합니�
 <!-- Then launch @R{} by double clicking on the icon. -->
    <p>윈도우즈에서 R을 사용하는 방법은 기본적으로 유닉스에서의 사용방법과 동일합니다. 
 먼저 워킹 디렉토리에 해당하는 폴더를 생성하고, <samp><span class="file">Start In</span></samp> 메뉴에서 R 바로가기를 바탕화면에 생성합니다. 
-그런 다음부터는 바탕화면의 바로가기 아이콘을 이용하여 R을 실행시킬 수 있습니다.
+그리고, 바탕화면의 바로가기 아이콘을 이용하여 R을 실행시킬 수 있습니다.
 
 <!-- @section An introductory session -->
-<h3 class="section">1.6 기초 소개 세션</h3>
+<h3 class="section">1.6 기초 소개 세션 (다시 의역 작업 재개 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;)</h3>
 
 <!-- Readers wishing to get a feel for @R{} at a computer before proceeding -->
 <!-- are strongly advised to work through the introductory session -->
