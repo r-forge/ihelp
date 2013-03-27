@@ -85,7 +85,8 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @ifnottex
 @c @node Top, Preface, (dir), (dir)
 @node Top, Acknowledgement, (dir), (dir)
-@top An Introduction to R
+@c @top An Introduction to R
+@top R에 대한 소개서 
 
 @c This is an introduction to R (``GNU S''), a language and environment for
 @c statistical computing and graphics.  R is similar to the award-winning S
@@ -141,7 +142,8 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 
 @node Acknowledgement, Preface, Top, Top
-@unnumbered Acknowledgement
+@c @unnumbered Acknowledgement
+@unnumbered 감사의 말씀
 
 이 한국어 문서는 @emph{The R Development Translation Teams}의 이철희에 의해서 번역되고 관리되고 있습니다.
 @R{}의 빠른 변화를 반영하고자 현재 최신 버전의 @value{VERSION}에 맞게 문서의 수정과 갱신이 수시로 이루어지고 있습니다.
@@ -160,7 +162,8 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @end itemize
 
 @node Preface, Introduction and preliminaries, Acknowledgement, Top
-@unnumbered Preface
+@c @unnumbered Preface
+@unnumbered 서문
 
 @c This introduction to @R{} is derived from an original set of notes
 @c describing the @Sl{} and @SPLUS{} environments written in 1990--2 by
@@ -811,7 +814,8 @@ UNIX상에서는 이러한 기능들을 사용자의 취향에 따라 매우 손
 이러한 이름들은 일회성 단순 분석에서는 의미가 있을 수 있으나, 여러개의 분석을 같은 디렉토리에서 수행하게 될때에는 매우 큰 혼란을 초래하게 됩니다.
 
 @node Simple manipulations numbers and vectors, Objects, Introduction and preliminaries, Top
-@chapter Simple manipulations; numbers and vectors
+@c @chapter Simple manipulations; numbers and vectors
+@chapter 기초 조작법
 @cindex Vectors
 
 @menu
@@ -1624,7 +1628,8 @@ for @code{sub} and @code{substring}.}
 @end itemize
 
 @node Objects, Factors, Simple manipulations numbers and vectors, Top
-@chapter Objects, their modes and attributes
+@c @chapter Objects, their modes and attributes
+@chapter 객체, 이것에 대한 속성과 모드
 @cindex Objects
 @cindex Attributes
 
@@ -1936,7 +1941,8 @@ for @code{sub} and @code{substring}.}
 이것들에 대해서 @ref{Object orientation}에서 더 자세히 살펴보게 되겠지만, 여기에서는 간단히 마치도록 합니다.
 
 @node Factors, Arrays and matrices, Objects, Top
-@chapter Ordered and unordered factors
+@c @chapter Ordered and unordered factors
+@chapter 순위형과 비순위형 요인들
 @cindex Factors
 @cindex Ordered factors
 
@@ -2167,7 +2173,8 @@ act    nsw  nt    qld     sa tas   vic     wa
 
 
 @node Arrays and matrices, Lists and data frames, Factors, Top
-@chapter Arrays and matrices
+@c @chapter Arrays and matrices
+@chapter  배열과 행렬
 
 @menu
 * Arrays::                      
@@ -3175,7 +3182,8 @@ incomef   act nsw nt qld sa tas vic wa
 Extension to higher-way frequency tables is immediate.
 
 @node Lists and data frames, Reading data from files, Arrays and matrices, Top
-@chapter Lists and data frames
+@c @chapter Lists and data frames
+@chapter 리스트와 데이터프레임
 
 @menu
 * Lists::                       
@@ -3596,7 +3604,8 @@ ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프�
 @end example
 
 @node Reading data from files, Probability distributions, Lists and data frames, Top
-@chapter Reading data from files
+@c @chapter Reading data from files
+@chapter 파일로부터 데이터 불러오기
 @cindex Reading data from files
 
 @c Large data objects will usually be read as values from external files
@@ -3872,7 +3881,8 @@ User-contributed packages can be a rich source of datasets.
 
 
 @node Probability distributions, Loops and conditional execution, Reading data from files, Top
-@chapter Probability distributions
+@c @chapter Probability distributions
+@chapter 확률분포
 @cindex Probability distributions
 
 @menu
@@ -4335,7 +4345,8 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @end example
 
 @node Loops and conditional execution, Writing your own functions, Probability distributions, Top
-@chapter Grouping, loops and conditional execution
+@c @chapter Grouping, loops and conditional execution
+@chapter 그룹핑, 반복 그리고 조건적 실행 
 @cindex Loops and conditional execution
 
 @menu
@@ -4501,7 +4512,8 @@ break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만
 실제로 프로그램의 흐름을 제어하는 것은 대개 사용자정의함수를 작성할때 다루어집니다. 이에 관련된 예제들에 대해서는 Writing your own functions 에서 다룰 것입니다.
 
 @node Writing your own functions, Statistical models in R, Loops and conditional execution, Top
-@chapter Writing your own functions
+@c @chapter Writing your own functions
+@chapter 사용자 정의 함수 작성하기 
 @cindex Writing functions
 
 @c As we have seen informally along the way, the @R{} language allows the
@@ -5308,7 +5320,8 @@ function (object, ...)
 이 섹션의 내용을 더 정확히 이해하기 위해서는 우리는 사용자가 R Language Definition라는 문서를 참고하길 바랍니다.
 
 @node Statistical models in R, Graphics, Writing your own functions, Top
-@chapter Statistical models in R
+@c @chapter Statistical models in R
+@chapter R에서의 통계모델들 
 @cindex Statistical models
 
 This section presumes the reader has some familiarity with statistical
@@ -6624,7 +6637,8 @@ packages @CRANpkg{rpart} and @CRANpkg{tree}.
 @end itemize
 
 @node Graphics, Packages, Statistical models in R, Top
-@chapter Graphical procedures
+@c @chapter Graphical procedures
+@chapter 그래픽 프로시져 
 
 @c Graphical facilities are an important and extremely versatile component
 @c of the @R{} environment.  It is possible to use the facilities to
@@ -7728,7 +7742,8 @@ Also, package @CRANpkg{rgl} provides ways to interact with 3D plots, for example
 of surfaces.
 
 @node Packages, A sample session, Graphics, Top
-@chapter Packages
+@c @chapter Packages
+@chapter 패키지들
 @cindex Packages
 
 @c All @R{} functions and datasets are stored in @emph{packages}.  Only
@@ -8920,17 +8935,18 @@ $endif
 @end example
 
 @node Function and variable index, Concept index, The command-line editor, Top
-@appendix Function and variable index
+@c @appendix Function and variable index
+@appendix 함수와 변수 인덱스 
 
 @printindex vr
 
 @node Concept index, References, Function and variable index, Top
-@appendix Concept index
+@appendix 개념적 용어에 대한 인덱스 
 
 @printindex cp
 
 @node References,  , Concept index, Top
-@appendix References
+@appendix 참고문헌들 
 
 D.@: M.@: Bates and  D.@: G.@: Watts (1988), @emph{Nonlinear Regression
 Analysis and Its Applications.} John Wiley & Sons, New York.
