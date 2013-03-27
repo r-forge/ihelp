@@ -8351,31 +8351,40 @@ $-\pi\leq x \leq \pi$ 구간을 50등분한 값을 가지고 있는 벡터입니
 @node Invoking R from the command line, Invoking R under Windows, Invoking R, Invoking R
 @appendixsec Invoking R from the command line
 
-When working at a command line on UNIX or Windows, the command @samp{R}
-can be used both for starting the main @R{} program in the form
+@c When working at a command line on UNIX or Windows, the command @samp{R}
+@c can be used both for starting the main @R{} program in the form
 
+@c @display
+@c @code{R} [@var{options}] [@code{<}@var{infile}] [@code{>}@var{outfile}],
+@c @end display
 
+@c @noindent
+@c or, via the @code{R CMD} interface, as a wrapper to various @R{} tools
+@c (e.g., for processing files in @R{} documentation format or manipulating
+@c add-on packages) which are not intended to be called ``directly''.
 
-@display
-@code{R} [@var{options}] [@code{<}@var{infile}] [@code{>}@var{outfile}],
-@end display
+UNIX혹은 윈도우 환경의 command line 작업 시, R은 R [options] [<infile]
+[>outfile]의 형태 혹은 '직접적'이란 의미를 지니지 않는 다양한 R 툴에 대한
+wrapper의 역할로서, R CMD 인터페이스를 통해 사용이 될 수 있습니다.
 
-@noindent
-or, via the @code{R CMD} interface, as a wrapper to various @R{} tools
-(e.g., for processing files in @R{} documentation format or manipulating
-add-on packages) which are not intended to be called ``directly''.
+@c At the Windows command-line, @command{Rterm.exe} is preferred to
+@c @command{R}.
 
-At the Windows command-line, @command{Rterm.exe} is preferred to
-@command{R}.
+윈도우 상의 command-line에서, Rterm.exe는 R에 해당합니다.
 
-You need to ensure that either the environment variable @env{TMPDIR} is
-unset or it points to a valid place to create temporary files and
-directories.
+@c You need to ensure that either the environment variable @env{TMPDIR} is
+@c unset or it points to a valid place to create temporary files and
+@c directories.
 
-Most options control what happens at the beginning and at the end of an
-@R{} session.  The startup mechanism is as follows (see also the on-line
-help for topic @samp{Startup} for more information, and the section below
-for some Windows-specific details).
+환경 변수 TMPDIR이 결정되지 않거나, 일시적 파일과 디렉토리 생성을 위한 공간을 해당
+변수가 지정할 수 있도록 합니다.
+
+@c Most options control what happens at the beginning and at the end of an
+@c @R{} session.  The startup mechanism is as follows (see also the on-line
+@c help for topic @samp{Startup} for more information, and the section below
+@c for some Windows-specific details).
+
+대부분의 옵션들은 R의 시작과 끝을 제어합니다. 시작 메커니즘은 아래와 같이 설명이 되어 있습니다(추가 정보를 원하시면, 'startup'이라는 주제에 대한 온라인 도움말(help)을 활용해 보십시오. 윈도우 환경 관련 구체적인 설명 또한 아래 부분에 기술되어 있습니다).
 
 @itemize @bullet
 @item
@@ -8393,31 +8402,41 @@ a precise description.)  Variables you might want to set include
 default print command) and @env{R_LIBS} (specifies the list of @R{}
 library trees searched for add-on packages).
 
-@item
-Then @R{} searches for the site-wide startup profile unless the command
-line option @option{--no-site-file} was given.  The name of this file is
-taken from the value of the @env{R_PROFILE} environment variable.  If
-that variable is unset, the default
-@file{@var{R_HOME}/etc/Rprofile.site} is used if this exists.
+--no-environ이 주어지지 않는다면, R은 유저 환경변수설정을 위해서 site files과 유저를 위해서 탐색합니다. 사이트 파일의 이름은 환경변수 R_ENVIRON에 의해 지정됩니다. 이름이 결정되지 않은 경우, 존재한다면 R_HOME/etc/Renviron.site를 활용할 수 있습니다. 유저 파일의 경우, 결정이 되었다면, 환경변수 R_ENVIRON_USER에 의해 지정이 됩니다. 그렇지 않은 경우 현재 혹은 유저의 홈 디렉토리(home directory)에 있는 file.Renviron이 탐색됩니다. 이 파일들은 'name=value' 형태의 라인들을 포함해야 합니다(좀 더 구체적인 이해를 위해서 "Startup" 도움말을 참조하십시오). 지정하고 싶은 변수들은 R_PAPERSIZE(default paper size), R_PRINTCMD (default print command)와 R_LIBS(추가 패키지를 위해 마련된 R library 트리 리스트의 세분화)를 포함해야 합니다.
 
-@item
-Then, unless @option{--no-init-file} was given, @R{} searches for a user
-profile and sources it.  The name of this file is taken from the
-environment variable @env{R_PROFILE_USER}; if unset, a file called
-@file{.Rprofile} in the current directory or in the user's home
-directory (in that order) is searched for.
+@c @item
+@c Then @R{} searches for the site-wide startup profile unless the command
+@c line option @option{--no-site-file} was given.  The name of this file is
+@c taken from the value of the @env{R_PROFILE} environment variable.  If
+@c that variable is unset, the default
+@c @file{@var{R_HOME}/etc/Rprofile.site} is used if this exists.
 
-@item
-It also loads a saved workspace from file @file{.RData} in the current
-directory if there is one (unless @option{--no-restore} or
-@option{--no-restore-data} was specified).
+그 다음, command line옵션 (--no-site-file)이 주어지지 않았다며, R이 site-wide startup profile을 탐색합니다. 이 파일의 이름은 R_PROFILE 환경 변수의 벨류(value)에서 얻을 수 있습니다. 만약 그 변수가 정해지지 않았다면, default R_HOME/etc/Rprofile.site가 존재한다면 사용될 수 있습니다.
 
-@item
-Finally, if a function @code{.First()} exists, it is executed.  This
-function (as well as @code{.Last()} which is executed at the end of the
-@R{} session) can be defined in the appropriate startup profiles, or
-reside in @file{.RData}.
-@end itemize
+@c @item
+@c Then, unless @option{--no-init-file} was given, @R{} searches for a user
+@c profile and sources it.  The name of this file is taken from the
+@c environment variable @env{R_PROFILE_USER}; if unset, a file called
+@c @file{.Rprofile} in the current directory or in the user's home
+@c directory (in that order) is searched for.
+
+그 다음 --no-init-file이 없다면, R은 user profile을 탐색 및 활용합니다. 이 파일의 이름은 R_PROFILE_USER 환경변수에서 얻을 수 있습니다. 그리고, 지정되지 않았다면, 현 디렉토리나 유저의 홈 디렉토리(해당 목록)의 .Rprofile 파일을 탐색할 수 있습니다.
+
+@c @item
+@c It also loads a saved workspace from file @file{.RData} in the current
+@c directory if there is one (unless @option{--no-restore} or
+@c @option{--no-restore-data} was specified).
+
+현 디렉토리 상의 .RData file이 존재한다면, (--norestore 혹은 --no-restore-data가 구분되어 있지 않은 경우) 해당 디렉토리에 있는 .RData 파일로부터 저장된 작업공간(workspace)을 로딩할 수 있습니다.
+
+@c @item
+@c Finally, if a function @code{.First()} exists, it is executed.  This
+@c function (as well as @code{.Last()} which is executed at the end of the
+@c @R{} session) can be defined in the appropriate startup profiles, or
+@c reside in @file{.RData}.
+@c @end itemize
+
+마지막으로, .First()함수가 존재한다면, 실행됩니다. 이 함수는 (R 설명 마지막 부분에서 실행되었던 .Last()를 포함) 적절한 startup profile 정의(define)될 수 있고 혹은 .RData에 상주할 수가 있습니다.
 
 In addition, there are options for controlling the memory available to
 the @R{} process (see the on-line help for topic @samp{Memory} for more
