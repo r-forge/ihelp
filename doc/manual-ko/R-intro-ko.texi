@@ -6840,58 +6840,66 @@ R에서 가장 많이 사용되는 플랏함수는 plot()입니다. 이것은 �
 @node Displaying multivariate data, Display graphics, The plot() function, High-level plotting commands
 @subsection Displaying multivariate data
 
-@R{} provides two very useful functions for representing multivariate
-data.  If @code{X} is a numeric matrix or data frame, the command
+@c @R{} provides two very useful functions for representing multivariate
+@c data.  If @code{X} is a numeric matrix or data frame, the command
+
+R은 다변량 데이터의 시각화를 위해 두가지 매우 유용한 함수들을 제공합니다. 만약, X가 수치형 행렬 혹은 데이터 프레임이라면, 아래의 명령문은 각각의 모든 열에 대해서 산점도 (scatterplot)을 출력합니다. 이것은 X의 한 열 혹은 변수에 대해서 다른 열들에 대한 플랏을 생성하므로, 한 화면에 총 n(n-1)개의 플랏들이 동일한 형식을 가진 행렬의 형태로 출력되게 됩니다.
 
 @example
 > pairs(X)
 @end example
 @findex pairs
 
-@noindent
-produces a pairwise scatterplot matrix of the variables defined by the
-columns of @code{X}, that is, every column of @code{X} is plotted
-against every other column of @code{X} and the resulting @math{n(n-1)}
-plots are arranged in a matrix with plot scales constant over the rows
-and columns of the matrix.
+@c @noindent
+@c produces a pairwise scatterplot matrix of the variables defined by the
+@c columns of @code{X}, that is, every column of @code{X} is plotted
+@c against every other column of @code{X} and the resulting @math{n(n-1)}
+@c plots are arranged in a matrix with plot scales constant over the rows
+@c and columns of the matrix.
 
-When three or four variables are involved a @emph{coplot} may be more
-enlightening.  If @code{a} and @code{b} are numeric vectors and @code{c}
-is a numeric vector or factor object (all of the same length), then
-the command
+@c When three or four variables are involved a @emph{coplot} may be more
+@c enlightening.  If @code{a} and @code{b} are numeric vectors and @code{c}
+@c is a numeric vector or factor object (all of the same length), then
+@c the command
+
+만약, 사용자가 세개 혹은 네 개의 변수만을 이용하여 분석을 수행하는 경우 coplot이 더 효과적일 수 있습니다. 예를들어, a와 b가 수치형 벡터이고, c가 수치형 벡터 혹은 a와 b와 같은 길이를 가지는 요인벡터라면 다음의 명령어를 사용해 보시길 바랍니다.
 
 @example
 > coplot(a ~ b | c)
 @end example
 @findex coplot
 
-@noindent
-produces a number of scatterplots of @code{a} against @code{b} for given
-values of @code{c}.  If @code{c} is a factor, this simply means that
-@code{a} is plotted against @code{b} for every level of @code{c}.  When
-@code{c} is numeric, it is divided into a number of @emph{conditioning
-intervals} and for each interval @code{a} is plotted against @code{b}
-for values of @code{c} within the interval.  The number and position of
-intervals can be controlled with @code{given.values=} argument to
-@code{coplot()}---the function @code{co.intervals()} is useful for
-selecting intervals.  You can also use two @emph{given} variables with a
-command like
+@c @noindent
+@c produces a number of scatterplots of @code{a} against @code{b} for given
+@c values of @code{c}.  If @code{c} is a factor, this simply means that
+@c @code{a} is plotted against @code{b} for every level of @code{c}.  When
+@c @code{c} is numeric, it is divided into a number of @emph{conditioning
+@c intervals} and for each interval @code{a} is plotted against @code{b}
+@c for values of @code{c} within the interval.  The number and position of
+@c intervals can be controlled with @code{given.values=} argument to
+@c @code{coplot()}---the function @code{co.intervals()} is useful for
+@c selecting intervals.  You can also use two @emph{given} variables with a
+@C command like
+
+이것은 c가 가지는 각각의 값별로 b에 대한 a의 산점도를 출력시켜줍니다. 만약 c가 요인이라면 이 함수는 c의 각 수준별 a와 b에 대한 산점도를 출력해주는 것입니다. 더 나아가, 이 함수는 c가 수치형 벡터일 경우 c를 구간화하여 각 구간별 a와 b에 대한 산점도를 출력할 수 있으며, 구간에 대한 조정은 given.values=이라는 인자를 조절함함으로서 이루어집니다. coplot()을 사용할 때, co.intervals()이라는 함수를 함께 사용하는 것은 구간을 선택할 때 매우 유용합니다. 또한, 아래와 같이 c와 d와 두개의 변수가 가지는 값들의 조합으로부터, 각 조합의 수준별 a와 b에 대한 산점도 출력 역시 가능합니다.
 
 @example
 > coplot(a ~ b | c + d)
 @end example
 
-@noindent
-which produces scatterplots of @code{a} against @code{b} for every joint
-conditioning interval of @code{c} and @code{d}.
+@c @noindent
+@c which produces scatterplots of @code{a} against @code{b} for every joint
+@c conditioning interval of @code{c} and @code{d}.
 
-The @code{coplot()} and @code{pairs()} function both take an argument
-@code{panel=} which can be used to customize the type of plot which
-appears in each panel.  The default is @code{points()} to produce a
-scatterplot but by supplying some other low-level graphics function of
-two vectors @code{x} and @code{y} as the value of @code{panel=} you can
-produce any type of plot you wish.  An example panel function useful for
-coplots is @code{panel.smooth()}.
+@c The @code{coplot()} and @code{pairs()} function both take an argument
+@c @code{panel=} which can be used to customize the type of plot which
+@c appears in each panel.  The default is @code{points()} to produce a
+@c scatterplot but by supplying some other low-level graphics function of
+@c two vectors @code{x} and @code{y} as the value of @code{panel=} you can
+@c produce any type of plot you wish.  An example panel function useful for
+@c coplots is @code{panel.smooth()}.
+
+coplot()과 pairs()라는 함수 모두 panel=이라는 인자를 가지고 있습니다. 이 panel=이라는 인자는 각각의 패널에 어떤 종류의 플랏을 생성할 것인지를 결정하며, 그 기본형은 points()라는 산점도를 출력하는데 이용되는 함수입니다. 만약, 사용자가 산점도외의 다른 종류의 플랏을 생성하고자 한다면, x와 y라는 벡터를 이용하는 로우레벨의 그래픽 함수를 이용하면 됩니다. 예를 들어, coplot()에 사용될 있는 플랏은 panel.smooth()란 함수가 있습니다.
 
 @node Display graphics, Arguments to high-level plotting functions, Displaying multivariate data, High-level plotting commands
 @subsection Display graphics
