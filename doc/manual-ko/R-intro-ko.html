@@ -119,7 +119,7 @@ p {
 <li><a href="#Arrays">5.1 배열</a>
 <li><a href="#Array-indexing">5.2 배열 인덱싱과 구성요소의 선택적 지정</a>
 <li><a href="#Index-matrices">5.3 인덱스 행렬</a>
-<li><a href="#The-array_0028_0029-function">5.4 The <code>array()</code> function</a>
+<li><a href="#The-array_0028_0029-function">5.4 <code>array()</code> 함수</a>
 <ul>
 <li><a href="#The-recycling-rule">5.4.1 Mixed vector and array arithmetic.  The recycling rule</a>
 </li></ul>
@@ -2489,27 +2489,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- used with a single @emph{index matrix} in order either to assign a vector -->
 <!-- of quantities to an irregular collection of elements in the array, or to -->
 <!-- extract an irregular collection as a vector. -->
-<p>어느 첨자의 위치에 있는 인덱스 벡터외에도 배열내에 있는 불특정 위치에 있는 구성요소들에 새로운 값을 대입하거나 값을 추출할때 <em>index matrix</em>(인덱스 행렬)을 사용할 수도 있습니다.
+<!-- A matrix example makes the process clear.  In the case of a doubly -->
+<!-- indexed array, an index matrix may be given consisting of two columns -->
+<!-- and as many rows as desired.  The entries in the index matrix are the -->
+<!-- row and column indices for the doubly indexed array.  Suppose for -->
+<!-- example we have a @math{4} by @math{5} array @code{X} and we wish to do -->
+<!-- the following: -->
+<p>배열의 첨자에는 인덱스 벡터외에도 불특정 위치에 있는 배열의 구성요소들에 접근하여 새로운 값을 대입하거나, 이들의 값을 뽑아내고자 할때 <em>index matrix</em>(인덱스 행렬)을 사용할 수 있습니다. 
+아래의 예제와 같이 배열의 크기가 4행 5열로 구성된 행렬 형식의 배열 <code>X</code>가 있다고 가정하고, <code>X</code>에 대해서 다음의 것을 수행하고자 합니다.
 
-   <p>A matrix example makes the process clear.  In the case of a doubly
-indexed array, an index matrix may be given consisting of two columns
-and as many rows as desired.  The entries in the index matrix are the
-row and column indices for the doubly indexed array.  Suppose for
-example we have a 4 by 5 array <code>X</code> and we wish to do
-the following:
-
-<!-- 아래의 행렬의 예제를 살펴본다면 이를 더욱 확실히 알수 있습니다. -->
-<!-- 아래의 예제와 같이 배열의 크기가 @math{4} by @math{5}인 배열 @code{X}가 있다고 가정하고, 우리는 @code{X}에 대해서 다음과 같은 것을 수행하고 싶다고 합니다. -->
      <ul>
-<li>Extract elements <code>X[1,3]</code>, <code>X[2,2]</code> and <code>X[3,1]</code> as a
-vector structure, and
-<li>Replace these entries in the array <code>X</code> by zeroes. 
-</ul>
-   In this case we need a 3 by 2 subscript array, as in the
-following example.
+<li><!-- Extract elements @code{X[1,3]}, @code{X[2,2]} and @code{X[3,1]} as a -->
+<!-- vector structure, and -->
+<code>X[1,3]</code>, <code>X[2,2]</code> 그리고 <code>X[3,1]</code>의 위치에 해당하는 구성요소들만 뽑아내어 벡터의 형태로 구성하려 합니다.
 
-<pre class="example">     &gt; x &lt;- array(1:20, dim=c(4,5))   # 4행 5열로 구성된 2차원 배열을 생성합니다.
-                                      <!-- @r{Generate a 4 by 5 array.} -->
+     <li><!-- Replace these entries in the array @code{X} by zeroes. -->
+그리고, 배열 <code>X</code>의 뽑아낸 위치에 있는 데이터를 0의 값으로 대체하고자 합니다. 
+</ul>
+   <!-- In this case we need a @math{3} by @math{2} subscript array, as in the -->
+<!-- following example. -->
+이를 수행하기 위해서는 첨자의 위치에 놓일 2행 2열로 구성된 배열이 필요합니다. 
+이제 아래의 명령을 따라 읽어보시면 이해가 쉬울 것입니다.
+
+<pre class="example">     &gt; x &lt;- array(1:20, dim=c(4,5))   <span class="roman"># 4행 5열로 구성된 2차원 배열을 생성합니다.</span>                                  <!-- @r{Generate a 4 by 5 array.} -->
      &gt; x
           [,1] [,2] [,3] [,4] [,5]
      [1,]    1    5    9   13   17
@@ -2517,17 +2519,14 @@ following example.
      [3,]    3    7   11   15   19
      [4,]    4    8   12   16   20
      &gt; i &lt;- array(c(1:3,3:1), dim=c(3,2))
-     &gt; i                             # i 이라는 3행 2열의 인덱스행렬을 생성했습니다.
-                                      <!-- @r{@code{i} is a 3 by 2 index array.} -->
+     &gt; i                             <span class="roman"># i 이라는 3행 2열의 인덱스행렬을 생성합니다.</span>                                  <!-- @r{@code{i} is a 3 by 2 index array.} -->
           [,1] [,2]
      [1,]    1    3
      [2,]    2    2
      [3,]    3    1
-     &gt; x[i]                          # 인덱스행렬에 해당하는 값만 뽑아냅니다
-                                     <!-- @r{Extract those elements} -->
+     &gt; x[i]                          <span class="roman"># 인덱스행렬 i를 이용하여 원하는 값만 뽑아냅니다</span>                                 <!-- @r{Extract those elements} -->
      [1] 9 6 3
-     &gt; x[i] &lt;- 0                     # 인덱스 행렬에 해당하는 값들을 0으로 교체합니다.
-                                     <!-- @r{Replace those elements by zeros.} -->
+     &gt; x[i] &lt;- 0                     <span class="roman"># 인덱스행렬 i에 해당하는 값들을 0으로 교체합니다.</span>                                 <!-- @r{Replace those elements by zeros.} -->
      &gt; x
           [,1] [,2] [,3] [,4] [,5]
      [1,]    1    5    0   13   17
@@ -2541,14 +2540,18 @@ following example.
 <!-- ignored, and rows containing an @code{NA} produce an @code{NA} in the -->
 <!-- result. -->
 
-   <p>인덱스 행렬에서 음의 값을 지시자 (index) 를 사용할 수는 없지만, <code>NA</code> 와 영(0) 은 사용할 수 있습니다. 만약,인덱스 행렬이 0을 포함하고 있는 행이 있다면 이는 무시 될 것이고, <code>NA</code>를 포함하고 있다면 모두 <code>NA</code>를 출력할 것입니다.
+   <p>인덱스행렬의 구성요소는 음의 값을 가질 수 없으나, <code>NA</code>와 0의 값은 사용할 수 있습니다. 
+만약, 인덱스행렬이 0의 값을 가지고 있는 행이 발견된다면, 해당 행은 무시되어 질 것입니다. 
+이와 유사하게, <code>NA</code>를 포함하는 행이 발견된다면, 해당 행은 모두 <code>NA</code>를 출력하게 됩니다.
 
 <!-- As a less trivial example, suppose we wish to generate an (unreduced) -->
 <!-- design matrix for a block design defined by factors @code{blocks} -->
 <!-- (@code{b} levels) and @code{varieties} (@code{v} levels).  Further -->
 <!-- suppose there are @code{n} plots in the experiment.  We could proceed as -->
 <!-- follows: -->
-   <p>다소 쉬운 예제는 아니지만 , <code>b</code> 개의 레벨이 있는 <code>blocks</code> 이라는 요인과 <code>v</code> 개의 레벨이 있는 <code>varieties</code> 라는 요인을 이용하여, <code>n</code>개의 플랏에 적용될 실험에 사용될 디자인 매트릭스는 다음의 절차를 통하여 얻어질 수 있습니다.
+   <p>다소 쉬운 예제는 아니지만, <code>b</code>개의 수준을 가지고 있는 <code>blocks</code>이라는 요인과 <code>v</code>개의 수준을 가지고 있는 <code>varieties</code>라는 요인에 의하여 정의되는 블락디자인 (block design)에 사용될 디자인 매트릭스(design matrix)를 생성하고자 합니다. 
+더 나아가, 실험에는 <code>n</code>개의 플랏이 있다고 가정합니다. 
+아래와 같이 이를 수행할 수 있을 것입니다.
 
 <pre class="example">     &gt; Xb &lt;- matrix(0, n, b)
      &gt; Xv &lt;- matrix(0, n, v)
@@ -2559,14 +2562,14 @@ following example.
      &gt; X &lt;- cbind(Xb, Xv)
 </pre>
    <!-- To construct the incidence matrix, @code{N} say, we could use -->
-   <p>만약 N 이라는 the incidence matrix (인시던스 매트릭스)를 생성하고자 한다면 다음과 같이 하면 됩니다.
+   <p>만약 <code>N</code>이라는 인시던스 행렬(incidence matrix)를 생성하고자 한다면 아래와 같이 할 수 있습니다.
 
 <pre class="example">     &gt; N &lt;- crossprod(Xb, Xv)
 </pre>
    <p><a name="index-crossprod-93"></a>
 <!-- However a simpler direct way of producing this matrix is to use -->
 
-   <p>위와 동일한 인시던스 매트릭스는 <code>table()</code> 이라는 함수를 이용하면 더욱 쉽게 생성할 수 있습니다.
+   <p>그러나, <code>table()</code>함수를 이용하면 보다 쉬운 방법으로 위에서 얻은 동일한 인시던스 행렬을 얻을 수 있습니다.
 
    <p><a name="index-table-94"></a>
 <pre class="example">     &gt; N &lt;- table(blocks, varieties)
@@ -2574,14 +2577,9 @@ following example.
    <!-- Index matrices must be numerical: any other form of matrix (e.g.@ a -->
 <!-- logical or character matrix) supplied as a matrix is treated as an -->
 <!-- indexing vector. -->
-   <p>인덱스 행렬은 반드시 수치형으로 구성되어야 합니다.
+   <p>인덱스행렬은 반드시 수치형으로 구성되어야 합니다. 
+만약, 논리형 또는 문자형 행렬의 형식으로 제공된 인덱스행렬이라면 단순히 인덱스 벡터로서 간주되게 됩니다.
 
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
 <div class="node">
 <a name="The-array()-function"></a>
 <a name="The-array_0028_0029-function"></a>
@@ -2592,27 +2590,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 
 </div>
 
-<h3 class="section">5.4 The <code>array()</code> function</h3>
+<!-- @section The @code{array()} function -->
+<h3 class="section">5.4 <code>array()</code> 함수</h3>
 
 <p><a name="index-array-95"></a>
 <!-- As well as giving a vector structure a @code{dim} attribute, arrays can -->
 <!-- be constructed from vectors by the @code{array} function, which has the -->
 <!-- form -->
 
-   <p>배열은 벡터에 <code>dim</code> 이라는 속성을 부여하여 얻는 방법외에도, 아래와 같은 방법으로 <code>array</code> 라는 함수를 이용하여 생성할 수 있습니다.
+   <p>배열은 벡터에 <code>dim</code>이라는 속성을 부여하여 생성하는 방법외에도, 아래와 같이 <code>array</code> 함수를 이용하여 생성이 가능합니다.
 
 <pre class="example">     &gt; Z &lt;- array(<var>data_vector</var>, <var>dim_vector</var>)
 </pre>
    <!-- For example, if the vector @code{h} contains 24 or fewer, numbers then -->
 <!-- the command -->
-   <p>예를 들어 벡터 <code>h</code>가 24개의 수치형 원소를 가진다면, 아래의 명령어는 3행 4열로 구성된 2개의 행렬을 나란히 3차원 공간에 배열 한 뒤 이를 Z 에 할당했음을 의미합니다.
+   <p>예를 들어 <code>h</code>가 24개 또는 그 보다 적은 개수의 숫자로 구성된 벡터라고 가정한다면,
+아래의 표현식은 3행 4열로 구성된 2개의 행렬을 3차원 공간에 배열 한 결과를 <code>Z</code>에 대입하였음을 알 수 있습니다.
 
 <pre class="example">     &gt; Z &lt;- array(h, dim=c(3,4,2))
 </pre>
-   <p>위에서는 배열 <code>Z</code> 를 array() 란 함수를 이용하였으나, 아래의 명령어는 벡터 <code>h</code>의 속성을 조정하여 동일한 배열 <code>Z</code>를 생성함을 보여줍니다.
+   <p>위에서는 배열 <code>Z</code>를 <code>array</code>함수를 이용하여 생성하였으나, 아래의 표현식은 벡터 <code>h</code>의 속성 <code>dim</code>을 변경하여 배열 <code>Z</code>와 동일한 벡터를 생성함을 보여줍니다.
 
-<p class="noindent">would use <code>h</code> to set up 3 by 4 by 2 array in
-<code>Z</code>.  If the size of <code>h</code> is exactly 24 the result is the same as
+<p class="noindent"><!-- would use @code{h} to set up @math{3} by @math{4} by @math{2} array in -->
+<!-- @code{Z}.  If the size of @code{h} is exactly 24 the result is the same as -->
 
 <pre class="example">     &gt; Z &lt;- h ; dim(Z) &lt;- c(3,4,2)
 </pre>
@@ -2620,28 +2620,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- beginning again to make it up to size 24 (@pxref{The recycling rule}) -->
 <!-- but @code{dim(h) <- c(3,4,2)} would signal an error about mismatching -->
 <!-- length. -->
-   <p>그런데, 만약 벡터 <code>h</code> 가 24개보다 적은 수의 원소를 가진다면, 24개라고 지정된 배열의 크기를 맞추기 위해서 벡터 <code>h</code>의 첫번째 원소부터 재사용되게 됩니다. 이것에 대해서는 (see see <a href="#The-recycling-rule">The recycling rule</a>). 그러나, <code>dim(h) &lt;- c(3,4,2)</code> 와 같이 속성을 조정하고자 할 때에는 에러를 보여줄 것입니다.
+   <p>그런데, 만약 벡터 <code>h</code>가 24보다 적은 수의 구성원소를 가진다면, <code>array</code>함수 사용시 24개라고 지정된 배열의 크기를 맞추기 위해서 벡터 <code>h</code>의 첫번째 원소부터 재사용하게 됩니다. 
+이 재활용 규칙(recycling rule)에 대해서는 see <a href="#The-recycling-rule">The recycling rule</a>를 살펴보시길 바랍니다. 
+그러나, <code>dim(h) &lt;- c(3,4,2)</code>와 같이 <code>dim</code> 속성을 변경하여 배열을 생성하고자 할 때는 에러를 보여줄 것 입니다.
 
-   <p>As an extreme but common example
+<!-- As an extreme but common example -->
+   <p>아래의 표현식은 다소 극단적인 경우이지만, 흔히 사용되는 예제이기도 합니다. 
+이는 배열 <code>Z</code>의 모든 구성요소가 0 값을 가지는 특수한 경우입니다.
 
 <pre class="example">     &gt; Z &lt;- array(0, c(3,4,2))
 </pre>
-   <p class="noindent">makes <code>Z</code> an array of all zeros.
+   <p class="noindent"><!-- makes @code{Z} an array of all zeros. -->
 
 <!-- At this point @code{dim(Z)} stands for the dimension vector -->
 <!-- @code{c(3,4,2)}, and @code{Z[1:24]} stands for the data vector as it was -->
 <!-- in @code{h}, and @code{Z[]} with an empty subscript or @code{Z} with no -->
 <!-- subscript stands for the entire array as an array. -->
-   <p>다음은 배열 <code>dim(Z)</code>의 모든 원소가 0 이라는 값을 가지는 특수한 경우입니다. 여기에서의 dim(Z) 는 차원벡터를 의미하고, <code>Z[1:24]</code> 는 <code>h</code> 와 동일한 데이터벡터를 의미합니다. <code>Z[]</code>와 같이 아무런 서브스크립트를 가지지 않거나 단순히 <code>Z</code>라고 배열이름을 사용하는 것은 배열 전체를 의미합니다.
+   <p>여기에서의 <code>dim(Z)</code>는 차원벡터를 의미하게 되며, <code>Z[1:24]</code>는 벡터 <code>h</code>와 동일한 데이터벡터를 의미합니다. 
+<code>Z[]</code>와 같이 아무런 첨자를 가지지 않는 경우는 단순히 <code>Z</code>라고 배열이름을 사용하는 것은 <code>Z</code>의 모든 구성요소로 이루어진 배열 그 자체를 의미하게 됩니다.
 
 <!-- Arrays may be used in arithmetic expressions and the result is an array -->
 <!-- formed by element-by-element operations on the data vector.  The -->
 <!-- @code{dim} attributes of operands generally need to be the same, and -->
 <!-- this becomes the dimension vector of the result. -->
-   <p>배열에서의 산술연산은 기본적으로 배열을 구성하는 원소단위에서 이루어집니다. 이때, 각각의 배열이 가지는 dim 이라는 차원속성이 모두 동일해야 하며, 동일한 차원의 결과값을 얻을 수 있게 됩니다. 따라서 아래의 명령문은 A, B, 그리고 C 가 모두 같은 dim 차원속성을 가지고 있다는 전제하에서, 원소단위의 연산을 수행한뒤 D 에 할당함을 의미합니다. 그러나, 배열과 벡터가 혼합된 경우의 연산을 수행할 경우에는 많은 주의가 요구됩니다.
-
-   <p>So if <code>A</code>,
-<code>B</code> and <code>C</code> are all similar arrays, then
+   <p>배열에서의 산술연산은 기본적으로 배열을 구성하는 원소단위에서 이루어지게 됩니다. 
+이때 각각의 배열이 가지는 <code>dim</code>이라는 차원벡터의 속성이 일치해야지만, 동일한 차원을 가진 결과값을 얻을 수 있습니다. 
+따라서 아래의 예제는 <code>A</code>, <code>B</code>, <code>C</code>가 모든 같은 <code>dim</code>속성을 가지고 있다면, 이를 원소단위에서 연산을 수행한 뒤에 배열 <code>D</code>에 대입함을 의미하는 표현식입니다. 
+<!-- So if @code{A}, -->
+<!-- @code{B} and @code{C} are all similar arrays, then -->
 
 <pre class="example">     &gt; D &lt;- 2*A*B + C + 1
 </pre>
@@ -2649,6 +2655,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- the given element-by-element operations.  However the precise rule -->
 <!-- concerning mixed array and vector calculations has to be considered a -->
 <!-- little more carefully. -->
+배열과 벡터를 혼용하여 연산을 수행하는 경우에는 많은 주의가 요구됩니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-recycling-rule">The recycling rule</a>
