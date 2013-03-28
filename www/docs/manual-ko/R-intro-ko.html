@@ -123,7 +123,7 @@ p {
 <ul>
 <li><a href="#The-recycling-rule">5.4.1 벡터와 배열가 혼용되는 산술연산과 재활용 규칙</a>
 </li></ul>
-<li><a href="#The-outer-product-of-two-arrays">5.5 The outer product of two arrays</a>
+<li><a href="#The-outer-product-of-two-arrays">5.5 두 배열의 외적</a>
 <li><a href="#Generalized-transpose-of-an-array">5.6 Generalized transpose of an array</a>
 <li><a href="#Matrix-facilities">5.7 Matrix facilities</a>
 <ul>
@@ -2711,7 +2711,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 
 </div>
 
-<h3 class="section">5.5 The outer product of two arrays</h3>
+<!-- @section The outer product of two arrays -->
+<h3 class="section">5.5 두 배열의 외적</h3>
 
 <p><a name="index-Outer-products-of-arrays-97"></a>
 <!-- An important operation on arrays is the @emph{outer product}.  If -->
@@ -2722,13 +2723,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- with those of @code{b}.  The outer product is formed by the special -->
 <!-- operator @code{%o%}: -->
 
-   <p>배열의 연산에서 가장 중요한 것은 %o% 라는 연산자기호를 이용하여 연산을 수행하는 외적(outer product)이라는 것입니다. 예를 들어 a와 b 라는 두개의 수치형 배열이 있다면, 외적(outer product)의 결과로 얻어지는 차원속성은 c(dim(a), dim(b)) 이고, 데이터 벡터는 a 의 모든 원소와 b 의 모든 원소로 얻어진 모든 조합의 곱입니다.
+   <p>배열의 연산에서 가장 중요한 것은 아래와 같이 <code>%o%</code>라고 정의된 연산자를 이용하여 연산이 이루어지는 <em>외적(outer product)</em>이라는 것입니다. 
+예를 들어 <code>a</code>와 <code>b</code>이라는 두개의 수치형 배열이 있다고 가정합니다. 
+이 두 배열의 외적(outer product)의 결과로 얻어지는 배열에 대한 차원은 <code>c(dim(a), dim(b))</code>이어야 하고,
+데이터 벡터는 배열 <code>a</code>의 모든 구성요소와 <code>b</code>의 구성요소로 얻어진 모든 조합의 곱이 됩니다.
 
    <p><a name="index-g_t_0025o_0025-98"></a>
 <pre class="example">     &gt; ab &lt;- a %o% b
 </pre>
    <!-- An alternative is -->
-   <p>다음은 outer()란 함수를 이용하여 동일한 외적(outer product) 연산을 수행하는 것입니다.
+   <p>외적에 대하여 위에서 수행한 것과 동일한 결과를 아래와 같이 <code>outer</code>라는 함수를 이용하여 얻을 수 있습니다.
 
 <pre class="example">     &gt; ab &lt;- outer(a, b, "*")
 </pre>
@@ -2740,15 +2744,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- defined by the @R{} vectors @code{x} and @code{y} respectively, we could -->
 <!-- proceed as follows: -->
 
-   <p>outer product 는 두개의 변수를 가지고 있는 임의의 함수에 대한 결과값을 연산하고자 할때 유용하게 사용됩니다. 예를 들어, x- 와 y- 좌표평면상에 있는 모든 좌표에 대하여 f(x;y)=cos(y)/(1+x^2) 라는 함수가 가질 수 있는 모든 값은 다음의 명령을 수행함으로서 쉽게 얻을 수 있습니다.
+   <p>이 외적(outer product)이라는 연산은 두 개의 변수와 어떤 임의의 함수가 있을 때 유용하게 사용될 수 있습니다. 
+예를 들어, <code>x</code>- 와 <code>y</code>-좌표평면상에 있는 모든 좌표에 대하여 이라는 함수가 가질 수 있는 모든 값을 아래와 같은 방법으로 쉽게 구할 수 있습니다.
 
 <pre class="example">     &gt; f &lt;- function(x, y) cos(y)/(1 + x^2)
      &gt; z &lt;- outer(x, y, f)
 </pre>
-   <p>In particular the outer product of two ordinary vectors is a doubly
-subscripted array (that is a matrix, of rank at most 1).  Notice that
-the outer product operator is of course non-commutative.  Defining your
-own R functions will be considered further in <a href="#Writing-your-own-functions">Writing your own functions</a>.
+   <!-- In particular the outer product of two ordinary vectors is a doubly -->
+<!-- subscripted array (that is a matrix, of rank at most 1).  Notice that -->
+<!-- the outer product operator is of course non-commutative.  Defining your -->
+<!-- own @R{} functions will be considered further in @ref{Writing your own -->
+<!-- functions}. -->
+   <p>외적에 대해서 알아두어야 것은 당연히 함수의 입력값들에 대한 교환법칙이 성립하지 않는다(non-commutative)는 것입니다. 
+이에 대해서는 <a href="#Writing-your-own-functions">Writing your own functions</a>에서 살펴볼 사용자 정의함수를 만들어 이용하는 법에 대해서 더 다루어지게 될 것입니다.
 
 <h5 class="subsubheading">An example: Determinants of 2 by 2 single-digit matrices</h5>
 

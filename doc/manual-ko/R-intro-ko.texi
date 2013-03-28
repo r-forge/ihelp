@@ -2592,7 +2592,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @end itemize
 
 @node The outer product of two arrays, Generalized transpose of an array, The array() function, Arrays and matrices
-@section The outer product of two arrays
+@c @section The outer product of two arrays
+@section 두 배열의 외적
 @cindex Outer products of arrays
 
 @c An important operation on arrays is the @emph{outer product}.  If
@@ -2603,7 +2604,10 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c with those of @code{b}.  The outer product is formed by the special
 @c operator @code{%o%}:
 
-배열의 연산에서 가장 중요한 것은 %o% 라는 연산자기호를 이용하여 연산을 수행하는 외적(outer product)이라는 것입니다. 예를 들어 a와 b 라는 두개의 수치형 배열이 있다면, 외적(outer product)의 결과로 얻어지는 차원속성은 c(dim(a), dim(b)) 이고, 데이터 벡터는 a 의 모든 원소와 b 의 모든 원소로 얻어진 모든 조합의 곱입니다.
+배열의 연산에서 가장 중요한 것은 아래와 같이 @code{%o%}라고 정의된 연산자를 이용하여 연산이 이루어지는 @emph{외적(outer product)}이라는 것입니다. 
+예를 들어 @code{a}와 @code{b}이라는 두개의 수치형 배열이 있다고 가정합니다.
+이 두 배열의 외적(outer product)의 결과로 얻어지는 배열에 대한 차원은 @code{c(dim(a), dim(b))}이어야 하고,
+데이터 벡터는 배열 @code{a}의 모든 구성요소와 @code{b}의 구성요소로 얻어진 모든 조합의 곱이 됩니다.
 
 @findex %o%
 
@@ -2613,7 +2617,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c An alternative is
 
-다음은 outer()란 함수를 이용하여 동일한 외적(outer product) 연산을 수행하는 것입니다.
+외적에 대하여 위에서 수행한 것과 동일한 결과를 아래와 같이 @code{outer}라는 함수를 이용하여 얻을 수 있습니다.
 
 @example
 > ab <- outer(a, b, "*")
@@ -2627,18 +2631,22 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c defined by the @R{} vectors @code{x} and @code{y} respectively, we could
 @c proceed as follows:
 
-outer product 는 두개의 변수를 가지고 있는 임의의 함수에 대한 결과값을 연산하고자 할때 유용하게 사용됩니다. 예를 들어, x- 와 y- 좌표평면상에 있는 모든 좌표에 대하여 f(x;y)=cos(y)/(1+x^2) 라는 함수가 가질 수 있는 모든 값은 다음의 명령을 수행함으로서 쉽게 얻을 수 있습니다.
+이 외적(outer product)이라는 연산은 두 개의 변수와 어떤 임의의 함수가 있을 때 유용하게 사용될 수 있습니다.
+예를 들어, @code{x}- 와 @code{y}-좌표평면상에 있는 모든 좌표에 대하여 @eqn{f(x;y)=cos(y)/(1+x^2)}이라는 함수가 가질 수 있는 모든 값을 아래와 같은 방법으로 쉽게 구할 수 있습니다. 
 
 @example
 > f <- function(x, y) cos(y)/(1 + x^2)
 > z <- outer(x, y, f)
 @end example
 
-In particular the outer product of two ordinary vectors is a doubly
-subscripted array (that is a matrix, of rank at most 1).  Notice that
-the outer product operator is of course non-commutative.  Defining your
-own @R{} functions will be considered further in @ref{Writing your own
-functions}.
+@c In particular the outer product of two ordinary vectors is a doubly
+@c subscripted array (that is a matrix, of rank at most 1).  Notice that
+@c the outer product operator is of course non-commutative.  Defining your
+@c own @R{} functions will be considered further in @ref{Writing your own
+@c functions}.
+
+외적에 대해서 알아두어야 것은 당연히 함수의 입력값들에 대한 교환법칙이 성립하지 않는다(non-commutative)는 것입니다.
+이에 대해서는 @ref{Writing your own functions}에서 살펴볼 사용자 정의함수를 만들어 이용하는 법에 대해서 더 다루어지게 될 것입니다.
 
 @subsubheading An example: Determinants of 2 by 2 single-digit matrices
 
