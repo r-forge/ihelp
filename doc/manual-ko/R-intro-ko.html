@@ -5518,30 +5518,32 @@ X는 <em>모델 행렬(model matrix)</em> 혹은 <em>디자인 행렬 (design ma
      <p>이는 두개의 설명변수 <code>x1</code>과 <code>x2</code>를 이용하여
 <code>y</code>가
 log(y),
-로 변환된 종속변수에 대한 다중선형회귀모델 (multiple regression)입니다. 
+로 변환된 종속변수에 대한 다중회귀모델 (multiple regression)입니다. 
 <!-- on @math{x1} and @math{x2} (with an implicit intercept term). -->
 
-     <br><dt><code>y ~ poly(x,2)</code><dd>
-이것은 종속변수 y를 설명변수 x의 다항식(polynomial)으로서 설명하고자 하는 다항회귀분석(polynomial regression)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
-
-     <dt><code>y ~ 1 + x + I(x^2)</code><dd><!-- Polynomial regression of @math{y} on @math{x} of degree 2.  The first -->
+     <br><dt><code>y ~ poly(x,2)</code><dt><code>y ~ 1 + x + I(x^2)</code><dd><!-- Polynomial regression of @math{y} on @math{x} of degree 2.  The first -->
 <!-- form uses orthogonal polynomials, and the second uses explicit powers, -->
 <!-- as basis. -->
 
-     <p>이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
+     <p>이 모델식은 x의 2차 다항식을 이용한 다항회귀 (polynomial regression)을 수행하는 것입니다. 
+x의 이차항이라는 것은 x^2를 의미합니다. 
+첫번째 식은 직교다항모형(orthogonal polynomials)이며,
+두번째 식은 x의 0차, 1차, 2차인 x^0, x^1, x^2가 기저 (basis)를 형성하는 다항모형을 의미합니다.
 
-     <br><dt><code>y ~ X + poly(x,2)</code><dd>Multiple regression y with model matrix consisting of the matrix
-X as well as polynomial terms in x to degree 2.
+     <br><dt><code>y ~ X + poly(x,2)</code><dd><!-- Multiple regression @math{y} with model matrix consisting of the matrix -->
+<!-- @math{X} as well as polynomial terms in @math{x} to degree 2. -->
 
-     <br><dt><code>y ~ A</code><dd>Single classification analysis of variance model of y, with
-classes determined by A.
+     <p>이 모델식은 X 행렬과 x의 2차항으로 구성된 다중회귀분석을 수행함을 의미합니다.
 
-     <br><dt><code>y ~ A + x</code><dd>Single classification analysis of covariance model of y, with
-classes determined by A, and with covariate x.
+     <br><dt><code>y ~ A</code><dd><!-- Single classification analysis of variance model of @math{y}, with -->
+<!-- classes determined by @math{A}. -->
 
-     <p>이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
+     <p>이 모델식은 여러개의 수준을 가지고 있는 요인 A를 이용하여 y에 대한 single classification analysis of variance model을 의미합니다.
 
-     <p>model formula 에 사용되는 ~ (틸다) 라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가지고 있습니다. 그 이유는 수학과 같이 정확한 함수적 관계가 있지 않기 때문입니다. 따라서, R 에서 사용하는 일반 선형모형은 다음과 같은 model formula 의 형식을 가집니다.
+     <br><dt><code>y ~ A + x</code><dd><!-- Single classification analysis of covariance model of @math{y}, with -->
+<!-- classes determined by @math{A}, and with covariate @math{x}. -->
+
+     <p>이 모델식은 여러개의 수준을 가지고 있는 요인 A와 설명변수 x를 이용하여 y에 대한 single classification analysis of covariance를 수행함을 의미합니다.
 
      <br><dt><code>y ~ A*B</code><dt><code>y ~ A + B + A:B</code><dt><code>y ~ B %in% A</code><dt><code>y ~ A/B</code><dd>Two factor non-additive model of y on A and B.  The
 first two specify the same crossed classification and the second two
@@ -5562,70 +5564,82 @@ experiment, with whole plots (and hence also subplots), determined by
 factor C. 
 </dl>
 
-   <p><a name="index-g_t_007e-178"></a>The operator <code>~</code> is used to define a <em>model formula</em> in R. 
-The form, for an ordinary linear model, is
+   <p><a name="index-g_t_007e-178"></a><!-- The operator @code{~} is used to define a @emph{model formula} in @R{}. -->
+<!-- The form, for an ordinary linear model, is -->
+
+   <p>그전에 모델식(model formula)에 이용되는 <code>~</code>(틸다)라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가집니다. 
+그 이유는 수학과 같이 우변의 식이 좌변의 값과 <code>=</code>(같음)이라는 등식이 성립되는 수학과 같은 정확한 함수관계는 아니기 때문입니다. 
+따라서, R에서 모델식을 작성할때는 <code>~</code>를 이용하여 아래와 같은 형식으로 작성해주시면 됩니다.
 
 <pre class="example">     <var>response</var> ~ <var>op_1</var> <var>term_1</var> <var>op_2</var> <var>term_2</var> <var>op_3</var> <var>term_3</var> <var><small class="dots">...</small></var>
 </pre>
-   <p class="noindent">where
-
+   <p class="noindent"><!-- where -->
+이 모델식에서
      <dl>
-<dt><var>response</var><dd>is a vector or matrix, (or expression evaluating to a vector or matrix)
-defining the response variable(s). 
-<br><dt><var>op_i</var><dd>is an operator, either <code>+</code> or <code>-</code>, implying the inclusion or
-exclusion of a term in the model, (the first is optional). 
-<br><dt><var>term_i</var><dd>is either
+<dt><var>response (종속변수)</var><dd><!-- is a vector or matrix, (or expression evaluating to a vector or matrix) -->
+<!-- defining the response variable(s). -->
+는 벡터 또는 행렬이 될 수 있습니다. 
+(또는 벡터 또는 행렬의 형식을 산출해내는 표현식일 수도 있습니다).
+
+     <br><dt><var>op_i (i 번째 연산자)</var><dd><!-- is an operator, either @code{+} or @code{-}, implying the inclusion or -->
+<!-- exclusion of a term in the model, (the first is optional). -->
+는 <code>+</code> 또는 <code>-</code> 부호를 가지는 연산자인데, 이 부호의 의미는 모델식에서 i 번째 항을 추가하거나 빼라는 의미입니다. 
+산술연산과 혼돈하지 말아야 합니다.
+
+     <br><dt><var>term_i (i 번째 항목)</var><dd><!-- is either -->
+은 다음의 것들중에 한가지가 될 수 있습니다.
           <ul>
-<li>a vector or matrix expression, or <code>1</code>,
-<li>a factor, or
-<li>a <em>formula expression</em> consisting of factors, vectors or matrices
-connected by <em>formula operators</em>. 
+<li><!-- a vector or matrix expression, or @code{1}, -->
+벡터 혹은 행렬, 또는 <code>1</code>
+<li><!-- a factor, or -->
+요인 (factor), 또는
+<li><!-- a @emph{formula expression} consisting of factors, vectors or matrices -->
+<!-- connected by @emph{formula operators}. -->
+요인, 벡터, 또는 행렬 등을 <em>모델식 연산자(formula operator)</em>에 의하여 연결되어 이루어진 <em>모델 표현식(formula expression)</em>입니다. 
 </ul>
      In all cases each term defines a collection of columns either to be
 added to or removed from the model matrix.  A <code>1</code> stands for an
 intercept column and is by default included in the model matrix unless
-explicitly removed.
+explicitly removed. 
+이렇게 작성되는 모델식을 통하여 각 항이 모델행렬(model matrix)에서 추가되어질지 혹은 빠질지를 결정하게 됩니다. 
+<code>1</code>이라는 열벡터는 절편을 의미하는데 특별히 지정하지 않아도 항상 모델행렬에 포함되어 있다는 것을 기억하시길 바랍니다. 
+</dl>
 
-   </dl>
+<!-- The @emph{formula operators} are similar in effect to the Wilkinson and -->
+<!-- Rogers notation used by such programs as Glim and Genstat.  One -->
+<!-- inevitable change is that the operator @samp{@code{.}} becomes -->
+<!-- @samp{@code{:}} since the period is a valid name character in @R{}. -->
+   <p><em>모델식 연산자(formula operator)</em>는 Glim 혹은 Genstat 이라는 프로그램에서 사용되는 Wilkinson과 Rogers 기호들과 유사한 기능입니다. 
+다른 점이 있다면, GLIM이나 Genstat에서는 &lsquo;<samp><code>.</code></samp>&rsquo;라는 연산자를 사용하지만 이것은 R에서는 &lsquo;<samp><code>:</code></samp>&rsquo;라는 기호를 사용합니다. 
+그 이유는 &lsquo;<samp><code>.</code></samp>&rsquo;라는 기호는 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
 
-   <p>The <em>formula operators</em> are similar in effect to the Wilkinson and
-Rogers notation used by such programs as Glim and Genstat.  One
-inevitable change is that the operator &lsquo;<samp><code>.</code></samp>&rsquo; becomes
-&lsquo;<samp><code>:</code></samp>&rsquo; since the period is a valid name character in R.
-
-   <p>The notation is summarized below (based on Chambers &amp; Hastie, 1992,
-p.29):
-
-   <p>각각의 항들에 대한 설명은 다음과 같습니다.
-
-   <p>response는 종속변수가 1개로 이루어진 열벡터가 될 수도 있고, 혹은 여러개의 종속변수들로
-이루어진 행렬이 될 수도 있습니다. op_i이라는 것은 + 혹은 -이라는 연산자를 의미합니다. 연산자 +는 설명변수 term_i를 회귀분석에 포함시킨다느느 의미이고 -는 포함시키지 않는다는 의미입니다. term_i라는 것은 다음의 항목들중에 한가지가 될 수 있습니다. 벡터 혹은 행렬, 또는 1 요인 (factor) 요인, 벡터, 행렬등을 +와 -라는 연산자를 이용하여 복합적으로 표현한 항 위의 모든 경우들을 행렬식으로 나타낼 경우, 각각의 term_i은 디자인 매트릭스에 의해서 선형회귀분석에 포함될 것인지 말 것인지가 결정되어 집니다. 1 이라는 열벡터는 인터셉트를 의미하는데, 이 열벡터는 특별히 지정하지 않아도 항상 디자인 매트릭스에 포함되어 있다고 생각하셔야 합니다.
-
-   <p>formula operators는 GLIM 혹은 Genstat 에서 사용되는 Wilkinson과 Rogers라는 연산자의 개념과 유사합니다. 그러나 다른점이 있다면 GLIM이나 Genstat에서는 ‘.’이라는 연산자를 사용하지만 이것은 R에서는 ‘:’이라는 심볼을 사용합니다. 그 이유는 ‘.’심볼은 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
-
-   <p>다음은 Chambers &amp; Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는 formula operators들에 대해서 정리한 것입니다.
+<!-- The notation is summarized below (based on Chambers & Hastie, 1992, -->
+<!-- p.29): -->
+   <p>다음은 Chambers &amp; Hastie (1991, p.29)의 내용을 기초로 모델식(model formula)내에서 사용되는 모델 연산자(formula operators)들에 대해서 정리한 것입니다.
 
      <dl>
 <dt><var>Y</var><code> ~ </code><var>M</var><dd><!-- @var{Y} is modeled as @var{M}. -->
 
-     <p>~ (틸다)는 Y를 M에서 정의된 모델에 관계시킨다는 의미입니다. 여기에서 M 이라는 것은 model formula에서 정의한 모델의 약자로 기억하시는 것이 편리합니다.
+     <p><code>~</code>(틸다)는 <var>Y</var>를 <var>M</var> 부분에서 정의된 식을 관계시킨다는 의미입니다. 
+여기에서 <var>M</var>이라는 것을 정의하고자 하는 모델식(model formula)을 나타내는 기호라고 생각하시는 것이 좋습니다.
 
      <br><dt><var>M_1</var><code> + </code><var>M_2</var><dd><!-- Include @var{M_1} and @var{M_2}. -->
 
-     <p>+ (플러스)는 model formula 작성시, 설명 변수 M_1과 또 다른 설명변수 M_2를 동시에 포함하겠다는 의미입니다.
+     <p><var>M_1</var>와 <var>M_2</var> 모두 포함합니다.
 
-     <br><dt><var>M_1</var><code> - </code><var>M_2</var><dd>Include <var>M_1</var> leaving out terms of <var>M_2</var>.
+     <br><dt><var>M_1</var><code> - </code><var>M_2</var><dd><!-- Include @var{M_1} leaving out terms of @var{M_2}. -->
 
-     <p>- (마이너스)는 model formula 정의시, 설명변수 M_1은 포함하되 M_2는 포함시키지 않는다는 의미입니다.
+     <p><var>M_1</var>은 포함하되 <var>M_2</var>는 포함시키지 않습니다.
 
-     <br><dt><var>M_1</var><code> : </code><var>M_2</var><dd>The tensor product of <var>M_1</var> and <var>M_2</var>.  If both terms are
-factors, then the &ldquo;subclasses&rdquo; factor.
+     <br><dt><var>M_1</var><code> : </code><var>M_2</var><dd><!-- The tensor product of @var{M_1} and @var{M_2}.  If both terms are -->
+<!-- factors, then the ``subclasses'' factor. -->
 
-     <p>: (세미콜론)은 model formula 정의시 , M_1과 M_2의 tensor product에 해당하는 모든 값을 활용한다는 의미입니다. 만약, M_1과 M_2가 요인이라면, tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들입니다.
+     <p><var>M_1</var>과 <var>M_2</var>의 텐서 프라닥트(tensor product)을 이용합니다. 
+만약, 두 개의 항 모두 요인이라면 tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들(&ldquo;subclasses&rdquo;)입니다.
 
      <br><dt><var>M_1</var><code> %in% </code><var>M_2</var><dd><!-- Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding. -->
 
-     <p>이것은 위의 tensor product 와 동일한 표현입니다
+     <p><var>M_1</var><code>:</code><var>M_2</var>와 유사하지만 다른 표현 코딩법입니다.
 
      <br><dt><var>M_1</var><code> * </code><var>M_2</var><dd><var>M_1</var><code> + </code><var>M_2</var><code> + </code><var>M_1</var><code>:</code><var>M_2</var>.
 
@@ -5633,10 +5647,12 @@ factors, then the &ldquo;subclasses&rdquo; factor.
 
      <br><dt><var>M</var><code>^</code><var>n</var><dd><!-- All terms in @var{M} together with ``interactions'' up to order @var{n} -->
 
-     <p>M의 모든 항들이 n차의 상호작용항(interactions)들과 함께 사용되었다는 의미입니다.
+     <p><var>M</var>의 모든 항들이 <var>n</var>차의 상호작용항(&ldquo;interactions&rdquo;)들과 함께 사용되었다는 의미입니다.
 
      <br><dt><code>I(</code><var>M</var><code>)</code><dd><!-- Insulate @var{M}.  Inside @var{M} all operators have their normal -->
 <!-- arithmetic meaning, and that term appears in the model matrix. -->
+<code>I()</code> 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모델식(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들이 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 
+따라서, 모델식 정의시 사용되는 <code>+</code> 혹은 <code>-</code>라는 기호는 모형연산자(model operators)로서 설명변수를 모델식(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, 모델식를 구성하는 한개의 항에 사용된 <code>I(M_1+M_2)</code>이라는 것은 <code>M_1</code>과 <code>M_2</code>을 활용하여 그 수학적 결과를 하나의 변수로서 모델식에 이용하겠다는 의미입니다. 
 </dl>
 
 <!-- Note that inside the parentheses that usually enclose function arguments -->
@@ -5647,7 +5663,9 @@ factors, then the &ldquo;subclasses&rdquo; factor.
 <!-- of the model matrix}, the specification of the parameters being -->
 <!-- implicit.  This is not the case in other contexts, for example in -->
 <!-- specifying nonlinear models. -->
-   <p>I() 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모형구성(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들은 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 따라서, model formula 정의시 사용되는 + 혹은 - 라는 연산자는 모형연산자(model operators)로서 설명변수를 모형구성(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, model formula를 구성하는 한개의 항에 사용된 I(M_1+M_2)이라는 것은 변수 M_1과 변수 M_2를 활용한 그 수학적 결과를 하나의 변수로서 모형구성(model formula)에 이용하겠다는 의미입니다. 모형구성(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
+   <p>모델식(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 
+그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 
+그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Contrasts">Contrasts</a>

@@ -5531,35 +5531,37 @@ log(y),
 @tex
 $\log(y)$,
 @end tex
-로 변환된 종속변수에 대한 다중선형회귀모델 (multiple regression)입니다.
+로 변환된 종속변수에 대한 다중회귀모델 (multiple regression)입니다.
 @c on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
-
-이것은 종속변수 y를 설명변수 x의 다항식(polynomial)으로서 설명하고자 하는 다항회귀분석(polynomial regression)입니다. 첫번째 표현은 직교다항모형(orthogonal polynomials)를 의미하며, 두번째 표현은 x^0, x^1, x^2가 직접적인 기저 (즉,basis)로 하는 다항모형을 의미합니다.
-
 @itemx y ~ 1 + x + I(x^2)
 @c Polynomial regression of @math{y} on @math{x} of degree 2.  The first
 @c form uses orthogonal polynomials, and the second uses explicit powers,
 @c as basis.
 
-이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
+이 모델식은 @math{x}의 2차 다항식을 이용한 다항회귀 (polynomial regression)을 수행하는 것입니다.
+@math{x}의 이차항이라는 것은 @math{x^2}를 의미합니다.
+첫번째 식은 직교다항모형(orthogonal polynomials)이며, 
+두번째 식은 @math{x}의 0차, 1차, 2차인 @math{x^0, x^1, x^2}가 기저 (basis)를 형성하는 다항모형을 의미합니다.
 
 @item y ~ X + poly(x,2)
-Multiple regression @math{y} with model matrix consisting of the matrix
-@math{X} as well as polynomial terms in @math{x} to degree 2.
+@c Multiple regression @math{y} with model matrix consisting of the matrix
+@c @math{X} as well as polynomial terms in @math{x} to degree 2.
+
+이 모델식은 @math{X} 행렬과 @math{x}의 2차항으로 구성된 다중회귀분석을 수행함을 의미합니다.
 
 @item y ~ A
-Single classification analysis of variance model of @math{y}, with
-classes determined by @math{A}.
+@c Single classification analysis of variance model of @math{y}, with
+@c classes determined by @math{A}.
+
+이 모델식은 여러개의 수준을 가지고 있는 요인 @math{A}를 이용하여 @math{y}에 대한 single classification analysis of variance model을 의미합니다. 
 
 @item y ~ A + x
-Single classification analysis of covariance model of @math{y}, with
-classes determined by @math{A}, and with covariate @math{x}.
+@c Single classification analysis of covariance model of @math{y}, with
+@c classes determined by @math{A}, and with covariate @math{x}.
 
-이 표현식은 요인 A를 이용하여 y에 대한 1차 분산분석 (one-way analysis of variance)을 의미합니다. 여기에서 A이라는 요인은 여러개의 레벨로 구성되어 있음을 기억하셔야 합니다.
-
-model formula 에 사용되는 ~ (틸다) 라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가지고 있습니다. 그 이유는 수학과 같이 정확한 함수적 관계가 있지 않기 때문입니다. 따라서, R 에서 사용하는 일반 선형모형은 다음과 같은 model formula 의 형식을 가집니다.
+이 모델식은 여러개의 수준을 가지고 있는 요인 @math{A}와 설명변수 @math{x}를 이용하여 @math{y}에 대한 single classification analysis of covariance를 수행함을 의미합니다.
 
 @item y ~ A*B
 @itemx y ~ A + B + A:B
@@ -5569,6 +5571,7 @@ Two factor non-additive model of @math{y} on @math{A} and @math{B}.  The
 first two specify the same crossed classification and the second two
 specify the same nested classification.  In abstract terms all four
 specify the same model subspace.
+
 
 @item y ~ (A + B + C)^2
 @itemx y ~ A*B*C - A:B:C
@@ -5591,85 +5594,97 @@ factor @math{C}.
 @end table
 
 @findex ~
-The operator @code{~} is used to define a @emph{model formula} in @R{}.
-The form, for an ordinary linear model, is
+@c The operator @code{~} is used to define a @emph{model formula} in @R{}.
+@c The form, for an ordinary linear model, is
+
+그전에 모델식(model formula)에 이용되는 @code{~}(틸다)라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가집니다.  
+그 이유는 수학과 같이 우변의 식이 좌변의 값과 @code{=}(같음)이라는 등식이 성립되는 수학과 같은 정확한 함수관계는 아니기 때문입니다.
+따라서, @R{}에서 모델식을 작성할때는 @code{~}를 이용하여 아래와 같은 형식으로 작성해주시면 됩니다.
 
 @example
 @var{response} ~ @var{op_1} @var{term_1} @var{op_2} @var{term_2} @var{op_3} @var{term_3} @var{@dots{}}
 @end example
 
 @noindent
-where
-
+@c where
+이 모델식에서 
 @table @var
-@item response
-is a vector or matrix, (or expression evaluating to a vector or matrix)
-defining the response variable(s).
-@item op_i
-is an operator, either @code{+} or @code{-}, implying the inclusion or
-exclusion of a term in the model, (the first is optional).
-@item term_i
-is either
+@item response (종속변수)
+@c is a vector or matrix, (or expression evaluating to a vector or matrix)
+@c defining the response variable(s).
+는 벡터 또는 행렬이 될 수 있습니다.
+(또는 벡터 또는 행렬의 형식을 산출해내는 표현식일 수도 있습니다).
+
+@item op_i (i 번째 연산자)
+@c is an operator, either @code{+} or @code{-}, implying the inclusion or
+@c exclusion of a term in the model, (the first is optional).
+는 @code{+} 또는 @code{-} 부호를 가지는 연산자인데, 이 부호의 의미는 모델식에서 i 번째 항을 추가하거나 빼라는 의미입니다. 
+산술연산과 혼돈하지 말아야 합니다.
+
+@item term_i (i 번째 항목)
+@c is either
+은 다음의 것들중에 한가지가 될 수 있습니다. 
 @itemize @bullet
 @item
-a vector or matrix expression, or @code{1},
+@c a vector or matrix expression, or @code{1},
+벡터 혹은 행렬, 또는 @code{1}
 @item
-a factor, or
+@c a factor, or
+요인 (factor), 또는 
 @item
-a @emph{formula expression} consisting of factors, vectors or matrices
-connected by @emph{formula operators}.
+@c a @emph{formula expression} consisting of factors, vectors or matrices
+@c connected by @emph{formula operators}.
+요인, 벡터, 또는 행렬 등을 @emph{모델식 연산자(formula operator)}에 의하여 연결되어 이루어진 @emph{모델 표현식(formula expression)}입니다.
 @end itemize
 In all cases each term defines a collection of columns either to be
 added to or removed from the model matrix.  A @code{1} stands for an
 intercept column and is by default included in the model matrix unless
 explicitly removed.
-
+이렇게 작성되는 모델식을 통하여 각 항이 모델행렬(model matrix)에서 추가되어질지 혹은 빠질지를 결정하게 됩니다.
+@code{1}이라는 열벡터는 절편을 의미하는데 특별히 지정하지 않아도 항상 모델행렬에 포함되어 있다는 것을 기억하시길 바랍니다.
 @end table
 
-The @emph{formula operators} are similar in effect to the Wilkinson and
-Rogers notation used by such programs as Glim and Genstat.  One
-inevitable change is that the operator @samp{@code{.}} becomes
-@samp{@code{:}} since the period is a valid name character in @R{}.
+@c The @emph{formula operators} are similar in effect to the Wilkinson and
+@c Rogers notation used by such programs as Glim and Genstat.  One
+@c inevitable change is that the operator @samp{@code{.}} becomes
+@c @samp{@code{:}} since the period is a valid name character in @R{}.
+@emph{모델식 연산자(formula operator)}는 Glim 혹은 Genstat 이라는 프로그램에서 사용되는 Wilkinson과 Rogers 기호들과 유사한 기능입니다.
+다른 점이 있다면, GLIM이나 Genstat에서는 @samp{@code{.}}라는 연산자를 사용하지만 이것은 @R{}에서는 @samp{@code{:}}라는 기호를 사용합니다. 
+그 이유는 @samp{@code{.}}라는 기호는 @R{}에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
 
-The notation is summarized below (based on Chambers & Hastie, 1992,
-p.29):
+@c The notation is summarized below (based on Chambers & Hastie, 1992, 
+@c p.29):
 
-각각의 항들에 대한 설명은 다음과 같습니다. 
-
-response는 종속변수가 1개로 이루어진 열벡터가 될 수도 있고, 혹은 여러개의 종속변수들로
-이루어진 행렬이 될 수도 있습니다. op_i이라는 것은 + 혹은 -이라는 연산자를 의미합니다. 연산자 +는 설명변수 term_i를 회귀분석에 포함시킨다느느 의미이고 -는 포함시키지 않는다는 의미입니다. term_i라는 것은 다음의 항목들중에 한가지가 될 수 있습니다. 벡터 혹은 행렬, 또는 1 요인 (factor) 요인, 벡터, 행렬등을 +와 -라는 연산자를 이용하여 복합적으로 표현한 항 위의 모든 경우들을 행렬식으로 나타낼 경우, 각각의 term_i은 디자인 매트릭스에 의해서 선형회귀분석에 포함될 것인지 말 것인지가 결정되어 집니다. 1 이라는 열벡터는 인터셉트를 의미하는데, 이 열벡터는 특별히 지정하지 않아도 항상 디자인 매트릭스에 포함되어 있다고 생각하셔야 합니다.
-
-formula operators는 GLIM 혹은 Genstat 에서 사용되는 Wilkinson과 Rogers라는 연산자의 개념과 유사합니다. 그러나 다른점이 있다면 GLIM이나 Genstat에서는 ‘.’이라는 연산자를 사용하지만 이것은 R에서는 ‘:’이라는 심볼을 사용합니다. 그 이유는 ‘.’심볼은 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
-
-다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 model formula내에서 사용되는 formula operators들에 대해서 정리한 것입니다.
-
+다음은 Chambers & Hastie (1991, p.29)의 내용을 기초로 모델식(model formula)내에서 사용되는 모델 연산자(formula operators)들에 대해서 정리한 것입니다.
 
 @table @code
 @item @var{Y} ~ @var{M}
 @c @var{Y} is modeled as @var{M}.
 
-~ (틸다)는 Y를 M에서 정의된 모델에 관계시킨다는 의미입니다. 여기에서 M 이라는 것은 model formula에서 정의한 모델의 약자로 기억하시는 것이 편리합니다.
+@code{~}(틸다)는 @var{Y}를 @var{M} 부분에서 정의된 식을 관계시킨다는 의미입니다. 
+여기에서 @var{M}이라는 것을 정의하고자 하는 모델식(model formula)을 나타내는 기호라고 생각하시는 것이 좋습니다.
 
 @item @var{M_1} + @var{M_2}
 @c Include @var{M_1} and @var{M_2}.
 
-+ (플러스)는 model formula 작성시, 설명 변수 M_1과 또 다른 설명변수 M_2를 동시에 포함하겠다는 의미입니다.
+@var{M_1}와 @var{M_2} 모두 포함합니다.
 
 @item @var{M_1} - @var{M_2}
-Include @var{M_1} leaving out terms of @var{M_2}.
+@c Include @var{M_1} leaving out terms of @var{M_2}.
 
-- (마이너스)는 model formula 정의시, 설명변수 M_1은 포함하되 M_2는 포함시키지 않는다는 의미입니다.
+@var{M_1}은 포함하되 @var{M_2}는 포함시키지 않습니다.
 
 @item @var{M_1} : @var{M_2}
-The tensor product of @var{M_1} and @var{M_2}.  If both terms are
-factors, then the ``subclasses'' factor.
+@c The tensor product of @var{M_1} and @var{M_2}.  If both terms are
+@c factors, then the ``subclasses'' factor.
 
-: (세미콜론)은 model formula 정의시 , M_1과 M_2의 tensor product에 해당하는 모든 값을 활용한다는 의미입니다. 만약, M_1과 M_2가 요인이라면, tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들입니다.
+@var{M_1}과 @var{M_2}의 텐서 프라닥트(tensor product)을 이용합니다.
+만약, 두 개의 항 모두 요인이라면 tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들(``subclasses'')입니다.
 
 @item @var{M_1} %in% @var{M_2}
 @c Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding.
 
-이것은 위의 tensor product 와 동일한 표현입니다
+@code{@var{M_1}:@var{M_2}}와 유사하지만 다른 표현 코딩법입니다.
 
 @item @var{M_1} * @var{M_2}
 @code{@var{M_1} + @var{M_2} + @var{M_1}:@var{M_2}}.
@@ -5680,11 +5695,13 @@ factors, then the ``subclasses'' factor.
 @item @var{M}^@var{n}
 @c All terms in @var{M} together with ``interactions'' up to order @var{n}
 
-M의 모든 항들이 n차의 상호작용항(interactions)들과 함께 사용되었다는 의미입니다.  
+@var{M}의 모든 항들이 @var{n}차의 상호작용항(``interactions'')들과 함께 사용되었다는 의미입니다.  
 
 @item I(@var{M})
 @c Insulate @var{M}.  Inside @var{M} all operators have their normal
 @c arithmetic meaning, and that term appears in the model matrix.
+@code{I()} 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모델식(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 @R{}은 괄호안에서 사용되는 표현식에 포함된 연산자들이 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 
+따라서, 모델식 정의시 사용되는 @code{+} 혹은 @code{-}라는 기호는 모형연산자(model operators)로서 설명변수를 모델식(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, 모델식를 구성하는 한개의 항에 사용된 @code{I(M_1+M_2)}이라는 것은 @code{M_1}과 @code{M_2}을 활용하여 그 수학적 결과를 하나의 변수로서 모델식에 이용하겠다는 의미입니다. 
 @end table
 
 @c Note that inside the parentheses that usually enclose function arguments
@@ -5697,7 +5714,9 @@ M의 모든 항들이 n차의 상호작용항(interactions)들과 함께 사용�
 @c implicit.  This is not the case in other contexts, for example in
 @c specifying nonlinear models.
 
-I() 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모형구성(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들은 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 따라서, model formula 정의시 사용되는 + 혹은 - 라는 연산자는 모형연산자(model operators)로서 설명변수를 모형구성(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, model formula를 구성하는 한개의 항에 사용된 I(M_1+M_2)이라는 것은 변수 M_1과 변수 M_2를 활용한 그 수학적 결과를 하나의 변수로서 모형구성(model formula)에 이용하겠다는 의미입니다. 모형구성(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
+모델식(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 
+그리고 우리는 이 모형의 모수들을 구하는데 @R{}을 사용하는 것입니다. 
+그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
 
 @menu
 * Contrasts::                   
