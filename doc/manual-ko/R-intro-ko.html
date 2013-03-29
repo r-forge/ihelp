@@ -195,7 +195,7 @@ p {
 <li><a href="#Customizing-the-environment">10.8 Customizing the environment</a>
 <li><a href="#Object-orientation">10.9 Classes, generic functions and object orientation</a>
 </li></ul>
-<li><a name="toc_Statistical-models-in-R" href="#Statistical-models-in-R">11 R에서의 통계모델들  (의역 일정 - 2013.03.29)</a>
+<li><a name="toc_Statistical-models-in-R" href="#Statistical-models-in-R">11 R에서 사용되는 통계모델들</a>
 <ul>
 <li><a href="#Formulae-for-statistical-models">11.1 Defining statistical models; formulae</a>
 <ul>
@@ -5405,26 +5405,27 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Statistical models in R -->
-<h2 class="chapter">11 R에서의 통계모델들  (의역 일정 - 2013.03.29)</h2>
+<h2 class="chapter">11 R에서 사용되는 통계모델들</h2>
 
 <p><a name="index-Statistical-models-176"></a>
-This section presumes the reader has some familiarity with statistical
-methodology, in particular with regression analysis and the analysis of
-variance.  Later we make some rather more ambitious presumptions, namely
-that something is known about generalized linear models and nonlinear
-regression.
+<!-- This section presumes the reader has some familiarity with statistical -->
+<!-- methodology, in particular with regression analysis and the analysis of -->
+<!-- variance.  Later we make some rather more ambitious presumptions, namely -->
+<!-- that something is known about generalized linear models and nonlinear -->
+<!-- regression. -->
 
-   <p>이번 세션에서 다루어지는 내용은 여러분이 회귀분석 (regression analysis) 혹은 분산분석 (analysis of variance)를 어느 정도 알고 있다고 가정한 상태에서 작성되었습니다. 그리고 이 섹션의 후반부에서는 여러분들이 일반 선형화 모델 (generalised linear model)과 비선형 모델 (nonlinear model) 을 이미 알고 있다고 전제합니다.
-
-   <p>The requirements for fitting statistical models are sufficiently well
-defined to make it possible to construct general tools that apply in a
-broad spectrum of problems.
-
+<!-- The requirements for fitting statistical models are sufficiently well -->
+<!-- defined to make it possible to construct general tools that apply in a -->
+<!-- broad spectrum of problems. -->
 <!-- @R{} provides an interlocking suite of facilities that make fitting -->
 <!-- statistical models very simple.  As we mention in the introduction, the -->
 <!-- basic output is minimal, and one needs to ask for the details by calling -->
 <!-- extractor functions. -->
-   <p>R은 여러분들이 일반적인 통계모형을 개발하는데 도움을 주고자 다양한 기능을 제공하고 있습니다. 이 문서의 처음부분에서 언급한 것과 같이 R은 최소한의 결과물만을 제공하기 때문에, 분석에 대한 더욱 상세한 내용이 필요한 경우에는 분석결과의 출력에 관련된 출력함수 (extractor functions)들을 이용하여 확인하셔야 합니다.
+   <p>이번 세션에서 다루어지는 내용은 독자가 이미 회귀분석(regression analysis) 또는 분산분석(analysis of variance)에 대해서 어느 정도 알고 있다고 가정한 상태에서 작성한 것입니다. 
+그리고, 본 섹션의 후반부에서 다루어지게 될 일반 선형화 모델(generalised linear model)과 비선형 모델(nonlinear model)에 대해서도 개략적인 내용을 이미 알고 계신다고 가정하였습니다.
+
+   <p>R은 통계모델을 적합하는데 필요한 사항들을 잘 정리하여 다양한 문제에 적용할 수 있도록 보다 일반화된 도구로서 제작해 두었고, 통계모델의 모델들의 적합을 매우 단순하게 처리할 수 있도록 도와주는 기능들을 잘 연결하여 놓은 하나의 묶음을 제공합니다. 
+본 문서의 서두에서 언급한 것과 같이, R은 분석을 수행시 최소한의 결과물만을 보여주기 때문에 중간절차에 대한 상세한 내용을 알아보고자 한다면 이를 확인해 볼 수 있는 기능을 가진 추출계열의 함수(extractor functions)들을 이용하셔야 합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Formulae-for-statistical-models">Formulae for statistical models</a>
