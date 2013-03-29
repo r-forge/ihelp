@@ -5427,20 +5427,30 @@ function (object, ...)
 @end menu
 
 @node Formulae for statistical models, Linear models, Statistical models in R, Statistical models in R
-@section Defining statistical models; formulae
+@c @section Defining statistical models; formulae
+@section 통계적 모델 정의하기; 통계식
 @cindex Formulae
 
 @c The template for a statistical model is a linear regression model with
 @c independent, homoscedastic errors
 
-선형 회귀 모델 (linear regression model)은 다음과 같은 일반적인 형식을 가집니다.
+선형 회귀 모델(linear regression model)은 다음과 같은 일반적인 형식을 가집니다.
+@code{y}는 종속변수이고, @code{x}는 설명변수입니다. 
+@code{p}개의 설명변수가 있고, 이들은 @code{j}라는 첨자를 통해 구분됩니다.
+따라서, @code{x_j}란 @code{j}번째 설명변수를 의미합니다. 
+또한, @code{n}개의 관측대상이 존재하며, 각 관측대상은 첨자 @code{i}를 통해 구분됩니다.
+따라서, @code{y_i}란 @code{i}번째 관측대상으로부터 얻은 종속변수의 값을 의미합니다.
+마지막으로 @code{e_i}란 @code{i}번째 관측대상의 에러항을 의미합니다. 
 
 @ifnottex
 @display
 y_i = sum_@{j=0@}^p beta_j x_@{ij@} + e_i, @ @ @ @ i = 1, @dots{}, n,
 @end display
 @noindent
-where the e_i are NID(0, sigma^2).
+여기에서 e_i은 NID(0, sigma^2)을 따릅니다.  
+이 말의 의미는 오차항(error term)의 평균이 @math{0}이고, 분산이 @code{sigma^2}인 정규분포를 따르는데 각 관측치는 독립(independent)이며 동질적(homoscedastic)이라는 것입니다.
+독립이란 말의 의미는 @code{i}번째 관측치와 @code{i}번째 관측치가 아닌 다른 관측치들과 관계없이 값이 얻어졌으며,
+동질적이라는 말의 의미는 모든 관측치들에 가정되는 분포가 동일하다는 것을 말합니다.
 @end ifnottex
 @tex
 $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
@@ -5449,11 +5459,13 @@ $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
 $$
 @end tex
 
-이때 e_i란 오차항 (error term) 을 의미하며, 오차항은 평균이 0이고 분산이 sigma^2인 정규분포를 따르되 각 관측치는 독립 (independent) 이며 동질적 (homoscedastic) 입니다. 그리고 이것을 오차항 (e_i) 은 NID(0, sigma^2)을 따른다고 씁니다. 독립이란 말의 의미는 i번째 관측치는 i번째 관측치가 아닌 다른 관측치들과 관계가 없으며, 동질적이란 말의 의미는 모든 관측치가 같은 분포로부터 얻어졌다는 것입니다.
-
 @c In matrix terms this would be written
 
-위에서 표현된 회귀분석의 일반식은 개개의 관측치를 기준으로 쓰여졌다면, 아래에 보이는 수식은 모든 관측치들에 대해여 행렬의 형식으로 표현한 것입니다. 
+위에서 표현된 회귀분석의 일반식이 개별 관측치를 기준으로 쓰여졌다면, 아래와 같이 행렬의 형식으로 표현할 수도 있습니다.
+@math{y}는 모든 관측치를 열벡터의 형식을 가진 하나의 종속변수(response variable 혹은 outcome variable) 이라고 하고, 
+@math{X}는 @emph{모델 행렬(model matrix)} 혹은 @emph{디자인 행렬 (design matrix)}이라고 합니다.
+이 디자인 행렬은 크기가 @math{n}행 @math{p}열로 정의되고, 각 열은 설명변수 (explanatory variable)의 값을 가진 열벡터로서 @math{x_0, x_1, ..., x_p} 와 같이 묶여있는 형태입니다.
+일반적으로 @math{x_0}은 @emph{절편항 (intercept term)}으로서 열 벡터의 모든 구성요소의 값이 1로 되어 있는 것을 의미합니다.
 
 @ifnottex
 @display
@@ -5471,23 +5483,22 @@ $$ y = X \beta + e $$
 @c the determining variables.  Very often @math{x_0}
 @c will be a column of ones defining an @emph{intercept} term.
 
-따라서 y는 모든 관측치를 한개의 열벡터의 형식을 가진 종속변수(response variable 혹은 outcome variable) 이라고 하고, X은 회귀분석의 모델을 정의하는 행렬로서 모델 매트릭스(model matrix) 혹은 디자인매트릭스(design matrix)라고 합니다. 이 디자인 매트릭스는 그 사이즈가 n행 p열로 정의되는데, 각 열은 p개의 설명변수(explanatory variable)로서 x_0, x_1, ..., x_p 표시합니다. 일반적으로 x_0 은 상수항(intercept term)으로서 x_0라는 열 벡터의 모든 구성요소가 1로 이루어진 것으로 정의합니다.
 
-@subsubheading Examples
+@c @subsubheading Examples
+@subsubheading 예제들
 
-Before giving a formal specification, a few examples may usefully set
-the picture.
-
-여기에서 다루는 내용은 사용자가 R을 이용하여 통계분석의 수행시 필요한 정보를 담고 있습니다.
+@c Before giving a formal specification, a few examples may usefully set
+@c the picture.
 
 @c Suppose @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{} are
 @c numeric variables, @code{X} is a matrix and @code{A}, @code{B},
 @c @code{C}, @dots{} are factors.  The following formulae on the left
 @c side below specify statistical models as described on the right.
 
-먼저 y, x, x0, x1, ... 가 모두 수치형 열벡터라고 가정합니다. 또한, X 는 행렬이고, A, B, C, ... 는 요인 들(factors)을 나타낸다고 가정합니다.
-
-그럼 이제부터 선형 회귀 모형 (linear equation 혹은 model formula)을 정의해봅니다. (역자는 model formula라는 영문을 그대로 사용할 것입니다. 그 이유는 model formula가 R에서 내부적으로 통일된 용어이기 때문입니다).
+몇 가지 예를 들어봄으로서 이해를 돕도록 하겠습니다.
+먼저 @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{}가 모두 수치형 벡터라고 가정합니다.
+@code{X}는 행렬이고 @code{A}, @code{B}, @code{C}, @dots{}는 요인들을 나타낸다고 가정합니다.
+그럼, 이제부터 통계모델을 @R{}에서 어떻게 지정하는지 알아보도록 하겠습니다.
 
 @table @code
 @item y ~ x
@@ -5496,9 +5507,10 @@ the picture.
 @c @math{x}.  The first has an implicit intercept term, and the second an
 @c explicit one.
 
-두가지 표현 모두 종속변수 y를 x 라는 한개의 설명변수를 이용하여 설명하고자 하는 단순선
-형회귀분석입니다. 가장 기본적인 수학적 모델이 인터셉트를 포함하므로 R은 기본적으로 분
-석을 수행할 때 인터셉트를 포함한다고 가정합니다.
+이 두가지 표현 모두 주어진 설명변수 @code{x}를 이용한 @code{y}의 단순선형회귀모델 (simple linear regression model)을 의미합니다.
+여기에서 단순이라는 말의 의미는 설명변수의 개수가 1개임을 의미합니다.
+첫번째 식은 절편항을 명시하지 않았으나, 두번째 식은 절편항을 명시하였습니다.
+절편항에 대한 특별한 명시가 없다면 @R{}은 기본적으로 디자인행렬에 절편항을 포함시킵니다.
 
 @item y ~ 0 + x
 @itemx y ~ -1 + x
@@ -5506,22 +5518,21 @@ the picture.
 @c Simple linear regression of @math{y} on @math{x} through the origin
 @c (that is, without an intercept term).
 
-세가지 표현 모두 단순선형회귀 모형을 나타내지만 인터셉트항을 가지고 있지 않을 경우에
-사용합니다.
+위와 동일한 @code{x}를 이용한 @code{y}의 단순선형회귀모델이지만, 이는 절편항을 포함하지 않는 경우를 표현하는 세가지 방법입니다.
 
 @item log(y) ~ x1 + x2
-Multiple regression of the transformed variable,
+@c Multiple regression of the transformed variable,
 
-log(y)에 의해 변환된 종속변수의 값을 2개의 설명변수 x1 과 x2를 이용하여 설명하고자 하
-는 다중회귀분석(multiple regression)입니다.
-
+이는 두개의 설명변수 @code{x1}과 @code{x2}를 이용하여
+@code{y}가 
 @ifnottex
 log(y),
 @end ifnottex
 @tex
 $\log(y)$,
 @end tex
-on @math{x1} and @math{x2} (with an implicit intercept term).
+로 변환된 종속변수에 대한 다중선형회귀모델 (multiple regression)입니다.
+@c on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
 
