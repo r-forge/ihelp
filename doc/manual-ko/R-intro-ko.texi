@@ -5725,7 +5725,7 @@ factor @math{C}.
 
 @node Contrasts,  , Formulae for statistical models, Formulae for statistical models
 @c @subsection Contrasts
-@subsection 대조하기 (Contrasts)
+@subsection 대조 (Contrasts)
 @cindex Contrasts
 
 @c We need at least some idea how the model formulae specify the columns of
@@ -5972,7 +5972,8 @@ coef    family     plot         residuals
 
 
 @node Analysis of variance and model comparison, Updating fitted models, Generic functions for extracting model information, Statistical models in R
-@section Analysis of variance and model comparison
+@c @section Analysis of variance and model comparison
+@section 분산분석과 모델비교
 @cindex Analysis of variance
 
 @c The model fitting function @code{aov(@code{formula},
@@ -5987,7 +5988,10 @@ coef    family     plot         residuals
 @c balanced incomplete block designs with recovery of inter-block
 @c information.  The model formula
 
-lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나, 분산분석이라는 통계적 방법을 이용하여 데이터를 적합하는데 가장 손쉽게 사용되는 aov(formula, data=data.frame)이라는 함수가 있습니다. 이 함수로부터 반환되는 리스트형식의 결과는 Generic functions for extracting model information에서 설명한 제네릭 함수들을 그대로 적용하여 출력해 낼 수 있습니다. 그러나, aov()라는 함수에 대해서 반드시 강조해야할 장점이 있습니다. 그것은 split plot experiment (한국말 모름) 혹은 블럭간의 정보를 추가적으로 활용해야 하는 balanced incomplete block design (한국말모름)와 같이 에러항이 다중구조를 가지는 통계적 방법을 손쉽게 구현할 수 있다는 것입니다. 이것은 multiple stratum experiment (한국말 모름)와 같은 통계적 방법에서 error strata (한국말 모름) 때문에 생기는 에러항에 대한 복합적 다중구조를 함수 aov() 내부에서 함께 쓰이는 함수 Error()의 strata.formula라는 인자를 통하여 쉽게 정의할 수 있기 때문입니다. 가장 간단한 예로, strata.formula는 요인의 수준간 (between)와 수준내 (within) 분석이 허용하는 two strata experiment (한국말 모름)을 정의할 수 있습니다.
+@code{lm()}이라는 함수의 사용방법과 그 작동원리가 비슷하나, 분산분석 (analysis of variance)을 수행하는 @code{aov(@code{formula}, data=@var{data.frame})}이라는 함수가 있습니다. 
+이 함수로부터 반환되는 리스트형식의 결과는 @ref{Generic functions for extracting model information}에서 설명한 것과 같이 제네릭 함수(generic functions)들을 그대로 적용하여 추출할 수 있습니다.
+그러나, @code{aov()}라는 함수에 대해서 반드시 강조해야할 장점이 있습니다. 
+그것은 split plot experiment 또는 블럭간(inter-block)의 정보를 활용해야 하는 balanced incomplete block design와 같이 에러항이 다중구조(multiple error strata)를 가지는 모델을 사용할 수 있다는 것입니다.
 
 @example
 @var{response} ~ @var{mean.formula} + Error(@var{strata.formula})
@@ -6000,10 +6004,13 @@ lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나,
 @c simply a factor, when it defines a two strata experiment, namely between
 @c and within the levels of the factor.
 
+위의 모델식은 @var{strata.formula}에 의해서 정의된 error strata 와 함께 사용되는 multi-stratum experiement를 정의합니다.
+가장 간단한 예로, 요인의 수준간(between)와 수준내(within)분석을 하는 two strata experiment를 정의할 때 @var{strata.formula}는 단순히 요인을 사용하면 됩니다.
+
 @c For example, with all determining variables factors, a model formula such
 @c as that in:
 
-예를들어, 아래와 같은 모형은 v + n*p*k이라는 mean model (정확한 한국말 모름)과Error(farms/blocks)로 표현되는 오차항의 합으로 표현되는 실험계획임을 알 수 있는데, 여기에서 사용된 함수 Error()는 오차항에 대하여 “between farms”, “within farms”, 그리고 “within block”이라는 다중구조를 정의해 줍니다.
+예를들어, 아래와 같은 모형은 @code{v + n*p*k}이라는 mean model과 ``between farms'', ``within farms'', 그리고 ``within block''이라는 세가지 error strata를 묘사할 때 사용됩니다.
 
 @example
 > fm <- aov(yield ~ v + n*p*k + Error(farms/blocks), data=farm.data)
@@ -6019,7 +6026,8 @@ lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나,
 @end menu
 
 @node ANOVA tables,  , Analysis of variance and model comparison, Analysis of variance and model comparison
-@subsection ANOVA tables
+@c @subsection ANOVA tables
+@subsection ANOVA 테이블
 
 @c Note also that the analysis of variance table (or tables) are for a
 @c sequence of fitted models.  The sums of squares shown are the decrease
@@ -6037,20 +6045,31 @@ lm()이라는 함수의 사용방법과 그 작동원리가 매우 비슷하나,
 @c compare two or more models directly using the @code{anova()} function.
 @c @findex anova
 
-aov()란 함수는 여러개의 적합된 모델에 대한 분산분석표를 제공해 줍니다. 일반적으로 항을 하나씩 추가함으로서 얻어지는 여러개의 적합된 모델의 Sum of Squares (SS)은 잔차제곱의 합이 감소함을 보여줍니다. 특히, orthogonal experiment (한국말 모름)의 경우에는 항을 추가하는 순서가 중요하지 않습니다. Multistratum experiments (한국말 모름)의 경우 역시 종속변수의 값을 오차항이 가지는 계층에 순차적으로 mean model 을 영사시켜 나감으로서 분산분석이 가능해집니다. 이에 대한 자세한 사항은 Chambers & Hastie (1992)의 책을 참고하시길 바랍니다. 이러한 통계분석이 요구될 경우 한개의 모델에 대한 적합결과를 완전한 분산분석표를 통하여 보는 것보다 2개 혹은 그 이상의 모델을 아래와 같이 anova()함수를 이용하여 종합적으로 한번에 비교해 본다면 매우 편리할 것입니다. 그러나 이러한 방법을 취하는 것은 단순히 모형에 대한 이해를 구조화함으로서 적합한 모델을 손쉽게 찾기 위한 방법 이외의 다른 목적이 없다는 것을 사용자는 반드시 인지하고 있어야 합니다.
+@code{aov()}란 함수는 적합된 일련의 모델에 대한 분산분석표 (analysis of variance table)를 제공해 줍니다. 
+일반적으로 Sum of Squares (SS)은 주어진 일련의 모델들에서 적합에 사용된 항들이 모델에 유지된다고 할때 새로운 항이 하나씩 추가될 때마다 감소됩니다.
+
+특히, orthogonal experiment의 경우에는 항을 추가하는 순서가 중요하지 않습니다. 
+Multistratum experiments 경우 역시 종속변수의 값을 오차항이 가지는 계층에 순차적으로 mean model 을 영사시켜 나감으로서 분산분석이 가능해집니다. 
+이에 대한 자세한 사항은 Chambers & Hastie (1992)의 책을 참고하시길 바랍니다. 
+
+이렇게 두 개이상의 모델들을 비교해야 할 경우 하나의 모델에 대한 적합결과를 완전한 분산분석표를 따로따로 비교하는 것보다는 종합적으로 한 번에 볼 수 있다면 매우 편리할 것입니다.
+이러한 방법으로 @code{anova()}함수를 이용하면 적합된 모델간의 차이를 보여주는 표를 생성해줍니다.
+이때 적합의 방법은 hierarchical sequence를 가집니다.
+그러나 이러한 방법은 단순히 모형에 대한 이해를 구조화함으로서 적합한 모델을 손쉽게 찾기 위한 방법일뿐 다른 목적은 없습니다.
 
 @example
 > anova(@var{fitted.model.1}, @var{fitted.model.2}, @dots{})
 @end example
 
-The display is then an ANOVA table showing the differences between the
-fitted models when fitted in sequence.  The fitted models being compared
-would usually be an hierarchical sequence, of course.  This does not
-give different information to the default, but rather makes it easier to
-comprehend and control.
+@c The display is then an ANOVA table showing the differences between the
+@c fitted models when fitted in sequence.  The fitted models being compared
+@c would usually be an hierarchical sequence, of course.  This does not
+@c give different information to the default, but rather makes it easier to
+@c comprehend and control.
 
 @node Updating fitted models, Generalized linear models, Analysis of variance and model comparison, Statistical models in R
-@section Updating fitted models
+@c @section Updating fitted models
+@section 적합된 모델들을 업데이트하기
 @cindex Updating fitted models
 
 @c The @code{update()} function is largely a convenience function that
@@ -6058,7 +6077,7 @@ comprehend and control.
 @c usually by just a few additional or removed terms.  Its form is
 @c @findex update
 
-아래에 예제에서 사용된 update()이라는 함수는 이전에 적합된 모형에 몇 개의 항을 추가 혹은 제거를 통하여 새로운 모형으로서 적합시키고자 할 때 매우 유용한 함수입니다.
+아래에 예제에서 사용된 @code{update()}이라는 함수는 이전에 적합된 모델에 몇 개의 항의 추가 혹은 제거를 통하여 새로운 모형으로서 적합시키고자 할 때 매우 유용한 함수입니다.
 
 @example
 > @var{new.model} <- update(@var{old.model}, @var{new.formula})
@@ -6070,7 +6089,14 @@ comprehend and control.
 @c only, can be used to stand for ``the corresponding part of the old model
 @c formula''.  For example,
 
-앞서 언급했던 것과 같이 R은 변수명에 ‘.’을 사용하는 것을 허용하므로 위의 예제와 같 new.model이라는 변수명을 사용함에 아무런 문제가 없습니다. 그러나, 함수 update()를 사용함에 있어서 ‘.’를 사용할 때는 이전 적합시 사용한 모델의 동일한 부분을 다시 사용함을 R시스템이 내부적으로 인식하도록 하는 역할을 합니다. 좀 더 확실한 이해를 이해서 아래의 예제를 살펴봅니다.
+@R{}은 변수명에 @samp{@code{.}}을 사용하는 것을 허용하므로 위의 예제와 같이 new.model이라는 변수명을 사용함에 아무런 문제가 없습니다. 
+그러나, 함수 @code{update()}를 사용함에 있어서 @samp{@code{.}}은 이전 적합에서 사용한 모델의 동일한 부분을 다시 사용함을 @R{} 시스템에게 인식하도록 하는 역할을 합니다. 
+좀 더 확실한 이해를 이해서 아래의 예제를 살펴봅니다.
+먼저 @code{production}라는 데이터 내의 @code{x1, x2, x3, x4, x5}이라는 5개의 설명변수를 이용하여  종속변수 @code{y}를 설명하고자 적합한 모델의 객체를 @code{fm05}에 저장합니다.
+이렇게 이미 적합에 사용된 모형에 새로운 6번째 설명변수를 추가하여 모형을 재적합하고 싶을 때, @samp{@code{.}}를 사용합니다. 
+그리고, @code{update()} 함수가 이미 @code{production} 데이터를 재적합을 위해서 홀딩하고 있기 때문에 @code{data=production}를 다시 입력할 필요는 없습니다.  
+위의 코드의 맨 마지막라인은 square root를 통해 변환된 종속변수 @code{y}를 6개의 설명변수로 설명하고자 하는 모델을 재적합한다는 의미입니다.
+
 
 @example
 > fm05 <- lm(y ~ x1 + x2 + x3 + x4 + x5, data = production)
@@ -6084,24 +6110,23 @@ comprehend and control.
 @c a sixth regressor variable, and fit a variant on the model where the
 @c response had a square root transform applied.
 
-먼저, production이라는 데이터가 가지고 있는 5개의 설명변수를 가지고 y라는 종속변수를 설명하고자 적합된 모델의 객체가 fm05에 저장되었습니다. 이렇게 이미 적합에 사용된 모형에 새로운 6번째 설명변수를 추가하여 모형을 재적합하고 싶을 때, ‘.’를 사용합니다. 이때 data=production이라는 인자를 다시 입력할 필요는 없습니다. 그 이유는 update()이라는 함수가 이미 production이라는 데이터를 재적합을 위해서 홀딩하고 있기 때문입니다. 위의 코드의 맨 마지막라인은 square root라는 변환된 종속변수 y의 값을 6개의 설명변수로 설명하고자 하는 모델을 적합한다는 의미입니다.
-
-Note especially that if the @code{data=} argument is specified on the
-original call to the model fitting function, this information is passed on
-through the fitted model object to @code{update()} and its allies.
+@c Note especially that if the @code{data=} argument is specified on the
+@c original call to the model fitting function, this information is passed on
+@c through the fitted model object to @code{update()} and its allies.
 
 @c The name @samp{.} can also be used in other contexts, but with slightly
 @c different meaning.  For example
 
-그러나, ‘.’는 아래의 코드에서 보여지는 것과 같이 다른 용도로 사용될 수 있기 때문에 사용자에게 ‘.’를 사용함에 있어서 주의가 요구됩니다. 이것은 ‘.’가 종속변수 y를 설명함에 있어서 production이라는 데이터안에 있는 모든 변수를 다 이용하여 모형을 적합하겠다는 의미입니다.
+그러나, @samp{@code{.}}는 아래의 코드에서 보여지는 것과 같이 다른 용도로도 사용될 수 있기 때문에 @samp{@code{.}}를 사용함에 있어서 주의가 요구됩니다.
+여기에서의 @samp{@code{.}}은 종속변수 @code{y}를 설명함에 있어서 @code{production} 데이터안에 있는 @emph{모든 변수를 다 이용}하여 모형을 적합하겠다는 의미입니다.
 
 @example
 > fmfull <- lm(y ~ . , data = production)
 @end example
 
 @noindent
-would fit a model with response @code{y} and regressor variables
-@emph{all other variables in the data frame @code{production}}.
+@c would fit a model with response @code{y} and regressor variables
+@c @emph{all other variables in the data frame @code{production}}.
 
 @c Other functions for exploring incremental sequences of models are
 @c @code{add1()}, @code{drop1()} and @code{step()}.
@@ -6111,7 +6136,8 @@ would fit a model with response @code{y} and regressor variables
 @c The names of these give a good clue to their purpose, but for full
 @c details see the on-line help.
 
-순차적으로 여러개의 모형을 살펴보기 위한 함수로서 add1(), drop1(), 그리고 step()이라는 함수들이 있는데, 이들은 이름 그대로의 의미를 가집니다. 더 자세한 사항은 온라인 도움말을 살펴보시길 바랍니다.
+순차적으로 증가하는 형식의 여러가지 모델을 비교하기 위해서 @code{add1()}, @code{drop1()} 그리고 @code{step()}와 같은 함수들을 살펴보시는 것은 많은 도움이 될 것입니다.
+이 함수들은 이름 그대로의 목적을 가지고 있는데, 자세한 사항은 각 함수의 도움말을 살펴보시길 바랍니다.
 
 @node Generalized linear models, Nonlinear least squares and maximum likelihood models, Updating fitted models, Statistical models in R
 @section Generalized linear models
