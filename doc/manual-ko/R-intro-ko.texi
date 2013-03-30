@@ -6297,7 +6297,8 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모델에 필요한 다른 정보들과 조합은 일반선형모델의 @emph{페밀리(family)}를 결정하게 됩니다. 
 
 @node The glm() function,  , Families, Generalized linear models
-@subsection The @code{glm()} function
+@c @subsection The @code{glm()} function
+@subsection 함수 @code{glm()}
 @findex glm
 
 @c Since the distribution of the response depends on the stimulus variables
@@ -6308,7 +6309,9 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c The @R{} function to fit a generalized linear model is @code{glm()}
 @c which uses the form
 
-GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관계로 설명하므로, 선형회귀분석에서 모델을 적합하는데 사용된 방식이 GLM에서도 선형관계를 설명하는데 이용될 수 있습니다. R은 GLM 을 수행하기 위해서 아래와 같은 형식을 가지는 glm()이라는 함수를 제공하고 있습니다. 함수의 이용방법은 family라는 클래스를 지정하는 것을 제외하고는 lm()의 사용방식과 동일합니다.
+일반선형모델은 종속변수의 분포를 오로지 설명변수에 대한 선형관계로 설명하므로, 선형회귀분석에서 모델을 적합하는데 사용된 방식이 일반선형모델에서도 선형관계를 설명하는데 이용될 수 있습니다.
+그러나, 특정한 방법으로 페밀리를 지정해 주어야 합니다. 
+일반선형모델을 적합하는데 사용되는 @R{}함수는 @code{glm()}이라고 하고, 아래와 같은 사용법을 가집니다.
 
 @example
 > @var{fitted.model} <- glm(@var{formula}, family=@var{family.generator}, data=@var{data.frame})
@@ -6327,17 +6330,28 @@ GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관�
 @c name, in parentheses as a parameter.  In the case of the @code{quasi}
 @c family, the variance function may also be specified in this way.
 
-여기에서 family를 지정하기 위해서 family.generator라는 인자가 사용되는데, 이것은 GLM이 모형을 정의하고 추정하는 그 모든 과정을 수행하기 위해 필요한 제네릭함수들을 불러오기 위해서 사용됩니다. 이는 매우 복잡한 것같이 생각되지만, 실제로 family의 이름만을 결정하면 되기 때문에 매우 GLM을 매우 간편하게 수행할 수 있도록 해줍니다. 여기에서 family.generator가 가질 수 있는 이름은 Families이라는 섹션에서 우리가 family에 대해서 언급할 때 사용한 표에 “Family Name”이라는 열에 나열되어 있습니다. 또한 이 표는 각 family에서 사용이 가능한 링크함수들에 대해서도 나열하고 있습니다. glm()함수를 사용시, 특정 링크 함수의 사용은 family.generator의 이름뒤에 괄호와 함께 링크함수의 이름을 지정해 줌으로 사용이 가능합니다. quasi family의 경우, variance function 역시 같은 방법으로 지정하게 됩니다.
+함수의 이용방법은 @code{family}를 지정하는 것을 제외하고는 @code{lm()}함수의 사용과 동일합니다.
+단지 새로운 부분은 어떤 페밀리가 사용되는지 알려주는 @code{family.generator}이라는 부분인데, 이는 함수들의 목록을 생성해주고 일반선형모형을 정의하고 추정하는데 필요한 프로세스를 표현하는 함수의 이름입니다.
+매우 복잡한 것같이 생각되지만, 실제로는 매우 쉽습니다.
+
+@code{family.generator}가 가질 수 있는 이름은 @ref{Families}라는 섹션에서 페리밀에 대해 정리한 표를 살펴보시면 됩니다.
+이 표에서 페밀리명(family name) 열에 있는 이름을 사용하게 됩니다.
+또한 페밀리에서 사용이 가능한 함수들의 이름을 나열하고 있는데, 이는 @code{glm()}함수를 사용시 @code{family.generator}의 이름 바로 뒤에 괄호와 함께 사용하시면 됩니다. 
+@code{쿼시페밀리(quasi family)}의 사용경우 역시 이와 같은 방식으로 variance function가 지정될 수 있습니다.
 
 @c Some examples make the process clear.
 
 아래의 예제는 여러분이 glm()함수를 이용하여 GLM 을 수행하는 방법을 보다 쉽게 이해할 수 있도록 도와줄 것입니다.
 
-@subsubheading The @code{gaussian} family
+@c @subsubheading The @code{gaussian} family
+@subsubheading 가우시안 (@code{gaussian}) 페밀리
 
 @c A call such as
 
-아래에서 보이는 것과 같이 glm()함수를 이용하여 gaussian (가우시안) family에 해당하는 문제를 해결하는 것은 lm()을 이용하여 문제를 해결하는 것과 수치적으로 아무런 차이는 없으나 비효율적입니다. 그 이유는 family.generator에 어떤 특정한 링크함수를 사용할 것인가를 알려주지 않았기 때문입니다. 또한, 사용자가 가우시안 페밀리에서 nonstandard (비표준) 링크함수를 이용하여 문제를 풀고자 할 경우, 이는 quasi 패밀리를 통하여 해결해야 합니다. 이 방법은 qausi 페밀리를 소개할때 설명하도록 하겠습니다.
+아래에서 보이는 것과 같이 @code{glm()} 함수를 이용하여 가우시안 (gaussian, 정규분포) 페밀리에 해당하는 문제를 해결하는 것은 @code{lm()}를 이용하여 문제를 해결하는 것과 수치적으로는 아무런 차이가 없으나 비효율적입니다.
+그 이유는 @code{family.generator}에 어떤 특정한 링크함수를 사용할 것인가를 알려주지 않았기 때문입니다. 
+만약, 가우시안 페밀리에서 비표준 (nonstandard) 링크함수를 이용하여 문제를 풀고자 할 경우, 이는 쿼시패밀리를 통하여 해결해야 합니다. 
+이 방법은 쿼시페밀리를 소개할때 설명하도록 하겠습니다.
 
 @example
 > fm <- glm(y ~ x1 + x2, family = gaussian, data = sales)
@@ -6357,18 +6371,21 @@ GLM은 종속변수의 분포를 설명변수의 조합을 오로지 선형관�
 @c link, this can usually be achieved through the @code{quasi} family, as
 @c we shall see later.
 
-@subsubheading The @code{binomial} family
+@c @subsubheading The @code{binomial} family
+@subsubheading 이항 (@code{binomial})분포 페밀리
 
 @c Consider a small, artificial example, from Silvey (1970).
 
-Silvey (1970)에 등장하는 간단한 예를 살펴보도록 하겠습니다.
+Silvey (1970)에서 사용되어진 간단한 예를 보도록 하겠습니다.
 
 @c On the Aegean island of Kalythos the male inhabitants suffer from a
 @c congenital eye disease, the effects of which become more marked with
 @c increasing age.  Samples of islander males of various ages were tested
 @c for blindness and the results recorded.  The data is shown below:
 
-Kalythos 라는 에게해에 있는 한 섬에는 남성들이 선천성 안질환을 가지고 있습니다. 이 안질환은 주로 나이가 들어감에 따라서 진행되어집니다. 아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다.
+Kalythos라는 에게해에 있는 한 섬에는 남성들이 선천성 안질환을 가지고 있습니다. 
+이 안질환은 주로 나이가 들어감에 따라서 진행되어집니다. 
+아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다.
 
 @iftex
 @quotation
@@ -6391,35 +6408,40 @@ Kalythos 라는 에게해에 있는 한 섬에는 남성들이 선천성 안질�
 @c this data, and to estimate for each model the LD50, that is the age at
 @c which the chance of blindness for a male inhabitant is 50%.
 
-우리는 이 데이터에 logistic 과 probit이라는 두가지 모델을 적합시키고 각각의 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이(LD50)를 추정하고자 합니다.
+우리는 이 데이터에 로지스틱(logistic)과 프로빗(probit)이라는 두가지 모델을 적합시키고 각각의 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이(LD50)를 추정하고자 합니다.
 
 @c If @math{y} is the number of blind at age @math{x} and @math{n} the
 @c number tested, both models have the form
-@c @ifnottex
-@c y ~ B(n, F(beta_0 + beta_1 x))
-@c @end ifnottex
-@c @tex
-@c $$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
-@c @end tex
+만약 @math{y}가 연령 @math{x}에서 테스트로부터 확인된 실명한 사람들의 수이고, @math{n}은 테스트를 받은 사람들이라면,
+@ifnottex
+y ~ B(n, F(beta_0 + beta_1 x))
+@end ifnottex
+@tex
+$$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
+@end tex
+이라고 할 수 있습니다.
 @c where for the probit case,
-@c @eqn{F(z) = \Phi(z), F(z) = Phi(z)}
+프로빗의 경우에는 
+@eqn{F(z) = \Phi(z), F(z) = Phi(z)}
 @c is the standard normal distribution function, and in the logit case
+이 정규분포 함수이며, 로짓의 경우에는 
 @c (the default),
-@c @eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}.
+@eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}
+입니다.
 @c In both cases the LD50 is
-@c @ifnottex
-@c LD50 = - beta_0/beta_1
-@c @end ifnottex
-@c @tex
-@c $$ \hbox{LD50} = -\beta_0/\beta_1 $$
-@c @end tex
+두 경우 모두 LD50은 
+@ifnottex
+LD50 = - beta_0/beta_1
+@end ifnottex
+@tex
+$$ \hbox{LD50} = -\beta_0/\beta_1 $$
+@end tex
 @c that is, the point at which the argument of the distribution function is
 @c zero.
+이 되며, 이것은 분포함수 @code{F(z)}의 값을 @math{0}으로 만들어 주는 @code{z}에 해당하게 됩니다.
 
-만약 y가 연령 x에서 테스트로부터 확인한 실명한 사람의 수 n을 나타낸다면, 두 모형 모두 y ~ B(n, F(beta_0 + beta_1 x)) 이라는 형식을 가지게 됩니다. 단, probit 모델의 경우 F(z) = Phi(z) 가 표준정규분포를 따르며, R에서 디폴트로 사용되는 logit 모델인 경우에는 F(z) = e^z/(1+e^z) 입니다. 두 경우 모두, LD50은 LD50 = - beta_0/beta_1 가 되며, 이것은 분포함수 F(z)의 값을 0으로 만들어 주는 z에 해당하게 됩니다.
 
 @c The first step is to set the data up as a data frame
-
 이 문제를 접근하는 가장 첫번째 단계는 모형에서 다룰 데이터를 아래와 같이 데이터프레임의 형식을 갖도록 하는 것입니다.
 
 @example
@@ -6430,29 +6452,30 @@ Kalythos 라는 에게해에 있는 한 섬에는 남성들이 선천성 안질�
 @c To fit a binomial model using @code{glm()} there are three possibilities
 @c for the response:
 
-glm()함수를 이용하여 binomial model (이항모델)을 적합하고자 한다면 아래의 세가지 경우 중 한 가지에 해당될 것입니다.
+@code{glm()}함수를 이용하여 이항모델(binomial model)을 적합하고자 한다면 아래의 세가지 경우 중 한 가지에 해당될 것입니다.
 
-@c @itemize @bullet
-@c @item
+@itemize @bullet
+@item
 @c If the response is a @emph{vector} it is assumed to hold @emph{binary}
 @c data, and so must be a @math{0/1} vector.
+종속변수가 @math{0}과 @math{1}만을 데이터값으로 가지는 @emph{열벡터}인 경우입니다. 
 
-@c @item
+@item
 @c If the response is a @emph{two-column matrix} it is assumed that the
 @c first column holds the number of successes for the trial and the second
 @c holds the number of failures.
+종속변수가 @emph{두개의 열을 가지는 행렬}인데, 첫번째 열은 모든 시행에 대한 성공회수 그리고 두번째 열은 실패회수의 정보를 가진 경우입니다.
 
-@c @item
+@item
 @c If the response is a @emph{factor}, its first level is taken as failure
 @c (0) and all other levels as `success' (1).
-@c @end itemize
+종속변수는 @emph{요인}일 수 있는데, 첫번째 수준이 실패를 의미하는 @math{0}의 값을 가지고, 두번째 레벨은 성공을 의미하는 @math{1}의 값을 가지는 경우입니다.
+@end itemize
 
-종속변수가 0과 1만을 데이터값으로 가지는 열벡터인 경우입니다. 종속변수가 첫번째 열은 각 시행에서의 성공회수 그리고 두번째 열은 실패회수의 정보를 가지고 있는 행렬의 형식을 가지고 있을 수도 있습니다. 또한, 종속변수는 요인의 형식을 가지는 경우도 있을 수 있습니다. 이때, 요인은 두개의 레벨을 가지며, 첫번째 레벨은 실패를 의미하는 0의 값을 가지고 두번째 레벨은 성공을 의미하는 1의 값을 가질 것입니다. 
+@c Here we need the second of these conventions, so we add a matrix to our
+@c data frame:
 
-Here we need the second of these conventions, so we add a matrix to our
-data frame:
-
-여기에서 우리는 두번째의 경우를 다룰 것입니다. 따라서 우리는 아래와 같은 작업을 통하여 데이터프레임에 실패의 정보를 포함하고 있는 열을 추가합니다.
+여기에서는 두번째의 경우를 다룰 것이므로, 아래와 같은 작업을 통하여 데이터프레임에 실패의 정보를 포함하고 있는 열을 추가합니다.
 
 @example
 > kalythos$Ymat <- cbind(kalythos$y, kalythos$n - kalythos$y)
@@ -6467,10 +6490,11 @@ data frame:
 > fml <- glm(Ymat ~ x, family = binomial, data = kalythos)
 @end example
 
-Since the logit link is the default the parameter may be omitted on the
-second call.  To see the results of each fit we could use
+@c Since the logit link is the default the parameter may be omitted on the
+@c second call.  To see the results of each fit we could use
 
-@c 만약 아무런 링크함수를 지정하지 않는다면 R은 기본적으로 logit 링크라고 가정합니다. 적합된 @c 모형의 결과를 보기 위해서 아래와 같이 실행합니다.
+만약 아무런 링크함수를 지정하지 않는다면 @R{}은 기본적으로 @code{logit}링크함수를 이용합니다.
+적합된 모형의 결과를 보기 위해서 아래와 같이 실행합니다.
 
 @example
 > summary(fmp)
@@ -6480,7 +6504,8 @@ second call.  To see the results of each fit we could use
 @c Both models fit (all too) well.  To find the LD50 estimate we can use a
 @c simple function:
 
-두 모형 모두 적합결과가 좋습니다. LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 작성합니다.
+두 모형 모두 적합결과가 좋습니다. 
+LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 작성합니다.
 
 @example
 > ld50 <- function(b) -b[1]/b[2]
@@ -6492,7 +6517,8 @@ second call.  To see the results of each fit we could use
 
 이 데이터로부터의 추정치는 각각 43.663 과 43.601 입니다.
 
-@subsubheading Poisson models
+@c @subsubheading Poisson models
+@subsubheading 포아송 (Poisson) 모델들
 
 @c With the Poisson family the default link is the @code{log}, and in
 @c practice the major use of this family is to fit surrogate Poisson
@@ -6501,7 +6527,9 @@ second call.  To see the results of each fit we could use
 @c further here.  It even forms a major part of the use of non-gaussian
 @c generalized models overall.
 
-Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 Poisson family는 Poisson log-linear model (포이송 로그-선형모델)을 이용하여 빈도데이터 (frequency data)를 적합하는데 사용됩니다. 역자는 추후 문서작성 방향을 고려하여 빈도데이터라는 용어보다는 카운트 데이터라고 사용할 것입니다. 실제로 이런 카운트 데이터는 주로 multinomial distribution을 따르는데, 이것은 매우 중요하고도 방대한 주제이므로 더 이상 이문서에서 다루지는 않습니다. 포이송 페밀리를 이용하는 것은 가우시안페밀리에 해당 하지 않는 GLM의 거의 모든 경우에 해당하므로 매우 중요합니다.
+포아송 페밀리 (Poisson family)의 경우 @code{log}를 기본링크함수로 사용하며, 주로 포아송 로그선형모델 (Poisson log-linear model)을 이용하여 빈도데이터 (frequency data)를 적합하는데 사용됩니다. 
+이런 종류의 데이터는 종종 멀티노미얼 분포(multinomial distribution)을 따르는데, 이것은 매우 중요하고도 방대한 주제이므로 본 문서에서는 다루지 않을 것입니다. 
+포이송 페밀리를 이용하는 것은 가우시안페밀리에 해당하지 않는 거의 모든 경우의 일반선형모형에 해당하므로 매우 중요합니다.
 
 @c Occasionally genuinely Poisson data arises in practice and in the past
 @c it was often analyzed as gaussian data after either a log or a
@@ -6509,14 +6537,15 @@ Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 P
 @c Poisson generalized linear model may be fitted as in the following
 @c example:
 
-과거에는 실무에서 가끔 포이송데이터를 로그 혹은 스퀘어루트를 이용하여 변환된 데이터를 가우시안 분포를 따르는 데이터와 같이 분석을 수행하기도 했었지만, 현재는 아래와 같이 포이송 페밀리를 이용한 GLM을 수행합니다.
+과거에는 실무에서 가끔 포이송데이터를 로그 혹은 스퀘어루트를 이용하여 변환된 데이터를 가우시안 분포를 따르는 데이터와 같이 분석을 수행하기도 했었지만, 현재는 아래와 같이 포이송 페밀리를 이용한 일반선형모형을 수행합니다.
 
 @example
 > fmod <- glm(y ~ A + B + x, family = poisson(link=sqrt),
               data = worm.counts)
 @end example
 
-@subsubheading Quasi-likelihood models
+@c @subsubheading Quasi-likelihood models
+@subsubheading 쿼시-라이클리후드 모델들
 
 @c For all families the variance of the response will depend on the mean
 @c and will have the scale parameter as a multiplier.  The form of
@@ -6524,7 +6553,9 @@ Poisson family 의 경우 log를 기본링크함수로 가정합니다. 주로 P
 @c response distribution; for example for the poisson distribution
 @c @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}.
 
-GLM의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수이며, scale parameter는 단순히 multiplier이라는 공통점을 발견할 수 있을 것입니다. 분산과 평균과의 상관관계는 종속변수분포의 특징이기도 합니다. 예를 들어, 포아송 분포는 평균과 분산이 일치합니다. (즉, Var(y) = mu).
+일반선형모델의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수이며, 스케일파라미터는 계수(multiplier)라는 공통점이 있습니다.
+분산과 평균과의 상관관계는 종속변수분포의 특징이기도 합니다. 
+예를 들어, 포아송 분포는 평균과 분산이 일치합니다. (즉, @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}).
 
 
 @c For quasi-likelihood estimation and inference the precise response
@@ -6535,38 +6566,41 @@ GLM의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수�
 @c gaussian models with non-standard link functions or variance functions,
 @c incidentally.
 
-Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분포를 찾아낸다는 것보다 다소 링크함수와 variance function이 평균과 어떤 관계를 가지고 있는지와 관련이 있습니다. quasi-likelihood를 이용한 추정은 가우시안 분포를 사용하는 경우와 동일한 방법을 사용하므로, 비표준링크함수 혹은 분산함수(variance funtion)를 이용하여 가우시안 모형의 적합을 가능하게 해줍니다.
+쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정과 추론은 정확한 종속변수의 분포가 지정되지 않았으나 링크함수와 variance function이 평균과 어떤 관계를 가지고 있는지와 관련이 있습니다. 
+쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정은 가우시안 분포를 사용하는 경우와 동일한 방법을 사용하므로, 비표준링크함수 혹은 분산함수(variance funtion)를 이용하여 가우시안 모형의 적합을 가능하게 해줍니다.
 
 @c For example, consider fitting the non-linear regression
-@c @ifnottex
-@c y = theta_1 z_1 / (z_2 - theta_2) + e
-@c @end ifnottex
-@c @tex
-@c $$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$
-@c @end tex
+예를들어, 아래와 같은 비선형회귀모델을 적합한다고 가정합니다.
+@ifnottex
+y = theta_1 z_1 / (z_2 - theta_2) + e
+@end ifnottex
+@tex
+$$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$
+@end tex
 @c which may be written alternatively as
-@c @ifnottex
-@c y = 1 / (beta_1 x_1 + beta_2 x_2) + e
-@c @end ifnottex
-@c @tex
-@c $$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
-@c @end tex
+이 모형은 다시 아래와 같이 쓸 수 있습니다.
+@ifnottex
+y = 1 / (beta_1 x_1 + beta_2 x_2) + e
+@end ifnottex
+@tex
+$$ y = {1 \over \beta_1x_1 + \beta_2x_2} + e $$
+@end tex
 @c where
-@c @ifnottex
-@c x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
-@c theta_2/theta_1.
-@c @end ifnottex
-@c @tex
-@c $x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and
-@c $\beta_2=\theta_2/\theta_1$.
-@c @end tex
-
-예를 들어, 비선형회귀모형인 y = theta_1 z_1 / (z_2 - theta_2) + e 에 대한 적합을 생각해 봅시다. 이모형은 다시 y = 1 / (beta_1 x_1 + beta_2 x_2) + e 로도 표현이 가능하며, 이 때 x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 = theta_2/theta_1. 입니다.
+이때, 
+@ifnottex
+x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
+theta_2/theta_1.
+@end ifnottex
+@tex
+$x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and
+$\beta_2=\theta_2/\theta_1$.
+@end tex
+입니다.
 
 @c Supposing a suitable data frame to be set up we could fit this
 @c non-linear regression as
 
-만약, 사용자가 모형에 대응하는 데이터 프레임을 가지고 있다면, 위에서 정의한 비선형회귀 모형은 아래와 같이 적합될 수 있습니다.
+만약, 사용자가 이 모델에 대응하는 데이터 프레임을 가지고 있다면, 위에서 정의한 비선형회귀 모형은 아래와 같이 적합될 수 있습니다.
 
 @example
 > nlfit <- glm(y ~ x1 + x2 - 1,
@@ -6580,7 +6614,8 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 만약, 더 자세한 설명이 필요하다면 매뉴얼과 도움말을 이용하시길 바랍니다.
 
 @node Nonlinear least squares and maximum likelihood models, Some non-standard models, Generalized linear models, Statistical models in R
-@section Nonlinear least squares and maximum likelihood models
+@c @section Nonlinear least squares and maximum likelihood models
+@section 비선형 최소제곱 및 최우추정 모델들
 @cindex Nonlinear least squares
 
 @c Certain forms of nonlinear model can be fitted by Generalized Linear
@@ -6600,7 +6635,13 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c try, and convergence may depend critically upon the quality of the
 @c starting values.
 
-특정한 형식을 가지고 있는 비선형모델은 GLM (glm())에 의하여 적합될 수 있습니다. 그러나, 대부분의 비선형 모델의 경우 적합이란 문제는 수치해석측면의 최적화 문제로서 접근해야만 합니다. R은 이런 비선형 최적화 문제를 위해서 optim()과 nlm()이라는 기능을 제공하고 있습니다. 특히, R 2.2.0 버전부터는 SPlus에서 사용할 수 있었던 ms()과 nlminb()와 같은 기능의 nlminb()을 지원합니다. 이러한 함수들의 기본 동작원리는 여러가지 모수의 값을 반복적으로 적용하여 적합결여지표 (the index of lack-of-fit)의 값을 최소화하는 모수의 값을 추정하는 것입니다. 그러나, 선형회귀에서 사용되는 모수의 추정과는 달리 비선형최적화 방법을 통한 모수의 추정은 만족스러운 수준의 추정치에 수렴하지 않을 수도 있습니다. 그 이유는 여기에 사용되는 수치해석법이 모수에 대한 초기값을 지정해야 하고, 추정치에 대한 수렴이라는 과정은 시작점의 선택에 따라서 크게 달라질 수 있기 때문입니다.
+특정한 형식을 가지고 있는 비선형모델은 일반선형모델의 @code{glm()}에 의하여 적합될 수 있습니다. 
+그러나, 대부분의 비선형 모델의 경우 적합이란 문제는 수치해석측면의 최적화 문제로서 접근해야만 합니다. 
+@R{}은 이런 비선형 최적화 문제를 위해서 @code{optim()}, @code{nlm()}, @code{nlminb()}의 기능을 제공하고 있습니다. 
+특히, @code{nlminb()}는 @R{} 2.2.0 부터는  @SPLUS{}에서 사용할 수 있었던 @code{ms()}와 @code{nlminb()}과 같거나 더 많은 기능을 제공합니다.
+이러한 함수들의 기본 동작원리는 여러가지 모수의 값을 반복적으로 적용하여 적합결여지표 (the index of lack-of-fit)의 값을 최소화하는 모수의 값을 추정하는 것입니다. 
+그러나, 선형회귀에서 사용되는 모수의 추정과는 달리 비선형최적화 방법을 통한 모수의 추정은 만족스러운 수준의 추정치에 수렴하지 않을 수도 있습니다. 
+그 이유는 여기에 사용되는 수치해석법이 모수에 대한 초기값을 지정해야 하고, 추정치에 대한 수렴이라는 과정은 시작점의 선택에 따라서 크게 달라질 수 있기 때문입니다.
 
 @menu
 * Least squares::               
@@ -6608,17 +6649,20 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @end menu
 
 @node Least squares, Maximum likelihood, Nonlinear least squares and maximum likelihood models, Nonlinear least squares and maximum likelihood models
-@subsection Least squares
+@c @subsection Least squares
+@subsection 최소제곱법
 
 @c One way to fit a nonlinear model is by minimizing the sum of the squared
 @c errors (SSE) or residuals.  This method makes sense if the observed
 @c errors could have plausibly arisen from a normal distribution.
 
-이렇게 비선형 모형을 적합하는 한가지 방법은 오차 혹은 잔차들의 제곱합 (the sum of the squared errors or residuals)을 최소화시키는 것입니다. 이러한 최소제곱법은 관측된 오차들이 정규분포와 유사할 경우 권장됩니다.
+비선형 모형을 적합하는 한가지 방법은 오차 혹은 잔차들의 제곱합 (the sum of the squared errors or residuals)을 최소화시키는 것입니다. 
+이러한 최소제곱법은 관측된 오차들이 정규분포와 유사할 경우 권장됩니다.
 
 @c Here is an example from Bates & Watts (1988), page 51.  The data are:
 
-여기에서 우리는 Bates & Watts (1988), page 51 에 수록된 예제를 하나 살펴보도록 하겠습니다 . 데이터가 아래와 같이 주어졌습니다.
+여기에서는 Bates & Watts (1988), page 51에 수록된 예제를 하나 살펴보도록 하겠습니다 . 
+주어진 데이터는 아래와 같습니다.
 
 @example
 > x <- c(0.02, 0.02, 0.06, 0.06, 0.11, 0.11, 0.22, 0.22, 0.56, 0.56,
@@ -6638,7 +6682,8 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c way to find sensible starting values is to plot the data, guess some
 @c parameter values, and superimpose the model curve using those values.
 
-모형적합을 위해서 우리는 모수에 대한 초기값이 필요합니다. 이러한 초기값을 결정하는 한가지 방법은 데이터를 플랏시켜보아 데이터와 비슷한 유사한 패턴을 생성해주는 분포의 모수를 추측해 보는 것입니다.
+적합을 위해서 모수에 대한 초기값이 필요합니다. 
+이러한 초기값을 결정하는 한가지 방법은 데이터를 플랏시켜보아 데이터와 비슷한 유사한 패턴을 생성해주는 분포의 모수를 추측해 보는 것입니다.
 
 @example
 > plot(x, y)
@@ -6661,7 +6706,8 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c @code{out$estimate} are the least squares estimates of the parameters.
 @c To obtain the approximate standard errors (SE) of the estimates we do:
 
-적합된 모형으로부터 우리는 out$minimum으로부터 SSE를, out$estimate로부터 최소제곱법을 이용하여 추정된 모수의 값을 확인할 수 있습니다. 추정된 모수의 근사 표준편차는 아래와 같이 계산됩니다.
+적합된 모형으로부터 @code{out$minimum}는 SSE를, @code{out$estimate}는 최소제곱법을 이용하여 추정된 모수의 값을 확인할 수 있습니다. 
+추정된 모수의 표준오차(standard error, SE)는 아래와 같이 근사되어집니다.
 
 @example
 > sqrt(diag(2*out$minimum/(length(y) - 2) * solve(out$hessian)))
@@ -6671,7 +6717,9 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c confidence interval would be the parameter estimate @eqn{\pm, +/-} 1.96
 @c SE.  We can superimpose the least squares fit on a new plot:
 
-위의 공식에서 사용된 숫자 2는 모수의 개수를 의미합니다. 모수의 추정치에 대한 95%의 신뢰구간을 구하기 위해서 +/- 1.96 SE 를 계산합니다. 최소제곱법으로 적합된 모형을 이용하여 새로운 플랏을 생성하여 데이터와 비교해봅니다.
+위의 공식에서 사용된 숫자 2는 모수의 개수를 의미합니다. 
+모수의 추정치에 대한 95%의 신뢰구간을 구하기 위해서 @eqn{\pm, +/-} 1.96를 계산합니다. 
+최소제곱법으로 적합된 모형을 이용하여 새로운 플랏을 생성하여 데이터와 비교해봅니다.
 
 @example
 > plot(x, y)
@@ -6684,7 +6732,8 @@ Quasi-likelihood 를 이용한 추정과 추론은 정확한 종속변수의 분
 @c for fitting non-linear models by least squares.  The model we have just
 @c fitted is the Michaelis-Menten model, so we can use
 
-R시스템에 내장되어 있는 표준패키지인 stats는 최소제곱방식을 이용하여 비선형모형을 적합하는 방대한 양의 함수들을 제공하고 있습니다. 우리는 위에서 Michaelis-Menten방법을 이용하여 모델을 적합하였으나, 다음과 같은 방법으로도 가능합니다
+표준패키지인 @pkg{stats}는 최소제곱방식을 이용하여 비선형모형을 적합하는 방대한 양의 함수들을 제공하고 있습니다. 
+위에서는 Michaelis-Menten 모델을 이용하여 모델을 적합하였으나, 다음과 같은 방법으로도 가능합니다
 
 @example
 > df <- data.frame(x=x, y=y)
@@ -6713,7 +6762,8 @@ K 0.7651
 @end example
 
 @node Maximum likelihood,  , Least squares, Nonlinear least squares and maximum likelihood models
-@subsection Maximum likelihood
+@c @subsection Maximum likelihood
+@subsection 최우추정법
 @cindex Maximum likelihood
 
 @c Maximum likelihood is a method of nonlinear model fitting that applies
@@ -6723,7 +6773,11 @@ K 0.7651
 @c 108--111.  This example fits a logistic model to dose-response data,
 @c which clearly could also be fit by @code{glm()}.  The data are:
 
-최우추정(Maximum likelihood)이라는 방법 역시 비선형모델을 적합하는데 쓰이며, 오차항이 정규분포를 따르지 않을 경우에도 이용될 수 있습니다. 이 방법의 핵심은 로그-우도(log-likelihood) 함수를 최대화 시켜주는 모수를 찾는것이며, 이것은 네가티브 로그-우도(negative log-likelihood)를 최소화 시켜주는 것과 동일합니다. 우리는 여기에서 Dobson(1990), pp.108–111 에 나오는 예제를 하나 살펴보도록 하겠습니다. 이 예제는 dose-response 데이터에 로지스틱 모형을 적합하는 것이며 glm() 함수를 활용할 수 있습니다. 데이터는 아래와 같습니다.
+최우추정(Maximum likelihood)법 또한 비선형모델을 적합하는데 쓰이며, 오차항이 정규분포를 따르지 않을 경우에도 이용될 수 있습니다. 
+이 방법의 핵심은 로그-우도(log-likelihood) 함수를 최대화 시켜주는 모수를 찾는것이며, 이것은 네가티브 로그-우도(negative log-likelihood)를 최소화 시켜주는 것과 동일합니다. 
+여기에서는 Dobson(1990), pp.108–111 에 나오는 예제를 살펴보도록 하겠습니다. 
+이 예제는 dose-response 데이터에 로지스틱 모형을 적합하는 것이며 @code{glm()}함수를 활용할 수 있습니다. 
+주어진 데이터는 아래와 같습니다.
 
 @example
 > x <- c(1.6907, 1.7242, 1.7552, 1.7842, 1.8113,
@@ -6745,7 +6799,7 @@ K 0.7651
 @c @noindent
 @c We pick sensible starting values and do the fit:
 
-이를 수행하기 위해서 우리는 그럴듯한 초기값 (starting values)를 지정합니다.
+이를 수행하기 위해서 그럴듯한 시작값 (starting values)를 지정합니다.
 
 @example
 > out <- nlm(fn, p = c(-50,20), hessian = TRUE)
@@ -6757,7 +6811,8 @@ K 0.7651
 @c and @code{out$estimate} are the maximum likelihood estimates of the
 @c parameters.  To obtain the approximate SEs of the estimates we do:
 
-적합된 모형으로부터 최소화 된 negative log-likelihood 값을 얻고자 하면 out$minimum을 이용하시고, 모수의 ML추정치를 확인하고 싶으시면 out$estimate을 통하여 얻을 수 있습니다. 추정치에 대한 근사 SE는 아래와 같이 얻어집니다.
+적합된 모형으로부터 최소화 된 음수인 우도함수 (negative log-likelihood) 값은 @code{out$minimum}로부터 얻을 수 있고, 모수의 최우추정치는 @code{out$estimate}을 통하여 얻을 수 있습니다. 
+추정치에 대한 표준오차는 아래와 같이 근사되어집니다.
 
 @example
 > sqrt(diag(solve(out$hessian)))
@@ -6766,33 +6821,36 @@ K 0.7651
 @c A 95% confidence interval would be the parameter estimate @eqn{\pm, +/-}
 @c 1.96 SE.
 
-95% 신뢰구간은 추정된 모수값에 +/-1.96 SE 를 계산하시면 됩니다.
+95% 신뢰구간은 추정된 모수값에 @eqn{\pm, +/-}SE 를 계산하시면 됩니다.
 
 @node Some non-standard models,  , Nonlinear least squares and maximum likelihood models, Statistical models in R
-@section Some non-standard models
+@c @section Some non-standard models
+@section 그외의 비선형 모델들 
 
 @c We conclude this chapter with just a brief mention of some of the other
 @c facilities available in @R{} for special regression and data analysis
 @c problems.
 
-이번 장을 마무리 하기 위해서 우리는 R이 특별한 회귀모형 및 데이터 분석에 어떠한 기능을 제공하는지 간단히 정리해 보았습니다.
+이번 장을 마무리 하기 위해서 @R{}이 특별한 회귀모형 및 데이터 분석에 어떠한 기능들을 사용가능한지 간단히 정리해 보았습니다.
 
-@c @itemize @bullet
-@c @item
-@c @cindex Mixed models
+@itemize @bullet
+@item
+@cindex Mixed models
 @c @strong{Mixed models.}  The recommended @CRANpkg{nlme} package provides
 @c functions @code{lme()} and @code{nlme()}
-@c @findex lme
-@c @findex nlme
+@findex lme
+@findex nlme
 @c for linear and non-linear mixed-effects models, that is linear and
 @c non-linear regressions in which some of the coefficients correspond to
 @c random effects.  These functions make heavy use of formulae to specify
 @c the models.
+@strong{Mixed models}이란 선형 및 비선형 회귀모형의 회귀계수 일부가 random effect을 가지는 모델입니다. 
+이러한 선형 및 비선형 mixed models을 적합하기 위해서 @CRANpkg{nlme}이라는 권장패키지에서 제공되는 @code{lme()}와 @code{nlme()}를 이용할 수 있습니다.
 
-@c @item
-@c @cindex Local approximating regressions
+@item
+@cindex Local approximating regressions
 @c @strong{Local approximating regressions.}  The @code{loess()}
-@c @findex loess
+@findex loess
 @c function fits a nonparametric regression by using a locally weighted
 @c regression.  Such regressions are useful for highlighting a trend in
 @c messy data or for data reduction to give some insight into a large data
@@ -6800,42 +6858,54 @@ K 0.7651
 
 @c Function @code{loess} is in the standard package @pkg{stats}, together
 @c with code for projection pursuit regression.
-@c @findex loess
+@findex loess
 
-@c @item
-@c @cindex Robust regression
+@strong{Local approximating regressions}는 @code{loess()} 함수가 locally weighted regression을 이용하여 비모수회귀(nonparametric regression)모델의 적합에 사용됩니다. 
+이러한 회귀분석은 메시데이터(messy data)에 대한 특정 추세를 파악하거나, 사이즈가 큰 데이터에 대해서 데이터 리덕션(data reduction)을 하고자 할 때 이용될 수 있습니다. 
+@code{loess()}라는 함수는 표준패키지인 @pkg{stats}에 포함되어 있습니다.
+
+@item
+@cindex Robust regression
 @c @strong{Robust regression.} There are several functions available for
 @c fitting regression models in a way resistant to the influence of extreme
 @c outliers in the data.  Function @code{lqs}
-@c @findex lqs
+@findex lqs
 @c in the recommended package @CRANpkg{MASS} provides state-of-art algorithms
 @c for highly-resistant fits.  Less resistant but statistically more
 @c efficient methods are available in packages, for example function
 @c @code{rlm}
-@c @findex rlm
+@findex rlm
 @c in package @CRANpkg{MASS}.
 
-Mixed models. mixed effect model(한국말 모름) 이란 선형 및 비선형 회귀모형 중 회귀계수의 일부가 random effect (한국말 모름)을 가지는 모델입니다. 이러한 선형 및 비선형 mixed models을 적합하기 위해서 사용자는 nlme이라는 패키지에서 제공하는 lme()과 nlme()이라는 함수를 이용하시면 됩니다. Local approximating regressions. loess()이라는 함수는 가중회귀모형을 이용하고자 하는 일부 비모수회귀모형의 적합에 사용됩니다. 이러한 회귀분석은 messy data 에 대한 특정 추세를 파악하거나, 사이즈가 큰 데이터에 대해서 데이터 리덕션 (data reduction)을 하고자 할 때 이용될 수 있습니다. loess()라는 함수는 R이 제공하는 기본패키지인 stats란 패키지에 포함되어 있습니다. Robust regression. R은 데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 안정적인 회귀모형을 적합하기 위하여 몇가지 함수를 제공하고 있습니다. 현재로서는 MASS라는 패키지에 포함되어 있는 lqs라는 함수가 다른 함수들에 비하여 이상치들의 영향을 상대적으로 적게 받는 가장 안정적인 모형을 적합해주는 것으로 알려져 있습니다. 또한 MASS패키지는 이상치에 대한 모형적합의 안정성이 lqs보다는 조금 떨어지지만 통계적으로 좀 더 나은 결과를 주는 rlm이라는 함수도 포함하고 있습니다.
+@strong{Robust regression}은 데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 안정적인 회귀모형을 적합한 것이데, 이를 수행하기 위해 몇가지 함수를 제공하고 있습니다.
+현재로서는 추천패키지 @pkg{MASS}에 포함되어 있는 @code{lqs}라는 함수가 다른 함수들에 비하여 이상치들의 영향을 상대적으로 적게 받는 다소 안정적으로 모델을 적합해주는 것으로 알려져 있습니다. 
+또한 이 @pkg{MASS}에는 이상치에 대한 모형적합의 안정성이 @code{lqs}보다 다소 불안정하나, 통계적으로 좀 더 효율적인 결과를 제공하는 @code{rlm}이라는 함수도 있습니다.
 
-
-@c @item
+@item
 @cindex Additive models
-@strong{Additive models.} This technique aims to construct a regression
-function from smooth additive functions of the determining variables,
-usually one for each determining variable.  Functions @code{avas} and
-@code{ace}
+@c @strong{Additive models.} This technique aims to construct a regression
+@c function from smooth additive functions of the determining variables,
+@c usually one for each determining variable.  Functions @code{avas} and
+@c @code{ace}
 @findex avas
 @findex ace
-in package @CRANpkg{acepack} and functions @code{bruto} and @code{mars}
+@c in package @CRANpkg{acepack} and functions @code{bruto} and @code{mars}
 @findex bruto
 @findex mars
-in package @CRANpkg{mda} provide some examples of these techniques in
-user-contributed packages to @R{}.  An extension is @strong{Generalized
-Additive Models}, implemented in user-contributed packages @CRANpkg{gam} and
-@CRANpkg{mgcv}.
+@c in package @CRANpkg{mda} provide some examples of these techniques in
+@c user-contributed packages to @R{}.  An extension is @strong{Generalized
+@c Additive Models}, implemented in user-contributed packages @CRANpkg{gam} and
+@c @CRANpkg{mgcv}.
 
-@c @item
-@c @cindex Tree-based models
+@strong{Additive models}는 aims to construct a regression function from smooth additive functions of the determining variables, usually one for each determining variable. 
+사용자개발패키지인 @CRANpkg{acepack}내의 @code{avas}와 @code{ace}, 그리고 @CRANpkg{mda} 패키지내의 @code{bruto}와 @code{mars} 함수들로부터 이 회귀모형에 대한 예제를 찾아 볼 수 있습니다.
+@strong{Generalized Additive Models}에 대해서 보다 더 일반적인 사용자개발패키지는 @CRANpkg{gam}과 @CRANpkg{mgcv}이 있습니다.  
+
+@c function from smooth additive functions of the determining variables,
+@c usually one for each determining variable.
+
+@item
+@cindex Tree-based models
 @c @strong{Tree-based models.} Rather than seek an explicit global linear
 @c model for prediction or interpretation, tree-based models seek to
 @c bifurcate the data, recursively, at critical points of the determining
@@ -6846,20 +6916,24 @@ Additive Models}, implemented in user-contributed packages @CRANpkg{gam} and
 
 @c Models are again specified in the ordinary linear model form.  The model
 @c fitting function is @code{tree()},
-@c @findex tree
+@findex tree
 @c but many other generic functions such as @code{plot()} and @code{text()}
 @c are well adapted to displaying the results of a tree-based model fit in
 @c a graphical way.
 
 @c Tree models are available in @R{} @emph{via} the user-contributed
 @c packages @CRANpkg{rpart} and @CRANpkg{tree}.
+@strong{Tree-based models}은 데이터 파티션에 주 목적이 있습니다.  
+이는 일반적인 선형모델방법이 전체적인 데이터의 특징을 설명하고 예측할 수 있는 선형모델을 찾는것과는 다릅니다.
+데이터파티셔닝의 기본원리는 주어진 데이터를 여러개의 동질적인 그룹들로 나누어 주되, 각 그룹간의 이질성은 최대화 시켜주는 방법을 말합니다. 
+이것은 그룹간의 차이를 가장 잘 구분할 수 있는 모형을 찾아 그 모형대로 데이터를 반복적으로 이분화함으로 이루어집니다. 
+그런데, 이러한 데이터 파티셔닝은 종종 다른 데이터 분석법으로부터는 찾을 수 없었던 데이터가 가지고 있는 특징을 발견해 내기도 합니다. 
+이러한 @strong{Tree-based models}에 의한 데이터 파티셔닝은 @code{tree()}라는 함수를 통하여 이루어집니다. 
+또한 이 분석법에 의한 결과는 효율적인 시각화를 위하여 @code{plot()}와 @code{text()}와 같은 제네릭함수와도 잘 호환되도록 설계되었습니다.
 
-@c @end itemize
+이러한 트리모델(tree models)는 @CRANpkg{rpart}과 @CRANpkg{tree}과 같은 사용자기여패키지(user contributed package)를 통해 이용가능합니다.
+@end itemize
 
-일반적인 선형모델방법이 전체적인 데이터의 특징을 설명하고 예측할 수 있는 선형모델을 찾는데
-목적이 있다고 한다면, tree-based models (한국말 모름)은 데이터 파티션에 주 목적이 있습니다. 데이터파티셔닝이란 주어진 데이터를 여러개의 동질적인 그룹들로 나누어 주되, 각 그룹간의 이질성은 최대화 시켜주는 방법을 말합니다. 이것은 데이터를 그룹간의 차이를 가장 잘 구분할 수 있는 모형을 찾아 그 모형대로 데이터를 반복적으로 이분화함으로 이루어집니다. 이러한 데이터 파티셔닝은 종종 다른 데이터 분석법으로부터는 찾을 수 없었던 데이터가 가지고 있는 특징을 발견해 내기도 합니다. 이러한 tree-based models에 의한 데이터 파티셔닝은 tree()라는 함수를 통하여 이루어집니다. 또한 이 분석법에 의한 결과는 효율적인 시각화를 위하여 plot()과 text()와 같은 제네릭함수와 잘 호환되도록 설계되었습니다.
-
-대개 데이터 파티셔닝은 rpart와 tree같은 user-contributed packages (사용자 기여 패키지)에 의해 수행됩니다.
 
 @node Graphics, Packages, Statistical models in R, Top
 @c @chapter Graphical procedures
