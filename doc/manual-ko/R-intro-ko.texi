@@ -6140,68 +6140,69 @@ Multistratum experiments 경우 역시 종속변수의 값을 오차항이 가�
 이 함수들은 이름 그대로의 목적을 가지고 있는데, 자세한 사항은 각 함수의 도움말을 살펴보시길 바랍니다.
 
 @node Generalized linear models, Nonlinear least squares and maximum likelihood models, Updating fitted models, Statistical models in R
-@section Generalized linear models
+@c @section Generalized linear models
+@section 일반선형모델
 @cindex Generalized linear models
 
-Generalized linear modeling is a development of linear models to
-accommodate both non-normal response distributions and transformations
-to linearity in a clean and straightforward way.  A generalized linear
-model may be described in terms of the following sequence of
-assumptions:
+@c Generalized linear modeling is a development of linear models to
+@c accommodate both non-normal response distributions and transformations
+@c to linearity in a clean and straightforward way.  A generalized linear
+@c model may be described in terms of the following sequence of
+@c assumptions:
 
-일반화선형모델(generalized linear model)이란 정규분포를 따르지 않는 종속변수(non-normal response distributions)에 변수변환(transformation)이라는 과정을 통하여 모형의 선형성 (linearity)를 찾는 방법으로 선형모델(linear model)의 일반화라고 생각하시면 됩니다 여기에서부터 역자는 일반선형화모델을 GLM 이라는 약자를 사용하도록 하겠습니다. GLM은 아래와 같은 일련의 내용을 가정합니다.
+일반선형모델(generalized linear model)이란 정규분포를 따르지 않는 종속변수(non-normal response distributions)의 변수변환(transformation)이라는 과정을 통하여 모형의 선형성 (linearity)를 찾는 방법으로 선형모델(linear model)의 일반화라고 생각하시면 됩니다.
+일반선형모델은 아래와 같은 내용들을 가정하고 있습니다.
 
 @itemize @bullet
 @item
 @c There is a response, @math{y}, of interest and stimulus variables
+종속변수 @math{y}가 있고, 이 반응변수의 분포 (distribution of response variable)에 영향을 미치는 여러개의 설명변수 (또는 자극변수, stimulus variables) 
 @ifnottex
-@c x_1, x_2, @dots{},
+x_1, x_2, @dots{},
 @end ifnottex
-@c @tex
-@c $x_1$, $x_2$, @dots{},
-@c @end tex
+@tex
+$x_1$, $x_2$, @dots{},
+@end tex
 @c whose values influence the distribution of the response.
-
+가 있습니다.
 
 @item
-The stimulus variables influence the distribution of @math{y} through
-@emph{a single linear function, only}.  This linear function is called
-the @emph{linear predictor}, and is usually written
+@c The stimulus variables influence the distribution of @math{y} through
+@c @emph{a single linear function, only}.  This linear function is called
+@c the @emph{linear predictor}, and is usually written
 
-먼저 우리가 분석하고자 하는 y라는 반응 혹은 종속변수 (response)가 있고, 이 반응변수의 분포(distribution of response variable)에 영향을 미치는 여러개의 설명변수 (stimulus variables) x_1, x_2, ..., 이 있다고 가정합니다. 또한 우리는 설명변수들이 y라는 반응변수의 분포에 영향을 미칠때 ,이 영향이 반드시 변수간의 선형관계(a single linear function, only)를 통하여 영향을 준다고 가정합니다. 따라서, 이 영향을 linear predictor (한국말 모름)이라고 말하고 아래와 같이 표현합니다.
+설명변수들이 종속변수 @math{y}의 분포에 영향을 미칠때, 이 영향은 반드시 아래와 같이 정의된 설명변수들의 선형관계로부터 얻어진 linear predictor를 통하여 영향을 줍니다. 
 
 @ifnottex
 @display
 eta = beta_1 x_1 + beta_2 x_2 + @dots{} + beta_p x_p,
 @end display
-hence x_i has no influence on the distribution of @math{y} if and only if
-beta_i is zero.
+@c hence x_i has no influence on the distribution of @math{y} if and only if
+@c beta_i is zero.
+따라서, i번째의 설명변수 x_i의 선형계수 beta_i가 0이라면 @math{y}의 분포에 어떠한 영향을 미치지 않는다는 점을 알 수 있습니다.
 @end ifnottex
-
-그러므로, 만약 i번째의 설명변수 x_i의 선형계수 beta_i 가 0 이라면 반응변수의 분포에 어떠한 영향을 미치지 않는다는 점을 알 수 있습니다.
-
 @tex
 $$ \eta = \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p, $$
 hence $x_i$ has no influence on the distribution of @math{y} if and only
 if $\beta_i=0$.
 @end tex
 
-GLM을 사용하기 위해서는 우리는 또한 반응변수 y의 분포가 아래와 같이 표현된다고 가정을 합니다.
-
 @item
-The distribution of @math{y} is of the form
+@c The distribution of @math{y} is of the form
+종속변수 @math{y}의 분포는 아래와 같은 형식을 가지고 있습니다.
 @ifnottex
 @display
 f_Y(y; mu, phi)
   = exp((A/phi) * (y lambda(mu) - gamma(lambda(mu))) + tau(y, phi))
 @end display
-where phi is a @emph{scale parameter} (possibly known), and is constant
-for all observations, @math{A} represents a prior weight, assumed known
-but possibly varying with the observations, and $\mu$ is the mean of
-@math{y}.
+@c where phi is a @emph{scale parameter} (possibly known), and is constant
+@c for all observations, @math{A} represents a prior weight, assumed known
+@c but possibly varying with the observations, and $\mu$ is the mean of
+@c @math{y}.
+여기에서 phi는 @emph{스케일 파라미터 (scale parameter)}이며, 이 값은 아마도 사전에 알고 있거나 미리 주어짐으로서 상수로서 역할을 하게 됩니다.
+@math{A}는 사전가중치(prior weight)인데, 이는 관측치마다 모두 다른 값을 가질 수도 있습니다.
+$\mu$라는 것은 @math{y}의 평균값입니다.
 @end ifnottex
-
-위에 표현된식에서 phi 란 scale parameter (스케일 파라미터)이고, 이 값은 아마도 사전에 알고 있을 수 있거나 미리 주어짐으로서 상수로서의 역할을 하게 됩니다. 또한 이 스케일 파라미터는 모든 관측치에 대해서 동일하게 적용된다고 가정합니다. A라는 것은 prior weight (사전 가중치)를 나타내는데, 이 사전 가중치는 관측치마다 모두 다를 수도 있다고 가정합니다. 그리고, $\mu$라는 것은 y의 평균값입니다. 따라서 y의 분포는 y의 평균과 스케일파라미터로서 결정된다고 가정할 수가 있게 됩니다.
 
 @tex
 $$
@@ -6216,23 +6217,23 @@ of $y$.
 @end tex
 @c So it is assumed that the distribution of @math{y} is determined by its
 @c mean and possibly a scale parameter as well.
-
-마지막으로 우리는 아래에서 표현한 것과 같이 반응변수 y의 평균과 linear predictor가 역함수 관계가 성립한다고 가정을 합니다. 그리고 이 역함수를 link function(링크함수)라고 부르며, 아래의 표현식에서 이 링크함수를 ell()로 표현하였습니다.
+따라서, @math{y}의 분포는 평균과 스케일 파라미터들로 결정되어집니다.
 
 @item
 @ifnottex
-The mean, mu, is a smooth invertible function of the linear predictor:
+@c The mean, mu, is a smooth invertible function of the linear predictor:
+아래에서 보이는 바와 같이 @math{y}의 평균 mu와 linear predictor가 역함수 관계로서 표현됩니다.
 @display
 mu = m(eta),    eta = m^@{-1@}(mu) = ell(mu)
 @end display
-and this inverse function, ell(), is called the @emph{link function}.
+@c and this inverse function, ell(), is called the @emph{link function}.
+이 역함수를 ell()로 표기하고 @emph{링크함수(link function)}이라고 합니다.
 @end ifnottex
 @tex
 The mean, $\mu$, is a smooth invertible function of the linear predictor:
 $$ \mu = m(\eta),\qquad \eta = m^{-1}(\mu) = \ell(\mu) $$
 and this inverse function, $\ell()$, is called the @emph{link function}.
 @end tex
-
 @end itemize
 
 @c These assumptions are loose enough to encompass a wide class of models
@@ -6242,7 +6243,10 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c reference works on the subject for full details, such as McCullagh &
 @c Nelder (1989) or Dobson (1990).
 
-위에서 언급된 가정들은 매우 많아 보이지만, 실제로 이것들은 통계실무에서 사용되는 광범위한 범위의 모델을 모두 포괄할 수 있는 최소한의 가정입니다. GLM 은 이러한 최소한의 가정들을 가지고 추정(estimation)과 추론(inference)을 위한 하나의 통일된 방법을 개발할 수 있도록 도와줍니다. 만약, GLM 에 관심이 있는 독자라면 McCullagh & Nelder (1989) 과 Dobson (1990)을 찾아보시길 바랍니다. 이 두권의 책은 GLM의 거의 모든 것에 대하여 매우 상세히 설명하고 있습니다.
+위에서 언급된 가정들은 매우 많아 보이지만, 실제로 이것들은 통계실무에서 사용되는 광범위한 범위의 모델을 모두 포괄할 수 있는 최소한의 가정입니다. 
+일반선형모델은 이러한 최소한의 가정들을 가지고 추정(estimation)과 추론(inference)을 위한 하나의 통일된 방법을 개발할 수 있도록 도와줍니다. 
+만약, 일반선형모델에 관심이 있는 독자라면 McCullagh & Nelder (1989)에 의해서 쓰여진 책과 Dobson (1990)이 저술한 책을 참고하시길 바랍니다.
+이 두 권의 책은 일반선형모델에 대한 거의 모든 내용을 다루고 있습니다.
 
 @menu
 * Families::                    
@@ -6250,7 +6254,8 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @end menu
 
 @node Families, The glm() function, Generalized linear models, Generalized linear models
-@subsection Families
+@c @subsection Families
+@subsection 페밀리
 @cindex Families
 
 @c The class of generalized linear models handled by facilities supplied in
@@ -6261,13 +6266,16 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c must be specified as a function of the mean, but in other cases this
 @c function is implied by the response distribution.
 
-R은 GLM에서 사용되는 종속변수 y의 분포가 gaussian, binomial, poisson, inverse gaussian, 그리고 gamma인 경우를 모두 다룰 수 있는 기능을 제공하고 있으며, 종속변수의 분포를 함수식으로 정확히 쓸 수 없는 경우에 적용되는 quasi-likelihood (쿼시-라이클리후드) 모델 역시 지원됩니다. 일반적으로 GLM을 적합하기 위해서는 variance function (한국말 모름)을 알고 있어야 합니다. 쿼시-라이클리후드 모델이 아닌 경우에는 종속변수의 분포로부터 variance function를 알 수 있으나, 쿼시-라이클리후드 모델의 경우에는 variance function가 반드시 종속변수의 평균에 관한 함수로서 표현되어져야만 합니다.
+@R{}은 일반선형모델에서 사용되는 종속변수 y의 분포가 @emph{가우시안(gaussian = 정규분포)}, @emph{이항 (binomial)}, @emph{포아송 (poisson)}, @emph{역가우시안 (inverse gaussian)}, 그리고 @emph{감마 (gamma)}인 경우를 모두 다룰 수 있는 기능을 제공하고 있습니다.
+또한, 종속변수의 분포를 함수식으로 정확히 쓸 수 없는 경우에 적용되는 @emph{쿼시-라이클리후드 (quasi-likelihood)} 모델 역시 지원합니다.
+일반적으로 일반선형모델을 적합하기 위해서는 @emph{variance function}을 알고 있어야 합니다. 
+쿼시-라이클리후드 모델이 아닌 경우에는 종속변수의 분포로부터 variance function를 알 수 있으나, 쿼시-라이클리후드 모델의 경우에는 variance function가 반드시 종속변수의 평균에 관한 함수로서 표현되어져야만 합니다.
 
 @c Each response distribution admits a variety of link functions to connect
 @c the mean with the linear predictor.  Those automatically available are
 @c shown in the following table:
 
-종속변수에 대한 각각의 분포들은 아래에 나열된 다양한 링크함수를 통하여 linear predictor와 함수적 관계를 가지게 됩니다.
+종속변수에 대한 각각의 분포들은 아래의 표에서 보이는 것과 같이 다양한 링크함수를 통하여 linear predictor와 함수적 관계를 표현하게 됩니다.
 
 @quotation
 @multitable @columnfractions 0.25 0.55
@@ -6286,7 +6294,7 @@ R은 GLM에서 사용되는 종속변수 y의 분포가 gaussian, binomial, pois
 @c other pieces of information that are needed to carry out the modeling
 @c exercise is called the @emph{family} of the generalized linear model.
 
-위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모형에 필요한 다른 정보들과 조합은 GLM에서 family라는 클래스를 결정하게 됩니다.
+위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모델에 필요한 다른 정보들과 조합은 일반선형모델의 @emph{페밀리(family)}를 결정하게 됩니다. 
 
 @node The glm() function,  , Families, Generalized linear models
 @subsection The @code{glm()} function
