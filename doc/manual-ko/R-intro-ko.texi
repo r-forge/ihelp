@@ -3724,7 +3724,7 @@ Extension to higher-way frequency tables is immediate.
 
 @node Reading data from files, Probability distributions, Lists and data frames, Top
 @c @chapter Reading data from files
-@chapter 파일로부터 데이터 불러오기 (의역 일정 - 2013.04.01)
+@chapter 파일로부터 데이터 불러오기
 @cindex Reading data from files
 
 @c Large data objects will usually be read as values from external files
@@ -3744,9 +3744,15 @@ Extension to higher-way frequency tables is immediate.
 @c For more details on importing data into @R{} and also exporting data,
 @c see the @emph{R Data Import/Export} manual.
 
-용량이 큰 데이터는 키보드로 입력하는 것보다는 외부에 저장되어 있는 데이터파일을 현재 작업하고 있는 R 세션으로 불러들이는 것이 편리하고 빠른 방법입니다. R 의 입력기능은 간단하지만, 다소 불편한 점이 없는 것은 아닙니다. R 의 개발자는 사용자가 파일 에디터 혹은 Perl 이라는 프로그래밍 언어를 이용하여 R이 데이터를 읽어들일수 있는 형식으로 변경할 수 있을 것이라는 가정하에 입력기능을 개발하였습니다. 번거로워 보이지만, 실제로 이 과정은 매우 간단합니다. 우리는 R이 데이터를 쉽게 불러올 수 있도록 사용자가 데이터 파일을 데이터프레임과 같은 형식을 가지도록 편집하는 것을 권장합니다. 만약, 데이터가 데이터 프레임과 같이 정리가 되어 있다면 read.table() 이라는 함수를 이용하여 데이터 파일안에 있는 모든 데이터를 R 세션내로 불러들일 수 있습니다. read.table() 외에도 scan() 이라는 함수를 이용하여 직접적으로 불러올 수 도 있습니다.
+용량이 큰 데이터는 키보드로 입력하는 것보다는 외부에 저장되어 있는 데이터파일을 현재 작업하고 있는 @R{} 세션으로 불러들이는 것이 편리하고 빠른 방법입니다. 
+@R{}의 입력기능은 사용하기 간단하지만, 다소 불편한 점이 없는 것은 아닙니다.
+독자는 파일에디터(file editor) 혹은 Perl@footnote{유닉스 운영체제에서 Sed 또는 Awk와 같은 유틸리티들이 함께 사용될 수 있습니다.}과 같은 다른 프로그래밍 언어를 이용하여 먼저 @R{}에서 데이터를 읽어들일 수 있는 조건과 형식으로 변경할 수 있다는 가정하에 @R{}의 입력기능이 개발되었다는 점을 알고 계셨으면 합니다. 
+ 
+이렇게 데이터 전처리를 실시할때 가급적이면 데이터를 쉽게 불러올 수 있도록 사용자가 데이터 파일을 데이터프레임과 같은 형식을 가지도록 편집하는 것을 권장합니다. 
+만약, 데이터가 데이터 프레임과 같이 정리가 되어 있다면 @code{read.table()} 함수를 이용하여 데이터 파일안에 있는 모든 데이터를 @R{} 세션내로 불러들일 수 있습니다. 
+@code{read.table()} 외에도 @code{scan()}과 같은 함수를 이용할 수 있습니다.
 
-데이터의 입출력에 관한 더 자세한 사항에 대해서는 R Data Import/Export 이라는 문서를 참조하시길 바랍니다.
+데이터의 입출력에 관한 더 자세한 사항에 대해서는 @emph{R Data Import/Export} 문서를 참조하시길 바랍니다.
 
 @menu
 * The read.table() function::   
@@ -3756,7 +3762,8 @@ Extension to higher-way frequency tables is immediate.
 @end menu
 
 @node The read.table() function, The scan() function, Reading data from files, Reading data from files
-@section The @code{read.table()} function
+@c @section The @code{read.table()} function
+@section @code{read.table()} 사용하기
 @findex read.table
 
 @c To read an entire data frame directly, the external file will normally
@@ -3764,21 +3771,24 @@ Extension to higher-way frequency tables is immediate.
 
 데이터 프레임 전체를 한번에 불러오기 위해서는, 외부 파일이 특정한 형식을 가지고 있어야만 합니다.
 
-@c @itemize @bullet
-@c @item
+@itemize @bullet
+@item
 @c The first line of the file should have a @emph{name} for each variable
 @c in the data frame.
+데이터 파일내의 첫번째 행은 데이터 프레임 안으로 불러올 데이터들의 @emph{변수명}이 저장되어 있어야 합니다. 
 
-@c @item
+@item
 @c Each additional line of the file has as its first item a @emph{row label}
 @c and the values for each variable.
-@c @end itemize
+데이터 파일내의 변수명 다음 행부터는 @emph{행레이블 (row label)}과 함께 변수값이 저장되어 있어야 합니다. 
+@end itemize
 
 @c If the file has one fewer item in its first line than in its second, this
 @c arrangement is presumed to be in force.  So the first few lines of a file
 @c to be read as a data frame might look as follows.
-
-데이터 파일내의 첫번째 줄은 데이터 프레임 안으로 불러올 데이터들의 변수명이 저장되어 있어야 합니다. 데이터 파일내의 변수명 다음 줄 부터는 행번호와 함께 변수값이 저장되어 있어야 합니다. 따라서 우리는 사용자가 데이터 파일을 아래와 같은 데이터 프레임의 형식을 갖출 것을 권장합니다.
+만약, 첫번째 행을 구성하는 항목들의 개수가 두번째 행을 구성하는 항목들의 개수보다 적을 경우, 
+강제적으로 첫번째 행의 구조에 따라 맞추어지게 됩니다.
+따라서, 사용자는 데이터 파일을 아래와 같은 데이터 프레임의 형식을 갖출 것을 권장합니다.
 
 @quotation
 @cartouche
@@ -3803,7 +3813,9 @@ Extension to higher-way frequency tables is immediate.
 @c The function @code{read.table()} can then be used to read the data frame
 @c directly
 
-기본적으로 R이 데이터 파일을 읽어올때, 행번호를 제외하고서 변수가 수치형 값을 가지면 수치형으로 변수가 수치형이 아니면 요인 (factor) 의 형식으로 자동변환되어 집니다. 위에 사용된 데이터 파일을 예로 들면, Price, Floor, Area, Rooms, Age 는 수치형으로 읽어들이지만, Cent.heat 라는 변수는 요인으로 읽어들입니다. 따라서 위와 같은 데이터 프레임의 형식을 가지고 있는 데이터 파일이라면 read.table() 이라는 함수를 아래와 같이 사용하여 데이터를 불러들이면 됩니다.
+기본적으로 @R{}이 데이터 파일을 읽어올때, 행레이블를 제외하고서 변수의 값이 수치형이면 수치형으로, 그렇지 않다면 요인(factor)으로서 강제형변환이 이루어지게 됩니다.
+위에 사용된 데이터 파일을 예로 들면, @code{Price}, @code{Floor}, @code{Area}, @code{Rooms}, @code{Age}는 수치형으로 읽어들이지만, @code{Cent.heat}는 요인(factor)으로 읽어들입니다. 
+따라서 위와 같은 데이터 프레임의 형식을 가지고 있는 데이터 파일이라면 @code{read.table()} 함수를 아래와 같이 사용하여 데이터를 불러들이면 됩니다.
 
 @example
 > HousePrice <- read.table("houses.data")
@@ -3813,7 +3825,7 @@ Extension to higher-way frequency tables is immediate.
 @c default labels.  In this case the file may omit the row label column as in
 @c the following.
 
-아래에 보이는 것과 같이 종종 데이터 파일에는 행번호가 없는 경우가 있거나, 혹은 사용자가 행번호를 원하지 않는 경우가 존재합니다.
+아래에 보이는 것과 같이 종종 데이터 파일에는 행레일블이 없는 경우가 있거나, 혹은 사용자가 행레이블을 원하지 않는 경우가 존재합니다.
 
 @quotation
 @cartouche
@@ -3834,7 +3846,7 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @c The data frame may then be read as
 
 
-이런경우에는 아래와 같이 read.table() 이라는 함수를 사용할 때 header 라는 옵션을 이용하면 됩니다.
+이런 경우에는 아래와 같이 @code{read.table()} 함수를 사용시 @code{header=TRUE} 옵션을 함께 사용합니다.
 
 @example
 > HousePrice <- read.table("houses.data", header=TRUE)
@@ -3851,7 +3863,8 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @end menu
 
 @node The scan() function, Accessing builtin datasets, The read.table() function, Reading data from files
-@section The @code{scan()} function
+@c @section The @code{scan()} function
+@section @code{scan()} 함수 사용하기
 @findex scan
 
 @c Suppose the data vectors are of equal length and are to be read in
@@ -3860,7 +3873,9 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @c @file{input.dat}.  The first step is to use @code{scan()} to read in the
 @c three vectors as a list, as follows
 
-먼저 input.dat 이라는 데이터 파일이 길이가 같은 세개의 벡터를 가지고 있다고 가정합니다. 또한, 이 세개의 벡터중 하나는 문자형이고, 나머지 두개는 수치형이라고 가정합니다. 아래의 코드는 scan() 함수를 이용하여 input.dat 이라는 데이터 파일을 읽어들이는 방법을 보여주고 있습니다.
+만약에 데이터 벡터들이 같은 길이를 가지고 있고 이들은 동시에 병렬적으로 읽어들여진다고 가정합니다.
+그리고, 벡터의 개수는 세개인데 첫번째 벡터는 문자형 모드를 가지고, 나머지 두 벡터는 수치형 모드를 가지며, 이 데이터 벡터들은 @code{input.dat}라는 파일내에 저장이 되어 있다고 가정합니다.
+먼저 @code{scan()}함수를 이용하여 @code{input.dat} 내의 세개의 벡터를 리스트 형식으로서 불러오는 방법은 다음과 같습니다.
 
 @example
 > inp <- scan("input.dat", list("",0,0))
@@ -3871,7 +3886,9 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @c list whose components are the three vectors read in.  To separate the
 @c data items into three separate vectors, use assignments like
 
-위에서 보이는 것과 같이 scan() 함수의 두번째 인자는 리스트라는 형식을 요구합니다. 또한, 이 리스트의 인자는 세개의 변수가 가지는 데이터형을 지정합니다. 큰 따옴표는 문자형을 의미하고, 0 이란 수치형을 의미합니다. 따라서, scan() 함수를 통해서 불러들인 input.dat 데이터 파일은 inp 이라는 리스트에 데이터를 저장하게 되므로 아래와 같은 방법으로 각각의 변수를 엑세스 할 수 있습니다.
+@code{scan()}함수의 두번째 인자에는 어떤 모드(mode)로서 데이터의 벡터들을 읽어올 것인가에 대한 더미 리스트 구조(dummy list structure)가 사용되었음을 알 수 있습니다.
+이 더미 리스트 구조에 사용된 큰따옴표는 문자형을 의미하고, @code{0}이란 수치형을 의미합니다. 
+따라서, @code{scan()}함수를 통해서 불러들인 @code{input.dat} 파일은 @code{inp}이라는 리스트에 데이터를 저장하게 되므로 아래와 같은 방법으로 각각의 데이터 변수를 엑세스 할 수 있습니다.
 
 @example
 > label <- inp[[1]]; x <- inp[[2]]; y <- inp[[3]]
@@ -3880,7 +3897,7 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @c More conveniently, the dummy list can have named components, in which
 @c case the names can be used to access the vectors read in.  For example
 
-위에서 소개한 방법보다 더 편한 방법은 아래의 코드에서 보이는 것과 같이 리스트를 통해 불러올때 인자에 바로 이름을 부여하는 것입니다.
+위에서 소개한 방법보다 더 편한 방법은 아래에서 보는 것과 같이 더미 리스트 구조를 사용할 때 바로 이름을 부여하는 것입니다.
 
 @example
 > inp <- scan("input.dat", list(id="", x=0, y=0))
@@ -3889,7 +3906,7 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 @c If you wish to access the variables separately they may either be
 @c re-assigned to variables in the working frame:
 
-이처럼 불러들어온 데이터가 리스트 형이므로 아래와 같은 방법으로 각각의 변수를 엑세스 할 수 있습니다.
+이와 같이 불러들어온 데이터가 리스트형이므로 아래와 같은 방법으로 각각의 데이터 변수에 접근할 수 있으며, 또는 @code{inp} 리스트를 @w{position 2}의 탐색경로에 연결하여 접근할 수도 있습니다 (이에 대해서는 @pxref{Attaching arbitrary lists}를 참고하시길 바랍니다).
 
 @example
 > label <- inp$id; x <- inp$x; y <- inp$y
@@ -3897,23 +3914,25 @@ Price    Floor     Area   Rooms     Age  Cent.heat
 
 @c @noindent
 @c or the list may be attached at @w{position 2} of the search path
-(@pxref{Attaching arbitrary lists}).
+@c (@pxref{Attaching arbitrary lists}).
 
-또는 inp 이라는 리스트를 제 2 탐색경로 (즉, position 2) 에 연결시켜 엑세스 할 수도 있습니다(see Attaching arbitrary lists).
+@c If the second argument is a single value and not a list, a single vector
+@c is read in, all components of which must be of the same mode as the
+@c dummy value.
 
-If the second argument is a single value and not a list, a single vector
-is read in, all components of which must be of the same mode as the
-dummy value.
+만약, 아래와 같이 두번째 인자가 리스트가 아닌 단일 숫자값이라면, 하나의 벡터가 읽혀지게 됩니다.
+그리고 반드시 벡터의 모든 구성요소는 더미 값(dummy value)와 같은 모드를 가지고 있어야 합니다.
 
 @example
 > X <- matrix(scan("light.dat", 0), ncol=5, byrow=TRUE)
 @end example
 
-There are more elaborate input facilities available and these are
-detailed in the manuals.
+@c There are more elaborate input facilities available and these are
+@c detailed in the manuals.
 
 @node Accessing builtin datasets, Editing data, The scan() function, Reading data from files
-@section Accessing builtin datasets
+@c @section Accessing builtin datasets
+@section 내장데이터셋에 접근하기
 @cindex Accessing builtin datasets
 @findex data
 
@@ -3922,7 +3941,8 @@ detailed in the manuals.
 @c supplied with @R{}).  To see the list of datasets currently available
 @c use
 
-R 은 기본적으로 대략 100여개의 데이터셋을 datasets 이라는 패키지를 통하여 제공하고 있습니다. 만약 R 이 제공하는 데이터셋의 목록을 확인하고 싶으시다면 아래의 명령어를 이용하면 됩니다.
+@R{}은 기본적으로 대략 100여개의 데이터셋을 @pkg{datasets} 패키지를 통하여 제공하고 있습니다. 
+만약 이 데이터셋의 목록을 확인하고 싶으시다면 아래와 같이 @code{data()}함수를 이용하시면 됩니다.
 
 @example
 data()
@@ -3934,24 +3954,25 @@ data()
 @c earlier convention in which @code{data} was also used to load datasets
 @c into @R{}, for example
 
-R-2.0.0 버전부터 제공되는 모든 데이터셋은 아래에서 보여지는 것과 같이 데이터셋의 이름을 통하여 바로 엑세스 할 수 있습니다.
+@R{} 버전 2.0.0 부터 제공되는 모든 데이터셋은 아래에서 보여지는 것과 같이 데이터셋의 이름을 통하여 바로 접근이 가능합니다.
 
 @example
 data(infert)
 @end example
 
 @noindent
-and this can still be used with the standard packages (as in this
-example).  In most cases this will load an @R{} object of the same name.
-However, in a few cases it loads several objects, so see the on-line
-help for the object to see what to expect.
+@c and this can still be used with the standard packages (as in this
+@c example).  In most cases this will load an @R{} object of the same name.
+@c However, in a few cases it loads several objects, so see the on-line
+@c help for the object to see what to expect.
 
-@subsection Loading data from other R packages
+@c @subsection Loading data from other R packages
+@subsection 다른 R 패키지들로부터 데이터를 로딩하기
 
 @c To access data from a particular package, use the @code{package}
 @c argument, for example
 
-만약 특정 패키지 안에서 사용되는 데이터셋에 대해서 알고 싶으시다면 아래에 보이는 것과 같이 data() 함수 내에 있는 package 라는 인자를 이용하시면 됩니다.
+만약 특정 패키지 내에 제공되어지는 데이터셋을 확인하고 싶다면 아래와 같이 @code{data()}함수의 @code{package}라는 인자를 사용합니다.
 
 @example
 data(package="rpart")
@@ -3961,35 +3982,38 @@ data(Puromycin, package="datasets")
 @c If a package has been attached by @code{library}, its datasets are
 @c automatically included in the search.
 
-만약 특정 패키지를 library 라는 함수를 통해서 현재 작업하고 있는 워크스페이스에 연결시켰다면, 패키지에 포함된 데이터셋들은 자동으로 연결되어 검색되어집니다.
+만약 특정 패키지를 @code{library} 함수를 이용하여 현재의 작업공간에 연결이 되어 있다면, 패키지에 내장된 데이터셋들은 자동으로 검색되게 됩니다.
 
-User-contributed packages can be a rich source of datasets.
+@c User-contributed packages can be a rich source of datasets.
 
 @node Editing data,  , Accessing builtin datasets, Reading data from files
-@section Editing data
+@c @section Editing data
+@section 데이터 편집하기
+@findex edit
 
-@c @findex edit
 @c When invoked on a data frame or matrix, @code{edit} brings up a separate
 @c spreadsheet-like environment for editing.  This is useful for making
 @c small changes once a data set has been read.  The command
 
-만약 사용자가 데이터 프레임이나 행렬의 일부내용을 수정 및 편집을 하고 싶을때 edit 이라는 함수는 윈도우즈 기반의 스프레드시트 형식의 편집기능을 제공해 주므로 매우 편리하게 작업을 할 수 있습니다.
+만약 사용자가 데이터 프레임이나 행렬의 일부내용을 수정 및 편집을 하고 싶을때 @code{edit} 함수를 사용합니다.
+이는 윈도우즈 기반의 스프레드시트 형식의 편집기능을 제공해 주므로 매우 편리하게 작업을 할 수 있습니다.
 
 @example
 > xnew <- edit(xold)
 @end example
 
-@c @noindent
+@noindent
 @c will allow you to edit your data set @code{xold}, and on completion the
 @c changed object is assigned to @code{xnew}.  If you want to alter the
 @c original dataset @code{xold}, the simplest way is to use
 @c @code{fix(xold)}, which is equivalent to @code{xold <- edit(xold)}.
 
-위에서 사용된 edit() 이라는 함수는 xold 이라는 데이터셋을 편집한 뒤, 편집된 새로운 내용을 xnew 라는 데이터셋으로 저장한다는 의미입니다. 만약, 사용자가 xold 라는 원본 데이터셋 자체를 변경하고자 한다면 fix(xold) 라는 함수를 이용하시길 바랍니다. 이것은 xold <- edit(xold) 와 동일한 표현입니다.
-
-만약에 여러분이 비어있는 데이터 프레임으로부터 윈도우즈 기반의 스프레드시트를 통하여 새로운 데이터셋을 생성하고자 한다면 아래에서 보여지는 것과 같이 명령어를 입력하시면 됩니다.
+@code{edit()}함수는 데이터셋 @code{xold}을 편집한 뒤, 편집된 새로운 내용을 새로운 데이터셋 @code{xnew}로 저장한다는 의미입니다. 
+만약, 사용자가 원본 데이터셋 @code{xold} 자체를 변경하고자 한다면 @code{fix(xold)} 함수를 이용하시길 바랍니다. 
+이것은 @code{xold <- edit(xold)}와 동일한 표현입니다.
 
 @c Use
+만약에 여러분이 비어있는 데이터 프레임으로부터 윈도우즈 기반의 스프레드시트를 통하여 새로운 데이터를 입력하고자 한다면 아래와 같이 할 수 있습니다.
 
 @example
 > xnew <- edit(data.frame())
@@ -4001,7 +4025,7 @@ User-contributed packages can be a rich source of datasets.
 
 @node Probability distributions, Loops and conditional execution, Reading data from files, Top
 @c @chapter Probability distributions
-@chapter 확률분포 (의역 일정 - 2013.03.28)
+@chapter 확률분포
 @cindex Probability distributions
 
 @menu
@@ -4020,10 +4044,10 @@ User-contributed packages can be a rich source of datasets.
 @c @math{q}, the smallest @math{x} such that @eqn{P(X \le x) > q, P(X <= x) > q}),
 @c and to simulate from the distribution.
 
-R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는 것입니다. 이것은 P(X <= x)를 만족하는 누적확률계산, 주어진 확률함수로부터 밀도계산, 주어진 q에 해당하는 퀀타일 (quantile)을 계산, P(X <= x) > q)를 만족하는 x 값 찾기, 그리고 주어진 분포로부터의 난수를 생성하는데 사용되어집니다.
+@R{}의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는 것입니다. 
+@eqn{P(X \le x), P(X <= x)}을 알려주는 누적확률(cumulative probability)값, 주어진 확률함수로부터 밀도(density)계산, 주어진 @math{q}에 해당하는 퀀타일(quantile)을 계산, @eqn{P(X \le x) > q, P(X <= x) > q})라는 조건을 만족하는 @code{x}값 찾기 및 주어진 분포로부터의 난수를 생성할 수 있습니다.
 
-@c @quotation
-
+@quotation
 @multitable{Distribution namessss}{names, names}{arguments, arguments}
 @headitem 확률분포 @tab @R{}함수명 @tab 필요한 인자들
 @item beta @tab @code{beta} @tab @code{shape1, shape2, ncp}
@@ -4046,20 +4070,30 @@ R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는
 @item Weibull @tab @code{weibull} @tab @code{shape, scale}
 @item Wilcoxon @tab @code{wilcox} @tab @code{m, n}
 @end multitable
+@end quotation
 
-@c @end quotation
-
-@c @noindent
+@noindent
 @c Prefix the name given here by @samp{d} for the density, @samp{p} for the
 @c CDF, @samp{q} for the quantile function and @samp{r} for simulation
 @c (@emph{r}andom deviates).  The first argument is @code{x} for
 @c @code{d@var{xxx}}, @code{q} for @code{p@var{xxx}}, @code{p} for
 @c @code{q@var{xxx}} and @code{n} for @code{r@var{xxx}} (except for
 @c @code{rhyper}, @code{rsignrank} and @code{rwilcox}, for which it is
-@code{nn}).  In not quite all cases is the non-centrality parameter
-@code{ncp} currently available: see the on-line help for details.
+@c @code{nn}).  In not quite all cases is the non-centrality parameter
+@c @code{ncp} currently available: see the on-line help for details.
 
-여기에 나열된 R 함수의 이름앞에 ‘d’를 붙여 사용하면 확률밀도를 구하기 위한 함수명이 되고, ‘p’ 를 붙이면 누적확률값을 구할 수 있는 함수명이 되고, ‘q’ 를 붙이면 퀀타일을 구할수 있는 함수명이 되며, ‘r’ 을 붙이는 것은 난수를 생성하는 함수명을 가지게 됩니다. 한가지 주의할 점은 R 이 제공하고 있는 모든 함수가 non-centrality parameter(비중심화 모수)를 지원하는 것은 아닙니다. 더 자세한 사항은 온라인 도움말을 참고해주세요.
+위의 표를 잘 살펴보면 하나의 규칙을 알 수 있습니다.
+@samp{d}로 시작하는 함수명은 확률밀도(density)를 구하기 위해 사용이 되고,
+@samp{p}로 시작하는 함수명은 누적확률값(cumulative probability)를 구하기 위해 사용이 되며,
+@samp{q}로 시작하는 함수명은 퀀타일(quantile)을 구하며,
+@samp{r}로 시작하는 함수명은 시뮬레이션을 위한 난수를 생성하는데 사용됩니다.
+또한, @code{d@var{xxx}}의 첫번째 인자는 @code{x}이며,
+@code{p@var{xxx}}는 @code{q}, 
+@code{q@var{xxx}}는 @code{p},
+@code{r@var{xxx}}는 @code{n}입니다.
+그러나, @code{rhyper}, @code{rsignrank} 그리고 @code{rwilcox}의 경우에는 @code{nn}입니다.
+그리고, 모든 함수에 non-centrality parameter(비중심화 모수)인  @code{ncp}를 사용할 수 있는 것은 아닙니다.
+더 자세한 사항은 온라인 도움말을 참고해주세요.
 
 @c The @code{p@var{xxx}} and @code{q@var{xxx}} functions all have logical
 @c arguments @code{lower.tail} and @code{log.p} and the @code{d@var{xxx}}
@@ -4067,17 +4101,18 @@ R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는
 @c ``integrated'') @emph{hazard} function, @eqn{H(t) = - \log(1 - F(t)),
 @c H(t) = - log(1 - F(t))}, by
 
-‘p’로 시작하는 확률함수 pxxx와 ‘q’로 시작하는 확률함수 qxxx 들은 lower.tail와 log.p 라는 인자들을 가집니다. 또한 ‘d’ 로 시작하는 확률함수 dxxx는 log 라는 인자를 가집니다. 아래의 코드가 보여주는 것과 같이 이러한 인자들의 활용은 생존분석에서 사용되는 H(t) = - log(1 - F(t))라는 해저드 (hazard) 함수의 연산을 가능하게 해줍니다.
+또한, @code{p@var{xxx}}와 @code{q@var{xxx}}함수들은 @code{lower.tail}와 @code{log.p}라는 인자를 가지며, @code{d@var{xxx}}는 인자 @code{log}를 가집니다.
+이러한 옵션의 사용은 아래에서 보이는 바와 같이 생존분석(survival analysis)에서 사용되는 @eqn{H(t) = - \log(1 - F(t)), H(t) = - log(1 - F(t))}이라는 @emph{hazard}함수의 계산을 가능하게 합니다.
 
 @example
  - p@var{xxx}(t, ..., lower.tail = FALSE, log.p = TRUE)
 @end example
 
-@c @noindent
+@noindent
 @c or more accurate log-likelihoods (by @code{d@var{xxx}(..., log =
 @c TRUE)}), directly.
 
-또한, dxxx(..., log = TRUE)) 와 같은 인자의 설정은 더 정교한 로그우도(log-likelihood) 값을 얻을 수 있도록 도와줍니다.
+또한, @code{d@var{xxx}(..., log = TRUE)}와 같은 인자의 설정은 더 정교한 로그우도(log-likelihood) 값을 얻을 수 있도록 도와줍니다.
 
 @c In addition there are functions @code{ptukey} and @code{qtukey} for the
 @c distribution of the studentized range of samples from a normal
@@ -4085,7 +4120,9 @@ R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는
 @c multinomial distribution. Further distributions are available in
 @c contributed packages, notably @CRANpkg{SuppDists}.
 
-더 나아가 정규분포로부터 얻은 샘플에 대한 스튜던타이즈된 범위에 대한 분포 (the distribution of the studentized ranged of samples from a normal distribution) 은 ptukey 와 qtukey 라는 함수를 통하여 얻을 수 있습니다. 또한, 멀티노미얼 (multinomial) 분포에 대한 밀도값과 난수생성은 dmultinom 과 rmultinom 이라는 함수를 통하여 얻을 수 있습니다. 더 많은 분포에 대해서는 SuppDists 라는 패키지를 검색해 보시길 바랍니다.
+더 나아가 정규분포로부터 얻은 샘플에 대해서 표준화된 범위에 대한 분포를 함수 @code{ptukey}와 @code{qtukey}를 통하여 얻을 수 있습니다. 
+또한, 멀티노미얼 (multinomial) 분포에 대한 밀도값과 난수생성은 @code{dmultinom}과 @code{rmultinom}이라는 함수를 통하여 얻을 수 있습니다. 
+더 많은 분포에 대해서는 @CRANpkg{SuppDists}라는 사용자개발패키지를 찾아보시길 바랍니다.
 
 @c Here are some examples
 
@@ -4101,22 +4138,24 @@ R의 많은 장점들 중 한가지는 다양한 통계분포표를 제공하는
 @c See the on-line help on @code{RNG} for how random-number generation is
 @c done in @R{}.
 
-R이 어떻게 난수 생성을 하는가에 대해서 알고 싶으시다면 온라인 도움말 RNG (random number
-generator의 약자)를 참고해주세요.
+@R{}에서 어떻게 난수를 생성하는지 알고 싶으시다면 온라인 도움말 @code{RNG}를 살펴보시길 바랍니다.
 
 @node  Examining the distribution of a set of data, One- and two-sample tests, R as a set of statistical tables, Probability distributions
-@section Examining the distribution of a set of data
+@c @section Examining the distribution of a set of data
+@section 데이터 셋의 분포를 살펴보기
 
 @c Given a (univariate) set of data we can examine its distribution in a
 @c large number of ways.  The simplest is to examine the numbers.  Two
 @c slightly different summaries are given by @code{summary} and
 @c @code{fivenum}
-@c @findex summary
-@c @findex fivenum
+@findex summary
+@findex fivenum
 @c and a display of the numbers by @code{stem} (a ``stem and leaf'' plot).
-@c @findex stem
+@findex stem
 
-우리는 많은 방법을 통하여 주어진 (일변량) 데이터의 분포를 확인해 볼 수 있습니다. 가장 쉬운 방법은 summary 혹은 fivenum이라는 함수를 이용하여 수치적 요약정보를 보는 것입니다. 혹은 stem 이라는 함수를 이용하여 줄기-잎 그림을 통하여 확인해 볼수도 있습니다.
+많은 방법을 통하여 주어진 (일변량) 데이터의 분포를 확인해 볼 수 있습니다. 
+가장 쉬운 방법은 함수 @code{summary} 혹은 @code{fivenum}를 이용하여 수치적 요약정보를 보는 것입니다. 
+혹은 @code{stem} 함수를 이용하여 줄기-잎 (stem and leaf) 플랏을 이용하여 확인해 볼수도 있습니다.
 
 @example
 > attach(faithful)
@@ -4151,9 +4190,9 @@ generator의 약자)를 참고해주세요.
 
 @c A stem-and-leaf plot is like a histogram, and @R{} has a function
 @c @code{hist} to plot histograms.
-@c @findex hist
+@findex hist
 
-실은 줄기-잎 그림은 R 에서 제공하는 hist라는 함수가 제공하는 히스토그램과 비슷합니다.
+실은 줄기-잎 그림은 @R{}에서 제공하는 @code{hist} 함수가 제공하는 히스토그램과 비슷합니다.
 
 @example
 > hist(eruptions)
@@ -4163,8 +4202,8 @@ generator의 약자)를 참고해주세요.
 > rug(eruptions) # @r{show the actual data points}
 @end example
 
-@c @findex density
-@c @cindex Density estimation
+@findex density
+@cindex Density estimation
 @c More elegant density plots can be made by @code{density}, and we added a
 @c line produced by @code{density} in this example.  The bandwidth
 @c @code{bw} was chosen by trial-and-error as the default gives too much
@@ -4172,18 +4211,20 @@ generator의 약자)를 참고해주세요.
 @c automated methods of bandwidth choice are available, and in this example
 @c @code{bw = "SJ"} gives a good result.)
 
-위의 예제에서 사용된 것과 같이 히스토그램보다 좀 더 정교한 확률분포를 살펴보기 위해서 density라는 함수에 의해서 계산되는 밀도플랏 (density plot) 을 함께 사용하는 것이 좋습니다. density 함수가 가지는 인자중에서 bw 이라는 bandwidth (한국말모름) 가지는 0.1 이라는 값은 기본으로 설정된 값이 너무 smoothing 이 되어서 trial-and-error 에 의해서 정해진 것입니다. (Bandwidth의 선택에 있어서 자동화된 방법이 있는데, bw='SJ' 를 이용해보시길 바랍니다).
+위의 예제에서 사용된 것과 같이 히스토그램보다 좀 더 정교한 확률분포를 살펴보기 위해서 @code{density} 함수에 의해서 계산되는 밀도플랏 (density plot) 을 함께 사용하는 것이 좋습니다. 
+@code{density}함수의 @code{bw}(bandwidth) 인자의 값은 trial-and-error를 통해 얻어집니다.
+(Bandwidth의 선택에 있어서 자동화된 방법이 있는데, @code{bw='SJ'}를 이용해보시길 바랍니다).
 
-@c @iftex
-@c @image{images/hist,9cm} @c deleted by Chel Hee Lee
-@c @end iftex
+@iftex
+@image{images/hist,9cm} 
+@end iftex
 
 @c We can plot the empirical cumulative distribution function by using the
 @c function @code{ecdf}.
-@c @findex ecdf
-@c @cindex Empirical CDFs
+@findex ecdf
+@cindex Empirical CDFs
 
-확률분포를 확인해보기 위해서 우리는 또한 ecdf 라는 함수에 의해서 얻어지는 empirical cumulative distribution function (정확한 한국말 모름)을 이용해 볼 수 있습니다.
+@code{ecdf} 함수를 이용하여 empirical cumulative distribution function을 플랏해 볼 수 있습니다.
 
 @example
 > plot(ecdf(eruptions), do.points=FALSE, verticals=TRUE)
@@ -4193,7 +4234,9 @@ generator의 약자)를 참고해주세요.
 @c How about the right-hand mode, say eruptions of longer than 3 minutes?
 @c Let us fit a normal distribution and overlay the fitted CDF.
 
-당연히 empirical 누적분포는 그 어떠한 표준분포를 따르지 않습니다. 하지만, 화산폭발이 3분이상 지속될 경우에 대한 분포는 어떨까요? 3분이상의 데이터으로부터의 생성된 empirical 누적분포를 만들어 본뒤 그 위에 정규분포와 오버레이시켜서 비교해 봅니다.
+이 분포는 표준정규분포로부터 많은 차이가 있음을 명백히 알 수 있습니다.
+하지만, 화산폭발이 3분이상 지속될 경우에 대한 분포는 어떨까요? 
+3분이상의 데이터으로부터의 생성된 누적분포를 만들어 본뒤 그 위에 정규분포와 겹쳐봄으로서 비교해봅니다.
 
 @example
 > long <- eruptions[eruptions > 3]
@@ -4202,31 +4245,32 @@ generator의 약자)를 참고해주세요.
 > lines(x, pnorm(x, mean=mean(long), sd=sqrt(var(long))), lty=3)
 @end example
 
-@c @iftex
-@c @image{images/ecdf,9cm} @c deleted by Chel Hee Lee 
-@c @end iftex
+@iftex
+@image{images/ecdf,9cm}
+@end iftex
 
 @c Quantile-quantile (Q-Q) plots can help us examine this more carefully.
-@c @cindex Quantile-quantile plots
-@c @findex qqnorm
-@c @findex qqline
+@cindex Quantile-quantile plots
+@findex qqnorm
+@findex qqline
 
-퀀타일-퀀타일 (Q-Q) 플랏을 이용하여 화산폭발 3분이상의 데이터에 대한 정규성을 검토해보는 것도 도움이 됩니다.
+Q-Q 플랏을 이용하여 화산폭발 3분이상의 데이터에 대한 정규성을 검토해보는 것도 도움이 됩니다.
 
 @example
 par(pty="s")       # arrange for a square figure region
 qqnorm(long); qqline(long)
 @end example
 
-@c @noindent
+@noindent
 @c which shows a reasonable fit but a shorter right tail than one would
 @c expect from a normal distribution.  Let us compare this with some
 @c simulated data from a @math{t} distribution
 
-Q-Q 플랏으로부터 정규성을 보임을 확인할 수 있었지만, 오른쪽 꼬리 부분이 생각보다 정규분포를 따르지 않는 것 같습니다. 그럼 이것을 t분포로부터 생성된 난수의 분포와는 어떤 관계를 가질까요?
+Q-Q 플랏으로부터 오른쪽 꼬리 부분이 생각보다 짧은 것을 제외하고는 정규분포를 대체적으로 따르는 것 같습니다.
+그럼 @code{t}-분포함수로부터 생성된 난수의 분포와는 어떤 관계를 가질지 생각해봅니다.
 
 @iftex
-@c @image{images/QQ,7cm} @c deleted by Chel Hee Lee 
+@image{images/QQ,7cm}
 @end iftex
 
 @example
@@ -4234,12 +4278,12 @@ x <- rt(250, df = 5)
 qqnorm(x); qqline(x)
 @end example
 
-@c @noindent
+@noindent
 @c which will usually (if it is a random sample) show longer tails than
 @c expected for a normal.  We can make a Q-Q plot against the generating
 @c distribution by
 
-t분포로부터 얻어진 난수의 분포가 정규분포보다도 더 긴 꼬리를 가짐을 볼 수 있습니다.
+@code{t}-분포로부터 얻어진 난수의 분포가 정규분포의 꼬리보다 길다는 것을 알 수 있습니다.
 
 @example
 qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
@@ -4248,10 +4292,11 @@ qqline(x)
 
 @c Finally, we might want a more formal test of agreement with normality
 @c (or not).  @R{} provides the Shapiro-Wilk test
-@c @cindex Shapiro-Wilk test
-@c @findex shapiro.test
+@cindex Shapiro-Wilk test
+@findex shapiro.test
 
-아마도 그 다음 과정은 R이 제공하는 Shpiro-Wilk 라는 테스트를 통하여 이 분포가 정규성을 얼마나 따르는지 확인하는 것입니다.
+마지막으로 정규성과 얼마나 따르는지를 확인하는 테스트를 수행하고자 할 것입니다.
+@R{}은 아래와 같은 Shpiro-Wilk 테스트를 제공합니다.
 
 @example
 > shapiro.test(long)
@@ -4263,11 +4308,11 @@ W = 0.9793, p-value = 0.01052
 @end example
 
 @noindent
-and the Kolmogorov-Smirnov test
+@c and the Kolmogorov-Smirnov test
 @cindex Kolmogorov-Smirnov test
 @findex ks.test
 
-Shpiro-Wilk 라는 테스트 외에도 Kolmogorov-Smirnov 라는 테스트를 이용하여 정규성을 확인해 볼 수 있습니다.
+Shpiro-Wilk 테스트 외에도 Kolmogorov-Smirnov 테스트를 이용하여 정규성을 확인해 볼 수 있습니다.
 
 @example
 > ks.test(long, "pnorm", mean = mean(long), sd = sqrt(var(long)))
@@ -4280,12 +4325,13 @@ alternative hypothesis: two.sided
 @end example
 
 @noindent
-(Note that the distribution theory is not valid here as we
-have estimated the parameters of the normal distribution from the same
-sample.)
+@c (Note that the distribution theory is not valid here as we
+@c have estimated the parameters of the normal distribution from the same
+@c sample.)
 
 @node One- and two-sample tests,  , Examining the distribution of a set of data, Probability distributions
-@section One- and two-sample tests
+@c @section One- and two-sample tests
+@section 단일 샘플과 두개의 샘플에 이용되는 테스트들 
 @cindex One- and two-sample tests
 
 @c So far we have compared a single sample to a normal distribution.  A
@@ -4293,12 +4339,15 @@ sample.)
 @c that in @R{}, all ``classical'' tests including the ones used below are
 @c in package @pkg{stats} which is normally loaded.
 
-지금까지 우리는 하나의 샘플을 정규분포와 비교해 보았습니다. 두개의 샘플을 비교하고자 한다면 더 많은 작업이 요구되나, 많은 작업이 공통적으로 적용되므로 많은 중복작업을 하는것과 같습니다. 다음의 예제에 사용되는 통계적 테스트를 포함하여 모든 전형적인 통계테스트는 기본적으로 stats 이라는 패키지에 포함되어 있습니다.
+지금까지 하나의 샘플을 정규분포와 비교해 보았습니다. 
+두개의 샘플을 비교하고자 한다면 더 많은 작업이 요구될 것입니다.
+@R{}에서는 다음 예제에 사용되는 통계적 테스트를 포함하여 모든 전형적인 테스트들을 @pkg{stats} 패키지에 넣어두었습니다.
 
 @c Consider the following sets of data on the latent heat of the fusion of
 @c ice (@emph{cal/gm}) from Rice (1995, p.490)
 
-1995년에 Rice가 the latent heat of the fusion of ice 에 대해서 연구한 논문의 490 쪽에 게재된 내용입니다. 다음 두개의 데이터셋이 주어졌습니다.
+1995년에 Rice가 the latent heat of the fusion of ice (@emph{cal/gm})에 대해서 연구한 논문의 490 쪽에 게재된 내용입니다. 
+다음 두 개의 데이터셋이 이용되었습니다.
 
 @example
 Method A: 79.98 80.04 80.02 80.04 80.03 80.03 80.04 79.97
@@ -4306,10 +4355,10 @@ Method A: 79.98 80.04 80.02 80.04 80.03 80.03 80.04 79.97
 Method B: 80.02 79.94 79.98 79.97 79.97 80.03 79.95 79.97
 @end example
 
-@c @noindent
+@noindent
 @c Boxplots provide a simple graphical comparison of the two samples.
 
-박스플랏 (boxplot) 은 두개의 샘플에 대한 정보를 시각적으로 비교해 줍니다.
+박스플랏(boxplot)은 두개의 샘플에 대하여 시각적인 비교를 제공합니다.
 
 @c NOTE scan() from stdin is not parse()able, hence not source()able
 @c Hence ./R-intro.R uses c(..)
@@ -4326,22 +4375,22 @@ boxplot(A, B)
 @findex boxplot
 @cindex Box plots
 
-@c @noindent
+@noindent
 @c which indicates that the first group tends to give higher results than
 @c the second.
 
 첫번째 그룹이 두번째 그룹보다 더 높은 결과를 보여주는 것같습니다.
 
 @iftex
-@c @image{images/ice,7cm} @c deleted by Chel Hee Lee
+@image{images/ice,7cm}
 @end iftex
 
 @c To test for the equality of the means of the two examples, we can use
 @c an @emph{unpaired} @math{t}-test by
-@c @cindex Student's @math{t} test
-@c @findex t.test
+@cindex Student's @math{t} test
+@findex t.test
 
-각각의 데이터의 평균이 일치하는가를 테스트 하기 위해서 우리는 아래와 같이 unpaired t-테스트를 수행해 봅니다.
+각각의 데이터의 평균이 같은지를 테스트하기 위해서 아래와 같이 @emph{unpaired} @math{t}-테스트를 수행해 봅니다.
 
 @example
 > t.test(A, B)
@@ -4358,14 +4407,18 @@ mean of x mean of y
  80.02077  79.97875
 @end example
 
-@c @noindent
+@noindent
 @c which does indicate a significant difference, assuming normality.  By
 @c default the @R{} function does not assume equality of variances in the
 @c two samples (in contrast to the similar @SPLUS{} @code{t.test}
 @c function).  We can use the F test to test for equality in the variances,
 @c provided that the two samples are from normal populations.
 
-테스트의 결과는 평균의 차이가 정규분포를 따른다고 가정할때 그 평균의 차이는 통계적으로 의미가 있음을 나타내고 있습니다. 여기에서 한가지 알아야 할 점은 R 은 기본적으로 두 데이터의 분산이 같다고 가정하지 않는다는 것입니다. 이것은 S-Plus 에서 제공하는 t.test 와 동일합니다. 따라서 우리는 두 데이터의 분산이 같은지에 대해서 F-테스트를 시행해 봅니다. 이때, 두 데이터는 정규분포로부터 얻어진 샘플이라고 가정해야 합니다.
+테스트의 결과는 평균의 차이가 정규분포를 따른다고 가정할때 통계적으로 의미가 있음을 나타내고 있습니다. 
+여기에서 한가지 알아야 할 점은 @R{}은 기본적으로 두 데이터의 분산이 같다고 가정하지 않는다는 것입니다. 
+이것은 @SPLUS{}에서 제공하는 @code{t.test}와 동일합니다. 
+따라서 두 데이터의 분산이 같은지에 대해서 F-테스트를 시행해 보아야 할 것입니다.
+이때, 두 데이터는 정규분포로부터 얻어진 샘플이라고 가정합니다.
 
 @example
 > var.test(A, B)
@@ -4383,11 +4436,12 @@ ratio of variances
 @end example
 @findex var.test
 
-@c @noindent
+@noindent
 @c which shows no evidence of a significant difference, and so we can use
 @c the classical @math{t}-test that assumes equality of the variances.
 
-테스트의 결과는 두 데이터의 분산은 통계학적으로 차이가 없음을 의미하므로, 우리는 두 데이터의 분산이 같다고 가정하는 전형적인 t-테스트를 사용해도 무방합니다.
+테스트의 결과는 두 데이터의 분산은 통계학적으로 차이가 없음을 의미하므로, 
+두 데이터의 분산이 같다고 가정하는 전형적인 t-테스트를 사용해도 무방합니다.
 
 @example
 > t.test(A, B, var.equal=TRUE)
@@ -4408,7 +4462,7 @@ mean of x mean of y
 @c Wilcoxon (or Mann-Whitney) test only assumes a common continuous
 @c distribution under the null hypothesis.
 
-우리가 사용한 모든 테스트들이 두 데이터가 정규분포로부터 얻어진 샘플임을 가정하고 있습니다. 그러나 two-sample Wilcoxon 혹은 Mann-Whitney 테스트는 단순히 연속형 분포만을 가정합니다.
+모든 테스트들이 두 데이터가 정규분포로부터 얻어진 샘플임을 가정하고 있으나, two-sample Wilcoxon 혹은 Mann-Whitney 테스트에 필요한 가정은 분포가 단순히 연속형이어야 한다는 것입니다.
 
 @cindex Wilcoxon test
 @findex wilcox.test
@@ -4425,30 +4479,36 @@ Warning message:
 Cannot compute exact p-value with ties in: wilcox.test(A, B)
 @end example
 
-@c @noindent
+@noindent
 @c Note the warning: there are several ties in each sample, which suggests
 @c strongly that these data are from a discrete distribution (probably due
 @c to rounding).
 
-테스트를 수행한 결과에 경고가 있음을 알 수 있습니다. 이것은 아마도 각각의 샘플안에 동일한 값을 가지는 데이터들이 존재하기 때문일것입니다. 따라서 우리는 연속형 분포를 가정하기 보다는 데이터가 이산형분포로부터 나왔다고 생각하는게 올바를 것입니다(혹은 이것은 rounding 으로부터 나온 결과일 수 도 있습니다).
+테스트를 수행한 결과에 경고가 있음을 알 수 있습니다. 
+이것은 아마도 각각의 샘플안에 동일한 값을 가지는 데이터들이 존재하기 때문일것입니다. 
+따라서 연속형 분포를 가정하기 보다는 데이터가 이산형분포로부터 나왔다고 생각하는게 올바를 것입니다
+(혹은 이것은 rounding 으로부터 나온 결과일 수 도 있습니다).
 
 @c There are several ways to compare graphically the two samples.  We have
 @c already seen a pair of boxplots.  The following
 
-두개의 샘플을 시각적으로 비교해 보는데 여러가지 방법이 있을 수 있습니다. 그 중에서 두개의 박스플랏을 동시에 비교해보는 것은 이미 해 보았습니다.
+두개의 샘플을 시각적으로 비교해 보는데 여러가지 방법이 있을 수 있습니다. 
+그 중에서 두개의 박스플랏을 동시에 비교해보는 것은 이미 해 보았습니다.
 
 @example
 > plot(ecdf(A), do.points=FALSE, verticals=TRUE, xlim=range(A, B))
 > plot(ecdf(B), do.points=FALSE, verticals=TRUE, add=TRUE)
 @end example
 
-@c @noindent
+@noindent
 @c will show the two empirical CDFs, and @code{qqplot} will perform a Q-Q
 @c plot of the two samples.  The Kolmogorov-Smirnov test is of the maximal
 @c vertical distance between the two ecdf's, assuming a common continuous
 @c distribution:
 
-위에서 사용된 코드는 두개의 emprical CDFs (누적확률분포)를 비교할 것입니다. 또한 qqplot함수를 이용하여 두 개의 샘플에 대한 Q-Q 플랏을 생성할 수도 있습니다. 아래의 코드는 두개의 ecdf(empirical CDF)의 차이에 대하여 Kolmogorov-Smirnov 테스트를 수행합니다.
+위에서 사용된 코드는 두개의 emprical CDFs (누적확률분포)를 비교할 것입니다. 
+또한 @code{qqplot}함수를 이용하여 두 개의 샘플에 대한 Q-Q 플랏을 생성할 수도 있습니다. 
+아래의 코드는 두개의 @code{ecdf}의 차이에 대하여 Kolmogorov-Smirnov 테스트를 수행합니다.
 
 @example
 > ks.test(A, B)
@@ -4463,9 +4523,10 @@ Warning message:
 cannot compute correct p-values with ties in: ks.test(A, B)
 @end example
 
+
 @node Loops and conditional execution, Writing your own functions, Probability distributions, Top
 @c @chapter Grouping, loops and conditional execution
-@chapter 그룹핑, 반복 그리고 조건적 실행  (의역 일정 - 2013.03.28)
+@chapter 그룹핑, 반복 그리고 조건적 실행
 @cindex Loops and conditional execution
 
 @menu
@@ -4474,7 +4535,8 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @end menu
 
 @node Grouped expressions, Control statements, Loops and conditional execution, Loops and conditional execution
-@section Grouped expressions
+@c @section Grouped expressions
+@section 그룹화된 표현들
 @cindex Grouped expressions
 
 @c @R{} is an expression language in the sense that its only command type
@@ -4489,10 +4551,16 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @c a group is also an expression it may, for example, be itself included in
 @c parentheses and used a part of an even larger expression, and so on.
 
-R은 결과값을 반환하는 함수를 사용하고, 이 결과를 재사용할 수 있도록 표현식에 할당하며, 이 표현식이 다시 재사용될 수 있다는 점에서 표현식을 기반으로 하는 언어라고 할 수 있습니다. 특히 다중 할당도 가능하다는 것이 특징입니다. 또한, @{expr_1; ...; expr_m@} 와 같이 여러개의 명령어들을 중괄호로 한데 묶어 이것을 또한 표현식으로도 사용할 수 있습니다 이것을 그룹화된 표현식이라고 하고, 이 그룹화된 표현식의 결과는 그룹내의 맨 마지막 명령문이 실행되었을때 얻어지게 됩니다. 이렇게 그룹화된 표현식 역시 괄호안의 일부분 혹은 더 큰 표현식의 일부분으로도 사용될 수 있습니다.
+@R{}은 명령어 형식으로 결과값을 반환하는 함수 또는 표현을 사용하는 점에서 표현언어(expression language)입니다.
+결과값를 재사용할 수 있도록 표현식에 할당하며, 이 표현식을 어느 곳에서든지 재사용할수도 있고 다중할당도 가능합니다.
+
+또한, @code{@{@var{expr_1}; @var{@dots{}}; @var{expr_m}@}}와 같이 여러개의 명령들을 중괄호로 한데 묶어 이것을 또한 표현식으로도 사용할 수 있습니다 
+이렇게 중괄호로 묶은 것을 그룹화된 표현식이라고 하고, 이것의 결과는 그룹내의 맨 마지막 명령문이 실행되었을때 얻어지게 됩니다. 
+이렇게 그룹화된 표현식 역시 더 큰 표현식의 일부분으로도 사용될 수 있습니다.
 
 @node Control statements,  , Grouped expressions, Loops and conditional execution
-@section Control statements
+@c @section Control statements
+@section 조건문
 @cindex Control statements
 
 @menu
@@ -4501,7 +4569,8 @@ R은 결과값을 반환하는 함수를 사용하고, 이 결과를 재사용�
 @end menu
 
 @node Conditional execution, Repetitive execution, Control statements, Control statements
-@subsection Conditional execution: @code{if} statements
+@c @subsection Conditional execution: @code{if} statements
+@subsection 조건적 실행: @code{if} 문
 @findex if
 
 @c The language has available a conditional construction of the form
@@ -4514,44 +4583,46 @@ R은 결과값을 반환하는 함수를 사용하고, 이 결과를 재사용�
 @findex if
 @findex else
 
-@c @noindent
+@noindent
 @c where @var{expr_1} must evaluate to a single logical value and the
 @c result of the entire expression is then evident.
+@var{expr_1}은 반드시 참 혹은 거짓이라는 단 하나의 논리형 값을 가져야만 합니다.
 
-expr_1 은 반드시 한개의 참 혹은 거짓 이라는 논리형 값을 가져야만 합니다.
-
-@c @findex &&
-@c @findex ||
+@findex &&
+@findex ||
 @c The ``short-circuit'' operators @code{&&} and @code{||} are often used
 @c as part of the condition in an @code{if} statement.  Whereas @code{&}
 @c and @code{|} apply element-wise to vectors, @code{&&} and @code{||}
 @c apply to vectors of length one, and only evaluate their second argument
 @c if necessary.
 
-“short-circuit” 이라고 불리는 && 와 || 이라는 연산자는 종종 if 라는 조건문과 함께 쓰입니다.
+@code{&&}와 @code{||}는 종종 @code{if}이라는 조건문과 함께 쓰이는 ``short-circuit'' 연산자입니다.
+@code{&}와 @code{|}가 벡터내 구성요소단위의 연산을 수행하는 반면, @code{&&}와 @code{||}는 길이가 1인 벡터들에만 적용됩니다.
 
-@c @findex ifelse
+@findex ifelse
 @c There is a vectorized version of the @code{if}/@code{else} construct,
 @c the @code{ifelse} function.  This has the form @code{ifelse(condition, a,
 @c b)} and returns a vector of the length of its longest argument, with
 @c elements @code{a[i]} if @code{condition[i]} is true, otherwise
 @c @code{b[i]}.
 
-R 은 벡터라이즈(vectorized) 된 버전의 if/else 조건문인 ifelse 라는 함수를 제공하고 있습니다. 이것은 ifelse(condition, a, b) 의 형식을 가지고 만약 condition[i] 이 참이면 a[i]를, 거짓이면 b[i]를 결과값으로 가지게 됩니다.
+@R{}은 벡터라이즈(vectorized)된 버전의 @code{if}/@code{else} 조건문인 @code{ifelse} 함수를 제공하고 있습니다. 
+이것은 @code{ifelse(condition, a, b)}의 형식을 가지고 만약  @code{condition[i]} 이 참이면 @code{a[i]}를, 거짓이면 @code{b[i]}를 결과값으로 가지게 됩니다.
 
 @node Repetitive execution,  , Conditional execution, Control statements
-@subsection Repetitive execution: @code{for} loops, @code{repeat} and @code{while}
+@c @subsection Repetitive execution: @code{for} loops, @code{repeat} and @code{while}
+@subsection 반복실행: @code{for} 루프, @code{repeat}와 @code{while}
 @findex for
 
 @c There is also a @code{for} loop construction which has the form
 
-다음은 for를 이용한 반복문에 대한 형식입니다.
+다음은 @code{for} 루프를 이용한 반복문에 대한 형식입니다.
 
 @example
 > for (@code{@var{name}} in @var{expr_1}) @var{expr_2}
 @end example
 
-@c @noindent
+@noindent
 @c where @code{@var{name}} is the loop variable.  @var{expr_1} is a
 @c vector expression, (often a sequence like @code{1:20}), and
 @c @var{expr_2} is often a grouped expression with its sub-expressions
@@ -4559,7 +4630,8 @@ R 은 벡터라이즈(vectorized) 된 버전의 if/else 조건문인 ifelse 라�
 @c evaluated as @var{name} ranges through the values in the vector result
 @c of @var{expr_1}.
 
-name은 1:20 과 같이 벡터로서 표현된 expr_1에 정의된 범위내에서 expr_2라는 표현식의 반복을 통제하는 지시자, 즉, 루프 변수(loop variable) 입니다. expr_2 은 종종 그룹화된 표현식으로 오는 경우가 있습니다.
+@code{@var{name}}는 벡터 @var{expr_1}의 순서대로서 표현식 @var{expr_2}의 반복을 진행할 수 있도록 지시하는 루프 변수(loop variable) 입니다.
+@var{expr_2}은 종종 그룹화된 표현식으로 오는 경우가 있습니다.
 
 @c As an example, suppose @code{ind} is a vector of class indicators and we
 @c wish to produce separate plots of @code{y} versus @code{x} within
@@ -4569,7 +4641,10 @@ name은 1:20 과 같이 벡터로서 표현된 expr_1에 정의된 범위내에�
 @c factor.  Another way to do this, now putting all plots on the one
 @c display, is as follows:
 
-예를들어, ind가 그룹멤버쉽을 나타낸다고 가정할때 그룹별로 y 와 x의 관계를 살펴 볼 수 있는 플랏(plot)을 생성하고 싶은 경우를 생각해 봅시다. 이것을 수행하기 위한 한가지 옵션은 어떤 특정요인이 가지고 있는 레벨별로 플랏을 생성해주는 함수 coplot(),5 을 이용하는 것입니다. 아래의 코드는 coplot() 을 사용하지 않고도 이를 수행하는 방법을 보여줍니다.
+예를들어, 만약 @code{ind}가 그룹멤버쉽을 나타낸다면, 각 그룹별로 @code{y}와 @code{x}의 관계를 살펴 볼 수 있는 플랏(plot)을 생성하고자 하는 경우를 가정해 봅니다.
+이를 수행하기 위한 한가지 옵션은 어떤 특정 요인이 가지고 있는 수준별로 플랏을 생성해주는 함수 @code{coplot()}
+@footnote{또는 @CRANpkg{lattice}에 있는 @code{xyplot}함수를 이용할 수 있습니다.} 을 이용하는 것입니다. 
+또 다른 방법으로는 아래와 같이 하는 것입니다.
 
 @example
 > xc <- split(x, ind)
@@ -4580,13 +4655,15 @@ name은 1:20 과 같이 벡터로서 표현된 expr_1에 정의된 범위내에�
   @}
 @end example
 
-@c @findex split
+@findex split
 @c (Note the function @code{split()} which produces a list of vectors
 @c obtained by splitting a larger vector according to the classes specified
 @c by a factor.  This is a useful function, mostly used in connection
 @c with boxplots.  See the @code{help} facility for further details.)
 
-위의 코드에서 사용된 split() 이란 함수는 데이터를 특정요인이 가지는 레벨별로 분리해 낸 뒤, 각각의 레벨별 데이터를 컴포넌트로 가지는 리스트를 생성하는 기능을 가지고 있습니다. 이것은 주로 박스플랏과 함께 사용되는데 매우 유용한 함수입니다. 더 자세한 사항은 도움말 기능을 이용하시길 바랍니다.
+위에서 사용된 함수 @code{split()}는 주어진 데이터를 특정 요인이 가지는 수준별로 분리한 뒤, 각각의 수준별 데이터를 컴포넌트로 가지는 리스트를 생성합니다.
+이것은 박스플랏과 많은 연관이 있는 매우 유용한 함수입니다.
+더 자세한 사항은 도움말 @code{help} 기능을 이용하시길 바랍니다.
 
 @c @quotation
 @c @strong{Warning}: @code{for()} loops are used in @R{} code much less
@@ -4594,9 +4671,14 @@ name은 1:20 과 같이 벡터로서 표현된 expr_1에 정의된 범위내에�
 @c is likely to be both clearer and faster in @R{}.
 @c @end quotation
 
-@c Other looping facilities include the
+@quotation
+@strong{Warning}: @R{}에서는 @code{for()}를 이용한 반복문은 다른 컴파일된 언어들에 비하여 자주 사용되지 않습니다. 
+그 이유는 전체 데이터 객체를 이용하여 벡터라이징 테크닉을 적절히 활용하는 것이 @R{}에서는 @code{for()}를 이용한 반복문보다도 더 빠른 연산속도를 가지며, 
+프로그래머의 입장에서 프로그램을 직관적으로 읽기 쉽고 이해가 빠르게 도와줍니다. 
+@end quotation
 
-R을 이용하여 프로그래밍을 할때 for() 를 이용한 반복문은 자주 사용되지 않습니다. 그 이유는 전체 데이터를 이용하여 벡터라이징 테크닉을 적절히 활용하는 것이 for() 를 이용한 반복문보다도 더 빠른 연산속도를 가지며, 프로그래머의 입장에서 프로그램을 직관적으로 읽기 쉽고 이해가 빠르게 도와줍니다. R 은 반복기능에 있어서 다음과 같은 repeat 와 while 이라는 기능을 제공하고 있습니다.
+@c Other looping facilities include the
+다른 반복기능들은 
 
 @example
 > repeat @var{expr}
@@ -4604,7 +4686,8 @@ R을 이용하여 프로그래밍을 할때 for() 를 이용한 반복문은 자
 @findex repeat
 
 @noindent
-statement and the
+@c statement and the
+문과 
 
 @example
 > while (@var{condition}) @var{expr}
@@ -4612,27 +4695,32 @@ statement and the
 @findex while
 
 @noindent
-statement.
+@c statement.
+문을 가지고 있습니다.
 
 @c The @code{break} statement can be used to terminate any loop, possibly
 @c abnormally.  This is the only way to terminate @code{repeat} loops.
-@c @findex break
+@findex break
 
-The @code{next} statement can be used to discontinue one particular
-cycle and skip to the ``next''.
+@c The @code{next} statement can be used to discontinue one particular
+@c cycle and skip to the ``next''.
 @findex next
 
-break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만, 중요한 차이가 있습니다. break 는 반복문을 무조건 중단하고 반복문 이후의 명령들을 실행하고자 할때 쓰입니다. 따라서 repeat 을 사용하여 expr을반복하던 중, 이를 중단하고자 할때는 break 이라는 명령문을 사용하면 됩니다. 그러나, next 라는 명령어는 현재 진행하고 있는 반복 단계만을 건너뛰고 다음 단계의 반복단계로 넘어가라는 의미입니다.
+@code{break}와 @code{next}라는 두 명령문은 반복문을 중단할 때 쓰이지만, 중요한 차이가 있습니다.
+@code{break}는 반복문을 무조건 중단하고 반복문 이후의 명령들을 실행하고자 할때 쓰입니다. 
+따라서 @code{repeat}을 사용하여 @code{expr}를 반복하던 중, 이를 중단하고자 할때는 @code{break} 명령문을 사용하면 됩니다. 
+그러나, @code{next}는 현재 진행하고 있는 반복 단계만을 건너뛰고 다음 단계의 반복단계로 넘어가라는 의미입니다.
 
 @c Control statements are most often used in connection with
 @c @emph{functions} which are discussed in @ref{Writing your own
 @c functions}, and where more examples will emerge.
 
-실제로 프로그램의 흐름을 제어하는 것은 대개 사용자정의함수를 작성할때 다루어집니다. 이에 관련된 예제들에 대해서는 Writing your own functions 에서 다룰 것입니다.
+실제로 프로그램의 흐름을 제어하는 것은 대개 사용자 정의함수를 작성할때 다루어집니다. 
+이에 관련된 예제들에 대해서는 다음의 @ref{Writing your own functions} 에서 다룰 것입니다.
 
 @node Writing your own functions, Statistical models in R, Loops and conditional execution, Top
 @c @chapter Writing your own functions
-@chapter 사용자 정의 함수 작성하기  (의역 일정 - 2013.03.28)
+@chapter 사용자 정의 함수 작성하기
 @cindex Writing functions
 
 @c As we have seen informally along the way, the @R{} language allows the
@@ -4643,14 +4731,16 @@ break 와 next 라는 두 명령문은 반복문을 중단하고자 쓰이지만
 @c useful functions is one of the main ways to make your use of @R{}
 @c comfortable and productive.
 
-R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 function(함수)라는 모드를 가진 객체를 생성할 수 있도록 지원합니다. 이처럼 R이 사전에 미리 제공하는 함수들은 built-in (내장) 함수라고 하며, 사용자가 직접 정의하는 함수를 사용자 정의함수라고 합니다. 사용자 정의 함수를 작성하는 것은 여러분들이 R을 더 효율적으로, 기능적으로, 그리고 생산적인 통계분석처리를 할 수 있도록 도와줍니다.
+@R{}은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 @emph{function(함수)}라는 모드를 가진 객체를 생성할 수 있도록 지원합니다. 
+@R{}이 사전에 미리 제공하는 함수들은 내장(built-in)함수라고 하며, 사용자가 직접 정의하는 함수를 사용자 정의함수라고 합니다. 
+이를 작성하는 것은 사용자가 @R{}을 더 효율적으로, 기능적으로, 그리고 생산적인 통계분석처리를 할 수 있도록 도와줍니다.
 
 @c It should be emphasized that most of the functions supplied as part of
 @c the @R{} system, such as @code{mean()}, @code{var()},
 @c @code{postscript()} and so on, are themselves written in @R{} and thus
 @c do not differ materially from user written functions.
 
-실제로 R시스템에 미리 내장되어 있는 많은 함수들 중의 대부분은 사용자 정의 함수입니다. 예를 들면, mean(), var(), postscript() 과 같은 것들이 대표적인 경우입니다.
+@code{mean()}, @code{var()}, @code{postscript()}와 같이 @R{}시스템에 미리 내장된 많은 함수들 역시 @R{}로 쓰여졌기 때문에, 대다수의 내장함수들이 사용자 정의함수라고 할 수도 있습니다.
 
 @c A function is defined by an assignment of the form
 
@@ -4661,18 +4751,18 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 @end example
 @findex function
 
-@c @noindent
+@noindent
 @c The @var{expression} is an @R{} expression, (usually a grouped
 @c expression), that uses the arguments, @var{arg_i}, to calculate a value.
 @c The value of the expression is the value returned for the function.
-
-위에서 사용된 expression 이란 arg_1, arg_2, ..., 을 이용하여 작성되는 R의 표현식 혹은 그룹화된 표현식입니다. 또한, name이라는 함수가 arg_1, arg_2, ..., 라는 인자들을 이용하여 expression 을 수행함으로 얻어진 최종적인 결과는 name 함수의 반환값이라고 합니다.
 
 @c A call to the function then usually takes the form
 @c @code{@var{name}(@var{expr_1}, @var{expr_2}, @dots{})} and may occur
 @c anywhere a function call is legitimate.
 
-사용자가 정의한 함수를 사용하는 방법은 일반적인 내장함수를 사용하는 것과 동일하며, R 시스템 어느 곳에서나 name(expr_1, expr_2, ...)이라고 명령하면 됩니다.
+여기에서 @var{expression} 이란 어떤 값을 계산하기 위해 사용되는 @var{arg_i}를 이용하여 작성되는 @R{}표현식 (일반적으로 그룹화된 표현식)입니다.
+그리고, @var{expression}을 수행함으로 얻어진 최종적인 결과를 함수의 반환값이라고 합니다.
+이렇게 정의된 함수를 사용하는 방법은 어느 곳에서나 @code{@var{name}(@var{expr_1}, @var{expr_2}, @dots{})}이라고 사용하면 됩니다.
 
 @menu
 * Simple examples::             
@@ -4687,7 +4777,8 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 @end menu
 
 @node Simple examples, Defining new binary operators, Writing your own functions, Writing your own functions
-@section Simple examples
+@c @section Simple examples
+@section 간단한 예제 
 
 @c As a first example, consider a function to calculate the two sample
 @c @math{t}-statistic, showing ``all the steps''.  This is an artificial
@@ -4696,7 +4787,8 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 
 @c The function is defined as follows:
 
-첫번째 (인위적인) 예제입니다. 두개의 샘플로부터 t-통계량을 구하는 함수를 다음과 같이 정의할 수 있습니다.
+첫번째 예제를 살펴봅니다.
+두개의 샘플로부터 t-통계량을 구하는 함수를 다음과 같이 정의할 수 있습니다.
 
 @example
 > twosam <- function(y1, y2) @{
@@ -4712,7 +4804,7 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 @c With this function defined, you could perform two sample @math{t}-tests
 @c using a call such as
 
-이렇게 함수가 정의되고 나면, 여러분은 아래와 같이 정의한 함수 twosam 를 사용할 수 있습니다.
+이렇게 함수를 정의한 뒤, 이 정의한 함수 @code{twosam}을 아래와 같은 방법으로 사용할 수 있습니다.
 
 @example
 > tstat <- twosam(data$male, data$female); tstat
@@ -4727,19 +4819,21 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 @c tricky to use directly and it pays to have a simple function such as the
 @c following to use it safely.
 
-두번째 예제는 Matlab을 이용하여 회귀분석시 최소제곱법을 이용하여 회귀계수를 구해주는 백슬래쉬(backslash)라는 명령어를 구현하는 것입니다. 본래 이것은 qr() 함수를 이용하여 할 수도 있으나, 어떤 경우에는 직접적으로 활용하기가 곤란한 경우가 있습니다. 따라서, 우리는 다음과 같은 방식을 사용하는 것을 권장합니다.
+두번째 예제는 @sc{Matlab}에서 최소제곱법을 이용하여 회귀모델의 회귀계수를 구해주는 백슬래쉬(backslash)라는 명령어를 구현해보는 것입니다.
+본래 이것은 @code{qr()}함수를 이용하여 할 수도 있으나, 어떤 경우에는 직접적으로 활용하기가 곤란한 경우가 있습니다. 
+따라서, 다음과 같은 방식을 사용하는 것을 권장합니다.
 
 @c Thus given a @math{n} by @math{1} vector @math{y} and an @math{n} by
 @c @math{p} matrix @math{X} then @math{X \ y} is defined as
-@c @ifnottex
-@c (X'X)^@{-@}X'y, where (X'X)^@{-@}
-@c @end ifnottex
-@c @tex
-@c $(X^T X)^{-}X^T y$, where $(X^T X)^{-}$
-@c @end tex
+만약, @math{n}개의 원소를 가지는 열벡터 @math{y}가 있고, 사이즈가 @math{n}행 @math{p}열을 가진 디자인행렬 @math{X}가 있다면 @math{X\y}는 
+@ifnottex
+(X'X)^@{-@}X'y, where (X'X)^@{-@}
+@end ifnottex
+@tex
+$(X^T X)^{-}X^T y$, where $(X^T X)^{-}$
+@end tex
+로 정의할 수 있으며, @math{(X'X)^@{-@}}는 @math{X'X}의 역행렬입니다.
 @c is a generalized inverse of @math{X'X}.
-
-만약, n개의 원소를 가지는 열벡터 y 가 있고, 사이즈가 n행 p열을 가진 디자인 매트릭스 X 가 있다면 X \ y 라는 것은 (X'X)^@{-@}X'y, 이라고 정의됩니다. 여기에서 (X'X)^@{-@}라는 것은 X'X의 역행렬입니다.
 
 @example
 > bslash <- function(X, y) @{
@@ -4748,16 +4842,15 @@ R은 방대한 양의 함수를 지원하고 있으나, 사용자가 직접 func
 @}
 @end example
 
+위와 같이 정의된 @code{bslahs} 함수는 아래와 같이 @code{regcoeff}라는 객체에 결과를 저장하게 됩니다.
+
 @c After this object is created it may be used in statements such as
-
-이렇게 정의된 bslash 라는 함수는 아래와 같이 regcoeff 라는 객체에 결과를 저장하게 됩니다.
-
 @example
 > regcoeff <- bslash(Xmat, yvar)
 @end example
 
 @noindent
-and so on.
+@c and so on.
 
 @c The classical @R{} function @code{lsfit()} does this job quite well, and
 @c more@footnote{See also the methods described in @ref{Statistical models
@@ -4768,47 +4861,53 @@ and so on.
 @c frequent use.  If so, we may wish to make it a matrix binary operator
 @c for even more convenient use.
 
-이와 동일한 기능은 R에서 제공하는 lsfit() 함수를 이용하여 수행할 수 있는데, lsfit() 함수의 이용이 좀 더 효율적일 수 있습니다. 6. 실제로, qr() 과 qr.coef() 라는 함수의 사용은 회귀계수를 구하는데 있어서 직관적이라고 보기 어려우며, 사용에 번거롭기도 합니다. 따라서, 우리는 이러한 번거로움을 줄이고 매우 편리한 방법으로 사용자가 직접 정의해서 사용하는 binary operator (사용자정의 바이너리 연산자)라는 기능을 제공합니다.
+이러한 기능은 @R{}에서 제공하는 @code{lsfit()} 함수를 통하여 더 잘 수행될 수 있습니다.
+@footnote{@ref{Statistical models in R}에 설명된 다른 방법들을 살펴보시길 바랍니다}.
+실제로, @code{qr()}과 @code{qr.coef()}의 사용은 회귀계수를 구하는데 있어서 직관적이라고 보기 어려우며, 사용에 번거롭기도 합니다. 
+보다 편리한 사용을 위해 사용자가 직접 정의하는 이항연산자(binary operator)라는 기능을 제공합니다.
 
 @node Defining new binary operators, Named arguments and defaults, Simple examples, Writing your own functions
-@section Defining new binary operators
+@c @section Defining new binary operators
+@section 새로운 이항연산자 정의하기
 @cindex Binary operators
 
 @c Had we given the @code{bslash()} function a different name, namely one of
 @c the form
 
-위에서 bslash()이라는 함수를 작성하였습니다. 그러나 이러한 연산의 수행은 함수를 작성하는 것보다 연산자의 형태를 지닌다면 훨씬 편리할 것입니다. 따라서 우리는 binary operator 라는 사용자정의 바이너리 연산자 기능을 아래와 같이 제공합니다.
+위에서 @code{bslash()} 함수를 작성하였습니다. 
+그러나 이러한 연산의 수행은 함수를 작성하는 것보다 아래와 같은 연산자의 형태를 지닌다면 훨씬 편리할 것입니다. 
 
 @example
 %@var{anything}%
 @end example
 
-@c @noindent
+@noindent
 @c it could have been used as a @emph{binary operator} in expressions
 @c rather than in function form.  Suppose, for example, we choose @code{!}
 @c for the internal character.  The function definition would then start as
 
-예를 들어, anything 이라는 부분에 느낌표 (!) 를 이용하여 %!% 이라는 새로운 바이너리 연산자를 정의하고자 한다면 아래와 같이 큰 따옴표를 활용하여 연산자의 이름을 정의하면 됩니다.
+예를 들어, @code{anything}이라는 부분에 느낌표(@code{!})를 이용하여 @code{%!%}이라는 새로운 이항연산자를 아래와 같이 큰 따옴표를 이용하여 정의할 수 있습니다.
 
 @example
 > "%!%" <- function(X, y) @{ @dots{} @}
 @end example
 
-@c @noindent
+@noindent
 @c (Note the use of quote marks.)  The function could then be used as
 @c @code{X %!% y}.  (The backslash symbol itself is not a convenient choice
 @c as it presents special problems in this context.)
 
-이렇게 새로이 정의된 연산자는 X %!% y와 같이 사용할 수 있습니다.
+이렇게 새로이 정의된 연산자는 @code{X %!% y}와 같이 사용할 수 있습니다.
 
 @c The matrix multiplication operator, @code{%*%}, and the outer product
 @c matrix operator @code{%o%} are other examples of binary operators
 @c defined in this way.
 
-행렬의 곱셈을 수행하는 연산자 %*%, outer product 를 수행하는 연산자 %o%, 그리고 그외의 연산자들은 바이너리 연산자의 대표적인 예입니다.
+행렬의 곱셈을 수행하는 연산자 @code{%*%}, 외적을 수행하는 연산자 @code{%o%}는 이러한 방법으로 정의된 이항연산자의 대표적인 경우입니다.
 
 @node Named arguments and defaults, The three dots argument, Defining new binary operators, Writing your own functions
-@section Named arguments and defaults
+@c @section Named arguments and defaults
+@section 이름을 가진 인자들과 기본값
 @cindex Named arguments
 @cindex Default values
 
@@ -4818,30 +4917,28 @@ and so on.
 @c may begin in the unnamed, positional form, and specify named arguments
 @c after the positional arguments.
 
-Generating regular sequences에서 설명했던 것과 같이 함수에 사용되는 인자들은 “name=object” 와 같은 형식을 가지고 있으며, 이렇게 함수를 정의할때 인자의 이름을 굳이 정의하는 것은 프로그래밍의 논리적 오류를 줄이고자 하는 노력이라고 보시면 됩니다.
+@ref{Generating regular sequences}에서 설명했던 것과 같이 함수에 사용되는 인자들은 ``@code{@var{name}=@var{object}}''와 같은 형식을 가지고 있습니다.
+이러한 방식으로 함수의 정의시 인자의 이름을 굳이 함께 정의하는 것은 프로그래밍의 논리적 오류를 줄이고자 하는 노력이라고 보시길 바랍니다.
 
 @c Thus if there is a function @code{fun1} defined by
 
-예를들어, 아래와 같이 정의된 fun1 이라는 함수가 있다고 가정합니다.
-
+예를들어, 아래와 같이 정의된 함수 @code{fun1}가 있다고 가정한다면,
 @example
 > fun1 <- function(data, data.frame, graph, limit) @{
     @r{[function body omitted]}
   @}
 @end example
 
-@c @noindent
+@noindent
 @c then the function may be invoked in several ways, for example
-
-위에서 정의된 함수는 아래와 같이 세가지 방법으로 사용이 가능합니다.
-
+아래와 같이 세가지 방법으로 사용이 가능하며, 모두 같은 결과를 줍니다.
 @example
 > ans <- fun1(d, df, TRUE, 20)
 > ans <- fun1(d, df, graph=TRUE, limit=20)
 > ans <- fun1(data=d, limit=20, graph=TRUE, data.frame=df)
 @end example
 
-@c @noindent
+@noindent
 @c are all equivalent.
 
 @c In many cases arguments can be given commonly appropriate default
@@ -4849,41 +4946,42 @@ Generating regular sequences에서 설명했던 것과 같이 함수에 사용�
 @c the defaults are appropriate.  For example, if @code{fun1} were defined
 @c as
 
-그런데, R 에서 제공하는 모든 함수들은 아래에서 보여지는 것과 같이 함수를 정의할 때 함수의 인자에 기본값이라는 것을 부여합니다.
-
+그런데, @R{}에서 제공하는 모든 함수들은 아래에서 보여지는 것과 같이 함수의 인자에 기본값이라는 것이 부여되어 있음을 알 수 있습니다.
 @example
 > fun1 <- function(data, data.frame, graph=TRUE, limit=20) @{ @dots{} @}
 @end example
 
-@c @noindent
+@noindent
 @c it could be called as
 
-이처럼 함수의 인자에 대해 기본값이 미리 정의되어 있기 때문에 아래와 같이 함수의 모든 인자를 입력하지 않아도 함수는 기본값을 이용하여 연산을 수행하게 됩니다.
+따라서, 이 기본값들을 이용하여 함수의 모든 인자를 입력하지 않아도 함수는 연산을 수행하게 됩니다.
+아래와 같은 사용은 위의 세가지 다른 방법으로 사용했던것과 동일한 결과를 줍니다.
 
 @example
 > ans <- fun1(d, df)
 @end example
 
-@c @noindent
+@noindent
 @c which is now equivalent to the three cases above, or as
 
-아래의 코드는 limit 라는 인자의 기본값을 20 에서 10 으로 바꾸어서 실행하라는 의미입니다.
+@code{limit}의 기본값을 20에서 10으로 바꾸어 실행하고자 한다면 아래와 같이 할 수 있습니다.
 
 @example
 > ans <- fun1(d, df, limit=10)
 @end example
 
-@c @noindent
+@noindent
 @c which changes one of the defaults.
 
 @c It is important to note that defaults may be arbitrary expressions, even
 @c involving other arguments to the same function; they are not restricted
 @c to be constants as in our simple example here.
 
-인자에 주어지는 기본값이 여기 예제에서 사용된 것과 같이 굳이 상수를 가질 필요는 없으며, 그 어떠한 표현식을 사용해도 무방합니다.
+인자에 주어지는 기본값들이 본 예제에서 사용된 것과 같이 상수일 필요는 없으며, 임의의 표현식이 될 수 있습니다.
 
 @node The three dots argument, Assignment within functions, Named arguments and defaults, Writing your own functions
-@section The @samp{@dots{}} argument
+@c @section The @samp{@dots{}} argument
+@section @samp{@dots{}} 인자
 
 @c The ?Reserved topic links here, so please update it
 @c if changing the node name.
@@ -4897,7 +4995,12 @@ Generating regular sequences에서 설명했던 것과 같이 함수에 사용�
 @c argument, literally @samp{@dots{}}, of the function, which may then be
 @c passed on.  An outline example is given below.
 
-함수를 정의할 때 ‘...’ 라는 기능을 알아두면 매우 유용합니다. 예를들어, plot()과 같이 그래픽에 관련된 많은 함수들은 par() 라는 함수를 사용합니다. par()라는 함수에는 그래픽의 결과물을 정교히 조정하기 위한 방대한 양의 인자들이 포함되어 있습니다. par() 라는 함수에 대해서 자세히 알고 싶으시다면 See The par() function. 그러나 실제로는, 그래픽에 관련된 함수들은 단순히 par()라는 함수에 있는 인자를 사용함으로서 결과물의 수정 및 조정을 조정할 뿐, 이러한 역할을 위한 인자를 따로 정의하고 있지 않습니다. 이렇게 외부에 정의에 되어 있는 함수 및 객체들의 인자들을 정의하고자 하는 함수로 불러들여와 활용하고자할 때, 아래의 코드에서 보이는 것과 같이 ‘...’를 함수 선언부에 나열된 인자들의 목록뒤에 붙여주면 됩니다.
+함수를 정의할 때 @samp{@dots{}}라는 표현을 알아두면 매우 유용합니다.
+이는 한 함수의 인자들에 대한 설정을 다른 함수로 넘겨주는 것을 허용하는 역할을 합니다.
+예를들어, @code{plot()}과 같은 그래픽 함수들은 그래픽의 결과물을 정교히 조정하기 위한 방대한 양의 인자들이 포함하고 있는 함수 @code{par()}를 사용합니다.
+@code{par()}에 대해서 자세히 알고 싶으시다면 @ref{The par() function}를 살펴보시길 바랍니다.
+따라서, 그래픽 함수들은 실제로는 par()라는 함수에 있는 인자를 사용함으로서 결과물의 수정 및 조정을 조정하고, 이러한 역할을 위한 인자를 따로 정의하고 있지 않습니다. 
+이렇게 외부에 정의에 되어 있는 함수 및 객체들의 인자들을 정의하고자 하는 함수로 불러들여와 활용하고자할 때, 아래의 코드에서 보이는 것과 같이 @samp{@dots{}}를 함수 선언부에 나열된 인자들의 목록뒤에 붙여주면 됩니다.
 
 @example
 fun1 <- function(data, data.frame, graph=TRUE, limit=20, ...) @{
@@ -4908,14 +5011,15 @@ fun1 <- function(data, data.frame, graph=TRUE, limit=20, ...) @{
 @}
 @end example
 
-Less frequently, a function will need to refer to components of
-@samp{@dots{}}.  The expression @code{list(...)} evaluates all such
-arguments and returns them in a named list, while @code{..1},
-@code{..2}, etc. evaluate them one at a time, with @samp{..n}
-returning the n'th unmatched argument.
+@c Less frequently, a function will need to refer to components of
+@c @samp{@dots{}}.  The expression @code{list(...)} evaluates all such
+@c arguments and returns them in a named list, while @code{..1},
+@c @code{..2}, etc. evaluate them one at a time, with @samp{..n}
+@c returning the n'th unmatched argument.
 
 @node Assignment within functions, More advanced examples, The three dots argument, Writing your own functions
-@section Assignments within functions
+@c @section Assignments within functions
+@section 함수내 할당
 
 @c Note that @emph{any ordinary assignments done within the function are
 @c local and temporary and are lost after exit from the function}.  Thus
@@ -4931,15 +5035,25 @@ returning the n'th unmatched argument.
 @c either the ``superassignment'' operator, @code{<<-} or the function
 @c @code{assign()} can be used.  See the @code{help} document for details.
 
-함수 내부에서 사용되는 변수가 가지는 어떠한 값이라도 그 값들은 함수 내부에서만 유효합니다. 이렇게 변수가 가지는 값이 지정된 함수 내부에서만 사용되는것을 지역할당(local assignment) 이라고 합니다. 이것을 이해하기 위해서는 R시스템내에서 할당범위 (the scope of assignment)라는 개념을 이해해야만 하며, 이것은 이 안내서의 수준을 벗어나므로 설명하지 않겠습니다. 그러나, 함수 내부에서 연산된 어떤 값을 함수 외부 및 작성하는 프로그램 전체에서 사용하고 싶다면, <<- 이라는 “superassignment" 이라는 연산자를 사용하거나, assign() 이라는 함수를 이용하시면 됩니다. 이렇게 변수가 가지는 값이 특정 함수내에서 국한되지 않고 전체에서 활용되는 개념을 전역할당 (global assignment 혹은 permanent assignment) 라고 합니다. 이것에 대한 더 자세한 사항은 도움말을 참조하시길 바랍니다.
+@emph{함수 내부에서 이루어진 값에 대한 모든 할당은 함수내부내에서만 유효합니다}. 
+따라서, @code{X <- qr(X)}은 호출하는 프로그램에 있는 인자들의 값에 아무런 영향을 미치지 않습니다.
+이렇게 변수가 가지는 값이 지정된 함수 내부에서만 사용되는것을 지역할당(local assignment) 이라고 합니다. 
+
+@R{}시스템내에서 할당범위 (the scope of assignment)에 대한 규칙들을 이해하기 위해서는 @emph{프레임(frame)}이 어떻게 평가가 되는지에 대한 개념에 익숙해져야만 합니다.
+그러나, 이것은 이 안내서의 수준을 벗어나므로 설명하지 않겠습니다. 
+
+만약, 함수 내부에서 연산된 어떤 값을 함수 외부 및 작성하는 프로그램 전체에서 사용하고 싶다면, 슈퍼할당 (superassignment)이라는 연산자 @code{<<-}를 사용하거나, 함수 @code{assign()}를 이용하시길 바랍니다.
+이렇게 변수가 가지는 값이 특정 함수내에서 국한되지 않고 전체에서 활용되는 개념을 전역할당 (global assignment 혹은 permanent assignment) 라고 합니다. 이것에 대한 더 자세한 사항은 도움말 @code{help}을 참조하시길 바랍니다.
 
 @c @SPLUS{} users should be aware that @code{<<-} has different semantics
 @c in @R{}.  These are discussed further in @ref{Scope}.
 
-S-Plus 사용자는 <<- 라는 연산자가 R 에서 다른 의미로 사용된다는 점을 반드시 알고 있어야 합니다. 이러한 다른 점들은 Scope 에서 다루어집니다.
+@SPLUS{}사용자는 @code{<<-} 연산자가 @R{}에서 다른 의미로 사용된다는 점을 반드시 알고 있어야 합니다. 
+이러한 다른 점들은 @ref{Scope}에서 다루어질 것입니다.
 
 @node More advanced examples, Scope, Assignment within functions, Writing your own functions
-@section More advanced examples
+@c @section More advanced examples
+@section 중급 예제들
 
 @menu
 * Efficiency factors in block designs::  
@@ -4948,14 +5062,16 @@ S-Plus 사용자는 <<- 라는 연산자가 R 에서 다른 의미로 사용된�
 @end menu
 
 @node Efficiency factors in block designs, Dropping all names in a printed array, More advanced examples, More advanced examples
-@subsection Efficiency factors in block designs
+@c @subsection Efficiency factors in block designs
+@subsection 블록디자인에서 효율성 요인
 
 @c As a more complete, if a little pedestrian, example of a function,
 @c consider finding the efficiency factors for a block design.  (Some
 @c aspects of this problem have already been discussed in @ref{Index
 @c matrices}.)
 
-함수에 대해서 좀 더 자세히 다루기 위해서 이번에는 블락 디자인에서 사용되는 효율성요인(efficiency factor)을 찾아보도록 하겠습니다. 이 문제에 대한 일부의 내용은 이미 Index matrices에서 다룬바 있습니다.
+함수에 대해서 좀 더 자세히 다루기 위해서 이번에는 블락 디자인에서 사용되는 효율성요인(efficiency factor)을 찾아보도록 하겠습니다. 
+이 문제에 대한 일부 내용은 이미 @ref{Index matrices}에서 다룬바 있습니다.
 
 @c A block design is defined by two factors, say @code{blocks} (@code{b}
 @c levels) and @code{varieties} (@code{v} levels).  If @math{R} and
@@ -4963,17 +5079,21 @@ S-Plus 사용자는 <<- 라는 연산자가 R 에서 다른 의미로 사용된�
 @c @emph{replications} and @emph{block size} matrices, respectively, and
 @c @math{N} is the @math{b} by @math{v} incidence matrix, then the
 @c efficiency factors are defined as the eigenvalues of the matrix
-@c @ifnottex
-@c E = I_v - R^@{-1/2@}N'K^@{-1@}NR^@{-1/2@} = I_v - A'A, where
-@c A = K^@{-1/2@}NR^@{-1/2@}.
-@c @end ifnottex
-@c @tex
-@c $$E = I_v - R^{-1/2}N^T K^{-1}NR^{-1/2} = I_v - A^T A,$$
-@c where $A = K^{-1/2}NR^{-1/2}$.
-@c @end tex
-@c One way to write the function is given below.
 
-b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 요인을 이용한 블락 디자인을 생각해 봅시다. 만약 R과 K이 각각 v행 v열을 가진 replications 행렬과 b행 b열을 가진 block size 행렬이라고 합시다. 효율성요인(efficiency factor)은 아래와 같은 행렬의 기저값들 (eigenvalues)로 정의될 수 있습니다. E = I_v - R^@{-1/2@}N'K^@{-1@}NR^@{-1/2@} = I_v - A'A, 여기에서 A = K^@{-1/2@}NR^@{-1/2@} 입니다. 효율성 요인을 산출하는 함수를 작성하는 것은 다음과 같습니다.
+@code{b}수준을 가진 요인 @code{blocks}와 @code{v}수준을 가진 요인 @code{varieties}을 이용한 블락 디자인을 생각해 봅니다.
+그리고, @math{R}과 @code{K}가 각각 @math{v}행 @math{v}열인 행렬 @code{replications}과 @math{b}행 @math{b}열인 행렬 @code{block size}이라고 합니다.
+효율성요인(efficiency factor)은 아래와 같은 행렬의 기저값(eigenvalues)을 이용하여, 
+@ifnottex
+E = I_v - R^@{-1/2@}N'K^@{-1@}NR^@{-1/2@} = I_v - A'A, where
+A = K^@{-1/2@}NR^@{-1/2@}.
+@end ifnottex
+@tex
+$$E = I_v - R^{-1/2}N^T K^{-1}NR^{-1/2} = I_v - A^T A,$$
+where $A = K^{-1/2}NR^{-1/2}$.
+@end tex
+로 구할 수 있습니다.
+@c One way to write the function is given below.
+다음은 이를 산출하는 함수를 작성한 것입니다.
 
 @example
 > bdeff <- function(blocks, varieties) @{
@@ -4993,17 +5113,19 @@ b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 �
 @c It is numerically slightly better to work with the singular value
 @c decomposition on this occasion rather than the eigenvalue routines.
 
-실제로 이경우에는 the singular value decomposition 을 이용하는 것이 기저값 (eigenvalue)를 이용한 방법보다 보다 나은 연산결과를 줍니다.
+실제로 이경우에는 the singular value decomposition을 이용하는 것이 기저값(eigenvalue)를 이용한 방법보다 보다 나은 연산결과를 줍니다.
 
 @c The result of the function is a list giving not only the efficiency
 @c factors as the first component, but also the block and variety canonical
 @c contrasts, since sometimes these give additional useful qualitative
 @c information.
 
-위에서 작성된 함수는 효율성 요인(인자)만을 결과값으로 돌려주는 것만이 아니라 block 과 variety 라는 요인의 정준대비(canonical contrast) 또한 알려줍니다. 그 이유는 이 두가지 결과값들이 때때로 유용한 질적 정보를 제공하기 때문입니다.
+위에서 작성된 함수는 효율성 요인만을 결과값으로 돌려주는 것만이 아니라 @code{block}과 @code{variety} 정준대비(canonical contrast) 또한 알려줍니다. 
+그 이유는 이 두가지 결과값들이 때때로 유용하기 때문입니다.
 
 @node Dropping all names in a printed array, Recursive numerical integration, Efficiency factors in block designs, More advanced examples
-@subsection Dropping all names in a printed array
+@c @subsection Dropping all names in a printed array
+@subsection 이름없이 배열출력하기
 
 @c For printing purposes with large matrices or arrays, it is often useful
 @c to print them in close block form without the array names or numbers.
@@ -5011,7 +5133,9 @@ b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 �
 @c rather the array must be given a @code{dimnames} attribute consisting of
 @c empty strings.  For example to print a matrix, @code{X}
 
-사이즈가 큰 행렬 혹은 배열의 출력이 주목적인 경우, 행렬과 배열의 구성요소의 위치를 알려주는 행, 열, 혹은 차원에 대한 정보를 나타내지 않고 오로지 데이터값만을 출력하는 것이 유용한 경우가 있습니다. 이런 경우에는 dimnames 이라는 속성이 가지는 문자열값들을 초기화 시켜주면 됩니다. 예를 들어 행렬 X를 행과 열의 정보 없이 데이터만 출력하고자 할 경우, 아래와 같이 코드를 작성하시면 됩니다.
+사이즈가 큰 행렬 혹은 배열의 출력이 주목적인 경우, 행렬과 배열의 구성요소의 위치를 알려주는 행, 열, 혹은 차원에 대한 정보를 나타내지 않고 오로지 데이터값만을 출력하는 것이 유용한 경우가 있습니다. 
+이런 경우에는 속성 @code{dimnames}이 가지는 문자열값들을 초기화 시켜주면 됩니다. 
+예를 들어 행렬 @code{X}의 행과 열의 정보 없이 데이터만 출력하고자 할 경우, 아래와 같이 할 수 있습니다.
 
 @example
 > temp <- X
@@ -5024,7 +5148,8 @@ b레벨을 가진 blocks이라는 요인과 v레벨을 가진 varieties라는 �
 @c same result.  It also illustrates how some effective and useful user
 @c functions can be quite short.
 
-우리는 또한 이와 같은 기능을 아래와 같이 no.dimnames()이라는 사용자정의 함수를 작성함으로서 수행할 수 도 있습니다. 이것은 또한 이러한 유용한 기능을 위한 사용자정의함수가 꼭 길지 않아도 됨을 잘 보여주고 있습니다.
+이와 같은 기능을 아래와 같이 @code{no.dimnames()}라는 사용자정의 함수를 작성함으로서 수행할 수 도 있습니다. 
+이것은 또한 이렇게 유용한 기능을 위한 사용자정의함수가 꼭 길지 않아도 됨을 잘 보여주고 있습니다.
 
 @example
 no.dimnames <- function(a) @{
@@ -5054,14 +5179,16 @@ no.dimnames <- function(a) @{
 이번 섹션에서 다룬 내용은 배열 데이터 값 자체 보다 배열의 값들이 가지는 패턴을 분석하고자 할때 더 유용하므로 주로 사이즈가 큰 정수형 배열을 다룰때 사용됩니다
 
 @node Recursive numerical integration,  , Dropping all names in a printed array, More advanced examples
-@subsection Recursive numerical integration
+@c @subsection Recursive numerical integration
+@subsection 재귀용법을 이용하여 적분하기
 
 @c Functions may be recursive, and may themselves define functions within
 @c themselves.  Note, however, that such functions, or indeed variables,
 @c are not inherited by called functions in higher evaluation frames as
 @c they would be if they were on the search path.
 
-함수는 재귀적인 용법으로도 사용할 수 있으며, 또한 정의하고자 하는 함수 내부에 필요한 함수를 정의하고 사용할 수 있습니다. 이렇게 정의하고자 하는 함수 내부에서 새로이 정의된 함수들은 제1탐색경로에서 검색될 수 있는 객체로 인식되지 않는다는 점에 명심해야 합니다. 정의하고자 하는 함수 내부에서 새로이 정의된 함수의 사용범위는 단순히 정의하고자 하는 함수 내부로만 제한됩니다.
+함수는 재귀적일 수 있으며, 함수 자신이 함수 자신내에 함수를 정의할 수도 있습니다.
+그러나, 이러한 함수들 (또는 실제로 변수들)은 마치 탐색경로(serach path)에 존재했던 것같은 상위평가프레임 (higer evaluation frames)내에서 불려진 함수에 의해 존재하는 것이 아니라는 점을 알고 있어야 합니다.
 
 @c The example below shows a naive way of performing one-dimensional
 @c numerical integration.  The integrand is evaluated at the end points of
@@ -5074,11 +5201,13 @@ no.dimnames <- function(a) @{
 @c competitive with other algorithms when the integrand is both smooth and
 @c very difficult to evaluate.
 
-아래의 예제는 1개의 변수만을 가지는 함수를 적분하는 가장 기초적인 방법에 대해서 다루고 있습니다. 적분을 하는 기본 개념은 먼저 적분하고자 하는 범위의 양쪽 끝점과 그 중간점에 해당하는 함수들의 값을 얻어낸 후, 사다리꼴 공식을 이용하여 단일 패널에서 얻어진 결과가 이중패널에서 얻어진 결과와 매우 유사할 경우 이중패널로부터 얻어진 결과를 적분값으로 결정합니다. 만약, 그렇지 않다면 각각의 패널에 위에서 묘사한 프로세스를 다시 적용하되 값의 변화가 없을때까지 반복합니다.
+아래의 예제는 1개의 변수만을 가지는 함수를 적분하는 기초적인 방법에 대해서 다루고 있습니다. 
+적분을 하는 기본 개념은 먼저 적분하고자 하는 범위의 양쪽 끝점과 그 중간점에 해당하는 함수들의 값을 얻어낸 후, 사다리꼴 공식을 이용하여 단일 패널에서 얻어진 결과가 이중패널에서 얻어진 결과와 매우 유사할 경우 이중패널로부터 얻어진 결과를 적분값으로 결정합니다. 
+만약, 그렇지 않다면 각각의 패널에 위에서 묘사한 프로세스를 다시 적용하되 값의 변화가 없을때까지 반복합니다.
 
 @c The example is also given partly as a little puzzle in @R{} programming.
 
-이 예제는 R프로그래밍을 하는데 있어서 다소 복잡한 부분에 해당하므로 이해가 어려울 수 도 있습니다.
+이 예제는 @R{} 프로그래밍을 하는데 있어서 다소 복잡한 부분에 해당하므로 이해가 어려울 수 도 있습니다.
 
 @example
 area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
@@ -5109,27 +5238,35 @@ area <- function(f, a, b, eps = 1.0e-06, lim = 10) @{
 @end menu
 
 @node Scope, Customizing the environment, More advanced examples, Writing your own functions
-@section Scope
+@c @section Scope
+@section 스코프
 @cindex Scope
 
 @c The discussion in this section is somewhat more technical than in other
 @c parts of this document.  However, it details one of the major differences
 @c between @SPLUS{} and @R{}.
 
-이번 섹션에서 다루어질 내용은 이 문서의 다른 부분들보다는 다소 기술적인 부분에 해당합니다. 그러나, 이 부분은 R과 S-Plus를 구분짓는 많은 다른 점들중에서 함수와 관련된 부분에 대해서 기술합니다.
+이번 섹션에서 다루어질 내용은 이 문서의 다른 부분들보다는 다소 어려운 기술적인 부분에 해당합니다. 
+그러나, 이 부분은 @R{}과 @SPLUS{}간의 다른 점들 중 함수와 관련된 부분입니다.
 
-The symbols which occur in the body of a function can be divided into
-three classes; formal parameters, local variables and free variables.
-The formal parameters of a function are those occurring in the argument
-list of the function.  Their values are determined by the process of
-@emph{binding} the actual function arguments to the formal parameters.
-Local variables are those whose values are determined by the evaluation
-of expressions in the body of the functions.  Variables which are not
-formal parameters or local variables are called free variables.  Free
-variables become local variables if they are assigned to.  Consider the
-following function definition.
+@c The symbols which occur in the body of a function can be divided into
+@c three classes; formal parameters, local variables and free variables.
+@c The formal parameters of a function are those occurring in the argument
+@c list of the function.  Their values are determined by the process of
+@c @emph{binding} the actual function arguments to the formal parameters.
+@c Local variables are those whose values are determined by the evaluation
+@c of expressions in the body of the functions.  Variables which are not
+@c formal parameters or local variables are called free variables.  Free
+@c variables become local variables if they are assigned to.  Consider the
+@c following function definition.
 
-먼저 함수의 본체에 사용되는 심볼에는 formal parameters, local variables(지역변수), 그리고 free variables (자유변수) 라는 세가지 종류가 있습니다. formal parameters 라는 것은 함수 선언시 아직 값이 부여되지 않은 인자들의 목록을 의미합니다. 따라서 formal parameters는 실제로 함수가 사용될 때 함수가 받아들이는 인자의 값을 가지게 됩니다. 이에 반해, 지역변수라는 것은 함수 본체에서 사용된 표현식의 결과값들을 가지게 됩니다. 만약, 어떤 변수가 formal parameters도 아니고 지역변수도 아닌 경우, 이러한 변수를 바로 자유변수라고 합니다. 그러나, 상황에 따라서 자유변수에 값이 부여될 경우 이는 지역변수가 되기도 합니다. 더 정확한 개념의 이해를 위해서 다음의 예제를 살펴봅시다.
+먼저 함수의 본체에 사용되는 기호는 형식인자 (formal parameters), 지역변수 (local variables), 그리고 자유변수 (free variables) 라는 세가지가 있습니다.
+형식인자 (formal parameters)라는 것은 함수 선언시 아직 값이 부여되지 않은 인자들의 목록을 의미합니다. 
+따라서 형식인자 (formal parameters)는 실제로 함수가 사용될 때 함수가 받아들이는 인자의 값을 가지게 됩니다. 
+이에 반해, 지역변수라는 것은 함수 본체에서 사용된 표현식의 결과값들을 가지게 됩니다. 
+만약, 어떤 변수가 형식인자 (formal parameters)도 아니고 지역변수도 아닌 경우, 이러한 변수를 바로 자유변수라고 합니다. 
+그러나, 상황에 따라서 자유변수에 값이 부여될 경우 이는 지역변수가 되기도 합니다. 
+더 정확한 개념의 이해를 위해서 다음의 예제를 살펴봅시다.
 
 @example
 f <- function(x) @{
@@ -5143,13 +5280,14 @@ f <- function(x) @{
 @c In this function, @code{x} is a formal parameter, @code{y} is a local
 @c variable and @code{z} is a free variable.
 
-여기 정의되어 있는 f 란 함수는 x 라는 formal parameter 를 가지고, y 란 지역변수를 가지는데 반해, z 라는 것은 자유변수입니다.
+여기 정의되어 있는 함수 @code{f}는 @code{x}라는 형식인자 (formal parameter)를 가지며, @code{y}라는 지역변수를 가지는데 반해, 자유변수 @code{z}를 가지고 있습니다.
 
 @c In @R{} the free variable bindings are resolved by first looking in the
 @c environment in which the function was created.  This is called
 @c @emph{lexical scope}.  First we define a function called @code{cube}.
 
-R에서 자유변수에 대한 값의 할당은 변수가 관리가 되고 있는 함수에 우선권이 부여되며, 이것을 렉시컬 스코프 (lexical scope)라고 합니다. 이해를 돕기 위해서 먼저 cube라는 함수를 정의해봅니다.
+@R{}에서 자유변수에 대한 값의 할당은 변수가 관리가 되고 있는 함수에 우선권이 부여되며, 이것을 렉시컬 스코프 (lexical scope)라고 합니다. 
+이해를 돕기 위해서 아래와 같이 정의된 함수 @code{cube}를 살펴봅니다.
 
 @example
 cube <- function(n) @{
@@ -5169,7 +5307,13 @@ cube <- function(n) @{
 @c global variable called @code{n} while @R{} first looks for a variable
 @c called @code{n} in the environment created when @code{cube} was invoked.
 
-sq라는 함수 안에 있는 변수 n 은 인자가 아니므로 자유변수이며, 이 자유변수가 어떠한 값을 가져야 하는가에 대해서 스코핑 규칙 (scoping rules)이 적용됩니다. 스태틱 스코핑 규칙을 가지는 S-Plus 에서는 자유변수가 가지는 값은 n 이라는 이름을 가진 전역변수 (global variable)에 의해서 그 값이 결정됩니다. 이에 반해, 렉시컬 스코핑 규칙을 가지는 R은 자유변수에 cube라는 함수가 실행될 때 가지는 인자의 값을 할당 합니다. 그 이유는 n은 sq라는 함수가 정의되기 '바로 이전에' cube라는 함수의 내부에서 정의되어 관리되는 변수이기 때문입니다. 이것은 R과 S-Plus를 구분짓는 큰 특징들중의 하나 입니다. 즉, R의 기본적인 스코핑 규칙은 전역변수에 의한 관리가 아닌 지역에 촛점을 맞춘 렉시컬 스코핑을 따르게 됩니다.
+함수 @code{sq}내에 있는 변수 @code{n}은 형식인자가 아닌 자유변수입니다.
+이 자유변수가 어떠한 값을 가져야 하는가에 대해서 스코핑 규칙 (scoping rules)이 적용됩니다. 
+정적 스코핑 규칙(static scoping rule)을 가지는 @SPLUS{}에서는 자유변수가 가지는 값은 @code{n}이라는 이름을 가진 전역변수 (global variable)에 의해서 그 값이 결정됩니다. 
+이에 반해, 렉시컬 스코핑 규칙을 가지는 @R{}은 자유변수에 함수 @code{cube}라는 실행될 때 가지는 인자의 값을 할당 합니다. 
+그 이유는 @code{n}은 함수 @code{sq}가 정의되기 '바로 이전에' 함수 @code{cube} 내부에서 정의되어 관리되는 변수이기 때문입니다. 
+이러한 스코핑 규칙의 차이는 @R{}과 @SPLUS{}를 구분짓는 큰 특징들 중의 하나 입니다. 
+즉, @R{}의 기본적인 스코핑 규칙은 전역변수에 의한 관리가 아닌 지역에 촛점을 맞춘 렉시컬 스코핑을 따르는 것입니다.
 
 @example
 ## @r{first evaluation in S}
@@ -5186,36 +5330,41 @@ R> cube(2)
 
 @c Lexical scope can also be used to give functions @emph{mutable state}.
 
-렉시컬 스코핑은 또한 변수가 가지는 값을 자동으로 변경 (mutable state) 해주기도 합니다.
+@c In the following example we show how @R{} can be used to mimic a bank
+@c account.  A functioning bank account needs to have a balance or total, a
+@c function for making withdrawals, a function for making deposits and a
+@c function for stating the current balance.  We achieve this by creating
+@c the three functions within @code{account} and then returning a list
+@c containing them.  When @code{account} is invoked it takes a numerical
+@c argument @code{total} and returns a list containing the three functions.
+@c Because these functions are defined in an environment which contains
+@c @code{total}, they will have access to its value.
 
-In the following example we show how @R{} can be used to mimic a bank
-account.  A functioning bank account needs to have a balance or total, a
-function for making withdrawals, a function for making deposits and a
-function for stating the current balance.  We achieve this by creating
-the three functions within @code{account} and then returning a list
-containing them.  When @code{account} is invoked it takes a numerical
-argument @code{total} and returns a list containing the three functions.
-Because these functions are defined in an environment which contains
-@code{total}, they will have access to its value.
+다음의 예제는 @R{}의 렉시컬 스코핑이 얼마나 효율적으로 은행계좌를 구현할 수 있는가를 보여줍니다. 
+은행계좌를 구현하기 위해서는 총계 (balance 혹은 total), 출금 (withdrawal), 입금 (deposits), 그리고 현재잔고(current balance)이 필요합니다. 
+먼저, 출급, 입금, 그리고 잔고에 대한 함수를 먼저 만든 뒤, 이를 리스트형식으로 한데 묶어 함수 @code{account}를 정의합니다. 
+함수 @code{account}가 실제적으로 실행되었을때 @code{total}이라는 인자는 특정한 값을 가진 인자가 되어 리스트에 정의되어 있는 출금, 입금, 그리고 잔고라는 함수에 그 값을 전달하게 됩니다. 
+그 이유는 바로 @code{total}이라는 인자가 함수 @code{account}에 의해서 정의되어 관리되는 변수이기 때문입니다.
 
-The special assignment operator, @code{<<-},
+@c The special assignment operator, @code{<<-},
 @findex <<-
-is used to change the value associated with @code{total}.  This operator
-looks back in enclosing environments for an environment that contains
-the symbol @code{total} and when it finds such an environment it
-replaces the value, in that environment, with the value of right hand
-side.  If the global or top-level environment is reached without finding
-the symbol @code{total} then that variable is created and assigned to
-there.  For most users @code{<<-} creates a global variable and assigns
-the value of the right hand side to it@footnote{In some sense this
-mimics the behavior in @SPLUS{} since in @SPLUS{} this operator always
-creates or assigns to a global variable.}.  Only when @code{<<-} has
-been used in a function that was returned as the value of another
-function will the special behavior described here occur.
+@c is used to change the value associated with @code{total}.  This operator
+@c looks back in enclosing environments for an environment that contains
+@c the symbol @code{total} and when it finds such an environment it
+@c replaces the value, in that environment, with the value of right hand
+@c side.  If the global or top-level environment is reached without finding
+@c the symbol @code{total} then that variable is created and assigned to
+@c there.  For most users @code{<<-} creates a global variable and assigns
+@c the value of the right hand side to it@footnote{In some sense this
+@c mimics the behavior in @SPLUS{} since in @SPLUS{} this operator always
+@c creates or assigns to a global variable.}.  Only when @code{<<-} has
+@c been used in a function that was returned as the value of another
+@c function will the special behavior described here occur.
 
-다음의 예제는 R의 렉시컬 스코핑이 얼마나 효율적으로 은행계좌를 구현할 수 있는가를 보여줍니다. 은행계좌를 구현하기 위해서는 총계 (balance 혹은 total), 출금 (withdrawal), 입금 (deposits), 그리고 현재잔고(current balance)이 필요합니다. 먼저, 출급, 입금, 그리고 잔고에 대한 함수를 먼저 만든 뒤, 이를 리스트형식으로 한데 묶어 account 라는 함수를 정의합니다. account라는 함수가 실제적으로 실행되었을때 total라는 파라미터는 특정한 값을 가진 인자가 되어 리스트에 정의되어 있는 출금, 입금, 그리고 잔고라는 함수에 그 값을 전달하게 됩니다. 그 이유는 바로 total이라는 인자는 account라는 함수에 의해서 정의되어 관리되는 변수이기 때문입니다.
-
-아래의 코드에서 total이라는 변수와 연관된 값의 변화를 위해서 특별한 할당 연산자인 <<-를 사용하였습니다. 이 연산자의 역할은 입금, 출금, 잔액이라는 함수내부의 total이라는변수의 값을 변경하는 것이 아니라, account 라는 함수내에 정의되어 관리되어지는 total이라는 변수의 값을 변경하는 것입니다. 만약, 이연산자를 사용하였으나 가장 상위에 정의된 함수 혹은 프로그램 전역에서도 total 이라는 변수를 찾을수가 없다면, total 이라는 변수는 새로이 생성이 되고, 새로이 생성된 변수에 그 값을 부여하게 됩니다.
+아래에서 보이는 것과 같이 @code{total}이라는 변수의 값을 변경하기 위해서 특별한 할당 연산자인 @code{<<-}를 사용하였습니다.
+이 연산자는 기호 @code{total}이 존재하는 환경(environment)을 둘러싼 환경 (enclosing enviornment)을 살펴보고, 그러한 환경이 찾아졌을때 해당 환경에 존재하는 값으로 대체하게 됩니다. 
+만약, 기호 @code{total}을 프로그램 전역 또는 최상위 환경 (top-level environment)에 도달할때까지도 찾을 수 없었다면, 기호 @code{total}이 새로이 생성이 되고 그 값이 할당되게 됩니다.
+@footnote{어떤한 의미로는 이것은 @SPLUS{}의 기능을 흉내낸 것처럼 보일 수도 있습니다. 그 이유는 @SPLUS{}의 연산이 항상 전역변수를 생성하고 이에 값을 할당하기 때문입니다}
 
 @example
 open.account <- function(total) @{
@@ -5251,7 +5400,8 @@ ross$withdraw(500)
 @end example
 
 @node Customizing the environment, Object orientation, Scope, Writing your own functions
-@section Customizing the environment
+@c @section Customizing the environment
+@section 환경설정하기
 @cindex Customizing the environment
 
 @c Users can customize their environment in several different ways.  There
@@ -5259,7 +5409,9 @@ ross$withdraw(500)
 @c special initialization file.  Finally, the special functions
 @c @code{.First} and @code{.Last} can be used.
 
-사용자는 사용자의 작업환경을 여러가지 방법으로 커스터마이징 할 수 있습니다. 먼저, 사이트 초기화 파일이라는 것이 있고, 각각의 디렉토리마다 특정역할을 하는 초기화 파일이 있습니다. 그리고, 이들과 연관된 특수한 함수 .First와 .Last라는 함수가 있습니다.
+사용자는 사용자의 환경설정을 여러가지 방법으로 변경할 수 있습니다.
+먼저, 사이트 초기화 파일(site initialization file)이라는 것이 있고, 각각의 디렉토리마다 특정역할을 하는 초기화 파일(special initialization file)이 있습니다. 
+그리고, @code{.First}와 @code{.Last}이라는 특수한 함수들이 있습니다.
 
 @c The location of the site initialization file is taken from the value of
 @c the @env{R_PROFILE} environment variable.  If that variable is unset,
@@ -5321,7 +5473,8 @@ R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아�
 @findex .Last
 
 @node Object orientation,  , Customizing the environment, Writing your own functions
-@section Classes, generic functions and object orientation
+@c @section Classes, generic functions and object orientation
+@section 클래스, 제네릭 함수, 그리고 객체지향 프로그래밍
 @cindex Classes
 @cindex Generic functions
 @cindex Object orientation
