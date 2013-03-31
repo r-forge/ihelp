@@ -3443,47 +3443,49 @@ Extension to higher-way frequency tables is immediate.
 @c discarded.
 
 @node Data frames,  , Constructing and modifying lists, Lists and data frames
-@section Data frames
+@c @section Data frames
+@section 데이터 프레임
 @cindex Data frames
 
 @c A @emph{data frame} is a list with class @code{"data.frame"}.  There are
 @c restrictions on lists that may be made into data frames, namely
+@emph{데이터 프레임 (data frame)}은 @code{"data.frame"}이라는 클래스를 가진 리스트의 특수한 경우입니다.
+데이터 프레임은 리스트와 구분되는 몇가지 특징이 있습니다.
+
 @itemize @bullet
-
-데이터 프레임 (data frame) 이라는 것은 특수한 형태의 리스트로서 "data.frame" 라는 클래스로 따로 구분 됩니다. 데이터 프레임은 리스트와 구분되는 몇가지 특징이 있습니다.
-
-@c @item
+@item
 @c The components must be vectors (numeric, character, or logical),
 @c factors, numeric matrices, lists, or other data frames.
-@c @item
-@c Matrices, lists, and data frames provide as many variables to the new
-@c data frame as they have columns, elements, or variables, respectively.
-
-데이터 프레임에 입력될 수 있는 자료는 반드시 (수치형, 문자형, 혹은 논리형) 벡터, 수치형 행렬, 리스트, 또는 다른 데이터 프레임이어야만 합니다. 데이터 프레임을 구성하는 각각의 열은 변수로 인식되므로, 새로운 데이터 프레임은 입력되는 행렬의 열, 리스트의 컴포넌트, 혹은 데이터 프레임의 변수의 개수만큼 자동으로 확장되어 생성되어 집니다. 데이터 프레임에 입력되는 수치형, 문자형, 그리고 논리형 벡터는 모두 요인으로 강제변환되어지고, 입력된 벡터내에 중복되지 않은 값들이 요인의 레벨로 간주되어 집니다.  
+데이터 프레임에 입력될 수 있는 자료는 반드시 (수치형, 문자형, 혹은 논리형) 벡터, 수치형 행렬, 리스트, 또는 다른 데이터 프레임이어야만 합니다.
 
 @item
-Numeric vectors, logicals and factors are included as is, and by
-default@footnote{Conversion of character columns to factors is
-overridden using the @code{stringsAsFactors} argument to the
-@code{data.frame()} function.} character vectors are coerced to be
-factors, whose levels are the unique values appearing in the vector.
+@c Matrices, lists, and data frames provide as many variables to the new
+@c data frame as they have columns, elements, or variables, respectively.
+데이터 프레임을 구성하는 각각의 열은 변수로 인식되므로, 입력되는 행렬의 열의 개수, 리스트의 컴포넌트 개수, 혹은 데이터 프레임의 변수의 개수만큼 새로운 데이터 프레임은 자동으로 이들의 개수만큼 확장되어 생성되어 집니다. 
 
-@c @item
+@item
+@c Numeric vectors, logicals and factors are included as is, and by
+@c default@footnote{Conversion of character columns to factors is
+@c overridden using the @code{stringsAsFactors} argument to the
+@c @code{data.frame()} function.} character vectors are coerced to be
+@c factors, whose levels are the unique values appearing in the vector.
+데이터 프레임에 입력되는 수치형, 문자형, 그리고 논리형 벡터는 모두 요인으로 강제형변환이 이루어지게 되며, 입력된 벡터내에 중복되지 않은 값들이 요인의 수준으로 간주되어 집니다 @footnote{문자형 벡터는 @code{data.frame()}함수의 인자 @code{stringsAsFactors}을 이용하여 입력시 요인으로 강제변환이 가능합니다}.
+ 
+@item
 @c Vector structures appearing as variables of the data frame must all have
 @c the @emph{same length}, 
-
-and matrix structures must all have the same
-@emph{row size}.
+@c and matrix structures must all have the same
+@c @emph{row size}.
+데이터프레임 내에 있는 모든 변수 (즉, 열벡터)는 @emph{동일한 길이 (same length)}를 가져야 합니다.
 @end itemize
-
-데이터프레임 내에 있는 모든 변수 (즉, 벡터) 는 동일한 길이를 가져야 합니다.
 
 @c A data frame may for many purposes be regarded as a matrix with columns
 @c possibly of differing modes and attributes.  It may be displayed in
 @c matrix form, and its rows and columns extracted using matrix indexing
 @c conventions.
 
-데이터 프레임을 단순히 추가적인 모드와 속성을 가진 행렬로 보아도 무방합니다. 행렬에서 인덱스 벡터와 인덱스 행렬을 이용하여 행렬의 서브셋을 구한 것과 동일한 방법으로 데이터프레임의 일부분을 서브셋 할 수 있습니다.
+데이터 프레임을 단순히 추가적인 모드(mode)와 속성(attribute)을 가진 행렬로 보아도 무방합니다. 
+행렬에서 인덱스 벡터와 인덱스 행렬을 이용하여 행렬의 부분집합을 구한 것과 동일한 방법으로 데이터프레임의 일부분을 임의선택 할 수 있습니다.
 
 @menu
 * Making data frames::          
@@ -3494,15 +3496,17 @@ and matrix structures must all have the same
 @end menu
 
 @node Making data frames, attach() and detach(), Data frames, Data frames
-@subsection Making data frames
+@c @subsection Making data frames
+@subsection 데이터 프레임 생성하기
 
 @c Objects satisfying the restrictions placed on the columns (components)
 @c of a data frame may be used to form one using the function
 @c @code{data.frame}:
 @c @findex data.frame
 
-데이터 프레임은 아래의 명령문에서 보여지는 바와 같이 data.frame이라는 함수내에 데이터 프레임에서 사용될 각각의 열에 대한 변수명과 이에 상응하는 데이터 벡터를 지정함으로서 생성할수 있습니다. 위의 예제에서 사용된 statef 는 이산형 데이터를 가지는 벡터이고, incomes 는 연속형 데이터를 가지는 벡터, 그리고 incomef는 구간화 된 값을 가지는 벡터입니다. 따라서 새로이 생성될 데이터 프레임 accountants은 home, loot, 그리고 shot 이라는 세가지 변수를 가질 것인데, home 이라는 변수는 statef의 데이터가, loot라는 변수에는 incomes의 데이터가, 그리고 shot 이라는 변수에는 incomef 이라는 데이터 벡터가 이용될 것이라는 것을 의미하게 됩니다.
-
+데이터 프레임은 아래에서 보이는 것과 같이 @code{data.frame} 함수내에 데이터 프레임에서 사용될 각각의 열에 대한 변수명과 이에 상응하는 데이터 벡터를 지정함으로서 생성할수 있습니다. 
+위의 예제에서 사용된 @code{statef}는 이산형 데이터를 가지는 벡터이고, @code{incomes}는 연속형 데이터를 가지는 벡터, 그리고 @code{incomef}는 구간화 된 값을 가지는 벡터입니다. 
+따라서 새로이 생성될 데이터 프레임 @code{accountants}은 @code{home}, @code{loot}, 그리고 @code{shot} 이라는 세가지 변수를 가질 것인데, @code{home}변수는 @code{statef}의 데이터가, @code{loot} 변수에는 @code{incomes} 데이터가, 그리고 @code{shot} 변수에는 @code{incomef}이라는 데이터 벡터가 이용될 것이라는 것을 의미하게 됩니다.
 
 @example
 > accountants <- data.frame(home=statef, loot=incomes, shot=incomef)
@@ -3518,10 +3522,13 @@ and matrix structures must all have the same
 @c external file.  This is discussed further in @ref{Reading data from
 @c files}.
 
-만약 사용자가 이미 벡터로 구성된 리스트를 가지고 있다면, as.data.frame() 이라는 함수를 이용하여 리스트를 데이터 프레임의 형식으로 강제변환 시킬 수 있습니다. 데이터 프레임을 생성하는 가장 편리한 방법은 read.table() 이라는 함수를 이용하여 컴퓨터에 저장되어 있는 데이터 파일을 불러들어오는 것입니다. 이것에 대해서는 Reading data from files 에서 자세히 소개합니다.
+만약 이미 벡터로 구성된 리스트가 존재한다면, @code{as.data.frame()} 함수를 이용하여 리스트를 데이터 프레임의 형식으로 강제형변환 시킬 수 있습니다. 
+데이터 프레임을 생성하는 가장 편리한 방법은 @code{read.table()} 함수를 이용하여 컴퓨터에 저장되어 있는 데이터 파일을 불러들어오는 것입니다. 
+이것에 대해서는 @ref{Reading data from files}에서 더 다루도록 하겠습니다.
 
 @node attach() and detach(), Working with data frames, Making data frames, Data frames
-@subsection @code{attach() and @code{detach()}}
+@c @subsection @code{attach() and @code{detach()}}
+@subsection @code{attach()와 @code{detach()}}
 @findex attach
 @findex detach
 
@@ -3531,14 +3538,18 @@ and matrix structures must all have the same
 @c visible as variables under their component name, without the need to
 @c quote the list name explicitly each time.
 
-여러분은 스트링 ($) 연산자를 이미 리스트를 구성하는 개별 컴포넌트를 엑세스할때 사용해 보았습니다. 그러나, 데이터 프레임 accountants 에 정의 되어 있는 home 이라는 변수를 엑세스 하기 위해서 매번 accountants$home와 같이 사용하는것은 많은 불편함이 있습니다. 따라서 R 은 attach() 라는 함수를 제공하여 이러한 불편함을 줄이고자 했습니다.
+스트링(@code{$}) 연산자는 리스트의 컴포넌트에 접근시에 사용했었습니다. 
+그러나, 데이터 프레임 @code{accountants}에 정의 되어 있는 @code{home}에 접근하기 위해서 @code{accountants$home}와 같이 사용하는것은 많은 불편함이 있습니다. 
+따라서 @R{}은 @code{attach()}라는 함수를 제공하여 이러한 불편함을 줄이고자 했습니다.
 
 @c The @code{attach()} function takes a `database' such as a list or data
 @c frame as its argument.  Thus suppose @code{lentils} is a
 @c data frame with three variables @code{lentils$u}, @code{lentils$v},
 @c @code{lentils$w}.  The attach
 
-예를들어 lentils$u, lentils$v, lentils$w라는 세개의 변수로 구성된 lentils 이라는 데이터 프레임이 있다고 가정합니다. 아래의 명령문에 사용된 attach() 란 함수의 사용은 R의 내부탐색경로를 자동으로 position 1(워크 스페이스에 있는 객체를 검색하는 최우선 탐색경로) 에서 position 2 (워크 스페이스 내에 존재하는 특정 객체의 내부를 검색하는 차선 탐색경로)로 변경하는 역할을 수행합니다. 따라서, attach(lentils) 라는 명령은 워크스페이스 내의 특정한 lentils 라는 데이터 프레임의 내부에서 이용되고 있는 u, v, w 이라는 객체들을 데이터 프레임의 이름없이 사용할 수 있도록 해줍니다. (만약, 전산지식이 있는 분이시라면 네이스페이스의 개념으로 이해하시는 것이 편리합니다).
+예를들어 @code{lentils$u}, @code{lentils$v}, @code{lentils$w}라는 세개의 변수로 구성된 @code{lentils}이라는 데이터 프레임이 있다고 가정합니다. 
+아래에서 보이는 것과 같이 @code{attach()} 함수의 사용은 탐색경로(search path)를 자동으로 position 1(작업공간내 객체를 검색하는 최상위 탐색경로)에서 position 2 (작업공간내 존재하는 특정 객체의 내부를 검색하는 탐색경로)로 변경하는 역할을 수행합니다. 
+따라서, @code{attach(lentils)}라는 명령은 작업공간 내 @code{lentils}이라는 특정한 데이터프레임 내부내에서 사용되는 @code{u}, @code{v}, @code{w}을 데이터프레임의 이름없이 검색이 가능하도록 해줍니다.
 
 @example
 > attach(lentils)
@@ -3550,7 +3561,10 @@ and matrix structures must all have the same
 @c @code{u}, @code{v} and @code{w} are available as variables from the data
 @c frame in their own right.  At this point an assignment such as
 
-attach() 를 사용하기 전에 반드시 알아야 할 점이 있습니다. 예를들어, 아래의 명령은 lentils 내 에 정의되어 있는 변수 v 와 w 를 이용하여 연산을 수행한 결과를 u 에 할당할 것을 의미합니다. 그러나 연산결과는 데이터 프레임 lentils 내에 정의된 u 에 저장되지 않습니다. 연산결과의 할당은 최우선 탐색경로 position 1로 재변경되어 새로운 u 라는 벡터를 생성해 내기 때문입니다.
+@code{attach()}를 사용하기 전에 반드시 알아야 할 점이 있습니다. 
+예를들어, 아래의 명령은 @code{lentils}내 변수 @code{v}와 @code{w}의 더하기 연산의 결과를 @code{u}에 대입할 것을 의미합니다.
+그러나 이러한 대입은 데이터 프레임 @code{lentils}내에 @code{u}라는 변수에 저장되지 않습니다. 
+그 이유는 어떠한 연산결과의 할당 및 대입은 최상위 탐색경로 @w{position 1}에서 이루어져 새로운 @code{u}라는 벡터를 생성해 내기 때문입니다.
 
 @example
 > u <- v+w
@@ -3563,7 +3577,7 @@ attach() 를 사용하기 전에 반드시 알아야 할 점이 있습니다. �
 @c data frame itself, the simplest way is to resort once again to the
 @c @code{$} notation:
 
-만약, lentils 라는 데이터 프레임내에 있는 u 라는 변수에 연산결과를 할당하고 싶다면 반드시 아래의 명령문에서 보이는 것과 같이 $ 연산자를 사용하여야 합니다. 그러나, 변경된 u 의 값들은 lentils 라는 데이터 프레임이 detach() 라는 함수가 사용될 때까지는 육안으로 확인할 수 없습니다.
+만약, @code{lentils}라는 데이터 프레임내에 있는 @code{u}라는 변수에 연산결과를 할당하고 싶다면 반드시 아래에서 보이는 것과 같이 @code{$}를 사용하여야 합니다. 
 
 @example
 > lentils$u <- v+w
@@ -3571,10 +3585,11 @@ attach() 를 사용하기 전에 반드시 알아야 할 점이 있습니다. �
 
 @c However the new value of component @code{u} is not visible until the
 @c data frame is detached and attached again.
+그러나, @code{u}의 값들은 @code{lentils} 데이터 프레임이 @code{detach()} 함수된 후 다시 @code{attach()} 함수가 사용될 때까지는 육안으로 확인할 수 없습니다.
 
 @c To detach a data frame, use the function
 
-아래의 detach() 란 함수는 현재 사용하고 있는 특정 데이터 프레임에 대한 탐색경로 position 2 를 position 1 로 재변경을 해주는 역할을 합니다.
+아래의 @code{detach()} 함수는 현재 사용하고 있는 특정 데이터 프레임에 대한 탐색경로 @w{position 2}를 @w{position 1}로 재변경을 해주는 역할을 합니다.
 
 @example
 > detach()
@@ -3588,53 +3603,63 @@ attach() 를 사용하기 전에 반드시 알아야 할 점이 있습니다. �
 @c to @code{detach}, but it is much safer to always use a name, for example
 @c by @code{detach(lentils)} or @code{detach("lentils")}
 
-여러 개의 데이터의 프레임을 동시에 attach()라는 함수를 이용하여 사용할 수 있기 때문에 detach(lentils) 혹은 ("lentils") 라고 데이터 프레임의 이름을 정확히 명시하는게 프로그래밍의 오류를 줄이는 방법입니다.
+여러 개의 데이터의 프레임을 동시에 @code{attach()} 함수와 함께 사용할 수 있기 때문에 @code{detach(lentils)} 혹은 @code{detach("lentils")}와 같이 데이터 프레임의 이름을 정확히 명시하는게 프로그래밍의 오류를 줄이는 방법입니다.
 
-@quotation Note
-In @R{} lists and data frames can only be attached at position 2 or
-above, and what is attached is a @emph{copy} of the original object.
-You can alter the attached values @emph{via} @code{assign}, but the
-original list or data frame is unchanged.
-@end quotation
+@c @quotation Note
+@c In @R{} lists and data frames can only be attached at position 2 or
+@c above, and what is attached is a @emph{copy} of the original object.
+@c You can alter the attached values @emph{via} @code{assign}, but the
+@c original list or data frame is unchanged.
+@c @end quotation
 
 @node Working with data frames, Attaching arbitrary lists, attach() and detach(), Data frames
-@subsection Working with data frames
+@c @subsection Working with data frames
+@subsection 데이터 프레임들과 작업하기
 
 @c A useful convention that allows you to work with many different problems
 @c comfortably together in the same working directory is
+만약 여러분들이 여러 가지 분석작업을 동일한 작업 디렉토리에서 수행하고 있다면, 
+아래에 나열한 몇 가지 방법들이 오류를 최소화하는데 도움이 될 것입니다.
 
-@c @itemize @bullet
-@c @item
+@itemize @bullet
+@item
 @c gather together all variables for any well defined and separate problem
 @c in a data frame under a suitably informative name;
-@c @item
+문제를 세분화하여, 문제별로 의미가 분명한 데이터 프레임의 이름을 부여하고, 데이터 프레임내에 정의된 변수들도 그 의미를 쉽게 알수있는 변수명을 사용하도록 합니다. 
+
+@item
 @c when working with a problem attach the appropriate data frame at
 @c @w{position 2}, and use the working directory at @w{level 1} for
 @c operational quantities and temporary variables;
-@c @item
+특정 데이터 프레임을 @w{position 2}로 이동시켜 작업을 하되, 임시변수의 생성 및 연산은 @w{position 1}에서 수행하도록 합니다. 
+
+@item
 @c before leaving a problem, add any variables you wish to keep for future
 @c reference to the data frame using the @code{$} form of assignment, and
 @c then @code{detach()};
-@c @item
+@w{position 2}에서의 특정 데이터 프레임과 연관된 연산이 끝났다면 @code{$}를 이용하여 그 연산결과를 저장한뒤 @code{detach()}를 이용하여 @w{position 1}으로 돌아옵니다.
+@item
 @c finally remove all unwanted variables from the working directory and
 @c keep it as clean of left-over temporary variables as possible.
-@c @end itemize
+마지막으로 워킹 디렉토리에 있는 임시적으로 사용했던 변수들은 모두 삭제하도록 합니다.
+@end itemize
 
-만약 여러분들이 여러 가지 분석작업을 동일한 워킹 디렉토리에서 수행하고 있다면, 아래에 나열한 몇 가지 방법들이 오류를 최소화하는데 도움이 될 것입니다. 문제를 세분화하여, 문제별로 의미가 분명한 데이터 프레임의 이름을 부여하고, 데이터 프레임내에 정의된 변수들도 그 의미를 쉽게 알수있는 변수명을 사용하도록 합니다. 특정 데이터 프레임을 position 2 로 이동시켜 작업을 하되, 임시변수의 생성 및 연산은 position 1 에서 수행하도록 합니다. position 2 에서의 특정 데이터 프레임과 연관된 연산이 끝났다면 $ 를 이용하여 그 연산결과를 저장한뒤 detach()를 이용하여 position 1 으로 돌아옵니다. 마지막으로 워킹 디렉토리에 있는 임시적으로 사용했던 변수들은 모두 삭제하도록 합니다.
-
-In this way it is quite simple to work with many problems in the same
-directory, all of which have variables named @code{x}, @code{y} and
-@code{z}, for example.
+@c In this way it is quite simple to work with many problems in the same
+@c directory, all of which have variables named @code{x}, @code{y} and
+@c @code{z}, for example.
+많은 경우에 @code{x}, @code{y}, @code{z}와 같은 변수명들을 이용하여 같은 디렉토리내에서 많은 문제를 작업하는 것이 비일비재하기 때문입니다.
 
 @node Attaching arbitrary lists, Managing the search path, Working with data frames, Data frames
-@subsection Attaching arbitrary lists
+@c @subsection Attaching arbitrary lists
+@subsection 임의의 리스트를 연결하기
 
 @c @code{attach()} is a generic function that allows not only directories
 @c and data frames to be attached to the search path, but other classes of
 @c object as well.  In particular any object of mode @code{"list"} may be
 @c attached in the same way:
 
-실제로 attach() 는 제네릭 함수 (generic function) 이므로 데이터 프레임을 특정탐색경로에 연결하는 작업 외에도 다른 크래스의 객체와의 연결에도 사용이 가능합니다. 특히 객체의 모드가 "list" 이라면 데이터 프레임과 동일한 방법으로 사용이 됩니다.
+실제로 @code{attach()}는 제네릭 함수 (generic function)이므로 데이터 프레임 외에도 다른 클래스의 객체를 탐색경로(search path)와 연결하는 작업을 수행할 수 있습니다.
+만약, 객체의 모드가 @code{"list"}이라면 데이터프레임과 동일한 방법으로 사용이 가능합니다.
 
 @example
 > attach(any.old.list)
@@ -3643,10 +3668,11 @@ directory, all of which have variables named @code{x}, @code{y} and
 @c Anything that has been attached can be detached by @code{detach}, by
 @c position number or, preferably, by name.
 
-즉, attach() 에 의해서 연결된 리스트형의 객체는 detach 라는 함수에 의해서 그 연결이 종료됩니다.
+@code{attach()}에 의해서 연결된 리스트형의 객체는 @code{detach} 함수에 의해서 그 연결이 종료됩니다.
 
 @node Managing the search path,  , Attaching arbitrary lists, Data frames
-@subsection Managing the search path
+@c @subsection Managing the search path
+@subsection 탐색경로 관리하기
 @findex search
 @cindex Search path
 
@@ -3654,19 +3680,22 @@ directory, all of which have variables named @code{x}, @code{y} and
 @c a very useful way to keep track of which data frames and lists (and
 @c packages) have been attached and detached.  Initially it gives
 
-아래에서 사용된 search 라는 함수는 현재의 객체탐색경로를 보여줌으로서 사용자가 현재 연결하여 작업하고 있는 데이터 프레임 및 리스트를 확인할 수 있도록 해줍니다. 만약, 어떠한 객체도 연결되지 않았다면 아래와 같은 결과를 보여줍니다. 여기에서 .GlobalEnv 이라는 것은 현재 작업하고 있는 워크 스페이스를 의미합니다.
+@code{search} 함수는 현재의 탐색경로를 보여줌으로서 사용자가 현재 연결하여 작업하고 있는 데이터 프레임 및 리스트 (그리고 패키지들)를 확인할 수 있도록 해줍니다. 
+기본적으로 @code{search}를 수행하면 아래와 같은 결과를 보여줍니다. 
 
 @example
 > search()
 [1] ".GlobalEnv"   "Autoloads"    "package:base"
 @end example
 @noindent
-where @code{.GlobalEnv} is the workspace.@footnote{See the on-line help
-for @code{autoload} for the meaning of the second term.}
+@c where @code{.GlobalEnv} is the workspace.@footnote{See the on-line help
+@c for @code{autoload} for the meaning of the second term.}
+여기에서 @code{.GlobalEnv}이라는 것은 현재 작업하고 있는 작업공간을 의미합니다.
+@footnote{@code{autoload}에 대해서는 온라인 도움말을 살펴보시길 바랍니다}.
 
 @c After @code{lentils} is attached we have
 
-만약 lentils 이라는 데이터 프레임이 연결되었다면, 아래와 같은 결과를 보여지게 됩니다.
+만약 데이터프레임 @code{lentils}이 연결(attached)되었다면, @code{search()}는 아래와 같은 결과를 보여줍니다.
 
 @example
 > search()
@@ -3679,12 +3708,13 @@ for @code{autoload} for the meaning of the second term.}
 @c and as we see @code{ls} (or @code{objects}) can be used to examine the
 @c contents of any position on the search path.
 
-ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프레임이라는 어떤 객체가 있는지 확인해 볼 수 있습니다. 여기에서 함수 ls() 안에 사용된 인자 2 이라는 것은 2단계 탐색경로를 의미하는 것입니다.
+@code{ls} 혹은 @code{objects} 함수를 이용하여 데이터 프레임 @code{lentils}내에 어떤 객체가 있는지 확인해 볼 수 있습니다. 
+여기에서 함수 @code{ls()}안에 사용된 숫자 @math{2}라는 것은 @w{position 2}에 놓인 탐색경로(serach path)를 의미하는 것입니다.
 
 @c Finally, we detach the data frame and confirm it has been removed from
 @c the search path.
 
-마지막으로 사용하고 있던 lentils 라는 데이터 프레임을 탐색경로로부터 연결해제를 한다면 아래와 같은 결과를 볼 수 있습니다.
+마지막으로 사용하고 있던 데이터프레임 @code{lentils}을 연결종료 (detach)한다면 아래와 같은 결과를 확인할 수 있습니다.
 
 @example
 > detach("lentils")
@@ -3694,7 +3724,7 @@ ls 혹은 objects 함수를 이용하여 우리는 lentils 라는 데이터 프�
 
 @node Reading data from files, Probability distributions, Lists and data frames, Top
 @c @chapter Reading data from files
-@chapter 파일로부터 데이터 불러오기 (의역 일정 - 2013.03.28)
+@chapter 파일로부터 데이터 불러오기 (의역 일정 - 2013.04.01)
 @cindex Reading data from files
 
 @c Large data objects will usually be read as values from external files
