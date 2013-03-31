@@ -5428,8 +5428,14 @@ ross$withdraw(500)
 @c exists).  If the environment variable @env{R_PROFILE_USER} is set, the
 @c file it points to is used instead of the @file{.Rprofile} files.
 
-주로 패키지의 다운로드에 관련된 저장소에 대한 정보와 연관이 있는 사이트 초기화 파일의 위치는
-R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아무런 값이 정해지지 앟았다면 R의 홈 디렉토리의 서브들 중에서 etc라는 디렉토리 내에 있는 Rprofile.site이라는 파일이 대신 사용되어 집니다. 두번째로 사용자의 워크스페이스 관리, 프로그램 사용도중 워킹 디렉토리 변경, 그리고 프로그램 시작시 워킹디렉토리의 설정에 대한 내용은 R_PROFILE_USER라는 환경변수의 값에 정해지는데, 만약 이러한 환경변수의 값이 정해지지 않았다면, .Rprofile이라는 파일을 찾게 됩니다. 주로 이 사용자에 대한 프로파일은 R 스타트업 디렉토리에 존재하지만 실제로 R홈 디렉토리내의 어떠한 서브에 위치해도 관계는 없습니다 . 만약, .Rprofile이 스타트업 디렉토리에서 발견되지 않는다는 R은 사용자의 홈디렉토리에서 .Rprofile 이라는 것을 찾을 것입니다(만약 존재할 경우에만 해당합니다).
+사이트 초기화 파일의 위치는 @env{R_PROFILE}이라는 환경변수의 값에 의해 정해집니다.
+만약, 이 환경변수의 값이 정해지지 않았다면 @R{}의 홈에 있는 @file{etc}라는 하위디렉토리에 있는 @file{Rprofile.site}의 값이 사용되게 됩니다.
+이 파일은 사용자의 시스템에서 @R{}이 실행될때마다 반드시 실행되어야 할 명령어들을 포함하고 있습니다.
+두번째로 @file{.Rprofile}@footnote{UNIX에서는 숨겨진 파일입니다.}이라는 개인프로파일이라는 파일은 어느 디렉토리에나 놓일 수 있습니다.
+만약, @R{}이 해당 디렉토리에서 실행된다면 이 파일은 소스될(sourced, 즉 불러들어 읽힘) 것입니다.
+이 파일은 해당 작업공간에 대한 개인사용자 설정이며, 다른 디렉토리마다 다른 스타트업(startup) 절차를 수행할 수 있게 해줍니다.
+만약, @file{.Rprofile}이라는 파일을 스타트업 디렉토리에 없다면, @R{}은 사용자의 홈디렉토리에 있는 (만약 있다면) @file{.Rprofile}을 사용하게 됩니다.
+만약, 환경설정변수 @env{R_PROFILE_USER}가 지정되어 있다면, @file{.Rprofile}파일대신에 사용될 것입니다.
 
 @c Any function named @code{.First()} in either of the two profile files or
 @c in the @file{.RData} image has a special status.  It is automatically
@@ -5438,13 +5444,16 @@ R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아�
 @c below alters the prompt to @code{$} and sets up various other useful
 @c things that can then be taken for granted in the rest of the session.
 
-사이트 프로파일, 사용자 프로파일, 그리고 .RData라는 이미지 내부에 .First()라고 이름이 붙은 함수들은 특정한 값을 가지고 있습니다. 이것들은 R세션이 시작할 때 자동으로 작업환경을 초기화할 때 사용되게 됩니다. 아래의 코드를 살펴 보신다면 더 빠른 이해를 가지실 수 있습니다. 예를들어, 아래에 있는 .First 라는 함수의 정의중 prompt 라는 옵션을 $ 에서 다른 심볼로 바꾸어 준다면, 여러분은 R을 사용하는 세션내내 사용자가 변경한 심볼을 이용하여 prompt를 사용하게 됩니다.
+사이트 프로파일, 사용자 프로파일, 그리고 @file{.RData}라는 이미지 내부에 @code{.First()}라고 이름이 붙은 함수들은 특정한 상태를 가지고 있습니다. 
+이것들은 @R{}세션이 시작할 때 자동으로 작업환경을 초기화할 때 사용되게 됩니다. 
+아래의 코드를 살펴 보신다면 더 빠른 이해를 가지실 수 있습니다. 
+예를들어, 함수 @code{.First}의 정의중 @code{prompt}라는 인자 @code{$}를 다른 기호로 변경하여 @R{}세션내내 사용자가 변경한 기호로 프롬프트를 사용할 수 있습니다.
 
 @c Thus, the sequence in which files are executed is, @file{Rprofile.site},
 @c the user profile, @file{.RData} and then @code{.First()}.  A definition
 @c in later files will mask definitions in earlier files.
 
-일반적으로 사용자의 환경설정을 위한 파일의 실행순서는 Rprofiles.site, 그리고 사용자 프로파일, .RData, 그리고 .First() 입니다.
+일반적으로 사용자의 환경설정을 위한 파일의 실행순서는 @file{Rprofiles.site}, 그리고 사용자 프로파일, @file{.RData}, 그리고 @code{.First()} 순입니다.
 
 @example
 > .First <- function() @{
@@ -5462,7 +5471,8 @@ R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아�
 @c Similarly a function @code{.Last()}, if defined, is (normally) executed
 @c at the very end of the session.  An example is given below.
 
-위의 .First()와 유사하게 .Last()라는 함수가 정의된다면 아래와 같습니다. 그리고 이것은 보통 세션이 종료될 때 사용될 것입니다.
+위에서 정의된 @code{.First()}와 유사하게 함수 @code{.Last()}를 아래와 같이 정의할 수 있습니다.
+이는 보통 세션 종료시 사용됩니다.
 
 @example
 > .Last <- function() @{
@@ -5479,14 +5489,15 @@ R_PROFILE 이라는 환경변수의 값에 의해 정해집니다. 만약, 아�
 @cindex Generic functions
 @cindex Object orientation
 
-The class of an object determines how it will be treated by what are
-known as @emph{generic} functions.  Put the other way round, a generic
-function performs a task or action on its arguments @emph{specific to
-the class of the argument itself}.  If the argument lacks any @code{class}
-attribute, or has a class not catered for specifically by the generic
-function in question, there is always a @emph{default action} provided.
+@c The class of an object determines how it will be treated by what are
+@c known as @emph{generic} functions.  Put the other way round, a generic
+@c function performs a task or action on its arguments @emph{specific to
+@c the class of the argument itself}.  If the argument lacks any @code{class}
+@c attribute, or has a class not catered for specifically by the generic
+@c function in question, there is always a @emph{default action} provided.
 
-객체에 대한 클래스라는 것은 generic (제네릭)함수가 어떻게 그 객체를 처리할 것인지 대한 정보를 제공합니다. 즉, 제네릭 함수라는 것이 객체에 대한 클래스정보를 인자로 가지기 때문에 만약 클래스 정보가 없거나, 혹은 제네릭 함수내에서 해당 클래스에 대한 처리방법이 정의되지 않았다면 default action(기본 행동)을 수행하게 됩니다.
+객체의 클래스라는 것은 @emph{제네릭 함수 (generic function)}가 어떻게 그 객체를 처리할 것인지 대한 정보를 제공합니다. 
+즉, 제네릭 함수라는 것은 객체의 클래스정보를 인자로 가지기 때문에 만약 클래스 정보가 없거나, 제네릭 함수내에서 해당 클래스에 대한 처리방법이 정의되지 않았다면 @emph{기본행동 (default action)}을 수행하게 됩니다.
 
 @c An example makes things clearer.  The class mechanism offers the user
 @c the facility of designing and writing generic functions for special
@@ -5495,25 +5506,28 @@ function in question, there is always a @emph{default action} provided.
 @c analyses of various types, and @code{anova()} for comparing statistical
 @c models.
 
-이러한 클래스 메커니즘은 사용자가 제네릭 함수를 디자인하고 새로 정의할 수 있도록 도와줍니다. 단편적인 예로 plot() 이라는 제네릭 함수는 여러가지 객체의 종류에 따른 다양한 시각화 방법을 제공하고, summary()라는 함수는 다양한 종류의 객체에 대한 통계분석의 결과를 요약해 줍니다. 또한 anova()라는 제네릭 함수는 통계 모델을 비교할 때 사용됩니다.
+예를 들면 더욱 수월하게 이해가 가실 것입니다.
+클래스 메커니즘 (작동하는 방법)은 사용자가 제네릭 함수를 디자인하고 새로 정의할 수 있도록 도와줍니다. 
+단편적인 예로 @code{plot()}이라는 제네릭 함수는 여러가지 객체의 종류 (즉, 클래스)에 따른 다양한 시각화 방법을 제공합니다.
+또 다른 제네릭함수 @code{summary()}는 다양한 종류의 객체에 대한 통계분석의 결과를 요약해 주며, @code{anova()}는 여러개의 통계 모델들을 비교할 때 사용됩니다.
 
 @c The number of generic functions that can treat a class in a specific way
 @c can be quite large.  For example, the functions that can accommodate in
 @c some fashion objects of class @code{"data.frame"} include
 
-클래스를 특정한 방법으로 처리하는 제네릭 함수의 종류는 매우 많습니다. 예를 들어, 데이터프레임이라는 클래스의 객체를 처리하고자 한다면 아래와 같은 처리방법들에 대해서 포함하고 있을 것입니다.
+클래스를 특정한 방법으로 처리하는 제네릭 함수의 수는 매우 많습니다. 
+예를 들어, 클래스 @code{"data.frame"}의 객체를 처리하는 방법들에 대해서는 아래와 같은 내용들이 있습니다.
 
 @example
 [     [[<-    any    as.matrix
 [<-   mean    plot   summary
 @end example
 
-@c @findex methods
+@findex methods
 @c A currently complete list can be got by using the @code{methods()}
 @c function:
 
-따라서 어떤 처리방법들이 제네릭 함수안에 구현되어 있는지를 확인하고 싶으시다면 아래와 같이
-methods()라는 함수를 클래스명과 함께 이용하시길 바랍니다.
+이와 같이 어떤 처리 방법들이 제네릭 함수안에 구현이 되어 있는지 확인하고 싶다면 아래와 같이 @code{methods()}를 사용해보세요.
 
 @example
 > methods(class="data.frame")
@@ -5525,7 +5539,9 @@ methods()라는 함수를 클래스명과 함께 이용하시길 바랍니다.
 @c @code{"density"}, @code{"factor"}, and more.  A complete list can be got
 @c again by using the @code{methods()} function:
 
-이와 반대로, 제네릭 함수가 처리해 낼 수 있는 클래스의 종류 또한 많습니다. 예를 들어, plot()이라는 함수는 기본적으로 default method이라는 처리방식을 가지며, "data.frame", "density", "factor", 그 밖의 클래스들로부터 파생되어진 다양한 종류의 객체들을 처리할 수 있습니다. 만약, 어떠한 종류의 객체들을 처리할 수 있는지 확인해 보고 싶으시다면 아래와 같이 methods()를 함수의 이름과 함께 사용하시면 됩니다.
+이와 반대로, 제네릭 함수가 처리해 낼 수 있는 클래스의 종류 또한 많습니다. 
+예를 들어, 함수 @code{plot()}는 기본처리방법(default method)을 가지고 있고, @code{"data.frame"}, @code{"density"}, @code{"factor"}, 그 밖의 클래스들로부터 파생되어진 다양한 종류의 객체들을 처리할 수 있습니다. 
+만약, 어떠한 종류의 객체들을 처리할 수 있는지 확인해 보고 싶으시다면 아래와 같이 @code{methods()}를 함수의 이름과 함께 사용하시면 됩니다.
 
 @example
 > methods(plot)
@@ -5533,7 +5549,7 @@ methods()라는 함수를 클래스명과 함께 이용하시길 바랍니다.
 
 @c For many generic functions the function body is quite short, for example
 
-일반적으로 제네릭 함수의 본체는 아래에서 보는 것과 같이 매우 짧습니다. 여기에서 UseMethod라는 메시지는 coef라는 함수가 제네릭 함수임을 의미하는 것입니다.
+일반적으로 제네릭 함수의 본체는 아래에서 보는 것과 같이 매우 짧습니다. 
 
 @example
 > coef
@@ -5541,11 +5557,12 @@ function (object, ...)
 UseMethod("coef")
 @end example
 
-@c @noindent
+@noindent
 @c The presence of @code{UseMethod} indicates this is a generic function.
 @c To see what methods are available we can use @code{methods()}
 
-따라서 coef라는 제네릭 함수에 대한 처리방식에 대한 내용을 확인하고 싶으시다면 methods()를 사용하시면 됩니다.
+여기에서 @code{UseMethod}라는 @code{coef}라는 함수가 제네릭 함수임을 의미하는 것입니다.
+따라서 @code{coef}라는 제네릭 함수에 대한 처리방식에 대한 내용을 확인하고 싶으시다면 @code{methods()}를 사용하시면 됩니다.
 
 @example
 > methods(coef)
@@ -5555,11 +5572,11 @@ UseMethod("coef")
    Non-visible functions are asterisked
 @end example
 
-@c @noindent
+@noindent
 @c In this example there are six methods, none of which can be seen by
 @c typing its name.  We can read these by either of
 
-위의 예제는 6가지의 처리방식이 있으나, 위에서 보는 바와 같이 메소드들이 어떻게 작성되었는지에 대해서는 보여지지 않는다고 *를 이용하여 표기하고 있습니다. 그러나, 우리는 이러한 메소드들에 대한 알고리즘의 구현방법을 아래와 같이 확인할 수 있는 함수를 제공합니다.
+위의 예제는 6가지의 처리방식이 있으나, 위에서 보는 바와 같이 메소드들이 어떻게 작성되었는지에 대해서는 보여지지 않는다고 *를 이용하여 표기하고 있습니다. 그러나, 아래와 같은 방법으로 이러한 메소드들에 대한 알고리즘의 구현방법을 확인할 수 있습니다.
 
 @findex getAnywhere
 @findex getS3method
@@ -5589,7 +5606,7 @@ function (object, ...)
 @c The reader is referred to the @emph{R Language Definition} for a more
 @c complete discussion of this mechanism.
 
-이 섹션의 내용을 더 정확히 이해하기 위해서는 우리는 사용자가 R Language Definition라는 문서를 참고하길 바랍니다.
+이 섹션의 내용을 더 정확히 이해하기 위해서는 @emph{R Language Definition}라는 문서를 참고하셔야 합니다.
 
 @node Statistical models in R, Graphics, Writing your own functions, Top
 @c @chapter Statistical models in R
