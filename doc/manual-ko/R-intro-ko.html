@@ -90,29 +90,29 @@ p {
 <li><a href="#Executing-commands-from-or-diverting-output-to-a-file">1.10 외부파일에 저장된 명령 실행 및 외부파일로 결과 저장하기</a>
 <li><a href="#Data-permanency-and-removing-objects">1.11 영구적인 데이터 생성 및 객체 제거하기</a>
 </li></ul>
-<li><a name="toc_Simple-manipulations-numbers-and-vectors" href="#Simple-manipulations-numbers-and-vectors">2 기초 조작법 (의역 일정 - 2013.03.28)</a>
+<li><a name="toc_Simple-manipulations-numbers-and-vectors" href="#Simple-manipulations-numbers-and-vectors">2 기초 조작법</a>
 <ul>
-<li><a href="#Vectors-and-assignment">2.1 Vectors and assignment</a>
-<li><a href="#Vector-arithmetic">2.2 Vector arithmetic</a>
-<li><a href="#Generating-regular-sequences">2.3 Generating regular sequences</a>
-<li><a href="#Logical-vectors">2.4 Logical vectors</a>
-<li><a href="#Missing-values">2.5 Missing values</a>
-<li><a href="#Character-vectors">2.6 Character vectors</a>
-<li><a href="#Index-vectors">2.7 Index vectors; selecting and modifying subsets of a data set</a>
-<li><a href="#Other-types-of-objects">2.8 Other types of objects</a>
+<li><a href="#Vectors-and-assignment">2.1 벡터와 할당</a>
+<li><a href="#Vector-arithmetic">2.2 벡터연산</a>
+<li><a href="#Generating-regular-sequences">2.3 일반적인 수열 생성하기</a>
+<li><a href="#Logical-vectors">2.4 논리형 벡터</a>
+<li><a href="#Missing-values">2.5 결측값</a>
+<li><a href="#Character-vectors">2.6 문자형 벡터</a>
+<li><a href="#Index-vectors">2.7 데이터셋의 일부분을 선택하고 수정하기 위한 인덱스 벡터</a>
+<li><a href="#Other-types-of-objects">2.8 객체의 다른 유형들</a>
 </li></ul>
-<li><a name="toc_Objects" href="#Objects">3 객체, 이것에 대한 속성과 모드 (의역 일정 - 2013.03.26)</a>
+<li><a name="toc_Objects" href="#Objects">3 객체, 이것에 대한 속성과 모드</a>
 <ul>
-<li><a href="#The-intrinsic-attributes-mode-and-length">3.1 Intrinsic attributes: mode and length</a>
-<li><a href="#Changing-the-length-of-an-object">3.2 Changing the length of an object</a>
-<li><a href="#Getting-and-setting-attributes">3.3 Getting and setting attributes</a>
-<li><a href="#The-class-of-an-object">3.4 The class of an object</a>
+<li><a href="#The-intrinsic-attributes-mode-and-length">3.1 기본적으로 내재된 속성들: 모드와 길이</a>
+<li><a href="#Changing-the-length-of-an-object">3.2 객체의 길이 변경하기</a>
+<li><a href="#Getting-and-setting-attributes">3.3 속성의 확인과 설정</a>
+<li><a href="#The-class-of-an-object">3.4 객체의 클래스</a>
 </li></ul>
-<li><a name="toc_Factors" href="#Factors">4 순위형과 비순위형 요인들 (의역 일정 - 2013.03.26)</a>
+<li><a name="toc_Factors" href="#Factors">4 순위형과 비순위형 요인들</a>
 <ul>
-<li><a href="#Factors">4.1 A specific example</a>
-<li><a href="#The-function-tapply_0028_0029-and-ragged-arrays">4.2 The function <code>tapply()</code> and ragged arrays</a>
-<li><a href="#Ordered-factors">4.3 Ordered factors</a>
+<li><a href="#Factors">4.1 특별한 예제</a>
+<li><a href="#The-function-tapply_0028_0029-and-ragged-arrays">4.2 함수 <code>tapply()</code>와 래그드된 배열</a>
+<li><a href="#Ordered-factors">4.3 순위가 있는 요인들</a>
 </li></ul>
 <li><a name="toc_Arrays-and-matrices" href="#Arrays-and-matrices">5 배열과 행렬</a>
 <ul>
@@ -254,11 +254,11 @@ p {
 </li></ul>
 <li><a href="#Dynamic-graphics">12.7 Dynamic graphics</a>
 </li></ul>
-<li><a name="toc_Packages" href="#Packages">13 패키지들 (의역 일정 - 2013.03.30)</a>
+<li><a name="toc_Packages" href="#Packages">13 패키지들</a>
 <ul>
-<li><a href="#Standard-packages">13.1 Standard packages</a>
-<li><a href="#Contributed-packages-and-CRAN">13.2 Contributed packages and <acronym>CRAN</acronym></a>
-<li><a href="#Namespaces">13.3 Namespaces</a>
+<li><a href="#Standard-packages">13.1 표준 패키지들</a>
+<li><a href="#Contributed-packages-and-CRAN">13.2 사용자개발 패키지들과 <acronym>CRAN</acronym></a>
+<li><a href="#Namespaces">13.3 네임스페이스</a>
 </li></ul>
 <li><a name="toc_A-sample-session" href="#A-sample-session">Appendix A 샘플 세션</a>
 <li><a name="toc_Invoking-R" href="#Invoking-R">Appendix B R 구동하기</a>
@@ -1077,7 +1077,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Simple manipulations; numbers and vectors -->
-<h2 class="chapter">2 기초 조작법 (의역 일정 - 2013.03.28)</h2>
+<h2 class="chapter">2 기초 조작법</h2>
 
 <p><a name="index-Vectors-15"></a>
 
@@ -1101,7 +1101,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.1 Vectors and assignment</h3>
+<!-- @section Vectors and assignment -->
+<h3 class="section">2.1 벡터와 할당</h3>
 
 <!-- @R{} operates on named @emph{data structures}.  The simplest such -->
 <!-- structure is the numeric @emph{vector}, which is a single entity -->
@@ -1188,7 +1189,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.2 Vector arithmetic</h3>
+<!-- @section Vector arithmetic -->
+<h3 class="section">2.2 벡터연산</h3>
 
 <!-- Vectors can be used in arithmetic expressions, in which case the -->
 <!-- operations are performed element by element.  Vectors occurring in the -->
@@ -1320,7 +1322,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.3 Generating regular sequences</h3>
+<!-- @section Generating regular sequences -->
+<h3 class="section">2.3 일반적인 수열 생성하기</h3>
 
 <p><a name="index-Regular-sequences-44"></a>
 <!-- @R{} has a number of facilities for generating commonly used sequences -->
@@ -1425,7 +1428,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.4 Logical vectors</h3>
+<!-- @section Logical vectors -->
+<h3 class="section">2.4 논리형 벡터</h3>
 
 <!-- As well as numerical vectors, @R{} allows manipulation of logical -->
 <!-- quantities.  The elements of a logical vector can have the values -->
@@ -1480,7 +1484,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.5 Missing values</h3>
+<!-- @section Missing values -->
+<h3 class="section">2.5 결측값</h3>
 
 <p><a name="index-Missing-values-61"></a>
 <!-- In some cases the components of a vector may not be completely -->
@@ -1546,7 +1551,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.6 Character vectors</h3>
+<!-- @section Character vectors -->
+<h3 class="section">2.6 문자형 벡터</h3>
 
 <p><a name="index-Character-vectors-66"></a>
 <!-- Character quantities and character vectors are used frequently in @R{}, -->
@@ -1613,7 +1619,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.7 Index vectors; selecting and modifying subsets of a data set</h3>
+<!-- @section Index vectors; selecting and modifying subsets of a data set -->
+<h3 class="section">2.7 데이터셋의 일부분을 선택하고 수정하기 위한 인덱스 벡터</h3>
 
 <p><a name="index-Indexing-vectors-69"></a>
 <!-- Subsets of the elements of a vector may be selected by appending to the -->
@@ -1745,7 +1752,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 
 </div>
 
-<h3 class="section">2.8 Other types of objects</h3>
+<!-- @section Other types of objects -->
+<h3 class="section">2.8 객체의 다른 유형들</h3>
 
 <!-- Vectors are the most important type of object in @R{}, but there are -->
 <!-- several others which we will meet more formally in later sections. -->
@@ -1804,7 +1812,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Objects, their modes and attributes -->
-<h2 class="chapter">3 객체, 이것에 대한 속성과 모드 (의역 일정 - 2013.03.26)</h2>
+<h2 class="chapter">3 객체, 이것에 대한 속성과 모드</h2>
 
 <p><a name="index-Objects-70"></a><a name="index-Attributes-71"></a>
 <!-- <FIXME> -->
@@ -1829,7 +1837,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 
 </div>
 
-<h3 class="section">3.1 Intrinsic attributes: mode and length</h3>
+<!-- @section Intrinsic attributes: mode and length -->
+<h3 class="section">3.1 기본적으로 내재된 속성들: 모드와 길이</h3>
 
 <!-- The entities @R{} operates on are technically known as @emph{objects}. -->
 <!-- Examples are vectors of numeric (real) or complex values, vectors of -->
@@ -1948,7 +1957,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 
 </div>
 
-<h3 class="section">3.2 Changing the length of an object</h3>
+<!-- @section Changing the length of an object -->
+<h3 class="section">3.2 객체의 길이 변경하기</h3>
 
 <pre class="example">     &gt; e &lt;- numeric()
 </pre>
@@ -2006,7 +2016,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 
 </div>
 
-<h3 class="section">3.3 Getting and setting attributes</h3>
+<!-- @section Getting and setting attributes -->
+<h3 class="section">3.3 속성의 확인과 설정</h3>
 
 <p><a name="index-attr-74"></a><a name="index-attributes-75"></a>
 <!-- The function @code{attributes(@var{object})} -->
@@ -2049,7 +2060,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Objects">Objects</a>
 
 </div>
 
-<h3 class="section">3.4 The class of an object</h3>
+<!-- @section The class of an object -->
+<h3 class="section">3.4 객체의 클래스</h3>
 
 <p><a name="index-Classes-78"></a>
 <!-- All objects in @R{} have a @emph{class}, reported by the function -->
@@ -2108,7 +2120,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Ordered and unordered factors -->
-<h2 class="chapter">4 순위형과 비순위형 요인들 (의역 일정 - 2013.03.26)</h2>
+<h2 class="chapter">4 순위형과 비순위형 요인들</h2>
 
 <p><a name="index-Factors-80"></a><a name="index-Ordered-factors-81"></a>
 <!-- A @emph{factor} is a vector object used to specify a discrete -->
@@ -2121,7 +2133,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 R은 <em>ordered</em>(순위형)과 <em>unordered</em>(비순위형) 두가지 종류의 요인을 제공하고 있습니다. 
 요인을 활용하는 실 응용예제는 see <a href="#Contrasts">Contrasts</a>에서 설명하는 model formulae(모델식)을 통해 알수 있지만, 여기에서는 특수한 예제를 통해서 요인이 무엇인지 이해하는데 중점을 둡니다.
 
-<h3 class="section">4.1 A specific example</h3>
+<!-- @section A specific example -->
+<h3 class="section">4.1 특별한 예제</h3>
 
 <!-- Suppose, for example, we have a sample of 30 tax accountants from all -->
 <!-- the states and territories of Australia@footnote{Readers should note -->
@@ -2179,7 +2192,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Factors">Factors</a>
 
 </div>
 
-<h3 class="section">4.2 The function <code>tapply()</code> and ragged arrays</h3>
+<!-- @section The function @code{tapply()} and ragged arrays -->
+<h3 class="section">4.2 함수 <code>tapply()</code>와 래그드된 배열</h3>
 
 <p><a name="index-tapply-84"></a>
 <!-- To continue the previous example, suppose we have the incomes of the -->
@@ -2294,7 +2308,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Factors">Factors</a>
 
 </div>
 
-<h3 class="section">4.3 Ordered factors</h3>
+<!-- @section Ordered factors -->
+<h3 class="section">4.3 순위가 있는 요인들</h3>
 
 <p><a name="index-ordered-87"></a>
 <!-- The levels of factors are stored in alphabetical order, or in the order -->
@@ -7992,7 +8007,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Packages -->
-<h2 class="chapter">13 패키지들 (의역 일정 - 2013.03.30)</h2>
+<h2 class="chapter">13 패키지들</h2>
 
 <p><a name="index-Packages-284"></a>
 <!-- All @R{} functions and datasets are stored in @emph{packages}.  Only -->
@@ -8074,7 +8089,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 
 </div>
 
-<h3 class="section">13.1 Standard packages</h3>
+<!-- @section Standard packages -->
+<h3 class="section">13.1 표준 패키지들</h3>
 
 <!-- The standard (or @emph{base}) packages are considered part of the @R{} -->
 <!-- source code.  They contain the basic functions that allow @R{} to work, -->
@@ -8096,7 +8112,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 
 </div>
 
-<h3 class="section">13.2 Contributed packages and <acronym>CRAN</acronym></h3>
+<!-- @section Contributed packages and @acronym{CRAN} -->
+<h3 class="section">13.2 사용자개발 패키지들과 <acronym>CRAN</acronym></h3>
 
 <p><a name="index-CRAN-285"></a>
 <!-- There are thousands of contributed packages for @R{}, written by many -->
@@ -8125,7 +8142,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 
 </div>
 
-<h3 class="section">13.3 Namespaces</h3>
+<!-- @section Namespaces -->
+<h3 class="section">13.3 네임스페이스</h3>
 
 <p><a name="index-Namespace-286"></a><a name="index-g_t_003a_003a-287"></a><a name="index-g_t_003a_003a_003a-288"></a>
 <!-- Packages can have @emph{namespaces}, and currently all of the base and -->
