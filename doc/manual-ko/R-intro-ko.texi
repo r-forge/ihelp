@@ -9117,7 +9117,7 @@ R 을 최대한 차분히 실행합니다. 이 옵션은 프로그램의 산술�
 @c This flag does nothing except cause the rest of the command line to be
 @c skipped: this can be useful to retrieve values from it with
 @c @code{commandArgs(TRUE)}.
-@c @end table
+@end table
 
 이 플래그(flag)는 나머지 command line이 넘어가게 만드는 걸 제외하면 다른 기능을 포함하진 않습니다. 이는 commandArgs(TRUE)와 함께 args로 부터 밸류를 되찾는데 있어 유용한 옵션입니다.
 
@@ -9155,7 +9155,7 @@ command는 그 툴의 이름이며 args는 그 이름에 삽입되어 있는 아
 @c Run @R{} in batch mode.  Runs @command{R --restore --save} with possibly
 @c further options (see @code{?BATCH}).
 
-batch 모드에서의 R 실행. 가능한 옵션들과 함께 R --restore --save를 실행
+batch 모드에서의 @R{} 실행. 가능한 옵션들과 함께 @command{R --restore --save}를 실행
 
 @item COMPILE
 @c (UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}.
@@ -9201,9 +9201,9 @@ Post-process R 프로파일링 파일
 @itemx Rd2txt
 @c Convert Rd format to various other formats, including @HTML{}, @LaTeX{},
 @c plain text, and extracting the examples.  @code{Rd2txt} can be used as
-@C shorthand for @code{Rd2conv -t txt}.
+@c shorthand for @code{Rd2conv -t txt}.
 
-HTML, LaTex, 일반 text를 포함, 다양한 포맷으로 Rd 포맷을 전환 그리고, 예를 추출. Rd2txt는 Rd2conv -t txt를 위한 shorthand로서 사용됩니다.
+@HTML{}, LaTex, 일반 텍스트를 포함, 다양한 포맷으로 Rd 포맷을 전환 그리고, 예를 추출. @code{Rd2txt}는 @code{Rd2conv -t txt} txt를 위한 shorthand로서 사용됩니다.
 
 @itemx Rd2pdf
 @c Convert Rd format to PDF.
@@ -9211,7 +9211,7 @@ HTML, LaTex, 일반 text를 포함, 다양한 포맷으로 Rd 포맷을 전환 �
 Rd 포맷을 PDF로 전환
 
 @item Stangle
-@C Extract S/R code from Sweave documentation
+@c Extract S/R code from Sweave documentation
 
 Sweave 문서로부터 S/R 코드를 추출
 
@@ -9221,7 +9221,7 @@ Sweave 문서로부터 S/R 코드를 추출
 Sweave 문서 프로세스
 
 @item Rdiff
-@C Diff @R{} output ignoring headers etc
+@c Diff @R{} output ignoring headers etc
 
 headers를 무시하는 R output을 diff
 
@@ -9250,7 +9250,7 @@ Configuration information입수
 
 (윈도우 환경) R형태의 파일을 활용한 (La)Tex 파일 프로세스
 
-@c @end table
+@end table
 
 
 @c Use
@@ -9345,7 +9345,7 @@ R CMD @var{cmd} @var{args}
 .RDATA로 끝나는 아큐먼트가 존재할 경우, 이는 되찾기 위한 작업공간에 대한 경로로서, 인식됩니다. 이는 --restore를 의미하며 해당 파일의 상위에 작업 디렉토리를 설정합니다. (이 메커니즘은 RGui.exe와 관련 있는 파일 혹은 drag-and-drop을 위해 사용됩니다. 하지만, 또한 Rterm.exe를 위해 활용되며, 해당 파일이 존재하지 않고, 상위 디렉토리가 존재할 경우, working directory를 설정합니다.
 
 @c The following additional command-line options are available when
-@C invoking @code{RGui.exe}.
+@c invoking @code{RGui.exe}.
 
 추가 command-line 옵션은 RGui.exe를 invoking할 때, 이용 가능합니다.
 

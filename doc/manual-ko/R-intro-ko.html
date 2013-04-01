@@ -8614,153 +8614,255 @@ library trees searched for add-on packages).
 
      <p>&ndash;no-save, &ndash;no-environ, &ndash;no-site-file, &ndash;no-init-file과 &ndash;no-restore를 결합합니다. 이는 또한 윈도우 상에서 &ndash;no-Rconcsole 포함합니다.
 
-     <br><dt><samp><span class="option">-f </span><var>file</var></samp><dt><samp><span class="option">--file=</span><var>file</var></samp><dd>(not <samp><span class="command">Rgui.exe</span></samp>) Take input from <var>file</var>: &lsquo;<samp><span class="samp">-</span></samp>&rsquo; means
-<code>stdin</code>.  Implies <samp><span class="option">--no-save</span></samp> unless <samp><span class="option">--save</span></samp> has
-been set.  On a Unix-alike, shell metacharacters should be avoided in
-<var>file</var> (but as from R 2.14.0 spaces are allowed).
+     <br><dt><samp><span class="option">-f </span><var>file</var></samp><dt><samp><span class="option">--file=</span><var>file</var></samp><dd><!-- (not @command{Rgui.exe}) Take input from @var{file}: @samp{-} means -->
+<!-- @code{stdin}.  Implies @option{-no-save} unless @option{-save} has -->
+<!-- been set.  On a Unix-alike, shell metacharacters should be avoided in -->
+<!-- @var{file} (but as from @R{} 2.14.0 spaces are allowed). -->
 
-     <br><dt><samp><span class="option">-e </span><var>expression</var></samp><dd>(not <samp><span class="command">Rgui.exe</span></samp>) Use <var>expression</var> as an input line.  One or
-more <samp><span class="option">-e</span></samp> options can be used, but not together with <samp><span class="option">-f</span></samp>
-or <samp><span class="option">--file</span></samp>.  Implies <samp><span class="option">--no-save</span></samp> unless <samp><span class="option">--save</span></samp>
-has been set.  (There is a limit of 10,000 bytes on the total length of
-expressions used in this way.  Expressions containing spaces or shell
-metacharacters will need to be quoted.)
+     <p>(Not Rgui.exe)파일로부터 입력하십시오.. '-'은 stdin을 의미하며, &ndash;save가 설정되지 되어 있지 않다면,&ndash;no-save를 나타냅니다. Unix와 같은 플랫폼 상에서는, 파일 상의 shell metacharacters은 피해야 하는 요소입니다. (하지만, R2.14.0에서와 같이, 공간이 허용됩니다.)
 
-     <br><dt><samp><span class="option">--no-readline</span></samp><dd>(UNIX only) Turn off command-line editing via <strong>readline</strong>.  This
-is useful when running R from within Emacs using the <acronym>ESS</acronym>
-(&ldquo;Emacs Speaks Statistics&rdquo;) package.  See <a href="#The-command_002dline-editor">The command-line editor</a>,
-for more information.  Command-line editing is enabled by default
-interactive use (see <samp><span class="option">--interactive</span></samp>).  This option also affects
-tilde-expansion: see the help for <code>path.expand</code>.
+     <br><dt><samp><span class="option">-e </span><var>expression</var></samp><dd><!-- (not @command{Rgui.exe}) Use @var{expression} as an input line.  One or -->
+<!-- more @option{-e} options can be used, but not together with @option{-f} -->
+<!-- or @option{-file}.  Implies @option{-no-save} unless @option{-save} -->
+<!-- has been set.  (There is a limit of 10,000 bytes on the total length of -->
+<!-- expressions used in this way.  Expressions containing spaces or shell -->
+<!-- metacharacters will need to be quoted.) -->
 
-     <br><dt><samp><span class="option">--min-vsize=</span><var>N</var></samp><dt><samp><span class="option">--min-nsize=</span><var>N</var></samp><dd>For expert use only: set the initial trigger sizes for garbage
-collection of vector heap (in bytes) and <em>cons cells</em> (number)
-respectively.  Suffix &lsquo;<samp><span class="samp">M</span></samp>&rsquo; specifies megabytes or millions of cells
-respectively.  The defaults are 6Mb and 350k respectively.
+     <p>(Not Rgui.exe) input line의 형태로 expression을 활용하세요. 하나 혹은 그 이상의 -e options이 사용될 수 있지만, -f 혹은 &ndash;file과 함께 사용될 순 없습니다. 그리고, 이는 &ndash;save가 설정되지 않는 한 &ndash;no-save를 의미합니다. (이와 같은 방식으로는, 전체 expression가 10,000 바이트 정도가 최대라고 할 수 있습니다. expression은 space 혹은 shell metacharacters를 가지고 있으며, 인용될 필요가 있습니다.)
 
-     <br><dt><samp><span class="option">--max-ppsize=</span><var>N</var></samp><dd>Specify the maximum size of the pointer protection stack as <var>N</var>
-locations.  This defaults to 10000, but can be increased to allow
-large and complicated calculations to be done.  Currently the maximum
-value accepted is 100000.
+     <br><dt><samp><span class="option">--no-readline</span></samp><dd><!-- (UNIX only) Turn off command-line editing via @strong{readline}.  This -->
+<!-- is useful when running @R{} from within Emacs using the @acronym{ESS} -->
+<!-- (``Emacs Speaks Statistics'') package.  @xref{The command-line editor}, -->
+<!-- for more information.  Command-line editing is enabled by default -->
+<!-- interactive use (see @option{-interactive}).  This option also affects -->
+<!-- tilde-expansion: see the help for @code{path.expand}. -->
 
-     <br><dt><samp><span class="option">--max-mem-size=</span><var>N</var></samp><dd>(Windows only) Specify a limit for the amount of memory to be used both
-for R objects and working areas.  This is set by default to the
-smaller of the amount of physical RAM in the machine and for 32-bit
-R, 1.5Gb<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a>, and must be between 32Mb and the
-maximum allowed on that version of Windows.
+     <p>(UNIX only) readline을 활용한 commend-line editing을 끄시기 바랍니다. (유닉스 환경). 이는 ESS(Emacs Speaks Statistics)를 사용하는 Emacs안에서 R이 활용될 때 유용합니다. 추가 정보를 원하시면, commend-line editor를 참조하시기 바랍니다. commend-line editing은 디폴트 인터렉티브 유즈(default interactive use)를 통해 가능합니다. (&ndash;interactive 참조) 이 옵션은 tilde-expansion에 영향을 끼칩니다. path.expand에 대한 내용은 도움말을 참조하세요.
 
-     <br><dt><samp><span class="option">--quiet</span></samp><dt><samp><span class="option">--silent</span></samp><dt><samp><span class="option">-q</span></samp><dd>Do not print out the initial copyright and welcome messages.
+     <br><dt><samp><span class="option">--min-vsize=</span><var>N</var></samp><dt><samp><span class="option">--min-nsize=</span><var>N</var></samp><dd><!-- For expert use only: set the initial trigger sizes for garbage -->
+<!-- collection of vector heap (in bytes) and @emph{cons cells} (number) -->
+<!-- respectively.  Suffix @samp{M} specifies megabytes or millions of cells -->
+<!-- respectively.  The defaults are 6Mb and 350k respectively. -->
 
-     <br><dt><samp><span class="option">--slave</span></samp><dd>Make R run as quietly as possible.  This option is intended to
-support programs which use R to compute results for them.  It implies
-<samp><span class="option">--quiet</span></samp> and <samp><span class="option">--no-save</span></samp>.
+     <p>고급사용을 위해서, 각각 cons cells과 vector heap(바이트 상)의 garbage collection에 대한 초기 trigger size를 설정합니다. 접미사 "M"은 각각 메가바이트(megabyte) 혹은 수백만 개의 cell을 구체화합니다. 디폴트는 각각 6Mb, 350k입니다.
 
-     <br><dt><samp><span class="option">--interactive</span></samp><dd>(UNIX only) Assert that R really is being run interactively even if
-input has been redirected: use if input is from a FIFO or pipe and fed
-from an interactive program.  (The default is to deduce that R is
-being run interactively if and only if <samp><span class="file">stdin</span></samp> is connected to a
-terminal or <code>pty</code>.)  Using <samp><span class="option">-e</span></samp>, <samp><span class="option">-f</span></samp> or
-<samp><span class="option">--file</span></samp> asserts non-interactive use even if
-<samp><span class="option">--interactive</span></samp> is given.
+     <br><dt><samp><span class="option">--max-ppsize=</span><var>N</var></samp><dd><!-- Specify the maximum size of the pointer protection stack as @var{N} -->
+<!-- locations.  This defaults to 10000, but can be increased to allow -->
+<!-- large and complicated calculations to be done.  Currently the maximum -->
+<!-- value accepted is 100000. -->
 
-     <br><dt><samp><span class="option">--ess</span></samp><dd>(Windows only) Set <code>Rterm</code> up for use by <code>R-inferior-mode</code> in
-<acronym>ESS</acronym>, including asserting interactive use without the
-command-line editor.
+     <p>N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다.
 
-     <br><dt><samp><span class="option">--verbose</span></samp><dd>Print more information about progress, and in particular set R's
-option <code>verbose</code> to <code>TRUE</code>.  R code uses this option to
-control the printing of diagnostic messages.
+     <br><dt><samp><span class="option">--max-mem-size=</span><var>N</var></samp><dd><!-- (Windows only) Specify a limit for the amount of memory to be used both -->
+<!-- for @R{} objects and working areas.  This is set by default to the -->
+<!-- smaller of the amount of physical RAM in the machine and for 32-bit -->
+<!-- @R{}, 1.5Gb@footnote{2.5Gb on versions of Windows that support 3Gb per -->
+<!-- process and have the support enabled: see the @file{rw-FAQ} Q2.9; 3.5Gb -->
+<!-- on some 64-bit versions of Windows.}, and must be between 32Mb and the -->
+<!-- maximum allowed on that version of Windows. -->
 
-     <br><dt><samp><span class="option">--debugger=</span><var>name</var></samp><dt><samp><span class="option">-d </span><var>name</var></samp><dd>(UNIX only) Run R through debugger <var>name</var>.  For most debuggers
-(the exceptions are <samp><span class="command">valgrind</span></samp> and recent versions of
-<samp><span class="command">gdb</span></samp>), further command line options are disregarded, and should
-instead be given when starting the R executable from inside the
-debugger.
+     <p>(윈도우 상에서) R 객체들과 작업 영역을 위해 사용되는 양의 메모리에 대한 한계를 정합니다. 이는 machine에서 그리고 32-bit R을 위해서 physical RAM의 상대적으로 작은 양에 디폴트가 설정되어 있습니다. 그리고, 반드시 32MB사이에 위치해야 하며, 원도우 버전에서 할당된 최대량입니다.
 
-     <br><dt><samp><span class="option">--gui=</span><var>type</var></samp><dt><samp><span class="option">-g </span><var>type</var></samp><dd>(UNIX only) Use <var>type</var> as graphical user interface (note that this
-also includes interactive graphics).  Currently, possible values for
-<var>type</var> are &lsquo;<samp><span class="samp">X11</span></samp>&rsquo; (the default) and, provided that &lsquo;<samp><span class="samp">Tcl/Tk</span></samp>&rsquo;
-support is available, &lsquo;<samp><span class="samp">Tk</span></samp>&rsquo;. (For back-compatibility, &lsquo;<samp><span class="samp">x11</span></samp>&rsquo; and
-&lsquo;<samp><span class="samp">tk</span></samp>&rsquo; are accepted.)
+     <br><dt><samp><span class="option">--quiet</span></samp><dt><samp><span class="option">--silent</span></samp><dt><samp><span class="option">-q</span></samp><dd><!-- Do not print out the initial copyright and welcome messages. -->
 
-     <br><dt><samp><span class="option">--arch=</span><var>name</var></samp><dd>(UNIX only) Run the specified sub-architecture.  Most commonly used on
-Mac OS X, where the possible values are &lsquo;<samp><span class="samp">i386</span></samp>&rsquo;, &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; and
-&lsquo;<samp><span class="samp">ppc</span></samp>&rsquo;.
+     <p>저작권 및 환영 메시지가 포함된 부분은 출력하지 않습니다.
 
-     <br><dt><samp><span class="option">--args</span></samp><dd>This flag does nothing except cause the rest of the command line to be
-skipped: this can be useful to retrieve values from it with
-<code>commandArgs(TRUE)</code>. 
+     <br><dt><samp><span class="option">--slave</span></samp><dd><!-- Make @R{} run as quietly as possible.  This option is intended to -->
+<!-- support programs which use @R{} to compute results for them.  It implies -->
+<!-- @option{-quiet} and @option{-no-save}. -->
+
+     <p>R 을 최대한 차분히 실행합니다. 이 옵션은 프로그램의 산술결과를 위해 R을 사용하는 프로그램을 지원합니다. 이는 &ndash;quiet을 의미하며, &ndash;no-save를 의미합니다.
+
+     <br><dt><samp><span class="option">--interactive</span></samp><dd><!-- (UNIX only) Assert that @R{} really is being run interactively even if -->
+<!-- input has been redirected: use if input is from a FIFO or pipe and fed -->
+<!-- from an interactive program.  (The default is to deduce that @R{} is -->
+<!-- being run interactively if and only if @file{stdin} is connected to a -->
+<!-- terminal or @code{pty}.)  Using @option{-e}, @option{-f} or -->
+<!-- @option{-file} asserts non-interactive use even if -->
+<!-- @option{-interactive} is given. -->
+
+     <p>(유닉스 상에서) input이 재설정된다 하더라도 R이 쌍방향으로 실행된다는 것을 보여줍니다. input이 FIFO 혹은 pipe 혹은 쌍방향 프로그램으로부터 사용이 될 때, &ndash;interactive를 사용 합니다. (디폴트는 stdin이 터미널(terminal) 혹은 pty에 연결이 되어 있을 때, R이 쌍방향으로 실행된다는 상황에서 deduce로 설정되어 있습니다.) -e,-f 혹은 &ndash;file의 활용은 &ndash;interactive가 주어진 상황에서 noninteractive사용을 하고자 합니다.
+
+     <br><dt><samp><span class="option">--ess</span></samp><dd><!-- (Windows only) Set @code{Rterm} up for use by @code{R-inferior-mode} in -->
+<!-- @acronym{ESS}, including asserting interactive use without the -->
+<!-- command-line editor. -->
+
+     <p>(윈도우 상에서) command-line editor없이 interactive 사용을 포함한, ESS내에서 R-inferior-mode를 통해, Rterm up을 설정합니다.
+
+     <br><dt><samp><span class="option">--verbose</span></samp><dd><!-- Print more information about progress, and in particular set @R{}'s -->
+<!-- option @code{verbose} to @code{TRUE}.  @R{} code uses this option to -->
+<!-- control the printing of diagnostic messages. -->
+
+     <p>진행과정에 대한 추가 정보를 프린트합니다. 그리고, R의 옵션을 TRUE에 verbose 합니다. R 코드는 진단 메시지의 프린팅 제어를 위해서 이 옵션을 사용합니다.
+
+     <br><dt><samp><span class="option">--debugger=</span><var>name</var></samp><dt><samp><span class="option">-d </span><var>name</var></samp><dd><!-- (UNIX only) Run @R{} through debugger @var{name}.  For most debuggers -->
+<!-- (the exceptions are @command{valgrind} and recent versions of -->
+<!-- @command{gdb}), further command line options are disregarded, and should -->
+<!-- instead be given when starting the @R{} executable from inside the -->
+<!-- debugger. -->
+
+     <p>(유닉스상에서) name이라는 debugger를 통해서 R을 실행하세요. (valgrind와 최근 gdb버전은 예외) 대부분의 debugger들을 위해서, 추가 command line 옵션은 무시될 것이며, 대신, debugger 내부를 통해서 R이 실행될 때, 주어집니다.
+
+     <br><dt><samp><span class="option">--gui=</span><var>type</var></samp><dt><samp><span class="option">-g </span><var>type</var></samp><dd><!-- (UNIX only) Use @var{type} as graphical user interface (note that this -->
+<!-- also includes interactive graphics).  Currently, possible values for -->
+<!-- @var{type} are @samp{X11} (the default) and, provided that @samp{Tcl/Tk} -->
+<!-- support is available, @samp{Tk}. (For back-compatibility, @samp{x11} and -->
+<!-- @samp{tk} are accepted.) -->
+
+     <p>(유닉스 환경) GUI로서 type을 사용합니다. (이 옵션은 쌍방향 그래픽을 포함하고 있습니다. ) 현재, type을 위한 가능한 밸류는 'Tcl/Tk' 지원이 가능하다는 전제하에, 'X11'입니다. (back-compatibility를 위해서, 'x11'과 'tk'가 사용될 수 있습니다. )
+
+     <br><dt><samp><span class="option">--arch=</span><var>name</var></samp><dd><!-- (UNIX only) Run the specified sub-architecture.  Most commonly used on -->
+<!-- Mac OS X, where the possible values are @samp{i386}, @samp{x86_64} and -->
+<!-- @samp{ppc}. -->
+
+     <p>(유닉스 환경) 구체화된 sub-architecture를 실행합니다. 가능한 밸류가 'i386', 'x86_64' 그리고 'ppc'를 포함하는 Mac OS X 환경에서 가장 일반적으로 쓰입니다.
+
+     <br><dt><samp><span class="option">--args</span></samp><dd><!-- This flag does nothing except cause the rest of the command line to be -->
+<!-- skipped: this can be useful to retrieve values from it with -->
+<!-- @code{commandArgs(TRUE)}. -->
 </dl>
 
-   <p>Note that input and output can be redirected in the usual way (using
-&lsquo;<samp><span class="samp">&lt;</span></samp>&rsquo; and &lsquo;<samp><span class="samp">&gt;</span></samp>&rsquo;), but the line length limit of 4095 bytes still
-applies.  Warning and error messages are sent to the error channel
-(<code>stderr</code>).
+   <p>이 플래그(flag)는 나머지 command line이 넘어가게 만드는 걸 제외하면 다른 기능을 포함하진 않습니다. 이는 commandArgs(TRUE)와 함께 args로 부터 밸류를 되찾는데 있어 유용한 옵션입니다.
 
-   <p>The command <code>R CMD</code> allows the invocation of various tools which
-are useful in conjunction with R, but not intended to be called
-&ldquo;directly&rdquo;.  The general form is
+<!-- Note that input and output can be redirected in the usual way (using -->
+<!-- @samp{<} and @samp{>}), but the line length limit of 4095 bytes still -->
+<!-- applies.  Warning and error messages are sent to the error channel -->
+<!-- (@code{stderr}). -->
+   <p>input과 output이 일반적으로는 재설정된다는 것을 주지합니다. ('&lt;'와 '&gt;'사용) 하지만, 4095 바이트로 제한되어 있는 라인 길이는 여전히 적용됩니다. 경고와 에러 메시지는 에러 채널(stderr)로 보내집니다.
+
+<!-- The command @code{R CMD} allows the invocation of various tools which -->
+<!-- are useful in conjunction with @R{}, but not intended to be called -->
+<!-- ``directly''.  The general form is -->
+   <p>R CMD는 R과 함께, 유용한 다양한 툴의 invocation을 허용합니다. 하지만, 직접적이진 않습니다. 일반적인 형태는
 
 <pre class="example">     R CMD <var>command</var> <var>args</var>
 </pre>
-   <p class="noindent">where <var>command</var> is the name of the tool and <var>args</var> the arguments
-passed on to it.
+   <p>이고,
 
-   <p>Currently, the following tools are available.
+<p class="noindent"><!-- where @var{command} is the name of the tool and @var{args} the arguments -->
+<!-- passed on to it. -->
+
+   <p>command는 그 툴의 이름이며 args는 그 이름에 삽입되어 있는 아규먼트(argument)입니다.
+
+<!-- Currently, the following tools are available. -->
+   <p>현재, 아래와 같은 도구들을 사용할 수 있습니다.
 
      <dl>
-<dt><code>BATCH</code><dd>Run R in batch mode.  Runs <samp><span class="command">R --restore --save</span></samp> with possibly
-further options (see <code>?BATCH</code>). 
-<br><dt><code>COMPILE</code><dd>(UNIX only) Compile C, C++, Fortran <small class="dots">...</small> files for use with R. 
-<br><dt><code>SHLIB</code><dd>Build shared library for dynamic loading. 
-<br><dt><code>INSTALL</code><dd>Install add-on packages. 
-<br><dt><code>REMOVE</code><dd>Remove add-on packages. 
-<br><dt><code>build</code><dd>Build (that is, package) add-on packages. 
-<br><dt><code>check</code><dd>Check add-on packages. 
-<br><dt><code>LINK</code><dd>(UNIX only) Front-end for creating executable programs. 
-<br><dt><code>Rprof</code><dd>Post-process R profiling files. 
-<br><dt><code>Rdconv</code><dt><code>Rd2txt</code><dd>Convert Rd format to various other formats, including <acronym>HTML</acronym>, LaTeX,
-plain text, and extracting the examples.  <code>Rd2txt</code> can be used as
-shorthand for <code>Rd2conv -t txt</code>. 
-<dt><code>Rd2pdf</code><dd>Convert Rd format to PDF. 
-<br><dt><code>Stangle</code><dd>Extract S/R code from Sweave documentation
-<br><dt><code>Sweave</code><dd>Process Sweave documentation
-<br><dt><code>Rdiff</code><dd>Diff R output ignoring headers etc
-<br><dt><code>config</code><dd>Obtain configuration information
-<br><dt><code>javareconf</code><dd>(Unix only) Update the Java configuration variables
-<br><dt><code>rtags</code><dd>(Unix only) Create Emacs-style tag files from C, R, and Rd files
-<br><dt><code>open</code><dd>(Windows only) Open a file via Windows' file associations
-<br><dt><code>texify</code><dd>(Windows only) Process (La)TeX files with R's style files
-</dl>
+<dt><code>BATCH</code><dd><!-- Run @R{} in batch mode.  Runs @command{R -restore -save} with possibly -->
+<!-- further options (see @code{?BATCH}). -->
 
-   <p>Use
+     <p>batch 모드에서의 R 실행. 가능한 옵션들과 함께 <samp><span class="command">R --restore --save</span></samp>를 실행
+
+     <br><dt><code>COMPILE</code><dd><!-- (UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}. -->
+
+     <p>(유닉스 환경) R과의 활용을 위해서 C, C++, 포트란 파일들을 편집
+
+     <br><dt><code>SHLIB</code><dd><!-- Build shared library for dynamic loading. -->
+
+     <p>다이나믹 로딩을 위한 공유하고 있는 library를 구축
+
+     <br><dt><code>INSTALL</code><dd><!-- Install add-on packages. -->
+
+     <p>추가 패키지 설치
+
+     <br><dt><code>REMOVE</code><dd><!-- Remove add-on packages. -->
+
+     <p>추가 패키지 제거
+
+     <br><dt><code>build</code><dd><!-- Build (that is, package) add-on packages. -->
+
+     <p>추가 패키지 구축
+
+     <br><dt><code>check</code><dd><!-- Check add-on packages. -->
+
+     <p>추가 패키지 점검
+
+     <br><dt><code>LINK</code><dd><!-- (UNIX only) Front-end for creating executable programs. -->
+
+     <p>(유닉스 환경) 실행가능한 프로그램 생성을 위한 Front-end
+
+     <br><dt><code>Rprof</code><dd><!-- Post-process @R{} profiling files. -->
+
+     <p>Post-process R 프로파일링 파일
+
+     <br><dt><code>Rdconv</code><dt><code>Rd2txt</code><dd><!-- Convert Rd format to various other formats, including @HTML{}, @LaTeX{}, -->
+<!-- plain text, and extracting the examples.  @code{Rd2txt} can be used as -->
+<!-- shorthand for @code{Rd2conv -t txt}. -->
+
+     <p><acronym>HTML</acronym>, LaTex, 일반 텍스트를 포함, 다양한 포맷으로 Rd 포맷을 전환 그리고, 예를 추출. <code>Rd2txt</code>는 <code>Rd2conv -t txt</code> txt를 위한 shorthand로서 사용됩니다.
+
+     <dt><code>Rd2pdf</code><dd><!-- Convert Rd format to PDF. -->
+
+     <p>Rd 포맷을 PDF로 전환
+
+     <br><dt><code>Stangle</code><dd><!-- Extract S/R code from Sweave documentation -->
+
+     <p>Sweave 문서로부터 S/R 코드를 추출
+
+     <br><dt><code>Sweave</code><dd><!-- Process Sweave documentation -->
+
+     <p>Sweave 문서 프로세스
+
+     <br><dt><code>Rdiff</code><dd><!-- Diff @R{} output ignoring headers etc -->
+
+     <p>headers를 무시하는 R output을 diff
+
+     <br><dt><code>config</code><dd><!-- Obtain configuration information -->
+
+     <p>Configuration information입수
+
+     <br><dt><code>javareconf</code><dd><!-- (Unix only) Update the Java configuration variables -->
+
+     <p>(유닉스 환경) 자바 configuration 변수 업데이트
+
+     <br><dt><code>rtags</code><dd><!-- (Unix only) Create Emacs-style tag files from C, R, and Rd files -->
+
+     <p>(유닉스 환경) C,R,Rd 파일로 부터 Emacs-style tag 파일을 생성
+
+     <br><dt><code>open</code><dd><!-- (Windows only) Open a file via Windows' file associations -->
+
+     <p>(윈도우 환경) 윈도우 파일 association을 통한 파일 오픈
+
+     <br><dt><code>texify</code><dd><!-- (Windows only) Process (La)TeX files with R's style files -->
+
+     <p>(윈도우 환경) R형태의 파일을 활용한 (La)Tex 파일 프로세스
+
+   </dl>
+
+<!-- Use -->
+   <p>사용법
 
 <pre class="example">     R CMD <var>command</var> --help
 </pre>
-   <p class="noindent">to obtain usage information for each of the tools accessible via the
-<code>R CMD</code> interface.
+   <p class="noindent"><!-- to obtain usage information for each of the tools accessible via the -->
+<!-- @code{R CMD} interface. -->
 
-   <p>In addition, you can use<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a>  options
-<samp><span class="option">--arch=</span></samp>, <samp><span class="option">--no-environ</span></samp>, <samp><span class="option">--no-init-file</span></samp>,
-<samp><span class="option">--no-site-file</span></samp> and <samp><span class="option">--vanilla</span></samp> between <samp><span class="command">R</span></samp> and
-<samp><span class="command">CMD</span></samp>: these affect any R processes run by the tools.  (Here
-<samp><span class="option">--vanilla</span></samp> is equivalent to <samp><span class="option">--no-environ --no-site-file
---no-init-file</span></samp>.)  However, note that <samp><span class="command">R CMD</span></samp> does not of itself
-use any R startup files (in particular, neither user nor site
-<samp><span class="file">Renviron</span></samp> files), and all of the R processes run by these tools
-(except <samp><span class="command">BATCH</span></samp>) use <samp><span class="option">--no-restore</span></samp>.  Most use
-<samp><span class="option">--vanilla</span></samp> and so invoke no R startup files: the current
-exceptions are <samp><span class="command">INSTALL</span></samp>, <samp><span class="command">REMOVE</span></samp>, <samp><span class="command">Sweave</span></samp> and
-<samp><span class="command">SHLIB</span></samp> (which uses <samp><span class="option">--no-site-file --no-init-file</span></samp>).
+   <p>R CMD 인터페이스를 통한 접근 가능한 각각의 툴을 위한 사용정보
+
+<!-- In addition, you can use@footnote{as from @R{} 2.13.0.}  options -->
+<!-- @option{-arch=}, @option{-no-environ}, @option{-no-init-file}, -->
+<!-- @option{-no-site-file} and @option{-vanilla} between @command{R} and -->
+<!-- @command{CMD}: these affect any @R{} processes run by the tools.  (Here -->
+<!-- @option{-vanilla} is equivalent to @option{-no-environ -no-site-file -->
+<!-- no-init-file}.)  However, note that @command{R CMD} does not of itself -->
+<!-- use any @R{} startup files (in particular, neither user nor site -->
+<!-- @file{Renviron} files), and all of the @R{} processes run by these tools -->
+<!-- (except @command{BATCH}) use @option{-no-restore}.  Most use -->
+<!-- @option{-vanilla} and so invoke no @R{} startup files: the current -->
+<!-- exceptions are @command{INSTALL}, @command{REMOVE}, @command{Sweave} and -->
+<!-- @command{SHLIB} (which uses @option{-no-site-file -no-init-file}). -->
+   <p>추가로, &ndash;arch-, &ndash;no-environ, &ndash;no-init-file, &ndash;no-site-file, &ndash;vanilla 를 R과 CMD에서 사용할 수 있습니다. 이 옵션들은 툴에 의해 실행되는 R에 영향을 끼칩니다. (&ndash;vanilla는 &ndash;noenviron, &ndash;no-site-file, &ndash;no-init-file과 동일 합니다.) 하지만, R CMD는 R startup file을 사용하지 않습니다. (특히, 유저 그리고 site Renviron 파일에 적용은 되지 않습니다.) 그리고, 모든 R 프로세스들은 이러한 툴들에 의해 실행됩니다. (BATCH 제외) &ndash;no-restore를 사용합니다. 대부분은 &ndash;vanilla를 사용하고 R startup file을 invoke하지 않습니다. 현재 예외라고 할 수 있는 부분은 INSTALL.REMOVE, Sweave그리고 SHLIB입니다(SHLIB는 &ndash;no-site-file &ndash;no-init-file을 사용합니다.).
 
 <pre class="example">     R CMD <var>cmd</var> <var>args</var>
 </pre>
-   <p class="noindent">for any other executable <samp><var>cmd</var></samp> on the path or given by an
-absolute filepath: this is useful to have the same environment as R
-or the specific commands run under, for example to run <samp><span class="command">ldd</span></samp> or
-<samp><span class="command">pdflatex</span></samp>.  Under Windows <var>cmd</var> can be an executable or a
-batch file, or if it has extension <code>.sh</code> or <code>.pl</code> the
-appropriate interpreter (if available) is called to run it.
+   <p class="noindent"><!-- for any other executable @command{@var{cmd}} on the path or given by an -->
+<!-- absolute filepath: this is useful to have the same environment as @R{} -->
+<!-- or the specific commands run under, for example to run @command{ldd} or -->
+<!-- @command{pdflatex}.  Under Windows @var{cmd} can be an executable or a -->
+<!-- batch file, or if it has extension @code{.sh} or @code{.pl} the -->
+<!-- appropriate interpreter (if available) is called to run it. -->
+
+   <p>경로에 위치해 있는 다른 실행 가능한 cmd와 absolute filepath를 고려하여, 이 옵션은 R과 같은 환경을 위해서 유용합니다. 그리고 특정 command는 예를 들어, 1dd 혹은 pdflatex 실행을 위해서 실행됩니다. 윈도우 상에서 cmd는 실행가능 혹은 batch 파일의 형태입니다. 그리고, 확장성을 가지고 있다면, .sh 혹은 .pl이 실행을 위해 call됩니다.
 
 <div class="node">
 <a name="Invoking-R-under-Windows"></a>
@@ -8773,42 +8875,48 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 <h3 class="appendixsec">B.2 Invoking R under Windows</h3>
 
-<p>There are two ways to run R under Windows.  Within a terminal window
-(e.g. <code>cmd.exe</code> or a more capable shell), the methods described in
-the previous section may be used, invoking by <code>R.exe</code> or more
-directly by <code>Rterm.exe</code>.  For interactive use, there is a
-console-based GUI (<code>Rgui.exe</code>).
+<!-- There are two ways to run @R{} under Windows.  Within a terminal window -->
+<!-- (e.g.@ @code{cmd.exe} or a more capable shell), the methods described in -->
+<!-- the previous section may be used, invoking by @code{R.exe} or more -->
+<!-- directly by @code{Rterm.exe}.  For interactive use, there is a -->
+<!-- console-based GUI (@code{Rgui.exe}). -->
+<p>윈도우 상에서 R을 실행하는 방법은 두 가지가 있습니다. cmd.exe 혹은 더 강력한 shell과 같은, 터미널 원도우 내에서, 전 장에서 설명 드렸던 방법이 사용될 수 있습니다. 바로, R.exe 그리고 Rterm.exe을 실행하는 것입니다. 쌍방향 사용목적을 위해서, 콘솔 기반의 GUI(Rgui.exe)도 있습니다.
 
-   <p>The startup procedure under Windows is very similar to that under
-UNIX, but references to the `home directory' need to be clarified, as
-this is not always defined on Windows.  If the environment variable
-<samp><span class="env">R_USER</span></samp> is defined, that gives the home directory.  Next, if the
-environment variable <samp><span class="env">HOME</span></samp> is defined, that gives the home
-directory.  After those two user-controllable settings, R tries to
-find system defined home directories.  It first tries to use the
-Windows "personal" directory (typically <code>C:\Documents and
-Settings\username\My Documents</code> in Windows XP).  If that fails, and
-environment variables <samp><span class="env">HOMEDRIVE</span></samp> and <samp><span class="env">HOMEPATH</span></samp> are defined
-(and they normally are) these define the home directory.  Failing all
-those, the home directory is taken to be the starting directory.
+<!-- The startup procedure under Windows is very similar to that under -->
+<!-- UNIX, but references to the `home directory' need to be clarified, as -->
+<!-- this is not always defined on Windows.  If the environment variable -->
+<!-- @env{R_USER} is defined, that gives the home directory.  Next, if the -->
+<!-- environment variable @env{HOME} is defined, that gives the home -->
+<!-- directory.  After those two user-controllable settings, @R{} tries to -->
+<!-- find system defined home directories.  It first tries to use the -->
+<!-- Windows "personal" directory (typically @code{C:\Documents and -->
+<!-- Settings\username\My Documents} in Windows XP).  If that fails, and -->
+<!-- environment variables @env{HOMEDRIVE} and @env{HOMEPATH} are defined -->
+<!-- (and they normally are) these define the home directory.  Failing all -->
+<!-- those, the home directory is taken to be the starting directory. -->
+   <p>원도우 상에서 초기 프로시져는 유닉스 상에서의 방식과 유사합니다. 하지만, 'home directory'에 대한 레퍼런스는 좀 더 명확할 필요가 있습니다. 윈도우 상에서 항상 정의가 되지 않기 때문입니다. 만약, 환경변수 R_USER가 정의되면, home directory를 제공합니다. 다음으로, 만약 환경변수 HOME이 정의되면, 이는 또한 home directory를 제공합니다. 이 두 유저 콘트롤링 셋팅 완료 후, R은 home directory를 정의한 시스템을 파악합니다. 우선, 윈도우 "personal" directory를 사용코자 합니다, (일반적으로,C:\Documents and Settings\username\My Documents in Windows XP) 만약, 실패 시, 환경변수 HOMEDRIVE와 HOMEPATH가 정의되며, 이들은 일반적으로 home directory를 정의하는 변수들입니다. 이 모든 과정이 실패할 경우, home directory는 starting directory로서, 사용됩니다.
 
-   <p>You need to ensure that either the environment variables <samp><span class="env">TMPDIR</span></samp>,
-<samp><span class="env">TMP</span></samp> and <samp><span class="env">TEMP</span></samp> are either unset or one of them points to a
-valid place to create temporary files and directories.
+<!-- You need to ensure that either the environment variables @env{TMPDIR}, -->
+<!-- @env{TMP} and @env{TEMP} are either unset or one of them points to a -->
+<!-- valid place to create temporary files and directories. -->
+   <p>환경변수 TMPDIR, TMP 혹은 TEMP가 결정되지 않거나, 이 둘 중 하나가 일시적인 파일 혹은 디렉토리 생성을 위한 유효한 공간을 지정하게 끔 설정해야 합니다.
 
-   <p>Environment variables can be supplied as &lsquo;<samp><var>name</var><span class="samp">=</span><var>value</var></samp>&rsquo;
-pairs on the command line.
+<!-- Environment variables can be supplied as @samp{@var{name}=@var{value}} -->
+<!-- pairs on the command line. -->
+   <p>환경변수들은 command line에서 'name=value' 페어로서 제공될 수 있습니다.
 
-   <p>If there is an argument ending <samp><span class="file">.RData</span></samp> (in any case) it is
-interpreted as the path to the workspace to be restored: it implies
-<samp><span class="option">--restore</span></samp> and sets the working directory to the parent of the
-named file.  (This mechanism is used for drag-and-drop and file
-association with <code>RGui.exe</code>, but also works for <code>Rterm.exe</code>. 
-If the named file does not exist it sets the working directory
-if the parent directory exists.)
+<!-- If there is an argument ending @file{.RData} (in any case) it is -->
+<!-- interpreted as the path to the workspace to be restored: it implies -->
+<!-- @option{-restore} and sets the working directory to the parent of the -->
+<!-- named file.  (This mechanism is used for drag-and-drop and file -->
+<!-- association with @code{RGui.exe}, but also works for @code{Rterm.exe}. -->
+<!-- If the named file does not exist it sets the working directory -->
+<!-- if the parent directory exists.) -->
+   <p>.RDATA로 끝나는 아큐먼트가 존재할 경우, 이는 되찾기 위한 작업공간에 대한 경로로서, 인식됩니다. 이는 &ndash;restore를 의미하며 해당 파일의 상위에 작업 디렉토리를 설정합니다. (이 메커니즘은 RGui.exe와 관련 있는 파일 혹은 drag-and-drop을 위해 사용됩니다. 하지만, 또한 Rterm.exe를 위해 활용되며, 해당 파일이 존재하지 않고, 상위 디렉토리가 존재할 경우, working directory를 설정합니다.
 
-   <p>The following additional command-line options are available when
-invoking <code>RGui.exe</code>.
+<!-- The following additional command-line options are available when -->
+<!-- invoking @code{RGui.exe}. -->
+   <p>추가 command-line 옵션은 RGui.exe를 invoking할 때, 이용 가능합니다.
 
      <dl>
 <dt><samp><span class="option">--mdi</span></samp><dt><samp><span class="option">--sdi</span></samp><dt><samp><span class="option">--no-mdi</span></samp><dd>Control whether <code>Rgui</code> will operate as an MDI program
@@ -8971,7 +9079,7 @@ line editor allowing recall, editing and re-submission of prior commands
 is used.  Note that other versions of <strong>readline</strong> exist and may be
 used by the inbuilt command line editor: this used to happen on Mac OS X.
 
-   <p>It can be disabled (useful for usage with <acronym>ESS</acronym> <a rel="footnote" href="#fn-28" name="fnd-28"><sup>28</sup></a>) using the startup option
+   <p>It can be disabled (useful for usage with <acronym>ESS</acronym> <a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a>) using the startup option
 <samp><span class="option">--no-readline</span></samp>.
 
    <p>Windows versions of R have somewhat simpler command-line editing: see
@@ -8987,7 +9095,7 @@ in <samp><span class="command">man readline</span></samp> or <samp><span class="
 characters, such as <kbd>Control-m</kbd>, are obtained by holding the
 &lt;CTRL&gt; down while you press the &lt;m&gt; key, and are written as
 <kbd>C-m</kbd> below.  Meta characters, such as <kbd>Meta-b</kbd>, are typed by
-holding down &lt;META&gt;<a rel="footnote" href="#fn-29" name="fnd-29"><sup>29</sup></a> and pressing &lt;b&gt;, and written as <kbd>M-b</kbd>
+holding down &lt;META&gt;<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a> and pressing &lt;b&gt;, and written as <kbd>M-b</kbd>
 in the following.  If your terminal does not have a &lt;META&gt; key
 enabled, you can still type Meta characters using two-character
 sequences starting with <kbd>ESC</kbd>.  Thus, to enter <kbd>M-b</kbd>, you could
@@ -9488,17 +9596,11 @@ eigendecomposition of A.</p>
 parameters such as the size of the current device are for information
 only.</p>
 
-   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> 2.5Gb on versions of Windows that support 3Gb per
-process and have the support enabled: see the <samp><span class="file">rw-FAQ</span></samp> Q2.9; 3.5Gb
-on some 64-bit versions of Windows.</p>
-
-   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> as from R 2.13.0.</p>
-
-   <p class="footnote"><small>[<a name="fn-28" href="#fnd-28">28</a>]</small> The
+   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> The
 `Emacs Speaks Statistics' package; see the <acronym>URL</acronym>
 <a href="http://ESS.R-project.org">http://ESS.R-project.org</a></p>
 
-   <p class="footnote"><small>[<a name="fn-29" href="#fnd-29">29</a>]</small> On a PC keyboard this is usually the
+   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> On a PC keyboard this is usually the
 Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no
 meta key is available.</p>
 
