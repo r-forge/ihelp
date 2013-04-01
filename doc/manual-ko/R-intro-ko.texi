@@ -8990,72 +8990,94 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 
 @item -f @var{file}
 @itemx --file=@var{file}
-(not @command{Rgui.exe}) Take input from @var{file}: @samp{-} means
-@code{stdin}.  Implies @option{--no-save} unless @option{--save} has
-been set.  On a Unix-alike, shell metacharacters should be avoided in
-@var{file} (but as from @R{} 2.14.0 spaces are allowed).
+@c (not @command{Rgui.exe}) Take input from @var{file}: @samp{-} means
+@c @code{stdin}.  Implies @option{--no-save} unless @option{--save} has
+@c been set.  On a Unix-alike, shell metacharacters should be avoided in
+@c @var{file} (but as from @R{} 2.14.0 spaces are allowed).
+
+(Not Rgui.exe)파일로부터 입력하십시오.. '-'은 stdin을 의미하며, --save가 설정되지 되어 있지 않다면,--no-save를 나타냅니다. Unix와 같은 플랫폼 상에서는, 파일 상의 shell metacharacters은 피해야 하는 요소입니다. (하지만, R2.14.0에서와 같이, 공간이 허용됩니다.)
 
 @item -e @var{expression}
-(not @command{Rgui.exe}) Use @var{expression} as an input line.  One or
-more @option{-e} options can be used, but not together with @option{-f}
-or @option{--file}.  Implies @option{--no-save} unless @option{--save}
-has been set.  (There is a limit of 10,000 bytes on the total length of
-expressions used in this way.  Expressions containing spaces or shell
-metacharacters will need to be quoted.)
+@c (not @command{Rgui.exe}) Use @var{expression} as an input line.  One or
+@c more @option{-e} options can be used, but not together with @option{-f}
+@c or @option{--file}.  Implies @option{--no-save} unless @option{--save}
+@c has been set.  (There is a limit of 10,000 bytes on the total length of
+@c expressions used in this way.  Expressions containing spaces or shell
+@c metacharacters will need to be quoted.)
+
+(Not Rgui.exe) input line의 형태로 expression을 활용하세요. 하나 혹은 그 이상의 -e options이 사용될 수 있지만, -f 혹은 --file과 함께 사용될 순 없습니다. 그리고, 이는 --save가 설정되지 않는 한 --no-save를 의미합니다. (이와 같은 방식으로는, 전체 expression가 10,000 바이트 정도가 최대라고 할 수 있습니다. expression은 space 혹은 shell metacharacters를 가지고 있으며, 인용될 필요가 있습니다.)
+
 
 @item --no-readline
-(UNIX only) Turn off command-line editing via @strong{readline}.  This
-is useful when running @R{} from within Emacs using the @acronym{ESS}
-(``Emacs Speaks Statistics'') package.  @xref{The command-line editor},
-for more information.  Command-line editing is enabled by default
-interactive use (see @option{--interactive}).  This option also affects
-tilde-expansion: see the help for @code{path.expand}.
+@c (UNIX only) Turn off command-line editing via @strong{readline}.  This
+@c is useful when running @R{} from within Emacs using the @acronym{ESS}
+@c (``Emacs Speaks Statistics'') package.  @xref{The command-line editor},
+@c for more information.  Command-line editing is enabled by default
+@c interactive use (see @option{--interactive}).  This option also affects
+@c tilde-expansion: see the help for @code{path.expand}.
+
+(UNIX only) readline을 활용한 commend-line editing을 끄시기 바랍니다. (유닉스 환경). 이는 ESS(Emacs Speaks Statistics)를 사용하는 Emacs안에서 R이 활용될 때 유용합니다. 추가 정보를 원하시면, commend-line editor를 참조하시기 바랍니다. commend-line editing은 디폴트 인터렉티브 유즈(default interactive use)를 통해 가능합니다. (--interactive 참조) 이 옵션은 tilde-expansion에 영향을 끼칩니다. path.expand에 대한 내용은 도움말을 참조하세요.
 
 @item --min-vsize=@var{N}
 @itemx --min-nsize=@var{N}
-For expert use only: set the initial trigger sizes for garbage
-collection of vector heap (in bytes) and @emph{cons cells} (number)
-respectively.  Suffix @samp{M} specifies megabytes or millions of cells
-respectively.  The defaults are 6Mb and 350k respectively.
+@c For expert use only: set the initial trigger sizes for garbage
+@c collection of vector heap (in bytes) and @emph{cons cells} (number)
+@c respectively.  Suffix @samp{M} specifies megabytes or millions of cells
+@c respectively.  The defaults are 6Mb and 350k respectively.
+
+고급사용을 위해서, 각각 cons cells과 vector heap(바이트 상)의 garbage collection에 대한 초기 trigger size를 설정합니다. 접미사 "M"은 각각 메가바이트(megabyte) 혹은 수백만 개의 cell을 구체화합니다. 디폴트는 각각 6Mb, 350k입니다.
+
 
 @item --max-ppsize=@var{N}
-Specify the maximum size of the pointer protection stack as @var{N}
-locations.  This defaults to 10000, but can be increased to allow
-large and complicated calculations to be done.  Currently the maximum
-value accepted is 100000.
+@c Specify the maximum size of the pointer protection stack as @var{N}
+@c locations.  This defaults to 10000, but can be increased to allow
+@c large and complicated calculations to be done.  Currently the maximum
+@c value accepted is 100000.
+
+N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다.
 
 @item --max-mem-size=@var{N}
-(Windows only) Specify a limit for the amount of memory to be used both
-for @R{} objects and working areas.  This is set by default to the
-smaller of the amount of physical RAM in the machine and for 32-bit
-@R{}, 1.5Gb@footnote{2.5Gb on versions of Windows that support 3Gb per
-process and have the support enabled: see the @file{rw-FAQ} Q2.9; 3.5Gb
-on some 64-bit versions of Windows.}, and must be between 32Mb and the
-maximum allowed on that version of Windows.
+@c (Windows only) Specify a limit for the amount of memory to be used both
+@c for @R{} objects and working areas.  This is set by default to the
+@c smaller of the amount of physical RAM in the machine and for 32-bit
+@c @R{}, 1.5Gb@footnote{2.5Gb on versions of Windows that support 3Gb per
+@c process and have the support enabled: see the @file{rw-FAQ} Q2.9; 3.5Gb
+@c on some 64-bit versions of Windows.}, and must be between 32Mb and the
+@c maximum allowed on that version of Windows.
+
+(윈도우 상에서) R 객체들과 작업 영역을 위해 사용되는 양의 메모리에 대한 한계를 정합니다. 이는 machine에서 그리고 32-bit R을 위해서 physical RAM의 상대적으로 작은 양에 디폴트가 설정되어 있습니다. 그리고, 반드시 32MB사이에 위치해야 하며, 원도우 버전에서 할당된 최대량입니다.
 
 @item --quiet
 @itemx --silent
 @itemx -q
-Do not print out the initial copyright and welcome messages.
+@c Do not print out the initial copyright and welcome messages.
+
+저작권 및 환영 메시지가 포함된 부분은 출력하지 않습니다.
 
 @item --slave
-Make @R{} run as quietly as possible.  This option is intended to
-support programs which use @R{} to compute results for them.  It implies
-@option{--quiet} and @option{--no-save}.
+@c Make @R{} run as quietly as possible.  This option is intended to
+@c support programs which use @R{} to compute results for them.  It implies
+@c @option{--quiet} and @option{--no-save}.
+
+R 을 최대한 차분히 실행합니다. 이 옵션은 프로그램의 산술결과를 위해 R을 사용하는 프로그램을 지원합니다. 이는 --quiet을 의미하며, --no-save를 의미합니다.
 
 @item --interactive
-(UNIX only) Assert that @R{} really is being run interactively even if
-input has been redirected: use if input is from a FIFO or pipe and fed
-from an interactive program.  (The default is to deduce that @R{} is
-being run interactively if and only if @file{stdin} is connected to a
-terminal or @code{pty}.)  Using @option{-e}, @option{-f} or
-@option{--file} asserts non-interactive use even if
-@option{--interactive} is given.
+@c (UNIX only) Assert that @R{} really is being run interactively even if
+@c input has been redirected: use if input is from a FIFO or pipe and fed
+@c from an interactive program.  (The default is to deduce that @R{} is
+@c being run interactively if and only if @file{stdin} is connected to a
+@c terminal or @code{pty}.)  Using @option{-e}, @option{-f} or
+@c @option{--file} asserts non-interactive use even if
+@c @option{--interactive} is given.
+
+(유닉스 상에서) input이 재설정된다 하더라도 R이 쌍방향으로 실행된다는 것을 보여줍니다. input이 FIFO 혹은 pipe 혹은 쌍방향 프로그램으로부터 사용이 될 때, --interactive를 사용 합니다. (디폴트는 stdin이 터미널(terminal) 혹은 pty에 연결이 되어 있을 때, R이 쌍방향으로 실행된다는 상황에서 deduce로 설정되어 있습니다.) -e,-f 혹은 --file의 활용은 --interactive가 주어진 상황에서 noninteractive사용을 하고자 합니다.
 
 @item --ess
-(Windows only) Set @code{Rterm} up for use by @code{R-inferior-mode} in
-@acronym{ESS}, including asserting interactive use without the
-command-line editor.
+@c (Windows only) Set @code{Rterm} up for use by @code{R-inferior-mode} in
+@c @acronym{ESS}, including asserting interactive use without the
+@c command-line editor.
+
+(윈도우 상에서) command-line editor없이 interactive 사용을 포함한, ESS내에서 R-inferior-mode를 통해, Rterm up을 설정합니다.
 
 @item --verbose
 Print more information about progress, and in particular set @R{}'s
