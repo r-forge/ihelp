@@ -9158,55 +9158,114 @@ command는 그 툴의 이름이며 args는 그 이름에 삽입되어 있는 아
 batch 모드에서의 R 실행. 가능한 옵션들과 함께 R --restore --save를 실행
 
 @item COMPILE
-(UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}.
+@c (UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}.
+
+(유닉스 환경) R과의 활용을 위해서 C, C++, 포트란 파일들을 편집
+
 @item SHLIB
-Build shared library for dynamic loading.
+@c Build shared library for dynamic loading.
+
+다이나믹 로딩을 위한 공유하고 있는 library를 구축
+
 @item INSTALL
-Install add-on packages.
+@c Install add-on packages.
+
+추가 패키지 설치
+
 @item REMOVE
-Remove add-on packages.
+@c Remove add-on packages.
+
+추가 패키지 제거
+
 @item build
-Build (that is, package) add-on packages.
+@c Build (that is, package) add-on packages.
+
+추가 패키지 구축
+
 @item check
-Check add-on packages.
+@c Check add-on packages.
+
+추가 패키지 점검
+
 @item LINK
-(UNIX only) Front-end for creating executable programs.
+@c (UNIX only) Front-end for creating executable programs.
+
+(유닉스 환경) 실행가능한 프로그램 생성을 위한 Front-end
+
 @item Rprof
-Post-process @R{} profiling files.
+@c Post-process @R{} profiling files.
+
+Post-process R 프로파일링 파일
+
 @item Rdconv
 @itemx Rd2txt
-Convert Rd format to various other formats, including @HTML{}, @LaTeX{},
-plain text, and extracting the examples.  @code{Rd2txt} can be used as
-shorthand for @code{Rd2conv -t txt}.
-@itemx Rd2pdf
-Convert Rd format to PDF.
-@item Stangle
-Extract S/R code from Sweave documentation
-@item Sweave
-Process Sweave documentation
-@item Rdiff
-Diff @R{} output ignoring headers etc
-@item config
-Obtain configuration information
-@item javareconf
-(Unix only) Update the Java configuration variables
-@item rtags
-(Unix only) Create Emacs-style tag files from C, R, and Rd files
-@item open
-(Windows only) Open a file via Windows' file associations
-@item texify
-(Windows only) Process (La)TeX files with R's style files
-@end table
+@c Convert Rd format to various other formats, including @HTML{}, @LaTeX{},
+@c plain text, and extracting the examples.  @code{Rd2txt} can be used as
+@C shorthand for @code{Rd2conv -t txt}.
 
-Use
+HTML, LaTex, 일반 text를 포함, 다양한 포맷으로 Rd 포맷을 전환 그리고, 예를 추출. Rd2txt는 Rd2conv -t txt를 위한 shorthand로서 사용됩니다.
+
+@itemx Rd2pdf
+@c Convert Rd format to PDF.
+
+Rd 포맷을 PDF로 전환
+
+@item Stangle
+@C Extract S/R code from Sweave documentation
+
+Sweave 문서로부터 S/R 코드를 추출
+
+@item Sweave
+@c Process Sweave documentation
+
+Sweave 문서 프로세스
+
+@item Rdiff
+@C Diff @R{} output ignoring headers etc
+
+headers를 무시하는 R output을 diff
+
+@item config
+@c Obtain configuration information
+
+Configuration information입수
+
+@item javareconf
+@c (Unix only) Update the Java configuration variables
+
+(유닉스 환경) 자바 configuration 변수 업데이트
+
+@item rtags
+@c (Unix only) Create Emacs-style tag files from C, R, and Rd files
+
+(유닉스 환경) C,R,Rd 파일로 부터 Emacs-style tag 파일을 생성
+
+@item open
+@c (Windows only) Open a file via Windows' file associations
+
+(윈도우 환경) 윈도우 파일 association을 통한 파일 오픈
+
+@item texify
+@c (Windows only) Process (La)TeX files with R's style files
+
+(윈도우 환경) R형태의 파일을 활용한 (La)Tex 파일 프로세스
+
+@c @end table
+
+
+@c Use
+
+사용법
 
 @example
 R CMD @var{command} --help
 @end example
 
 @noindent
-to obtain usage information for each of the tools accessible via the
-@code{R CMD} interface.
+@c to obtain usage information for each of the tools accessible via the
+@c @code{R CMD} interface.
+
+R CMD 인터페이스를 통한 접근 가능한 각각의 툴을 위한 사용정보
 
 In addition, you can use@footnote{as from @R{} 2.13.0.}  options
 @option{--arch=}, @option{--no-environ}, @option{--no-init-file},
