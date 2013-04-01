@@ -9121,29 +9121,42 @@ R 을 최대한 차분히 실행합니다. 이 옵션은 프로그램의 산술�
 
 이 플래그(flag)는 나머지 command line이 넘어가게 만드는 걸 제외하면 다른 기능을 포함하진 않습니다. 이는 commandArgs(TRUE)와 함께 args로 부터 밸류를 되찾는데 있어 유용한 옵션입니다.
 
-Note that input and output can be redirected in the usual way (using
-@samp{<} and @samp{>}), but the line length limit of 4095 bytes still
-applies.  Warning and error messages are sent to the error channel
-(@code{stderr}).
+@c Note that input and output can be redirected in the usual way (using
+@c @samp{<} and @samp{>}), but the line length limit of 4095 bytes still
+@c applies.  Warning and error messages are sent to the error channel
+@c (@code{stderr}).
 
-The command @code{R CMD} allows the invocation of various tools which
-are useful in conjunction with @R{}, but not intended to be called
-``directly''.  The general form is
+input과 output이 일반적으로는 재설정된다는 것을 주지합니다. ('<'와 '>'사용) 하지만, 4095 바이트로 제한되어 있는 라인 길이는 여전히 적용됩니다. 경고와 에러 메시지는 에러 채널(stderr)로 보내집니다.
+
+@c The command @code{R CMD} allows the invocation of various tools which
+@c are useful in conjunction with @R{}, but not intended to be called
+@c ``directly''.  The general form is
+
+R CMD는 R과 함께, 유용한 다양한 툴의 invocation을 허용합니다. 하지만, 직접적이진 않습니다. 일반적인 형태는 
 
 @example
 R CMD @var{command} @var{args}
 @end example
 
-@noindent
-where @var{command} is the name of the tool and @var{args} the arguments
-passed on to it.
+이고, 
 
-Currently, the following tools are available.
+@noindent
+@c where @var{command} is the name of the tool and @var{args} the arguments
+@c passed on to it.
+
+command는 그 툴의 이름이며 args는 그 이름에 삽입되어 있는 아규먼트(argument)입니다.
+
+@c Currently, the following tools are available.
+
+현재, 아래와 같은 도구들을 사용할 수 있습니다.
 
 @table @code
 @item BATCH
-Run @R{} in batch mode.  Runs @command{R --restore --save} with possibly
-further options (see @code{?BATCH}).
+@c Run @R{} in batch mode.  Runs @command{R --restore --save} with possibly
+@c further options (see @code{?BATCH}).
+
+batch 모드에서의 R 실행. 가능한 옵션들과 함께 R --restore --save를 실행
+
 @item COMPILE
 (UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}.
 @item SHLIB
