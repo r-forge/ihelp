@@ -9267,31 +9267,35 @@ R CMD @var{command} --help
 
 R CMD 인터페이스를 통한 접근 가능한 각각의 툴을 위한 사용정보
 
-In addition, you can use@footnote{as from @R{} 2.13.0.}  options
-@option{--arch=}, @option{--no-environ}, @option{--no-init-file},
-@option{--no-site-file} and @option{--vanilla} between @command{R} and
-@command{CMD}: these affect any @R{} processes run by the tools.  (Here
-@option{--vanilla} is equivalent to @option{--no-environ --no-site-file
---no-init-file}.)  However, note that @command{R CMD} does not of itself
-use any @R{} startup files (in particular, neither user nor site
-@file{Renviron} files), and all of the @R{} processes run by these tools
-(except @command{BATCH}) use @option{--no-restore}.  Most use
-@option{--vanilla} and so invoke no @R{} startup files: the current
-exceptions are @command{INSTALL}, @command{REMOVE}, @command{Sweave} and
-@command{SHLIB} (which uses @option{--no-site-file --no-init-file}).
+@c In addition, you can use@footnote{as from @R{} 2.13.0.}  options
+@c @option{--arch=}, @option{--no-environ}, @option{--no-init-file},
+@c @option{--no-site-file} and @option{--vanilla} between @command{R} and
+@c @command{CMD}: these affect any @R{} processes run by the tools.  (Here
+@c @option{--vanilla} is equivalent to @option{--no-environ --no-site-file
+@c --no-init-file}.)  However, note that @command{R CMD} does not of itself
+@c use any @R{} startup files (in particular, neither user nor site
+@c @file{Renviron} files), and all of the @R{} processes run by these tools
+@c (except @command{BATCH}) use @option{--no-restore}.  Most use
+@c @option{--vanilla} and so invoke no @R{} startup files: the current
+@c exceptions are @command{INSTALL}, @command{REMOVE}, @command{Sweave} and
+@c @command{SHLIB} (which uses @option{--no-site-file --no-init-file}).
+
+추가로, --arch-, --no-environ, --no-init-file, --no-site-file, --vanilla 를 R과 CMD에서 사용할 수 있습니다. 이 옵션들은 툴에 의해 실행되는 R에 영향을 끼칩니다. (--vanilla는 --noenviron, --no-site-file, --no-init-file과 동일 합니다.) 하지만, R CMD는 R startup file을 사용하지 않습니다. (특히, 유저 그리고 site Renviron 파일에 적용은 되지 않습니다.) 그리고, 모든 R 프로세스들은 이러한 툴들에 의해 실행됩니다. (BATCH 제외) --no-restore를 사용합니다. 대부분은 --vanilla를 사용하고 R startup file을 invoke하지 않습니다. 현재 예외라고 할 수 있는 부분은 INSTALL.REMOVE, Sweave그리고 SHLIB입니다(SHLIB는 --no-site-file --no-init-file을 사용합니다.).
+
 
 @example
 R CMD @var{cmd} @var{args}
 @end example
 
 @noindent
-for any other executable @command{@var{cmd}} on the path or given by an
-absolute filepath: this is useful to have the same environment as @R{}
-or the specific commands run under, for example to run @command{ldd} or
-@command{pdflatex}.  Under Windows @var{cmd} can be an executable or a
-batch file, or if it has extension @code{.sh} or @code{.pl} the
-appropriate interpreter (if available) is called to run it.
+@c for any other executable @command{@var{cmd}} on the path or given by an
+@c absolute filepath: this is useful to have the same environment as @R{}
+@c or the specific commands run under, for example to run @command{ldd} or
+@c @command{pdflatex}.  Under Windows @var{cmd} can be an executable or a
+@c batch file, or if it has extension @code{.sh} or @code{.pl} the
+@c appropriate interpreter (if available) is called to run it.
 
+경로에 위치해 있는 다른 실행 가능한 cmd와 absolute filepath를 고려하여, 이 옵션은 R과 같은 환경을 위해서 유용합니다. 그리고 특정 command는 예를 들어, 1dd 혹은 pdflatex 실행을 위해서 실행됩니다. 윈도우 상에서 cmd는 실행가능 혹은 batch 파일의 형태입니다. 그리고, 확장성을 가지고 있다면, .sh 혹은 .pl이 실행을 위해 call됩니다.
 
 @node Invoking R under Windows, Invoking R under Mac OS X, Invoking R from the command line, Invoking R
 @appendixsec Invoking R under Windows
