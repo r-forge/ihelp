@@ -9433,32 +9433,42 @@ run this in the background or as a batch job use OS-specific facilities
 to do so: for example in most shells on Unix-alike OSes @command{R CMD
 BATCH foo.R &} runs a background job.
 
-You can pass parameters to scripts via additional arguments on the
-command line: for example (where the exact quoting needed will depend on
-the shell in use)
+R 커맨드의 foo.R 파일을 실행하고자 한다면, R CMD BATCH foo.R을 활용하는 방법을 생각해볼 수 있습니다. 이 파일을 표면적으로 드러나지 않게 실행하길 원하거나, batch 작업으로 하길 원한다면, OS-specific facilities를 사용합니다. 예를 들어, 유닉스와 같은 OSes 상에서 R CMD BATCH foo.R 혹은 background job으로 실행합니다.
+
+@c You can pass parameters to scripts via additional arguments on the
+@c command line: for example (where the exact quoting needed will depend on
+@c the shell in use)
+
+커맨드 라인에서 추가 아규먼트들을 통해서 스크립트를 위해서 파라미터를 넘겨 줄 수 있습니다. 예를 들어,(where the exact quoting needed will depend on the shell in use)
 
 @example
 R CMD BATCH "--args arg1 arg2" foo.R &
 @end example
 
 @noindent
-will pass arguments to a script which can be retrieved as a character
-vector by
+@c will pass arguments to a script which can be retrieved as a character
+@c vector by
+
+는 다음과 같은 방법으로 character vector로서, 추출될 수 있는 스크립트에 아규먼트를 넘겨 줄 수 있습니다.
 
 @example
 args <- commandArgs(TRUE)
 @end example
 
-This is made simpler by the alternative front-end @command{Rscript},
-which can be invoked by
+@c This is made simpler by the alternative front-end @command{Rscript},
+@c which can be invoked by
+
+이는 Rscript foo.R arg1 arg2에 의해 invoked 될 수 있는 alternative front-end Rscript에 의해 간소화 될 수 있습니다.
 
 @example
 Rscript foo.R arg1 arg2
 @end example
 
 @noindent
-and this can also be used to write executable script files like (at
-least on Unix-alikes, and in some Windows shells)
+@c and this can also be used to write executable script files like (at
+@c least on Unix-alikes, and in some Windows shells)
+
+그리고 (적어도 유닉스와 같은 환경에서, 그리고 일부 Window shell에서) 실행가능한 스크립트를 생성하기 위해서 사용될 수 있습니다.
 
 @example
 #! /path/to/Rscript
@@ -9468,23 +9478,29 @@ q(status=<exit status code>)
 @end example
 
 @noindent
-If this is entered into a text file @file{runfoo} and this is made
-executable (by @command{chmod 755 runfoo}), it can be invoked for
-different arguments by
+@c If this is entered into a text file @file{runfoo} and this is made
+@c executable (by @command{chmod 755 runfoo}), it can be invoked for
+@c different arguments by
+
+만약 runfoo text file으로 들어간다면, 이는 chmod 755 runfoo에 의해 실행 가능하게 되며, runfoo arg1 arg2에 의해서 다른 아규먼트들을 대한 invoke를 실행할 수 있습니다.
 
 @example
 runfoo arg1 arg2
 @end example
 
 @noindent
-For further options see @command{help("Rscript")}.  This writes @R{}
-output to @file{stdout} and @file{stderr}, and this can be redirected in
-the usual way for the shell running the command.
+@c For further options see @command{help("Rscript")}.  This writes @R{}
+@c output to @file{stdout} and @file{stderr}, and this can be redirected in
+@c the usual way for the shell running the command.
 
-If you do not wish to hardcode the path to @command{Rscript} but have it
-in your path (which is normally the case for an installed @R{} except on
-Windows, but e.g.@: Mac OS X users may need to add @file{/usr/local/bin}
-to their path), use
+추가 옵션을 위해서, help("Rscript")를 찾아 봅니다. 이는 R output을 stdout 그리고 stderr로 write할 수 있으며, 그 커맨드를 실행시키는 shell을 위해서 일반적인 방식으로 재설정 될 수 있습니다.
+
+@c If you do not wish to hardcode the path to @command{Rscript} but have it
+@c in your path (which is normally the case for an installed @R{} except on
+@c Windows, but e.g.@: Mac OS X users may need to add @file{/usr/local/bin}
+@c to their path), use
+
+Rscript로의 경로를 hardcode하지 않고, 경로 상에만 위치하게끔 하고자 한다면, #! /usr/bin/env Rscript을 사용합니다(이 상황은 윈도우를 제외한 일반적인 경우이며, 하지만, Mac OS X 유저들은 /usr/local/bin을 경로에 추가할 필요가 있습니다).
 
 @example
 #! /usr/bin/env Rscript
@@ -9492,12 +9508,16 @@ to their path), use
 @end example
 
 @noindent
-At least in Bourne and bash shells, the @code{#!} mechanism does
-@strong{not} allow extra arguments like 
-@code{#! /usr/bin/env Rscript --vanilla}.
+@c At least in Bourne and bash shells, the @code{#!} mechanism does
+@c @strong{not} allow extra arguments like 
+@c @code{#! /usr/bin/env Rscript --vanilla}.
 
-One thing to consider is what @code{stdin()} refers to.  It is
-commonplace to write @R{} scripts with segments like
+적어도, Bourne와 bash shell에서, #!메커니즘은 #! /usr/bin/env Rscript  --vanilla와 같은 추가 아규먼트들을 허용하지 않습니다.
+
+@c One thing to consider is what @code{stdin()} refers to.  It is
+@c commonplace to write @R{} scripts with segments like
+
+한가지 고려할 사항은 stdin()이 무엇을 의미하는지 여부입니다.
 
 @example
 chem <- scan(n=24)
@@ -9506,12 +9526,16 @@ chem <- scan(n=24)
 @end example
 
 @noindent
-and @code{stdin()} refers to the script file to allow such traditional
-usage.  If you want to refer to the process's @file{stdin}, use
-@code{"stdin"} as a @code{file} connection, e.g.@: @code{scan("stdin", ...)}.
+@c and @code{stdin()} refers to the script file to allow such traditional
+@c usage.  If you want to refer to the process's @file{stdin}, use
+@c @code{"stdin"} as a @code{file} connection, e.g.@: @code{scan("stdin", ...)}.
 
-Another way to write executable script files (suggested by Fran@,{c}ois
-Pinard) is to use a @emph{here document} like
+와 같은 세그먼트들과 함께 R 스크립트를 생성하는 것은 일반적인 것입니다. 그리고 stdin()은 이러한 기존의 사용방식을 허용하기 위해서 스크립트 파일을 의미합니다. stdin을 참조하고 싶다면, 이를 file connection으로 사용합니다 (예, scan("stdin"..)
+
+@c Another way to write executable script files (suggested by Fran@,{c}ois
+@c Pinard) is to use a @emph{here document} like
+
+Francois Pinard에 의해 마련된 스크립트 파일을 만들기 위한 다른 방법은
 
 @example
 #!/bin/sh
@@ -9524,14 +9548,16 @@ EOF
 @end example
 
 @noindent
-but here @code{stdin()} refers to the program source and
-@code{"stdin"} will not be usable.
+@c but here @code{stdin()} refers to the program source and
+@c @code{"stdin"} will not be usable.
 
-Very short scripts can be passed to @command{Rscript} on the
-command-line via the @option{-e} flag.
+@c Very short scripts can be passed to @command{Rscript} on the
+@c command-line via the @option{-e} flag.
 
-Note that on a Unix-alike the input filename (such as @file{foo.R})
-should not contain spaces nor shell metacharacters.
+@c Note that on a Unix-alike the input filename (such as @file{foo.R})
+@c should not contain spaces nor shell metacharacters.
+
+와 같은 다큐먼트를 사용하는 것입니다. 하지만하지만, stdin()은 프로그램 소스를 의미하며, stdin을 사용할 수 없습니다. e-flag를 통해서 command line 상에서 짧은 스크립트들은 Rscript로 보내질 수 있습니다. 유닉스와 같은 환경에서 foo.R과 같은 input filename은 공간을 포함하거나, shell metacharacter를 포함해서는 안됩니다.
 
 
 @node The command-line editor, Function and variable index, Invoking R, Top
