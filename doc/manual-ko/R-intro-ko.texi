@@ -9371,31 +9371,39 @@ R CMD @var{cmd} @var{args}
 @item --mdi
 @itemx --sdi
 @itemx --no-mdi
-Control whether @code{Rgui} will operate as an MDI program 
-(with multiple child windows within one main window) or an SDI application
-(with multiple top-level windows for the console, graphics and pager).  The 
-command-line setting overrides the setting in the user's @file{Rconsole} file.
+@c Control whether @code{Rgui} will operate as an MDI program 
+@c (with multiple child windows within one main window) or an SDI application
+@c (with multiple top-level windows for the console, graphics and pager).  The 
+@c command-line setting overrides the setting in the user's @file{Rconsole} file.
+
+Rgui가 MDI 프로그램(하나의 주 윈도우 상에 여러 개의 작은 윈도우 창) 혹은 SDI 어플리케이션(콘솔, 그래픽 혹은 페이저를 위한 다수의 top-level 윈도우)으로서, 실행되는지 여부 판단. 커맨드라인 설정은 유저의 Rconsole 파일 상의 설정보다 우선합니다.
 
 @item --debug
-Enable the ``Break to debugger'' menu item in @code{Rgui}, and trigger
-a break to the debugger during command line processing.
-@end table
+@c Enable the ``Break to debugger'' menu item in @code{Rgui}, and trigger
+@c a break to the debugger during command line processing.
+@c @end table
 
-Under Windows with @code{R CMD} you may also specify your own
-@file{.bat}, @file{.exe}, @file{.sh} or @file{.pl} file.  It will be run
-under the appropriate interpreter (Perl for @file{.pl}) with several
-environment variables set appropriately, including @env{R_HOME},
-@env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS} and @env{TEXINPUTS}.  For
-example, if you already have @file{latex.exe} on your path, then
+Rgui에서 "Break to debugger" 매뉴 아이템을 이용할 수 있게 제공 하고 command line 처리하는 동안 break를 debugger를 위해서 작동합니다.
+
+@c Under Windows with @code{R CMD} you may also specify your own
+@c @file{.bat}, @file{.exe}, @file{.sh} or @file{.pl} file.  It will be run
+@c under the appropriate interpreter (Perl for @file{.pl}) with several
+@c environment variables set appropriately, including @env{R_HOME},
+@c @env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS} and @env{TEXINPUTS}.  For
+@c example, if you already have @file{latex.exe} on your path, then
+
+윈도우 상에서, R CMD를 활용하여, .bat, exe, .sh or .pl 파일들을 구체화할 수 있습니다. R_HOME, R_OSTYPE, PATH, BSTINPUTS, TEXINPUTS 포함해, 이미 설정된 일부 환경변수들과 함께, 적절한 interpreter (Perl for .pl)하에서 실행될 수 있습니다. 예를 들어, 만약 자신의 경로에 이미 latex.exe가 존재한다면, 그 다음으로,
 
 @example
 R CMD latex.exe mydoc
 @end example
 @noindent
-will run @LaTeX{} on @file{mydoc.tex}, with the path to @R{}'s
-@file{share/texmf} macros appended to @env{TEXINPUTS}.  (Unfortunately,
-this does not help with the MiKTeX build of @LaTeX{}, but
-@command{R CMD texify mydoc} will work in that case.)
+@c will run @LaTeX{} on @file{mydoc.tex}, with the path to @R{}'s
+@c @file{share/texmf} macros appended to @env{TEXINPUTS}.  (Unfortunately,
+@c this does not help with the MiKTeX build of @LaTeX{}, but
+@c @command{R CMD texify mydoc} will work in that case.)
+
+TEXINPUTS에 macros appended되어 있는 R의 share/texmf 경로와 함께 mydoc.tex상에서 LaTex를 실행할 수 있습니다. (안타깝게도, MiKTex LaTex는 적용이 되지 않습니다. 하지만, R CMD texify mydoc은 이 상황에 작동할 수 있습니다.)
 
 @node Invoking R under Mac OS X, Scripting with R, Invoking R under Windows, Invoking R
 @appendixsec Invoking R under Mac OS X
