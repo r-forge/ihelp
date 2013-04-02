@@ -9566,16 +9566,20 @@ EOF
 
 @appendixsection Preliminaries
 
-When the @acronym{GNU} @strong{readline} library is available at the
-time @R{} is configured for compilation under UNIX, an inbuilt command
-line editor allowing recall, editing and re-submission of prior commands
-is used.  Note that other versions of @strong{readline} exist and may be
-used by the inbuilt command line editor: this used to happen on Mac OS X.
+@c When the @acronym{GNU} @strong{readline} library is available at the
+@c time @R{} is configured for compilation under UNIX, an inbuilt command
+@c line editor allowing recall, editing and re-submission of prior commands
+@c is used.  Note that other versions of @strong{readline} exist and may be
+@c used by the inbuilt command line editor: this used to happen on Mac OS X.
 
-It can be disabled (useful for usage with @acronym{ESS} @footnote{The
-`Emacs Speaks Statistics' package; see the @acronym{URL}
-@uref{http://ESS.R-project.org}}) using the startup option
-@option{--no-readline}.
+GNU readline 라이브러리는 UNIX 환경에서 R이 설정될 때, 이용할 수 있으며, 커맨드 입력 전에 제출(Re-submission)과 에디팅, 리콜을 허용하는 내재되어 있는 command line 에디터(inbuilt)가 사용됩니다. readline의 다른 버전이 존재하고, 내재되어 있는 command line 에디터에 의해 사용될 수 있다는 것을 잊지 마세요. Mac OS X 환경에서 활용된 바 있습니다 .
+
+@c It can be disabled (useful for usage with @acronym{ESS} @footnote{The
+@c `Emacs Speaks Statistics' package; see the @acronym{URL}
+@c @uref{http://ESS.R-project.org}}) using the startup option
+@c @option{--no-readline}.
+
+--no-readline startup 옵션을 사용해서 (ESS 활용에 유용) 억제(disabled)될 수 있습니다 .
 
 Windows versions of @R{} have somewhat simpler command-line editing: see
 @samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the
