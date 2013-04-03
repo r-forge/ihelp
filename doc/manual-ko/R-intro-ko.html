@@ -220,12 +220,12 @@ p {
 </li></ul>
 <li><a href="#Some-non_002dstandard-models">11.8 그외의 비선형 모델들</a>
 </li></ul>
-<li><a name="toc_Graphics" href="#Graphics">12 그래픽 프로시져  (의역 일정 - 2013.03.30)</a>
+<li><a name="toc_Graphics" href="#Graphics">12 그래픽 프로시져</a>
 <ul>
-<li><a href="#High_002dlevel-plotting-commands">12.1 High-level plotting commands</a>
+<li><a href="#High_002dlevel-plotting-commands">12.1 하이레벨 플랏팅 명령어들</a>
 <ul>
-<li><a href="#The-plot_0028_0029-function">12.1.1 The <code>plot()</code> function</a>
-<li><a href="#Displaying-multivariate-data">12.1.2 Displaying multivariate data</a>
+<li><a href="#The-plot_0028_0029-function">12.1.1 <code>plot()</code> 함수</a>
+<li><a href="#Displaying-multivariate-data">12.1.2 다변량 데이터의 시각화</a>
 <li><a href="#Display-graphics">12.1.3 Display graphics</a>
 <li><a href="#Arguments-to-high_002dlevel-plotting-functions">12.1.4 Arguments to high-level plotting functions</a>
 </li></ul>
@@ -6938,7 +6938,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Graphical procedures -->
-<h2 class="chapter">12 그래픽 프로시져  (의역 일정 - 2013.03.30)</h2>
+<h2 class="chapter">12 그래픽 프로시져</h2>
 
 <!-- Graphical facilities are an important and extremely versatile component -->
 <!-- of the @R{} environment.  It is possible to use the facilities to -->
@@ -7015,14 +7015,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
 </div>
 
-<h3 class="section">12.1 High-level plotting commands</h3>
+<!-- @section High-level plotting commands -->
+<h3 class="section">12.1 하이레벨 플랏팅 명령어들</h3>
 
 <!-- High-level plotting functions are designed to generate a complete plot -->
 <!-- of the data passed as arguments to the function.  Where appropriate, -->
 <!-- axes, labels and titles are automatically generated (unless you request -->
 <!-- otherwise.) High-level plotting commands always start a new plot, -->
 <!-- erasing the current plot if necessary. -->
-<p>하이레벨 플랏 함수들은 함수에 인수로서 받아들여지는 데이터에 대한 완전한 시각화 처리를 위해 고안되었습니다. 완전한 시각화 처리란 사용자가 특별히 따로 지정하지 않아도 적절한 위치에 축, 레이블, 그리고 제목들이 자동으로 생성되어짐을 말합니다. 하이레벨 플랏은 현재 그래픽 디바이스에 출력되어 있는 플랏을 지우고, 항상 새로운 플랏을 생성하는 기능을 수행합니다.
+<p>하이레벨 플랏 함수들은 함수에 전달된 인자만을 가지고도 특별한 설정없이도 적절한 위치에 축, 레이블, 그리고 제목들이 놓이며 데이터에 대한 완전한 시각화 처리를 할 수 있도록 작성되었습니다. 
+하이레벨 플랏 명령어들은 항상 현재 존재하는 그래픽 디바이스에 출력되어 있는 플랏을 지우고, 항상 새로운 플랏을 생성합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-plot_0028_0029-function">The plot() function</a>
@@ -7041,7 +7043,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 
 </div>
 
-<h4 class="subsection">12.1.1 The <code>plot()</code> function</h4>
+<!-- @subsection The @code{plot()} function -->
+<h4 class="subsection">12.1.1 <code>plot()</code> 함수</h4>
 
 <p><a name="index-plot-247"></a>
 <!-- One of the most frequently used plotting functions in @R{} is the -->
@@ -7049,7 +7052,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- plot produced is dependent on the type or @emph{class} of the first -->
 <!-- argument. -->
 
-   <p>R에서 가장 많이 사용되는 플랏함수는 plot()입니다. 이것은 제네릭 함수로서 생성되는 플랏의 형태는 함수의 첫번째 인자로서 입력받는 객체의 클래스에 의해서 결정되어 집니다.
+   <p>R에서 가장 많이 사용되는 플랏팅 함수는 <code>plot()</code>입니다. 
+이는 <em>제네릭 (generic)</em> 함수이며, 생성되는 플랏의 종류는 함수의 첫번째 인자로서 입력받는 객체의 <em>클래스(class)</em>에 의해서 결정됩니다.
 
      <dl>
 <dt><code>plot(</code><var>x</var><code>, </code><var>y</var><code>)</code><dt><code>plot(</code><var>xy</var><code>)</code><dd><!-- If @var{x} and @var{y} are vectors, @code{plot(@var{x}, @var{y})} -->
@@ -7057,7 +7061,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- be produced by supplying one argument (second form) as either a list -->
 <!-- containing two elements @var{x} and @var{y} or a two-column matrix. -->
 
-     <p>만약, x와 y가 둘다 벡터이면 plot(x, y)라는 명령은 x에 대한 y의 산점도를 생성합니다. 두번째 명령문 역시 동일한 산점도를 출력하지만, xy라는 인자가 입력받는 데이터 형식에 주의해야합니다. 이것은 x와 y라는 변수들이 각각의 컴포넌트로 구성된 하나의 리스트 형을 입력받아야 하거나, 혹은 두 개의 열을 가지는 행렬의 형식을 입력받기를 요구함을 의미합니다.
+     <p>만약, <var>x</var>와 <var>y</var> 두개 모두 벡터이면 <code>plot(</code><var>x</var><code>, </code><var>y</var><code>)</code>은 <var>x</var>와 <var>y</var>의 관계를 살펴볼 수 있는 산점도(scatter plot)를 생성합니다. 
+두 번째의 표현 역시 역시 동일한 산점도를 출력하지만, 인자 <var>xy</var>가 입력받는 데이터 형식에 주의해야합니다. 
+<var>x</var>와 <var>y</var>를 컴포넌트로서 가지고 있는 리스트형이거나, 혹은 두 개의 열을 가지는 행렬의 형식을 의미합니다.
 
      <br><dt><code>plot(</code><var>x</var><code>)</code><dd><!-- If @var{x} is a time series, this produces a time-series plot. If -->
 <!-- @var{x} is a numeric vector, it produces a plot of the values in the -->
@@ -7065,22 +7071,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- vector, it produces a plot of imaginary versus real parts of the vector -->
 <!-- elements. -->
 
-     <p>만약, x가 시계열 데이터 인경우, 이 명령문은 자동으로 시계열 플랏을 생성합니다. 단, x가 수치형 벡터인 경우, 이것은 x의 인덱스에 대한 x의 값들을 플랏하게 됩니다. 만약, x가 복소수라면 이것은 실수부분에 해당하는 값에 대하여 허수의 부분에 해당하는 값들을 산점도의 형식으로 출력하게 됩니다.
+     <p>만약, <var>x</var>가 시계열 (time-series) 데이터인 경우, 자동으로 시계열 플랏(time-series plot)을 생성합니다. 
+만약 <var>x</var>가 수치형 벡터인 경우, <var>x</var>의 인덱스를 <code>x</code>축에 <var>x</var>의 값을 <code>y</code>축으로 하는 플랏을 생성하게 됩니다. 
+만약, <var>x</var>가 복소수라면 이것은 실수부분와 허수부분에 대한 값들의 관계를 살펴볼 수 있는 산점도의 형식으로 플랏이 생성됩니다.
 
      <br><dt><code>plot(</code><var>f</var><code>)</code><dt><code>plot(</code><var>f</var><code>, </code><var>y</var><code>)</code><dd><!-- @var{f} is a factor object, @var{y} is a numeric vector.  The first form -->
 <!-- generates a bar plot of @var{f}; the second form produces boxplots of -->
 <!-- @var{y} for each level of @var{f}. -->
 
-     <p>만약, f가 요인이고, y가 수치형 벡터이면, 첫번째 명령어는 f에 대한 바 플랏을 생성하고, 두번째 명령어는 f가 가지는 레벨별로 y에 대한 박스플랏을 생성하게 됩니다.
+     <p>여기에서 <var>f</var>가 요인이고, <var>y</var>가 수치형 벡터라고 가정을 한다면, 첫번째 표현은 <var>f</var>의 바플랏 (bar plot)을 생성하고 두번째 표현은 <var>f</var>의 수준별 <var>y</var>의 박스플랏 (boxplot)을 생성해줍니다.
 
      <br><dt><code>plot(</code><var>df</var><code>)</code><dt><code>plot(~ </code><var>expr</var><code>)</code><dt><code>plot(</code><var>y</var><code> ~ </code><var>expr</var><code>)</code><dd><!-- @var{df} is a data frame, @var{y} is any object, @var{expr} is a list -->
 <!-- of object names separated by `@code{+}' (e.g., @code{a + b + c}).  The -->
 <!-- first two forms produce distributional plots of the variables in a data -->
 <!-- frame (first form) or of a number of named objects (second form).  The -->
 <!-- third form plots @var{y} against every object named in @var{expr}. -->
+여기에서 <var>df</var>는 데이터 프레임, <var>y</var>는 임의의 객체, <var>expr</var>는 <code>a+b+c</code>와 같이 <code>+</code>로 구분할 수 있는 객체의 이름들에 대한 목록이라고 가정한다면, 첫번째 표현은 데이터프레임의 각 변수에 대해서 다른 변수들간의 분포도를 생성하고, 두번째 표현은 <code>expr</code>내에 사용된 변수들만을 이용한 분포를 보여줍니다. 
+그리고, 마지막 표현은 <var>expr</var>에 사용된 모든 변수에 대한 <var>y</var>의 분포를 보여줍니다. 
 </dl>
-
-   <p>만약, df가 데이터 프레임이고, y은 어떠한 객체가 될 수 도 있으며, expr라는 것은 a+b+c와 같이 +를 이용하여 연결된 하나의 객체들의 집합이라고 가정합시다. 첫번째 명령문은 데이터프레임의 각 변수에 대해서 다른 변수들에 대한 분포를 보여주는 산점도를 출력하고, 두번째 명령문은 expr 내에서 사용된 변수들만을 이용한 분포를 보여줍니다. 마지막 명령문은 y의 분포를 expr에 사용된 변수벼로 플랏시켜줍니다.
 
 <div class="node">
 <a name="Displaying-multivariate-data"></a>
@@ -7091,11 +7099,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 
 </div>
 
-<h4 class="subsection">12.1.2 Displaying multivariate data</h4>
+<!-- @subsection Displaying multivariate data -->
+<h4 class="subsection">12.1.2 다변량 데이터의 시각화</h4>
 
 <!-- @R{} provides two very useful functions for representing multivariate -->
 <!-- data.  If @code{X} is a numeric matrix or data frame, the command -->
-<p>R은 다변량 데이터의 시각화를 위해 두가지 매우 유용한 함수들을 제공합니다. 만약, X가 수치형 행렬 혹은 데이터 프레임이라면, 아래의 명령문은 각각의 모든 열에 대해서 산점도 (scatterplot)을 출력합니다. 이것은 X의 한 열 혹은 변수에 대해서 다른 열들에 대한 플랏을 생성하므로, 한 화면에 총 n(n-1)개의 플랏들이 동일한 형식을 가진 행렬의 형태로 출력되게 됩니다.
+<p>R은 다변량 데이터의 시각화를 위해 두 가지 매우 유용한 함수들을 제공합니다. 
+만약, <code>X</code>가 수치형 행렬 혹은 데이터 프레임이라면, 아래와 같은 방법으로 각각의 모든 열에 대한 산점도 (scatterplot)를 생성할 수 있습니다. 
+이것은 <code>X</code>의 한 열 혹은 변수에 대해서 다른 열들에 대한 플랏을 생성하므로, 한 화면에 총 n(n-1)개의 플랏들이 동일한 형식을 가진 행렬의 형태로 출력되게 됩니다.
 
 <pre class="example">     &gt; pairs(X)
 </pre>
@@ -7111,12 +7122,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- enlightening.  If @code{a} and @code{b} are numeric vectors and @code{c} -->
 <!-- is a numeric vector or factor object (all of the same length), then -->
 <!-- the command -->
-   <p>만약, 사용자가 세개 혹은 네 개의 변수만을 이용하여 분석을 수행하는 경우 coplot이 더 효과적일 수 있습니다. 예를들어, a와 b가 수치형 벡터이고, c가 수치형 벡터 혹은 a와 b와 같은 길이를 가지는 요인벡터라면 다음의 명령어를 사용해 보시길 바랍니다.
+   <p>만약, 사용자가 세개 혹은 네 개의 변수만을 이용하여 분석을 수행하는 경우 <em>coplot</em>의 사용이 보다 효과적일 수 있습니다. 
+예를들어, <code>a</code>와 <code>b</code>는 수치형 벡터이고, <code>c</code>는 수치형 벡터 혹은 <code>a</code>와 <code>b</code>와 같은 길이를 가지는 요인벡터라면 아래와 같은 방법으로 <code>c</code>에 주어진 값에 대하여 <code>a</code>와 <code>b</code>의 관계를 보여주는 산점도를 생성할 수 있습니다. 
+즉, <code>c</code>가 요인이라면 이 함수는 <code>c</code>의 수준별 <code>a</code>와 <code>b</code> 간의 산점도를 생성합니다. 
+더 나아가, <code>c</code>가 수치형 벡터일 경우 <code>c</code>를 구간화하여 각 구간별 <code>a</code>와 <code>b</code>간의 산점도 생성이 가능합니다. 
+구간에 대한 조정은 인자 <code>given.values=</code>를 통하여 이루어집니다. 
+함수 <code>co.intervals()</code>와 병행하여 사용하면 구간선택시 매우 유용합니다.
 
 <pre class="example">     &gt; coplot(a ~ b | c)
 </pre>
    <p><a name="index-coplot-249"></a>
-<!-- @noindent -->
 <!-- produces a number of scatterplots of @code{a} against @code{b} for given -->
 <!-- values of @code{c}.  If @code{c} is a factor, this simply means that -->
 <!-- @code{a} is plotted against @code{b} for every level of @code{c}.  When -->
@@ -7128,13 +7143,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- selecting intervals.  You can also use two @emph{given} variables with a -->
 <!-- command like -->
 
-   <p>이것은 c가 가지는 각각의 값별로 b에 대한 a의 산점도를 출력시켜줍니다. 만약 c가 요인이라면 이 함수는 c의 각 수준별 a와 b에 대한 산점도를 출력해주는 것입니다. 더 나아가, 이 함수는 c가 수치형 벡터일 경우 c를 구간화하여 각 구간별 a와 b에 대한 산점도를 출력할 수 있으며, 구간에 대한 조정은 given.values=이라는 인자를 조절함함으로서 이루어집니다. coplot()을 사용할 때, co.intervals()이라는 함수를 함께 사용하는 것은 구간을 선택할 때 매우 유용합니다. 또한, 아래와 같이 c와 d와 두개의 변수가 가지는 값들의 조합으로부터, 각 조합의 수준별 a와 b에 대한 산점도 출력 역시 가능합니다.
+   <p>아래와 같은 방법으로 각각의 변수 <code>c</code>와 <code>d</code>가 가지는 값들의 조합으로부터, 각 조합의 수준별 <code>a</code>와 <code>b</code>간의 산점도 역시 생성이 가능합니다.
 
 <pre class="example">     &gt; coplot(a ~ b | c + d)
 </pre>
-   <!-- @noindent -->
-<!-- which produces scatterplots of @code{a} against @code{b} for every joint -->
+   <p class="noindent"><!-- which produces scatterplots of @code{a} against @code{b} for every joint -->
 <!-- conditioning interval of @code{c} and @code{d}. -->
+
 <!-- The @code{coplot()} and @code{pairs()} function both take an argument -->
 <!-- @code{panel=} which can be used to customize the type of plot which -->
 <!-- appears in each panel.  The default is @code{points()} to produce a -->
@@ -7142,7 +7157,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#High_002dlevel-plotting-commands">High
 <!-- two vectors @code{x} and @code{y} as the value of @code{panel=} you can -->
 <!-- produce any type of plot you wish.  An example panel function useful for -->
 <!-- coplots is @code{panel.smooth()}. -->
-   <p>coplot()과 pairs()라는 함수 모두 panel=이라는 인자를 가지고 있습니다. 이 panel=이라는 인자는 각각의 패널에 어떤 종류의 플랏을 생성할 것인지를 결정하며, 그 기본형은 points()라는 산점도를 출력하는데 이용되는 함수입니다. 만약, 사용자가 산점도외의 다른 종류의 플랏을 생성하고자 한다면, x와 y라는 벡터를 이용하는 로우레벨의 그래픽 함수를 이용하면 됩니다. 예를 들어, coplot()에 사용될 있는 플랏은 panel.smooth()란 함수가 있습니다.
+   <p><code>coplot()</code>과 <code>pairs()</code>는 함수 모두 <code>panel=</code>이라는 인자를 가지고 있습니다. 
+이 인자는 각각의 패널에 어떤 종류의 플랏을 생성할 것인지를 결정하며, 산점도를 생성하는데 사용되는 <code>points()</code>라는 함수가 기본으로 설정되어 있습니다. 
+만약, 산점도외의 다른 종류의 플랏을 생성하고자 한다면, <code>x</code>와 <code>y</code> 벡터를 이용하는 로우레벨의 그래픽 함수를 이용하면 됩니다. 
+예를 들어, <code>coplot()</code>과 함께 사용될 수 있는 유용한 패널함수는 <code>panel.smooth()</code>입니다.
 
 <div class="node">
 <a name="Display-graphics"></a>
@@ -8937,28 +8955,35 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
    <p>추가 command-line 옵션은 RGui.exe를 invoking할 때, 이용 가능합니다.
 
      <dl>
-<dt><samp><span class="option">--mdi</span></samp><dt><samp><span class="option">--sdi</span></samp><dt><samp><span class="option">--no-mdi</span></samp><dd>Control whether <code>Rgui</code> will operate as an MDI program
-(with multiple child windows within one main window) or an SDI application
-(with multiple top-level windows for the console, graphics and pager).  The
-command-line setting overrides the setting in the user's <samp><span class="file">Rconsole</span></samp> file.
+<dt><samp><span class="option">--mdi</span></samp><dt><samp><span class="option">--sdi</span></samp><dt><samp><span class="option">--no-mdi</span></samp><dd><!-- Control whether @code{Rgui} will operate as an MDI program -->
+<!-- (with multiple child windows within one main window) or an SDI application -->
+<!-- (with multiple top-level windows for the console, graphics and pager).  The -->
+<!-- command-line setting overrides the setting in the user's @file{Rconsole} file. -->
 
-     <br><dt><samp><span class="option">--debug</span></samp><dd>Enable the &ldquo;Break to debugger&rdquo; menu item in <code>Rgui</code>, and trigger
-a break to the debugger during command line processing. 
+     <p>Rgui가 MDI 프로그램(하나의 주 윈도우 상에 여러 개의 작은 윈도우 창) 혹은 SDI 어플리케이션(콘솔, 그래픽 혹은 페이저를 위한 다수의 top-level 윈도우)으로서, 실행되는지 여부 판단. 커맨드라인 설정은 유저의 Rconsole 파일 상의 설정보다 우선합니다.
+
+     <br><dt><samp><span class="option">--debug</span></samp><dd><!-- Enable the ``Break to debugger'' menu item in @code{Rgui}, and trigger -->
+<!-- a break to the debugger during command line processing. -->
 </dl>
 
-   <p>Under Windows with <code>R CMD</code> you may also specify your own
-<samp><span class="file">.bat</span></samp>, <samp><span class="file">.exe</span></samp>, <samp><span class="file">.sh</span></samp> or <samp><span class="file">.pl</span></samp> file.  It will be run
-under the appropriate interpreter (Perl for <samp><span class="file">.pl</span></samp>) with several
-environment variables set appropriately, including <samp><span class="env">R_HOME</span></samp>,
-<samp><span class="env">R_OSTYPE</span></samp>, <samp><span class="env">PATH</span></samp>, <samp><span class="env">BSTINPUTS</span></samp> and <samp><span class="env">TEXINPUTS</span></samp>.  For
-example, if you already have <samp><span class="file">latex.exe</span></samp> on your path, then
+   <p>Rgui에서 "Break to debugger" 매뉴 아이템을 이용할 수 있게 제공 하고 command line 처리하는 동안 break를 debugger를 위해서 작동합니다.
+
+<!-- Under Windows with @code{R CMD} you may also specify your own -->
+<!-- @file{.bat}, @file{.exe}, @file{.sh} or @file{.pl} file.  It will be run -->
+<!-- under the appropriate interpreter (Perl for @file{.pl}) with several -->
+<!-- environment variables set appropriately, including @env{R_HOME}, -->
+<!-- @env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS} and @env{TEXINPUTS}.  For -->
+<!-- example, if you already have @file{latex.exe} on your path, then -->
+   <p>윈도우 상에서, R CMD를 활용하여, .bat, exe, .sh or .pl 파일들을 구체화할 수 있습니다. R_HOME, R_OSTYPE, PATH, BSTINPUTS, TEXINPUTS 포함해, 이미 설정된 일부 환경변수들과 함께, 적절한 interpreter (Perl for .pl)하에서 실행될 수 있습니다. 예를 들어, 만약 자신의 경로에 이미 latex.exe가 존재한다면, 그 다음으로,
 
 <pre class="example">     R CMD latex.exe mydoc
 </pre>
-   <p class="noindent">will run LaTeX on <samp><span class="file">mydoc.tex</span></samp>, with the path to R's
-<samp><span class="file">share/texmf</span></samp> macros appended to <samp><span class="env">TEXINPUTS</span></samp>.  (Unfortunately,
-this does not help with the MiKTeX build of LaTeX, but
-<samp><span class="command">R CMD texify mydoc</span></samp> will work in that case.)
+   <p class="noindent"><!-- will run @LaTeX{} on @file{mydoc.tex}, with the path to @R{}'s -->
+<!-- @file{share/texmf} macros appended to @env{TEXINPUTS}.  (Unfortunately, -->
+<!-- this does not help with the MiKTeX build of @LaTeX{}, but -->
+<!-- @command{R CMD texify mydoc} will work in that case.) -->
+
+   <p>TEXINPUTS에 macros appended되어 있는 R의 share/texmf 경로와 함께 mydoc.tex상에서 LaTex를 실행할 수 있습니다. (안타깝게도, MiKTex LaTex는 적용이 되지 않습니다. 하지만, R CMD texify mydoc은 이 상황에 작동할 수 있습니다.)
 
 <div class="node">
 <a name="Invoking-R-under-Mac-OS-X"></a>
@@ -8971,17 +8996,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 <h3 class="appendixsec">B.3 Invoking R under Mac OS X</h3>
 
-<p>There are two ways to run R under Mac OS X.  Within a <code>Terminal.app</code>
-window by invoking <code>R</code>, the methods described in the first
-subsection apply.  There is also console-based GUI (<code>R.app</code>) that by
-default is installed in the <code>Applications</code> folder on your
-system.  It is a standard double-clickable Mac OS X application.
+<!-- There are two ways to run @R{} under Mac OS X.  Within a @code{Terminal.app} -->
+<!-- window by invoking @code{R}, the methods described in the first -->
+<!-- subsection apply.  There is also console-based GUI (@code{R.app}) that by -->
+<!-- default is installed in the @code{Applications} folder on your -->
+<!-- system.  It is a standard double-clickable Mac OS X application. -->
+<p>Mac OS X 상에서 R을 실행할 수 있는 방법에는 두 가지가 있습니다. 첫 번째, subsection에서 설명된 것처럼 터미널 안에서, R invoking을 통한 .app window가 그것이며, 콘솔기반의 GUI(R.app)가 또 다른 방법입니다. 이는 시스템 상의 어플리케이션 폴더안에 디폴트로 설치가 되어 있습니다. 이는 표준 더블 클릭(standard double-clickable) Mac OS X 어플리케이션입니다.
 
    <p>The startup procedure under Mac OS X is very similar to that under UNIX. 
 The `home directory' is the one inside the R.framework, but the startup
 and current working directory are set as the user's home directory
 unless a different startup directory is given in the Preferences window
 accessible from within the GUI.
+
+   <p>Mac OS X 상에서 startup 프로시져는 유닉스 상의 그것과 비교해서 유사합니다. home directory는 R.framework 내부에 존재합니다. 하지만, GUI 내에서 preference window accessible에 다른 startup directory가 없는 경우, startup과 현재 working directory는 유저의home directory로서 설정됩니다.
 
 <div class="node">
 <a name="Scripting-with-R"></a>
@@ -8999,65 +9027,84 @@ run this in the background or as a batch job use OS-specific facilities
 to do so: for example in most shells on Unix-alike OSes <samp><span class="command">R CMD
 BATCH foo.R &amp;</span></samp> runs a background job.
 
-   <p>You can pass parameters to scripts via additional arguments on the
-command line: for example (where the exact quoting needed will depend on
-the shell in use)
+   <p>R 커맨드의 foo.R 파일을 실행하고자 한다면, R CMD BATCH foo.R을 활용하는 방법을 생각해볼 수 있습니다. 이 파일을 표면적으로 드러나지 않게 실행하길 원하거나, batch 작업으로 하길 원한다면, OS-specific facilities를 사용합니다. 예를 들어, 유닉스와 같은 OSes 상에서 R CMD BATCH foo.R 혹은 background job으로 실행합니다.
+
+<!-- You can pass parameters to scripts via additional arguments on the -->
+<!-- command line: for example (where the exact quoting needed will depend on -->
+<!-- the shell in use) -->
+   <p>커맨드 라인에서 추가 아규먼트들을 통해서 스크립트를 위해서 파라미터를 넘겨 줄 수 있습니다. 예를 들어,(where the exact quoting needed will depend on the shell in use)
 
 <pre class="example">     R CMD BATCH "--args arg1 arg2" foo.R &amp;
 </pre>
-   <p class="noindent">will pass arguments to a script which can be retrieved as a character
-vector by
+   <p class="noindent"><!-- will pass arguments to a script which can be retrieved as a character -->
+<!-- vector by -->
+
+   <p>는 다음과 같은 방법으로 character vector로서, 추출될 수 있는 스크립트에 아규먼트를 넘겨 줄 수 있습니다.
 
 <pre class="example">     args &lt;- commandArgs(TRUE)
 </pre>
-   <p>This is made simpler by the alternative front-end <samp><span class="command">Rscript</span></samp>,
-which can be invoked by
+   <!-- This is made simpler by the alternative front-end @command{Rscript}, -->
+<!-- which can be invoked by -->
+   <p>이는 Rscript foo.R arg1 arg2에 의해 invoked 될 수 있는 alternative front-end Rscript에 의해 간소화 될 수 있습니다.
 
 <pre class="example">     Rscript foo.R arg1 arg2
 </pre>
-   <p class="noindent">and this can also be used to write executable script files like (at
-least on Unix-alikes, and in some Windows shells)
+   <p class="noindent"><!-- and this can also be used to write executable script files like (at -->
+<!-- least on Unix-alikes, and in some Windows shells) -->
+
+   <p>그리고 (적어도 유닉스와 같은 환경에서, 그리고 일부 Window shell에서) 실행가능한 스크립트를 생성하기 위해서 사용될 수 있습니다.
 
 <pre class="example">     #! /path/to/Rscript
      args &lt;- commandArgs(TRUE)
      ...
      q(status=&lt;exit status code&gt;)
 </pre>
-   <p class="noindent">If this is entered into a text file <samp><span class="file">runfoo</span></samp> and this is made
-executable (by <samp><span class="command">chmod 755 runfoo</span></samp>), it can be invoked for
-different arguments by
+   <p class="noindent"><!-- If this is entered into a text file @file{runfoo} and this is made -->
+<!-- executable (by @command{chmod 755 runfoo}), it can be invoked for -->
+<!-- different arguments by -->
+
+   <p>만약 runfoo text file으로 들어간다면, 이는 chmod 755 runfoo에 의해 실행 가능하게 되며, runfoo arg1 arg2에 의해서 다른 아규먼트들을 대한 invoke를 실행할 수 있습니다.
 
 <pre class="example">     runfoo arg1 arg2
 </pre>
-   <p class="noindent">For further options see <samp><span class="command">help("Rscript")</span></samp>.  This writes R
-output to <samp><span class="file">stdout</span></samp> and <samp><span class="file">stderr</span></samp>, and this can be redirected in
-the usual way for the shell running the command.
+   <p class="noindent"><!-- For further options see @command{help("Rscript")}.  This writes @R{} -->
+<!-- output to @file{stdout} and @file{stderr}, and this can be redirected in -->
+<!-- the usual way for the shell running the command. -->
 
-   <p>If you do not wish to hardcode the path to <samp><span class="command">Rscript</span></samp> but have it
-in your path (which is normally the case for an installed R except on
-Windows, but e.g. Mac OS X users may need to add <samp><span class="file">/usr/local/bin</span></samp>
-to their path), use
+   <p>추가 옵션을 위해서, help("Rscript")를 찾아 봅니다. 이는 R output을 stdout 그리고 stderr로 write할 수 있으며, 그 커맨드를 실행시키는 shell을 위해서 일반적인 방식으로 재설정 될 수 있습니다.
+
+<!-- If you do not wish to hardcode the path to @command{Rscript} but have it -->
+<!-- in your path (which is normally the case for an installed @R{} except on -->
+<!-- Windows, but e.g.@: Mac OS X users may need to add @file{/usr/local/bin} -->
+<!-- to their path), use -->
+   <p>Rscript로의 경로를 hardcode하지 않고, 경로 상에만 위치하게끔 하고자 한다면, #! /usr/bin/env Rscript을 사용합니다(이 상황은 윈도우를 제외한 일반적인 경우이며, 하지만, Mac OS X 유저들은 /usr/local/bin을 경로에 추가할 필요가 있습니다).
 
 <pre class="example">     #! /usr/bin/env Rscript
      ...
 </pre>
-   <p class="noindent">At least in Bourne and bash shells, the <code>#!</code> mechanism does
-<strong>not</strong> allow extra arguments like
-<code>#! /usr/bin/env Rscript --vanilla</code>.
+   <p class="noindent"><!-- At least in Bourne and bash shells, the @code{#!} mechanism does -->
+<!-- @strong{not} allow extra arguments like -->
+<!-- @code{#! /usr/bin/env Rscript -vanilla}. -->
 
-   <p>One thing to consider is what <code>stdin()</code> refers to.  It is
-commonplace to write R scripts with segments like
+   <p>적어도, Bourne와 bash shell에서, #!메커니즘은 #! /usr/bin/env Rscript  &ndash;vanilla와 같은 추가 아규먼트들을 허용하지 않습니다.
+
+<!-- One thing to consider is what @code{stdin()} refers to.  It is -->
+<!-- commonplace to write @R{} scripts with segments like -->
+   <p>한가지 고려할 사항은 stdin()이 무엇을 의미하는지 여부입니다.
 
 <pre class="example">     chem &lt;- scan(n=24)
      2.90 3.10 3.40 3.40 3.70 3.70 2.80 2.50 2.40 2.40 2.70 2.20
      5.28 3.37 3.03 3.03 28.95 3.77 3.40 2.20 3.50 3.60 3.70 3.70
 </pre>
-   <p class="noindent">and <code>stdin()</code> refers to the script file to allow such traditional
-usage.  If you want to refer to the process's <samp><span class="file">stdin</span></samp>, use
-<code>"stdin"</code> as a <code>file</code> connection, e.g. <code>scan("stdin", ...)</code>.
+   <p class="noindent"><!-- and @code{stdin()} refers to the script file to allow such traditional -->
+<!-- usage.  If you want to refer to the process's @file{stdin}, use -->
+<!-- @code{"stdin"} as a @code{file} connection, e.g.@: @code{scan("stdin", ...)}. -->
 
-   <p>Another way to write executable script files (suggested by Fran&ccedil;ois
-Pinard) is to use a <em>here document</em> like
+   <p>와 같은 세그먼트들과 함께 R 스크립트를 생성하는 것은 일반적인 것입니다. 그리고 stdin()은 이러한 기존의 사용방식을 허용하기 위해서 스크립트 파일을 의미합니다. stdin을 참조하고 싶다면, 이를 file connection으로 사용합니다 (예, scan("stdin"..)
+
+<!-- Another way to write executable script files (suggested by Fran@,{c}ois -->
+<!-- Pinard) is to use a @emph{here document} like -->
+   <p>Francois Pinard에 의해 마련된 스크립트 파일을 만들기 위한 다른 방법은
 
 <pre class="example">     #!/bin/sh
      [environment variables can be set here]
@@ -9067,14 +9114,14 @@ Pinard) is to use a <em>here document</em> like
      
      EOF
 </pre>
-   <p class="noindent">but here <code>stdin()</code> refers to the program source and
-<code>"stdin"</code> will not be usable.
+   <p class="noindent"><!-- but here @code{stdin()} refers to the program source and -->
+<!-- @code{"stdin"} will not be usable. -->
 
-   <p>Very short scripts can be passed to <samp><span class="command">Rscript</span></samp> on the
-command-line via the <samp><span class="option">-e</span></samp> flag.
-
-   <p>Note that on a Unix-alike the input filename (such as <samp><span class="file">foo.R</span></samp>)
-should not contain spaces nor shell metacharacters.
+<!-- Very short scripts can be passed to @command{Rscript} on the -->
+<!-- command-line via the @option{-e} flag. -->
+<!-- Note that on a Unix-alike the input filename (such as @file{foo.R}) -->
+<!-- should not contain spaces nor shell metacharacters. -->
+   <p>와 같은 다큐먼트를 사용하는 것입니다. 하지만하지만, stdin()은 프로그램 소스를 의미하며, stdin을 사용할 수 없습니다. e-flag를 통해서 command line 상에서 짧은 스크립트들은 Rscript로 보내질 수 있습니다. 유닉스와 같은 환경에서 foo.R과 같은 input filename은 공간을 포함하거나, shell metacharacter를 포함해서는 안됩니다.
 
 <div class="node">
 <a name="The-command-line-editor"></a>
@@ -9091,14 +9138,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h3 class="appendixsec">C.1 Preliminaries</h3>
 
-<p>When the <acronym>GNU</acronym> <strong>readline</strong> library is available at the
-time R is configured for compilation under UNIX, an inbuilt command
-line editor allowing recall, editing and re-submission of prior commands
-is used.  Note that other versions of <strong>readline</strong> exist and may be
-used by the inbuilt command line editor: this used to happen on Mac OS X.
+<!-- When the @acronym{GNU} @strong{readline} library is available at the -->
+<!-- time @R{} is configured for compilation under UNIX, an inbuilt command -->
+<!-- line editor allowing recall, editing and re-submission of prior commands -->
+<!-- is used.  Note that other versions of @strong{readline} exist and may be -->
+<!-- used by the inbuilt command line editor: this used to happen on Mac OS X. -->
+<p>GNU readline 라이브러리는 UNIX 환경에서 R이 설정될 때, 이용할 수 있으며, 커맨드 입력 전에 제출(Re-submission)과 에디팅, 리콜을 허용하는 내재되어 있는 command line 에디터(inbuilt)가 사용됩니다. readline의 다른 버전이 존재하고, 내재되어 있는 command line 에디터에 의해 사용될 수 있다는 것을 잊지 마세요. Mac OS X 환경에서 활용된 바 있습니다 .
 
-   <p>It can be disabled (useful for usage with <acronym>ESS</acronym> <a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a>) using the startup option
-<samp><span class="option">--no-readline</span></samp>.
+<!-- It can be disabled (useful for usage with @acronym{ESS} @footnote{The -->
+<!-- `Emacs Speaks Statistics' package; see the @acronym{URL} -->
+<!-- @uref{http://ESS.R-project.org}}) using the startup option -->
+<!-- @option{-no-readline}. -->
+   <p>&ndash;no-readline startup 옵션을 사용해서 (ESS 활용에 유용) 억제(disabled)될 수 있습니다 .
 
    <p>Windows versions of R have somewhat simpler command-line editing: see
 &lsquo;<samp><span class="samp">Console</span></samp>&rsquo; under the &lsquo;<samp><span class="samp">Help</span></samp>&rsquo; menu of the <acronym>GUI</acronym>, and the
@@ -9113,7 +9164,7 @@ in <samp><span class="command">man readline</span></samp> or <samp><span class="
 characters, such as <kbd>Control-m</kbd>, are obtained by holding the
 &lt;CTRL&gt; down while you press the &lt;m&gt; key, and are written as
 <kbd>C-m</kbd> below.  Meta characters, such as <kbd>Meta-b</kbd>, are typed by
-holding down &lt;META&gt;<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a> and pressing &lt;b&gt;, and written as <kbd>M-b</kbd>
+holding down &lt;META&gt;<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a> and pressing &lt;b&gt;, and written as <kbd>M-b</kbd>
 in the following.  If your terminal does not have a &lt;META&gt; key
 enabled, you can still type Meta characters using two-character
 sequences starting with <kbd>ESC</kbd>.  Thus, to enter <kbd>M-b</kbd>, you could
@@ -9614,11 +9665,7 @@ eigendecomposition of A.</p>
 parameters such as the size of the current device are for information
 only.</p>
 
-   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> The
-`Emacs Speaks Statistics' package; see the <acronym>URL</acronym>
-<a href="http://ESS.R-project.org">http://ESS.R-project.org</a></p>
-
-   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> On a PC keyboard this is usually the
+   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> On a PC keyboard this is usually the
 Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no
 meta key is available.</p>
 
