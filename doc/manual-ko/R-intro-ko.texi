@@ -7400,18 +7400,25 @@ base 그래픽와는 별개로 @pkg{grid} 패키지 내에 있는 별도의 그�
 예를 들어, @code{coplot()}과 함께 사용될 수 있는 유용한 패널함수는 @code{panel.smooth()}입니다.
 
 @node Display graphics, Arguments to high-level plotting functions, Displaying multivariate data, High-level plotting commands
-@subsection Display graphics
+@c @subsection Display graphics
+@subsection 그래픽 표현하기
 
-Other high-level graphics functions produce different types of plots.
-Some examples are:
+@c Other high-level graphics functions produce different types of plots.
+@c Some examples are:
+다른 하이레벨 그래픽 함수들은 다른 종류의 플랏들을 생성합니다.
+아래는 그 일부를 정리해두었습니다.
 
 @table @code
-@c  @item tsplot(x_1, x_2, @dots{})
-@c  @findex tsplot
+@item tsplot(x_1, x_2, @dots{})
+@findex tsplot
 @c  Plots any number of time series on the same scale.  This automatic
 @c  simultaneous scaling feature is also useful when the @code{x@var{_i}}'s
 @c  are ordinary numeric vectors, in which case they are plotted against the
 @c  numbers @math{1, 2, 3, @dots{}}.
+
+임의의 개수에 대한 시계열 데이터들을 같은 스케일 (또는 척도)로 보여줍니다.
+이 기능은 @code{x@var{_i}}가 시계열이 아닌 일반 수치형 벡터일때도 유용하게 사용될 수 있습니다.
+단, 이경우에는 @math{1, 2, 3, @dots{}}를 기준으로 표현됩니다.
 
 @item qqnorm(x)
 @itemx qqline(x)
@@ -7419,30 +7426,39 @@ Some examples are:
 @findex qqnorm
 @findex qqline
 @findex qqplot
-Distribution-comparison plots.  The first form plots the numeric vector
-@code{x} against the expected Normal order scores (a normal scores plot)
-and the second adds a straight line to such a plot by drawing a line
-through the distribution and data quartiles.  The third form plots the
-quantiles of @code{x} against those of @code{y} to compare their
-respective distributions.
+@c Distribution-comparison plots.  The first form plots the numeric vector
+@c @code{x} against the expected Normal order scores (a normal scores plot)
+@c and the second adds a straight line to such a plot by drawing a line
+@c through the distribution and data quartiles.  The third form plots the
+@c quantiles of @code{x} against those of @code{y} to compare their
+@c respective distributions.
+분포에 대한 비교를 위한 플랏을 생성합니다.
+첫번째 표현은 수치형 벡터 @code{x}와 expected Normal order score간의 관계를 보여주는 표준스코어 플랏 (Normal scores plot)을 생성합니다.
+두번째 표현은 첫번째 표현을 통해 얻은 플랏에 레퍼런스 라인을 추가해줍니다.
+세번째 표현은 @code{x}의 퀀타일과 @code{y}의 퀀타일을 서로 비교할 수 있는 플랏을 생성해줍니다.
 
 @item hist(x)
 @itemx hist(x, nclass=@var{n})
 @itemx hist(x, breaks=@var{b}, @dots{})
 @findex hist
-Produces a histogram of the numeric vector @code{x}.  A sensible number
-of classes is usually chosen, but a recommendation can be given with the
-@code{nclass=} argument.  Alternatively, the breakpoints can be
-specified exactly with the @code{breaks=} argument.  If the
-@code{probability=TRUE} argument is given, the bars represent relative
-frequencies divided by bin width instead of counts.
+@c Produces a histogram of the numeric vector @code{x}.  A sensible number
+@c of classes is usually chosen, but a recommendation can be given with the
+@c @code{nclass=} argument.  Alternatively, the breakpoints can be
+@c specified exactly with the @code{breaks=} argument.  If the
+@c @code{probability=TRUE} argument is given, the bars represent relative
+@c frequencies divided by bin width instead of counts.
+수치형 벡터 @code{x}에 대한 히스토그램을 생성합니다. 
+구간의 개수는 인자 @code{nclass=}를 통해 변경될 수 있습니다.
+또한, breakpoint (브레이크 포인트 = 구간의 끝점들)은 인자 @code{breaks=}를 통해 정해질 수도 있습니다.
+만약, @code{probability=TRUE}가 주어진다면, 세로축이 도수로 표현되지 않고 상대도수로서 나타내어 집니다.
 
-@item dotchart(x, @dots{})
+@c @item dotchart(x, @dots{})
 @findex dotchart
-Constructs a dotchart of the data in @code{x}.  In a dotchart the
-@math{y}-axis gives a labelling of the data in @code{x} and the
-@math{x}-axis gives its value.  For example it allows easy visual
-selection of all data entries with values lying in specified ranges.
+@c Constructs a dotchart of the data in @code{x}.  In a dotchart the
+@c @math{y}-axis gives a labelling of the data in @code{x} and the
+@c @math{x}-axis gives its value.  For example it allows easy visual
+@c selection of all data entries with values lying in specified ranges.
+
 
 @item image(x, y, z, @dots{})
 @itemx contour(x, y, z, @dots{})
@@ -7450,10 +7466,14 @@ selection of all data entries with values lying in specified ranges.
 @findex image
 @findex contour
 @findex persp
-Plots of three variables.  The @code{image} plot draws a grid of rectangles
-using different colours to represent the value of @code{z}, the @code{contour}
-plot draws contour lines to represent the value of @code{z}, and the
-@code{persp} plot draws a 3D surface.
+@c Plots of three variables.  The @code{image} plot draws a grid of rectangles
+@c using different colours to represent the value of @code{z}, the @code{contour}
+@c plot draws contour lines to represent the value of @code{z}, and the
+@c @code{persp} plot draws a 3D surface.
+3차원 데이터를 시각화 하는데 사용되는 플랏을 제공합니다.
+@code{image} 플랏은 @code{z}의 값의 높낮이를 표현하기 위해서 사용된 여러가지 색상을 직사각형으로 구성된 그리드를 생성합니다.
+@code{contour}는 @code{z}의 값에 상응하는 컨투어라인 (또는 고등선)을 그려줍니다.
+그리고, @code{persp}은 3차원 표면도 (surface plot)을 생성합니다. 
 @end table
 
 @node Arguments to high-level plotting functions,  , Display graphics, High-level plotting commands
