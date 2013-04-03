@@ -9745,34 +9745,71 @@ instead of @kbd{C-b} and @kbd{C-f}, respectively.
 @table @kbd
 @item @var{text}
 Insert @var{text} at the cursor.
+
+커서에 text 삽입
+
 @item C-f @var{text}
 Append @var{text} after the cursor.
+
+커서 뒤에 text 첨가
+
 @item @key{DEL}
 Delete the previous character (left of the cursor).
+
+이전 문자 삭 제(커서의 왼쪽)
+
 @item C-d
 Delete the character under the cursor.
+
+커서 아래의 문자 삭제
+
 @item M-d
 Delete the rest of the word under the cursor, and ``save'' it.
+
+커서 아래의 모든 남아 있는 단어 삭제 그리고 저장
+
 @item C-k
 Delete from cursor to end of command, and ``save'' it.
+
+커서부터 커맨드의 마지막까지 삭제 그리고 저장
+
 @item C-y
 Insert (yank) the last ``saved'' text here.
+
+마지막 "저장된" text 삽입
+
 @item C-t
 Transpose the character under the cursor with the next.
+
+다음 문자와 함께 커서 아래의 문자를 이항
+
 @item M-l
 Change the rest of the word to lower case.
+
+나머지 단어들을 소문자로 변경
+
 @item M-c
 Change the rest of the word to upper case.
+
+나머지 단어들을 대분자로 변경
+
 @item @key{RET}
 Re-submit the command to @R{}.
+
+R에 커맨드를 다시 제출
+
 @end table
 
 The final @key{RET} terminates the command line editing sequence.
+
+마지막 RET는 command line editing sequence를 종료
 
 The @strong{readline} key bindings can be customized in the usual way
 @emph{via} a @file{~/.inputrc} file.  As from @R{} 2.12.0, these
 customizations can be conditioned on application @code{R}, that is
 by including a section like
+
+Readline key bindings들은 ~/.inputrc 파일을 통해서 맞춤 형식으로 바뀔 수 있습니다. R 2.12.0 버전부터는 이러한 커스터마이제이션이 R 어플리케이션 상에서 아래의 섹션 포함을 통해서, 설정 될 수 있습니다.
 
 @example
 $if R
