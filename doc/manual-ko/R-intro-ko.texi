@@ -9678,35 +9678,67 @@ vi 모드에서 캐릭터 삽입 모드는 M-i 혹은 M-a에 의해 시작되고
 
 @table @kbd
 @item C-p
-Go to the previous command (backwards in the history).
+@c Go to the previous command (backwards in the history).
+
+이전 커맨드로 이동(히스토리 상에서는 뒤로 이동)
+
 @item C-n
 Go to the next command (forwards in the history).
+
+다음 커맨드로 이동(히스토리 상에서는 앞으로 이동)
+
 @item C-r @var{text}
 Find the last command with the @var{text} string in it.
 @end table
 
+text 스트링과 함께 마지막 커맨드를 탐색
+
 On most terminals, you can also use the up and down arrow keys instead
 of @kbd{C-p} and @kbd{C-n}, respectively.
 
+대부분의 터미널에서는, C-p나 C-n 대신 각각 위, 아래 화살표 키를 이용할 수 있습니다 .
+
 @subheading Horizontal motion of the cursor
+
+@c 커서의 상하 이동
 
 @table @kbd
 @item C-a
-Go to the beginning of the command.
+@c Go to the beginning of the command.
+
+커맨드의 시작점으로 이동
+
 @item C-e
-Go to the end of the line.
+@c Go to the end of the line.
+
+커맨드 라인의 끝으로 이동
+
 @item M-b
-Go back one word.
+@c Go back one word.
+
+한 단어 뒤로 이동
+
 @item M-f
-Go forward one word.
+@c Go forward one word.
+
+한 단어 앞으로 이동
+
 @item C-b
-Go back one character.
+@c Go back one character.
+
+한 문자 뒤로 이동
+
 @item C-f
-Go forward one character.
+@c Go forward one character.
+
+한 문자 앞으로 이동
+
 @end table
 
 On most terminals, you can also use the left and right arrow keys
 instead of @kbd{C-b} and @kbd{C-f}, respectively.
+
+대부분의 터미널에서는, C-b와 C-f 대신 왼쪽, 오른쪽 화살표 키를 사용할 수 있습니다.
 
 @subheading Editing and re-submission
 
