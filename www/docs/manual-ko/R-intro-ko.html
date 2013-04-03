@@ -9169,26 +9169,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- @option{-no-readline}. -->
    <p>&ndash;no-readline startup 옵션을 사용해서 (ESS 활용에 유용) 억제(disabled)될 수 있습니다 .
 
-   <p>Windows versions of R have somewhat simpler command-line editing: see
-&lsquo;<samp><span class="samp">Console</span></samp>&rsquo; under the &lsquo;<samp><span class="samp">Help</span></samp>&rsquo; menu of the <acronym>GUI</acronym>, and the
-file <samp><span class="file">README.Rterm</span></samp> for command-line editing under
-<code>Rterm.exe</code>.
+<!-- Windows versions of @R{} have somewhat simpler command-line editing: see -->
+<!-- @samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the -->
+<!-- file @file{README.Rterm} for command-line editing under -->
+<!-- @code{Rterm.exe}. -->
+   <p>윈도우 버전에서의 R은 더욱 간단한 command-line 에디팅을 선보입니다. GUI의 도움말 메뉴상의 'Console'과 Rterm.exe의 command-line 에디팅을 위해 README.Rterm 파일을 읽어 보세요 .
 
-   <p>When using R with <strong>readline</strong> capabilities, the functions
-described below are available, as well as others (probably) documented
-in <samp><span class="command">man readline</span></samp> or <samp><span class="command">info readline</span></samp> on your system.
+<!-- When using @R{} with @strong{readline} capabilities, the functions -->
+<!-- described below are available, as well as others (probably) documented -->
+<!-- in @command{man readline} or @command{info readline} on your system. -->
+   <p>readline의 기능을 활용해서 R을 사용할 때, 아래의 기능들과 각 시스템의 readline 혹은 info readline 상의 다른 기능들도 이용 가능합니다 .
 
-   <p>Many of these use either Control or Meta characters.  Control
-characters, such as <kbd>Control-m</kbd>, are obtained by holding the
-&lt;CTRL&gt; down while you press the &lt;m&gt; key, and are written as
-<kbd>C-m</kbd> below.  Meta characters, such as <kbd>Meta-b</kbd>, are typed by
-holding down &lt;META&gt;<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a> and pressing &lt;b&gt;, and written as <kbd>M-b</kbd>
-in the following.  If your terminal does not have a &lt;META&gt; key
-enabled, you can still type Meta characters using two-character
-sequences starting with <kbd>ESC</kbd>.  Thus, to enter <kbd>M-b</kbd>, you could
-type &lt;ESC&gt;&lt;b&gt;.  The <kbd>ESC</kbd> character sequences are also
-allowed on terminals with real Meta keys.  Note that case is significant
-for Meta characters.
+<!-- Many of these use either Control or Meta characters.  Control -->
+<!-- characters, such as @kbd{Control-m}, are obtained by holding the -->
+<!-- @key{CTRL} down while you press the @key{m} key, and are written as -->
+<!-- @kbd{C-m} below.  Meta characters, such as @kbd{Meta-b}, are typed by -->
+<!-- holding down @key{META}@footnote{On a PC keyboard this is usually the -->
+<!-- Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no -->
+<!-- meta key is available.} and pressing @key{b}, and written as @kbd{M-b} -->
+<!-- in the following.  If your terminal does not have a @key{META} key -->
+<!-- enabled, you can still type Meta characters using two-character -->
+<!-- sequences starting with @kbd{ESC}.  Thus, to enter @kbd{M-b}, you could -->
+<!-- type @key{ESC}@key{b}.  The @kbd{ESC} character sequences are also -->
+<!-- allowed on terminals with real Meta keys.  Note that case is significant -->
+<!-- for Meta characters. -->
+   <p>Control 혹은 메타문자들(Meta characters)이 자주 사용 됩니다. Control-m과 같은 Control 문자들은 m과 &lt;CTRL&gt;을 입력하면서 얻을 수 있으며, 이하에서는 C-m으로 쓰입니다. Meta-b와 같은 메타문자들(Meta characters)은 META와 b를 눌러서 사용합니다. 그리고 M-b로 명명 됩니다. 귀하의 터미널에서 META 키를 사용할 수 없다면, ESC 키와 함께 두 문자의 열(two-character sequences)을 사용해서 메타문자들(Meta characters)을 입력 할 수 있습니다. 따라서, M-b를 위해, ESC와 b를 사용 할 수 있습니다. ESC 문자열(character sequences)은 또한 실제 Meta 키들을 활용하여 터미널 상에서 사용될 수 있습니다. 두 문자의 열(two-character sequences)에겐 상당한 의미가 있다고 볼 수 있습니다.
 
 <h3 class="appendixsec">C.2 Editing actions</h3>
 
@@ -9209,55 +9214,126 @@ re-submitted.
 
    <p>Other editing actions are summarized in the following table.
 
+   <p>R은 에러가 존재하는 line들을 포함, command line에 대한 정보를 보관하고, 전에 사용하던 커맨드들은 필요하면 변경되거나, 혹은 재사용 될 수 있고, 완전히 새로운 커맨드로 바뀌어서 다시 사용 될 수도 있습니다. Emac-스타일의 command-line 에디팅 환경에서, 이 에디팅 단계에서 입력된 값으로 인해 캐릭터들이 여러분이 에디팅 하는 커맨드에 삽입 될 수 있고, 그리고 캐릭터들을 커서의 오른쪽으로 치환합니다. 
+vi 모드에서 캐릭터 삽입 모드는 M-i 혹은 M-a에 의해 시작되고, 캐릭터들이 입력되고 삽입 모드 는 &lt;ESC&gt;키를 입력하여 마치게 됩니다(디폴트는 Emacs-style이며, 여기에 기술되어 있습니다. vi 모드를 더 자세히 알고 싶으시면, readline 문서를 참조하세요). 그리고 RET를 명령문을 입력하면 command를 다시 제출할 수 있습니다. 기타 다른 editing 실행에대한 내용도 나와 있습니다.
+
 <h3 class="appendixsec">C.3 Command-line editor summary</h3>
 
 <h4 class="subheading">Command recall and vertical motion</h4>
 
      <dl>
-<dt><kbd>C-p</kbd><dd>Go to the previous command (backwards in the history). 
-<br><dt><kbd>C-n</kbd><dd>Go to the next command (forwards in the history). 
-<br><dt><kbd>C-r </kbd><var>text</var><dd>Find the last command with the <var>text</var> string in it. 
+<dt><kbd>C-p</kbd><dd><!-- Go to the previous command (backwards in the history). -->
+
+     <p>이전 커맨드로 이동(히스토리 상에서는 뒤로 이동)
+
+     <br><dt><kbd>C-n</kbd><dd>Go to the next command (forwards in the history).
+
+     <p>다음 커맨드로 이동(히스토리 상에서는 앞으로 이동)
+
+     <br><dt><kbd>C-r </kbd><var>text</var><dd>Find the last command with the <var>text</var> string in it. 
 </dl>
+
+   <p>text 스트링과 함께 마지막 커맨드를 탐색
 
    <p>On most terminals, you can also use the up and down arrow keys instead
 of <kbd>C-p</kbd> and <kbd>C-n</kbd>, respectively.
 
+   <p>대부분의 터미널에서는, C-p나 C-n 대신 각각 위, 아래 화살표 키를 이용할 수 있습니다 .
+
 <h4 class="subheading">Horizontal motion of the cursor</h4>
 
+<!-- 커서의 상하 이동 -->
      <dl>
-<dt><kbd>C-a</kbd><dd>Go to the beginning of the command. 
-<br><dt><kbd>C-e</kbd><dd>Go to the end of the line. 
-<br><dt><kbd>M-b</kbd><dd>Go back one word. 
-<br><dt><kbd>M-f</kbd><dd>Go forward one word. 
-<br><dt><kbd>C-b</kbd><dd>Go back one character. 
-<br><dt><kbd>C-f</kbd><dd>Go forward one character. 
+<dt><kbd>C-a</kbd><dd><!-- Go to the beginning of the command. -->
+
+     <p>커맨드의 시작점으로 이동
+
+     <br><dt><kbd>C-e</kbd><dd><!-- Go to the end of the line. -->
+
+     <p>커맨드 라인의 끝으로 이동
+
+     <br><dt><kbd>M-b</kbd><dd><!-- Go back one word. -->
+
+     <p>한 단어 뒤로 이동
+
+     <br><dt><kbd>M-f</kbd><dd><!-- Go forward one word. -->
+
+     <p>한 단어 앞으로 이동
+
+     <br><dt><kbd>C-b</kbd><dd><!-- Go back one character. -->
+
+     <p>한 문자 뒤로 이동
+
+     <br><dt><kbd>C-f</kbd><dd><!-- Go forward one character. -->
+
+     <p>한 문자 앞으로 이동
+
 </dl>
 
    <p>On most terminals, you can also use the left and right arrow keys
 instead of <kbd>C-b</kbd> and <kbd>C-f</kbd>, respectively.
 
+   <p>대부분의 터미널에서는, C-b와 C-f 대신 왼쪽, 오른쪽 화살표 키를 사용할 수 있습니다.
+
 <h4 class="subheading">Editing and re-submission</h4>
 
      <dl>
-<dt><var>text</var><dd>Insert <var>text</var> at the cursor. 
-<br><dt><kbd>C-f </kbd><var>text</var><dd>Append <var>text</var> after the cursor. 
-<br><dt><kbd>&lt;DEL&gt;</kbd><dd>Delete the previous character (left of the cursor). 
-<br><dt><kbd>C-d</kbd><dd>Delete the character under the cursor. 
-<br><dt><kbd>M-d</kbd><dd>Delete the rest of the word under the cursor, and &ldquo;save&rdquo; it. 
-<br><dt><kbd>C-k</kbd><dd>Delete from cursor to end of command, and &ldquo;save&rdquo; it. 
-<br><dt><kbd>C-y</kbd><dd>Insert (yank) the last &ldquo;saved&rdquo; text here. 
-<br><dt><kbd>C-t</kbd><dd>Transpose the character under the cursor with the next. 
-<br><dt><kbd>M-l</kbd><dd>Change the rest of the word to lower case. 
-<br><dt><kbd>M-c</kbd><dd>Change the rest of the word to upper case. 
-<br><dt><kbd>&lt;RET&gt;</kbd><dd>Re-submit the command to R. 
+<dt><var>text</var><dd>Insert <var>text</var> at the cursor.
+
+     <p>커서에 text 삽입
+
+     <br><dt><kbd>C-f </kbd><var>text</var><dd>Append <var>text</var> after the cursor.
+
+     <p>커서 뒤에 text 첨가
+
+     <br><dt><kbd>&lt;DEL&gt;</kbd><dd>Delete the previous character (left of the cursor).
+
+     <p>이전 문자 삭 제(커서의 왼쪽)
+
+     <br><dt><kbd>C-d</kbd><dd>Delete the character under the cursor.
+
+     <p>커서 아래의 문자 삭제
+
+     <br><dt><kbd>M-d</kbd><dd>Delete the rest of the word under the cursor, and &ldquo;save&rdquo; it.
+
+     <p>커서 아래의 모든 남아 있는 단어 삭제 그리고 저장
+
+     <br><dt><kbd>C-k</kbd><dd>Delete from cursor to end of command, and &ldquo;save&rdquo; it.
+
+     <p>커서부터 커맨드의 마지막까지 삭제 그리고 저장
+
+     <br><dt><kbd>C-y</kbd><dd>Insert (yank) the last &ldquo;saved&rdquo; text here.
+
+     <p>마지막 "저장된" text 삽입
+
+     <br><dt><kbd>C-t</kbd><dd>Transpose the character under the cursor with the next.
+
+     <p>다음 문자와 함께 커서 아래의 문자를 이항
+
+     <br><dt><kbd>M-l</kbd><dd>Change the rest of the word to lower case.
+
+     <p>나머지 단어들을 소문자로 변경
+
+     <br><dt><kbd>M-c</kbd><dd>Change the rest of the word to upper case.
+
+     <p>나머지 단어들을 대분자로 변경
+
+     <br><dt><kbd>&lt;RET&gt;</kbd><dd>Re-submit the command to R.
+
+     <p>R에 커맨드를 다시 제출
+
 </dl>
 
    <p>The final &lt;RET&gt; terminates the command line editing sequence.
+
+   <p>마지막 RET는 command line editing sequence를 종료
 
    <p>The <strong>readline</strong> key bindings can be customized in the usual way
 <em>via</em> a <samp><span class="file">~/.inputrc</span></samp> file.  As from R 2.12.0, these
 customizations can be conditioned on application <code>R</code>, that is
 by including a section like
+
+   <p>Readline key bindings들은 ~/.inputrc 파일을 통해서 맞춤 형식으로 바뀔 수 있습니다. R 2.12.0 버전부터는 이러한 커스터마이제이션이 R 어플리케이션 상에서 아래의 섹션 포함을 통해서, 설정 될 수 있습니다.
 
 <pre class="example">     $if R
        "\C-xd": "q('no')\n"
@@ -9683,10 +9759,6 @@ eigendecomposition of A.</p>
    <p class="footnote"><small>[<a name="fn-25" href="#fnd-25">25</a>]</small> Some graphics
 parameters such as the size of the current device are for information
 only.</p>
-
-   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> On a PC keyboard this is usually the
-Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no
-meta key is available.</p>
 
    <hr></div>
 
