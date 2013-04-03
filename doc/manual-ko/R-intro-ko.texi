@@ -7452,13 +7452,15 @@ base 그래픽와는 별개로 @pkg{grid} 패키지 내에 있는 별도의 그�
 또한, breakpoint (브레이크 포인트 = 구간의 끝점들)은 인자 @code{breaks=}를 통해 정해질 수도 있습니다.
 만약, @code{probability=TRUE}가 주어진다면, 세로축이 도수로 표현되지 않고 상대도수로서 나타내어 집니다.
 
-@c @item dotchart(x, @dots{})
+@item dotchart(x, @dots{})
 @findex dotchart
 @c Constructs a dotchart of the data in @code{x}.  In a dotchart the
 @c @math{y}-axis gives a labelling of the data in @code{x} and the
 @c @math{x}-axis gives its value.  For example it allows easy visual
 @c selection of all data entries with values lying in specified ranges.
-
+@code{x}의 데이터에 대한 닷챠트 (dotchart)를 생성합니다.
+닷챠트란 @math{y}-축에 @code{x}의 데이터에 대한 레이블 정보를 표기하고, @math{x}축에는 해당 레이블에 상응하는 값을 표시한 것입니다.
+예를들면, 모든 데이터 항목들을 정해진 구간내에 놓인 값과 함께 볼 수 있게 해줍니다.
 
 @item image(x, y, z, @dots{})
 @itemx contour(x, y, z, @dots{})
@@ -7477,67 +7479,96 @@ base 그래픽와는 별개로 @pkg{grid} 패키지 내에 있는 별도의 그�
 @end table
 
 @node Arguments to high-level plotting functions,  , Display graphics, High-level plotting commands
-@subsection Arguments to high-level plotting functions
+@c @subsection Arguments to high-level plotting functions
+@subsection 하이레벨 플랏 함수에 사용되는 인자들
 
-There are a number of arguments which may be passed to high-level
-graphics functions, as follows:
+@c There are a number of arguments which may be passed to high-level
+@c graphics functions, as follows:
+하이레벨 그래픽 함수에 자주 사용되는 주요인자들을 아래와 같이 정리하였습니다.
 
 @table @code
 @item add=TRUE
-Forces the function to act as a low-level graphics function,
-superimposing the plot on the current plot (some functions only).
+@c Forces the function to act as a low-level graphics function,
+@c superimposing the plot on the current plot (some functions only).
+함수가 로우레벨 그래픽 함수와 같이 작동하도록 하여 현재의 플랏을 이전의 플랏위에 겹쳐 놓을 수 있도록 합니다.
 
 @item axes=FALSE
-Suppresses generation of axes---useful for adding your own custom axes
-with the @code{axis()} function.  The default, @code{axes=TRUE}, means
-include axes.
+@c Suppresses generation of axes---useful for adding your own custom axes
+@c with the @code{axis()} function.  The default, @code{axes=TRUE}, means
+@c include axes.
+축의 정보를 표시 않도록 하여, 사용자가 직접 @code{axis()}함수를 이용하여 축의 내용을 설정하는데 유용하게 사용됩니다.
+하이레벨 플랏에서는 이 인자의 값은 @code{axes=TRUE}로 주어져 있어 그래픽 생성시 자동으로 축의 정보가 포함되어 있습니다.
 
 @item log="x"
 @itemx log="y"
 @itemx log="xy"
-Causes the @math{x}, @math{y} or both axes to be logarithmic.  This will
-work for many, but not all, types of plot.
+@c Causes the @math{x}, @math{y} or both axes to be logarithmic.  This will
+@c work for many, but not all, types of plot.
+@math{x}, @math{y} 또는 양쪽 축 모두 @math{log}(로그)의 값을 가지도록 변형합니다.
+이것은 플랏의 종류에 따라 많이 사용되기도 하지만 전부 사용되는 것은 아닙니다.
 
 @item type=
-The @code{type=} argument controls the type of plot produced, as
-follows:
+@c The @code{type=} argument controls the type of plot produced, as
+@c follows:
+@code{type=}인자는 생성되는 플랏의 종류를 조절하며 아래와 같습니다.
 
 @table @code
 @item type="p"
-Plot individual points (the default)
+@c Plot individual points (the default)
+기본값으로서 포인트 (즉, 점)을 표시합니다.
+
 @item type="l"
-Plot lines
+@c Plot lines
+라인으로서 표시합니다. 
+
 @item type="b"
-Plot points connected by lines (@emph{both})
+@c Plot points connected by lines (@emph{both})
+@emph{양쪽 (both)}간을 서로 점으로 연결하여 표시합니다.
+
 @item type="o"
-Plot points overlaid by lines
+@c Plot points overlaid by lines
+라인위에 @code{"o"}라는 기호를 찍어줍니다.
+
 @item type="h"
-Plot vertical lines from points to the zero axis (@emph{high-density})
+@c Plot vertical lines from points to the zero axis (@emph{high-density})
+@math{0}의 값으로부터 해당 점의 위치까지 높이를 알수 있는 수직선을 그려줍니다. 
+
 @item type="s"
 @itemx type="S"
-Step-function plots.  In the first form, the top of the vertical defines
-the point; in the second, the bottom.
+@c Step-function plots.  In the first form, the top of the vertical defines
+@c the point; in the second, the bottom.
+스텝함수 (step-function, 즉 계단형) 플랏을 생성해줍니다.
+첫번째 표현은 점핑포인트에서 수직선을 그리는 계단식 플랏을, 두번째 표현은 점핑포인트에서 수평선을 그리는 계단식 플랏을 생성합니다.
+ 
 @item type="n"
-No plotting at all.  However axes are still drawn (by default) and the
-coordinate system is set up according to the data.  Ideal for creating
-plots with subsequent low-level graphics functions.
+@c No plotting at all.  However axes are still drawn (by default) and the
+@c coordinate system is set up according to the data.  Ideal for creating
+@c plots with subsequent low-level graphics functions.
+이것은 아무것도 생성하지 않습니다.
+그러나, 축과 좌표시스템은 데이터에 맞춰서 보여줍니다.
+이것은 로우레벨 그래픽 함수를 이용하여 플랏을 생성하는데 유용합니다.
 @end table
 
 @item xlab=@var{string}
 @itemx ylab=@var{string}
-Axis labels for the @math{x} and @math{y} axes.  Use these arguments to
-change the default labels, usually the names of the objects used in the
-call to the high-level plotting function.
+@c Axis labels for the @math{x} and @math{y} axes.  Use these arguments to
+@c change the default labels, usually the names of the objects used in the
+@c call to the high-level plotting function.
+@math{x}축과 @math{y}축에 대한 레이블을 표기합니다.
+이 인자들을 이용하여 하이레벨 플랏함수에서 기본적으로 사용하는 레이블의 이름 (즉, 객체의이름)을 변경하도록 해줍니다.
 
 @item main=@var{string}
-Figure title, placed at the top of the plot in a large font.
+@c Figure title, placed at the top of the plot in a large font.
+플랏의 가장 위치에 가장 큰 글자크기를 가진 주제목을 변경하도록 해줍니다.
 
 @item sub=@var{string}
-Sub-title, placed just below the @math{x}-axis in a smaller font.
+@c Sub-title, placed just below the @math{x}-axis in a smaller font.
+@math{x}-축 바로 밑에 주제목보다는 다소 작은 글자크기로 부제목을 표시합니다.
 @end table
 
 @node Low-level plotting commands, Interacting with graphics, High-level plotting commands, Graphics
-@section Low-level plotting commands
+@c @section Low-level plotting commands
+@section 로우레벨 플랏팅 명령어들 - 미번역 
 
 Sometimes the high-level plotting functions don't produce exactly the
 kind of plot you desire.  In this case, low-level plotting commands can
@@ -7646,7 +7677,8 @@ may be used to specify positions on a plot interactively.
 @end menu
 
 @node Mathematical annotation, Hershey vector fonts, Low-level plotting commands, Low-level plotting commands
-@subsection Mathematical annotation
+@c @subsection Mathematical annotation
+@subsection 수학기호 표시하기 - 미번역 
 
 In some cases, it is useful to add mathematical symbols and formulae to a
 plot.  This can be achieved in @R{} by specifying an @emph{expression} rather
@@ -7668,7 +7700,8 @@ obtained from within @R{} using the commands:
 @end example
 
 @node Hershey vector fonts,  , Mathematical annotation, Low-level plotting commands
-@subsection Hershey vector fonts
+@c @subsection Hershey vector fonts
+@subsection Hershey 벡터 글꼴 - 미번역 
 
 It is possible to specify Hershey vector fonts for rendering text when using
 the @code{text} and @code{contour} functions.  There are three reasons for
@@ -7697,11 +7730,15 @@ within @R{} using the commands:
 @end example
 
 @node Interacting with graphics, Using graphics parameters, Low-level plotting commands, Graphics
-@section Interacting with graphics
+@c @section Interacting with graphics
+@section 대화식으로 사용하는 그래픽 - 미번역 
 
-@R{} also provides functions which allow users to extract or add
-information to a plot using a mouse.  The simplest of these is the
-@code{locator()} function:
+@c @R{} also provides functions which allow users to extract or add
+@c information to a plot using a mouse.  The simplest of these is the
+@c @code{locator()} function:
+
+@R{}은 또한 사용자가 마우스를 이용하여 플랏에 정보를 추출하거나 추가할 수 있도록 해줍니다.
+이러한 것을 대화식으로 사용한다고 하며, 가장 단순한 예는 함수 @code{locator()}를 이용하는 것입니다. 
 
 @table @code
 @item locator(n, type)
@@ -7764,7 +7801,8 @@ selected points; you can use these indices to extract the selected
 points from the original vectors @code{x} and @code{y}.
 
 @node Using graphics parameters, Graphics parameters, Interacting with graphics, Graphics
-@section Using graphics parameters
+@c @section Using graphics parameters
+@section 그래픽 파라미터들을 사용하기
 
 When creating graphics, particularly for presentation or publication
 purposes, @R{}'s defaults do not always produce exactly that which is
@@ -7787,7 +7825,8 @@ device; or temporarily, affecting only a single graphics function call.
 @end menu
 
 @node The par() function, Arguments to graphics functions, Using graphics parameters, Using graphics parameters
-@subsection Permanent changes: The @code{par()} function
+@subsection @code{par()} 함수를 이용한 그래픽 파라미터들의 영구적 변환 
+@c @subsection Permanent changes: The @code{par()} function
 @findex par
 @cindex Graphics parameters
 
@@ -7842,7 +7881,8 @@ only.} graphical parameters use
 
 
 @node Arguments to graphics functions,  , The par() function, Using graphics parameters
-@subsection Temporary changes: Arguments to graphics functions
+@c @subsection Temporary changes: Arguments to graphics functions
+@subsection 그래픽 함수에 인자로 전달하는 방식의 임시적 변환
 
 Graphics parameters may also be passed to (almost) any graphics function
 as named arguments.  This has the same effect as passing the arguments
@@ -7863,7 +7903,8 @@ sometimes necessary to set and reset graphics parameters using
 
 
 @node Graphics parameters, Device drivers, Using graphics parameters, Graphics
-@section Graphics parameters list
+@c @section Graphics parameters list
+@section 그래픽 파라미터들의 목록
 
 The following sections detail many of the commonly-used graphical
 parameters.  The @R{} help documentation for the @code{par()} function
@@ -7891,7 +7932,8 @@ argument to a few @code{plot} methods: see @code{xaxt} and @code{yaxt}.
 @end menu
 
 @node Graphical elements, Axes and tick marks, Graphics parameters, Graphics parameters
-@subsection Graphical elements
+@c @subsection Graphical elements
+@subsection 그래픽 구성요소들의 활용
 
 @R{} plots are made up of points, lines, text and polygons (filled
 regions.) Graphical parameters exist which control how these
@@ -7985,7 +8027,8 @@ The character expansion to be used for axis annotation, @math{x} and
 @end table
 
 @node Axes and tick marks, Figure margins, Graphical elements, Graphics parameters
-@subsection Axes and tick marks
+@c @subsection Axes and tick marks
+@subsection 축과 틱마크 (단위표시자) 이용하기
 
 Many of @R{}'s high-level plots have axes, and you can construct axes
 yourself with the low-level @code{axis()} graphics function.  Axes have
@@ -8039,7 +8082,8 @@ not implemented in @R{}.)
 @end table
 
 @node Figure margins, Multiple figure environment, Axes and tick marks, Graphics parameters
-@subsection Figure margins
+@c @subsection Figure margins
+@subsection 그림(figure)의 여백 조절하기
 
 
 A single plot in @R{} is known as a @code{figure} and comprises a
@@ -8208,7 +8252,8 @@ end of a session.)
 @end menu
 
 @node PostScript diagrams for typeset documents, Multiple graphics devices, Device drivers, Device drivers
-@subsection PostScript diagrams for typeset documents
+@c @subsection PostScript diagrams for typeset documents
+@subsection 조판 문서를 위한 포스트스크립트 다이어그램 생성하기
 
 By passing the @code{file} argument to the @code{postscript()} device
 driver function, you may store the graphics in PostScript format in a
@@ -8244,7 +8289,8 @@ specification).  Thus to produce a plot for inclusion use something like
 
 
 @node Multiple graphics devices,  , PostScript diagrams for typeset documents, Device drivers
-@subsection Multiple graphics devices
+@c @subsection Multiple graphics devices
+@subsection 다중 그래픽 장치 이용하기
 
 In advanced use of @R{} it is often useful to have several graphics
 devices in use at the same time.  Of course only one graphics device can
@@ -8313,7 +8359,8 @@ Terminate all graphics devices on the list, except the null device.
 @end table
 
 @node Dynamic graphics,  , Device drivers, Graphics
-@section Dynamic graphics
+@c @section Dynamic graphics
+@section 다이나믹한 그래픽 생성하기
 @cindex Dynamic graphics
 
 @R{} does not have builtin capabilities for dynamic or
