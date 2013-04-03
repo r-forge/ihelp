@@ -9621,28 +9621,34 @@ GNU readline 라이브러리는 UNIX 환경에서 R이 설정될 때, 이용할 
 
 --no-readline startup 옵션을 사용해서 (ESS 활용에 유용) 억제(disabled)될 수 있습니다 .
 
-Windows versions of @R{} have somewhat simpler command-line editing: see
-@samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the
-file @file{README.Rterm} for command-line editing under
-@code{Rterm.exe}.
+@c Windows versions of @R{} have somewhat simpler command-line editing: see
+@c @samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the
+@c file @file{README.Rterm} for command-line editing under
+@c @code{Rterm.exe}.
 
-When using @R{} with @strong{readline} capabilities, the functions
-described below are available, as well as others (probably) documented
-in @command{man readline} or @command{info readline} on your system.
+윈도우 버전에서의 R은 더욱 간단한 command-line 에디팅을 선보입니다. GUI의 도움말 메뉴상의 'Console'과 Rterm.exe의 command-line 에디팅을 위해 README.Rterm 파일을 읽어 보세요 .
 
-Many of these use either Control or Meta characters.  Control
-characters, such as @kbd{Control-m}, are obtained by holding the
-@key{CTRL} down while you press the @key{m} key, and are written as
-@kbd{C-m} below.  Meta characters, such as @kbd{Meta-b}, are typed by
-holding down @key{META}@footnote{On a PC keyboard this is usually the
-Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no
-meta key is available.} and pressing @key{b}, and written as @kbd{M-b}
-in the following.  If your terminal does not have a @key{META} key
-enabled, you can still type Meta characters using two-character
-sequences starting with @kbd{ESC}.  Thus, to enter @kbd{M-b}, you could
-type @key{ESC}@key{b}.  The @kbd{ESC} character sequences are also
-allowed on terminals with real Meta keys.  Note that case is significant
-for Meta characters.
+@c When using @R{} with @strong{readline} capabilities, the functions
+@c described below are available, as well as others (probably) documented
+@c in @command{man readline} or @command{info readline} on your system.
+
+readline의 기능을 활용해서 R을 사용할 때, 아래의 기능들과 각 시스템의 readline 혹은 info readline 상의 다른 기능들도 이용 가능합니다 .
+
+@c Many of these use either Control or Meta characters.  Control
+@c characters, such as @kbd{Control-m}, are obtained by holding the
+@c @key{CTRL} down while you press the @key{m} key, and are written as
+@c @kbd{C-m} below.  Meta characters, such as @kbd{Meta-b}, are typed by
+@c holding down @key{META}@footnote{On a PC keyboard this is usually the
+@c Alt key, occasionally the `Windows' key.  On a Mac keyboard normally no
+@c meta key is available.} and pressing @key{b}, and written as @kbd{M-b}
+@c in the following.  If your terminal does not have a @key{META} key
+@c enabled, you can still type Meta characters using two-character
+@c sequences starting with @kbd{ESC}.  Thus, to enter @kbd{M-b}, you could
+@c type @key{ESC}@key{b}.  The @kbd{ESC} character sequences are also
+@c allowed on terminals with real Meta keys.  Note that case is significant
+@c for Meta characters.
+
+Control 혹은 메타문자들(Meta characters)이 자주 사용 됩니다. Control-m과 같은 Control 문자들은 m과 <CTRL>을 입력하면서 얻을 수 있으며, 이하에서는 C-m으로 쓰입니다. Meta-b와 같은 메타문자들(Meta characters)은 META와 b를 눌러서 사용합니다. 그리고 M-b로 명명 됩니다. 귀하의 터미널에서 META 키를 사용할 수 없다면, ESC 키와 함께 두 문자의 열(two-character sequences)을 사용해서 메타문자들(Meta characters)을 입력 할 수 있습니다. 따라서, M-b를 위해, ESC와 b를 사용 할 수 있습니다. ESC 문자열(character sequences)은 또한 실제 Meta 키들을 활용하여 터미널 상에서 사용될 수 있습니다. 두 문자의 열(two-character sequences)에겐 상당한 의미가 있다고 볼 수 있습니다.
 
 @appendixsection Editing actions
 
