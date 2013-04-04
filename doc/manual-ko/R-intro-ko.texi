@@ -7568,14 +7568,18 @@ base 그래픽와는 별개로 @pkg{grid} 패키지 내에 있는 별도의 그�
 
 @node Low-level plotting commands, Interacting with graphics, High-level plotting commands, Graphics
 @c @section Low-level plotting commands
-@section 로우레벨 플랏팅 명령어들 - 미번역 
+@section 
 
-Sometimes the high-level plotting functions don't produce exactly the
-kind of plot you desire.  In this case, low-level plotting commands can
-be used to add extra information (such as points, lines or text) to the
-current plot.
+@c Sometimes the high-level plotting functions don't produce exactly the
+@c kind of plot you desire.  In this case, low-level plotting commands can
+@c be used to add extra information (such as points, lines or text) to the
+@c current plot.
 
-Some of the more useful low-level plotting functions are:
+high-level 그래픽 함수로는 정학히 원하는 형태의 플롯을 그리는 것이 불가능한 경우가 있습니다. 이런 경우, low-level 명령문으로 현재의 플롯에 (포인트, 선 또는 문자와 같은) 추가적인 정보를 표현하는 것이 가능합니다.
+
+@c Some of the more useful low-level plotting functions are:
+
+유용하게 사용될 수 있는 low-level 그래픽 함수로는 다음과 같은 것들이 있습니다:
 
 @table @code
 @item points(x, y)
@@ -7586,6 +7590,8 @@ Adds points or connected lines to the current plot.  @code{plot()}'s
 @code{type=} argument can also be passed to these functions (and
 defaults to @code{"p"} for @code{points()} and @code{"l"} for
 @code{lines()}.)
+
+현재의 함수에 포인트나 이를 연결한 선을 첨가한다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있다.)
 
 @item text(x, y, labels, @dots{})
 @findex text
