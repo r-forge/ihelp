@@ -229,7 +229,7 @@ p {
 <li><a href="#Display-graphics">12.1.3 그래픽 표현하기</a>
 <li><a href="#Arguments-to-high_002dlevel-plotting-functions">12.1.4 하이레벨 플랏 함수에 사용되는 인자들</a>
 </li></ul>
-<li><a href="#Low_002dlevel-plotting-commands">12.2 로우레벨 플랏팅 명령어들 - 미번역</a>
+<li><a href="#Low_002dlevel-plotting-commands">12.2 </a>
 <ul>
 <li><a href="#Mathematical-annotation">12.2.1 수학기호 표시하기 - 미번역</a>
 <li><a href="#Hershey-vector-fonts">12.2.2 Hershey 벡터 글꼴 - 미번역</a>
@@ -7335,20 +7335,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 </div>
 
 <!-- @section Low-level plotting commands -->
-<h3 class="section">12.2 로우레벨 플랏팅 명령어들 - 미번역</h3>
+<h3 class="section">12.2 </h3>
 
-<p>Sometimes the high-level plotting functions don't produce exactly the
-kind of plot you desire.  In this case, low-level plotting commands can
-be used to add extra information (such as points, lines or text) to the
-current plot.
+<!-- Sometimes the high-level plotting functions don't produce exactly the -->
+<!-- kind of plot you desire.  In this case, low-level plotting commands can -->
+<!-- be used to add extra information (such as points, lines or text) to the -->
+<!-- current plot. -->
+<p>high-level 그래픽 함수로는 정학히 원하는 형태의 플롯을 그리는 것이 불가능한 경우가 있습니다. 이런 경우, low-level 명령문으로 현재의 플롯에 (포인트, 선 또는 문자와 같은) 추가적인 정보를 표현하는 것이 가능합니다.
 
-   <p>Some of the more useful low-level plotting functions are:
+<!-- Some of the more useful low-level plotting functions are: -->
+   <p>유용하게 사용될 수 있는 low-level 그래픽 함수로는 다음과 같은 것들이 있습니다:
 
      <dl>
 <dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-259"></a><a name="index-lines-260"></a>Adds points or connected lines to the current plot.  <code>plot()</code>'s
 <code>type=</code> argument can also be passed to these functions (and
 defaults to <code>"p"</code> for <code>points()</code> and <code>"l"</code> for
 <code>lines()</code>.)
+
+     <p>현재의 함수에 포인트나 이를 연결한 선을 첨가한다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있다.)
 
      <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-261"></a>Add text to a plot at points given by <code>x, y</code>.  Normally
 <code>labels</code> is an integer or character vector in which case
