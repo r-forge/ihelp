@@ -7347,73 +7347,108 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
    <p>유용하게 사용될 수 있는 low-level 그래픽 함수로는 다음과 같은 것들이 있습니다:
 
      <dl>
-<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-259"></a><a name="index-lines-260"></a>Adds points or connected lines to the current plot.  <code>plot()</code>'s
-<code>type=</code> argument can also be passed to these functions (and
-defaults to <code>"p"</code> for <code>points()</code> and <code>"l"</code> for
-<code>lines()</code>.)
+<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-259"></a><a name="index-lines-260"></a><!-- Adds points or connected lines to the current plot.  @code{plot()}'s -->
+<!-- @code{type=} argument can also be passed to these functions (and -->
+<!-- defaults to @code{"p"} for @code{points()} and @code{"l"} for -->
+<!-- @code{lines()}.) -->
 
-     <p>현재의 함수에 포인트나 이를 연결한 선을 첨가한다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있다.)
+     <p>현재의 함수에 포인트나 이를 연결한 선을 첨가합니다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있습니다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있습니다.)
 
-     <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-261"></a>Add text to a plot at points given by <code>x, y</code>.  Normally
-<code>labels</code> is an integer or character vector in which case
-<code>labels[i]</code> is plotted at point <code>(x[i], y[i])</code>.  The default
-is <code>1:length(x)</code>.
+     <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-261"></a><!-- Add text to a plot at points given by @code{x, y}.  Normally -->
+<!-- @code{labels} is an integer or character vector in which case -->
+<!-- @code{labels[i]} is plotted at point @code{(x[i], y[i])}.  The default -->
+<!-- is @code{1:length(x)}. -->
 
-     <p><strong>Note</strong>: This function is often used in the sequence
+     <p>x와y 값으로 표현된 점들에 문자를 첨가합니다. 보통 정수나 문자의 벡터 형태로 레이블이 주어지며, 이 경우 특정 i에 대해 (x[i], y[i])위치에 labels[i] 값이 표시됩니다. 디폴트로 1:length(x)이 지정되어 있습니다.
+
+     <!-- @strong{Note}: This function is often used in the sequence -->
+     <p><strong>주의</strong>: 이 함수는 다음과 같은 순서로 사용되는 경우가 많습니다.
 
      <pre class="example">          &gt; plot(x, y, type="n"); text(x, y, names)
 </pre>
-     <p class="noindent">The graphics parameter <code>type="n"</code> suppresses the points but sets up
-the axes, and the <code>text()</code> function supplies special characters, as
-specified by the character vector <code>names</code> for the points.
+     <p class="noindent"><!-- The graphics parameter @code{type="n"} suppresses the points but sets up -->
+<!-- the axes, and the @code{text()} function supplies special characters, as -->
+<!-- specified by the character vector @code{names} for the points. -->
 
-     <br><dt><code>abline(a, b)</code><dt><code>abline(h=</code><var>y</var><code>)</code><dt><code>abline(v=</code><var>x</var><code>)</code><dt><code>abline(</code><var>lm.obj</var><code>)</code><dd><a name="index-abline-262"></a>Adds a line of slope <code>b</code> and intercept <code>a</code> to the current
-plot.  <code>h=</code><var>y</var> may be used to specify y-coordinates for
-the heights of horizontal lines to go across a plot, and
-<code>v=</code><var>x</var> similarly for the x-coordinates for vertical
-lines.  Also <var>lm.obj</var> may be list with a <code>coefficients</code>
-component of length 2 (such as the result of model-fitting functions,)
-which are taken as an intercept and slope, in that order.
+     <p>그래픽 parameter인 type="n"이 포인트가 표현되는 것을 제한하고 있지만, 축은 이미 세워져 있고, text() 함수는 각 포인트들에 대한 문자 vector형태의 이름이 표현되도록 합니다.
 
-     <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-263"></a>Draws a polygon defined by the ordered vertices in (<code>x</code>, <code>y</code>)
-and (optionally) shade it in with hatch lines, or fill it if the
-graphics device allows the filling of figures.
+     <br><dt><code>abline(a, b)</code><dt><code>abline(h=</code><var>y</var><code>)</code><dt><code>abline(v=</code><var>x</var><code>)</code><dt><code>abline(</code><var>lm.obj</var><code>)</code><dd><a name="index-abline-262"></a><!-- Adds a line of slope @code{b} and intercept @code{a} to the current -->
+<!-- plot.  @code{h=@var{y}} may be used to specify @math{y}-coordinates for -->
+<!-- the heights of horizontal lines to go across a plot, and -->
+<!-- @code{v=@var{x}} similarly for the @math{x}-coordinates for vertical -->
+<!-- lines.  Also @var{lm.obj} may be list with a @code{coefficients} -->
+<!-- component of length 2 (such as the result of model-fitting functions,) -->
+<!-- which are taken as an intercept and slope, in that order. -->
 
-     <br><dt><code>legend(x, y, legend, ...)</code><dd><a name="index-legend-264"></a>Adds a legend to the current plot at the specified position.  Plotting
-characters, line styles, colors etc., are identified with the labels in
-the character vector <code>legend</code>.  At least one other argument <var>v</var>
-(a vector the same length as <code>legend</code>) with the corresponding
-values of the plotting unit must also be given, as follows:
+     <p>기울기 b 이고 y 절편 a인 선을 현재의 플롯에 첨가합니다. h=y 는 y좌표값을 높이로 하는 가로선이 이 그래프를 가로질러 그리며, 마찬가지로 v=x 은 x 좌표값을 시작점으로 하는 세로선을 그립니다. 또, lm.obj 는 (모형적함 함수의 결과로 얻어진) 길이 2의 coefficient 성분들을 표시하는데, 이 경우에는 순서대로 y절편과 기울기 값에 해당합니다.
+
+     <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-263"></a><!-- Draws a polygon defined by the ordered vertices in (@code{x}, @code{y}) -->
+<!-- and (optionally) shade it in with hatch lines, or fill it if the -->
+<!-- graphics device allows the filling of figures. -->
+
+     <p>(x,y)에 의해 정의된 꼭지점들을 순서대로 연결해서 만든 다각형을 그린다. 해당 그래픽 장치가 기능을 지원하면, (옵션을 사용해서) 그려진 다각형의 내부에 음영을 주거나 색을 채우는 것이 가능합니다.
+
+     <br><dt><code>legend(x, y, legend, ...)</code><dd><a name="index-legend-264"></a><!-- Adds a legend to the current plot at the specified position.  Plotting -->
+<!-- characters, line styles, colors etc., are identified with the labels in -->
+<!-- the character vector @code{legend}.  At least one other argument @var{v} -->
+<!-- (a vector the same length as @code{legend}) with the corresponding -->
+<!-- values of the plotting unit must also be given, as follows: -->
+
+     <p>특정한 위치에 현재 플롯의 범례를 첨가합니다. 플롯에 사용된 문자나 선의 종류 혹은 색 등이 범례에 포함된 문자 레이블을 통해 구분 가능해집니다. 다음과 같이 플롯 구성 단위가 가질 수 있는 값들 중 최소한 한 개 이상의 v (범례와 같은 길이를 가진 벡터를 사용하여) 선언이 필요합니다:
 
           <dl>
-<dt><code>legend( , fill=</code><var>v</var><code>)</code><dd>Colors for filled boxes
-<br><dt><code>legend( , col=</code><var>v</var><code>)</code><dd>Colors in which points or lines will be drawn
-<br><dt><code>legend( , lty=</code><var>v</var><code>)</code><dd>Line styles
-<br><dt><code>legend( , lwd=</code><var>v</var><code>)</code><dd>Line widths
-<br><dt><code>legend( , pch=</code><var>v</var><code>)</code><dd>Plotting characters (character vector)
+<dt><code>legend( , fill=</code><var>v</var><code>)</code><dd><!-- Colors for filled boxes -->
+
+          <p>상자에 칠해진 색상들
+
+          <br><dt><code>legend( , col=</code><var>v</var><code>)</code><dd><!-- Colors in which points or lines will be drawn -->
+
+          <p>포인트나 선에 사용될 색상들
+
+          <br><dt><code>legend( , lty=</code><var>v</var><code>)</code><dd><!-- Line styles -->
+
+          <p>선의 종류
+
+          <br><dt><code>legend( , lwd=</code><var>v</var><code>)</code><dd><!-- Line widths -->
+
+          <p>선의 굵기
+
+          <br><dt><code>legend( , pch=</code><var>v</var><code>)</code><dd><!-- Plotting characters (character vector) -->
+
+          <p>문자표시를 포함할 것 (문자 벡터 형태)
+
+     </dl>
+
+     <br><dt><code>title(main, sub)</code><dd><a name="index-title-265"></a><!-- Adds a title @code{main} to the top of the current plot in a large font -->
+<!-- and (optionally) a sub-title @code{sub} at the bottom in a smaller font. -->
+
+     <p>현재 플롯의 윗부분에 큰 글시로 주요(main) 제목을 첨가하고 (선택에 의해) 좀 더 작은 크기의 클씨로 부(sub)제목을 아랫 부분에 표시합니다.
+
+     <br><dt><code>axis(side, ...)</code><dd><a name="index-axis-266"></a><!-- Adds an axis to the current plot on the side given by the first argument -->
+<!-- (1 to 4, counting clockwise from the bottom.)  Other arguments control -->
+<!-- the positioning of the axis within or beside the plot, and tick -->
+<!-- positions and labels.  Useful for adding custom axes after calling -->
+<!-- @code{plot()} with the @code{axes=FALSE} argument. -->
 </dl>
 
-     <br><dt><code>title(main, sub)</code><dd><a name="index-title-265"></a>Adds a title <code>main</code> to the top of the current plot in a large font
-and (optionally) a sub-title <code>sub</code> at the bottom in a smaller font.
+   <p>현재 플롯에 첫번째 인수(1 부터 4까지의 숫자로 나타나며, 바닥에서부터 시계 방향으로 해당 사면을 의미함)에 의해 주어진 면에 새로운 축을 첨가합니다. 다른 인수들로 플롯 안에 포함되거나 플롯 옆에 나타나는 축을 조절할 수도 있고, 위치나 레이블에 대한 v 선언을 하기도 합니다. 사용자 정의로 축을 사용하기 위해서는 plot() 함수 안에 axes=FALSE 인수를 지정하는 편이 좋을 것입이다.
 
-     <br><dt><code>axis(side, ...)</code><dd><a name="index-axis-266"></a>Adds an axis to the current plot on the side given by the first argument
-(1 to 4, counting clockwise from the bottom.)  Other arguments control
-the positioning of the axis within or beside the plot, and tick
-positions and labels.  Useful for adding custom axes after calling
-<code>plot()</code> with the <code>axes=FALSE</code> argument. 
-</dl>
+<!-- Low-level plotting functions usually require some positioning -->
+<!-- information (e.g., @math{x} and @math{y} coordinates) to determine where -->
+<!-- to place the new plot elements.  Coordinates are given in terms of -->
+<!-- @emph{user coordinates} which are defined by the previous high-level -->
+<!-- graphics command and are chosen based on the supplied data. -->
+   <p>Low-level 그래픽 함수들은 대체로 새로운 플롯 구성 요소를 어디에 배치할지 결정하기 위해 위치에 관한 (x, y좌표 같은) 정보를 요구합니다. 이런 좌표들은 이전의 high-level 그래픽 함수 명령문에 의해 정의된 사용자 좌표에 의해 표현되며, 이것은 주어진 데이터에 따라 결정됩니다.
 
-   <p>Low-level plotting functions usually require some positioning
-information (e.g., x and y coordinates) to determine where
-to place the new plot elements.  Coordinates are given in terms of
-<em>user coordinates</em> which are defined by the previous high-level
-graphics command and are chosen based on the supplied data.
-
-   <p>Where <code>x</code> and <code>y</code> arguments are required, it is also
-sufficient to supply a single argument being a list with elements named
-<code>x</code> and <code>y</code>.  Similarly a matrix with two columns is also
-valid input.  In this way functions such as <code>locator()</code> (see below)
-may be used to specify positions on a plot interactively.
+<!-- Where @code{x} and @code{y} arguments are required, it is also -->
+<!-- sufficient to supply a single argument being a list with elements named -->
+<!-- @code{x} and @code{y}.  Similarly a matrix with two columns is also -->
+<!-- valid input.  In this way functions such as @code{locator()} (see below) -->
+<!-- may be used to specify positions on a plot interactively. -->
+   <p>X 와 y 인수값이 필요한 경우, x 와 y로 명명된 성분들을 연결해서 표현한 하나의 인수로
+표현하는 것 역시 가능합니다. 마찬가지로 두개의 열을 가진 행렬을 사용하는 것도 역시
+유효한 방법입니다. 이 방법을 사용할 때는 locator() (아래 참조) 같은 함수를 사용해서
+플롯을 표현하기 위한 여러 위치들을 interactive하게 조정하는 것이 가능합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Mathematical-annotation">Mathematical annotation</a>
