@@ -7926,32 +7926,45 @@ par()함수는 현재의 그래픽 디바이스의 그래픽 모수 리스트를
 
 @table @code
 @item par()
-Without arguments, returns a list of all graphics parameters and their
-values for the current device.
+@c Without arguments, returns a list of all graphics parameters and their
+@c values for the current device.
+
+아무런 인수가 없는 경우, 현재 디바스에 저장되어 있는 모든 그래픽 모수와 그 모수들 해당 값의 리스트를 출력합니다.
+
 @item par(c("col", "lty"))
-With a character vector argument, returns only the named graphics
-parameters (again, as a list.)
+@c With a character vector argument, returns only the named graphics
+@c parameters (again, as a list.)
+
+문자 벡터 인수를 사용하면, 오직 따로 지정된 그래픽 모수들에 대해서만 (이 경우도 리스트의 형태로) 출력합니다.
+
 @item par(col=4, lty=2)
-With named arguments (or a single list argument), sets the values of
-the named graphics parameters, and returns the original values of the
-parameters as a list.
+@c With named arguments (or a single list argument), sets the values of
+@C the named graphics parameters, and returns the original values of the
+@c parameters as a list.
+
+그래픽 모수와 해당 모수의 값들을 따로 인수(하나의 인수도 가능)로 지정하면, 지정된 값이 리스트로 출려됩니다.
+
 @end table
 
-Setting graphics parameters with the @code{par()} function changes the
-value of the parameters @emph{permanently}, in the sense that all future
-calls to graphics functions (on the current device) will be affected by
-the new value.  You can think of setting graphics parameters in this way
-as setting ``default'' values for the parameters, which will be used by
-all graphics functions unless an alternative value is given.
+@c Setting graphics parameters with the @code{par()} function changes the
+@c value of the parameters @emph{permanently}, in the sense that all future
+@c calls to graphics functions (on the current device) will be affected by
+@c the new value.  You can think of setting graphics parameters in this way
+@c as setting ``default'' values for the parameters, which will be used by
+@c all graphics functions unless an alternative value is given.
 
-Note that calls to @code{par()} @emph{always} affect the global values
-of graphics parameters, even when @code{par()} is called from within a
-function.  This is often undesirable behavior---usually we want to set
-some graphics parameters, do some plotting, and then restore the
-original values so as not to affect the user's @R{} session.  You can
-restore the initial values by saving the result of @code{par()} when
-making changes, and restoring the initial values when plotting is
-complete.
+par()함수를 사용해서 그래픽 모수를 지정하면 해당 모수와 그 값은 “영구적”으로 바뀝니다. 즉 미래에 해당 그래픽 함수를 (현재 디바이스에서) 사용하면 새로 지정된 값이 반영되어 출력되는 것 입니다. 따라서 이 방법을 사용해서 그래픽 모수를 지정하는 것은 일종의 “디폴트” 값을 지정하는 것과 같다고 생각할 수 있을 겁니다. 즉, 다른 값이 다시 지정되지 않는 한, 모든 그래픽 함수가 이 지정값에 영향을 받게 되는 것입니다.
+
+@c Note that calls to @code{par()} @emph{always} affect the global values
+@c of graphics parameters, even when @code{par()} is called from within a
+@c function.  This is often undesirable behavior---usually we want to set
+@c some graphics parameters, do some plotting, and then restore the
+@c original values so as not to affect the user's @R{} session.  You can
+@c restore the initial values by saving the result of @code{par()} when
+@c making changes, and restoring the initial values when plotting is
+@c complete.
+
+par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용된 경우라도 전체적으로 모든 그래픽 모수들의 값이 영향을 받게 된다는 점을 주의하시기 바랍니다. 이것은 많은 경우 그다지 바람직하지 않다고 볼 수 있습니다 . 우리가 몇 개의 그래픽 모수를 따로 지정하는 것은 대체로 몇 개의 플롯을 그린 후, 현재의 R 세션이 이 값에 영향 받기 전 상태인 원래의 모수값으로 돌아가고 싶기 때문입니다. 특별히 모수를 바꾸는 작업이 필요할 때 par()의 결과를 따로 저장하고 플롯 작업이 끝난 후에는 초기 값을 다시 사용함으로써 초기값을 계속 유지하는 것이 가능합니다.
 
 @example
 > oldpar <- par(col=4, lty=2)
@@ -7960,9 +7973,11 @@ complete.
 @end example
 
 @noindent
-To save and restore @emph{all} settable@footnote{Some graphics
-parameters such as the size of the current device are for information
-only.} graphical parameters use
+@c To save and restore @emph{all} settable@footnote{Some graphics
+@c parameters such as the size of the current device are for information
+@c only.} graphical parameters use
+
+조정 가능한 모든 그래픽 모수값을 저장해서 다시 사용하기 위해서는
 
 @example
 > oldpar <- par(no.readonly=TRUE)
