@@ -7734,18 +7734,22 @@ X와 y인수값이 필요한 경우, x 와 y로 명명된 성분들을 연결해
 @c @subsection Mathematical annotation
 @subsection
 
-In some cases, it is useful to add mathematical symbols and formulae to a
-plot.  This can be achieved in @R{} by specifying an @emph{expression} rather
-than a character string in any one of @code{text}, @code{mtext}, @code{axis},
-or @code{title}.   For example, the following code draws the formula for
-the Binomial probability function:
+@c In some cases, it is useful to add mathematical symbols and formulae to a
+@c plot.  This can be achieved in @R{} by specifying an @emph{expression} rather
+@c than a character string in any one of @code{text}, @code{mtext}, @code{axis},
+@c or @code{title}.   For example, the following code draws the formula for
+@c the Binomial probability function:
+
+어떤 경우에는, 수학적 기호나 공식을 플롯에 첨가하는 것이 유용합니다. R에서는 이런 작업을 text, mtext, axis 또는 title 같은 함수를 사용해서 하나의 문자열을 입력하는 것 보다는 하나의 표현(expression)을 사용해서 해결합니다. 예를 들면, 다음의 코드는 이항분포 함수(binomial probability function)의 공식을 표현되도록 합니다:
 
 @example
 > text(x, y, expression(paste(bgroup("(", atop(n, x), ")"), p^x, q^@{n-x@})))
 @end example
 
-More information, including a full listing of the features available can
-obtained from within @R{} using the commands:
+@c More information, including a full listing of the features available can
+@c obtained from within @R{} using the commands:
+
+이 함수에서 사용할 수 있는 모든 기능들을 포함해서 좀 더 많은 정보를 얻을 수 있는 R 명령문들은 다음과 같습니다:
 
 @example
 > help(plotmath)
