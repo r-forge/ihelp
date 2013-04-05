@@ -8474,22 +8474,29 @@ Terminate all graphics devices on the list, except the null device.
 @section 다이나믹한 그래픽 생성하기
 @cindex Dynamic graphics
 
-@R{} does not have builtin capabilities for dynamic or
-interactive graphics, e.g.@ rotating point clouds or to ``brushing''
-(interactively highlighting) points. However, extensive dynamic graphics
-facilities are available in the system GGobi by Swayne, Cook and Buja
-available from
+@c @R{} does not have builtin capabilities for dynamic or
+@c interactive graphics, e.g.@ rotating point clouds or to ``brushing''
+@c (interactively highlighting) points. However, extensive dynamic graphics
+@c facilities are available in the system GGobi by Swayne, Cook and Buja
+@c available from
+
+Dynamic 또는 interactive 한 그래픽 built-in기능을 제공하지 않습니다. (e.g. rotating point clouds or to “brushing” (interactively highlighting) points) 그렇지만, Swayne, Cook과 Buja 에 의해 개발된 GGobi 시스템
 
 @quotation
 @uref{http://www.ggobi.org/}
 @end quotation
 
 @noindent
-and these can be accessed from @R{} via the package @CRANpkg{rggobi}, described at
-@uref{http://www.ggobi.org/rggobi}.
+@c and these can be accessed from @R{} via the package @CRANpkg{rggobi}, described at
 
-Also, package @CRANpkg{rgl} provides ways to interact with 3D plots, for example
-of surfaces.
+을 통해 충분한 dynamic 그래픽 기능들을 사용하는 것이 가능합니다. 이러한 GGobi 기능들을 이용하기 위해서는 R의 팩키지 중의 하나인 rggobi를 사용해야 합니다. (사용법:
+
+@uref{http://www.ggobi.org/rggobi}).
+
+@c Also, package @CRANpkg{rgl} provides ways to interact with 3D plots, for example
+@c of surfaces.
+
+또한, rgl 팩키지는 3D plot 을 사용하여 이러한 plot 의 표면(surface) 등에서 interactive 하게 작업할 수 있도록 해 줍니다.
 
 @node Packages, A sample session, Graphics, Top
 @c @chapter Packages
