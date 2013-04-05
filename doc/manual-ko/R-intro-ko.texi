@@ -7985,27 +7985,32 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 > par(oldpar)
 @end example
 
-
 @node Arguments to graphics functions,  , The par() function, Using graphics parameters
 @c @subsection Temporary changes: Arguments to graphics functions
 @subsection 그래픽 함수에 인자로 전달하는 방식의 임시적 변환
 
-Graphics parameters may also be passed to (almost) any graphics function
-as named arguments.  This has the same effect as passing the arguments
-to the @code{par()} function, except that the changes only last for the
-duration of the function call.  For example:
+@c Graphics parameters may also be passed to (almost) any graphics function
+@c as named arguments.  This has the same effect as passing the arguments
+@c to the @code{par()} function, except that the changes only last for the
+@c duration of the function call.  For example:
+
+그래픽 모수들은 (거의 모든) 그래픽 함수에서 인수처럼 사용될 수도 있습니다. 이러한 방법은 인수로 사용되었을 때의 변화가 오직 해당 함수가 사용되는 동안만 지속된다는 점을 제외하고는, par()함수에 인수들을 사용하는 것과 같은 효과를 줍니다. 예를 들면:
 
 @example
 > plot(x, y, pch="+")
 @end example
 
 @noindent
-produces a scatterplot using a plus sign as the plotting character,
-without changing the default plotting character for future plots.
+@c produces a scatterplot using a plus sign as the plotting character,
+@c without changing the default plotting character for future plots.
 
-Unfortunately, this is not implemented entirely consistently and it is
-sometimes necessary to set and reset graphics parameters using
-@code{par()}.
+이 경우, 더하기 표시를 플롯 문자로 사용한 산점도를 그리게 되는데, 이 때 사용된 플롯 문자는 앞으로 사용하게 될 플롯의 디폴트에는 영향을 주지 않습니다.
+
+@c Unfortunately, this is not implemented entirely consistently and it is
+@c sometimes necessary to set and reset graphics parameters using
+@c @code{par()}.
+
+안타깝지만, 항상 이와 같은 형태로만 실행되는 것이 아니므로 경우에 따라 par()를 사용해서 그래픽 모수들을 지정하고 다시 되돌리는 작업이 필요하기도 합니다.
 
 
 @node Graphics parameters, Device drivers, Using graphics parameters, Graphics
