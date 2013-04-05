@@ -7759,26 +7759,40 @@ X와 y인수값이 필요한 경우, x 와 y로 명명된 성분들을 연결해
 
 @node Hershey vector fonts,  , Mathematical annotation, Low-level plotting commands
 @c @subsection Hershey vector fonts
-@subsection Hershey 벡터 글꼴 - 미번역 
+@subsection Hershey
 
-It is possible to specify Hershey vector fonts for rendering text when using
-the @code{text} and @code{contour} functions.  There are three reasons for
-using the Hershey fonts:
+@c It is possible to specify Hershey vector fonts for rendering text when using
+@c the @code{text} and @code{contour} functions.  There are three reasons for
+@c using the Hershey fonts:
+
+Text 와 contour 함수를 사용할 때, text 를 조절하기 위해 Hershey폰트를 사용하는 것이 가능합니다. Hershey폰트를 사용하는 것은 다음의 세가지 이유에서 때문입니다:
+
 @itemize @bullet
 @item
-Hershey fonts can produce better
-output, especially on a computer screen, for rotated and/or small text.
+@c Hershey fonts can produce better
+@c output, especially on a computer screen, for rotated and/or small text.
+
+Hershey폰트는 컴퓨터 스크린에서 text 를 회전시키거나 작은 text 를 사용할 때 특히 효과적입니다.
+
 @item
-Hershey fonts
-provide certain symbols that may not be available
-in the standard fonts.  In particular, there are zodiac signs, cartographic
-symbols and astronomical symbols.
+@c Hershey fonts
+@c provide certain symbols that may not be available
+@c in the standard fonts.  In particular, there are zodiac signs, cartographic
+@c symbols and astronomical symbols.
+
+Hershey 폰트는 일판 폰트에서는 제공하지 않는 몇몇 심볼들을 제공합니다. 특히, 조디악 기호 (zodiac sign)나 지도 제작용 (cartographic) 심볼 그리고 천문학(astronomical) 심볼 등을 제공합니다.
+
 @item
-Hershey fonts provide cyrillic and japanese (Kana and Kanji) characters.
+@c Hershey fonts provide cyrillic and japanese (Kana and Kanji) characters.
+
+Hershey 폰트는 키릴(Cyrillic)과 일본어(Kana 와 Kanji 포함) 문자들을 제공합니다.
+
 @end itemize
 
-More information, including tables of Hershey characters can be obtained from
-within @R{} using the commands:
+@c More information, including tables of Hershey characters can be obtained from
+@c within @R{} using the commands:
+
+Hershey 문자표를 포함한 좀 더 많은 정보를 찾기 위해 R에서 사용할 수 있는 명령문은 다음과 같습니다:
 
 @example
 > help(Hershey)
