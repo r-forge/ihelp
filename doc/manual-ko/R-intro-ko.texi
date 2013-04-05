@@ -7803,74 +7803,87 @@ Hershey 문자표를 포함한 좀 더 많은 정보를 찾기 위해 R에서 �
 
 @node Interacting with graphics, Using graphics parameters, Low-level plotting commands, Graphics
 @c @section Interacting with graphics
-@section 대화식으로 사용하는 그래픽 - 미번역 
+@section
 
 @c @R{} also provides functions which allow users to extract or add
 @c information to a plot using a mouse.  The simplest of these is the
 @c @code{locator()} function:
 
-@R{}은 또한 사용자가 마우스를 이용하여 플랏에 정보를 추출하거나 추가할 수 있도록 해줍니다.
-이러한 것을 대화식으로 사용한다고 하며, 가장 단순한 예는 함수 @code{locator()}를 이용하는 것입니다. 
+@R{}에서는 마우스를 사용하여 플롯에 관련된 정보를 빼거나 더하는 작업을 하는 것도 가
+능합니다. 이런 방식으로 작동하는 함수 중 중 가장 간단한 것은 @code{locator()} 함수 입니다:
 
 @table @code
 @item locator(n, type)
 @findex locator
-Waits for the user to select locations on the current plot using the
-left mouse button.  This continues until @code{n} (default 512) points
-have been selected, or another mouse button is pressed.  The
-@code{type} argument allows for plotting at the selected points and has
-the same effect as for high-level graphics commands; the default is no
-plotting.  @code{locator()} returns the locations of the points selected
-as a list with two components @code{x} and @code{y}.
+@c Waits for the user to select locations on the current plot using the
+@c left mouse button.  This continues until @code{n} (default 512) points
+@c have been selected, or another mouse button is pressed.  The
+@c @code{type} argument allows for plotting at the selected points and has
+@c the same effect as for high-level graphics commands; the default is no
+@c plotting.  @code{locator()} returns the locations of the points selected
+@c as a list with two components @code{x} and @code{y}.
 @end table
 
-@code{locator()} is usually called with no arguments.  It is
-particularly useful for interactively selecting positions for graphic
-elements such as legends or labels when it is difficult to calculate in
-advance where the graphic should be placed.  For example, to place some
-informative text near an outlying point, the command
+마우스 왼쪽 버튼을 사용하여 현재 플롯에 관련된 위치에 관련된 값들을 선택할 수 있도록 기다리는 함수. 이 함수는 n (디폴트는 512)개의 점들이 모두 선택될 까지 또는 다음 번 마우스 버튼을 누를 때까지 계속 작동합니다. Type 인수는 선택된 포인들을 어떤 플롯으로 그릴지 결정하며 high-level 그래픽 함수에서와 같은 기능으로 사용됩니다; 디폴트로는 플롯을 표시하지 않는 것이 지정되어 있습니다. locator()는 선택된 포인트드의 위치들이 두 개의 x 와 y의 성분으로 이루어진 하나의 리스트 값을 출력합니다.
+
+@c @code{locator()} is usually called with no arguments.  It is
+@c particularly useful for interactively selecting positions for graphic
+@c elements such as legends or labels when it is difficult to calculate in
+@c advance where the graphic should be placed.  For example, to place some
+@c informative text near an outlying point, the command
+
+하지만 locator()함수는 인수들을 입력하지 않은 채 그대로 사용되는 경우가 더 많습니다. 이 함수는 범례나 레이블 같은 그래픽 요소들의 위치를 정할 때 interactive하게 사용되는데, 특히 이러한 요소들을 사전에 해당 그래픽의 어느 곳에 배치해야할지 결정하기 어려운 경우에 유용하게 사용될 수 있습니다. 예를 들면, Outlier와 같은 포인트에 해당 포인트에 대한 정보를 입력하기 위해 다음 명령문을 사용할 수 있습니다.
 
 @example
 > text(locator(1), "Outlier", adj=0)
 @end example
 
 @noindent
-may be useful.  (@code{locator()} will be ignored if the current device,
-such as @code{postscript} does not support interactive pointing.)
+@c may be useful.  (@code{locator()} will be ignored if the current device,
+@c such as @code{postscript} does not support interactive pointing.)
+
+(@code{locator()} 함수는 현재 디바이스가 postscript 와 같이 interactive pointing 기능을 제공하지 않는 경우에는 그냥 무시되어 버립니다.)
 
 @table @code
 @item identify(x, y, labels)
 @findex identify
-Allow the user to highlight any of the points defined by @code{x} and
-@code{y} (using the left mouse button) by plotting the corresponding
-component of @code{labels} nearby (or the index number of the point if
-@code{labels} is absent).  Returns the indices of the selected points
-when another button is pressed.
+@c Allow the user to highlight any of the points defined by @code{x} and
+@c @code{y} (using the left mouse button) by plotting the corresponding
+@c component of @code{labels} nearby (or the index number of the point if
+@c @code{labels} is absent).  Returns the indices of the selected points
+@c when another button is pressed.
+
+x 와 y 에 의해 정의된 어떤 포인트라도 (마우스의 왼쪽 버튼을 사용해서) 그 근처에 해당 포인트에 대응되는 레이블을 표기함으로써 그 포인트를 확인할 수 있도록 하는 함수.(레이블 정보가 없는 경우, 해당 포인트의 인덱스 번호를 사용) 버튼을 한 번 더 누르면 선택된 포인트들의 인덱스들을 출력합니다.
+
 @end table
 
-Sometimes we want to identify particular @emph{points} on a plot, rather
-than their positions.  For example, we may wish the user to select some
-observation of interest from a graphical display and then manipulate
-that observation in some way.  Given a number of @math{(x, y)}
-coordinates in two numeric vectors @code{x} and @code{y}, we could use
-the @code{identify()} function as follows:
+@c Sometimes we want to identify particular @emph{points} on a plot, rather
+@c than their positions.  For example, we may wish the user to select some
+@c observation of interest from a graphical display and then manipulate
+@c that observation in some way.  Given a number of @math{(x, y)}
+@c coordinates in two numeric vectors @code{x} and @code{y}, we could use
+@c the @code{identify()} function as follows:
+
+때때로 우리는 플롯에서 특별한 몇 개의 포인트들의 위치를 보기 보다는 해당 포인트에 대한 정보를 확인하고 싶어집니다. 예를 들면, 그래픽으로 표현된 데이터 중 관심 있는 몇 개의 관측치만 선택해서 그 관측치들만 따로 처리하고 싶은 경우가 있습니다. 포인트들을 두 개의 숫자 벡터인 x 와 y 에 의해 표현된 (x, y) 좌표 쌍들로 표현하면, identify()를 다음과 같이 사용할 수 있습니다:
 
 @example
 > plot(x, y)
 > identify(x, y)
 @end example
 
-The @code{identify()} functions performs no plotting itself, but simply
-allows the user to move the mouse pointer and click the left mouse
-button near a point.  If there is a point near the mouse pointer it will
-be marked with its index number (that is, its position in the
-@code{x}/@code{y} vectors) plotted nearby.  Alternatively, you could use
-some informative string (such as a case name) as a highlight by using
-the @code{labels} argument to @code{identify()}, or disable marking
-altogether with the @code{plot = FALSE} argument.  When the process is
-terminated (see above), @code{identify()} returns the indices of the
-selected points; you can use these indices to extract the selected
-points from the original vectors @code{x} and @code{y}.
+@c The @code{identify()} functions performs no plotting itself, but simply
+@c allows the user to move the mouse pointer and click the left mouse
+@c button near a point.  If there is a point near the mouse pointer it will
+@c be marked with its index number (that is, its position in the
+@c @code{x}/@code{y} vectors) plotted nearby.  Alternatively, you could use
+@c some informative string (such as a case name) as a highlight by using
+@c the @code{labels} argument to @code{identify()}, or disable marking
+@c altogether with the @code{plot = FALSE} argument.  When the process is
+@c terminated (see above), @code{identify()} returns the indices of the
+@c selected points; you can use these indices to extract the selected
+@c points from the original vectors @code{x} and @code{y}.
+
+identify() 함수는 그 자체로 플롯을 그리지는 않지만, 사용자들이 마우스 포인터를 움직이다 어떤 포인트에서는 마우스 왼쪽 버튼을 클릭할 수 있는 기능을 제공합니다. 어떤 포인트 근처에 마우스 포인터가 있는 경우, 해당 포인트는 인덱스 번호로 표시될 것 입니다. (이것은, 그 포인트의 위치가 x/y vector로 되어 있음을 의미하는 것입니다.) 또한, identify()함수 내에 labels 인수를 사용하여 포인트들이 좀 더 informative하게(해당 케이스의 이름 등) 표현되도록 할 수도 있으며, plot = FALSE인수를 사용하면 포인트를 선택해도 아무런 표시가 남지 않도록 할 수도 있습니다. 해당 프로세스가 끝나고 나면(위 참조), identify()는 선택되었던 포인트들의 인덱스를 출력합니다; 이러한 인덱스 정보를 바탕으로 원래 x, y의 벡터 형태로 되어 있는 선택된 포인트들의 정보를 따로 추출해내는 것도 가능할 것입니다.
 
 @node Using graphics parameters, Graphics parameters, Interacting with graphics, Graphics
 @c @section Using graphics parameters
