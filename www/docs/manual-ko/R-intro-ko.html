@@ -125,10 +125,10 @@ p {
 </li></ul>
 <li><a href="#The-outer-product-of-two-arrays">5.5 두 배열의 외적</a>
 <li><a href="#Generalized-transpose-of-an-array">5.6 배열의 전치를 일반적인 방법으로 수행하는 법</a>
-<li><a href="#Matrix-facilities">5.7 Matrix facilities</a>
+<li><a href="#Matrix-facilities">5.7 행렬의 기능들</a>
 <ul>
-<li><a href="#Multiplication">5.7.1 Matrix multiplication</a>
-<li><a href="#Linear-equations-and-inversion">5.7.2 Linear equations and inversion</a>
+<li><a href="#Multiplication">5.7.1 행렬의 곱셈연산</a>
+<li><a href="#Linear-equations-and-inversion">5.7.2 선형방정식의 해와 역행렬</a>
 <li><a href="#Eigenvalues-and-eigenvectors">5.7.3 Eigenvalues and eigenvectors</a>
 <li><a href="#Singular-value-decomposition-and-determinants">5.7.4 Singular value decomposition and determinants</a>
 <li><a href="#Least-squares-fitting-and-the-QR-decomposition">5.7.5 Least squares fitting and the QR decomposition</a>
@@ -2862,7 +2862,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 
 </div>
 
-<h3 class="section">5.7 Matrix facilities</h3>
+<!-- @section Matrix facilities -->
+<h3 class="section">5.7 행렬의 기능들</h3>
 
 <!-- As noted above, a matrix is just an array with two subscripts.  However -->
 <!-- it is such an important special case it needs a separate discussion. -->
@@ -2870,16 +2871,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- matrices.  For example @code{t(X)} is the matrix transpose function, as -->
 <!-- noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the -->
 <!-- number of rows and columns in the matrix @code{A} respectively. -->
-<p>위에서 언급했던것과 같이, 행렬은 단순히 2개의 서브스크립트로 이루어진 배열의 특수한 경우입니다. R은 다양하고 풍부한 행렬의 연산기능을 제공하고 있습니다. 예를 들면, t(X) 는 행렬 X 의 전치입니다. 함수 nrow(A) 과 ncol(A) 은 행렬 A 의 행의 개수와 열의 개수를 알려줍니다.
+<p>위에서 언급했던것과 같이, 행렬은 2개의 첨자를 활용하는 배열의 특수한 경우입니다. 
+그러나, 배열의 섹션으로부터 분리하여 행렬에 대해서만 따로 설명하는 이유는 R은 행렬에 특화된 다양한 연산기능을 제공하기 때문입니다. 
+예를들면, <code>t(X)</code>는 전치를 하는데 사용되는 함수이며, <code>nrow(A)</code>와 <code>ncol(A)</code>은 행렬 <code>A</code>의 행의 개수와 열의 개수를 알려주는데 사용되는 함수들입니다. 
+<a name="index-nrow-103"></a><a name="index-ncol-104"></a>
 
-   <p><a name="index-nrow-103"></a><a name="index-ncol-104"></a>
-
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
 <ul class="menu">
 <li><a accesskey="1" href="#Multiplication">Multiplication</a>
 <li><a accesskey="2" href="#Linear-equations-and-inversion">Linear equations and inversion</a>
@@ -2897,9 +2893,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 
 </div>
 
-<h4 class="subsection">5.7.1 Matrix multiplication</h4>
+<!-- @subsection Matrix multiplication -->
+<h4 class="subsection">5.7.1 행렬의 곱셈연산</h4>
 
-<p><a name="index-Matrix-multiplication-105"></a>The operator <code>%*%</code> is used for matrix multiplication. 
+<p><a name="index-Matrix-multiplication-105"></a><!-- The operator @code{%*%} is used for matrix multiplication. -->
 <a name="index-g_t_0025_002a_0025-106"></a>
 <!-- An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be -->
 <!-- used as an @math{n}-vector if in the context such is appropriate. -->
@@ -2910,30 +2907,47 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 
 <!-- If, for example, @code{A} and @code{B} are square matrices of the same -->
 <!-- size, then -->
-   <p>%*% 라는 연산자는 행렬의 곱에 사용됩니다. 본래 1개의 행 또는 1개의 열로 구성된 행렬은 정확히 말하면, n 개의 요소를 가진 행 벡터 혹은 열벡터입니다. 그러나, 행렬곱셈에서 사용되는 벡터는 수학적 표현이 논리적으로 정확하다면 행 혹은 열벡터로 적절하게 변경되어 연산을 수행합니다.
+   <p><code>%*%</code>기호는 행렬의 곱셈을 수행하는 연산자입니다. 
+본래 n개의 구성요소로 이루어진 1개의 행 또는 1개의 열로 된 행렬은 n개의 구성요소를 가진 벡터로 상황에 따라 적절히 변경됩니다. 
+행렬의 수식에서 사용되는 행 또는 열 벡터들은 수학적으로 올바른 표현이기만 하다면 자동으로 곱셈연산을 수행합니다 (그러나, 항상 이렇게 올바르게 분명한 방식으로 작동하는게 아니므로, 주의해야 합니다. 
+이러한 예제에 대해서는 조금 뒤에 살펴보게 될 것입니다).
 
-   <p>만약, A 와 B 가 정방행렬이라면, 다음의 표현은 원소단위의 곱을 수행합니다.
+   <p>만약, <code>A</code>와 <code>B</code> 모두 정방행렬이라면, 다음과 같이 원소단위의 곱셈을 수행할 수 있습니다.
 
 <pre class="example">     &gt; A * B
 </pre>
    <p class="noindent"><!-- is the matrix of element by element products and -->
 
-   <p>그러나, 다음의 표현은 원소의 곱이 아닌 행렬곱셈을 의미합니다.
+   <p>그러나, 다음의 표현은 원소의 곱셈이 아닌 행렬의 곱셈이라는 것을 분명히 구분하셔야 합니다.
 
 <pre class="example">     &gt; A %*% B
 </pre>
    <p class="noindent"><!-- is the matrix product.  If @code{x} is a vector, then -->
 
-   <p>만약, 아래와 같이 행렬곱셈에서 사용되는 x가 벡터라면 스칼라 값을 돌려주는 이차(quadratic)연산을 수행합니다.
+   <p>만약, <code>x</code>가 벡터라면 아래와 같은 표현은 쿼드래딕 형식(quadratic form)을 나타냅니다. 
+<a rel="footnote" href="#fn-16" name="fnd-16"><sup>16</sup></a>
 
 <pre class="example">     &gt; x %*% A %*% x
 </pre>
-   <p class="noindent">is a quadratic form.<a rel="footnote" href="#fn-16" name="fnd-16"><sup>16</sup></a>
+   <p class="noindent"><!-- is a quadratic form. -->
+<!-- @footnote{Note that @code{x %*% x} is ambiguous, as -->
+<!-- it could mean either @xTx{} or @xxT{}, where @eqn{@strong{x},x} is the -->
+<!-- column form.  In such cases the smaller matrix seems implicitly to be -->
+<!-- the interpretation adopted, so the scalar @xTx{} is in this case the -->
+<!-- result.  The matrix @xxT{} may be calculated either by @code{cbind(x) -->
+<!-- %*% x} or @code{x %*% rbind(x)} since the result of @code{rbind()} or -->
+<!-- @code{cbind()} is always a matrix.  However, the best way to compute -->
+<!-- @xTx{} or @xxT{} is @code{crossprod(x)} or @code{x %o% x} -->
+<!-- respectively.} -->
 
    <p><a name="index-crossprod-107"></a><!-- The function @code{crossprod()} forms ``crossproducts'', meaning that -->
 <!-- @code{crossprod(X, y)} is the same as @code{t(X) %*% y} but the -->
 <!-- operation is more efficient.  If the second argument to -->
 <!-- @code{crossprod()} is omitted it is taken to be the same as the first. -->
+
+   <p>함수 <code>crossprod()</code>는 &ldquo;크로스 프라닥트 (crossproduct)&rdquo;라고도 불리는 <code>t(X) %*% y</code> 연산을 수행하게 되며, 이의 사용법은 <code>corssprod(X, y)</code> 입니다. 
+다른 점은 단순히 좀 더 효율적이라는 점입니다. 
+만약, 함수 <code>crossprod()</code>에 사용되는 두번째가 인자가 생략되어 있다면, 첫번째 인자를 이용하여 연산을 수행하게 됩니다.
 
    <p><a name="index-diag-108"></a><!-- The meaning of @code{diag()} depends on its argument.  @code{diag(v)}, -->
 <!-- where @code{v} is a vector, gives a diagonal matrix with elements of the -->
@@ -2944,16 +2958,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- numeric value then @code{diag(k)} is the @code{k} by @code{k} identity -->
 <!-- matrix! -->
 
-   <p>crossprod() 이라는 함수는 연산속도가 더 효율적이라는 점만 제외한다면 t(X)%*%y 와 동일한 연산을 수행합니다. 만약, 두번째 인자와 첫번째 인자와 동일하다면 두번째 인자는 생략해도 무방합니다.
+   <p>함수 <code>diag()</code>는 입력받는 인자에 따라 다른 결과를 줍니다. 
+만약, <code>diag(v)</code>와 같이 <code>v</code>라는 벡터 인자가 입력되면 행렬의 대각원소를 <code>v</code>를 가지는 대각행렬을 생성합니다. 
+그러나, <code>diag(M)</code>과 같이 <code>M</code>라는 행렬 인자가 입력되면 행렬 <code>M</code>이 가지는 대각원소들을 벡터의 형식으로 출력하게 됩니다. 
+이것은 <span class="sc">Matlab</span>에서 사용되는 함수 <code>diag()</code>의 기능과 동일합니다. 
+다소 혼돈스러울 수도 있으나, <code>diag(k)</code>와 같이 <code>k</code>라는 스칼라 인자가 입력되면, <code>k</code>행 <code>k</code>열을 가지는 단위행렬 (identity matrix) 를 생성해주니다.
 
-   <p>diag() 라는 함수가 v 라는 벡터를 인자를 가진다면 대각원소가 v인 대각 행렬을 생성합니다. 하지만, diag() 의 인자가 M 이라는 행렬이라면, 행렬 M 의 대각원소를 출력하게 됩니다. 이것은 Matlab 에서 사용되는 diag() 이라는 함수의 기능과 동일합니다. 다소 혼돈스러울 수도 있으나, diag() 의 인자가 k라는 스칼라라면 k 행 k열을 가지는 단위행렬 (identity matrix) 를 생성합니다.
-
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
-<!-- ======================================================================================================================================= -->
 <div class="node">
 <a name="Linear-equations-and-inversion"></a>
 <p><hr>
@@ -2963,19 +2973,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 
 </div>
 
-<h4 class="subsection">5.7.2 Linear equations and inversion</h4>
+<!-- @subsection Linear equations and inversion -->
+<h4 class="subsection">5.7.2 선형방정식의 해와 역행렬</h4>
 
 <p><a name="index-Linear-equations-109"></a><a name="index-solve-110"></a><!-- Solving linear equations is the inverse of matrix multiplication. -->
 <!-- When after -->
 
-   <p>다음의 표현과 같은 선형 방정식이 존재할 때, A 의 계수값들과 b 의 값을 미리 알고 있다고 가정한다면, x를 찾아내는 것을 선형방정식의 해를 찾는다고 합니다.
+   <p>행렬 <code>A</code>의 구성요소들의 값을 알고, 벡터 <code>b</code> 구성요소들의 값을 미리 알고 있다고 가정하고, 아래와 같은 선형방정식의 해를 찾는 것은 <code>x</code>의 값을 구하는 것과 동일합니다.
 
 <pre class="example">     &gt; b &lt;- A %*% x
 </pre>
    <p class="noindent"><!-- only @code{A} and @code{b} are given, the vector @code{x} is the -->
 <!-- solution of that linear equation system.  In @R{}, -->
 
-   <p>R 은 다음의 명령어를 통하여 선형방정식의 해 x 를 구합니다.
+   <p>R에서는 아래와 같은 방법으로 선형방정식의 해 <code>x</code>를 구할 수 있습니다.
 
 <pre class="example">     &gt; solve(A,b)
 </pre>
@@ -2986,7 +2997,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- @eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of -->
 <!-- @eqn{@strong{A},@code{A}}, which can be computed by -->
 
-   <p>즉, 이것은 x = A^{-1} %*% b 입니다. 여기에서 A^{-1} 은 A 의 역행렬이며, 다음의 명령어를 수행하여 얻을 수 있습니다.
+   <p>즉, <code>x = A^{-1} %*% b</code>입니다. 
+여기에서 <code>A^{-1}</code> 은 <code>A</code>의 역행렬이며, 이는 아래와 같은 방법으로 얻을 수 있습니다.
 
 <pre class="example">     solve(A)
 </pre>
@@ -2994,12 +3006,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- potentially unstable to compute @code{x <- solve(A) %*% b} instead of -->
 <!-- @code{solve(A,b)}. -->
 
-   <p>하지만, 위와 같이 역행렬을 이용하여 x &lt;- solve(A) %*% b 와 같은 연산을 하는 것은 solve(A,b) 라는 함수를 이용하는 것보다 비효율적입니다.
+   <p>하지만, 위와 같이 역행렬을 이용하여 <code>x &lt;- solve(A) %*% b</code> 연산을 하는 것은 함수 <code>solve(A,b)</code>를 이용하는 것보다 비효율적입니다.
 
-   <p>The quadratic form  <code>x %*% A^{-1} %*%
-x</code>   which is used in multivariate computations, should be computed by
-something like<a rel="footnote" href="#fn-17" name="fnd-17"><sup>17</sup></a> <code>x %*% solve(A,x)</code>, rather than
-computing the inverse of <code>A</code>.
+<!-- The quadratic form @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*% -->
+<!-- x} @ } which is used in multivariate computations, should be computed by -->
+<!-- something like@footnote{Even better would be to form a matrix square -->
+<!-- root @eqn{B, B} with @eqn{A = BB^T, A = BB'} and find the squared length of the -->
+<!-- solution of @eqn{By = x, By = x}, perhaps using the Cholesky or -->
+<!-- eigendecomposition of @eqn{A, A}.} @code{x %*% solve(A,x)}, rather than -->
+<!-- computing the inverse of @code{A}. -->
+   <p>다변량 연산에 이용되는 쿼드래딕 형식 (quadratic form)  <code>x %*% A^{-1} %*% x</code>  은 <code>A</code>의 역행렬을 찾는 것 보다 <code>x %*% solve(A,x)</code>으로 계산해야 합니다. 
+<a rel="footnote" href="#fn-17" name="fnd-17"><sup>17</sup></a>
 
 <div class="node">
 <a name="Eigenvalues-and-eigenvectors"></a>
@@ -9773,20 +9790,16 @@ for <code>sub</code> and <code>substring</code>.</p>
    <p class="footnote"><small>[<a name="fn-15" href="#fnd-15">15</a>]</small> &lsquo;<samp><code>tapply(incomes, state)</code></samp>&rsquo;와 같이 <code>tapply()</code>의 두번째 인자가 꼭 요인(factor)이 아니어도 괜찮습니다. 
 그 이유는 인자는 필요에 의하여 <code>as.factor()</code>를 이용하여 강제형변환 <em>coerced</em>이 내부적으로 수행되기 때문입니다</p>
 
-   <p class="footnote"><small>[<a name="fn-16" href="#fnd-16">16</a>]</small> Note that <code>x %*% x</code> is ambiguous, as
-it could mean either x'x or x x', where x is the
-column form.  In such cases the smaller matrix seems implicitly to be
-the interpretation adopted, so the scalar x'x is in this case the
-result.  The matrix x x' may be calculated either by <code>cbind(x)
-%*% x</code> or <code>x %*% rbind(x)</code> since the result of <code>rbind()</code> or
-<code>cbind()</code> is always a matrix.  However, the best way to compute
-x'x or x x' is <code>crossprod(x)</code> or <code>x %o% x</code>
-respectively.</p>
+   <p class="footnote"><small>[<a name="fn-16" href="#fnd-16">16</a>]</small> 여기에서 <code>x %*% x</code>는 올바른 사용이라고 보기 어렵습니다. 
+그 이유는 사용자가 수행하고자 하는 연산이 x'x 또는 x x'일 수도 있기 때문입니다. 
+여기에서 사용된 x는 열벡터임을 기억하시길 바랍니다. 
+만약, 이런 표현식이 입력된다면 스칼라 값(즉, 한개의 숫자)을 결과로 가지는 x'x를 수행하게 됩니다. 
+x x'와 같은 행렬연산을 수행하고 싶다면 <code>cbind(x)%*% x</code> 또는 <code>x %*% rbind(x)</code>라고 해야합니다. 
+그 이유는 <code>rbind()</code> 또는 <code>cbind()</code>의 사용의 결과는 항상 행렬의 형식을 유지하기 때문입니다. 
+그러나, x'x 또는 x x'을 연산하기 위한 가장 좋은 방법은 함수 <code>crossprod(x)</code> 또는 <code>x %o% x</code>를 사용하는 것입니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-17" href="#fnd-17">17</a>]</small> Even better would be to form a matrix square
-root B with A = BB' and find the squared length of the
-solution of By = x, perhaps using the Cholesky or
-eigendecomposition of A.</p>
+   <p class="footnote"><small>[<a name="fn-17" href="#fnd-17">17</a>]</small> 좀 더 좋은 방법은 matrix square root B를 찾는 것입니다. 
+여기에서 A = BB'이며, A의 콜레스키 분해 (Cholesky) 또는 eigendecomposition를 이용하여 By = x의 해들에 대한 the squared length 를 찾는것입니다.</p>
 
    <p class="footnote"><small>[<a name="fn-18" href="#fnd-18">18</a>]</small> 문자형 벡터는 <code>data.frame()</code>함수의 인자 <code>stringsAsFactors</code>을 이용하여 입력시 요인으로 강제변환이 가능합니다</p>
 
