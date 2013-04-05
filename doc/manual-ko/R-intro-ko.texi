@@ -7889,20 +7889,24 @@ identify() 함수는 그 자체로 플롯을 그리지는 않지만, 사용자�
 @c @section Using graphics parameters
 @section 그래픽 파라미터들을 사용하기
 
-When creating graphics, particularly for presentation or publication
-purposes, @R{}'s defaults do not always produce exactly that which is
-required.  You can, however, customize almost every aspect of the
-display using @emph{graphics parameters}.  @R{} maintains a list of a
-large number of graphics parameters which control things such as line
-style, colors, figure arrangement and text justification among many
-others.  Every graphics parameter has a name (such as `@code{col}',
-which controls colors,) and a value (a color number, for example.)
+@c When creating graphics, particularly for presentation or publication
+@c purposes, @R{}'s defaults do not always produce exactly that which is
+@C required.  You can, however, customize almost every aspect of the
+@c display using @emph{graphics parameters}.  @R{} maintains a list of a
+@c large number of graphics parameters which control things such as line
+@c style, colors, figure arrangement and text justification among many
+@c others.  Every graphics parameter has a name (such as `@code{col}',
+@c which controls colors,) and a value (a color number, for example.)
 
-A separate list of graphics parameters is maintained for each active
-device, and each device has a default set of parameters when
-initialized.  Graphics parameters can be set in two ways: either
-permanently, affecting all graphics functions which access the current
-device; or temporarily, affecting only a single graphics function call.
+그래픽을 만들어 낼 때, 특히 그것이 프리젠테이션이나 다른 공공 목적을 위한 것이라면, R 의 디폴트만으로는 항상 원하는 형태를 얻을 수 없을 것입니다. 그렇지만, 그래픽 모수(graphics parameters)를 이용하여 거의 모든 표현 방식을 사용자 임의대로 정의할 수 있습니다. R에는 선의 형태, 색, 그림 배열 그리고 문자 정의 등에 이르기까지 굉장히 다양한 그래픽 모수들이 포함되어 있습니다. 모든 그래픽 모수는 이름(e.g.색을 결정하는 ‘col’)과 값(특정색을 의미하는 숫자)으로 구성 됩니다.
+
+@c A separate list of graphics parameters is maintained for each active
+@c device, and each device has a default set of parameters when
+@c initialized.  Graphics parameters can be set in two ways: either
+@c permanently, affecting all graphics functions which access the current
+@c device; or temporarily, affecting only a single graphics function call.
+
+각각의 디바이스를 위해 그래픽 모수의 리스트들을 따로 정의하는 것이 가능하고, 각 디바스들은 모수들의 디폴트 값을 가진 채 초기화 됩니다. 그래픽 모수들은 크게 두 가지 방법으로 사용될 수 있습니다: 하나는 현재 디바이스를 사용할 때마다 모든 그래픽 함수들에 영향을 주는 “영구적” 방법이고 다른 방법은 오직 하나의 그래픽 함수를 사용할 때에만 영향을 주는 “임시적” 방법입니다.
 
 @menu
 * The par() function::          
