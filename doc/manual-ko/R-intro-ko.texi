@@ -7599,57 +7599,69 @@ high-level 그래픽 함수로는 정학히 원하는 형태의 플롯을 그리
 @itemx lines(x, y)
 @findex points
 @findex lines
-Adds points or connected lines to the current plot.  @code{plot()}'s
-@code{type=} argument can also be passed to these functions (and
-defaults to @code{"p"} for @code{points()} and @code{"l"} for
-@code{lines()}.)
+@c Adds points or connected lines to the current plot.  @code{plot()}'s
+@c @code{type=} argument can also be passed to these functions (and
+@c defaults to @code{"p"} for @code{points()} and @code{"l"} for
+@c @code{lines()}.)
 
-현재의 함수에 포인트나 이를 연결한 선을 첨가한다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있다.)
+현재의 함수에 포인트나 이를 연결한 선을 첨가합니다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있습니다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있습니다.)
 
 @item text(x, y, labels, @dots{})
 @findex text
-Add text to a plot at points given by @code{x, y}.  Normally
-@code{labels} is an integer or character vector in which case
-@code{labels[i]} is plotted at point @code{(x[i], y[i])}.  The default
-is @code{1:length(x)}.
+@c Add text to a plot at points given by @code{x, y}.  Normally
+@c @code{labels} is an integer or character vector in which case
+@c @code{labels[i]} is plotted at point @code{(x[i], y[i])}.  The default
+@c is @code{1:length(x)}.
 
-@strong{Note}: This function is often used in the sequence
+x와y 값으로 표현된 점들에 문자를 첨가합니다. 보통 정수나 문자의 벡터 형태로 레이블이 주어지며, 이 경우 특정 i에 대해 (x[i], y[i])위치에 labels[i] 값이 표시됩니다. 디폴트로 1:length(x)이 지정되어 있습니다.
+
+@c @strong{Note}: This function is often used in the sequence
+
+@strong{주의}: 이 함수는 다음과 같은 순서로 사용되는 경우가 많습니다.
 
 @example
 > plot(x, y, type="n"); text(x, y, names)
 @end example
 
 @noindent
-The graphics parameter @code{type="n"} suppresses the points but sets up
-the axes, and the @code{text()} function supplies special characters, as
-specified by the character vector @code{names} for the points.
+@c The graphics parameter @code{type="n"} suppresses the points but sets up
+@c the axes, and the @code{text()} function supplies special characters, as
+@c specified by the character vector @code{names} for the points.
+
+그래픽 parameter인 type="n"이 포인트가 표현되는 것을 제한하고 있지만, 축은 이미 세워져 있고, text() 함수는 각 포인트들에 대한 문자 vector형태의 이름이 표현되도록 합니다.
 
 @item abline(a, b)
 @itemx abline(h=@var{y})
 @itemx abline(v=@var{x})
 @itemx abline(@var{lm.obj})
 @findex abline
-Adds a line of slope @code{b} and intercept @code{a} to the current
-plot.  @code{h=@var{y}} may be used to specify @math{y}-coordinates for
-the heights of horizontal lines to go across a plot, and
-@code{v=@var{x}} similarly for the @math{x}-coordinates for vertical
-lines.  Also @var{lm.obj} may be list with a @code{coefficients}
-component of length 2 (such as the result of model-fitting functions,)
-which are taken as an intercept and slope, in that order.
+@c Adds a line of slope @code{b} and intercept @code{a} to the current
+@c plot.  @code{h=@var{y}} may be used to specify @math{y}-coordinates for
+@c the heights of horizontal lines to go across a plot, and
+@c @code{v=@var{x}} similarly for the @math{x}-coordinates for vertical
+@c lines.  Also @var{lm.obj} may be list with a @code{coefficients}
+@c component of length 2 (such as the result of model-fitting functions,)
+@c which are taken as an intercept and slope, in that order.
+
+기울기 b 이고 y 절편 a인 선을 현재의 플롯에 첨가합니다. h=y 는 y좌표값을 높이로 하는 가로선이 이 그래프를 가로질러 그리며, 마찬가지로 v=x 은 x 좌표값을 시작점으로 하는 세로선을 그립니다. 또, lm.obj 는 (모형적함 함수의 결과로 얻어진) 길이 2의 coefficient 성분들을 표시하는데, 이 경우에는 순서대로 y절편과 기울기 값에 해당합니다.
 
 @item polygon(x, y, @dots{})
 @findex polygon
-Draws a polygon defined by the ordered vertices in (@code{x}, @code{y})
-and (optionally) shade it in with hatch lines, or fill it if the
-graphics device allows the filling of figures.
+@c Draws a polygon defined by the ordered vertices in (@code{x}, @code{y})
+@c and (optionally) shade it in with hatch lines, or fill it if the
+@c graphics device allows the filling of figures.
+
+(x,y)에 의해 정의된 꼭지점들을 순서대로 연결해서 만든 다각형을 그린다. 해당 그래픽 장치가 기능을 지원하면, (옵션을 사용해서) 그려진 다각형의 내부에 음영을 주거나 색을 채우는 것이 가능합니다.
 
 @item legend(x, y, legend, @dots{})
 @findex legend
-Adds a legend to the current plot at the specified position.  Plotting
-characters, line styles, colors etc., are identified with the labels in
-the character vector @code{legend}.  At least one other argument @var{v}
-(a vector the same length as @code{legend}) with the corresponding
-values of the plotting unit must also be given, as follows:
+@c Adds a legend to the current plot at the specified position.  Plotting
+@c characters, line styles, colors etc., are identified with the labels in
+@c the character vector @code{legend}.  At least one other argument @var{v}
+@c (a vector the same length as @code{legend}) with the corresponding
+@c values of the plotting unit must also be given, as follows:
+
+특정한 위치에 현재 플롯의 범례를 첨가합니다. 플롯에 사용된 문자나 선의 종류 혹은 색 등이 범례에 포함된 문자 레이블을 통해 구분 가능해집니다. 다음과 같이 플롯 구성 단위가 가질 수 있는 값들 중 최소한 한 개 이상의 v (범례와 같은 길이를 가진 벡터를 사용하여) 선언이 필요합니다:
 
 @table @code
 @item legend( , fill=@var{v})
