@@ -8084,24 +8084,30 @@ Plotted points tend to appear slightly above or below the appropriate
 position unless you use @code{"."} as the plotting character, which
 produces centered points.
 
-
+집중된 점들을 만들어 내는 플롯된 점들은 여러분이 @code{"."}을 플롯팅 문자로 사용하지 않는한 위아래로 적절히 위치하도록 나타날 것입니다. 
 
 @item pch=4
-When @code{pch} is given as an integer between 0 and 25 inclusive, a
-specialized plotting symbol is produced.  To see what the symbols are,
-use the command
+@c When @code{pch} is given as an integer between 0 and 25 inclusive, a
+@c specialized plotting symbol is produced.  To see what the symbols are,
+@c use the command
+
+@code{pch}가 0과 25사이의 정수로 주어진 경우 특별화된 플롯팅 심볼이 생성됩니다. 심볼이 어떤 것인지 살펴보기 위해 다음과 같은 명령어를 사용해 보십시오.
 
 @example
 > legend(locator(1), as.character(0:25), pch = 0:25)
 @end example
 
 @noindent
-Those from 21 to 25 may appear to duplicate earlier symbols, but can be
-coloured in different ways: see the help on @code{points} and its
-examples.
+@c Those from 21 to 25 may appear to duplicate earlier symbols, but can be
+@c coloured in different ways: see the help on @code{points} and its
+@c examples.
 
-In addition, @code{pch} can be a character or a number in the range
-@code{32:255} representing a character in the current font.
+21에서 25 까지의 숫자들은 이전의 심볼을 겹쳐서 보이지만, 다른 방법으로 색이 나타날 수 있습니다(@code{point}에 관한 도움말과 예제를 살펴보십시오).
+
+@c In addition, @code{pch} can be a character or a number in the range
+@c @code{32:255} representing a character in the current font.
+
+게다가 @code{pch}는 현재의 폰트에서 문자를 나타내는 @code{32:255}의 범위에서 문자 또는 숫자가 될 수 있습니다.
 
 @item lty=2
 Line types.  Alternative line styles are not supported on all graphics
