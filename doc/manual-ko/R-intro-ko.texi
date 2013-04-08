@@ -8058,16 +8058,24 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 @c @subsection Graphical elements
 @subsection 그래픽 구성요소들의 활용
 
-@R{} plots are made up of points, lines, text and polygons (filled
-regions.) Graphical parameters exist which control how these
-@emph{graphical elements} are drawn, as follows:
+@c @R{} plots are made up of points, lines, text and polygons (filled
+@c regions.) Graphical parameters exist which control how these
+@c @emph{graphical elements} are drawn, as follows:
+
+@R{}의 플롯은 점, 선, 텍스트 그리고 (영역이 채워진) 다각형으로 구성되어 있습니다. @emph{그래픽 요소}들이 그려지는 방법을 제어하는 그래픽 파라미터들은 다음과 같습니다.
 
 @table @code
 @item pch="+"
-Character to be used for plotting points.  The default varies with
-graphics drivers, but it is usually
+@c Character to be used for plotting points.  The default varies with
+@c graphics drivers, but it is usually
+
+플롯팅 점들에 대해 사용되는 문자. 기본값은 그래픽 드라이버에 따라 변하지만 일반적으로는
+
 @ifnottex
-a circle.
+@c a circle.
+
+원
+
 @end ifnottex
 @tex
 `$\circ$'.
@@ -8075,6 +8083,8 @@ a circle.
 Plotted points tend to appear slightly above or below the appropriate
 position unless you use @code{"."} as the plotting character, which
 produces centered points.
+
+
 
 @item pch=4
 When @code{pch} is given as an integer between 0 and 25 inclusive, a
