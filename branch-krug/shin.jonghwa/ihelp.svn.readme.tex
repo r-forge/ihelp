@@ -1,0 +1,79 @@
+\batchmode
+\makeatletter
+\def\input@path{{/home/jhshin/Downloads/iHELP/ihelp/branch-krug/shin.jonghwa//}}
+\makeatother
+\documentclass[,noae]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\usepackage{noweb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{kotex}
+
+\makeatother
+
+
+\usepackage{Sweave}
+\begin{document}
+
+\title{r-forge.r-project.org subversion 사용법}
+
+
+\author{신종화}
+
+\maketitle
+
+\part{iHELP 프로젝트}
+
+
+\chapter{계정취득}
+
+
+\chapter{subversion 사용법}
+
+
+\section{Ubuntu}
+
+
+\subsection{subversion 프로그램 설치}
+\begin{itemize}
+\item sudo apt-get install subversion
+\end{itemize}
+
+\section{iHELP repository 접속방법}
+\begin{enumerate}
+\item 사용자는 본인의 컴퓨터에 iHELP repository를 다운로드 받을 디렉토리를 만든다.
+
+\begin{enumerate}
+\item 예: mkdir /home/사용자이름/Downloads/iHELP
+\end{enumerate}
+\item 위에서 만든 디렉토리로 이동한다.
+\item \textquotedbl{}svn checkout svn+ssh://사용자계정@r-forge.r-project.org/svnroot/ihelp/\textquotedbl{}을
+입력한다. 
+
+\begin{enumerate}
+\item ihelp 프로젝트의 홈페이지에 접속방법이 나와있다.
+\end{enumerate}
+\end{enumerate}
+
+\section{iHELP repository 업로드 방법}
+\begin{enumerate}
+\item 이 파일의 위치는 ihelp/branch-krug/shin.jonghwa/일 것이다.
+\item 이 파일의 이름은 ihelp.svn.readme.texi 일 것이다.
+\item 파일(예: ihelp.svn.readme.texi)을 디렉토리에 추가해야 한다.
+
+\begin{enumerate}
+\item svn add ``ihelp.svn.readme.texi''
+\end{enumerate}
+\item 파일을 원격지에 있는 ihelp 저장소로 올린다.
+
+\begin{enumerate}
+\item svn commit ``ihelp.svn.readme.texi''\end{enumerate}
+\end{enumerate}
+
+\end{document}
