@@ -1,5 +1,5 @@
-\begin{verbatim}
 
+\begin{verbatim}
 state <- c("tas", "sa",  "qld", "nsw", "nsw", "nt",  "wa",  "wa",
                    "qld", "vic", "nsw", "vic", "qld", "qld", "sa",  "tas",
                    "sa",  "nt",  "wa",  "vic", "qld", "nsw", "nsw", "wa",
@@ -10,6 +10,4 @@ incomes <- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56,
                      59, 46, 58, 43)
 factor(cut(incomes, breaks = 35+10*(0:7))) -> incomef
 accountants <- data.frame(home=statef, loot=incomes, shot=incomef) 
-
-
 \end{verbatim}
