@@ -1,0 +1,179 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
+<head>
+<style type="text/css">.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}, 
+.warning {
+	font-weight: bold;
+} 
+.message {
+	font-style: italic;
+} 
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f7f7f7;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+
+.source {
+  color: #333333;
+}
+.background {
+  color: #F7F7F7;
+}
+
+.number {
+  color: #000000;
+}
+
+.functioncall {
+  color: #800054;
+  font-weight: bolder;
+}
+
+.string {
+  color: #9999FF;
+}
+
+.keyword {
+  font-weight: bolder;
+  color: black;
+}
+
+.argument {
+  color: #B04005;
+}
+
+.comment {
+  color: #2E9957;
+}
+
+.roxygencomment {
+  color: #707AB3;
+}
+
+.formalargs {
+  color: #B04005;
+}
+
+.eqformalargs {
+  color: #B04005;
+}
+
+.assignement {
+  font-weight: bolder;
+  color: #000000;
+}
+
+.package {
+  color: #96B525;
+}
+
+.slot {
+  font-style: italic;
+}
+
+.symbol {
+  color: #000000;
+}
+
+.prompt {
+  color: #333333;
+}
+</style>
+	<title> R 한국어 지원 - Korean Language Support - iHELP Project R Tutorial - R 한국어 한글 메시지 매뉴얼 튜토리얼 </title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+</head>
+<body>
+
+<div id="setpage">
+<header>
+	<table>
+		<tr>
+			<td valign="bottom"> <a href="index.html"> <img src="logo.png"> </a> </td>
+			<td valign="bottom"> <a href="lang.html"> [ Language Support ] </a></td>
+			<td valign="bottom"> <a href="shared.html"> [ We Share ] </a></td>
+			<td valign="bottom"> <a href="contributedDocs.html"> [ Contributed Docs ] </a></td>
+			<td valign="bottom"> <a href="members.html"> [ Members &amp; Donors] </a></td>
+<!--			<td valign="bottom"> <a href="pool.html"> [ Export DB ] </a></td> -->
+		</tr>
+	</table>
+</header>
+
+<aside>
+<table>
+	<th> We shared </th>
+	<tr> <td> <a href="mailing_guide.html"> 메일링 사용가이드 </a> </td> </tr>
+	<tr> <td> <a href="sk_base.html"> 데이터관리 </a> </td> </tr>
+	<tr> <td> <a href="sk_graphics.html"> 그래픽스 </a> </td> </tr>
+	<tr> <td> <a href="sk_utils.html"> 유틸리티 </a> </td> </tr>
+	<tr> <td> <a href="sk_medical_stats.html"> 의학/보건통계 </a> </td> </tr>
+	<tr> <td> <a href="sk_simulation.html"> 시뮬레이션 </a> </td> </tr>
+</table>
+
+</aside>
+
+<article>
+
+<p> 데이터를 입력해 봅니다 </p>
+
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="source"><pre class="knitr r">
+state &lt;- <span class="functioncall">c</span>(<span class="string">"tas"</span>, <span class="string">"sa"</span>, <span class="string">"qld"</span>, <span class="string">"nsw"</span>, <span class="string">"nsw"</span>, <span class="string">"nt"</span>, <span class="string">"wa"</span>, <span class="string">"wa"</span>, <span class="string">"qld"</span>, <span class="string">"vic"</span>, 
+    <span class="string">"nsw"</span>, <span class="string">"vic"</span>, <span class="string">"qld"</span>, <span class="string">"qld"</span>, <span class="string">"sa"</span>, <span class="string">"tas"</span>, <span class="string">"sa"</span>, <span class="string">"nt"</span>, <span class="string">"wa"</span>, <span class="string">"vic"</span>, <span class="string">"qld"</span>, 
+    <span class="string">"nsw"</span>, <span class="string">"nsw"</span>, <span class="string">"wa"</span>, <span class="string">"sa"</span>, <span class="string">"act"</span>, <span class="string">"nsw"</span>, <span class="string">"vic"</span>, <span class="string">"vic"</span>, <span class="string">"act"</span>)
+statef &lt;- <span class="functioncall">factor</span>(state)
+statef
+</pre></div><div class="output"><pre class="knitr r">##  [1] tas sa  qld nsw nsw nt  wa  wa  qld vic nsw vic qld qld sa  tas sa 
+## [18] nt  wa  vic qld nsw nsw wa  sa  act nsw vic vic act
+## Levels: act nsw nt qld sa tas vic wa
+</pre></div></div></div>
+
+
+<p> 데이터 정리를 해보겠습니다. </p>
+
+<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="source"><pre class="knitr r"><span class="functioncall">table</span>(statef)
+</pre></div><div class="output"><pre class="knitr r">## statef
+## act nsw  nt qld  sa tas vic  wa 
+##   2   6   2   5   4   2   5   4
+</pre></div></div></div>
+
+
+<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="source"><pre class="knitr r">incomes &lt;- <span class="functioncall">c</span>(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56, 61, 61, 61, 
+    58, 51, 48, 65, 49, 49, 41, 48, 52, 46, 59, 46, 58, 43)
+incomef &lt;- <span class="functioncall">factor</span>(<span class="functioncall">cut</span>(incomes, breaks = 35 + 10 * (0:7)))
+accountants &lt;- <span class="functioncall">data.frame</span>(home = statef, loot = incomes, shot = incomef)
+</pre></div></div></div>
+
+
+
+</article>
+<footer>
+@ 2008-2013 ihelp.r-forge.r-project.org. Copyright of individual papers resides with the authors
+</footer>
+
+</div>
+
+</body>
+</html>
