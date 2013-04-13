@@ -2936,7 +2936,8 @@ solve(A)
 
 
 @node Eigenvalues and eigenvectors, Singular value decomposition and determinants, Linear equations and inversion, Matrix facilities
-@subsection Eigenvalues and eigenvectors
+@c @subsection Eigenvalues and eigenvectors
+@subsection 고유값과 고유벡터
 @cindex Eigenvalues and eigenvectors
 
 @findex eigen
@@ -2945,7 +2946,7 @@ solve(A)
 @c function is a list of two components named @code{values} and
 @c @code{vectors}.  The assignment
 
-eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 기저벡터 (eigenvectors) 를 계산해줍니다. 예를들어, 아래와 같이 이 함수를 적용한 결과는 values 라는 기저값으로 구성된 벡터와 vectors 라는 기저벡터로 구성된 행렬을 반환하는 리스트의 형식을 가지고 있습니다. 따라서 기저값은 ev$val을, 기저벡터는 ev$vec을 통하여 얻을 수 있습니다.
+함수 @code{eigen(Sm)}는 대칭행렬 (symmetric matrix) @code{Sm} 의 고유값 (eigenvalues)과 고유벡터 (eigenvectors)를 계산해주며 아래에서 보이는 것처럼 사용합니다.
 
 @example
 > ev <- eigen(Sm)
@@ -2956,8 +2957,10 @@ eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 �
 @c eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of
 @c corresponding eigenvectors.  Had we only needed the eigenvalues we could
 @c have used the assignment:
-
-만약 사용자가 단순히 기저값만을 원한다면 아래와 같이 표현할 수 있습니다. 즉, evals 은 기저값에 대한 결과만을 가지게 되고 기저벡터에 대한 결과는 저장되지 않습니다.
+이 함수를 적용한 결과는 @code{values}라는 고유값 벡터와 @code{vectors}라는 고유벡터들의 행렬을 구성요소로 가지는 리스트입니다.
+따라서, 고유값 벡터는 @code{ev$val}라고 함으로서 얻을 수 있고, 고유벡터들의 행렬들은 @code{ev$eigen}을 통해 얻을 수 있습니다.
+만약 사용자가 단순히 고유값만을 얻어 @code{evals}에 저장하고 싶다면 아래와 같이 할 수 있습니다. 
+이때 @code{evals}는 고유벡터에 대한 결과는 가지지 않습니다.
 
 @example
 > evals <- eigen(Sm)$values
@@ -2967,8 +2970,7 @@ eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 �
 @c @code{evals} now holds the vector of eigenvalues and the second
 @c component is discarded.  If the expression
 
-만약 아래와 같이 단순히 함수를 적용하는 것은 기저값과 기저벡터의 결과를 동시에 출력해줍니다.
-
+만약, 아래와 같이 @code{eigen} 함수를 사용한다면 고유값 벡터와 고유벡터들의 행렬 모두 출력됩니다.
 @example
 > eigen(Sm)
 @end example
@@ -2978,41 +2980,38 @@ eigen(Sm) 이라는 함수는 대칭행렬 Sm 의 기저값 (eigenvalues) 와 �
 @c their names.  For large matrices it is better to avoid computing the
 @c eigenvectors if they are not needed by using the expression
 
-행렬의 크기가 크고, 기저벡터보다는 기저값만 요구될 경우 연산속도를 높이기 위해서 아래와 같이 사용할 수도 있습니다.
+행렬의 크기가 크고, 고유벡터들에 대한 정보보다는 고유값 벡터에 대한 정보만이 필요한 경우 아래와 같이 할 수 있습니다.
 
 @example
 > evals <- eigen(Sm, only.values = TRUE)$values
 @end example
 
-
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-
 @node Singular value decomposition and determinants, Least squares fitting and the QR decomposition, Eigenvalues and eigenvectors, Matrix facilities
-@subsection Singular value decomposition and determinants
+@c @subsection Singular value decomposition and determinants
+@subsection 특이해 분해법과 행렬계수
 @cindex Singular value decomposition
 
 @findex svd
-The function @code{svd(M)} takes an arbitrary matrix argument, @code{M},
-and calculates the singular value decomposition of @code{M}.  This
-consists of a matrix of orthonormal columns @code{U} with the same
-column space as @code{M}, a second matrix of orthonormal columns
-@code{V} whose column space is the row space of @code{M} and a diagonal
-matrix of positive entries @code{D} such that @code{M = U %*% D %*%
-t(V)}.  @code{D} is actually returned as a vector of the diagonal
-elements.  The result of @code{svd(M)} is actually a list of three
-components named @code{d}, @code{u} and @code{v}, with evident meanings.
+@c The function @code{svd(M)} takes an arbitrary matrix argument, @code{M},
+@c and calculates the singular value decomposition of @code{M}.  This
+@c consists of a matrix of orthonormal columns @code{U} with the same
+@c column space as @code{M}, a second matrix of orthonormal columns
+@c @code{V} whose column space is the row space of @code{M} and a diagonal
+@c matrix of positive entries @code{D} such that @code{M = U %*% D %*%
+@c t(V)}.  @code{D} is actually returned as a vector of the diagonal
+@c elements.  The result of @code{svd(M)} is actually a list of three
+@c components named @code{d}, @code{u} and @code{v}, with evident meanings.
 
-If @code{M} is in fact square, then, it is not hard to see that
+@c If @code{M} is in fact square, then, it is not hard to see that
 
-svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 the singular value decomposion 을 수행합니다. 이 함수로부터 세가지의 결과를 얻어낼 수 있습니다. 첫번째는 M 행렬의 열을 기초
-로 한 orthonormal matrix U이고, 두번째는 M 행렬의 행을 기초로 한 orthonormal matrix V 이며, 세번째는 M = U %*% D %*% t(V)라는 조건을 만족하는 D 라는 대각행렬 계산해냅니다. svd(M) 의 실제 계산 결과는 위의 세가지를 한데 묶은 리스트의 형식으로 d, u, v 라는 이름으로 저장되어집니다.
+함수 @code{svd(M)}는 @code{M}이라는 임의의 행렬을 인자로 가지며 특이해분해 (the singular value decomposition)을 수행합니다.
+이 함수로부터는 세가지 결과가 얻어집니다.
+첫번째는 @code{M}행렬의 열을 기초로 하는 직교행렬 (orthonormal matrix) @code{U}이고,
+두번째는 @code{M}행렬의 행을 기초로 한 직교행렬 @code{V}이며,
+세번째는 @code{M = U %*% D %*% t(V)}이라는 조건을 만족하는 대각행렬 @code{D}입니다.
+@code{svd(M)}의 실제 계산결과는 위의 세가지를 구성요소로 가지는 리스트이며, 각 구성요소들은 @code{d}, @code{u}, @code{v}라는 이름을 가집니다.
 
-예를 들어 행렬 M의 행렬계수(determinant)의 절대값을 구하고자 한다면, singular value decomposition을 이용하여 아래와 같이 쉽게 얻을 수있습니다.
+만약, 행렬 @code{M}의 행렬계수 (determinant)의 절대값을 구하고자 한다면, 아래와 같은 방법으로 특이해분해를 이용할 수 있습니다.
 
 @example
 > absdetM <- prod(svd(M)$d)
@@ -3023,7 +3022,7 @@ svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 t
 @c calculation were needed often with a variety of matrices it could be
 @c defined as an @R{} function
 
-만약 사용자가 위와 같은 행렬계수 (determinant)의 절대값을 자주 사용해야 한다면, R은 아래와 같이 사용자가 정의하는 함수 absdet() 를 작성하여 사용할 수 있도록 도와줍니다.
+또한, 아래와 같이 사용자 정의함수 @code{abdet()}를 작성하여 사용할수도 있습니다.
 
 @example
 > absdet <- function(M) prod(svd(M)$d)
@@ -3037,7 +3036,7 @@ svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 t
 @c a square matrix.  [Hint: You will not need to use an explicit loop.
 @c Look again at the @code{diag()} function.]
 
-또 다른 직관적인 예로 여러분은 함수의 trace (한국말 모름) 을 계산해주는 tr() 이라는 singular decomposition 을 이용하여 얻어낸 대각행렬과 diag()이라는 함수를 이용하여 쉽게 작성할 수 도 있습니다.
+또 다른 예로는 정방행렬의 트레이스(trace)를 계산해주는 @code{tr()}이라는 함수를 작성할 수도 있습니다.
 
 @findex det
 @findex determinant
@@ -3045,27 +3044,22 @@ svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 t
 @c including the sign, and another, @code{determinant}, to give the sign
 @c and modulus (optionally on log scale),
 
-실은 R은 행렬계수 (determinant)를 연산하기 위한 det 를 제공하고 있으며, 행렬계수 외에도 계수의 부호와 로그값이 취해진 모듈러스 (modulus) 의 결과를 함께 계산해주는 determinant 라는 함수또한 제공하고 있습니다.
+@R{}은 행렬계수 (determinant)를 구하는데 사용되는 함수 @code{det}를 제공합니다.
+또한 함수 @code{determinant}는 이의 부호와 모듈러스의 결과도 함께 알려줍니다.
 
 @c Functions will be discussed formally later in these notes.
 
-
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-
 @node Least squares fitting and the QR decomposition,  , Singular value decomposition and determinants, Matrix facilities
-@subsection Least squares fitting and the QR decomposition
+@c @subsection Least squares fitting and the QR decomposition
+@subsection 최소제곱적합과 QR 분해
 @cindex Least squares fitting
 @cindex QR decomposition
 
 @c The function @code{lsfit()} returns a list giving results of a least
 @c squares fitting procedure.  An assignment such as
 
-아래의 표현은 만약 여러분이 관측치들을 y 라는 벡터에 저장하고, X 라는 디자인 매트릭스를 지정했을때,lsfit() 이라는 함수가 최소제곱법 (least square)을 이용하여 적합된 (fitted) 된 값을 ans 에 할당하는 것을 보여줍니다.
+함수 @code{lsfit()}은 최소제곱적합 (least squares fitting)을 수행하여 얻은 결과를 리스트의 형식으로 돌려줍니다.
+만약, @code{y}는 관측값 벡터이고, @code{X}는 디자인 행렬이라고 할때, 아래와 같이 사용된 함수 @code{lsfit()}는 최소제곱법 (least square)을 이용하여 적합된 값을 @code{ans}에 할당하는 것입니다. 
 
 @example
 > ans <- lsfit(X, y)
@@ -3082,14 +3076,17 @@ svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 t
 @c using @code{lm(.)} (@pxref{Linear models}) to @code{lsfit()} for
 @c regression modelling.
 
-더 자세한 사항은 도움말을 참조하세요. 그리고 최소제곱법을 이용한 회귀분석을 통한 모델진단에 대해서 조금 더 알고 싶으시다면 이와 연관된 ls.diag() 라는 함수를 살펴보시길 바랍니다. 그러나, 여러분들이 회귀분석을 수행하고자 한다면 lsfit() 이라는 함수를 이용하는 것보다 lm(.) (see Linear models) 을 사용하는 것이 더 편리합니다.
+더 자세한 사항은 도움말을 참조하시길 바랍니다.
+만약, 최소제곱법을 이용한 회귀분석을 통한 모델진단에 대해서 알고 싶으시다면 함수 @code{ls.diag()}를 살펴보시길 바랍니다. 
+그러나, 회귀분석을 수행하고자 한다면 @code{lsfit()}을 이용하기 보다는 @code{lm(.)}를 사용하는 것이 더욱 편리하며, 이에 대해서는 @ref{Linear models}를 살펴보시길 바랍니다.
 
 @findex qr
 @c Another closely related function is @code{qr()} and its allies.
 @c Consider the following assignments
 
-아래의 코드는 lsfit() 이라는 함수를 통한 회귀분석을 qr() 이라는 함수를 이용하여 동일한 작업을 할 수 있음을 보여줍니다.
-
+다음의 코드는 @code{qr()} 함수를 활용하여 회귀분석을 수행하는 것입니다.
+여기에서 @code{b}는 회귀계수를, @code{fit}은 벡터 @code{y}가 @code{X}에 직사영(orthogonal projection)된 값(즉, fitted 된 값)을, 그리고 @code{res}는 잔차 (the projection onto the orthogonal complement)입니다.
+특히, @code{b}의 결과는 @sc{Matlab}에서 `백슬래쉬' 연산자를 이용하여 얻은 것과 동일합니다.
 @example
 > Xplus <- qr(X)
 > b <- qr.coef(Xplus, y)
@@ -3104,23 +3101,16 @@ svd(M) 이라는 함수는 M 이라는 임의의 행렬을 인자로 가지며 t
 @c that is, @code{b} is essentially the result of the @sc{Matlab}
 @c `backslash' operator.
 
-여기에서 b 는 회귀계수를, fit 은 벡터 y 가 X 에 직사영(orthogonal projection)된 값 (즉, fitted 된 값)을, 그리고 res 란 값은 오차 (the projection onto the orthogonal complement)를 가지고 있습니다. 여러분들은 디자인 매트릭스 X 가 꼭 full column rank 이라는 조건을 만족해야 하는 것에 대해서 걱정할 필요는 없습니다. 만약 full column rank 가 아니라면, R 은 자동으로 redundancies을 수행합니다.
+@c It is not assumed that @code{X} has full column rank.  Redundancies will
+@c be discovered and removed as they are found.
 
-It is not assumed that @code{X} has full column rank.  Redundancies will
-be discovered and removed as they are found.
+디자인 행렬 @code{X}가 이 full column rank이라는 조건을 만족해야 하는 것은 아닙니다.
+만약, 이 조건이 만족하지 않으면 선형독립이 아닌 열들을 찾아내고 이들을 제거할 것입니다.
 
-This alternative is the older, low-level way to perform least squares
-calculations.  Although still useful in some contexts, it would now
-generally be replaced by the statistical models features, as will be
-discussed in @ref{Statistical models in R}.
-
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-
+@c This alternative is the older, low-level way to perform least squares
+@c calculations.  Although still useful in some contexts, it would now
+@c generally be replaced by the statistical models features, as will be
+@c discussed in @ref{Statistical models in R}.
 
 
 @node Forming partitioned matrices, The concatenation function c() with arrays, Matrix facilities, Arrays and matrices
