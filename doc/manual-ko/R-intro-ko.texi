@@ -2,7 +2,7 @@
 
 @c %**start of header
 @setfilename R-intro.info
-@settitle An Introduction to R in Korean (2013.04.03, ver.0.91.5.)
+@settitle An Introduction to R in Korean (2013.04.15, ver.0.92.1.)
 @setchapternewpage on
 @c %**end of header
 
@@ -160,7 +160,7 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @item 주이진, 이화여자대학교, 2009
 @item 정우준, 홍익대학교, 2009-2013
 @item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
-@item 김혜인, University of Manitoba, 2010-2011
+@item Heather Kim, University of Manitoba, 2010-2011
 @end itemize
 
 본 문서에 대한 수정 및 추가, 그리고 제안사항에 대해서는 @email{ihelp-translators@@ihelp.r-forge.r-project.org}로 이메일을 보내주시면 감사드리겠습니다.
@@ -3114,7 +3114,8 @@ solve(A)
 
 
 @node Forming partitioned matrices, The concatenation function c() with arrays, Matrix facilities, Arrays and matrices
-@section Forming partitioned matrices, @code{cbind()} and @code{rbind()}
+@c @section Forming partitioned matrices, @code{cbind()} and @code{rbind()}
+@section @code{cbind()}과 @code{rbind()}
 @findex cbind
 @findex rbind
 
@@ -3124,9 +3125,11 @@ solve(A)
 @c horizontally, or column-wise, and @code{rbind()} vertically, or
 @c row-wise.
 
-위에서도 잠깐 언급했었지만, cbind() 와 rbind() 이라는 함수는 벡터와 행렬을 열방향 혹은 행방향으로 묶어 새로운 행렬을 생성할 때 이용됩니다.
+위에서도 잠깐 언급했었지만, @code{cbind()}와 @code{rbind()}라는 함수는 벡터와 행렬을 열방향 혹은 행방향으로 묶어 새로운 행렬을 생성할 때 이용됩니다.
 
-In the assignment
+@c In the assignment
+아래에서 사용된 함수 @code{cbind()}에 사용되는 입력인자는 임의의 길이를 가진 벡터 또는 행렬입니다.
+단, 인자로서 사용되는 행렬들은 각각의 행렬이 같은 수의 행을 가지고 있어야 합니다. 
 
 @example
 > X <- cbind(@var{arg_1}, @var{arg_2}, @var{arg_3}, @dots{})
@@ -3138,36 +3141,40 @@ In the assignment
 @c The result is a matrix with the concatenated arguments @var{arg_1},
 @c @var{arg_2}, @dots{} forming the columns.
 
-위에서 사용된 cbind() 라는 함수는 임의의 크기를 가진 벡터나 행렬을 인자로 가질 수 있으나, 모든 인자들의 행의 길이는 같아야만 합니다.
 
-If some of the arguments to @code{cbind()} are vectors they may be
-shorter than the column size of any matrices present, in which case they
-are cyclically extended to match the matrix column size (or the length
-of the longest vector if no matrices are given).
+@c If some of the arguments to @code{cbind()} are vectors they may be
+@c shorter than the column size of any matrices present, in which case they
+@c are cyclically extended to match the matrix column size (or the length
+@c of the longest vector if no matrices are given).
 
 @c The function @code{rbind()} does the corresponding operation for rows.
 @c In this case any vector argument, possibly cyclically extended, are of
 @c course taken as row vectors.
 
-rbind()이라는 함수역시 cbind() 라는 함수와 사용방법은 동일하지만, 모든 인자들의 열의 길이는 같아야만 합니다.
+함수 @code{rbind()}는 함수 @code{cbind()}와 유사한 기능을 가지고 있으나, 입력받는 모든 인자들 각각이 가지는 열의 개수가 동일해야만 합니다. 
 
 @c Suppose @code{X1} and @code{X2} have the same number of rows.  To
 @c combine these by columns into a matrix @code{X}, together with an
 @c initial column of @code{1}s we can use
 
-예를 들어, X1 과 X2 이라는 두 행렬이 같은 행의 길이를 가지고 있다고 가정합니다. 아래의 명령문은 1 이란 인자는 X1 이 가진 행의 길이만큼 1 을 리사이클링 시켜서 1 이라는 열벡터를 생성한뒤, 1, X1, X2 를 열방향으로 한데 묶어 X 라는 새로운 벡터를 생성시켜 줍니다.
+예를 들어, @code{X1}과 @code{X2}라는 두 행렬이 같은 개수의 행을 가지고 있다고 가정합니다.
+아래에서 보여지는 것과 같이 @code{X}는 @code{1}, @code{X1}, @code{X2}라는 인자를 가지는데, 여기에서 @code{1}이라는 인자는 @code{X1}이 가진 행의 길이만큼 @code{1}을 리사이클링 시켜 @code{1}이라는 열벡터를 생성한뒤, @code{1}, @code{X1}, @code{X2}를 열방향으로 한데 묶어 @code{X}라는 새로운 행렬을 생성시켜 줍니다.
 
 @example
 > X <- cbind(1, X1, X2)
 @end example
 
-The result of @code{rbind()} or @code{cbind()} always has matrix status.
-Hence @code{cbind(x)} and @code{rbind(x)} are possibly the simplest ways
-explicitly to allow the vector @code{x} to be treated as a column or row
-matrix respectively.
+@c The result of @code{rbind()} or @code{cbind()} always has matrix status.
+@c Hence @code{cbind(x)} and @code{rbind(x)} are possibly the simplest ways
+@c explicitly to allow the vector @code{x} to be treated as a column or row
+@c matrix respectively.
+
+@code{rbind()} 또는 @code{cbind()}의 사용으로 얻어진 결과는 항상 행렬입니다.
+따라서, @code{cbind(x)}와 @code{rbind(x)}는 벡터 @code{x}를 행벡터 혹은 열벡터로 표현할 수 있는 유용한 함수들입니다.
 
 @node The concatenation function c() with arrays, Frequency tables from factors, Forming partitioned matrices, Arrays and matrices
-@section The concatenation function, @code{c()}, with arrays
+@c @section The concatenation function, @code{c()}, with arrays
+@section 배열과 함께 사용할 수 있는 결합함수 @code{c()}
 
 @c It should be noted that whereas @code{cbind()} and @code{rbind()} are
 @c concatenation functions that respect @code{dim} attributes, the basic
@@ -3175,12 +3182,14 @@ matrix respectively.
 @c @code{dim} and @code{dimnames} attributes.  This is occasionally useful
 @c in its own right.
 
-만약, cbind()와 rbind() 이라는 함수가 행렬의 dim 속성을 기초로 여러개의 행렬을 한데 묶어준다고 한다면, c() 이라는 함수는 dim 과 dimnames 라는 속성을 모두 무시한채 결합을 수행한다고 할 수 있습니다. c() 를 이용하는 것이 때때로 더 유용한 경우가 있습니다.
+만약, @code{cbind()}와 @code{rbind()} 함수들이 행렬의 @code{dim} 속성을 기초로 여러개의 행렬을 한데 묶어준다고 한다면, 
+함수 @code{c()}는 @code{dim}과 @code{dimnames} 속성 모두를 무시한 채 결합을 수행한다고 할 수 있습니다. 
+따라서, @code{c()}를 이용하는 것이 때때로 더 유용한 경우가 있습니다.
 
 @c The official way to coerce an array back to a simple vector object is to
 @c use @code{as.vector()}
 
-원래 이렇게 속성들을 무시하고, 배열을 단순 벡터로 강제변환하는 방법은 아래와 같이 as.vector()이라는 함수를 이용하는 것입니다.
+본래 이렇게 주어진 속성들을 무시하고, 배열을 단순 벡터로 강제형변환하는 방법은 아래와 같이 @code{as.vector()}이라는 함수를 이용하는 것입니다.
 
 @example
 > vec <- as.vector(X)
@@ -3190,7 +3199,7 @@ matrix respectively.
 @c However a similar result can be achieved by using @code{c()} with just
 @c one argument, simply for this side-effect:
 
-위에서 얻은 동일한 결과를 아래와 같이 c()라는 함수를 이용해서도 얻을 수 있습니다. 
+이와 같은 결과를 아래와 같이 함수 @code{c()}를 이용하여 얻을 수도 있습니다. 
 
 @example
 > vec <- c(X)
@@ -3201,32 +3210,28 @@ matrix respectively.
 @c between them is largely a matter of style (with the former being
 @c preferable).
 
-실은 약간 다른 점은 있으나, 어느 것을 사용하는가는 프로그래밍 스타일의 차이일 뿐입니다 .
-
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
-@c =======================================================================================================================================
+실제로는 다소 다른 점이 존재하기는 하지만, 어떤 함수를 이용하여 이를 수행할 것인가는 단순히 프로그래밍 스타일의 차이일뿐입니다.
 
 @node Frequency tables from factors,  , The concatenation function c() with arrays, Arrays and matrices
-@section Frequency tables from factors
+@c @section Frequency tables from factors
+@section 요인을 이용한 도수분포표
 @cindex Tabulation
 
 @c Recall that a factor defines a partition into groups.  Similarly a pair
 @c of factors defines a two way cross classification, and so on.
-@c @findex table
+@findex table
 @c The function @code{table()} allows frequency tables to be calculated
 @c from equal length factors.  If there are @math{k} factor arguments,
 @c the result is a @math{k}-way array of frequencies.
 
-위에서 요인 (factor) 라는 것은 데이터를 요인이 가진 레벨에 따라서 분류할 때 사용한다고 했습니다. 만약 2개의 요인이 존재한다면 2차원 분류 (two way cross classification) 가 가능할 것이고, 더 나아가 k 개의 요인이 있다면 k-차원의 분류가 가능할 것입니다.
+위에서 데이터를 그룹화하는데 요인 (factor)이 사용됨을 보았습니다. 
+만약 2개의 요인이 존재한다면 2차원 분류 (two way cross classification)가 가능할 것이고, 더 나아가 k 개의 요인이 있다면 k-차원의 분류가 가능할 것입니다.
+함수 @code{table()}은 이러한 분류가 가능하도록 도와줍니다. 
+만약, 여러 개의 수준을 가진 지역코드란 요인에 대한 정보가 @code{statef}에 저장되어 있다면, 지역코드별 도수분포를 아래와 같이 구할 수 있습니다. 
+이때 각 도수는 수준 (level)이 가진 이름순으로 정렬됩니다. 
 
 @c Suppose, for example, that @code{statef} is a factor giving the state
 @c code for each entry in a data vector.  The assignment
-
-함수 table() 은 배열을 이용하여 이러한 분류가 가능하도록 도와줍니다. 예를 들어, 여러개의 레벨을 가진 지역코드란 요인에 대한 정보가 statef 에 저장되어 있다면, 다음의 코드는 지역코드별 도수분포를 statefr에 저장하게 됩니다. 이때 각 레벨별 도수는 레벨이 가진 이름순으로 정렬됩니다.
 
 @example
 > statefr <- table(statef)
@@ -3238,7 +3243,7 @@ matrix respectively.
 @c attribute of the factor.  This simple case is equivalent to, but more
 @c convenient than,
 
-이와 동일한 역할을 수행하는 또 다른 편리한 방법은 아래와 같습니다.
+이와 동일한 역할을 수행하는 또 다른 방법은 다음과 같습니다.
 
 @example
 > statefr <- tapply(statef, statef, length)
@@ -3248,7 +3253,8 @@ matrix respectively.
 @c defined ``income class'' for each entry in the data vector, for example
 @c with the @code{cut()} function:
 
-지역별 코드의 경우에는 데이터값이 이산형이지만, 소득수준의 경우는 연속형의 데이터를 가집니다. 이런 경우, 소득수준에 대한 구간을 나누는 편리한 방법은 아래와 같이 cut() 이라는 함수를 사용하는 것입니다.
+지역별 코드의 경우에는 데이터값이 이산형이지만, 소득수준의 경우는 연속형의 데이터를 가집니다. 
+이런 경우, 소득수준 (``income class'')에 대한 구간을 나누는 편리한 방법은 아래와 같이 @code{cut()}이라는 함수를 사용하는 것입니다.
 
 @example
 > factor(cut(incomes, breaks = 35+10*(0:7))) -> incomef
@@ -3257,7 +3263,7 @@ matrix respectively.
 
 @c Then to calculate a two-way table of frequencies:
 
-아래의 코드는 cut() 이라는 함수에 의해 구간화된 incomef 이라는 요인을 이용하여 지역코드별 소득수준에 대한 도수분포를 보여줍니다.
+이렇게 함수 @code{cut()}을 이용하여 구간화된 @code{incomef}라는 요인을 이용하여 지역코드별 소득수준에 대한 도수분포를 아래와 같이 보여줄 수 있습니다. 
 
 @example
 > table(incomef,statef)
@@ -3269,7 +3275,7 @@ incomef   act nsw nt qld sa tas vic wa
   (65,75]   0   1  0   0  0   0   1  0
 @end example
 
-Extension to higher-way frequency tables is immediate.
+@c Extension to higher-way frequency tables is immediate.
 
 @node Lists and data frames, Reading data from files, Arrays and matrices, Top
 @c @chapter Lists and data frames
