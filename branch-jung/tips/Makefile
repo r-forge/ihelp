@@ -24,4 +24,3 @@ tohtml:
 clean2:
 	rm -rf $(filename).4ct $(filename).4tc $(filename).aux $(filename).idv $(filename).idx $(filename).lg $(filename).log $(filename).tmp $(filename).xref $(filename).tex.bak
 
-
