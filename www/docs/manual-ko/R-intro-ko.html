@@ -165,7 +165,7 @@ p {
 </li></ul>
 <li><a name="toc_Probability-distributions" href="#Probability-distributions">8 확률분포</a>
 <ul>
-<li><a href="#R-as-a-set-of-statistical-tables">8.1 R as a set of statistical tables</a>
+<li><a href="#R-as-a-set-of-statistical-tables">8.1 R에서 제공되는 통계분포표</a>
 <li><a href="#Examining-the-distribution-of-a-set-of-data">8.2 데이터 셋의 분포를 살펴보기</a>
 <li><a href="#One_002d-and-two_002dsample-tests">8.3 단일 샘플과 두개의 샘플에 이용되는 테스트들</a>
 </li></ul>
@@ -229,7 +229,7 @@ p {
 <li><a href="#Display-graphics">12.1.3 그래픽 표현하기</a>
 <li><a href="#Arguments-to-high_002dlevel-plotting-functions">12.1.4 하이레벨 플랏 함수에 사용되는 인자들</a>
 </li></ul>
-<li><a href="#Low_002dlevel-plotting-commands">12.2 </a>
+<li><a href="#Low_002dlevel-plotting-commands">12.2 로우레벨 플랏팅 명령어들</a>
 <ul>
 <li><a href="#Mathematical-annotation">12.2.1 </a>
 <li><a href="#Hershey-vector-fonts">12.2.2 Hershey</a>
@@ -263,16 +263,16 @@ p {
 <li><a name="toc_A-sample-session" href="#A-sample-session">Appendix A 샘플 세션</a>
 <li><a name="toc_Invoking-R" href="#Invoking-R">Appendix B R 구동하기</a>
 <ul>
-<li><a href="#Invoking-R-from-the-command-line">B.1 Invoking R from the command line</a>
-<li><a href="#Invoking-R-under-Windows">B.2 Invoking R under Windows</a>
+<li><a href="#Invoking-R-from-the-command-line">B.1 명령어 라인으로부터 R을 사용하기</a>
+<li><a href="#Invoking-R-under-Windows">B.2 윈도우즈에서 R을 사용하기</a>
 <li><a href="#Invoking-R-under-Mac-OS-X">B.3 Invoking R under Mac OS X</a>
-<li><a href="#Scripting-with-R">B.4 Scripting with R</a>
+<li><a href="#Scripting-with-R">B.4 R 스크립트</a>
 </li></ul>
 <li><a name="toc_The-command_002dline-editor" href="#The-command_002dline-editor">Appendix C 명령어 기반의 에디터</a>
 <ul>
 <li><a href="#The-command_002dline-editor">C.1 Preliminaries</a>
-<li><a href="#The-command_002dline-editor">C.2 Editing actions</a>
-<li><a href="#The-command_002dline-editor">C.3 Command-line editor summary</a>
+<li><a href="#The-command_002dline-editor">C.2 편집하기</a>
+<li><a href="#The-command_002dline-editor">C.3 명령어 기반의 에디터</a>
 </li></ul>
 <li><a name="toc_Function-and-variable-index" href="#Function-and-variable-index">Appendix D 함수와 변수 인덱스</a>
 <li><a name="toc_Concept-index" href="#Concept-index">Appendix E 개념적 용어에 대한 인덱스</a>
@@ -4137,7 +4137,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Probability-distributions">Probability
 
 </div>
 
-<h3 class="section">8.1 R as a set of statistical tables</h3>
+<!-- @section R as a set of statistical tables -->
+<h3 class="section">8.1 R에서 제공되는 통계분포표</h3>
 
 <!-- One convenient use of @R{} is to provide a comprehensive set of -->
 <!-- statistical tables.  Functions are provided to evaluate the cumulative -->
@@ -7331,16 +7332,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 </div>
 
 <!-- @section Low-level plotting commands -->
-<h3 class="section">12.2 </h3>
+<h3 class="section">12.2 로우레벨 플랏팅 명령어들</h3>
 
 <!-- Sometimes the high-level plotting functions don't produce exactly the -->
 <!-- kind of plot you desire.  In this case, low-level plotting commands can -->
 <!-- be used to add extra information (such as points, lines or text) to the -->
 <!-- current plot. -->
-<p>high-level 그래픽 함수로는 정학히 원하는 형태의 플롯을 그리는 것이 불가능한 경우가 있습니다. 이런 경우, low-level 명령문으로 현재의 플롯에 (포인트, 선 또는 문자와 같은) 추가적인 정보를 표현하는 것이 가능합니다.
+<p>하이레벨(high-level) 그래픽 함수를 이용하여 정확히 원하는 형태의 플랏을 그리는 것이 불가능한 경우들이 있습니다. 
+이러한 경우에 로우레벨 (low-level) 함수들을 이용하여 포인트, 선 또는 문자와 같은 추가적인 정보를 표현하는 것이 가능합니다. 
+즉, 하이레벨 그래픽을 커스터마이징 할 수 있습니다.
 
 <!-- Some of the more useful low-level plotting functions are: -->
-   <p>유용하게 사용될 수 있는 low-level 그래픽 함수로는 다음과 같은 것들이 있습니다:
+   <p>유용하게 사용될 수 있는 로우레벨 플랏팅 함수들은 아래와 같습니다.
 
      <dl>
 <dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-260"></a><a name="index-lines-261"></a><!-- Adds points or connected lines to the current plot.  @code{plot()}'s -->
@@ -7348,13 +7351,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- defaults to @code{"p"} for @code{points()} and @code{"l"} for -->
 <!-- @code{lines()}.) -->
 
-     <p>현재의 함수에 포인트나 이를 연결한 선을 첨가합니다. plot()와 이에 포함된 “type=”선언이 이러한 함수들과 비슷하게 사용될 수 있습니다. (디폴트인 “p”는 points()과 "l"은 lines()과 같이 사용될 수 있습니다.)
+     <p>현재 그려진 플랏에 포인트 또는 이들을 서로 연결한 선을 추가합니다. 
+이러한 기능들은 <code>plot()</code>함수에 정의된 <code>type=</code>이라는 입력인자를 이용하여 수행할 수도 있습니다. 
+(이 입력인자에 대한 기본값은 <code>``p''</code>는 <code>points()</code>을 의미하고,
+<code>``l''</code>은 <code>lines()</code>를 의미합니다.)
 
      <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-262"></a><!-- Add text to a plot at points given by @code{x, y}.  Normally -->
 <!-- @code{labels} is an integer or character vector in which case -->
 <!-- @code{labels[i]} is plotted at point @code{(x[i], y[i])}.  The default -->
 <!-- is @code{1:length(x)}. -->
 
+     <!-- ================== 교정중 ============================= @c -->
      <p>x와y 값으로 표현된 점들에 문자를 첨가합니다. 보통 정수나 문자의 벡터 형태로 레이블이 주어지며, 이 경우 특정 i에 대해 (x[i], y[i])위치에 labels[i] 값이 표시됩니다. 디폴트로 1:length(x)이 지정되어 있습니다.
 
      <!-- @strong{Note}: This function is often used in the sequence -->
@@ -8682,7 +8689,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 </div>
 
-<h3 class="appendixsec">B.1 Invoking R from the command line</h3>
+<!-- @appendixsec Invoking R from the command line -->
+<h3 class="appendixsec">B.1 명령어 라인으로부터 R을 사용하기</h3>
 
 <!-- When working at a command line on UNIX or Windows, the command @samp{R} -->
 <!-- can be used both for starting the main @R{} program in the form -->
@@ -8714,19 +8722,19 @@ wrapper의 역할로서, R CMD 인터페이스를 통해 사용이 될 수 있�
    <p>대부분의 옵션들은 R의 시작과 끝을 제어합니다. 시작 메커니즘은 아래와 같이 설명이 되어 있습니다(추가 정보를 원하시면, 'startup'이라는 주제에 대한 온라인 도움말(help)을 활용해 보십시오. 윈도우 환경 관련 구체적인 설명 또한 아래 부분에 기술되어 있습니다).
 
      <ul>
-<li>Unless <samp><span class="option">--no-environ</span></samp> was given, R searches for user and site
-files to process for setting environment variables.  The name of the
-site file is the one pointed to by the environment variable
-<samp><span class="env">R_ENVIRON</span></samp>; if this is unset, <samp><var>R_HOME</var><span class="file">/etc/Renviron.site</span></samp>
-is used (if it exists).  The user file is the one pointed to by the
-environment variable <samp><span class="env">R_ENVIRON_USER</span></samp> if this is set; otherwise,
-files <samp><span class="file">.Renviron</span></samp> in the current or in the user's home directory
-(in that order) are searched for.  These files should contain lines of
-the form &lsquo;<samp><var>name</var><span class="samp">=</span><var>value</var></samp>&rsquo;.  (See <code>help("Startup")</code> for
-a precise description.)  Variables you might want to set include
-<samp><span class="env">R_PAPERSIZE</span></samp> (the default paper size), <samp><span class="env">R_PRINTCMD</span></samp> (the
-default print command) and <samp><span class="env">R_LIBS</span></samp> (specifies the list of R
-library trees searched for add-on packages).
+<li><!-- Unless @option{-no-environ} was given, @R{} searches for user and site -->
+<!-- files to process for setting environment variables.  The name of the -->
+<!-- site file is the one pointed to by the environment variable -->
+<!-- @env{R_ENVIRON}; if this is unset, @file{@var{R_HOME}/etc/Renviron.site} -->
+<!-- is used (if it exists).  The user file is the one pointed to by the -->
+<!-- environment variable @env{R_ENVIRON_USER} if this is set; otherwise, -->
+<!-- files @file{.Renviron} in the current or in the user's home directory -->
+<!-- (in that order) are searched for.  These files should contain lines of -->
+<!-- the form @samp{@var{name}=@var{value}}.  (See @code{help("Startup")} for -->
+<!-- a precise description.)  Variables you might want to set include -->
+<!-- @env{R_PAPERSIZE} (the default paper size), @env{R_PRINTCMD} (the -->
+<!-- default print command) and @env{R_LIBS} (specifies the list of @R{} -->
+<!-- library trees searched for add-on packages). -->
 
      <p>&ndash;no-environ이 주어지지 않는다면, R은 유저 환경변수설정을 위해서 site files과 유저를 위해서 탐색합니다. 사이트 파일의 이름은 환경변수 R_ENVIRON에 의해 지정됩니다. 이름이 결정되지 않은 경우, 존재한다면 R_HOME/etc/Renviron.site를 활용할 수 있습니다. 유저 파일의 경우, 결정이 되었다면, 환경변수 R_ENVIRON_USER에 의해 지정이 됩니다. 그렇지 않은 경우 현재 혹은 유저의 홈 디렉토리(home directory)에 있는 file.Renviron이 탐색됩니다. 이 파일들은 'name=value' 형태의 라인들을 포함해야 합니다(좀 더 구체적인 이해를 위해서 "Startup" 도움말을 참조하십시오). 지정하고 싶은 변수들은 R_PAPERSIZE(default paper size), R_PRINTCMD (default print command)와 R_LIBS(추가 패키지를 위해 마련된 R library 트리 리스트의 세분화)를 포함해야 합니다.
 
@@ -9096,7 +9104,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 </div>
 
-<h3 class="appendixsec">B.2 Invoking R under Windows</h3>
+<!-- @appendixsec Invoking R under Windows -->
+<h3 class="appendixsec">B.2 윈도우즈에서 R을 사용하기</h3>
 
 <!-- There are two ways to run @R{} under Windows.  Within a terminal window -->
 <!-- (e.g.@ @code{cmd.exe} or a more capable shell), the methods described in -->
@@ -9206,15 +9215,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 </div>
 
-<h3 class="appendixsec">B.4 Scripting with R</h3>
+<!-- @appendixsec Scripting with R -->
+<h3 class="appendixsec">B.4 R 스크립트</h3>
 
-<p>If you just want to run a file <samp><span class="file">foo.R</span></samp> of R commands, the
-recommended way is to use <samp><span class="command">R CMD BATCH foo.R</span></samp>.  If you want to
-run this in the background or as a batch job use OS-specific facilities
-to do so: for example in most shells on Unix-alike OSes <samp><span class="command">R CMD
-BATCH foo.R &amp;</span></samp> runs a background job.
-
-   <p>R 커맨드의 foo.R 파일을 실행하고자 한다면, R CMD BATCH foo.R을 활용하는 방법을 생각해볼 수 있습니다. 이 파일을 표면적으로 드러나지 않게 실행하길 원하거나, batch 작업으로 하길 원한다면, OS-specific facilities를 사용합니다. 예를 들어, 유닉스와 같은 OSes 상에서 R CMD BATCH foo.R 혹은 background job으로 실행합니다.
+<!-- If you just want to run a file @file{foo.R} of @R{} commands, the -->
+<!-- recommended way is to use @command{R CMD BATCH foo.R}.  If you want to -->
+<!-- run this in the background or as a batch job use OS-specific facilities -->
+<!-- to do so: for example in most shells on Unix-alike OSes @command{R CMD -->
+<!-- BATCH foo.R &} runs a background job. -->
+<p>R 커맨드의 foo.R 파일을 실행하고자 한다면, R CMD BATCH foo.R을 활용하는 방법을 생각해볼 수 있습니다. 이 파일을 표면적으로 드러나지 않게 실행하길 원하거나, batch 작업으로 하길 원한다면, OS-specific facilities를 사용합니다. 예를 들어, 유닉스와 같은 OSes 상에서 R CMD BATCH foo.R 혹은 background job으로 실행합니다.
 
 <!-- You can pass parameters to scripts via additional arguments on the -->
 <!-- command line: for example (where the exact quoting needed will depend on -->
@@ -9364,42 +9373,42 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- for Meta characters. -->
    <p>Control 혹은 메타문자들(Meta characters)이 자주 사용 됩니다. Control-m과 같은 Control 문자들은 m과 &lt;CTRL&gt;을 입력하면서 얻을 수 있으며, 이하에서는 C-m으로 쓰입니다. Meta-b와 같은 메타문자들(Meta characters)은 META와 b를 눌러서 사용합니다. 그리고 M-b로 명명 됩니다. 귀하의 터미널에서 META 키를 사용할 수 없다면, ESC 키와 함께 두 문자의 열(two-character sequences)을 사용해서 메타문자들(Meta characters)을 입력 할 수 있습니다. 따라서, M-b를 위해, ESC와 b를 사용 할 수 있습니다. ESC 문자열(character sequences)은 또한 실제 Meta 키들을 활용하여 터미널 상에서 사용될 수 있습니다. 두 문자의 열(two-character sequences)에겐 상당한 의미가 있다고 볼 수 있습니다.
 
-<h3 class="appendixsec">C.2 Editing actions</h3>
+<!-- @appendixsection Editing actions -->
+<h3 class="appendixsec">C.2 편집하기</h3>
 
-<p>The R program keeps a history of the command lines you type,
-including the erroneous lines, and commands in your history may be
-recalled, changed if necessary, and re-submitted as new commands.  In
-Emacs-style command-line editing any straight typing you do while in
-this editing phase causes the characters to be inserted in the command
-you are editing, displacing any characters to the right of the cursor. 
-In <em>vi</em> mode character insertion mode is started by <kbd>M-i</kbd> or
-<kbd>M-a</kbd>, characters are typed and insertion mode is finished by typing
-a further &lt;ESC&gt;.  (The default is Emacs-style, and only that is
-described here: for <em>vi</em> mode see the <strong>readline</strong>
-documentation.)
-
-   <p>Pressing the &lt;RET&gt; command at any time causes the command to be
-re-submitted.
-
-   <p>Other editing actions are summarized in the following table.
-
-   <p>R은 에러가 존재하는 line들을 포함, command line에 대한 정보를 보관하고, 전에 사용하던 커맨드들은 필요하면 변경되거나, 혹은 재사용 될 수 있고, 완전히 새로운 커맨드로 바뀌어서 다시 사용 될 수도 있습니다. Emac-스타일의 command-line 에디팅 환경에서, 이 에디팅 단계에서 입력된 값으로 인해 캐릭터들이 여러분이 에디팅 하는 커맨드에 삽입 될 수 있고, 그리고 캐릭터들을 커서의 오른쪽으로 치환합니다. 
+<!-- The @R{} program keeps a history of the command lines you type, -->
+<!-- including the erroneous lines, and commands in your history may be -->
+<!-- recalled, changed if necessary, and re-submitted as new commands.  In -->
+<!-- Emacs-style command-line editing any straight typing you do while in -->
+<!-- this editing phase causes the characters to be inserted in the command -->
+<!-- you are editing, displacing any characters to the right of the cursor. -->
+<!-- In @emph{vi} mode character insertion mode is started by @kbd{M-i} or -->
+<!-- @kbd{M-a}, characters are typed and insertion mode is finished by typing -->
+<!-- a further @key{ESC}.  (The default is Emacs-style, and only that is -->
+<!-- described here: for @emph{vi} mode see the @strong{readline} -->
+<!-- documentation.) -->
+<!-- Pressing the @key{RET} command at any time causes the command to be -->
+<!-- re-submitted. -->
+<!-- Other editing actions are summarized in the following table. -->
+<p>R은 에러가 존재하는 line들을 포함, command line에 대한 정보를 보관하고, 전에 사용하던 커맨드들은 필요하면 변경되거나, 혹은 재사용 될 수 있고, 완전히 새로운 커맨드로 바뀌어서 다시 사용 될 수도 있습니다. Emac-스타일의 command-line 에디팅 환경에서, 이 에디팅 단계에서 입력된 값으로 인해 캐릭터들이 여러분이 에디팅 하는 커맨드에 삽입 될 수 있고, 그리고 캐릭터들을 커서의 오른쪽으로 치환합니다. 
 vi 모드에서 캐릭터 삽입 모드는 M-i 혹은 M-a에 의해 시작되고, 캐릭터들이 입력되고 삽입 모드 는 &lt;ESC&gt;키를 입력하여 마치게 됩니다(디폴트는 Emacs-style이며, 여기에 기술되어 있습니다. vi 모드를 더 자세히 알고 싶으시면, readline 문서를 참조하세요). 그리고 RET를 명령문을 입력하면 command를 다시 제출할 수 있습니다. 기타 다른 editing 실행에대한 내용도 나와 있습니다.
 
-<h3 class="appendixsec">C.3 Command-line editor summary</h3>
+<!-- @appendixsection Command-line editor summary -->
+<h3 class="appendixsec">C.3 명령어 기반의 에디터</h3>
 
-<h4 class="subheading">Command recall and vertical motion</h4>
+<!-- @subheading Command recall and vertical motion -->
+<h4 class="subheading">커서의 상하이동을 통한 명령어 되불러 선택하기</h4>
 
      <dl>
 <dt><kbd>C-p</kbd><dd><!-- Go to the previous command (backwards in the history). -->
 
      <p>이전 커맨드로 이동(히스토리 상에서는 뒤로 이동)
 
-     <br><dt><kbd>C-n</kbd><dd>Go to the next command (forwards in the history).
+     <br><dt><kbd>C-n</kbd><dd><!-- Go to the next command (forwards in the history). -->
 
      <p>다음 커맨드로 이동(히스토리 상에서는 앞으로 이동)
 
-     <br><dt><kbd>C-r </kbd><var>text</var><dd>Find the last command with the <var>text</var> string in it. 
+     <br><dt><kbd>C-r </kbd><var>text</var><dd><!-- Find the last command with the @var{text} string in it. -->
 </dl>
 
    <p>text 스트링과 함께 마지막 커맨드를 탐색
@@ -9409,7 +9418,8 @@ of <kbd>C-p</kbd> and <kbd>C-n</kbd>, respectively.
 
    <p>대부분의 터미널에서는, C-p나 C-n 대신 각각 위, 아래 화살표 키를 이용할 수 있습니다 .
 
-<h4 class="subheading">Horizontal motion of the cursor</h4>
+<!-- @subheading Horizontal motion of the cursor -->
+<h4 class="subheading">커서의 좌우이동</h4>
 
 <!-- 커서의 상하 이동 -->
      <dl>
@@ -9444,38 +9454,39 @@ instead of <kbd>C-b</kbd> and <kbd>C-f</kbd>, respectively.
 
    <p>대부분의 터미널에서는, C-b와 C-f 대신 왼쪽, 오른쪽 화살표 키를 사용할 수 있습니다.
 
-<h4 class="subheading">Editing and re-submission</h4>
+<!-- @subheading Editing and re-submission -->
+<h4 class="subheading">편집 후 재실행하기</h4>
 
      <dl>
-<dt><var>text</var><dd>Insert <var>text</var> at the cursor.
+<dt><var>text</var><dd><!-- Insert @var{text} at the cursor. -->
 
      <p>커서에 text 삽입
 
-     <br><dt><kbd>C-f </kbd><var>text</var><dd>Append <var>text</var> after the cursor.
+     <br><dt><kbd>C-f </kbd><var>text</var><dd><!-- Append @var{text} after the cursor. -->
 
      <p>커서 뒤에 text 첨가
 
-     <br><dt><kbd>&lt;DEL&gt;</kbd><dd>Delete the previous character (left of the cursor).
+     <br><dt><kbd>&lt;DEL&gt;</kbd><dd><!-- Delete the previous character (left of the cursor). -->
 
      <p>이전 문자 삭 제(커서의 왼쪽)
 
-     <br><dt><kbd>C-d</kbd><dd>Delete the character under the cursor.
+     <br><dt><kbd>C-d</kbd><dd><!-- Delete the character under the cursor. -->
 
      <p>커서 아래의 문자 삭제
 
-     <br><dt><kbd>M-d</kbd><dd>Delete the rest of the word under the cursor, and &ldquo;save&rdquo; it.
+     <br><dt><kbd>M-d</kbd><dd><!-- Delete the rest of the word under the cursor, and ``save'' it. -->
 
      <p>커서 아래의 모든 남아 있는 단어 삭제 그리고 저장
 
-     <br><dt><kbd>C-k</kbd><dd>Delete from cursor to end of command, and &ldquo;save&rdquo; it.
+     <br><dt><kbd>C-k</kbd><dd><!-- Delete from cursor to end of command, and ``save'' it. -->
 
      <p>커서부터 커맨드의 마지막까지 삭제 그리고 저장
 
-     <br><dt><kbd>C-y</kbd><dd>Insert (yank) the last &ldquo;saved&rdquo; text here.
+     <br><dt><kbd>C-y</kbd><dd><!-- Insert (yank) the last ``saved'' text here. -->
 
      <p>마지막 "저장된" text 삽입
 
-     <br><dt><kbd>C-t</kbd><dd>Transpose the character under the cursor with the next.
+     <br><dt><kbd>C-t</kbd><dd><!-- Transpose the character under the cursor with the next. -->
 
      <p>다음 문자와 함께 커서 아래의 문자를 이항
 
@@ -9483,25 +9494,23 @@ instead of <kbd>C-b</kbd> and <kbd>C-f</kbd>, respectively.
 
      <p>나머지 단어들을 소문자로 변경
 
-     <br><dt><kbd>M-c</kbd><dd>Change the rest of the word to upper case.
+     <br><dt><kbd>M-c</kbd><dd><!-- Change the rest of the word to upper case. -->
 
      <p>나머지 단어들을 대분자로 변경
 
-     <br><dt><kbd>&lt;RET&gt;</kbd><dd>Re-submit the command to R.
+     <br><dt><kbd>&lt;RET&gt;</kbd><dd><!-- Re-submit the command to @R{}. -->
 
      <p>R에 커맨드를 다시 제출
 
 </dl>
 
-   <p>The final &lt;RET&gt; terminates the command line editing sequence.
-
+<!-- The final @key{RET} terminates the command line editing sequence. -->
    <p>마지막 RET는 command line editing sequence를 종료
 
-   <p>The <strong>readline</strong> key bindings can be customized in the usual way
-<em>via</em> a <samp><span class="file">~/.inputrc</span></samp> file.  As from R 2.12.0, these
-customizations can be conditioned on application <code>R</code>, that is
-by including a section like
-
+<!-- The @strong{readline} key bindings can be customized in the usual way -->
+<!-- @emph{via} a @file{~/.inputrc} file.  As from @R{} 2.12.0, these -->
+<!-- customizations can be conditioned on application @code{R}, that is -->
+<!-- by including a section like -->
    <p>Readline key bindings들은 ~/.inputrc 파일을 통해서 맞춤 형식으로 바뀔 수 있습니다. R 2.12.0 버전부터는 이러한 커스터마이제이션이 R 어플리케이션 상에서 아래의 섹션 포함을 통해서, 설정 될 수 있습니다.
 
 <pre class="example">     $if R
