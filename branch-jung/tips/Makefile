@@ -2,6 +2,11 @@ all: pdf
 	make clean
 	make tohtml
 	make clean2
+	cp $(filename).html ../../www/
+	cp $(filename)*.png ../../www/
+	cp $(filename).css ../../www/
+	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
+#	svn ../../commit
 
 pdf: ps
 	ps2pdf $(filename).ps
