@@ -9952,38 +9952,37 @@ instead of @kbd{C-b} and @kbd{C-f}, respectively.
 @table @kbd
 @item @var{text}
 @c Insert @var{text} at the cursor.
-
-커서에 text 삽입
+커서 위치에서 @var{text} 삽입합니다.
 
 @item C-f @var{text}
 @c Append @var{text} after the cursor.
 
-커서 뒤에 text 첨가
+커서 위치 다음부터 @var{text}를 추가합니다.
 
 @item @key{DEL}
 @c Delete the previous character (left of the cursor).
 
-이전 문자 삭 제(커서의 왼쪽)
+커서 위치의 바로 좌측에 있는 이전 문자를 삭제합니다.
 
 @item C-d
 @c Delete the character under the cursor.
 
-커서 아래의 문자 삭제
+커서 위치의 바로 아래에 있는 문자를 삭제합니다.
 
 @item M-d
 @c Delete the rest of the word under the cursor, and ``save'' it.
 
-커서 아래의 모든 남아 있는 단어 삭제 그리고 저장
+커서위치의 아래에 남아 있는 모든 단어를 삭제하고 저장합니다.
 
 @item C-k
 @c Delete from cursor to end of command, and ``save'' it.
 
-커서부터 커맨드의 마지막까지 삭제 그리고 저장
+커서의 위치로부터 명령어 끝까지 삭제하고 저장합니다.
 
 @item C-y
 @c Insert (yank) the last ``saved'' text here.
 
-마지막 "저장된" text 삽입
+마지막에 저장된 텍스트를 삽입합니다.
 
 @item C-t
 @c Transpose the character under the cursor with the next.
@@ -9991,7 +9990,7 @@ instead of @kbd{C-b} and @kbd{C-f}, respectively.
 다음 문자와 함께 커서 아래의 문자를 이항
 
 @item M-l
-Change the rest of the word to lower case.
+@c Change the rest of the word to lower case.
 
 나머지 단어들을 소문자로 변경
 
@@ -10026,17 +10025,19 @@ $endif
 
 @node Function and variable index, Concept index, The command-line editor, Top
 @c @appendix Function and variable index
-@appendix 함수와 변수 인덱스 
+@appendix 함수명과 변수명 정리 
 
 @printindex vr
 
 @node Concept index, References, Function and variable index, Top
-@appendix 개념적 용어에 대한 인덱스 
+@c @appendix Concept index
+@appendix 개념정리
 
 @printindex cp
 
 @node References,  , Concept index, Top
-@appendix 참고문헌들 
+@c @appendix References
+@appendix 참고문헌 
 
 D.@: M.@: Bates and  D.@: G.@: Watts (1988), @emph{Nonlinear Regression
 Analysis and Its Applications.} John Wiley & Sons, New York.
