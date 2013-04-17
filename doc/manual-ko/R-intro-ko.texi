@@ -8150,7 +8150,7 @@ device drivers arrange so that @code{1} corresponds to plain text,
 @code{2} to bold face, @code{3} to italic, @code{4} to bold italic
 and @code{5} to a symbol font (which include Greek letters).
 
-
+텍스트 사용을 위한 폰트를 지정하는 정수. 가능하면, 도구 드라이버를 @code{1}은 일반적인 텍스트, @code{2}는 굵은 글씨, @code{3}은 이탤릭체, @code{4}는 굵은 이탤릭체, 그리고 @code{5}는 (그릭 문자를 포함한) 심볼폰트로 정렬.
 
 @item font.axis
 @itemx font.lab
@@ -8159,6 +8159,8 @@ and @code{5} to a symbol font (which include Greek letters).
 The font to be used for axis annotation, @math{x} and @math{y} labels,
 main and sub-titles, respectively.
 
+축 주석, @math{x} and @math{y} 축의 이름, 주된 타이틀과 부수적 타이틀 각각에 사용하기 위한 폰트
+
 @item adj=-0.1
 Justification of text relative to the plotting position.  @code{0} means
 left justify, @code{1} means right justify and @code{0.5} means to
@@ -8166,6 +8168,8 @@ center horizontally about the plotting position.  The actual value is
 the proportion of text that appears to the left of the plotting
 position, so a value of @code{-0.1} leaves a gap of 10% of the text width
 between the text and the plotting position.
+
+
 
 @item cex=1.5
 Character expansion.  The value is the desired size of text characters
