@@ -274,9 +274,9 @@ p {
 <li><a href="#The-command_002dline-editor">C.2 편집하기</a>
 <li><a href="#The-command_002dline-editor">C.3 명령어 기반의 에디터</a>
 </li></ul>
-<li><a name="toc_Function-and-variable-index" href="#Function-and-variable-index">Appendix D 함수와 변수 인덱스</a>
-<li><a name="toc_Concept-index" href="#Concept-index">Appendix E 개념적 용어에 대한 인덱스</a>
-<li><a name="toc_References" href="#References">Appendix F 참고문헌들</a>
+<li><a name="toc_Function-and-variable-index" href="#Function-and-variable-index">Appendix D 함수명과 변수명 정리</a>
+<li><a name="toc_Concept-index" href="#Concept-index">Appendix E 개념정리</a>
+<li><a name="toc_References" href="#References">Appendix F 참고문헌</a>
 </li></ul>
 </div>
 
@@ -7839,24 +7839,36 @@ devices (and vary on those that do) but line type 1 is always a solid
 line, line type 0 is always invisible, and line types 2 and onwards are
 dotted or dashed lines, or some combination of both.
 
+     <p>선 유형. 대체적인 선 유형들이 모든 그래픽 도구에서 지원되지는 않지만 선유형 1은 언제나 실선이고 선유형 0은 보이지 않고 그리고 선 유형 2와 onward는 점선 또는 대쉬로 된 선 또는 이 둘의 결합된 형태입니다.
+
      <br><dt><code>lwd=2</code><dd>Line widths.  Desired width of lines, in multiples of the &ldquo;standard&rdquo;
 line width.  Affects axis lines as well as lines drawn with
 <code>lines()</code>, etc.  Not all devices support this, and some have
 restrictions on the widths that can be used.
 
+     <p>선 굵기. 표준적인 선 굵기의 중첩사용에서 선 굵기가 요구됩니다. <code>lines()</code>으로 그려진 선과 함께 축선에도 영향을 줍니다. 모든 도구가 이것을 지원하는 것은 아니며 사용되는 굵기에 다소 제약이 있습니다.
+
      <br><dt><code>col=2</code><dd>Colors to be used for points, lines, text, filled regions and images. 
 A number from the current palette (see <code>?palette</code>) or a named colour.
 
+     <p>점, 선, 텍스트, 채워진 영역과 이미지에 사용될 색들. 현재의 파레트(<code>?palette</code>를 참고하십시오)에서 숫자로 또는 컬러 이름.
+
      <br><dt><code>col.axis</code><dt><code>col.lab</code><dt><code>col.main</code><dt><code>col.sub</code><dd>The color to be used for axis annotation, x and y labels,
 main and sub-titles, respectively.
+
+     <p>축 주석, x와 y 축 이름, 주된 타이틀과 부수적 타이틀 각각에 사용하기 위한 색
 
      <br><dt><code>font=2</code><dd>An integer which specifies which font to use for text.  If possible,
 device drivers arrange so that <code>1</code> corresponds to plain text,
 <code>2</code> to bold face, <code>3</code> to italic, <code>4</code> to bold italic
 and <code>5</code> to a symbol font (which include Greek letters).
 
+     <p>텍스트 사용을 위한 폰트를 지정하는 정수. 가능하면, 도구 드라이버를 <code>1</code>은 일반적인 텍스트, <code>2</code>는 굵은 글씨, <code>3</code>은 이탤릭체, <code>4</code>는 굵은 이탤릭체, 그리고 <code>5</code>는 (그릭 문자를 포함한) 심볼폰트로 정렬.
+
      <br><dt><code>font.axis</code><dt><code>font.lab</code><dt><code>font.main</code><dt><code>font.sub</code><dd>The font to be used for axis annotation, x and y labels,
 main and sub-titles, respectively.
+
+     <p>축 주석, x and y 축의 이름, 주된 타이틀과 부수적 타이틀 각각에 사용하기 위한 폰트
 
      <br><dt><code>adj=-0.1</code><dd>Justification of text relative to the plotting position.  <code>0</code> means
 left justify, <code>1</code> means right justify and <code>0.5</code> means to
@@ -9459,38 +9471,37 @@ instead of <kbd>C-b</kbd> and <kbd>C-f</kbd>, respectively.
 
      <dl>
 <dt><var>text</var><dd><!-- Insert @var{text} at the cursor. -->
-
-     <p>커서에 text 삽입
+커서 위치에서 <var>text</var> 삽입합니다.
 
      <br><dt><kbd>C-f </kbd><var>text</var><dd><!-- Append @var{text} after the cursor. -->
 
-     <p>커서 뒤에 text 첨가
+     <p>커서 위치 다음부터 <var>text</var>를 추가합니다.
 
      <br><dt><kbd>&lt;DEL&gt;</kbd><dd><!-- Delete the previous character (left of the cursor). -->
 
-     <p>이전 문자 삭 제(커서의 왼쪽)
+     <p>커서 위치의 바로 좌측에 있는 이전 문자를 삭제합니다.
 
      <br><dt><kbd>C-d</kbd><dd><!-- Delete the character under the cursor. -->
 
-     <p>커서 아래의 문자 삭제
+     <p>커서 위치의 바로 아래에 있는 문자를 삭제합니다.
 
      <br><dt><kbd>M-d</kbd><dd><!-- Delete the rest of the word under the cursor, and ``save'' it. -->
 
-     <p>커서 아래의 모든 남아 있는 단어 삭제 그리고 저장
+     <p>커서위치의 아래에 남아 있는 모든 단어를 삭제하고 저장합니다.
 
      <br><dt><kbd>C-k</kbd><dd><!-- Delete from cursor to end of command, and ``save'' it. -->
 
-     <p>커서부터 커맨드의 마지막까지 삭제 그리고 저장
+     <p>커서의 위치로부터 명령어 끝까지 삭제하고 저장합니다.
 
      <br><dt><kbd>C-y</kbd><dd><!-- Insert (yank) the last ``saved'' text here. -->
 
-     <p>마지막 "저장된" text 삽입
+     <p>마지막에 저장된 텍스트를 삽입합니다.
 
      <br><dt><kbd>C-t</kbd><dd><!-- Transpose the character under the cursor with the next. -->
 
      <p>다음 문자와 함께 커서 아래의 문자를 이항
 
-     <br><dt><kbd>M-l</kbd><dd>Change the rest of the word to lower case.
+     <br><dt><kbd>M-l</kbd><dd><!-- Change the rest of the word to lower case. -->
 
      <p>나머지 단어들을 소문자로 변경
 
@@ -9527,7 +9538,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @appendix Function and variable index -->
-<h2 class="appendix">Appendix D 함수와 변수 인덱스</h2>
+<h2 class="appendix">Appendix D 함수명과 변수명 정리</h2>
 
 <ul class="index-vr" compact>
 <li><a href="#index-g_t_005e-25"><code>^</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
@@ -9741,7 +9752,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="appendix">Appendix E 개념적 용어에 대한 인덱스</h2>
+<!-- @appendix Concept index -->
+<h2 class="appendix">Appendix E 개념정리</h2>
 
 
 
@@ -9836,7 +9848,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="appendix">Appendix F 참고문헌들</h2>
+<!-- @appendix References -->
+<h2 class="appendix">Appendix F 참고문헌</h2>
 
 <p>D. M. Bates and  D. G. Watts (1988), <em>Nonlinear Regression
 Analysis and Its Applications.</em> John Wiley &amp; Sons, New York.
