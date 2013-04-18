@@ -1,4 +1,3 @@
-% \begin{quotation}
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
@@ -11,33 +10,17 @@
 
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
-% \end{quotation}
 
-% Author: Chel Hee Lee
-% Created on 2013-APR-11
-% Modified on 2013-APR-11
 
-% The HTML syntax generated from this document will be added to the page
-% ./ihelp/www/sk_tips.html
-% htlatex $(file_name).tex "html, 4, mouseover, frames, next" "" "-dweb/"
-% htlatex tips.tex "html, 1, mouseover, next"
-
+% NOTE:
+% htlatex tips.tex
 % graphics file must be in the format of .eps
-
-% 아 안된다... tex에서 한글사용 어렵다....
-
-% fullpage.sty 파일이 없다는 에러가 나옵니다.. 해결 방법은?
-% 어떤 종류의 파일명이던지 간에 filename.sty 이라는 것은 패키지가 없다는 말입니다.  따라서, fullpage 이라는 패키지를 찾아 설치해 줘야 합니다.
-
-
-
 
 \documentclass{article}
 
 \usepackage{mystyle}
-% \usepackage{kotex, url, hyperref, Sweave}
 
-\title{Some R Problems Derived Me Nuts Before!}
+\title{Some R Problems Derived Me Nuts!}
 \author{iHELP Working Group \\ Chel Hee Lee \& Eugene Jung}
 
 \begin{document}
@@ -51,12 +34,6 @@
 메일링에 등록된 내용은 이 문서의 관리자가 문서를 갱신할 때마다 반영하도록 노력할 것입니다.
 
 
-% 분석을 하고 나면 결과를 그래프나 그림으로 나타내게 되는데 R에서는 그림을 나타내는 창이 하나만 나타나서 동시에 두 개를 보지 
-% 못하는 경우가 허다함.
-% 이의 해결 방법은?
-
-% 
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -64,14 +41,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{시작하면서 겪는 문제들}
-% R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 하다..
-% 기존의 분석은 일반적으로 [프로그램 실행 -> 데이터 불러오기 -> 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) -> 실행]의 절차를 밟아왔다.
-% 즉 할 거 다하고 나중에 결과를 보는 식이다.
-% 그러나 R은 다르다. 일단 여기부터 생소하다.
-% 뭔가 이상하다.. 하는 거 같은 느낌도 없다. 데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아니다.
-% 물론 나중에는 스크립트를 이용하여 비슷한 방법으로 분석을 실행할 수도 있음을 알게 되었지만 이것도 친숙한 편은 아니다.
-% 이런 느낌은 특히 최소한 내가 알기로는 경영학과 경제학 분야(거의 확실함) 및 사회학, 심리학 분야가 특히 심하다. 그리고 이들 분야에서는
+\section{시작하면서 겪는 문제들 -- 사용환경에 익숙해지기}
+
+
+
+% 이런 느낌은 특히 최소한 내가 알기로는 경영학과 경제학 분야(거의 확실함) 및 사회학, 심리학 분야가 특히 심하다. 
+% 그리고 이들 분야에서는
 % R의 다양한 기능(특히 visualization) 또는 packages를 필요로 하지 않을 가능성이 높다. 왜냐하면 분석 방법이 단순하기 때문이다.
 % 여기에서 분석 방법이 단순하다는 것은 그 이론적 배경이 쉽다는 것을 의미하는 것이 아니라 절차상의 얘기이다.
 % 언급한 분야에서 학술연구에서 실행되는 분석의 양을 보면 대부분 [기술통계 - 상관관계 - 차이분석, 회귀분석, 구조방정식분석] 정도로
@@ -100,37 +75,52 @@
 % 그러기를 한참 후 어느 정도 익숙해지고 나니, 또 연구자로서의 건방이 살아나 R 교육이 어떻게 이루어지고 있는 지가 궁금해졌다.
 % 이 부분은 나중에 다시 써 볼라오,,,
 \begin{enumerate}
-	\item 초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다.
-	대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.
-	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.
-	그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
 
-\begin{Schunk}
-\begin{Soutput}
-> library(pkg_name)	
-\end{Soutput}
-\end{Schunk}
+	\item \textsf{(질문)} -- R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 하다.  기존의 분석은 일반적으로 $[$프로그램 실행 $->$ 데이터 불러오기 $->$ 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) $->$ 실행$]$의 절차를 밟아왔다.  즉 할 거 다하고 나중에 결과를 보는 식이다. 그러나 R은 다르다. 일단 여기부터 생소하다. 뭔가 이상하다.. 하는 거 같은 느낌도 없다. 데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아니다.  물론 나중에는 스크립트를 이용하여 비슷한 방법으로 분석을 실행할 수도 있음을 알게 되었지만 이것도 친숙한 편은 아니다. (접수날짜: 2013-APR-17).
 
-\item 패키지를 설치하는 방법
-\begin{Schunk}
-\begin{Soutput}
-> install.packages()
-\end{Soutput}
-\end{Schunk}
-% 또한 위의 내용과 관련하여,
-% > packages.install()
+	\textsf{(답변)} 사용방식의 다른 점에 대해서 아주 근본적인 다른 점을 알려줄 것.  Introduction to R 문서에 써 있음 (단순히 링크시켜주는게 좋을 듯 함).
+
+	\item \textsf{(질문)} 프롬프트가 무엇인가요? 
+	\begin{Schunk}
+	\begin{Soutput}
+	>
+	\end{Soutput}
+	\end{Schunk}
+% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
+% 경우도 있다.
+	
+	\textsf{(답변)} 
+	
+	\item \textsf{(질문)} 분석을 하고 나면 결과를 그래프나 그림으로 나타내게 되는데 R에서는 그림을 나타내는 창이 하나만 나타나서 동시에 두 개를 보지 못하는 경우가 허다한데, 이의 해결방법은 없나요? (접수: 2013-APR-13, 분류: 그래픽스 관련) 
+	
+	\textsf{(답변)} \texttt{R}에서는 그래픽 디바이스가 그래픽 생성시 마다 초기화되어 다시 보여줌으로서 그래픽 창이 하나만 계속 보여지는 것입니다.  새로운 그래프를 또다른 장치를 통해 보여주고자 한다면 \texttt{X11()}이라는 명령어를 이용하면 됩니다.  이 명령어는 유닉스환경에 설치된 \texttt{R}의 경우에 해당합니다.  윈도우즈의 경우에는 \texttt{}입니다. 
+
+	\item \textsf{(질문)} 초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다. (접수: 2013-APR-15, 분류: 패키지 관련) 
+	
+	\textsf{(답변)} 대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.  	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.  그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
+
+	\begin{Schunk}
+	\begin{Soutput}
+	> library(pkg_name)	
+	\end{Soutput}
+	\end{Schunk}
+
+	\item \textsf{(질문)} 패키지를 설치 (분류: 사용자 환경)  
+	
+	\textsf{(답변)} 설치되는 패키지의 \textbf{설치위치}와 \textbf{의존성}에 대해서 반드시 알아야 합니다. 
+	\begin{Schunk}
+	\begin{Soutput}
+	> install.packages("패키지명", dependencies=TRUE, )
+	\end{Soutput}
+	\end{Schunk}
 % 을 쓰지 못하는 사례도 허다하다. package를 설치할 때 메뉴에서 [패키지 -> 패키지 설치하기]를 선택하고 난 뒤
 % [mirror]를 선택한 뒤 패키지 리스트에서 하나씩 어디선가 본 패키지 이름을 어렵게 어렵게 찾아 더블클릭하는 절차를 따르는 것이다.
 
-% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
-% 경우도 있다.
+	\item \textsf{(질문)} 설치된 패키지의 목록을 확인하는 방법을 알고 싶습니다.
+	
+	\textsf{(답변)} 
 
-\item 프롬프트에 대한 설명
-\begin{Schunk}
-\begin{Soutput}
->
-\end{Soutput}
-\end{Schunk}
+
 
 \end{enumerate}
 
@@ -138,6 +128,19 @@
 
 
 \section{데이터 관리에 관련하여}
+
+\begin{enumerate}
+
+
+\item 결측치를 채우고 싶어요.
+
+\item 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
+
+\item 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
+
+\item \texttt{do.call()} 함수를 사용하는 법에 대해서..
+
+\item 현재 패키지를
 
 % 데이터 불러오기
 % 보통 사람들은 R 콘솔에서 직접 입력한 데이터를 제외하고 그 외의 데이터는 *.txt, *.xlsx 이든 *.sav이든 모두 외부데이터로 생각하기
@@ -154,16 +157,6 @@
 
 % interacrive한 작업 방식을 취하는 R은 객체 관리에 혼란은 느끼는 경우가 많다. 특히 동시에 작업을 한다면 이루 말할 수 없을 정도이다. % 따라서 작업 중에 살아있는 객체들이 무엇이 있는지 파악하고 있는 것이 중요하다. 따라서 프로세스 차트 등을 먼저 작성해 놓은 것이 좋다.
 
-\begin{enumerate}
-\item 결측치를 채우고 싶어요.
-
-\item 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
-
-\item 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
-
-\item \texttt{do.call()} 함수를 사용하는 법에 대해서..
-
-\item 현재 패키지를
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
