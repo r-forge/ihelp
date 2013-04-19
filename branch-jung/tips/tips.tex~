@@ -1,4 +1,3 @@
-% \begin{quotation}
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
@@ -11,51 +10,31 @@
 
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
-% \end{quotation}
 
-% Author: Chel Hee Lee
-% Created on 2013-APR-11
-% Modified on 2013-APR-11
 
-% The HTML syntax generated from this document will be added to the page
-% ./ihelp/www/sk_tips.html
-% htlatex $(file_name).tex "html, 4, mouseover, frames, next" "" "-dweb/"
-% htlatex tips.tex "html, 1, mouseover, next"
-
+% NOTE:
+% htlatex tips.tex
 % graphics file must be in the format of .eps
-
-% 아 안된다... tex에서 한글사용 어렵다....
-
-% fullpage.sty 파일이 없다는 에러가 나옵니다.. 해결 방법은?
-% 어떤 종류의 파일명이던지 간에 filename.sty 이라는 것은 패키지가 없다는 말입니다.  따라서, fullpage 이라는 패키지를 찾아 설치해 줘야 합니다.
-
-
-
 
 \documentclass{article}
 
 \usepackage{mystyle}
-% \usepackage{kotex, url, hyperref, Sweave}
 
-\title{Some R Problems Derived Me Nuts Before!}
+\title{Some R Problems Derived Me Nuts!}
 \author{iHELP Working Group \\ Chel Hee Lee \& Eugene Jung}
+\date{\today}
 
 \begin{document}
 \maketitle
 
-\texttt{R}을 사용하게 된 이래로 여러가지 경험들을 바탕으로 유용한 테크닉을 바탕으로 정리한 것입니다.
+\texttt{R}을 사용하게 된 이래로 여러가지 경험들을 바탕으로 도움이 되고자 하는 내용을 정리하였습니다. 
 이 문서의 작성자 역시 다른 사용자들의 똑똑한 테크닉들을 항상 배우고 있습니다.
+
+본 페이지는 다양한 종류의 패키지들을 활용하는 방법보다는 \underline{R 기본 시스템만을 활용하여 할 수 있는 내용들만이 정리되어 집니다}. 
 이 문서는 매일 갱신이 되며, 문서의 최초 작성일은 2013년 4월 13일입니다.
 
-만약, 이 페이지를 읽고 있는 사용자가 이 문서가 도움이 되었다고 생각된다면 본인이 가진 유용한 팁을 함께 공유하지 않으시겠나요?  만약, 그렇다면 그 내용을 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org}의 주소로 이메일을 보내주시길 부탁드립니다. 
+만약, 이 페이지를 읽고 있는 사용자가 이 문서가 도움이 되었다고 생각된다면 문서에 더 많은 내용이 기재될 수 있도록 추가, 수정 및 제안에 대한 내용을 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org}의 주소로 이메일을 보내주시길 부탁드립니다. 
 메일링에 등록된 내용은 이 문서의 관리자가 문서를 갱신할 때마다 반영하도록 노력할 것입니다.
-
-
-% 분석을 하고 나면 결과를 그래프나 그림으로 나타내게 되는데 R에서는 그림을 나타내는 창이 하나만 나타나서 동시에 두 개를 보지 
-% 못하는 경우가 허다함.
-% 이의 해결 방법은?
-
-% 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,14 +43,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{시작하면서 겪는 문제들}
-% R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 하다..
-% 기존의 분석은 일반적으로 [프로그램 실행 -> 데이터 불러오기 -> 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) -> 실행]의 절차를 밟아왔다.
-% 즉 할 거 다하고 나중에 결과를 보는 식이다.
-% 그러나 R은 다르다. 일단 여기부터 생소하다.
-% 뭔가 이상하다.. 하는 거 같은 느낌도 없다. 데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아니다.
-% 물론 나중에는 스크립트를 이용하여 비슷한 방법으로 분석을 실행할 수도 있음을 알게 되었지만 이것도 친숙한 편은 아니다.
-% 이런 느낌은 특히 최소한 내가 알기로는 경영학과 경제학 분야(거의 확실함) 및 사회학, 심리학 분야가 특히 심하다. 그리고 이들 분야에서는
+\section{미분류 질문들}
+
+
+
+% 이런 느낌은 특히 최소한 내가 알기로는 경영학과 경제학 분야(거의 확실함) 및 사회학, 심리학 분야가 특히 심하다. 
+% 그리고 이들 분야에서는
 % R의 다양한 기능(특히 visualization) 또는 packages를 필요로 하지 않을 가능성이 높다. 왜냐하면 분석 방법이 단순하기 때문이다.
 % 여기에서 분석 방법이 단순하다는 것은 그 이론적 배경이 쉽다는 것을 의미하는 것이 아니라 절차상의 얘기이다.
 % 언급한 분야에서 학술연구에서 실행되는 분석의 양을 보면 대부분 [기술통계 - 상관관계 - 차이분석, 회귀분석, 구조방정식분석] 정도로
@@ -100,37 +77,70 @@
 % 그러기를 한참 후 어느 정도 익숙해지고 나니, 또 연구자로서의 건방이 살아나 R 교육이 어떻게 이루어지고 있는 지가 궁금해졌다.
 % 이 부분은 나중에 다시 써 볼라오,,,
 \begin{enumerate}
-	\item 초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다.
-	대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.
-	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.
-	그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
 
-\begin{Schunk}
-\begin{Soutput}
-> library(pkg_name)	
-\end{Soutput}
-\end{Schunk}
+	\item R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 합니다.  기존의 분석은 일반적으로 $[$프로그램 실행 $->$ 데이터 불러오기 $->$ 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) $->$ 실행$]$의 절차를 밟아 왔기에 모든 결과를 한 번에 보여주는 식입니다. 그러나 R은 그렇지 않아 이러한 점부터 생소하고 이상합니다.  데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아닙니다 (접수날짜: 2013-APR-17).
 
-\item 패키지를 설치하는 방법
-\begin{Schunk}
-\begin{Soutput}
-> install.packages()
-\end{Soutput}
-\end{Schunk}
-% 또한 위의 내용과 관련하여,
-% > packages.install()
+	\textsf{(답변)} 사용방식의 다른 점에 대해서 아주 근본적인 다른 점을 알려줄 것.  Introduction to R 문서에 써 있음 (단순히 링크시켜주는게 좋을 듯 함).
+
+
+	\item 프롬프트가 무엇인가요? 
+	\begin{Schunk}
+	\begin{Soutput}
+	>
+	\end{Soutput}
+	\end{Schunk}
+% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
+% 경우도 있다.
+	
+	\textsf{(답변)} 
+
+
+	\item (접수: 2013-04-18, Reproducibility=NA) \texttt{c()}의 역할은 무엇인가요? \texttt{a <- seq(1:4)}과 \texttt{a <- c(1,2,3,4)}은 동일한 것인가요?
+	
+	\item (접수: 2013-04-18, Reproducibility=NA) R의 장점이자 단점이라고 생각되는 것 중에 하나가 엄청난 수의 패키지들임. 즉 어떤 분석을 하고자 할 때 그것에 대해 하나의 패키지가 있는 것이 아니라 대체적으로 사용가능한 패키지들이 존재하는데 이들 중 어느 것을 써야할 지 잘 모름. 다른 분석 프로그램의 경우 이러한 문제가 없는데... 결국엔 어떻게 제일 성능이 좋은? 결과가 신뢰할 만한? 좋은 패키지를 선택하는가를 알려주었으면 좋겠씀돠.
+
+	\item (접수: 2013-04-18, Reproducibility=NO) read.xlsx함수를 이용해 xlsx파일에서 데이터프레임형태로 가져옵니다. 이 때 [3,3] 셀에 있는 텍스트가 "3월" 이라고 할 때 temp[3,3] == "3월" 이렇게 비교하려고 하면 제대로 비교가 안되더군요.. 한글 텍스트로 이루어진 변수값를 비교하는 방법이 어떤게 있는지 궁금합니다.
+	
+	\item 분석을 하고 나면 결과를 그래프나 그림으로 나타내게 되는데 R에서는 그림을 나타내는 창이 하나만 나타나서 동시에 두 개를 보지 못하는 경우가 허다한데, 이의 해결방법은 없나요? (접수: 2013-APR-13, 분류: 그래픽스 관련) 
+	
+	\textsf{(답변)} \texttt{R}에서는 그래픽 디바이스가 그래픽 생성시 마다 초기화되어 다시 보여줌으로서 그래픽 창이 하나만 계속 보여지는 것입니다.  새로운 그래프를 또다른 장치를 통해 보여주고자 한다면 \texttt{X11()}이라는 명령어를 이용하면 됩니다.  
+	이 명령어는 유닉스환경에 설치된 \texttt{R}의 경우에 해당합니다.  
+	
+	\item 초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다. (접수: 2013-APR-15, 분류: 패키지 관련) 
+	
+	\textsf{(답변)} 대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.  	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.  그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
+
+	\begin{Schunk}
+	\begin{Soutput}
+	> library(pkg_name)	
+	\end{Soutput}
+	\end{Schunk}
+	
+	이와 반대로 현재 연결된 라이브러리를 떼어낼 수도 있습니다. 
+
+	\begin{Schunk}
+	\begin{Soutput}
+	> detach(package:pkg_name)	
+	\end{Soutput}
+	\end{Schunk}
+
+	% 웹에 > detach(package:pkg_name) 과 5. 패키지를 설치 (분류: 사용자 환경)이 한 줄 띄어져야 함.
+
+	\item 패키지를 설치 (분류: 사용자 환경)  
+	
+	\textsf{(답변)} 설치되는 패키지의 \textbf{설치위치}와 \textbf{의존성}에 대해서 반드시 알아야 합니다. 
+	
+	\begin{Schunk}
+	\begin{Soutput}
+	> install.packages("패키지명", dependencies=TRUE, )
+	\end{Soutput}
+	\end{Schunk}
 % 을 쓰지 못하는 사례도 허다하다. package를 설치할 때 메뉴에서 [패키지 -> 패키지 설치하기]를 선택하고 난 뒤
 % [mirror]를 선택한 뒤 패키지 리스트에서 하나씩 어디선가 본 패키지 이름을 어렵게 어렵게 찾아 더블클릭하는 절차를 따르는 것이다.
 
-% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
-% 경우도 있다.
-
-\item 프롬프트에 대한 설명
-\begin{Schunk}
-\begin{Soutput}
->
-\end{Soutput}
-\end{Schunk}
+	\item 설치된 패키지의 목록을 확인하는 방법을 알고 싶습니다.
+	
+	\textsf{(답변)} 
 
 \end{enumerate}
 
@@ -138,6 +148,101 @@
 
 
 \section{데이터 관리에 관련하여}
+
+\begin{enumerate}
+\item 아래와 같이 주어진 데이터에 변수 ID는 결측값 없이 모든 값이 완전하게 잘 들어가 있는데, Week 변수에는 각 ID의 첫번째 레코드에만 해당하는 부분에 값이 들어가 있고 나머지부분에는 \texttt{NA}값이 들어가 있습니다. 
+	\begin{Schunk}
+\begin{Sinput}
+mydata <- data.frame(ID=c(rep(1,4), rep(2,4), rep(3,2)), Week=c(15, NA, NA, NA, 18, NA, NA, NA, 20, NA))
+\end{Sinput}
+\begin{Soutput}
+> mydata		
+
+   ID Week
+1   1   15
+2   1   NA
+3   1   NA
+4   1   NA
+5   2   18
+6   2   NA
+7   2   NA
+8   2   NA
+9   3   20
+10  3   NA
+\end{Soutput}
+\end{Schunk}
+
+이와 같은 데이터를 아래와 같이 자동으로 채워주려면 어떻게 해야 할까요? 	
+	
+\begin{Schunk}
+\begin{Soutput}
+   ID Week
+1   1   15
+2   1   15
+3   1   15
+4   1   15
+5   2   18
+6   2   18
+7   2   18
+8   2   18
+9   3   20
+10  3   20
+	\end{Soutput}
+	\end{Schunk}
+	
+
+이를 수행하는데에는 여러 가지 종류의 함수들이 다양한 패지키 안에 존재합니다.  
+그러나, 이를 수행하는 기본 알고리즘은 동일하며, R 기본시스템만으로 작성이 가능합니다. 
+아래의 함수를 복사하여 사용하시면 됩니다. 
+
+\begin{Schunk}
+	\begin{Soutput}
+fill <- function(x, first, last){
+	n <- last-first+1
+	for(i in c(1:length(first))) x[first[i]:last[i]] <- rep(x[first[i]], n[i])
+	return(x)
+}
+	\end{Soutput}
+\end{Schunk}
+
+\item 위에서 주어진 데이터에서 ID 변수에서 보이는 것처럼 같은 관측치가 여러번 반복 측정되어 ID가 반복적으로 입력이 되었을 때, SAS에서처럼 각 아이디별로 첫번째와 마지막 레코드를 알수 있는 .FIRST 와 .LAST 같은 기능이 R에서는 어떻게 해야 하나요?
+
+\begin{Schunk}
+	\begin{Sinput}
+mydata$first <- !duplicated(mydata$ID)
+mydata$last <- !duplicated(mydata$ID, fromLast=TRUE)		
+	\end{Sinput}
+	\begin{Soutput}
+> mydata
+   ID Week first  last
+1   1   15  TRUE FALSE
+2   1   NA FALSE FALSE
+3   1   NA FALSE FALSE
+4   1   NA FALSE  TRUE
+5   2   18  TRUE FALSE
+6   2   NA FALSE FALSE
+7   2   NA FALSE FALSE
+8   2   NA FALSE  TRUE
+9   3   20  TRUE FALSE
+10  3   NA FALSE  TRUE
+	\end{Soutput}	
+\end{Schunk}
+
+\item wide format 데이터를 long format 으로 바꿀 수 있나요? 
+
+\item 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
+
+\item 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
+
+\item \texttt{do.call()} 함수를 사용하는 법에 대해서..
+
+\item \texttt{which.max()}와 \texttt{which.min()}을 사용하는 방법 
+
+\item \texttt{list()}과 \texttt{data.frame()}과의 관계
+
+\item \texttt{apply()}, \texttt{lapply()}, \texttt{sapply()}, \texttt{mapply()}의 사용방법
+
+\item 현재 패키지를
 
 % 데이터 불러오기
 % 보통 사람들은 R 콘솔에서 직접 입력한 데이터를 제외하고 그 외의 데이터는 *.txt, *.xlsx 이든 *.sav이든 모두 외부데이터로 생각하기
@@ -154,16 +259,6 @@
 
 % interacrive한 작업 방식을 취하는 R은 객체 관리에 혼란은 느끼는 경우가 많다. 특히 동시에 작업을 한다면 이루 말할 수 없을 정도이다. % 따라서 작업 중에 살아있는 객체들이 무엇이 있는지 파악하고 있는 것이 중요하다. 따라서 프로세스 차트 등을 먼저 작성해 놓은 것이 좋다.
 
-\begin{enumerate}
-\item 결측치를 채우고 싶어요.
-
-\item 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
-
-\item 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
-
-\item \texttt{do.call()} 함수를 사용하는 법에 대해서..
-
-\item 현재 패키지를
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -175,7 +270,7 @@
 \section{수치해석 및 시뮬레이션에 관련하여}
 
 \begin{enumerate}
-\item \texttt{R}에도 \texttt{C}와 같은 \texttt{switch}문이 존재하나요?  -- 네 있습니다.
+\item \texttt{R}에도 \texttt{C}와 같은 \texttt{switch}문이 존재하며, 그렇다면 어떻게 사용할 수 있나요? 
 
 \item \texttt{warning}(경고)와 \texttt{error}(에러)를 이용하는 법
 
@@ -202,6 +297,14 @@ error = function(e) {
 
 예제는 내일 시간날때 작성
 \item \texttt{combn()} 함수를 이용하여 모든 조합을 찾기
+
+\item \texttt{Metropolis-Hastings} 알고리즘을 구현하는 프레임 워크
+
+\item \texttt{Newton-Raphson} 알고리즘을 구현하는 방법 
+
+\item \texttt{Laplace Approximation} 알고리즘을 구현하는 방법 
+
+\item \texttt{Bootstrap} 방법
 \end{enumerate}
 
 
@@ -280,3 +383,8 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \end{enumerate}
 
 \end{document}
+
+% R을 사용해서 web 크롤링을 하는데 속도가 엄청 느리네요 scan() 함수를 쓰면 url로부터 html데이터를 받게 되는데 이것을 substring()함수와 regexprs()함수를 사용하여 적절히 데이터를 분해 하는 작업을 하는데 엄청느리네요. 원체느린거 같은데 혹시 해결방안 아시는분 게시나요?
+
+% R에 있는 ggplot2 패키지를 이용해 얻은 얻은 plot그림을 웹에 보여주는 방법에 대해 아시는 분 계신가요?
+ 
