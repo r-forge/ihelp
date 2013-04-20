@@ -80,24 +80,29 @@
 
 	\item R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 합니다.  기존의 분석은 일반적으로 $[$프로그램 실행 $->$ 데이터 불러오기 $->$ 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) $->$ 실행$]$의 절차를 밟아 왔기에 모든 결과를 한 번에 보여주는 식입니다. 그러나 R은 그렇지 않아 이러한 점부터 생소하고 이상합니다.  데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아닙니다 (접수날짜: 2013-APR-17).
 
-	\textsf{(답변)} 사용방식의 다른 점에 대해서 아주 근본적인 다른 점을 알려줄 것.  Introduction to R 문서에 써 있음 (단순히 링크시켜주는게 좋을 듯 함).
-
-
-	\item 프롬프트가 무엇인가요? 
-	\begin{Schunk}
-	\begin{Soutput}
-	>
-	\end{Soutput}
-	\end{Schunk}
-% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
-% 경우도 있다.
+	\textsf{(답변)} 사용방식의 다른 점에 대해서 아주 근본적인 다른 점을 알려줄 것.  Introduction to R 문서에 써 있음 (단순히 링크시켜주는게 좋을 듯 함). 
 	
-	\textsf{(답변)} 
+	파일관리와 관계된 여러가지 유용한 유틸리티가 존재합니다. 
+	\begin{itemize}
+		\item \texttt{edit()},
+		\item \texttt{file.edit()}
+		\item \texttt{fix()}
+		\item \texttt{file.show()}
+		\item \texttt{file.path()}
+		\item \texttt{list.files()}
+		\item \texttt{dir.create()}
+		\item \texttt{file.access()}
+		\item \texttt{file.exists()}
+		\item \texttt{file.copy()}
+		\item \texttt{data.entry()}
+		\item 너무 많아서 차근차근 예를들면서 하나씩 설명하겠습니다. 
+	\end{itemize}
+	
 
 
 	\item (접수: 2013-04-18, Reproducibility=NA) \texttt{c()}의 역할은 무엇인가요? \texttt{a <- seq(1:4)}과 \texttt{a <- c(1,2,3,4)}은 동일한 것인가요?
 	
-	\item (접수: 2013-04-18, Reproducibility=NA) R의 장점이자 단점이라고 생각되는 것 중에 하나가 엄청난 수의 패키지들임. 즉 어떤 분석을 하고자 할 때 그것에 대해 하나의 패키지가 있는 것이 아니라 대체적으로 사용가능한 패키지들이 존재하는데 이들 중 어느 것을 써야할 지 잘 모름. 다른 분석 프로그램의 경우 이러한 문제가 없는데... 결국엔 어떻게 제일 성능이 좋은? 결과가 신뢰할 만한? 좋은 패키지를 선택하는가를 알려주었으면 좋겠씀돠.
+
 
 	\item (접수: 2013-04-18, Reproducibility=NO) read.xlsx함수를 이용해 xlsx파일에서 데이터프레임형태로 가져옵니다. 이 때 [3,3] 셀에 있는 텍스트가 "3월" 이라고 할 때 temp[3,3] == "3월" 이렇게 비교하려고 하면 제대로 비교가 안되더군요.. 한글 텍스트로 이루어진 변수값를 비교하는 방법이 어떤게 있는지 궁금합니다.
 	
@@ -145,7 +150,35 @@
 \end{enumerate}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{프로그래밍 언어를 처음 접하거나 전산지식이 전무하신 분들을 위하여}
+
+\begin{enumerate}
+	\item 프롬프트가 무엇인가요? 
+	\begin{Schunk}
+	\begin{Soutput}
+	>
+	\end{Soutput}
+	\end{Schunk}
+% 보다 더 엄청난 것은 여러 참고용 문서들에서 운영체제에 따른 프롬프트들을 알려주지 않은 이유로 프롬프트인지 뭔지를 구분하지 못하는
+% 경우도 있다.
+	
+	\textsf{(답변)} 
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{데이터 관리에 관련하여}
 
@@ -153,10 +186,9 @@
 \item 아래와 같이 주어진 데이터에 변수 ID는 결측값 없이 모든 값이 완전하게 잘 들어가 있는데, Week 변수에는 각 ID의 첫번째 레코드에만 해당하는 부분에 값이 들어가 있고 나머지부분에는 \texttt{NA}값이 들어가 있습니다. 
 
 \begin{Schunk}
-\begin{Sinput}
-mydata <- data.frame(ID=c(rep(1,4), rep(2,4), rep(3,2)), Week=c(15, NA, NA, NA, 18, NA, NA, NA, 20, NA))
-\end{Sinput}
 \begin{Soutput}
+mydata <- data.frame(ID=c(rep(1,4), rep(2,4), rep(3,2)), Week=c(15, NA, NA, NA, 18, NA, NA, NA, 20, NA))
+
 > mydata		
 
    ID Week
@@ -210,11 +242,10 @@ fill <- function(x, first, last){
 \item 위에서 주어진 데이터에서 ID 변수에서 보이는 것처럼 같은 관측치가 여러번 반복 측정되어 ID가 반복적으로 입력이 되었을 때, SAS에서처럼 각 아이디별로 첫번째와 마지막 레코드를 알수 있는 .FIRST 와 .LAST 같은 기능이 R에서는 어떻게 해야 하나요?
 
 \begin{Schunk}
-	\begin{Sinput}
+\begin{Soutput}
 mydata$first <- !duplicated(mydata$ID)
 mydata$last <- !duplicated(mydata$ID, fromLast=TRUE)		
-	\end{Sinput}
-	\begin{Soutput}
+
 > mydata
    ID Week first  last
 1   1   15  TRUE FALSE
@@ -377,7 +408,7 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{기타내용들}
+\section{인코딩과 한글}
 \begin{enumerate}
 \item 불러오고자 하는 데이터의 인코딩이 UTF-8가 아닐때 이를 확인하고, 데이터를 올바르게 불러오기 위한 내용은 \url{http://lists.r-forge.r-project.org/pipermail/ihelp-urquestion/2013-April/000017.html} 를 읽어보시길 바랍니다.
 
@@ -385,6 +416,26 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 이를 설정하는 방법에 대해서는 \url{http://lists.r-forge.r-project.org/pipermail/ihelp-urquestion/2013-April/000003.html} 을 읽어보시길 바랍니다.
 \end{enumerate}
 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{답변되지 않을 수도 있는 질문들}
+
+\begin{enumerate}
+	\item (접수: 2013-04-18, Reproducibility=NA) R의 장점이자 단점이라고 생각되는 것 중에 하나가 엄청난 수의 패키지들임. 즉 어떤 분석을 하고자 할 때 그것에 대해 하나의 패키지가 있는 것이 아니라 대체적으로 사용가능한 패키지들이 존재하는데 이들 중 어느 것을 써야할 지 잘 모름. 다른 분석 프로그램의 경우 이러한 문제가 없는데... 결국엔 어떻게 제일 성능이 좋은? 결과가 신뢰할 만한? 좋은 패키지를 선택하는가를 알려주었으면 좋겠씀돠.
+	
+	\textsf{(답변)} 이것은 경험에 해당되며, 해당분야의 전문가로부터의 조언을 받는 것이 안전합니다.  그렇지 않다면, 직접 베이스를 이용하여 작성하면 됩니다. 
+	
+\end{enumerate}
 \end{document}
 
 % R을 사용해서 web 크롤링을 하는데 속도가 엄청 느리네요 scan() 함수를 쓰면 url로부터 html데이터를 받게 되는데 이것을 substring()함수와 regexprs()함수를 사용하여 적절히 데이터를 분해 하는 작업을 하는데 엄청느리네요. 원체느린거 같은데 혹시 해결방안 아시는분 게시나요?
