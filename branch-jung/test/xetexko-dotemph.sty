@@ -1,0 +1,92 @@
+
+<!-- saved from url=(0101)ftp://ftp4.kr.freebsd.org/pub/ktug/texlive/texmf-dist/tex/latex/kotex-dev/xetexko/xetexko-dotemph.sty -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-949"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">%% xetexko-dotemph.sty
+%%	방점강조 under xelatex
+%%	copyright (c) 2008-2009  Dohyun Kim &lt;nomos@ktug.or.kr&gt;
+%%	lppl (maintained)
+
+\ifcsname ProvidesPackage\endcsname
+  \ProvidesPackage{xetexko-dotemph}
+    [2009/05/06 v0.6  dot-emphasis under xetexko/luatexko]
+\fi
+
+\def\dotemphraise{0.4em }
+\unless\ifcsname bfseries\endcsname\let\bfseries\bf\fi
+\def\dotemphchar{\bfseries ^^^^02d9}
+
+\unless\ifcsname @gobble\endcsname
+  \def\@gobble#1{}
+\fi
+\unless\ifcsname @sptoken\endcsname
+  {\def\:{\global\let\@sptoken= } \: }% space token
+\fi
+
+\begingroup
+\catcode`\A=11
+\catcode`\0=12
+\global\let\dhucs@cat@eleven=A
+\global\let\dhucs@cat@twelve=0
+\endgroup
+
+\expandafter\def\expandafter\strip@character@meaning@prefix
+  \detokenize{the character} #1{#1}
+\expandafter\def\expandafter\strip@letter@meaning@prefix
+  \detokenize{the letter} #1{#1}
+
+\def\appendtotoks@#1{\toks@\expandafter{\the\toks@ #1}}
+\def\dot@appendtotoks@#1{\appendtotoks@{#1}\dot@emph}
+\def\dot@removeonetoken{\afterassignment\dot@emph\let\@tempa= }
+\def\appendtotoks@letter{%
+  \edef\@tempb{\expandafter\strip@letter@meaning@prefix\meaning\xtxko@next}%
+  \append@dot@@@emph}
+\def\appendtotoks@character{%
+  \edef\@tempb{\expandafter\strip@character@meaning@prefix\meaning\xtxko@next}%
+  \append@dot@@@emph}
+\def\append@dot@@@emph{%
+  \count@\expandafter`\@tempb\relax
+  \ifnum\count@&lt;"3400 \else
+  \ifnum\count@&lt;"9FC4 \appendtotoks@{\dot@@@emph}\else
+  \ifnum\count@&lt;"AC00 \else
+  \ifnum\count@&lt;"D7A4 \appendtotoks@{\dot@@@emph}\else
+  \ifnum\count@&lt;"F900 \else
+  \ifnum\count@&lt;"FADA \appendtotoks@{\dot@@@emph}\else
+  \ifnum\count@&lt;"20000 \else
+  \ifnum\count@&lt;"2FA1E \appendtotoks@{\dot@@@emph}%
+  \fi\fi\fi\fi\fi \fi\fi\fi
+}
+  
+\protected\def\dotemph#1{%
+  \leavevmode
+  \toks@{}\dot@emph#1\@nil
+  \the\toks@}
+\def\dot@emph{\futurelet\xtxko@next\dot@@emph}
+\def\dot@@emph{% &#65533;�주 조금 불완&#65533;�함. (ifcat etc)
+  \ifx\fi\xtxko@next \expandafter\let\csname xtxko@next\endcsname\relax \fi
+  \ifx\ifx\xtxko@next \expandafter\let\csname xtxko@next\endcsname\relax \fi
+  \ifx\xtxko@next\@nil
+    \let\next\@gobble
+  \else\if\noexpand\xtxko@next\relax
+    \let\next\dot@appendtotoks@
+  \else\ifx\bgroup\xtxko@next
+    \appendtotoks@{\bgroup}\let\next\dot@removeonetoken
+  \else\ifx\egroup\xtxko@next
+    \appendtotoks@{\egroup}\let\next\dot@removeonetoken
+  \else\ifx\@sptoken\xtxko@next
+    \appendtotoks@{\space}\let\next\dot@removeonetoken
+  \else\ifcat\dhucs@cat@eleven\xtxko@next
+    \appendtotoks@letter \let\next\dot@appendtotoks@
+  \else\ifcat\dhucs@cat@twelve\xtxko@next
+    \appendtotoks@character \let\next\dot@appendtotoks@
+  \else \let\next\dot@appendtotoks@
+  \fi\fi\fi\fi\fi\fi\fi
+  \next}
+
+\def\dot@@@emph#1{%
+  \hskip0pt plus .02em minus .02em 
+  \setbox\z@\hbox{#1}\dimen@\wd\z@
+  \setbox\z@\hbox to\dimen@{\hss\dotemphchar\hss}\ht\z@\z@\dp\z@\z@
+  \rlap{\raise\dotemphraise\box\z@}\nobreak
+  #1}
+
+\endinput
+</pre></body></html>

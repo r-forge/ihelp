@@ -1,0 +1,264 @@
+
+<!-- saved from url=(0098)ftp://ftp4.kr.freebsd.org/pub/ktug/texlive/texmf-dist/tex/latex/kotex-dev/xetexko/xetexko-josa.sty -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-949"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">%% xetex-autojosa.sty
+%%	XeTeX &#65533;êÎèôÏ°∞ÏÇ¨ ◊ŸÄ&#65533;&#65533; : \ref \pageref \nameref \cite &#65533;∞ÏúÑ &#65533;§Ïóê&#65533;úÎßå 
+%%	copyright (c) 2008-2009  Dohyun Kim &lt;nomos@ktug.or.kr&gt;
+%%	lppl (author maintained)
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xetexko-josa}[2009/03/12 v0.5 Korean auto-josa under XeTeX]
+
+\newcount\@josa
+\newtoks\josatoks
+
+\protected\def\jong{\global\josatoks{^^J}\global\@josa\z@}
+\protected\def\rieul{\global\josatoks{^^J}\global\@josa\@ne}
+\protected\def\jung{\global\josatoks{^^J}\global\@josa\tw@}
+
+\AtBeginDocument{%
+    % redefine ref/pageref for finemath
+    \let\@setref@dhucs@orig@\@setref
+    \def\@setref#1#2#3{\@setref@dhucs@orig@{#1}{#2}{#3}%
+      \ifx#1\relax\else
+        \bgroup\setbox\z@\lastbox\egroup
+      \fi}%
+    % redefine ref/pageref for autojosa
+    \let\@setref@dhucs@orig\@setref
+    \def\@setref#1#2#3{\@setref@dhucs@orig{#1}{#2}{#3}%
+      \ifx#1\relax\else
+        \bgroup
+        \edef\@temp{\expandafter#2#1}\global\josatoks\expandafter{\@temp}%
+        \egroup
+      \fi}%
+    % redefine cite for autojosa: base only or with hyperref.sty
+    \let\@cite@ofmt@dhucs@orig\@cite@ofmt
+    \def\@cite@ofmt#1{\@cite@ofmt@dhucs@orig{#1}%
+      \bgroup
+      \let\@safe@activesfalse\@empty %%% workaround babel %%%
+      \def\hyper@@link[##1]##2##3##4{##4}%
+      \edef\@temp{#1}\global\josatoks\expandafter{\@temp}%
+      \egroup}%
+  % redefine footref for autojosa (footmisc v5.3d)
+  \@ifpackageloaded{footmisc}{%
+      \renewcommand\footref[1]{%
+        \begingroup
+          \let\@setref\@setref@dhucs@orig@
+          \unrestored@protected@xdef\@thefnmark{\ref{#1}}%
+        \endgroup
+        \@footnotemark
+        \global\josatoks\expandafter{\@thefnmark}}%      
+  }{}
+  % redefine cite for autojosa: with cite.sty
+  \@ifpackageloaded{cite}{%
+      \let\citeform@dhucs@orig\citeform
+      \def\citeform#1{\citeform@dhucs@orig{#1}%
+        \bgroup
+        \def\hyper@@link[##1]##2##3##4{##4}%
+        \edef\@temp{#1}\global\josatoks\expandafter{\@temp}%
+        \egroup}%
+  }{}%
+  % redefine cite for autojosa: with natbib.sty (NOT a full support yet)
+  \@ifpackageloaded{natbib}{%
+      \expandafter\def\expandafter\hyper@natlinkend\expandafter{%
+        \hyper@natlinkend
+        \bgroup%\def\protect##1##2{^^J}% how to do about \protect
+        \ifnum\NAT@ctype=1
+          \edef\@temp{\NAT@nm}%
+        \else
+          \ifNAT@numbers
+          \edef\@temp{\NAT@num}\else
+          \edef\@temp{\NAT@date}\fi
+        \fi
+        \global\josatoks\expandafter{\@temp}%
+        \egroup}%
+  }{}%
+  % support of autojosa for apacite.sty
+  \@ifpackageloaded{apacite}{%
+      \let\dhucs@@cite@orig\@@cite
+      \def\@@cite&lt;#1&gt;[#2]#3{%
+        \dhucs@@cite@orig&lt;#1&gt;[#2]{#3}%
+        \begingroup
+        \def\hyper@@link[##1]##2##3##4{##4}%
+        \def\setcounter##1##2{\@ifundefined{c@##1}{\@nocounterr{##1}}%
+          {\csname c@##1\endcsname}{##2}}%
+        \if@Y@cite
+          \@for\@citeb:=#3\do{%
+            \@ifundefined{b@\@citeb\@extra@b@citeb}{}{%
+              \edef\@temp{\csname Y@\@citeb\@extra@b@citeb\endcsname}}}%
+        \else
+          \let\BCA\@firstoftwo
+          \@for\@citeb:=#3\do{%
+            \@ifundefined{b@\@citeb\@extra@b@citeb}{}{%
+              \edef\@temp{\csname b@\@citeb\@extra@b@citeb\endcsname}}}%
+        \fi
+        \global\josatoks\expandafter{\@temp}%
+        \endgroup}%
+  }{}%
+}
+
+\newcommand*\josa@hyper@link{%
+  \begingroup
+	\expandafter\josa@hyper@link@\the\josatoks\@nil
+  \endgroup}
+\newcommand*\josa@hyper@link@{%
+  \afterassignment\josa@link@reversetoks\let\dhucs@tmp@next= }
+\newcommand*\josa@link@reversetoks{%
+  \ifx\dhucs@tmp@next\@nil
+    \expandafter\josa@hyper@link@@
+  \else 
+    \if\noexpand\dhucs@tmp@next\relax
+    \else\ifx\bgroup\dhucs@tmp@next
+    \else\ifx\egroup\dhucs@tmp@next
+    \else\ifx)\dhucs@tmp@next
+    \else\ifx]\dhucs@tmp@next
+    \else\ifcat\dhucs@cat@eleven\dhucs@tmp@next
+	\@tempcntb\number\@tempcnta\relax
+	\@tempcnta\number\count@\relax
+	\expandafter\expandafter\expandafter\count@
+		\expandafter\strip@letternum@meaning@prefix
+			\meaning\dhucs@tmp@next\relax
+    \else\ifcat\dhucs@cat@twelve\dhucs@tmp@next
+	\@tempcntb\number\@tempcnta\relax
+	\@tempcnta\number\count@\relax
+	\expandafter\expandafter\expandafter\count@
+		\expandafter\strip@characternum@meaning@prefix
+			\meaning\dhucs@tmp@next\relax
+    \fi\fi\fi\fi\fi\fi\fi
+    \expandafter\josa@hyper@link@
+  \fi}
+
+\begingroup
+\catcode`\A=11
+\catcode`\0=12
+\global\let\dhucs@cat@eleven=A
+\global\let\dhucs@cat@twelve=0
+\endgroup
+
+\expandafter\def\expandafter\strip@characternum@meaning@prefix
+  \detokenize{the character} #1{\number`#1}
+\expandafter\def\expandafter\strip@letternum@meaning@prefix
+  \detokenize{the letter} #1{\number`#1}
+
+\newcommand*\josa@hyper@link@@{%
+  \ifnum\count@&lt;256 %
+    \ifnum 49=\count@ \rieul\else	% 1
+    \ifnum 51=\count@ \jong\else	% 3
+    \ifnum 54=\count@ \jong\else	% 6
+    \ifnum 55=\count@ \rieul\else	% 7
+    \ifnum 56=\count@ \rieul\else	% 8
+    \ifnum 48=\count@ \jong\else	% 0
+    \ifnum 108=\count@ \rieul\else	% l
+    \ifnum 109=\count@ \jong\else	% m
+    \ifnum 110=\count@ \jong\else	% n
+    \ifnum 76=\count@ \rieul\else	% L
+    \ifnum 77=\count@ \jong\else	% M
+    \ifnum 78=\count@ \jong\else	% N
+      \jung
+    \fi\fi\fi\fi\fi \fi\fi\fi\fi\fi \fi\fi
+    \ifnum 110=\@tempcnta \ifnum 103=\count@ \jong\fi\fi	%skati-ng
+    \ifnum 97=\@tempcnta  \ifnum 112=\count@ \jong\fi\fi	%c-ap
+    \ifnum 117=\@tempcnta \ifnum 112=\count@ \jong\fi\fi	%c-up
+    \ifnum 97=\@tempcnta  \ifnum 116=\count@ \jong\fi\fi	%c-at
+    \ifnum 101=\@tempcnta \ifnum 116=\count@ \jong\fi\fi	%Haml-et
+    \ifnum 105=\@tempcnta \ifnum 116=\count@ \jong\fi\fi	%summ-it
+    \ifnum 111=\@tempcnta \ifnum 116=\count@ \jong\fi\fi	%n-ot
+    \ifnum 117=\@tempcnta \ifnum 116=\count@ \jong\fi\fi	%n-ut
+    \ifnum 111=\@tempcnta \ifnum 107=\count@ \jong\fi\fi	%bo-ok
+    \ifnum 105=\@tempcnta \ifnum 99=\count@  \jong\fi\fi	%picn-ic
+    \ifnum 108=\@tempcnta \ifnum 101=\count@ \rieul\fi\fi	%app-le
+    \ifnum 105=\@tempcntb \ifnum 109=\@tempcnta \ifnum 101=\count@ \jong\fi\fi\fi	%t-ime
+    \ifnum 105=\@tempcntb \ifnum 110=\@tempcnta \ifnum 101=\count@ \jong\fi\fi\fi	%m-ine
+    \ifnum 97=\@tempcntb  \ifnum 99=\@tempcnta  \ifnum 107=\count@ \jong\fi\fi\fi	%b-ack
+    \ifnum 105=\@tempcntb  \ifnum 99=\@tempcnta  \ifnum 107=\count@ \jong\fi\fi\fi	%p-ick
+    \ifnum 111=\@tempcntb \ifnum 97=\@tempcnta  \ifnum 116=\count@ \jung\fi\fi\fi	%b-oat
+    \ifnum 84=\@tempcntb  \ifnum 69=\@tempcnta  \ifnum 88=\count@ \jong\fi\fi\fi	%TEX
+  \else
+	\global\@josa\number\count@\relax
+  \fi}
+
+\newcommand*\josa@hanja@hangul[1]{\begingroup
+  \count@=\z@
+  \openin1=#1\relax \josa@hanja \closein1
+  \endgroup}
+\newcommand*\josa@hanja{\read1 to \@tempa
+  \ifnum\count@=\@josa
+    \global\@josa\@tempa \let\next\relax
+  \else
+    \advance\count@\@ne \let\next\josa@hanja
+  \fi \next}
+\protected\def\makejosa#1#2{%
+  \expandafter\ifx^^J\the\josatoks\else\josa@hyper@link\fi
+  \ifnum\@josa&gt;19967 \ifnum\@josa&lt;40870 %%% CJK UNIFIED IDEOGRAPHS
+    \advance\@josa-19968 % "4E00
+    \josa@hanja@hangul{hanja_hg.tab}\fi\fi
+  \ifnum\@josa&gt;13311 \ifnum\@josa&lt;19894 %%% CJK UNIFIED IDEOGRAPHS EXT. A
+    \advance\@josa-13312 % "3400
+    \josa@hanja@hangul{hjexa_hg.tab}\fi\fi
+  \ifnum\@josa&gt;63743 \ifnum\@josa&lt;64046 %%% CJK COMPATIBILITY IDEOGRAPHS
+    \advance\@josa-63744 % "F900
+    \josa@hanja@hangul{hjcom_hg.tab}\fi\fi
+  \ifnum\@josa&gt;44031 \ifnum\@josa&lt;55204 %%% hangul syllables
+    \advance\@josa-44032 % "AC00
+    \count@=\@josa \divide\count@28 \multiply\count@28
+    \advance\@josa-\count@ \advance\@josa4519 % "11A7
+    \ifnum\@josa=4519 \jung
+    \else\ifnum\@josa=4527 \rieul % "11AF
+    \else \jong \fi\fi \fi\fi
+  \ifnum\@josa&gt;12592 \ifnum\@josa&lt;12623 %%% &#65533;±„Ñ¥&#65533;∑„Ñπ
+    \ifnum\@josa=12601 \rieul
+    \else\jong\fi \fi\fi
+  \ifnum\@josa&gt;12895 \ifnum\@josa&lt;12924 \advance\@josa-96 \fi\fi
+  \ifnum\@josa&gt;12799 \ifnum\@josa&lt;12814 %%% &#65533;&#65533; or &#65533;Ä
+    \ifnum\@josa=12803 \rieul
+    \else\jong\fi \fi\fi
+  \ifnum\@josa&gt;12813 \ifnum\@josa&lt;12829 %%% &#65533;&#65533; or &#65533;&#65533;
+    \jung \fi\fi
+  \ifnum\@josa&gt;9311 \ifnum\@josa&lt;9372 %%% &#65533;&#65533; or &#65533;&#65533;
+    \advance\@josa\m@ne \num@josa{\@josa}\fi\fi
+  \ifnum\@josa&gt;9423 \ifnum\@josa&lt;9450 \advance\@josa-26 \fi\fi
+  \ifnum\@josa&gt;9397 \ifnum\@josa&lt;9424 \advance\@josa-26 \fi\fi
+  \ifnum\@josa&gt;9371 \ifnum\@josa&lt;9398 %%% &#65533;&#65533; or &#65533;&#65533;
+    \ifnum\@josa=9383 \rieul\else % l
+    \ifnum\@josa=9384 \jong\else  % m
+    \ifnum\@josa=9385 \jong\else  % n
+    \jung\fi\fi\fi \fi\fi
+  \ifnum\@josa&gt;8543 \ifnum\@josa&lt;8556 % &#65533;∞‚Ö±&#65533;&#65533;
+    \advance\@josa-3 \num@josa{\@josa}\fi\fi
+  \ifnum\@josa&gt;8559 \ifnum\@josa&lt;8572 % &#65533;†‚Ö°&#65533;&#65533;
+    \advance\@josa\@ne \num@josa{\@josa}\fi\fi
+  \ifnum\@josa=\@ne
+    \ifx\@empty#1\@empty \else#2\relax\fi% rieul
+  \else
+    \ifnum\@josa=\tw@ #1\relax% jung
+    \else #2\relax% jong
+    \fi
+  \fi}
+\newcommand*\num@josa[1]{\bgroup\count@#1%
+  \ifnum\count@&lt;\z@ \count@-\count@ \fi\count2\count@
+  \divide\count2 10 \multiply\count2 10 \advance\count@-\count2
+  \ifcase\count@\jong\or\rieul\or\jung\or\jong\or\jung\or
+    \jung\or\jong\or\rieul\or\rieul\or\jung\fi\egroup}
+
+\def\Í∞Ä{\makejosa{Í∞Ä}{&#65533;&#65533;}
+\def\&#65533;&#65533;\futurelet\dhucs@next\makejosa@I}
+\def\&#65533;Ä{\makejosa{&#65533;&#65533;{&#65533;Ä}}
+\def\&#65533;&#65533;\makejosa{&#65533;&#65533;{&#65533;Ä}}
+\def\&#65533;&#65533;\makejosa{Î•&#65533;{&#65533;&#65533;}
+\def\Î•&#65533;\makejosa{Î•&#65533;{&#65533;&#65533;}
+\def\&#65533;Ä{\makejosa{&#65533;Ä}{Í≥&#65533;}
+\def\Í≥&#65533;\makejosa{&#65533;Ä}{Í≥&#65533;}
+\def\&#65533;&#65533;\makejosa{}{&#65533;&#65533;}
+\def\Î°&#65533;\makejosa{}{&#65533;&#65533;Î°&#65533;
+\def\&#65533;&#65533;\makejosa{&#65533;&#65533;{&#65533;¥Îùº}}
+\def\makejosa@I{%
+	\ifx\dhucs@next&#65533;&#65533;%
+		\makejosa\relax{&#65533;&#65533;%
+	\else
+		\makejosa{Í∞Ä}{&#65533;&#65533;%
+	\fi}
+ 
+%% \&#65533;&#65533;: see http://kts.ktug.kr/node/204
+%\def\&#65533;&#65533;\nobreak &#65533;&#65533;
+
+\endinput
+</pre></body></html>

@@ -1,0 +1,69 @@
+
+<!-- saved from url=(0098)ftp://ftp4.kr.freebsd.org/pub/ktug/texlive/texmf-dist/tex/latex/kotex-dev/xetexko/xetexko-font.sty -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-949"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">%% xetexko-font.sty
+%%	copyright (c) 2008  Dohyun Kim &lt;nomos@ktug.or.kr&gt;
+%%	lppl (author maintained)
+
+\ProvidesPackage{xetexko-font}
+  [2008/10/20 v0.2 Korean font definition in conjunction with xetexko-space]
+
+\@ifpackageloaded{xltxtra}{}{\RequirePackage{xltxtra}}
+
+\def\setmainhangulfont{\newfontfamily\kormainfont}
+\def\setsanshangulfont{\newfontfamily\korsansfont}
+\def\setmonohangulfont{\newfontfamily\kormonofont}
+\def\setmainhanjafont {\newfontfamily\hnjmainfont}
+\def\setsanshanjafont {\newfontfamily\hnjsansfont}
+\def\setmonohanjafont {\newfontfamily\hnjmonofont}
+
+%% &#65533;œê&#65533;&#65533;°íŠ¸ ×Ù€&#65533;•í•˜ê¸&#65533; :
+\setmainhangulfont
+  [
+    ExternalLocation,
+    BoldFont=UnBatangBold,
+    ItalicFont=UnBatang, ItalicFeatures={RawFeature={slant=0.17}},
+    BoldItalicFont=UnBatangBold, BoldItalicFeatures={RawFeature={slant=0.17}},
+    %%% &#65533;¤ìŒ &#65533;µì…˜&#65533;€ &#65533;›í•œê¸€&#65533;ì„œ×º&#65533; &#65533;˜ë&#65533; &#65533;ˆìŒ. 
+    % Script=Hangul, Language=Korean, RawFeature=+ccmp;+ljmo;+vjmo;+tjmo,
+  ]
+  {UnBatang}
+
+\setsanshangulfont
+  [
+    ExternalLocation,
+    BoldFont=UnDotumBold,
+    ItalicFont=UnDotum, ItalicFeatures={RawFeature={slant=0.17}},
+    BoldItalicFont=UnDotumBold, BoldItalicFeatures={RawFeature={slant=0.17}},
+  ]
+  {UnDotum}
+
+\setmonohangulfont
+  [
+    ExternalLocation,
+    Scale=1.05,
+    BoldFont=UnTaza, BoldFeatures={RawFeature={embolden=2}},
+    ItalicFont=UnTaza, ItalicFeatures={RawFeature={slant=0.17}},
+    BoldItalicFont=UnTaza, BoldItalicFeatures={RawFeature={embolden=2;slant=0.17}},
+  ]
+  {UnTaza}
+
+%%% &#65533;¸ë¡œ&#65533;°ê¸°
+%  \newfontfamily\korvertfont[ExternalLocation,
+%      BoldFont=UnBatang,
+%        BoldFeatures={RawFeature={embolden=2}},
+%      ItalicFont=UnBatang,
+%        ItalicFeatures={RawFeature={slant=0.17}},
+%      BoldItalicFont=UnBatang,
+%        BoldItalicFeatures={RawFeature={embolden=2;slant=0.17}},
+%      Script=Hangul,
+%      Language=Korean,
+%      Vertical=RotatedGlyphs]
+%    {UnBatang}
+
+%%% &#65533;€ê¸€ê¼&#65533; &#65533;œì&#65533;°íŠ¸ &#65533;¤ì •
+\let\hnjmainfont\kormainfont
+\let\hnjsansfont\korsansfont
+\let\hnjmonofont\korsansfont
+
+\endinput
+</pre></body></html>
