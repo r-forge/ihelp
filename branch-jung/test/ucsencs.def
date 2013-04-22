@@ -1,0 +1,443 @@
+
+<!-- saved from url=(0056)http://code.haskell.org/~byorgey/TMR/Issue16/ucsencs.def -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-949"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">%%
+%% This is file `ucsencs.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ucs.dtx  (with options: `ucsencs.def')
+%% 
+%% Copyright 2001 Dominique Unruh &lt;dominique@unruh.de&gt;
+%% 
+%% This program is provided under the terms of the LaTeX Project Public
+%% License with some modifications.
+%% See the file LICENSE (http://www.unruh.de/DniQ/latex/unicode/content/LICENSE)
+%% for information.
+%% 
+\ifx\ProvidesFile\undefined\else
+\ProvidesFile{ucsencs.def}[2003/11/29 Fixes to fontencodings LGR, T3]
+\fi
+\expandafter\edef\csname uc@temp@d\endcsname{%
+  \noexpand\catcode`\noexpand\@=\number\catcode`\@\relax
+  \noexpand\catcode`\noexpand\^=\number\catcode`\^\relax
+  \noexpand\catcode`\noexpand\"=\number\catcode`\"\relax
+  \noexpand\catcode1=\number\catcode1\relax
+  \noexpand\catcode2=\number\catcode2\relax
+}%
+\catcode`\@11
+\catcode`\"12
+\ifx\@backslashchar\undefined
+  \edef\@backslashchar{\expandafter\@gobble\string\\}\fi
+\catcode`\^7
+\@tempcnta\catcode1
+\@tempcntb\catcode2
+\catcode1=13\relax
+\def\uc@temp@c#1
+{}%
+\def^^A#1{%
+  \let\uc@temp@a\undefined
+  \ifx#1\def\let\uc@temp@a\thr@@\fi
+  \ifx#1\DeclareTextSymbol\let\uc@temp@a\@ne\fi
+  \ifx#1\DeclareTextComposite\let\uc@temp@a\tw@\fi
+  \ifx#1\DeclareTextCommand\let\uc@temp@a\@ne\fi
+  \ifx#1\DeclareTextAccent\let\uc@temp@a\@ne\fi
+  \ifx#1\DeclareTextCompositeCommand\let\uc@temp@a\tw@\fi
+  \ifx#1\typeout\let\uc@temp@a\typeout\fi
+  \ifx\uc@temp@a\@ne
+    \def\uc@temp@a##1##2{%
+      \expandafter\ifx\csname ##2\string##1\endcsname\relax
+        \expandafter#1%
+      \else
+        \wlog{##2\string##1 already defined.}%
+        \expandafter\uc@temp@c
+      \fi##1{##2}}%
+  \fi
+  \ifx\uc@temp@a\tw@
+    \def\uc@temp@a##1##2##3{%
+      \expandafter\ifx\csname\@backslashchar##2\string##1-\string##3\endcsname\relax
+        \expandafter#1%
+      \else
+        \wlog{\@backslashchar##2\string##1-\string##3 already defined.}%
+        \expandafter\uc@temp@c
+      \fi##1{##2}##3}%
+  \fi
+  \ifx\uc@temp@a\thr@@
+    \def\uc@temp@a##1{%
+      \ifx##1\undefined
+        \expandafter\def\expandafter##1%
+      \else
+        \expandafter\def\expandafter\uc@temp@a
+      \fi}
+  \fi
+  \ifx\uc@temp@a\undefined
+    \errmessage{ucsencs.def: Dont know how to handle \string#1}%
+    \let\uc@temp@a#1%
+  \fi
+  \uc@temp@a}
+\def\uc@temp@b#1{\expandafter\ifx\csname T@#1\endcsname\relax
+  \catcode1=14\relax\catcode2=14\relax
+  \else\catcode1=13\relax\catcode2=9\relax\fi}%
+\ifx\autofe@mode\undefined\else\ifx\autofe@mode0\else\let\autofe@mode1\fi\fi
+\ProvideTextCommandDefault{\textascii}[1]{\@textascii{#1}}%
+\def\@textascii#1{\expandafter\@@textascii\string#1\empty\@nil}%
+\def\@@textascii#1#2\@nil{\ifx#2\empty#1\else#2\fi}%
+\def\textasciiencoding{\encodingdefault}%
+\def\@textascii@switch#1{\begingroup\@use@text@encoding{\textasciiencoding}\def\textasciiencoding{OT1}\textascii{#1}\endgroup}%
+\let\uc@text@composite\@text@composite
+\def\@text@composite#1#2#3\@text@composite{%
+  \ifx\textascii#2\expandafter\@secondoftwo\else\expandafter\@firstoftwo\fi
+  {\uc@text@composite{#1}{#2}{#3}\@text@composite}%
+  {\uc@text@composite{#1}#3\@text@composite}}%
+\uc@temp@b{LGR}
+^^A\DeclareTextCommand{\textascii}{LGR}[1]{\@textascii@switch{#1}}
+^^A\DeclareTextSymbol{\textpentedeka}{LGR}{2}
+^^A\DeclareTextSymbol{\textpentehkaton}{LGR}{3}
+^^A\DeclareTextSymbol{\textpenteqilioi}{LGR}{4}
+^^A\DeclareTextSymbol{\textpentemuria}{LGR}{5}
+^^A\DeclareTextSymbol{\textstigma}{LGR}{6}
+^^A\DeclareTextSymbol{\textstigmavariant}{LGR}{7}
+^^A\DeclareTextSymbol{\textqoppa}{LGR}{"12}
+^^A\DeclareTextSymbol{\textqoppavariant}{LGR}{"13}
+^^A\DeclareTextSymbol{\texteuro}{LGR}{"18}
+^^A\DeclareTextSymbol{\textperthousand}{LGR}{"19}
+^^A\DeclareTextSymbol{\textsanpi}{LGR}{"1B}
+^^A\DeclareTextSymbol{\textquoteleft}{LGR}{"1C}
+^^A\DeclareTextSymbol{\textquoteright}{LGR}{"1D}
+^^A\DeclareTextAccent{\u}{LGR}{"1E}
+^^A\DeclareTextAccent{\=}{LGR}{"1F}
+^^A\DeclareTextAccent{\textdialytikaperispomeni}{LGR}{"20}
+^^A\DeclareTextAccent{\"}{LGR}{"22}
+^^A\DeclareTextAccent{\textdialytikatonos}{LGR}{"23}
+^^A\DeclareTextCommand{\textdialytikaoxia}{LGR}[1]{\textdialytikatonos{#1}}
+^^A\DeclareTextAccent{\textdialytikavaria}{LGR}{"24}
+^^A\DeclareTextSymbol{\textpercent}{LGR}{"25}
+^^A\DeclareTextSymbol{\textperiodcentered}{LGR}{"26}
+^^A\DeclareTextAccent{\'}{LGR}{"27}
+^^A\DeclareTextCommand{\textoxia}{LGR}[1]{\@tabacckludge'{#1}}
+^^A\DeclareTextSymbol{\textparenleft}{LGR}{"28}
+^^A\DeclareTextSymbol{\textparenright}{LGR}{"29}
+^^A\DeclareTextSymbol{\textanoteleia}{LGR}{"3B}
+^^A\DeclareTextAccent{\textdasia}{LGR}{"3C}
+^^A\DeclareTextAccent{\textpsili}{LGR}{"3E}
+^^A\DeclareTextSymbol{\textquestion}{LGR}{"3F}
+^^A\DeclareTextAccent{\textdasiaperispomeni}{LGR}{"40}
+^^A\DeclareTextSymbol{\textAlpha}{LGR}{"41}
+^^A\DeclareTextSymbol{\textBeta}{LGR}{"42}
+^^A\DeclareTextAccent{\textdasiavaria}{LGR}{"43}
+^^A\DeclareTextSymbol{\textDelta}{LGR}{"44}
+^^A\DeclareTextSymbol{\textEpsilon}{LGR}{"45}
+^^A\DeclareTextSymbol{\textPhi}{LGR}{"46}
+^^A\DeclareTextSymbol{\textGamma}{LGR}{"47}
+^^A\DeclareTextSymbol{\textEta}{LGR}{"48}
+^^A\DeclareTextSymbol{\textIota}{LGR}{"49}
+^^A\DeclareTextSymbol{\textTheta}{LGR}{"4A}
+^^A\DeclareTextSymbol{\textKappa}{LGR}{"4B}
+^^A\DeclareTextSymbol{\textLambda}{LGR}{"4C}
+^^A\DeclareTextSymbol{\textMu}{LGR}{"4D}
+^^A\DeclareTextSymbol{\textNu}{LGR}{"4E}
+^^A\DeclareTextSymbol{\textOmicron}{LGR}{"4F}
+^^A\DeclareTextSymbol{\textPi}{LGR}{"50}
+^^A\DeclareTextSymbol{\textChi}{LGR}{"51}
+^^A\DeclareTextSymbol{\textRho}{LGR}{"52}
+^^A\DeclareTextSymbol{\textSigma}{LGR}{"53}
+^^A\DeclareTextSymbol{\textTau}{LGR}{"54}
+^^A\DeclareTextSymbol{\textUpsilon}{LGR}{"55}
+^^A\DeclareTextAccent{\textdasiaoxia}{LGR}{"56}
+^^A\DeclareTextSymbol{\textOmega}{LGR}{"57}
+^^A\DeclareTextSymbol{\textXi}{LGR}{"58}
+^^A\DeclareTextSymbol{\textPsi}{LGR}{"59}
+^^A\DeclareTextSymbol{\textZeta}{LGR}{"5A}
+^^A\DeclareTextAccent{\textpsiliperispomeni}{LGR}{"5C}
+^^A\DeclareTextAccent{\textpsilioxia}{LGR}{"5E}
+^^A\DeclareTextAccent{\textpsilivaria}{LGR}{"5F}
+^^A\DeclareTextAccent{\`}{LGR}{"60}
+^^A\DeclareTextSymbol{\textalpha}{LGR}{"61}
+^^A\DeclareTextSymbol{\textbeta}{LGR}{"62}
+^^A\DeclareTextSymbol{\textvarsigma}{LGR}{"63}
+^^A\DeclareTextSymbol{\textdelta}{LGR}{"64}
+^^A\DeclareTextSymbol{\textepsilon}{LGR}{"65}
+^^A\DeclareTextSymbol{\textphi}{LGR}{"66}
+^^A\DeclareTextSymbol{\textgamma}{LGR}{"67}
+^^A\DeclareTextSymbol{\texteta}{LGR}{"68}
+^^A\DeclareTextSymbol{\textiota}{LGR}{"69}
+^^A\DeclareTextSymbol{\texttheta}{LGR}{"6A}
+^^A\DeclareTextSymbol{\textkappa}{LGR}{"6B}
+^^A\DeclareTextSymbol{\textlambda}{LGR}{"6C}
+^^A\DeclareTextSymbol{\textmu}{LGR}{"6D}
+^^A\DeclareTextSymbol{\textnu}{LGR}{"6E}
+^^A\DeclareTextSymbol{\textomicron}{LGR}{"6F}
+^^A\DeclareTextSymbol{\textpi}{LGR}{"70}
+^^A\DeclareTextSymbol{\textchi}{LGR}{"71}
+^^A\DeclareTextSymbol{\textrho}{LGR}{"72}
+^^A\DeclareTextSymbol{\textautosigma}{LGR}{"73}
+^^B\ifx\lgr@sig@fix\undefined\def\lgr@sig@fix#1cm#2\@nil{\ifx!#1!\char"9B \fi}\fi
+^^A\DeclareTextCommand{\textsigma}{LGR}{\char"73 \expandafter\lgr@sig@fix\f@family cm\@nil}
+^^A\DeclareTextSymbol{\texttau}{LGR}{"74}
+^^A\DeclareTextSymbol{\textupsilon}{LGR}{"75}
+^^A\DeclareTextSymbol{\textomega}{LGR}{"77}
+^^A\DeclareTextSymbol{\textxi}{LGR}{"78}
+^^A\DeclareTextSymbol{\textpsi}{LGR}{"79}
+^^A\DeclareTextSymbol{\textzeta}{LGR}{"7A}
+^^A\DeclareTextSymbol{\guillemotleft}{LGR}{"7B}
+^^A\DeclareTextCommand{\textsubiota}{LGR}[1]{#1|}
+^^A\DeclareTextCommand{\textpsiliiota}{LGR}[1]{\textpsili{#1}|}
+^^A\DeclareTextCommand{\textdasiaiota}{LGR}[1]{\textdasia{#1}|}
+^^A\DeclareTextCommand{\textvariaiota}{LGR}[1]{\@tabacckludge`{#1}|}
+^^A\DeclareTextCommand{\textoxiaiota}{LGR}[1]{\@tabacckludge'{#1}|}
+^^A\DeclareTextCommand{\textpsilivariaiota}{LGR}[1]{\textpsilivaria{#1}|}
+^^A\DeclareTextCommand{\textdasiavariaiota}{LGR}[1]{\textdasiavaria{#1}|}
+^^A\DeclareTextCommand{\textpsilioxiaiota}{LGR}[1]{\textpsilioxia{#1}|}
+^^A\DeclareTextCommand{\textdasiaoxiaiota}{LGR}[1]{\textdasiaoxia{#1}|}
+^^A\DeclareTextCommand{\textperispomeniiota}{LGR}[1]{\@tabacckludge~{#1}|}
+^^A\DeclareTextCommand{\textpsiliperispomeniiota}{LGR}[1]{\textpsiliperispomeni{#1}|}
+^^A\DeclareTextCommand{\textdasiaperispomeniiota}{LGR}[1]{\textdasiaperispomeni{#1}|}
+^^A\DeclareTextComposite{\textsubiota}{LGR}{\textAlpha}{9}
+^^A\DeclareTextComposite{\textsubiota}{LGR}{\textEta}{"A}
+^^A\DeclareTextComposite{\textsubiota}{LGR}{\textOmega}{"B}
+^^A\DeclareTextSymbol{\guillemotright}{LGR}{"7D}
+^^A\DeclareTextAccent{\~}{LGR}{"7E}
+^^A\DeclareTextSymbol{\textemdash}{LGR}{"7F}
+^^A\DeclareTextComposite{\`}{LGR}{\textalpha}{"80}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textalpha}{"81}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textalpha}{"82}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textalpha}{"83}
+^^A\DeclareTextComposite{\'}{LGR}{\textalpha}{"88}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textalpha}{"89}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textalpha}{"8A}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textalpha}{"8B}
+^^A\DeclareTextComposite{\~}{LGR}{\textalpha}{"90}
+^^A\DeclareTextComposite{\textdasiaperispomeni}{LGR}{\textalpha}{"91}
+^^A\DeclareTextComposite{\textpsiliperispomeni}{LGR}{\textalpha}{"92}
+^^A\DeclareTextSymbol{\textdigamma}{LGR}{"93}
+^^A\DeclareTextComposite{\`}{LGR}{\texteta}{"98}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\texteta}{"99}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\texteta}{"9A}
+^^A\DeclareTextComposite{\'}{LGR}{\texteta}{"A0}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\texteta}{"A1}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\texteta}{"A2}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\texteta}{"A3}
+^^A\DeclareTextComposite{\~}{LGR}{\texteta}{"A8}
+^^A\DeclareTextComposite{\textdasiaperispomeni}{LGR}{\texteta}{"A9}
+^^A\DeclareTextComposite{\textpsiliperispomeni}{LGR}{\texteta}{"AA}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\texteta}{"AB}
+^^A\DeclareTextComposite{\`}{LGR}{\textomega}{"B0}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textomega}{"B1}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textomega}{"B2}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textomega}{"B3}
+^^A\DeclareTextComposite{\'}{LGR}{\textomega}{"B8}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textomega}{"B9}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textomega}{"BA}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textomega}{"BB}
+^^A\DeclareTextComposite{\~}{LGR}{\textomega}{"C0}
+^^A\DeclareTextComposite{\textdasiaperispomeni}{LGR}{\textomega}{"C1}
+^^A\DeclareTextComposite{\textpsiliperispomeni}{LGR}{\textomega}{"C2}
+^^A\DeclareTextSymbol{\textDigamma}{LGR}{"C3}
+^^A\DeclareTextComposite{\`}{LGR}{\textiota}{"C8}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textiota}{"C9}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textiota}{"CA}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textiota}{"CB}
+^^A\DeclareTextComposite{\`}{LGR}{\textupsilon}{"CC}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textupsilon}{"CD}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textupsilon}{"CE}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textupsilon}{"CF}
+^^A\DeclareTextComposite{\'}{LGR}{\textiota}{"D0}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textiota}{"D1}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textiota}{"D2}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textiota}{"D3}
+^^A\DeclareTextComposite{\'}{LGR}{\textupsilon}{"D4}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textupsilon}{"D5}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textupsilon}{"D6}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textupsilon}{"D7}
+^^A\DeclareTextComposite{\~}{LGR}{\textiota}{"D8}
+^^A\DeclareTextComposite{\textdasiaperispomeni}{LGR}{\textiota}{"D9}
+^^A\DeclareTextComposite{\textpsiliperispomeni}{LGR}{\textiota}{"DA}
+^^A\DeclareTextComposite{\"}{LGR}{\textIota}{"DB}
+^^A\DeclareTextComposite{\~}{LGR}{\textupsilon}{"DC}
+^^A\DeclareTextComposite{\textdasiaperispomeni}{LGR}{\textupsilon}{"DD}
+^^A\DeclareTextComposite{\textpsiliperispomeni}{LGR}{\textupsilon}{"DE}
+^^A\DeclareTextComposite{\"}{LGR}{\textUpsilon}{"DF}
+^^A\DeclareTextComposite{\`}{LGR}{\textepsilon}{"E0}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textepsilon}{"E1}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textepsilon}{"E2}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textepsilon}{"E3}
+^^A\DeclareTextComposite{\`}{LGR}{\textomicron}{"E4}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textomicron}{"E5}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textomicron}{"E6}
+^^A\DeclareTextComposite{\textdasiavaria}{LGR}{\textomicron}{"E7}
+^^A\DeclareTextComposite{\'}{LGR}{\textepsilon}{"E8}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textepsilon}{"E9}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textepsilon}{"EA}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textepsilon}{"EB}
+^^A\DeclareTextComposite{\'}{LGR}{\textomicron}{"EC}
+^^A\DeclareTextComposite{\textdasiaoxia}{LGR}{\textomicron}{"ED}
+^^A\DeclareTextComposite{\textpsilioxia}{LGR}{\textomicron}{"EE}
+^^A\DeclareTextComposite{\textpsilivaria}{LGR}{\textomicron}{"EF}
+^^A\DeclareTextComposite{\"}{LGR}{\textiota}{"F0}
+^^A\DeclareTextComposite{\textdialytikavaria}{LGR}{\textiota}{"F1}
+^^A\DeclareTextComposite{\textdialytikatonos}{LGR}{\textiota}{"F2}
+^^A\DeclareTextComposite{\textdialytikaperispomeni}{LGR}{\textiota}{"F3}
+^^A\DeclareTextComposite{\"}{LGR}{\textupsilon}{"F4}
+^^A\DeclareTextComposite{\textdialytikavaria}{LGR}{\textupsilon}{"F5}
+^^A\DeclareTextComposite{\textdialytikatonos}{LGR}{\textupsilon}{"F6}
+^^A\DeclareTextComposite{\textdialytikaperispomeni}{LGR}{\textupsilon}{"F7}
+^^A\DeclareTextComposite{\textdasia}{LGR}{\textrho}{"FB}
+^^A\DeclareTextComposite{\textpsili}{LGR}{\textrho}{"FC}
+^^A\DeclareTextSymbol{\textdexiakeraia}{LGR}{"FE}
+^^A\DeclareTextSymbol{\textaristerikeraia}{LGR}{"FF}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textAlpha}{`A}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textAlpha}{'A}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textAlpha}{&gt;A}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textAlpha}{&lt;A}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textAlpha}{\char"5F A}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textAlpha}{CA}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textAlpha}{\char"5E A}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textAlpha}{VA}
+^^A\DeclareTextCompositeCommand{\textpsiliperispomeni}{LGR}{\textAlpha}{\char"5C A}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeni}{LGR}{\textAlpha}{@A}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textEpsilon}{`E}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textEpsilon}{'E}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textEpsilon}{&gt;E}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textEpsilon}{&lt;E}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textEpsilon}{\char"5F E}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textEpsilon}{CE}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textEpsilon}{\char"5E E}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textEpsilon}{VE}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textEta}{`H}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textEta}{'H}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textEta}{&gt;H}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textEta}{&lt;H}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textEta}{\char"5F H}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textEta}{CH}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textEta}{\char"5E H}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textEta}{VH}
+^^A\DeclareTextCompositeCommand{\textpsiliperispomeni}{LGR}{\textEta}{\char"5C H}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeni}{LGR}{\textEta}{@H}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textIota}{`I}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textIota}{'I}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textIota}{&gt;I}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textIota}{&lt;I}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textIota}{\char"5F I}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textIota}{CI}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textIota}{\char"5E I}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textIota}{VI}
+^^A\DeclareTextCompositeCommand{\textpsiliperispomeni}{LGR}{\textIota}{\char"5C I}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeni}{LGR}{\textIota}{@I}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textOmicron}{'O}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textOmicron}{`O}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textOmicron}{&gt;O}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textOmicron}{&lt;O}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textOmicron}{\char"5F O}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textOmicron}{CO}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textOmicron}{\char"5E O}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textOmicron}{VO}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textUpsilon}{`U}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textUpsilon}{'U}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textUpsilon}{&lt;U}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textUpsilon}{CU}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textUpsilon}{VU}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeni}{LGR}{\textUpsilon}{@U}
+^^A\DeclareTextCompositeCommand{\'}{LGR}{\textOmega}{'W}
+^^A\DeclareTextCompositeCommand{\`}{LGR}{\textOmega}{`W}
+^^A\DeclareTextCompositeCommand{\textpsili}{LGR}{\textOmega}{&gt;W}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textOmega}{&lt;W}
+^^A\DeclareTextCompositeCommand{\textpsilivaria}{LGR}{\textOmega}{\char"5F W}
+^^A\DeclareTextCompositeCommand{\textdasiavaria}{LGR}{\textOmega}{CW}
+^^A\DeclareTextCompositeCommand{\textpsilioxia}{LGR}{\textOmega}{\char"5E W}
+^^A\DeclareTextCompositeCommand{\textdasiaoxia}{LGR}{\textOmega}{VW}
+^^A\DeclareTextCompositeCommand{\textpsiliperispomeni}{LGR}{\textOmega}{\char"5C W}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeni}{LGR}{\textOmega}{@W}
+^^A\DeclareTextCompositeCommand{\textpsiliiota}{LGR}{\textOmega}{&gt;W|}
+^^A\DeclareTextCompositeCommand{\textdasiaiota}{LGR}{\textOmega}{&lt;W|}
+^^A\DeclareTextCompositeCommand{\textpsilivariaiota}{LGR}{\textOmega}{\char"5F W|}
+^^A\DeclareTextCompositeCommand{\textdasiavariaiota}{LGR}{\textOmega}{CW|}
+^^A\DeclareTextCompositeCommand{\textpsilioxiaiota}{LGR}{\textOmega}{\char"5E W|}
+^^A\DeclareTextCompositeCommand{\textdasiaoxiaiota}{LGR}{\textOmega}{VW|}
+^^A\DeclareTextCompositeCommand{\textpsiliperispomeniiota}{LGR}{\textOmega}{\char"5C W|}
+^^A\DeclareTextCompositeCommand{\textdasiaperispomeniiota}{LGR}{\textOmega}{@W|}
+^^A\DeclareTextCompositeCommand{\textdasia}{LGR}{\textRho}{&lt;R}
+\ifx\@uclclist\undefined\else
+^^A\def\update@uclc@with@text{%
+^^B \expandafter\def\expandafter\@uclclist\expandafter
+^^B  {\@uclclist
+^^B    \textalpha\textAlpha \textbeta\textBeta \textdelta\textDelta
+^^B    \textepsilon\textEpsilon \textphi\textPhi
+^^B    \textgamma\textGamma \texteta\textEta \textiota\textIota
+^^B    \texttheta\textTheta \textkappa\textKappa
+^^B    \textlambda\textLambda \textmu\textMu \textnu\textNu
+^^B    \textomicron\textOmicron \textpi\textPi \textchi\textChi
+^^B    \textrho\textRho \textsigma\textSigma
+^^B    \textvarsigma\textSigma \textautosigma\textSigma
+^^B    \texttau\textTau \textupsilon\textUpsilon
+^^B    \textomega\textOmega \textxi\textXi \textpsi\textPsi
+^^B    \textzeta\textZeta \textdigamma\textDigamma}%
+^^B \let\update@uclc@with@text\empty}
+^^B\update@uclc@with@text
+\fi
+^^A\typeout{fontencoding LGR patched}
+\uc@temp@b{T3}
+\def\ifxx#1#2{\toks255{#1==#2}\typeout{ifx:\the\toks255}\ifx#1#2}%
+\def\show#1?{\toks255{#1}\typeout{\the\toks255}}
+^^A\DeclareTextSymbol{\textscriptg}{T3}{103}
+^^A\DeclareTextCommand{\textascii}{T3}[1]{\ifx#1g\char164 \else\@textascii{#1}\fi}
+^^A\typeout{fontencoding T3 patched}
+\uc@temp@b{T5}
+^^A\DeclareTextCompositeCommand{\~}{T5}{\i}{\~i}
+^^A\DeclareTextCompositeCommand{\`}{T5}{\i}{\`i}
+^^A\DeclareTextCompositeCommand{\'}{T5}{\i}{\'i}
+^^A\typeout{fontencoding T5 patched}
+\uc@temp@b{T4}
+^^A\DeclareTextCommand\texthbar{T4}{\B h}
+^^A\DeclareTextCommand\textHbar{T4}{\B H}
+^^A\DeclareTextCommand\textbhook{T4}{\m b}
+^^A\DeclareTextCommand\textBhook{T4}{\m B}
+^^A\DeclareTextCommand\textdhook{T4}{\m d}
+^^A\DeclareTextCommand\textDhook{T4}{\m D}
+^^A\DeclareTextCommand\texteopen{T4}{\m e}
+^^A\DeclareTextCommand\textEopen{T4}{\m E}
+^^A\DeclareTextCommand\textschwa{T4}{\M e}
+^^A\DeclareTextCommand\texteturned{T4}{\M e}
+^^A\DeclareTextCommand\textEreversed{T4}{\M E}
+^^A\DeclareTextCommand\textGammaafrican{T4}{\m G}
+^^A\DeclareTextCommand\textgammalatinsmall{T4}{\m g}
+^^A\DeclareTextCommand\textKhook{T4}{\m K}
+^^A\DeclareTextCommand\textkhook{T4}{\m k}
+^^A\DeclareTextCommand\textDafrican{T4}{\M D}
+^^A\DeclareTextCommand\textdtail{T4}{\M d}
+^^A\DeclareTextCommand\textTretroflexhook{T4}{\M T}
+^^A\DeclareTextCommand\texttretroflexhook{T4}{\M t}
+^^A\DeclareTextCommand\textOopen{T4}{\m O}
+^^A\DeclareTextCommand\textoopen{T4}{\m o}
+^^A\DeclareTextCommand\textIotaafrican{T4}{\m I}
+^^A\DeclareTextCommand\textiotalatin{T4}{\m i}
+^^A\DeclareTextCommand\textFhook{T4}{\m F}
+^^A\DeclareTextCommand\textflorin{T4}{\m f}
+^^A\DeclareTextCommand\textYhook{T4}{\m Y}
+^^A\DeclareTextCommand\textyhook{T4}{\m y}
+^^A\DeclareTextCommand\textEsh{T4}{\m S}
+^^A\DeclareTextCommand\textesh{T4}{\m s}
+^^A\DeclareTextCommand\textThook{T4}{\m T}
+^^A\DeclareTextCommand\textthook{T4}{\m t}
+^^A\DeclareTextCommand\textEzh{T4}{\m Z}
+^^A\DeclareTextCommand\textezh{T4}{\m z}
+^^A\DeclareTextCommand\textChook{T4}{\m C}
+^^A\DeclareTextCommand\textchook{T4}{\m c}
+^^A\DeclareTextCommand\textTbar{T4}{\B T}
+^^A\DeclareTextCommand\texttbar{T4}{\B t}
+^^A\DeclareTextCommand\textVhook{T4}{\m V}
+^^A\DeclareTextCommand\textvhook{T4}{\m v}
+^^A\DeclareTextCommand\textPhook{T4}{\m P}
+^^A\DeclareTextCommand\textphook{T4}{\m p}
+^^A\DeclareTextCommand\textNhookleft{T4}{\m J}
+^^A\DeclareTextCommand\textnhookleft{T4}{\m j}
+^^A\DeclareTextCommand\texttesh{T4}{\tsh}
+^^A\DeclareTextCompositeCommand{\~}{T4}{\textEopen}{\T E}
+^^A\DeclareTextCompositeCommand{\~}{T4}{\texteopen}{\T e}
+^^A\DeclareTextCompositeCommand{\~}{T4}{\textOopen}{\T O}
+^^A\DeclareTextCompositeCommand{\~}{T4}{\textoopen}{\T o}
+^^A\DeclareTextSymbol\textexclamdown{T4}{'275}
+^^A\DeclareTextSymbol\textquestiondown{T4}{'276}
+^^A\DeclareTextAccent\textdblgravecmb{T4}{'237}
+^^A\typeout{fontencoding T4 patched}
+\uc@temp@d
+</pre></body></html>
