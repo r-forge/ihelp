@@ -85,6 +85,67 @@
 % 아래의 주소로부터 질문 다 만들어내기 	
 % http://www.statmethods.net/input/valuelabels.html
 
+	\item (제안) 본 페이지 자체를 데이터 분석을 위한 프로세스를 나타낼 수 있도록 섹션구성 자체를
+	\begin{itemize}
+		\item 최초 데이터의 입력과 확인 
+		\item 데이터를 조작
+		\item 데이터 정리하기 
+		\item 통계로 데이터를 설명하기 
+		\item 그래픽적으로 보여주기 
+		\item 원하는 그래픽 만들기
+	\end{itemize}
+	\item 데이터의 형변환과 결측치에대 대한 전반적인 내용을 알려주면 될 듯함.
+
+	\item 기본 데이터 형에 대해서 -- 벡터, 행렬, 배열, 데이터 프레임, 리스트, 요인, 그리고 이들을 다루는데 필요한 함수들 
+	% http://www.statmethods.net/input/datatypes.html
+	\begin{Schunk}
+	\begin{Soutput}
+	ls()
+
+	names(mydata)
+
+	str(mydata)
+
+
+	dim(object)
+
+	class(obj)
+
+	mydata
+
+	head(mydata, n=10)
+
+	tail(mydata, n=5) 
+
+	length(obj)
+	str(obj)
+	class(obj)
+	names(obj)
+	
+	c(obj,obj,...)
+	cbind(obj, obj, ...)
+	rbind(obj, obj, ...)
+	
+	obj
+	
+	ls()
+	rm(obj)
+	
+	newobject <- edit(obj)
+	fix(obj)
+	\end{Soutput}
+	\end{Schunk}
+% 	levels(mydata$v1)
+
+
+	\item 데이터 입출력 
+	% http://www.statmethods.net/input/importingdata.html
+	\begin{Schunk}
+	\begin{Soutput}
+	mydata <- read.table("c:/mydata.csv", header=TRUE, sep=",", row.names="id")
+	write.table(mydata, "c:/mydata.txt", sep="\t") 
+	\end{Soutput}
+	\end{Schunk}
 	\item R을 사용하기 전에 반드시 알아두어야 할 점 -- R은 모든 연산을 열벡터를 기준으로 한다는 것을 반드시 알고 시작해야 함.  SAS는 행벡터임.  따라서, 가끔 R에서 벡터사이즈가 어쩌구 할때는 바로 데이터의 수가 R이 해결하기에는 부족하다는 점이다.  그런데, 어떤 경우 이것은 주로 메모리 조절과 관계가 있음. 
 	
 	\item (접수: 2013-APR-23)  NA 와 NaN을 데이터로부터 찾고 싶어요.
