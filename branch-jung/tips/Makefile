@@ -2,9 +2,10 @@ all: pdf
 	make clean
 	make tohtml
 	make clean2
-	cp $(filename)*.html ../../www/
-	cp $(filename)*.png ../../www/
-	cp $(filename)*.css ../../www/
+	cp *.html ../../www/
+	cp *.tmp ../../www/
+	cp *.png ../../www/
+	cp *.css ../../www/
 	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
 #	svn ../../commit
 
