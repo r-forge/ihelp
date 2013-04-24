@@ -15,12 +15,14 @@
 % NOTE:
 % htlatex tips.tex
 % graphics file must be in the format of .eps
+% htlatex $(file_name).tex "html, 4, mouseover, frames, next" "" "-dweb/"
+% htlatex tips.tex "html, 1, mouseover, next"
 
 \documentclass{report}
 
 \usepackage{mystyle}
 
-\title{Some R Problems Derived Me Nuts!}
+\title{R 튜토리얼 \\ - Some R Problems Derived Me Nuts! -}
 \author{iHELP Working Group}
 \date{\today}
 
@@ -37,11 +39,29 @@
 
 만약, 이 페이지를 읽고 있는 사용자가 이 문서가 도움이 되었다고 생각된다면 문서에 더 많은 내용이 기재될 수 있도록 추가, 수정 및 제안에 대한 내용을 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org}의 주소로 이메일을 보내주시길 부탁드립니다. 
 
-\textbf{\underline{본 페이지는 iHELP Working Group의 관리자에 의해서 정리가 되고 있지만, 무수한 ihelp-urquestion 메일링 리스트를 활용하시는 사용자님들의 도움을 통하여 확장되고 있습니다.
-참여자님들에 대한 감사의 말씀은 \url{http://ihelp.r-forge.r-project.org/members.html}에서 확인하실 수 있습니다}}.  
-%
+\textbf{\underline{본 페이지는 iHELP Working Group의 관리자에 의해서 정리가 되고 있지만, ihelp-urquestion 메일링 리스트를 활용하시는 사용자님들의 도움을 통하여 확장되고 있습니다.
+이 문서의 작업에 도움을 주신 분들은 아래와 같습니다}}. 
+
+\begin{itemize}
+	\item Chel Hee Lee
+	\item Eugene Jung 
+	\item Jong Hwa Shin
+\end{itemize} 
+
 메일링에 등록된 내용은 이 문서의 관리자가 문서를 갱신할 때마다 반영하도록 노력할 것입니다.
 
+\begin{enumerate}
+	\item (제안) 본 페이지 자체를 데이터 분석을 위한 프로세스를 나타낼 수 있도록 섹션구성 자체를
+	\begin{itemize}
+		\item 최초 데이터의 입력과 확인 
+		\item 데이터를 조작
+		\item 데이터 정리하기 
+		\item 통계로 데이터를 설명하기 
+		\item 그래픽적으로 보여주기 
+		\item 원하는 그래픽 만들기
+	\end{itemize}
+	으로 조정함. -- 즉각적 수용 -- 문서구조 변경함 (2013-APR-24)
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -49,8 +69,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{미분류 질문들 (이 섹션에 등록된 질문들은 접수만 되고 아직은 답변되지 않은 상태입니다)}
-
+\chapter{미분류 질문들}
+이 섹션에 등록된 질문들은 접수만 되고 아직은 답변되지 않은 상태입니다
+% http://www.columbia.edu/~cjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf
+% http://www.ats.ucla.edu/stat/r/library/advanced_function_r.htm
+% http://www.sr.bham.ac.uk/~ajrs/R/r-function_list.html
+% http://www.scidav.org/techno/r_environments
 
 
 % 이런 느낌은 특히 최소한 내가 알기로는 경영학과 경제학 분야(거의 확실함) 및 사회학, 심리학 분야가 특히 심하다. 
@@ -87,16 +111,7 @@
 % 아래의 주소로부터 질문 다 만들어내기 	
 % http://www.statmethods.net/input/valuelabels.html
 
-	\item (제안) 본 페이지 자체를 데이터 분석을 위한 프로세스를 나타낼 수 있도록 섹션구성 자체를
-	\begin{itemize}
-		\item 최초 데이터의 입력과 확인 
-		\item 데이터를 조작
-		\item 데이터 정리하기 
-		\item 통계로 데이터를 설명하기 
-		\item 그래픽적으로 보여주기 
-		\item 원하는 그래픽 만들기
-	\end{itemize}
-	으로 조정함. -- 즉각적 수용 -- 문서구조 변경함 (2013-APR-24)
+
 	
 	
 	\item 데이터의 형변환과 결측치에대 대한 전반적인 내용을 알려주면 될 듯함.
@@ -272,7 +287,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{프로그래밍 언어를 처음 접하거나 전산지식이 전무하신 분들을 위하여}
+\chapter{완전 초보에요}
+프로그래밍 언어를 처음 접하거나 전산지식이 전무하신 분들을 위하여
 
 \begin{enumerate}
 	\item 프롬프트가 무엇인가요? 
@@ -290,13 +306,9 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{데이터 읽어온 뒤 확인하기}
 
-\section{데이터 조작에 관련하여}
+\chapter{데이터 클리닝 테크닉}
 
 분석자가 보통 얻게 되는 데이터는 분석에 사용되는 통계모형에 적합한 경우는 드물기 때문에 분석자 스스로가 이러한 데이터를 형성하는 것은 필요한 기술중에 하나라고 할 수 있습니다.
 % 
@@ -454,13 +466,63 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 
 \end{enumerate}
 
+\chapter{데이터형}
+
+\begin{itemize}
+	\item 벡터 
+	\item 행렬
+	\item 데이터프레임 
+	\item 리스트 
+	\item 배열 
+\end{itemize}
+
+\chapter{프로그래밍}
+
+\begin{itemize}
+	\item 반복문
+	\item 조건문 
+	\item 객체 
+\end{itemize}
+
+\chapter{수학 관련  함수들}
+\begin{itemize}
+	\item 집합관련 함수들
+	\item 일반적 수학함수들 
+\end{itemize}
+
+\chapter{확률}
+
+\begin{itemize}
+	\item Probability Axioms
+	\item Probability distributions
+	\item Bayesian Statistics
+\end{itemize}
+
+\chapter{기초 통계학}
+
+\begin{itemize}
+	\item 
+\end{itemize}
+
+\chapter{통계모형}
+
+\begin{itemize}
+\item Generalized linear model
+\item Mixed-effect model
+\item Longitudinal data analysis
+\item Mixture model and latent class model
+\item Survival analysis
+\item Clinical Trial
+\item Multivariate Analysis
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Numerical Techniques
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{수치해석 및 시뮬레이션에 관련하여}
+\chapter{수치해석 및 시뮬레이션에 관련하여}
 
 \begin{enumerate}
 	
@@ -513,7 +575,7 @@ error = function(e) {
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{비쥬얼라이제이션}
+\chapter{비쥬얼라이제이션}
 \begin{enumerate}
 \item \texttt{coordinating system}을 활용하기
 
@@ -549,7 +611,7 @@ error = function(e) {
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{데이터 입출력 및 파일관리 유틸리티}
+\chapter{데이터 입출력 및 파일관리 유틸리티}
 \begin{enumerate}
 \item \texttt{read.table} 계열의 함수를 이용하여 데이터를 불러올 때 첫번째 인자는 파일의 위치와 파일명이 입력된 문자열이어야 합니다.
 그런데, 간혹 문법에서 틀린 점도 없고, 불러오고자 하는 데이터 파일도 올바른 파일경로에 위치하고 있음에도 불구하고,
@@ -576,7 +638,7 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{클래스와 메소드 그리고 패키지 제작}
+\chapter{클래스와 메소드 그리고 패키지 제작}
 \begin{enumerate}
 \item 패키지를 만들고 싶어요. (흠.. Generalized Linear Model 프레임워크 흉내내서 똑같이 만들어보기 실습자료로 제공해주기)
 \end{enumerate}
@@ -589,7 +651,10 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{인코딩과 한글}
+\chapter{인코딩과 한글}
+
+이 부분은 데이터를 불러오고 쓰는 방법과 연관되었으므로 해당 챕터로 이동시키는게 좋을 것 같음 (제안 수용됨)
+
 \begin{enumerate}
 \item 불러오고자 하는 데이터의 인코딩이 UTF-8가 아닐때 이를 확인하고, 데이터를 올바르게 불러오기 위한 내용은 \url{http://lists.r-forge.r-project.org/pipermail/ihelp-urquestion/2013-April/000017.html} 를 읽어보시길 바랍니다.
 
@@ -604,7 +669,7 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{간단한 GUI 제작 해보기}
+\chapter{간단한 GUI 제작 해보기}
 
 \begin{enumerate}
 	\item 다른 언어로 인터페이싱 하는 방법마로, 그냥 \texttt{R}에서 주어지는 패키지를 이용해서 간단한 GUI 환경만들기
@@ -620,7 +685,7 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{답변되지 않을 수도 있는 질문들}
+\chapter{답변되지 않을 수도 있는 질문들}
 
 \begin{enumerate}
 	\item (접수: 2013-04-18, Reproducibility=NA) R의 장점이자 단점이라고 생각되는 것 중에 하나가 엄청난 수의 패키지들임. 즉 어떤 분석을 하고자 할 때 그것에 대해 하나의 패키지가 있는 것이 아니라 대체적으로 사용가능한 패키지들이 존재하는데 이들 중 어느 것을 써야할 지 잘 모름. 다른 분석 프로그램의 경우 이러한 문제가 없는데... 결국엔 어떻게 제일 성능이 좋은? 결과가 신뢰할 만한? 좋은 패키지를 선택하는가를 알려주었으면 좋겠씀돠.

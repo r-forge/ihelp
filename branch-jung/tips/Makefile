@@ -2,9 +2,9 @@ all: pdf
 	make clean
 	make tohtml
 	make clean2
-	cp $(filename).html ../../www/
+	cp $(filename)*.html ../../www/
 	cp $(filename)*.png ../../www/
-	cp $(filename).css ../../www/
+	cp $(filename)*.css ../../www/
 	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
 #	svn ../../commit
 
@@ -24,7 +24,7 @@ clean:
 	rm -rf $(filename).ps $(filename).log $(filename).aux $(filename).out $(filename).dvi $(filename).bbl $(filename).blg $(filename).toc $(filename).lot $(filename).idx $(filename).lof $(filename).css $(filename).idv $(filename).ind $(filename).lg $(filename).tmp $(filename).ilg $(filename).4ct $(filename).xref $(filename).4tc *js.* *.tmp *.html *.png
 
 tohtml:
-	htlatex $(filename).tex
+	htlatex $(filename).tex "html, mouseover, next, frames, 2"
 
 clean2:
 	rm -rf $(filename).4ct $(filename).4tc $(filename).aux $(filename).idv $(filename).idx $(filename).lg $(filename).log $(filename).tmp $(filename).xref $(filename).tex.bak
