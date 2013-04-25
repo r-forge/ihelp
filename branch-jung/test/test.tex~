@@ -1,0 +1,225 @@
+\documentclass[a4paper,10pt]{report}
+
+
+% \usepackage[utf8]{inputenc}
+% \usepackage{fontenc}
+% \usepackage{fontspec}
+% \usepackage{amsfonts}
+
+% \usepackage{calligra}
+% \DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+% \usepackage{eucal}
+% \usepackage{fonttable}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+
+%%---------------------- General Formatting --------------------------%%
+\usepackage{fullpage}
+\usepackage{verbatim}
+\usepackage{setspace}
+\usepackage{paralist}
+\usepackage{multirow}
+\usepackage{indentfirst}
+% \usepackage{tex4ht}  %% This package works with htlatex but not with pdf 
+% \usepackage{arydshln}  %% This package works with pdf but not with htlatex
+% \usepackage{parskip}
+
+%%---------------------- Customizing Layout --------------------------%%
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+
+%%---------------------- Mathematics ---------------------------------%%
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb} 	% See notes
+% \usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{esdiff}
+
+% Note: 
+% 'amssymb' package conflicts with the 'Rd' package
+
+%%---------------------- Biblography ---------------------------------%%
+\usepackage{natbib}
+% \usepackage[numbers, super, comma, sort&compress, sectionbib]{natbib}
+% \usepackage{chapterbib}
+
+
+%%---------------------- Graphics ------------------------------------%%
+\usepackage[dvips]{graphicx, color}
+% \DeclareGraphicsExtensions{.pdf, .png, .jpg, .gif}
+% \usepackage{color}
+\usepackage{epsfig}
+
+%%---------------------- Encoding ------------------------------------%%
+\usepackage[utf8]{inputenc}
+
+
+%%---------------------- Hyperlink -----------------------------------%%
+\usepackage{hyperref}
+\usepackage{ulem}
+% \usepackage[hyphens]{url}
+\usepackage{url}
+\usepackage{breakcites}
+% \usepackage{cite}
+
+%% ----------------- INDEX GENERATION ------------------------------- %%
+\usepackage{makeidx}
+\makeindex
+
+%%---------------------- R -------------------------------------------%%
+%% \usepackage{Rd}  %% This package conflicts with the 'amssymb' package
+\usepackage{Sweave}
+\usepackage{listings}
+% Let us first define a custom Verbatim environment, that saves us a lot of writing
+% \DefineVerbatimEnvironment{VerbatimTest}{Verbatim}{showspaces,showtabs,commandchars=\\\{\}}% showspaces and showtabs only for visualizing
+
+% \definecolor{darkred}{rgb}{0.545,0,0} 
+% \definecolor{midnightblue}{rgb}{0.098,0.098,0.439} 
+% \DefineVerbatimEnvironment{Sinput}{Verbatim}{fontshape=sl,formatcom={\color{midnightblue}}} 
+% \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom={\color{darkred}}} 
+% \DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl,formatcom={\color{blue}}} 
+% \renewenvironment{Schunk}{\footnotesize}{}
+% \usepackage{fancyverb}
+% \usepackage{fancyvrb} 
+% \setlength{\fancyvrbtopsep}{0pt}
+% \setlength{\fancyvrbpartopsep}{0pt}
+
+% \DefineVerbatimEnvironment{Sinput}{Verbatim} {fontsize=\footnotesize,fontshape=sl,formatcom=\color{SinColor}}
+% \DefineVerbatimEnvironment{Soutput}{Verbatim}{fontsize=\footnotesize,formatcom=\color{SoutColor}}
+% \fvset{listparameters={\setlength{\topsep}{0pt}}}
+
+% \DefineVerbatimEnvironment{Sinput}{Verbatim} {
+% commentchar=@,
+% frame=lines, 
+% label=\textrm{\bf R code}, 
+% numbers=left,
+% framesep=10pt, 
+% fontshape=sl, 
+% commandchars=\\\{\},
+% formatcom={\color{midnightblue}}
+% }
+% \DefineVerbatimEnvironment{Soutput}{Verbatim}{}
+
+%% ----------------- R PROGRAM STYLE -------------------------------- %%
+
+%\definecolor{dkgreen}{rgb}{0,0.6,0}
+%\definecolor{gray}{rgb}{0.5,0.5,0.5}
+%\definecolor{mauve}{rgb}{0.58,0,0.82}
+ 
+%\lstset{ %
+%  language=R,                % the language of the code
+%  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+%  numbers=left,                   % where to put the line-numbers
+%  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+%  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+%%  numbersep=5pt,                  % how far the line-numbers are from the code
+%%  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+%  showspaces=false,               % show spaces adding particular underscores
+%  showstringspaces=false,         % underline spaces within strings
+%  showtabs=false,                 % show tabs within strings adding particular underscores
+%  frame=single,                   % adds a frame around the code
+  % rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+%  tabsize=2,                      % sets default tabsize to 2 spaces
+  % captionpos=b,                   % sets the caption-position to bottom
+%  breaklines=true,                % sets automatic line breaking
+%%  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%%  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+%  keywordstyle=\color{blue},          % keyword style
+%  commentstyle=\color{dkgreen},       % comment style
+%  stringstyle=\color{mauve},         % string literal style
+%  escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+%  morekeywords={*,...}               % if you want to add more keywords to the set
+%}
+
+
+% \lstset{% setup listings
+%        language=R,% set programming language
+%        basicstyle=\ttfamily\footnotesize, % basic font style
+%        keywordstyle=\bfseries, % keyword style
+%        commentstyle=\ttfamily, %\itshape, % comment style
+%        numbers=left,% display line numbers on the left side
+%        numberstyle=\scriptsize,% use small line numbers
+%        numbersep=10pt,% space between line numbers and code
+%        tabsize=2,% sizes of tabs
+%        showstringspaces=false,% do not replace spaces in strings by a certain character
+%        captionpos=b,% positioning of the caption below
+%        breaklines=true,% automatic line breaking
+%			  frame=single,                   % adds a frame around the code
+%        escapeinside={(*}{*)},% escaping to LaTeX
+%        fancyvrb=true,% verbatim code is typset by listings
+%        extendedchars=false,% prohibit extended chars (chars of codes 128--255)
+%        literate={"}{{\texttt{"}}}1{<-}{{$\leftarrow$}}1{<<-}{{$\twoheadleftarrow$}}1
+%        {~}{{$\sim$}}1{<=}{{$\le$}}1{>=}{{$\ge$}}1{!=}{{$\neq$}}1{^}{{$^\wedge$}}1,% item to replace, text, length of chars
+%        alsoletter={.<-},% becomes a letter
+%        alsoother={$},% becomes other
+%        otherkeywords={!=, ~, $, *, \&, \%/\%, \%*\%, \%\%, <-, <<-, /},% other keywords
+%        deletekeywords={c}% remove keywords
+% }
+
+
+%% ----------------- ALGORITHM -------------------------------------- %%
+% \usepackage[chapter]{algorithm}
+% \usepackage{algpseudocode}
+
+% \DefineVerbatimEnvironment{Sinput}{Verbatim} {xleftmargin=2em}
+% \DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=2em}
+% \DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=2em}
+% \fvset{listparameters={\setlength{\topsep}{0pt}}}
+% \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+
+
+
+
+
+
+% \usepackage{lstautogobble}
+
+
+%% Regarding the matters of creating the new style of theorem, 
+%% See 
+% \newcommand{\selfcomment}[1]{\texttt{#1}}
+
+% \theoremstyle{definition}
+% \newtheorem{Example}{Example}[section]
+% \newtheorem{Discussion}{Discussion}[section]
+% \newtheorem{Suggestion}{Suggestion}[section]
+% \newtheorem{PotentialApproach}{Potential Approach}[section]
+% \newtheorem{Lemma}{Lemma}
+
+%%---------------------- TEMP: Testing -------------------------------%%
+
+% \usepackage{subfiles}
+\usepackage{kotex}
+
+
+%%----- PAGE HEADING PROCESS -----------------------------------------%%
+% \pagestyle{fancy}
+% \setlength{\headheight}{17pt}
+% \rhead{\today}
+% \lhead{DRAFT v.0.1}
+
+
+%%----- TABLE FORMAT -------------------------------------------------%%
+\usepackage{longtable}
+
+
+%%----- GRAPHICS -------------------------------------------------%%
+\usepackage{tikz}
+% \usetikzlibrary{arrows,backgrounds,snakes}
+
+\title{Test File}
+\author{iHELP}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+Hi
+
+안녕하세요. 
+\end{document}
