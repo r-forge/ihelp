@@ -43,7 +43,7 @@
 따라서, 이 문서는 어떤 특정한 기간을 두고 완성되지 않으므로 단지 최신 업데이트된 버전만이 존재합니다.
 만약, 이 문서를 현재 읽고 있는 독자가 내용에 대한 추가, 수정, 및 제안이 있다면 이를 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org} 주소로 이메일을 보내주신다면 감사하겠습니다. 
 
-이 문서의 작성에 도움을 주신 분들은 아래와 같습니다. 
+이 문서의 작성에 여러가지 제안을 해 주신 분들은 아래와 같습니다. 
 \begin{itemize}
 \item 신종화
 \end{itemize}
@@ -72,6 +72,15 @@
 \paragraph{데이터 입력과 처리:}  R 에서는 이용되는 모든 데이터들에 대한 처리는 열방향으로 이루어집니다.
 이 말의 뜻은 데이터의 입력 및 변형, 그리고 연산에 사용되는 데이터들에 대한 처리순서는 열방향으로 나열된 후에 이루어지는 것을 말합니다. 
 예를들어, 1부터 12까지 12개의 정수로 이루어진 수열 (즉, $\{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \}$)을 수학적인 표현으로 4행 3열의 행렬은 R은 아래와 같이 이해합니다. 
+
+% 데이터 불러오기
+% 보통 사람들은 R 콘솔에서 직접 입력한 데이터를 제외하고 그 외의 데이터는 *.txt, *.xlsx 이든 *.sav이든 모두 외부데이터로 생각하기
+% 일쑤이다.
+% 즉 foreign 팩키지를 사용해야 하는 경우를 제대로 구분하지 못한다. 그러니,
+% > library(foreign)
+% 을 선언할 줄 모르는 것은 당연하다.
+
+% 그리고 인코딩이란 무엇인지를 모르는 사람은 보다 맞다.
 
 \begin{Schunk}
 \begin{Soutput}
@@ -114,6 +123,10 @@
 
 따라서, 이 문서는 위에서 설명한 과정에 해당하는 순서대로 챕터들을 구성하였습니다. 
 
+
+% interacrive한 작업 방식을 취하는 R은 객체 관리에 혼란은 느끼는 경우가 많다. 특히 동시에 작업을 한다면 이루 말할 수 없을 정도이다. % 따라서 작업 중에 살아있는 객체들이 무엇이 있는지 파악하고 있는 것이 중요하다. 따라서 프로세스 차트 등을 먼저 작성해 놓은 것이 좋다.
+
+
 \paragraph{인코딩과 한글:}
 
 \begin{enumerate}
@@ -128,6 +141,18 @@
 
 \paragraph{대소문자 구분:}
 
+
+\paragraph{패키지와 관련하여: }
+	초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다. (접수: 2013-APR-15, 분류: 패키지 관련) 
+	
+	대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.  	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.  그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
+
+	\begin{Schunk}
+	\begin{Soutput}
+	> library(pkg_name)	
+	\end{Soutput}
+	\end{Schunk}
+	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -153,6 +178,7 @@
 \subparagraph{XML}
 \subparagraph{.EXCEL}
 
+
 \subparagraph{.CSV}
 \begin{enumerate}
 \item \texttt{read.table} 계열의 함수를 이용하여 데이터를 불러올 때 첫번째 인자는 파일의 위치와 파일명이 입력된 문자열이어야 합니다.
@@ -168,7 +194,24 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \end{Schunk}
 \end{enumerate}
 
+
+데이터 입출력 
+	% http://www.statmethods.net/input/importingdata.html
+	\begin{Schunk}
+	\begin{Soutput}
+	mydata <- read.table("c:/mydata.csv", header=TRUE, sep=",", row.names="id")
+	write.table(mydata, "c:/mydata.txt", sep="\t") 
+	\end{Soutput}
+	\end{Schunk}
+
+
+
 \subsection{출력}
+
+
+% R에서 편집한 데이터를 엑셀로 내보내는 방법[새로운 변수를 생성해서 기존 데이터에 더하려고 하는데
+% (csv로 R에서 불러서 편집한 자료)]
+% 
 \paragraph{저장하기}
 \subparagraph{.RData}
 \subparagraph{.CSV}
@@ -190,6 +233,52 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \subsection{데이터프레임}
 
 \subsection{리스트}
+\paragraph{리스트와 데이터 프레임 관계:}
+
+
+
+
+% http://www.statmethods.net/input/datatypes.html
+	\begin{Schunk}
+	\begin{Soutput}
+	ls()
+
+	names(mydata)
+
+	str(mydata)
+
+
+	dim(object)
+
+	class(obj)
+
+	mydata
+
+	head(mydata, n=10)
+
+	tail(mydata, n=5) 
+
+	length(obj)
+	str(obj)
+	class(obj)
+	names(obj)
+	
+	c(obj,obj,...)
+	cbind(obj, obj, ...)
+	rbind(obj, obj, ...)
+	
+	obj
+	
+	ls()
+	rm(obj)
+	
+	newobject <- edit(obj)
+	fix(obj)
+	\end{Soutput}
+	\end{Schunk}
+% 	levels(mydata$v1)
+
+
 
 \subsection{배열}
 
@@ -200,15 +289,42 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 
 \section{기초 프로그래밍}
 
-\begin{itemize}
-	\item 반복문
-	\item 조건문 
-	\item 객체 
-\end{itemize}
+\subsection{벡터라이제이션과 반복문:} 
+\paragraph{반복문:}
+
+\paragraph{벡터라이제이션:} \texttt{apply()}, \texttt{lapply()}, \texttt{sapply()}, \texttt{mapply()}의 사용방법
+
+\subsection{조건문:}
+\paragraph{분기:}
+
+\subsection{객체와 속성}
+\paragraph{속성:}
+\paragraph{객체:}
+
+\subsection{제네릭 함수}
+
+\subsection{메소드와 클래스}
+\paragraph{메소드:}
+\paragraph{클래스:}
+
+\subsection{함수의 정의와 사용}
+
+\paragraph{내장함수}
+
+\paragraph{사용자 정의 함수}
+
+\paragraph{do.call()}
+% \item \texttt{do.call()} 함수를 사용하는 법에 대해서..
+% http://cran.r-project.org/web/packages/rockchalk/vignettes/Rchaeology.pdf
+% http://www.stat.berkeley.edu/classes/s133/all2011.pdf  (다운로드 해두었음 Desktop/tmpRsrc/all2011.pdf)
+% http://www.stat.berkeley.edu/classes/s133/resources.html 
+
+
 
 \section{데이터 클리닝 및 전처리 테크닉}
 
 \subsection{데이터셋에 관련하여}
+
 \paragraph{변수명 변경하기}
 \paragraph{조건에 부합하는 데이터셋 골라내기}
 \paragraph{주어진 데이터셋으로부터 랜덤샘플 추출하기}
@@ -217,7 +333,9 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \paragraph{변수 추가 또는 제거}
 \paragraph{종횡데이터를 횡형으로 변형하기}
 \paragraph{횡형데이터를 종형으로 변형하기}
-
+\paragraph{관측치의 개수 알아보기}
+\paragraph{중복되는 값 찾아보기}
+\paragraph{결측치에 대해서}
 
 \subsection{문자형 변수들과 연관하여}
 
@@ -226,18 +344,24 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \paragraph{특정 문자열 뽑아내기}
 \paragraph{변수의 길이 파악하기}
 \paragraph{두 문자형 변수 결합하기}
-\paragraph{대소문자 전환}
+\paragraph{대소문자 전환} 
+\paragraph{요인과 관계하여}
+\paragraph{라벨링 생성 및 변경하기}
+
 
 \subsection{시간과 날짜에 관련하여}
 
+\paragraph{날짜 데이터 생성}
+\paragraph{년/월/일 따로 분리하기}
+\paragraph{시간 데이터 생성}
 
-\section{TODO}
+
+\section{유용한 클리닝 테크닉들}
 
 분석자가 보통 얻게 되는 데이터는 분석에 사용되는 통계모형에 적합한 경우는 드물기 때문에 분석자 스스로가 이러한 데이터를 형성하는 것은 필요한 기술중에 하나라고 할 수 있습니다.
 % 
 
-\begin{enumerate}
-\item 아래와 같이 주어진 데이터에 변수 ID는 결측값 없이 모든 값이 완전하게 잘 들어가 있는데, Week 변수에는 각 ID의 첫번째 레코드에만 해당하는 부분에 값이 들어가 있고 나머지부분에는 \texttt{NA}값이 들어가 있습니다. 
+\paragraph{결측치를 바로 윗값으로 채워넣기: } 아래와 같이 주어진 데이터에 변수 ID는 결측값 없이 모든 값이 완전하게 잘 들어가 있는데, Week 변수에는 각 ID의 첫번째 레코드에만 해당하는 부분에 값이 들어가 있고 나머지부분에는 \texttt{NA}값이 들어가 있습니다. 
 
 \begin{Schunk}
 \begin{Soutput}
@@ -293,7 +417,7 @@ fill <- function(x, first, last){
 \end{Schunk}
 
 
-\item 위에서 주어진 데이터에서 ID 변수에서 보이는 것처럼 같은 관측치가 여러번 반복 측정되어 ID가 반복적으로 입력이 되었을 때, SAS에서처럼 각 아이디별로 첫번째와 마지막 레코드를 알수 있는 .FIRST 와 .LAST 같은 기능이 R에서는 어떻게 해야 하나요?
+\paragraph{각 아디이별로 첫번째와 마지막 레코드 찾아보기: } 위에서 주어진 데이터에서 ID 변수에서 보이는 것처럼 같은 관측치가 여러번 반복 측정되어 ID가 반복적으로 입력이 되었을 때, SAS에서처럼 각 아이디별로 첫번째와 마지막 레코드를 알수 있는 .FIRST 와 .LAST 같은 기능이 R에서는 어떻게 해야 하나요?
 
 \begin{Schunk}
 \begin{Soutput}
@@ -315,7 +439,7 @@ mydata$last <- !duplicated(mydata$ID, fromLast=TRUE)
 	\end{Soutput}	
 \end{Schunk}
 
-\item 데이터의 일부분만 골라 내고 싶어요.  예를들면, 위에서 사용된 예제에서 ID 가 1과 2인 데이터만 골라내고 싶다면 아래와 같이 할 수 있습니다. 
+\paragraph{조건에 맞게 데이터 선택하기:} 데이터의 일부분만 골라 내고 싶어요.  예를들면, 위에서 사용된 예제에서 ID 가 1과 2인 데이터만 골라내고 싶다면 아래와 같이 할 수 있습니다. 
 
 \begin{Schunk}
 \begin{Soutput}
@@ -355,42 +479,12 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 \end{Soutput}
 \end{Schunk}
 
-\item wide format 데이터를 long format 으로 바꿀 수 있나요? 
 
+\paragraph{여러개의 엑셀시트로 구성된 엑셀파일 하나로 합치기:} 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
 
-\item 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
+\paragraph{리스트 중첩구조} 
+가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
 
-\item 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
-
-\item \texttt{do.call()} 함수를 사용하는 법에 대해서..
-% http://cran.r-project.org/web/packages/rockchalk/vignettes/Rchaeology.pdf
-% http://www.stat.berkeley.edu/classes/s133/all2011.pdf  (다운로드 해두었음 Desktop/tmpRsrc/all2011.pdf)
-% http://www.stat.berkeley.edu/classes/s133/resources.html 
-
-\item \texttt{which.max()}와 \texttt{which.min()}을 사용하는 방법 
-
-\item \texttt{list()}과 \texttt{data.frame()}과의 관계
-
-\item \texttt{apply()}, \texttt{lapply()}, \texttt{sapply()}, \texttt{mapply()}의 사용방법
-
-\item 현재 패키지를
-
-% 데이터 불러오기
-% 보통 사람들은 R 콘솔에서 직접 입력한 데이터를 제외하고 그 외의 데이터는 *.txt, *.xlsx 이든 *.sav이든 모두 외부데이터로 생각하기
-% 일쑤이다.
-% 즉 foreign 팩키지를 사용해야 하는 경우를 제대로 구분하지 못한다. 그러니,
-% > library(foreign)
-% 을 선언할 줄 모르는 것은 당연하다.
-
-% 그리고 인코딩이란 무엇인지를 모르는 사람은 보다 맞다.
-
-% R에서 편집한 데이터를 엑셀로 내보내는 방법[새로운 변수를 생성해서 기존 데이터에 더하려고 하는데
-% (csv로 R에서 불러서 편집한 자료)]
-% 
-
-% interacrive한 작업 방식을 취하는 R은 객체 관리에 혼란은 느끼는 경우가 많다. 특히 동시에 작업을 한다면 이루 말할 수 없을 정도이다. % 따라서 작업 중에 살아있는 객체들이 무엇이 있는지 파악하고 있는 것이 중요하다. 따라서 프로세스 차트 등을 먼저 작성해 놓은 것이 좋다.
-
-\end{enumerate}
 
 
 
@@ -401,6 +495,9 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 	\item 집합관련 함수들
 	\item 일반적 수학함수들 
 \end{itemize}
+
+% \item \texttt{which.max()}와 \texttt{which.min()}을 사용하는 방법 
+
 
 \section{확률의 이해와 확류분포들}
 
@@ -466,6 +563,8 @@ error = function(e) {
 
 \chapter{통계모형의 선택 및 적용}
 
+
+\section{다양한 모형에 대한 개관과 장단점}
 \begin{itemize}
 \item Generalized linear model
 \item Mixed-effect model
@@ -475,6 +574,34 @@ error = function(e) {
 \item Clinical Trial
 \item Multivariate Analysis
 \end{itemize}
+
+\section{패키지 관리}
+\begin{enumerate}
+\item 	이와 반대로 현재 연결된 라이브러리를 떼어낼 수도 있습니다. 
+
+	\begin{Schunk}
+	\begin{Soutput}
+	> detach(package:pkg_name)	
+	\end{Soutput}
+	\end{Schunk}
+
+	% 웹에 > detach(package:pkg_name) 과 5. 패키지를 설치 (분류: 사용자 환경)이 한 줄 띄어져야 함.
+
+	\item 패키지를 설치 (분류: 사용자 환경)  
+	
+	\textsf{(답변)} 설치되는 패키지의 \textbf{설치위치}와 \textbf{의존성}에 대해서 반드시 알아야 합니다. 
+	
+	\begin{Schunk}
+	\begin{Soutput}
+	> install.packages("패키지명", dependencies=TRUE, )
+	\end{Soutput}
+	\end{Schunk}
+% 을 쓰지 못하는 사례도 허다하다. package를 설치할 때 메뉴에서 [패키지 -> 패키지 설치하기]를 선택하고 난 뒤
+% [mirror]를 선택한 뒤 패키지 리스트에서 하나씩 어디선가 본 패키지 이름을 어렵게 어렵게 찾아 더블클릭하는 절차를 따르는 것이다.
+
+	\item 설치된 패키지의 목록을 확인하는 방법을 알고 싶습니다.
+\end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -598,66 +725,14 @@ error = function(e) {
 % 바위깨기 식이었다. 이 R tips 과정은 이러한 어려움을 덜어주기 위한 방안이 될 수도 있을 것이다.
 % 그러기를 한참 후 어느 정도 익숙해지고 나니, 또 연구자로서의 건방이 살아나 R 교육이 어떻게 이루어지고 있는 지가 궁금해졌다.
 % 이 부분은 나중에 다시 써 볼라오,,,
+
+
 \begin{enumerate}
 	
 % 아래의 주소로부터 질문 다 만들어내기 	
 % http://www.statmethods.net/input/valuelabels.html
 
 
-	
-	
-	\item 데이터의 형변환과 결측치에대 대한 전반적인 내용을 알려주면 될 듯함.
-
-	\item 기본 데이터 형에 대해서 -- 벡터, 행렬, 배열, 데이터 프레임, 리스트, 요인, 그리고 이들을 다루는데 필요한 함수들 
-	% http://www.statmethods.net/input/datatypes.html
-	\begin{Schunk}
-	\begin{Soutput}
-	ls()
-
-	names(mydata)
-
-	str(mydata)
-
-
-	dim(object)
-
-	class(obj)
-
-	mydata
-
-	head(mydata, n=10)
-
-	tail(mydata, n=5) 
-
-	length(obj)
-	str(obj)
-	class(obj)
-	names(obj)
-	
-	c(obj,obj,...)
-	cbind(obj, obj, ...)
-	rbind(obj, obj, ...)
-	
-	obj
-	
-	ls()
-	rm(obj)
-	
-	newobject <- edit(obj)
-	fix(obj)
-	\end{Soutput}
-	\end{Schunk}
-% 	levels(mydata$v1)
-
-
-	\item 데이터 입출력 
-	% http://www.statmethods.net/input/importingdata.html
-	\begin{Schunk}
-	\begin{Soutput}
-	mydata <- read.table("c:/mydata.csv", header=TRUE, sep=",", row.names="id")
-	write.table(mydata, "c:/mydata.txt", sep="\t") 
-	\end{Soutput}
-	\end{Schunk}
 	\item R을 사용하기 전에 반드시 알아두어야 할 점 -- R은 모든 연산을 열벡터를 기준으로 한다는 것을 반드시 알고 시작해야 함.  SAS는 행벡터임.  따라서, 가끔 R에서 벡터사이즈가 어쩌구 할때는 바로 데이터의 수가 R이 해결하기에는 부족하다는 점이다.  그런데, 어떤 경우 이것은 주로 메모리 조절과 관계가 있음. 
 	
 	\item (접수: 2013-APR-23)  NA 와 NaN을 데이터로부터 찾고 싶어요.
@@ -726,49 +801,7 @@ error = function(e) {
 	\textsf{(답변)} \texttt{R}에서는 그래픽 디바이스가 그래픽 생성시 마다 초기화되어 다시 보여줌으로서 그래픽 창이 하나만 계속 보여지는 것입니다.  새로운 그래프를 또다른 장치를 통해 보여주고자 한다면 \texttt{X11()}이라는 명령어를 이용하면 됩니다.  
 	이 명령어는 유닉스환경에 설치된 \texttt{R}의 경우에 해당합니다.  
 	
-	\item 초기에 가장 보는 에러는 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다. (접수: 2013-APR-15, 분류: 패키지 관련) 
-	
-	\textsf{(답변)} 대부분의 경우는 사용하고자 하는 함수가 R 기본 배포판에 포함되어 있지 않은 사용자에 의해서 제공된 특정한 패키지에서 존재하기 때문입니다.  	이런 경우에는 먼저 사용하고자 하는 함수가 어떤 패키지에 존재하는지 알아야 합니다.  그리고, 해당 패키지를 설치했을 때에는 설치된 패키지를 사용할 수 있도록 로딩하는 과정을 거쳐야 합니다.
 
-	\begin{Schunk}
-	\begin{Soutput}
-	> library(pkg_name)	
-	\end{Soutput}
-	\end{Schunk}
-	
-	이와 반대로 현재 연결된 라이브러리를 떼어낼 수도 있습니다. 
-
-	\begin{Schunk}
-	\begin{Soutput}
-	> detach(package:pkg_name)	
-	\end{Soutput}
-	\end{Schunk}
-
-	% 웹에 > detach(package:pkg_name) 과 5. 패키지를 설치 (분류: 사용자 환경)이 한 줄 띄어져야 함.
-
-	\item 패키지를 설치 (분류: 사용자 환경)  
-	
-	\textsf{(답변)} 설치되는 패키지의 \textbf{설치위치}와 \textbf{의존성}에 대해서 반드시 알아야 합니다. 
-	
-	\begin{Schunk}
-	\begin{Soutput}
-	> install.packages("패키지명", dependencies=TRUE, )
-	\end{Soutput}
-	\end{Schunk}
-% 을 쓰지 못하는 사례도 허다하다. package를 설치할 때 메뉴에서 [패키지 -> 패키지 설치하기]를 선택하고 난 뒤
-% [mirror]를 선택한 뒤 패키지 리스트에서 하나씩 어디선가 본 패키지 이름을 어렵게 어렵게 찾아 더블클릭하는 절차를 따르는 것이다.
-
-	\item 설치된 패키지의 목록을 확인하는 방법을 알고 싶습니다.
-	
-	\textsf{(답변)} 
-	
-	\item (접수: 2013-APR-15) \texttt{setwd()} 와 \texttt{getwd()}를 활용하기 
-	
-	\textsf{(답변)}
-	
-	\item (접수: 2013-APR-15)
-	
-	\textsf{(답변)}
 
 \end{enumerate}
 
