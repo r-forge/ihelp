@@ -5,1083 +5,193 @@
 <meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
 <!-- html,mouseover,next,frames,2,no-DOCTYPE --> 
 <meta name="src" content="tips.tex"> 
-<meta name="date" content="2013-04-28 16:29:00"> 
+<meta name="date" content="2013-04-28 17:35:00"> 
 <link rel="stylesheet" type="text/css" href="tips.css"> 
 <script type="text/javascript" src="tips-js.js"></script> 
 <script type="text/javascript" src="overlib.js"><!-- overLIB (c) Erik Bosrup --></script> <!--http://www.bosrup.com/web/overlib/--></head><body 
 ><div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div> 
-   <!--l. 163--><div class="crosslinks"><p class="noindent">[<a 
+   <!--l. 157--><div class="crosslinks"><p class="noindent">[<a 
 href="tipsch4.html" >next</a>] [<a 
 href="tipsch2.html" >prev</a>] [<a 
 href="tipsch2.html#tailtipsch2.html" >prev-tail</a>] [<a 
 href="#tailtipsch3.html">tail</a>] [<a 
 href="tips3.html#tipsch3.html" >up</a>] </p></div>
    <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;3</span><br /><a 
- id="x6-100003"></a>&#45936;&#51060;&#53552; &#51312;&#51089;&#44284; &#44288;&#47144;&#54616;&#50668;</h2>
+ id="x6-100003"></a>&#44592;&#52488; &#54532;&#47196;&#44536;&#47000;&#48141;&#44284; &#50868;&#50689;&#52404;&#51228;</h2>
+<!--l. 159--><p class="noindent" >&#51060; &#52309;&#53552;&#50640;&#49436;&#45716; &#45936;&#51060;&#53552; &#52376;&#47532;&#50752; &#48516;&#49437;&#50640; &#54596;&#50836;&#54620; &#44592;&#52488; &#54532;&#47196;&#44536;&#47000;&#48141; &#50836;&#49548;&#47484; &#50508;&#50500;&#48389;&#45768;&#45796;.
    <h3 class="sectionHead"><span class="titlemark">3.1   </span> <a 
- id="x6-110003.1"></a>&#45936;&#51060;&#53552; &#54028;&#51068; &#51077;&#52636;&#47141;</h3>
-<!--l. 167--><p class="noindent" >
+ id="x6-110003.1"></a>&#50640;&#47084;&#44284; &#44221;&#44256;&#50640; &#45824;&#54620; &#51060;&#54644;</h3>
+<!--l. 163--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.1.1   </span> <a 
- id="x6-120003.1.1"></a>&#51077;&#47141;</h4>
-<!--l. 169--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-130003.1.1"></a>&#45796;&#47480; &#54805;&#49885;&#46308;<span 
-class="aebx-10">: </span></span>
-   &#53412; &#54252;&#51064;&#53944;&#45716; .csv &#54028;&#51068;&#51012; &#51060;&#50857;&#54616;&#50668; &#45936;&#51060;&#53552; &#51077;&#47141;&#44284; &#52636;&#47141;&#51012; &#54616;&#45716; &#44163;&#51012; &#44428;&#51109;&#54616;&#44256;, &#44536; &#51060;&#50808;&#51032; &#48169;&#48277;&#50640; &#45824;&#54644;&#49436;&#45716; &#44036;&#45800;&#54620; &#49444;&#47749;&#44284; &#49324;&#50857;&#48277;&#47564; &#52628;&#44032;&#54644;&#51452;&#46020;&#47197; &#54632;.
-<!--l. 173--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-140003.1.1"></a>&#44256;&#51221;&#54805;&#49885;</span>
-<!--l. 174--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-150003.1.1"></a>&#48373;&#51105;&#54620; &#44396;&#51312;&#47484; &#51069;&#50612;&#50732;&#46412;</span>
-<!--l. 175--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-160003.1.1"></a><span 
-class="aebx-10">.SAS</span></span>
-<!--l. 176--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-170003.1.1"></a><span 
-class="aebx-10">.SPSS</span></span>
-<!--l. 177--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-180003.1.1"></a><span 
-class="aebx-10">.URL</span></span>
-<!--l. 178--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-190003.1.1"></a><span 
-class="aebx-10">XML</span></span>
-<!--l. 179--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-200003.1.1"></a><span 
-class="aebx-10">.EXCEL</span></span>
-<!--l. 182--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-210003.1.1"></a><span 
-class="aebx-10">.CSV</span></span>
-     <dl class="enumerate"><dt class="enumerate">
-  1. </dt><dd 
-class="enumerate"><span 
-class="aett-10">read.table </span>&#44228;&#50676;&#51032; &#54632;&#49688;&#47484; &#51060;&#50857;&#54616;&#50668; &#45936;&#51060;&#53552;&#47484; &#48520;&#47084;&#50732; &#46412; &#52395;&#48264;&#51704; &#51064;&#51088;&#45716; &#54028;&#51068;&#51032; &#50948;&#52824;&#50752; &#54028;&#51068;&#47749;&#51060; &#51077;&#47141;&#46108; &#47928;&#51088;&#50676;&#51060;&#50612;&#50556; &#54633;&#45768;&#45796;. &#44536;&#47088;&#45936;, &#44036;&#54841; &#47928;&#48277;&#50640;&#49436; &#53952;&#47536; &#51216;&#46020; &#50630;&#44256;, &#48520;&#47084;&#50724;&#44256;&#51088; &#54616;&#45716; &#45936;&#51060;&#53552; &#54028;&#51068;&#46020; &#50732;&#48148;&#47480; &#54028;&#51068;&#44221;&#47196;&#50640; &#50948;&#52824;&#54616;&#44256; &#51080;&#51020;&#50640;&#46020; &#48520;&#44396;&#54616;&#44256;, &#45936;&#51060;&#53552;&#47484; &#52286;&#51012; &#49688; &#50630;&#45796;&#44256; &#54616;&#45716; &#44221;&#50864;&#44032; &#51080;&#49845;&#45768;&#45796;. &#51060;&#44163;&#51008; &#45236;&#48512;&#51201;&#51004;&#47196; &#54028;&#51068;&#44221;&#47196;&#50640; &#46916;&#50612;&#50416;&#44592;, &#53945;&#49688;&#47928;&#51088;, &#54841;&#51008; &#53945;&#49688;&#54620; &#51064;&#53076;&#46377; &#46321; &#45796;&#50577;&#54620; &#51060;&#50976;&#47196; &#51064;&#54616;&#50668; &#54028;&#51068;&#44221;&#47196;&#44032; &#50732;&#48148;&#47476;&#44172; &#52376;&#47532;&#46104;&#51648; &#50506;&#50520;&#44592; &#46412;&#47928;&#51077;&#45768;&#45796;. &#50500;&#47000;&#50752; &#44057;&#51008; &#48169;&#48277;&#51004;&#47196; <span 
-class="aett-10">read.table() </span>&#54632;&#49688; &#49324;&#50857;&#49884; <span 
-class="aett-10">file.choose() </span>&#54632;&#49688;&#47484; &#54632;&#44760; &#49324;&#50857;&#54616;&#47732; &#51060;&#47084;&#54620; &#47928;&#51228;&#47484; &#54644;&#44208;&#51060; &#44032;&#45733;&#54633;&#45768;&#45796;.
-     <!--l. 191--><p class="noindent" >
-     <div class="fancyvrb" id="fancyvrb4"><a 
- id="x6-21003r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;read.table(file.choose(),</span><span 
-class="aett-10">&#x00A0;header=TRUE,</span><span 
-class="aett-10">&#x00A0;sep=",")</span></div>
-     </dd></dl>
-<!--l. 198--><p class="indent" >   &#45936;&#51060;&#53552; &#51077;&#52636;&#47141;
-   <div class="fancyvrb" id="fancyvrb5"><a 
- id="x6-21005r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        mydata</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;read.table("c:/mydata.csv",</span><span 
-class="aett-10">&#x00A0;header=TRUE,</span><span 
-class="aett-10">&#x00A0;sep=",",</span><span 
-class="aett-10">&#x00A0;row.names="id")</span>
-<br class="fancyvrb" /><a 
- id="x6-21007r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        write.table(mydata,</span><span 
-class="aett-10">&#x00A0;"c:/mydata.txt",</span><span 
-class="aett-10">&#x00A0;sep="\t")</span></div>
-<!--l. 209--><p class="noindent" >
+ id="x6-120003.1.1"></a>&#44288;&#47144; &#47700;&#49884;&#51648;</h4>
+<!--l. 165--><p class="noindent" >
    <h4 class="subsectionHead"><span class="titlemark">3.1.2   </span> <a 
- id="x6-220003.1.2"></a>&#52636;&#47141;</h4>
-                                                                                         
-                                                                                         
-<!--l. 215--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-230003.1.2"></a>&#51200;&#51109;&#54616;&#44592;</span>
-<!--l. 216--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-240003.1.2"></a><span 
-class="aebx-10">.RData</span></span>
-<!--l. 217--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-250003.1.2"></a><span 
-class="aebx-10">.CSV</span></span>
-<!--l. 218--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-260003.1.2"></a><span 
-class="aebx-10">.HTML</span></span>
-<!--l. 219--><p class="indent" >   <span class="subparagraphHead"> <a 
- id="x6-270003.1.2"></a><span 
-class="aebx-10">.XML</span></span>
-<!--l. 221--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.1.3   </span> <a 
- id="x6-280003.1.3"></a>&#47700;&#53440;&#45936;&#51060;&#53552; &#52376;&#47532;</h4>
-<!--l. 222--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-290003.1.3"></a>&#50896; &#45936;&#51060;&#53552; &#49548;&#49828;&#50640; &#45936;&#51060;&#53552; &#44396;&#51312; &#45824;&#54620; &#51060;&#54644;&#50752; &#45936;&#51060;&#53552; &#50644;&#53944;&#47532;<span 
-class="aebx-10">: </span></span>
-<!--l. 224--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-300003.1.3"></a>&#45936;&#51060;&#53552;&#49483; &#46608;&#45716; &#48320;&#49688;&#50640; &#51452;&#49437;&#52392;&#44032;&#54616;&#44592;</span>
-<!--l. 227--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">3.2   </span> <a 
- id="x6-310003.2"></a>&#45936;&#51060;&#53552;&#54805;&#50640; &#45824;&#54620; &#51060;&#54644;</h3>
-<!--l. 229--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.2.1   </span> <a 
- id="x6-320003.2.1"></a>&#48289;&#53552;</h4>
-<!--l. 231--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.2.2   </span> <a 
- id="x6-330003.2.2"></a>&#54665;&#47148;</h4>
-<!--l. 233--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.2.3   </span> <a 
- id="x6-340003.2.3"></a>&#45936;&#51060;&#53552;&#54532;&#47112;&#51076;</h4>
-<!--l. 235--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.2.4   </span> <a 
- id="x6-350003.2.4"></a>&#47532;&#49828;&#53944;</h4>
-                                                                                         
-                                                                                         
-<!--l. 236--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-360003.2.4"></a>&#47532;&#49828;&#53944;&#50752; &#45936;&#51060;&#53552; &#54532;&#47112;&#51076; &#44288;&#44228;<span 
-class="aebx-10">:</span></span>
-   <div class="fancyvrb" id="fancyvrb6"><a 
- id="x6-36002r1"></a><span 
+ id="x6-130003.1.2"></a>&#50640;&#47084; &#54648;&#46308;&#47553;</h4>
+<!--l. 166--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-140003.1.2"></a><span 
+class="aebx-10">try()</span></span>
+<!--l. 168--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-150003.1.2"></a><span 
+class="aebx-10">tryCatch()</span></span>
+   <div class="fancyvrb" id="fancyvrb4"><a 
+ id="x6-15002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        ls()</span><br class="fancyvrb" /><a 
- id="x6-36004r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36006r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        names(mydata)</span><br class="fancyvrb" /><a 
- id="x6-36008r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36010r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        str(mydata)</span><br class="fancyvrb" /><a 
- id="x6-36012r6"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36014r7"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36016r8"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        dim(object)</span><br class="fancyvrb" /><a 
- id="x6-36018r9"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span>
-<br class="fancyvrb" /><a 
- id="x6-36020r10"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        class(obj)</span><br class="fancyvrb" /><a 
- id="x6-36022r11"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36024r12"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        mydata</span><br class="fancyvrb" /><a 
- id="x6-36026r13"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36028r14"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        head(mydata,</span><span 
-class="aett-10">&#x00A0;n=10)</span><br class="fancyvrb" /><a 
- id="x6-36030r15"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36032r16"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        tail(mydata,</span><span 
-class="aett-10">&#x00A0;n=5)</span>
-<br class="fancyvrb" /><a 
- id="x6-36034r17"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36036r18"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        length(obj)</span><br class="fancyvrb" /><a 
- id="x6-36038r19"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        str(obj)</span><br class="fancyvrb" /><a 
- id="x6-36040r20"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        class(obj)</span><br class="fancyvrb" /><a 
- id="x6-36042r21"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        names(obj)</span><br class="fancyvrb" /><a 
- id="x6-36044r22"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span>
-<br class="fancyvrb" /><a 
- id="x6-36046r23"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        c(obj,obj,...)</span><br class="fancyvrb" /><a 
- id="x6-36048r24"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        cbind(obj,</span><span 
-class="aett-10">&#x00A0;obj,</span><span 
-class="aett-10">&#x00A0;...)</span><br class="fancyvrb" /><a 
- id="x6-36050r25"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        rbind(obj,</span><span 
-class="aett-10">&#x00A0;obj,</span><span 
-class="aett-10">&#x00A0;...)</span><br class="fancyvrb" /><a 
- id="x6-36052r26"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36054r27"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        obj</span>
-<br class="fancyvrb" /><a 
- id="x6-36056r28"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36058r29"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        ls()</span><br class="fancyvrb" /><a 
- id="x6-36060r30"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        rm(obj)</span><br class="fancyvrb" /><a 
- id="x6-36062r31"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-36064r32"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        newobject</span><span 
+class="aett-10">&#x00A0;result</span><span 
 class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;edit(obj)</span><br class="fancyvrb" /><a 
- id="x6-36066r33"></a><span 
+class="aett-10">&#x00A0;tryCatch(</span><br class="fancyvrb" /><a 
+ id="x6-15004r2"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        fix(obj)</span></div>
-<!--l. 283--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.2.5   </span> <a 
- id="x6-370003.2.5"></a>&#48176;&#50676;</h4>
-<!--l. 285--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">3.3   </span> <a 
- id="x6-380003.3"></a>&#44288;&#47532; &#50976;&#54008;&#47532;&#54000;</h3>
-<!--l. 287--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.3.1   </span> <a 
- id="x6-390003.3.1"></a>&#54028;&#51068;&#44288;&#47532;</h4>
-<!--l. 290--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">3.4   </span> <a 
- id="x6-400003.4"></a>&#44592;&#52488; &#54532;&#47196;&#44536;&#47000;&#48141;</h3>
-<!--l. 292--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.1   </span> <a 
- id="x6-410003.4.1"></a>&#48289;&#53552;&#46972;&#51060;&#51228;&#51060;&#49496;&#44284; &#48152;&#48373;&#47928;:</h4>
-<!--l. 293--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-420003.4.1"></a>&#48152;&#48373;&#47928;<span 
+class="aett-10">&#x00A0;{</span><br class="fancyvrb" /><a 
+ id="x6-15006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;        </span>&#49688;&#54665;&#54616;&#44256;&#51088;<span 
+class="aett-10">&#x00A0;</span>&#54616;&#45716;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;<br class="fancyvrb" /><a 
+ id="x6-15008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;},</span><br class="fancyvrb" /><a 
+ id="x6-15010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;warning</span><span 
+class="aett-10">&#x00A0;=</span><span 
+class="aett-10">&#x00A0;function(w)</span><span 
+class="aett-10">&#x00A0;{</span><br class="fancyvrb" /><a 
+ id="x6-15012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;        </span>&#50948;&#50640;&#49436;<span 
+class="aett-10">&#x00A0;</span>&#49688;&#54665;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;&#51060;<span 
+class="aett-10">&#x00A0;</span>&#44221;&#44256;&#47484;<span 
+class="aett-10">&#x00A0;</span>&#48156;&#49373;&#49884;&#53420;&#46412;<span 
+class="aett-10">&#x00A0;</span>&#50612;&#46523;&#44172;<span 
+class="aett-10">&#x00A0;</span>&#52376;&#47532;&#54616;&#44256;&#51088;<span 
+class="aett-10">&#x00A0;</span>&#54616;&#45716;&#51648;&#50640;<span 
+class="aett-10">&#x00A0;</span>&#45824;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;<br class="fancyvrb" /><a 
+ id="x6-15014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;},</span>
+<br class="fancyvrb" /><a 
+ id="x6-15016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;error</span><span 
+class="aett-10">&#x00A0;=</span><span 
+class="aett-10">&#x00A0;function(e)</span><span 
+class="aett-10">&#x00A0;{</span><br class="fancyvrb" /><a 
+ id="x6-15018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;        </span>&#50948;&#50640;&#49436;<span 
+class="aett-10">&#x00A0;</span>&#49688;&#54665;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;&#51060;<span 
+class="aett-10">&#x00A0;</span>&#50640;&#47084;&#47484;<span 
+class="aett-10">&#x00A0;</span>&#48156;&#49373;&#49884;&#53420;&#46412;<span 
+class="aett-10">&#x00A0;</span>&#50612;&#46523;&#44172;<span 
+class="aett-10">&#x00A0;</span>&#52376;&#47532;&#54616;&#44256;&#51088;<span 
+class="aett-10">&#x00A0;</span>&#54616;&#45716;&#51648;&#50640;<span 
+class="aett-10">&#x00A0;</span>&#45824;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;<br class="fancyvrb" /><a 
+ id="x6-15020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;},</span><span 
+class="aett-10">&#x00A0;finally</span><span 
+class="aett-10">&#x00A0;{</span><br class="fancyvrb" /><a 
+ id="x6-15022r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;        </span>&#50948;&#50640;&#49436;<span 
+class="aett-10">&#x00A0;</span>&#49688;&#54665;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;&#50640;<span 
+class="aett-10">&#x00A0;</span>&#45824;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#52572;&#51333;&#51201;<span 
+class="aett-10">&#x00A0;</span>&#52376;&#47532;&#47484;<span 
+class="aett-10">&#x00A0;</span>&#50948;&#54620;<span 
+class="aett-10">&#x00A0;</span>&#54364;&#54788;&#49885;<br class="fancyvrb" /><a 
+ id="x6-15024r12"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;}</span></div>
+<!--l. 188--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x6-160003.2"></a>&#51312;&#44148;&#47928;:</h3>
+<!--l. 189--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-170003.2"></a>&#48516;&#44592;<span 
 class="aebx-10">:</span></span>
-<!--l. 295--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-430003.4.1"></a>&#48289;&#53552;&#46972;&#51060;&#51228;&#51060;&#49496;<span 
+<!--l. 191--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-180003.2"></a><span 
+class="aebx-10">switch</span></span>
+<!--l. 193--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x6-190003.3"></a>&#54632;&#49688;&#51032; &#51221;&#51032;&#50752; &#49324;&#50857;</h3>
+<!--l. 195--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-200003.3"></a>&#45236;&#51109;&#54632;&#49688;</span>
+<!--l. 197--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-210003.3"></a>&#49324;&#50857;&#51088; &#51221;&#51032; &#54632;&#49688;</span>
+<!--l. 199--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-220003.3"></a><span 
+class="aebx-10">do.call()</span></span>
+                                                                                         
+                                                                                         
+<!--l. 205--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-230003.3"></a>&#49828;&#53076;&#54532;</span>
+<!--l. 207--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-240003.3"></a>&#51064;&#48148;&#51060;&#47088;&#47676;&#53944;</span>
+<!--l. 209--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x6-250003.4"></a>&#48289;&#53552;&#46972;&#51060;&#51228;&#51060;&#49496;&#44284; &#48152;&#48373;&#47928;</h3>
+<!--l. 210--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-260003.4"></a>&#48152;&#48373;&#47928;<span 
+class="aebx-10">:</span></span>
+<!--l. 212--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-270003.4"></a>&#48289;&#53552;&#46972;&#51060;&#51228;&#51060;&#49496;<span 
 class="aebx-10">:</span></span>
    <span 
 class="aett-10">apply()</span>, <span 
 class="aett-10">lapply()</span>, <span 
 class="aett-10">sapply()</span>, <span 
 class="aett-10">mapply()</span>&#51032; &#49324;&#50857;&#48169;&#48277;
-<!--l. 297--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.2   </span> <a 
- id="x6-440003.4.2"></a>&#51312;&#44148;&#47928;:</h4>
-<!--l. 298--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-450003.4.2"></a>&#48516;&#44592;<span 
-class="aebx-10">:</span></span>
-<!--l. 300--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.3   </span> <a 
- id="x6-460003.4.3"></a>&#44061;&#52404;&#50752; &#49549;&#49457;</h4>
-                                                                                         
-                                                                                         
-<!--l. 301--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-470003.4.3"></a>&#49549;&#49457;<span 
-class="aebx-10">:</span></span>
-<!--l. 302--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-480003.4.3"></a>&#44061;&#52404;<span 
-class="aebx-10">:</span></span>
-<!--l. 304--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.4   </span> <a 
- id="x6-490003.4.4"></a>&#51228;&#45348;&#47533; &#54632;&#49688;</h4>
-<!--l. 306--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.5   </span> <a 
- id="x6-500003.4.5"></a>&#47700;&#49548;&#46300;&#50752; &#53364;&#47000;&#49828;</h4>
-<!--l. 307--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-510003.4.5"></a>&#47700;&#49548;&#46300;<span 
-class="aebx-10">:</span></span>
-<!--l. 308--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-520003.4.5"></a>&#53364;&#47000;&#49828;<span 
-class="aebx-10">:</span></span>
-<!--l. 310--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.4.6   </span> <a 
- id="x6-530003.4.6"></a>&#54632;&#49688;&#51032; &#51221;&#51032;&#50752; &#49324;&#50857;</h4>
-<!--l. 312--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-540003.4.6"></a>&#45236;&#51109;&#54632;&#49688;</span>
-<!--l. 314--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-550003.4.6"></a>&#49324;&#50857;&#51088; &#51221;&#51032; &#54632;&#49688;</span>
-<!--l. 316--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-560003.4.6"></a><span 
-class="aebx-10">do.call()</span></span>
-<!--l. 324--><p class="noindent" >
+<!--l. 215--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">3.5   </span> <a 
- id="x6-570003.5"></a>&#45936;&#51060;&#53552; &#53364;&#47532;&#45789; &#48143; &#51204;&#52376;&#47532; &#53580;&#53356;&#45769;</h3>
-<!--l. 326--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.5.1   </span> <a 
- id="x6-580003.5.1"></a>&#45936;&#51060;&#53552;&#49483;&#50640; &#44288;&#47144;&#54616;&#50668;</h4>
-<!--l. 328--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-590003.5.1"></a>&#48320;&#49688;&#47749; &#48320;&#44221;&#54616;&#44592;</span>
-<!--l. 329--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-600003.5.1"></a>&#51312;&#44148;&#50640; &#48512;&#54633;&#54616;&#45716; &#45936;&#51060;&#53552;&#49483; &#44264;&#46972;&#45236;&#44592;</span>
-                                                                                         
-                                                                                         
-<!--l. 330--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-610003.5.1"></a>&#51452;&#50612;&#51652; &#45936;&#51060;&#53552;&#49483;&#51004;&#47196;&#48512;&#53552; &#47004;&#45924;&#49368;&#54540; &#52628;&#52636;&#54616;&#44592;</span>
-<!--l. 331--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-620003.5.1"></a>&#51221;&#47148;&#54616;&#44592;</span>
-<!--l. 332--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-630003.5.1"></a>&#45936;&#51060;&#53552;&#49483; &#54633;&#52824;&#44592;</span>
-<!--l. 333--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-640003.5.1"></a>&#48320;&#49688; &#52628;&#44032; &#46608;&#45716; &#51228;&#44144;</span>
-<!--l. 334--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-650003.5.1"></a>&#51333;&#54945;&#45936;&#51060;&#53552;&#47484; &#54945;&#54805;&#51004;&#47196; &#48320;&#54805;&#54616;&#44592;</span>
-<!--l. 335--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-660003.5.1"></a>&#54945;&#54805;&#45936;&#51060;&#53552;&#47484; &#51333;&#54805;&#51004;&#47196; &#48320;&#54805;&#54616;&#44592;</span>
-<!--l. 336--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-670003.5.1"></a>&#44288;&#52769;&#52824;&#51032; &#44060;&#49688; &#50508;&#50500;&#48372;&#44592;</span>
-<!--l. 337--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-680003.5.1"></a>&#51473;&#48373;&#46104;&#45716; &#44050; &#52286;&#50500;&#48372;&#44592;</span>
-<!--l. 338--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-690003.5.1"></a>&#44208;&#52769;&#52824;&#50640; &#45824;&#54644;&#49436;</span>
-<!--l. 340--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.5.2   </span> <a 
- id="x6-700003.5.2"></a>&#47928;&#51088;&#54805; &#48320;&#49688;&#46308;&#44284; &#50672;&#44288;&#54616;&#50668;</h4>
-<!--l. 342--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-710003.5.2"></a>&#49688;&#52824;&#54805; &#48320;&#49688;&#47196; &#44053;&#51228;&#54805;&#48320;&#54872; &#54616;&#44592;</span>
-<!--l. 343--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-720003.5.2"></a>&#48712;&#44277;&#44036; &#47784;&#46160; &#51228;&#44144;&#54616;&#44592;</span>
-<!--l. 344--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-730003.5.2"></a>&#53945;&#51221; &#47928;&#51088;&#50676; &#48977;&#50500;&#45236;&#44592;</span>
-<!--l. 345--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-740003.5.2"></a>&#48320;&#49688;&#51032; &#44600;&#51060; &#54028;&#50501;&#54616;&#44592;</span>
-<!--l. 346--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-750003.5.2"></a>&#46160; &#47928;&#51088;&#54805; &#48320;&#49688; &#44208;&#54633;&#54616;&#44592;</span>
-<!--l. 347--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-760003.5.2"></a>&#45824;&#49548;&#47928;&#51088; &#51204;&#54872;</span>
-                                                                                         
-                                                                                         
-<!--l. 348--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-770003.5.2"></a>&#50836;&#51064;&#44284; &#44288;&#44228;&#54616;&#50668;</span>
-<!--l. 349--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-780003.5.2"></a>&#46972;&#48296;&#47553; &#49373;&#49457; &#48143; &#48320;&#44221;&#54616;&#44592;</span>
-<!--l. 352--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">3.5.3   </span> <a 
- id="x6-790003.5.3"></a>&#49884;&#44036;&#44284; &#45216;&#51676;&#50640; &#44288;&#47144;&#54616;&#50668;</h4>
-<!--l. 354--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-800003.5.3"></a>&#45216;&#51676; &#45936;&#51060;&#53552; &#49373;&#49457;</span>
-<!--l. 355--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-810003.5.3"></a>&#45380;<span 
-class="aebx-10">/</span>&#50900;<span 
-class="aebx-10">/</span>&#51068; &#46384;&#47196; &#48516;&#47532;&#54616;&#44592;</span>
-<!--l. 356--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-820003.5.3"></a>&#49884;&#44036; &#45936;&#51060;&#53552; &#49373;&#49457;</span>
-<!--l. 359--><p class="noindent" >
+ id="x6-280003.5"></a>&#44061;&#52404;&#50752; &#49549;&#49457;</h3>
+<!--l. 216--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-290003.5"></a>&#49549;&#49457;<span 
+class="aebx-10">:</span></span>
+<!--l. 217--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-300003.5"></a>&#44061;&#52404;<span 
+class="aebx-10">:</span></span>
+<!--l. 219--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">3.6   </span> <a 
- id="x6-830003.6"></a>&#50976;&#50857;&#54620; &#53364;&#47532;&#45789; &#53580;&#53356;&#45769;&#46308;</h3>
-<!--l. 361--><p class="noindent" >&#48516;&#49437;&#51088;&#44032; &#48372;&#53685; &#50619;&#44172; &#46104;&#45716; &#45936;&#51060;&#53552;&#45716; &#48516;&#49437;&#50640; &#49324;&#50857;&#46104;&#45716; &#53685;&#44228;&#47784;&#54805;&#50640; &#51201;&#54633;&#54620; &#44221;&#50864;&#45716; &#46300;&#47932;&#44592; &#46412;&#47928;&#50640; &#48516;&#49437;&#51088; &#49828;&#49828;&#47196;&#44032; &#51060;&#47084;&#54620; &#45936;&#51060;&#53552;&#47484; &#54805;&#49457;&#54616;&#45716; &#44163;&#51008; &#54596;&#50836;&#54620; &#44592;&#49696;&#51473;&#50640; &#54616;&#45208;&#46972;&#44256; &#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
-<!--l. 364--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-840003.6"></a>&#44208;&#52769;&#52824;&#47484; &#48148;&#47196; &#50967;&#44050;&#51004;&#47196; &#52292;&#50892;&#45347;&#44592;<span 
-class="aebx-10">: </span></span>
-   &#50500;&#47000;&#50752; &#44057;&#51060; &#51452;&#50612;&#51652; &#45936;&#51060;&#53552;&#50640; &#48320;&#49688; ID&#45716; &#44208;&#52769;&#44050; &#50630;&#51060; &#47784;&#46304; &#44050;&#51060; &#50756;&#51204;&#54616;&#44172; &#51096; &#46308;&#50612;&#44032; &#51080;&#45716;&#45936;, Week &#48320;&#49688;&#50640;&#45716; &#44033; ID&#51032; &#52395;&#48264;&#51704; &#47112;&#53076;&#46300;&#50640;&#47564; &#54644;&#45817;&#54616;&#45716; &#48512;&#48516;&#50640; &#44050;&#51060; &#46308;&#50612;&#44032; &#51080;&#44256; &#45208;&#47672;&#51648;&#48512;&#48516;&#50640;&#45716; <span 
-class="aett-10">NA</span>&#44050;&#51060; &#46308;&#50612;&#44032; &#51080;&#49845;&#45768;&#45796;.
-<!--l. 367--><p class="indent" >
-   <div class="fancyvrb" id="fancyvrb7"><a 
- id="x6-84002r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;data.frame(ID=c(rep(1,4),</span><span 
-class="aett-10">&#x00A0;rep(2,4),</span><span 
-class="aett-10">&#x00A0;rep(3,2)),</span><span 
-class="aett-10">&#x00A0;Week=c(15,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;18,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;20,</span><span 
-class="aett-10">&#x00A0;NA))</span>
-<br class="fancyvrb" /><a 
- id="x6-84004r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-84006r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;&#x003E;</span><span 
-class="aett-10">&#x00A0;mydata</span><br class="fancyvrb" /><a 
- id="x6-84008r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-84010r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;Week</span><br class="fancyvrb" /><a 
- id="x6-84012r6"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><br class="fancyvrb" /><a 
- id="x6-84014r7"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84016r8"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84018r9"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;4</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84020r10"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;5</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span>
-<br class="fancyvrb" /><a 
- id="x6-84022r11"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;6</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84024r12"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;7</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84026r13"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;8</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><br class="fancyvrb" /><a 
- id="x6-84028r14"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;9</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;20</span><br class="fancyvrb" /><a 
- id="x6-84030r15"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;10</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span></div>
-<!--l. 386--><p class="indent" >   &#51060;&#50752; &#44057;&#51008; &#45936;&#51060;&#53552;&#47484; &#50500;&#47000;&#50752; &#44057;&#51060; &#51088;&#46041;&#51004;&#47196; &#52292;&#50892;&#51452;&#47140;&#47732; &#50612;&#46523;&#44172; &#54644;&#50556; &#54624;&#44620;&#50836;?
-<!--l. 389--><p class="indent" >
-   <div class="fancyvrb" id="fancyvrb8"><a 
- id="x6-84032r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;Week</span><br class="fancyvrb" /><a 
- id="x6-84034r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><br class="fancyvrb" /><a 
- id="x6-84036r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><br class="fancyvrb" /><a 
- id="x6-84038r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><br class="fancyvrb" /><a 
- id="x6-84040r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;4</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><br class="fancyvrb" /><a 
- id="x6-84042r6"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;5</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><br class="fancyvrb" /><a 
- id="x6-84044r7"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;6</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span>
-<br class="fancyvrb" /><a 
- id="x6-84046r8"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;7</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><br class="fancyvrb" /><a 
- id="x6-84048r9"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;8</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><br class="fancyvrb" /><a 
- id="x6-84050r10"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;9</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;20</span><br class="fancyvrb" /><a 
- id="x6-84052r11"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;10</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;20</span></div>
-<!--l. 405--><p class="indent" >   &#51060;&#47484; &#49688;&#54665;&#54616;&#45716;&#45936;&#50640;&#45716; &#50668;&#47084; &#44032;&#51648; &#51333;&#47448;&#51032; &#54632;&#49688;&#46308;&#51060; &#45796;&#50577;&#54620; &#54056;&#51648;&#53412; &#50504;&#50640; &#51316;&#51116;&#54633;&#45768;&#45796;. &#44536;&#47084;&#45208;, &#51060;&#47484; &#49688;&#54665;&#54616;&#45716; &#44592;&#48376; &#50508;&#44256;&#47532;&#51608;&#51008; &#46041;&#51068;&#54616;&#47728;, R &#44592;&#48376;&#49884;&#49828;&#53596;&#47564;&#51004;&#47196; &#51089;&#49457;&#51060; &#44032;&#45733;&#54633;&#45768;&#45796;. &#50500;&#47000;&#51032; &#54632;&#49688;&#47484; &#48373;&#49324;&#54616;&#50668; &#49324;&#50857;&#54616;&#49884;&#47732; &#46121;&#45768;&#45796;.
-<!--l. 410--><p class="indent" >
-   <div class="fancyvrb" id="fancyvrb9"><a 
- id="x6-84054r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;fill</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;function(x,</span><span 
-class="aett-10">&#x00A0;first,</span><span 
-class="aett-10">&#x00A0;last){</span><br class="fancyvrb" /><a 
- id="x6-84056r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        n</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;last-first+1</span>
-<br class="fancyvrb" /><a 
- id="x6-84058r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        for(i</span><span 
-class="aett-10">&#x00A0;in</span><span 
-class="aett-10">&#x00A0;c(1:length(first)))</span><span 
-class="aett-10">&#x00A0;x[first[i]:last[i]]</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;rep(x[first[i]],</span><span 
-class="aett-10">&#x00A0;n[i])</span><br class="fancyvrb" /><a 
- id="x6-84060r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;        return(x)</span><br class="fancyvrb" /><a 
- id="x6-84062r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;}</span></div>
-                                                                                         
-                                                                                         
-<!--l. 420--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-850003.6"></a>&#44033; &#50500;&#46356;&#51060;&#48324;&#47196; &#52395;&#48264;&#51704;&#50752; &#47560;&#51648;&#47561; &#47112;&#53076;&#46300; &#52286;&#50500;&#48372;&#44592;<span 
-class="aebx-10">: </span></span>
-   &#50948;&#50640;&#49436; &#51452;&#50612;&#51652; &#45936;&#51060;&#53552;&#50640;&#49436; ID &#48320;&#49688;&#50640;&#49436; &#48372;&#51060;&#45716; &#44163;&#52376;&#47100; &#44057;&#51008; &#44288;&#52769;&#52824;&#44032; &#50668;&#47084;&#48264; &#48152;&#48373; &#52769;&#51221;&#46104;&#50612; ID&#44032; &#48152;&#48373;&#51201;&#51004;&#47196; &#51077;&#47141;&#51060; &#46104;&#50632;&#51012; &#46412;, SAS&#50640;&#49436;&#52376;&#47100; &#44033; &#50500;&#51060;&#46356;&#48324;&#47196; &#52395;&#48264;&#51704;&#50752; &#47560;&#51648;&#47561; &#47112;&#53076;&#46300;&#47484; &#50508;&#49688; &#51080;&#45716; .FIRST &#50752; .LAST &#44057;&#51008; &#44592;&#45733;&#51060; R&#50640;&#49436;&#45716; &#50612;&#46523;&#44172; &#54644;&#50556; &#54616;&#45208;&#50836;?
-<!--l. 423--><p class="indent" >
-   <div class="fancyvrb" id="fancyvrb10"><a 
- id="x6-85002r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata$first</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;!duplicated(mydata$ID)</span><br class="fancyvrb" /><a 
- id="x6-85004r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata$last</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;!duplicated(mydata$ID,</span><span 
-class="aett-10">&#x00A0;fromLast=TRUE)</span>
-<br class="fancyvrb" /><a 
- id="x6-85006r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-85008r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;&#x003E;</span><span 
-class="aett-10">&#x00A0;mydata</span><br class="fancyvrb" /><a 
- id="x6-85010r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;Week</span><span 
-class="aett-10">&#x00A0;first</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;last</span><br class="fancyvrb" /><a 
- id="x6-85012r6"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-85014r7"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span>
-<br class="fancyvrb" /><a 
- id="x6-85016r8"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-85018r9"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;4</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><br class="fancyvrb" /><a 
- id="x6-85020r10"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;5</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-85022r11"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;6</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span>
-<br class="fancyvrb" /><a 
- id="x6-85024r12"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;7</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-85026r13"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;8</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><br class="fancyvrb" /><a 
- id="x6-85028r14"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;9</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;20</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-85030r15"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;10</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;NA</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span></div>
-<!--l. 442--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-860003.6"></a>&#51312;&#44148;&#50640; &#47582;&#44172; &#45936;&#51060;&#53552; &#49440;&#53469;&#54616;&#44592;<span 
+ id="x6-310003.6"></a>&#51228;&#45348;&#47533; &#54632;&#49688;&#50752; &#53364;&#47000;&#49828;</h3>
+<!--l. 220--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-320003.6"></a>&#47700;&#49548;&#46300;<span 
 class="aebx-10">:</span></span>
-   &#45936;&#51060;&#53552;&#51032; &#51068;&#48512;&#48516;&#47564; &#44264;&#46972; &#45236;&#44256; &#49910;&#50612;&#50836;. &#50696;&#47484;&#46308;&#47732;, &#50948;&#50640;&#49436; &#49324;&#50857;&#46108; &#50696;&#51228;&#50640;&#49436; ID &#44032; 1&#44284; 2&#51064; &#45936;&#51060;&#53552;&#47564; &#44264;&#46972;&#45236;&#44256; &#49910;&#45796;&#47732; &#50500;&#47000;&#50752; &#44057;&#51060; &#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
-<!--l. 445--><p class="indent" >
-   <div class="fancyvrb" id="fancyvrb11"><a 
- id="x6-86002r1"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;</span>&#45936;&#51060;&#53552;<span 
-class="aett-10">&#x00A0;</span>&#49373;&#49457;&#54616;&#44592;<br class="fancyvrb" /><a 
- id="x6-86004r2"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;data.frame(ID=c(rep(1,4),</span><span 
-class="aett-10">&#x00A0;rep(2,4),</span><span 
-class="aett-10">&#x00A0;rep(3,2)),</span><span 
-class="aett-10">&#x00A0;Week=c(15,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;18,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;NA,</span><span 
-class="aett-10">&#x00A0;20,</span><span 
-class="aett-10">&#x00A0;NA))</span><br class="fancyvrb" /><a 
- id="x6-86006r3"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span>
-<br class="fancyvrb" /><a 
- id="x6-86008r4"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;</span>&#48320;&#49688;&#50640;<span 
-class="aett-10">&#x00A0;</span>&#51080;&#45716;<span 
-class="aett-10">&#x00A0;ID</span>&#47484;<span 
-class="aett-10">&#x00A0;</span>&#44592;&#51456;&#51004;&#47196;<span 
-class="aett-10">&#x00A0;</span>&#52395;&#48264;&#51704;&#50752;<span 
-class="aett-10">&#x00A0;</span>&#47560;&#51648;&#47561;<span 
-class="aett-10">&#x00A0;</span>&#47112;&#53076;&#46300;&#51032;<span 
-class="aett-10">&#x00A0;</span>&#50948;&#52824;<span 
-class="aett-10">&#x00A0;</span>&#50508;&#50500;&#45236;&#44592;<br class="fancyvrb" /><a 
- id="x6-86010r5"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;idx.first</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;which(!duplicated(mydata$ID))</span><br class="fancyvrb" /><a 
- id="x6-86012r6"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;idx.last</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;which(!duplicated(mydata$ID,</span><span 
-class="aett-10">&#x00A0;fromLast=TRUE))</span>
-<br class="fancyvrb" /><a 
- id="x6-86014r7"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-86016r8"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;ID</span>&#50640;<span 
-class="aett-10">&#x00A0;</span>&#51080;&#45716;<span 
-class="aett-10">&#x00A0;NA</span>&#44050;&#51012;<span 
-class="aett-10">&#x00A0;</span>&#52292;&#50892;&#45347;&#44592;<br class="fancyvrb" /><a 
- id="x6-86018r9"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata$Week</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;fill(x=mydata$Week,</span><span 
-class="aett-10">&#x00A0;first=idx.first,</span><span 
-class="aett-10">&#x00A0;last=idx.last)</span><br class="fancyvrb" /><a 
- id="x6-86020r10"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><br class="fancyvrb" /><a 
- id="x6-86022r11"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;</span>&#44060;&#48324;<span 
-class="aett-10">&#x00A0;ID</span>&#50640;<span 
-class="aett-10">&#x00A0;</span>&#45824;&#54620;<span 
-class="aett-10">&#x00A0;</span>&#52395;&#48264;&#51704;&#50752;<span 
-class="aett-10">&#x00A0;</span>&#47560;&#51648;&#47561;<span 
-class="aett-10">&#x00A0;</span>&#47112;&#53076;&#46300;&#50640;<span 
-class="aett-10">&#x00A0;</span>&#45824;&#54620;<span 
-class="aett-10">&#x00A0;</span>&#45436;&#47532;&#44050;&#51012;<span 
-class="aett-10">&#x00A0;</span>&#52628;&#44032;&#54616;&#50668;<span 
-class="aett-10">&#x00A0;</span>&#45936;&#51060;&#53552;<span 
-class="aett-10">&#x00A0;</span>&#54869;&#51109;&#54616;&#44592;
-<br class="fancyvrb" /><a 
- id="x6-86024r12"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata$first</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;!duplicated(mydata$ID)</span><br class="fancyvrb" /><a 
- id="x6-86026r13"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;mydata$last</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;!duplicated(mydata$ID,</span><span 
-class="aett-10">&#x00A0;fromLast=TRUE)</span><br class="fancyvrb" /><a 
- id="x6-86028r14"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span>
-<br class="fancyvrb" /><a 
- id="x6-86030r15"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;</span>&#51312;&#44148;&#50640;<span 
-class="aett-10">&#x00A0;</span>&#47582;&#45716;<span 
-class="aett-10">&#x00A0;</span>&#45936;&#51060;&#53552;<span 
-class="aett-10">&#x00A0;</span>&#44264;&#46972;&#45236;&#44592;<br class="fancyvrb" /><a 
- id="x6-86032r16"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;select</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;subset(x=mydata,</span><span 
-class="aett-10">&#x00A0;subset=(ID</span><span 
-class="aett-10">&#x00A0;%in%</span><span 
-class="aett-10">&#x00A0;c(1,2)))</span><br class="fancyvrb" /><a 
- id="x6-86034r17"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;&#x003E;</span><span 
-class="aett-10">&#x00A0;select</span><br class="fancyvrb" /><a 
- id="x6-86036r18"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;Week</span><span 
-class="aett-10">&#x00A0;first</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;last</span>
-<br class="fancyvrb" /><a 
- id="x6-86038r19"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86040r20"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86042r21"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;3</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86044r22"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;4</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span>
-<br class="fancyvrb" /><a 
- id="x6-86046r23"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;5</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86048r24"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;6</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86050r25"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;7</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86052r26"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;8</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;FALSE</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><br class="fancyvrb" /><a 
- id="x6-86054r27"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span>
-<br class="fancyvrb" /><a 
- id="x6-86056r28"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;#</span><span 
-class="aett-10">&#x00A0;</span>&#52628;&#44032;&#51201;&#51064;<span 
-class="aett-10">&#x00A0;</span>&#51312;&#44148;<span 
-class="aett-10">&#x00A0;</span>&#48512;&#50668;&#54616;&#44592;<br class="fancyvrb" /><a 
- id="x6-86058r29"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;select.1</span><span 
-class="aett-10">&#x00A0;&#x003C;-</span><span 
-class="aett-10">&#x00A0;subset(x=mydata,</span><span 
-class="aett-10">&#x00A0;subset=(</span><span 
-class="aett-10">&#x00A0;(ID</span><span 
-class="aett-10">&#x00A0;%in%</span><span 
-class="aett-10">&#x00A0;c(1,2))</span><span 
-class="aett-10">&#x00A0;&amp;</span><span 
-class="aett-10">&#x00A0;first==TRUE</span><span 
-class="aett-10">&#x00A0;))</span><br class="fancyvrb" /><a 
- id="x6-86060r30"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;&#x003E;</span><span 
-class="aett-10">&#x00A0;select.1</span>
-<br class="fancyvrb" /><a 
- id="x6-86062r31"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;ID</span><span 
-class="aett-10">&#x00A0;Week</span><span 
-class="aett-10">&#x00A0;first</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;last</span><br class="fancyvrb" /><a 
- id="x6-86064r32"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;1</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;15</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span><br class="fancyvrb" /><a 
- id="x6-86066r33"></a><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;5</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;2</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;18</span><span 
-class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;TRUE</span><span 
-class="aett-10">&#x00A0;FALSE</span></div>
-<!--l. 483--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-870003.6"></a>&#50668;&#47084;&#44060;&#51032; &#50641;&#49472;&#49884;&#53944;&#47196; &#44396;&#49457;&#46108; &#50641;&#49472;&#54028;&#51068; &#54616;&#45208;&#47196; &#54633;&#52824;&#44592;<span 
+<!--l. 221--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-330003.6"></a>&#51228;&#45348;&#47533; &#54632;&#49688;<span 
 class="aebx-10">:</span></span>
-   &#50668;&#47084;&#44060;&#51032; &#50641;&#49472;&#49884;&#53944;&#47196; &#44396;&#49457;&#46104;&#50612; &#51080;&#45716; &#50641;&#49472;&#54028;&#51068;&#51012; &#48520;&#47084;&#50752; &#54616;&#45208;&#51032; &#45936;&#51060;&#53552;&#49483;&#51004;&#47196; &#54633;&#52824;&#44592;
-<!--l. 485--><p class="noindent" ><span class="paragraphHead"><a 
- id="x6-880003.6"></a>&#47532;&#49828;&#53944; &#51473;&#52393;&#44396;&#51312;</span>
-   &#44032;&#45140; &#47532;&#49828;&#53944;&#54805;&#51004;&#47196; &#48155;&#50500;&#51652; &#45936;&#51060;&#53552;&#44032; &#51473;&#52393;&#46108; &#44396;&#51312;&#47484; &#44032;&#51648;&#44256; &#51080;&#50612;&#49436;, &#54620; &#48264;&#50640; &#51060;&#47484; &#48520;&#47084;&#50724;&#44592;&#47484; &#54644;&#50556;&#54624; &#46412;&#45716; &#50612;&#46523;&#44172; &#54644;&#50556;&#54624;&#51648;.
+<!--l. 222--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-340003.6"></a>&#53364;&#47000;&#49828;<span 
+class="aebx-10">:</span></span>
+<!--l. 224--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.7   </span> <a 
+ id="x6-350003.7"></a>&#49828;&#53356;&#47549;&#53944; &#51089;&#49457;&#54616;&#44592;</h3>
+<!--l. 225--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-360003.7"></a>&#51068;&#44292;&#52376;&#47532;</span>
                                                                                          
                                                                                          
-   <!--l. 491--><div class="crosslinks"><p class="noindent">[<a 
+<!--l. 226--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-370003.7"></a>&#49892;&#54665;&#54616;&#44592;</span>
+<!--l. 228--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3.8   </span> <a 
+ id="x6-380003.8"></a>&#50868;&#50689;&#52404;&#51228;&#50752; &#49548;&#53685;&#54616;&#44592;</h3>
+<!--l. 229--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-390003.8"></a>&#54028;&#51068;&#44284; &#46356;&#47113;&#53664;&#47532; &#50976;&#54008;&#47532;&#54000;</span>
+<!--l. 230--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x6-400003.8"></a>&#49884;&#44036;&#44284; &#44288;&#47144;&#46108; &#47749;&#47161;&#50612;&#46308;</span>
+                                                                                         
+                                                                                         
+   <!--l. 238--><div class="crosslinks"><p class="noindent">[<a 
 href="tipsch4.html" >next</a>] [<a 
 href="tipsch2.html" >prev</a>] [<a 
 href="tipsch2.html#tailtipsch2.html" >prev-tail</a>] [<a 
 href="tipsch3.html" >front</a>] [<a 
 href="tips3.html#tipsch3.html" >up</a>] </p></div>
-<!--l. 491--><p class="indent" >   <a 
+<!--l. 238--><p class="indent" >   <a 
  id="tailtipsch3.html"></a>    
 </body></html> 
