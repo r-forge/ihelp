@@ -40,7 +40,7 @@
 \end{itemize}
 
 본 문서의 최초작성일은 2010년 4월 10일이며, iHELP Working Group의 관리자에 의하여 수시로 갱신되고 있습니다.
-따라서, 이 문서는 어떤 특정한 기간을 두고 완성되지 않으므로 단지 최신 업데이트된 버전만이 존재합니다.
+따라서, 이 문서는 어떤 특정한 기간을 두고 완성되지 않으므로 단지 업데이트된 버전만이 존재합니다.
 만약, 이 문서를 현재 읽고 있는 독자가 내용에 대한 추가, 수정, 및 제안이 있다면 이를 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org} 주소로 이메일을 보내주신다면 감사하겠습니다. 
 
 이 문서의 작성에 여러가지 제안을 해 주신 분들은 아래와 같습니다. 
@@ -606,10 +606,18 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 방법 -- 요건 아주 좋은 패키지가 있음 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{탐색적 데이터 분석}
 
-\section{기초 요약}
+여기에서 말하는 탐색적 분석이란 분석 초기에 단순히 데이터의 특징을 보는데 사용됩니다. 
+또한, 이 과정은 데이터 클리닝과도 연관이 있습니다. 
+
+\section{기술통계량 요약}
 
 \paragraph{평균과 분산과 같은 기초요약 함수들}
 
@@ -623,34 +631,69 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 
 \paragraph{신뢰구간}
 
-\section{t-test}
+\section{분할표와 카이제곱 검정}
 
-\section{Contingency table}
+\section{z-검정}
 
-\section{코크란 알파}
+\section{t-검정}
 
-\section{요인분석}
+\section{}
 
-\section{클래시피케이션}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{통계모형의 선택 및 적용}
 
+각 섹션은 다음과 같은 방법으로 이루어져야 합니다. 
+\begin{itemize}
+\item 아래의 모형이 어느 경우에 사용되어야 하는가?
+\item 모형을 사용하는데 있어서 요구되는 가정들은 무엇인가?
+\item 모형의 계수에 대한 추정치는 어떻게 구하는가?
+\item 모형의 진단
+\item 추정치들에 대한 해석
+\item 사용법들 
+\item 모형에 대한 한계점
+\end{itemize}
 
-\section{다양한 모형에 대한 개관과 장단점}
+\section{분산분석 (Analysis of Variance-Covariance)}
 
-\subsection{회귀분석}
+\section{상관분석 (Correlation Analysis) }
 
-\subsection{일반선형모델 (GLM)}
+\section{회귀분석 (Regression Analysis) }
 
-\subsection{Mixed-effect model}
+\section{주성분분석 (Principle Component Analysis)}
 
-\subsection{Longitudinal data analysis}
+\section{판별분석 (Discriminant Analysis) }
 
-\subsection{Survivial analysis}
+\section{군집분석 (Cluster Analysis) }
 
-\subsection{Mixture and latent class model}
+\section{시계열분석 (Time-Series Analysis) }
 
+\section{일반선형모델 (GLM)}
+
+\section{의사결정 나무(Decision Tree)}
+
+\section{Longitudinal data analysis}
+
+\section{생존분석 (Survivial analysis)}
+
+\section{Mixture and latent class analysis}
+
+\section{신경망 분석}
+
+\section{기계학습 (Machine Learning)}
+
+\section{메타 분석 (Meta Analysis)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{패키지 관리}
 \begin{enumerate}
@@ -876,9 +919,6 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 	
 	\item (접수: 2013-APR-19) R은 처음부터 기존의 통계팩키지와는 다른 모습에 약간 두렵기까지 합니다.  기존의 분석은 일반적으로 $[$프로그램 실행 $->$ 데이터 불러오기 $->$ 분석(메뉴클릭:SPSS 또는 명령어입력:SAS) $->$ 실행$]$의 절차를 밟아 왔기에 모든 결과를 한 번에 보여주는 식입니다. 그러나 R은 그렇지 않아 이러한 점부터 생소하고 이상합니다.  데이터를 불러오기 하면 바로 데이터시트를 볼 수 있는 것도 아닙니다 (접수날짜: 2013-APR-17).
 
-	
-	\item (접수: 2013-04-18, Reproducibility=NA) \texttt{c()}의 역할은 무엇인가요? \texttt{a <- seq(1:4)}과 \texttt{a <- c(1,2,3,4)}은 동일한 것인가요?
-	
 	\item (접수: 2013-04-18, Reproducibility=NO) read.xlsx함수를 이용해 xlsx파일에서 데이터프레임형태로 가져옵니다. 이 때 [3,3] 셀에 있는 텍스트가 "3월" 이라고 할 때 temp[3,3] == "3월" 이렇게 비교하려고 하면 제대로 비교가 안되더군요.. 한글 텍스트로 이루어진 변수값를 비교하는 방법이 어떤게 있는지 궁금합니다.
 	
 	\item 분석을 하고 나면 결과를 그래프나 그림으로 나타내게 되는데 R에서는 그림을 나타내는 창이 하나만 나타나서 동시에 두 개를 보지 못하는 경우가 허다한데, 이의 해결방법은 없나요? (접수: 2013-APR-13, 분류: 그래픽스 관련) 
