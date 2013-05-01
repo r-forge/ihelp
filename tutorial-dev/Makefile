@@ -17,9 +17,9 @@ ps: dvi
 
 dvi:
 	latex $(filename).tex
-#	bibtex $(filename)
-#	latex $(filename).tex
-#	latex $(filename).tex
+	bibtex $(filename)
+	latex $(filename).tex
+	latex $(filename).tex
 
 clean:
 	rm -rf $(filename).ps $(filename).log $(filename).aux $(filename).out $(filename).dvi $(filename).bbl $(filename).blg $(filename).toc $(filename).lot $(filename).idx $(filename).lof $(filename).css $(filename).idv $(filename).ind $(filename).lg $(filename).tmp $(filename).ilg $(filename).4ct $(filename).xref $(filename).4tc *js.* *.tmp *.html *.png
