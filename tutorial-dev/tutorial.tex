@@ -16,7 +16,7 @@
 
 \usepackage{mystyle}
 
-\title{R 튜토리얼 \\ - Some R Problems Derived Me Nuts! -}
+\title{함께 배우는 R 스터디 가이드 \\ - 도움이 되길 바랍니다 -}
 \author{iHELP Working Group \\ Chel Hee Lee \& Eugene Jung } 
 \date{\today}
 
@@ -36,11 +36,11 @@
 \item 통계와 전산에 관련된 전문용어는 쉽게 풀어쓰거나, 용어에 대한 이해를 돕기 위한 참고 자료를 제공합니다. 
 \end{itemize}
 
-본 문서와 관련한 프로젝트의 시작일은 2010년 4월 10일이며, iHELP Working Group 관리자에 의하여 수시로 갱신되고 있습니다.
+본 문서와 관련한 프로젝트의 시작일은 2013년 4월 10일이며, iHELP Working Group 관리자에 의하여 수시로 갱신되고 있습니다.
 따라서, 이 문서는 어떤 특정한 기간을 두고 완성되으며, 오로지 업데이트된 버전만이 존재합니다.
 만약, 이 문서를 읽고 있는 독자가 문서 내용에 대한 추가, 수정, 및 제안이 있다면 이를 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org} 주소로 이메일을 보내주신다면 감사하겠습니다. 
 
-아래와 명시된 분들의 도움이 없었다면 이 문서가 발전될 수 없었기에 그 감사의 말씀을 올리고 싶습니다. 
+아래에 기재된 분들의 도움이 없었다면 이 문서가 발전될 수 없었기에 그 감사의 말씀을 올리고 싶습니다. 
 \begin{itemize}
 \item 신종화 교수님 (서울종합과학대학원 사회학과)
 \item 이부일 박사님 (충남대학교 정보통계학과 박사졸)
@@ -287,7 +287,7 @@ output
 \paragraph{switch}
 \begin{Schunk}
 \begin{Soutput}
-output
+
 \end{Soutput}
 \end{Schunk}
 
@@ -306,6 +306,8 @@ output
 \end{Schunk}
 
 \paragraph{사용자 정의 함수}
+
+함수를 정의한 뒤 사용할 때, 
 \begin{Schunk}
 \begin{Soutput}
 output
@@ -414,12 +416,87 @@ output
 output
 \end{Soutput}
 \end{Schunk}
-\paragraph{파일과 디렉토리 유틸리티}
+
+\section{파일과 디렉토리 유틸리티}
+파일관리와 관계된 여러가지 유용한 유틸리티가 존재합니다. 
+
+\texttt{edit()},
 \begin{Schunk}
 \begin{Soutput}
 output
 \end{Soutput}
 \end{Schunk}
+
+\texttt{file.edit()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{fix()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{file.show()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{file.path()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{list.files()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{dir.create()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{file.access()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{file.exists()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{file.copy()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\texttt{data.entry()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{시간과 관련된 명령어들}
 \begin{Schunk}
 \begin{Soutput}
@@ -427,25 +504,17 @@ output
 \end{Soutput}
 \end{Schunk}
 
-	파일관리와 관계된 여러가지 유용한 유틸리티가 존재합니다. 
-	\begin{itemize}
-		\item \texttt{edit()},
-		\item \texttt{file.edit()}
-		\item \texttt{fix()}
-		\item \texttt{file.show()}
-		\item \texttt{file.path()}
-		\item \texttt{list.files()}
-		\item \texttt{dir.create()}
-		\item \texttt{file.access()}
-		\item \texttt{file.exists()}
-		\item \texttt{file.copy()}
-		\item \texttt{data.entry()}
-		\item 너무 많아서 차근차근 예를들면서 하나씩 설명하겠습니다. 
-	\end{itemize}
+\paragraph{자주 찾는 질문들}
+\begin{Schunk}
+\begin{Soutput}
+rm(list=ls())
+\end{Soutput}
+\end{Schunk}
+
 
 	
 \section{프로그래밍 스타일 가이드}
-
+% http://www.wekaleamstudios.co.uk/posts/programming-with-r-checking-function-arguments/
 \begin{Schunk}
 \begin{Soutput}
 output

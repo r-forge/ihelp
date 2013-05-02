@@ -5,43 +5,705 @@
 <meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
 <!-- html,mouseover,next,frames,3,no-DOCTYPE --> 
 <meta name="src" content="tutorial.tex"> 
-<meta name="date" content="2013-05-02 09:42:00"> 
+<meta name="date" content="2013-05-02 15:36:00"> 
 <link rel="stylesheet" type="text/css" href="tutorial.css"> 
 <script type="text/javascript" src="tutorial-js.js"></script> 
 <script type="text/javascript" src="overlib.js"><!-- overLIB (c) Erik Bosrup --></script> <!--http://www.bosrup.com/web/overlib/--></head><body 
 ><div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div> 
-   <!--l. 1418--><div class="crosslinks"><p class="noindent">[<a 
-href="tutorialch6.html" >next</a>] [<a 
+   <!--l. 1264--><div class="crosslinks"><p class="noindent">[<a 
+href="tutorialse21.html" >next</a>] [<a 
 href="tutorialse19.html" >prev</a>] [<a 
 href="tutorialse19.html#tailtutorialse19.html" >prev-tail</a>] [<a 
 href="#tailtutorialse20.html">tail</a>] [<a 
 href="tutorialch5.html#tutorialse20.html" >up</a>] </p></div>
-   <h3 class="sectionHead"><span class="titlemark">5.5   </span> <a 
- id="x28-1380005.5"></a>&#49884;&#48044;&#47112;&#51060;&#49496;</h3>
-<!--l. 1419--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">5.5.1   </span> <a 
- id="x28-1390005.5.1"></a>Metropolis-Hastings</h4>
-<!--l. 1419--><p class="noindent" >&#50508;&#44256;&#47532;&#51608;&#51012; &#44396;&#54788;&#54616;&#45716; &#54532;&#47112;&#51076; &#50892;&#53356; - &#51060;&#44163;&#51008; &#44536;&#45285; &#49324;&#50857;&#44032;&#45733;&#54616;&#44172; &#48148;&#47196; &#49548;&#49828;&#53076;&#46300; &#48537;&#50668;&#51452;&#44592; (&#48288;&#51060;&#51648;&#50504; &#52980;&#54504;&#53580;&#51060;&#49496;&#50640; &#47566;&#51060; &#50416;&#51076;)
+   <h3 class="sectionHead"><span class="titlemark">5.4   </span> <a 
+ id="x28-1270005.4"></a>&#54665;&#47148;&#50672;&#49328;</h3>
+<!--l. 1266--><p class="noindent" >&#54665;&#47148; &#50672;&#49328;&#50640; &#45824;&#54620; &#51060;&#54644;&#47484; &#46037;&#44592; &#50948;&#54644;&#49436; &#50500;&#47000;&#50752; &#44057;&#51008; &#44036;&#45800;&#54620; &#54665;&#47148;&#51012; &#49373;&#44033;&#54644; &#48389;&#45768;&#45796;.
+   <table 
+class="equation"><tr><td><a 
+ id="x28-127001r1"></a>
+   <center class="math-display" >
+<img 
+src="tutorial0x.png" alt="     [1 3]
+A =   2 4
+" class="math-display" ></center></td><td class="equation-label">(5.1)</td></tr></table>
+<!--l. 1274--><p class="nopar" >
+<!--l. 1276--><p class="indent" >   &#50668;&#44592;&#50640;&#49436; &#54665;&#47148;&#51032; &#44396;&#49457;&#50836;&#49548;&#45716; <span 
+class="cmr-10">1</span><span 
+class="cmmi-10">,</span><span 
+class="cmr-10">2</span><span 
+class="cmmi-10">,</span><span 
+class="cmr-10">3</span><span 
+class="cmmi-10">,</span><span 
+class="cmr-10">4 </span>&#51060;&#47728;, &#53356;&#44592;&#45716; 2&#54665; 2&#50676;&#51077;&#45768;&#45796;.
+<!--l. 1285--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1280005.4"></a>&#54665;&#47148;&#51032; &#49373;&#49457;<span 
+class="aebx-10">:</span></span>
+   &#50948;&#50640;&#49436; &#49688;&#54617;&#51201;&#51004;&#47196; &#54364;&#54788;&#46108; A &#46972;&#45716; &#54665;&#47148;&#51012; R&#50640; &#51077;&#47141;&#54616;&#44592; &#50948;&#54644;&#49436;&#45716; &#50500;&#47000;&#50752; &#44057;&#51060; &#54633;&#45768;&#45796;. &#51228;&#51068; &#52376;&#51020;&#51032; &#49689;&#51648;&#49324;&#54637;&#50640;&#49436; &#50616;&#44553;&#46108; &#48148;&#50752; &#44057;&#51060; &#51077;&#47141;&#46108; &#54665;&#47148;&#51032; &#50836;&#49548;&#46308;&#51012; R&#51008; &#50676;&#48169;&#54693;&#51004;&#47196; &#45208;&#50676;&#54633;&#45768;&#45796;.
+<!--l. 1289--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb121"><a 
+ id="x28-128002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(1,2,3,4),</span><span 
+class="aett-10">&#x00A0;ncol=2)</span><br class="fancyvrb" /><a 
+ id="x28-128004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><br class="fancyvrb" /><a 
+ id="x28-128006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-128008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><br class="fancyvrb" /><a 
+ id="x28-128010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-128012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1299--><p class="indent" >   &#44536;&#47084;&#45208;, &#49324;&#50857;&#51088;&#45716; &#46412;&#46412;&#47196; &#54665;&#47148;&#51032; &#50836;&#49548;&#46308;&#51012; &#54665;&#48169;&#54693;&#51004;&#47196; &#45208;&#50676;&#54616;&#44256;&#51088; &#54624; &#49688;&#46020; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 1302--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb122"><a 
+ id="x28-128014r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M1</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(1,2,3,4),</span><span 
+class="aett-10">&#x00A0;ncol=2,</span><span 
+class="aett-10">&#x00A0;byrow=TRUE)</span><br class="fancyvrb" /><a 
+ id="x28-128016r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M1</span><br class="fancyvrb" /><a 
+ id="x28-128018r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-128020r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><br class="fancyvrb" /><a 
+ id="x28-128022r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-128024r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1312--><p class="indent" >   &#49373;&#49457;&#46108; &#54665;&#47148;&#51032; &#53356;&#44592;&#47484; &#54869;&#51064;&#54616;&#44256;&#51088; &#54620;&#45796;&#47732; <span 
+class="aett-10">dim()</span>&#54632;&#49688;&#47484; &#51060;&#50857;&#54633;&#45768;&#45796;. &#52395;&#48264;&#51704; &#50836;&#49548;&#45716; &#54665;&#51032; &#44060;&#49688;&#51060;&#44256;, &#46160;&#48264;&#51704; &#50836;&#49548;&#45716; &#50676;&#51032; &#44060;&#49688;&#51077;&#45768;&#45796;.
+<!--l. 1316--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb123"><a 
+ id="x28-128026r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;dim(M)</span><br class="fancyvrb" /><a 
+ id="x28-128028r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;2</span><br class="fancyvrb" /><a 
+ id="x28-128030r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1323--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1290005.4"></a>&#54665;&#44284; &#50676;&#50640; &#46972;&#48296;&#47553;<span 
+class="aebx-10">:</span></span>
+   &#54665;&#47148;&#51032; &#54665;&#44284; &#50676;&#50640; &#44033;&#44033; &#46972;&#48296;&#47553;&#51012; &#54616;&#44256; &#49910;&#45796;&#47732; <span 
+class="aett-10">rownames()</span>&#50752; <span 
+class="aett-10">colnames()</span>&#46972;&#45716; &#54632;&#49688;&#47484; &#51060;&#50857;&#54633;&#45768;&#45796;.
+<!--l. 1326--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb124"><a 
+ id="x28-129002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;rownames(M)</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;c("R1",</span><span 
+class="aett-10">&#x00A0;"R2")</span><br class="fancyvrb" /><a 
+ id="x28-129004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;colnames(M)</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;c("C1",</span><span 
+class="aett-10">&#x00A0;"C2")</span><br class="fancyvrb" /><a 
+ id="x28-129006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><br class="fancyvrb" /><a 
+ id="x28-129008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;C1</span><span 
+class="aett-10">&#x00A0;C2</span><br class="fancyvrb" /><a 
+ id="x28-129010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;R1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><br class="fancyvrb" /><a 
+ id="x28-129012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;R2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span></div>
+                                                                                         
+                                                                                         
+<!--l. 1336--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1300005.4"></a>&#54665;&#47148;&#51032; &#51204;&#52824;<span 
+class="aebx-10">: </span></span>
+   2&#54665; 2&#50676;&#51064; &#51221;&#48169;&#54665;&#47148;&#51012; &#50676;&#48169;&#54693;&#51004;&#47196; &#45208;&#50676;&#54616;&#45716; &#44163;&#51012; &#54665;&#48169;&#54693;&#51004;&#47196; &#45208;&#50676;&#54616;&#44172; &#46108;&#45796;&#47732;, &#51060;&#45716; &#54665;&#47148;&#51032; &#51204;&#52824;&#47484; &#51032;&#48120;&#54616;&#44172; &#46121;&#45768;&#45796;. &#46384;&#46972;&#49436;, &#54665;&#47148;&#51032; &#51204;&#52824;&#47484; &#49688;&#54665;&#54664;&#51012;&#45824; &#46041;&#51068;&#54620; &#44208;&#44284;&#47484; &#44032;&#51648;&#44172; &#46112; &#44163;&#51077;&#45768;&#45796;.
+<!--l. 1341--><p class="indent" >
    <div class="fancyvrb" id="fancyvrb125"><a 
- id="x28-139002r1"></a><span 
+ id="x28-130002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;output</span></div>
-<!--l. 1426--><p class="noindent" >
-   <h4 class="subsectionHead"><span class="titlemark">5.5.2   </span> <a 
- id="x28-1400005.5.2"></a>Bootstrap</h4>
-<!--l. 1427--><p class="noindent" >&#48169;&#48277; &#8211; &#50836;&#44148; &#50500;&#51452; &#51339;&#51008; &#54056;&#53412;&#51648;&#44032; &#51080;&#51020;
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;t(M)</span><br class="fancyvrb" /><a 
+ id="x28-130004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-130006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><br class="fancyvrb" /><a 
+ id="x28-130008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-130010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1350--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1310005.4"></a>&#54665;&#47148;&#51012; &#45796;&#49884; &#48289;&#53552;&#47196; &#51204;&#54872;&#54616;&#44592;<span 
+class="aebx-10">:</span></span>
+   &#50612;&#46500; &#44221;&#50864;&#45716; &#45796;&#49884; &#54665;&#47148;&#51012; &#48289;&#53552;&#51032; &#54805;&#49885;&#51004;&#47196; &#48520;&#47084;&#50752;&#50556; &#54624; &#44221;&#50864;&#46020; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 1354--><p class="indent" >
    <div class="fancyvrb" id="fancyvrb126"><a 
- id="x28-140002r1"></a><span 
+ id="x28-131002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;c(M)</span><br class="fancyvrb" /><a 
+ id="x28-131004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-131006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1361--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1320005.4"></a>&#50669;&#54665;&#47148; &#52286;&#44592;<span 
+class="aebx-10">:</span></span>
+   &#50669;&#54665;&#47148;&#51008; <span 
+class="aett-10">solve()</span>&#46972;&#45716; &#54632;&#49688;&#47484; &#53685;&#54644; &#50619;&#51012; &#49688; &#51080;&#45716;&#45936;, &#51060;&#45716; &#49440;&#54805; &#50672;&#47549;&#48169;&#51221;&#49885;&#51032; &#54644;&#47484; &#44396;&#54616;&#45716;&#45936; &#49324;&#50857;&#46121;&#45768;&#45796;. <span 
+class="cmmi-10">AX </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">b</span>&#46972;&#45716; &#54805;&#49885;&#51012; &#44032;&#51648;&#47728;, <span 
+class="aett-10">solve(M)</span>&#51032; &#44208;&#44284;&#45716; <span 
+class="aett-10">x</span>&#51032; &#54644;&#47484; &#51032;&#48120;&#54633;&#45768;&#45796;.
+<!--l. 1365--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb127"><a 
+ id="x28-132002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;solve(M)</span><br class="fancyvrb" /><a 
+ id="x28-132004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-132006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;-2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1.5</span><br class="fancyvrb" /><a 
+ id="x28-132008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;-0.5</span><br class="fancyvrb" /><a 
+ id="x28-132010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1374--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1330005.4"></a>&#45824;&#44033;&#54665;&#47148; &#44592;&#45733;&#54876;&#50857;<span 
+class="aebx-10">: </span></span>
+   &#54665;&#47148; A&#51032; &#45824;&#44033;&#54665;&#47148;&#51032; &#50896;&#49548;&#46308;&#51008; <span 
+class="cmr-10">1</span>&#44284; <span 
+class="cmr-10">4</span>&#51064;&#45936;, &#51060;&#47484; &#50619;&#45716; &#48169;&#48277;&#51008; &#50500;&#47000;&#50752; &#44057;&#51060; <span 
+class="aett-10">diag() </span>&#54632;&#49688;&#47484; &#49324;&#50857;&#54616;&#45716; &#44163;&#51077;&#45768;&#45796;.
+<!--l. 1377--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb128"><a 
+ id="x28-133002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;diag(M)</span><br class="fancyvrb" /><a 
+ id="x28-133004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;4</span></div>
+<!--l. 1383--><p class="indent" >   &#47564;&#50557;, &#45824;&#44033;&#54665;&#47148;&#51032; &#50896;&#49548;&#44032; <span 
+class="aett-10">c(3,4)</span>&#47484; &#44032;&#51648;&#45716; &#51221;&#48169;&#45824;&#44033;&#54665;&#47148;&#51012; &#49373;&#49457;&#54616;&#44256;&#51088; &#54620;&#45796;&#47732; &#50500;&#47000;&#50752; &#44057;&#51060; &#49324;&#50857;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796; .
+<!--l. 1386--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb129"><a 
+ id="x28-133006r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;diag(c(3,4))</span><br class="fancyvrb" /><a 
+ id="x28-133008r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-133010r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0</span><br class="fancyvrb" /><a 
+ id="x28-133012r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-133014r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1395--><p class="indent" >   &#46608;&#54620;, I &#54665;&#47148;&#51012; &#49373;&#49457;&#54616;&#45716;&#45936; &#49324;&#50857;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 1398--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb130"><a 
+ id="x28-133016r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;diag(2)</span><br class="fancyvrb" /><a 
+ id="x28-133018r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-133020r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0</span><br class="fancyvrb" /><a 
+ id="x28-133022r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><br class="fancyvrb" /><a 
+ id="x28-133024r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1407--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1340005.4"></a>&#44256;&#50976;&#44050;&#44284; &#44256;&#50976;&#48289;&#53552;<span 
+class="aebx-10">:</span></span>
+   M &#54665;&#47148;&#51032; &#44256;&#50976;&#44050;&#44284; &#44256;&#50976;&#48289;&#53552;&#45716; &#50500;&#47000;&#50752; &#44057;&#51008; &#48169;&#48277;&#51004;&#47196; &#44396;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 1412--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb131"><a 
+ id="x28-134002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;eigen(M)</span><br class="fancyvrb" /><a 
+ id="x28-134004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(eM)</span><br class="fancyvrb" /><a 
+ id="x28-134006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;"values"</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;"vectors"</span><br class="fancyvrb" /><a 
+ id="x28-134008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM$values</span><br class="fancyvrb" /><a 
+ id="x28-134010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5.3722813</span><span 
+class="aett-10">&#x00A0;-0.3722813</span>
+<br class="fancyvrb" /><a 
+ id="x28-134012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM$vectors</span><br class="fancyvrb" /><a 
+ id="x28-134014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-134016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.5657675</span><span 
+class="aett-10">&#x00A0;-0.9093767</span><br class="fancyvrb" /><a 
+ id="x28-134018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.8245648</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.4159736</span><br class="fancyvrb" /><a 
+ id="x28-134020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 1426--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1350005.4"></a>&#54665;&#47148;&#44050; &#44396;&#54616;&#44592;</span>
+   <div class="fancyvrb" id="fancyvrb132"><a 
+ id="x28-135002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(1,2,3,4),</span><span 
+class="aett-10">&#x00A0;ncol=2)</span><br class="fancyvrb" /><a 
+ id="x28-135004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;val</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;det(M)</span><br class="fancyvrb" /><a 
+ id="x28-135006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><br class="fancyvrb" /><a 
+ id="x28-135008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-135010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span>
+<br class="fancyvrb" /><a 
+ id="x28-135012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x28-135014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;val</span><br class="fancyvrb" /><a 
+ id="x28-135016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;-2</span><br class="fancyvrb" /><a 
+ id="x28-135018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;1*4-3*2</span><br class="fancyvrb" /><a 
+ id="x28-135020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;-2</span></div>
+                                                                                         
+                                                                                         
+<!--l. 1443--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1360005.4"></a>&#53945;&#51060;&#44050; &#48516;&#54644;</span>
+   &#54665;&#47148; A&#51032; Singular value decomposition (&#53945;&#51060;&#44050; &#48516;&#54644;)&#45716; &#50500;&#47000;&#50752; &#44057;&#51008; &#49688;&#54617;&#51201; &#51032;&#48120;&#47484; &#44032;&#51665;&#45768;&#45796;.
+   <table 
+class="equation"><tr><td><a 
+ id="x28-136001r2"></a>
+   <center class="math-display" >
+<img 
+src="tutorial1x.png" alt="            T
+A = U D(Q)V
+" class="math-display" ></center></td><td class="equation-label">(5.2)</td></tr></table>
+<!--l. 1449--><p class="nopar" >
+&#50668;&#44592;&#50640;&#49436; <span 
+class="cmmi-10">U</span><sup><span 
+class="cmmi-7">T</span></sup><span 
+class="cmmi-10">U </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">V</span> <sup><span 
+class="cmmi-7">T</span></sup><span 
+class="cmmi-10">V </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">V V</span> <sup><span 
+class="cmmi-7">T</span></sup> <span 
+class="cmr-10">= </span><span 
+class="cmmi-10">I </span>&#51060;&#47728; <span 
+class="cmmi-10">Q</span>&#45716; &#53945;&#51060;&#44050; &#48289;&#53552;&#51077;&#45768;&#45796;.
+<!--l. 1454--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb133"><a 
+ id="x28-136003r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;svd(M)</span><br class="fancyvrb" /><a 
+ id="x28-136005r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(svdM)</span><br class="fancyvrb" /><a 
+ id="x28-136007r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;"d"</span><span 
+class="aett-10">&#x00A0;"u"</span><span 
+class="aett-10">&#x00A0;"v"</span><br class="fancyvrb" /><a 
+ id="x28-136009r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$d</span><br class="fancyvrb" /><a 
+ id="x28-136011r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;5.4649857</span><span 
+class="aett-10">&#x00A0;0.3659662</span><br class="fancyvrb" /><a 
+ id="x28-136013r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$u</span>
+<br class="fancyvrb" /><a 
+ id="x28-136015r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-136017r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.5760484</span><span 
+class="aett-10">&#x00A0;-0.8174156</span><br class="fancyvrb" /><a 
+ id="x28-136019r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.8174156</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.5760484</span><br class="fancyvrb" /><a 
+ id="x28-136021r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$v</span>
+<br class="fancyvrb" /><a 
+ id="x28-136023r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x28-136025r12"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.4045536</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.9145143</span><br class="fancyvrb" /><a 
+ id="x28-136027r13"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.9145143</span><span 
+class="aett-10">&#x00A0;-0.4045536</span><br class="fancyvrb" /><a 
+ id="x28-136029r14"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;$</span></div>
+<!--l. 1472--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1370005.4"></a>&#54665;&#47148;&#51032; &#48512;&#48516;&#49440;&#53469;</span>
+   <div class="fancyvrb" id="fancyvrb134"><a 
+ id="x28-137002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 1479--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x28-1380005.4"></a>&#54665;&#47148;&#44032;&#51648;&#44256; &#46608; &#54624; &#49688; &#51080;&#45716; &#44592;&#48376;&#51201;&#51064; &#47924;&#50631;&#51060; &#51080;&#45208;&#50836;<span 
+class="aebx-10">?</span></span>
+   <div class="fancyvrb" id="fancyvrb135"><a 
+ id="x28-138002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
                                                                                          
                                                                                          
-   <!--l. 1441--><div class="crosslinks"><p class="noindent">[<a 
-href="tutorialch6.html" >next</a>] [<a 
+   <!--l. 1487--><div class="crosslinks"><p class="noindent">[<a 
+href="tutorialse21.html" >next</a>] [<a 
 href="tutorialse19.html" >prev</a>] [<a 
 href="tutorialse19.html#tailtutorialse19.html" >prev-tail</a>] [<a 
 href="tutorialse20.html" >front</a>] [<a 
 href="tutorialch5.html#tutorialse20.html" >up</a>] </p></div>
-<!--l. 1441--><p class="indent" >   <a 
+<!--l. 1487--><p class="indent" >   <a 
  id="tailtutorialse20.html"></a>   
 </body></html> 
