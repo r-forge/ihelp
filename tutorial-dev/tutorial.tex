@@ -68,14 +68,15 @@
 \item 그냥 무엇을 해야할지 막막함에 쌓여 계신분 
 \end{itemize}
 
-이에 해당하시는 분들은 꼭 ``사용전 숙지사항'' 섹션을 꼭 읽어주시길 부탁드립니다.
+이에 해당하시는 분들은 꼭 ``사용전 반드시 알아야 할 7가지 숙지사항'' 섹션을 꼭 읽어주시길 부탁드립니다.
 R을 사용하시는데 있어 숙지사항의 내용을 기억하신다면, 매우 도움이 될 것입니다. 
 
-\section{사용전 숙지사항}
+\section{꼭 먼저 알아야 할 7가지}
 
 초보라고 생각하시는 분들께서는 아래의 내용들에 대한 개념적 숙지해주시길 부탁드립니다.
 
-\paragraph{데이터 입력과 처리:}  R 에서는 이용되는 모든 데이터들에 대한 처리는 열방향으로 이루어집니다.
+\begin{enumerate}
+  \item  \textbf{데이터 입력과 처리:}  R 에서는 이용되는 모든 데이터들에 대한 처리는 열방향으로 이루어집니다.
 이 말의 뜻은 데이터의 입력 및 변형, 그리고 연산에 사용되는 데이터들에 대한 처리순서는 열방향으로 나열된 후에 이루어지는 것을 말합니다. 
 예를들어, 1부터 12까지 12개의 정수로 이루어진 수열 (즉, $\{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \}$)을 수학적인 표현으로 4행 3열의 행렬은 R은 아래와 같이 이해합니다. 
 
@@ -99,7 +100,7 @@ R을 사용하시는데 있어 숙지사항의 내용을 기억하신다면, 매
 
 따라서, 이 행렬에서 5라는 숫자값은 행렬의 1행 2열에 위치하고 있다고 할 수 있으며, 행렬의 5번째의 값이라고도 할 수 있습니다. 
 
-\paragraph{대화식 사용과 결과를 보는 방법에 대해서:} R은 사용자가 주어지는 업무를 시키는 대로만 수행하는 유용한 프로그램일뿐, 그 이상의 내용은 수행하지 않는다는 점을 반드시 명심하셔야 합니다. 
+  \item  \textbf{대화식 사용과 결과를 보는 방법에 대해서:} R은 사용자가 주어지는 업무를 시키는 대로만 수행하는 유용한 프로그램일뿐, 그 이상의 내용은 수행하지 않는다는 점을 반드시 명심하셔야 합니다. 
 따라서, R 프로그램을 시작하게 되면 아래와 같은 기호로 표시되는 프롬프트 (즉, 사용자의 명령어를 기다리는 기호)를 보여주게 됩니다. 
 \begin{Schunk}
 \begin{Soutput}
@@ -114,7 +115,8 @@ R을 사용하시는데 있어 숙지사항의 내용을 기억하신다면, 매
 분석자가 확인하고자 하는 결과를 R에서 제공하는 함수를 통하여 중간 결과물들을 확인할 수 있습니다. 
 우리는 분석자가 작업을 어떻게 진행하고 확인할 것인가에 대한 프로세스 차트를 먼저 작성한뒤 분석을 수행하기를 권장합니다.
 
-\paragraph{통계분석의 절차:} 분석이라 것은 데이터에 대한 이해를 통하여 데이터가 가진 특징을 수학적 표현으로서 설명하기 위한 과정입니다. 
+
+  \item \textbf{통계분석의 절차:} 분석이라 것은 데이터에 대한 이해를 통하여 데이터가 가진 특징을 수학적 표현으로서 설명하기 위한 과정입니다. 
 따라서, 데이터에 대한 직관적인 이해를 위해서 시각화 작업과 통계 모형이 요구하는 데이터 형식을 만드는 것이 중요합니다. 
 이를 전처리 과정이라고 하며, 통계분석은 크게 아래와 같은 절차를 밟아 이루어집니다.
 
@@ -128,9 +130,11 @@ R을 사용하시는데 있어 숙지사항의 내용을 기억하신다면, 매
 
 따라서, 이 문서는 위에서 설명한 과정에 해당하는 순서대로 챕터들을 구성하였습니다. 
 
-\paragraph{한글 표현과 인코딩에 관련하여:}
 
-\texttt{R}은 한국어 사용자를 위한 한국어 인터페이스를 지원하고 있습니다. 
+  \item \textbf{한글 표현과 인코딩에 관련하여:}
+
+
+  \texttt{R}은 한국어 사용자를 위한 한국어 인터페이스를 지원하고 있습니다. 
 \textbf{그러나, 사용자는 이러한 한국어 지원이 단순히 사용자의 편의를 위한 선택적 사항이라는 점을 반드시 알고 있어야 합니다}.
 또한, 분석시 본래의 정교한 표현은 번역된 한국어 보다는 원래의 영문이라는 점도 잊지 마셔야 합니다. 
 
@@ -147,16 +151,16 @@ R을 사용하시는데 있어 숙지사항의 내용을 기억하신다면, 매
 단, 이러한 한글처리는 분석에 연관된 수치연산과는 아무런 관계가 없음을 반드시 알아주시길 부탁드립니다.
 
 
-\paragraph{대소문자 구분에 관련하여:}
+	\item \textbf{대소문자 구분에 관련하여:}
 많은 분들이 이전에 SAS 소프트웨어를 사용하여 분석을 수행하셨을 것입니다.
 SAS에서는 대소문자를 구분하지 않고 프로그램을 작성하게 되지만, R에서는 대소문자를 구분하므로 A 라는 변수와 a 라는 변수는 서로 다른 것임을 명심하시길 부탁드립니다. 
 
 
-\paragraph{운영체제와 관련하여:}
+	\item \textbf{운영체제와 관련하여:}
 R은 기본적으로 Unix (유닉스)와 같은 환경에서 작성되었습니다. 
 
 
-\paragraph{패키지와 관련하여: }
+	\item \textbf{패키지와 관련하여: }
 R은 Add-on이라는 패키지 시스템을 이용합니다. 
 이것은 기본 베이스 시스템에 추가로 필요한 기능들을 추가하는 의미입니다.
 이러한 내용을 잘 모르는 상태에서 초보자가 가장 많이 겪는 실수는 어떤 함수를 사용하고자 할 때 ``xxx 함수가 없습니다'' 또는 ``xxx 함수를 찾을 수 없습니다''입니다.
@@ -172,7 +176,7 @@ R은 Add-on이라는 패키지 시스템을 이용합니다.
 
 패키지의 설치, 확인에 관련된 사항은 ``통계모형의 선택과 적용''이라는 챕터에 기록해두었습니다. 
 
-
+\end{enumerate}
 
 
 \chapter{기초 프로그래밍과 운영체제}
@@ -186,16 +190,48 @@ R은 Add-on이라는 패키지 시스템을 이용합니다.
 그 이유는 분석을 위한 프로그래밍은 논리적인 절차를 어떻게 잘 구성하는가에 따라서 그 효율성과 프로그램의 가독성이 달라지기 때문입니다. 
 
 \section{에러에 관하여}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
-\subsection{에러의 정류와 관련 메시지}
+
+\subsection{에러의 종류와 관련 메시지}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{문법적 오류}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{논리적 오류}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{오류와 경고의 다른점}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{디버거를 사용하기전에}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 분석작업에서는 주로 논리적 오류를 찾는것이 중요하지만, 패키지 개발에서는 디버거를 잘 다루는 기술적 요소가 더욱 요구됩니다. 
 이러한 디버거의 사용에 대해서는 ``패키지 제작''이라는 챕터에서 다루도록 하겠습니다.
@@ -203,6 +239,11 @@ R은 Add-on이라는 패키지 시스템을 이용합니다.
 \subsection{에러 핸들링}
 	만약, 메시지 역시 설명해줄려면  \texttt{stop()}, \texttt{warning()}도 함께 설명해주면 최고임.  
 \paragraph{try()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{tryCatch()}
 
@@ -229,19 +270,54 @@ error = function(e) {
 
 \section{조건문:}
 \texttt{repeat}, \texttt{while}에 대해서 간단히 보여주고, \texttt{break}과 \texttt{next} 를 알려주면 좋음. 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \paragraph{분기:}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{switch}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{함수의 정의와 사용}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{내장함수}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{사용자 정의 함수}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{do.call()}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 % \item \texttt{do.call()} 함수를 사용하는 법에 대해서..
 % http://cran.r-project.org/web/packages/rockchalk/vignettes/Rchaeology.pdf
 % http://www.stat.berkeley.edu/classes/s133/all2011.pdf  (다운로드 해두었음 Desktop/tmpRsrc/all2011.pdf)
@@ -250,29 +326,106 @@ error = function(e) {
 \paragraph{스코프}
 
 \paragraph{인바이런먼트}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{벡터라이제이션과 반복문} 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{반복문:}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{벡터라이제이션:} \texttt{apply()}, \texttt{lapply()}, \texttt{sapply()}, \texttt{mapply()}의 사용방법
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{객체와 속성}
 \paragraph{속성:}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{객체:}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{제네릭 함수와 클래스}
 \paragraph{메소드:}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{제네릭 함수:}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{클래스:}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{스크립트 작성하기}
 \paragraph{일괄처리}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{실행하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{운영체제와 소통하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{파일과 디렉토리 유틸리티}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{시간과 관련된 명령어들}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 	파일관리와 관계된 여러가지 유용한 유틸리티가 존재합니다. 
 	\begin{itemize}
@@ -293,6 +446,12 @@ error = function(e) {
 	
 \section{프로그래밍 스타일 가이드}
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
@@ -308,25 +467,75 @@ error = function(e) {
 따라서, 가급적이면 다른종류의 파일확장자를 .csv로 먼저 변경한 뒤에 사용하는 것이 좋습니다. 
 
 \subsection{입력}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{다른 형식들: }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{고정형식}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{복잡한 구조를 읽어올때}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{.SAS}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{.SPSS}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{.URL}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{XML}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{.xls 또는 .xlsx}
 마이크로소프트 엑셀을 사용합니다. 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subparagraph{.csv}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \texttt{read.table()}이라는 함수를 아래와 같은 방법으로 이용하여 데이터를 읽어옵니다.
 
@@ -376,24 +585,93 @@ mydata <- read.table(file.path(), header=TRUE, sep=",")
 % (csv로 R에서 불러서 편집한 자료)]
 % 
 \paragraph{저장하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subparagraph{.RData}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subparagraph{.CSV}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subparagraph{.HTML}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subparagraph{.XML}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{메타데이터 처리}
 \paragraph{원 데이터 소스에 데이터 구조 대한 이해와 데이터 엔트리: }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{데이터셋 또는 변수에 주석첨가하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{데이터형에 대한 이해}
 
+\begin{comment}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+\end{comment}
+
 \subsection{벡터}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\subsection{요인과 수준}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{행렬}
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \subsection{데이터프레임}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{리스트}
 \paragraph{리스트와 데이터 프레임 관계:}
@@ -438,46 +716,224 @@ mydata <- read.table(file.path(), header=TRUE, sep=",")
 % 	levels(mydata$v1)
 
 \subsection{배열}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{배열과 행렬과 벡터와의 관계}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{결측치}
 
 NA 와 NaN을 데이터로부터 찾고 싶어요. 
 \texttt{is.na()}와 \texttt{is.nan()} 함수 사용법을 알려주면 좋음.  추가로 \texttt{is.null()}도 알려주면 \texttt{is}관련 함수들에 설명해주면 짱임.
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \section{데이터 클리닝 및 전처리 테크닉}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{데이터셋에 관련하여}
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{변수명 변경하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{조건에 부합하는 데이터셋 골라내기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{주어진 데이터셋으로부터 랜덤샘플 추출하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{정렬하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{데이터셋 합치기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{변수 추가 또는 제거}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{종횡데이터를 횡형으로 변형하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{횡형데이터를 종형으로 변형하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{관측치의 개수 알아보기}
+
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{중복되는 값 찾아보기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{결측치에 대해서}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{수치형으로 변환}
+
+\begin{Schunk}
+\begin{Soutput}
+as.numeric()
+as.numeric(as.character(variable))
+as.numeric(gsub(",", "", variable))
+\end{Soutput}
+\end{Schunk}
+
+
 
 \subsection{문자형 변수들과 연관하여}
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{수치형 변수로 강제형변환 하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{빈공간 모두 제거하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{특정 문자열 뽑아내기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{변수의 길이 파악하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{두 문자형 변수 결합하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{대소문자 전환} 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{요인과 관계하여}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{라벨링 생성 및 변경하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \subsection{시간과 날짜에 관련하여}
 
 \paragraph{날짜 데이터 생성}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{년/월/일 따로 분리하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
+
 \paragraph{시간 데이터 생성}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{유용한 클리닝 테크닉들}
@@ -605,9 +1061,19 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 
 
 \paragraph{여러개의 엑셀시트로 구성된 엑셀파일 하나로 합치기:} 여러개의 엑셀시트로 구성되어 있는 엑셀파일을 불러와 하나의 데이터셋으로 합치기
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{리스트 중첩구조} 
 가끔 리스트형으로 받아진 데이터가 중첩된 구조를 가지고 있어서, 한 번에 이를 불러오기를 해야할 때는 어떻게 해야할지.
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 
@@ -621,8 +1087,23 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 
 \section{수학함수들의 사용}
 \paragraph{일반 수학함수들}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{삼각함수들}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{집합과 관련된 함수들}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{기타 유용한 함수들}
 % \item \texttt{which.max()}와 \texttt{which.min()}을 사용하는 방법 
 \texttt{combn()} 함수를 이용하여 모든 조합을 찾기
@@ -630,25 +1111,85 @@ select.1 <- subset(x=mydata, subset=( (ID %in% c(1,2)) & first==TRUE ))
 \section{확률의 사용}
 
 \subsection{밀도/누적 확률분포}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{퍼센타일 값 찾기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{표준 난수생성 함수}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{비표준 난수생성 알고리즘}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{Multinomial random variables}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{Correlated binary random variables}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{수치해석}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{미분}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{적분}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{Laplace Approximation} 알고리즘을 구현하는 방법 -- 적분하는 방법에 많이 쓰임 (특히, 베이지안 컴퓨테이션) 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{최적화 문제}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{Newton-Raphson} 알고리즘을 구현하는 방법 -- optimization 에 관련된 일종의 설명도 추가해주면 좋을 것 같음 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{행렬연산}
@@ -860,15 +1401,35 @@ A = U D(Q) V^T
 \end{Schunk}
 
 \paragraph{행렬의 부분선택}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{행렬가지고 또 할 수 있는 기본적인 무엇이 있나요?}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{시뮬레이션}
 \subsection{Metropolis-Hastings} 알고리즘을 구현하는 프레임 워크 - 이것은 그냥 사용가능하게 바로 소스코드 붙여주기 (베이지안 컴퓨테이션에 많이 쓰임)
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{Bootstrap} 
 방법 -- 요건 아주 좋은 패키지가 있음 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -883,26 +1444,81 @@ A = U D(Q) V^T
 또한, 이 과정은 데이터 클리닝과도 연관이 있습니다. 
 
 \section{기술통계량 요약}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{평균과 분산과 같은 기초요약 함수들}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{그룹별 평균산출}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{5분위수 구하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{퀀타일}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{표준화와 스케일링}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \paragraph{신뢰구간}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{분할표와 카이제곱 검정}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{z-검정}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{t-검정}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -924,34 +1540,109 @@ A = U D(Q) V^T
 \end{itemize}
 
 \section{분산분석 (Analysis of Variance-Covariance)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{상관분석 (Correlation Analysis) }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{회귀분석 (Regression Analysis) }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{주성분분석 (Principle Component Analysis)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{판별분석 (Discriminant Analysis) }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{군집분석 (Cluster Analysis) }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{시계열분석 (Time-Series Analysis) }
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{일반선형모델 (GLM)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{의사결정 나무(Decision Tree)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{Longitudinal data analysis}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{생존분석 (Survivial analysis)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{Mixture and latent class analysis}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{신경망 분석}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{기계학습 (Machine Learning)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{메타 분석 (Meta Analysis)}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -997,37 +1688,172 @@ A = U D(Q) V^T
 \chapter{비쥬얼라이제이션}
 
 \section{플랏 커스터마이징}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{포인트와 텍스트 사이즈 변경}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{마진 조절하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{한페이지에 다중 그래프 생성}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{축 라벨, 보조선 조절하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{선의 종류와 너비조절}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{색상에 대해서}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 \section{그래픽 요소 추가하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{직선 넣기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{플랏 기호 변경}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{다중 플랏 보여주기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{제목/부제목 수정}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{라벨 붙이기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{레전드 넣기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{수학기호 표현하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{텍스트 집어넣기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{그래픽 출력하기}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{Postscript}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{PDF}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{JPEG, TIFF, PNG}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{플랏팅의 종류}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \subsection{산점도}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subsection{바플랏}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \paragraph{다중 바플랏}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subsection{히스토그램}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subsection{줄기-잎 그림}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 \subsection{Q-Q 플랏}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \section{3차원 플랏}
 % 3D plot materials
@@ -1038,6 +1864,11 @@ A = U D(Q) V^T
 % Computing and Displyaing Isosurfaces in R
 % MATH 6627 2012-13 Practicum inStatistical Computing -- http://scs/math.yorku.ca/index.php/MATH_6627_2012-13
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 \begin{enumerate}
 
@@ -1088,6 +1919,11 @@ A = U D(Q) V^T
 \begin{enumerate}
 \item 패키지를 만들고 싶어요. (흠.. Generalized Linear Model 프레임워크 흉내내서 똑같이 만들어보기 실습자료로 제공해주기)
 \end{enumerate}
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 
 
@@ -1112,6 +1948,11 @@ A = U D(Q) V^T
 	\item 원리도 간단히 설명해주면 더욱 좋을 것 같음. 
 \end{enumerate}
 
+\begin{Schunk}
+\begin{Soutput}
+output
+\end{Soutput}
+\end{Schunk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
