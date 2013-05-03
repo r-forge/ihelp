@@ -36,14 +36,14 @@
 \item 통계와 전산에 관련된 전문용어는 쉽게 풀어쓰거나, 용어에 대한 이해를 돕기 위한 참고 자료를 제공합니다. 
 \end{itemize}
 
-본 문서와 관련한 프로젝트의 시작일은 2010년 4월 10일이며, iHELP Working Group 관리자에 의하여 수시로 갱신되고 있습니다.
+본 문서와 관련한 프로젝트의 시작일은 2013년 4월 10일이며, iHELP Working Group 관리자에 의하여 수시로 갱신되고 있습니다.
 따라서, 이 문서는 어떤 특정한 기간을 두고 완성되으며, 오로지 업데이트된 버전만이 존재합니다.
 만약, 이 문서를 읽고 있는 독자가 문서 내용에 대한 추가, 수정, 및 제안이 있다면 이를 \href{mailto:ihelp-urquestion@lists.r-forge.r-project.org}{ihelp-urquestion@lists.r-forge.r-project.org} 주소로 이메일을 보내주신다면 감사하겠습니다. 
 
-아래와 명시된 분들의 도움이 없었다면 이 문서가 발전될 수 없었기에 그 감사의 말씀을 올리고 싶습니다. 
+아래에 기재된 분들의 도움이 없었다면 이 문서가 발전될 수 없었기에 그 감사의 말씀을 올리고 싶습니다. 
 \begin{itemize}
+\item 이부일 박사님 (충남대학교 정보통계학과)
 \item 신종화 교수님 (서울종합과학대학원 사회학과)
-\item 이부일 박사님 (충남대학교 정보통계학과 박사졸)
 \end{itemize}
 
 \paragraph{이 문서를 읽는 방법:} 
@@ -287,7 +287,7 @@ output
 \paragraph{switch}
 \begin{Schunk}
 \begin{Soutput}
-output
+
 \end{Soutput}
 \end{Schunk}
 
@@ -306,6 +306,8 @@ output
 \end{Schunk}
 
 \paragraph{사용자 정의 함수}
+
+함수를 정의한 뒤 사용할 때, 
 \begin{Schunk}
 \begin{Soutput}
 output
@@ -397,7 +399,11 @@ output
 \paragraph{일괄처리}
 \begin{Schunk}
 \begin{Soutput}
-output
+source()
+dump()
+save()
+load()
+
 \end{Soutput}
 \end{Schunk}
 
@@ -506,6 +512,11 @@ output
 \begin{Schunk}
 \begin{Soutput}
 rm(list=ls())
+search()
+install.packages()
+library(MASS)
+data()
+
 \end{Soutput}
 \end{Schunk}
 
@@ -635,6 +646,7 @@ mydata <- read.table(file.choose(), header=TRUE, sep=",")
 \begin{Schunk}
 \begin{Soutput}
 mydata <- read.table(file.path(), header=TRUE, sep=",")
+mydata1 <- read.table(file=url(site_address), header=TRUE, sep=",")
 \end{Soutput}
 \end{Schunk}
 
@@ -643,6 +655,13 @@ mydata <- read.table(file.path(), header=TRUE, sep=",")
 
 % http://www.statmethods.net/input/importingdata.html
 
+\begin{Schunk}
+\begin{Soutput}
+age <- scan()
+32 33 39 28 20 20
+
+\end{Soutput}
+\end{Schunk}
 
 
 \subsection{출력}
@@ -678,7 +697,7 @@ output
 \subparagraph{.XML}
 \begin{Schunk}
 \begin{Soutput}
-output
+write(t(mydata), file="./where/should/be/saved", ncolumns)
 \end{Soutput}
 \end{Schunk}
 
@@ -699,6 +718,9 @@ output
 
 
 \section{데이터형에 대한 이해}
+
+
+요소 $\in$ 벡터 $\in$ 행렬 $\in$ 배열 
 
 \begin{comment}
 \begin{Schunk}
@@ -804,7 +826,16 @@ NA 와 NaN을 데이터로부터 찾고 싶어요.
 
 \begin{Schunk}
 \begin{Soutput}
-output
+x <- c(1,3,NA,7,9)
+is.na(x)
+y <- x[!is.na(x)]
+
+x <- c(3,9,8,2,3,9,1,4,5)
+trt <- c(rep("A", 3), rep("B", 3), rep("C", 3))
+x[trt=="A"]
+x[trt=="A"|trt=="B"]
+split(x, trt)
+
 \end{Soutput}
 \end{Schunk}
 
@@ -1003,6 +1034,20 @@ output
 \end{Schunk}
 
 
+\section{연산자}
+\paragraph{논리연산자}
+\begin{Schunk}
+\begin{Soutput}
+<, >, <=, >=, ==
+with(data.frame, expression)
+with(mydata, age>34)
+attach()
+
+\end{Soutput}
+\end{Schunk}
+
+
+
 \section{유용한 클리닝 테크닉들}
 
 분석자가 보통 얻게 되는 데이터는 분석에 사용되는 통계모형에 적합한 경우는 드물기 때문에 분석자 스스로가 이러한 데이터를 형성하는 것은 필요한 기술중에 하나라고 할 수 있습니다.
@@ -1153,10 +1198,56 @@ output
 \chapter{수학/확률/행렬/수치해석과 관련하여}
 
 \section{수학함수들의 사용}
+
+\begin{equation}
+3 + 5 - 2 + 15/3 + 3^2 - \sqrt{9}
+\end{equation}
+
 \paragraph{일반 수학함수들}
+
 \begin{Schunk}
 \begin{Soutput}
-output
+x <- 3.9234
+round(x)
+
+x <- 7
+7 -> x1
+x = 7
+
+x^2 
+
+x <- c(1,2,3,4,5)
+x^2
+
+which(x==4)
+
+y <- c(6,7,8,9,10)
+cbind(x,y)
+rbind(x,y)
+
+
+seq(0, 1, 0.1)
+seq(0,10)
+0:8
+8:0
+
+rep(1,5)
+c(rep(1,2), rep(11,2), rep(2, 5))
+
+rep(c(0, "x"), 3)
+
+rep(1:3, rep(3,3))
+
+typos <- c(11,12,13,14,15,16,17,18,19,20)
+typos[c(1,3,5)]
+typos[-c(1,5)]
+
+
+x <- c(1,2,3)
+names(x) <- c("A", "B", "C")
+names(x) <- NULL
+
+
 \end{Soutput}
 \end{Schunk}
 \paragraph{삼각함수들}
@@ -1369,6 +1460,13 @@ $AX=b$라는 형식을 가지며, \texttt{solve(M)}의 결과는 \texttt{x}의 �
 \end{Soutput}
 \end{Schunk}
 
+\begin{eqnarray}
+2x + 5y - z & = & 10
+5x - 2y + 2z & = & 22
+x + y + z & = & 6
+\end{eqnarray}
+
+
 \paragraph{대각행렬 기능활용: } 행렬 A의 대각행렬의 원소들은 $1$과 $4$인데, 이를 얻는 방법은 아래와 같이 \texttt{diag()} 함수를 사용하는 것입니다. 
 
 \begin{Schunk}
@@ -1471,6 +1569,19 @@ A = U D(Q) V^T
 \begin{Schunk}
 \begin{Soutput}
 output
+\end{Soutput}
+\end{Schunk}
+
+
+
+\begin{Schunk}
+\begin{Soutput}
+colnames <- c("C1", "C2", "C3")
+rownames <- c("R1", "R2", "R3")
+dimnames(M) <- list(colnames, rownames)
+M["C1",]
+M[,"R2"]
+
 \end{Soutput}
 \end{Schunk}
 
