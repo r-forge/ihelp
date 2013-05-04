@@ -305,6 +305,12 @@ output
 \end{Soutput}
 \end{Schunk}
 
+
+% 베리굿 노트: http://www.pitt.edu/~njc23/
+% http://cm.bell-labs.com/cm/ms/departments/sia/Sbook/
+% http://developer.r-project.org/methodDefinition.html
+% http://www.biostat.jhsph.edu/~rpeng/teaching.html
+
 \paragraph{사용자 정의 함수}
 
 함수를 정의한 뒤 사용할 때, 
@@ -815,7 +821,11 @@ output
 
 \begin{Schunk}
 \begin{Soutput}
-output
+cube <- array(1:27, dim=c(3,3,3))
+cube[1,,]
+cube[,1,]
+cube[,,1]
+
 \end{Soutput}
 \end{Schunk}
 
