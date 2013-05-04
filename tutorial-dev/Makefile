@@ -1,12 +1,12 @@
 all: pdf
 	make clean
 	make tohtml
-#	make clean2
-#	cp *.html ../www/
-#	cp *.tmp ../www/
-#	cp *.png ../www/
-#	cp *.css ../www/
-#	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
+	make clean2
+	cp *.html ../www/
+	cp *.tmp ../www/
+	cp *.png ../www/
+	cp *.css ../www/
+	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
 #	svn ../../commit
 
 pdf: ps
