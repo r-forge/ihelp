@@ -1503,10 +1503,197 @@ R은 이러한 것들을 다루기 위한 디버거라는 도구와 에러핸들
 
 본 섹션의 내용을 이해했다면 여러분은 이제 프로그래밍을 시작할 준비가 되었습니다. 
 
-\section{주석문의 사용}
+\section{프로그래밍과 함수}
+
+우리가 중학교에서 수학시간에 함수라는 개념을 배울때 블랙박스에 비유하는 것은 잘 알고 계실 것입니다. 
+이 블랙박스에 어떠한 입력을 넣어주면, 어떤 특정한 프로세스에 의하여 처리된 결과가 블랙박스의 출력으로 나오게 됩니다. 
+예를들어 x 라는 것은 3.532 이라는 값을 가지고 있는데, 이를 반올림하는 경우를 생각해 봅니다.
+R은 round()라는 함수를 제공합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> x <- 3.532
+> round(x)
+[1] 4
+\end{Soutput}
+\end{Schunk}
+
+그런데, 내가 원하고자 했던 것은 실제로 소수점 두번째 자리에서 반올림하는 것입니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> round(x, 1)
+[1] 3.5
+\end{Soutput}
+\end{Schunk}
+
+흠... 어쩌다 보니 소수점 세번째 자리에서 반올림 한 숫자를 쓰는 것이 필요하게 되어 아래와 같이 합니다.
+
+\begin{Schunk}
+\begin{Soutput}
+> round(x, 2)
+[1] 3.53
+\end{Soutput}
+\end{Schunk}
+
+내가 수행하고자 하는 어떤 것을 round()라는 블랙박스와 이 블랙박스에 반올림 자리수라는 인자를 이용하여 조절할 수 있었습니다. 
+
+여기에서 보는 것과 같이 함수를 작성하기 위해서는 입력, 목적, 출력이라는 세가지 요소가 필요합니다. 
+R에서 제공하는 다양한 함수들은 실제로 이러한 방식으로 작성되어 있으며, 단지 사용자의 편의를 고려하여 라이브러리라고 불리는 함수들의 묶음을 제공하는 것입니다. 
+즉, 반올림을 해주는 round(), 어떤 구간을 동일하게 나누어 주는 cut()이라는 함수, 작업디렉토리에 어떤 파일들이 있는가를 보여주는 ls()함수들이 이렇게 미리 작성되어 제공되어지는 내장함수들이라고 합니다.
+
+그러나, 사용자의 목적에 따라서 내장함수만으로는 더 이상 작업을 할 수 없는 경우가 있습니다.
+이럴때 사용자 자신이 원하는 함수를 작성하여 사용하는 블랙박스를 사용자정의 함수라고 합니다.
+이렇게 사용자 정의 함수를 정의하는데 사용되는 문법은 아래와 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+fn <- function(args){
+	expressions
+}
+\end{Soutput}
+\end{Schunk}
+
+예를들어, 내가 만드는 함수의 목적이 주어진 두개의 숫자들을 이용하여 더하기를 수행한 뒤 그 결과를 돌려준다고 가정합니다.
+R을 이용하여 아래와 같이 할 수 있는데, 내가 원하는 것은 plus()라는 사용자정의 함수를 만들어 보는 것입니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> x <- 1
+> y <- 3
+> x + y
+[1] 4
+\end{Soutput}
+\end{Schunk}
+
+그렇다면 일반 텍스트 파일을 열고 아래와 같이 입력합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	y <- x1 + x2
+	return(y)
+}
+\end{Soutput}
+\end{Schunk}
 
 
-\section{조건문:}
+
+
+\begin{Schunk}
+\begin{Soutput}
+> plus <- function(x1, x2){
++ y <- x1 + x2
++ return(y)
++ }
+> plus(3,2)
+[1] 5
+> plus(10,30)
+[1] 40
+> plus(x1=3, x2=5)
+[1] 8
+> plus(x1=3)
+Error in x1 + x2 : 'x2' is missing
+> plus()
+Error in x1 + x2 : 'x1' is missing
+> plus
+function(x1, x2){
+y <- x1 + x2
+return(y)
+}
+> 
+\end{Soutput}
+\end{Schunk}
+
+
+아주 단순하게 말하면, 프로그램을 작성한다는 것은 이렇게 블랙박스를 만드는 것에 비유할 수 있습니다. 
+
+그러나, 몇 개의 블랙박스가 서로 어떻게 연결 및  구성되며, 형상관리는 어떻게 할 것인지, 사용자의 편의를 고려해야 하는지, 얼마나 프로그램을 자잘하게 쪼개야 하는 등의 다양한 관점을 살리는 부분은 프로그램을 하면서 경험속에서 얻어지게 됩니다.
+따라서, 여기에서는 소프트웨어의 개발을 이야기 하는 것이 아니기 때문에 단순히 프로그램이라는 것을 어떤 분석을 수행하기 위한 일련의 과정을 컴퓨터가 이해할 수 있도록 하는 것으로 한정하도록 합니다.
+우리는 이러한 일련의 과정을 기록하는 것을 스크립트를 작성한다고 합니다. 
+ 
+
+
+\section{조건문과 논리연산자}
+
+\paragraph{if 그리고 else} 
+우리는 어떤 프로세스를 설계할 때 이런 경우에는 A라는 것을 수행하고, 저런 경우에는 B 라는 것을 수행한다라고 하는 로직을 사용합니다. 
+R은 이러한 논리를 표현하기 위해서 if와 else 라는 ``만약 그렇다면'' 이것을 수행하고 ``그렇지 않다면'' 이것을 수행한다라는 조건문을 제공하고 있습니다.  
+이것에 대한 문법적 형식은 아래와 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+if(condition){
+	expressions
+}
+else {
+	expressions
+}
+\end{Soutput}
+\end{Schunk}
+
+이러한 조건문을 이해하기 위해서 아래의 예제를 생각해 봅니다.
+
+먼저, x 라는 숫자가 
+\begin{itemize}
+	\item 만약 입력받은 숫자 x가 10 보다 크다면 "x는 10 보다 큽니다" 라는 출력하고,
+	\item 만약 입력받은 숫자 x가 10 보다 작거나 같다면 x가 가진 값을 출력하는 것입니다.
+\end{itemize}
+
+이를 표현하자면, 
+
+\paragraph{논리연산}
+위의 문법적 표현에서 condition 이라는 것은 어떤 주어진 조건에 대한 참과 거짓을 판단하는 부분입니다.
+R은 참과 거짓을 판단하는 기능을 줍니다. 
+대표적인 예로는 위에서 사용했던 is.na()라는 함수의 결과는 TRUE 또는 FALSE 로 표현되었습니다. 
+이러한 표현이 바로 논리적 연산의 결과입니다.
+
+아래의 예를 살펴봅니다.
+먼저 1부터 10사이에 1단위로의 수열을 생성합니다.
+
+\begin{Schunk}
+\begin{Soutput}
+> x <- 1:10
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+\end{Soutput}
+\end{Schunk}
+
+이제 벡터 x의 구성요소중 5 보다 큰 요소들에 대한 결정을 내리도록 하겠습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> x > 5
+ [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{Soutput}
+\end{Schunk}
+
+그럼, $x>5$와  $x>7$ 이라는 두개의 조건을 만족하는 결과는 어떻게 표현할까요?
+두개의 조건을 서로 결합하는 것은 \& (엠퍼센트) 라는 기호를 이용하여 표기합니다. 
+ 
+\begin{Schunk}
+\begin{Soutput}
+> x > 5 & x < 7
+ [1] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+\end{Soutput}
+\end{Schunk}
+
+위와 같은 표현이 가능하다면 $x<3$ 또는 $x>5$ 라는 논리는 어떻게 표현될까요? 
+이는 $|$ 를 이용하여 표시합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> x < 3 | x > 5
+ [1]  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{Soutput}
+\end{Schunk}
+
+
+
+여기까지는 2가지의 경우에 대한 조건적 수행을 얘기했으나, 실제적으로는 조건의 수에는 매우 많을 수도 있습니다. 
+
+
+
 \texttt{repeat}, \texttt{while}에 대해서 간단히 보여주고, \texttt{break}과 \texttt{next} 를 알려주면 좋음. 
 \begin{Schunk}
 \begin{Soutput}
@@ -1528,6 +1715,7 @@ output
 
 \end{Soutput}
 \end{Schunk}
+\section{주석문의 사용}
 
 \section{함수의 정의와 사용}
 \begin{Schunk}
