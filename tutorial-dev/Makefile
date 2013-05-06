@@ -2,10 +2,12 @@ all: pdf
 	make clean
 	make tohtml
 	make clean2
+	svn rm --force ../www/$(filename)*
 	cp *.html ../www/
 	cp *.tmp ../www/
 	cp *.png ../www/
 	cp *.css ../www/
+	svn add --force ../www/$(filename)*
 	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
 #	svn ../../commit
 
