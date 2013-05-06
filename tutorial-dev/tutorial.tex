@@ -1577,8 +1577,8 @@ plus <- function(x1, x2){
 \end{Soutput}
 \end{Schunk}
 
-
-
+이렇게 작성된 것을 R콘솔에 붙여 넣습니다.  
+(이렇게 외부에서 작성된 R 프로그램을 실행시키는 법을 조금뒤에 설명할 것입니다).
 
 \begin{Schunk}
 \begin{Soutput}
@@ -1586,16 +1586,63 @@ plus <- function(x1, x2){
 + y <- x1 + x2
 + return(y)
 + }
+>
+\end{Soutput}
+\end{Schunk}
+
+이제 내가 만든 plus()라는 함수를 사용해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
 > plus(3,2)
 [1] 5
 > plus(10,30)
 [1] 40
+\end{Soutput}
+\end{Schunk}
+
+아하! 잘 됩니다. 
+그럼 아래와 같이 따라해봅니다. 
+\begin{Schunk}
+\begin{Soutput}
 > plus(x1=3, x2=5)
 [1] 8
+\end{Soutput}
+\end{Schunk}
+
+이렇게 사용자가 함수의 정의부분에 사용한 인자를 보통 formal argument (형식 인자)라고 합니다. 
+그리고 위와 같이 정의된 인자의 이름을 함께 이용하여 사용할 수 있습니다. 
+이 때 이렇게 사용하는 인자를  named argument (지시된 인자)와 함께 사용한다고 합니다. 
+지시된 인자를 사용하는 이유는 함수의 정의에 사용되는 인자의 개수는 매우 많을 수도 있기 때문에 사용의 혼돈을 피하기 위해서 입니다. 
+따라서, 우리는 어떤 함수를 사용할 때 지시된 인자명과 함께 사용하기를 권장합니다. 
+
+그런데, 이 함수는 정의할 때 두개의 인자를 필요로 했습니다. 
+따라서, 아래와 같이 하나만 사용이 되거나 아무것도 입력되지 않는다는 아래와 같은 메시지를 보여주게 됩니다. 
+
+\begin{Schunk}
+\begin{Soutput}
 > plus(x1=3)
 Error in x1 + x2 : 'x2' is missing
 > plus()
 Error in x1 + x2 : 'x1' is missing
+\end{Soutput}
+\end{Schunk}
+
+이렇게 어떤 함수에서 사용되는 인자들의 목록을 확인해 보고 싶다면 arg() 함수를 이용하길 바랍니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> args(plus)
+function (x1, x2) 
+NULL
+> 
+\end{Soutput}
+\end{Schunk}
+
+만약 아래와 같이 함수의 이름만 입력하게 된다면 아래와 같이 작성된 사용자함수의 소스코드를 볼 수 있습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
 > plus
 function(x1, x2){
 y <- x1 + x2
@@ -1605,14 +1652,38 @@ return(y)
 \end{Soutput}
 \end{Schunk}
 
+따라서, 사용자가 R의 소스코드가 어떻게 작성되어 있는지 확인하고 싶다면 사용되는 함수명을 입력하면 됩니다. 
+예를들어, 현재 세션의 있는 R의 객체를 삭제해주는 명령어인 rm() 이라는 함수의 소스코드를 확인해 보고 싶다면 아래와 같이 단순히 rm이라고 입력합니다.
 
-아주 단순하게 말하면, 프로그램을 작성한다는 것은 이렇게 블랙박스를 만드는 것에 비유할 수 있습니다. 
+\begin{Schunk}
+\begin{Soutput}
+> rm
+function (..., list = character(), pos = -1, envir = as.environment(pos), 
+    inherits = FALSE) 
+{
+    dots <- match.call(expand.dots = FALSE)$...
+    if (length(dots) && !all(sapply(dots, function(x) is.symbol(x) || 
+        is.character(x)))) 
+        stop("... must contain names or character strings")
+    names <- sapply(dots, as.character)
+    if (length(names) == 0L) 
+        names <- character()
+    list <- .Primitive("c")(list, names)
+    .Internal(remove(list, envir, inherits))
+}
+<bytecode: 0x9fd5864>
+<environment: namespace:base>
+> 
+\end{Soutput}
+\end{Schunk}
+% $
 
-그러나, 몇 개의 블랙박스가 서로 어떻게 연결 및  구성되며, 형상관리는 어떻게 할 것인지, 사용자의 편의를 고려해야 하는지, 얼마나 프로그램을 자잘하게 쪼개야 하는 등의 다양한 관점을 살리는 부분은 프로그램을 하면서 경험속에서 얻어지게 됩니다.
-따라서, 여기에서는 소프트웨어의 개발을 이야기 하는 것이 아니기 때문에 단순히 프로그램이라는 것을 어떤 분석을 수행하기 위한 일련의 과정을 컴퓨터가 이해할 수 있도록 하는 것으로 한정하도록 합니다.
-우리는 이러한 일련의 과정을 기록하는 것을 스크립트를 작성한다고 합니다. 
- 
+이렇게 소스를 볼 수 있는 기능은 추후에 전산통계를 배우고자 하는 학생 또는 소프트웨어 개발자들에게 매우 도움이 될 것입니다. 
 
+본 섹션에서는 아주 단순한 예제를 이용하여 함수의 개념과 사용자 정의함수를 작성하는 방법을 설명했습니다.  
+이렇게 단위의 함수들이 모이고 모여서 어떤 하나의 큰 작업을 수행하도록 할 수 있습니다. 
+그리고, 몇 개의 블랙박스가 서로 어떻게 연결 및  구성되며, 형상관리는 어떻게 할 것인지, 사용자의 편의를 고려해야 하는지, 얼마나 프로그램을 자잘하게 쪼개야 하는 등의 다양한 관점을 살리는 부분은 프로그램을 하면서 경험속에서 얻어지게 됩니다.
+여기에서는 소프트웨어의 개발을 이야기 하는 것이 아니기 때문에 단순히 프로그램이라는 것을 어떤 분석을 수행하기 위한 일련의 과정을 컴퓨터가 이해할 수 있도록 하는 것으로 한정하도록 합니다.
 
 \section{조건문과 논리연산자}
 
@@ -1632,21 +1703,87 @@ else {
 \end{Soutput}
 \end{Schunk}
 
-이러한 조건문을 이해하기 위해서 아래의 예제를 생각해 봅니다.
+이러한 조건문을 이해하기 위해서 위에서 사용한 plus()라는 사용자 정의 함수를 아래와 같이 확장해 보도록 합니다. 
 
-먼저, x 라는 숫자가 
 \begin{itemize}
-	\item 만약 입력받은 숫자 x가 10 보다 크다면 "x는 10 보다 큽니다" 라는 출력하고,
-	\item 만약 입력받은 숫자 x가 10 보다 작거나 같다면 x가 가진 값을 출력하는 것입니다.
+	\item 만약 x1에 입력받은 숫자가 10 보다 크다면 "x1 is greater than 10" (x1은 10보다 큽니다)라는 메시지를 함수의 결과값을 보여주기 전에 출력하고, 
+	\item 그렇지 않다면 "x1 is less than or equal to 10" (x1은 10보다 작거나 같습니다) 라는 메시지를 함수의 결과값을 보여주기 전에 출력하도록 합니다.
 \end{itemize}
 
-이를 표현하자면, 
+이를 표현하자면, 아래와 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	if(x1 <= 10) print("x1 is less than or equal to 10")
+	if(x1 > 10) print("x1 is greater than 10")
+	y <- x1 + x2
+	return(y)
+}
+\end{Soutput}
+\end{Schunk}
+
+조금 바꿔봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	if(x1 <= 10) print("x1 is less than or equal to 10")
+	else print("x1 is greater than 10")
+	y <- x1 + x2
+	return(y)
+}
+\end{Soutput}
+\end{Schunk}
+
+그 결과는 아래와 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> plus(3,5)
+[1] "x1 is less than or equal to 10"
+[1] 8
+> plus(15, 4)
+[1] "x1 is greater than 10"
+[1] 19
+> 
+\end{Soutput}
+\end{Schunk}
+
+프로그램이 잘 수행됩니다. 
 
 \paragraph{논리연산}
-위의 문법적 표현에서 condition 이라는 것은 어떤 주어진 조건에 대한 참과 거짓을 판단하는 부분입니다.
-R은 참과 거짓을 판단하는 기능을 줍니다. 
-대표적인 예로는 위에서 사용했던 is.na()라는 함수의 결과는 TRUE 또는 FALSE 로 표현되었습니다. 
-이러한 표현이 바로 논리적 연산의 결과입니다.
+이제 다시 위의 문법을 살펴보도록 합니다. 
+조건문 if 의 사용에 꼭 필요한 것은 조건문에 대한 판단입니다.
+문법적 요소인  condition 이라는 것은 어떤 주어진 조건에 대한 참과 거짓을 판단하는 부분입니다.
+
+위의 plus 함수에서 이 condition 에 해당하는 부분이 바로 $x1 < 10$ 이라는 표현입니다. 
+그럼, 이 조건문은 어떻게 수행되는지 알기 위해서 $x1 < 10$의 결과를 출력하도록 print($x1<10$)으로 변경합니다.
+ 
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	if(print(x1 <= 10)) print("x1 is less than or equal to 10")
+	else print("x1 is greater than 10")
+	y <- x1 + x2
+	return(y)
+}
+\end{Soutput}
+\end{Schunk}
+
+이를 확인해 보기 위해서 실행해 봅니다. 
+\begin{Schunk}
+\begin{Soutput}
+> plus(3,5)
+[1] TRUE
+[1] "x1 is less than or equal to 10"
+[1] 8
+> 
+\end{Soutput}
+\end{Schunk}
+
+아하! R은 이렇게 condition 부분에서 참과 거짓을 판단한 후 그 결과로서 돌려주는 TRUE 또는 FALSE 라는 값에 의해서 조건문을 실행하게 된다는 것을 알 수 있습니다. 
+이러한 조건에 대한 수행적 결과를 우리는 논리적 연산을 수행한다고 합니다. 
 
 아래의 예를 살펴봅니다.
 먼저 1부터 10사이에 1단위로의 수열을 생성합니다.
@@ -1688,10 +1825,162 @@ R은 참과 거짓을 판단하는 기능을 줍니다.
 \end{Soutput}
 \end{Schunk}
 
+논리연산에는 다음과 같은 것들이 있습니다
+\begin{Schunk}
+\begin{Soutput}
+<, >, <=, >=, &, &&, |, ||, 
+\end{Soutput}
+\end{Schunk}
+
+이 논리연산은 추후에 설명하게 될 수학의 집합연산과도 관계가 깊습니다. 
+이에 대한 설명은 ``수학/확률/수치연산'' 이라는 챕터에서 다루도록 하고, 여기에서는 단순한 논리연산만을 다루겠습니다. 
+
+\paragraph{plus() 예제 확장: }
+
+조건을 하나만 사용하는 것이 아니라 여러개를 사용할 수 있습니다. 
+예를들어, 우리가 수집하는 두개의 데이터가 x 와  y 에 저장을 하는데, 실제적으로는 0 보다 큰 값들만이 존재합니다. 
+따라서, plus() 함수를 사용할때,  
+
+\begin{itemize}
+\item 두개의 입력인자가 모두 양수인 경우에만 plus()연산을 수행하고,
+\item 만약 그렇지 않다면 "Both x1 and x2 must be positive" 라는 메시지를 출력하는 것입니다.
+\end{itemize}
+
+아래와 같이 프로그램을 살짝 변경합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	if( (x1 > 0) & (x2 > 0) ){
+		y <- x1 + x2
+		return(y)
+	}
+	else print("Both x1 and x2 must be positive")
+}
+\end{Soutput}
+\end{Schunk}
+
+이제 그 결과를 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> plus(3,2)
+[1] 5
+> plus(-3,2)
+[1] "Both x1 and x2 must be positive"
+> plus(3,-2)
+[1] "Both x1 and x2 must be positive"
+\end{Soutput}
+\end{Schunk}
+
+사용자가 예상한대로 프로그램이 잘 짜지고 있음을 확인할 수 있습니다. 
+
+이제 한 단계 더 업그레이드 합니다. 
+실제로 더하기라는 개념은 두개의 값을 필요로 합니다. 
+그래서 plus()라는 함수를 사용할때 두 개의 인자들이 입력되어야 합니다.
+따라서, 아래와 같이 해봅니다.
+
+\begin{itemize}
+\item 만약, 입력된 인자의 개수가 2개 아니라면 "Only two arguments are needed for this computation" (이 연산을 수행하기 위해서는 두개의 인자가 필요합니다) 라는 메시지를 출력하고, 
+\item 입력된 인자의 개수가 2개라면 연산을 수행하되, 오로지 두개의 인자값들이 양수일때만 연산을 수행합니다. 
+\end{itemize}
+
+이를 수행하기 위해서는 여러분들은 missing()이라는 함수와 stop()이라는 함수를 알아야 합니다. 
+missing()이라는 함수는 사용된 변수의 값이 있는지 없는지를 판단하며, stop()이라는 함수는 메시지를 보여준뒤 그 뒤에 있는 프로세스들은 모두 중단한 채로 함수를 빠져나가는 것입니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+plus <- function(x1, x2){
+	if(missing(x1) | missing(x2)) stop("Two arguments are needed")
+	
+	if( (x1 > 0) & (x2 > 0) ){
+		y <- x1 + x2
+		return(y)
+	}
+	else print("Both x1 and x2 must be positive")
+}
+\end{Soutput}
+\end{Schunk}
+
+이제 확인을 해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> plus(3)
+Error in plus(3) : Two arguments are needed
+> plus(-3,2)
+[1] "Both x1 and x2 must be positive"
+> plus(3,5)
+[1] 8
+\end{Soutput}
+\end{Schunk}
+
+모두 사용자의 로직대로 프로그램이 작성되었음을 확인할 수 있습니다. 
 
 
-여기까지는 2가지의 경우에 대한 조건적 수행을 얘기했으나, 실제적으로는 조건의 수에는 매우 많을 수도 있습니다. 
+그런데 가끔 이런 경우가 있습니다. 
+조건문이 어떤 특정한 값을 받고 이에 해당하는 경우만을 실행하고자 할때입니다. 
+예를들면, 아래와 같습니다.
 
+\begin{itemize}
+\item 만약, 사용자가 "A"를 입력하면 "Hi! What's up?" 을 출력합니다.
+\item 만약, 사용자가 "B"를 입력하면 "Hello~ World! I am R" 을 출력합니다.
+\end{itemize}
+
+이 경우에 어떤 독자는 if문을 배웠으니 아래와 같이 할 것입니다.
+
+\begin{Schunk}
+\begin{Soutput}
+urInput <- function(x){
+	if(x=="A") print("Hi! What's up?")
+	if(x=="B") print("Hello~ World! I am R")
+}
+\end{Soutput}
+\end{Schunk}
+
+아래와 같이 결과를 확인해 봅니다. 
+\begin{Schunk}
+\begin{Soutput}
+> urInput("A")
+[1] "Hi! What's up?"
+> urInput("B")
+[1] "Hello~ World! I am R"
+> urInput("C")
+> urInput(3)
+\end{Soutput}
+\end{Schunk}
+
+여기에서 "C" 또는 3 을 입력 했을 때는 아무것도 수행하지 않았음을 알 수 있습니다. 
+이와 동일한 기능을 R은 switch()라는 함수를 통하여 수행할 수도 있습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+urInput2 <- function(x){
+	switch(x, 
+		"A" = print("Hi! What's up?"),
+		"B" = print("Hello~ World! I am R")
+	)
+}
+\end{Soutput}
+\end{Schunk}
+
+이제 동일한 결과를 얻는지 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> urInput2("A")
+[1] "Hi! What's up?"
+> urInput2("B")
+[1] "Hello~ World! I am R"
+> urInput2("C")
+>
+\end{Soutput}
+\end{Schunk}
+
+이러한 조건적 실행을 수행하는 분기문에 대해서는 프로그래밍의 경험이 쌓여 가면서 자연스레 더욱 많은 것을 알게 됩니다. 
+본 섹션에서는 분기문에 대해서 이정도로 마무리하고 다음 장으로 넘어가겠습니다. 
+
+\section{반복문}
 
 
 \texttt{repeat}, \texttt{while}에 대해서 간단히 보여주고, \texttt{break}과 \texttt{next} 를 알려주면 좋음. 
@@ -1702,34 +1991,49 @@ output
 \end{Schunk}
 
 
-\paragraph{분기:}
+
+마지막으로 R 콘솔이 아닌 외부에서 작성된 프로그램을 실행하는 방법을 소개합니다. 
+그 이유는 작성하는 사용자 정의 함수 또는 프로그램의 길이가 매우 길어질 수 있기 때문입니다. 
+
+먼저 위에서 작성한 plus()라는 함수를 현재의 작업디렉토리에서 plus.R 이라는 파일명으로 저장합니다. 
+그리고 source() 라는 함수를 이용하여 실행시킵니다. 
 \begin{Schunk}
 \begin{Soutput}
-output
+> source("plus.R")
 \end{Soutput}
 \end{Schunk}
 
-\paragraph{switch}
+
+
+\section{프로그램의 가독성}
+
+많은 초보 프로그래머들은 R 프로그램을 작성할 때 반드시 따라야 할 코딩 스타일을 따르고자 합니다.
+코딩스타일을 이야기 하는 것은 프로그램의 가독성 때문입니다. 
+가독성이란 내가 작성한 프로그램을 다른 사람이 쉽게 이해할 수 있으며, 다른 사람이 작성한 프로그램을 내가 얼마나 이해할 수 있는가를 의미합니다.
+이러한 가독성 때문에 프로그램을 작성할 때 어떤 작성 표준에 맞추어 짜야 한다는 것입니다.
+그리고, 이러한 가독성은 결국 공동작업을 통한 협업을 할 때 그 힘을 발휘하게 됩니다. 
+
+사실상 그러한 코딩스타일에 대한 표준은 사실상 존재하지 않지만, 가독성과 공동작업을 위하여 일종의 코딩컨벤션 (coding convention)을 사용합니다. 
+\begin{itemize}
+\item GNU C 프로그래밍 코딩 스탠다드 (\url{http://www.gnu.org/prep/standards/standards.html})이 도움이 될 것입니다. 
+\item 구글에 포스팅되어 있는 구글의 R 스타일 가이드 (\url{http://google-styleguide.googlecode.com/svn/trunk/google-r-style.html})이 도움이 될 것입니다. 
+\item 그리고 Github에 게시된 Hadley의 스타일 가이드 (\url{https://github.com/hadley/devtools/wiki/Style}) 등이 여러분들의 R 프로그래밍 스타일을 갖추는데 도움이 될 것입니다. 
+\end{itemize}
+
+
+% http://www.wekaleamstudios.co.uk/posts/programming-with-r-checking-function-arguments/
+
+\section{기본 유틸리티들}
 \begin{Schunk}
 \begin{Soutput}
-
-\end{Soutput}
-\end{Schunk}
-\section{주석문의 사용}
-
-\section{함수의 정의와 사용}
-\begin{Schunk}
-\begin{Soutput}
-output
+rm(list=ls())
+search()
+install.packages()
+library(MASS)
+data()
 \end{Soutput}
 \end{Schunk}
 
-\paragraph{내장함수}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 
 
 % 베리굿 노트: http://www.pitt.edu/~njc23/
@@ -1740,121 +2044,25 @@ output
 % http://web.udl.es/Biomath/Bioestadistica/R/Manuals/r_in_a_nutshell.pdf
 % http://web.udl.es/Biomath/Bioestadistica/R/Manuals/
 
-\paragraph{사용자 정의 함수}
-
-함수를 정의한 뒤 사용할 때, 
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{do.call()}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 % \item \texttt{do.call()} 함수를 사용하는 법에 대해서..
 % http://cran.r-project.org/web/packages/rockchalk/vignettes/Rchaeology.pdf
 % http://www.stat.berkeley.edu/classes/s133/all2011.pdf  (다운로드 해두었음 Desktop/tmpRsrc/all2011.pdf)
 % http://www.stat.berkeley.edu/classes/s133/resources.html 
 
+본 챕터는 사용에 익숙해지기 위한 아주 기초적인 내용만을 다루기 때문에 아래와 같은 내용은 ``패키지 작성'' 이라는 챕터에서 다루도록 하겠습니다. 
+
+\begin{itemize}
+	\item 렉시컬 스코핑 
+	\item environemnt
+	\item 제네릭 함수 
+	\item 메소드와 클래스 
+	\item S3와 S4 프로그래밍 그리고 R5
+	\item 에러 핸들링 - try(), tryCatch()
+	\item 운영체제와의 소통 - 파일과 디렉토리 관리에 필요한 유틸리티들 
+\end{itemize}
 \paragraph{스코프}
 
-\paragraph{인바이런먼트}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\section{벡터라이제이션과 반복문} 
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{반복문:}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
 \paragraph{벡터라이제이션:} \texttt{apply()}, \texttt{lapply()}, \texttt{sapply()}, \texttt{mapply()}의 사용방법
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-
-\subsection{에러 핸들링}
-	만약, 메시지 역시 설명해줄려면  \texttt{stop()}, \texttt{warning()}도 함께 설명해주면 최고임.  
-\paragraph{try()}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{tryCatch()}
-
-\begin{Schunk}
-\begin{Soutput}
-result <- tryCatch(
-{
-	수행하고자 하는 표현식
-},
-warning = function(w) {
-	위에서 수행한 표현식이 경고를 발생시킬때 어떻게 처리하고자 하는지에 대한 표현식
-},
-error = function(e) {
-	위에서 수행한 표현식이 에러를 발생시킬때 어떻게 처리하고자 하는지에 대한 표현식
-}, finally {
-	위에서 수행한 표현식에 대한 최종적 처리를 위한 표현식
-}
-\end{Soutput}
-\end{Schunk}
-
-
-
-
-\section{객체와 속성}
-\paragraph{속성:}
-
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{객체:}
-
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\section{제네릭 함수와 클래스}
-\paragraph{메소드:}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{제네릭 함수:}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\paragraph{클래스:}
 \begin{Schunk}
 \begin{Soutput}
 output
@@ -1875,60 +2083,6 @@ load()
 
 스크립트란 일련의 작업을 순서대로 나열하여 놓은 순서대로 실행되어지는 명령어의 집합이라고 할 수 있습니다. 
 대화형으로 R을 사용할 수 있으나, 보다 손 쉽게 작업을 할 수 있는 장점이 있습니다. 
-
-
-\subsection{논리연산}
-
-\begin{Schunk}
-	\begin{Soutput}
-		< <= > >= == !=
-	\end{Soutput}
-\end{Schunk}
-
-\subsection{집합연산}
-\begin{Schunk}
-	\begin{Soutput}
-		
-	\end{Soutput}
-\end{Schunk}
-
-
-
-
-\paragraph{실행하기}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-\section{운영체제와 소통하기}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-
-
-
-\section{연산자와 함수의 개념}
-
-여기까지는 객체의 구성요소들을 뽑아내는 방법을 알았지만, 실제적으로는 이들 객체의 크기가 커진다면 내가 원하는 값이 어디에 위치하는지 알려면 매우 힘이 듭니다. 
-그래서, R은 자신이 원하는 값이 어디에 위치하는지에 대한 정보를 주는 which()라는 함수를 제공합니다. 
-
-위에서 사용한 벡터 x를 살펴봅니다. 
-내가 하고자 하는 것은 108 번째라는 값이 어디에 있는가를 알고 싶습니다.
-
-
-\begin{Schunk}
-\begin{Soutput}
-which(x==4)
-
-typos[-c(1,5)]
-\end{Soutput}
-\end{Schunk}
-
-
 
 \section{파일과 디렉토리 유틸리티}
 파일관리와 관계된 여러가지 유용한 유틸리티가 존재합니다. 
@@ -2017,27 +2171,7 @@ output
 \end{Soutput}
 \end{Schunk}
 
-\paragraph{자주 찾는 질문들}
-\begin{Schunk}
-\begin{Soutput}
-rm(list=ls())
-search()
-install.packages()
-library(MASS)
-data()
-
-\end{Soutput}
-\end{Schunk}
-
-
 	
-\section{프로그래밍 스타일 가이드}
-% http://www.wekaleamstudios.co.uk/posts/programming-with-r-checking-function-arguments/
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
