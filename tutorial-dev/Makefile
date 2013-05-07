@@ -1,7 +1,8 @@
-all: pdf
-	make clean
+all: 
+# pdf
+#	make clean
 	make tohtml
-	make clean2
+#	make clean2
 	svn rm --force ../www/$(filename)*
 	cp *.html ../www/
 	cp *.tmp ../www/
@@ -27,7 +28,10 @@ clean:
 	rm -rf $(filename).ps $(filename).log $(filename).aux $(filename).out $(filename).dvi $(filename).bbl $(filename).blg $(filename).toc $(filename).lot $(filename).idx $(filename).lof $(filename).css $(filename).idv $(filename).ind $(filename).lg $(filename).tmp $(filename).ilg $(filename).4ct $(filename).xref $(filename).4tc *js.* *.tmp *.html *.png
 
 tohtml:
-	htlatex $(filename).tex "html, mouseover, next, frames, 2"
+#	htlatex $(filename).tex "xhtml, mycfg, mouseover, next, frames, 2"
+	htlatex $(filename).tex "mycfg, 2, frames"
+# http://uce.uniovi.es/tips/Latex/HtLatexConfig.html
+# http://www.tug.org/TUGboat/tb25-1/gurari.pdf
 
 clean2:
 	rm -rf $(filename).4ct $(filename).4tc $(filename).aux $(filename).idv $(filename).idx $(filename).lg $(filename).log $(filename).tmp $(filename).xref $(filename).tex.bak
