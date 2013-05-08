@@ -1,11 +1,147 @@
+R에서의 그래픽 시스템은 \citet{Murrell2005}와 Deepayan Sarkar가 쓴 두권의 책으로부터 정보를 얻을 수 있습니다.
+
+% 레퍼런스 시스템이 정상적으로 작동하는지 확인해볼것 - 링크 눌러보셈.
+
 \chapter{그래픽}
 
-R에서의 그래픽 시스템은 \citet{Murrell2005}
+이번 챕터에서는 R의 그래픽 기능을 보여줄 것입니다.
+서울종합과학대학원의 신종화 교수님께서 제공해주신 dart8.xls 데이터를 다시 활용하며, 이 데이터셋은 \href{http://korea.gnu.org/gnustats/dataset/dart8.xls}{http://korea.gnu.org/gnustats/dataset/dart8.xls}로부터 다운로드 할 수 있습니다.
 
-그래픽에 대해서 알고 있는 모든 사항을 써 놓을 것.
-이미지를 넣어줄 것.
+먼저 이전 챕터에서 클리닝 했던 데이터 mydata로부터 2010년 1분기에 해당하는 자료만 뽑아 이름이 ``예제1'' 이라는 객체를 생성합니다.
+
+\begin{Schunk}
+\begin{Soutput}	
+> 예제1 <- subset(mydata, subset=(년도=="2010" & 분기=="1분기"))
+> 예제1 
+    광고선전비 교육훈련비      매출액       여행사 번호 년도  분기
+38  1055742790   44554342 48480421492     하나투어   38 2010 1분기
+85   285347000    3554000 26266456633   레드캡투어   41 2010 1분기
+112  627109367   11581130 25003802066     모두투어   21 2010 1분기
+157   92244120   15798800 14808015873         세중   39 2010 1분기
+176  663249619         NA  8464425371   참좋은레져   13 2010 1분기
+199  660158348   28187000  7761111255 롯데관광개발   17 2010 1분기
+240  817154204     516680 11317681906     자유투어   35 2010 1분기
+283  116821788    2240000  2270390985   비티앤아이   37 2010 1분기
+>
+\end{Soutput}
+\end{Schunk}
+
+이제 ``광고선전비''와 ``매출액'' 두 변수 사이의 상관관계를 보기 위해서 산점도를 그려보도록 합니다.
+
+\begin{Schunk}
+\begin{Soutput}	
+with(예제1, plot(x=광고선전비, y=매출액, main="산점도", xlab="광고선전비 (백만원)", ylab="광고선전비 (백만원)"))
+\end{Soutput}
+\end{Schunk}
+
+생성된 산점도는 아래와 같으며, 양의 상관관계가 있을 것 같다고 추측을 해봅니다.
+이때, 축의 이름, 제목, 그리고 데이터가 모두 한글로 잘 출력됨을 알 수 있습니다.
+\includegraphics{img/plot-00.eps}
+
+현재 이 문서에서 보여지는 플랏은 퍼블리케이션 퀄리티를 얻기 위해서 포스트스크립트(eps)형식으로 생성되었기 때문에 웹페이지에 사용되는 png 파일이 아니므로 좋은 퀄리티를 보여주지 못합니다. 
+따라서, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-00.eps}{http://korea.gnu.org/gnustats/img/plot-00.eps}를 눌러주세요. 
+
+이제 이 플랏이 어떻게 생성되어지고, 어떻게 조절이 가능한지에 대하여 순서대로 보여드리겠습니다.
+
+본래 plot()이 작동되게 되면, 그래픽 디바이스가 모든 내용을 초기화합니다. 
+\begin{Schunk}
+\begin{Soutput}	
+with(예제1, plot(x=광고선전비, y=매출액, type="n", xlab="", ylab="", axes=FALSE))
+\end{Soutput}
+\end{Schunk}
+
+이는 아래와 같이 아무것도 보이지 않는 상태입니다. 
+현재 여러분이 아무것도 보이지 않는 것이 정상입니다. 
+원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-01.eps}{http://korea.gnu.org/gnustats/img/plot-01.eps}를 눌러주세요. 
+\includegraphics{img/plot-01.eps}
+ 
+ 
+그런다음에 격자를 집어넣습니다. 
+\begin{Schunk}
+\begin{Soutput}	
+grid()
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-02.eps}{http://korea.gnu.org/gnustats/img/plot-02.eps}를 눌러주세요. 
+\includegraphics{img/plot-02.eps}
+
+
+해당 포인트들을 뿌려줍니다.
+\begin{Schunk}
+\begin{Soutput}	
+with(예제1, points(x=광고선전비, y=매출액))
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-03.eps}{http://korea.gnu.org/gnustats/img/plot-03.eps}를 눌러주세요. 
+\includegraphics{img/plot-03.eps}
+
+x 축을 그려줍니다. 
+\begin{Schunk}
+\begin{Soutput}	
+axis(1)
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-04.eps}{http://korea.gnu.org/gnustats/img/plot-04.eps}를 눌러주세요. 
+\includegraphics{img/plot-04.eps}
+
+동일한 방식으로 y축을 그려넣고, x축과 y축의 라벨을 위치시켜줍니다. 
+\begin{Schunk}
+\begin{Soutput}	
+axis(2)
+mtext("광고선전비 (백만원)", side=1, line=3)
+mtext("매출액 (백만원)", side=2, line=3, las=0)
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-05.eps}{http://korea.gnu.org/gnustats/img/plot-05.eps}를 눌러주세요. 
+\includegraphics{img/plot-05.eps}
+
+
+마지막으로 박스를 그려주고, 제목을 표시합니다. 
+\begin{Schunk}
+\begin{Soutput}	
+box()
+title(main="산점도")
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-06.eps}{http://korea.gnu.org/gnustats/img/plot-06.eps}를 눌러주세요. 
+\includegraphics{img/plot-06.eps}
+
+각 점마다 이름을 붙여줍니다.
+\begin{Schunk}
+\begin{Soutput}	
+with(예제1, text(x=광고선전비, y=매출액, labels=여행사, pos=4))
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-07.eps}{http://korea.gnu.org/gnustats/img/plot-07.eps}를 눌러주세요. 
+\includegraphics{img/plot-07.eps}
+
+적합된 선분을 추가해 줍니다. 
+\begin{Schunk}
+\begin{Soutput}	
+abline(lm(매출액 ~ 광고선전비, data=예제1))
+\end{Soutput}
+\end{Schunk}
+생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-08.eps}{http://korea.gnu.org/gnustats/img/plot-09.eps}를 눌러주세요. 
+\includegraphics{img/plot-08.eps}
+
+
+\begin{Schunk}
+\begin{Soutput}
+with(예제, plot(광고선전비, 매출액))
+\end{Soutput}
+\end{Schunk}
+
+산점도를 위해 사용한 plot() 함수의 사용은 매우 기초적인 내용만을 보여줍니다. 
+따라서, 제목과 라벨을 더해주면 좀 더 확실하게 내용을 전달할 수 있을 것 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+with(예제, plot(x=광고선전비, y=매출액, main="하나투어", xlab="x축: 광고선전비", ylab="y축: 매출액"))
+\end{Soutput}
+\end{Schunk}
 
 \section{플랏 커스터마이징}
+
 \begin{Schunk}
 \begin{Soutput}
 output
