@@ -1,4 +1,5 @@
-all: pdf
+all: 
+# pdf
 #	make clean
 	make tohtml
 #	make clean2
@@ -28,7 +29,7 @@ clean:
 
 tohtml:
 #	htlatex $(filename).tex "xhtml, mycfg, mouseover, next, frames, 2"
-	htlatex $(filename).tex "html, mycfg, 2, frames"
+	htlatex $(filename).tex "mycfg, 2, frames"
 # http://uce.uniovi.es/tips/Latex/HtLatexConfig.html
 # http://www.tug.org/TUGboat/tb25-1/gurari.pdf
 
