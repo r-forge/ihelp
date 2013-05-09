@@ -1787,6 +1787,35 @@ function (..., list = character(), pos = -1, envir = as.environment(pos),
 
 이렇게 소스를 볼 수 있는 기능은 추후에 전산통계를 배우고자 하는 학생 또는 소프트웨어 개발자들에게 매우 도움이 될 것입니다. 
 
+%참고사항
+%어떤 함수의 소스코드를 알아보고자 ggplot2, mean, sapply를 각각 입력했다고 한다면 각각의 메세지가 다르게 나타나는 것을 확인할 수 있습니다.
+% > ggplot2
+% 에러: 객체 'ggolot2'를 찾을 수 없습니다
+
+% > sapply
+% function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) 
+% {
+%    FUN <- match.fun(FUN)
+%    answer <- lapply(X = X, FUN = FUN, ...)
+%    if (USE.NAMES && is.character(X) && is.null(names(answer))) 
+%        names(answer) <- X
+%    if (!identical(simplify, FALSE) && length(answer)) 
+%        simplify2array(answer, higher = (simplify == "array"))
+%    else answer
+% }
+% <bytecode: 0x00000000147a3290>
+% <environment: namespace:base>
+
+% 이와 같은 메세지의 차이는 ggplot2 그리고 sapply가 서로 다른 속성을 가진 객체이기 때문입니다.
+% ggplot2는 팩키지(package)이고 sapply는 R base에 기본적으로 탑재된 함수(function)인 것입니다.
+
+% > mean
+% function (x, ...) 
+% UseMethod("mean")
+% <bytecode: 0x0000000021e6edc8>
+% <environment: namespace:base>
+% mean은 왜 이리 간단하게 나오지? 너가 써줘... ㅋㅋㅋ
+
 본 섹션에서는 아주 단순한 예제를 이용하여 함수의 개념과 사용자 정의함수를 작성하는 방법을 설명했습니다.  
 이렇게 단위의 함수들이 모이고 모여서 어떤 하나의 큰 작업을 수행하도록 할 수 있습니다. 
 그리고, 몇 개의 블랙박스가 서로 어떻게 연결 및  구성되며, 형상관리는 어떻게 할 것인지, 사용자의 편의를 고려해야 하는지, 얼마나 프로그램을 자잘하게 쪼개야 하는 등의 다양한 관점을 살리는 부분은 프로그램을 하면서 경험속에서 얻어지게 됩니다.
