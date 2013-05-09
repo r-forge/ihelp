@@ -1599,7 +1599,7 @@ Error in log(a) : Non-numeric argument to mathematical function
 이를 에러라고 합니다. 
 
 여기에서 보았듯이 경고와 에러는 서로 다른 것입니다.
-요약하면, 경고라는 것은 연산은 수행하되 어떠한 수학적 정의에 맞지 않는 것이며, 에러라는 것은 발생하지 말아야할 일이 일어났다는 것을 의미합니다. 
+요약하면, 경고라는 것은 연산은 수행되지만 어떠한 수학적 정의에 맞지 않는 것이며, 에러라는 것은 발생하지 말아야할 일이 일어났다는 것을 의미합니다. 
 
 이러한 경고와 에러를 다루는 것은 실제적인 프로그래밍을 할 때 매우 중요합니다. 
 R은 이러한 것들을 다루기 위한 디버거라는 도구와 에러핸들링이라는 기능을 제공하고 있습니다.
@@ -1686,17 +1686,18 @@ plus <- function(x1, x2){
 이렇게 작성된 것을 R콘솔에 붙여 넣습니다.  
 (이렇게 외부에서 작성된 R 프로그램을 실행시키는 법을 조금뒤에 설명할 것입니다).
 
-\begin{Schunk}
-\begin{Soutput}
-> plus <- function(x1, x2){
-+ y <- x1 + x2
-+ return(y)
-+ }
->
+% 이미지가 없으면 오히려 혼란을 줄 수 있으므로 일단 주석처리함. 이 의견에 동의하지 않으면 맘대로 수정해도 됨
+% \begin{Schunk}
+% \begin{Soutput}
+% > plus <- function(x1, x2){
+% + y <- x1 + x2
+% + return(y)
+% + }
+
 \end{Soutput}
 \end{Schunk}
 
-이제 내가 만든 plus()라는 함수를 사용해 봅니다. 
+이제 R 콘솔에서 내가 만든 plus()라는 함수를 사용해 봅니다. 
 
 \begin{Schunk}
 \begin{Soutput}
@@ -1741,7 +1742,7 @@ Error in x1 + x2 : 'x1' is missing
 > args(plus)
 function (x1, x2) 
 NULL
-> 
+
 \end{Soutput}
 \end{Schunk}
 
