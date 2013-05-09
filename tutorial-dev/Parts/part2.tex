@@ -37,7 +37,12 @@ with(예제1, plot(x=광고선전비, y=매출액, main="산점도", xlab="광�
 
 생성된 산점도는 아래와 같으며, 양의 상관관계가 있을 것 같다고 추측을 해봅니다.
 이때, 축의 이름, 제목, 그리고 데이터가 모두 한글로 잘 출력됨을 알 수 있습니다.
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-00.eps}
+\end{center}
+\end{figure}
 
 현재 이 문서에서 보여지는 플랏은 퍼블리케이션 퀄리티를 얻기 위해서 포스트스크립트(eps)형식으로 생성되었기 때문에 웹페이지에 사용되는 png 파일이 아니므로 좋은 퀄리티를 보여주지 못합니다. 
 따라서, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-00.eps}{http://korea.gnu.org/gnustats/img/plot-00.eps}를 눌러주세요. 
@@ -54,7 +59,12 @@ with(예제1, plot(x=광고선전비, y=매출액, type="n", xlab="", ylab="", a
 이는 아래와 같이 아무것도 보이지 않는 상태입니다. 
 현재 여러분이 아무것도 보이지 않는 것이 정상입니다. 
 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-01.eps}{http://korea.gnu.org/gnustats/img/plot-01.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-01.eps}
+\end{center}
+\end{figure}
  
  
 그런다음에 격자를 집어넣습니다. 
@@ -64,7 +74,12 @@ grid()
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-02.eps}{http://korea.gnu.org/gnustats/img/plot-02.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-02.eps}
+\end{center}
+\end{figure}
 
 
 해당 포인트들을 뿌려줍니다.
@@ -74,7 +89,12 @@ with(예제1, points(x=광고선전비, y=매출액))
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-03.eps}{http://korea.gnu.org/gnustats/img/plot-03.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-03.eps}
+\end{center}
+\end{figure}
 
 x 축을 그려줍니다. 
 \begin{Schunk}
@@ -83,7 +103,12 @@ axis(1)
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-04.eps}{http://korea.gnu.org/gnustats/img/plot-04.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-04.eps}
+\end{center}
+\end{figure}
 
 동일한 방식으로 y축을 그려넣고, x축과 y축의 라벨을 위치시켜줍니다. 
 \begin{Schunk}
@@ -94,7 +119,12 @@ mtext("매출액 (백만원)", side=2, line=3, las=0)
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-05.eps}{http://korea.gnu.org/gnustats/img/plot-05.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-05.eps}
+\end{center}
+\end{figure}
 
 
 마지막으로 박스를 그려주고, 제목을 표시합니다. 
@@ -105,7 +135,12 @@ title(main="산점도")
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-06.eps}{http://korea.gnu.org/gnustats/img/plot-06.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-06.eps}
+\end{center}
+\end{figure}
 
 각 점마다 이름을 붙여줍니다.
 \begin{Schunk}
@@ -114,7 +149,12 @@ with(예제1, text(x=광고선전비, y=매출액, labels=여행사, pos=4))
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-07.eps}{http://korea.gnu.org/gnustats/img/plot-07.eps}를 눌러주세요. 
+
+\begin{figure}
+\begin{center}
 \includegraphics{img/plot-07.eps}
+\end{center}
+\end{figure}
 
 적합된 선분을 추가해 줍니다. 
 \begin{Schunk}
@@ -123,8 +163,12 @@ abline(lm(매출액 ~ 광고선전비, data=예제1))
 \end{Soutput}
 \end{Schunk}
 생성된 그래픽은 아래와 같으며, 원래 화질의 그래픽을 확인하고 싶으시다면 \href{http://korea.gnu.org/gnustats/img/plot-08.eps}{http://korea.gnu.org/gnustats/img/plot-09.eps}를 눌러주세요. 
-\includegraphics{img/plot-08.eps}
 
+\begin{figure}
+\begin{center}
+\includegraphics{img/plot-08.eps}
+\end{center}
+\end{figure}
 
 \begin{Schunk}
 \begin{Soutput}

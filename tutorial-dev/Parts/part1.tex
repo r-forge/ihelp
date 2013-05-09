@@ -1694,8 +1694,6 @@ plus <- function(x1, x2){
 % + return(y)
 % + }
 
-\end{Soutput}
-\end{Schunk}
 
 이제 R 콘솔에서 내가 만든 plus()라는 함수를 사용해 봅니다. 
 
@@ -4248,6 +4246,16 @@ fill <- function(x, first, last){
 \end{Schunk}
 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% CHAPTER: INPUT AND OUTPUT 으로 변경이 가능한 섹션임 
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{데이터 파일 입출력}
 
 데이터 입력과 출력은 R을 이용한 분석에서의 첫번째 단계와 마지막 단계라고도 할 수 있습니다. 
@@ -4302,50 +4310,18 @@ age <- scan()
 
 \subsection{출력}
 
-
-% R에서 편집한 데이터를 엑셀로 내보내는 방법[새로운 변수를 생성해서 기존 데이터에 더하려고 하는데
-% (csv로 R에서 불러서 편집한 자료)]
-% 
 \paragraph{저장하기}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 \subparagraph{.RData}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 \subparagraph{.CSV}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
 \subparagraph{.HTML}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
-\subparagraph{.XML}
 \begin{Schunk}
 \begin{Soutput}
 write(t(mydata), file="./where/should/be/saved", ncolumns)
 \end{Soutput}
 \end{Schunk}
 
-\subsection{메타데이터 처리}
-\paragraph{원 데이터 소스에 데이터 구조 대한 이해와 데이터 엔트리: }
-
 \paragraph{데이터셋 또는 변수에 주석첨가하기}
-\begin{Schunk}
-\begin{Soutput}
-output
-\end{Soutput}
-\end{Schunk}
+
 
 
 
@@ -4353,15 +4329,283 @@ output
 
 \chapter{환경설정 및 유틸리티}
 
-이번 챕터의 내용을 알아두면 R을 사용하는데 도움이 되는 유틸리티에 대해서 알아보는 것입니다.
+이번 챕터에서는 R을 사용하는데 있어 알아두면 도움이 되는 유틸리티에 대해서 알아봅니다.
 
-\section{R 프로그램 실행하기}
 
-\paragraph{쉘 프로그램으로 실행하기}
+\section{스크립트 작성과 실행}
 
-\paragraph{source()}
+R에서 콘솔로 작업을 하는데 프로그램의 크기가 늘어난다면 프로그램의 작성에 매우 어려움을 느끼게 될 것입니다.
+따라서, R에서 제공하는 스크립트 에디터가 아닌 외부 텍스트에디터를 이용하여 스크립트를 작성 뒤 실행하면 좋을 것입니다.
 
-\paragraph{R CMD BATCH}
+\paragraph{초기 메시지 없이 R 실행하기}
+먼저 아래와 같이 R을 실행시킵니다. 
+\texttt{--quiet}라는 옵션을 주게 되면 처음에 출력되는 시작 메시지를 표시하지 않습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop$ R --quiet
+> 
+\end{Soutput}
+\end{Schunk}
+% $
+
+\paragraph{현재 위치 확인하기:}
+일단은 내가 현재 어디에 있는지 알아야 할 것입니다.
+\begin{Schunk}
+\begin{Soutput}
+> getwd()
+[1] "/home/gnustats/Desktop"
+> 
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{작업디렉토리 만들기:}
+현재 나의 바탕화면에서 재밌는 것들이 많이 놓여 있기 때문에 작업에 혼돈을 주지 않기 위해 \texttt{testR}이라는 작업디렉토리를 생성할 것입니다. 
+\begin{Schunk}
+\begin{Soutput}
+> dir.create("testR")
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{작업디렉토리 지정하기}
+그리고 난 다음에 실제로 작업을 위해서 작업디렉토리로 들어갑니다. 
+그리고 나서 제대로 들어왔는지 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> setwd("testR")
+> getwd()
+[1] "/home/gnustats/Desktop/testR"
+>
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{작업디렉토리 내 파일확인하기:}
+방금 막 만들어 놓은 작업디렉토리이기 때문에 아무 파일도 존재하지 않습니다. 
+이를 list.files()라는 함수를 이용하여 확인합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> list.files()
+character(0)
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{스크립트 생성하기}
+이제 스크립트를 작성합니다. 
+\begin{Schunk}
+\begin{Soutput}
+> file.create("myRcode.R")
+[1] TRUE
+> list.files()
+[1] "myRcode.R"
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{스크립트 확인하기}
+이렇게 myRcode.R 이라는 파일만 생성을 했지 프로그램에는 아무런 내용이 없을 것입니다. 
+이를 확인하기 위해서는 file.show() 함수를 사용합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> file.show("myRcode.R")
+>
+\end{Soutput}
+\end{Schunk}
+
+아무런 내용이 없으므로 아무것도 없이 END 라는 메시지만 보일 것입니다.
+
+\paragraph{에디터 설정하기: }
+그런데, 내가 파일을 무슨 에디터를 이용하여 작성하는지를 모릅니다. 
+그래서 확인해 보도록 하겠습니다.
+
+\begin{Schunk}
+\begin{Soutput}
+> options()$editor
+[1] "vi"
+\end{Soutput}
+\end{Schunk}
+% $
+그런데 나는 vi 라는 에디터를 싫어합니다.  
+그 이유는 나는 emacs 또는 nano 를 사용하기 때문입니다.
+그래픽 에디터로는 geany 또는 gedit 을 사용합니다. 
+그래서 바꾸고 싶습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> options(editor="nano")
+> options()$editor
+[1] "nano"
+> 
+\end{Soutput}
+\end{Schunk}
+% $ 
+
+이렇게 바뀜을 확인할 수 있었습니다.
+
+\paragraph{파일 편집 후 콘솔 내에서 실행하기}
+그래서 이제 아까 생성한 myRcode.R을 편집하도록 하겠습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> file.edit("myRcode.R")
+\end{Soutput}
+\end{Schunk}
+
+이렇게 했더니 커서가 깜빡이면서 nano가 열리면서 스크립트를 작성할 준비가 되었습니다.
+그래서 아래와 같이 입력하고 저장하고 파일에디터를 닫았습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+print("Hello R!  This is my first R program")
+\end{Soutput}
+\end{Schunk}
+
+이제 저정한 스크립트를 실행하기 위해서 아래와 같이 source() 함수를 사용합니다.
+
+\begin{Schunk}
+\begin{Soutput}
+> source("myRcode.R")
+[1] "Hello R!  This is my first R program"
+> 
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{파일 복사하기:}
+이제 이 스크립트를 보관하기 위해서 복사를 해 두겠습니다.
+
+\begin{Schunk}
+\begin{Soutput}
+> list.files()
+[1] "myRcode.R"
+> file.copy("myRcode.R", "myRcode.copied.R")
+[1] TRUE
+> list.files()
+[1] "myRcode.copied.R" "myRcode.R"       
+> 
+\end{Soutput}
+\end{Schunk}
+
+아하! 잘 복사가 되었음을 확인하였습니다.
+
+\paragraph{파일 삭제하기:}
+그런데, 생각해 보니 이 파일을 대체 왜 복사했는지 모르겠습니다. 
+그래서 지워보고 싶습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> file.remove("myRcode.copied.R")
+[1] TRUE
+> list.files()
+[1] "myRcode.R"
+> 
+\end{Soutput}
+\end{Schunk}
+
+이제 다시 파일을 아래와 같이 수정해 봅니다. 
+\begin{Schunk}
+\begin{Soutput}
+print("Hello R!  This is my first R program")
+print("안녕 난 R 이야!")
+x <- 3
+y <- 2
+cat(x, "+", y, "=", x+y, "\n")
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{스크립트를 터미널에서 실행하기: }
+
+먼저 R을 종료하고 testR이라는 작업디렉토리에 들어값니다.  
+\begin{Schunk}
+\begin{Soutput}
+> q()
+Save workspace image? [y/n/c]: n
+gnustats@CHL072:~/Desktop$ cd testR
+gnustats@CHL072:~/Desktop/testR$ ls
+myRcode.R
+\end{Soutput}
+\end{Schunk}
+
+myRcode.R 파일이 작업디렉토리에 있는 것을 확인한 뒤에, 아래와 같이 명령어를 입력합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ R CMD BATCH --quiet myRcode.R
+gnustats@CHL072:~/Desktop/testR$ ls
+myRcode.R  myRcode.Rout
+\end{Soutput}
+\end{Schunk}
+
+아하! 새로운 myRcode.Rout 이라는 파일이 새로이 생긴 것을 알 수 있으며 내용을 확인해 보니 아래와 같습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ cat myRcode.Rout
+> print("Hello R!  This is my first R program")
+[1] "Hello R!  This is my first R program"
+> print("안녕 난 R 이야!")
+[1] "안녕 난 R 이야!"
+> x <- 3
+> y <- 2
+> cat(x, "+", y, "=", x+y, "\n")
+3 + 2 = 5 
+> 
+> proc.time()
+   user  system elapsed 
+  0.208   0.016   0.206 
+gnustats@CHL072:~/Desktop/testR$ 
+\end{Soutput}
+\end{Schunk}
+% $ 
+
+프로그램의 결과가 프로그램이 수행된 시간과 함께 myRcode.Rout 이라는 파일에 저장되었음을 알 수 있습니다. 
+\texttt{--slave}라는 옵션을 아래와 같이 주게 사용한다면 저장되는 결과물은 아래와 같습니다. 
+  
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ R CMD BATCH --quiet --slave myRcode.R
+gnustats@CHL072:~/Desktop/testR$ cat myRcode.Rout
+[1] "Hello R!  This is my first R program"
+[1] "안녕 난 R 이야!"
+3 + 2 = 5 
+> proc.time()
+   user  system elapsed 
+  0.224   0.012   0.224 
+gnustats@CHL072:~/Desktop/testR$ 
+\end{Soutput}
+\end{Schunk}
+% $
+
+\subparagraph{쉘 프로그램으로 실행하기:}
+
+쉘프로그램을 작성하시는 분들은 다음과 같이 R 스크립트를 작성하고 수행할 수 있습니다. 
+myRcode.R 프로그램을 아래와 같이 변경합니다.
+
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ cat myRcode.R
+#!/usr/bin/Rscript --vanilla
+
+print("Hello R!  This is my first R program")
+print("안녕 난 R 이야!")
+x <- 3
+y <- 2
+cat(x, "+", y, "=", x+y, "\n")
+gnustats@CHL072:~/Desktop/testR$ 
+\end{Soutput}
+\end{Schunk}
+
+이제 쉘 프로그램과 같이 실행할 수 있습니다. 
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ chmod u+x myRcode.R
+gnustats@CHL072:~/Desktop/testR$ ./myRcode.R
+[1] "Hello R!  This is my first R program"
+[1] "안녕 난 R 이야!"
+3 + 2 = 5 
+\end{Soutput}
+\end{Schunk}
+
 
 \section{객체관리}
 
