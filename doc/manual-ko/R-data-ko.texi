@@ -507,22 +507,26 @@ text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 
 
 확장형 마크업 언어(좀 더 일반적으로는 @acronym{XML}로 알려져 있는 eXtensible Markup Language)는 표준 형태의 데이터 세트뿐 아니라 좀 더 복잡한 형태의 데이터 구조까지도 표현이 가능합니다. @acronym{XML}은 점점 더 엄청난 인기를 얻고 있으며, 모든 형태의 데이터 마크업과 그 교환에 대한 하나의 기준이 되어가고 있습니다. XML은 서로 다른 커뮤니티들에서 지도, 그래픽, 수학식 등의 지리학적 데이터를 묘사하는데 사용되고 있습니다.
 
-XML provides a way to specify the file's encoding, e.g.@:
+@c XML provides a way to specify the file's encoding, e.g.@:
+
+@acronym{XML}은 비록 요구되지 않더라도 다음과 같이 파일의 인코딩을 특정하는 방법을 제공하고 있습니다.
 
 @example
 <?xml version="1.0" encoding="UTF-8"?>
 @end example
 
-@noindent
-although it does not require it.
+@c @noindent
+@c although it does not require it.
 
-The @CRANpkg{XML} package provides general facilities for reading and
-writing @acronym{XML} documents within @R{}.  A description of the
-facilities of the @CRANpkg{XML} package is outside the scope of this
-document: see the package's Web page at
-@uref{http://www.omegahat.org/RSXML} for details and examples.  Package
-@CRANpkg{StatDataML} on @acronym{CRAN} is one example building on
-@CRANpkg{XML}.
+@c The @CRANpkg{XML} package provides general facilities for reading and
+@c writing @acronym{XML} documents within @R{}.  A description of the
+@c facilities of the @CRANpkg{XML} package is outside the scope of this
+@c document: see the package's Web page at
+@c @uref{http://www.omegahat.org/RSXML} for details and examples.  Package
+@c @CRANpkg{StatDataML} on @acronym{CRAN} is one example building on
+@c @CRANpkg{XML}.
+
+패키지  @CRANpkg{XML}은 R에서 @acronym{XML} 문서를 읽고 쓸 수 있도록 다양한 기능을 제공합니다. 팩키지  @CRANpkg{XML}의 기능에 대한 설명서는 이 문서의 범위를 벗어나므로 세부적 사항들과 예제에 대하여는 웹페이지(@uref{http://www.omegahat.org/RSXML})를 참고하기 바랍니다. @acronym{CRAN}에서 패키지 @CRANpkg{StatDataML}은  @CRANpkg{XML}에서 구축된 하나의 사례입니다.
 
 NB: @CRANpkg{XML} is available as a binary package for Windows, normally
 from the `CRAN extras' repository (which is selected by default on
