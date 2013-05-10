@@ -402,20 +402,27 @@ Greenmantle     2.5     650     16.083
 @item @strong{Missing values}
 @cindex Missing values
 
-By default missing values are output as @code{NA}, but this may be
-changed by argument @code{na}.  Note that @code{NaN}s are treated as
-@code{NA} by @code{write.table}, but not by @code{cat} nor @code{write}.
+@c By default missing values are output as @code{NA}, but this may be
+@c changed by argument @code{na}.  Note that @code{NaN}s are treated as
+@c @code{NA} by @code{write.table}, but not by @code{cat} nor @code{write}.
+
+디폴트로 결측값들을 NA로 출력(output)되게 지정한다고 해도, 이것은 인수 na에 의해 달라질 수 있습니다. NaN는 write.table에서는 NA와 똑같이 취급되지만, cat이나 write에서는 그렇지 않다는 점을 주의해야 합니다.
 
 @item @strong{Quoting strings}
 @cindex Quoting strings
 
-By default strings are quoted (including the row and column names).
-Argument @code{quote} controls if  character and factor variables are
-quoted: some programs, for example @pkg{Mondrian}, do not accept quoted
-strings (which are the default).
+@c By default strings are quoted (including the row and column names).
+@c Argument @code{quote} controls if  character and factor variables are
+@c quoted: some programs, for example @pkg{Mondrian}, do not accept quoted
+@c strings (which are the default).
 
-Some care is needed if the strings contain embedded quotes.  Three
-useful forms are
+문자열(string, 그것이 행 이름이던 열 이름이던)은 기본값으로 인용(quote)됩니다. 문자(character)와 요인(factor) 변수들이 인용된다면 인자 @code{quote}가 제어합니다. 예를 들어 @pkg{Mondrian} 같은 어떤 프로그램들은 인용된 문자열을 받아들이지 않고 기본값을 적용합니다.
+
+@c Some care is needed if the strings contain embedded quotes.  Three
+@c useful forms are
+
+만약에 문자열(strings)이 임베디드 인용문(embedded quotes)을 포함하고 있다면 특별히 더 조심해야 합니다. 유용한 세 가지 형태는 다음과 같습니다.
+
 
 @example
 > df <- data.frame(a = I("a \" quote"))
@@ -430,8 +437,10 @@ a
 1,a " quote
 @end example
 
-@noindent
-The second is the form of escape commonly used by spreadsheets.
+@c @noindent
+@c The second is the form of escape commonly used by spreadsheets.
+
+두번째 방법은 명령을 중단(escape)하기 위한 형태인데 주로 스프레드 시트 형태 에서 많이 사용됩니다.
 
 @item @strong{Encodings}
 @cindex Encodings
@@ -477,22 +486,26 @@ currently support for export to @code{SAS}, @code{SPSS} and @code{Stata}.
 @section XML
 @cindex XML
 
-When reading data from text files, it is the responsibility of the user
-to know and to specify the conventions used to create that file,
-e.g. the comment character, whether a header line is present, the value
-separator, the representation for missing values (and so on) described
-in @ref{Export to text files}.  A markup language which can be used to
-describe not only content but also the structure of the content can
-make a file self-describing, so that one need not provide these details
-to the software reading the data.
+@c When reading data from text files, it is the responsibility of the user
+@c to know and to specify the conventions used to create that file,
+@c e.g. the comment character, whether a header line is present, the value
+@c separator, the representation for missing values (and so on) described
+@c in @ref{Export to text files}.  A markup language which can be used to
+@c describe not only content but also the structure of the content can
+@c make a file self-describing, so that one need not provide these details
+@c to the software reading the data.
 
-The eXtensible Markup Language -- more commonly known simply as
-@acronym{XML} -- can be used to provide such structure, not only for
-standard datasets but also more complex data structures.
-@acronym{XML} is becoming extremely popular and is emerging as a
-standard for general data markup and exchange.  It is being used by
-different communities to describe geographical data such as maps,
-graphical displays, mathematics and so on.
+text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(converntion)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 @ref{Export to text files}에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
+
+@c The eXtensible Markup Language -- more commonly known simply as
+@c @acronym{XML} -- can be used to provide such structure, not only for
+@c standard datasets but also more complex data structures.
+@c @acronym{XML} is becoming extremely popular and is emerging as a
+@c standard for general data markup and exchange.  It is being used by
+@c different communities to describe geographical data such as maps,
+@c graphical displays, mathematics and so on.
+
+확장형 마크업 언어(좀 더 일반적으로는 @acronym{XML}로 알려져 있는 eXtensible Markup Language)는 표준 형태의 데이터 세트뿐 아니라 좀 더 복잡한 형태의 데이터 구조까지도 표현이 가능합니다. @acronym{XML}은 점점 더 엄청난 인기를 얻고 있으며, 모든 형태의 데이터 마크업과 그 교환에 대한 하나의 기준이 되어가고 있습니다. XML은 서로 다른 커뮤니티들에서 지도, 그래픽, 수학식 등의 지리학적 데이터를 묘사하는데 사용되고 있습니다.
 
 XML provides a way to specify the file's encoding, e.g.@:
 
