@@ -4355,7 +4355,7 @@ write(t(mydata), file="./where/should/be/saved", ncolumns)
 이번 챕터에서는 R을 사용하는데 있어 알아두면 도움이 되는 유틸리티에 대해서 알아봅니다.
 
 
-\section{스크립트 작성과 실행}
+\section{파일과 스크립트 관리}
 
 R에서 콘솔로 작업을 하는데 프로그램의 크기가 늘어난다면 프로그램의 작성에 매우 어려움을 느끼게 될 것입니다.
 따라서, R에서 제공하는 스크립트 에디터가 아닌 외부 텍스트에디터를 이용하여 스크립트를 작성 뒤 실행하면 좋을 것입니다.
@@ -4629,12 +4629,146 @@ gnustats@CHL072:~/Desktop/testR$ ./myRcode.R
 \end{Soutput}
 \end{Schunk}
 
+\paragraph{디렉토리 변경:}
+이제 다른 작업을 해야하므로 기존 작업과 혼돈하지 않기 위해서 또하나의 디렉토리를 생성해 봅니다. 
+그렇고 보니, 이런식으로 작업을 하게 된다면 디렉토리를 이동하는것이 중요할 것입니다. 
+그러나 이것은 위에서 언급한 setwd()이면 충분합니다. 
+아래의 예제를 살펴보세요.
+
+\begin{Schunk}
+\begin{Soutput}
+> # 현재 디렉토리 확인 
+> getwd()
+[1] "/home/gnustats/Desktop/testR"
+> 
+> # tmp 디렉토리 생성 
+> dir.create("tmp")
+>
+> # tmp 디렉토리로 이동 
+> setwd("tmp")
+> 
+> # 현재 디렉토리 다시 확인 
+> getwd()
+[1] "/home/gnustats/Desktop/testR/tmp"
+> 
+> # 다시 상위 디렉토리 testR로 이동 
+> setwd("..")
+>
+> # 현재 디렉토리 다시 확인 
+> getwd()
+[1] "/home/gnustats/Desktop/testR"
+\end{Soutput}
+\end{Schunk}
+
 
 \section{객체관리}
 
-\paragraph{객체확인: }  현재 세션내에 있는 모든 객체의 목록을 확인해 보고 싶을때는 ls()함수를 이용해보세요.
+\paragraph{객체확인: } R에서 생성되고 다루어지는 그 모든 것들을 객체라고 합니다. 
+객체라는 개념을 보다 정확하게 이해하기 위해서는 클래스라는 개념을 알아야 하는데, 본 파트에서는 R의 사용에 익숙해지는 것이 주목적이므로 다루지 않습니다.
+그러나, 객체지향적 프로그래밍을 위한 클래스와 객체, 그리고 메소드라는 개념에 대해서는 ``패키지 작성''이라는 챕터에서 다루도록 하겠습니다. 
 
-\paragraph{객체삭제:} 현재 세션내에 사용되는 객체들중 선택된 객체를 삭제하고자 할때는 rm() 함수를 이용합니다.
+현재 세션내에서 사용되고 있는 모든 객체들의 목록을 확인해 보고 싶을 때는 ls()함수를 이용합니다. 
+R을 시작하면 어떠한 작업도 하지 않았기 때문에 생성된 객체가 없을 것입니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+gnustats@CHL072:~/Desktop/testR$ R --quiet
+> ls()
+character(0)
+\end{Soutput}
+\end{Schunk}
+% $ 
+따라서, ls() 함수를 입력했을 때 아무것도 보여줄 것이 없다는 의미의 character(0) 이라는 것이 메시지가 나옵니다.
+이러한 표현은 ls()의 결과값이 문자형이기 때문입니다.
+(ls는 list의 약어입니다).
+
+이번에는 이전에 작성한 myRcode.R 프로그램을 수행해봅니다.
+그리고 나서 어떤 객체가 있는지 살펴봅니다.
+\begin{Schunk}
+\begin{Soutput}
+> source("myRcode.R")
+[1] "Hello R!  This is my first R program"
+[1] "안녕 난 R 이야!"
+3 + 2 = 5 
+> ls()
+[1] "x" "y"
+\end{Soutput}
+\end{Schunk}
+
+아하! 이전 프로그램에서 x와 y라는 변수를 생성하여 값을 대입했었기 때문에 객체가 존재합니다. 
+따라서 "x"와 "y"라는 객체가 나열됨을 확인할 수 있습니다.
+이번에는 z 라는 객체를 생성해 봅니다.
+그리고 다시 어떤 객체들이 존재하는지 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> z <- 8
+> ls()
+[1] "x" "y" "z"
+\end{Soutput}
+\end{Schunk}
+
+한개의 객체를 더 생성해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> a <- "너도 R이니?  나도 R이야"
+> ls()
+[1] "a" "x" "y" "z"
+> 
+\end{Soutput}
+\end{Schunk}
+
+\paragraph{객체삭제:} 만약, 작업을 하면서 너무 많은 양의 객체들로 인하여 R의 메모리 사용에 영향이 생길때 객체를 삭제하고 싶을 경우가 있습니다. 
+이럴때는 rm()이라는 함수를 사용합니다.  
+(rm 은 remove의 약자입니다).
+
+\begin{Schunk}
+\begin{Soutput}
+> # 현재 세션의 객체들을 확인합니다. 
+> ls()
+[1] "a" "x" "y" "z"
+>
+> # 객체 x를 삭제해봅니다 
+> rm("x")
+> ls()
+[1] "a" "y" "z"
+> 
+> # 객체 x를 삭제한 뒤에 다시 x를 사용하고자 하면 어떻게 될까요?
+> x
+Error: object 'x' not found
+> 
+\end{Soutput}
+\end{Schunk}
+
+객체를 확인할때는 ls()를 사용하지만 "객체"라는 말 그대로 objects()라는 함수도 동일한 역할을 수행합니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+	
+> # 현재 세션의 객체들 확인하기 
+> objects()
+[1] "a" "y" "z"
+>
+> # 이번엔 "y"와 "z"를 한 번에 삭제하기 
+> rm(list=c("y", "z"))
+> objects()
+[1] "a"
+> 
+\end{Soutput}
+\end{Schunk}
+
+현 세션내의 작업공간 (workspace)의 모든 객체들을 삭제하기 위해서는 아래와 같이 할 수 있습니다. 
+
+\begin{Schunk}
+\begin{Soutput}
+> rm(list=ls())
+> objects()
+character(0)
+> 
+\end{Soutput}
+\end{Schunk}
+
 
 \paragraph{데이터 확인:}
 
@@ -4642,25 +4776,15 @@ gnustats@CHL072:~/Desktop/testR$ ./myRcode.R
 
 \paragraph{데이터 입력:}
 
-\paragraph{작업디렉토리 확인}
-\paragraph{작업디렉토리 변경:}
 \paragraph{작업공간 저장하기:}
+
 \paragraph{작업공간 불러오기:}
+
 \paragraph{작업내역 불러오기:}
+
 \paragraph{작업내역 저장하기:}
 
 
-\section{파일관리}
- 
-\paragraph{작업디렉토리의 파일목록보기 } 
-\paragraph{새로운 파일열기}
-\paragraph{파일열어 내용보기}
-\paragraph{절대경로와 상대경로}
-\paragraph{홈 디렉토리 찾기}
-\paragraph{환경변수 찾아 확인하기}
-\paragraph{인코딩확인}
-\paragraph{}
-\paragraph{}
 
 \section{환경설정 및 관리}
 
@@ -4669,17 +4793,15 @@ gnustats@CHL072:~/Desktop/testR$ ./myRcode.R
 \paragraph{chooseCRANmirror()}
 \paragraph{options(repos="URL")}
 \paragraph{options(width=)}
-\paragraph{R --quite}
-\paragraph{source()}
-\paragraph{Rscript}
-\paragraph{R CMD BATCH}
-\paragraph{}
-\paragraph{}
+\paragraph{홈 디렉토리 찾기}
+\paragraph{환경변수 찾아 확인하기}
+\paragraph{인코딩확인}
 
 
 
 \subsection{패키지 관리}
 
+\paragraph{패키지를 설치후 불러오지 않았다}
 \paragraph{install.packages()}
 \paragraph{remove.packages()}
 \paragraph{update.packages()}
@@ -4690,16 +4812,10 @@ vignette(package="pkg_{name}")
 \paragraph{내장된 데이터셋에 접근하자} data(car93, package="MASS")
 \paragraph{library()}
 \paragraph{installed.packages()}
-\paragraph{}
-\paragraph{}
 \paragraph{함수의 사용예제를 알고 싶다면 } example()을 사용하세요. 
 \paragraph{함수에 어떤 인자가 반드시 들어가야 하는지 확인해야 한다면}  args()를 이용하세요.
 \paragraph{R에서 제공되는 도움말 문서를 확인하고자 한다면:} help.start()를 이용하세요.
 \paragraph{연산시에 R을 종료하지 않고 중단하고자 할때:}  Ctrl+C 를 눌러보세요.
 
-\section{흔한 실수들}
 \paragraph{함수명을 쓰고 괄호를 잊는다}
-
 \paragraph{윈도우에서 파일경로명 작성시 역슬래쉬를 사용하지 않았다}
-
-\paragraph{패키지를 설치후 불러오지 않았다}
