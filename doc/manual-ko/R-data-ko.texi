@@ -379,25 +379,25 @@ Greenmantle     2.5     650     16.083
 @findex write.csv
 @findex write.csv2
 
-A common field separator to use in the file is a comma, as that is
-unlikely to appear in any of the fields in English-speaking countries.
-Such files are known as CSV (comma separated values) files, and wrapper
-function @code{write.csv} provides appropriate defaults.  In some
-locales the comma is used as the decimal point (set this in
-@code{write.table} by @code{dec = ","}) and there CSV files use the
-semicolon as the field separator: use @code{write.csv2} for appropriate
-defaults.  There is an IETF standard for CSV files (which mandates
-commas and CRLF line endings, for which use @code{eol = "\r\n"}), RFC4180
-(see @uref{http://tools.ietf.org/html/rfc4180}), but what is more
-important in practice is that the file is readable by the application it
-is targeted at.
+@c A common field separator to use in the file is a comma, as that is
+@c unlikely to appear in any of the fields in English-speaking countries.
+@c Such files are known as CSV (comma separated values) files, and wrapper
+@c function @code{write.csv} provides appropriate defaults.  In some
+@c locales the comma is used as the decimal point (set this in
+@c @code{write.table} by @code{dec = ","}) and there CSV files use the
+@c semicolon as the field separator: use @code{write.csv2} for appropriate
+@c defaults.  There is an IETF standard for CSV files (which mandates
+@c commas and CRLF line endings, for which use @code{eol = "\r\n"}), RFC4180
+@c (see @uref{http://tools.ietf.org/html/rfc4180}), but what is more
+@c important in practice is that the file is readable by the application it
+@c is targeted at.
 
-가장 많이 사용되는 필드 구분자 중 하나는 쉼표(comma)이며, 그래서 영어를 사용하는 국가에서는 필드 안에서 입력된 값에서 쉼표를 발견하는 일이 그리 흔하지는 않습니다. 이러한 형태의 파일들을 CSV (comma separated values)라고 하며, wrapper 함수인 @code{write.csv}가 적당한 기본값을 제공합니다. 몇몇 지역에서는, 쉼표가 소수점(decimal point)으로 사용되고 있으므로(이 경우는 @code{write.table}에서 @{dec = ","}을 지정하는 것과 같습니다) CSV 파일 중에 세미콜론이 필드 구분자로 사용되는 것도 있습니다. 이 경우 적절한 기본값을 사용하기 위해 @code{write.csv2}을 사용해야 합니다. CSV에 대한 IETF 표준이 있습니다.
+가장 많이 사용되는 필드 구분자 중 하나는 쉼표(comma)이며, 그래서 영어를 사용하는 국가에서는 필드 안에서 입력된 값에서 쉼표를 발견하는 일이 그리 흔하지는 않습니다. 이러한 형태의 파일들을 CSV (comma separated values)라고 하며, wrapper 함수인 @code{write.csv}가 적당한 기본값을 제공합니다. 몇몇 지역에서는, 쉼표가 소수점(decimal point)으로 사용되고 있으므로(이 경우는 @code{write.table}에서 @{dec = ","}을 지정하는 것과 같습니다) CSV 파일 중에 세미콜론이 필드 구분자로 사용되는 것도 있습니다. 이 경우 적절한 기본값을 사용하기 위해 @code{write.csv2}을 사용해야 합니다. CSV에 대한 IETF 표준이 있습니다. IETF에서는 @code{eol = "\r\n"}), RFC4180 (see @uref{http://tools.ietf.org/html/rfc4180}) 를 사용하는 것에 대해콤마와 CRLF 라인 인코딩을 권장합니다. 그러나 실제에서 더욱 중요한 것은 목표로 하고 있는 어플리케이션에 의해 읽혀들여 질 수 있는가 입니다.
 
-따라서, 세미콜론을 사용하거나 탭(tap, sep = "＼t")을 사용하는 것이 가장 안정적인 선택이 될 수 있습니다.
+@c Using a semicolon or tab (@code{sep = "\t"}) are probably the safest
+@c options.
 
-Using a semicolon or tab (@code{sep = "\t"}) are probably the safest
-options.
+따라서, 세미콜론을 사용하거나 탭(@code{sep = "\t"})을 사용하는 것이 가장 안전한 선택이 될 수 있습니다.
 
 @item @strong{Missing values}
 @cindex Missing values
