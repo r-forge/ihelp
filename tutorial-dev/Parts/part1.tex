@@ -1695,19 +1695,28 @@ R을 이용하여 아래와 같이 할 수 있는데, 내가 원하는 것은 pl
 \end{Soutput}
 \end{Schunk}
 
-그렇다면 일반 텍스트 파일을 열고 아래와 같이 입력합니다. 
+그렇다면 콘솔상에서 아래와 같이 입력합니다. 
 
 \begin{Schunk}
 \begin{Soutput}
+> file.create("plus.R")
+> file.edit("plus.R")
+# 여기부터는 R이 아닌 R이 열어준 plus.R이라는 파일명을 가지는 외부 파일임.
+
 plus <- function(x1, x2){
 	y <- x1 + x2
 	return(y)
 }
+
+# 저장후 종료 하면 다시 R로 돌아감.
+> # 저장한 코드를 실행하기 위해서 아래와 같이 함.
+> source("plus.R")
+>
 \end{Soutput}
 \end{Schunk}
 
-이렇게 작성된 것을 R콘솔에 붙여 넣습니다.  
-(이렇게 외부에서 작성된 R 프로그램을 실행시키는 법을 조금뒤에 설명할 것입니다).
+% 이렇게 작성된 것을 R콘솔에 붙여 넣습니다.  
+% (이렇게 외부에서 작성된 R 프로그램을 실행시키는 법을 조금뒤에 설명할 것입니다).
 
 % 이미지가 없으면 오히려 혼란을 줄 수 있으므로 일단 주석처리함. 이 의견에 동의하지 않으면 맘대로 수정해도 됨
 % \begin{Schunk}
@@ -1716,6 +1725,9 @@ plus <- function(x1, x2){
 % + y <- x1 + x2
 % + return(y)
 % + }
+%
+%
+%
 
 
 이제 R 콘솔에서 내가 만든 plus()라는 함수를 사용해 봅니다. 
@@ -1808,34 +1820,50 @@ function (..., list = character(), pos = -1, envir = as.environment(pos),
 
 이렇게 소스를 볼 수 있는 기능은 추후에 전산통계를 배우고자 하는 학생 또는 소프트웨어 개발자들에게 매우 도움이 될 것입니다. 
 
-%참고사항
-%어떤 함수의 소스코드를 알아보고자 ggplot2, mean, sapply를 각각 입력했다고 한다면 각각의 메세지가 다르게 나타나는 것을 확인할 수 있습니다.
-% > ggplot2
-% 에러: 객체 'ggolot2'를 찾을 수 없습니다
+\subparagraph{참고사항}
+어떤 함수의 소스코드를 알아보고자 kk, mean, sapply를 각각 입력했다고 한다면 각각의 메세지가 다르게 나타나는 것을 확인할 수 있습니다.
+그러나, 실제로는 객체의 유형이 무엇인지 잘 알아야 합니다. 
+현재 kk 라는 것은 한 번도 사용한 적이 없는 객체의 이름이기 때문에 아래와 같이 나옵니다. 
 
-% > sapply
-% function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) 
-% {
-%    FUN <- match.fun(FUN)
-%    answer <- lapply(X = X, FUN = FUN, ...)
-%    if (USE.NAMES && is.character(X) && is.null(names(answer))) 
-%        names(answer) <- X
-%    if (!identical(simplify, FALSE) && length(answer)) 
-%        simplify2array(answer, higher = (simplify == "array"))
-%    else answer
-% }
-% <bytecode: 0x00000000147a3290>
-% <environment: namespace:base>
+\begin{Schunk}
+\begin{Soutput}
+> kk
+에러: 객체 'kk'를 찾을 수 없습니다
+\end{Soutput}
+\end{Schunk}
 
-% 이와 같은 메세지의 차이는 ggplot2 그리고 sapply가 서로 다른 속성을 가진 객체이기 때문입니다.
-% ggplot2는 팩키지(package)이고 sapply는 R base에 기본적으로 탑재된 함수(function)인 것입니다.
+그러나, sapply()와 같이 R에서 미리 제공하는 내장함수의 경우에는 이미 함수가 정의되어 있는 것이기 때문에 아래와 같이 나옵니다. 
 
+\begin{Schunk}
+\begin{Soutput}
+> sapply
+function (X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE) 
+{
+   FUN <- match.fun(FUN)
+   answer <- lapply(X = X, FUN = FUN, ...)
+   if (USE.NAMES && is.character(X) && is.null(names(answer))) 
+       names(answer) <- X
+   if (!identical(simplify, FALSE) && length(answer)) 
+       simplify2array(answer, higher = (simplify == "array"))
+   else answer
+}
+<bytecode: 0x00000000147a3290>
+<environment: namespace:base>
+\end{Soutput}
+\end{Schunk}
+
+이와 같은 메세지의 차이는 kk 그리고 sapply가 서로 다른 클래스라는 속성을 가진 객체이기 때문입니다.
+
+% \begin{Schunk}
+% \begin{Soutput}
 % > mean
 % function (x, ...) 
 % UseMethod("mean")
 % <bytecode: 0x0000000021e6edc8>
 % <environment: namespace:base>
-% mean은 왜 이리 간단하게 나오지? 너가 써줘... ㅋㅋㅋ
+% \end{Soutput}
+% \end{Schunk}
+
 
 본 섹션에서는 아주 단순한 예제를 이용하여 함수의 개념과 사용자 정의함수를 작성하는 방법을 설명했습니다.  
 이렇게 단위의 함수들이 모이고 모여서 어떤 하나의 큰 작업을 수행하도록 할 수 있습니다. 
