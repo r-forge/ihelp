@@ -1463,19 +1463,27 @@ S를 세가지의 현재 실행 언어 혹은 “engines”, “old S engine” 
 @node Lexical scoping, Models, What are the differences between R and S?, What are the differences between R and S?
 @subsection Lexical scoping
 
-Contrary to other implementations of the S language, R has adopted an
-evaluation model in which nested function definitions are lexically
-scoped.  This is analogous to the evaluation model in Scheme.
+@c Contrary to other implementations of the S language, R has adopted an
+@c evaluation model in which nested function definitions are lexically
+@c scoped.  This is analogous to the evaluation model in Scheme.
 
-This difference becomes manifest when @emph{free} variables occur in a
-function.  Free variables are those which are neither formal parameters
-(occurring in the argument list of the function) nor local variables
-(created by assigning to them in the body of the function).  In S, the
-values of free variables are determined by a set of global variables
-(similar to C, there is only local and global scope).  In R, they are
-determined by the environment in which the function was created.
+@c This difference becomes manifest when @emph{free} variables occur in a
+@c function.  Free variables are those which are neither formal parameters
+@c (occurring in the argument list of the function) nor local variables
+@c (created by assigning to them in the body of the function).  In S, the
+@c values of free variables are determined by a set of global variables
+@c (similar to C, there is only local and global scope).  In R, they are
+@c determined by the environment in which the function was created.
 
-Consider the following function:
+S언어의 다른 실행들과는 다르게, R은 nested 함수 정의들이 사전적으로 정의된 평가 모델을 채택 했습니다. 
+이는 Scheme의 평가 모델과 유사합니다. 
+이 차이점은 free variable들이 함수에서 발생할 때 분명해 집니다. 
+Free variable들은  전의 parameter (함수의 argument list에서 발생하는)들도 아닐 뿐더러 local variable (함수의 body에 이들을 배치함으로써 생겨나는)들도 아닙니다. 
+S에서, free variable들의 값들은 global variable 세트에 의하여 정해집니다 (C와 마찬가지로, 여기에도 local과 global scope만이 존재합니다) .
+R에서는 이들은 함수가 생성된 환경에 의하여 결정됩니다. 
+
+@c Consider the following function:
+다음의 함수를 보십시오:
 
 @example
 @group
@@ -1486,8 +1494,9 @@ cube <- function(n) @{
 @end group
 @end example
 
-Under S, @code{sq()} does not ``know'' about the variable @code{n}
-unless it is defined globally:
+@c Under S, @code{sq()} does not ``know'' about the variable @code{n}
+@c unless it is defined globally:
+S에서, sq()는 variable n이 global하게 정의되지 않은 이상 variable n을 알지 못합니다: 
 
 @example
 @group
@@ -1500,8 +1509,9 @@ S> cube(2)
 @end group
 @end example
 
-In R, the ``environment'' created when @code{cube()} was invoked is
-also looked in:
+@c In R, the ``environment'' created when @code{cube()} was invoked is
+@c also looked in:
+R에서는, “environment(환경)”은  cube()가 적용되었을 때 생성되며 아래에서도 찾을 수 있습니다: 
 
 @example
 @group
@@ -1546,15 +1556,19 @@ R> cube(2)
 @c his fellow students over the past couple of years, causing literally
 @c hours of confusion on each occasion.)
 
-As a more ``interesting'' real-world problem, suppose you want to write
-a function which returns the density function of the @math{r}-th order
-statistic from a sample of size @math{n} from a (continuous)
-distribution.  For simplicity, we shall use both the cdf and pdf of the
-distribution as explicit arguments.  (Example compiled from various
-postings by Luke Tierney.)
+@c As a more ``interesting'' real-world problem, suppose you want to write
+@c a function which returns the density function of the @math{r}-th order
+@c statistic from a sample of size @math{n} from a (continuous)
+@c distribution.  For simplicity, we shall use both the cdf and pdf of the
+@c distribution as explicit arguments.  (Example compiled from various
+@c postings by Luke Tierney.)
 
-The @SPLUS{} documentation for @code{call()} basically suggests the
-following:
+더욱 “흥미로운” 실전 문제로, (연속) 분포도에서의 sample size n에서 r번째 order statistic의 밀도 함수를 구하는 함수를 쓰고 싶다고 가정해 봅니다. 
+간단하게하기위해서는, cdf 와 pdf  두 가지 모두를 explicit argument로  써야 할 것입니다. ( 예시는 Luke Tierney의 여러가지 포스팅에서 수집 하였습니다)
+
+@c The @SPLUS{} documentation for @code{call()} basically suggests the
+@c following:
+call()을 위한S-Plus 문서는 기본적으로 다음을 제시합니다: 
 
 @example
 @group
@@ -1573,13 +1587,16 @@ dorder <- function(n, r, pfun, dfun) @{
 @end group
 @end example
 
-@noindent Rather tricky, isn't it?  The code uses the fact that in S,
-functions are just lists of special mode with the function body as the
-last argument, and hence does not work in R (one could make the idea
-work, though).
+@c @noindent Rather tricky, isn't it?  The code uses the fact that in S,
+@c functions are just lists of special mode with the function body as the
+@c last argument, and hence does not work in R (one could make the idea
+@c work, though).
 
-A version which makes heavy use of @code{substitute()} and seems to work
-under both S and R is
+헷갈리지 않습니까? 이 코드들은 S의 fact를 사용하고, 함수들은 마지막 argument같은 함수의 body와 special mode의 목록일 뿐이며, 그러므로 R에서는 작동하지 않습니다 (아이디어는 쓸 수 있을지도 모릅니다).
+
+@c A version which makes heavy use of @code{substitute()} and seems to work
+@c under both S and R is
+S와 R 두 개 모두에서 작동하는 것 처럼 보이는substitute()의 사용빈도가 높은 버전은
 
 @example
 @group
@@ -1592,10 +1609,13 @@ dorder <- function(n, r, pfun, dfun) @{
 @end group
 @end example
 
-@noindent
-(the @code{eval()} is not needed in S).
+@c @noindent
+@c (the @code{eval()} is not needed in S).
+(S 에서는 eval() 이 필요하지 않습니다). 
 
-However, in R there is a much easier solution:
+
+@c However, in R there is a much easier solution:
+하지만, R에는 더욱 쉬운 해결책이 있습니다:
 
 @example
 @group
@@ -1609,15 +1629,20 @@ dorder <- function(n, r, pfun, dfun) @{
 @end example
 
 @noindent
-This seems to be the ``natural'' implementation, and it works because
-the free variables in the returned function can be looked up in the
-defining environment (this is lexical scope).
+@c This seems to be the ``natural'' implementation, and it works because
+@c the free variables in the returned function can be looked up in the
+@c defining environment (this is lexical scope).
 
-Note that what you really need is the function @emph{closure}, i.e., the
-body along with all variable bindings needed for evaluating it.  Since
-in the above version, the free variables in the value function are not
-modified, you can actually use it in S as well if you abstract out the
-closure operation into a function @code{MC()} (for ``make closure''):
+이는 “자연스러운” 실행처럼 보이고, 지정된 환경에서 returned 함수의 free variable들을 찾을 수 있기 때문에 작동합니다 (이것이 lexical scope입니다). 
+
+@c Note that what you really need is the function @emph{closure}, i.e., the
+@c body along with all variable bindings needed for evaluating it.  Since
+@c in the above version, the free variables in the value function are not
+@c modified, you can actually use it in S as well if you abstract out the
+@c closure operation into a function @code{MC()} (for ``make closure''):
+
+함수 closure이 당신이 진정으로 필요한 것이라는 것을 유의하십시오.  즉, 이를 평가하기위한 모든 variable binding들이 있는 body. 위의 버전에서는 value 함수안의 free variable들이 변경되지 않았기 때문에, 이를 S에서 쓸 수 있을 뿐만 아니라, 만약 closure operation에서 mc() 함수로 요약한다면: 
+
 
 @example
 @group
@@ -1631,12 +1656,15 @@ dorder <- function(n, r, pfun, dfun) @{
 @end group
 @end example
 
-Given the appropriate definitions of the closure operator, this works in
-both R and S, and is much ``cleaner'' than a substitute/eval solution
-(or one which overrules the default scoping rules by using explicit
-access to evaluation frames, as is of course possible in both R and S).
+@c Given the appropriate definitions of the closure operator, this works in
+@c both R and S, and is much ``cleaner'' than a substitute/eval solution
+@c (or one which overrules the default scoping rules by using explicit
+@c access to evaluation frames, as is of course possible in both R and S).
 
-For R, @code{MC()} simply is
+적합한 closure operator의 정의에 의하면, 이는 R과 S 모두에서 작동하고, substitute/eval 보다 “깨끗한” 해결책입니다 (혹은 R과 S에서 확실히 가능한, evaluation frame에 explicit access를 사용하여 기본 scoping rule들을 무효화 시키는 것). 
+
+@c For R, @code{MC()} simply is
+R 에서, 간단하게 MC()는
 
 @example
 MC <- function(f, env) f
@@ -1665,56 +1693,67 @@ MC <- function(f, env = NULL) @{
 @end group
 @end example
 
-Similarly, most optimization (or zero-finding) routines need some
-arguments to be optimized over and have other parameters that depend on
-the data but are fixed with respect to optimization.  With R scoping
-rules, this is a trivial problem; simply make up the function with the
-required definitions in the same environment and scoping takes care of
-it.  With S, one solution is to add an extra parameter to the function
-and to the optimizer to pass in these extras, which however can only
-work if the optimizer supports this.
+@c Similarly, most optimization (or zero-finding) routines need some
+@c arguments to be optimized over and have other parameters that depend on
+@c the data but are fixed with respect to optimization.  With R scoping
+@c rules, this is a trivial problem; simply make up the function with the
+@c required definitions in the same environment and scoping takes care of
+@c it.  With S, one solution is to add an extra parameter to the function
+@c and to the optimizer to pass in these extras, which however can only
+@c work if the optimizer supports this.
 
-Nested lexically scoped functions allow using function closures and
-maintaining local state.  A simple example (taken from Abelson and
-Sussman) is obtained by typing @kbd{demo("scoping")} at the R prompt.
-Further information is provided in the standard R reference ``R: A
-Language for Data Analysis and Graphics'' (@pxref{What documentation
-exists for R?}) and in Robert Gentleman and Ross Ihaka (2000), ``Lexical
-Scope and Statistical Computing'',
-@url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of
-Computational and Graphical Statistics}}, @strong{9}, 491--508.
+마찬가지로, 대부분이 optimization(혹은 zero-finding) routine들은 optimize되고 데이타에는 의존하지만, optimization에 관해서는 고정된 다른 parameter들을 가진 argument들이 필요합니다. R scoping 룰들로, 이는 대수롭지 않은 문제입니다; 간단하게 같은 환경에서 필요한 정의들로 함수를 만들면 scoping이 알아서 처리를 합니다. S로는, 한가지 방법으로, 함수와 extra parameter들을 전달하기위한 optimizer에 하나의 extra parameter를 더하는 것인데, 이는 optimizer가 이를 지원할 때만 작동합니다.
 
-Nested lexically scoped functions also imply a further major difference.
-Whereas S stores all objects as separate files in a directory somewhere
-(usually @file{.Data} under the current directory), R does not.  All
-objects in R are stored internally.  When R is started up it grabs a
-piece of memory and uses it to store the objects.  R performs its own
-memory management of this piece of memory, growing and shrinking its
-size as needed.  Having everything in memory is necessary because it is
-not really possible to externally maintain all relevant ``environments''
-of symbol/value pairs.  This difference also seems to make R
-@emph{faster} than S.
+@c Nested lexically scoped functions allow using function closures and
+@c maintaining local state.  A simple example (taken from Abelson and
+@c Sussman) is obtained by typing @kbd{demo("scoping")} at the R prompt.
+@c Further information is provided in the standard R reference ``R: A
+@c Language for Data Analysis and Graphics'' (@pxref{What documentation
+@c exists for R?}) and in Robert Gentleman and Ross Ihaka (2000), ``Lexical
+@c Scope and Statistical Computing'',
+@c @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of
+@c Computational and Graphical Statistics}}, @strong{9}, 491--508.
 
-The down side is that if R crashes you will lose all the work for the
-current session.  Saving and restoring the memory ``images'' (the
-functions and data stored in R's internal memory at any time) can be a
-bit slow, especially if they are big.  In S this does not happen,
-because everything is saved in disk files and if you crash nothing is
-likely to happen to them.  (In fact, one might conjecture that the S
-developers felt that the price of changing their approach to persistent
-storage just to accommodate lexical scope was far too expensive.)
-Hence, when doing important work, you might consider saving often (see
-@ref{How can I save my workspace?}) to safeguard against possible
-crashes.  Other possibilities are logging your sessions, or have your R
-commands stored in text files which can be read in using
-@code{source()}.
+Nested lexically scoped 함수들은 function closure들의 사용과 local state을 유지하는 것을 허용합니다. 간단한 예로 (Abelson and Sussman에서 인용) R prompt에서 demo(“scoping”)를 입력 함으로써 얻어지는 것입니다. 더 자세한 정보는 기본 R reference의 “R: A Language for Data Analysis and Graphics” (What documentation exists for R을 참고하십시오)와 Robert Gentleman and Ross Ihaka (2000)의 “Lexical Scope and Statistical Computing”,   Journal of Computational and Graphical Statistics, 9, 491–508 를 참고하십시오. 
 
-@quotation Note
-If you run R from within Emacs (see @ref{R and Emacs}), you can save the
-contents of the interaction buffer to a file and conveniently manipulate
-it using @code{ess-transcript-mode}, as well as save source copies of
-all functions and data used.
-@end quotation
+
+@c Nested lexically scoped functions also imply a further major difference.
+@c Whereas S stores all objects as separate files in a directory somewhere
+@c (usually @file{.Data} under the current directory), R does not.  All
+@c objects in R are stored internally.  When R is started up it grabs a
+@c piece of memory and uses it to store the objects.  R performs its own
+@c memory management of this piece of memory, growing and shrinking its
+@c size as needed.  Having everything in memory is necessary because it is
+@c not really possible to externally maintain all relevant ``environments''
+@c of symbol/value pairs.  This difference also seems to make R
+@c @emph{faster} than S.
+
+Nested lexically scoped 함수들은 더 큰 차이도 의미합니다. S가 모든 object들을 하나의 directory 어딘가에 (보통 현재 directory의  .Data) 다른 파일들로 저장하는 반면, R은 그렇지 않습니다. R에 있는 모든 object들은 내부로 저장 됩니다. R이 시작되면 이는 memory의 조각을 붙잡고 object들을 저장하는데 사용합니다. R은 필요한대로 사이즈를 늘리고 줄이며이 memory 조각들의 memory 관리를 실행합니다. Symbol/ value pair들의 모든 관련된 “환경들”을 externally 유지하는것이 거의 가능하지 않기 때문에, memory에 모든것을 가지고 있는 것이 필요합니다. 이 다른점 또한 R이 S보다 빠르게 만드는것 처럼 보입니다. 
+
+@c The down side is that if R crashes you will lose all the work for the
+@c current session.  Saving and restoring the memory ``images'' (the
+@c functions and data stored in R's internal memory at any time) can be a
+@c bit slow, especially if they are big.  In S this does not happen,
+@c because everything is saved in disk files and if you crash nothing is
+@c likely to happen to them.  (In fact, one might conjecture that the S
+@c developers felt that the price of changing their approach to persistent
+@c storage just to accommodate lexical scope was far too expensive.)
+@c Hence, when doing important work, you might consider saving often (see
+@c @ref{How can I save my workspace?}) to safeguard against possible
+@c crashes.  Other possibilities are logging your sessions, or have your R
+@c commands stored in text files which can be read in using
+@c @code{source()}.
+
+불리한 점은 만약 R이 crash되면 지금 현재 세션의 모든 work를 잃게 될 것입니다. Memory “이미지” (R의 internal memory에 at any time 저장된 함수들과 데이터)를 저장하고 복원하는것이, 특히 이들의 크기가 크면, 약간 느릴 수도 있습니다. S에서는 이 같은 것이 일어나지 않는데, 이는 모든 것이 디스크 파일에 저장되어있고 crash가 거의 일어나지 않습니다.(의역) (사실적으로, 누군가는 S 개발자들이 lexical scope를 수용하기 위해서만 persistent storage로의 그들의 접근방법을 바꾸는 것의 가격이 너무 비싸다고 느꼈다고 추측할 수 있습니다.) 그래서, 중요한 일을 할 때에는, 가능한 crash들에서 안전하기 위해 저장을 자주하는 것 (How can I save my workspace?를 참조)을 고려할 수도 있습니다. 다른 가능성으로는 세션을 logging하거나 R 명령어들을 source()를 사용하여 읽을 수 있는 텍스트 파일로 저장하는 것 입니다
+
+@c @quotation Note
+@c If you run R from within Emacs (see @ref{R and Emacs}), you can save the
+@c contents of the interaction buffer to a file and conveniently manipulate
+@c it using @code{ess-transcript-mode}, as well as save source copies of
+@c all functions and data used.
+@c @end quotation
+
+Note: 만약 Emacs (R and Emacs를 참조) 안에서 R을 실행한다면, interaction buffer의 content들을 파일로 저장하고 편리하게 이를 ess-transcript-mode를 사용하여 조작할 수 있고, 사용된 모든 함수들과 데이터의 source copy들을 저장할 수 있습니다. 
 
 @node Models, Others, Lexical scoping, What are the differences between R and S?
 @subsection Models
