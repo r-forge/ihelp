@@ -298,13 +298,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- are discussed in @ref{Binary files} and @ref{Binary connections}. -->
    <p>적지 않은 경우 데이터는 그 크기를 줄이고(compactness) 접근 속도를 높이기 위해(speed of access) binary 포맷으로 저장됩니다. 여기에 대한 한 가지 사례는 이미지 데이터(imaging data)를 저장하는 데서 찾을 수 있는데, 보통 엄청난 사이즈의 메모리를 차지하기 때문에 헤더(header)를 앞에 붙이기도 합니다. 이러한 형태의 데이터 포맷에 대해서는 <a href="#Binary-files">Binary files</a>와 <a href="#Binary-connections">Binary connections</a>에서 더 찾아볼 수 있습니다.
 
-   <p>For much larger databases it is common to handle the data using a
-database management system (DBMS).  There is once again the option of
-using the DBMS to extract a plain file, but for many such DBMSs the
-extraction operation can be done directly from an R package:
-See <a href="#Relational-databases">Relational databases</a>.  Importing data via network connections is
-discussed in <a href="#Network-interfaces">Network interfaces</a>.
-
+<!-- For much larger databases it is common to handle the data using a -->
+<!-- database management system (DBMS).  There is once again the option of -->
+<!-- using the DBMS to extract a plain file, but for many such DBMSs the -->
+<!-- extraction operation can be done directly from an @R{} package: -->
+<!-- @xref{Relational databases}.  Importing data via network connections is -->
+<!-- discussed in @ref{Network interfaces}. -->
    <p>좀 더 큰 데이터베이스에 대해서는 database management system (DBMS)을 사용해서 데이터를 처리하는 것이 일반적입니다. 또한, DBMS를 사용해서 특정한 포맷이 없는(plain) 파일을 추출해내는 것도 가능합니다. 그렇지만 DBMS와 같은 시스템들을 이용한 결과 추출 작업을 R 패키지를 사용해서 직접하는 것도 가능합니다. 이에 관하여는 <a href="#Relational-databases">Relational databases</a>를 참고하십시오. 네트워크 연결을 통해 데이터를 입력하는 방법은 <a href="#Network-interfaces">Network interfaces</a>에서 찾을 수 있습니다.
 
 <div class="node">
@@ -364,80 +363,77 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <h3 class="section">1.2 Export to text files</h3>
 
 <p><a name="index-Exporting-to-a-text-file-3"></a>
-Exporting results from R is usually a less contentious task, but
-there are still a number of pitfalls.  There will be a target
-application in mind, and normally a text file will be the most
-convenient interchange vehicle.  (If a binary file is required, see
-<a href="#Binary-files">Binary files</a>.)
+<!-- Exporting results from @R{} is usually a less contentious task, but -->
+<!-- there are still a number of pitfalls.  There will be a target -->
+<!-- application in mind, and normally a text file will be the most -->
+<!-- convenient interchange vehicle.  (If a binary file is required, see -->
+<!-- @ref{Binary files}.) -->
 
    <p>R에서 결과를 내보내는 과정은 대체로 다소 단순한 작업이지만, 여전히 많은 문제점을 안고 있습니다. 아무래도 이 작업에 사용하고자 하는 특정 어플리케이션이 있기 마련이고, 보통의 경우 text 파일이 가장 편리하게 변환할 수 있는 수단이라고 할 수 있습니다(만약 binary 파일이 필요하면, <a href="#Binary-files">Binary files</a>을 참조하십시오).
 
-   <p><a name="index-cat-4"></a>Function <code>cat</code> underlies the functions for exporting data.  It
-takes a <code>file</code> argument, and the <code>append</code> argument allows a
-text file to be written via successive calls to <code>cat</code>.  Better,
-especially if this is to be done many times, is to open a <code>file</code>
-connection for writing or appending, and <code>cat</code> to that connection,
-then <code>close</code> it.
+   <p><a name="index-cat-4"></a><!-- Function @code{cat} underlies the functions for exporting data.  It -->
+<!-- takes a @code{file} argument, and the @code{append} argument allows a -->
+<!-- text file to be written via successive calls to @code{cat}.  Better, -->
+<!-- especially if this is to be done many times, is to open a @code{file} -->
+<!-- connection for writing or appending, and @code{cat} to that connection, -->
+<!-- then @code{close} it. -->
 
    <p>함수 cat은 데이터를 추출해내는 여러 함수들 중 가장 기본이 됩니다. 이것은 하나의 파일을 인자(argument)로 하며, 인자 append는 cat 어떤 텍스트 파일이 연속적인 호출(call)을 통해 cat에 쓰여질 수 있도록 해줍니다. 만약 이런 작업이 여러 번에 걸쳐 발생한다면, file connection을 열어 쓰기(writing), 첨가하기(appending), 그리고 cat을 connection에 연결하고 close로 file을 종료하면 됩니다.
 
-   <p><a name="index-write-5"></a><a name="index-write_002etable-6"></a>The most common task is to write a matrix or data frame to file as a
-rectangular grid of numbers, possibly with row and column labels.  This
-can be done by the functions <code>write.table</code> and <code>write</code>. 
-Function <code>write</code> just writes out a matrix or vector in a specified
-number of columns (and transposes a matrix).  Function
-<code>write.table</code> is more convenient, and writes out a data frame (or
-an object that can be coerced to a data frame) with row and column
-labels.
+   <p><a name="index-write-5"></a><a name="index-write_002etable-6"></a><!-- The most common task is to write a matrix or data frame to file as a -->
+<!-- rectangular grid of numbers, possibly with row and column labels.  This -->
+<!-- can be done by the functions @code{write.table} and @code{write}. -->
+<!-- Function @code{write} just writes out a matrix or vector in a specified -->
+<!-- number of columns (and transposes a matrix).  Function -->
+<!-- @code{write.table} is more convenient, and writes out a data frame (or -->
+<!-- an object that can be coerced to a data frame) with row and column -->
+<!-- labels. -->
 
    <p>가장 흔히 하는 작업은 하나의 행렬 혹은 데이터 프레임을 숫자들의 열이나 행에 label을 붙인 사각형의 격자(grid) 형태로 입력하는 것입니다. 이 작업은 <code>write.table</code>과 <code>write</code> 함수로 실행될 수 있습니다. 함수 <code>write</code>은 단순히 정해진 숫자의 열들로 하나의 행렬이나 벡터(그리고 전치 행렬(transpose) 까지도)를 표현할 수 있습니다. 함수 <code>write.table</code>은 더욱 사용하기 편리하며, 행과 열의 이름과 함께 데이터 프레임(혹은 데이터 프레임이라고 정의할 수 있는 하나의 객체)을 정의할 수 있습니다.
 
-   <p>There are a number of issues that need to be considered in writing out a
-data frame to a text file.
-
+<!-- There are a number of issues that need to be considered in writing out a -->
+<!-- data frame to a text file. -->
    <p>하나의 데이터 프레임을 하나의 text 파일로 정의하기 위해서는 많은 부분에서 고민해 볼 필요가 있습니다.
 
      <ol type=1 start=1>
 <a name="index-format-7"></a><li><strong>Precision</strong>
 
-     <p>Most of the conversions of real/complex numbers done by these functions
-is to full precision, but those by <code>write</code> are governed by the
-current setting of <code>options(digits)</code>.  For more control, use
-<code>format</code> on a data frame, possibly column-by-column.
-
+     <!-- Most of the conversions of real/complex numbers done by these functions -->
+     <!-- is to full precision, but those by @code{write} are governed by the -->
+     <!-- current setting of @code{options(digits)}.  For more control, use -->
+     <!-- @code{format} on a data frame, possibly column-by-column. -->
      <p>이러한 함수들에 의한 대부분의 실수/복소수 간 전환(conversion)은 가능한 모든 자릿수를 다 이용하지만(full precision), <code>write</code>에 의한 그러한 결과는 <code>options(digits)</code>에 의해 현재 세팅 된 자릿수(digits option)에 의해 결정됩니다. 그 이상의 컨트롤은 데이터 프레임에 <code>format)을 이용하여 열(column-by-column) 별로도 가능합니다.
 
      <li></code><strong>Header line</strong><code>
 
-     <p>R prefers the header line to have no entry for the row names, so the
-file looks like
-
+     <!-- @R{} prefers the header line to have no entry for the row names, so the -->
+     <!-- file looks like -->
      <p>R은 행 이름을 입력하지 않아도 되도록 header line을 사용하는 방식을 택하며, 그렇기 때문에 파일의 형태는 다음과 같습니다.
 
      <pre class="example">                          dist    climb   time
           Greenmantle     2.5     650     16.083
              ...
 </pre>
-     <p class="noindent">Some other systems require a (possibly empty) entry for the row names, which
-is what write.table will provide if argument col.names = NA
-is specified.  Excel is one such system.
+     <p class="noindent"><!-- Some other systems require a (possibly empty) entry for the row names, which -->
+<!-- is what @code{write.table} will provide if argument @code{col.names = NA} -->
+<!-- is specified.  Excel is one such system. -->
 
      <p>몇몇 다른 시스템들은 (입력하지 않아도 되긴 하지만) 행 이름을 입력하도록 하며, 이것은 인자가 col.names = NA라고 지정되어 있을 때, write.table이 보여주는 결과와 같습니다.
 
      <li></code><strong>Separator</strong><code>
 <a name="index-CSV-files-8"></a><a name="index-comma-separated-values-9"></a><a name="index-write_002ecsv-10"></a><a name="index-write_002ecsv2-11"></a>
-A common field separator to use in the file is a comma, as that is
-unlikely to appear in any of the fields in English-speaking countries. 
-Such files are known as CSV (comma separated values) files, and wrapper
-function write.csv provides appropriate defaults.  In some
-locales the comma is used as the decimal point (set this in
-write.table by dec = ",") and there CSV files use the
-semicolon as the field separator: use write.csv2 for appropriate
-defaults.  There is an IETF standard for CSV files (which mandates
-commas and CRLF line endings, for which use eol = "\r\n"), RFC4180
-(see <a href="http://tools.ietf.org/html/rfc4180">http://tools.ietf.org/html/rfc4180</a>), but what is more
-important in practice is that the file is readable by the application it
-is targeted at.
+<!-- A common field separator to use in the file is a comma, as that is -->
+<!-- unlikely to appear in any of the fields in English-speaking countries. -->
+<!-- Such files are known as CSV (comma separated values) files, and wrapper -->
+<!-- function @code{write.csv} provides appropriate defaults.  In some -->
+<!-- locales the comma is used as the decimal point (set this in -->
+<!-- @code{write.table} by @code{dec = ","}) and there CSV files use the -->
+<!-- semicolon as the field separator: use @code{write.csv2} for appropriate -->
+<!-- defaults.  There is an IETF standard for CSV files (which mandates -->
+<!-- commas and CRLF line endings, for which use @code{eol = "\r\n"}), RFC4180 -->
+<!-- (see @uref{http://tools.ietf.org/html/rfc4180}), but what is more -->
+<!-- important in practice is that the file is readable by the application it -->
+<!-- is targeted at. -->
 
      <p>가장 많이 사용되는 필드 구분자 중 하나는 쉼표(comma)이며, 그래서 영어를 사용하는 국가에서는 필드 안에서 입력된 값에서 쉼표를 발견하는 일이 그리 흔하지는 않습니다. 이러한 형태의 파일들을 CSV (comma separated values)라고 하며, wrapper 함수인 write.csv가 적당한 기본값을 제공합니다. 몇몇 지역에서는, 쉼표가 소수점(decimal point)으로 사용되고 있으므로(이 경우는 write.table에서 {dec = ","</code>을 지정하는 것과 같습니다) CSV 파일 중에 세미콜론이 필드 구분자로 사용되는 것도 있습니다. 이 경우 적절한 기본값을 사용하기 위해 <code>write.csv2</code>을 사용해야 합니다. CSV에 대한 IETF 표준이 있습니다.
 
