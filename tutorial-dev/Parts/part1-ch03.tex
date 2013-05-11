@@ -428,6 +428,7 @@ function (..., list = character(), pos = -1, envir = as.environment(pos),
 \end{Soutput}
 \end{Schunk}
 
+
 그러나, sapply()와 같이 R에서 미리 제공하는 내장함수의 경우에는 이미 함수가 정의되어 있는 것이기 때문에 아래와 같이 나옵니다. 
 
 \begin{Schunk}
@@ -490,7 +491,7 @@ else {
 \end{itemize}
 
 이를 표현하자면, 아래와 같습니다. 
-
+f
 \begin{Schunk}
 \begin{Soutput}
 plus <- function(x1, x2){
@@ -550,6 +551,9 @@ plus <- function(x1, x2){
 \end{Soutput}
 \end{Schunk}
 
+%프로그램은 위에서부터 아래로 순차적으로 인식 및 실행되는 것을 보여주는 사례가 있으면 좋을 듯...
+
+
 이를 확인해 보기 위해서 실행해 봅니다. 
 \begin{Schunk}
 \begin{Soutput}
@@ -557,7 +561,7 @@ plus <- function(x1, x2){
 [1] TRUE
 [1] "x1 is less than or equal to 10"
 [1] 8
-> 
+
 \end{Soutput}
 \end{Schunk}
 
