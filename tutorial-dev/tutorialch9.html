@@ -1,100 +1,1066 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
   "http://www.w3.org/TR/html4/loose.dtd">  
 <html > 
-<head><title>9   </title> 
+<head><title>9  </title> 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
 <meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
 <meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
 <!-- 2,frames,html --> 
 <meta name="src" content="tutorial.tex"> 
-<meta name="date" content="2013-05-10 12:38:00"> 
+<meta name="date" content="2013-05-10 22:47:00"> 
 <link rel="stylesheet" type="text/css" href="tutorial.css"> 
 </head><body 
 >
-   <!--l. 8--><div class="crosslinks"><p class="noindent">[<a 
+   <!--l. 7--><div class="crosslinks"><p class="noindent">[<a 
 href="#tailtutorialch9.html">tail</a>] [<a 
-href="tutorialpa4.html#tutorialch9.html" >up</a>] </p></div>
+href="tutorialpa3.html#tutorialch9.html" >up</a>] </p></div>
    <h2 class="chapterHead"><span class="titlemark">Chapter&#x00A0;9</span><br /><a 
- id="x16-1870009"></a>&#53456;&#49353;&#51201; &#45936;&#51060;&#53552; &#48516;&#49437;</h2>
-<!--l. 10--><p class="noindent" >&#50668;&#44592;&#50640;&#49436; &#47568;&#54616;&#45716; &#53456;&#49353;&#51201; &#48516;&#49437;&#51060;&#46976; &#48516;&#49437; &#52488;&#44592;&#50640; &#45800;&#49692;&#55176; &#45936;&#51060;&#53552;&#51032; &#53945;&#51669;&#51012; &#48372;&#45716;&#45936; &#49324;&#50857;&#46121;&#45768;&#45796;. &#46608;&#54620;, &#51060; &#44284;&#51221;&#51008; &#45936;&#51060;&#53552; &#53364;&#47532;&#45789;&#44284;&#46020; &#50672;&#44288;&#51060; &#51080;&#49845;&#45768;&#45796;.
+ id="x15-1580009"></a>&#49688;&#52824;&#54644;&#49437;&#44284; &#44288;&#47144;&#54616;&#50668;</h2>
    <h3 class="sectionHead"><span class="titlemark">9.1   </span> <a 
- id="x16-1880009.1"></a>&#44592;&#49696;&#53685;&#44228;&#47049; &#50836;&#50557;</h3>
-<!--l. 15--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1890009.1"></a>&#54217;&#44512;&#44284; &#48516;&#49328;&#44284; &#44057;&#51008; &#44592;&#52488;&#50836;&#50557; &#54632;&#49688;&#46308;</span>
-   <div class="fancyvrb" id="fancyvrb296"><a 
- id="x16-189002r1"></a><span 
+ id="x15-1590009.1"></a>&#49688;&#54617;&#50672;&#49328;&#50640; &#46020;&#50880;&#51060; &#46104;&#45716; &#54632;&#49688;&#46308;</h3>
+<!--l. 12--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1600009.1"></a>&#54665;&#47148;&#44050; &#44396;&#54616;&#44592;<span 
+class="aebx-10">: </span></span>
+   &#50500;&#47560;&#46020; &#54665;&#47148;&#44284; &#50672;&#44288;&#54616;&#50668; &#51088;&#51452; &#50416;&#51060;&#45716; &#50672;&#49328;&#51008; &#54665;&#47148;&#44050;&#51012; &#44396;&#54616;&#45716; &#44163;&#51068; &#44163;&#51077;&#45768;&#45796;. &#50948;&#50640;&#49436; &#50616;&#44553;&#54620; M &#51060;&#46972;&#45716; &#54665;&#47148;&#44050;&#51008; <span 
+class="cmr-10">1 </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmr-10">4 </span><span 
+class="cmsy-10">- </span><span 
+class="cmr-10">3 </span><span 
+class="cmsy-10">&#x00D7; </span><span 
+class="cmr-10">2 = </span><span 
+class="cmsy-10">-</span><span 
+class="cmr-10">2 </span>&#51068; &#44163;&#51077;&#45768;&#45796;. R&#51008; &#51060;&#44163;&#51032; &#44228;&#49328;&#51012; det()&#51060;&#46972;&#45716; &#54632;&#49688;&#47484; &#51060;&#50857;&#54633;&#45768;&#45796;.
+<!--l. 17--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb275"><a 
+ id="x15-160002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;output</span></div>
-<!--l. 22--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1900009.1"></a>&#44536;&#47353;&#48324; &#54217;&#44512;&#49328;&#52636;</span>
-   <div class="fancyvrb" id="fancyvrb297"><a 
- id="x16-190002r1"></a><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(1,2,3,4),</span><span 
+class="aett-10">&#x00A0;ncol=2)</span><br class="fancyvrb" /><a 
+ id="x15-160004r2"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;output</span></div>
-<!--l. 29--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1910009.1"></a><span 
-class="aebx-10">5</span>&#48516;&#50948;&#49688; &#44396;&#54616;&#44592;</span>
-   <div class="fancyvrb" id="fancyvrb298"><a 
- id="x16-191002r1"></a><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;val</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;det(M)</span><br class="fancyvrb" /><a 
+ id="x15-160006r3"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;output</span></div>
-<!--l. 36--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1920009.1"></a>&#53248;&#53440;&#51068;</span>
-   <div class="fancyvrb" id="fancyvrb299"><a 
- id="x16-192002r1"></a><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;M</span><br class="fancyvrb" /><a 
+ id="x15-160008r4"></a><span 
 class="aett-10">&#x00A0;</span><span 
-class="aett-10">&#x00A0;output</span></div>
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x15-160010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span>
+<br class="fancyvrb" /><a 
+ id="x15-160012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><br class="fancyvrb" /><a 
+ id="x15-160014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;val</span><br class="fancyvrb" /><a 
+ id="x15-160016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;-2</span><br class="fancyvrb" /><a 
+ id="x15-160018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;1*4-3*2</span><br class="fancyvrb" /><a 
+ id="x15-160020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;-2</span></div>
+<!--l. 32--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1610009.1"></a>&#50669;&#54665;&#47148; &#52286;&#44592;<span 
+class="aebx-10">:</span></span>
+   &#50669;&#54665;&#47148;&#51008; <span 
+class="aett-10">solve()</span>&#46972;&#45716; &#54632;&#49688;&#47484; &#53685;&#54644; &#50619;&#51012; &#49688; &#51080;&#45716;&#45936;, &#49688;&#54617;&#51201;&#51064; &#51032;&#48120;&#44032; <span 
+class="cmmi-10">MM</span><sup><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sup> <span 
+class="cmr-10">= </span><span 
+class="cmmi-10">I </span>&#51077;&#45768;&#45796;.
+<!--l. 35--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb276"><a 
+ id="x15-161002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;solve(M)</span><br class="fancyvrb" /><a 
+ id="x15-161004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x15-161006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;-2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1.5</span><br class="fancyvrb" /><a 
+ id="x15-161008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;-0.5</span><br class="fancyvrb" /><a 
+ id="x15-161010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 45--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1620009.1"></a>&#50672;&#47549;&#48169;&#51221;&#49885;&#51032; &#54644;&#52286;&#44592;<span 
+class="aebx-10">:</span></span>
+   &#50669;&#54665;&#47148;&#51012; &#51060;&#50857;&#54616;&#45716; &#50696;&#45716; &#50500;&#47560;&#46020; &#49440;&#54805;&#48169;&#51221;&#49885;&#51032; &#54644;&#47484; &#44396;&#54616;&#45716; &#44163;&#51077;&#45768;&#45796;. &#50500;&#47000;&#50752; &#44057;&#51008; &#49440;&#54805;&#48169;&#51221;&#49885;&#51012; &#49332;&#54196;&#48389;&#45768;&#45796;. <div class="eqnarray">
+   <center class="math-display" >
+<img 
+src="tutorial14x.png" alt=" 3x+ 4y - 2z =   5                                (9.1)
+- 4x+ 3y - z =   22                               (9.2)
+
+    x+ y + z =   6                                (9.3)
+" class="math-display" ></center>
+</div>
+<!--l. 53--><p class="indent" >   &#51060;&#45716; &#49688;&#54617;&#51201;&#51004;&#47196; &#50500;&#47000;&#50752; &#44057;&#51060; &#50424; &#49688; &#51080;&#49845;&#45768;&#45796;.
+   <table 
+class="equation"><tr><td><a 
+ id="x15-162002r4"></a>
+   <center class="math-display" >
+<img 
+src="tutorial15x.png" alt="&#x230A;          &#x230B; &#x230A;  &#x230B;   &#x230A;  &#x230B;
+  3   4  - 2  x       5
+|&#x2308; - 4 3  - 1|&#x2309; |&#x2308; y|&#x2309; = |&#x2308;- 1|&#x2309;
+
+  1   1   1    z      6
+" class="math-display" ></center></td><td class="equation-label">(9.4)</td></tr></table>
+<!--l. 72--><p class="nopar" >
+<!--l. 74--><p class="indent" >   &#51060;&#47111;&#44172; &#49440;&#54805;&#48169;&#51221;&#49885;&#51060; <span 
+class="cmmi-10">AX </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">b</span>&#46972;&#45716; &#54805;&#49885;&#51004;&#47196; &#54364;&#54788; &#54624; &#49688; &#51080;&#45796;&#47732; <span 
+class="aett-10">solve(M)</span>&#51032; &#44208;&#44284;&#45716; <span 
+class="aett-10">x</span>&#51032; &#54644;&#47484; &#51032;&#48120;&#54633;&#45768;&#45796;. &#51060; &#49440;&#54805;&#48169;&#51221;&#49885;&#51012; &#49552;&#51004;&#47196; &#54400;&#47732; <span 
+class="cmmi-10">x </span><span 
+class="cmr-10">= 1</span>, <span 
+class="cmmi-10">y </span><span 
+class="cmr-10">= 2</span>, <span 
+class="cmmi-10">z </span><span 
+class="cmr-10">= 3 </span>&#51060;&#46972;&#45716; &#44050;&#51060; &#45208;&#50724;&#44172; &#46121;&#45768;&#45796;. &#51060;&#47484; R&#47196; &#54616;&#44592;&#50948;&#54644;&#49436;&#45716; &#45796;&#51020;&#44284; &#44057;&#51060; &#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 79--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb277"><a 
+ id="x15-162004r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;A</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(3,-4,1,4,3,1,-2,-1,1),</span><span 
+class="aett-10">&#x00A0;ncol=3)</span><br class="fancyvrb" /><a 
+ id="x15-162006r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;b</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;c(5,-1,6)</span><br class="fancyvrb" /><a 
+ id="x15-162008r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;solve(A,b)</span><br class="fancyvrb" /><a 
+ id="x15-162010r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;3</span><br class="fancyvrb" /><a 
+ id="x15-162012r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 88--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1630009.1"></a>&#53584;&#49436; &#54532;&#47196;&#45797;&#53944;</span>
+   tensor product (&#54841;&#51008; Kronecker product)&#46976; &#50500;&#47000;&#50752; &#44057;&#51060; &#54665;&#47148;&#51032; &#50672;&#49328;&#51012; &#49688;&#54665;&#54633;&#45768;&#45796;. &#51060;&#47484; &#49688;&#54665;&#54616;&#44592; &#50948;&#54620; R &#54632;&#49688;&#45716; &#50500;&#47000;&#50752; &#44057;&#49845;&#45768;&#45796;.
+<!--l. 92--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb278"><a 
+ id="x15-163002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;A1</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(c(1,2,3,4),</span><span 
+class="aett-10">&#x00A0;ncol=2)</span><br class="fancyvrb" /><a 
+ id="x15-163004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;A2</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;matrix(1:9,</span><span 
+class="aett-10">&#x00A0;ncol=3)</span><br class="fancyvrb" /><a 
+ id="x15-163006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;kronecker(A1,</span><span 
+class="aett-10">&#x00A0;A2)</span><br class="fancyvrb" /><a 
+ id="x15-163008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;[,2]</span><span 
+class="aett-10">&#x00A0;[,3]</span><span 
+class="aett-10">&#x00A0;[,4]</span><span 
+class="aett-10">&#x00A0;[,5]</span><span 
+class="aett-10">&#x00A0;[,6]</span>
+<br class="fancyvrb" /><a 
+ id="x15-163010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;21</span><br class="fancyvrb" /><a 
+ id="x15-163012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;15</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;24</span><br class="fancyvrb" /><a 
+ id="x15-163014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[3,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;27</span>
+<br class="fancyvrb" /><a 
+ id="x15-163016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[4,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;14</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;28</span><br class="fancyvrb" /><a 
+ id="x15-163018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[5,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;10</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;20</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;32</span><br class="fancyvrb" /><a 
+ id="x15-163020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[6,]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;36</span><br class="fancyvrb" /><a 
+ id="x15-163022r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 107--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1640009.1"></a>&#50808;&#51201;&#44284; &#45236;&#51201;</span>
+   &#44536;&#47088;&#45936;, &#53356;&#47196;&#45349;&#52964; &#54532;&#47196;&#45797;&#53944;&#45716; &#48376;&#47000; &#48289;&#53552;&#51032; &#50808;&#51201;&#51012; &#51060;&#50857;&#54616;&#50668; &#44228;&#49328;&#54633;&#45768;&#45796;. &#50808;&#51201;&#51032; &#50672;&#49328;&#50640; &#45824;&#54620; &#51060;&#54644;&#45716; &#50500;&#47000;&#47484; &#49332;&#54196;&#48372;&#49884;&#44600; &#48148;&#46989;&#45768;&#45796;.
                                                                                          
                                                                                          
-<!--l. 43--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1930009.1"></a>&#54364;&#51456;&#54868;&#50752; &#49828;&#52992;&#51068;&#47553;</span>
-   <div class="fancyvrb" id="fancyvrb300"><a 
- id="x16-193002r1"></a><span 
+   <div class="fancyvrb" id="fancyvrb279"><a 
+ id="x15-164002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;x</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;1:9</span><br class="fancyvrb" /><a 
+ id="x15-164004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(x)</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;x</span><br class="fancyvrb" /><a 
+ id="x15-164006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;x</span><span 
+class="aett-10">&#x00A0;%o%</span><span 
+class="aett-10">&#x00A0;x</span><br class="fancyvrb" /><a 
+ id="x15-164008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><br class="fancyvrb" /><a 
+ id="x15-164010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span>
+<br class="fancyvrb" /><a 
+ id="x15-164012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;10</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;14</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;18</span><br class="fancyvrb" /><a 
+ id="x15-164014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;15</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;21</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;27</span><br class="fancyvrb" /><a 
+ id="x15-164016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;20</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;28</span><span 
+class="aett-10">&#x00A0;32</span><span 
+class="aett-10">&#x00A0;36</span><br class="fancyvrb" /><a 
+ id="x15-164018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;10</span><span 
+class="aett-10">&#x00A0;15</span><span 
+class="aett-10">&#x00A0;20</span><span 
+class="aett-10">&#x00A0;25</span><span 
+class="aett-10">&#x00A0;30</span><span 
+class="aett-10">&#x00A0;35</span><span 
+class="aett-10">&#x00A0;40</span><span 
+class="aett-10">&#x00A0;45</span>
+<br class="fancyvrb" /><a 
+ id="x15-164020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;30</span><span 
+class="aett-10">&#x00A0;36</span><span 
+class="aett-10">&#x00A0;42</span><span 
+class="aett-10">&#x00A0;48</span><span 
+class="aett-10">&#x00A0;54</span><br class="fancyvrb" /><a 
+ id="x15-164022r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;14</span><span 
+class="aett-10">&#x00A0;21</span><span 
+class="aett-10">&#x00A0;28</span><span 
+class="aett-10">&#x00A0;35</span><span 
+class="aett-10">&#x00A0;42</span><span 
+class="aett-10">&#x00A0;49</span><span 
+class="aett-10">&#x00A0;56</span><span 
+class="aett-10">&#x00A0;63</span><br class="fancyvrb" /><a 
+ id="x15-164024r12"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;32</span><span 
+class="aett-10">&#x00A0;40</span><span 
+class="aett-10">&#x00A0;48</span><span 
+class="aett-10">&#x00A0;56</span><span 
+class="aett-10">&#x00A0;64</span><span 
+class="aett-10">&#x00A0;72</span><br class="fancyvrb" /><a 
+ id="x15-164026r13"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;27</span><span 
+class="aett-10">&#x00A0;36</span><span 
+class="aett-10">&#x00A0;45</span><span 
+class="aett-10">&#x00A0;54</span><span 
+class="aett-10">&#x00A0;63</span><span 
+class="aett-10">&#x00A0;72</span><span 
+class="aett-10">&#x00A0;81</span><br class="fancyvrb" /><a 
+ id="x15-164028r14"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 128--><p class="indent" >   &#51060;&#47484; &#54876;&#50857;&#54616;&#50668; &#44396;&#44396;&#45800;&#51012; &#47564;&#46300;&#45716; &#54532;&#47196;&#44536;&#47016;&#51012; &#51089;&#49457;&#54644;&#48389;&#45768;&#45796;.
+<!--l. 131--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb280"><a 
+ id="x15-164030r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;x</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;1:9</span><br class="fancyvrb" /><a 
+ id="x15-164032r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(x)</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;x</span><br class="fancyvrb" /><a 
+ id="x15-164034r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;y</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;2:9</span><br class="fancyvrb" /><a 
+ id="x15-164036r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(y)</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;paste(y,</span><span 
+class="aett-10">&#x00A0;"*",</span><span 
+class="aett-10">&#x00A0;sep="")</span><br class="fancyvrb" /><a 
+ id="x15-164038r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;outer(y,</span><span 
+class="aett-10">&#x00A0;x,</span><span 
+class="aett-10">&#x00A0;"*")</span>
+<br class="fancyvrb" /><a 
+ id="x15-164040r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;1</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><br class="fancyvrb" /><a 
+ id="x15-164042r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;2*</span><span 
+class="aett-10">&#x00A0;2</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;10</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;14</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;18</span><br class="fancyvrb" /><a 
+ id="x15-164044r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;3*</span><span 
+class="aett-10">&#x00A0;3</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;15</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;21</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;27</span>
+<br class="fancyvrb" /><a 
+ id="x15-164046r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;4*</span><span 
+class="aett-10">&#x00A0;4</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;20</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;28</span><span 
+class="aett-10">&#x00A0;32</span><span 
+class="aett-10">&#x00A0;36</span><br class="fancyvrb" /><a 
+ id="x15-164048r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5*</span><span 
+class="aett-10">&#x00A0;5</span><span 
+class="aett-10">&#x00A0;10</span><span 
+class="aett-10">&#x00A0;15</span><span 
+class="aett-10">&#x00A0;20</span><span 
+class="aett-10">&#x00A0;25</span><span 
+class="aett-10">&#x00A0;30</span><span 
+class="aett-10">&#x00A0;35</span><span 
+class="aett-10">&#x00A0;40</span><span 
+class="aett-10">&#x00A0;45</span><br class="fancyvrb" /><a 
+ id="x15-164050r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;6*</span><span 
+class="aett-10">&#x00A0;6</span><span 
+class="aett-10">&#x00A0;12</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;30</span><span 
+class="aett-10">&#x00A0;36</span><span 
+class="aett-10">&#x00A0;42</span><span 
+class="aett-10">&#x00A0;48</span><span 
+class="aett-10">&#x00A0;54</span>
+<br class="fancyvrb" /><a 
+ id="x15-164052r12"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;7*</span><span 
+class="aett-10">&#x00A0;7</span><span 
+class="aett-10">&#x00A0;14</span><span 
+class="aett-10">&#x00A0;21</span><span 
+class="aett-10">&#x00A0;28</span><span 
+class="aett-10">&#x00A0;35</span><span 
+class="aett-10">&#x00A0;42</span><span 
+class="aett-10">&#x00A0;49</span><span 
+class="aett-10">&#x00A0;56</span><span 
+class="aett-10">&#x00A0;63</span><br class="fancyvrb" /><a 
+ id="x15-164054r13"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;8*</span><span 
+class="aett-10">&#x00A0;8</span><span 
+class="aett-10">&#x00A0;16</span><span 
+class="aett-10">&#x00A0;24</span><span 
+class="aett-10">&#x00A0;32</span><span 
+class="aett-10">&#x00A0;40</span><span 
+class="aett-10">&#x00A0;48</span><span 
+class="aett-10">&#x00A0;56</span><span 
+class="aett-10">&#x00A0;64</span><span 
+class="aett-10">&#x00A0;72</span><br class="fancyvrb" /><a 
+ id="x15-164056r14"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;9*</span><span 
+class="aett-10">&#x00A0;9</span><span 
+class="aett-10">&#x00A0;18</span><span 
+class="aett-10">&#x00A0;27</span><span 
+class="aett-10">&#x00A0;36</span><span 
+class="aett-10">&#x00A0;45</span><span 
+class="aett-10">&#x00A0;54</span><span 
+class="aett-10">&#x00A0;63</span><span 
+class="aett-10">&#x00A0;72</span><span 
+class="aett-10">&#x00A0;81</span><br class="fancyvrb" /><a 
+ id="x15-164058r15"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 150--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1650009.1"></a>&#44256;&#50976;&#44050;&#44284; &#44256;&#50976;&#48289;&#53552;<span 
+class="aebx-10">:</span></span>
+   M &#54665;&#47148;&#51032; &#44256;&#50976;&#44050;&#44284; &#44256;&#50976;&#48289;&#53552;&#45716; &#50500;&#47000;&#50752; &#44057;&#51008; &#48169;&#48277;&#51004;&#47196; &#44396;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;.
+<!--l. 153--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb281"><a 
+ id="x15-165002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;eigen(M)</span><br class="fancyvrb" /><a 
+ id="x15-165004r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(eM)</span><br class="fancyvrb" /><a 
+ id="x15-165006r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;"values"</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;"vectors"</span><br class="fancyvrb" /><a 
+ id="x15-165008r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM$values</span><br class="fancyvrb" /><a 
+ id="x15-165010r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;5.3722813</span><span 
+class="aett-10">&#x00A0;-0.3722813</span>
+<br class="fancyvrb" /><a 
+ id="x15-165012r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;eM$vectors</span><br class="fancyvrb" /><a 
+ id="x15-165014r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x15-165016r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.5657675</span><span 
+class="aett-10">&#x00A0;-0.9093767</span><br class="fancyvrb" /><a 
+ id="x15-165018r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.8245648</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.4159736</span><br class="fancyvrb" /><a 
+ id="x15-165020r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span></div>
+<!--l. 167--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1660009.1"></a>&#53945;&#51060;&#44050; &#48516;&#54644;</span>
+   &#54665;&#47148; A&#51032; Singular value decomposition (&#53945;&#51060;&#44050; &#48516;&#54644;)&#45716; &#50500;&#47000;&#50752; &#44057;&#51008; &#49688;&#54617;&#51201; &#51032;&#48120;&#47484; &#44032;&#51665;&#45768;&#45796;.
+   <table 
+class="equation"><tr><td><a 
+ id="x15-166001r5"></a>
+   <center class="math-display" >
+<img 
+src="tutorial16x.png" alt="A = U D(Q)V T
+" class="math-display" ></center></td><td class="equation-label">(9.5)</td></tr></table>
+<!--l. 173--><p class="nopar" >
+&#50668;&#44592;&#50640;&#49436; <span 
+class="cmmi-10">U</span><sup><span 
+class="cmmi-7">T</span></sup><span 
+class="cmmi-10">U </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">V</span> <sup><span 
+class="cmmi-7">T</span></sup><span 
+class="cmmi-10">V </span><span 
+class="cmr-10">= </span><span 
+class="cmmi-10">V V</span> <sup><span 
+class="cmmi-7">T</span></sup> <span 
+class="cmr-10">= </span><span 
+class="cmmi-10">I </span>&#51060;&#47728; <span 
+class="cmmi-10">Q</span>&#45716; &#53945;&#51060;&#44050; &#48289;&#53552;&#51077;&#45768;&#45796;.
+<!--l. 178--><p class="indent" >
+   <div class="fancyvrb" id="fancyvrb282"><a 
+ id="x15-166003r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM</span><span 
+class="aett-10">&#x00A0;&#x003C;-</span><span 
+class="aett-10">&#x00A0;svd(M)</span><br class="fancyvrb" /><a 
+ id="x15-166005r2"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;names(svdM)</span><br class="fancyvrb" /><a 
+ id="x15-166007r3"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;"d"</span><span 
+class="aett-10">&#x00A0;"u"</span><span 
+class="aett-10">&#x00A0;"v"</span><br class="fancyvrb" /><a 
+ id="x15-166009r4"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$d</span><br class="fancyvrb" /><a 
+ id="x15-166011r5"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1]</span><span 
+class="aett-10">&#x00A0;5.4649857</span><span 
+class="aett-10">&#x00A0;0.3659662</span><br class="fancyvrb" /><a 
+ id="x15-166013r6"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$u</span>
+<br class="fancyvrb" /><a 
+ id="x15-166015r7"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x15-166017r8"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.5760484</span><span 
+class="aett-10">&#x00A0;-0.8174156</span><br class="fancyvrb" /><a 
+ id="x15-166019r9"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.8174156</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.5760484</span><br class="fancyvrb" /><a 
+ id="x15-166021r10"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;svdM$v</span>
+<br class="fancyvrb" /><a 
+ id="x15-166023r11"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,1]</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[,2]</span><br class="fancyvrb" /><a 
+ id="x15-166025r12"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[1,]</span><span 
+class="aett-10">&#x00A0;-0.4045536</span><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;0.9145143</span><br class="fancyvrb" /><a 
+ id="x15-166027r13"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;[2,]</span><span 
+class="aett-10">&#x00A0;-0.9145143</span><span 
+class="aett-10">&#x00A0;-0.4045536</span><br class="fancyvrb" /><a 
+ id="x15-166029r14"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;&#x003E;</span><span 
+class="aett-10">&#x00A0;$</span></div>
+                                                                                         
+                                                                                         
+<!--l. 197--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1670009.1"></a>&#51068;&#48152; &#49688;&#54617;&#54632;&#49688;&#46308;</span>
+<!--l. 199--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1680009.1"></a>&#49340;&#44033;&#54632;&#49688;&#46308;</span>
+   <div class="fancyvrb" id="fancyvrb283"><a 
+ id="x15-168002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
-<!--l. 50--><p class="noindent" ><span class="paragraphHead"><a 
- id="x16-1940009.1"></a>&#49888;&#47280;&#44396;&#44036;</span>
-   <div class="fancyvrb" id="fancyvrb301"><a 
- id="x16-194002r1"></a><span 
+<!--l. 205--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1690009.1"></a>&#51665;&#54633;&#44284; &#44288;&#47144;&#46108; &#54632;&#49688;&#46308;</span>
+   <div class="fancyvrb" id="fancyvrb284"><a 
+ id="x15-169002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
-<!--l. 57--><p class="noindent" >
+<!--l. 211--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1700009.1"></a>&#44592;&#53440; &#50976;&#50857;&#54620; &#54632;&#49688;&#46308;</span>
+   <span 
+class="aett-10">combn() </span>&#54632;&#49688;&#47484; &#51060;&#50857;&#54616;&#50668; &#47784;&#46304; &#51312;&#54633;&#51012; &#52286;&#44592;
+<!--l. 217--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">9.2   </span> <a 
- id="x16-1950009.2"></a>&#48516;&#54624;&#54364;&#50752; &#52852;&#51060;&#51228;&#44273; &#44160;&#51221;</h3>
-<!--l. 59--><p class="noindent" >
-   <div class="fancyvrb" id="fancyvrb302"><a 
- id="x16-195002r1"></a><span 
+ id="x15-1710009.2"></a>&#54869;&#47456;&#48516;&#54252;&#50640; &#45824;&#54644;&#49436;</h3>
+<!--l. 219--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.2.1   </span> <a 
+ id="x15-1720009.2.1"></a>&#48128;&#46020;/&#45572;&#51201; &#54869;&#47456;&#48516;&#54252;</h4>
+<!--l. 221--><p class="noindent" >
+   <div class="fancyvrb" id="fancyvrb285"><a 
+ id="x15-172002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
-<!--l. 64--><p class="noindent" >
+<!--l. 226--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1730009.2.1"></a>&#54140;&#49468;&#53440;&#51068; &#44050; &#52286;&#44592;</span>
+   <div class="fancyvrb" id="fancyvrb286"><a 
+ id="x15-173002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 233--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.2.2   </span> <a 
+ id="x15-1740009.2.2"></a>&#54364;&#51456; &#45212;&#49688;&#49373;&#49457; &#54632;&#49688;</h4>
+<!--l. 235--><p class="noindent" >
+   <div class="fancyvrb" id="fancyvrb287"><a 
+ id="x15-174002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+                                                                                         
+                                                                                         
+<!--l. 240--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.2.3   </span> <a 
+ id="x15-1750009.2.3"></a>&#48708;&#54364;&#51456; &#45212;&#49688;&#49373;&#49457; &#50508;&#44256;&#47532;&#51608;</h4>
+<!--l. 242--><p class="noindent" >
+   <div class="fancyvrb" id="fancyvrb288"><a 
+ id="x15-175002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 248--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1760009.2.3"></a><span 
+class="aebx-10">Multinomial random variables</span></span>
+   <div class="fancyvrb" id="fancyvrb289"><a 
+ id="x15-176002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 255--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1770009.2.3"></a><span 
+class="aebx-10">Correlated binary random variables</span></span>
+   <div class="fancyvrb" id="fancyvrb290"><a 
+ id="x15-177002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 266--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">9.3   </span> <a 
- id="x16-1960009.3"></a>z-&#44160;&#51221;</h3>
-<!--l. 66--><p class="noindent" >
-   <div class="fancyvrb" id="fancyvrb303"><a 
- id="x16-196002r1"></a><span 
+ id="x15-1780009.3"></a>&#48120;&#48516;&#44284; &#51201;&#48516;</h3>
+<!--l. 268--><p class="noindent" >
+   <div class="fancyvrb" id="fancyvrb291"><a 
+ id="x15-178002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
-<!--l. 71--><p class="noindent" >
+<!--l. 274--><p class="noindent" >
    <h3 class="sectionHead"><span class="titlemark">9.4   </span> <a 
- id="x16-1970009.4"></a>t-&#44160;&#51221;</h3>
-<!--l. 73--><p class="noindent" >
-   <div class="fancyvrb" id="fancyvrb304"><a 
- id="x16-197002r1"></a><span 
+ id="x15-1790009.4"></a>Numerical Techniques</h3>
+<!--l. 276--><p class="noindent" >Numerical techniques &#50640; &#45824;&#54620; &#54620;&#44397;&#50612;&#44032; &#47924;&#50631;&#51064;&#51648;&#50836;?
+<!--l. 278--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1800009.4"></a><span 
+class="aebx-10">Newton-Raphson</span></span>
+   &#50508;&#44256;&#47532;&#51608;&#51012; &#44396;&#54788;&#54616;&#45716; &#48169;&#48277; &#8211; optimization &#50640; &#44288;&#47144;&#46108; &#51068;&#51333;&#51032; &#49444;&#47749;&#46020; &#52628;&#44032;&#54644;&#51452;&#47732; &#51339;&#51012; &#44163; &#44057;&#51020;
+   <div class="fancyvrb" id="fancyvrb292"><a 
+ id="x15-180002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
-<!--l. 78--><p class="noindent" >
-   <h3 class="sectionHead"><span class="titlemark">9.5   </span> <a 
- id="x16-1980009.5"></a></h3>
-<!--l. 80--><p class="noindent" >
-   <div class="fancyvrb" id="fancyvrb305"><a 
- id="x16-198002r1"></a><span 
+<!--l. 285--><p class="noindent" ><span class="paragraphHead"><a 
+ id="x15-1810009.4"></a><span 
+class="aebx-10">Laplace Approximation</span></span>
+   &#50508;&#44256;&#47532;&#51608;&#51012; &#44396;&#54788;&#54616;&#45716; &#48169;&#48277; &#8211; &#51201;&#48516;&#54616;&#45716; &#48169;&#48277;&#50640; &#47566;&#51060; &#50416;&#51076; (&#53945;&#55176;, &#48288;&#51060;&#51648;&#50504; &#52980;&#54504;&#53580;&#51060;&#49496;)
+   <div class="fancyvrb" id="fancyvrb293"><a 
+ id="x15-181002r1"></a><span 
 class="aett-10">&#x00A0;</span><span 
 class="aett-10">&#x00A0;output</span></div>
                                                                                          
                                                                                          
-   <!--l. 40--><div class="crosslinks"><p class="noindent">[<a 
+<!--l. 294--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.4.1   </span> <a 
+ id="x15-1820009.4.1"></a>Metropolis-Hastings</h4>
+<!--l. 294--><p class="noindent" >&#50508;&#44256;&#47532;&#51608;&#51012; &#44396;&#54788;&#54616;&#45716; &#54532;&#47112;&#51076; &#50892;&#53356; - &#51060;&#44163;&#51008; &#44536;&#45285; &#49324;&#50857;&#44032;&#45733;&#54616;&#44172; &#48148;&#47196; &#49548;&#49828;&#53076;&#46300; &#48537;&#50668;&#51452;&#44592; (&#48288;&#51060;&#51648;&#50504; &#52980;&#54504;&#53580;&#51060;&#49496;&#50640; &#47566;&#51060; &#50416;&#51076;)
+   <div class="fancyvrb" id="fancyvrb294"><a 
+ id="x15-182002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+<!--l. 301--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.4.2   </span> <a 
+ id="x15-1830009.4.2"></a>Importance Sampling</h4>
+<!--l. 303--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.4.3   </span> <a 
+ id="x15-1840009.4.3"></a>Accept-Rejection Sampling</h4>
+<!--l. 305--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.4.4   </span> <a 
+ id="x15-1850009.4.4"></a>EM algorithm</h4>
+<!--l. 307--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.4.5   </span> <a 
+ id="x15-1860009.4.5"></a>Bootstrap</h4>
+<!--l. 308--><p class="noindent" >&#48169;&#48277; &#8211; &#50836;&#44148; &#50500;&#51452; &#51339;&#51008; &#54056;&#53412;&#51648;&#44032; &#51080;&#51020;
+   <div class="fancyvrb" id="fancyvrb295"><a 
+ id="x15-186002r1"></a><span 
+class="aett-10">&#x00A0;</span><span 
+class="aett-10">&#x00A0;output</span></div>
+                                                                                         
+                                                                                         
+   <!--l. 37--><div class="crosslinks"><p class="noindent">[<a 
 href="tutorialch9.html" >front</a>] [<a 
-href="tutorialpa4.html#tutorialch9.html" >up</a>] </p></div>
-<!--l. 40--><p class="indent" >   <a 
- id="tailtutorialch9.html"></a>   
+href="tutorialpa3.html#tutorialch9.html" >up</a>] </p></div>
+<!--l. 37--><p class="indent" >   <a 
+ id="tailtutorialch9.html"></a>    
 </body></html> 
