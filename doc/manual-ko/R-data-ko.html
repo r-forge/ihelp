@@ -378,7 +378,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- connection for writing or appending, and @code{cat} to that connection, -->
 <!-- then @code{close} it. -->
 
-   <p>함수 cat은 데이터를 추출해내는 여러 함수들 중 가장 기본이 됩니다. 이것은 하나의 파일을 인자(argument)로 하며, 인자 append는 cat 어떤 텍스트 파일이 연속적인 호출(call)을 통해 cat에 쓰여질 수 있도록 해줍니다. 만약 이런 작업이 여러 번에 걸쳐 발생한다면, file connection을 열어 쓰기(writing), 첨가하기(appending), 그리고 cat을 connection에 연결하고 close로 file을 종료하면 됩니다.
+   <p>함수 cat은 데이터를 추출해내는 여러 함수들 중 가장 기본이 됩니다. 이것은 하나의 파일을 인자(argument)로 하며, 인자 append는 cat 어떤 텍스트 파일이 연속적인 호출(call)을 통해 cat에 쓰여질 수 있도록 해줍니다. 만약 이런 작업이 여러 번에 걸쳐 발생한다면, file connection을 열어서 쓰기(writing), 첨가하기(appending), 그리고 cat을 connection에 연결하고 close로 file을 종료하면 됩니다.
 
    <p><a name="index-write-5"></a><a name="index-write_002etable-6"></a><!-- The most common task is to write a matrix or data frame to file as a -->
 <!-- rectangular grid of numbers, possibly with row and column labels.  This -->
@@ -408,8 +408,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
      <!-- @R{} prefers the header line to have no entry for the row names, so the -->
      <!-- file looks like -->
-     <p>R은 행 이름을 입력하지 않아도 되도록 header line을 사용하는 방식을 택하며, 그렇기 때문에 파일의 형태는 다음과 같습니다.
-
+     <!-- R은 행 이름을 입력하지 않아도 되도록 header line을 사용하는 방식을 택하며, 그렇기 때문에 파일의 형태는 @c 다음과 같습니다. -->
      <pre class="example">                          dist    climb   time
           Greenmantle     2.5     650     16.083
              ...
@@ -418,7 +417,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- is what @code{write.table} will provide if argument @code{col.names = NA} -->
 <!-- is specified.  Excel is one such system. -->
 
-     <p>몇몇 다른 시스템들은 (입력하지 않아도 되긴 하지만) 행 이름을 입력하도록 하며, 이것은 인자가 col.names = NA라고 지정되어 있을 때, write.table이 보여주는 결과와 같습니다.
+     <p>몇몇 다른 시스템들은 (입력하지 않아도 되긴 하지만) 행 이름을 입력하도록 하며, 이것은 인자가 col.names = NA라고 지정되어 있을 때, write.table이 보여주는 결과와 같습니다. 엑셀이 그러한 시스템 중 하나입니다.
 
      <li></code><strong>Separator</strong><code>
 <a name="index-CSV-files-8"></a><a name="index-comma-separated-values-9"></a><a name="index-write_002ecsv-10"></a><a name="index-write_002ecsv2-11"></a>
@@ -435,28 +434,32 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- important in practice is that the file is readable by the application it -->
 <!-- is targeted at. -->
 
-     <p>가장 많이 사용되는 필드 구분자 중 하나는 쉼표(comma)이며, 그래서 영어를 사용하는 국가에서는 필드 안에서 입력된 값에서 쉼표를 발견하는 일이 그리 흔하지는 않습니다. 이러한 형태의 파일들을 CSV (comma separated values)라고 하며, wrapper 함수인 write.csv가 적당한 기본값을 제공합니다. 몇몇 지역에서는, 쉼표가 소수점(decimal point)으로 사용되고 있으므로(이 경우는 write.table에서 {dec = ","</code>을 지정하는 것과 같습니다) CSV 파일 중에 세미콜론이 필드 구분자로 사용되는 것도 있습니다. 이 경우 적절한 기본값을 사용하기 위해 <code>write.csv2</code>을 사용해야 합니다. CSV에 대한 IETF 표준이 있습니다.
+     <p>가장 많이 사용되는 필드 구분자 중 하나는 쉼표(comma)이며, 그래서 영어를 사용하는 국가에서는 필드 안에서 입력된 값에서 쉼표를 발견하는 일이 그리 흔하지는 않습니다. 이러한 형태의 파일들을 CSV (comma separated values)라고 하며, wrapper 함수인 write.csv가 적당한 기본값을 제공합니다. 몇몇 지역에서는, 쉼표가 소수점(decimal point)으로 사용되고 있으므로(이 경우는 write.table에서 {dec = ","</code>을 지정하는 것과 같습니다) CSV 파일 중에 세미콜론이 필드 구분자로 사용되는 것도 있습니다. 이 경우 적절한 기본값을 사용하기 위해 <code>write.csv2</code>을 사용해야 합니다. CSV에 대한 IETF 표준이 있습니다. IETF에서는 <code>eol = "\r\n"</code>), RFC4180 (see <a href="http://tools.ietf.org/html/rfc4180">http://tools.ietf.org/html/rfc4180</a>) 를 사용하는 것에 대해콤마와 CRLF 라인 인코딩을 권장합니다. 그러나 실제에서 더욱 중요한 것은 목표로 하고 있는 어플리케이션에 의해 읽혀들여 질 수 있는가 입니다.
 
-     <p>따라서, 세미콜론을 사용하거나 탭(tap, sep = "＼t")을 사용하는 것이 가장 안정적인 선택이 될 수 있습니다.
-
-     <p>Using a semicolon or tab (<code>sep = "\t"</code>) are probably the safest
-options.
+     <!-- Using a semicolon or tab (@code{sep = "\t"}) are probably the safest -->
+     <!-- options. -->
+     <p>따라서, 세미콜론을 사용하거나 탭(<code>sep = "\t"</code>)을 사용하는 것이 가장 안전한 선택이 될 수 있습니다.
 
      <li><strong>Missing values</strong>
 <a name="index-Missing-values-12"></a>
-By default missing values are output as <code>NA</code>, but this may be
-changed by argument <code>na</code>.  Note that <code>NaN</code>s are treated as
-<code>NA</code> by <code>write.table</code>, but not by <code>cat</code> nor <code>write</code>.
+<!-- By default missing values are output as @code{NA}, but this may be -->
+<!-- changed by argument @code{na}.  Note that @code{NaN}s are treated as -->
+<!-- @code{NA} by @code{write.table}, but not by @code{cat} nor @code{write}. -->
+
+     <p>디폴트로 결측값들을 NA로 출력(output)되게 지정한다고 해도, 이것은 인수 na에 의해 달라질 수 있습니다. NaN는 write.table에서는 NA와 똑같이 취급되지만, cat이나 write에서는 그렇지 않다는 점을 주의해야 합니다.
 
      <li><strong>Quoting strings</strong>
 <a name="index-Quoting-strings-13"></a>
-By default strings are quoted (including the row and column names). 
-Argument <code>quote</code> controls if  character and factor variables are
-quoted: some programs, for example <strong>Mondrian</strong>, do not accept quoted
-strings (which are the default).
+<!-- By default strings are quoted (including the row and column names). -->
+<!-- Argument @code{quote} controls if  character and factor variables are -->
+<!-- quoted: some programs, for example @pkg{Mondrian}, do not accept quoted -->
+<!-- strings (which are the default). -->
 
-     <p>Some care is needed if the strings contain embedded quotes.  Three
-useful forms are
+     <p>문자열(string, 그것이 행 이름이던 열 이름이던)은 기본값으로 인용(quote)됩니다. 문자(character)와 요인(factor) 변수들이 인용된다면 인자 <code>quote</code>가 제어합니다. 예를 들어 <strong>Mondrian</strong> 같은 어떤 프로그램들은 인용된 문자열을 받아들이지 않고 기본값을 적용합니다.
+
+     <!-- Some care is needed if the strings contain embedded quotes.  Three -->
+     <!-- useful forms are -->
+     <p>만약에 문자열(strings)이 임베디드 인용문(embedded quotes)을 포함하고 있다면 특별히 더 조심해야 합니다. 유용한 세 가지 형태는 다음과 같습니다.
 
      <pre class="example">          &gt; df &lt;- data.frame(a = I("a \" quote"))
           &gt; write.table(df)
@@ -469,7 +472,9 @@ useful forms are
           a
           1,a " quote
 </pre>
-     <p class="noindent">The second is the form of escape commonly used by spreadsheets.
+     <!-- @noindent -->
+     <!-- The second is the form of escape commonly used by spreadsheets. -->
+     <p>두번째 방법은 명령을 중단(escape)하기 위한 형태인데 주로 스프레드 시트 형태 에서 많이 사용됩니다.
 
      <li><strong>Encodings</strong>
 <a name="index-Encodings-14"></a>
@@ -515,36 +520,41 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <h3 class="section">1.3 XML</h3>
 
 <p><a name="index-XML-18"></a>
-When reading data from text files, it is the responsibility of the user
-to know and to specify the conventions used to create that file,
-e.g. the comment character, whether a header line is present, the value
-separator, the representation for missing values (and so on) described
-in <a href="#Export-to-text-files">Export to text files</a>.  A markup language which can be used to
-describe not only content but also the structure of the content can
-make a file self-describing, so that one need not provide these details
-to the software reading the data.
+<!-- When reading data from text files, it is the responsibility of the user -->
+<!-- to know and to specify the conventions used to create that file, -->
+<!-- e.g. the comment character, whether a header line is present, the value -->
+<!-- separator, the representation for missing values (and so on) described -->
+<!-- in @ref{Export to text files}.  A markup language which can be used to -->
+<!-- describe not only content but also the structure of the content can -->
+<!-- make a file self-describing, so that one need not provide these details -->
+<!-- to the software reading the data. -->
 
-   <p>The eXtensible Markup Language &ndash; more commonly known simply as
-<acronym>XML</acronym> &ndash; can be used to provide such structure, not only for
-standard datasets but also more complex data structures. 
-<acronym>XML</acronym> is becoming extremely popular and is emerging as a
-standard for general data markup and exchange.  It is being used by
-different communities to describe geographical data such as maps,
-graphical displays, mathematics and so on.
+   <p>text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(converntion)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 <a href="#Export-to-text-files">Export to text files</a>에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
 
-   <p>XML provides a way to specify the file's encoding, e.g.
+<!-- The eXtensible Markup Language - more commonly known simply as -->
+<!-- @acronym{XML} - can be used to provide such structure, not only for -->
+<!-- standard datasets but also more complex data structures. -->
+<!-- @acronym{XML} is becoming extremely popular and is emerging as a -->
+<!-- standard for general data markup and exchange.  It is being used by -->
+<!-- different communities to describe geographical data such as maps, -->
+<!-- graphical displays, mathematics and so on. -->
+   <p>확장형 마크업 언어(좀 더 일반적으로는 <acronym>XML</acronym>로 알려져 있는 eXtensible Markup Language)는 표준 형태의 데이터 세트뿐 아니라 좀 더 복잡한 형태의 데이터 구조까지도 표현이 가능합니다. <acronym>XML</acronym>은 점점 더 엄청난 인기를 얻고 있으며, 모든 형태의 데이터 마크업과 그 교환에 대한 하나의 기준이 되어가고 있습니다. XML은 서로 다른 커뮤니티들에서 지도, 그래픽, 수학식 등의 지리학적 데이터를 묘사하는데 사용되고 있습니다.
+
+<!-- XML provides a way to specify the file's encoding, e.g.@: -->
+   <p><acronym>XML</acronym>은 비록 요구되지 않더라도 다음과 같이 파일의 인코딩을 특정하는 방법을 제공하고 있습니다.
 
 <pre class="example">     &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 </pre>
-   <p class="noindent">although it does not require it.
-
-   <p>The <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a> package provides general facilities for reading and
-writing <acronym>XML</acronym> documents within R.  A description of the
-facilities of the <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a> package is outside the scope of this
-document: see the package's Web page at
-<a href="http://www.omegahat.org/RSXML">http://www.omegahat.org/RSXML</a> for details and examples.  Package
-<a href="http://CRAN.R-project.org/package=StatDataML"><strong>StatDataML</strong></a> on <acronym>CRAN</acronym> is one example building on
-<a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>.
+   <!-- @noindent -->
+<!-- although it does not require it. -->
+<!-- The @CRANpkg{XML} package provides general facilities for reading and -->
+<!-- writing @acronym{XML} documents within @R{}.  A description of the -->
+<!-- facilities of the @CRANpkg{XML} package is outside the scope of this -->
+<!-- document: see the package's Web page at -->
+<!-- @uref{http://www.omegahat.org/RSXML} for details and examples.  Package -->
+<!-- @CRANpkg{StatDataML} on @acronym{CRAN} is one example building on -->
+<!-- @CRANpkg{XML}. -->
+   <p>패키지  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>은 R에서 <acronym>XML</acronym> 문서를 읽고 쓸 수 있도록 다양한 기능을 제공합니다. 팩키지  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>의 기능에 대한 설명서는 이 문서의 범위를 벗어나므로 세부적 사항들과 예제에 대하여는 웹페이지(<a href="http://www.omegahat.org/RSXML">http://www.omegahat.org/RSXML</a>)를 참고하기 바랍니다. <acronym>CRAN</acronym>에서 패키지 <a href="http://CRAN.R-project.org/package=StatDataML"><strong>StatDataML</strong></a>은  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>에서 구축된 하나의 사례입니다.
 
    <p>NB: <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a> is available as a binary package for Windows, normally
 from the `CRAN extras' repository (which is selected by default on

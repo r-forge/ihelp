@@ -1799,211 +1799,264 @@ Terms object들이 다르게 저장됩니다. S에서 Terms object는 attribute�
 @node Others,  , Models, What are the differences between R and S?
 @subsection  Others
 
-Apart from lexical scoping and its implications, R follows the S
-language definition in the Blue and White Books as much as possible, and
-hence really is an ``implementation'' of S.  There are some intentional
-differences where the behavior of S is considered ``not clean''.  In
-general, the rationale is that R should help you detect programming
-errors, while at the same time being as compatible as possible with S.
+@c Apart from lexical scoping and its implications, R follows the S
+@c language definition in the Blue and White Books as much as possible, and
+@c hence really is an ``implementation'' of S.  There are some intentional
+@c differences where the behavior of S is considered ``not clean''.  In
+@c general, the rationale is that R should help you detect programming
+@c errors, while at the same time being as compatible as possible with S.
 
-Some known differences are the following.
+Lexical scoping과 그에 연관 된 것들을 떠나서, R은 Blue and White Books의 S 언어 정의를 가능한한 많이 따고, 그렇기 때문에 사실상은 S의 “실행” 입니다. S의 behaviour이 “깨끗하지 않다고: 간주되는 곳에는 의도되는 다른 점들이 있습니다. 일반적으로, R은 당신이 같은 시간동안 S와 호환하면서 프로그래밍 에러를 발견하도록 도와주는 것입니다. 
+
+
+@c Some known differences are the following.
+몇가지의 알려진 다른 점들이 아래에 설명되어 있습니다. 
 
 @itemize @bullet
 
 @item
-In R, if @code{x} is a list, then @code{x[i] <- NULL} and @code{x[[i]]
-<- NULL} remove the specified elements from @code{x}.  The first of
-these is incompatible with S, where it is a no-op.  (Note that you can
-set elements to @code{NULL} using @code{x[i] <- list(NULL)}.)
+@c In R, if @code{x} is a list, then @code{x[i] <- NULL} and @code{x[[i]]
+@c <- NULL} remove the specified elements from @code{x}.  The first of
+@c these is incompatible with S, where it is a no-op.  (Note that you can
+@c set elements to @code{NULL} using @code{x[i] <- list(NULL)}.)
+
+ R에서, 만약 x가 목록 형태라면, x[i] <- NULL 과 x[[i]] <- NULL는 x에서 지정된 element들을 없앱니다. 이 중 첫번째는 no-op인 곳에서 S와 호환하지 않습니다. (element를 x[i] <- list(NULL)를 사용하여NULL 지정할 수 있다는 것을 유의하십시오.)
 
 @c @item
 @c In R @code{x[-4]} fails if @code{x} is not @code{NULL} but has fewer
 @c than 4 elements.  In S it has no effect.
 
 @item
-In S, the functions named @code{.First} and @code{.Last} in the
-@file{.Data} directory can be used for customizing, as they are executed
-at the very beginning and end of a session, respectively.
+@c In S, the functions named @code{.First} and @code{.Last} in the
+@c @file{.Data} directory can be used for customizing, as they are executed
+@c at the very beginning and end of a session, respectively.
+S에서, .Data 디렉토리 안에서 .First 와 .Last로 이름이 지어진 함수들은 순서대로 세션의 제일 시작과 맨 끝에서 실행될 때 customizing을 위해 사용될 수 있습니다. 
 
-In R, the startup mechanism is as follows.  Unless @option{--no-environ}
-was given on the command line, R searches for site and user files to
-process for setting environment variables.  Then, R searches for a
-site-wide startup profile unless the command line option
-@option{--no-site-file} was given.  This code is loaded in package
-@pkg{base}.  Then, unless @option{--no-init-file} was given, R
-searches for a user profile file, and sources it into the user
-workspace.  It then loads a saved image of the user workspace from
-@file{.RData} in case there is one (unless @option{--no-restore-data} or
-@option{--no-restore} were specified).  Next, a function @code{.First()}
-is run if found on the search path.  Finally, function @code{.First.sys}
-in the @pkg{base} package is run.  When terminating an R session, by
-default a function @code{.Last} is run if found on the search path,
-followed by @code{.Last.sys}.  If needed, the functions @code{.First()}
-and @code{.Last()} should be defined in the appropriate startup
-profiles.  See the help pages for @code{.First} and @code{.Last} for
-more details.
+@c In R, the startup mechanism is as follows.  Unless @option{--no-environ}
+@c was given on the command line, R searches for site and user files to
+@c process for setting environment variables.  Then, R searches for a
+@c site-wide startup profile unless the command line option
+@c @option{--no-site-file} was given.  This code is loaded in package
+@c @pkg{base}.  Then, unless @option{--no-init-file} was given, R
+@c searches for a user profile file, and sources it into the user
+@c workspace.  It then loads a saved image of the user workspace from
+@c @file{.RData} in case there is one (unless @option{--no-restore-data} or
+@c @option{--no-restore} were specified).  Next, a function @code{.First()}
+@c is run if found on the search path.  Finally, function @code{.First.sys}
+@c in the @pkg{base} package is run.  When terminating an R session, by
+@c default a function @code{.Last} is run if found on the search path,
+@c followed by @code{.Last.sys}.  If needed, the functions @code{.First()}
+@c and @code{.Last()} should be defined in the appropriate startup
+@c profiles.  See the help pages for @code{.First} and @code{.Last} for
+@c more details.
 
-@item
-In R, @code{T} and @code{F} are just variables being set to @code{TRUE}
-and @code{FALSE}, respectively, but are not reserved words as in S and
-hence can be overwritten by the user.  (This helps e.g.@: when you have
-factors with levels @code{"T"} or @code{"F"}.)  Hence, when writing code
-you should always use @code{TRUE} and @code{FALSE}.
+R에서, startup mechanism은 다음과 같습니다. --no-environ이 명령줄에 주어지지 않은 이상, R은 environment variable들을 지정하기위한 프로세스를 하기위해 사이트와 사용자 파일을 검색합니다. 그리고나서 R은 명령줄 옵션--no-site-file가 주어지지 않은 이상 사이트 전체의 시작 프로필을 검색합니다. 이 코드는 base 패키지에 로드되어 있습니다. 그리고나서, --no-init-file가 주어지지 않은 이상, R은 사용자 프로필 파일을 검색하고, 그것을 사용자 workspace로 공급합니다.  그리고나서 그것은 있을 경우를 대비하여 .RData로부터 사용자 workspace의 저장된 이미지로 로드합니다 (--no-restore-data 혹은 --no-restore 가 명시되지 않은 이상). 그 다음, .First() 함수는 검색 경로에서 찾아지면 실행 됩니다. 마지막으로, base 패키지의.First.sys 함수가 실행됩니다. R 세션이 종료되면, .Last.sys 다음에 만약 검색 경로에서 찾아진다면 기본 함수 .Last가 실행됩니다. 만약 필요하다면, 함수.First() 와 .Last()는 적절한 startup 프로필들에서 정의되어야만 할 것입니다. 더 많은 정보는 help 페이지에서 .First 와 .Last를 참고하십시오.
+
 
 @item
-In R, @code{dyn.load()} can only load @emph{shared objects}, as created
-for example by @kbd{R CMD SHLIB}.
+@c In R, @code{T} and @code{F} are just variables being set to @code{TRUE}
+@c and @code{FALSE}, respectively, but are not reserved words as in S and
+@c hence can be overwritten by the user.  (This helps e.g.@: when you have
+@c factors with levels @code{"T"} or @code{"F"}.)  Hence, when writing code
+@c you should always use @code{TRUE} and @code{FALSE}.
+
+R에서, T와 F는, 순서대로, TRUE와 FALSE로 지정되는 값이지만, S에서는 reserve된 단어는 아니기 때문에 사용자에의해 덮어쓰여질 수 있습니다. (이는 예를들어 “T” 혹은 “F”레벨들의 factor들이 있을때 도움이 됩니다.) 그러므로, 코드를 쓸때에는 항상 TRUE와 FALSE를 사용해야만 합니다. 
 
 @item
-In R, @code{attach()} currently only works for lists and data frames,
-but not for directories.  (In fact, @code{attach()} also works for R
-data files created with @code{save()}, which is analogous to attaching
-directories in S.)  Also, you cannot attach at position 1.
+@c In R, @code{dyn.load()} can only load @emph{shared objects}, as created
+@c for example by @kbd{R CMD SHLIB}.
+
+R에서, dyn.load()는R CMD SHLIB에의한 예제를위해 생성되었기 때문에 공유된 object들만을 로드할 수 있습니다. 
 
 @item
-Categories do not exist in R, and never will as they are deprecated now
-in S.  Use factors instead.
+@c In R, @code{attach()} currently only works for lists and data frames,
+@c but not for directories.  (In fact, @code{attach()} also works for R
+@c data files created with @code{save()}, which is analogous to attaching
+@c directories in S.)  Also, you cannot attach at position 1.
+
+ R에서, attach()는 현재 목록들과 데이터 프레임들에서만 실행되지만, 디렉토리들에서는 실행되지 않습니다. (실제로, attach()는S에서의 디렉토리를 첨부하는것과 유사하게, save()와 함께 생성된 R 데이터 파일들을 위해서도 실행됩니다.) 또한, position 1에는 첨부할 수 없습니다
 
 @item
-In R, @code{For()} loops are not necessary and hence not supported.
+@c Categories do not exist in R, and never will as they are deprecated now
+@c in S.  Use factors instead.
+R에서 카테고리는 존재하지않고, S에서 되었기 때문에 앞으로도 존재하지 않을 것 입니다. 대신 factor들을 사용하십시오.
 
 @item
-In R, @code{assign()} uses the argument @option{envir=} rather than
-@option{where=} as in S.
+@c In R, @code{For()} loops are not necessary and hence not supported.
+R에서, For() loop들은 필요하지않고 그러므로 지원되지 않습니다.
 
 @item
-The random number generators are different, and the seeds have different
-length.
+@c In R, @code{assign()} uses the argument @option{envir=} rather than
+@c @option{where=} as in S.
+R에서, assign()은  S에서와 같이 where= 보다는envir= argument를 사용합니다. 
 
 @item
-R passes integer objects to C as @code{int *} rather than @code{long *}
-as in S.
+@c The random number generators are different, and the seeds have different
+@c length.
+랜덤 숫자 생성기들은 다르고, seed들은 다른 길이를 가지고 있습니다. 
 
 @item
-R has no single precision storage mode.  However, as of version 0.65.1,
-there is a single precision interface to C/@FORTRAN{} subroutines.
+@c R passes integer objects to C as @code{int *} rather than @code{long *}
+@c as in S.
+R은 S에서와 같이 long* 대신 int* 처럼 정수 object들을 C로 패스합니다.
 
 @item
-By default, @code{ls()} returns the names of the objects in the current
-(under R) and global (under S) environment, respectively.  For example,
-given
+@c R has no single precision storage mode.  However, as of version 0.65.1,
+@c there is a single precision interface to C/@FORTRAN{} subroutines.
+R은 단일 정밀도 저장 모드가 없습니다. 하지만, 0.65.1버전부터, C/FORTRAN 서브루틴들로의 단일 정밀도 인터페이스가 존재합니다. 
+
+@item
+@c By default, @code{ls()} returns the names of the objects in the current
+@c (under R) and global (under S) environment, respectively.  For example,
+@c given
+기본값으로, ls()는 순서대로 현재 (R에서)와 global (S에서) 환경안의 object들의 이름을 return합니다. 예를들어, 
 
 @example
 x <- 1; fun <- function() @{y <- 1; ls()@}
 @end example
 
 @noindent
-then @code{fun()} returns @code{"y"} in R and @code{"x"} (together with
-the rest of the global environment) in S.
+@c then @code{fun()} returns @code{"y"} in R and @code{"x"} (together with
+@c the rest of the global environment) in S.
+이 주어지면, fun()은 R에서는"y"을, S에서는"x" (나머지 global 환경과 함께)를 return합니다. 
 
 @item
-R allows for zero-extent matrices (and arrays, i.e., some elements of
-the @code{dim} attribute vector can be 0).  This has been determined a
-useful feature as it helps reducing the need for special-case tests for
-empty subsets.  For example, if @code{x} is a matrix, @code{x[, FALSE]}
-is not @code{NULL} but a ``matrix'' with 0 columns.  Hence, such objects
-need to be tested for by checking whether their @code{length()} is zero
-(which works in both R and S), and not using @code{is.null()}.
+@c R allows for zero-extent matrices (and arrays, i.e., some elements of
+@c the @code{dim} attribute vector can be 0).  This has been determined a
+@c useful feature as it helps reducing the need for special-case tests for
+@c empty subsets.  For example, if @code{x} is a matrix, @code{x[, FALSE]}
+@c is not @code{NULL} but a ``matrix'' with 0 columns.  Hence, such objects
+@c need to be tested for by checking whether their @code{length()} is zero
+@c (which works in both R and S), and not using @code{is.null()}.
+
+R은 zero-extent 행렬들(그리고 array들, 즉 dim attribute 벡터의 몇몇의 element들은 0가 될 수 있습니다)을 허용합니다. 이는 빈 subset에 대한 특별한 테스트들의 필요성을 줄이는데 도움을 주기때문에 유용한 기능이라고 여겨져 왔습니다. 예ㄹㄹㄷㄹ어, 만약 x가 행렬이라면, x[, FALSE]는NULL이 아니고 0 행들로 이루어진 하나의 “행렬”입니다. 그러므로, 이러한 object들은length()가 제로인지 (R과 S 둘 다에서 실행됩니다) 테스트를 해야할 필요가 있고, is.null()를 사용하지 않습니다. 
 
 @item
-Named vectors are considered vectors in R but not in S (e.g.,
-@code{is.vector(c(a = 1:3))} returns @code{FALSE} in S and @code{TRUE}
-in R).
+@c Named vectors are considered vectors in R but not in S (e.g.,
+@c @code{is.vector(c(a = 1:3))} returns @code{FALSE} in S and @code{TRUE}
+@c in R).
+이름이 주어진 벡터들은 R에서는 벡터로 간주되지만 S에서는 그렇지 않습니다 (예를들어, is.vector(c(a = 1:3))는 S에서는 FALSE를 R에서는 TRUE를 return합니다).
 
 @item
-Data frames are not considered as matrices in R (i.e., if @code{DF} is a
-data frame, then @code{is.matrix(DF)} returns @code{FALSE} in R and
-@code{TRUE} in S).
+@c Data frames are not considered as matrices in R (i.e., if @code{DF} is a
+@c data frame, then @code{is.matrix(DF)} returns @code{FALSE} in R and
+@c @code{TRUE} in S).
+데이터 프레임은 R에서 행렬처럼 간주되지 않습니다 (예를들어, 만약 DF가 데이터 프레임이라면, is.matrix(DF)는 R에서는 FALSE를 S에서는 TRUE를 return합니다).
 
 @item
-R by default uses treatment contrasts in the unordered case, whereas S
-uses the Helmert ones.  This is a deliberate difference reflecting the
-opinion that treatment contrasts are more natural.
+@c R by default uses treatment contrasts in the unordered case, whereas S
+@c uses the Helmert ones.  This is a deliberate difference reflecting the
+@c opinion that treatment contrasts are more natural.
+ R은 기본값으로 정렬되지 않은 경우에 treatment contrast를 사용하는반면, S는 Helmert들을 사용합니다. 이는 treatment contrast들이 더 자연수럽다는 의견이 반영된 의도된 다른점입니다. 
+
 
 @item
-In R, the argument of a replacement function which corresponds to the
-right hand side must be named @samp{value}.  E.g., @code{f(a) <- b} is
-evaluated as @code{a <- "f<-"(a, value = b)}.  S always takes the last
-argument, irrespective of its name.
+@c In R, the argument of a replacement function which corresponds to the
+@c right hand side must be named @samp{value}.  E.g., @code{f(a) <- b} is
+@c evaluated as @code{a <- "f<-"(a, value = b)}.  S always takes the last
+@c argument, irrespective of its name.
+R에서, 오른쪽에 해당하는 치환 함수의 argument는‘value’로 이름이 지어져야만 합니다. 예를들어, f(a) <- b는 a <- "f<-"(a, value = b)처럼 평가됩니다. S는 이름에 관계없이, 항상 마지막 argument를 취합니다. 
+
 
 @item
-In S, @code{substitute()} searches for names for substitution in the
-given expression in three places: the actual and the default arguments
-of the matching call, and the local frame (in that order).  R looks in
-the local frame only, with the special rule to use a ``promise'' if a
-variable is not evaluated.  Since the local frame is initialized with
-the actual arguments or the default expressions, this is usually
-equivalent to S, until assignment takes place.
+@c In S, @code{substitute()} searches for names for substitution in the
+@c given expression in three places: the actual and the default arguments
+@c of the matching call, and the local frame (in that order).  R looks in
+@c the local frame only, with the special rule to use a ``promise'' if a
+@c variable is not evaluated.  Since the local frame is initialized with
+@c the actual arguments or the default expressions, this is usually
+@c equivalent to S, until assignment takes place.
+
+S에서, substitute()는 세 군데에서 주어진 표현들안의 대체할 이름들을 검색합니다: matching call의 실제와 기본 argument들, 그리고 local  프레임(순서대로). R은 만약 값이 평가되지 않았다면 “promise”를 사용하기위해 특별한 룰을 사용하여, local 프레임 안에서만 찾습니다. Local 프레임이assignment가 일어나기 전까지는 실제 argument들 혹은 기본 표현들로 초기설정 되어있지때문에, 이는 보통 S와 같습니다.
 
 @item
-In S, the index variable in a @code{for()} loop is local to the inside
-of the loop.  In R it is local to the environment where the @code{for()}
-statement is executed.
+@c In S, the index variable in a @code{for()} loop is local to the inside
+@c of the loop.  In R it is local to the environment where the @code{for()}
+@c statement is executed.
+
+S에서는, for() loop안의 index 값이 loop안으로의 local입니다. R에서 이는 for() statement가 실행된 환경으로의 local입니다. 
 
 @item
-In S, @code{tapply(simplify=TRUE)} returns a vector where R returns a
-one-dimensional array (which can have named dimnames).
+@c In S, @code{tapply(simplify=TRUE)} returns a vector where R returns a
+@c one-dimensional array (which can have named dimnames).
+S에서, tapply(simplify=TRUE)는 R이 1-차원 배열(dimnames로 이름지어졌을수도 있는)을 return한 벡터를 return합니다. 
 
 @item
-In S(-@sc{Plus}) the C locale is used, whereas in R the current
-operating system locale is used for determining which characters are
-alphanumeric and how they are sorted.  This affects the set of valid
-names for R objects (for example accented chars may be allowed in R) and
-ordering in sorts and comparisons (such as whether @code{"aA" < "Bb"} is
-true or false).  From version 1.2.0 the locale can be (re-)set in R by
-the @code{Sys.setlocale()} function.
+@c In S(-@sc{Plus}) the C locale is used, whereas in R the current
+@c operating system locale is used for determining which characters are
+@c alphanumeric and how they are sorted.  This affects the set of valid
+@c names for R objects (for example accented chars may be allowed in R) and
+@c ordering in sorts and comparisons (such as whether @code{"aA" < "Bb"} is
+@c true or false).  From version 1.2.0 the locale can be (re-)set in R by
+@c the @code{Sys.setlocale()} function.
+
+S(-Plus)에서 C locale이 사용되는 반면, R에서는 현재 실행 시스탬 locale이 어떤 character들이 alphanumeric이고 그들이 어떻게 분류되었는지를 알아보기위해 사용됩니다. 이는 R object들의 유효한 이름들의 세트와 (예를들어 R에서 accented chars가 허용될지도 모릅니다) 분류들의 정렬 그리고 비교 ("aA" < "Bb"가 맞는지 틀린지 같은)들에 영향을 줍니다. 1.2.0버전부터 locale은 Sys.setlocale() 함수에의해 R에서 (re-)set될 수 있습니다.
+
+
 
 @item
-In S, @code{missing(@var{arg})} remains @code{TRUE} if @var{arg} is
-subsequently modified; in R it doesn't.
+@c In S, @code{missing(@var{arg})} remains @code{TRUE} if @var{arg} is
+@c subsequently modified; in R it doesn't.
+
+S에서, missing(arg)은 만약 arg가 나중에 수정되면 TRUE로 남아있습니다; R에서는 그렇지 않습니다.
 
 @item
-From R version 1.3.0, @code{data.frame} strips @code{I()} when creating
-(column) names.
+@c From R version 1.3.0, @code{data.frame} strips @code{I()} when creating
+@c (column) names.
+R 버전 1.3.0에서부터, data.frame는 (행) 이름을 생성할 때I()를 분해합니다. 
 
 @item
-In R, the string @code{"NA"} is not treated as a missing value in a
-character variable.  Use @code{as.character(NA)} to create a missing
-character value.
+@c In R, the string @code{"NA"} is not treated as a missing value in a
+@c character variable.  Use @code{as.character(NA)} to create a missing
+@c character value.
+ R에서, "NA" string은 character값에서 missing 값처럼 여겨지지 않습니다. Missing character 값을 생성할 때 as.character(NA)를 사용하십시오.
 
 @item
-R disallows repeated formal arguments in function calls.
+@c R disallows repeated formal arguments in function calls.
+R은 함수 call들에서 반복된 전 argument들을 허용하지 않습니다.
 
 @item
-In S, @code{dump()}, @code{dput()} and @code{deparse()} are essentially
-different interfaces to the same code.  In R from version 2.0.0, this is
-only true if the same @code{control} argument is used, but by default it
-is not.  By default @code{dump()} tries to write code that will evaluate
-to reproduce the object, whereas @code{dput()} and @code{deparse()}
-default to options for producing deparsed code that is readable.
+@c In S, @code{dump()}, @code{dput()} and @code{deparse()} are essentially
+@c different interfaces to the same code.  In R from version 2.0.0, this is
+@c only true if the same @code{control} argument is used, but by default it
+@c is not.  By default @code{dump()} tries to write code that will evaluate
+@c to reproduce the object, whereas @code{dput()} and @code{deparse()}
+@c default to options for producing deparsed code that is readable.
+S에서, dump(), dput() 그리고 deparse()는 같은 코드로의 근본적으로 다른 인터페이스들 입니다. R의 버저 2.0.0 부터, 이는 만약 control argument가 사용되었을 때만 true이지만, 기본값으로는 사실이 아닙니다. 기본값으로dump()는 object를 다시 생성하기위한 평가를 할 코드를 쓰려고 노력하는반면, dput()와 deparse()는 읽혀질 수 있는 deparsed 코드를 생성하기위한 기본 옵션들 입니다. 
+
 
 @item
-In R, indexing a vector, matrix, array or data frame with @code{[} using
-a character vector index looks only for exact matches (whereas @code{[[}
-and @code{$} allow partial matches).  In S, @code{[} allows partial
-matches.
+@c In R, indexing a vector, matrix, array or data frame with @code{[} using
+@c a character vector index looks only for exact matches (whereas @code{[[}
+@c and @code{$} allow partial matches).  In S, @code{[} allows partial
+@c matches.
+R에서, character 벡터 인덱스를 사용한 [ 와 함께 벡터, 행렬, array를 인덱스 하는 것은 정확한 매치들만을 찾습니다 (반면에 [[와 $는 부분 매치를 허용합니다).
 
 @item
-S has a two-argument version of @code{atan} and no @code{atan2}.  A call 
-in S such as @code{atan(x1, x2)} is equivalent to R's @code{atan2(x1, 
-x2)}.  However, beware of named arguments since S's @code{atan(x = a, y
-= b)} is equivalent to R's @code{atan2(y = a, x = b)} with the meanings
-of @code{x} and @code{y} interchanged.  (R used to have undocumented
-support for a two-argument @code{atan} with positional arguments, but
-this has been withdrawn to avoid further confusion.)
+@c S has a two-argument version of @code{atan} and no @code{atan2}.  A call 
+@c in S such as @code{atan(x1, x2)} is equivalent to R's @code{atan2(x1, 
+@c x2)}.  However, beware of named arguments since S's @code{atan(x = a, y
+@c = b)} is equivalent to R's @code{atan2(y = a, x = b)} with the meanings
+@c of @code{x} and @code{y} interchanged.  (R used to have undocumented
+@c support for a two-argument @code{atan} with positional arguments, but
+@c this has been withdrawn to avoid further confusion.)
+S는 atan의 두개의 argument 버전이 있고 atan2는 없습니다. S에서의 as atan(x1, x2)와 같은 call은 R의atan2(x1, x2)와 같습니다. 하지만, x와 y가 교환 되었다는 뜻의 S의atan(x = a, y = b)이atan2(y = a, x = b)과 같으므로 이름이 주어진 argument들은 주의하십시오. (R은 위치 매개변수가 있는 두개의 argument atan을 위한 자료가 없는 지원을 하기도 했지만, 이는 더이상의 혼돈을 막기위해 제거되었습니다. 
 
 @item
-Numeric constants with no fractional and exponent (i.e., only integer)
-part are taken as integer in @SPLUS{} 6.x or later, but as double in R.
+@c Numeric constants with no fractional and exponent (i.e., only integer)
+@c part are taken as integer in @SPLUS{} 6.x or later, but as double in R.
+분수나 지수가 없는 수치상수들 (즉, 정수들만)은S-Plus 6.x나 이후에서는 정수처럼 취해지지만, R에서는 double처럼 취해집니다. 
 
 @end itemize
 
-There are also differences which are not intentional, and result from
-missing or incorrect code in R.  The developers would appreciate hearing
-about any deficiencies you may find (in a written report fully
-documenting the difference as you see it).  Of course, it would be
-useful if you were to implement the change yourself and make sure it
-works.
+@c There are also differences which are not intentional, and result from
+@c missing or incorrect code in R.  The developers would appreciate hearing
+@c about any deficiencies you may find (in a written report fully
+@c documenting the difference as you see it).  Of course, it would be
+@c useful if you were to implement the change yourself and make sure it
+@c works.
+의도되지 않은 다른점들 또한 있고, 잃어버리거나 잘못된 R의 코드들로부터의 결과도 있습니다. 개발자들은 당신이 찾는 어떠한 부족한 것(당신이 보는것 처럼 다른점들에 대해 충분하게 설명된 기록된 보고서)에 대하여 듣는 것을 감사하게 여길 것 입니다. 물론, 당신이 바꾼것을 실행해보고 그것이 확실하게 실행이되는 것을 확인하면 유용할 것입니다. 
+
 
 @node Is there anything R can do that S-PLUS cannot?, What is R-plus?, What are the differences between R and S?, R and S
 @section Is there anything R can do that @sc{S-Plus} cannot?
