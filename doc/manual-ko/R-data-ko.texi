@@ -495,7 +495,7 @@ currently support for export to @code{SAS}, @code{SPSS} and @code{Stata}.
 @c make a file self-describing, so that one need not provide these details
 @c to the software reading the data.
 
-text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(converntion)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 @ref{Export to text files}에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
+text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(convention)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 @ref{Export to text files}에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
 
 @c The eXtensible Markup Language -- more commonly known simply as
 @c @acronym{XML} -- can be used to provide such structure, not only for
@@ -528,9 +528,14 @@ text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 
 
 패키지  @CRANpkg{XML}은 R에서 @acronym{XML} 문서를 읽고 쓸 수 있도록 다양한 기능을 제공합니다. 팩키지  @CRANpkg{XML}의 기능에 대한 설명서는 이 문서의 범위를 벗어나므로 세부적 사항들과 예제에 대하여는 웹페이지(@uref{http://www.omegahat.org/RSXML})를 참고하기 바랍니다. @acronym{CRAN}에서 패키지 @CRANpkg{StatDataML}은  @CRANpkg{XML}에서 구축된 하나의 사례입니다.
 
+%NB가 'nota bene' 이거 맞나?
+ 
 NB: @CRANpkg{XML} is available as a binary package for Windows, normally
 from the `CRAN extras' repository (which is selected by default on
 Windows).
+
+주의: @CRANpkg{XML}은 일반적으로 'CRAN extras' 저장소(리포지토리: repository)로부터 윈도우즈 운영체제에 바이너리 패키지 형태(윈도우즈에 기본값으로 선택되어 지게 되어있습니다)로 사용가능합니다. 
+
 
 @node Spreadsheet-like data, Importing from other statistical systems, Introduction, Top
 @chapter Spreadsheet-like data
