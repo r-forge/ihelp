@@ -550,13 +550,12 @@ Windows).
 * Flat contingency tables::     
 @end menu
 
-In @ref{Export to text files} we saw a number of variations on the
-format of a spreadsheet-like text file, in which the data are presented
-in a rectangular grid, possibly with row and column labels.  In this
-section we consider importing such files into @R{}.
+@c In @ref{Export to text files} we saw a number of variations on the
+@c format of a spreadsheet-like text file, in which the data are presented
+@c in a rectangular grid, possibly with row and column labels.  In this
+@c section we consider importing such files into @R{}.
 
-
-
+@ref{Export to text files}에서 우리는 행과 열 이름이 달려 있고 사각의 격자 형태로 표현된 다양한 스프레드 시트 형태의 text 파일 포맷을 확인할 수 있었습니다. 이번에는 이와 같은 형태의 파일들을 R로 읽어 들이는 방법을 다룹니다.
 
 @node Variations on read.table, Fixed-width-format files, Spreadsheet-like data, Spreadsheet-like data
 @section  Variations on @code{read.table}
@@ -566,6 +565,8 @@ The function @code{read.table} is the most convenient way to read in a
 rectangular grid of data.  Because of the many possibilities, there are
 several other functions that call @code{read.table} but change a group
 of default arguments.
+
+@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
 
 Beware that @code{read.table} is an inefficient way to read in
 very large numerical matrices: see @code{scan} below.
