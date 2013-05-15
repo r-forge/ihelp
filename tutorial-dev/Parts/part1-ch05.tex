@@ -242,6 +242,8 @@ $class
 \end{Schunk}
 %$
 
+%가끔가다 나오는 이 %$ 표시는 무슨 뜻인거야?
+
 행의 이름 또한 아래와 같은 방법으로 변경이 가능합니다. 
 
 \begin{Schunk}
@@ -361,7 +363,7 @@ Wide character in print at /usr/lib/R/site-library/gdata/perl/xls2csv.pl line 27
 
 따라서, XLConnect 라는 운영체제에 관계없이 사용될 수 있는 또 다른 종류의 패키지를 아래와 같이 불러왔습니다.
 
-%문맥상 XLConnect 패키지를 사용하면 클리닝 작업의 기록을 확인할 수 있다는 것으로 파악된다. 그러나 여기에는 그에 대한 언급이 없다.
+%문맥상 XLConnect 패키지를 사용하면 클리닝 작업의 기록을 확인할 수 있다는 것으로 파악된다. 그러나 여기에는 그에 대한 언급이 없다. 그에 대한 설며을 추가해줄 것...
 
 \begin{Schunk}
 \begin{Soutput}
@@ -372,6 +374,13 @@ Wide character in print at /usr/lib/R/site-library/gdata/perl/xls2csv.pl line 27
 그리고 아래와 같이 데이터를 읽어왔더니, 어떠한 메시지 없이 잘 수행되었음을 볼 수 있었습니다. 
 
 %근데 R은 왜 R고유의 데이터파일이 없지? .sav나 .sas7dbat 처럼?
+% 근데... 아래와 같은 얘기도 있네..?
+% You can use the R command 'load()' to read data from a binary format Rdata file. 
+% A 122 MB file however probably is too large to do anything with it in base R, without using our RevoScaleR 
+% package and storing the data in an XDF format file. If you still have the original data in a 'non'-Rdata format 
+% such as a fixed-format file or regular text file, you can use the RevoScaleR function 'rxImport()' to import 
+% your data into Revolution R and create an XDF file. It can handle a dataset of this size
+% 이런 거더군..
 
 \begin{Schunk}
 \begin{Soutput}
@@ -1006,6 +1015,8 @@ duplicated()라는 함수는 중복을 체크하여 TRUE 또는 FALSE를 알려�
 > 
 \end{Soutput}
 \end{Schunk}
+
+% 쪼개어서 분리하지 않고 특정 문자를 삭제하는 방법은? 예를 들어, 하나투어.1이 하나투어1로 되도록...
 
 \paragraph{데이터프레임에 변수 추가하기}
 
