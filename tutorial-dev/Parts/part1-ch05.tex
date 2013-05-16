@@ -1018,7 +1018,64 @@ duplicated()라는 함수는 중복을 체크하여 TRUE 또는 FALSE를 알려�
 
 % 쪼개어서 분리하지 않고 특정 문자를 삭제하는 방법은? 예를 들어, 하나투어.1이 하나투어1로 되도록...
 % 함수 do.call()에 대한 설명
-% 
+% R은 흥미로운 기능을 가진 do.call()이란 함수를 가지고 있습니다. 이 함수는 여러분이 하나씩 함수의 인자를 쓰는 대신 그 함수의 인자를 유지한 상태로 어떠한 R 함수도 호출할 수 있도록 해줍니다. 표면적으로는 별로 유용해 보이지 않을 수도 있지만 단순한 예제로도 do.call()이 얼마나 유용한지 보일 수 있습니다.
+% 만약 여러분이 콤마로 구분된 파일을 가지고 있다고 가정해 보십시오. 
+% 예를 들어, 그 파일은 다음과 같은 구조를 가지는 것입니다.
+
+% a,b,x,y
+% b,B,2.49778634403711,-0.351307445767206
+% b,A,-0.594683138631719,1.19629936975021
+% b,D,1.14857619580259,0.653315728121014
+% c,A,0.957476532595248,0.935608419299617
+
+% 그리고 위와 같은 구조를 가지며 행 수가 하나는 21개, 다른 하나는 25개, 세번째는 27개의 행을 가지고 있다고 가정하면 
+% 이와 같은 데이터는 아래와 같이 read.csv()를 이용하여 쉽게 읽을 수 있습니다. 
+
+% > one = read.csv('1.csv')
+% > nrow(one)
+% [1] 21
+% > two = read.csv('2.csv')
+% > nrow(two)
+% [1] 25
+% > three = read.csv('3.csv')
+% > nrow(three)
+% [1] 27
+
+% 또한 rbind()를 이용하여 하나의 데이터프로임 구조의 데이터로 만들 수도 있습니다.
+% 여기에서 rbind()는 모든 데이터가 같은 변수명을 가져야 함에 주의하시기 바랍니다.
+
+% > big = rbind(one,two,three)
+% > nrow(big)
+% [1] 73
+
+% 위와 같은 작업은 매우 쉽게 할 수 있습니다. 그런데 만약 여러분이 이와 같은 콤마로 구분된 파일이 200개가 있고 이것들을 읽어 들이고 모두 합하기를 원한다고 가정해 보시기 바랍니다. 물론 여러분은 위와 같은 방법으로 200개의 파일 작업을 할 수도 있지만 이것은 매우 지루하고 피곤한 작업일 것입니다. 그리고 무엇보다 그런 작업은 에러가 발생할 수 있는 가능성이 큽니다.
+
+% > allframes = lapply(1:20,function(x)read.csv(paste(x,'csv',sep='.')))
+% > sapply(allframes,nrow)
+%  [1] 21 25 27 25 27 21 24 28 23 23 22 26 24 23 25 29 28 30 27 29
+% > answer = do.call(rbind,allframes)
+% > nrow(answer)
+% [1] 507
+% We can combine all the data frames without storing them separately or passing them individually to
+% rbind().
+
+
+% > allframes = sapply(1:200, function(x)read.csv(paste(x,'csv',sep='.')))
+% > head(allframes)
+%   [,1]       [,2]       [,3]       [,4]       [,5]       [,6]       [,7]
+% a factor,21  factor,25  factor,27  factor,25  factor,27  factor,21  factor,24
+% b factor,21  factor,25  factor,27  factor,25  factor,27  factor,21  factor,24
+% x Numeric,21 Numeric,25 Numeric,27 Numeric,25 Numeric,27 Numeric,21 Numeric,24
+% y Numeric,21 Numeric,25 Numeric,27 Numeric,25 Numeric,27 Numeric,21 Numeric,24
+%   [,8]       [,9]       [,10]      [,11]      [,12]      [,13]      [,14]
+% a factor,28  factor,23  factor,23  factor,22  factor,26  factor,24  factor,23
+% b factor,28  factor,23  factor,23  factor,22  factor,26  factor,24  factor,23
+% x Numeric,28 Numeric,23 Numeric,23 Numeric,22 Numeric,26 Numeric,24 Numeric,23
+% the "s" in sapply stands for simplify 
+% sapply() created an odd matrix, where each element represents one of the columns of one of the files we read in. The difference between sapply and lapply is that lapply will never try to simplify its results. It will always return a list, the same length as its first argument, with each element of the list resulting in the function we passed to lapply operating on one element of the first argument. In our case, calling lapply instead of sapply will give us a list of length 20, where each element is the result of calling read.csv on one of the 20 files. This is where do.call comes in. Instead of having to pass 20 data frames to rbind, we can use do.call to pass all 20 of them to rbind, since they are in a list, and that's exactly what do.call is looking for.
+
+
+
 
 \paragraph{데이터프레임에 변수 추가하기}
 
