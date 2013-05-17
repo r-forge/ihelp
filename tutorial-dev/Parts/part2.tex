@@ -24,6 +24,127 @@ R에서의 그래픽 시스템은 \citet{Murrell2005}와 Deepayan Sarkar가 쓴 
 
 \chapter{그래픽스}
 
+
+% http://www.stat.auckland.ac.nz/~paul/grid/grid.html
+\section{실무예제}
+
+\texttt{TOP PRIORITY - A:} 
+이 예제는 이준호님께서 보내주신 내용을 바탕으로 임의의 데이터를 가상으로 만들어 본 것입니다. 
+
+고객을 유입시키고 추가 구매를 일으킬 수 있도록 프로모션을 진행하는데 이 프로모션으로 유입된 고객들이 추가적으로 어떤 상품을 더 샀는지 트래킹하여 간단한 RFM 분석을 하고 있는 정도입니다.
+
+하지만 저는 이러한 고객들의 프로모션으로 유입 후 추가 구매상품 카테고리별로 보는것과 동시에 다른 한편으로는 유저 성향별로(가령 예를 들자면 남,녀,연령대)도 그루핑하여 도식화하고 싶습니다.
+
+한가지 예를 들자면
+\begin{itemize}
+	\item 상품카테고리별 기준으로 사분면의 세로축은 평균 구매회수(마이너스는 환불을 의미), 가로축 왼쪽은 남자 / 오른쪽은 여자로 지정한뒤
+	\item 프로모션 참여자 중 그 이후 일정기간동안의 패션카테고리에 참여한 사람들이 평균 10번의 Transaction을 일으키고 여성고객이 70\%라면,{}
+	\item 오른쪽 위에 위치하고 버블의 크기는 총 구매금액으로 설정.
+	\item 추가적으로는 버블내에서 연령대별 portion을 나누어 표시하는것.
+	\item 버블의 크기는 총 구매금매금액으로 설정하되 축은 제거하고 카테고리별 서로 겹치는 유저가 얼마나 많은 지에 대해서 각 버블들의
+위치와 거리를 보여주는 것
+\end{itemize} 
+
+이렇게 하나의 RAW 데이터로 다양한 관점을 쉽고 빠르게 도식화 할 수 있도록 돕는게 개발이라고 생각합니다. 
+지금도 sql과 엑셀로 첫번째 관점에 대해서는 부분적으로 만들어 보고 있지만 시간이 오래 걸리고 두번째 방법은 고민중입니다.
+
+상품 
+성별 - 남, 녀
+평균구매회수 - 10 번이상 
+버블내에서 연령 
+성별, 구매회수, 구매금액, 연령 
+
+gender <- rbinom(n=100, size=1, p=0.7)
+ptimes <- rpois(n=100, lambda=10)
+pamount <- rnorm(n=100, mean=1000000, sd=100000) 
+age <- rmultinom(n=100, size=1, prob=c(0.1, 0.2, 0.35, 0.25, 0.1))
+
+rfm <- 
+
+library(grid)
+
+x <- c(0.88, 1.00, 0.67, 0.34)
+y <- c(0.87, 0.43, 0.04, 0.94)
+z <- matrix(runif(4*2), ncol=2)
+
+oldpar <- par(no.readonly=TRUE)
+plot(x, y, xlim=c(-0.2, 1.2), ylim=c(-0.2, 1.2), type="n")
+
+vps <- baseViewports()
+pushViewport(vps$inner, vps$figure, vps$plot) # $
+grid.segments(x0=unit(c(rep(0, 4), x), rep(c("npc", "native"), each=4)), x1=unit(c(x, x), rep("native", 8)), y0=unit(c(y, rep(0, 4)), rep(c("native", "npc"), each=4)), y1=unit(c(y, y), rep("native", 8)), gp=gpar(lty="dashed", col="grey")) 
+
+maxpiesize <- unit(1, "inches")
+totals <- apply(z, 1, sum)
+sizemult <- totals/max(totals)
+
+for (i in 1:4) {
+	pushViewport(viewport(x=unit(x[i], "native"), y=unit(y[i], "native"), width = sizemult[i]*maxpiesize, height = sizemult[i]*maxpiesize))
+	grid.rect(gp=gpar(col="grey", fill="white", lty="dashed"))
+#	par(plt=gridPLT(), new=TRUE)
+	par(new=TRUE)
+	pie(z[i,], radius=1, labels=rep("", 2))
+#	popViewport()
+}
+
+
+
+floating.pie<-function(xpos,ypos,x,edges=200,radius=1,col=NULL,
+ startpos=0,shadow=FALSE,shadow.col=c("#ffffff","#cccccc"),...) {
+
+ if (!is.numeric(x) || any(is.na(x) | x<=0))
+  stop("floating.pie: x values must be positive.")
+ x<-c(0,cumsum(x)/sum(x))
+ dx <- diff(x)
+ nx <- length(dx)
+ if (is.null(col)) col<-rainbow(nx)
+ else if(length(col) < nx) col<-rep(col,nx)
+ # scale the y radius
+ xylim<-par("usr")
+ plotdim<-par("pin")
+ yradius<-radius*(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
+ # get the center values in radians
+ bc<-2*pi*(x[1:nx]+dx/2)+startpos
+ if(shadow) {
+  xc<-c(cos(seq(0,2*pi,length=edges))*radius+xpos)
+  yc<-c(sin(seq(0,2*pi,length=edges))*yradius+ypos)
+  polygon.shadow(xc,yc,col=shadow.col)
+ }
+ for(i in 1:nx) {
+  n<-max(2,floor(edges*dx[i]))
+  t2p<-2*pi*seq(x[i],x[i + 1],length=n)+startpos
+  xc<-c(cos(t2p)*radius+xpos,xpos)
+  yc<-c(sin(t2p)*yradius+ypos,ypos)
+  polygon(xc,yc,col=col[i],...)
+  t2p<-2*pi*mean(x[i+0:1])+startpos
+  xc<-cos(t2p)*radius
+  yc<-sin(t2p)*radius
+ }
+ invisible(bc)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 이번 챕터에서는 R의 그래픽 기능을 보여줄 것입니다.
 서울종합과학대학원의 신종화 교수님께서 제공해주신 dart8.xls 데이터를 다시 활용하며, 이 데이터셋은 \href{http://korea.gnu.org/gnustats/dataset/dart8.xls}{http://korea.gnu.org/gnustats/dataset/dart8.xls}로부터 다운로드 할 수 있습니다.
 
@@ -266,6 +387,14 @@ with(예제, plot(x=광고선전비, y=매출액, main="하나투어", xlab="x�
 output
 \end{Soutput}
 \end{Schunk}
+
+
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

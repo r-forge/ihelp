@@ -2309,51 +2309,81 @@ Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 �
 @node Add-on packages in R, Add-on packages from CRAN, Which add-on packages exist for R?, Which add-on packages exist for R?
 @subsection Add-on packages in R
 
-The R distribution comes with the following packages:
+@c The R distribution comes with the following packages:
+R distribution은 다음의 패키지들과 함께 옵니다
 
 @table @strong
 @c <FIXME>
 @c 3.0.0
 @item base
-Base R functions (and datasets before R 2.0.0).
+@c Base R functions (and datasets before R 2.0.0).
+기본 R 함수들 (과 R 2.0.0 전의 dataset들).
+
 @item compiler
-R byte code compiler (added in R 2.13.0).
+@c R byte code compiler (added in R 2.13.0).
+R byte 코드 compiler (R 2.13.0에 더해진). 
+
 @item datasets
-Base R datasets (added in R 2.0.0).
+@c Base R datasets (added in R 2.0.0).
+기본 R dataset들 (R 2.0.0에 더해진). 
+
 @item grDevices
-Graphics devices for base and grid graphics (added in R 2.0.0).
+@c Graphics devices for base and grid graphics (added in R 2.0.0).
+기본 그리고 grid 그래픽들을 위한 그래픽 장치들 (R 2.0.0에 더해진). 
+
 @c </FIXME>
 @item graphics
-R functions for base graphics.
+@c R functions for base graphics.
+기본 그래픽들을 위한 R 함수들. 
+
 @item grid
-A rewrite of the graphics layout capabilities, plus some support for
-interaction.
+@c A rewrite of the graphics layout capabilities, plus some support for
+@c interaction.
+그래픽들의 레이아웃 기능의 재 작성, 플러스 상호작용을위한 일부 지원. 
+
 @item methods
-Formally defined methods and classes for R objects, plus other
-programming tools, as described in the Green Book.
+@c Formally defined methods and classes for R objects, plus other
+@c programming tools, as described in the Green Book.
+R object들을 위한 공식적으로 정의된 방법들과 클래스, 그리고 Green Book에 설명되어있는 것과 같은, 다른 프로그래밍 툴들.
+
 @item parallel
-Support for parallel computation, including by forking and by sockets, 
-and random-number generation (added in R 2.14.0).
+@c Support for parallel computation, including by forking and by sockets, 
+@c and random-number generation (added in R 2.14.0).
+by forking과 by socket들 그리고 random number generation(R 2.14.0에 더해진)을 포함한, 병렬 계산을 지원.
+
 @item splines
-Regression spline functions and classes.
+@c Regression spline functions and classes.
+Regression spline 함수와 class들. 
+
 @item stats
-R statistical functions.
+@c R statistical functions.
+R 통계 기능들. 
+
 @item stats4
-Statistical functions using S4 classes.
+@c Statistical functions using S4 classes.
+S4 클래스들을 이용한 통계 함수들.
+
 @item tcltk
-Interface and language bindings to Tcl/Tk @acronym{GUI} elements.
+@c Interface and language bindings to Tcl/Tk @acronym{GUI} elements.
+Tcl/Tk GUI element들로의 인터페이스와 언어 묶음들.
+
 @item tools
-Tools for package development and administration.
+@c Tools for package development and administration.
+패키지 개발과 관리를 위한 툴. 
+
 @item utils
-R utility functions.
+@c R utility functions.
+R 유틸리티 함수들.
+
 @end table
-These ``base packages'' were substantially reorganized in R 1.9.0.  The
-former @pkg{base} was split into the four packages @pkg{base},
-@pkg{graphics}, @pkg{stats}, and @pkg{utils}.  Packages @pkg{ctest},
-@pkg{eda}, @pkg{modreg}, @pkg{mva}, @pkg{nls}, @pkg{stepfun} and
-@pkg{ts} were merged into @pkg{stats}, package @pkg{lqs} returned to the
-recommended package @CRANpkg{MASS}, and package @pkg{mle} moved to
-@pkg{stats4}.
+@c These ``base packages'' were substantially reorganized in R 1.9.0.  The
+@c former @pkg{base} was split into the four packages @pkg{base},
+@c @pkg{graphics}, @pkg{stats}, and @pkg{utils}.  Packages @pkg{ctest},
+@c @pkg{eda}, @pkg{modreg}, @pkg{mva}, @pkg{nls}, @pkg{stepfun} and
+@c @pkg{ts} were merged into @pkg{stats}, package @pkg{lqs} returned to the
+@c recommended package @CRANpkg{MASS}, and package @pkg{mle} moved to
+@c @pkg{stats4}.
+이 “기본 패키지드”은 R 1.9.0에서 실질적으로 개편되었습니다. 전의 base는 base, graphics, stats, 그리고 utils의 네가지의 패키지로 나누어져 있었습니다. ctest, eda, modreg, mva, nls, stepfun 그리고 ts 패키지들은 stats로 통합되었고 lqs 패키지는 권장된 패키지 MASS로 return되었으며, mle 패키지는 stats4로 옮겨졌습니다.
 
 @node Add-on packages from CRAN, Add-on packages from Omegahat, Add-on packages in R, Which add-on packages exist for R?
 @subsection Add-on packages from @acronym{CRAN}

@@ -2318,37 +2318,67 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Which-add_002don-packages-exist-for-R_
 
 <h4 class="subsection">5.1.1 Add-on packages in R</h4>
 
-<p>The R distribution comes with the following packages:
+<!-- The R distribution comes with the following packages: -->
+<p>R distribution은 다음의 패키지들과 함께 옵니다
 
      <dl>
 <!-- <FIXME> -->
 <!-- 3.0.0 -->
-<dt><strong>base</strong><dd>Base R functions (and datasets before R 2.0.0). 
-<br><dt><strong>compiler</strong><dd>R byte code compiler (added in R 2.13.0). 
-<br><dt><strong>datasets</strong><dd>Base R datasets (added in R 2.0.0). 
-<br><dt><strong>grDevices</strong><dd>Graphics devices for base and grid graphics (added in R 2.0.0). 
-<!-- </FIXME> -->
-<br><dt><strong>graphics</strong><dd>R functions for base graphics. 
-<br><dt><strong>grid</strong><dd>A rewrite of the graphics layout capabilities, plus some support for
-interaction. 
-<br><dt><strong>methods</strong><dd>Formally defined methods and classes for R objects, plus other
-programming tools, as described in the Green Book. 
-<br><dt><strong>parallel</strong><dd>Support for parallel computation, including by forking and by sockets,
-and random-number generation (added in R 2.14.0). 
-<br><dt><strong>splines</strong><dd>Regression spline functions and classes. 
-<br><dt><strong>stats</strong><dd>R statistical functions. 
-<br><dt><strong>stats4</strong><dd>Statistical functions using S4 classes. 
-<br><dt><strong>tcltk</strong><dd>Interface and language bindings to Tcl/Tk <acronym>GUI</acronym> elements. 
-<br><dt><strong>tools</strong><dd>Tools for package development and administration. 
-<br><dt><strong>utils</strong><dd>R utility functions. 
-</dl>
-   These &ldquo;base packages&rdquo; were substantially reorganized in R 1.9.0.  The
-former <strong>base</strong> was split into the four packages <strong>base</strong>,
-<strong>graphics</strong>, <strong>stats</strong>, and <strong>utils</strong>.  Packages <strong>ctest</strong>,
-<strong>eda</strong>, <strong>modreg</strong>, <strong>mva</strong>, <strong>nls</strong>, <strong>stepfun</strong> and
-<strong>ts</strong> were merged into <strong>stats</strong>, package <strong>lqs</strong> returned to the
-recommended package <a href="http://CRAN.R-project.org/package=MASS"><strong>MASS</strong></a>, and package <strong>mle</strong> moved to
-<strong>stats4</strong>.
+<dt><strong>base</strong><dd><!-- Base R functions (and datasets before R 2.0.0). -->
+기본 R 함수들 (과 R 2.0.0 전의 dataset들).
+
+     <br><dt><strong>compiler</strong><dd><!-- R byte code compiler (added in R 2.13.0). -->
+R byte 코드 compiler (R 2.13.0에 더해진).
+
+     <br><dt><strong>datasets</strong><dd><!-- Base R datasets (added in R 2.0.0). -->
+기본 R dataset들 (R 2.0.0에 더해진).
+
+     <br><dt><strong>grDevices</strong><dd><!-- Graphics devices for base and grid graphics (added in R 2.0.0). -->
+기본 그리고 grid 그래픽들을 위한 그래픽 장치들 (R 2.0.0에 더해진).
+
+     <!-- </FIXME> -->
+     <br><dt><strong>graphics</strong><dd><!-- R functions for base graphics. -->
+기본 그래픽들을 위한 R 함수들.
+
+     <br><dt><strong>grid</strong><dd><!-- A rewrite of the graphics layout capabilities, plus some support for -->
+<!-- interaction. -->
+그래픽들의 레이아웃 기능의 재 작성, 플러스 상호작용을위한 일부 지원.
+
+     <br><dt><strong>methods</strong><dd><!-- Formally defined methods and classes for R objects, plus other -->
+<!-- programming tools, as described in the Green Book. -->
+R object들을 위한 공식적으로 정의된 방법들과 클래스, 그리고 Green Book에 설명되어있는 것과 같은, 다른 프로그래밍 툴들.
+
+     <br><dt><strong>parallel</strong><dd><!-- Support for parallel computation, including by forking and by sockets, -->
+<!-- and random-number generation (added in R 2.14.0). -->
+by forking과 by socket들 그리고 random number generation(R 2.14.0에 더해진)을 포함한, 병렬 계산을 지원.
+
+     <br><dt><strong>splines</strong><dd><!-- Regression spline functions and classes. -->
+Regression spline 함수와 class들.
+
+     <br><dt><strong>stats</strong><dd><!-- R statistical functions. -->
+R 통계 기능들.
+
+     <br><dt><strong>stats4</strong><dd><!-- Statistical functions using S4 classes. -->
+S4 클래스들을 이용한 통계 함수들.
+
+     <br><dt><strong>tcltk</strong><dd><!-- Interface and language bindings to Tcl/Tk @acronym{GUI} elements. -->
+Tcl/Tk GUI element들로의 인터페이스와 언어 묶음들.
+
+     <br><dt><strong>tools</strong><dd><!-- Tools for package development and administration. -->
+패키지 개발과 관리를 위한 툴.
+
+     <br><dt><strong>utils</strong><dd><!-- R utility functions. -->
+R 유틸리티 함수들.
+
+   </dl>
+   <!-- These ``base packages'' were substantially reorganized in R 1.9.0.  The -->
+<!-- former @pkg{base} was split into the four packages @pkg{base}, -->
+<!-- @pkg{graphics}, @pkg{stats}, and @pkg{utils}.  Packages @pkg{ctest}, -->
+<!-- @pkg{eda}, @pkg{modreg}, @pkg{mva}, @pkg{nls}, @pkg{stepfun} and -->
+<!-- @pkg{ts} were merged into @pkg{stats}, package @pkg{lqs} returned to the -->
+<!-- recommended package @CRANpkg{MASS}, and package @pkg{mle} moved to -->
+<!-- @pkg{stats4}. -->
+이 “기본 패키지드”은 R 1.9.0에서 실질적으로 개편되었습니다. 전의 base는 base, graphics, stats, 그리고 utils의 네가지의 패키지로 나누어져 있었습니다. ctest, eda, modreg, mva, nls, stepfun 그리고 ts 패키지들은 stats로 통합되었고 lqs 패키지는 권장된 패키지 MASS로 return되었으며, mle 패키지는 stats4로 옮겨졌습니다.
 
 <div class="node">
 <a name="Add-on-packages-from-CRAN"></a>
