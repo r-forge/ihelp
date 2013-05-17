@@ -81,11 +81,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <h2 class="unnumbered">R Data Import/Export</h2>
 
-<p>This is a guide to importing and exporting data to and from R.
-
-   <p>The current version of this document is 3.0.0 Under development (2013-02-11).
-
-   <p>이 문서는 데이터를 R로 불러들이거나 R에서 내보내는 안내입니다. 이 문서의 현재 버전은 3.0.0 Under development (2013-02-11)입니다.
+<!-- This is a guide to importing and exporting data to and from R. -->
+<!-- The current version of this document is @value{VERSION}. -->
+<p>이 문서는 데이터를 R로 불러들이거나 R에서 내보내는 안내입니다. 이 문서의 현재 버전은 3.0.0 Under development (2013-02-11)입니다.
 
    <p>ISBN 3-900051-10-0
 
@@ -141,10 +139,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
    <p>이 매뉴얼의 관계형데이터베이스 부분은 부분적으로 Douglas Bates와 Saikat DebRoy의 이전 버전에 기초하고 있습니다. 이 매뉴얼의 주저자는 Brian Ripley입니다.
 
-   <p>Many volunteers have contributed to the packages used here.  The
-principal authors of the packages mentioned are
-
-   <p>맣은 자원자들이 여기에 사용된 팩키지에 공헌하였습니다. 여기에 언급된 팩키지들의 주요 저자는 아래와 같습니다.
+<!-- Many volunteers have contributed to the packages used here.  The -->
+<!-- principal authors of the packages mentioned are -->
+   <p>많은 자원자들이 여기에 사용된 팩키지에 공헌하였습니다. 여기에 언급된 팩키지들의 주요 저자는 아래와 같습니다.
 
    <blockquote>
    <p><table summary=""><tr align="left"><td valign="top"><strong>CORBA</strong> </td><td valign="top">Duncan Temple Lang
@@ -173,7 +170,7 @@ principal authors of the packages mentioned are
 </blockquote>
 
 <!-- Brian Ripley is the author of the support for connections. -->
-   <p>Brian Ripley는 connection을 위한 지원의 저자입니다.
+   <p>Brian Ripley는 connection 지원의 저자입니다.
 
 <div class="node">
 <a name="Introduction"></a>
@@ -529,7 +526,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- make a file self-describing, so that one need not provide these details -->
 <!-- to the software reading the data. -->
 
-   <p>text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(converntion)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 <a href="#Export-to-text-files">Export to text files</a>에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
+   <p>text 파일들에서 데이터를 읽어 들일 때, 그 파일을 생성하는 데 사용한 규정(convention)들을 알고 표기하는 것은 사용자의 책임입니다. 예를 들어, 주석문자(comment character)나 헤더의 존재 여부, 값 구분자(the value separator), 결측치의 재표현 등은 <a href="#Export-to-text-files">Export to text files</a>에 기술되어 있습니다.  데이터의 내용뿐 아니라 그 내용의 구조까지 기록하는 마크업 언어(markup language)는 하나의 파일이 그 안에서 완전히 설명 가능하도록(self-describing) 해주며, 그렇기 때문에 누군가가 데이터를 읽을 때 소프트웨어에 이러한 세부 사항들을 알려줄 필요가 없습니다.
 
 <!-- The eXtensible Markup Language - more commonly known simply as -->
 <!-- @acronym{XML} - can be used to provide such structure, not only for -->
@@ -556,9 +553,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 <!-- @CRANpkg{XML}. -->
    <p>패키지  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>은 R에서 <acronym>XML</acronym> 문서를 읽고 쓸 수 있도록 다양한 기능을 제공합니다. 팩키지  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>의 기능에 대한 설명서는 이 문서의 범위를 벗어나므로 세부적 사항들과 예제에 대하여는 웹페이지(<a href="http://www.omegahat.org/RSXML">http://www.omegahat.org/RSXML</a>)를 참고하기 바랍니다. <acronym>CRAN</acronym>에서 패키지 <a href="http://CRAN.R-project.org/package=StatDataML"><strong>StatDataML</strong></a>은  <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>에서 구축된 하나의 사례입니다.
 
+   <p>%NB가 'nota bene' 이거 맞나?
+
    <p>NB: <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a> is available as a binary package for Windows, normally
 from the `CRAN extras' repository (which is selected by default on
 Windows).
+
+   <p>주의: <a href="http://CRAN.R-project.org/package=XML"><strong>XML</strong></a>은 일반적으로 'CRAN extras' 저장소(리포지토리: repository)로부터 윈도우즈 운영체제에 바이너리 패키지 형태(윈도우즈에 기본값으로 선택되어 지게 되어있습니다)로 사용가능합니다.
 
 <div class="node">
 <a name="Spreadsheet-like-data"></a>
@@ -583,10 +584,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a accesskey="6" href="#Flat-contingency-tables">Flat contingency tables</a>
 </ul>
 
-   <p>In <a href="#Export-to-text-files">Export to text files</a> we saw a number of variations on the
-format of a spreadsheet-like text file, in which the data are presented
-in a rectangular grid, possibly with row and column labels.  In this
-section we consider importing such files into R.
+<!-- In @ref{Export to text files} we saw a number of variations on the -->
+<!-- format of a spreadsheet-like text file, in which the data are presented -->
+<!-- in a rectangular grid, possibly with row and column labels.  In this -->
+<!-- section we consider importing such files into @R{}. -->
+   <p><a href="#Export-to-text-files">Export to text files</a>에서 우리는 행과 열 이름이 달려 있고 사각의 격자 형태로 표현된 다양한 스프레드 시트 형태의 text 파일 포맷을 확인할 수 있었습니다. 이번에는 이와 같은 형태의 파일들을 R로 읽어 들이는 방법을 다룹니다.
 
 <div class="node">
 <a name="Variations-on-read.table"></a>
@@ -605,6 +607,8 @@ The function <code>read.table</code> is the most convenient way to read in a
 rectangular grid of data.  Because of the many possibilities, there are
 several other functions that call <code>read.table</code> but change a group
 of default arguments.
+
+   <p><code>read.table</code>은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, <code>read.table</code>을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
 
    <p>Beware that <code>read.table</code> is an inefficient way to read in
 very large numerical matrices: see <code>scan</code> below.

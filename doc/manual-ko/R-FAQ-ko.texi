@@ -2121,130 +2121,166 @@ Random Technologies, R을 기업용 validation, documentation, 소프트웨어 �
 @node R Web Interfaces, R Add-On Packages, R and S, Top
 @chapter R Web Interfaces
 
-@strong{Rweb} is developed and maintained by
-@email{jeff@@math.montana.edu, Jeff Banfield}.  The
-@url{http://www.math.montana.edu/Rweb/, Rweb Home Page} provides access
-to all three versions of Rweb---a simple text entry form that returns
-output and graphs, a more sophisticated JavaScript version that provides
-a multiple window environment, and a set of point and click modules that
-are useful for introductory statistics courses and require no knowledge
-of the R language.  All of the Rweb versions can analyze Web accessible
-datasets if a @acronym{URL} is provided.
+@c @strong{Rweb} is developed and maintained by
+@c @email{jeff@@math.montana.edu, Jeff Banfield}.  The
+@c @url{http://www.math.montana.edu/Rweb/, Rweb Home Page} provides access
+@c to all three versions of Rweb---a simple text entry form that returns
+@c output and graphs, a more sophisticated JavaScript version that provides
+@c a multiple window environment, and a set of point and click modules that
+@c are useful for introductory statistics courses and require no knowledge
+@c of the R language.  All of the Rweb versions can analyze Web accessible
+@c datasets if a @acronym{URL} is provided.
 
-The paper ``Rweb: Web-based Statistical Analysis'', providing a detailed
-explanation of the different versions of Rweb and an overview of how
-Rweb works, was published in the Journal of Statistical Software
-(@url{http://www.jstatsoft.org/v04/i01/}).
+Rweb 은 Jeff Banfield에 의해 개발되고 유지되었습니다. Rweb Home Page는 Rweb의 세가지 버전 모두로의 액세스를 제공합니다 – output과 그래프들을 returm하는 간단한 텍스트 입력 방식, 여러개의 윈도우 환경을 제공하는 더 정교한 JavaScript 버전, 그리고 R 언어가 필요없는 기초 통계 과목을을 위한 유용한 포인트와 클릭 모듈들의 세트. 모든 Rweb 버전들은 URL이 제공되어있으면 웹에서 액세스 할 수 있는 dataset들을 분석할 수 있습니다. 
 
-@email{ulfi@@cs.tu-berlin.de, Ulf Bartel} has developed
-@strong{R-Online}, a simple on-line programming environment for R which
-intends to make the first steps in statistical programming with R
-(especially with time series) as easy as possible.  There is no need for
-a local installation since the only requirement for the user is a
-JavaScript capable browser.  See @url{http://osvisions.com/r-online/}
-for more information.
+@c The paper ``Rweb: Web-based Statistical Analysis'', providing a detailed
+@c explanation of the different versions of Rweb and an overview of how
+@c Rweb works, was published in the Journal of Statistical Software
+@c (@url{http://www.jstatsoft.org/v04/i01/}).
 
-@strong{Rcgi} is a CGI WWW interface to R by @email{mjr@@dsl.pipex.com,
-MJ Ray}.  It had the ability to use ``embedded code'': you could mix
-user input and code, allowing the @HTML{} author to do anything from
-load in data sets to enter most of the commands for users without
-writing CGI scripts.  Graphical output was possible in PostScript or GIF
-formats and the executed code was presented to the user for revision.
-However, it is not clear if the project is still active.
-@c URL no longer seems to work ...
-@c See @url{http://stats.mth.uea.ac.uk/Rcgi/} for more information.
-Currently, a modified version of @strong{Rcgi} by
-@email{mai@@ms.uky.edu, Mai Zhou} (actually, two versions: one with
-(bitmap) graphics and one without) as well as the original code are
-available from @url{http://www.ms.uky.edu/~statweb/}.
+다른 버전들의 Rweb에 대한 자세한 설명과 Rweb이 어떻게 작동하는지의 개요를 제공하는 논문“Rweb: Web-based Statistical Analysis”은the Journal of Statistical Software (http://www.jstatsoft.org/v04/i01/)에서 출간되었습니다. 
 
-CGI-based web access to R is also provided at
-@url{http://hermes.sdu.dk/cgi-bin/go/}.  There are many additional
-examples of web interfaces to R which basically allow to submit R code
-to a remote server, see for example the collection of links available from
-@url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}.
+@c @email{ulfi@@cs.tu-berlin.de, Ulf Bartel} has developed
+@c @strong{R-Online}, a simple on-line programming environment for R which
+@c intends to make the first steps in statistical programming with R
+@c (especially with time series) as easy as possible.  There is no need for
+@c a local installation since the only requirement for the user is a
+@c JavaScript capable browser.  See @url{http://osvisions.com/r-online/}
+@c for more information.
 
-@url{http://www.warwick.ac.uk/go/dfirth, David Firth} has written
-@CRANpkg{CGIwithR}, an R add-on package available from @CRAN{}.  It
-provides some simple extensions to R to facilitate running R scripts
-through the CGI interface to a web server, and allows submission of data
-using both GET and POST methods.  It is easily installed using Apache
-under Linux and in principle should run on any platform that supports R
-and a web server provided that the installer has the necessary security
-permissions.  David's paper ``CGIwithR: Facilities for Processing Web
-Forms Using R'' was published in the Journal of Statistical Software
-(@url{http://www.jstatsoft.org/v08/i10/}).  The package is now
-maintained by @email{duncan@@wald.ucdavis.edu, Duncan Temple Lang} and
-has a web page at @url{http://www.omegahat.org/CGIwithR/}.
+Ulf Bartel은 R을 이용한 통계 프록래밍의 첫 단계들을 (특히 시계열에서) 가능한한 쉽게 만들도록 의도한 R의 간단한 온라인 프로그래밍 환경인 R-Online을 개발하였습니다. JavaScript가 가능한 브라우저만이 유일한 필요조건이기 때문에 로컬 설치는 필요하지 않습니다.  더 많은 정보를 위해서는http://osvisions.com/r-online/를 참조하십시오. 
 
-@url{http://www.rpad.org/Rpad, Rpad}, developed and actively maintained
-by Tom Short, provides a sophisticated environment which combines some
-of the features of the previous approaches with quite a bit of
-JavaScript, allowing for a @acronym{GUI}-like behavior (with sortable
-tables, clickable graphics, editable output), etc.
+@c @strong{Rcgi} is a CGI WWW interface to R by @email{mjr@@dsl.pipex.com,
+@c MJ Ray}.  It had the ability to use ``embedded code'': you could mix
+@c user input and code, allowing the @HTML{} author to do anything from
+@c load in data sets to enter most of the commands for users without
+@c writing CGI scripts.  Graphical output was possible in PostScript or GIF
+@c formats and the executed code was presented to the user for revision.
+@c However, it is not clear if the project is still active.
+@c @c URL no longer seems to work ...
+@c @c See @url{http://stats.mth.uea.ac.uk/Rcgi/} for more information.
+@c Currently, a modified version of @strong{Rcgi} by
+@c @email{mai@@ms.uky.edu, Mai Zhou} (actually, two versions: one with
+@c (bitmap) graphics and one without) as well as the original code are
+@c available from @url{http://www.ms.uky.edu/~statweb/}.
 
-Jeff Horner is working on the R/Apache Integration Project which embeds
-the R interpreter inside Apache 2 (and beyond).  A tutorial and
-presentation are available from the project web page at
-@url{http://biostat.mc.vanderbilt.edu/@/twiki/@/bin/@/view/@/Main/@/RApacheProject}.
+Rcgi는MJ Ray에 의한R로의CGI WWW 인터페이스입니다. 이는 “embedded code”의 사용을 가능하게 합니다: HTML author이 CGI 스크립들을 쓰지 않고 사용자가 데이터 셋을 로드하는 것 으로부터  대부분의 명령어들을 입력하는 것 까지 어떤 것이든 하도록 허용하는, 사용자 input과 코드를 섞을 수 있습니다. Graphical output은  PostScript 이나 GIF형식들에서 가능했었고 실행된 코드는 수정을 위해 사용자에게 주어졌습니다. 하지만, 프로젝트가 아직 활성화 되 있는지는 확실하지 않습니다. 현재, Mai Zhou에 의한 수정된 버전의 Rcgi (실제로, 두가지 버전입니다: (bitmap) 그래픽이있는 것과 없는 것)와 어울러 기존 코드가http://www.ms.uky.edu/~statweb/에서 사용가능합니다. 
 
-@url{http://stats.math.uni-augsburg.de/Rserve/, Rserve} is a project
-actively developed by Simon Urbanek.  It implements a TCP/IP server which
-allows other programs to use facilities of R.  Clients are available from
-the web site for Java and C++ (and could be written for other languages
-that support TCP/IP sockets).
 
-@url{http://openstatserver.org/index.html, OpenStatServer} is being
-developed by a team lead by Greg Warnes; it aims ``to provide clean access
-to computational modules defined in a variety of computational
-environments (R, SAS, Matlab, etc) via a single well-defined client
-interface'' and to turn computational services into web services.
+@c CGI-based web access to R is also provided at
+@c @url{http://hermes.sdu.dk/cgi-bin/go/}.  There are many additional
+@c examples of web interfaces to R which basically allow to submit R code
+@c to a remote server, see for example the collection of links available from
+@c @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}.
 
-Two projects use PHP to provide a web interface to R.
-@url{http://steve-chen.net/R_PHP/, R_PHP_Online} by Steve Chen (though
-it is unclear if this project is still active) is somewhat similar to
-the above Rcgi and Rweb.  @url{http://dssm.unipa.it/R-php/?cmd=home,
-R-php} is actively developed by Alfredo Pontillo and Angelo Mineo and
-provides both a web interface to R and a set of pre-specified analyses
-that need no R code input.
+R로의 CGI에 기초한 웹 액세스또한 http://hermes.sdu.dk/cgi-bin/go/에서 제공됩니다. 근본적으로 Remote server로 R 코드를 주는 것을 허용하는 추가의 R로의 웹 인터페이스 예시들이 많고, 이 예시들의 모음 링크들은http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse에서 찾을 수 있으니 참조하십시오.
 
-@url{http://www.bioconductor.org/, webbioc} is ``an integrated web
-interface for doing microarray analysis using several of the
-Bioconductor packages'' and is designed to be installed at local sites
-as a shared computing resource.
+@c @url{http://www.warwick.ac.uk/go/dfirth, David Firth} has written
+@c @CRANpkg{CGIwithR}, an R add-on package available from @CRAN{}.  It
+@c provides some simple extensions to R to facilitate running R scripts
+@c through the CGI interface to a web server, and allows submission of data
+@c using both GET and POST methods.  It is easily installed using Apache
+@c under Linux and in principle should run on any platform that supports R
+@c and a web server provided that the installer has the necessary security
+@c permissions.  David's paper ``CGIwithR: Facilities for Processing Web
+@c Forms Using R'' was published in the Journal of Statistical Software
+@c (@url{http://www.jstatsoft.org/v08/i10/}).  The package is now
+@c maintained by @email{duncan@@wald.ucdavis.edu, Duncan Temple Lang} and
+@c has a web page at @url{http://www.omegahat.org/CGIwithR/}.
 
-@url{http://sysbio.mrc-bsu.cam.ac.uk/Rwui, Rwui} is a web application to
-create user-friendly web interfaces for R scripts.  All code for the web
-interface is created automatically.  There is no need for the user to do
-any extra scripting or learn any new scripting techniques.
+David Firth는  CRAN에서 사용가능한 R add-on패지키인, CGIwithR을 집필했습니다.  이는 CGI 인터페이스를 통하여 웹서버로 R script들을 실행하는 것을 가능하게하는 간단한 R의 extension들을 제공하고, GET과 POST 방법들 두가지 모두를 이용하여 데이터의 접수를 가능하게 합니다. 이는 Linux의 Apache를 사용하여 쉽게 설치되고 원칙적으로는 R을 지원하는 모든 플랫폼과 설치자가 필요한 보안 허가들을 가지고 있는 것을 제공한 웹서버에서 작동을 해야 합니다. David의 논문  “CGIwithR: Facilities for Processing Web Forms Using R”은the Journal of Statistical Software (http://www.jstatsoft.org/v08/i10/)에서 출간되었습니다. 이 패키지는Duncan Temple Lang에 의해 관리되며 웹페이지는 http://www.omegahat.org/CGIwithR/입니다. 
 
-The @CRANpkg{R.rsp} package by Henrik Bengtsson introduces ``R Server
-Pages''.  Analogous to Java Server Pages, an R server page is typically
-@HTML{} with embedded R code that gets evaluated when the page is
-requested.  The package includes an internal cross-platform HTTP server
-implemented in Tcl, so provides a good framework for including web-based
-user interfaces in packages.  The approach is similar to the use of the
-@CRANpkg{brew} package with @url{http://rapache.net/, Rapache} with the
-advantage of cross-platform support and easy installation.
+@c @url{http://www.rpad.org/Rpad, Rpad}, developed and actively maintained
+@c by Tom Short, provides a sophisticated environment which combines some
+@c of the features of the previous approaches with quite a bit of
+@c JavaScript, allowing for a @acronym{GUI}-like behavior (with sortable
+@c tables, clickable graphics, editable output), etc.
 
-The @CRANpkg{Rook} package by Jeffrey Horner provides a web server
-interface borrowing heavily from Ruby's Rack project.
+Tom Short에 의해 개발되고 활동적으로 관리되고 있는 Rpad는 꽤 많은 양의 JaveScript와 GUI-와 같은 작용을 하는 것들 등 (배열가능한 테이블들, 클릭할 수 있는 그래픽들, 고칠수 있는 output) 과 같은 이전의 approach들의 몇가지 특징들을 합한 정교한 환경을 제공합니다. 
 
-Finally, @uref{http://code.google.com/p/concerto-platform/, Concerto} is
-a user friendly open-source Web Interface to R developed at the
-Psychometrics Centre of Cambridge University.  It was designed as an
-online platform to design and run Computerized Adaptive Tests, but can
-be also used as a general-purpose R Web Interface.  It allows R users
-with no programming or web designing background to quickly develop
-flexible and powerful online applications, websites, and psychometrics
-tests.  To maximize its reliability, security, and performance, Concerto
-relies on the popular and reliable open-source elements such as MySQL
-server (exchange and storage of the data), @uref{http://rstudio.org/,
-Rstudio} (R code designing and testing, file management), CKEditor
-(@HTML{} Layer design), and PHP.
+@c Jeff Horner is working on the R/Apache Integration Project which embeds
+@c the R interpreter inside Apache 2 (and beyond).  A tutorial and
+@c presentation are available from the project web page at
+@c @url{http://biostat.mc.vanderbilt.edu/@/twiki/@/bin/@/view/@/Main/@/RApacheProject}.
 
-See @url{http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces} for
-additional information.
+Jeff Horner은Apache 2 (와 그 이후) 안의 R interpreter를 보관하는 R/Apache Integration 프로젝트에 공을 들이고 있습니다.  튜토리얼과 프레젠테이션은 프로젝트 웹페이지http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/RApacheProject에서 이용가능합니다. 
+
+@c @url{http://stats.math.uni-augsburg.de/Rserve/, Rserve} is a project
+@c actively developed by Simon Urbanek.  It implements a TCP/IP server which
+@c allows other programs to use facilities of R.  Clients are available from
+@c the web site for Java and C++ (and could be written for other languages
+@c that support TCP/IP sockets).
+
+Rserve는Simon Urbanek에 의해 활동적으로 개발 된 프로젝트입니다. 이는 다른 프로그램들이  R의 facility들을 사용할 수 있도록 허용하는 TCP/IP 서버를 이행합니다. 클라이언트들은 Java와 C++를 위한 웹사이트 (TCP/IP socket들을 지원하는 다른 언어로도 쓰여질 수 있습니다)에서 이용가능합니다. 
+
+@c @url{http://openstatserver.org/index.html, OpenStatServer} is being
+@c developed by a team lead by Greg Warnes; it aims ``to provide clean access
+@c to computational modules defined in a variety of computational
+@c environments (R, SAS, Matlab, etc) via a single well-defined client
+@c interface'' and to turn computational services into web services.
+
+OpenStatServer는 Greg Warnes이 지휘하는 팀에의해 개발되고 있습니다; 이는 “단일화된 잘-정의된 클라이언트 인터페이스를 통해 여러가지 computational 환경 (R, SAS, Matlab, 등)에서 정의된 computational 모듈들로의 더 깨끗한 access를 제공하는 것”과 computational 서비스를 웹 서비스로 바꾸는 것을 목표로 합니다. 
+두가지 프로젝트는 R로의 웹 인터페이스를 제공하기위해 PHP를 사용합니다. 
+
+@c Two projects use PHP to provide a web interface to R.
+@c @url{http://steve-chen.net/R_PHP/, R_PHP_Online} by Steve Chen (though
+@c it is unclear if this project is still active) is somewhat similar to
+@c the above Rcgi and Rweb.  @url{http://dssm.unipa.it/R-php/?cmd=home,
+@c R-php} is actively developed by Alfredo Pontillo and Angelo Mineo and
+@c provides both a web interface to R and a set of pre-specified analyses
+@c that need no R code input.
+
+Steve Chen의R_PHP_Online은 (이 프로젝트가 아직 활성적인지는 미지수이지만) 위의 Rcgi와 Rweb과 다소 비슷합니다. R-php는  Alfredo Pontillo와Angelo Mineo에 의해 활성적으로 개발되었고 R로의 웹 인터페이스와 R 코드 input이 필요하지 않은 미리 지정된 analysis들의 set을 제공합니다. 
+
+@c @url{http://www.bioconductor.org/, webbioc} is ``an integrated web
+@c interface for doing microarray analysis using several of the
+@c Bioconductor packages'' and is designed to be installed at local sites
+@c as a shared computing resource.
+
+Webbioc 은 “몇몇의 Bioconductor 패키지들을 사용하여 microarray analysis를 하는 통합적인 웹 인터페이스”이고 공유된 컴퓨팅 resource처럼 local 사이트에 인스톨 되도록 디자인 되었습니다.
+
+@c @url{http://sysbio.mrc-bsu.cam.ac.uk/Rwui, Rwui} is a web application to
+@c create user-friendly web interfaces for R scripts.  All code for the web
+@c interface is created automatically.  There is no need for the user to do
+@c any extra scripting or learn any new scripting techniques.
+
+Rwui는 R 스크립들의 사용하기 쉬운 웹 인터페이스를 만들기 위한 웹 어플리케이션입니다. 웹 인터페이스의 모든 코드는 자동으로 생성됩니다. 사용자는 추가의 스크립트를 하거나 새로운 스크립팅  기술을 배울 필요가 없습니다.
+
+@c The @CRANpkg{R.rsp} package by Henrik Bengtsson introduces ``R Server
+@c Pages''.  Analogous to Java Server Pages, an R server page is typically
+@c @HTML{} with embedded R code that gets evaluated when the page is
+@c requested.  The package includes an internal cross-platform HTTP server
+@c implemented in Tcl, so provides a good framework for including web-based
+@c user interfaces in packages.  The approach is similar to the use of the
+@c @CRANpkg{brew} package with @url{http://rapache.net/, Rapache} with the
+@c advantage of cross-platform support and easy installation.
+
+Henrik Bengtsson 의 R.rsp 패키지는 “R server Pages”를 소개합니다. Java Server Page들과 유사하게, Rserver page는 보통 페이지가 요구되었을 때 평가되는 저정된 R 코드로 된 HTML입니다. 이 패키지는 Tcl안에서 실행되는internal cross-platform HTTP server를 포함하고, 그래서 패키지의 웹에 기초한 사용자 인터페이스를 포함한 좋은 framework를 제공합니다. 접근성은 cross-platform의 지원과 쉬운 설치의 이점이 있는 Rapach를 가지고 있는 brew패키지의 사용법과 비슷합니다. 
+
+@c The @CRANpkg{Rook} package by Jeffrey Horner provides a web server
+@c interface borrowing heavily from Ruby's Rack project.
+
+Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 많이 빌리는 웹 서버 인터페이스를 제공합니다. 
+
+@c Finally, @uref{http://code.google.com/p/concerto-platform/, Concerto} is
+@c a user friendly open-source Web Interface to R developed at the
+@c Psychometrics Centre of Cambridge University.  It was designed as an
+@c online platform to design and run Computerized Adaptive Tests, but can
+@c be also used as a general-purpose R Web Interface.  It allows R users
+@c with no programming or web designing background to quickly develop
+@c flexible and powerful online applications, websites, and psychometrics
+@c tests.  To maximize its reliability, security, and performance, Concerto
+@c relies on the popular and reliable open-source elements such as MySQL
+@c server (exchange and storage of the data), @uref{http://rstudio.org/,
+@c Rstudio} (R code designing and testing, file management), CKEditor
+@c (@HTML{} Layer design), and PHP.
+
+마지막으로, Concerto는the Psychometrics Centre of Cambridge University에서 개발된 사용이 쉬운 오픈소스 R로의 웹 인터페이스 입니다. 이는Computerized Adaptive Test를 디자인하고 작동하는 온라인 플랫폼 처럼 디자인 되었으나, R 웹 인터페이스의 일반적인 목적으로도 쓰여질 수 있습니다. 이는 프로그래밍이나 웹디자인의 기초 지식이 없는 R 사용자들이 융통성 있고 강력한 온라인 application들과 웹사이트들, 그리고 심리측정 테스트들을 빨리 개발 할 수 있도록 허용합니다. 신뢰성과 안전성, 그리고 성능을 극대화 시키기위해, Concerto는 MySQL 서버 (데이터의 교환과 저장), Rstudio (R코ㄷ를 디자인하고 테스트, 파일 관리), CKEditor (HTML Layer 디자인), 그리고 PHP와 같은 대중적이고 신뢰할 수 있는 오픈소스 element들에 의존합니다. 
+
+@c See @url{http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces} for
+@c additional information.
+
+추가의 정보를 위해서는http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces를 참조하십시오.
 
 
 @node R Add-On Packages, R and Emacs, R Web Interfaces, Top
