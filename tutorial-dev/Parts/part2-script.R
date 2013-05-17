@@ -4,12 +4,10 @@ draw.pie <- function(xpos, ypos, x, edges=200, radius=1, col=NULL,...) {
  dx <- diff(x)
  nx <- length(dx)
 
- # scale the y radius
  xylim<-par("usr") # c(x1, x2, y1, y2)
  plotdim<-par("pin") # width, height
  yradius<-radius*(xylim[4]-xylim[3])/(xylim[2]-xylim[1])*plotdim[1]/plotdim[2]
 
- # get the center values in radians
  bc<-2*pi*(x[1:nx]+dx/2)
 
 	for(i in seq_len(nx)) {
@@ -22,7 +20,6 @@ draw.pie <- function(xpos, ypos, x, edges=200, radius=1, col=NULL,...) {
 		xc <- cos(t2p)*radius
 		yc <- sin(t2p)*radius
 	}
-
 
  invisible(bc)
 }
@@ -41,11 +38,11 @@ dev.off()
 
 #Then a simple function to draw a circle based on its center and its radius:
 circle <- function (r, x0, y0, col){
-    t <- seq(0, 2 * pi, by = 0.01)
-    x <- r * cos(t) + x0
-    y <- r * sin(t) + y0
-    lines(x, y, col=col)
-    }
+t <- seq(0, 2 * pi, by = 0.01)
+x <- r * cos(t) + x0
+y <- r * sin(t) + y0
+lines(x, y, col=col)
+}
 
 
 # gender <- rbinom(n=100, size=1, p=0.7)
