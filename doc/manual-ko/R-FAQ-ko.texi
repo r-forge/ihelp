@@ -3012,43 +3012,55 @@ rm(list = ls(all = TRUE))
 @node How can I get eval() and D() to work?, Why do my matrices lose dimensions?, How can I clean up my workspace?, R Miscellanea
 @section How can I get eval() and D() to work?
 
-Strange things will happen if you use @code{eval(print(x), envir = e)}
-or @code{D(x^2, "x")}.  The first one will either tell you that
-"@code{x}" is not found, or print the value of the wrong @code{x}.
-The other one will likely return zero if @code{x} exists, and an error
-otherwise.
+@c Strange things will happen if you use @code{eval(print(x), envir = e)}
+@c or @code{D(x^2, "x")}.  The first one will either tell you that
+@c "@code{x}" is not found, or print the value of the wrong @code{x}.
+@c The other one will likely return zero if @code{x} exists, and an error
+@c otherwise.
 
-This is because in both cases, the first argument is evaluated in the
-calling environment first.  The result (which should be an object of
-mode @code{"expression"} or @code{"call"}) is then evaluated or
-differentiated.  What you (most likely) really want is obtained by
-``quoting'' the first argument upon surrounding it with
-@code{expression()}.  For example,
+만약 @code{eval(print(x), envir = e)} 또는 @code{D(x^2, "x")}를 실행하고자 한다면 예상치 않은 결과가 나타날 것입니다.
+전자는 "@code{x}"를 찾을 수 없다고 하거나, 잘못된 @code{x}의 값을 출력할 것입니다. 
+후자는 만약 @code{x}가 존재한다면 0값을 돌려줄 수 있으며, 그렇지 않다면 에러를 보여줄 것입니다. 
+
+@c This is because in both cases, the first argument is evaluated in the
+@c calling environment first.  The result (which should be an object of
+@c mode @code{"expression"} or @code{"call"}) is then evaluated or
+@c differentiated.  What you (most likely) really want is obtained by
+@c ``quoting'' the first argument upon surrounding it with
+@c @code{expression()}.  For example,
+
+두가지 경우 모두 다 불러들어온 환경 내에서 첫번째 인자가 평가되기 때문입니다. 
+객체의 모드가 반드시 @code{"expression"} 또는 @code{"call"}이어야 하고 그 결과가 평가되거나 미분된 것입니다.
+이를 해결하기 위해서는 아래와 같이 반드시 첫번째 인자를 큰 따옴표로 묶어줘야 한다는것입니다. 
 
 @example
 R> D(expression(x^2), "x")
 2 * x
 @end example
 
-Although this behavior may initially seem to be rather strange, is
-perfectly logical.  The ``intuitive'' behavior could easily be
-implemented, but problems would arise whenever the expression is
-contained in a variable, passed as a parameter, or is the result of a
-function call.  Consider for instance the semantics in cases like
+@c Although this behavior may initially seem to be rather strange, is
+@c perfectly logical.  The ``intuitive'' behavior could easily be
+@c implemented, but problems would arise whenever the expression is
+@c contained in a variable, passed as a parameter, or is the result of a
+@c function call.  Consider for instance the semantics in cases like
+
+이렇게 하는 것이 처음에는 다소 이상해 보일 수 있으나, 완전히 논리적인 부분일 뿐입니다.
 
 @example
 D2 <- function(e, n) D(D(e, n), n)
 @end example
 
 @noindent
-or
+@c or
 
+또는 
 @example
 g <- function(y) eval(substitute(y), sys.frame(sys.parent(n = 2)))
 g(a * b)
 @end example
 
-See the help page for @code{deriv()} for more examples.
+@c See the help page for @code{deriv()} for more examples.
+더 많은 예제들을 @code{deriv()}의 도움말 페이지를 통하여 확인할 수 있습니다. 
 
 @node Why do my matrices lose dimensions?, How does autoloading work?, How can I get eval() and D() to work?, R Miscellanea
 @section Why do my matrices lose dimensions?
