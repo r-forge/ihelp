@@ -2388,113 +2388,170 @@ R 유틸리티 함수들.
 @node Add-on packages from CRAN, Add-on packages from Omegahat, Add-on packages in R, Which add-on packages exist for R?
 @subsection Add-on packages from @acronym{CRAN}
 
-The @CRAN{} @file{src/contrib} area contains a wealth of add-on
-packages, including the following @emph{recommended} packages which are
-to be included in all binary distributions of R.
+@c The @CRAN{} @file{src/contrib} area contains a wealth of add-on
+@c packages, including the following @emph{recommended} packages which are
+@c to be included in all binary distributions of R.
+
+CRAN src/contrib area는 모든 R의 binary distribution에 포함되어질 다음의 권장된 패키지들을 포함한 다량의 add-on 패키지를 포함하고 있습니다. 
 
 @c <FIXME>
 @c 3.0.0
 @table @strong
 @item KernSmooth
-Functions for kernel smoothing (and density estimation) corresponding to
-the book ``Kernel Smoothing'' by M. P. Wand and M. C. Jones, 1995.
+@c Functions for kernel smoothing (and density estimation) corresponding to
+@c the book ``Kernel Smoothing'' by M. P. Wand and M. C. Jones, 1995.
+1995년에M. P. Wand 와 M. C. Jones 에 의해 쓰여진 책“Kernel Smoothing”에 해당하는 Kernel smoothing을 위한 function들 (그리고 밀도 추정).
+
 @item MASS
-Functions and datasets from the main package of Venables and Ripley,
-``Modern Applied Statistics with S''.
-(Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+@c Functions and datasets from the main package of Venables and Ripley,
+@c ``Modern Applied Statistics with S''.
+@c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+Venables 와 Ripley, “Modern Applied Statistics with S” (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)의 메인 패키지로부터의 function들과 dataset들.
+
 @item Matrix
-A Matrix package.
-(Recommended for R 2.9.0 or later.)
+@c A Matrix package.
+@c (Recommended for R 2.9.0 or later.)
+
+행렬 패키지 (R 2.9.0 혹은 이후의 버전에 권장).
+
 @item boot
-Functions and datasets for bootstrapping from the book ``Bootstrap
-Methods and Their Applications'' by A. C. Davison and D. V. Hinkley,
-1997, Cambridge University Press.
+@c Functions and datasets for bootstrapping from the book ``Bootstrap
+@c Methods and Their Applications'' by A. C. Davison and D. V. Hinkley,
+@c 1997, Cambridge University Press.
+
+1997년에  Cambridge University Press에서 A. C. Davison 과 D. V. Hinkley에 의해 쓰여진  “Bootstrap Methods and Their Applications”, 책에서의 booststrapping을 위한 function와 dataset들.
+
 @item class
-Functions for classification (@math{k}-nearest neighbor and LVQ).
-(Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+@c Functions for classification (@math{k}-nearest neighbor and LVQ).
+@c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+
+분류를 위한 function들 (k-nearest neighbor과 LVQ). (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)
+
 @item cluster
-Functions for cluster analysis.
+@c Functions for cluster analysis.
+
+Cluster 분석을 위한 function들.
+
+
 @item codetools
-Code analysis tools.
-(Recommended for R 2.5.0 or later.)
+@c Code analysis tools.
+@c (Recommended for R 2.5.0 or later.)
+코드 분석 툴들. (R 2.5.0. 혹은 이후 버전에 권장)
+
+
 @item foreign
-Functions for reading and writing data stored by statistical software
-like Minitab, S, SAS, SPSS, Stata, Systat, etc.
+@c Functions for reading and writing data stored by statistical software
+@c like Minitab, S, SAS, SPSS, Stata, Systat, etc.
+@c Minitab, S, SAS, SPSS, Stata, Systat 등과 같은 통계 소프트웨어에 의해 저장된 읽고 쓰는 데이터를 위한 function들. 
+
 @item lattice
-Lattice graphics, an implementation of Trellis Graphics functions.
+@c Lattice graphics, an implementation of Trellis Graphics functions.
+
+Trellis 그래픽 function들의 실행인, 격자 그래픽들
+
+
 @item mgcv
-Routines for GAMs and other generalized ridge regression problems with
-multiple smoothing parameter selection by GCV or UBRE.
+@c Routines for GAMs and other generalized ridge regression problems with
+@c multiple smoothing parameter selection by GCV or UBRE.
+
+GCV와 UBRE에 의한 복합적인 smoothing parameter 선택들을 가진 GAM들과 다른 일반적인 ridge regression 문제들을 위한 루틴.
+
 @item nlme
-Fit and compare Gaussian linear and nonlinear mixed-effects models.
+@c Fit and compare Gaussian linear and nonlinear mixed-effects models.
+Gaussian 선형과 비선형의 혼합 효과 모델들을 형성하고 비교.
+
 @item nnet
-Software for single hidden layer perceptrons (``feed-forward neural
-networks''), and for multinomial log-linear models.
-(Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+@c Software for single hidden layer perceptrons (``feed-forward neural
+@c networks''), and for multinomial log-linear models.
+@c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+@c 단일로 숨겨진 layer perceptron의 소프트웨어 (“feed-forward neural 네트워크들”)와, 다항 로그 선형 모형들 (2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된).
+
 @item rpart
-Recursive PARTitioning and regression trees.
+@c Recursive PARTitioning and regression trees.
+반복되는PARTitioning과 회귀나무.
+
 @item spatial
-Functions for kriging and point pattern analysis from ``Modern Applied
-Statistics with S'' by W. Venables and B. Ripley.
-(Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+@c Functions for kriging and point pattern analysis from ``Modern Applied
+@c Statistics with S'' by W. Venables and B. Ripley.
+@c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
+
+W. Venables와 B. Ripley의 “Modern Applied Statistics with S”에서의 그리그격자법과 point pattern analysis를 위한 function들(2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된).
+
+
 @item survival
-Functions for survival analysis, including penalized likelihood.
+@c Functions for survival analysis, including penalized likelihood.
+
+Penalized likelihood를 포함한, survival analysis을위한 function들. 
+
 @end table
 @c </FIXME>
-See the @url{http://CRAN.R-project.org/web/packages/, , @CRAN{}
-contributed packages page} for more information.
+@c See the @url{http://CRAN.R-project.org/web/packages/, , @CRAN{}
+@c contributed packages page} for more information.
 
-Many of these packages are categorized into
-@url{http://CRAN.R-project.org/web/views/, @CRAN{} Task Views}, allowing
-to browse packages by topic and providing tools to automatically install
-all packages for special areas of interest.
+@c Many of these packages are categorized into
+@c @url{http://CRAN.R-project.org/web/views/, @CRAN{} Task Views}, allowing
+@c to browse packages by topic and providing tools to automatically install
+@c all packages for special areas of interest.
 
-Some @CRAN{} packages that do not build out of the box on Windows,
-require additional software, or are shipping third party libraries for
-Windows cannot be made available on @CRAN{} in form of a Windows binary
-packages.  Nevertheless, some of these packages are available at the
-``@CRAN{} extras'' repository at
-@url{http://www.stats.ox.ac.uk/pub/RWin/} kindly provided by Brian
-D. Ripley.  Note that this repository is a default repository for recent
-versions of R for Windows.
+@c Some @CRAN{} packages that do not build out of the box on Windows,
+@c require additional software, or are shipping third party libraries for
+@c Windows cannot be made available on @CRAN{} in form of a Windows binary
+@c packages.  Nevertheless, some of these packages are available at the
+@c ``@CRAN{} extras'' repository at
+@c @url{http://www.stats.ox.ac.uk/pub/RWin/} kindly provided by Brian
+@c D. Ripley.  Note that this repository is a default repository for recent
+@c versions of R for Windows.
+
+더 많은 정보를 위해서는CRAN contributed packages page를 참조하십시오.
+이 패키지들중 많은 것이 주제별로 패키지들을 브라우즈하도록 허락하고 특별한 관심 구역으로의 자동설치를 하도록하는 툴을 제공하는 CRAN Task Views로 분류됩니다. 
+Windows에서 패키지로 build되지 않는 몇몇의 CRAN 패키지들은 추가의 소프트웨어가 필요하거나, Windows binary 패키지들의 형태의 CRAN에서 이용가능하게 만들어지지 못한 Windows를 위한 third party library들을 배송합니다. 그럼에도 불구하고, 이 몇몇의 패키지들은Brian D. Ripley가 친절하게 제공한http://www.stats.ox.ac.uk/pub/RWin/의 저장소인the “CRAN extras”에서 이용이 가능합니다. 이 저장소는 Windows를 위한 최신 R 버전들의 기본 저장소라는것을 유의하십시오. 
+
 
 @node Add-on packages from Omegahat, Add-on packages from Bioconductor, Add-on packages from CRAN, Which add-on packages exist for R?
 @subsection Add-on packages from Omegahat
 
-The @url{http://www.omegahat.org/, Omega Project for Statistical
-Computing} provides a variety of open-source software for statistical
-applications, with special emphasis on web-based software, Java, the
-Java virtual machine, and distributed computing.  A @acronym{CRAN} style
-R package repository is available via @url{http://www.omegahat.org/R/}.
-See @url{http://www.omegahat.org/} for information on most R packages
-available from the Omega project.
+@c The @url{http://www.omegahat.org/, Omega Project for Statistical
+@c Computing} provides a variety of open-source software for statistical
+@c applications, with special emphasis on web-based software, Java, the
+@c Java virtual machine, and distributed computing.  A @acronym{CRAN} style
+@c R package repository is available via @url{http://www.omegahat.org/R/}.
+@c See @url{http://www.omegahat.org/} for information on most R packages
+@c available from the Omega project.
+
+통계적 컴퓨팅을 위한 Omega 프로젝트는 웹에 기초한 소프트웨어, Java, Java virtual machine, 그리고 distributed computing에 특별한 주안점을 둔, 통계 응용프로그램들을 위한 다양한 오픈소스 소프트웨어를 제공합니다. CRAN 스타일 R 패키지 저장소는http://www.omegahat.org/R/를 통해 이용가능합니다. Omega 프로젝트의 대부분의 R 패키지에 대한 정보는http://www.omegahat.org/를 참조하십시오.
 
 @node Add-on packages from Bioconductor, Other add-on packages, Add-on packages from Omegahat, Which add-on packages exist for R?
 @subsection Add-on packages from Bioconductor
 
-@url{http://www.bioconductor.org/, Bioconductor} is an open source and
-open development software project for the analysis and comprehension of
-genomic data.  Most Bioconductor components are distributed as R add-on
-packages.  Initially most of the
-@url{http://www.bioconductor.org/packages/bioc/, Bioconductor software
-packages} focused primarily on DNA microarray data analysis.  As the
-project has matured, the functional scope of the software packages
-broadened to include the analysis of all types of genomic data, such as
-SAGE, sequence, or SNP data.  In addition, there are metadata
-(annotation, CDF and probe) and experiment data packages.  See
-@url{http://www.bioconductor.org/download/} for available packages and a
-complete taxonomy via BioC Views.
+@c @url{http://www.bioconductor.org/, Bioconductor} is an open source and
+@c open development software project for the analysis and comprehension of
+@c genomic data.  Most Bioconductor components are distributed as R add-on
+@c packages.  Initially most of the
+@c @url{http://www.bioconductor.org/packages/bioc/, Bioconductor software
+@c packages} focused primarily on DNA microarray data analysis.  As the
+@c project has matured, the functional scope of the software packages
+@c broadened to include the analysis of all types of genomic data, such as
+@c SAGE, sequence, or SNP data.  In addition, there are metadata
+@c (annotation, CDF and probe) and experiment data packages.  See
+@c @url{http://www.bioconductor.org/download/} for available packages and a
+@c complete taxonomy via BioC Views.
+
+Bioconductor은 오픈소스이고 분석과 지놈 데이터의 이해를 위한 오픈 개발 소프트웨어 프로젝트입니다. 대부분의 Bioconductor 구성요소들은 R의 add-on 패키지들처럼 분배되어 있습니다. 처음 Bioconductor 소프트웨어 패키지들의 대부분은 주로 DNA microarray 데이터 분석에 주력했습니다. 프로젝트가 성숙해질수록, SAGE, sequence, 혹은 SNP 데이터와 같은 모든 종류의 지놈 데이터의 분석을 포함한 소프트웨어 패키지들의 기능 범위가 넓어졌습니다. 추가로, metadata(주석, CDF와 probe)와 실험 데이터 패키지들이 있습니다.  이용가능한 패키지들과BioC Views를 통한 완전한 분류 체계를 위해서는 http://www.bioconductor.org/download/를 참조하십시오.  
+
 
 @node Other add-on packages,  , Add-on packages from Bioconductor, Which add-on packages exist for R?
 @subsection Other add-on packages
 
-Many more packages are available from places other than the three
-default repositories discussed above (@CRAN{}, Bioconductor and
-Omegahat).  In particular, R-Forge provides a @CRAN{} style repository
-at @url{http://R-Forge.R-project.org/}.
+@c Many more packages are available from places other than the three
+@c default repositories discussed above (@CRAN{}, Bioconductor and
+@c Omegahat).  In particular, R-Forge provides a @CRAN{} style repository
+@c at @url{http://R-Forge.R-project.org/}.
 
-More code has been posted to the R-help mailing list, and can be
-obtained from the mailing list archive.
+@c More code has been posted to the R-help mailing list, and can be
+@c obtained from the mailing list archive.
+
+더 많은 패키지들이 위에서 언급된 세가지 기본 저장소 (CRAN, Bioconductor 그리고 Omegahat) 외의 장소에서도 이용가능합니다. 특히, R-Forge는http://R-Forge.R-project.org/에서 CRAN 스타일 저장소를 제공합니다. 
+더 많은 코드는 R-help 메일링 리스트에 포스트되어 있으며, 메일링 리스트 archive에서 얻을 수도 있습니다. 
 
 @node How can add-on packages be installed?, How can add-on packages be used?, Which add-on packages exist for R?, R Add-On Packages
 @section How can add-on packages be installed?
@@ -2504,6 +2561,8 @@ files named @code{@var{pkg}_@var{version}.tar.gz}, which may in fact be
 ``bundles'' containing more than one package.  Let @var{path} be the
 path to such a package file.  Provided that @command{tar} and
 @command{gzip} are available on your system, type
+
+
 
 @example
 $ R CMD INSTALL @var{path}/@var{pkg}_@var{version}.tar.gz
