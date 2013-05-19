@@ -2392,59 +2392,101 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Which-add_002don-packages-exist-for-R_
 
 <h4 class="subsection">5.1.2 Add-on packages from <acronym>CRAN</acronym></h4>
 
-<p>The <acronym>CRAN</acronym> <samp><span class="file">src/contrib</span></samp> area contains a wealth of add-on
-packages, including the following <em>recommended</em> packages which are
-to be included in all binary distributions of R.
+<!-- The @CRAN{} @file{src/contrib} area contains a wealth of add-on -->
+<!-- packages, including the following @emph{recommended} packages which are -->
+<!-- to be included in all binary distributions of R. -->
+<p>CRAN src/contrib area는 모든 R의 binary distribution에 포함되어질 다음의 권장된 패키지들을 포함한 다량의 add-on 패키지를 포함하고 있습니다.
 
 <!-- <FIXME> -->
 <!-- 3.0.0 -->
      <dl>
-<dt><strong>KernSmooth</strong><dd>Functions for kernel smoothing (and density estimation) corresponding to
-the book &ldquo;Kernel Smoothing&rdquo; by M. P. Wand and M. C. Jones, 1995. 
-<br><dt><strong>MASS</strong><dd>Functions and datasets from the main package of Venables and Ripley,
-&ldquo;Modern Applied Statistics with S&rdquo;. 
-(Contained in the <samp><span class="file">VR</span></samp> bundle for R versions prior to 2.10.0.) 
-<br><dt><strong>Matrix</strong><dd>A Matrix package. 
-(Recommended for R 2.9.0 or later.) 
-<br><dt><strong>boot</strong><dd>Functions and datasets for bootstrapping from the book &ldquo;Bootstrap
-Methods and Their Applications&rdquo; by A. C. Davison and D. V. Hinkley,
-1997, Cambridge University Press. 
-<br><dt><strong>class</strong><dd>Functions for classification (k-nearest neighbor and LVQ). 
-(Contained in the <samp><span class="file">VR</span></samp> bundle for R versions prior to 2.10.0.) 
-<br><dt><strong>cluster</strong><dd>Functions for cluster analysis. 
-<br><dt><strong>codetools</strong><dd>Code analysis tools. 
-(Recommended for R 2.5.0 or later.) 
-<br><dt><strong>foreign</strong><dd>Functions for reading and writing data stored by statistical software
-like Minitab, S, SAS, SPSS, Stata, Systat, etc. 
-<br><dt><strong>lattice</strong><dd>Lattice graphics, an implementation of Trellis Graphics functions. 
-<br><dt><strong>mgcv</strong><dd>Routines for GAMs and other generalized ridge regression problems with
-multiple smoothing parameter selection by GCV or UBRE. 
-<br><dt><strong>nlme</strong><dd>Fit and compare Gaussian linear and nonlinear mixed-effects models. 
-<br><dt><strong>nnet</strong><dd>Software for single hidden layer perceptrons (&ldquo;feed-forward neural
-networks&rdquo;), and for multinomial log-linear models. 
-(Contained in the <samp><span class="file">VR</span></samp> bundle for R versions prior to 2.10.0.) 
-<br><dt><strong>rpart</strong><dd>Recursive PARTitioning and regression trees. 
-<br><dt><strong>spatial</strong><dd>Functions for kriging and point pattern analysis from &ldquo;Modern Applied
-Statistics with S&rdquo; by W. Venables and B. Ripley. 
-(Contained in the <samp><span class="file">VR</span></samp> bundle for R versions prior to 2.10.0.) 
-<br><dt><strong>survival</strong><dd>Functions for survival analysis, including penalized likelihood. 
-</dl>
+<dt><strong>KernSmooth</strong><dd><!-- Functions for kernel smoothing (and density estimation) corresponding to -->
+<!-- the book ``Kernel Smoothing'' by M. P. Wand and M. C. Jones, 1995. -->
+1995년에M. P. Wand 와 M. C. Jones 에 의해 쓰여진 책“Kernel Smoothing”에 해당하는 Kernel smoothing을 위한 function들 (그리고 밀도 추정).
+
+     <br><dt><strong>MASS</strong><dd><!-- Functions and datasets from the main package of Venables and Ripley, -->
+<!-- ``Modern Applied Statistics with S''. -->
+<!-- (Contained in the @file{VR} bundle for R versions prior to 2.10.0.) -->
+Venables 와 Ripley, “Modern Applied Statistics with S” (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)의 메인 패키지로부터의 function들과 dataset들.
+
+     <br><dt><strong>Matrix</strong><dd><!-- A Matrix package. -->
+<!-- (Recommended for R 2.9.0 or later.) -->
+
+     <p>행렬 패키지 (R 2.9.0 혹은 이후의 버전에 권장).
+
+     <br><dt><strong>boot</strong><dd><!-- Functions and datasets for bootstrapping from the book ``Bootstrap -->
+<!-- Methods and Their Applications'' by A. C. Davison and D. V. Hinkley, -->
+<!-- 1997, Cambridge University Press. -->
+
+     <p>1997년에  Cambridge University Press에서 A. C. Davison 과 D. V. Hinkley에 의해 쓰여진  “Bootstrap Methods and Their Applications”, 책에서의 booststrapping을 위한 function와 dataset들.
+
+     <br><dt><strong>class</strong><dd><!-- Functions for classification (@math{k}-nearest neighbor and LVQ). -->
+<!-- (Contained in the @file{VR} bundle for R versions prior to 2.10.0.) -->
+
+     <p>분류를 위한 function들 (k-nearest neighbor과 LVQ). (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)
+
+     <br><dt><strong>cluster</strong><dd><!-- Functions for cluster analysis. -->
+
+     <p>Cluster 분석을 위한 function들.
+
+     <br><dt><strong>codetools</strong><dd><!-- Code analysis tools. -->
+<!-- (Recommended for R 2.5.0 or later.) -->
+코드 분석 툴들. (R 2.5.0. 혹은 이후 버전에 권장)
+
+     <br><dt><strong>foreign</strong><dd><!-- Functions for reading and writing data stored by statistical software -->
+<!-- like Minitab, S, SAS, SPSS, Stata, Systat, etc. -->
+<!-- Minitab, S, SAS, SPSS, Stata, Systat 등과 같은 통계 소프트웨어에 의해 저장된 읽고 쓰는 데이터를 위한 function들. -->
+
+     <br><dt><strong>lattice</strong><dd><!-- Lattice graphics, an implementation of Trellis Graphics functions. -->
+
+     <p>Trellis 그래픽 function들의 실행인, 격자 그래픽들
+
+     <br><dt><strong>mgcv</strong><dd><!-- Routines for GAMs and other generalized ridge regression problems with -->
+<!-- multiple smoothing parameter selection by GCV or UBRE. -->
+
+     <p>GCV와 UBRE에 의한 복합적인 smoothing parameter 선택들을 가진 GAM들과 다른 일반적인 ridge regression 문제들을 위한 루틴.
+
+     <br><dt><strong>nlme</strong><dd><!-- Fit and compare Gaussian linear and nonlinear mixed-effects models. -->
+Gaussian 선형과 비선형의 혼합 효과 모델들을 형성하고 비교.
+
+     <br><dt><strong>nnet</strong><dd><!-- Software for single hidden layer perceptrons (``feed-forward neural -->
+<!-- networks''), and for multinomial log-linear models. -->
+<!-- (Contained in the @file{VR} bundle for R versions prior to 2.10.0.) -->
+<!-- 단일로 숨겨진 layer perceptron의 소프트웨어 (“feed-forward neural 네트워크들”)와, 다항 로그 선형 모형들 (2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된). -->
+
+     <br><dt><strong>rpart</strong><dd><!-- Recursive PARTitioning and regression trees. -->
+반복되는PARTitioning과 회귀나무.
+
+     <br><dt><strong>spatial</strong><dd><!-- Functions for kriging and point pattern analysis from ``Modern Applied -->
+<!-- Statistics with S'' by W. Venables and B. Ripley. -->
+<!-- (Contained in the @file{VR} bundle for R versions prior to 2.10.0.) -->
+
+     <p>W. Venables와 B. Ripley의 “Modern Applied Statistics with S”에서의 그리그격자법과 point pattern analysis를 위한 function들(2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된).
+
+     <br><dt><strong>survival</strong><dd><!-- Functions for survival analysis, including penalized likelihood. -->
+
+     <p>Penalized likelihood를 포함한, survival analysis을위한 function들.
+
+   </dl>
    <!-- </FIXME> -->
-See the <a href="http://CRAN.R-project.org/web/packages/"><acronym>CRAN</acronym> contributed packages page</a> for more information.
+<!-- See the @url{http://CRAN.R-project.org/web/packages/, , @CRAN{} -->
+<!-- contributed packages page} for more information. -->
 
-   <p>Many of these packages are categorized into
-<a href="http://CRAN.R-project.org/web/views/"><acronym>CRAN</acronym> Task Views</a>, allowing
-to browse packages by topic and providing tools to automatically install
-all packages for special areas of interest.
-
-   <p>Some <acronym>CRAN</acronym> packages that do not build out of the box on Windows,
-require additional software, or are shipping third party libraries for
-Windows cannot be made available on <acronym>CRAN</acronym> in form of a Windows binary
-packages.  Nevertheless, some of these packages are available at the
-&ldquo;<acronym>CRAN</acronym> extras&rdquo; repository at
-<a href="http://www.stats.ox.ac.uk/pub/RWin/">http://www.stats.ox.ac.uk/pub/RWin/</a> kindly provided by Brian
-D. Ripley.  Note that this repository is a default repository for recent
-versions of R for Windows.
+<!-- Many of these packages are categorized into -->
+<!-- @url{http://CRAN.R-project.org/web/views/, @CRAN{} Task Views}, allowing -->
+<!-- to browse packages by topic and providing tools to automatically install -->
+<!-- all packages for special areas of interest. -->
+<!-- Some @CRAN{} packages that do not build out of the box on Windows, -->
+<!-- require additional software, or are shipping third party libraries for -->
+<!-- Windows cannot be made available on @CRAN{} in form of a Windows binary -->
+<!-- packages.  Nevertheless, some of these packages are available at the -->
+<!-- ``@CRAN{} extras'' repository at -->
+<!-- @url{http://www.stats.ox.ac.uk/pub/RWin/} kindly provided by Brian -->
+<!-- D. Ripley.  Note that this repository is a default repository for recent -->
+<!-- versions of R for Windows. -->
+   <p>더 많은 정보를 위해서는CRAN contributed packages page를 참조하십시오. 
+이 패키지들중 많은 것이 주제별로 패키지들을 브라우즈하도록 허락하고 특별한 관심 구역으로의 자동설치를 하도록하는 툴을 제공하는 CRAN Task Views로 분류됩니다. 
+Windows에서 패키지로 build되지 않는 몇몇의 CRAN 패키지들은 추가의 소프트웨어가 필요하거나, Windows binary 패키지들의 형태의 CRAN에서 이용가능하게 만들어지지 못한 Windows를 위한 third party library들을 배송합니다. 그럼에도 불구하고, 이 몇몇의 패키지들은Brian D. Ripley가 친절하게 제공한http://www.stats.ox.ac.uk/pub/RWin/의 저장소인the “CRAN extras”에서 이용이 가능합니다. 이 저장소는 Windows를 위한 최신 R 버전들의 기본 저장소라는것을 유의하십시오.
 
 <div class="node">
 <a name="Add-on-packages-from-Omegahat"></a>
@@ -2458,12 +2500,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Which-add_002don-packages-exist-for-R_
 
 <h4 class="subsection">5.1.3 Add-on packages from Omegahat</h4>
 
-<p>The <a href="http://www.omegahat.org/">Omega Project for Statistical Computing</a> provides a variety of open-source software for statistical
-applications, with special emphasis on web-based software, Java, the
-Java virtual machine, and distributed computing.  A <acronym>CRAN</acronym> style
-R package repository is available via <a href="http://www.omegahat.org/R/">http://www.omegahat.org/R/</a>. 
-See <a href="http://www.omegahat.org/">http://www.omegahat.org/</a> for information on most R packages
-available from the Omega project.
+<!-- The @url{http://www.omegahat.org/, Omega Project for Statistical -->
+<!-- Computing} provides a variety of open-source software for statistical -->
+<!-- applications, with special emphasis on web-based software, Java, the -->
+<!-- Java virtual machine, and distributed computing.  A @acronym{CRAN} style -->
+<!-- R package repository is available via @url{http://www.omegahat.org/R/}. -->
+<!-- See @url{http://www.omegahat.org/} for information on most R packages -->
+<!-- available from the Omega project. -->
+<p>통계적 컴퓨팅을 위한 Omega 프로젝트는 웹에 기초한 소프트웨어, Java, Java virtual machine, 그리고 distributed computing에 특별한 주안점을 둔, 통계 응용프로그램들을 위한 다양한 오픈소스 소프트웨어를 제공합니다. CRAN 스타일 R 패키지 저장소는http://www.omegahat.org/R/를 통해 이용가능합니다. Omega 프로젝트의 대부분의 R 패키지에 대한 정보는http://www.omegahat.org/를 참조하십시오.
 
 <div class="node">
 <a name="Add-on-packages-from-Bioconductor"></a>
@@ -2477,17 +2521,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Which-add_002don-packages-exist-for-R_
 
 <h4 class="subsection">5.1.4 Add-on packages from Bioconductor</h4>
 
-<p><a href="http://www.bioconductor.org/">Bioconductor</a> is an open source and
-open development software project for the analysis and comprehension of
-genomic data.  Most Bioconductor components are distributed as R add-on
-packages.  Initially most of the
-<a href="http://www.bioconductor.org/packages/bioc/">Bioconductor software packages</a> focused primarily on DNA microarray data analysis.  As the
-project has matured, the functional scope of the software packages
-broadened to include the analysis of all types of genomic data, such as
-SAGE, sequence, or SNP data.  In addition, there are metadata
-(annotation, CDF and probe) and experiment data packages.  See
-<a href="http://www.bioconductor.org/download/">http://www.bioconductor.org/download/</a> for available packages and a
-complete taxonomy via BioC Views.
+<!-- @url{http://www.bioconductor.org/, Bioconductor} is an open source and -->
+<!-- open development software project for the analysis and comprehension of -->
+<!-- genomic data.  Most Bioconductor components are distributed as R add-on -->
+<!-- packages.  Initially most of the -->
+<!-- @url{http://www.bioconductor.org/packages/bioc/, Bioconductor software -->
+<!-- packages} focused primarily on DNA microarray data analysis.  As the -->
+<!-- project has matured, the functional scope of the software packages -->
+<!-- broadened to include the analysis of all types of genomic data, such as -->
+<!-- SAGE, sequence, or SNP data.  In addition, there are metadata -->
+<!-- (annotation, CDF and probe) and experiment data packages.  See -->
+<!-- @url{http://www.bioconductor.org/download/} for available packages and a -->
+<!-- complete taxonomy via BioC Views. -->
+<p>Bioconductor은 오픈소스이고 분석과 지놈 데이터의 이해를 위한 오픈 개발 소프트웨어 프로젝트입니다. 대부분의 Bioconductor 구성요소들은 R의 add-on 패키지들처럼 분배되어 있습니다. 처음 Bioconductor 소프트웨어 패키지들의 대부분은 주로 DNA microarray 데이터 분석에 주력했습니다. 프로젝트가 성숙해질수록, SAGE, sequence, 혹은 SNP 데이터와 같은 모든 종류의 지놈 데이터의 분석을 포함한 소프트웨어 패키지들의 기능 범위가 넓어졌습니다. 추가로, metadata(주석, CDF와 probe)와 실험 데이터 패키지들이 있습니다.  이용가능한 패키지들과BioC Views를 통한 완전한 분류 체계를 위해서는 http://www.bioconductor.org/download/를 참조하십시오.
 
 <div class="node">
 <a name="Other-add-on-packages"></a>
@@ -2500,13 +2546,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Which-add_002don-packages-exist-for-R_
 
 <h4 class="subsection">5.1.5 Other add-on packages</h4>
 
-<p>Many more packages are available from places other than the three
-default repositories discussed above (<acronym>CRAN</acronym>, Bioconductor and
-Omegahat).  In particular, R-Forge provides a <acronym>CRAN</acronym> style repository
-at <a href="http://R-Forge.R-project.org/">http://R-Forge.R-project.org/</a>.
-
-   <p>More code has been posted to the R-help mailing list, and can be
-obtained from the mailing list archive.
+<!-- Many more packages are available from places other than the three -->
+<!-- default repositories discussed above (@CRAN{}, Bioconductor and -->
+<!-- Omegahat).  In particular, R-Forge provides a @CRAN{} style repository -->
+<!-- at @url{http://R-Forge.R-project.org/}. -->
+<!-- More code has been posted to the R-help mailing list, and can be -->
+<!-- obtained from the mailing list archive. -->
+<p>더 많은 패키지들이 위에서 언급된 세가지 기본 저장소 (CRAN, Bioconductor 그리고 Omegahat) 외의 장소에서도 이용가능합니다. 특히, R-Forge는http://R-Forge.R-project.org/에서 CRAN 스타일 저장소를 제공합니다. 
+더 많은 코드는 R-help 메일링 리스트에 포스트되어 있으며, 메일링 리스트 archive에서 얻을 수도 있습니다.
 
 <div class="node">
 <a name="How-can-add-on-packages-be-installed%3f"></a>
@@ -3035,36 +3082,45 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.4 How can I get eval() and D() to work?</h3>
 
-<p>Strange things will happen if you use <code>eval(print(x), envir = e)</code>
-or <code>D(x^2, "x")</code>.  The first one will either tell you that
-"<code>x</code>" is not found, or print the value of the wrong <code>x</code>. 
-The other one will likely return zero if <code>x</code> exists, and an error
-otherwise.
+<!-- Strange things will happen if you use @code{eval(print(x), envir = e)} -->
+<!-- or @code{D(x^2, "x")}.  The first one will either tell you that -->
+<!-- "@code{x}" is not found, or print the value of the wrong @code{x}. -->
+<!-- The other one will likely return zero if @code{x} exists, and an error -->
+<!-- otherwise. -->
+<p>만약 <code>eval(print(x), envir = e)</code> 또는 <code>D(x^2, "x")</code>를 실행하고자 한다면 예상치 않은 결과가 나타날 것입니다. 
+전자는 "<code>x</code>"를 찾을 수 없다고 하거나, 잘못된 <code>x</code>의 값을 출력할 것입니다. 
+후자는 만약 <code>x</code>가 존재한다면 0값을 돌려줄 수 있으며, 그렇지 않다면 에러를 보여줄 것입니다.
 
-   <p>This is because in both cases, the first argument is evaluated in the
-calling environment first.  The result (which should be an object of
-mode <code>"expression"</code> or <code>"call"</code>) is then evaluated or
-differentiated.  What you (most likely) really want is obtained by
-&ldquo;quoting&rdquo; the first argument upon surrounding it with
-<code>expression()</code>.  For example,
+<!-- This is because in both cases, the first argument is evaluated in the -->
+<!-- calling environment first.  The result (which should be an object of -->
+<!-- mode @code{"expression"} or @code{"call"}) is then evaluated or -->
+<!-- differentiated.  What you (most likely) really want is obtained by -->
+<!-- ``quoting'' the first argument upon surrounding it with -->
+<!-- @code{expression()}.  For example, -->
+   <p>두가지 경우 모두 다 불러들어온 환경 내에서 첫번째 인자가 평가되기 때문입니다. 
+객체의 모드가 반드시 <code>"expression"</code> 또는 <code>"call"</code>이어야 하고 그 결과가 평가되거나 미분된 것입니다. 
+이를 해결하기 위해서는 아래와 같이 반드시 첫번째 인자를 큰 따옴표로 묶어줘야 한다는것입니다.
 
 <pre class="example">     R&gt; D(expression(x^2), "x")
      2 * x
 </pre>
-   <p>Although this behavior may initially seem to be rather strange, is
-perfectly logical.  The &ldquo;intuitive&rdquo; behavior could easily be
-implemented, but problems would arise whenever the expression is
-contained in a variable, passed as a parameter, or is the result of a
-function call.  Consider for instance the semantics in cases like
+   <!-- Although this behavior may initially seem to be rather strange, is -->
+<!-- perfectly logical.  The ``intuitive'' behavior could easily be -->
+<!-- implemented, but problems would arise whenever the expression is -->
+<!-- contained in a variable, passed as a parameter, or is the result of a -->
+<!-- function call.  Consider for instance the semantics in cases like -->
+   <p>이렇게 하는 것이 처음에는 다소 이상해 보일 수 있으나, 완전히 논리적인 부분일 뿐입니다.
 
 <pre class="example">     D2 &lt;- function(e, n) D(D(e, n), n)
 </pre>
-   <p class="noindent">or
+   <p class="noindent"><!-- or -->
 
+   <p>또는
 <pre class="example">     g &lt;- function(y) eval(substitute(y), sys.frame(sys.parent(n = 2)))
      g(a * b)
 </pre>
-   <p>See the help page for <code>deriv()</code> for more examples.
+   <!-- See the help page for @code{deriv()} for more examples. -->
+   <p>더 많은 예제들을 <code>deriv()</code>의 도움말 페이지를 통하여 확인할 수 있습니다.
 
 <div class="node">
 <a name="Why-do-my-matrices-lose-dimensions%3f"></a>

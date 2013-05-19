@@ -594,184 +594,405 @@ R에서는 Perl에서 제공하는 regular expression을 사용합니다.
      
 
 
-\section{날짜와 시간을 다루기}
+\section{날짜와 시간 다루기}
 
-이 부분은 내일 작성하겠습니다.
+데이터 실무라는 챕터에서 다루었던 dart8.xls 이라는 데이터셋에서 여행사별 매출액 변수는 년도와 분기별로 기록이 되어 있음을 알 수 있었습니다. 
+R에서는 이러한 시간과 날짜를 다루는 기능들을 제공하고 있습니다.
+dart8.xls데이터는 R의 이러한 기능들을 설명하는데 다소 부족함이 있으므로, 일반적인 설명하기 위해 임의적으로 데이터를 필요에 따라 생성하여 설명하도록 하겠습니다. 
 
-\begin{comment}
+시간과 날짜를 다룰 때 제일 먼저 알아야 할 것은 로케일 설정입니다. 
+로케일 (locale)이라는 것을 쉽게 이해하기 위해서는 지역설정이라고 생각하시면 됩니다. 
+즉, 사용자의 국가별 언어, 화폐단위, 그리고 시간대를 설정할 수 있는 변수입니다. 
+
+따라서, R을 한국어로 사용하시는 분들은 이러한 로케일 정보에 따라서 한글, 원(화폐단위), 년-월-일 (시간정보)를 사용하게 됩니다. 
+(이곳에서는 로케일과 관련하여 날짜와 시간에 대해서만 이야기 하므로, 한글에 대해서는 ``환경설정과 유틸리티''라는 챕터에서 ``한글과 UTF-8 인코딩''이라는 섹션을 살펴보시길 바랍니다).
+
+
+이러한 로케일에 대한 정보는 아래와 같이 Sys.getlocale()이라는 함수를 통하여 얻을 수 있습니다. 
+그런데, 이러한 로케일의 설정은 R과 관계없이 운영체제로부터 그 정보를 얻어온다는 것을 아셔야 합니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> Sys.getlocale()
+[1] "LC_CTYPE=en_CA.UTF-8;LC_NUMERIC=C;LC_TIME=en_CA.UTF-8;LC_COLLATE=en_CA.UTF-8;LC_MONETARY=en_CA.UTF-8;LC_MESSAGES=en_CA.UTF-8;LC_PAPER=C;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=en_CA.UTF-8;LC_IDENTIFICATION=C"
+\end{Soutput}
+\end{Schunk}
+
+이렇게 보니까 눈에 잘 안들어와서, 위의 ``문자열 다루기''섹션에서 배웠던 strsplit()함수를 이용한뒤 unlist()함수를 적용해봅니다.
+
+\begin{Schunk}
+\begin{Soutput} 
+> unlist(strsplit(Sys.getlocale(), ";"))
+ [1] "LC_CTYPE=en_CA.UTF-8"       "LC_NUMERIC=C"              
+ [3] "LC_TIME=en_CA.UTF-8"        "LC_COLLATE=en_CA.UTF-8"    
+ [5] "LC_MONETARY=en_CA.UTF-8"    "LC_MESSAGES=en_CA.UTF-8"   
+ [7] "LC_PAPER=C"                 "LC_NAME=C"                 
+ [9] "LC_ADDRESS=C"               "LC_TELEPHONE=C"            
+[11] "LC_MEASUREMENT=en_CA.UTF-8" "LC_IDENTIFICATION=C"       
+> 
+\end{Soutput}
+\end{Schunk}
+
+눈에 보기 좋아 이해하기가 쉽군요. 
+(이는 단순히 복습차원에서 한 번 내용을 적어본것입니다).
+
+현재 저의 운영체제에 있는 로케일 설정설정은 en\_CA 로 캐나다에서 사용되는 언어를 사용하고 있습니다.  
+그럼, 이 정보가 과연 운영체제로부터 전달되었는지 R의 콘솔이 아닌 쉘상에서 확인을 해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+gnustats@CHL072:~$ locale
+LANG=en_CA.UTF-8
+LANGUAGE=en_CA:en
+LC_CTYPE="en_CA.UTF-8"
+LC_NUMERIC="en_CA.UTF-8"
+LC_TIME="en_CA.UTF-8"
+LC_COLLATE="en_CA.UTF-8"
+LC_MONETARY="en_CA.UTF-8"
+LC_MESSAGES="en_CA.UTF-8"
+LC_PAPER="en_CA.UTF-8"
+LC_NAME="en_CA.UTF-8"
+LC_ADDRESS="en_CA.UTF-8"
+LC_TELEPHONE="en_CA.UTF-8"
+LC_MEASUREMENT="en_CA.UTF-8"
+LC_IDENTIFICATION="en_CA.UTF-8"
+LC_ALL=
+gnustats@CHL072:~$ 
+\end{Soutput}
+\end{Schunk}
+
+이러한 저의 환경에서 만약 한국어 로케일이 없다면 한국어로 볼 수 없고, 한국어 날짜를 표기 할 수 없을 것입니다. 
+따라서, 한국어 로케일이 있는지 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+gnustats@CHL072:~$ locale -a
+C
+C.UTF-8
+en_AG
+en_AG.utf8
+en_AU.utf8
+en_BW.utf8
+en_CA.utf8
+en_DK.utf8
+en_GB.utf8
+en_HK.utf8
+en_IE.utf8
+en_IN
+en_IN.utf8
+en_NG
+en_NG.utf8
+en_NZ.utf8
+en_PH.utf8
+en_SG.utf8
+en_US.utf8
+en_ZA.utf8
+en_ZM
+en_ZM.utf8
+en_ZW.utf8
+es_CO.utf8
+ko_KR.utf8
+POSIX
+zh_CN.utf8
+zh_SG.utf8
+gnustats@CHL072:~$ 
+\end{Soutput}
+\end{Schunk}
+
+내용을 쭈루룩 읽다보니 아하! ko\_KR.utf8 이라는 것이 보입니다. 
+이렇게 ko\_KR.utf8이 존재한다면 한국어 관련 로케일을 표시하는데 문제가 없습니다. 
+만약, 없는 분이 있다면 아래의 명령어를 이용하여 꼭 추가를 하신뒤에 사용을 하시길 바랍니다.
+
+\begin{Schunk}
+\begin{Soutput} 
+gnustats@CHL072:~$ sudo localedef -f UTF-8 -i ko_KR ko_KR.UTF-8
+\end{Soutput}
+\end{Schunk}
+%$ 
+
+이 명령어는 사용가능한 로케일들을 보관하고 있는 /usr/share/i18n/locales/locale-archive 라는 파일에 ko\_KR.utf8이 추가됩니다.
+따라서, locale -a를 실행하게 되면 한국어 로케일을 볼 수 있게 됩니다. 
+명령어에 사용된 -f 라는 인자의 의미는 /usr/share/i18n/charmaps/UTF-8.gz 라는 캐릭터 맵 (즉, 문자의 기호와 인코딩을 매칭하는 정의)를 이용하며, -i 라는 인자는 ko\_KR 이라는 UTF-8로 로케일을 컴파일 할 수 있도록 지정하는 것입니다. 
+본래 한국어 언어 처리 부분은 /usr/share/lcoale/ko/LC\_MESSAGES 에 프로그램에 사용되는 메시지를 담고 있으며, 해당 프로그램 설치시 make install 을 통해서 관련위치에 복사되는 것입니다.
+따라서, 리눅스에서 한국어 메시지 대신 영어로 사용을 하고자 하시는 분들은 LC\_MESSAGES 카테고리를 C 또는 POSIX로 변경해주면 됩니다. 
+이러한 방법이 그대로 R에서 한국어를 출력하는 방식으로 되어 있습니다. 
+
+로케일을 설명하면서 잠시 삼천포로 빠졌으나 위의 내용에 대한 이해는 R을 사용하는데 반드시 도움을 주게 됩니다. 
+다시 날짜와 시간관리에 대한 본론으로 돌아옵니다.
+R은 날짜와 시간을 크게 두가지로 구분합니다. 
+하나는 2013년 05월 16일과 같이 시간정보 없이 날짜만을 다루는 Date 라는 클래스를 이용하는 것이고, 그리고 다른 하나는 2013년 05월 16일 오후 06시 28분 33초 와 같이 날짜와 시간을 동시에 다루는 POSIXlt와 POSIXct 라는 클래스를 이용하는 것입니다.
+
+먼저 아래와 같이 날짜를 출력해주는 Sys.Date()을 이용해봅니다.
+
+현재시간을 출력해주는 함수 Sys.Date()에 대해서 알아봅니다.
+\begin{Schunk}
+\begin{Soutput} 
+> cdt <- Sys.Date()
+> cdt
+[1] "2013-05-19"
+\end{Soutput}
+\end{Schunk}
+
+여기에서 한가지 꼭 알아둘 것은 R이 날짜 데이터 처리에 사용하는 표준형식은 International Organization for Standardization 이라는 ISO 8601 표준방식에서 지정되어 있는 대시기호 (-)를 이용한 "YYYY-MM-DD"(년-월-일)이라는 것입니다. 
+(추후에 ISOdate()라는 함수에 대해서 설명할 것입니다).
+꼭 기억해주세요.
+
+\begin{Schunk}
+\begin{Soutput} 
+> str(cdt)
+ Date[1:1], format: "2013-05-19"
+> class(cdt)
+[1] "Date"
+> 
+\end{Soutput}
+\end{Schunk}
+
+이번에는 시간을 출력해주는 Sys.time()에 대해서 알아봅니다.
+
+\begin{Schunk}
+\begin{Soutput} 
 > ct <- Sys.time()
-> cd <- Sys.Date()
+> ct
+[1] "2013-05-19 12:08:22 CST"
 > str(ct)
- POSIXct[1:1], format: "2013-05-17 18:16:57"
-> str(cd)
- Date[1:1], format: "2013-05-17"
-> is.character(ct)
-[1] FALSE
-> is.character(cd)
-[1] FALSE
-> 
+ POSIXct[1:1], format: "2013-05-19 12:08:22"
+> class(ct)
+[1] "POSIXct" "POSIXt" 
+>
+\end{Soutput}
+\end{Schunk}
 
-> as.Date("2013-05-17")
-[1] "2013-05-17"
-> as.Date("2013년05월17일")
+그러나, 본래 날짜와 시간 출력은 "YYYY-MM-DD" (년도-월-일)이라는 표준형식을 가진 문자열을 Date와 POSIXct라는 클래스의 형태로 변환하여 출력하는 것입니다. 
+따라서, 문자열이 아래와 같은 문자열을 Date 형식으로 변환이 가능합니다. 
+아래를 살펴보세요. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> "2013-05-20-19"
+[1] "2013-05-20-19"
+> str <- "2013-05-19"
+> is.character(str)
+[1] TRUE
+> class(str)
+[1] "character"
+\end{Soutput}
+\end{Schunk}
+
+문자형 객체임을 확인했습니다.
+이제 날짜로 변경해봅니다.
+
+\begin{Schunk}
+\begin{Soutput} 
+> corced.str <- as.Date(str)
+> corced.str 
+[1] "2013-05-19"
+> class(corced.str)
+[1] "Date"
+> 
+\end{Soutput}
+\end{Schunk}
+
+그러나, 한국어 시간표기법에 대해서는 다소 주의가 필요하기 때문에 개인적으로는 날짜를 다룰때 한국어 날짜표기법인 "XXXX년 XX월 XX일"이라는 형식은 피하고 대시 (-)를 이용해주시길 바랍니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> as.Date("2013년05월19일")
 Error in charToDate(x) : 
   character string is not in a standard unambiguous format
-> as.Date("05/17/13")
+> 
+\end{Soutput}
+\end{Schunk}
+
+앗! 에러가 납니다 (위의 메시지는 한국어로 ``다음에 오류charToDate(x) : 문자열이 표준서식을 따르지 않습니다'' 이라고 나올 것입니다).  
+그 이유는 위에서 설명한 로케일 때문입니다.
+그런데, 아쉽게도 이 문제는 로케일을 ko\_KR.UTF-8 로 변경해도 제대로 표시되지 않습니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> Sys.setlocale("LC_TIME", "ko_KR.UTF-8")
+[1] "ko_KR.UTF-8"
+> as.Date("2013년05월19일")
 Error in charToDate(x) : 
   character string is not in a standard unambiguous format
+\end{Soutput}
+\end{Schunk}
+
+그럼 한국날짜를 년/월/일을 이용해서 표현할 수는 없나요? 
+아래와 같이 format 옵션을 함께 조정해주세요.
+
+\begin{Schunk}
+\begin{Soutput} 
+> as.Date("2013년05월19일", "%Y년%m월%d일")
+[1] "2013-05-19"
 > 
+\end{Soutput}
+\end{Schunk}
 
-> as.Date("2013년05월17일", format="%Y/m/%d")
+그럼 표준형식으로 출력되는 것을 확인할 수 있을 것입니다.
+조금더 살펴봅니다.
+
+\begin{Schunk}
+\begin{Soutput} 
+> as.Date("05월19일2013년", "%Y년%m월%d일")
 [1] NA
-> as.Date("2013년05월17일", format="%Y/%m/%d")
-[1] NA
-> as.Date("2013년05월17일", format="%Y년%m월%d")
-[1] "2013-05-17"
-> as.Date("2013/05/17", format="%Y/%m/%d")
-[1] "2013-05-17"
-> as.Date("05월17일2013년", format="%m/%d/%Y")
-[1] NA
+\end{Soutput}
+\end{Schunk}
+
+여기에서 NA 로 나오는 이유는 "05월19일2013년"의 입력순서는 월-일-년의 순서인데 출력은 년-월-일로 하라고 했기 때문입니다. 
+따라서, format 인자의 형식을 올바르게 아래와 같이 합니다.
+
+\begin{Schunk}
+\begin{Soutput} 
+> as.Date("05월19일2013년", "%m월%d일%Y년")
+[1] "2013-05-19"
 > 
+\end{Soutput}
+\end{Schunk}
 
-> as.Date("05월17일2013년", format="%m월%d일%Y")
+이렇게 format 인자를 다루는 것은 한국 로케일외에도 일반적으로 적용되는 규칙입니다.
+아래를 살펴보세요.
+
+\begin{Schunk}
+\begin{Soutput} 
+> as.Date("2013/05/19", format="%Y-%m-%d")
+[1] NA
+> as.Date("2013/05/19", format="%Y/%m/%d")
+[1] "2013-05-19"
+> as.Date("2013-05-19", format="%Y/%m/%d")
+[1] NA
+> as.Date("2013-05-19", format="%Y%m%d")
+[1] NA
+> as.Date("2013년05월19일", format="%Y/m/%d")
+[1] NA
+> as.Date("2013년05월19일", format="%Y/%m/%d")
+[1] NA
+> as.Date("2013년05월19일", format="%Y년%m월%d")
 [1] "2013-05-17"
-> as.Date("05월2013년17일", format="%m월%Y년%d")
-[1] "2013-05-17"
+\end{Soutput}
+\end{Schunk}
+
+현재 한국어로 된 R을 사용할때 가장 많이 겪는 경우는 날짜 데이터를 불러올때 와장창 NA로 나오는 경우 일 것입니다. 
+이것은 원래의 데이터가 입력될때 영어권 로케일 상태에서 입력이 된경우가 대다수입니다. 
+아래를 살펴보시면 이해가 가실 것입니다. 
+
+
+먼저 아래와 같이 영어권 로케일임을 확인합니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> Sys.getlocale("LC_TIME")
+[1] "en_CA.UTF-8"
 > 
-% 5 http://rhdxmr.tistory.com/45
+\end{Soutput}
+\end{Schunk}
 
-International Organization for Standardization  _ISO 8601.
-     
-     ## locale-specific version of the date
-     format(Sys.Date(), "%a %b %d")
-     
-     ## read in date info in format 'ddmmmyyyy'
-     ## This will give NA(s) in some locales; setting the C locale
-     ## as in the commented lines will overcome this on most systems.
-     ## lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
-     x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
-     z <- as.Date(x, "%d%b%Y")
-     ## Sys.setlocale("LC_TIME", lct)
-     z
-     
-     ## read in date/time info in format 'm/d/y'
-     dates <- c("02/27/92", "02/27/92", "01/14/92", "02/28/92", "02/01/92")
-     as.Date(dates, "%m/%d/%y")
-     
-    
-     ## date given as number of days since 1900-01-01 (a date in 1989)
-     as.Date(32768, origin="1900-01-01")
-     ## Excel is said to use 1900-01-01 as day 1 (Windows default) or
-     ## 1904-01-01 as day 0 (Mac default), but this is complicated by Excel
-     ## treating 1900 as a leap year.
-     ## So for dates (post-1901) from Windows Excel
-     as.Date(35981, origin="1899-12-30") # 1998-07-05
-     ## and Mac Excel
-     as.Date(34519, origin="1904-01-01") # 1998-07-05
-     ## (these values come from http://support.microsoft.com/kb/214330)
-     
-     ## Experiment shows that Matlab's origin is 719529 days before ours,
-     ## so Matlab day 734373 can be imported as
-     as.Date(734373, origin = "1970-01-01") - 719529
-     ## (value from http://www.mathworks.com/help/techdoc/matlab_prog/bspgcx2-1.html)
-     
-    
-     ## Timezone effect
-     z <- ISOdate(2010, 04, 13, c(0,12)) # midnight and midday UTC
-     as.Date(z) # in UTC
-     ## these timezone names are common
-     as.Date(z, tz ="NZ")
-     as.Date(z, tz ="HST") # Hawaii
-     
-     
- ## locale-specific version of date()
-     format(Sys.time(), "%a %b %d %X %Y %Z")
-     
-     ## time to sub-second accuracy (if supported by the OS)
-     format(Sys.time(), "%H:%M:%OS3")
-     
-     ## read in date info in format 'ddmmmyyyy'
-     ## This will give NA(s) in some locales; setting the C locale
-     ## as in the commented lines will overcome this on most systems.
-     ## lct <- Sys.getlocale("LC_TIME"); Sys.setlocale("LC_TIME", "C")
-     x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
-     z <- strptime(x, "%d%b%Y")
-     ## Sys.setlocale("LC_TIME", lct)
-     z
-     
-     ## read in date/time info in format 'm/d/y h:m:s'
-     dates <- c("02/27/92", "02/27/92", "01/14/92", "02/28/92", "02/01/92")
-     times <- c("23:03:20", "22:29:56", "01:03:30", "18:21:03", "16:56:26")
-     x <- paste(dates, times)
-     strptime(x, "%m/%d/%y %H:%M:%S")
+이제 아래와 같이 날짜 데이터를 입력하고 날짜가 나오는지 확인합니다. 
 
-
-     ## time with fractional seconds
-     z <- strptime("20/2/06 11:16:16.683", "%d/%m/%y %H:%M:%OS")
-     z # prints without fractional seconds
-     op <- options(digits.secs=3)
-     z
-     options(op)
-     
-     ## timezones are not portable, but 'EST5EDT' comes pretty close.
-     (x <- strptime(c("2006-01-08 10:07:52", "2006-08-07 19:33:02"),
-                    "%Y-%m-%d %H:%M:%S", tz="EST5EDT"))
-     attr(x, "tzone")
-     
-     ## An RFC 822 header (Eastern Canada, during DST)
-     strptime("Tue, 23 Mar 2010 14:36:38 -0400",  "%a, %d %b %Y %H:%M:%S %z")
-     
-> ?strftime
-> d
-에러:개체 'd'이 없습니다
->   x <- c("1jan1960", "2jan1960", "31mar1960", "30jul1960")
->      z <- strptime(x, "%d%b%Y")
+\begin{Schunk}
+\begin{Soutput} 
+> x <- c("1MAY2013", "2MAY2013", "3MAY2013")
 > x
-[1] "1jan1960"  "2jan1960"  "31mar1960" "30jul1960"
-> z
-[1] NA NA NA NA
->      z <- strptime(x, "%d일%b월%Y")
-> z
-[1] NA NA NA NA
->      z <- strptime(x, "%d일%b월%Y년")
-> z
-[1] NA NA NA NA
-> as.Date(x, "%d일%b월%Y년")
-[1] NA NA NA NA
-> as.Date(x, "%d%b%Y")
-[1] NA NA NA NA
-> ?strptime
-> as.Date("05월17일2013년", format="%m월%d일%Y")
-[1] "2013-05-17"
-> as.Date("05월17일2013년", format="%m/%d/%Y")
-[1] NA
->      format(Sys.Date(), "%a %b %d")
-[1] "금  5월 17"
-> as.Date(x, formate="%d%b%Y")
-다음에 오류charToDate(x) : 문자열이 표준서식을 따르지 않습니다 
-> x
-[1] "1jan1960"  "2jan1960"  "31mar1960" "30jul1960"
-> str(x)
- chr [1:4] "1jan1960" "2jan1960" "31mar1960" "30jul1960"
-> as.Date(x)
-다음에 오류charToDate(x) : 문자열이 표준서식을 따르지 않습니다 
-> as.Date(x, format="%d%b%U)
-+ ")
-[1] NA NA NA NA
-> as.Date(x, format="%d%b%Y")
-[1] NA NA NA NA
-> as.Date(x, format="%d%b%Y")
-[1] NA NA NA NA
-> Sys.getlocale("LC_ALL")
-[1] "LC_CTYPE=ko_KR.UTF-8;LC_NUMERIC=C;LC_TIME=ko_KR.UTF-8;LC_COLLATE=ko_KR.UTF-8;LC_MONETARY=ko_KR.UTF-8;LC_MESSAGES=ko_KR.UTF-8;LC_PAPER=C;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=ko_KR.UTF-8;LC_IDENTIFICATION=C"
-> Sys.setlocale("LC_ALL", "C")
-[1] "LC_CTYPE=C;LC_NUMERIC=C;LC_TIME=C;LC_COLLATE=C;LC_MONETARY=C;LC_MESSAGES=ko_KR.UTF-8;LC_PAPER=C;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=ko_KR.UTF-8;LC_IDENTIFICATION=C"
-> as.Date(x, format="%d%b%Y")
-[1] "1960-01-01" "1960-01-02" "1960-03-31" "1960-07-30"
-> 
+[1] "1MAY2013" "2MAY2013" "3MAY2013"
+> class(x)
+[1] "character"
+> xc <- as.Date(x, format="%d%B%Y")
+> xc
+[1] "2013-05-01" "2013-05-02" "2013-05-03"
+> class(xc)
+[1] "Date"
+\end{Soutput}
+\end{Schunk}
 
-> "2013-05-17"
-[1] "2013-05-17"
+이제 로케일을 한국으로 변경합니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> Sys.setlocale("LC_TIME", "ko_KR.UTF-8")
+[1] "ko_KR.UTF-8"
+> xc2 <- as.Date(x, format="%d%B%Y")
+> xc2
+[1] NA NA NA
+> 
+\end{Soutput}
+\end{Schunk}
+
+따라서, 이와 같은 경우는 Sys.setlocale()함수를 이용하여 LC\_TIME 이라는 환경설정 변수를 영어권국가로 변경한뒤 데이터를 읽으면 잘 수행됩니다. 
+그런데, 어느 영어권 국가인지 잘 모르겠다면 그냥 C 라고 변경하세요. 
+
+
+여기까지는 시간 없이 날짜만 다루었습니다.
+이제 시간을 초단위까지 다루는 POSIX에 대해서 알아봅니다.
+그런데, 이 클래스는 POSIXlt와 POSIXct 라는 두개의 종류를 가지고 있습니다.
+
+먼저 아래와 같이 POSIXct 클래스를 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> ct2 <- as.Date(Sys.Date())
+> ct2
+[1] "2013-05-19"
+> cdt <- Sys.time()
+> class(cdt)
+[1] "POSIXct" "POSIXt" 
+> attributes(cdt)
+$class
+[1] "POSIXct" "POSIXt" 
+> 
+\end{Soutput}
+\end{Schunk}
+% $
+
+위에서 보는 바와 같이 아무런 속성을 가지고 있지 않습니다. 
+무엇이 POSIXct 클래스가 POSIXlt 클래스와 무엇이 다른지 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> cdt2 <- as.POSIXlt(cdt)
+> cdt2
+[1] "2013-05-19 12:58:58 CST"
+> attributes(cdt2)
+$names
+[1] "sec"   "min"   "hour"  "mday"  "mon"   "year"  "wday"  "yday"  "isdst"
+
+$class
+[1] "POSIXlt" "POSIXt" 
+
+$tzone
+[1] ""    "CST" "CST"
+>
+\end{Soutput}
+\end{Schunk}
+% $
+
+아하! 둘 다 모두 시간을 초단위까지 다루지만, POSIXlt는 1970년 1월 1일 00시 00분 00초를 기준으로 현재의 날짜와 시간을 초단위로 기억해 두는 반면 POSIXct는 `sec', `min', `hour', `mday', `mon', `year', 'wday' `yday', `isdst'라는 아홉개의 구성요소를 가진 리스트로 되어 있습니다. 
+
+그럼, 저기 있는 POSIXlt 클래스의 속성들이 가진 것들 대체 무엇을 의미할까요? 
+"sec", "min", "hour"은 영어그대로 초,분,시각이고,  `mday'는 한 달중에 몇번째 날짜이며, `year'는 1990년 이래로 몇 번째 해이며, `wday'는 1주일중 몇 번째 날짜인지 알려줍니다. 
+아래와 같이 확인해 봅니다. 
+
+\begin{Schunk}
+\begin{Soutput} 
+> cdt2$sec
+[1] 58.97329
+> cdt2$yday
+[1] 138
+> 
+\end{Soutput}
+\end{Schunk}
+
+따라서, 이러한 정보를 이용하면 보다 수월하게 시간 객체들을 다룰 수 있습니다. 
+
+% 날짜와 시간에 대해서는 Ripley, B. D. 와 Hornik, K. (2001)가 작성한  \href{http://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf}{Date-time classes} 이라는 내용을 읽어보시길 바랍니다. 
+% ?POSIXct 의 예제 살펴보면 좋음 
+
+
+그런데, 실제적으로는 아마 제일 필요한 것이 언제부터 언제까지의 시간객체를 만들어 내는 것일 수 있습니다. 
+이럴때 seq() 함수를 또 이용이 가능한데 주의할 점이 있습니다.
+아래를 살펴보세요.
+
+
+\begin{Schunk}
+\begin{Soutput} 
 > seq(from="2013-05-17", to="2013-05-29")
 Error in from:to : NA/NaN argument
 In addition: Warning messages:
@@ -779,16 +1000,37 @@ In addition: Warning messages:
   NAs introduced by coercion
 2: In seq.default(from = "2013-05-17", to = "2013-05-29") :
   NAs introduced by coercion
-> seq(from=as.Date("2013-05-17"), to=as.Date("2013-05-29"))
-Error in seq.Date(from = as.Date("2013-05-17"), to = as.Date("2013-05-29")) : 
-  exactly two of 'to', 'by' and 'length.out' / 'along.with' must be specified
+>
+\end{Soutput}
+\end{Schunk}
+
+이럴 때는 by 옵션의 단위를 잘 선택해야 합니다. 
+일반벡터는 1이라는 숫자를 다루지만, 여기에서 우리는 날짜를 다루기 때문에 기본단위는 년/월/일 일것입니다.
+
+일단위로 생성해 봅니다. 
+\begin{Schunk}
+\begin{Soutput} 
 > seq(from=as.Date("2013-05-17"), to=as.Date("2013-05-29"), by=1)
  [1] "2013-05-17" "2013-05-18" "2013-05-19" "2013-05-20" "2013-05-21"
  [6] "2013-05-22" "2013-05-23" "2013-05-24" "2013-05-25" "2013-05-26"
 [11] "2013-05-27" "2013-05-28" "2013-05-29"
 > 
+\end{Soutput}
+\end{Schunk}
+
+
+년단위로 생성해봅니다.
+\begin{Schunk}
+\begin{Soutput} 
 > seq(from=as.Date("2013-05-17"), to=as.Date("2016-05-29"), by="year")
 [1] "2013-05-17" "2014-05-17" "2015-05-17" "2016-05-17"
+\end{Soutput}
+\end{Schunk}
+
+
+월단위도 한 번 해봅니다.
+\begin{Schunk}
+\begin{Soutput} 
 > seq(from=as.Date("2013-05-17"), to=as.Date("2016-05-29"), by="month")
  [1] "2013-05-17" "2013-06-17" "2013-07-17" "2013-08-17" "2013-09-17"
  [6] "2013-10-17" "2013-11-17" "2013-12-17" "2014-01-17" "2014-02-17"
@@ -798,39 +1040,19 @@ Error in seq.Date(from = as.Date("2013-05-17"), to = as.Date("2013-05-29")) :
 [26] "2015-06-17" "2015-07-17" "2015-08-17" "2015-09-17" "2015-10-17"
 [31] "2015-11-17" "2015-12-17" "2016-01-17" "2016-02-17" "2016-03-17"
 [36] "2016-04-17" "2016-05-17"
-
-> ISOdate(2015, 2, 3)
-[1] "2015-02-03 12:00:00 GMT"
-> as.Date(ISOdate(2015, 2, 3))
-[1] "2015-02-03"
-> 
-> ct <- as.POSIXlt("2015-02-03")
-> ct$mday
-[1] 3
-> as.POSIXlt
-function (x, tz = "", ...) 
-UseMethod("as.POSIXlt")
-<bytecode: 0x8ddac28>
-<environment: namespace:base>
-> attributes(ct)
-$names
-[1] "sec"   "min"   "hour"  "mday"  "mon"   "year"  "wday"  "yday"  "isdst"
-
-$class
-[1] "POSIXlt" "POSIXt" 
-
-> 
+\end{Soutput}
+\end{Schunk}
 
 
 
-날짜와 시간을 다루는데는 크게 두가지로 나눌 수 있습니다.
-하나는 2013년 05월 16일과 같이 시간정보 없이 날짜만을 다루는 Date 클래스, 그리고 다른 하나는 2013년 05월 16일 오후 06시 28분 33초 와 같이 날짜와 시간을 동시에 다루는 POSIXlt와 POSIXct 라는 클래스들입니다.
-POSIXlt와 POSIXct 모두 시간을 초단위까지 다루지만, POSIXlt는 1970년 1월 1일 00시 00분 00초를 기준으로 현재의 날짜와 시간을 초단위로 기억해 두는 반면 POSIXct는 `sec', `min', `hour', `mday', `mon', `year', 'wday' `yday', `isdst'라는 아홉개의 구성요소를 가진 리스트로 되어 있습니다. 
-여기에서 `mday'는 한 달중에 몇번째 날짜인지를 나타내고, `year'는 1990년 이래로 몇 번째 해인가에 대한 정보이며, `wday'는 1주일중 몇 번째 날짜인지 아려줍니다. 
-그리고 `yday'는 1년중 몇번째 날인지에 대한 정보가 있으며, `isdst'는 일광시간절약제에 대한 정보를 담고 있습니다.
-날짜와 시간에 대해서는 Ripley, B. D. 와 Hornik, K. (2001)가 작성한  \href{http://www.r-project.org/doc/Rnews/Rnews_2001-2.pdf}{Date-time classes} 이라는 내용을 읽어보시길 바랍니다. 
-% ?POSIXct 의 예제 살펴보면 좋음 
 
+\paragraph{TODO:}
+\begin{itemize}
+	\item 시간대의 영향을 보여주는 예제가 있으면 좋을 것 같음
+\end{itemize}
+
+
+\begin{comment}
 
 % 베리굿 노트: http://www.pitt.edu/~njc23/
 % http://cm.bell-labs.com/cm/ms/departments/sia/Sbook/
@@ -840,7 +1062,6 @@ POSIXlt와 POSIXct 모두 시간을 초단위까지 다루지만, POSIXlt는 197
 % http://web.udl.es/Biomath/Bioestadistica/R/Manuals/r_in_a_nutshell.pdf
 % http://web.udl.es/Biomath/Bioestadistica/R/Manuals/
 
-% \item \texttt{do.call()} 함수를 사용하는 법에 대해서..
 % http://cran.r-project.org/web/packages/rockchalk/vignettes/Rchaeology.pdf
 % http://www.stat.berkeley.edu/classes/s133/all2011.pdf  (다운로드 해두었음 Desktop/tmpRsrc/all2011.pdf)
 % http://www.stat.berkeley.edu/classes/s133/resources.html 
