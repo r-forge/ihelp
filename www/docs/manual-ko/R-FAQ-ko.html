@@ -2567,28 +2567,37 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
 
 <h3 class="section">5.2 How can add-on packages be installed?</h3>
 
-<p>(Unix-like only.)  The add-on packages on <acronym>CRAN</acronym> come as gzipped tar
-files named <var>pkg</var><code>_</code><var>version</var><code>.tar.gz</code>, which may in fact be
-&ldquo;bundles&rdquo; containing more than one package.  Let <var>path</var> be the
-path to such a package file.  Provided that <samp><span class="command">tar</span></samp> and
-<samp><span class="command">gzip</span></samp> are available on your system, type
+<!-- (Unix-like only.)  The add-on packages on @CRAN{} come as gzipped tar -->
+<!-- files named @code{@var{pkg}_@var{version}.tar.gz}, which may in fact be -->
+<!-- ``bundles'' containing more than one package.  Let @var{path} be the -->
+<!-- path to such a package file.  Provided that @command{tar} and -->
+<!-- @command{gzip} are available on your system, type -->
+<p>(Unix 같은것 에서만) CRAN의 Add-on 패키지들은 실제로 한개 이상의 “bundle들”을 포함할 수도 있는, pkg_version.tar.gz으로 이름지어진gzipped tar파일들처럼 옵니다. Path를 그런 패키지 파일로의 경로로 놓읍시다. 당신의 시스템에 tar 과 gzip이 이용가능하다는 전제하에, 당신의 library 검색 경로의 첫번째 디렉토리에 근원을 가진 library tree로의 설치를 shell  prompt하는
 
 <pre class="example">     $ R CMD INSTALL <var>path</var>/<var>pkg</var>_<var>version</var>.tar.gz
 </pre>
-   <p class="noindent">at the shell prompt to install to the library tree rooted at the first
-directory in your library search path (see the help page for
-<code>.libPaths()</code> for details on how the search path is determined).
+   <!-- $ R CMD INSTALL path/pkg_version.tar.gz -->
+   <p>를 타입합니다. (검색 경로가 어떻게 결정되는지의 자세한 설명은 .libPaths()에 대한 help page를 참조하십시오.
 
-   <p>To install to another tree (e.g., your private one), use
+<p class="noindent"><!-- at the shell prompt to install to the library tree rooted at the first -->
+<!-- directory in your library search path (see the help page for -->
+<!-- @code{.libPaths()} for details on how the search path is determined). -->
+
+<!-- To install to another tree (e.g., your private one), use -->
+   <p>다른 tree를 설치하려면 (예, 당신의 개인적인 것), lib 가  설치하는 library tree에대한 경로를 제공하는
 
 <pre class="example">     $ R CMD INSTALL -l <var>lib</var> <var>path</var>/<var>pkg</var>_<var>version</var>.tar.gz
 </pre>
-   <p class="noindent">where <var>lib</var> gives the path to the library tree to install to.
+   <!-- $ R CMD INSTALL -l lib path/pkg_version.tar.gz -->
+   <p>을 사용하십시오.
 
-   <p>Even more conveniently, you can install and automatically update
-packages from within R if you have access to repositories such as
-<acronym>CRAN</acronym>.  See the help page for <code>available.packages()</code> for more
-information.
+<p class="noindent"><!-- where @var{lib} gives the path to the library tree to install to. -->
+
+<!-- Even more conveniently, you can install and automatically update -->
+<!-- packages from within R if you have access to repositories such as -->
+<!-- @CRAN{}.  See the help page for @code{available.packages()} for more -->
+<!-- information. -->
+   <p>더욱더 편리하게, CRAN과 같은 저장소로의 액세스가 있으면 R 내에서부터 패키지들의 설치와 자동 업데이트를 할 수 있습니다.  더 많은 정보를 위해서는available.packages()에 대한 help page를 참조하십시오.
 
 <!-- <COMMENT> -->
 <!-- This is really no longer quite accurate (R_LIBS_USER is preferred to -->
@@ -2623,13 +2632,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
 
 <h3 class="section">5.3 How can add-on packages be used?</h3>
 
-<p>To find out which additional packages are available on your system, type
+<!-- To find out which additional packages are available on your system, type -->
+<p>당신의 시스템에 어떤 추가의 패키지들이 이용가능한지를 찾아내기위해서는R prompt에
 
 <pre class="example">     library()
 </pre>
-   <p class="noindent">at the R prompt.
+   <p class="noindent"><!-- at the R prompt. -->
 
-   <p>This produces something like
+   <p>를 타입하십시오.
+
+<!-- This produces something like -->
+   <p>이는 다음과 같은 것을 생성합니다.
 
    <blockquote>
 <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
@@ -2673,20 +2686,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
    </td></tr></table>
 </blockquote>
 
-   <p>You can &ldquo;load&rdquo; the installed package <var>pkg</var> by
+<!-- You can ``load'' the installed package @var{pkg} by -->
+   <p>에 의해 설치된 pkg 패키지를 “load”할 수 있습니다.
 
+   <p>그러고 나서
 <pre class="example">     library(<var>pkg</var>)
 </pre>
-   <p>You can then find out which functions it provides by typing one of
-
+   <!-- You can then find out which functions it provides by typing one of -->
 <pre class="example">     library(help = <var>pkg</var>)
      help(package = <var>pkg</var>)
 </pre>
-   <p>You can unload the loaded package <var>pkg</var> by
+   <p>들 중 하나를 타입하는것으로 어떤 function들이 이를 제공하는지를 알아낼 수 있습니다.
 
+<!-- You can unload the loaded package @var{pkg} by -->
 <pre class="example">     detach("package:<var>pkg</var>", unload = TRUE)
 </pre>
-   <p class="noindent">(where <code>unload = TRUE</code> is needed only for packages with a
+   <p>에 의해 Loaded 패키지인 pkg를 unload할 수 있습니다. 
+(namespace가있는 패키지들만이 unload = TRUE가 필요한 곳, ?unload를 참조하십시오).
+
+<p class="noindent">(where <code>unload = TRUE</code> is needed only for packages with a
 namespace, see <code>?unload</code>).
 
 <div class="node">
@@ -2701,20 +2719,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
 
 <h3 class="section">5.4 How can add-on packages be removed?</h3>
 
-<p>Use
-
+<!-- Use -->
 <pre class="example">     $ R CMD REMOVE <var>pkg_1</var> ... <var>pkg_n</var>
 </pre>
-   <p class="noindent">to remove the packages <var>pkg_1</var>, <small class="dots">...</small>, <var>pkg_n</var> from the
-library tree rooted at the first directory given in <samp><span class="env">R_LIBS</span></samp> if this
-is set and non-null, and from the default library otherwise.  (Versions
-of R prior to 1.3.0 removed from the default library by default.)
+<p class="noindent"><!-- to remove the packages @var{pkg_1}, @dots{}, @var{pkg_n} from the -->
+<!-- library tree rooted at the first directory given in @env{R_LIBS} if this -->
+<!-- is set and non-null, and from the default library otherwise.  (Versions -->
+<!-- of R prior to 1.3.0 removed from the default library by default.) -->
 
-   <p>To remove from library <var>lib</var>, do
+   <p>를 만약 이가 세트와 null이 아니고, 그렇지 않으면 기본 library에서부터인 R_LIBS안의 첫번째 디렉토리에 근원을 둔 library tree에서부터의pkg_1, ..., pkg_n 패키지를 없애기 위해서 사용합니다. (1.3.0 전의 R의 버전들은 기본으로 기본 library에서부터 지워졌습니다.) 
+Library lib에서부터 지우려면,
 
+<!-- To remove from library @var{lib}, do -->
 <pre class="example">     $ R CMD REMOVE -l <var>lib</var> <var>pkg_1</var> ... <var>pkg_n</var>
 </pre>
-   <div class="node">
+   <p>를 하십시오. 
+<div class="node">
 <a name="How-can-I-create-an-R-package%3f"></a>
 <a name="How-can-I-create-an-R-package_003f"></a>
 <p><hr>
@@ -2726,24 +2746,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
 
 <h3 class="section">5.5 How can I create an R package?</h3>
 
-<p>A package consists of a subdirectory containing a file
-<samp><span class="file">DESCRIPTION</span></samp> and the subdirectories <samp><span class="file">R</span></samp>, <samp><span class="file">data</span></samp>,
-<samp><span class="file">demo</span></samp>, <samp><span class="file">exec</span></samp>, <samp><span class="file">inst</span></samp>, <samp><span class="file">man</span></samp>, <samp><span class="file">po</span></samp>,
-<samp><span class="file">src</span></samp>, and <samp><span class="file">tests</span></samp> (some of which can be missing).  The
-package subdirectory may also contain files <samp><span class="file">INDEX</span></samp>,
-<samp><span class="file">NAMESPACE</span></samp>, <samp><span class="file">configure</span></samp>, <samp><span class="file">cleanup</span></samp>, <samp><span class="file">LICENSE</span></samp>,
-<samp><span class="file">LICENCE</span></samp>, <samp><span class="file">COPYING</span></samp> and <samp><span class="file">NEWS</span></samp>.
+<!-- A package consists of a subdirectory containing a file -->
+<!-- @file{DESCRIPTION} and the subdirectories @file{R}, @file{data}, -->
+<!-- @file{demo}, @file{exec}, @file{inst}, @file{man}, @file{po}, -->
+<!-- @file{src}, and @file{tests} (some of which can be missing).  The -->
+<!-- package subdirectory may also contain files @file{INDEX}, -->
+<!-- @file{NAMESPACE}, @file{configure}, @file{cleanup}, @file{LICENSE}, -->
+<!-- @file{LICENCE}, @file{COPYING} and @file{NEWS}. -->
+<p>파일DESCRIPTION과 subdirectori들 R, data, demo, exec, inst, man, po, src, 그리고 tests (몇몇은 missing되었을 수도 있습니다)들을 포함한 subdirectory를 포함한 패키지 입니다. 패키지 subdirectory는INDEX, NAMESPACE, configure, cleanup, LICENSE, LICENCE, COPYING 그리고 NEWS파일들 또한 포함할 수도 있습니다.
 
-   <p>See section &ldquo;Creating R packages&rdquo; in <cite>Writing R Extensions</cite>, for
-details.  This manual is included in the R distribution, see <a href="#What-documentation-exists-for-R_003f">What documentation exists for R?</a>, and gives information on package
-structure, the configure and cleanup mechanisms, and on automated
-package checking and building.
+<!-- See section ``Creating R packages'' in @cite{Writing R Extensions}, for -->
+<!-- details.  This manual is included in the R distribution, @pxref{What -->
+<!-- documentation exists for R?}, and gives information on package -->
+<!-- structure, the configure and cleanup mechanisms, and on automated -->
+<!-- package checking and building. -->
+   <p>자세한 사항으로는Writing R Extensions의 “Creating R packages” 섹션을 참고하십시오. 이 매튜얼은 R distribution에 포함되어있고, What documentation exists for R?를 참조하십시오,  패키지 구조, configure과 cleanup mechanism들, 그리고 자동 패키지 체크와 building들에 대한 정보를 줍니다.
 
-   <p>R version 1.3.0 has added the function <code>package.skeleton()</code> which
-will set up directories, save data and code, and create skeleton help
-files for a set of R functions and datasets.
+<!-- R version 1.3.0 has added the function @code{package.skeleton()} which -->
+<!-- will set up directories, save data and code, and create skeleton help -->
+<!-- files for a set of R functions and datasets. -->
+   <p>R 버전 1.3.0은 디렉토리들를 셋업하고, 데이터와 코드를 저장하고, R function들과 dataset들의 skeleton 도움 파일들을 생성하는 package.skeleton() function을 추가했습니다.
 
-   <p>See <a href="#What-is-CRAN_003f">What is CRAN?</a>, for information on uploading a package to <acronym>CRAN</acronym>.
+<!-- @xref{What is CRAN?}, for information on uploading a package to @CRAN{}. -->
+   <p>CRAN으로의 파일을 업로드를하는 정보을 위해서는, What is CRAN?를 참조하십시오.
 
 <div class="node">
 <a name="How-can-I-contribute-to-R%3f"></a>
@@ -2756,15 +2781,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Add_002dOn-Packages">R Add-On Packag
 
 <h3 class="section">5.6 How can I contribute to R?</h3>
 
-<p>R is in active development and there is always a risk of bugs creeping
-in.  Also, the developers do not have access to all possible machines
-capable of running R.  So, simply using it and communicating problems is
-certainly of great value.
+<!-- R is in active development and there is always a risk of bugs creeping -->
+<!-- in.  Also, the developers do not have access to all possible machines -->
+<!-- capable of running R.  So, simply using it and communicating problems is -->
+<!-- certainly of great value. -->
+<p>R은 활성적인 개발중이고 버그가 생기기 시작할 위험요소가 항상 있습니다. 또한, 개발자들은 R을 실행할 수 있는 가능한 모든 컴퓨터에 액세스 할 수가 없습니다. 그래서, 단순히 이를 사용하며 문제들에 대해 의사소통하는 것이 확실히 큰 가치입니다.
 
-   <p>The <a href="http://developer.R-project.org/">R Developer Page</a> acts as an
-intermediate repository for more or less finalized ideas and plans for
-the R statistical system.  It contains (pointers to) TODO lists, RFCs,
-various other writeups, ideas lists, and SVN miscellanea.
+<!-- The @url{http://developer.R-project.org/, R Developer Page} acts as an -->
+<!-- intermediate repository for more or less finalized ideas and plans for -->
+<!-- the R statistical system.  It contains (pointers to) TODO lists, RFCs, -->
+<!-- various other writeups, ideas lists, and SVN miscellanea. -->
+   <p>R Developer Page는 더도 말고 덜도 말고 R 통계 시스템을 위해 마무리지어진 아이디어들과 플랜들을 위한 중간의 저장소처럼 행동합니다. 그는 (pointers to) TODO 목록들과 RFC들, 여러가지 writeup들, 아이디어 목록들, 그리고 SVN miscellanea를 포함합니다.
 
 <div class="node">
 <a name="R-and-Emacs"></a>
@@ -2795,50 +2822,57 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-Emacs">R and Emacs</a>
 
 <h3 class="section">6.1 Is there Emacs support for R?</h3>
 
-<p>There is an Emacs package called <acronym>ESS</acronym> (&ldquo;Emacs Speaks
-Statistics&rdquo;) which provides a standard interface between statistical
-programs and statistical processes.  It is intended to provide
-assistance for interactive statistical programming and data analysis. 
-Languages supported include: S dialects (R, S 3/4, and <span class="sc">S-Plus</span>
-3.x/4.x/5.x/6.x/7.x), LispStat dialects (XLispStat, ViSta), SAS, Stata,
-and BUGS.
+<!-- There is an Emacs package called @acronym{ESS} (``Emacs Speaks -->
+<!-- Statistics'') which provides a standard interface between statistical -->
+<!-- programs and statistical processes.  It is intended to provide -->
+<!-- assistance for interactive statistical programming and data analysis. -->
+<!-- Languages supported include: S dialects (R, S 3/4, and @SPLUS{} -->
+<!-- 3.x/4.x/5.x/6.x/7.x), LispStat dialects (XLispStat, ViSta), SAS, Stata, -->
+<!-- and BUGS. -->
+<p>통계 프로그램들과 통계 프로세스들 사이의 기본 인터페이스를 제공하는(“Emacs Speaks Statistics”)라고 불리는 Emacs 패키지가 있습니다. 이는통계 프로그래밍과 데이터 분석의 상호작용을 위한 지원을 제공하기위한 목적이었습니다. 지원되는 언어는 다음을 포함합니다: S dialects (R, S 3/4, and S-Plus 3.x/4.x/5.x/6.x/7.x), LispStat dialects (XLispStat, ViSta), SAS, Stata, 그리고 BUGS.
 
-   <p><acronym>ESS</acronym> grew out of the need for bug fixes and extensions to
-S-mode 4.8 (which was a <acronym>GNU</acronym> Emacs interface to S/<span class="sc">S-Plus</span>
-version 3 only).  The current set of developers desired support for
-XEmacs, R, S4, and MS Windows.  In addition, with new modes being
-developed for R, Stata, and SAS, it was felt that a unifying interface
-and framework for the user interface would benefit both the user and the
-developer, by helping both groups conform to standard Emacs usage.  The
-end result is an increase in efficiency for statistical programming and
-data analysis, over the usual tools.
+<!-- @acronym{ESS} grew out of the need for bug fixes and extensions to -->
+<!-- S-mode 4.8 (which was a @acronym{GNU} Emacs interface to S/@SPLUS{} -->
+<!-- version 3 only).  The current set of developers desired support for -->
+<!-- XEmacs, R, S4, and MS Windows.  In addition, with new modes being -->
+<!-- developed for R, Stata, and SAS, it was felt that a unifying interface -->
+<!-- and framework for the user interface would benefit both the user and the -->
+<!-- developer, by helping both groups conform to standard Emacs usage.  The -->
+<!-- end result is an increase in efficiency for statistical programming and -->
+<!-- data analysis, over the usual tools. -->
+   <p>ESS는 버그를 고치는 것과 S-mode 4.8(S/S-Plus version 3만으로의GNU Emacs interface인터페이스였덤)로의 연장을 위해서 생겼습니다.  현제 개발자들 모임은XEmacs, R, S4, 그리고 MS Windows를 지원하기를 갈망했었습니다. 추가로, 새로운 모드들이 R, Stata, 그리고 SAS를위해 개발되어지고, 이는 사용자 인터페이스가 사용자와 개발자가 기본 Emacs의 사용에 따르는것에 의해 두 그룹 모두가 이익인 단일화된 인터페이스와 프레임워크인 것 처럼 느껴졌었습니다. 최종 결과는 보통의 툴들을 사용하는 것에 비해 통계 프로그래밍과 데이터 분석의 능률을 증가입니다.
 
-   <p>R support contains code for editing R source code (syntactic indentation
-and highlighting of source code, partial evaluations of code, loading
-and error-checking of code, and source code revision maintenance) and
-documentation (syntactic indentation and highlighting of source code,
-sending examples to running <acronym>ESS</acronym> process, and previewing),
-interacting with an inferior R process from within Emacs (command-line
-editing, searchable command history, command-line completion of R object
-and file names, quick access to object and search lists, transcript
-recording, and an interface to the help system), and transcript
-manipulation (recording and saving transcript files, manipulating and
-editing saved transcripts, and re-evaluating commands from transcript
-files).
+<!-- R support contains code for editing R source code (syntactic indentation -->
+<!-- and highlighting of source code, partial evaluations of code, loading -->
+<!-- and error-checking of code, and source code revision maintenance) and -->
+<!-- documentation (syntactic indentation and highlighting of source code, -->
+<!-- sending examples to running @acronym{ESS} process, and previewing), -->
+<!-- interacting with an inferior R process from within Emacs (command-line -->
+<!-- editing, searchable command history, command-line completion of R object -->
+<!-- and file names, quick access to object and search lists, transcript -->
+<!-- recording, and an interface to the help system), and transcript -->
+<!-- manipulation (recording and saving transcript files, manipulating and -->
+<!-- editing saved transcripts, and re-evaluating commands from transcript -->
+<!-- files). -->
+   <p>R support는 R source 코드를 고치는 것 syntactic indentation과 소스코드의 강조, 코드의 부분적인 평가, 코드의 로딩과 오류 체크, 그리고 소스 코드 수정 관리) 그리고 documentation (syntactic indentation과 소스코드의 강조, 실행되고있는 ESS 프로세스로 예제들을 보내는것, 그리고 미리보기), Emacs안에서부터 inferior R 프로세스로 상호작용 (명령줄 고치기, 찾을 수 있는 명령 히스토리, R object와 파일 이름들의 명령줄 완성, object와 검색 목록들로의 빠른 액세스, transcript recording, 그리고 help 시스템으로의 인터페이스), 그리고 transcript manipulation (recording과 transcript 파일드의 저장, 저장된 transcript들을 조작하고 고침, 그리고 transcript 파일들에서부터의 명령들을 재 평가).
 
-   <p>The latest stable version of <acronym>ESS</acronym> are available via <acronym>CRAN</acronym> or
-the <a href="http://ESS.R-project.org/">ESS web page</a>.  The <acronym>HTML</acronym> version
-of the documentation can be found at <a href="http://stat.ethz.ch/ESS/">http://stat.ethz.ch/ESS/</a>.
+<!-- The latest stable version of @acronym{ESS} are available via @CRAN{} or -->
+<!-- the @url{http://ESS.R-project.org/, ESS web page}.  The @HTML{} version -->
+<!-- of the documentation can be found at @url{http://stat.ethz.ch/ESS/}. -->
+   <p>ESS의 최근 안정된 버전은 CRAN 혹은ESS web page를 통해서 이용 가능 합니다. Documentation의 HTML버전은http://stat.ethz.ch/ESS/에서 찾을 수 있습니다.
 
-   <p><acronym>ESS</acronym> comes with detailed installation instructions.
+<!-- @acronym{ESS} comes with detailed installation instructions. -->
+   <p>ESS는 자세한 설치 설명들과 함께 옵니다.
 
-   <p>For help with <acronym>ESS</acronym>, send email to
-<a href="mailto:ESS-help@stat.math.ethz.ch">ESS-help@stat.math.ethz.ch</a>.
+<!-- For help with @acronym{ESS}, send email to -->
+<!-- @email{ESS-help@@stat.math.ethz.ch}. -->
+   <p>ESS에 대한 도움이 필요하면, <a href="mailto:ESS-help@stat.math.ethz.ch">ESS-help@stat.math.ethz.ch</a>로 이메일을 보내십시오.
 
-   <p>Please send bug reports and suggestions on <acronym>ESS</acronym> to
-<a href="mailto:ESS-bugs@stat.math.ethz.ch">ESS-bugs@stat.math.ethz.ch</a>.  The easiest way to do this from is
-within Emacs by typing <kbd>M-x ess-submit-bug-report</kbd> or using the
-[ESS] or [iESS] pulldown menus.
+<!-- Please send bug reports and suggestions on @acronym{ESS} to -->
+<!-- @email{ESS-bugs@@stat.math.ethz.ch}.  The easiest way to do this from is -->
+<!-- within Emacs by typing @kbd{M-x ess-submit-bug-report} or using the -->
+<!-- [ESS] or [iESS] pulldown menus. -->
+   <p>ESS에 대한 버그 리포드들이나 제안사항들을 <a href="mailto:ESS-bugs@stat.math.ethz.ch">ESS-bugs@stat.math.ethz.ch</a>로 보내주십시오. 이를 하기에 가장 쉬운 방법은 Emacs안에서M-x ess-submit-bug-report를 타입하거나 pulldown 메뉴들에서 [ESS] 혹은 [iESS]를 사용하는 것 입니다.
 
 <div class="node">
 <a name="Should-I-run-R-from-within-Emacs%3f"></a>
