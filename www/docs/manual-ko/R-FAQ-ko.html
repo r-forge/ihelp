@@ -4007,12 +4007,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.28 Why is read.table() so inefficient?</h3>
 
-<p>By default, <code>read.table()</code> needs to read in everything as character
-data, and then try to figure out which variables to convert to numerics
-or factors.  For a large data set, this takes considerable amounts of
-time and memory.  Performance can substantially be improved by using the
-<code>colClasses</code> argument to specify the classes to be assumed for the
-columns of the table.
+<!-- By default, @code{read.table()} needs to read in everything as character -->
+<!-- data, and then try to figure out which variables to convert to numerics -->
+<!-- or factors.  For a large data set, this takes considerable amounts of -->
+<!-- time and memory.  Performance can substantially be improved by using the -->
+<!-- @code{colClasses} argument to specify the classes to be assumed for the -->
+<!-- columns of the table. -->
+<p>기본값으로, read.table()는 character 데이터 처럼 모든것을 읽어야만 하고, 어떤 값을 숫자로나 factor들로 바꿔야 하는지를 알아내려 노력합니다. 큰 데이터 세트에서, 이는 꽤나 많은 양의 시간과 메모리를 차지합니다. 성능은 테이블의 행에 대하여 가정되어질 클래스를 명시하는 colClasses argument를 사용함으로인해 상당히 향상될 수 있습니다.
 
 <div class="node">
 <a name="What-is-the-difference-between-package-and-library%3f"></a>
@@ -4026,17 +4027,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.29 What is the difference between package and library?</h3>
 
-<p>A <dfn>package</dfn> is a standardized collection of material extending R,
-e.g. providing code, data, or documentation.  A <dfn>library</dfn> is a
-place (directory) where R knows to find packages it can use (i.e., which
-were <dfn>installed</dfn>).  R is told to use a package (to &ldquo;load&rdquo; it and
-add it to the search path) via calls to the function <code>library</code>. 
-I.e., <code>library()</code> is employed to load a package from libraries
-containing packages.
+<!-- A @dfn{package} is a standardized collection of material extending R, -->
+<!-- e.g.@: providing code, data, or documentation.  A @dfn{library} is a -->
+<!-- place (directory) where R knows to find packages it can use (i.e., which -->
+<!-- were @dfn{installed}).  R is told to use a package (to ``load'' it and -->
+<!-- add it to the search path) via calls to the function @code{library}. -->
+<!-- I.e., @code{library()} is employed to load a package from libraries -->
+<!-- containing packages. -->
+<p>package는 R을 연장하는 material들, 예로, 코드, 데이터 혹은 documentation을 제공하는,의 표준화 된 컬렉센 입니다. library는 R이 사용할 수 있는 패키지들(즉, 설치된)을 찾는 장소(directory)입니다. R은 function library로의 call을 통해 패키지를 (“로드”하고 검색 경로에 그를 추가하라고) 사용하라고 명령됩니다. 즉, library()는 library들을 포함하고있는 패키지들에서의 패키지를 로드하도록 쓰여집니다.
 
-   <p>See <a href="#R-Add_002dOn-Packages">R Add-On Packages</a>, for more details.  See also Uwe Ligges (2003),
-&ldquo;R Help Desk: Package Management&rdquo;, <em>R News</em>, <strong>3/3</strong>,
-37&ndash;39.
+<!-- @xref{R Add-On Packages}, for more details.  See also Uwe Ligges (2003), -->
+<!-- ``R Help Desk: Package Management'', @emph{R News}, @strong{3/3}, -->
+<!-- 37-39. -->
+   <p>더 자세한 사항으로는R Add-On Packages를 참조하십시오. 또한Uwe Ligges (2003), “R Help Desk: Package Management”, R News, 3/3, 37–39도 참조하십시오.
 
 <div class="node">
 <a name="I-installed-a-package-but-the-functions-are-not-there"></a>
@@ -4049,10 +4052,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.30 I installed a package but the functions are not there</h3>
 
-<p>To actually <em>use</em> the package, it needs to be <em>loaded</em> using
-<code>library()</code>.
+<!-- To actually @emph{use} the package, it needs to be @emph{loaded} using -->
+<!-- @code{library()}. -->
+<p>실제로 패키지를 사용하려면, library() 사용하여 로드가 되어있어야만 합니다.
 
-   <p>See <a href="#R-Add_002dOn-Packages">R Add-On Packages</a> and <a href="#What-is-the-difference-between-package-and-library_003f">What is the difference between package and library?</a> for more information.
+<!-- See @ref{R Add-On Packages} and @ref{What is the difference between -->
+<!-- package and library?} for more information. -->
+   <p>더 자세한 정보는R Add-On Packages 와 What is the difference between package and library?를 참조하십시오.
 
 <div class="node">
 <a name="Why-doesn't-R-think-these-numbers-are-equal%3f"></a>
@@ -4066,12 +4072,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.31 Why doesn't R think these numbers are equal?</h3>
 
-<p>The only numbers that can be represented exactly in R's numeric type
-are integers and fractions whose denominator is a power of 2.  Other
-numbers have to be rounded to (typically) 53 binary digits accuracy.  As a
-result, two floating point numbers will not reliably be equal unless they
-have been computed by the same algorithm, and not always even then.  For
-example
+<!-- The only numbers that can be represented exactly in R's numeric type -->
+<!-- are integers and fractions whose denominator is a power of 2.  Other -->
+<!-- numbers have to be rounded to (typically) 53 binary digits accuracy.  As a -->
+<!-- result, two floating point numbers will not reliably be equal unless they -->
+<!-- have been computed by the same algorithm, and not always even then.  For -->
+<!-- example -->
+<p>R의 숫자 형식에 정확하게 표시될 수 있는 숫자들은 분모가 power of 2인 정수와 분수들 뿐입니다. 다른 숫자들은 (보통) 53 이진 숫자의 정확성으로 어림되어야만 합니다. 결과적으로, 두개의 floating point 숫자들은 같은 알고리즘에 의해 산출되지 않은 이상 확실하게 같이 않을 것이고, 항상 동등하지도 않을 것 입니다. 예를 들어,
 
 <pre class="example">     R&gt; a &lt;- sqrt(2)
      R&gt; a * a == 2
@@ -4079,21 +4086,25 @@ example
      R&gt; a * a - 2
      [1] 4.440892e-16
 </pre>
-   <p>The function <code>all.equal()</code> compares two objects using a numeric
-tolerance of <code>.Machine$double.eps ^ 0.5</code>.  If you want much greater
-accuracy than this you will need to consider error propagation
-carefully.
+   <!-- The function @code{all.equal()} compares two objects using a numeric -->
+<!-- tolerance of @code{.Machine$double.eps ^ 0.5}.  If you want much greater -->
+<!-- accuracy than this you will need to consider error propagation -->
+<!-- carefully. -->
+   <p>Function all.equal()은.Machine$double.eps ^ 0.5의 numeric tolerance를 사용하여 두 개의 object들을 비교합니다. 만약 이보다 훨씬 더 좋은 정확도를 원한다면, error propagation을 조심스럽게 생각해 보아야 할 것입니다.
 
-   <p>For more information, see e.g. David Goldberg (1991), &ldquo;What Every
-Computer Scientist Should Know About Floating-Point Arithmetic&rdquo;,
-<em>ACM Computing Surveys</em>, <strong>23/1</strong>, 5&ndash;48, also available via
-<a href="http://www.validlab.com/goldberg/paper.pdf">http://www.validlab.com/goldberg/paper.pdf</a>.
+<!-- For more information, see e.g.@: David Goldberg (1991), ``What Every -->
+<!-- Computer Scientist Should Know About Floating-Point Arithmetic'', -->
+<!-- @emph{ACM Computing Surveys}, @strong{23/1}, 5-48, also available via -->
+<!-- @url{http://www.validlab.com/goldberg/paper.pdf}. -->
+   <p>더 많은 정보를 위해서는, e.g. David Goldberg (1991), “What Every Computer Scientist Should Know About Floating-Point Arithmetic”, ACM Computing Surveys, 23/1, 5–48를 참고하시고, 또한http://www.validlab.com/goldberg/paper.pdf를 통해서도 이용가능합니다.
 
-   <p>To quote from &ldquo;The Elements of Programming Style&rdquo; by Kernighan and
-Plauger:
+<!-- To quote from ``The Elements of Programming Style'' by Kernighan and -->
+<!-- Plauger: -->
+   <p>“The Elements of Programming Style” by Kernighan and Plauger에서부터 quote하기를:
 
    <blockquote>
-<em>10.0 times 0.1 is hardly ever 1.0</em>. 
+<!-- @emph{10.0 times 0.1 is hardly ever 1.0}. -->
+10.0 곱하기 0.1 는 거의 1.0이 아니다. 
 </blockquote>
 
 <div class="node">
@@ -4108,16 +4119,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.32 How can I capture or ignore errors in a long simulation?</h3>
 
-<p>Use <code>try()</code>, which returns an object of class <code>"try-error"</code>
-instead of an error, or preferably <code>tryCatch()</code>, where the return
-value can be configured more flexibly.  For example
+<!-- Use @code{try()}, which returns an object of class @code{"try-error"} -->
+<!-- instead of an error, or preferably @code{tryCatch()}, where the return -->
+<!-- value can be configured more flexibly.  For example -->
+<p>에러 대신 class "try-error"의 object를 return하는try(), 혹은 가급적이면 return 값이 더 융통성 있게 구성될 수 있는tryCatch()를 사용하십시오. 예를들어,
 
 <pre class="example">     beta[i,] &lt;- tryCatch(coef(lm(formula, data)),
                           error = function(e) rep(NaN, 4))
 </pre>
-   <p class="noindent">would return the coefficients if the <code>lm()</code> call succeeded and
-would return <code>c(NaN, NaN, NaN, NaN)</code> if it failed (presumably there
-are supposed to be 4 coefficients in this example).
+   <p class="noindent"><!-- would return the coefficients if the @code{lm()} call succeeded and -->
+<!-- would return @code{c(NaN, NaN, NaN, NaN)} if it failed (presumably there -->
+<!-- are supposed to be 4 coefficients in this example). -->
+는 만약lm() call이 성공하면 coefficient들을 return하고, 실패하면 c(NaN, NaN, NaN, NaN)를 return할 것입니다 (짐작컨대 이 예제에는 4개의 coefficient들이 있을 것이라고 추정됩니다).
 
 <div class="node">
 <a name="Why-are-powers-of-negative-numbers-wrong%3f"></a>
@@ -4131,22 +4144,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.33 Why are powers of negative numbers wrong?</h3>
 
-<p>You are probably seeing something like
-
+<!-- You are probably seeing something like -->
+<p>아마 당신은 다음과 같은 것을 보고
 <pre class="example">     R&gt; -2^2
      [1] -4
 </pre>
-   <p class="noindent">and misunderstanding the precedence rules for expressions in R. 
-Write
-
+   <p class="noindent"><!-- and misunderstanding the precedence rules for expressions in R. -->
+<!-- Write -->
+R에 있는 expression들을 위한 선행 규직을 잘못 이해 할 것입니다. 
+and misunderstanding the precedence rules for expressions in R. Square of -2를 얻기위해
 <pre class="example">     R&gt; (-2)^2
      [1] 4
 </pre>
-   <p class="noindent">to get the square of -2.
+   <p class="noindent"><!-- to get the square of @math{-2}. -->
+를 쓰십시오.
 
-   <p>The precedence rules are documented in <code>?Syntax</code>, and to see how R
-interprets  an expression you can look at the parse tree
-
+<!-- The precedence rules are documented in @code{?Syntax}, and to see how R -->
+<!-- interprets  an expression you can look at the parse tree -->
+   <p>선행 규칙은 ?Syntax 안에 기록되어 있고, R이 expression을 어떻게 해석하는지를 보기윟서는 다음의 parse tree를 볼 수 있습니다.
 <pre class="example">     R&gt; as.list(quote(-2^2))
      [[1]]
      `-`
@@ -4166,11 +4181,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.34 How can I save the result of each iteration in a loop into a separate file?</h3>
 
-<p>One way is to use <code>paste()</code> (or <code>sprintf()</code>) to concatenate a
-stem filename and the iteration number while <code>file.path()</code>
-constructs the path.  For example, to save results into files
-<samp><span class="file">result1.rda</span></samp>, <small class="dots">...</small>, <samp><span class="file">result100.rda</span></samp> in the subdirectory
-<samp><span class="file">Results</span></samp> of the current working directory, one can use
+<!-- One way is to use @code{paste()} (or @code{sprintf()}) to concatenate a -->
+<!-- stem filename and the iteration number while @code{file.path()} -->
+<!-- constructs the path.  For example, to save results into files -->
+<!-- @file{result1.rda}, @dots{}, @file{result100.rda} in the subdirectory -->
+<!-- @file{Results} of the current working directory, one can use -->
+<p>한가지 방법으로 file.path() 이 경로를 구축하는 동안 Stem filename과 반복되는 숫자를 연결시키기위한 paste()(혹은sprintf())를 사용하는 것입니다. 예를 들어, 현재 실행되고있는 디렉토리의 subdirectory Results안의result1.rda, ..., result100.rda파일들로 저장을 하려면, 아래를 사용할 수 있습니다.
 
 <pre class="example">     for(i in 1:100) {
        ## Calculations constructing "some_object" ...
@@ -4190,9 +4206,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.35 Why are p-values not displayed when using lmer()?</h3>
 
-<p>Doug Bates has kindly provided an extensive response in a post to the
-r-help list, which can be reviewed at
-<a href="https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html">https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html</a>.
+<!-- Doug Bates has kindly provided an extensive response in a post to the -->
+<!-- r-help list, which can be reviewed at -->
+<!-- @uref{https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html}. -->
+<p>Doug Bates는https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html에서 review할 수 있는 친절하게 r-help list의 포스트 안에 폭넓은 응답을 제공해 주었습니다.
 
 <div class="node">
 <a name="Why-are-there-unwanted-borders"></a>
@@ -4205,32 +4222,51 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.36 Why are there unwanted borders, lines or grid-like artifacts when viewing a plot saved to a PS or PDF file?</h3>
 
-<p>This can occur when using functions such as <code>polygon()</code>,
-<code>filled.contour()</code>, <code>image()</code> or other functions which may
-call these internally.  In the case of <code>polygon()</code>, you may observe
-unwanted borders between the polygons even when setting the
-<code>border</code> argument to <code>NA</code> or <code>"transparent"</code>.
+<!-- This can occur when using functions such as @code{polygon()}, -->
+<!-- @code{filled.contour()}, @code{image()} or other functions which may -->
+<!-- call these internally.  In the case of @code{polygon()}, you may observe -->
+<!-- unwanted borders between the polygons even when setting the -->
+<!-- @code{border} argument to @code{NA} or @code{"transparent"}. -->
+<p>이는polygon(), filled.contour(), image() 혹은 내부에서 이들을 부를 지도 모르는 다른 function들과 같은 function들을 사용할 때 발생합니다. polygon() 같은 경우, NA나 “transparent”로의 border argument가 세팅 되었을 때에도 polygon들 사이에서 원하지 않는 border들을 발견 할지도 모릅니다.
 
-   <p>The source of the problem is the PS/PDF viewer when the plot is
-anti-aliased.  The details for the solution will be different depending
-upon the viewer used, the operating system and may change over time. 
-For some common viewers, consider the following:
+<!-- The source of the problem is the PS/PDF viewer when the plot is -->
+<!-- anti-aliased.  The details for the solution will be different depending -->
+<!-- upon the viewer used, the operating system and may change over time. -->
+<!-- For some common viewers, consider the following: -->
+   <p>이 문제들의 근원은 plot이 anti-aliased되었을 때의 PS/PDF 뷰어입니다. 문제 해결의 자세한 사항은 사용된 뷰어, 운영 체제에 따라 다르며, 시간이 지나면서 바뀔지도 모릅니다. 몇몇의 평범한 뷰어들은, 다음을 생각해 보십시오:
 
      <dl>
-<dt>Acrobat Reader (cross platform)<a name="index-Acrobat-Reader-_0028cross-platform_0029-1"></a><dd>There are options in Preferences to enable/disable text smoothing, image
-smoothing and line art smoothing. 
-Disable line art smoothing. 
-<br><dt>Preview (Mac OS X)<a name="index-Preview-_0028Mac-OS-X_0029-2"></a><dd>There is an option in Preferences to enable/disable anti-aliasing of
-text and line art. 
-Disable this option. 
-<br><dt>GSview (cross platform)<a name="index-GSview-_0028cross-platform_0029-3"></a><dd>There are settings for Text Alpha and Graphics Alpha. 
-Change Graphics Alpha from 4 bits to 1 bit to disable graphic
-anti-aliasing. 
-<br><dt>gv (Unix-like X)<a name="index-gv-_0028Unix_002dlike-X_0029-4"></a><dd>There is an option to enable/disable anti-aliasing. 
-Disable this option. 
-<br><dt>Evince (Linux/GNOME)<a name="index-Evince-_0028Linux_002fGNOME_0029-5"></a><dd>There is not an option to disable anti-aliasing in this viewer. 
-<br><dt>Okular (Linux/KDE)<a name="index-Okular-_0028Linux_002fKDE_0029-6"></a><dd>There is not an option in the GUI to enable/disable anti-aliasing. 
-From a console command line, use:
+<dt>Acrobat Reader (cross platform)<a name="index-Acrobat-Reader-_0028cross-platform_0029-1"></a><dd><!-- There are options in Preferences to enable/disable text smoothing, image -->
+<!-- smoothing and line art smoothing. -->
+<!-- Disable line art smoothing. -->
+
+     <p>Text smoothing, image smoothing과 line art smoothing을 enable/disable하는 Preferences안의 옵션이 있습니다. Line art smoothing을 disable하십시오.
+
+     <br><dt>Preview (Mac OS X)<a name="index-Preview-_0028Mac-OS-X_0029-2"></a><dd><!-- There is an option in Preferences to enable/disable anti-aliasing of -->
+<!-- text and line art. -->
+<!-- Disable this option. -->
+
+     <p>Text의 anti-aliasing과 line art를 enable/disable하는 Preferences 안의 옵션이 있습니다. 이 옵션을 disable하십시오.
+
+     <br><dt>GSview (cross platform)<a name="index-GSview-_0028cross-platform_0029-3"></a><dd><!-- There are settings for Text Alpha and Graphics Alpha. -->
+<!-- Change Graphics Alpha from 4 bits to 1 bit to disable graphic -->
+<!-- anti-aliasing. -->
+
+     <p>Text Alpha와 Graphics Alpha에 대한 세팅이 있습니다. Graphics Alpha를 graphic anti-aliasing을 disable하기위해 4bits에서 1bit로 바꾸십시오.
+
+     <br><dt>gv (Unix-like X)<a name="index-gv-_0028Unix_002dlike-X_0029-4"></a><dd><!-- There is an option to enable/disable anti-aliasing. -->
+<!-- Disable this option. -->
+
+     <p>anti-aliasing을 enable/disable 하는 옵션이 있습니다. 이 업션을 disable하십시오
+
+     <br><dt>Evince (Linux/GNOME)<a name="index-Evince-_0028Linux_002fGNOME_0029-5"></a><dd><!-- There is not an option to disable anti-aliasing in this viewer. -->
+
+     <p>이 뷰어에는 anti-aliasing을 disable하는 옵션이 없습니다.
+
+     <br><dt>Okular (Linux/KDE)<a name="index-Okular-_0028Linux_002fKDE_0029-6"></a><dd><!-- There is not an option in the GUI to enable/disable anti-aliasing. -->
+<!-- From a console command line, use: -->
+
+     <p>GUI에는 anti-aliasing을 disable하는 옵션이 없습니다. Console 명령줄에서, 다음을 사용하십시오:
      <pre class="smallexample">          $ kwriteconfig --file okularpartrc --group 'Dlg Performance' \
                          --key GraphicsAntialias Disabled
 </pre>
@@ -4250,17 +4286,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.37 Why does backslash behave strangely inside strings?</h3>
 
-<p>This question most often comes up in relation to file names (see
-<a href="#How-do-file-names-work-in-Windows_003f">How do file names work in Windows?</a>)  but it also happens that
-people complain that they cannot seem to put a single &lsquo;<samp><span class="samp">\</span></samp>&rsquo; character
-into a text string unless it happens to be followed by certain other
-characters.
+<!-- This question most often comes up in relation to file names (see -->
+<!-- @ref{How do file names work in Windows?})  but it also happens that -->
+<!-- people complain that they cannot seem to put a single @samp{\} character -->
+<!-- into a text string unless it happens to be followed by certain other -->
+<!-- characters. -->
+<p>이 질문은 대부분 파일 이름들과 관련하여 종종 올라오지만(How do file names work in Windows?를 참조하십시오), 이는 특정한 다른 character에 뒤이어 일어나지 않는 이상 문자열로의 단일의 ‘\’ character를 넣을 수 없는 것 처럼 보이는 것에 분만을 제기할 때 발생하기도 합니다.
 
-   <p>To understand this, you have to distinguish between character strings
-and <em>representations</em> of character strings.  Mostly, the
-representation in R is just the string with a single or double quote at
-either end, but there are strings that cannot be represented that way,
-e.g., strings that themselves contains the quote character.  So
+<!-- To understand this, you have to distinguish between character strings -->
+<!-- and @emph{representations} of character strings.  Mostly, the -->
+<!-- representation in R is just the string with a single or double quote at -->
+<!-- either end, but there are strings that cannot be represented that way, -->
+<!-- e.g., strings that themselves contains the quote character.  So -->
+   <p>이를 이해하기 위해서는, 문자열과 문자열의 표현을 구분해야만 합니다. 대부분, R에서의 표현은 단지 어떤쪽의 끝이던지에 single quote혹은 double quote가 있는 string이지만, 그런 방법으로 표현 될 수 없는 string들도 있습니다, 예로, quote character를 포함하고있는 string들입니다. 그래서
 
 <pre class="example">     &gt; str &lt;- "This \"text\" is quoted"
      &gt; str
@@ -4268,34 +4306,38 @@ e.g., strings that themselves contains the quote character.  So
      &gt; cat(str, "\n")
      This "text" is quoted
 </pre>
-   <p class="noindent">The <em>escape sequences</em> &lsquo;<samp><span class="samp">\"</span></samp>&rsquo; and &lsquo;<samp><span class="samp">\n</span></samp>&rsquo; represent a double
-quote and the newline character respectively. Printing text strings,
-using <code>print()</code> or by typing the name at the prompt will use the
-escape sequences too, but the <code>cat()</code> function will display the
-string as-is. Notice that &lsquo;<samp><span class="samp">"\n"</span></samp>&rsquo; is a one-character string, not
-two; the backslash is not actually in the string, it is just generated
-in the printed representation.
+   <p class="noindent"><!-- The @emph{escape sequences} @samp{\"} and @samp{\n} represent a double -->
+<!-- quote and the newline character respectively. Printing text strings, -->
+<!-- using @code{print()} or by typing the name at the prompt will use the -->
+<!-- escape sequences too, but the @code{cat()} function will display the -->
+<!-- string as-is. Notice that @samp{"\n"} is a one-character string, not -->
+<!-- two; the backslash is not actually in the string, it is just generated -->
+<!-- in the printed representation. -->
 
+   <p>escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로운 줄의 character를 나타냅니다. print()나 prompt에 이름을 타입하는 것을 사용하여 문자열을 프린트 하는 것 또한 escape sequence들을 사용 할 것이지만, cat() function은 string을 그래로 display할 것입니다. ‘"\n"’이 둘이 아닌 하나의 문자열이라는 것을 주목하십시오; backslash는 실제로 string안에 있는것이 아니고, 프린트 된 표현 안에 생성 된 것일 뿐입니다.
 <pre class="example">     &gt; nchar("\n")
      [1] 1
      &gt; substring("\n", 1, 1)
      [1] "\n"
 </pre>
-   <p>So how do you put a backslash in a string? For this, you have to
-escape the escape character. I.e., you have to double the backslash. 
-as in
+   <!-- So how do you put a backslash in a string? For this, you have to -->
+<!-- escape the escape character. I.e., you have to double the backslash. -->
+<!-- as in -->
+   <p>그래서 backslash를 string안에 어떻게 넣겠습니까? 여기에서, escape character를 escape해야만 합니다. 즉, 다음과 같이 두개의 backslash를 써야합니다.
 
 <pre class="example">     &gt; cat("\\n", "\n")
      \n
 </pre>
-   <p>Some functions, particularly those involving regular expression
-matching, themselves use metacharacters, which may need to be escaped by
-the backslash mechanism.  In those cases you may need a <em>quadruple</em>
-backslash to represent a single literal one.
+   <!-- Some functions, particularly those involving regular expression -->
+<!-- matching, themselves use metacharacters, which may need to be escaped by -->
+<!-- the backslash mechanism.  In those cases you may need a @emph{quadruple} -->
+<!-- backslash to represent a single literal one. -->
+   <p>특히 일반적인 expression matching을 포함한 몇몇의 function들은backslash mechanism에 의해escape를 해야 항 수도 있는metacharacter들을 사용합니다. 그런 경우에는, single literal을 표현하기위해 4개의 backlash를 써야할 수도 있습니다.
 
-   <p>In versions of R up to 2.4.1 an unknown escape sequence like &lsquo;<samp><span class="samp">\p</span></samp>&rsquo;
-was quietly interpreted as just &lsquo;<samp><span class="samp">p</span></samp>&rsquo;.  Current versions of R emit a
-warning.
+<!-- In versions of R up to 2.4.1 an unknown escape sequence like @samp{\p} -->
+<!-- was quietly interpreted as just @samp{p}.  Current versions of R emit a -->
+<!-- warning. -->
+   <p>2.4.1까지의 R 버전에서‘\p’와 같은 알려지지않은 escape sequence는 ‘p’처럼 조용히 해석되었습니다. 현재 R 버전들은 경고를 줍니다.
 
 <div class="node">
 <a name="How-can-I-put-error-bars-or-confidence-bands-on-my-plot%3f"></a>
@@ -4309,31 +4351,33 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.38 How can I put error bars or confidence bands on my plot?</h3>
 
-<p>Some functions will display a particular kind of plot with error bars,
-such as the <code>bar.err()</code> function in the <a href="http://CRAN.R-project.org/package=agricolae"><strong>agricolae</strong></a>
-package, the <code>plotCI()</code> function in the <a href="http://CRAN.R-project.org/package=gplots"><strong>gplots</strong></a> package,
-the <code>plotCI()</code> and <code>brkdn.plot()</code> functions in the
-<a href="http://CRAN.R-project.org/package=plotrix"><strong>plotrix</strong></a> package and the <code>error.bars()</code>,
-<code>error.crosses()</code> and <code>error.bars.by()</code> functions in the
-<a href="http://CRAN.R-project.org/package=psych"><strong>psych</strong></a> package.  Within these types of functions, some will
-accept the measures of dispersion (e.g., <code>plotCI</code>), some will
-calculate the dispersion measures from the raw values (<code>bar.err</code>,
-<code>brkdn.plot</code>), and some will do both (<code>error.bars</code>).  Still
-other functions will just display error bars, like the dispersion
-function in the <a href="http://CRAN.R-project.org/package=plotrix"><strong>plotrix</strong></a> package.  Most of the above functions
-use the <code>arrows()</code> function in the base <strong>graphics</strong> package to
-draw the error bars.
+<!-- Some functions will display a particular kind of plot with error bars, -->
+<!-- such as the @code{bar.err()} function in the @CRANpkg{agricolae} -->
+<!-- package, the @code{plotCI()} function in the @CRANpkg{gplots} package, -->
+<!-- the @code{plotCI()} and @code{brkdn.plot()} functions in the -->
+<!-- @CRANpkg{plotrix} package and the @code{error.bars()}, -->
+<!-- @code{error.crosses()} and @code{error.bars.by()} functions in the -->
+<!-- @CRANpkg{psych} package.  Within these types of functions, some will -->
+<!-- accept the measures of dispersion (e.g., @code{plotCI}), some will -->
+<!-- calculate the dispersion measures from the raw values (@code{bar.err}, -->
+<!-- @code{brkdn.plot}), and some will do both (@code{error.bars}).  Still -->
+<!-- other functions will just display error bars, like the dispersion -->
+<!-- function in the @CRANpkg{plotrix} package.  Most of the above functions -->
+<!-- use the @code{arrows()} function in the base @pkg{graphics} package to -->
+<!-- draw the error bars. -->
+<p>몇몇의 function들은agricolae 패키지 안의 bar.err() function, glots 패키지 안의plotCI() function, plotrix 패키지 안의plotCI() 과 brkdn.plot() function들 그리고psych 패키지 안의error.bars(), error.crosses() 그리고 error.bars.by() function들과 같이 error bar들을 가지고 있는 특정한 종류의 plot을 display할 것입니다. 이론 function드르이 종류안에서, 몇몇은 dispersion의 measure들을 허용 할 것이고(예, plotCI), 몇몇은 raw value들에서부터의 dispersion measure들을 계산할 것이며(bar.err, brkdn.plot), 몇몇은 두가지 다를 할 것입니다(error.bars). 아직까지 다른 function들은plotrix 패키지 않의 dispersion function처럼 error bar들을 display 할 것입니다. 위의 대부분의 function들은 error bar들을 그리기 위해 base graphics 패키지에 있는 arrows() function을 사용합니다.
 
-   <p>The above functions all use the base graphics system.  The grid and
-lattice graphics systems also have specific functions for displaying
-error bars, e.g., the <code>grid.arrow()</code> function in the <strong>grid</strong>
-package, and the <code>geom_errorbar()</code>, <code>geom_errorbarh()</code>,
-<code>geom_pointrange()</code>, <code>geom_linerange()</code>,
-<code>geom_crossbar()</code> and <code>geom_ribbon()</code> functions in the
-<a href="http://CRAN.R-project.org/package=ggplot2"><strong>ggplot2</strong></a> package.  In the lattice system, error bars can be
-displayed with <code>Dotplot()</code> or <code>xYplot()</code> in the
-<a href="http://CRAN.R-project.org/package=Hmisc"><strong>Hmisc</strong></a> package and <code>segplot()</code> in the
-<a href="http://CRAN.R-project.org/package=latticeExtra"><strong>latticeExtra</strong></a> package.
+<!-- The above functions all use the base graphics system.  The grid and -->
+<!-- lattice graphics systems also have specific functions for displaying -->
+<!-- error bars, e.g., the @code{grid.arrow()} function in the @pkg{grid} -->
+<!-- package, and the @code{geom_errorbar()}, @code{geom_errorbarh()}, -->
+<!-- @code{geom_pointrange()}, @code{geom_linerange()}, -->
+<!-- @code{geom_crossbar()} and @code{geom_ribbon()} functions in the -->
+<!-- @CRANpkg{ggplot2} package.  In the lattice system, error bars can be -->
+<!-- displayed with @code{Dotplot()} or @code{xYplot()} in the -->
+<!-- @CRANpkg{Hmisc} package and @code{segplot()} in the -->
+<!-- @CRANpkg{latticeExtra} package. -->
+   <p>위의 function들은 모두 base 그래픽 시스템을 사용합니다. Grid와 lattice 그래픽 시스템들 또한 error bar들을 display하기위한 특정한 functin을 가지고 있습니다. 예, grid 패키지 안의grid.arrow() function, ggplot2 패키지 안의geom_errorbar(), geom_errorbarh(), geom_pointrange(), geom_linerange(), geom_crossbar()과 geom_ribbon() function들. Lattice system에서, error bar들은Hmisc 패키지 안의Dotplot() or xYplot()와latticeExtra 패키지 안의segplot()을 사용하여 display될 수도 있습니다.
 
 <div class="node">
 <a name="How-do-I-create-a-plot-with-two-y-axes%3f"></a>
@@ -4347,17 +4391,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.39 How do I create a plot with two y-axes?</h3>
 
-<p>Creating a graph with two y-axes, i.e., with two sorts of data that are
-scaled to the same vertical size and showing separate vertical axes on
-the left and right sides of the plot that reflect the original scales of
-the data, is possible in R but is not recommended.  The basic approach
-for constructing such graphs is to use <code>par(new=TRUE)</code> (see
-<code>?par</code>); functions <code>twoord.plot()</code> (in the <a href="http://CRAN.R-project.org/package=plotrix"><strong>plotrix</strong></a>
-package) and <code>doubleYScale()</code> (in the <a href="http://CRAN.R-project.org/package=latticeExtra"><strong>latticeExtra</strong></a>
-package) automate the process somewhat.  See
-<a href="http://rwiki.sciviews.org/doku.php?id=tips:graphics-base:2yaxes">http://rwiki.sciviews.org/doku.php?id=tips:graphics-base:2yaxes</a>
-for more information, including strong arguments against this sort of
-graph.
+<!-- Creating a graph with two y-axes, i.e., with two sorts of data that are -->
+<!-- scaled to the same vertical size and showing separate vertical axes on -->
+<!-- the left and right sides of the plot that reflect the original scales of -->
+<!-- the data, is possible in R but is not recommended.  The basic approach -->
+<!-- for constructing such graphs is to use @code{par(new=TRUE)} (see -->
+<!-- @code{?par}); functions @code{twoord.plot()} (in the @CRANpkg{plotrix} -->
+<!-- package) and @code{doubleYScale()} (in the @CRANpkg{latticeExtra} -->
+<!-- package) automate the process somewhat.  See -->
+<!-- @url{http://rwiki.sciviews.org/@/doku.php?id=tips:graphics-base:2yaxes} -->
+<!-- for more information, including strong arguments against this sort of -->
+<!-- graph. -->
+<p>두 개의 y 축을 사용하여 그래프를 생성하는 것, 즉, 같은 수직 크기로 측정되고 데이터의 원래 측정값을 나타내는 plot의 왼쪽과 오른쪽위의 서로다른 수직축을 보여주는 두 종류의 데이터, 가 R에서 가능하지만 권장되지는 않습니다. 이런 그래프를 구성하기위한 기본 접근법은par(new=TRUE)를 사용하는 것입니다 (?par를 참조하십시오); twoord.plot() (plotrix 패키지 안의) 과 doubleYScale() (latticeExtra 패키지 안의) function은 어느정도 자동화된 프로세스 입니다. 이런 종류의 그래프에 반하는 강력한 argument들은 포함한, 더 많은 정보를 위해서는http://rwiki.sciviews.org/doku.php?id=tips:graphics-base:2yaxes를 참조하십시오.
 
 <div class="node">
 <a name="How-do-I-access-the-source-code-for-a-function%3f"></a>
@@ -4371,11 +4416,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.40 How do I access the source code for a function?</h3>
 
-<p>In most cases, typing the name of the function will print its source
-code. However, code is sometimes hidden in a namespace, or compiled.  For
-a complete overview on how to access source code, see Uwe Ligges (2006),
-&ldquo;Help Desk: Accessing the sources&rdquo;, <em>R News</em>, <strong>6/4</strong>,
-43&ndash;45 (<a href="http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf">http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf</a>).
+<!-- In most cases, typing the name of the function will print its source -->
+<!-- code. However, code is sometimes hidden in a namespace, or compiled.  For -->
+<!-- a complete overview on how to access source code, see Uwe Ligges (2006), -->
+<!-- ``Help Desk: Accessing the sources'', @emph{R News}, @strong{6/4}, -->
+<!-- 43-45 (@url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf}). -->
+<p>대부분의 경우, function의 이름을 타입하는 것은 그의 소스 코드를 프린트 할 것입니다. 하지만, 때때로 코드는 namespace안에 숨어져 있거나 compile되어져 있습니다. 어떻게 소스 코드에 액세스를 하는지에 대한 완전한 개요는Uwe Ligges (2006), “Help Desk: Accessing the sources”, R News, 6/4, 43–45 (http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf)를 참조하십시오.
 
 <div class="node">
 <a name="Why-does-summary()-report-strange-results-for-the-R%5e2-estimate-when-I-fit-a-linear-model-with-no-intercept%3f"></a>
@@ -4389,29 +4435,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.41 Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?</h3>
 
-<p>As described in <code>?summary.lm</code>, when the intercept is zero (e.g.,
-from <code>y ~ x - 1</code> or <code>y ~ x + 0</code>), <code>summary.lm()</code> uses the
-formula
-  R^2 = 1 - Sum(R[i]^2) / Sum((y[i])^2)
+<!-- As described in @code{?summary.lm}, when the intercept is zero (e.g., -->
+<!-- from @code{y ~ x - 1} or @code{y ~ x + 0}), @code{summary.lm()} uses the -->
+<!-- formula -->
+<p>?summary.lm에 설명되어 있듯이, 절편이 제로일 때 (예, y ~ x - 1 나 y ~ x + 0 에서), summary.lm()는 보통 쓰이는R^2 = 1 - Sum(R[i]^2) / Sum((y[i] - mean(y))^2)과는 다른R^2 = 1 - Sum(R[i]^2) / Sum((y[i])^2) 식을 사용합니다.
+
+   <p>R^2 = 1 - Sum(R[i]^2) / Sum((y[i])^2)
 which is different from the usual
   R^2 = 1 - Sum(R[i]^2) / Sum((y[i] - mean(y))^2). 
-There are several reasons for this:
+<!-- There are several reasons for this: -->
+여기에는 몇가지의 이유들이 있습니다:
+
      <ul>
-<li>Otherwise the R^2 could be negative (because the model with zero
-intercept can fit <em>worse</em> than the constant-mean model it is
-implicitly compared to). 
-<li>If you set the slope to zero in the model with a line through the
-origin you get fitted values y*=0
-<li>The model with constant, non-zero mean is not nested in the model
-with a line through the origin. 
+<li><!-- Otherwise the @math{R^2} could be negative (because the model with zero -->
+<!-- intercept can fit @emph{worse} than the constant-mean model it is -->
+<!-- implicitly compared to). -->
+그렇지 않으면R^2가 음수가 될 수 있습니다 (제로 절편이 있는 모델은 잠재적으로 비교되는 constant-mean 모델보다 못하게 fit될 수도 있기 때문입니다).
+
+     <li><!-- If you set the slope to zero in the model with a line through the -->
+<!-- origin you get fitted values y*=0 -->
+원점을 지나는 선 모델에서 기울기를 제로로 설정한다면,  fitted value y*=0를 얻습니다.
+
+     <li><!-- The model with constant, non-zero mean is not nested in the model -->
+<!-- with a line through the origin. -->
+상수를 가지고 있는 모덴, non-zero mean은 원점을 지나는 선 모델로 nested되어져 있지 않습니다. 
 </ul>
 
-   <p>All these come down to saying that if you know <em>a priori</em> that
-E[Y]=0 when x=0 then the `null' model that you should
-compare to the fitted line, the model where x doesn't explain any
-of the variance, is the model where E[Y]=0 everywhere.  (If you
-don't know a priori that E[Y]=0 when x=0, then you
-probably shouldn't be fitting a line through the origin.)
+<!-- All these come down to saying that if you know @emph{a priori} that -->
+<!-- @math{E[Y]=0} when @math{x=0} then the `null' model that you should -->
+<!-- compare to the fitted line, the model where @math{x} doesn't explain any -->
+<!-- of the variance, is the model where @math{E[Y]=0} everywhere.  (If you -->
+<!-- don't know a priori that @math{E[Y]=0} when @math{x=0}, then you -->
+<!-- probably shouldn't be fitting a line through the origin.) -->
+   <p>이 모든 것들은 x=0일 때E[Y]=0이라는 것을 미리 알고 있다면 fitted line과 비교해야하는 ‘null’ 모델, x가 어떠한 variance도 설명하지 않는 모델,이  모든 곳이E[Y]=0인 모델이라는 것을 말해 주는 것으로 설명됩니다. (만약 x=0일 때E[Y]=0라는 것을 미리 알지 못한다면, 선을 원점을 통하도록 fitting하면 안될 것입니다.)
 
 <div class="node">
 <a name="Why-is-R-apparently-not-releasing-memory%3f"></a>
@@ -4424,57 +4480,61 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 <h3 class="section">7.42 Why is R apparently not releasing memory?</h3>
 
-<p>This question is often asked in different flavors along the lines of
-&ldquo;I have removed objects in R and run <code>gc()</code> and yet
-<code>ps</code>/<code>top</code> still shows the R process using a lot of
-memory&rdquo;, often on Linux machines.
+<!-- This question is often asked in different flavors along the lines of -->
+<!-- ``I have removed objects in R and run @code{gc()} and yet -->
+<!-- @code{ps}/@code{top} still shows the R process using a lot of -->
+<!-- memory'', often on Linux machines. -->
+<p>이 질문은, 자주 Linux 기계에서의 “R 안의 object들을 지우고 gc()를 실행했는데 ps/top이 아직도 메모리의 ㅁ낳은 부분을 사용하여 R 프로세스를 보여줍니다”의 문장과 다른 의미로 종종 물어집니다.
 
-   <p>This is an artifact of the way the operating system (OS) allocates
-memory.  In general it is common that the OS is not capable of
-releasing all unused memory.  In extreme cases it is possible that even
-if R frees almost all its memory, the OS can not release any of it due
-to its design and thus tools such as <code>ps</code> or <code>top</code> will
-report substantial amount of resident RAM used by the R process even
-though R has released all that memory.  In general such tools do
-<em>not</em> report the actual memory usage of the process but rather
-what the OS is reserving for that process.
+<!-- This is an artifact of the way the operating system (OS) allocates -->
+<!-- memory.  In general it is common that the OS is not capable of -->
+<!-- releasing all unused memory.  In extreme cases it is possible that even -->
+<!-- if R frees almost all its memory, the OS can not release any of it due -->
+<!-- to its design and thus tools such as @code{ps} or @code{top} will -->
+<!-- report substantial amount of resident RAM used by the R process even -->
+<!-- though R has released all that memory.  In general such tools do -->
+<!-- @emph{not} report the actual memory usage of the process but rather -->
+<!-- what the OS is reserving for that process. -->
+   <p>이는 운영 체제 (OS)가 인공으로 메모리를 지정하는 방법입니다. 일반적으로, 이는 OS가 모든 사용되지 않은 메모리를 방출할 수 없는 것이 흔합니다.  극단적인 경우에는, R이 거의 모든 메모리를 자유롭게 한다고 하더라도, OS가 자기의 디자인 때문에R이 모든 메모리를 방출할다고 하더라도 ps나 top가 R 프로세스에 의해 사용된 resident RAM의 상당한 사용량을 리포트 하는 것과 같은 tool들 때문에 어느것도 방출할 수 없을 가능성도 있습니다. 일반적으로 이런 tool들은 프로세스의 실제 메모리 사용랑을 리포트하지 않고, OS가 프로세스를 위해 reserve해 놓은 것을 리포트 합니다.
 
-   <p>The short answer is that this is a limitation of the memory allocator
-in the operating system and there is nothing R can do about it. That
-space is simply kept by the OS in the hope that R will ask for it
-later.  The following paragraph gives more in-depth answer with
-technical details on how this happens.
+<!-- The short answer is that this is a limitation of the memory allocator -->
+<!-- in the operating system and there is nothing R can do about it. That -->
+<!-- space is simply kept by the OS in the hope that R will ask for it -->
+<!-- later.  The following paragraph gives more in-depth answer with -->
+<!-- technical details on how this happens. -->
+   <p>짧은 답으로 운영 체제의 메모리 할당기의 한계이고 R이 할 수 있는 것이 아무것도 없습니다. 공간은 간단히 R이 나중에 물어볼 것이라는 희망을 가지고 OS에 의해 관리됩니다. 다음의 문단은 어떻게 이가 발생하는지에대한 기술적인 detail들로 더 심도있는 답을 줍니다.
 
-   <p>Most systems use two separate ways to allocate memory. For allocation
-of large chunks they will use <code>mmap</code> to map memory into the
-process address space.  Such chunks can be released immediately when
-they are completely free, because they can reside anywhere in the
-virtual memory.  However, this is a relatively expensive operation and
-many OSes have a limit on the number of such allocated chunks, so this
-is only used for allocating large memory regions.  For smaller
-allocations the system can expand the data segment of the process
-(historically using the <code>brk</code> system call), but this whole area
-is always contiguous.  The OS can only move the end of this space, it
-cannot create any &ldquo;holes&rdquo;. Since this operation is fairly cheap, it
-is used for allocations of small pieces of memory.  However, the
-side-effect is that even if there is just one byte that is in use
-at the end of the data segment, the OS cannot release any memory
-at all, because it cannot change the address of that byte.  This is
-actually more common than it may seem, because allocating a lot of
-intermediate objects, then allocating a result object and removing all
-intermediate objects is a very common practice.  Since the result is
-allocated at the end it will prevent the OS from releasing any memory
-used by the intermediate objects.  In practice, this is not necessarily
-a problem, because modern operating systems can page out unused
-portions of the virtual memory so it does not necessarily reduce the
-amount of real memory available for other applications.  Typically,
-small objects such as strings or pairlists will be affected by this
-behavior, whereas large objects such as long vectors will be allocated
-using <code>mmap</code> and thus not affected.  On Linux (and possibly other
-Unix-like systems) it is possible to use the <code>mallinfo</code> system call
-(also see the <a href="http://rforge.net/mallinfo">mallinfo</a> package) to
-query the allocator about the layout of the allocations, including the
-actually used memory as well as unused memory that cannot be released.
+<!-- Most systems use two separate ways to allocate memory. For allocation -->
+<!-- of large chunks they will use @code{mmap} to map memory into the -->
+<!-- process address space.  Such chunks can be released immediately when -->
+<!-- they are completely free, because they can reside anywhere in the -->
+<!-- virtual memory.  However, this is a relatively expensive operation and -->
+<!-- many OSes have a limit on the number of such allocated chunks, so this -->
+<!-- is only used for allocating large memory regions.  For smaller -->
+<!-- allocations the system can expand the data segment of the process -->
+<!-- (historically using the @code{brk} system call), but this whole area -->
+<!-- is always contiguous.  The OS can only move the end of this space, it -->
+<!-- cannot create any ``holes''. Since this operation is fairly cheap, it -->
+<!-- is used for allocations of small pieces of memory.  However, the -->
+<!-- side-effect is that even if there is just one byte that is in use -->
+<!-- at the end of the data segment, the OS cannot release any memory -->
+<!-- at all, because it cannot change the address of that byte.  This is -->
+<!-- actually more common than it may seem, because allocating a lot of -->
+<!-- intermediate objects, then allocating a result object and removing all -->
+<!-- intermediate objects is a very common practice.  Since the result is -->
+<!-- allocated at the end it will prevent the OS from releasing any memory -->
+<!-- used by the intermediate objects.  In practice, this is not necessarily -->
+<!-- a problem, because modern operating systems can page out unused -->
+<!-- portions of the virtual memory so it does not necessarily reduce the -->
+<!-- amount of real memory available for other applications.  Typically, -->
+<!-- small objects such as strings or pairlists will be affected by this -->
+<!-- behavior, whereas large objects such as long vectors will be allocated -->
+<!-- using @code{mmap} and thus not affected.  On Linux (and possibly other -->
+<!-- Unix-like systems) it is possible to use the @code{mallinfo} system call -->
+<!-- (also see the @url{http://rforge.net/mallinfo, mallinfo} package) to -->
+<!-- query the allocator about the layout of the allocations, including the -->
+<!-- actually used memory as well as unused memory that cannot be released. -->
+   <p>대부분의 시스템들은 메모리를 지정하기위해 두 가지 다른 방법을 사용합니다. 큰 chunk들의 지정에 프로세스 address 공간으로 메모리를 인도하기위해 mmap을 사용할 것입니다. 이러한 chunk들은 가상 메모리 어디에든 속해있을 수 있기 때문에 완전히 자유로울 때에 바로 방출이 가능합니다. 하지만, 이는 꽤나 비싼 operation이고 많은 운영 체제들이 그런 지정chunk들의 숫자에 한계가 있기 때문에, 이는 큰 메모리 region들을 지정하는 데에만 사용됩니다. 작은 지정들을 위해서, 시스템은 프로세스의 data segment(역사적으로 brk 시스템 call을 사용하여)를 확장 할 수 있지만, 이 전체 area는 항상 근접합니다.  OS는 이 공간의 끝만 움직일수 있고, 이는 어떠한 “hole들”도 생성할 수 없습니다. 이 operatin은 꽤나 싸기때문에, 이는 메모리의 작은 조각들의 지정을 위해 사용됩니다. 하지만, 부작용으로 data segment의 끝에 고작 1 byte의 사용되고있는 것이 있더라도, 그 byte의 주소를 바꿀 수 없기 떄문에, OS는 어떠한 메모리도 방출할 수 없습니다. 많은 양의 intermediate object들을 지정하고나서, result object를 지정하고 모든 intermediate object들을 지우는 것이 매우 흔한 연습이기때문에, 이는 실제로 보기보다 더 흔합니다. 결과가 끝에 지정되기 때문에, 이는 OS가 intermediate object들에의해 사용된 어떠한 메모리라도 방출 하는 것을 막을 것 입니다. 실제로, 현대의 운영체제는 쓰이지 않은 가상 메모리 부분을 page out할 수 있고 이가 다른 application들에서 사용가능한 실제 메모리의 양을 줄이지는 않으므로, 이는 문제가 되지는 않습니다. 전형적으로, mmap을 사용하여 지정되어질 긴 벡터들과 같은 큰 object들은 영향을 받지 않는 반면, string들이나 pairlist들 같은 작은 object들은 이런 작용에 영향을 받을 것 입니다. Linux에서 (그리고 아마 Unix-like 시스템들에서도) 실제 사용된 메모리와 함께 방출되지 못하는 사용되지 않은 메모리를 포함한 allocation들의 layout에 대한 할당기에 문의를 하기위한 mallinfo 시스템 call(mallinfo 패키지도 참조하십시오)을 사용할 수도 있습니다.
 
 <div class="node">
 <a name="R-Programming"></a>
