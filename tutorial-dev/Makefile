@@ -12,6 +12,19 @@ all: pdf
 #	svn ../../commit
 # pdf2htmlEX tutorial.pdf --split-pages 1 --process-outline 0
 
+part1:
+	pdflatex Parts/part1-ch00.tex
+	pdflatex Parts/part1-ch01.tex
+	pdflatex Parts/part1-ch02.tex
+	pdflatex Parts/part1-ch03.tex
+	pdflatex Parts/part1-ch04.tex
+	pdflatex Parts/part1-ch05.tex
+	pdflatex Parts/part1-ch06.tex
+	pdflatex Parts/part1-ch07.tex
+	rm -rf *.aux *.idx *.log *.out
+	cp *.pdf ../www/tutorial/part1/
+	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
+
 pdf: ps
 	ps2pdf $(filename).ps
 
