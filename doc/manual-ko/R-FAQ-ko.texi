@@ -2885,24 +2885,31 @@ ESS에 대한 버그 리포드들이나 제안사항들을 @email{ESS-bugs@@stat
 @node Should I run R from within Emacs?, Debugging R from within Emacs, Is there Emacs support for R?, R and Emacs
 @section Should I run R from within Emacs?
 
-Yes, @emph{definitely}.  Inferior R mode provides a readline/history
-mechanism, object name completion, and syntax-based highlighting of the
-interaction buffer using Font Lock mode, as well as a very convenient
-interface to the R help system.
+@c Yes, @emph{definitely}.  Inferior R mode provides a readline/history
+@c mechanism, object name completion, and syntax-based highlighting of the
+@c interaction buffer using Font Lock mode, as well as a very convenient
+@c interface to the R help system.
 
-Of course, it also integrates nicely with the mechanisms for editing R
-source using Emacs.  One can write code in one Emacs buffer and send
-whole or parts of it for execution to R; this is helpful for both data
-analysis and programming.  One can also seamlessly integrate with a
-revision control system, in order to maintain a log of changes in your
-programs and data, as well as to allow for the retrieval of past
-versions of the code.
+네, 확실합니다. Inferior R 모드는 readline/ 히스토리 메카니즘, object 이름 완성, 그리고 Font Lock 모드를 이용한 상호작용 buffer의 syntax-based hightliting, 또한 R  help system으로의 매우 편리한 인터페이스를 제공합니다. 
 
-In addition, it allows you to keep a record of your session, which can
-also be used for error recovery through the use of the transcript mode.
+@c Of course, it also integrates nicely with the mechanisms for editing R
+@c source using Emacs.  One can write code in one Emacs buffer and send
+@c whole or parts of it for execution to R; this is helpful for both data
+@c analysis and programming.  One can also seamlessly integrate with a
+@c revision control system, in order to maintain a log of changes in your
+@c programs and data, as well as to allow for the retrieval of past
+@c versions of the code.
 
-To specify command line arguments for the inferior R process, use
-@kbd{C-u M-x R} for starting R.
+물론, 이는 Emacs를 이용한 R 소스를 고치는 메케니즘과도 잘 통합됩니다. 누군가는 하나의 Emacs buffer에 코드를 쓰고 R로의 실행을 위해 그의 전체나 부분을 보낼수도 있습니다; 이는 데이터 분석과 프로그래밍 두가지 모두에 유용합니다. 누군가는 또 당신의 프로그램들이 데이터안의 변경들의 로그를 유지하고, 또한 코드의 전 버전들의 retrieval을 허락하기위한 revision control system을 균일하게 통합 할 수도 있습니다.  
+
+@c In addition, it allows you to keep a record of your session, which can
+@c also be used for error recovery through the use of the transcript mode.
+
+추가로, 이는 transcript 모드의 사용을 통해 에러를 회복할 수도 있는, 당신의 세션의 기록을 보관하도록 허용합니다. 
+Inferior R 프로세스의 명령줄 argument들을 지정하기위해서는, R을 시작하는 것에C-u M-x R를 사용하십시오.
+
+@c To specify command line arguments for the inferior R process, use
+@c @kbd{C-u M-x R} for starting R.
 
 @c This prompts you for the arguments; in particular, you can increase
 @c the memory size this way (@pxref{Why does R run out of memory?}).
@@ -2910,34 +2917,44 @@ To specify command line arguments for the inferior R process, use
 @node Debugging R from within Emacs,  , Should I run R from within Emacs?, R and Emacs
 @section Debugging R from within Emacs
 
-To debug R ``from within Emacs'', there are several possibilities.  To
-use the Emacs GUD (Grand Unified Debugger) library with the recommended
-debugger GDB, type @kbd{M-x gdb} and give the path to the R
-@emph{binary} as argument.  At the @command{gdb} prompt, set
-@env{R_HOME} and other environment variables as needed (using e.g.@:
-@kbd{set env R_HOME /path/to/R/}, but see also below), and start the
-binary with the desired arguments (e.g., @kbd{run --quiet}).
+@c To debug R ``from within Emacs'', there are several possibilities.  To
+@c use the Emacs GUD (Grand Unified Debugger) library with the recommended
+@c debugger GDB, type @kbd{M-x gdb} and give the path to the R
+@c @emph{binary} as argument.  At the @command{gdb} prompt, set
+@c @env{R_HOME} and other environment variables as needed (using e.g.@:
+@c @kbd{set env R_HOME /path/to/R/}, but see also below), and start the
+@c binary with the desired arguments (e.g., @kbd{run --quiet}).
 
-If you have @acronym{ESS}, you can do @kbd{C-u M-x R @key{RET} - d
-@key{SPC} g d b @key{RET}} to start an inferior R process with arguments
-@option{-d gdb}.
+“Emacs내에서” R을 debug하기위해서, 몇가지의 가능성들이 있습니다. 권장된 debugger GDB가 있는 Emacs GUD (Grand Unified Debugger) library를 사용하기위해서는, M-x gdb를 타입하고 argument 처럼 R binary로의 경로를 줍니다. gdb prompt에서, R_HOME과 필요한 대로 다른 환경값들을 타입하고(예로, env R_HOME /path/to/R/를 사용하여, 하지만 아래도 참조하십시오), 원하는 argument들을 가진 binary를 시작합니다 (예,  run –quiet).
 
-A third option is to start an inferior R process via @acronym{ESS}
-(@kbd{M-x R}) and then start GUD (@kbd{M-x gdb}) giving the R binary
-(using its full path name) as the program to debug.  Use the program
-@command{ps} to find the process number of the currently running R
-process then use the @code{attach} command in gdb to attach it to that
-process.  One advantage of this method is that you have separate
-@code{*R*} and @code{*gud-gdb*} windows.  Within the @code{*R*} window
-you have all the @acronym{ESS} facilities, such as object-name
-completion, that we know and love.
+@c If you have @acronym{ESS}, you can do @kbd{C-u M-x R @key{RET} - d
+@c @key{SPC} g d b @key{RET}} to start an inferior R process with arguments
+@c @option{-d gdb}.
 
-When using GUD mode for debugging from within Emacs, you may find it
-most convenient to use the directory with your code in it as the current
-working directory and then make a symbolic link from that directory to
-the R binary.  That way @file{.gdbinit} can stay in the directory with
-the code and be used to set up the environment and the search paths for
-the source, e.g.@: as follows:
+만약 ESS가 있다면, argument들-d gdb를 가진 inferior R 프로세스를 시작하기 위해 C-u M-x R <RET> - d <SPC> g d b <RET>를 할 수 있습니다. 
+
+
+@c A third option is to start an inferior R process via @acronym{ESS}
+@c (@kbd{M-x R}) and then start GUD (@kbd{M-x gdb}) giving the R binary
+@c (using its full path name) as the program to debug.  Use the program
+@c @command{ps} to find the process number of the currently running R
+@c process then use the @code{attach} command in gdb to attach it to that
+@c process.  One advantage of this method is that you have separate
+@c @code{*R*} and @code{*gud-gdb*} windows.  Within the @code{*R*} window
+@c you have all the @acronym{ESS} facilities, such as object-name
+@c completion, that we know and love.
+
+세 번째 옵션은ESS (M-x R)를 통해 inferior R 프로세스를 시작하고나서 debug로의 프로그램처럼 R binary(전체 경로의 이름을 사용)를 주는GUD (M-x gdb)를 시작합니다. 현재 실행되고있는 R 프로세스의 프로세스 번호를 찾기 위해서 프로그램 ps를 사용하고 그 프로세스에 gdb안에 이를 첨부하기위해 attach를 사용합니다. 이 방법의 하나의 이점은 독립된 *R*과 *gud-gdb* 윈도우즈를 가지고 있다는 것 입니다. *R* 윈도우즈 안에는 object 이름 완성과 같은 우리가 알고 사랑하는 모든 ESS 기능들이 있습니다. 
+
+
+@c When using GUD mode for debugging from within Emacs, you may find it
+@c most convenient to use the directory with your code in it as the current
+@c working directory and then make a symbolic link from that directory to
+@c the R binary.  That way @file{.gdbinit} can stay in the directory with
+@c the code and be used to set up the environment and the search paths for
+@c the source, e.g.@: as follows:
+Emacs 내에서 debugging을 위해 GUD 모드를 사용할 떄, 현재 실행 디렉토리처럼 코드를 디렉토리를 사용하고 R binary로의 디렉토리로부터 symbolic 링크를 만드는 것이 가장 편리할 것입니다. 그렇게 하면, .gdbinit는 코드와 함께 디렉토리 안에 계속있고 소스의 환경과 검색 경로들을 셋업하는데에 사용됩니다, 예제는 아래와 같습니다: 
+
 
 @example
 set env R_HOME /opt/R
@@ -3134,15 +3151,19 @@ g(a * b)
 @node Why do my matrices lose dimensions?, How does autoloading work?, How can I get eval() and D() to work?, R Miscellanea
 @section Why do my matrices lose dimensions?
 
-When a matrix with a single row or column is created by a subscripting
-operation, e.g., @code{row <- mat[2, ]}, it is by default turned into a
-vector.  In a similar way if an array with dimension, say, @w{2 x 3 x 1
-x 4} is created by subscripting it will be coerced into a @w{2 x 3 x 4}
-array, losing the unnecessary dimension.  After much discussion this has
-been determined to be a @emph{feature}.
+@c When a matrix with a single row or column is created by a subscripting
+@c operation, e.g., @code{row <- mat[2, ]}, it is by default turned into a
+@c vector.  In a similar way if an array with dimension, say, @w{2 x 3 x 1
+@c x 4} is created by subscripting it will be coerced into a @w{2 x 3 x 4}
+@c array, losing the unnecessary dimension.  After much discussion this has
+@c been determined to be a @emph{feature}.
 
-To prevent this happening, add the option @option{drop = FALSE} to the
-subscripting.  For example,
+단일의 열이나 행으로 이루어진 행렬은 subscripting operation에 의해 생성됩니다, 예로, row <- mat[2, ], 이는 자동적으로 벡터로 바뀝니다. 비슷한 방법으로 만약2 x 3 x 1 x 4라고 하는 dimension이 있는 array는 이를 subscripting에 의해  불필요한 dimension을 잃은 2 x 3 x 4 array로 강제 생성됩니다. 많은  논의 후 이는 feature로 결정되었습니다.  
+
+@c To prevent this happening, add the option @option{drop = FALSE} to the
+@c subscripting.  For example,
+
+이런 일을 막기 위해서, subscripting에 옵션drop = FALSE를 더하십히오. 예를들어,
 
 @example
 rowmatrix <- mat[2, , drop = FALSE]  # @r{creates a row matrix}
@@ -3150,17 +3171,21 @@ colmatrix <- mat[, 2, drop = FALSE]  # @r{creates a column matrix}
 a <- b[1, 1, 1, drop = FALSE]        # @r{creates a 1 x 1 x 1 array}
 @end example
 
-The @option{drop = FALSE} option should be used defensively when
-programming.  For example, the statement
+@c The @option{drop = FALSE} option should be used defensively when
+@c programming.  For example, the statement
+
+drop = FALSE 옵션은 프로그래밍을 할 때에 수동적으로 사용되어야만 합니다. 예를들어, 문장
 
 @example
 somerows <- mat[index, ]
 @end example
 
 @noindent
-will return a vector rather than a matrix if @code{index} happens to
-have length 1, causing errors later in the code.  It should probably be
-rewritten as
+@c will return a vector rather than a matrix if @code{index} happens to
+@c have length 1, causing errors later in the code.  It should probably be
+@c rewritten as
+
+은 만약 index가 이 코드에서 나중에 오류의 원인이 되는 길이 1을 가지고 있다면, 행렬대신 벡터를 return 할 것입니다. 이는 다음과같이 다시 쓰여져야만 할 것입니다.
 
 @example
 somerows <- mat[index, , drop = FALSE]
@@ -3169,31 +3194,41 @@ somerows <- mat[index, , drop = FALSE]
 @node How does autoloading work?, How should I set options?, Why do my matrices lose dimensions?, R Miscellanea
 @section How does autoloading work?
 
-R has a special environment called @code{.AutoloadEnv}.  Using
-@kbd{autoload(@var{name}, @var{pkg})}, where @var{name} and
-@var{pkg} are strings giving the names of an object and the package
-containing it, stores some information in this environment.  When R
-tries to evaluate @var{name}, it loads the corresponding package
-@var{pkg} and reevaluates @var{name} in the new package's
-environment.
+@c R has a special environment called @code{.AutoloadEnv}.  Using
+@c @kbd{autoload(@var{name}, @var{pkg})}, where @var{name} and
+@c @var{pkg} are strings giving the names of an object and the package
+@c containing it, stores some information in this environment.  When R
+@c tries to evaluate @var{name}, it loads the corresponding package
+@c @var{pkg} and reevaluates @var{name} in the new package's
+@c environment.
 
-Using this mechanism makes R behave as if the package was loaded, but
-does not occupy memory (yet).
+R은.AutoloadEnv라고 불리우는 특별한 환경이 있습니다. Name 과 pkg가 object의 이름과 그를 포함하는 패키지를 주는 string인 곳에서, autoload(name, pkg)를 사용하여, 이 환경 안에서 몇몇의 정보를 저장합니다. R이 name을 평가하려고 할 떄, 이는 해당하는 패키지 pkg를 로드하고 새로운 패키지의 환경안의 name을 재 평가 합니다. 
 
-See the help page for @code{autoload()} for a very nice example.
+@c Using this mechanism makes R behave as if the package was loaded, but
+@c does not occupy memory (yet).
+
+이 mechanism을 사용하여 패키지가 로드되었지만 (아직) 메모리를 차지하지 않은 것처럼 R이 행동하도록 만듭니다.
+
+@c See the help page for @code{autoload()} for a very nice example.
+
+매우 좋은 예제들은help 페이지에서 autoload()를 참조하십시오. 
+
 
 @node How should I set options?, How do file names work in Windows?, How does autoloading work?, R Miscellanea
 @section How should I set options?
 
-The function @code{options()} allows setting and examining a variety of
-global ``options'' which affect the way in which R computes and displays
-its results.  The variable @code{.Options} holds the current values of
-these options, but should never directly be assigned to unless you want
-to drive yourself crazy---simply pretend that it is a ``read-only''
-variable.
+@c The function @code{options()} allows setting and examining a variety of
+@c global ``options'' which affect the way in which R computes and displays
+@c its results.  The variable @code{.Options} holds the current values of
+@c these options, but should never directly be assigned to unless you want
+@c to drive yourself crazy---simply pretend that it is a ``read-only''
+@c variable.
 
-For example, given
+options() function은 R이 결과를 compute하고 display하는데의 방법에 영향을 미치는 다양한 global “옵션들”을 setting하고 examining하는 것을 허용합니다. .Options 값은 현재 이 옵션들의 값을 가지고 있지만, 당신을 미치게 만들고 싶지 않은 이상 직접적으로 배정되어서는 안됩니다 – 간단하게 이것이 “읽기 전용”값인 것 처럼 하십시오. 
 
+@c For example, given
+
+예를들어, 주어진
 @example
 test1 <- function(x = pi, dig = 3) @{
   oo <- options(digits = dig); on.exit(options(oo));
@@ -3206,7 +3241,8 @@ test2 <- function(x = pi, dig = 3) @{
 @end example
 
 @noindent
-we obtain:
+@c we obtain:
+우리는 아래를 얻습니다. 
 
 @example
 R> test1()
@@ -3215,40 +3251,55 @@ R> test2()
 3 3.141593
 @end example
 
-What is really used is the @emph{global} value of @code{.Options}, and
-using @kbd{options(OPT = VAL)} correctly updates it.  Local copies of
-@code{.Options}, either in @code{.GlobalEnv} or in a function
-environment (frame), are just silently disregarded.
+@c What is really used is the @emph{global} value of @code{.Options}, and
+@c using @kbd{options(OPT = VAL)} correctly updates it.  Local copies of
+@c @code{.Options}, either in @code{.GlobalEnv} or in a function
+@c environment (frame), are just silently disregarded.
+
+실제로 쓰여진 것은.Options의 global 값이고, options(OPT = VAL)를 씀으로 이를 정확하게 업데이트 합니다. .Options의 local copy들은, .GlobalEnv 안이나 function 환경 (frame)안에, 조용히 무시되어 집니다. 
 
 @node How do file names work in Windows?, Why does plotting give a color allocation error?, How should I set options?, R Miscellanea
 @section How do file names work in Windows?
 
-As R uses C-style string handling, @samp{\} is treated as an escape
-character, so that for example one can enter a newline as @samp{\n}.
-When you really need a @samp{\}, you have to escape it with another
-@samp{\}.
+@c As R uses C-style string handling, @samp{\} is treated as an escape
+@c character, so that for example one can enter a newline as @samp{\n}.
+@c When you really need a @samp{\}, you have to escape it with another
+@c @samp{\}.
 
-Thus, in filenames use something like @code{"c:\\data\\money.dat"}.  You
-can also replace @samp{\} by @samp{/} (@code{"c:/data/money.dat"}).
+R이 C-style string handling을 사용함으로써, ‘\’는 escape character처럼 대해지고, 예로써 새로운 줄을 ‘\n’로 쓸 수 있습니다. ‘\’가 정말로 필요할 때, 다른‘\’와 함께 이를 escape 해야만 합니다. 
+
+@c Thus, in filenames use something like @code{"c:\\data\\money.dat"}.  You
+@c can also replace @samp{\} by @samp{/} (@code{"c:/data/money.dat"}).
+
+그리하여, 파일 이름 안에 "c:\\data\\money.dat"와 같은 것을 씁니다. ‘\’를 ‘/’로 교체 할 수도 있습니다 ("c:/data/money.dat").  
+
 
 @node Why does plotting give a color allocation error?, How do I convert factors to numeric?, How do file names work in Windows?, R Miscellanea
 @section Why does plotting give a color allocation error?
 
-On an X11 device, plotting sometimes, e.g., when running
-@code{demo("image")}, results in ``Error: color allocation error''.
-This is an X problem, and only indirectly related to R.  It occurs when
-applications started prior to R have used all the available colors.
-(How many colors are available depends on the X configuration; sometimes
-only 256 colors can be used.)
+@c On an X11 device, plotting sometimes, e.g., when running
+@c @code{demo("image")}, results in ``Error: color allocation error''.
+@c This is an X problem, and only indirectly related to R.  It occurs when
+@c applications started prior to R have used all the available colors.
+@c (How many colors are available depends on the X configuration; sometimes
+@c only 256 colors can be used.)
 
-One application which is notorious for ``eating'' colors is Netscape.
-If the problem occurs when Netscape is running, try (re)starting it with
-either the @option{-no-install} (to use the default colormap) or the
-@option{-install} (to install a private colormap) option.
+X11 장치에서, 가끔하는 plotting은, 예를들어demo("image")를 실행할 때, “오류: 색상 할당 오류”의 결과를 초래합니다. 이는 X 문제이고, R과 간접적으로만 관련이 있습니다. 이는 R전에 시작되었던 application들이 모든 이용가능한 색들을 써버렸을 때 일어납니다. (얼마나 많은 색상이 이용가능한지는 X configuration에 의해 결정됩니다; 가끔은 256 색만이 사용할 가능할 수도 있습니다.)
 
-You could also set the @code{colortype} of @code{X11()} to
-@code{"pseudo.cube"} rather than the default @code{"pseudo"}.  See the
-help page for @code{X11()} for more information.
+
+@c One application which is notorious for ``eating'' colors is Netscape.
+@c If the problem occurs when Netscape is running, try (re)starting it with
+@c either the @option{-no-install} (to use the default colormap) or the
+@c @option{-install} (to install a private colormap) option.
+
+“먹는”색으로 악명이 높은 application은 Netscape입니다. 만약 Netscape이 실행되는 도중에 이 문제가 발생하면, -no-install (기본 colormap을 사용하도록하는) 혹은 –install (개인 소유의 colormap을 설치하도록 하는)옵션을 사용하여 (재)시작을 해 보십시오.
+
+@c You could also set the @code{colortype} of @code{X11()} to
+@c @code{"pseudo.cube"} rather than the default @code{"pseudo"}.  See the
+@c help page for @code{X11()} for more information.
+
+X11()의 colortype을 기본값 "pseudo" 대신에"pseudo.cube"로 설정할 수도 있습니다. 더 많은 정보를 위해서는 help 페이지의 X11()을 참조하십시오.
+
 
 @c  @node Is R Y2K-compliant?, How do I convert factors to numeric?, Why does plotting give a color allocation error?, R Miscellanea
 @c  @section Is R Y2K-compliant?
@@ -3265,225 +3316,274 @@ help page for @code{X11()} for more information.
 @node How do I convert factors to numeric?, Are Trellis displays implemented in R?, Why does plotting give a color allocation error?, R Miscellanea
 @section How do I convert factors to numeric?
 
-It may happen that when reading numeric data into R (usually, when
-reading in a file), they come in as factors.  If @code{f} is such a
-factor object, you can use
+@c It may happen that when reading numeric data into R (usually, when
+@c reading in a file), they come in as factors.  If @code{f} is such a
+@c factor object, you can use
+
+R로 숫자 데이터를 읽을 때 (보통, 파일을 읽을 때), 이들이 factor들 처럼 오는 경우가 있을 수도 있습니다. 만약 f가 그런 factor object라면, 당신은 
 
 @example
 as.numeric(as.character(f))
 @end example
 
 @noindent
-to get the numbers back.  More efficient, but harder to remember, is
+@c to get the numbers back.  More efficient, but harder to remember, is
+를 숫자들을 다시 가져오기위해 사용할 수 있습니다. 더 효율적이지만, 기억하기는 더 어려운,
 
 @example
 as.numeric(levels(f))[as.integer(f)]
 @end example
 
-In any case, do not call @code{as.numeric()} or their likes directly for
-the task at hand (as @code{as.numeric()} or @code{unclass()} give the
-internal codes).
+@c In any case, do not call @code{as.numeric()} or their likes directly for
+@c the task at hand (as @code{as.numeric()} or @code{unclass()} give the
+@c internal codes).
+어떠한 경우에도, 주어진 일(as.numeric()나 unclass() 는 내부 코드들을 줍니다.)에 직접적으로 as.numeric()나 그 비슷한 것을 부르지 마십시오. 
+
 
 @node Are Trellis displays implemented in R?, What are the enclosing and parent environments?, How do I convert factors to numeric?, R Miscellanea
 @section Are Trellis displays implemented in R?
 
-The recommended package @CRANpkg{lattice} (which is based on base
-package @pkg{grid}) provides graphical functionality that is compatible
-with most Trellis commands.
+@c The recommended package @CRANpkg{lattice} (which is based on base
+@c package @pkg{grid}) provides graphical functionality that is compatible
+@c with most Trellis commands.
 
-You could also look at @code{coplot()} and @code{dotchart()} which might
-do at least some of what you want.  Note also that the R version of
-@code{pairs()} is fairly general and provides most of the functionality
-of @code{splom()}, and that R's default plot method has an argument
-@code{asp} allowing to specify (and fix against device resizing) the
-aspect ratio of the plot.
+권장된 패키지 lattice (베이스 패키지 grid에 기초를 두고있는)는 대부분의 Trellis 명령어들과 호환 가능한 그래픽 기능을 제공합니다. 
 
-(Because the word ``Trellis'' has been claimed as a trademark we do not
-use it in R.  The name ``lattice'' has been chosen for the R
-equivalent.)
+@c You could also look at @code{coplot()} and @code{dotchart()} which might
+@c do at least some of what you want.  Note also that the R version of
+@c @code{pairs()} is fairly general and provides most of the functionality
+@c of @code{splom()}, and that R's default plot method has an argument
+@c @code{asp} allowing to specify (and fix against device resizing) the
+@c aspect ratio of the plot.
+
+적어도 당신이 원하는 몇개는 할 수도 있는 coplot()와 dotchart() 또한 살펴볼 수 있습니다. Pairs()의 R버전이 꽤나 일반적이고 splom()의 거의 모든 기능들을 제공하며, R의 기본 plot method가 plot의 aspect ratio를 지정하는 것을 허락하는 (그리고 device 크기를 재조정하는 것에 반하여 fix하는) argument asp를 가지고 있다는 것 또한 유의하십시오.
+
+@c (Because the word ``Trellis'' has been claimed as a trademark we do not
+@c use it in R.  The name ``lattice'' has been chosen for the R
+@c equivalent.)
+
+(단어 “Trellis”가 상표처럼 주장되었기 떄문에 R에서는 이 단어를 사용하지 않습니다. 이름 “lattice”는 R equivalent에서 선택되었습니다.)
 
 @node What are the enclosing and parent environments?, How can I substitute into a plot label?, Are Trellis displays implemented in R?, R Miscellanea
 @section What are the enclosing and parent environments?
 
-Inside a function you may want to access variables in two additional
-environments: the one that the function was defined in (``enclosing''),
-and the one it was invoked in (``parent'').
+@c Inside a function you may want to access variables in two additional
+@c environments: the one that the function was defined in (``enclosing''),
+@c and the one it was invoked in (``parent'').
 
-If you create a function at the command line or load it in a package its
-enclosing environment is the global workspace.  If you define a function
-@code{f()} inside another function @code{g()} its enclosing environment
-is the environment inside @code{g()}.  The enclosing environment for a
-function is fixed when the function is created.  You can find out the
-enclosing environment for a function @code{f()} using
-@code{environment(f)}.
+Function 안에서 두 개의 추가 환경들안의 값들로의 액세스를 원할지도 모릅니다: function이 정의되지 않은 것(“enclosing”)과 function이 적용된 것 (“parent”).
 
-The ``parent'' environment, on the other hand, is defined when you
-invoke a function.  If you invoke @code{lm()} at the command line its
-parent environment is the global workspace, if you invoke it inside a
-function @code{f()} then its parent environment is the environment
-inside @code{f()}.  You can find out the parent environment for an
-invocation of a function by using @code{parent.frame()} or
-@code{sys.frame(sys.parent())}.
+@c If you create a function at the command line or load it in a package its
+@c enclosing environment is the global workspace.  If you define a function
+@c @code{f()} inside another function @code{g()} its enclosing environment
+@c is the environment inside @code{g()}.  The enclosing environment for a
+@c function is fixed when the function is created.  You can find out the
+@c enclosing environment for a function @code{f()} using
+@c @code{environment(f)}.
 
-So for most user-visible functions the enclosing environment will be the
-global workspace, since that is where most functions are defined.  The
-parent environment will be wherever the function happens to be called
-from.  If a function @code{f()} is defined inside another function
-@code{g()} it will probably be used inside @code{g()} as well, so its
-parent environment and enclosing environment will probably be the same.
+만약 명령줄에 function을 생성했거나 패키지 안에 그를 load했다면, 그의 enclosing환경은 global workspace입니다. 만약 function f()를 다른 function g()에 지정했다면, 그의 enclosing 환경은 g()안의 환경입니다. 그 function에 대한 enclosing 환경은 function이 생성되었을 떄 고정되었습니다. Function f()에 대한 enclosing 환경은 environment(f)를 사용하여 찾을 수 있습니다. 
 
-Parent environments are important because things like model formulas
-need to be evaluated in the environment the function was called from,
-since that's where all the variables will be available.  This relies on
-the parent environment being potentially different with each invocation.
+@c The ``parent'' environment, on the other hand, is defined when you
+@c invoke a function.  If you invoke @code{lm()} at the command line its
+@c parent environment is the global workspace, if you invoke it inside a
+@c function @code{f()} then its parent environment is the environment
+@c inside @code{f()}.  You can find out the parent environment for an
+@c invocation of a function by using @code{parent.frame()} or
+@c @code{sys.frame(sys.parent())}.
 
-Enclosing environments are important because a function can use
-variables in the enclosing environment to share information with other
-functions or with other invocations of itself (see the section on
-lexical scoping).  This relies on the enclosing environment being the
-same each time the function is invoked.  (In C this would be done with
-static variables.)
+반면에, “parent” 환경은 function을 적용할 떄 정의됩니다. 만약 명령줄에 lm()을 적용한다면, 이의 parent 환경이 global workspace이고, 만약 이를 function f() 안에 지정한다면, 이의 parent 환경은 f() 안의 환경입니다. parent.frame() 이나 sys.frame(sys.parent())를 사용하여 function의 invocation을 위한 parent 환경을 찾아낼 수 있습니다. 
 
-Scoping @emph{is} hard.  Looking at examples helps.  It is particularly
-instructive to look at examples that work differently in R and S and try
-to see why they differ.  One way to describe the scoping differences
-between R and S is to say that in S the enclosing environment is
-@emph{always} the global workspace, but in R the enclosing environment
-is wherever the function was created.
+@c So for most user-visible functions the enclosing environment will be the
+@c global workspace, since that is where most functions are defined.  The
+@c parent environment will be wherever the function happens to be called
+@c from.  If a function @code{f()} is defined inside another function
+@c @code{g()} it will probably be used inside @code{g()} as well, so its
+@c parent environment and enclosing environment will probably be the same.
+
+그래서, 대부분의 사용자가 볼수있는 function들에 대해 대부분의 function들이 정의된 곳이기 때문에enclosing 환경이 global workspace가 될 것입니다. Parent 환경은 function의 호출이 일어나는 곳 어디든지가 될 것입니다. 만약 function f()가 다른 function g()안에서 정의된다면, 이는 g() 안에서도 사용될 것이고, 그리하여 그의 parent 환경과 enclosing 환경은 아마도 같을 것 입니다.
+
+@c Parent environments are important because things like model formulas
+@c need to be evaluated in the environment the function was called from,
+@c since that's where all the variables will be available.  This relies on
+@c the parent environment being potentially different with each invocation.
+
+Parent 환경들은 model formula들 같은 것들이 모든 값들이 이용가능한 장소인 function이 불려온 환경을 평가하는데 필요하기 때문에 중요합니다. 이는 각각의 invocation에 따라 잠재적으로 다른 parent 환경에 의지합니다. 
+
+@c Enclosing environments are important because a function can use
+@c variables in the enclosing environment to share information with other
+@c functions or with other invocations of itself (see the section on
+@c lexical scoping).  This relies on the enclosing environment being the
+@c same each time the function is invoked.  (In C this would be done with
+@c static variables.)
+
+Enclosing 환경들은 function이 enclosing 환경 안의 값들을 다른 function들과 혹은 다른 그자신의 invocation들을 가진 정보를 공유하도록 사용할 수 있기 때문에 중요합니다 (lexical scoping에 대한 섹션은 참조하십시오). 이는 function이 invoke될 때마다 enclosing 환경이 같다는 것을 필요로 합니다. (C에서 이는 정적 변수로 행해 질 것입니다.)
+
+@c Scoping @emph{is} hard.  Looking at examples helps.  It is particularly
+@c instructive to look at examples that work differently in R and S and try
+@c to see why they differ.  One way to describe the scoping differences
+@c between R and S is to say that in S the enclosing environment is
+@c @emph{always} the global workspace, but in R the enclosing environment
+@c is wherever the function was created.
+
+Scoping은 어렵습니다. 예제들을 보는 것이 도움이 됩니다. 이는 R과 S에서 다르게 실행되고 왜 그들이 다른지를 보려고 노력하는 예제들을 보는 것이 특히 유익합니다. R과 S사이의 다른 scoping를 설명하는 하나의 방법으로는 S 안에서 enclosing 환경은 항상 global workspace이지만, R 안에서의 enclosing 환경은function이 생성된 곳 어디든지라는 것 입니다. 
+
 
 @node How can I substitute into a plot label?, What are valid names?, What are the enclosing and parent environments?, R Miscellanea
 @section How can I substitute into a plot label?
 
-Often, it is desired to use the value of an R object in a plot label,
-e.g., a title.  This is easily accomplished using @code{paste()} if the
-label is a simple character string, but not always obvious in case the
-label is an expression (for refined mathematical annotation).  In such a
-case, either use @code{parse()} on your pasted character string or use
-@code{substitute()} on an expression.  For example, if @code{ahat} is an
-estimator of your parameter @math{a} of interest, use
+@c Often, it is desired to use the value of an R object in a plot label,
+@c e.g., a title.  This is easily accomplished using @code{paste()} if the
+@c label is a simple character string, but not always obvious in case the
+@c label is an expression (for refined mathematical annotation).  In such a
+@c case, either use @code{parse()} on your pasted character string or use
+@c @code{substitute()} on an expression.  For example, if @code{ahat} is an
+@c estimator of your parameter @math{a} of interest, use
+
+자주, plot label 안에 R object의 값을 사용하는 것, 예, 제목, 이 원해 집니다. 이는 만약 label이 단순한 문자열일경우 paste()를 사용하여 쉽게 이뤄지지만, label이 expression (재 정비된 수학 주석에 대한)일때와 같은 경우는 항상 분명하지는 않습니다. 이런 경우에는, 복사하여 붙여진 문자열에parse()를 사용하거나 expression에substitute()를 사용합니다. 예를들어, 만약 ahat이 당신이 관심있어하는 parameter의 estimator이라면, 
 
 @example
 title(substitute(hat(a) == ahat, list(ahat = ahat)))
 @end example
 
 @noindent
-(note that it is @samp{==} and not @samp{=}).  Sometimes @code{bquote()}
-gives a more compact form, e.g.,
+@c (note that it is @samp{==} and not @samp{=}).  Sometimes @code{bquote()}
+@c gives a more compact form, e.g.,
+를 사용하십시오(‘=’이 아니라 ‘==’ 이라는 것에 유의하십시오). 가끔 bquote()가 더 간편한  형태를 줍니다, 예로, ‘.()’ 안의 subexpression들이 그들의 값에 의해 대체된 
 
 @example
 title(bquote(hat(a) = .(ahat)))
 @end example
 
 @noindent
-where subexpressions enclosed in @samp{.()} are replaced by their
-values.
+@c where subexpressions enclosed in @samp{.()} are replaced by their
+@c values.
+메일링 리스트 archives에 더 많은 풀어진 예제들이 있습니다. 
 
-There are more worked examples in the mailing list archives.
+@c There are more worked examples in the mailing list archives.
 
 @node What are valid names?, Are GAMs implemented in R?, How can I substitute into a plot label?, R Miscellanea
 @section What are valid names?
 
-When creating data frames using @code{data.frame()} or
-@code{read.table()}, R by default ensures that the variable names are
-syntactically valid.  (The argument @option{check.names} to these
-functions controls whether variable names are checked and adjusted by
-@code{make.names()} if needed.)
+@c When creating data frames using @code{data.frame()} or
+@c @code{read.table()}, R by default ensures that the variable names are
+@c syntactically valid.  (The argument @option{check.names} to these
+@c functions controls whether variable names are checked and adjusted by
+@c @code{make.names()} if needed.)
 
-To understand what names are ``valid'', one needs to take into account
-that the term ``name'' is used in several different (but related) ways
-in the language:
+data.frame() 이나 read.table()을 사용하여 데이터 프레임을 생성할 때, R은 기본적으로 변수 이름들이 구문상으로 반드시 유효하도록 합니다.  ( 이 함수들로의 argument check.names는 변수 이름들이 체크 되었는지를 조정하고, 만약 필요하면make.names()로 조절합니다.)
+
+@c To understand what names are ``valid'', one needs to take into account
+@c that the term ``name'' is used in several different (but related) ways
+@c in the language:
+
+어떤 이름들이 “유효한지”를 이해하기 위해서는, 언어 안에서 “이름”이 몇몇의 다른 (하지만 연관된) 방법으로 쓰여지는지를 생각 해 보아야 합니다.
 
 @enumerate
 @item
-A @emph{syntactic name} is a string the parser interprets as this type
-of expression.  It consists of letters, numbers, and the dot and (for
-version of R at least 1.9.0) underscore characters, and starts with
-either a letter or a dot not followed by a number.  Reserved words are
-not syntactic names.
-@item
-An @emph{object name} is a string associated with an object that is
-assigned in an expression either by having the object name on the left
-of an assignment operation or as an argument to the @code{assign()}
-function.  It is usually a syntactic name as well, but can be any
-non-empty string if it is quoted (and it is always quoted in the call to
-@code{assign()}).
+@c A @emph{syntactic name} is a string the parser interprets as this type
+@c of expression.  It consists of letters, numbers, and the dot and (for
+@c version of R at least 1.9.0) underscore characters, and starts with
+@c either a letter or a dot not followed by a number.  Reserved words are
+@c not syntactic names.
+Syntactic name은 parser가 expression의 형태처럼 해석하는 string입니다. 이는 문자들과 숫자들, 그리고 점들과 (적어도 1.9.0 버전의 R에서) 밑줄 표시된 글자들을 포함하고, 숫자가 바로 뒤에 오지 않는 문자나 점으로 시작합니다. 예약어들은 syntactic name들이 아닙니다. 
 
 @item
-An @emph{argument name} is what appears to the left of the equals sign
-when supplying an argument in a function call (for example,
-@code{f(trim=.5)}).  Argument names are also usually syntactic names,
-but again can be anything if they are quoted.
+@c An @emph{object name} is a string associated with an object that is
+@c assigned in an expression either by having the object name on the left
+@c of an assignment operation or as an argument to the @code{assign()}
+@c function.  It is usually a syntactic name as well, but can be any
+@c non-empty string if it is quoted (and it is always quoted in the call to
+@c @code{assign()}).
+Object name은 assignment operation의 왼쪽에 있는 object 이름을 가지고 있는 것이나 assign() function으로의 argument에 의한 expression안에 배정된 object와 관련이 있는 string입니다.  이는 보통 syntactic name이기도 하지만, 만약 quoted(assign()으로 불러지면 항상 quoted입니다)되었다면 비어있지 않은 어떠한 string이 될 수도 있습니다. 
 
 @item
-An @emph{element name} is a string that identifies a piece of an object
-(a component of a list, for example.)  When it is used on the right of
-the @samp{$} operator, it must be a syntactic name, or quoted.
-Otherwise, element names can be any strings.  (When an object is used as
-a database, as in a call to @code{eval()} or @code{attach()}, the
-element names become object names.)
+@c An @emph{argument name} is what appears to the left of the equals sign
+@c when supplying an argument in a function call (for example,
+@c @code{f(trim=.5)}).  Argument names are also usually syntactic names,
+@c but again can be anything if they are quoted.
+Argument name은 function call (예로, f(trim=.5)) 안의 argument를 제공할 때 등부호의 왼쪽에 나타나는 것 입니다. Argument name들 또한 보통 syntactic name들이지만, 이 또한 만약 quoted면 어떤 것이든 될 수 있습니다. 
 
 @item
-Finally, a @emph{file name} is a string identifying a file in the
-operating system for reading, writing, etc.  It really has nothing much
-to do with names in the language, but it is traditional to call these
-strings file ``names''.
+@c An @emph{element name} is a string that identifies a piece of an object
+@c (a component of a list, for example.)  When it is used on the right of
+@c the @samp{$} operator, it must be a syntactic name, or quoted.
+@c Otherwise, element names can be any strings.  (When an object is used as
+@c a database, as in a call to @code{eval()} or @code{attach()}, the
+@c element names become object names.)
+Element name은 object의 조각 (예를들어, 목록의 구성요소)을 확인하는 string입니다. ‘$’ operator의 오른쪽에 사용되면, 이는 syntactic name 혹은 quoted여야만 합니다. 그렇지 않으면, element name들은 어떠한 string들이든 될 수 있습니다. (object는 eval()혹은 attach()로 불러지는 것 처럼, 데이터베이스처럼 사용될 때, element name들은 object name들이 됩니다.)
+
+
+@item
+@c Finally, a @emph{file name} is a string identifying a file in the
+@c operating system for reading, writing, etc.  It really has nothing much
+@c to do with names in the language, but it is traditional to call these
+@c strings file ``names''.
+마지막으로, file name은 읽고 쓰는 것 등을 위한 운영체계안의 파일을 확인하는 string입니다. 이는 언어 안의 이름들과 아무런 관련도 없지만, 이 string들을 파일 “이름들” 이라고 부르는 것이 인습입니다. 
 @end enumerate
 
 @node Are GAMs implemented in R?, Why is the output not printed when I source() a file?, What are valid names?, R Miscellanea
 @section Are GAMs implemented in R?
 
-Package @CRANpkg{gam} from @CRAN{} implements all the Generalized
-Additive Models (GAM) functionality as described in the GAM chapter of
-the White Book.  In particular, it implements backfitting with both
-local regression and smoothing splines, and is extendable.  There is a
-@code{gam()} function for GAMs in package @CRANpkg{mgcv}, but it is not
-an exact clone of what is described in the White Book (no @code{lo()}
-for example).  Package @CRANpkg{gss} can fit spline-based GAMs too.  And
-if you can accept regression splines you can use @code{glm()}.  For
-Gaussian GAMs you can use @code{bruto()} from package @CRANpkg{mda}.
+@c Package @CRANpkg{gam} from @CRAN{} implements all the Generalized
+@c Additive Models (GAM) functionality as described in the GAM chapter of
+@c the White Book.  In particular, it implements backfitting with both
+@c local regression and smoothing splines, and is extendable.  There is a
+@c @code{gam()} function for GAMs in package @CRANpkg{mgcv}, but it is not
+@c an exact clone of what is described in the White Book (no @code{lo()}
+@c for example).  Package @CRANpkg{gss} can fit spline-based GAMs too.  And
+@c if you can accept regression splines you can use @code{glm()}.  For
+@c Gaussian GAMs you can use @code{bruto()} from package @CRANpkg{mda}.
+
+CRAN에서부터의 패키지 gam은White Book의 GAM 챕터에서 설명된 것처럼 모든Generalized Additive Models (GAM) 기능을 시행합니다. 특히, 이는 local regresion과 smoothing sline들 둘 다를 사용하는 backfitting을 시행하고, 이는 연장 가능합니다. 패키지mgcv 안에는 GAM을 위한 gam() function이 있는데, 이는 White Book에 설명되어있는 것과 완전히 똑같지 않습니다 (한 예로 lo()가 없습니다). 패키지 gss는 spline-based GAM에도 적합할 수 있습니다. 그리고 만약 regression spline들을 받아들일 수 있다면 glm()을 사용할 수도 있습니다. Gaussian GAM들에는, 패키지 mda에서의 bruto()를 사용할 수 있습니다. 
 
 @node Why is the output not printed when I source() a file?, Why does outer() behave strangely with my function?, Are GAMs implemented in R?, R Miscellanea
 @section Why is the output not printed when I source() a file?
 
-Most R commands do not generate any output. The command
+@c Most R commands do not generate any output. The command
 
+대부분의 R 명령어들은 어떠한 output도 생성하지 않습니다. 명령어
 @example
 1+1
 @end example
 
 @noindent
-computes the value 2 and returns it; the command
+@c computes the value 2 and returns it; the command
+은 value 2를 산출하고 그를 return 합니다; 명령어 
 
 @example
 summary(glm(y~x+z, family=binomial))
 @end example
 
 @noindent
-fits a logistic regression model, computes some summary information and
-returns an object of class @code{"summary.glm"} (@pxref{How should I
-write summary methods?}).
+@c fits a logistic regression model, computes some summary information and
+@c returns an object of class @code{"summary.glm"} (@pxref{How should I
+@c write summary methods?}).
+는 logistic regression model을 fit하고 몇몇의 요약 정볼ㄹ 산출하며 class의 object "summary.glm" 를 return합니다. (How should I write summary methods?를 참조하십시오). 
 
-If you type @samp{1+1} or @samp{summary(glm(y~x+z, family=binomial))} at
-the command line the returned value is automatically printed (unless it
-is @code{invisible()}), but in other circumstances, such as in a
-@code{source()}d file or inside a function it isn't printed unless you
-specifically print it.
+@c If you type @samp{1+1} or @samp{summary(glm(y~x+z, family=binomial))} at
+@c the command line the returned value is automatically printed (unless it
+@c is @code{invisible()}), but in other circumstances, such as in a
+@c @code{source()}d file or inside a function it isn't printed unless you
+@c specifically print it.
+만약 명령줄에 ‘1+1’ 혹은 ‘summary(glm(y~x+z, family=binomial))’를 타입한다면, return된 겂은 자동으로 프린트되지만 (invisible()가 아닌한), source() 파일이나 function 안에있는 다른 상황에서는, 이는 당신이 특별히 프린트하지 않는 이상 프린트 되지 않습니다.  
 
-To print the value use
+@c To print the value use
+값을 프린트 하기 위해서는
 
 @example
 print(1+1)
 @end example
 
 @noindent
-or
+를 사용하거나, 대신
 
 @example
 print(summary(glm(y~x+z, family=binomial)))
 @end example
 
 @noindent
-instead, or use @code{source(@var{file}, echo=TRUE)}.
+@c instead, or use @code{source(@var{file}, echo=TRUE)}.
+, 혹은source(file, echo=TRUE)를 사용하십시오. 
 
 @node Why does outer() behave strangely with my function?, Why does the output from anova() depend on the order of factors in the model?, Why is the output not printed when I source() a file?, R Miscellanea
 @section Why does outer() behave strangely with my function?

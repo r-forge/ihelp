@@ -1,16 +1,16 @@
-all: 
-# pdf
+all: pdf
 #	make clean
-	make tohtml
+#	make tohtml
 #	make clean2
-	svn rm --force ../www/$(filename)*
-	cp *.html ../www/
-	cp *.tmp ../www/
-	cp *.png ../www/
-	cp *.css ../www/
-	svn add --force ../www/$(filename)*
-	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
+#	svn rm --force ../www/$(filename)*
+#	cp *.html ../www/
+#	cp *.tmp ../www/
+#	cp *.png ../www/
+#	cp *.css ../www/
+#	svn add --force ../www/$(filename)*
+#	rsync -auv ../www/* gnustats@korea.gnu.org:./www/
 #	svn ../../commit
+# pdf2htmlEX tutorial.pdf --split-pages 1 --process-outline 0
 
 pdf: ps
 	ps2pdf $(filename).ps

@@ -95,6 +95,8 @@ po2html:
 	sed -e 's/msgstr/[한국어]/g' $(filename)-en.txt > $(filename)-ko.txt
 	dwww-txt2html --utf8 $(filename)-ko.txt > $(filename).html
 	rm $(filename)*.txt
+# pdf2htmlEX – Convert PDF to HTML without losing format
+# http://ubuntuguide.net/pdf2htmlex-convert-pdf-to-html-without-losing-format
 
 convert2HTML:
 	rm -rf $(src_path)/*/po/*.html
