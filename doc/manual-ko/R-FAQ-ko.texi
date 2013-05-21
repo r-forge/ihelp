@@ -3588,18 +3588,21 @@ print(summary(glm(y~x+z, family=binomial)))
 @node Why does outer() behave strangely with my function?, Why does the output from anova() depend on the order of factors in the model?, Why is the output not printed when I source() a file?, R Miscellanea
 @section Why does outer() behave strangely with my function?
 
-As the help for @code{outer()} indicates, it does not work on arbitrary
-functions the way the @code{apply()} family does.  It requires functions
-that are vectorized to work elementwise on arrays.  As you can see by
-looking at the code, @code{outer(x, y, FUN)} creates two large vectors
-containing every possible combination of elements of @code{x} and
-@code{y} and then passes this to @code{FUN} all at once.  Your function
-probably cannot handle two large vectors as parameters.
+@c As the help for @code{outer()} indicates, it does not work on arbitrary
+@c functions the way the @code{apply()} family does.  It requires functions
+@c that are vectorized to work elementwise on arrays.  As you can see by
+@c looking at the code, @code{outer(x, y, FUN)} creates two large vectors
+@c containing every possible combination of elements of @code{x} and
+@c @code{y} and then passes this to @code{FUN} all at once.  Your function
+@c probably cannot handle two large vectors as parameters.
 
-If you have a function that cannot handle two vectors but can handle two
-scalars, then you can still use @code{outer()} but you will need to wrap
-your function up first, to simulate vectorized behavior.  Suppose your
-function is
+outer()의 도움말이 나타내듯이, 이는 apply() family가 하는 방법으로 arbitrary function들에는 실행되지 않습니다. 이는 array들에 elementwise처럼 실행되기위한 벡터화 된 fuction들을 필요로 합니다. 코드outer(x, y, FUN)를 보면 알 수 있듯이, 이는 x와 y의 element들의 모든 가능한 조합들을 포함한 두개의 큰 벡터들을 생성하고나서 FUN으로 한꺼번에 전달합니다. 당신의 function은 아마도 두개의 큰 벡터들을 parameter들 처럼 다루지 못할 것 입니다. 
+
+@c If you have a function that cannot handle two vectors but can handle two
+@c scalars, then you can still use @code{outer()} but you will need to wrap
+@c your function up first, to simulate vectorized behavior.  Suppose your
+@c function is
+만약 두 개의 벡터는 다루지 못하지만 두 개의 scalar는 다룰 수 있는 function을 가지고 있다면, outer()를 계속 쓸 수는 있지만 벡터화 behavior를 simulate하기 위해서는 첫번째로 function을 둘러싸야만 할 것입니다. 당신의 function이 다음과 같다고 가정해 봅시다. 
 
 @example
 foo <- function(x, y, happy) @{
@@ -3609,7 +3612,8 @@ foo <- function(x, y, happy) @{
 @end example
 
 @noindent
-If you define the general function
+@c If you define the general function
+만약 일반 function을 아래와 같이 정의한다면,
 
 @example
 wrapper <- function(x, y, my.fun, ...) @{
@@ -3618,7 +3622,8 @@ wrapper <- function(x, y, my.fun, ...) @{
 @end example
 
 @noindent
-then you can use @code{outer()} by writing, e.g.,
+@c then you can use @code{outer()} by writing, e.g.,
+outer()를 사용할 수 있습니다. 예제, 
 
 @example
 outer(1:4, 1:2, FUN = wrapper, my.fun = foo, happy = 10)
@@ -3627,101 +3632,121 @@ outer(1:4, 1:2, FUN = wrapper, my.fun = foo, happy = 10)
 @node Why does the output from anova() depend on the order of factors in the model?, How do I produce PNG graphics in batch mode?, Why does outer() behave strangely with my function?, R Miscellanea
 @section Why does the output from anova() depend on the order of factors in the model?
 
-In a model such as @code{~A+B+A:B}, R will report the difference in sums
-of squares between the models @code{~1}, @code{~A}, @code{~A+B} and
-@code{~A+B+A:B}.  If the model were @code{~B+A+A:B}, R would report
-differences between @code{~1}, @code{~B}, @code{~A+B}, and
-@code{~A+B+A:B} . In the first case the sum of squares for @code{A} is
-comparing @code{~1} and @code{~A}, in the second case it is comparing
-@code{~B} and @code{~B+A}.  In a non-orthogonal design (i.e., most
-unbalanced designs) these comparisons are (conceptually and numerically)
-different.
+@c In a model such as @code{~A+B+A:B}, R will report the difference in sums
+@c of squares between the models @code{~1}, @code{~A}, @code{~A+B} and
+@c @code{~A+B+A:B}.  If the model were @code{~B+A+A:B}, R would report
+@c differences between @code{~1}, @code{~B}, @code{~A+B}, and
+@c @code{~A+B+A:B} . In the first case the sum of squares for @code{A} is
+@c comparing @code{~1} and @code{~A}, in the second case it is comparing
+@c @code{~B} and @code{~B+A}.  In a non-orthogonal design (i.e., most
+@c unbalanced designs) these comparisons are (conceptually and numerically)
+@c different.
 
-Some packages report instead the sums of squares based on comparing the
-full model to the models with each factor removed one at a time (the
-famous `Type III sums of squares' from SAS, for example).  These do not
-depend on the order of factors in the model.  The question of which set
-of sums of squares is the Right Thing provokes low-level holy wars on
-R-help from time to time.
+~A+B+A:B와 같은 모델 안에서, R은~1, ~A, ~A+B 와 ~A+B+A:B 모델들 사이의 sums of squares의 다른점을 보고할 것입니다. 만약 모델이~B+A+A:B였다면, R은~1, ~B, ~A+B, 와 ~A+B+A:B의 다른 점을 보고할 것입니다. Non-orthogonal design에서 (즉, 대부분의 불균형한 디자인들)이 비교들은 (개념상으로와 숫자상으로) 다릅니다.
 
-There is no need to be agitated about the particular sums of squares
-that R reports.  You can compute your favorite sums of squares quite
-easily.  Any two models can be compared with @code{anova(@var{model1},
-@var{model2})}, and @code{drop1(@var{model1})} will show the sums of
-squares resulting from dropping single terms.
+@c Some packages report instead the sums of squares based on comparing the
+@c full model to the models with each factor removed one at a time (the
+@c famous `Type III sums of squares' from SAS, for example).  These do not
+@c depend on the order of factors in the model.  The question of which set
+@c of sums of squares is the Right Thing provokes low-level holy wars on
+@c R-help from time to time.
+
+몇몇의 패키지들은, 비교에 기초한 sums of squares 대신에, full 모델에서 각각의 factor가 한번에 하나씩 지워지는 모델(한 예로, 유명한 SAS에서의 ‘Type III sums of suqares’)을 보고합니다. 이는 모델 안의 factor들의 순서에 의존하지 않습니다. 어떤 sums of squares의 세트가 Right Thing (맞는 것) 인지의 질문은 이따금 R-help에서 낮은 레벨의 holy war들을 유발합니다. 
+
+@c There is no need to be agitated about the particular sums of squares
+@c that R reports.  You can compute your favorite sums of squares quite
+@c easily.  Any two models can be compared with @code{anova(@var{model1},
+@c @var{model2})}, and @code{drop1(@var{model1})} will show the sums of
+@c squares resulting from dropping single terms.
+
+R이 보고하는 특정한 sums of squares에 대해 불안해 할 필요가 없습니다. 당신은 당신이 가장 좋아하는 sums of squares를 꽤나 쉽게 산출할 수 있습니다. anova(model1, model2), 와 drop1(model1)를 사용하요 비교될 수 있는 모든 두개의 모델들은 단일항을 떨어뜨리는 것을 초례하는 sums of squares를 보여줄 것 입니다. 
+
 
 @node How do I produce PNG graphics in batch mode?, How can I get command line editing to work?, Why does the output from anova() depend on the order of factors in the model?, R Miscellanea
 @section How do I produce PNG graphics in batch mode?
 
-Under a Unix-like, if your installation supports the
-@code{type="cairo"} option to the @code{png()} device there should be no
-problems, and the default settings should just work.  This option is not
-available for versions of R prior to 2.7.0, or without support for
-cairo.  From R 2.7.0 @code{png()} by default uses the Quartz device
-on Mac OS X, and that too works in batch mode.
+@c Under a Unix-like, if your installation supports the
+@c @code{type="cairo"} option to the @code{png()} device there should be no
+@c problems, and the default settings should just work.  This option is not
+@c available for versions of R prior to 2.7.0, or without support for
+@c cairo.  From R 2.7.0 @code{png()} by default uses the Quartz device
+@c on Mac OS X, and that too works in batch mode.
 
-Earlier versions of the @code{png()} device uses the X11 driver, which
-is a problem in batch mode or for remote operation.  If you have
-Ghostscript you can use @code{bitmap()}, which produces a PostScript or
-PDF file then converts it to any bitmap format supported by Ghostscript.
-On some installations this produces ugly output, on others it is
-perfectly satisfactory.  Many systems now come with Xvfb from
-@url{http://www.x.org/Downloads.html, X.Org} (possibly as an optional
-install), which is an X11 server that does not require a screen; and
-there is the @CRANpkg{GDD} package from @CRAN{}, which produces PNG,
-JPEG and GIF bitmaps without X11.
+Unix –like 에서, 만약 당신의 설치가 png()로의type="cairo" 옵션을 지원한다면, 거기의 device는 아무런 문제가 없어야하고, 기본 세팅들이 그냥 실행되어야 합니다. 이 옵션은 2.7.0 이전의 R 버전들이나 cairo의 지원이 없이는 사용이 가능하지 않습니다. R 2.7.0 에서 png()는 기본으로 Mac OS X에서 Quartz device를 사용하고, 이것 또한 batch 모드에서 실행합니다. 
+
+@c Earlier versions of the @code{png()} device uses the X11 driver, which
+@c is a problem in batch mode or for remote operation.  If you have
+@c Ghostscript you can use @code{bitmap()}, which produces a PostScript or
+@c PDF file then converts it to any bitmap format supported by Ghostscript.
+@c On some installations this produces ugly output, on others it is
+@c perfectly satisfactory.  Many systems now come with Xvfb from
+@c @url{http://www.x.org/Downloads.html, X.Org} (possibly as an optional
+@c install), which is an X11 server that does not require a screen; and
+@c there is the @CRANpkg{GDD} package from @CRAN{}, which produces PNG,
+@c JPEG and GIF bitmaps without X11.
+
+png() device의 이전 버전들에서는 batch 모드나 remote operation에서 무네가 있는 X11 드라이버를 사용합니다. 만약Ghostscript가 있다면, PostScript나 PDF 파일을 생산할 수 있는  bitmap()을 사용할 수 있고, 그러고 나서Ghostscript에서 지원하는 모든 bitmap 형식으로 이를 전환할 수 있습니다. 몇몇의 설치들에서 이는 보기 싫은 output을 생성하고, 다른 곳에서는 완벽하게 만족스럽습니다. 요즈음의 많은 시스템들은 스크린을 필요치 않는 X11 서버인 X.Org(옵션적인 설치일 수도 있습니다)에서 나온Xvfb와 함께 옵니다; 그리고 X11 없이 PNG, JPEG, 그리고 GIF bitmap들을 생성하는 CRAN에서 나온 GDD 패키지가 있습니다.  
+
 
 @node How can I get command line editing to work?, How can I turn a string into a variable?, How do I produce PNG graphics in batch mode?, R Miscellanea
 @section How can I get command line editing to work?
 
-The Unix-like command-line interface to R can only provide the inbuilt
-command line editor which allows recall, editing and re-submission of
-prior commands provided that the @acronym{GNU} readline library is
-available at the time R is configured for compilation.  Note that the
-`development' version of readline including the appropriate headers is
-needed: users of Linux binary distributions will need to install
-packages such as @code{libreadline-dev} (Debian) or
-@code{readline-devel} (Red Hat).
+@c The Unix-like command-line interface to R can only provide the inbuilt
+@c command line editor which allows recall, editing and re-submission of
+@c prior commands provided that the @acronym{GNU} readline library is
+@c available at the time R is configured for compilation.  Note that the
+@c `development' version of readline including the appropriate headers is
+@c needed: users of Linux binary distributions will need to install
+@c packages such as @code{libreadline-dev} (Debian) or
+@c @code{readline-devel} (Red Hat).
+
+R로의 Unix-like 명령줄 인터페이스는 R이 compilation을 위한 구성을 할 때 사용가능한 GNU readline library를 제공하는 전 명령들의 recall, editing 그리고 re-submission을 허용하는 내장된 명령줄 editor만을 제공할 수 있습니다. Readline의 ‘개발’버전은 적합한 header들이 필요하다는 것을 유의하십시오: Linux binary distribution들의 사용자는libreadline-dev (Debian) 나readline-devel (Red Hat)와 같은 설치 패키지가 필요할 것입니다. 
 
 @node How can I turn a string into a variable?, Why do lattice/trellis graphics not work?, How can I get command line editing to work?, R Miscellanea
 @section How can I turn a string into a variable?
 
-If you have
+@c If you have
+만약 
 
 @example
 varname <- c("a", "b", "d")
 @end example
 
 @noindent
-you can do
+@c you can do
+를 가지고 있다면 당신은
 
 @example
 get(varname[1]) + 2
 @end example
 
 @noindent
-for
+@c for
+를 다음에 대하여 
 
 @example
 a + 2
 @end example
 
 @noindent
-or
+@c or
+혹은 
 
 @example
 assign(varname[1], 2 + 2)
 @end example
 
 @noindent
-for
+@c for
+다음에 대하여
 
 @example
 a <- 2 + 2
 @end example
 
 @noindent
-or
+@c or
+혹은
 
 @example
 eval(substitute(lm(y ~ x + variable),
@@ -3729,14 +3754,16 @@ eval(substitute(lm(y ~ x + variable),
 @end example
 
 @noindent
-for
+@c for
+다음에 대하여
 
 @example
 lm(y ~ x + a)
 @end example
 
-At least in the first two cases it is often easier to just use a list,
-and then you can easily index it by name
+@c At least in the first two cases it is often easier to just use a list,
+@c and then you can easily index it by name
+할 수 있습니다.
 
 @example
 vars <- list(a = 1:10, b = rnorm(100), d = LETTERS)
@@ -3744,44 +3771,56 @@ vars[["a"]]
 @end example
 
 @noindent
-without any of this messing about.
+@c without any of this messing about.
+적어도 처음 두가지의 경우에, 목록을 부르는 것이 종종 쉽고, 그러면 이에 대해 아무것도 지저분하게 만들지 않고 이름에 대해 쉽게 index를 할 수 있습니다. 
 
 @node Why do lattice/trellis graphics not work?, How can I sort the rows of a data frame?, How can I turn a string into a variable?, R Miscellanea
 @section Why do lattice/trellis graphics not work?
 
-The most likely reason is that you forgot to tell R to display the
-graph.  Lattice functions such as @code{xyplot()} create a graph object,
-but do not display it (the same is true of @CRANpkg{ggplot2} graphics,
-and Trellis graphics in @SPLUS{}).  The @code{print()} method for the
-graph object produces the actual display.  When you use these functions
-interactively at the command line, the result is automatically printed,
-but in @code{source()} or inside your own functions you will need an
-explicit @code{print()} statement.
+@c The most likely reason is that you forgot to tell R to display the
+@c graph.  Lattice functions such as @code{xyplot()} create a graph object,
+@c but do not display it (the same is true of @CRANpkg{ggplot2} graphics,
+@c and Trellis graphics in @SPLUS{}).  The @code{print()} method for the
+@c graph object produces the actual display.  When you use these functions
+@c interactively at the command line, the result is automatically printed,
+@c but in @code{source()} or inside your own functions you will need an
+@c explicit @code{print()} statement.
+
+대부분의 이유는 당신이 R에 그래프를 display하라고 명령을 내리는 것을 잊은것이 원인입니다. xyplot()과 같은 lattice function들은 그래프 object를 생성하지만, display하지는 않습니다 (ggplot2 그래픽과 S-Plus의 Trellis 그래픽들에서도 마찬가지입니다). 그래프 object를 위한 print() 방법은 실제 display를 생성합니다. 명령줄게 이 function들을 상호 작용적으로 사용한다면, 결과는 자동적으로 프린트 되지만, source() 안 혹은 당신의 function 안에서는 명확한print()문장이 필요할 것입니다. 
 
 @node How can I sort the rows of a data frame?, Why does the help.start() search engine not work?, Why do lattice/trellis graphics not work?, R Miscellanea
 @section How can I sort the rows of a data frame?
 
-To sort the rows within a data frame, with respect to the values in one
-or more of the columns, simply use @code{order()} (e.g.,
-@code{DF[order(DF$a, DF[["b"]]), ]} to sort the data frame @code{DF} on
-columns named @code{a} and @code{b}).
+@c To sort the rows within a data frame, with respect to the values in one
+@c or more of the columns, simply use @code{order()} (e.g.,
+@c @code{DF[order(DF$a, DF[["b"]]), ]} to sort the data frame @code{DF} on
+@c columns named @code{a} and @code{b}).
+
+데이터 프레임 안에서, 한 개 이상의 행 안의 값들에 대하여, 열을 순서대로 정리하려면, 간단하게order()를 사용하십시오 (예, a와 b라고 이름 지어진 행의 데이터 프레임 DF를 순서대로 정리하기 위한DF[order(DF$a, DF[["b"]]), ]).
+
 
 @node Why does the help.start() search engine not work?, Why did my .Rprofile stop working when I updated R?, How can I sort the rows of a data frame?, R Miscellanea
 @section Why does the help.start() search engine not work?
 
-The browser-based search engine in @code{help.start()} utilizes a Java
-applet.  In order for this to function properly, a compatible version of
-Java must installed on your system and linked to your browser, and both
-Java @emph{and} JavaScript need to be enabled in your browser.
+@c The browser-based search engine in @code{help.start()} utilizes a Java
+@c applet.  In order for this to function properly, a compatible version of
+@c Java must installed on your system and linked to your browser, and both
+@c Java @emph{and} JavaScript need to be enabled in your browser.
 
-There have been a number of compatibility issues with versions of Java
-and of browsers.  
+help.start() 안의 brower-based 검색 엔진은 Java applet을 활용합니다. 이것이 올바르게 작동하게하기 위해서는, Java의 호환가능한 버전이 당신의 시스템에 설치되어있고 당신의 브라우저에 링크가 되어있어야만 하고, Java와 JavaScript 모두 당신의 브라우저에서 가능해야만 합니다.  
+
+
+@c There have been a number of compatibility issues with versions of Java
+@c and of browsers.  
+Java와 브라우저의 버전들에 많은 호환성 문제들이 있었습니다. 
+
 @ifclear UseExternalXrefs
-For further details please consult section ``Enabling search in HTML
-help'' in @cite{R Installation and Administration}.  This manual is
-included in the R distribution, @pxref{What documentation exists for
-R?}, and its @acronym{HTML} version is linked from the @acronym{HTML}
-search page.
+@c For further details please consult section ``Enabling search in HTML
+@c help'' in @cite{R Installation and Administration}.  This manual is
+@c included in the R distribution, @pxref{What documentation exists for
+@c R?}, and its @acronym{HTML} version is linked from the @acronym{HTML}
+@c search page.
+더 자세한 사항은 R installation and Administration의 “Enabling search in HTML help” 섹션에서 상담해 주십시오. 이 메뉴얼은 R distribution에 포함되어 있고, What documentation exists for R?을 참조하십시오, HTML버전은 HTML 검색 페이지에 링크되어 있습니다
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Enabling search in HTML help, , Enabling search in HTML help,
@@ -3791,9 +3830,11 @@ R-admin, R Installation and Administration}, for further details.
 @node Why did my .Rprofile stop working when I updated R?, Where have all the methods gone?, Why does the help.start() search engine not work?, R Miscellanea
 @section Why did my .Rprofile stop working when I updated R?
 
-Did you read the @file{NEWS} file?  For functions that are not in the
-@pkg{base} package you need to specify the correct package namespace,
-since the code will be run @emph{before} the packages are loaded.  E.g.,
+@c Did you read the @file{NEWS} file?  For functions that are not in the
+@c @pkg{base} package you need to specify the correct package namespace,
+@c since the code will be run @emph{before} the packages are loaded.  E.g.,
+
+NEWS 파일을 읽어 보셨습니까? base 패키지에 없는 function들에 대해, 코드들이 패키지가 로드되기 전에 실행될 것이기 떄문에, 정확한 패키지 namespace를 명시해야만 합니다. 예로,
 
 @example
 ps.options(horizontal = FALSE)
@@ -3801,7 +3842,9 @@ help.start()
 @end example
 
 @noindent
-needs to be
+@c needs to be
+
+는
 
 @example
 grDevices::ps.options(horizontal = FALSE)
@@ -3817,28 +3860,35 @@ utils::help.start()
 @node Where have all the methods gone?, How can I create rotated axis labels?, Why did my .Rprofile stop working when I updated R?, R Miscellanea
 @section Where have all the methods gone?
 
-Many functions, particularly S3 methods, are now hidden in namespaces.
-This has the advantage that they cannot be called inadvertently with
-arguments of the wrong class, but it makes them harder to view.
+@c Many functions, particularly S3 methods, are now hidden in namespaces.
+@c This has the advantage that they cannot be called inadvertently with
+@c arguments of the wrong class, but it makes them harder to view.
 
-To see the code for an S3 method (e.g., @code{[.terms}) use
+많은 function들, 특히 S3 method들, 은 이제 namespace들 안에 숨겨져 있습니다. 이는 틀린 class의 argument와 함께 의도하지 않은 call을 할 수 없는 장점이 있지만, 이는 이들을 보기에 힘들어 지도록 만듭니다. 
+
+@c To see the code for an S3 method (e.g., @code{[.terms}) use
+@c S3 method에 대한 코드를 보려면 (예, [.terms) 
 
 @example
 getS3method("[", "terms")
 @end example
+를 사용하십시오.
 
 @noindent
-To see the code for an unexported function @code{foo()} in the namespace
-of package @code{"bar"} use @code{bar:::foo}.  Don't use these
-constructions to call unexported functions in your own code---they are
-probably unexported for a reason and may change without warning.
+@c To see the code for an unexported function @code{foo()} in the namespace
+@c of package @code{"bar"} use @code{bar:::foo}.  Don't use these
+@c constructions to call unexported functions in your own code---they are
+@c probably unexported for a reason and may change without warning.
+패키지 “bar”의 namespace안의 내보내지지않은 function foo()에 대한 코드를 보기위해서는bar:::foo를 사용합니다. 당신만의 코드 안의 내보내지지 않은 function들을 부르기 위해서는 이 construction들을 사용하지 마십시오 – 그들은 아마도 이유가 있어서 내보내지지 않았을 것으고 경고 없이 바뀔지도 모릅니다. 
+
 
 @node How can I create rotated axis labels?, Why is read.table() so inefficient?, Where have all the methods gone?, R Miscellanea
 @section How can I create rotated axis labels?
 
-To rotate axis labels (using base graphics), you need to use
-@code{text()}, rather than @code{mtext()}, as the latter does not
-support @code{par("srt")}.
+@c To rotate axis labels (using base graphics), you need to use
+@c @code{text()}, rather than @code{mtext()}, as the latter does not
+@c support @code{par("srt")}.
+(base 그래픽들을 이용하여)축의 label들을 회전하기위해서는, par("srt")을 지원하지 않는  mtext()대신에text()를 사용하여야 합니다. 
 
 @example
 ## @r{Increase bottom margin to make room for rotated labels}
@@ -3857,16 +3907,20 @@ mtext(1, text = "X Axis Label", line = 6)
 @end example
 
 @noindent
-When plotting the x axis labels, we use @code{srt = 45} for text
-rotation angle, @code{adj = 1} to place the right end of text at the
-tick marks, and @code{xpd = TRUE} to allow for text outside the plot
-region.  You can adjust the value of the @code{0.25} offset as required
-to move the axis labels up or down relative to the x axis.  See
-@code{?par} for more information.
+@c When plotting the x axis labels, we use @code{srt = 45} for text
+@c rotation angle, @code{adj = 1} to place the right end of text at the
+@c tick marks, and @code{xpd = TRUE} to allow for text outside the plot
+@c region.  You can adjust the value of the @code{0.25} offset as required
+@c to move the axis labels up or down relative to the x axis.  See
+@c @code{?par} for more information.
+x 축 label들을 plot할 때, 문자 회전 각도로srt = 45, 문자의 오른쪽 끝을 tick marks에 놓도록adj = 1, 그리고 바깥쪽의 plot region의 문자를 허용하기 위해xpd = TRUE를 사용합니다. 0.25 offset의 값을 x축에 관하여 축의 label들을 위로나 아래로 움직이도록 필요한 대로 조정할 수 있습니다. 더 많은 정보는?par를 참고하십시오. 
 
-Also see Figure 1 and associated code in Paul Murrell (2003),
-``Integrating grid Graphics Output with Base Graphics Output'',
+@c Also see Figure 1 and associated code in Paul Murrell (2003),
+@c ``Integrating grid Graphics Output with Base Graphics Output'',
 @emph{R News}, @strong{3/2}, 7--12.
+또한 Figure 1과Paul Murrell (2003), “Integrating grid Graphics Output with Base Graphics Output”, R News, 3/2, 7–12 안의 연관된 코드들을 참조하십시오. 
+
+
 
 @node Why is read.table() so inefficient?, What is the difference between package and library?, How can I create rotated axis labels?, R Miscellanea
 @section Why is read.table() so inefficient?
@@ -3877,6 +3931,7 @@ or factors.  For a large data set, this takes considerable amounts of
 time and memory.  Performance can substantially be improved by using the
 @code{colClasses} argument to specify the classes to be assumed for the
 columns of the table.
+
 
 @node What is the difference between package and library?, I installed a package but the functions are not there, Why is read.table() so inefficient?, R Miscellanea
 @section What is the difference between package and library?
