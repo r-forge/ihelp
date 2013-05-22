@@ -4425,26 +4425,31 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @node How should I write summary methods?, How can I debug dynamically loaded code?, R Programming, R Programming
 @section How should I write summary methods?
 
-Suppose you want to provide a summary method for class @code{"foo"}.
-Then @code{summary.foo()} should not print anything, but return an
-object of class @code{"summary.foo"}, @emph{and} you should write a
-method @code{print.summary.foo()} which nicely prints the summary
-information and invisibly returns its object.  This approach is
-preferred over having @code{summary.foo()} print summary information and
-return something useful, as sometimes you need to grab something
-computed by @code{summary()} inside a function or similar.  In such
-cases you don't want anything printed.
+@c Suppose you want to provide a summary method for class @code{"foo"}.
+@c Then @code{summary.foo()} should not print anything, but return an
+@c object of class @code{"summary.foo"}, @emph{and} you should write a
+@c method @code{print.summary.foo()} which nicely prints the summary
+@c information and invisibly returns its object.  This approach is
+@c preferred over having @code{summary.foo()} print summary information and
+@c return something useful, as sometimes you need to grab something
+@c computed by @code{summary()} inside a function or similar.  In such
+@c cases you don't want anything printed.
+
+당신이 class “foo”를 위한 summary method를 제공하고 싶다고 가정해 봅시다. 그러면summary.foo()는 어떤것도 프린트하지 않아야하지만, class "summary.foo" 의 object를 return해야하며, 요약된 정보를 보기 좋게 프린트하고 그의 object를 보이지 않게 return하는method인 print.summary.foo()를 써야만 합니다. 이 접근법은summary.foo()를 쓰는 것 보다 더 선호 하는데 이는 가끔function이나 비슷한 것들 안에서 summary()에 의해 산출된 것을 grab해야할 때, 요약된 정보를 프린트하고 유용한 것을 return하기 때문입니다. 이런 경우에서, 어떤것도 프린트되는 것을 원하지 않을 것입니다. 
 
 @node How can I debug dynamically loaded code?, How can I inspect R objects when debugging?, How should I write summary methods?, R Programming
 @section How can I debug dynamically loaded code?
 
-Roughly speaking, you need to start R inside the debugger, load the
-code, send an interrupt, and then set the required breakpoints.
+@c Roughly speaking, you need to start R inside the debugger, load the
+@c code, send an interrupt, and then set the required breakpoints.
+
+대략, debugger 안에서 R을 시작하고, 코드를 로드, interrupt를 보내며, 그리고 요구되는 breakpoint를 설정해야만 합니다. 
 
 @ifclear UseExternalXrefs
-See section ``Finding entry points in dynamically loaded code'' in
-@cite{Writing R Extensions}.  This manual is included in the R
-distribution, @pxref{What documentation exists for R?}.
+@c See section ``Finding entry points in dynamically loaded code'' in
+@c @cite{Writing R Extensions}.  This manual is included in the R
+@c distribution, @pxref{What documentation exists for R?}.
+Writing R Extensions에서“Finding entry points in dynamically loaded code” 섹션을 참조하십시오. 이 메뉴얼은 R distribution에 포함되어 있습니다, What documentation exists for R?를 참조하십시오.
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Finding entry points, , Finding entry points in dynamically loaded
@@ -4454,8 +4459,10 @@ code, R-exts, Writing R Extensions}.
 @node How can I inspect R objects when debugging?, How can I change compilation flags?, How can I debug dynamically loaded code?, R Programming
 @section How can I inspect R objects when debugging?
 
-The most convenient way is to call @code{R_PV} from the symbolic
-debugger.
+@c The most convenient way is to call @code{R_PV} from the symbolic
+@c debugger.
+
+가장 편리한 방법은 symbolic debugger에서 R_PV를 부르는 것입니다.
 
 @ifclear UseExternalXrefs
 See section ``Inspecting R objects when debugging'' in @cite{Writing R
@@ -4464,32 +4471,43 @@ Extensions}.
 @ifset UseExternalXrefs
 @xref{Inspecting R objects, , Inspecting R objects when debugging,
 R-exts, Writing R Extensions}.
+Writing R Extensions에서“Inspecting R objects when debugging” 섹션을 참조하십시오. 
 @end ifset
 
 @node How can I change compilation flags?, How can I debug S4 methods?, How can I inspect R objects when debugging?, R Programming
 @section How can I change compilation flags?
 
-Suppose you have C code file for dynloading into R, but you want to use
-@code{R CMD SHLIB} with compilation flags other than the default ones
-(which were determined when R was built).
+@c Suppose you have C code file for dynloading into R, but you want to use
+@c @code{R CMD SHLIB} with compilation flags other than the default ones
+@c (which were determined when R was built).
 
-Starting with R 2.1.0, users can provide personal Makevars configuration
-files in @file{$@env{HOME}/.R} to override the default flags.
+R로 dynloading하기위한 C 코드 파일이 있지만, 기본값(R이 생성되었을 때 지정된)이 아닌 compilation flag들을 가지고 있는 R CMD SHLIB를 사용하고 싶다고 가정해 보십시오. 
+
+@c Starting with R 2.1.0, users can provide personal Makevars configuration
+@c files in @file{$@env{HOME}/.R} to override the default flags.
+
+R 2.1.0부터, 사용자는$HOME/.R에 기본 flag들을 override하기위해 개인의 Makevars configuration file들을 제공할 수 있습니다. R Installation and 
 @ifclear UseExternalXrefs
-See section ``Add-on packages'' in @cite{R Installation and
-Administration}.
+@c See section ``Add-on packages'' in @cite{R Installation and
+@c Administration}.
+Administration의“Add-on packages” 섹션은 참조하십시오 
+
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Add-on packages, , Add-on packages, R-admin,
 R Installation and Administration}.
 @end ifset
 
-For earlier versions of R, you could change the file
-@file{@var{R_HOME}/etc/Makeconf} to reflect your preferences, or (at
-least for systems using @acronym{GNU} Make) override them by the
-environment variable @env{MAKEFLAGS}.
+@c For earlier versions of R, you could change the file
+@c @file{@var{R_HOME}/etc/Makeconf} to reflect your preferences, or (at
+@c least for systems using @acronym{GNU} Make) override them by the
+@c environment variable @env{MAKEFLAGS}.
+이전 버전의 R에서는, 당신의 선호를 반영하기위해서 파일 R_HOME/etc/Makeconf를 바꿀수 있었거나, 혹은 (적어도 GNU Make를 사용하는 시스템을위해서)  
+MAKEFLAGS 환경값에의해 그들을 override합니다. 
+
 @ifclear UseExternalXrefs
-See section ``Creating shared objects'' in @cite{Writing R Extensions}.
+@c See section ``Creating shared objects'' in @cite{Writing R Extensions}.
+Writing R Extensions의 “Creating shared objects” 섹션을 참조하십시오. 
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Creating shared objects, , Creating shared objects, R-exts,
@@ -4499,10 +4517,12 @@ Writing R Extensions}.
 @node How can I debug S4 methods?,  , How can I change compilation flags?, R Programming
 @section How can I debug S4 methods?
 
-Use the @code{trace()} function with argument @code{signature=} to add
-calls to the browser or any other code to the method that will be
-dispatched for the corresponding signature.  See @code{?trace} for
-details.
+@c Use the @code{trace()} function with argument @code{signature=} to add
+@c calls to the browser or any other code to the method that will be
+@c dispatched for the corresponding signature.  See @code{?trace} for
+@c details.
+
+브라우저로 call들을 추가하기위해 argument signature=가 있는trace() function이나 상응하는 서명에 대해 dispath될 다른 코드들을 사용하십시오. 자세한 사항들은 ?trace를 참조하십시오. 
 
 @node R Bugs, Acknowledgments, R Programming, Top
 @chapter R Bugs
@@ -4515,49 +4535,61 @@ details.
 @node What is a bug?, How to report a bug, R Bugs, R Bugs
 @section What is a bug?
 
-If R executes an illegal instruction, or dies with an operating system
-error message that indicates a problem in the program (as opposed to
-something like ``disk full''), then it is certainly a bug.  If you call
-@code{.C()}, @code{.Fortran()}, @code{.External()} or @code{.Call()} (or
-@code{.Internal()}) yourself (or in a function you wrote), you can
-always crash R by using wrong argument types (modes).  This is not a
-bug.
+@c If R executes an illegal instruction, or dies with an operating system
+@c error message that indicates a problem in the program (as opposed to
+@c something like ``disk full''), then it is certainly a bug.  If you call
+@c @code{.C()}, @code{.Fortran()}, @code{.External()} or @code{.Call()} (or
+@c @code{.Internal()}) yourself (or in a function you wrote), you can
+@c always crash R by using wrong argument types (modes).  This is not a
+@c bug.
 
-Taking forever to complete a command can be a bug, but you must make
-certain that it was really R's fault.  Some commands simply take a long
-time.  If the input was such that you @emph{know} it should have been
-processed quickly, report a bug.  If you don't know whether the command
-should take a long time, find out by looking in the manual or by asking
-for assistance.
+만약 R이 불법적인 설명을 수행하거나, 프로그램 내의 문제를 나타내는 (“disk full” 같은것과 반대되는) 운영체제 오류 메세지와 함께 죽는다면, 이는 확실하게 bug입니다. 만약 .C(), .Fortran(), .External() 혹은 .Call() (혹은 .Internal())을 직접 (혹은 , 당신이 쓴 function에)부른다면, 잘못된 argument type들 (mode들)을 사용함으로 인해서 R을 항상 crash 할 수 있습니다.  이는 bug가 아닙니다. 
 
-If a command you are familiar with causes an R error message in a case
-where its usual definition ought to be reasonable, it is probably a bug.
-If a command does the wrong thing, that is a bug.  But be sure you know
-for certain what it ought to have done.  If you aren't familiar with the
-command, or don't know for certain how the command is supposed to work,
-then it might actually be working right.  For example, people sometimes
-think there is a bug in R's mathematics because they don't understand
-how finite-precision arithmetic works.  Rather than jumping to
-conclusions, show the problem to someone who knows for certain.
-Unexpected results of comparison of decimal numbers, for example
-@code{0.28 * 100 != 28} or @code{0.1 + 0.2 != 0.3}, are not a bug.
-@xref{Why doesn't R think these numbers are equal?}, for more details.
 
-Finally, a command's intended definition may not be best for statistical
-analysis.  This is a very important sort of problem, but it is also a
-matter of judgment.  Also, it is easy to come to such a conclusion out
-of ignorance of some of the existing features.  It is probably best not
-to complain about such a problem until you have checked the
-documentation in the usual ways, feel confident that you understand it,
-and know for certain that what you want is not available.  If you are
-not sure what the command is supposed to do after a careful reading of
-the manual this indicates a bug in the manual.  The manual's job is to
-make everything clear.  It is just as important to report documentation
-bugs as program bugs.  However, we know that the introductory
-documentation is seriously inadequate, so you don't need to report this.
+@c Taking forever to complete a command can be a bug, but you must make
+@c certain that it was really R's fault.  Some commands simply take a long
+@c time.  If the input was such that you @emph{know} it should have been
+@c processed quickly, report a bug.  If you don't know whether the command
+@c should take a long time, find out by looking in the manual or by asking
+@c for assistance.
 
-If the online argument list of a function disagrees with the manual, one
-of them must be wrong, so report the bug.
+명령을 완성하는데 시간이 오래 걸리면 bug일 수 있지만, 이것이 정말 R의 잘못인지를 확실하게 해야만 합니다. 몇몇의 명령들은 원래 오랜시간이 걸립니다. 만약 input이 빨리 프로세스가 되어야만 한다는 것을 알고있다면, bug를 보고하십시오. 만약 명령이 시간이 오래 걸리는지 확실하지 않다면, 메뉴얼에서 찾아보거나 도움을 청하여 알아내십시오.
+
+@c If a command you are familiar with causes an R error message in a case
+@c where its usual definition ought to be reasonable, it is probably a bug.
+@c If a command does the wrong thing, that is a bug.  But be sure you know
+@c for certain what it ought to have done.  If you aren't familiar with the
+@c command, or don't know for certain how the command is supposed to work,
+@c then it might actually be working right.  For example, people sometimes
+@c think there is a bug in R's mathematics because they don't understand
+@c how finite-precision arithmetic works.  Rather than jumping to
+@c conclusions, show the problem to someone who knows for certain.
+@c Unexpected results of comparison of decimal numbers, for example
+@c @code{0.28 * 100 != 28} or @code{0.1 + 0.2 != 0.3}, are not a bug.
+@c @xref{Why doesn't R think these numbers are equal?}, for more details.
+
+만약 익숙한 명령이 보통의 정의가 합리적인 경우에 R 오류 메세지를 초래한다면, 이는 아마도 bug일 것입니다. 만약 명령어가 틀린것을 한다면, 이는 버그입니다. 하지만 무엇이 되어야만하는지를 당신이 반드시 확실하게 알도록 하십시오. 만약 당신이 명령에 익숙하지 않다거나, 명령이 어떻게 실행되어야하는지를 확실하게 알지 못한다면, 이는 실제로 잘 실행되고 있는것일 것입니다. 예를들어, 사람들은 R의 mathematics 안에 버그가 있다고 생각하는데 이는finite-precision arithmetic이 어떻게 기능하는지 모르기 때문입니다. 결론들로 바로 가기보다는, 확실하게 아는 누군가에게 문제를 보여주십시오. 예상하지 못한 소수의 비교 결과, 예로, 0.28 * 100 != 28 혹은 0.1 + 0.2 != 0.3, 는 bug가 아닙니다. 더 자세한 사항들은 Why doesn't R think these numbers are equal?을 참조하십시오. 
+
+
+@c Finally, a command's intended definition may not be best for statistical
+@c analysis.  This is a very important sort of problem, but it is also a
+@c matter of judgment.  Also, it is easy to come to such a conclusion out
+@c of ignorance of some of the existing features.  It is probably best not
+@c to complain about such a problem until you have checked the
+@c documentation in the usual ways, feel confident that you understand it,
+@c and know for certain that what you want is not available.  If you are
+@c not sure what the command is supposed to do after a careful reading of
+@c the manual this indicates a bug in the manual.  The manual's job is to
+@c make everything clear.  It is just as important to report documentation
+@c bugs as program bugs.  However, we know that the introductory
+@c documentation is seriously inadequate, so you don't need to report this.
+
+마지막으로,  명령의 목적 정의어는 통계 분석에 대해 가장 좋지 않을지도 모릅니다. 이는 이런 종류의 문제에서 매우 중요하지만, 이는 판단력의 문제이기도 합니다. 또한, 몇몇의 기존 기능들의 무지에서의 결론과 같은 것에서 나오기 십상입니다. 이는 아마도 당신이 평소의 방법으로 documentation을 체크하고, 그를 이해하는 것에 대해 자신감이 있고 당신이 원하는 것이 이용가능하지 않다는 것을 확실하게 알기 전까지는 이런 문제들에 대하여 불평하지 않는 것이 좋을 것 입니다. 만약 당신이 메뉴얼을 정독 한 후에도 어떤 명령이 실행되어야하는지 확실하지 않을때에는, 메뉴얼에 bug가 있다는 것을 나타냅니다. 이 메뉴얼의 역할은 모든것을 확실하게 만드는 것입니다. Documentation bug들을 보고하는것이 프로그램 bug들만큼 중요합니다. 그렇지만, 서두 문서가 심각하게 무능하다는 것을 알고 있기때문에, 이는 보고하지 않아도 됩니다. 
+
+@c If the online argument list of a function disagrees with the manual, one
+@c of them must be wrong, so report the bug.
+
+만약 function의 온라인 argument 목록이 메뉴얼과 일치하지 않는다면, 둘 중하나는 틀린것이므로, bug를 보고하십시오. 
 
 @node How to report a bug,  , What is a bug?, R Bugs
 @section How to report a bug
