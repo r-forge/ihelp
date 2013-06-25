@@ -25,8 +25,8 @@ draw.pie <- function(xpos, ypos, x, edges=200, radius=1, col=NULL,...) {
 }
 
 
-cairo_ps(file="JonghoonLee-2013MAY16.eps")
-cairo_pdf(file="JonghoonLee-2013MAY16.pdf")
+# cairo_ps(file="JonghoonLee-2013MAY16.eps")
+cairo_pdf(file="test.pdf")
 plot(data.frame(x=seq(-5,5), y=seq(-5, 5)), main="버블-파이 응용", xlab="", ylab="", type="n", sub="기본 그래픽으로 구성요소 그리기 보여줄 것")
 rect(-5, -5, 0, 0,  col="green")
 rect(0, 0, 5, 5, col="gray70")
@@ -34,6 +34,9 @@ draw.pie(2, 3, c(2,4,4,2,8), radius=1)
 draw.pie(-3, 2, c(1,4,5,2,8), radius=0.3)
 draw.pie(3, -2, c(5,1,1,2,1), radius=0.5)
 dev.off()
+
+
+
 
 
 #Then a simple function to draw a circle based on its center and its radius:
