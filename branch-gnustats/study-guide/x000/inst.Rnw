@@ -1,0 +1,113 @@
+%
+%  Part of the iHELP project at http://ihelp.r-forge.r-project.org
+%
+%  Copyright (C) 2013- The iHELP Working Group 
+%                                in the Korean R Translation Team
+%
+%  This program is free software; you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation; either version 2 of the License, or
+%  (at your option) any later version.
+%
+%  This program is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  A copy of the GNU General Public License is available at
+%  http://www.r-project.org/Licenses/
+%
+
+% Author: Chel Hee Lee
+% Created on 2013-JUN-27
+% Modified on 2013-JUN-27
+% 
+% Description:
+% GNU R Study Guide 에서 필요한 제출형식을 Knitr를 이용하는 방법
+% 
+% 이 문서는 많은 사람들에게 중요한 문서 작성함에 있어 가이드라인이 되기 때문에 많이 손 보고 다양한 내용을 넣어 주어야 합니다.  iHELP 워킹 그룹멤버중에서 본 문서를 발전시키고자 하시는 분은 망설이지 말아주세요. 
+
+
+\documentclass{article}
+
+\usepackage{../mystyle}
+
+\title{문서작성요령}
+\author{R-iHELP Working Group \\ Chel Hee Lee}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\texttt{iHELP GNU R Study Guide}에 올려질 문서를 작성하여 배포하고자 하시는 분들을 위한 가장 단순한 형식을 정리한 문서입니다. 
+본 작업지침서의 문서 역시 개발 문서 중 하나에 포함되므로, 본 문서를 더 발전 시켜나가는데 망설이지 마시길 당부드립니다.
+
+\section{시작 전 작업환경 확인}
+
+Ubuntu 13.04, texlive, R, 
+
+\begin{itemize}
+  \item 설치 중 아래와 같은 에러를 겪을 수 있습니다. 
+
+    \begin{Schunk}
+      \begin{Sinput}
+In install.packages(``RCurl'', dependencies = TRUE) :
+  installation of package 'RCurl' had non-zero exit status
+      \end{Sinput}
+    \end{Schunk}
+
+    대부분의 경우는 아래와 같은 방법으로 해결이 가능합니다. 
+    \begin{verbatim}
+sudo apt-get install libcurl4-openssl-dev
+    \end{verbatim}
+    
+\end{itemize}
+
+
+\section{실행방법}
+
+% \begin{Verbatim}[fontfamily=NanumMyungjoBold]
+% \begin{Verbatim}[fontfamily=monospace]
+% \begin{Verbatim}[fontfamily=NanumGothic]
+% \begin{Verbatim}[fontfamily=helvetica]
+% [fontfamily=Courier, fontshape=it, fontseries=b]
+\begin{Verbatim}[fontfamily=rm]
+$ Rscript -e "library(knitr); knit('inst.Rnw');"
+$ pdflatex inst.tex
+한글 폰트 테스트 
+\end{Verbatim}
+
+<<eval=FALSE>>=
+library(knitr)
+knit2pdf("inst.Rnw", compiler="pdflatex")
+@ 
+
+
+\section{문서 작성법}
+
+R 코드청크를 $<<>>=$ 와 $@$ 사이에 넣어주어야 합니다. 
+<<>>=
+# 한글폰트 테스트 
+.Machine$double.xmin
+@ 
+
+<<>>=
+sessionInfo()
+@ 
+
+
+% <<fig=TRUE>>=
+% plot(rnorm(100))
+% @ 
+
+
+\section{유용한 링크}
+
+\section{Reference}
+
+
+\end{document}
+
+
+  
