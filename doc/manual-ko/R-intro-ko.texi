@@ -144,27 +144,23 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c @unnumbered Acknowledgement
 @unnumbered 감사의 말씀
 
-본 한국어 문서는 @strong{The R Development Translation Teams}의 @strong{Korean}부문 이철희에 의해서 관리되어지고 있습니다.
-매번 새로운 배포가 이루어질 때마다 문서의 수정과 갱신이 이루어지는데 이는 @R{}의 빠른 변화를 반영하고자 하기 때문입니다.
-그러나, @strong{이 한국어 문서는 본래의 영문 문서와는 다소 다르다는 점을 독자는 미리 알고 있어야 합니다.
-그 이유는 전산학과 통계학이 아닌 독자들을 고려하여 본래의 영문문서에서 전문용어가 아니면 특별히 이해할 수 없거나 잘 못된 이해를 가질 수 있다는 의견을 고려하여,
-이러한 전문용어들에 대한 개념풀이와 부가적인 해석을 덧붙임으로서 보다 쉽게 전달하고자 노력하고 있기 때문입니다}.
+본 한국어 문서는 @strong{R Development Translation Teams}의 한국어 섹션인 @strong{Korean R Translation Team}에 의하여 번역되고 관리되고 있습니다.
 이러한 문서의 수정과 재배포를 허락해 준 @strong{R Development Core Team}에게 감사를 드립니다.
-@c 특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada), 그리고 David Smith에 깊은 감사의 뜻을 표현합니다.  
+@c 특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)  , 그리고 David Smith에 깊은 감사의 뜻을 표현합니다.  
 
-본 문서에 대한 최초의 직역은 2009년 07월에 @R{}-2.9.1를 기초로 이루어졌으며, 정우준님의 꾸준한 관심과 노력에 의하여 보다 완성도 높은 문서 발전하였습니다.
-또한, 여러차례의 제안, 수정 그리고 일부분의 번역 및 교정 등 다양한 방법으로 아래와 같은 분들께서 기여를 해 주셨기에 감사의 말씀을 올립니다 (의도적이 아닌 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 빠져있을 수 있습니다). 
+본 문서에 대한 최초의 직역은 2009년 07월에 @R{}-2.9.1를 기초로 이루어졌으나, 무수한 수정과 내용의 갱신이 R의 새로운 배포에 맞추어 이루어지고 있습니다. 
+이러한 작업은 아래와 같은 분들께서 문서 일부분의 번역 및 교정, 그리고 다양한 방법으로의 검토를 통하여 이루어져 왔기에 감사의 말씀을 올립니다 (의도적이 아닌 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 빠져있을 수 있으므로 꼭 문서의 책임자 @email{gnustats@@korea.gnu.org}로 알려주시길 부탁드립니다).
 
 @itemize @bullet
-@item 이세연, 이화여자대학교, 2009
-@item 주이진, 이화여자대학교, 2009
+@item 이철희, University of Saskatchewan, 2009--2013
+@item 주이진, 이화여자대학교, 2009--2013
 @item 정우준, 홍익대학교, 2009-2013
-@item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
 @item Heather Kim, University of Manitoba, 2010-2011
+@item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
+@item 이세연, 이화여자대학교, 2009
 @end itemize
 
-본 문서에 대한 수정 및 추가, 그리고 제안사항에 대해서는 @email{ihelp-translators@@ihelp.r-forge.r-project.org}로 이메일을 보내주시면 감사드리겠습니다.
-또한, 위의 명단에서 성함이 누락되신 분이 있다면 꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다.
+본 문서에 대한 수정 및 추가, 그리고 제안사항에 대해서는 @email{ihelp-translators@@ihelp.r-forge.r-project.org}로 알려주시길 부탁드립니다. 
 
 @node Preface, Introduction and preliminaries, Acknowledgement, Top
 @c @unnumbered Preface
@@ -279,12 +275,6 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 @c analysis.
 
 ``environment''(환경 또는 개발환경)라는 용어는 다른 분석소프트웨어들의 경우처럼 사용방법에 제약이 많아 유용성이 없는 도구들을 추가적으로 계속 제공받아야 하는 것과는 달리 완전하게 잘 계획되어 있는 일관성있는 시스템 자체를 지칭하고자 하는 목적으로 사용하고 있습니다.
-
-@strong{역자는 이 문서에서 가급적이면 environment라는 용어를 영문 그대로 environment라고 사용할 것입니다. 
-그 이유는 environment 이라는 개념이 본 소개서의 이 부분에서만 문맥상 잘 개발된 통합개발환경이라고 이해해도 무난하지만, 본 소개서의 내용을 뛰어넘는 실질적인 프로그램의 개발에서는 environment라는 용어에 대한 개념은 단순하게 개발환경이라고 할 수는 없습니다.
-따라서, 이러한 개념적 혼돈을 피하기 위해서 역자는 문맥상 environment가 다소 기술적이고 중요한 개념을 다룰 때는 영문 그대로 사용할 것이고, 부연설명을 할 것입니다.
-그렇지 않은 경우에는 개발환경 혹은 사용자 환경이라고 생각하셔도 무난합니다.
-프로그래머에게 필요한 사항들은 R language definition 문서에서 더 자세히 다루도록 하겠습니다}.
 
 @R{}은 시스템과 분석자가 서로 대화를 하는 방식을 통해서 데이터 분석를 수행하고, 또한 이러한 분석에 필요한 새로운 방법들을 개발하는데 사용하는 수단이라고 생각할 수 있습니다. 
 이렇게 새로이 개발되어진 방법들은 @emph{package}(패키지)로서 개인 사용자가 배포할 수도 있으며, 다른 사용자가 개발한 패키지들을 이용하여 보다 더 빠르게 분석에 필요한 @R{}시스템을 확장시켜 나갈 수도 있습니다.
@@ -8342,99 +8332,139 @@ R에서 n 개의 행과 m 개의 열로 배열된 그래프들을 한 페이지�
 이 두 모수 중 어느 하나를 사용할 경우, (par ("cex") 와 현재 디바이스의 기본 폰트에 영향을 받는) 그래프의 심벌과 텍스트의 크기가 줄어들 수 있습니다. 두 개의 행과 두 개의 열로 구성된 레이아웃의 경우, 이들에 포함된 텍스트의 기본 크기가 처음의 0.83 배가 되며, 만약 세 개나 그 이상의 행이나 열이 한 레이아웃에 포함될 경우에는 텍스트가 처음 크기의 0.66배가 됩니다.
 
 @item mfg=c(2, 2, 3, 2)
-Position of the current figure in a multiple figure environment.  The first
-two numbers are the row and column of the current figure; the last two
-are the number of rows and columns in the multiple figure array.  Set
-this parameter to jump between figures in the array.  You can even use
-different values for the last two numbers than the @emph{true} values
-for unequally-sized figures on the same page.
+@c Position of the current figure in a multiple figure environment.  The first
+@c two numbers are the row and column of the current figure; the last two
+@c are the number of rows and columns in the multiple figure array.  Set
+@c this parameter to jump between figures in the array.  You can even use
+@c different values for the last two numbers than the @emph{true} values
+@c for unequally-sized figures on the same page.
+
+그래프 중첩 시의 현재 그림의 위치를 조정 합니다. 처음 두 개의 숫자는 해당 그림의 행과 열의 위치를 표시하며, 나중의 두 숫자는 여러 그림의 배열에서의 행과 열의 위치를 표시합다. 이미 배열이 된 그림들 사이의 간격을 띄우기 위해 이 문장을 사용할 수도 있습니다. 또한 한 페이지 상에 출력된 크기가 다른 두 그림을 조정하기 위해 이 그래픽 모수의 마지막 두 숫자를 실제 위치와는 다른 값으로 지정하는 것도 가능합니다.
 
 @item fig=c(4, 9, 1, 4)/10
-Position of the current figure on the page.  Values are the positions of
-the left, right, bottom and top edges respectively, as a percentage of
-the page measured from the bottom left corner.  The example value would
-be for a figure in the bottom right of the page.  Set this parameter for
-arbitrary positioning of figures within a page.  If you want to add a
-figure to a current page, use @code{new=TRUE} as well (unlike S).
+@c Position of the current figure on the page.  Values are the positions of
+@c the left, right, bottom and top edges respectively, as a percentage of
+@c the page measured from the bottom left corner.  The example value would
+@c be for a figure in the bottom right of the page.  Set this parameter for
+@c arbitrary positioning of figures within a page.  If you want to add a
+@c figure to a current page, use @code{new=TRUE} as well (unlike S).
+
+해당 페이지에서 현재 그림의 위치를 조정하는 모수. 각각의 숫자들은 각각 그림의 왼쪽, 오른쪽 아래 그리고 위 모서리의 위치를 나타내며 해당 페이지를 왼쪽 아래 모서리에서부터 재었을 때의 비율로 나타냅니다.
+
+예제에서 보여진 값은 해당 페이지의 오른쪽 아래에 있는 그림으로 출력됩니다. 
+
+이 모수를 사용하면 한 페이지 안의 어떤 위치에라도 그래프를 출력하는 것이 가능해집니다. 만약 현재 페이지에 그래프를 하나 더 추가하고 싶다면, new=TRUE 라는 옵션을 함께 사용해야 합니다. (이 점이 S와 다릅니다.)
+
 
 @item oma=c(2, 0, 3, 0)
 @itemx omi=c(0, 0, 0.8, 0)
-Size of outer margins.  Like @code{mar} and @code{mai}, the first
-measures in text lines and the second in inches, starting with the
-bottom margin and working clockwise.
+@c Size of outer margins.  Like @code{mar} and @code{mai}, the first
+@c measures in text lines and the second in inches, starting with the
+@c bottom margin and working clockwise.
 
+외부 여백의 크기를 조정하는 그래픽 모수들. mai 와 mar의 경우처럼, oma는 텍스트 줄 간격으로 여백의 크기를 지정하고, omi는 인치를 단위로 하며, 여백의 크기를 나타내는 네 숫자는 아래 여백부터 시작해서 시계 방향 순으로 표기됩니다.
 @end table
 
-Outer margins are particularly useful for page-wise titles, etc.  Text
-can be added to the outer margins with the @code{mtext()} function with
-argument @code{outer=TRUE}.  There are no outer margins by default,
-however, so you must create them explicitly using @code{oma} or
+@c Outer margins are particularly useful for page-wise titles, etc.  Text
+@c can be added to the outer margins with the @code{mtext()} function with
+@c argument @code{outer=TRUE}.  There are no outer margins by default,
+@c however, so you must create them explicitly using @code{oma} or
 @code{omi}.
 
-More complicated arrangements of multiple figures can be produced by the
-@code{split.screen()} and @code{layout()} functions, as well as by the
-@pkg{grid} and @CRANpkg{lattice} packages.
+외부 여백은 페이지 별로 표기되는 타이틀 등을 제대로 출력하기 위해 지정되어야 합니다. 외부 여백에 텍스트를 출력하고 싶을 경우, mtext() 함수에서 outer=TRUE 옵션을 사용하면 됩니다. 외부 여백은 디폴트로 지정된 기능이 아니므로, oma 와 omi 를 사용해서 따로 지정해야 그림에 여백이 포함됩니다.
+
+@c More complicated arrangements of multiple figures can be produced by the
+@c @code{split.screen()} and @code{layout()} functions, as well as by the
+@c @pkg{grid} and @CRANpkg{lattice} packages.
+
+좀 더 복잡한 형태의 그래픽 중첩을 사용하고 싶다면, split.screen() 이나 layout() 같은 함수들을 사용할 수 있으며, grid나 lattice 같은 팩키지를 사용하는 것도 가능합니다.
+
 
 @node Device drivers, Dynamic graphics, Graphics parameters, Graphics
-@section Device drivers
+@c @section Device drivers
+@section 장치 드라이버
 @cindex Graphics device drivers
 
-@R{} can generate graphics (of varying levels of quality) on almost any
-type of display or printing device.  Before this can begin, however,
-@R{} needs to be informed what type of device it is dealing with.  This
-is done by starting a @emph{device driver}.  The purpose of a device
-driver is to convert graphical instructions from @R{} (``draw a line,''
-for example) into a form that the particular device can understand.
+@c @R{} can generate graphics (of varying levels of quality) on almost any
+@c type of display or printing device.  Before this can begin, however,
+@c @R{} needs to be informed what type of device it is dealing with.  This
+@c is done by starting a @emph{device driver}.  The purpose of a device
+@c driver is to convert graphical instructions from @R{} (``draw a line,''
+@c for example) into a form that the particular device can understand.
 
-Device drivers are started by calling a device driver function.  There
-is one such function for every device driver: type @code{help(Devices)}
-for a list of them all.  For example, issuing the command
+R은 거의 모든 종류의 디스플레이나 프린팅 디바이스에서의 (다양한 수준의) 그래픽 출력을 지원할 수 있습니다. 하지만, 이러한 출력 작업 전 R에 어떤 종류의 디바이스를 사용할 것인지를 미리 지정해줘야 합니다. 이러한 디바이스 지정 작업은 디바이스 드라이버를 작동시키는 것 입니다. 이렇게 디바이스 드라이버를 작동시키는 이유는 R에서 사용한 그래픽 관련 명령문(예를 들면, “선을 그어라” 같은)을 본인이 사용하고자 하는 디바이스가 이해할 수 있도록 전환하기 위해서입니다.      
+
+@c Device drivers are started by calling a device driver function.  There
+@c is one such function for every device driver: type @code{help(Devices)}
+@c for a list of them all.  For example, issuing the command
+
+디바이스 드라이는 디바이스 드라이버 함수를 사용해서 작동시킵니다. 모든 종류의 디바이스 드라이버에는 이러한 기능을 하는 함수가 하나씩 있습니다: help(Devices)를 입력하면 사용가능한 모든 디바이스와 디바이스를 시작하게 하는 함수의 리스트가 보여집니다. 예를 들면, 다음과 같은 명령문을 입력하면
 
 @example
 > postscript()
 @end example
 
 @noindent
-causes all future graphics output to be sent to the printer in
-PostScript format.  Some commonly-used device drivers are:
+@c causes all future graphics output to be sent to the printer in
+@c PostScript format.  Some commonly-used device drivers are:
+
+앞으로 생성하게 될 모든 그래픽 결과물들이 PostScript 포맷으로 프린터로 보내지게 됩니다. 자주 자용되는 디바이스 드라이버에는 다음과 같은 것들이 있습니다:
+
+
 
 @table @code
 @item X11()
 @findex X11
-For use with the X11 window system on Unix-alikes
+@c For use with the X11 window system on Unix-alikes
+Unix와 같은 X11 윈도우 시스템을 사용하기 위한 함수
+
 @item windows()
 @findex windows
-For use on Windows
+@c For use on Windows
+윈도우를 사용하기 위한 함수
+
 @item quartz()
 @findex quartz
-For use on Mac OS X
+@c For use on Mac OS X
+Mac OS X 를 사용하기 위한 함수
+
 @item postscript()
 @findex postscript
-For printing on PostScript printers, or creating PostScript graphics
-files.
+@c For printing on PostScript printers, or creating PostScript graphics
+@c files.
+PostScript 프린터를 사용하거나, 또는 PostScript 포맷으로 된 그래픽 파일을 생성하기 위한 함수.
+
 @item pdf()
 @findex pdf
-Produces a PDF file, which can also be included into PDF files.
+@c Produces a PDF file, which can also be included into PDF files.
+PDF 파일을 생성하는 함수. 이 파일을 다른PDF 파일의 일부분으로 포함 가능
+
 @item png()
 @findex png
-Produces a bitmap PNG file. (Not always available: see its help page.)
+@c Produces a bitmap PNG file. (Not always available: see its help page.)
+비트맵 PNG 파일을 생성하는 함수 (언제나 실행 가능한 것은 아닙니다: help 참조)
+
 @item jpeg()
 @findex jpeg
-Produces a bitmap JPEG file, best used for @code{image} plots.
-(Not always available: see its help page.)
+@c Produces a bitmap JPEG file, best used for @code{image} plots.
+@c (Not always available: see its help page.)
+비트맵 JPEG 파일을 생성하는 함수로 이미지 플롯을 저장하기에 최적화된 방법 (언제나 실행 가능한 것은 아닙니다: help 참조)
 @end table
 
-When you have finished with a device, be sure to terminate the device
-driver by issuing the command
+@c When you have finished with a device, be sure to terminate the device
+@c driver by issuing the command
+하나의 디바이스의 사용이 끝나면, 다음과 같은 명령어를 사용해서 해당 디바이스를 종료시키는 것을 잊지 마십시오.
 
 @example
 > dev.off()
 @end example
 
-This ensures that the device finishes cleanly; for example in the case
-of hardcopy devices this ensures that every page is completed and has
-been sent to the printer.  (This will happen automatically at the normal
-end of a session.)
+@c This ensures that the device finishes cleanly; for example in the case
+@c of hardcopy devices this ensures that every page is completed and has
+@c been sent to the printer.  (This will happen automatically at the normal
+@c end of a session.)
+
+이 문장을 사용하면 현재 사용 중인 디바이스를 좀 더 확실하게 종료시킬 수 있습니다. 예를 들면, 하드 카피로 출력하기 위한 디바이스를 사용 중인 경우, 이 명령문을 사용하면 각 페이지를 프린터로 보낼 때마다 종료되도록 합니다. (원래 페이지의 종료는 R에서 하나의 세션이 종료될 때 자동적으로 이루어지게 됩니다.)
 
 @menu
 * PostScript diagrams for typeset documents::  
@@ -8445,51 +8475,61 @@ end of a session.)
 @c @subsection PostScript diagrams for typeset documents
 @subsection 조판 문서를 위한 포스트스크립트 다이어그램 생성하기
 
-By passing the @code{file} argument to the @code{postscript()} device
-driver function, you may store the graphics in PostScript format in a
-file of your choice.  The plot will be in landscape orientation unless
-the @code{horizontal=FALSE} argument is given, and you can control the
-size of the graphic with the @code{width} and @code{height} arguments
-(the plot will be scaled as appropriate to fit these dimensions.) For
-example, the command
+@c By passing the @code{file} argument to the @code{postscript()} device
+@c driver function, you may store the graphics in PostScript format in a
+@c file of your choice.  The plot will be in landscape orientation unless
+@c the @code{horizontal=FALSE} argument is given, and you can control the
+@c size of the graphic with the @code{width} and @code{height} arguments
+@c (the plot will be scaled as appropriate to fit these dimensions.) For
+@c example, the command
+
+postscript() 디바이스 드라이버 함수를 사용해서 파일을 작업할 경우, 작업된 그래픽을 지정된 파일 안에 PostScript 포맷으로 저장하는 것이 가능합니다. 플롯은 따로horizontal=FALSE 라는 문장을 사용하지 않는다면, 가로 방향으로 정렬된 페이지에 그려지며, 그래픽의 크기는 width와 height 문장을 사용해서 조정 가능합니다 (플롯은 지정된 페이즈의 크기에 맞게 크기가 자동적으로 조정됩니다).
+
+예를 들면, 다음과 같은 명령문을 사용할 경우
 
 @example
 > postscript("file.ps", horizontal=FALSE, height=5, pointsize=10)
 @end example
 
 @noindent
-will produce a file containing PostScript code for a figure five inches
-high, perhaps for inclusion in a document.  It is important to note that
-if the file named in the command already exists, it will be overwritten.
-This is the case even if the file was only created earlier in the same
-@R{} session.
+@c will produce a file containing PostScript code for a figure five inches
+@c high, perhaps for inclusion in a document.  It is important to note that
+@c if the file named in the command already exists, it will be overwritten.
+@c This is the case even if the file was only created earlier in the same
+@c @R{} session.
+PostScript 코드로 된 높이가 5인치인 그림 파일이 하나 생성되며, 이 파일은 아마도 하나의 문서 안에서 생성되었을 것 입니다. 만약 명령문에 사용된 파일의 이름이 이미 존재하는 파일의 이름과 같다면, 이 문장으로 실행하면 덮어쓰기가 되어버립니다. 이러한 덮어쓰기는 설사 해당 파일이 같은 R 세선 내에서 방금 전에 생성된 것이라고 하더라도 발생하게 됩니다.
 
-Many usages of PostScript output will be to incorporate the figure in
-another document.  This works best when @emph{encapsulated} PostScript
-is produced: @R{} always produces conformant output, but only marks the
-output as such when the @code{onefile=FALSE} argument is supplied.  This
-unusual notation stems from @Sl{}-compatibility: it really means that
-the output will be a single page (which is part of the EPSF
-specification).  Thus to produce a plot for inclusion use something like
+@c Many usages of PostScript output will be to incorporate the figure in
+@c another document.  This works best when @emph{encapsulated} PostScript
+@c is produced: @R{} always produces conformant output, but only marks the
+@c output as such when the @code{onefile=FALSE} argument is supplied.  This
+@c unusual notation stems from @Sl{}-compatibility: it really means that
+@c the output will be a single page (which is part of the EPSF
+@c specification).  Thus to produce a plot for inclusion use something like
+
+PostScript 포맷을 사용하는 가장 흔한 이유는 작업한 그림을 다른 문서에 포함시키기 위해서일 것 입니다. 이러한 작업을 최적하하는 것이 파일을 PostScript 포맷으로 작업하는 것입니다: R은 따로 onefile=FALSE 과 같은 옵션을 지정하는 경우가 아니라면, 계속해서 일정한 형태로 결과를 출력합니다. 이러한 흔치 않은 출력 형태는 S와 R의 상호 호환성에서 기인합니다: 다시 말해, 모든 결과물이 (EPSF 기준을 따르는 결과로 인해) 한 페이지에 출력된다는 의미입니다. 따라서, 다른 문서에 포함되는 플롯을 그리기 위해서는 다음과 같은 문장을 사용해야 합니다.
 
 @example
 > postscript("plot1.eps", horizontal=FALSE, onefile=FALSE,
              height=8, width=6, pointsize=10)
 @end example
 
-
 @node Multiple graphics devices,  , PostScript diagrams for typeset documents, Device drivers
 @c @subsection Multiple graphics devices
 @subsection 다중 그래픽 장치 이용하기
 
-In advanced use of @R{} it is often useful to have several graphics
-devices in use at the same time.  Of course only one graphics device can
-accept graphics commands at any one time, and this is known as the
-@emph{current device}.  When multiple devices are open, they form a
-numbered sequence with names giving the kind of device at any position.
+@c In advanced use of @R{} it is often useful to have several graphics
+@c devices in use at the same time.  Of course only one graphics device can
+@c accept graphics commands at any one time, and this is known as the
+@c @emph{current device}.  When multiple devices are open, they form a
+@c numbered sequence with names giving the kind of device at any position.
 
-The main commands used for operating with multiple devices, and their
-meanings are as follows:
+@c The main commands used for operating with multiple devices, and their
+@c meanings are as follows:
+
+R의 중상급 이상의 사용자라면 종종 여러 개의 그래픽 디바이스를 동시에 사용해야 할 필요가 생길 것입니다. 물론, 한 번에 하나의 명령문을 실행할 수 있는 것은 오직 하나의 디바이스이며, 우리는 이 사용 중인 디바이스를 현재 디바이스라고 부릅니다. 여러 개의 디바이스가 사용 중일 경우, 디바이스들이 순서대로 디바이스 종류 별 이름으로 리스트 상에 표기되어 하나의 위치에 할당 됩니다.   
+
+여러 개의 디바이스들을 열어서 작동시키기 위한 주요 명령문과 그 의미는 아래와 같습니다:
 
 @table @code
 @item X11()
@@ -8507,45 +8547,57 @@ meanings are as follows:
 @item tiff()
 @item bitmap()
 @itemx @dots{}
-Each new call to a device driver function opens a new graphics device,
-thus extending by one the device list.  This device becomes the current
-device, to which graphics output will be sent.
+@c Each new call to a device driver function opens a new graphics device,
+@c thus extending by one the device list.  This device becomes the current
+@c device, to which graphics output will be sent.
+각각의 디바이스 드라이버 함수를 입력할 때마다 새로운 그래픽 디바이스를  작동되며, 따라서 디바이스 리스트도 그 사용된 함수의 숫자 만큼 길어지게 됩니다. 이렇게 작동된 디바이스가 현재 디바이스가 되며, 그래픽 결과물의 출력시 이 현재 디바이스가 결과를 보여주게 됩니다.
 
 @item dev.list()
 @findex dev.list
-Returns the number and name of all active devices.  The device at
-position 1 on the list is always the @emph{null device} which does not
-accept graphics commands at all.
+@c Returns the number and name of all active devices.  The device at
+@c position 1 on the list is always the @emph{null device} which does not
+@c accept graphics commands at all.
+현재 열려 있는 모든 디바이스들의 숫자와 이름을 보여주는 명령문. 이 리스트 상의 첫 번째 위치에는 항상 null device가 위치하는데 사실 이 디바이스는 그랙픽 명령문을 전혀 실행하지 않습니다.
 
 @item dev.next()
 @itemx dev.prev()
 @findex dev.next
 @findex dev.prev
-Returns the number and name of the graphics device next to, or previous
-to the current device, respectively.
+@c Returns the number and name of the graphics device next to, or previous
+@c to the current device, respectively.
+리스트 상에서 현재 디바이스 보다 순서상 각각 앞이나 또는 뒤에 위치한 그래픽 디바이스의 숫와 이름을 보여주는 명령문들.
 
 @item dev.set(which=@var{k})
 @findex dev.set
-Can be used to change the current graphics device to the one at position
-@var{k} of the device list.  Returns the number and label of the device.
+@c Can be used to change the current graphics device to the one at position
+@c @var{k} of the device list.  Returns the number and label of the device.
+
+디바이스 리스트 상의 k 번째에 위치한 그래픽 디바이스를 현재 디바이스로 지정하기 위해 사용하는 명령문. 지정된 디바이스의 숫자와 이름을 출력합니다.
 
 @item dev.off(@var{k})
 @findex dev.off
-Terminate the graphics device at point @var{k} of the device list.  For
-some devices, such as @code{postscript} devices, this will either print
-the file immediately or correctly complete the file for later printing,
-depending on how the device was initiated.
+@c Terminate the graphics device at point @var{k} of the device list.  For
+@c some devices, such as @code{postscript} devices, this will either print
+@c the file immediately or correctly complete the file for later printing,
+@c depending on how the device was initiated.
+디바이스 리스트 상의 k 번째 그래픽 디바이스를 종료시킵니다. Postscript 와 같은 몇몇 디바이스의 경우, 이 명령문은 디바이스의 종류에 따라 해당 파일을 즉시 출력하는 식으로 실행되며 또는 나중에 출력하기 위해 해당 파일을 제대로 종료하는 식으로 실행되기도 합니다.
+
+
 
 @item dev.copy(device, @dots{}, which=@var{k})
 @itemx dev.print(device, @dots{}, which=@var{k})
-Make a copy of the device @var{k}.  Here @code{device} is a device
-function, such as @code{postscript}, with extra arguments, if needed,
-specified by @samp{@dots{}}.  @code{dev.print} is similar, but the
-copied device is immediately closed, so that end actions, such as
-printing hardcopies, are immediately performed.
+@c Make a copy of the device @var{k}.  Here @code{device} is a device
+@c function, such as @code{postscript}, with extra arguments, if needed,
+@c specified by @samp{@dots{}}.  @code{dev.print} is similar, but the
+@c copied device is immediately closed, so that end actions, such as
+@c printing hardcopies, are immediately performed.
+
+k 번째 디바이스를 카피하는 명령문. 여기서 디바이스는 포스트 스크립트와 같은 하나의 디바이스 함수를 의미하며, 필요할 경우 ‘...’ 부분에 좀 더 구체적으로 지정할 수도 있습니다. dev.print 도 비슷한 기능을 하지만, 디바이스를 카피 한 후 바로 종료시키므로 하드 카피로 출력하는 것과 같은 명령을 즉시 실행합니다.
 
 @item graphics.off()
-Terminate all graphics devices on the list, except the null device.
+@c Terminate all graphics devices on the list, except the null device.
+기본 장치(null device)를 제외한 리스트 상에 나열된 모든 그래픽 장치를 종료합니다.
+
 @end table
 
 @node Dynamic graphics,  , Device drivers, Graphics
