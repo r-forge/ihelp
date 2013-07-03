@@ -1,13 +1,13 @@
-#ŽöŒº¿©Žë Á€ºžÅë°èÇÐ°ú ±èÀçÈñ ±³ŒöÀÇ "(RÀ» ÀÌ¿ëÇÑ)Åë°èÇÁ·Î±×·¡¹Ö ±âÃÊ"ÀÇ ÄÚµåžŠ µû¿Â °ÍÀÓ.
+#이 코드는 김재희(덕성여대)의 R을 이용한 통계프로그래밍 기초에서 따온 것임.
 
-#ŽÜŒø°è»ê
+#단순계산
 
 2+3
 2^3
 1/2
 3-2*1+4
 
-#ÇÔŒöžŠ ÀÌ¿ëÇÑ °è»ê
+#함수를 이용한 계산
 
 sqrt(2)
 sin(pi)
@@ -19,7 +19,7 @@ abs(-2)
 factorial(5)
 choose(5, 2)
 
-#ÇÒŽç
+#할
 
 x.const_1 <- 3
 x.const_1
@@ -35,14 +35,14 @@ rm(x); rm(y)
 
 memory.size(max=TRUE)
 
-#c()žŠ ÀÌ¿ëÇÏ¿© µ¥ÀÌÅÍ º€ÅÍ žžµé±â
+#c()를 이용하여 데이터 벡터 만들기
 
 k_score1 <- c(96, 80, 76, 96, 88, 75, 78, 89, 92, 70)
 k_score2 <- c(67, 83, 96, 90, 85, 75, 82, 89, 92, 75)
 score <- c(k_score1, k_score2)
 score
 
-#µ¥ÀÌÅÍÀÇ ÇüÅÂ
+#데이터의 형태
 
 y <- c(1, 5, 3)
 family <- c("kim", "lee", "chulsu", "younghee")
@@ -59,7 +59,7 @@ w <- x<2
 w
 sum(w)
 
-#µ¥ÀÌÅÍÀÇ ÇüÅÂ º¯È¯
+#데이터의 형태 변환
 
 fact <- c(1, 2, 3)
 fact
@@ -72,7 +72,7 @@ exp.fact <- factor(c("exp1", "ecp2"))
 fact2 <- as.numeric(exp.fact)
 fact2
 
-#¹Ý¿Ãž²
+#반올림
 
 a <- c(-2.456, 3.6789, 5.23445676)
 ceiling(s)
@@ -82,7 +82,7 @@ round(a)
 aa <- round(a, digits=2)
 aa
 
-#±âÃÊÅë°è·®
+#기초통계량
 
 k_score <- c(96, 80, 76, 96, 88, 75, 78, 89, 92, 70)
 sum(k_score)
@@ -118,7 +118,7 @@ cabbages.mean <- aggregate(HeadWt, list(Cult, Date), FUN="mean")
 names(cabbages.mean)
 cabbages.mean
 
-#ÇÊ¿äÇÑ µ¥ÀÌÅÍžž Œ±ÅÃÇÏ±â
+#필요한 데이터만 선택하기
 
 cabbages1 <- cabbages[(cabbages$Date=="d16"), ]
 cabbages1
@@ -127,7 +127,7 @@ cabbages2
 cabbages3 <- cabbages[(cabbages$Date=="d16") & (cabbages$VitC >= 60), ]
 cabbages3
 
-#ŒøŒ­ÇÔŒö
+#순서함수
 
 id <- c(1, 2, 3, 4, 5)
 a <- c(4, 9, 7, 2, 8)
@@ -144,7 +144,8 @@ x <- c(11, 24, 24, 30, 30, 30)
 rank(x)
 order(x)
 
-#±žÁ¶ÀûÀÎ µ¥ÀÌÅÍ žžµé±â
+#구조적인 데이터 만들기 
+
 1:10
 sqp(1, 10)
 rev(1:10)
@@ -157,7 +158,7 @@ rep(c(2, 3, 5), 4)
 a <- rep(0, 12)
 a
 
-#µ¥ÀÌÅÍ º€ÅÍ ŽÙ·ç±â
+#데이터 벡터 다루기 
 
 x <- c(100, 120, 130, 124, 150, 167, 170, 163, 160, 155, 145, 157)
 x[1]
@@ -175,7 +176,7 @@ xx
 xp <- x[x>=150]
 xp
 
-#º€ÅÍ¿Í Çà·ÄÀÇ ±âº»¿¬»ê
+#기본연산 
 
 x <- c(1, 2, 3, 4, 5)
 y <- c(-1, -2, -3, -4, -5)
@@ -192,7 +193,7 @@ t(temp1)
 t(temp1)%*%temp1
 dim(temp1)
 
-#¿ªÇà·Ä
+#역행렬 
 
 a1 <- c(34.74, 15.66)
 a2 <- c(15.66, 378.6)
@@ -201,7 +202,7 @@ s
 library(MASS)
 ginv(s)
 
-#
+#고유값과 고유벡터 
 
 eigen(s)
 lambda <- eigen(s)
@@ -211,7 +212,7 @@ lambda$values[2]
 lambda$vectors[1, ]
 lambda$vectors[2, ]
 
-#¹è¿­
+#배열 
 
 g <- array(1:24, c(4, 3, 2))
 g
@@ -220,7 +221,7 @@ g[, , 1]
 g[, 1, ]
 x <- array(1:120, c(5, 4, 3,2))
 
-#for()žŠ ÀÌ¿ëÇÑ looping
+#for()를 이용한 looping
 
 for(i in 1:4)
 print(i)
@@ -244,9 +245,8 @@ transport <- c("bus", "subway", "car", "bike")
 for(vehicle in transport){
 print(vehicle)
 }
-##À§¿¡°Ç ¿Ö ÇÑ°ÅÁö? µµŽëÃŒ ÀÌÇØ°¡....
 
-#whle()À» ÀÌ¿ëÇÑ looping
+#whle()을 이용한 looping
 
 n <- 0
 sum.sofar <- 0
@@ -257,7 +257,7 @@ sum.sofar=sum.sofar+n
 print(n)
 print(sum.sofar)
 
-#repeat()žŠ ÀÌ¿ëÇÑ looping
+#repeat()을 이용한 looping
 
 n <- 0
 sum.sofar <- 0
@@ -280,7 +280,7 @@ else pos[i]=0
 }
 print(pos)
 
-#°áÃø°ª
+#결측값 
 
 x <- c(1, 6, 2, NA)
 is.na(x)
@@ -295,17 +295,17 @@ r
 r <- rank(x, na.rm=TRUE)
 r
 
-#µ¥ÀÌÅÍÇÁ·¹ÀÓ
+#데이터프레임 형태 예시 
 
 data(ORchardSprays)
 OrchardSprays
 
-#³»ÀåµÈ µ¥ÀÌÅÍŒÂ ÀÐ±â
+#내장된 데이터셋 열기 
 
 data(Orange)
 Orange[1, ]
 
-#µ¥ÀÌÅÍ ÆÄÀÏ ÀÐ±â¿Í °á°ú ÆÄÀÏ žžµé±â
+#데이터 파일 읽기와 결과 파일 만들기 
 
 zzz <- read.table(" /text.txt", header=TRUE)
 attributes(zzz)
@@ -319,7 +319,7 @@ y <- zzz$y
 zz1 <- read.csv(file=" /test.csv", header=TRUE, sep=",")
 zz2 <- read.csv(" /test.csv", header=TRUE, sep=",")
 
-#°á°ú ÆÄÀÏ žžµé±â
+#결과 파일 만들기 
 
 cat("data set example", "\n", "x=", zzz$x, "\n", "y=", zzz$y, 
 file="testout.txt")
@@ -332,9 +332,7 @@ my <- c(4, 5, 6)
 mm <- cbind(mydf, my)
 write.table(mm, " /mydftest.csv", sep=",", row.names=FALSE)
 
-#µ¥ÀÌÅÍŒÂ ÇÕÄ¡±â
-##ÄÚµå ŒöÁ€ ÇÊ¿äÇÔ.
-##"l"ÀÌ ¹¹Ÿß?! ŸÆ¹«·± Œ³žíÀÌ ŸøÀœ.
+#데이터셋 합치기 
 
 authors <- data.frame(
 surname <- l(c("Tukey", "Venables", "Tierney", "Ripley", "McNeil")),
@@ -362,11 +360,11 @@ d2
 d3 <- merge(authors, books2, by.x="surname", by.y="name", all=TRUE)
 d3
 
-#°ŽÃŒ °üž®
+#객체 리스트 
 
 ls()
 
-#°£ŽÜÇÑ ±×·¡ÇÁ
+#간단한 그래프 
 
 demo(graphics)
 demo(persp)
@@ -386,8 +384,6 @@ y <- cos(x)
 ysin <- sin(x)
 plot(x, y); text(3, 0, "cos(x)")
 plot(x, ysin); text(5, 0.5, "sin(x)")
-
-##ŸÆ ÀÌ Ã¥ Ÿ²·¹±â³×... µÚÁö°Î³×...
 
 x <- (0:20)*pi/10
 y <- cos(x)
