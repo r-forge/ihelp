@@ -76,13 +76,13 @@ p {
 <li><a name="toc_Top" href="#Top">R에 대한 소개서</a>
 <li><a name="toc_Acknowledgement" href="#Acknowledgement">감사의 말씀</a>
 <li><a name="toc_Preface" href="#Preface">서문</a>
-<li><a name="toc_Introduction-and-preliminaries" href="#Introduction-and-preliminaries">1 소개와 시작하기 전에</a>
+<li><a name="toc_Introduction-and-preliminaries" href="#Introduction-and-preliminaries">1 소개와 본문에 들어가기 전에</a>
 <ul>
 <li><a href="#The-R-environment">1.1 R environment (개발환경)</a>
 <li><a href="#Related-software-and-documentation">1.2 관련 소프트웨어 및 유용한 문서들</a>
 <li><a href="#R-and-statistics">1.3 R 과 통계</a>
 <li><a href="#R-and-the-window-system">1.4 R 과 윈도우 시스템</a>
-<li><a href="#Using-R-interactively">1.5 대화식으로 사용하는 R</a>
+<li><a href="#Using-R-interactively">1.5 대화형으로 사용하는 R</a>
 <li><a href="#Using-R-interactively">1.6 기초 소개 세션</a>
 <li><a href="#Getting-help">1.7 함수와 기능에 대한 도움말 사용법</a>
 <li><a href="#R-commands_003b-case-sensitivity-etc">1.8 R 명령어들 및 대소문자 구별과 같이 미리 알아두면 좋은 사항들</a>
@@ -306,9 +306,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <!-- statistical modelling and graphics. -->
 <!-- The current version of this document is @value{VERSION}. -->
 <p>이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 수행하는 언어이며 개발환경이기도 한 R에 대한 기본 안내서입니다. 
-R은 벨연구소에서 John Chambers 외 다수에 의해서 개발된 이래로 여러차례의 수상을 받은 적이 있는 S 라는 시스템과 유사하기 때문에 &ldquo;GNU S&rdquo;라고도 불리우며,
-선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계분석 방법들과 그래픽 기능들을 제공하고 있습니다. 
-이러한 기능을 R을 시작하시는 분들이 잘 활용할 수 있도록 사용에 반드시 필요한 기본 데이터형, 프로그래밍의 기본요소들, 그리고 통계적 모델링과 그래픽 구현에 대한 기본적인 정보가 이 문서에서 다루어질 것입니다.
+R은 벨랩에서 John Chambers 외 다수에 의해서 개발된 이래로 여러 차례 상을 수상한 S 라는 시스템과 유사하기 때문에 &ldquo;GNU S&rdquo;라고도 불리우며,
+선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계분석 방법들과 그래픽 기능들을 제공합니다. 
+이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형, 프로그래밍의 기본 요소들, 그리고 통계 모델링과 그래픽 구현에 대한 기본적인 정보가 이 문서에서 다루어질 것입니다.
 
    <p>본 한글문서에 대한 영어원문의 버전은 3.0.0 Under development (2013-02-11)이며, 한국어 버전의 마지막 업데이트는 2013.04.03입니다.
 
@@ -373,11 +373,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="unnumbered">감사의 말씀</h2>
 
 <p>본 한국어 문서는 <strong>R Development Translation Teams</strong>의 한국어 섹션인 <strong>Korean R Translation Team</strong>에 의하여 번역되고 관리되고 있습니다. 
-이러한 문서의 수정과 재배포를 허락해 준 <strong>R Development Core Team</strong>에게 감사를 드립니다. 
-<!-- 특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)  , 그리고 David Smith에 깊은 감사의 뜻을 표현합니다. -->
+문서의 수정과 재배포를 허락해 주신 <strong>R Development Core Team</strong>에게 감사를 드립니다. 
+<!-- 특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주시는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)  , 그리고 David Smith에 진심으로 감사드립니다. -->
 
-   <p>본 문서에 대한 최초의 직역은 2009년 07월에 R-2.9.1를 기초로 이루어졌으나, 무수한 수정과 내용의 갱신이 R의 새로운 배포에 맞추어 이루어지고 있습니다. 
-이러한 작업은 아래와 같은 분들께서 문서 일부분의 번역 및 교정, 그리고 다양한 방법으로의 검토를 통하여 이루어져 왔기에 감사의 말씀을 올립니다 (의도적이 아닌 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 빠져있을 수 있으므로 꼭 문서의 책임자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>로 알려주시길 부탁드립니다).
+   <p>본 문서에 대한 최초의 직역은 2009년 07월에 R-2.9.1를 기초로 이루어졌으나, 많은 수정과 내용의 갱신이 R의 버전이 업드레이드 될 때마다 이루어지고 있습니다. 
+이러한 계속 된 문서의 업데이트는 아래에 기재되신 분들의 문서 각 부분의 번역 및 교정, 그리고 다양한 관점에서의 검토를 통하여 가능할 수 있었습니다. (의도적인 것은 아니지만 문서의 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 혹시 빠져 있을 수도 있습니다. 부디 문서의 책임자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>에게 직접 연락주시면 감사하겠습니다).
 
      <ul>
 <li>이철희, University of Saskatchewan, 2009&ndash;2013
@@ -388,7 +388,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li>이세연, 이화여자대학교, 2009
 </ul>
 
-   <p>본 문서에 대한 수정 및 추가, 그리고 제안사항에 대해서는 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>로 알려주시길 부탁드립니다.
+   <p>본 문서에 대한 수정 및 추가 및 제안 사항에 대해서 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>로 연락주시기 바랍니다.
 
 <div class="node">
 <a name="Preface"></a>
@@ -412,12 +412,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- in this way, and for being a supporter of @R{} from way back. -->
 <!-- Comments and corrections are always welcome.  Please address email -->
 <!-- correspondence to @email{R-core@@R-project.org}. -->
-<p>본래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 
-그러나, R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
-이렇게 원래의 노트에 대한 수정과 재배포를 수락하고, R을 지지해주는 Bill Venables (그리고 David Smith)에게 우리는 깊은 감사의 뜻을 전합니다.
+<p>원래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 
+그러나,이 문서에서는 R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
+이렇게 원래의 노트에 대한 수정과 재배포를 허락하고, R을 지지해주신 Bill Venables (그리고 David Smith)에게깊은 감사의 뜻을 전합니다.
 
 <!-- @subheading Suggestions to the reader -->
-<h4 class="subheading">처음 R을 접하는 사용자에게</h4>
+<h4 class="subheading">처음 R을 사용하시는 분들에게</h4>
 
 <!-- Most @R{} novices will start with the introductory session in Appendix -->
 <!-- A.  This should give some familiarity with the style of @R{} sessions -->
@@ -426,9 +426,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- this case, @ref{Graphics} on the graphics facilities can be read at -->
 <!-- almost any time and need not wait until all the preceding sections have -->
 <!-- been digested. -->
-<p>이 문서의 독자가 R을 처음 접하는 것이라면 R이 어떻게 동작하는가에 대해서 좀 더 편안하게 익히기 위해서 Appendix A 샘플세션를 가장 먼저 살펴보시길 권장합니다. 
-일부 독자들은 R에서 제공하는 그래픽 기능들때문에 R을 사용하기도 합니다. 
-이러한 독자들을 위하여 그래픽에 관련된 주제들을 <a href="#Graphics">Graphics</a> 챕터에 따로 모아둠으로서 본 문서의 모든 내용을 순차적으로 보지 않아도 필요시에 쉽게 찾아 볼 수있도록 해두었습니다.
+<p>지금 이 글을 읽고 계신 분이 혹시 R을 처음 접하는 분이라면 R이 어떻게 작동하는가를 좀 더 쉽게 익히기 위해 Appendix A 샘플 세션을 먼저 살펴보시길 권장 합니다. 
+특히, 적지 않은 분들의 경우 R의 우수한 그래픽 기능 때문에 R을 사용하실 것 입니다. 
+이러한 분들을 위해 그래픽에 관련된 주제들은 <a href="#Graphics">Graphics</a> 챕터에 따로 모았으니 문서 전체의 내용을 순서대로 따라갈 필요 없이 필요한 내용만 쉽게 찾아 보실 수 있을 것입니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Introduction-and-preliminaries">Introduction and preliminaries</a>
@@ -444,7 +444,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter 1 Introduction and preliminaries -->
-<h2 class="chapter">1 소개와 시작하기 전에</h2>
+<h2 class="chapter">1 소개와 본문에 들어가기 전에</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-R-environment">The R environment</a>
@@ -491,16 +491,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- input and output facilities.  (Indeed most of the system supplied -->
 <!-- functions are themselves written in the @Sl{} language.) -->
 <!-- @end itemize -->
-<p>R은 데이터의 조작 및 수치연산, 그리고 시각화를 수행할 수 있는 소프트웨어 기능들을 한데 모아놓은 통합개발환경이라고 할 수 있으며, 다음과 같은 기능들이 특화되어 있습니다.
+<p>R은 데이터의 조작 및 수치연산, 그리고 시각화를 수행할 수 있는 소프트웨어 기능들을 한데 모아놓은 통합 개발환경이라고 할 수 있으며, 다음과 같은 기능들을 수행하는데 특히 강점을 보입니다.
 
      <ul>
-<li>효과적인 데이터 관리 및 저장,
-<li>배열기반의 연산을 수행하기 위한 다양한 연산자의 제공 (행렬 연산에 더욱 특화되어 있음),
-<li>데이터 분석을 수행함에 있어, 중간과정의 단계를 모두 확인할 수 있는 기능들을 일관성있게 잘 조합해 놓은 통합적 분석도구를 제공,
-<li>데이터 분석으로부터 얻은 결과 및 시각화된 자료들을 컴퓨터에서 확인하거나 하드카피로의 출력기능들,
-<li>조건문, 반복문, 사용자 정의 함수, 그리고 표준 입출력을 관리할 수 있는 기능들을 가지고 있는 프로그래밍 언어의 제공를 제공합니다. 
-특히 이 언어는 'S' 이라고도 불리우며 사용하기에 단순하면서도 효율적인 이용이 가능하도록 매우 잘 개발되어 있습니다. 
-(실제로 R 시스템의 대다수의 함수들은 S언어로 작성되었습니다). 
+<li>효과적인 데이터의 관리 및 저장,
+<li>배열(array) 기반의 연산을 수행하기 위한 다양한 연산자의 제공 (행렬 연산에 더욱 특화되어 있음),
+<li>데이터 분석을 수행함에 있어, 중간과정의 단계를 모두 확인할 수 있는 기능들을 일관성있게 조합해 놓은 통합 분석도구 제공,
+<li>데이터 분석으로부터 얻은 결과 및 시각화된 자료들을 직접 컴퓨터에서 출력하거나 하드카피로 출력,
+<li>조건문, 반복문, 사용자 정의 함수, 그리고 표준 입출력과 관련된 기능들 다룰 수 있는 이 언어는 'S' 이라고 불리우며 사용이 단순하면서도 효율적이도록 개발되었습니다. 
+(실제로 R 시스템의 대다수의 함수들은 S언어로 작성 되었습니다). 
 </ul>
 
 <!-- The term ``environment'' is intended to characterize it as a fully -->
@@ -512,11 +511,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- large collection of @emph{packages}.  However, most programs written in -->
 <!-- @R{} are essentially ephemeral, written for a single piece of data -->
 <!-- analysis. -->
-   <p>&ldquo;environment&rdquo;(환경 또는 개발환경)라는 용어는 다른 분석소프트웨어들의 경우처럼 사용방법에 제약이 많아 유용성이 없는 도구들을 추가적으로 계속 제공받아야 하는 것과는 달리 완전하게 잘 계획되어 있는 일관성있는 시스템 자체를 지칭하고자 하는 목적으로 사용하고 있습니다.
+   <p>&ldquo;environment&rdquo;(개발환경)라는 용어는 특정한 기능만을 가진 제한적인 용도의 도구들을 끊임없이 더해나가야 하는 대부분의 자료 분석 소트웨어와는 다르게, 하나의 계획적이고 일관성있는 시스템을 지칭하고자 사용되었습니다.
 
-   <p>R은 시스템과 분석자가 서로 대화를 하는 방식을 통해서 데이터 분석를 수행하고, 또한 이러한 분석에 필요한 새로운 방법들을 개발하는데 사용하는 수단이라고 생각할 수 있습니다. 
-이렇게 새로이 개발되어진 방법들은 <em>package</em>(패키지)로서 개인 사용자가 배포할 수도 있으며, 다른 사용자가 개발한 패키지들을 이용하여 보다 더 빠르게 분석에 필요한 R시스템을 확장시켜 나갈 수도 있습니다. 
-그러나, R로 작성된 대부분의 프로그램들은 사용자에게 주어졌던 특수한 한 가지 데이터 분석을 위해서 개발된 것이 대다수이기 때문에, 패키지를 사용함에 있어서 이의 범용성에 제한이 있다는 것을 잊지 마셔야 합니다.
+   <p>R은 시스템과 분석자가 서로 대화하는 과정을 통해 데이터를 분석하고, 또한 이러한 분석에 필요한 새로운 방법들을 개발하는데 사용하는 수단이라고 볼 수 있습니다. R은 빠르게 발전해왔고, 많은 수의 <em>package</em>(패키지)의 모음으로 그 기능을 확장시켜 왔습니다. 하지만, R로 작성된 대부분의 프로그램들은 사용자에게 주어진 하나의 구체적인 데이터를 분석하기 위해서 작성되는 것이므로 대부분의 경우 다시 사용한 것은 아닙니다.
 
 <div class="node">
 <a name="Related-software-and-documentation"></a>
@@ -549,7 +546,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 <!-- typically be used with @R{}, keeping the differences between the @Sl{} -->
 <!-- implementations in mind.  @xref{What documentation exists for R?, , , -->
 <!-- R-FAQ, The R statistical system FAQ}. -->
-<p>독자는 R을 Bell 연구실에서 근무하던 Rick Becker, John Chambers 그리고 Allan Wilks가 <span class="sc">S-Plus</span> 시스템의 구축을 위해 개발한 S 라는 언어를 이용한 일종의 다른 구현물이라고 생각하셔도 괜찮습니다.
+<p>여러분은 R을 Bell 연구소에서 근무하던 Rick Becker, John Chambers 그리고 Allan Wilks가 <span class="sc">S-Plus</span> 시스템의 구축을 위해 개발한 S 라는 언어가 바탕이 된 다른 형태의 결과물이라고 생각하셔도 좋을 것입니다.
 
    <p>이 S 라는 언어의 진화과정은 John Chambers와 그의 동료들이 쓴 네 권의 책에 의해서 잘 정리되어 있습니다. 
 만약, 독자에게 R의 가장 기본적인 참고자료를 권장하고자 한다면 Richard A. Becker, John M. Chambers 그리고 Allan R. Wilks가 저술한 <em>The New S Language: A Programming Environment for Data Analysis and Graphics</em>라는 책을 들 수 있습니다. 
@@ -604,7 +601,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 
    <p>가장 고전적인 통계방법부터 최근에 개발된 대부분의 통계적 방법들은 R에서 사용될 수 있으나, 사용자의 목적에 맞는 필요한 패키지를 찾기 위해서는 사용자 스스로의 노력이 요구되어 집니다.
 
-   <p>또한, 독자들은 S (이 문서에서는 R)은 다른 주요 통계시스템들과는 분석의 결과물을 보여주는 방식이 다르다는 점을 알고 계셔야 합니다. 
+   <p>또한, 독자들은 S (이 문서에서는 R)은 다른 주요 통계시스템들과는 분석의 결과물을 보여주는 방식이 다르다는 점을 알고계셔야 합니다. 
 예를들면, S에서는 통계적 분석을 일련의 절차를 통하여 수행하게 되는데, 각 과정마다 얻어진 결과물을 객체라고 하는 매체에 저장을 해 둡니다. 
 따라서, SAS 또는 SPSS와 같은 분석도구가 회귀분석 또는 판별분석을 수행하여 한 번에 방대한 양의 결과를 제공하는 반면, R은 최소한의 결과만을 제공하므로 더 자세한 중간분석결과 및 수행과정을 확인하고 싶다면 이들을 확인해 볼 수 있는 추가적인 함수를 이용해야 합니다.
 
@@ -642,7 +639,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 이 문서는 사용자가 UNIX를 다룬다고 가정한 상태에서 작성되었으므로, 만약, 윈도우즈 혹은 Mac 에서 R을 사용하시는 분들은 본문에서 설명하는 사용법이 다소 다를 수 있다는 점을 알아주셨으면 합니다.
 
    <p>이러한 환경에서 최적화된 성능의 R을 사용하기 위해서는 다소 기술적인 설정이 요구되지만, 본 문서에서는 이러한 내용들을 다루지 않습니다. 
-만약, 이러한 조정에 어려움이 있는 사용자는 주변 전문가에게 도움을 요청하시길 바랍니다.
+만약, 이러한 조정이 어려운 분이라면 주변 전문가에게 도움을 요청하시길 바랍니다.
 
 <div class="node">
 <a name="Using-R-interactively"></a>
@@ -654,7 +651,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction-and-preliminaries">Introd
 </div>
 
 <!-- @section Using R interactively -->
-<h3 class="section">1.5 대화식으로 사용하는 R</h3>
+<h3 class="section">1.5 대화형으로 사용하는 R</h3>
 
 <!-- When you use the @R{} program it issues a prompt when it expects input -->
 <!-- commands.  The default prompt is @samp{@code{>}}, which on UNIX might be -->
