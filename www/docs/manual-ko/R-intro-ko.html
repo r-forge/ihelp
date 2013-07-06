@@ -1,8 +1,8 @@
 <html lang="ko">
 <head>
-<title>An Introduction to R in Korean (2013.07.04, ver.0.93.1.)</title>
+<title>An Introduction to R (한국어 번역 - 2013.07.04, ver.0.93.2.)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="An Introduction to R in Korean (2013.07.04, ver.0.93.1.)">
+<meta name="description" content="An Introduction to R (한국어 번역 - 2013.07.04, ver.0.93.2.)">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
@@ -69,7 +69,7 @@ p {
 --></style>
 </head>
 <body>
-<h1 class="settitle">An Introduction to R in Korean (2013.07.04, ver.0.93.1.)</h1>
+<h1 class="settitle">An Introduction to R (한국어 번역 - 2013.07.04, ver.0.93.2.)</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -8831,7 +8831,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 <!-- that variable is unset, the default -->
 <!-- @file{@var{R_HOME}/etc/Rprofile.site} is used if this exists. -->
 
-     <p>그 다음, command line옵션 (&ndash;no-site-file)이 주어지지 않았다며, R이 site-wide startup profile을 탐색합니다. 이 파일의 이름은 R_PROFILE 환경 변수의 벨류(value)에서 얻을 수 있습니다. 만약 그 변수가 정해지지 않았다면, default R_HOME/etc/Rprofile.site가 존재한다면 사용될 수 있습니다.
+     <p>명령어 옵션 <samp><span class="option">--no-site-file</span></samp>이 주어지지 않았다면, R은 사이트-와이드 스타트업 프로파일(site-wide startup profile)을 찾습니다. 
+이 파일의 이름은 <samp><span class="env">R_PROFILE</span></samp> 환경 변수의 값으로부터 얻을 수 있습니다. 
+만약 이 변수가 지정되지 않았다면 기본적으로 <samp><var>R_HOME</var><span class="file">/etc/Rprofile.site</span></samp>이 이용됩니다 (만약 존재한다면).
 
      <li><!-- Then, unless @option{-no-init-file} was given, @R{} searches for a user -->
 <!-- profile and sources it.  The name of this file is taken from the -->
@@ -8839,61 +8841,64 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 <!-- @file{.Rprofile} in the current directory or in the user's home -->
 <!-- directory (in that order) is searched for. -->
 
-     <p>그 다음 &ndash;no-init-file이 없다면, R은 user profile을 탐색 및 활용합니다. 이 파일의 이름은 R_PROFILE_USER 환경변수에서 얻을 수 있습니다. 그리고, 지정되지 않았다면, 현 디렉토리나 유저의 홈 디렉토리(해당 목록)의 .Rprofile 파일을 탐색할 수 있습니다.
+     <p>만약 <samp><span class="option">--no-init-file</span></samp>이 주어지지 않았다면 R은 사용자 프로파일(user profile)을 탐색 후 이를 읽어들이게 됩니다. 
+이 파일의 이름은 환경변수 <samp><span class="env">R_PROFILE_USER</span></samp>로 부터 얻을 수 있습니다. 
+이것이 설정되지 않았다면, 현재 디렉토리에 있거나 사용자의 홈 디렉토리에 있는 <samp><span class="file">.Rprofile</span></samp> 파일을 찾을 것입니다.
 
      <li><!-- It also loads a saved workspace from file @file{.RData} in the current -->
 <!-- directory if there is one (unless @option{-no-restore} or -->
 <!-- @option{-no-restore-data} was specified). -->
-
-     <p>현 디렉토리 상의 .RData file이 존재한다면, (&ndash;norestore 혹은 &ndash;no-restore-data가 구분되어 있지 않은 경우) 해당 디렉토리에 있는 .RData 파일로부터 저장된 작업공간(workspace)을 로딩할 수 있습니다.
+또한, (<samp><span class="option">--no-restore</span></samp> 또는 <samp><span class="option">--no-restore-data</span></samp> 옵션이 지정되지 않았다면) 현재의 디렉토리에 <samp><span class="file">.RData</span></samp> 파일로부터 저장된 작업공간을 불러올 수 있습니다.
 
      <li><!-- Finally, if a function @code{.First()} exists, it is executed.  This -->
 <!-- function (as well as @code{.Last()} which is executed at the end of the -->
 <!-- @R{} session) can be defined in the appropriate startup profiles, or -->
 <!-- reside in @file{.RData}. -->
+마지막으로 <code>.First()</code> 함수가 존재한다면, 이것은 실행될 것입니다. 
+(R 세션의 끝부분에서 실행된 <code>.Last()</code>함수와 같이) 이 함수는 적절한 스타트업 프로파일들 내에 정의될 수 있습니다. 
+또는 <samp><span class="file">.RData</span></samp>에 위치할 수도 있습니다. 
 </ul>
-
-   <p>마지막으로, .First()함수가 존재한다면, 실행됩니다. 이 함수는 (R 설명 마지막 부분에서 실행되었던 .Last()를 포함) 적절한 startup profile 정의(define)될 수 있고 혹은 .RData에 상주할 수가 있습니다.
 
 <!-- In addition, there are options for controlling the memory available to -->
 <!-- the @R{} process (see the on-line help for topic @samp{Memory} for more -->
 <!-- information).  Users will not normally need to use these unless they -->
 <!-- are trying to limit the amount of memory used by @R{}. -->
-   <p>추가적으로, R 처리과정에서 이용 가능한 메모리 제어를 위한 옵션이 있습니다(추가 정보를 원하신다면, 'Memory' 토픽 부분의 온라인 도움말을 참고하시기 바랍니다). R에 의해 사용되는 메모리 양을 제한하려 하지 않는 이상 이 옵션들을 사용해야 할 필요는 굳이 없습니다.
+   <p>추가적으로 R 처리과정에 이용되는 메모리를 조절하는 옵션들이 있습니다. 
+(더 많은 정보를 원하신다면 &lsquo;<samp><span class="samp">Memory</span></samp>&rsquo;와 관련된 온라인 도움말을 살펴보시길 바랍니다). 
+R에 의하여 사용되는 메모리를 크기를 조절하고자 하지 않는다면 사용자는 이들을 사용해야 할 필요는 없습니다.
 
-   <p>R accepts the following command-line options.
-
-   <p>R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
+<!-- @R{} accepts the following command-line options. -->
+   <p>R은 다음과 같은 명령어 옵션들을 제공합니다.
 
      <dl>
 <dt><samp><span class="option">--help</span></samp><dt><samp><span class="option">-h</span></samp><dd><!-- Print short help message to standard output and exit successfully. -->
-
-     <p>표준결과물에 대한 짧은 도움말 메시지를 출력하고 빠져나옴.
+표준 출력(standard output)으로 짧은 도움말 메시지를 보여주고 종료합니다.
 
      <br><dt><samp><span class="option">--version</span></samp><dd><!-- Print version information to standard output and exit successfully. -->
-
-     <p>표준결과물에 대한 버전 정보를 출력하고 빠져나옴.
+표준 출력(standard output)으로 버전정보를 표시해주고 종료합니다.
 
      <br><dt><samp><span class="option">--encoding=</span><var>enc</var></samp><dd><!-- Specify the encoding to be assumed for input from the console or -->
 <!-- @code{stdin}.  This needs to be an encoding known to @code{iconv}: see -->
 <!-- its help page.  (@code{-encoding @var{enc}} is also accepted.) -->
-
-     <p>콘솔 혹은 stdin의 input을 위해서 인코딩(encoding)을 구체화해야 합니다. 이는 iconv라고 불리는 인코딩이 필요합니다. 도움말 페이지를 참조하세요. (&ndash;encoding enc도 사용될 수 있습니다.)
+<code>stdin</code> 또는 콘솔로부터의 입력에 사용될 인코딩(encoding)을 지정합니다. 
+이것은 <code>iconv</code>에서 사용될 수 있는 알려진 인코딩이어야 합니다. 
+도움말 페이지를 참고하시길 바랍니다. 
+(<code>--encoding </code><var>enc</var>) 또한 사용될 수 있습니다.
 
      <br><dt><samp><span class="option">RHOME</span></samp><dd><!-- Print the path to the @R{} ``home directory'' to standard output and -->
 <!-- exit successfully.  Apart from the front-end shell script and the man -->
 <!-- page, @R{} installation puts everything (executables, packages, etc.) -->
 <!-- into this directory. -->
-
-     <p>R home directory를 표준출력과 exit을 위해서 R "home directory"에 대한 경로 출력을 합니다. front-end shell 스크립트 와 매인 페이지를 제외하고, R installation은 모든 것을 이 디렉토리 안에 포함시킵니다.
+표준출력에 R &ldquo;home directory&rdquo; (홈디렉토리)의 경로를 보여주고 종료합니다. 
+사용자가 직접 작성하는 쉘 스크립트(shell script)와 도움말 페이지(man page)를 제외하고 실행이 가능한 파일들, 패키지 등 모두가 R이 설치되어 집니다.
 
      <br><dt><samp><span class="option">--save</span></samp><dt><samp><span class="option">--no-save</span></samp><dd><!-- Control whether data sets should be saved or not at the end of the @R{} -->
 <!-- session.  If neither is given in an interactive session, the user is -->
 <!-- asked for the desired behavior when ending the session with @kbd{q()}; -->
 <!-- in non-interactive use one of these must be specified or implied by some -->
 <!-- other option (see below). -->
-
-     <p>데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
+R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. 
+<!-- 데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다. -->
 
      <br><dt><samp><span class="option">--no-environ</span></samp><dd><!-- Do not read any user file to set environment variables. -->
 
@@ -9230,7 +9235,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Invoking-R">Invoking R</a>
 
 <!-- Environment variables can be supplied as @samp{@var{name}=@var{value}} -->
 <!-- pairs on the command line. -->
-   <p>환경변수들은 command line에서 &lsquo;<samp><var>name</var><span class="samp">=</span><var>value</var></samp>&rsquo; 페어로서 제공될 수 있습니다.
+   <p>환경변수들은 명령어 command line에서 &lsquo;<samp><var>name</var><span class="samp">=</span><var>value</var></samp>&rsquo; 페어로서 제공될 수 있습니다.
 
 <!-- If there is an argument ending @file{.RData} (in any case) it is -->
 <!-- interpreted as the path to the workspace to be restored: it implies -->

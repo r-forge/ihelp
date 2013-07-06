@@ -14,7 +14,7 @@
 
 @c %**start of header
 @setfilename R-intro.info
-@settitle An Introduction to R in Korean (2013.07.04, ver.0.93.1.)
+@settitle An Introduction to R (한국어 번역 - 2013.07.04, ver.0.93.2.)
 @setchapternewpage on
 @c %**end of header
 
@@ -9251,7 +9251,9 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c that variable is unset, the default
 @c @file{@var{R_HOME}/etc/Rprofile.site} is used if this exists.
 
-그 다음, command line옵션 (--no-site-file)이 주어지지 않았다며, R이 site-wide startup profile을 탐색합니다. 이 파일의 이름은 R_PROFILE 환경 변수의 벨류(value)에서 얻을 수 있습니다. 만약 그 변수가 정해지지 않았다면, default R_HOME/etc/Rprofile.site가 존재한다면 사용될 수 있습니다.
+명령어 옵션 @option{--no-site-file}이 주어지지 않았다면, @R{}은 사이트-와이드 스타트업 프로파일(site-wide startup profile)을 찾습니다. 
+이 파일의 이름은 @env{R_PROFILE} 환경 변수의 값으로부터 얻을 수 있습니다. 
+만약 이 변수가 지정되지 않았다면 기본적으로 @file{@var{R_HOME}/etc/Rprofile.site}이 이용됩니다 (만약 존재한다면).
 
 @item
 @c Then, unless @option{--no-init-file} was given, @R{} searches for a user
@@ -9260,61 +9262,64 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c @file{.Rprofile} in the current directory or in the user's home
 @c directory (in that order) is searched for.
 
-그 다음 --no-init-file이 없다면, R은 user profile을 탐색 및 활용합니다. 이 파일의 이름은 R_PROFILE_USER 환경변수에서 얻을 수 있습니다. 그리고, 지정되지 않았다면, 현 디렉토리나 유저의 홈 디렉토리(해당 목록)의 .Rprofile 파일을 탐색할 수 있습니다.
+만약 @option{--no-init-file}이 주어지지 않았다면 @R{}은 사용자 프로파일(user profile)을 탐색 후 이를 읽어들이게 됩니다. 
+이 파일의 이름은 환경변수 @env{R_PROFILE_USER}로 부터 얻을 수 있습니다.
+이것이 설정되지 않았다면, 현재 디렉토리에 있거나 사용자의 홈 디렉토리에 있는 @file{.Rprofile} 파일을 찾을 것입니다. 
 
 @item
 @c It also loads a saved workspace from file @file{.RData} in the current
 @c directory if there is one (unless @option{--no-restore} or
 @c @option{--no-restore-data} was specified).
-
-현 디렉토리 상의 .RData file이 존재한다면, (--norestore 혹은 --no-restore-data가 구분되어 있지 않은 경우) 해당 디렉토리에 있는 .RData 파일로부터 저장된 작업공간(workspace)을 로딩할 수 있습니다.
+또한, (@option{--no-restore} 또는 @option{--no-restore-data} 옵션이 지정되지 않았다면) 현재의 디렉토리에 @file{.RData} 파일로부터 저장된 작업공간을 불러올 수 있습니다. 
 
 @item
 @c Finally, if a function @code{.First()} exists, it is executed.  This
 @c function (as well as @code{.Last()} which is executed at the end of the
 @c @R{} session) can be defined in the appropriate startup profiles, or
 @c reside in @file{.RData}.
+마지막으로 @code{.First()} 함수가 존재한다면, 이것은 실행될 것입니다.
+(@R{} 세션의 끝부분에서 실행된 @code{.Last()}함수와 같이) 이 함수는 적절한 스타트업 프로파일들 내에 정의될 수 있습니다. 
+또는 @file{.RData}에 위치할 수도 있습니다. 
 @end itemize
-
-마지막으로, .First()함수가 존재한다면, 실행됩니다. 이 함수는 (R 설명 마지막 부분에서 실행되었던 .Last()를 포함) 적절한 startup profile 정의(define)될 수 있고 혹은 .RData에 상주할 수가 있습니다.
 
 @c In addition, there are options for controlling the memory available to
 @c the @R{} process (see the on-line help for topic @samp{Memory} for more
 @c information).  Users will not normally need to use these unless they
 @c are trying to limit the amount of memory used by @R{}.
 
-추가적으로, R 처리과정에서 이용 가능한 메모리 제어를 위한 옵션이 있습니다(추가 정보를 원하신다면, 'Memory' 토픽 부분의 온라인 도움말을 참고하시기 바랍니다). R에 의해 사용되는 메모리 양을 제한하려 하지 않는 이상 이 옵션들을 사용해야 할 필요는 굳이 없습니다.
+추가적으로 @R{} 처리과정에 이용되는 메모리를 조절하는 옵션들이 있습니다. 
+(더 많은 정보를 원하신다면 @samp{Memory}와 관련된 온라인 도움말을 살펴보시길 바랍니다).
+@R{}에 의하여 사용되는 메모리를 크기를 조절하고자 하지 않는다면 사용자는 이들을 사용해야 할 필요는 없습니다. 
 
-@R{} accepts the following command-line options.
-
-R에서 아래의 command-line 옵션들을 사용할 수 있습니다.
+@c @R{} accepts the following command-line options.
+@R{}은 다음과 같은 명령어 옵션들을 제공합니다. 
 
 @table @option
 @item --help
 @itemx -h
 @c Print short help message to standard output and exit successfully.
-
-표준결과물에 대한 짧은 도움말 메시지를 출력하고 빠져나옴.
+표준 출력(standard output)으로 짧은 도움말 메시지를 보여주고 종료합니다. 
 
 @item --version
 @c Print version information to standard output and exit successfully.
-
-표준결과물에 대한 버전 정보를 출력하고 빠져나옴.
+표준 출력(standard output)으로 버전정보를 표시해주고 종료합니다.
 
 @item --encoding=@var{enc}
 @c Specify the encoding to be assumed for input from the console or
 @c @code{stdin}.  This needs to be an encoding known to @code{iconv}: see
 @c its help page.  (@code{--encoding @var{enc}} is also accepted.)
-
-콘솔 혹은 stdin의 input을 위해서 인코딩(encoding)을 구체화해야 합니다. 이는 iconv라고 불리는 인코딩이 필요합니다. 도움말 페이지를 참조하세요. (--encoding enc도 사용될 수 있습니다.)
+@code{stdin} 또는 콘솔로부터의 입력에 사용될 인코딩(encoding)을 지정합니다.
+이것은 @code{iconv}에서 사용될 수 있는 알려진 인코딩이어야 합니다. 
+도움말 페이지를 참고하시길 바랍니다.
+(@code{--encoding @var{enc}}) 또한 사용될 수 있습니다. 
 
 @item RHOME
 @c Print the path to the @R{} ``home directory'' to standard output and
 @c exit successfully.  Apart from the front-end shell script and the man
 @c page, @R{} installation puts everything (executables, packages, etc.)
 @c into this directory.
-
-R home directory를 표준출력과 exit을 위해서 R "home directory"에 대한 경로 출력을 합니다. front-end shell 스크립트 와 매인 페이지를 제외하고, R installation은 모든 것을 이 디렉토리 안에 포함시킵니다.
+표준출력에 @R{} ``home directory'' (홈디렉토리)의 경로를 보여주고 종료합니다.
+사용자가 직접 작성하는 쉘 스크립트(shell script)와 도움말 페이지(man page)를 제외하고 실행이 가능한 파일들, 패키지 등 모두가 @R{}이 설치되어 집니다. 
 
 @item --save
 @itemx --no-save
@@ -9323,8 +9328,8 @@ R home directory를 표준출력과 exit을 위해서 R "home directory"에 대�
 @c asked for the desired behavior when ending the session with @kbd{q()};
 @c in non-interactive use one of these must be specified or implied by some
 @c other option (see below).
-
-데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
+@R{}세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. 
+@c 데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
 
 @item --no-environ
 @c Do not read any user file to set environment variables.
@@ -9724,7 +9729,7 @@ Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home director
 @c Environment variables can be supplied as @samp{@var{name}=@var{value}}
 @c pairs on the command line.
 
-환경변수들은 command line에서 @samp{@var{name}=@var{value}} 페어로서 제공될 수 있습니다.
+환경변수들은 명령어 command line에서 @samp{@var{name}=@var{value}} 페어로서 제공될 수 있습니다.
 
 @c If there is an argument ending @file{.RData} (in any case) it is
 @c interpreted as the path to the workspace to be restored: it implies
