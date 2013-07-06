@@ -27,426 +27,54 @@
 
 <aside>
 	
-<table>
-	<th> 바로가기  </th>
-	<tr> <td> <a href="shared.html"> GNU R 스터디 가이드 </a> </td> </tr>
-	<tr> <td> <a href="lang_doc.html"> R 매뉴얼 (한국어판) </a> </td> </tr>
-	<tr> <td> <a href="links.html"> 유용한 링크정리 </a> </td> </tr>
-<!--	<tr> <td> <a href="shared_codesniper.html"> R 코드 스나이퍼 </a> </td> </tr> -->
-	<tr> <td> <a href="mailing_guide.html"> 메일링 사용가이드 </a> </td> </tr>
-</table>
-
 </aside>
 
 <article>
 	
 <p> 
-	Modified on 2013-JUN-20 <br> by Chel Hee Lee
+	Modified on 2013-JUL-05 <br> by Chel Hee Lee
 </p>
 
 <!-- 우리의 기본철학은 한 사람의 5분에서 10분작업이 보다 많은 이들을 이롭게 할 수 있다 입니다.  지성공동체-->
 
 <p> 
 <strong> 
-본 페이지에 있는 내용을 작성하기 위한 가장 큰 자원은 개인의 시간입니다. 
-따라서, 문서가 어떤 특정기간을 두고 완성되지 않으며, 오로지 업데이트 된 문서만이 공개됨을 이해해 주시길 부탁드립니다.
+본 카테고리는 R과 관련된 다양한 분야의 튜토리얼 중심의 한국어로 작성된 GNU Free Documentation License 문서들입니다. 
+이곳에 있는 대부분의 문서들은 어떤 특정기간을 두고 완성되지 않습니다. 
+그 이유는 이러한 내용을 작성하기 위한 가장 큰 자원은 개인의 할애된 시간이기 때문입니다.
+따라서, 문서의 변경은 작성자 개개인에 따라 수시로 변경되며 오로지 업데이트된 미완의 문서들만이 공개되는 점을 이해 부탁드립니다.
 </strong>
 </p>
 
-<h3> GNU R 스터디 가이드 </h3>	
 <p>
-R BASE 시스템의 표준 및 추천패키지들에 대해서 R Documentation의 내용을 바탕으로 R 한국어 사용자를 위한 내용을 함께 공유하는 곳입니다.
-R을 활용하는데 있어서 알면 도움이 되는 개념들과 전문용어들에 대한 해석을 돕고자 노력하는 중입니다.
-이곳에 수록된 모든 내용은 작성자의 독립적인 창작물이라는 점을 반드시 알아주셨으면 합니다.
+
+<ul>
+<li> 
+문서제공을 하고 싶으신 분들께서는 꼭 아래의 문구를 문서의 최상단에 위치 시켜주시길 부탁드립니다.
+
+<pre>
+Modified on YYYY-MMM-DD 
+by First Name, Last Name < email@address >
+</pre>
+
+</li>
+<li> HTML을 생성해주는 Sweave 또는 Knitr 로 작성한 문서를 선호합니다. </li>
+<li> PDF 게재를 희망하시는 분은 PDF 또는 .tex 문서를 보내주시길 바랍니다 </li>
+</ul>
 </p>
 
-<p> 
-이 문서의 내용이 도움이 된다고 생각되신다면 문서가 더욱 발전될 수 있도록 수정과 교정, 작성참여, 그리고 발전에 대한 제안등을 <a href="mailto:ihelp-urquestion@lists.r-forge.r-project.org"> ihelp-urquestion@lists.r-forge.r-project.org </a> 으로 보내주시길 부탁드립니다.  
-<!-- 또한, 본 메일링의 모든 스레드들은 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-urquestion/" target="_blank"> ihelp-urquestion 메일링 알카이브</a>를 통해 확인하실 수 있습니다.
-메일링 리스트의 사용법은 <a href="lang_howto.html" target="_blank"> 참여하기 </a> 페이지를 참고하시길 바랍니다. -->
-</p>
-
-
+아래의 문서들을 확인하기 위해서는 링크를 눌러주세요 
 <table>
-	<tr> <th colspan="5"> GNU R 스터디 가이드 </th> </tr>
-	<tr> <td colspan="5" align="center"> Revision: # 750 </td> </tr>
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td width="250"> 챕터 </td> 
-		<td width="150"> devel </td> 
-		<td width="150"> unstable </td> 
-		<td width="150"> freezing </td>
-		<td width="150"> stable </td> 
-	</tr>
-
-	<tr> 
-		<td>  </td> 
-		<td> today </td> 
-		<td> 2013-MAY-31 </td>
-		<td> tba </td> 
-		<td> unknown </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 파트 1  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 시작하면서   </td> 
-		<td> </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch01.pdf" target="_blank"> PDF </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 벡터/행렬/배열 조작  </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch02.pdf" target="_blank"> PDF </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 기초프로그래밍    </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch03.pdf" target="_blank"> PDF </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 데이터조작 실무 </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch04.pdf" target="_blank"> PDF </a>]  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 시간과 문자 조작    </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch05.pdf" target="_blank"> PDF </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 파일 입출력(여기에 SQL 사용법을 넣으면 좋을 거 같음) </td> 
-		<td> [<a href="#" target="_blank"> .</a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 환경설정과 유틸리티  </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/part1-ch07.pdf" target="_blank"> PDF </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 파트 2 </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorialpa2.html#x12-144000II" target="_blank"> HTML </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 8. 그래픽스  </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorialch8.html#x13-1450008" target="_blank"> HTML </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 파트 3  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 9. 확률/수치해석   </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorialch9.html#x15-1580009" target="_blank"> HTML </a>] </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 파트 4  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 10. 기초통계량 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 11. 통계모형의 선택과 적용  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 파트 5 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 12. Sweave 이해하기 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 13. Knitr 이용하기 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 파트 6 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> 14. 패키지 개발 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	
-	<tr> 
-		<td> 15. 데이터 마이닝 </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-	<tr> 
-		<td> 전체문서 </td> 
-		<td> [<a href="http://korea.gnu.org/gnustats/tutorial/part1/tutorial.pdf" target="_blank"> PDF </a>]  </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
+<th> </th>
+<tr> <td width="200"> <a href="shared_RGuide.html"> GNU R 스터디 가이드 </a> </td> <td width="500"> 사용법에 빠르게 익숙해지고 싶은 초보자를 위한 문서입니다. </td></tr>
+<tr> <td> <a href="links.html"> 유용한 링크정리 </a> </td> <td> 다양한 분야에 유용한 정보를 담고 있는 링크를 정리합니다. </td> </tr>
+<tr> <td> <a href="lang_doc.html"> R 매뉴얼 (한국어판) </a> </td> <td> </td></tr>
+<tr> <td> <a href="shared_matlab.html"> R과 Matlab </a> </td> <td> MATLAB 레퍼런스 정리 중. </td> </tr>
+<!--	<tr> <td> <a href="shared_codesniper.html"> R 코드 스나이퍼 </a> </td> </tr> -->
+<tr> <td> <a href="mailing_guide.html"> 메일링 사용가이드 </a> </td> <td> 질문/참여/제안/기타 각종 문의사항을 위한 메일링입니다 </td></tr>
 </table>
 
 
-
-
-<!-- SECTION -->
-<!--
-<h3> R Documentation (한국어) </h3>
-
-<p>
-한국어로 번역된 R Documentation (영문버전  <a href="http://cran.r-project.org/manuals.html" target="_blank"> R Manuals </a> )은 아래와 같습니다.  
-진행중인 한국어 문서는 <a href="lang_doc.html" target="_blank"> R 한국어 번역 문서작업 </a> 페이지를 참고하시길 부탁드립니다.
-</p> 
-
-
-<table>
-
-	<tr> 
-		<th colspan="5"> 전체문서 </th 
-		<td> R Manuals (한국어 번역본) </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td width="250"> 문서 </td> 
-		<td width="150"> devel </td> 
-		<td width="150"> unstable </td> 
-		<td width="150"> freezing </td>
-		<td width="150"> stable </td> 
-	</tr>
-
-	<tr> 
-		<td>  </td> 
-		<td> today </td> 
-		<td> 2013-MAY-21 </td>
-		<td> tba </td> 
-		<td> unknown </td> 
-	</tr>
-
-	<tr> 
-		<td height="10"> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td width="200"> Introduction to R </td> 
-		<td> [<a href="docs/manual-ko/R-intro-ko.html" target="_blank"> HTML </a>]  </td> 
-		<td> [<a href="docs/manual-ko/R-intro-ko.html" target="_blank"> HTML </a>] (2013-APR-15) </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> R FAQ </td> 
-		<td> [<a href="docs/manual-ko/R-FAQ-ko.html" target="_blank"> HTML </a>]  </td> 
-		<td> [<a href="docs/manual-ko/R-FAQ-ko.html" target="_blank"> HTML </a>]  (2013-MAY-21) </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> R Data Import/Export </td> 
-		<td> [<a href="docs/manual-ko/R-data-ko-old.html" target="_blank"> HTML </a>]  </td> 
-		<td> [<a href="docs/manual-ko/R-data-ko.html" target="_blank"> HTML </a>] (2013-MAY-11) </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> R Language Definition </td> 
-		<td> <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> 참여신청 </a> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> R Installation and Administration </td> 
-		<td> <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> 참여신청 </a> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-	<tr> 
-		<td> Writing R Extensions </td> 
-		<td> <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> 참여신청 </a> </td> 
-		<td> </td> 
-		<td> </td> 
-		<td> </td> 
-	</tr>
-
-</table>
--->
-
-<!--
-<p>
-이러한 번역작업에 참여를 희망하신다면 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 메일링 리스트</a>를 활용해 보시길 부탁드립니다. -->
-<!-- 메일링의 사용법은 <a href="lang_howto.html"> 참여하는 방법 </a>에 대한 페이지를 살펴보시길 부탁드립니다. -->
-<!-- </p> -->
 
 </article>
 <footer>
