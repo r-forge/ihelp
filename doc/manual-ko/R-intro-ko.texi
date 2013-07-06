@@ -1,6 +1,6 @@
 @c 
-@c The last modification is made by Lijin Joo on 2013-JUL-05 (Friday)
-@c (1.Begining ~ 1.8)
+@c The last modification is made by Chel Hee Lee on 2013-JUL-06 (Saturday)
+@c (1.Begining ~ 1.8 -- 2013-JUL-05 by IJIN)
 @c
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
@@ -9199,7 +9199,7 @@ UNIX 또는 Windows 환경에서 명령어를 이용하여 작업을 할때, 명
 @c or, via the @code{R CMD} interface, as a wrapper to various @R{} tools
 @c (e.g., for processing files in @R{} documentation format or manipulating
 @c add-on packages) which are not intended to be called ``directly''.
-또한, @R{} 문서형식 또는 애드온(add-on)패키지들을 다루는데 필요한 다양한 @R{}도구들을 사용하도록 해주는 @code{R CMD}를 이용하여 직접적으로 호출되지 하지 않고도 사용할 수 있습니다. 
+또한, @R{} 문서형식 또는 애드온(add-on)패키지들을 다루는데 필요한 다양한 @R{}도구들을 사용하도록 해주는 @code{R CMD}를 이용하여 직접적으로 호출되지 않고도 사용할 수 있습니다. 
 
 @c At the Windows command-line, @command{Rterm.exe} is preferred to
 @c @command{R}.
@@ -9209,16 +9209,15 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c unset or it points to a valid place to create temporary files and
 @c directories.
 
-환경 변수 TMPDIR이 결정되지 않거나, 일시적 파일과 디렉토리 생성을 위한 공간을 해당
-변수가 지정할 수 있도록 합니다.
+환경 변수 @env{TMPDIR}이 지정되지 않았거나, 임시 파일과 디렉토리 생성을 하는데 사용되는 공간을 올바르게 지정을 했는지에 대해서 확인을 해야합니다.
 
 @c Most options control what happens at the beginning and at the end of an
 @c @R{} session.  The startup mechanism is as follows (see also the on-line
 @c help for topic @samp{Startup} for more information, and the section below
 @c for some Windows-specific details).
 
-대부분의 옵션들은 R의 시작과 끝을 제어합니다. 시작 메커니즘은 아래와 같이 설명이 되어 있습니다(추가 정보를 원하시면, 'startup'이라는 주제에 대한 온라인 도움말(help)을 활용해 보십시오. 윈도우 환경 관련 구체적인 설명 또한 아래 부분에 기술되어 있습니다).
-
+대부분의 옵션들은 @R{} 세션의 시작과 끝에서 무엇이 일어나는가를 제어하는데 사용됩니다. 
+이러한 스타트업 메카니즘 (startup mechanism)은 다음과 같습니다 (이에 대해서 더 많은 정보를 @samp{Startup}이라는 주제에 대한 온라인 도움말을 참고하시길 바랍니다.  또한, 일부 Windows와 관련된 내용들은 아래에 설명이 되어있습니다).
 
 @itemize @bullet
 @item
@@ -9236,7 +9235,14 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c default print command) and @env{R_LIBS} (specifies the list of @R{}
 @c library trees searched for add-on packages).
 
---no-environ이 주어지지 않는다면, R은 유저 환경변수설정을 위해서 site files과 유저를 위해서 탐색합니다. 사이트 파일의 이름은 환경변수 R_ENVIRON에 의해 지정됩니다. 이름이 결정되지 않은 경우, 존재한다면 R_HOME/etc/Renviron.site를 활용할 수 있습니다. 유저 파일의 경우, 결정이 되었다면, 환경변수 R_ENVIRON_USER에 의해 지정이 됩니다. 그렇지 않은 경우 현재 혹은 유저의 홈 디렉토리(home directory)에 있는 file.Renviron이 탐색됩니다. 이 파일들은 'name=value' 형태의 라인들을 포함해야 합니다(좀 더 구체적인 이해를 위해서 "Startup" 도움말을 참조하십시오). 지정하고 싶은 변수들은 R_PAPERSIZE(default paper size), R_PRINTCMD (default print command)와 R_LIBS(추가 패키지를 위해 마련된 R library 트리 리스트의 세분화)를 포함해야 합니다.
+@option{--no-environ}이라는 옵션이 주어지지 않는다면, @R{}은 환경변수들을 설정하기 위한 작업을 진행하기 위해서 사용자와 사이트 파일들(user and site files)을 찾습니다.
+사이트 파일의 이름은 환경변수 @env{R_ENVIRON}에 의해 지정됩니다. 
+만약, 이것이 설정되어 있지 않다면, @file{@var{R_HOME}/etc/Renviron.site}이 이용됩니다 (만약 존재할 경우에 한합니다).
+사용자 파일은 @env{R_ENVIRON_USER}라는 환경변수가 설정되어 있다면 이 파일에 의해서 지정됩니다. 
+그렇지 않다면 현재 또는 사용자의 홈디렉토리내에 있는 @file{.Renviron}이라는 파일을 찾습니다. 
+이러한 파일들은 @samp{@var{name}=@var{value}}이라는 형식을 가진 라인들을 포함해야 합니다.
+(구체적인 이해를 위해서 @code{help("Startup")}을 살펴보시길 바랍니다)
+설정하고 싶은 변수들은 아마도 기본 페이퍼의 크기를 정하는 @env{R_PAPERSIZE}, 기본 프린터 명령을 정해주는 @env{R_PRINTCMD}, 그리고 애드온 패키지들을 찾는데 사용된 @R{} 라이브러리 트리(library tree)들의 목록을 지정하는 @env{R_LIBS}가 있습니다. 
 
 @item
 @c Then @R{} searches for the site-wide startup profile unless the command
