@@ -1,5 +1,5 @@
 @c 
-@c The last modification is made by Chel Hee Lee on 2013-JUL-06 (Saturday)
+@c The last modification is made by Chel Hee Lee on 2013-JUL-07 (Sunday)
 @c (1.Begining ~ 1.8 -- 2013-JUL-05 by IJIN)
 @c
 @c 
@@ -9157,13 +9157,6 @@ $-\pi\leq x \leq \pi$ 구간을 50등분한 값을 가지고 있는 벡터입니
 
 
 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
-
-
 
 
 @node Invoking R, The command-line editor, A sample session, Top
@@ -9329,22 +9322,18 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c in non-interactive use one of these must be specified or implied by some
 @c other option (see below).
 @R{}세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. 
-@c 데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다.
 
 @item --no-environ
 @c Do not read any user file to set environment variables.
-
-환경변수 설정을 위한 유저 파일 불러오기는 하지 않습니다.
+환결변수를 설정하기 위한 어떠한 유저파일(user file)을 읽어들이지 않습니다.
 
 @item --no-site-file
 @c Do not read the site-wide profile at startup.
-
-startup상에서 site-wide 프로파일을 불러오지 않습니다.
+스타트업(startup)에서 사이트-와이드 프로파일 (site-wide profile)을 읽어들이지 않습니다. 
 
 @item --no-init-file
 @c Do not read the user's profile at startup.
-
-startup상에서 user 프로파일을 불러오지 않습니다.
+스타트업(startup)에서 사용자의 프로파일을 읽어들이지 않습니다. 
 
 @item --restore
 @itemx --no-restore
@@ -9353,29 +9342,31 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c @R{} was started) should be restored at startup or not.  The default is
 @c to restore. (@option{--no-restore} implies all the specific
 @c @option{--no-restore-*} options.)
-
-저장된 이미지 파일이 startup상에서의 restore 여부를 결정합니다.(R이 시작된 디렉토리 안에 file .RData 존재) 디폴트는 restore되어야 합니다. (--no-restore는 모든 --no-restore-* 옵션들을 의미합니다.
+스타트업(startup)할때 @R{}이 시작된 디렉토리내에서 @file{.RData}의 형식으로 저장되어진 이미지들 복구할 것인지를 조절합니다.
+기본값은 복구하는 것입니다.
+(@option{--no-restore}는 좀 더 세부적인 @option{--no-restore-*}과 같은 옵션들 모두를 의미합니다)
 
 @item --no-restore-history
 @c Control whether the history file (normally file @file{.Rhistory} in the
 @c directory where @R{} was started, but can be set by the environment
 @c variable @env{R_HISTFILE}) should be restored at startup or not.  The
 @c default is to restore.
-
-히스토리 파일이 restore되어야 하는지 여부 결정합니다(R이 시작된 디렉토리에 일반적으로 file .Rhistory가 존재하며, 환경변수 R_HISTFILE에 의해 설정될 수 있습니다). 디폴트는 restore 되어야 합니다.
+@R{}이 시작된 디렉토리내에 일반적으로 @file{.Rhistory}로 되어 있는 작업기록파일 (history file)을 스타트업 (startup)할때 복구할 것인지를 조절합니다.
+이 파일은 환경변수 @env{R_HISTFILE}에 의해서 지정될 수도 있습니다. 
+기본값은 복구하는 것입니다. 
 
 @item --no-Rconsole
 @c (Windows only) Prevent loading the @file{Rconsole} file at startup.
-
-(윈도우 환경)startup시, Rconsole 파일 로딩 예방
+(Windows에만 적용되는 옵션입니다).
+이는 스타트업시에 @file{Rconsole} 파일을 로딩하지 못하게 합니다. 
 
 @item --vanilla
 @c Combine @option{--no-save}, @option{--no-environ},
 @c @option{--no-site-file}, @option{--no-init-file} and
 @c @option{--no-restore}.  Under Windows, this also includes
 @c @option{--no-Rconsole}.
-
---no-save, --no-environ, --no-site-file, --no-init-file과 --no-restore를 결합합니다. 이는 또한 윈도우 상에서 --no-Rconcsole 포함합니다.
+@option{--no-save}, @option{--no-environ}, @option{--no-site-file}, @option{--no-init-file}, @option{--no-restore}를 모두 한데 묶은 것입니다.
+Windows상에서는 이 옵션은 또한 @option{--no-Rconsole}을 포함합니다.
 
 @item -f @var{file}
 @itemx --file=@var{file}
@@ -9383,8 +9374,12 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c @code{stdin}.  Implies @option{--no-save} unless @option{--save} has
 @c been set.  On a Unix-alike, shell metacharacters should be avoided in
 @c @var{file} (but as from @R{} 2.14.0 spaces are allowed).
-
-(Not Rgui.exe)파일로부터 입력하십시오.. '-'은 stdin을 의미하며, --save가 설정되지 되어 있지 않다면,--no-save를 나타냅니다. Unix와 같은 플랫폼 상에서는, 파일 상의 shell metacharacters은 피해야 하는 요소입니다. (하지만, R2.14.0에서와 같이, 공간이 허용됩니다.)
+(@command{Rgui.exe}에 적용되지 않습니다).
+@var{file}로부터 입력을 가져옵니다:
+@samp{-}은 @code{stdin}을 의미합니다.
+@option{--save}가 지정되지 않았다면 @option{--no-save}를 의미하게 됩니다.
+Unix와 같은 환경에서는 쉡 메타문자(shell metacharacters)는 @var{file}내에서 사용을 피해야 합니다.
+(그러나, @R{} 2.14.0 부터 공백(spaces)들이 허용됩니다).
 
 @item -e @var{expression}
 @c (not @command{Rgui.exe}) Use @var{expression} as an input line.  One or
@@ -9393,9 +9388,12 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c has been set.  (There is a limit of 10,000 bytes on the total length of
 @c expressions used in this way.  Expressions containing spaces or shell
 @c metacharacters will need to be quoted.)
-
-(Not Rgui.exe) input line의 형태로 expression을 활용하세요. 하나 혹은 그 이상의 -e options이 사용될 수 있지만, -f 혹은 --file과 함께 사용될 순 없습니다. 그리고, 이는 --save가 설정되지 않는 한 --no-save를 의미합니다. (이와 같은 방식으로는, 전체 expression가 10,000 바이트 정도가 최대라고 할 수 있습니다. expression은 space 혹은 shell metacharacters를 가지고 있으며, 인용될 필요가 있습니다.)
-
+(@command{Rgui.exe}에서는 사용할 수 없습니다). 
+@var{expression}을 한줄의 입력라인 (input line)으로 이용하세요.
+하나 또는 그 이상의 @option{-e} 옵션들이 사용될 수 있으나, @option{-f} 또는 @option{--file}과는 함께 사용할 수 없습니다. 
+@option{--save}가 지정되어 있지 않다면 @option{--no-svae}을 의미하게 됩니다.
+(이러한 방식으로 expression 부분에 들어갈 수 있는 최대 길이는 10,000 바이트 입니다.
+공백 또는 쉘 메타문자들을 포함하는 expressions들은 따옴표를 사용해야 할 필요가 있습니다)
 
 @item --no-readline
 @c (UNIX only) Turn off command-line editing via @strong{readline}.  This
@@ -9404,8 +9402,14 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c for more information.  Command-line editing is enabled by default
 @c interactive use (see @option{--interactive}).  This option also affects
 @c tilde-expansion: see the help for @code{path.expand}.
-
-(UNIX only) readline을 활용한 commend-line editing을 끄시기 바랍니다. (유닉스 환경). 이는 ESS(Emacs Speaks Statistics)를 사용하는 Emacs안에서 R이 활용될 때 유용합니다. 추가 정보를 원하시면, commend-line editor를 참조하시기 바랍니다. commend-line editing은 디폴트 인터렉티브 유즈(default interactive use)를 통해 가능합니다. (--interactive 참조) 이 옵션은 tilde-expansion에 영향을 끼칩니다. path.expand에 대한 내용은 도움말을 참조하세요.
+(UNIX에서만 사용됩니다).
+@strong{readline}을 통해서 명령어줄(command-line)을 편집하는 것을 끕니다.
+이것은 @acronym{ESS}(``Emacs Speaks Statistics'') 패키지를 이용하여 Emacs상에서 @R{}을 실행할 때 유용합니다. 
+더 많은 정보를 원하시면 @xref{The command-line editor}를 살펴보시길 바랍니다.
+명령어라인 편집은 기본적으로 대화식으로 사용합니다.
+(@option{--interactive}를 살펴보세요).
+이 옵션은 또한 틸데확장(tilde-expansion)에 영향을 미칩니다.
+이것에 대해서는 @code{path.expand}에 대한 도움말을 살펴보시길 바랍니다.
 
 @item --min-vsize=@var{N}
 @itemx --min-nsize=@var{N}
@@ -9413,8 +9417,10 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c collection of vector heap (in bytes) and @emph{cons cells} (number)
 @c respectively.  Suffix @samp{M} specifies megabytes or millions of cells
 @c respectively.  The defaults are 6Mb and 350k respectively.
-
-고급사용을 위해서, 각각 cons cells과 vector heap(바이트 상)의 garbage collection에 대한 초기 trigger size를 설정합니다. 접미사 "M"은 각각 메가바이트(megabyte) 혹은 수백만 개의 cell을 구체화합니다. 디폴트는 각각 6Mb, 350k입니다.
+고급사용자들에게만 권장됩니다. 
+바이트단위의 벡터 힙(vector heap)과 @emph{cons cells} (numbers)에 대한 가비지 컬렉션 (garbage collection)에 대한 초기 트리거 크기 (initial trigger sizes)를 설정합니다. 
+접미사 @samp{M}은 메가바이트 (megabytes)또는 수백만개의 셀 (millions of cells)을 지정합니다.
+기본값은 6Mb 와 350k 입니다. 
 
 
 @item --max-ppsize=@var{N}
@@ -9423,7 +9429,20 @@ startup상에서 user 프로파일을 불러오지 않습니다.
 @c large and complicated calculations to be done.  Currently the maximum
 @c value accepted is 100000.
 
-N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다.
+
+
+
+
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc 
+
+
+
+
+@c N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다.
 
 @item --max-mem-size=@var{N}
 @c (Windows only) Specify a limit for the amount of memory to be used both

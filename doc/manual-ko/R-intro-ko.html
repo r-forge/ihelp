@@ -8733,11 +8733,6 @@ R 프로그램을 종료합니다.
 그리고, 기초사용에 대한 설명을 목적으로 하는 세션이므로 꼭 저장하실 필요는 없습니다. 
 </dl>
 
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
 <div class="node">
 <a name="Invoking-R"></a>
 <p><hr>
@@ -8897,52 +8892,54 @@ R에 의하여 사용되는 메모리를 크기를 조절하고자 하지 않는
 <!-- asked for the desired behavior when ending the session with @kbd{q()}; -->
 <!-- in non-interactive use one of these must be specified or implied by some -->
 <!-- other option (see below). -->
-R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. 
-<!-- 데이터가 R 마지막 부분에 저장이 되어야 할지 여부에 대해서 결정합니다. noninteractive use상의 q()와 session을 끝낼 때, interactive session에 주어지지 않거나, 필요한 조치가 요구되지 않는다면, 다른 옵션들에 의해서 구체화되거나 전달되어야 합니다. -->
+R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다.
 
      <br><dt><samp><span class="option">--no-environ</span></samp><dd><!-- Do not read any user file to set environment variables. -->
-
-     <p>환경변수 설정을 위한 유저 파일 불러오기는 하지 않습니다.
+환결변수를 설정하기 위한 어떠한 유저파일(user file)을 읽어들이지 않습니다.
 
      <br><dt><samp><span class="option">--no-site-file</span></samp><dd><!-- Do not read the site-wide profile at startup. -->
-
-     <p>startup상에서 site-wide 프로파일을 불러오지 않습니다.
+스타트업(startup)에서 사이트-와이드 프로파일 (site-wide profile)을 읽어들이지 않습니다.
 
      <br><dt><samp><span class="option">--no-init-file</span></samp><dd><!-- Do not read the user's profile at startup. -->
-
-     <p>startup상에서 user 프로파일을 불러오지 않습니다.
+스타트업(startup)에서 사용자의 프로파일을 읽어들이지 않습니다.
 
      <br><dt><samp><span class="option">--restore</span></samp><dt><samp><span class="option">--no-restore</span></samp><dt><samp><span class="option">--no-restore-data</span></samp><dd><!-- Control whether saved images (file @file{.RData} in the directory where -->
 <!-- @R{} was started) should be restored at startup or not.  The default is -->
 <!-- to restore. (@option{-no-restore} implies all the specific -->
 <!-- @option{-no-restore-*} options.) -->
-
-     <p>저장된 이미지 파일이 startup상에서의 restore 여부를 결정합니다.(R이 시작된 디렉토리 안에 file .RData 존재) 디폴트는 restore되어야 합니다. (&ndash;no-restore는 모든 &ndash;no-restore-* 옵션들을 의미합니다.
+스타트업(startup)할때 R이 시작된 디렉토리내에서 <samp><span class="file">.RData</span></samp>의 형식으로 저장되어진 이미지들 복구할 것인지를 조절합니다. 
+기본값은 복구하는 것입니다. 
+(<samp><span class="option">--no-restore</span></samp>는 좀 더 세부적인 <samp><span class="option">--no-restore-*</span></samp>과 같은 옵션들 모두를 의미합니다)
 
      <br><dt><samp><span class="option">--no-restore-history</span></samp><dd><!-- Control whether the history file (normally file @file{.Rhistory} in the -->
 <!-- directory where @R{} was started, but can be set by the environment -->
 <!-- variable @env{R_HISTFILE}) should be restored at startup or not.  The -->
 <!-- default is to restore. -->
-
-     <p>히스토리 파일이 restore되어야 하는지 여부 결정합니다(R이 시작된 디렉토리에 일반적으로 file .Rhistory가 존재하며, 환경변수 R_HISTFILE에 의해 설정될 수 있습니다). 디폴트는 restore 되어야 합니다.
+R이 시작된 디렉토리내에 일반적으로 <samp><span class="file">.Rhistory</span></samp>로 되어 있는 작업기록파일 (history file)을 스타트업 (startup)할때 복구할 것인지를 조절합니다. 
+이 파일은 환경변수 <samp><span class="env">R_HISTFILE</span></samp>에 의해서 지정될 수도 있습니다. 
+기본값은 복구하는 것입니다.
 
      <br><dt><samp><span class="option">--no-Rconsole</span></samp><dd><!-- (Windows only) Prevent loading the @file{Rconsole} file at startup. -->
-
-     <p>(윈도우 환경)startup시, Rconsole 파일 로딩 예방
+(Windows에만 적용되는 옵션입니다). 
+이는 스타트업시에 <samp><span class="file">Rconsole</span></samp> 파일을 로딩하지 못하게 합니다.
 
      <br><dt><samp><span class="option">--vanilla</span></samp><dd><!-- Combine @option{-no-save}, @option{-no-environ}, -->
 <!-- @option{-no-site-file}, @option{-no-init-file} and -->
 <!-- @option{-no-restore}.  Under Windows, this also includes -->
 <!-- @option{-no-Rconsole}. -->
-
-     <p>&ndash;no-save, &ndash;no-environ, &ndash;no-site-file, &ndash;no-init-file과 &ndash;no-restore를 결합합니다. 이는 또한 윈도우 상에서 &ndash;no-Rconcsole 포함합니다.
+<samp><span class="option">--no-save</span></samp>, <samp><span class="option">--no-environ</span></samp>, <samp><span class="option">--no-site-file</span></samp>, <samp><span class="option">--no-init-file</span></samp>, <samp><span class="option">--no-restore</span></samp>를 모두 한데 묶은 것입니다. 
+Windows상에서는 이 옵션은 또한 <samp><span class="option">--no-Rconsole</span></samp>을 포함합니다.
 
      <br><dt><samp><span class="option">-f </span><var>file</var></samp><dt><samp><span class="option">--file=</span><var>file</var></samp><dd><!-- (not @command{Rgui.exe}) Take input from @var{file}: @samp{-} means -->
 <!-- @code{stdin}.  Implies @option{-no-save} unless @option{-save} has -->
 <!-- been set.  On a Unix-alike, shell metacharacters should be avoided in -->
 <!-- @var{file} (but as from @R{} 2.14.0 spaces are allowed). -->
-
-     <p>(Not Rgui.exe)파일로부터 입력하십시오.. '-'은 stdin을 의미하며, &ndash;save가 설정되지 되어 있지 않다면,&ndash;no-save를 나타냅니다. Unix와 같은 플랫폼 상에서는, 파일 상의 shell metacharacters은 피해야 하는 요소입니다. (하지만, R2.14.0에서와 같이, 공간이 허용됩니다.)
+(<samp><span class="command">Rgui.exe</span></samp>에 적용되지 않습니다). 
+<var>file</var>로부터 입력을 가져옵니다:
+&lsquo;<samp><span class="samp">-</span></samp>&rsquo;은 <code>stdin</code>을 의미합니다. 
+<samp><span class="option">--save</span></samp>가 지정되지 않았다면 <samp><span class="option">--no-save</span></samp>를 의미하게 됩니다. 
+Unix와 같은 환경에서는 쉡 메타문자(shell metacharacters)는 <var>file</var>내에서 사용을 피해야 합니다. 
+(그러나, R 2.14.0 부터 공백(spaces)들이 허용됩니다).
 
      <br><dt><samp><span class="option">-e </span><var>expression</var></samp><dd><!-- (not @command{Rgui.exe}) Use @var{expression} as an input line.  One or -->
 <!-- more @option{-e} options can be used, but not together with @option{-f} -->
@@ -8950,8 +8947,12 @@ R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부
 <!-- has been set.  (There is a limit of 10,000 bytes on the total length of -->
 <!-- expressions used in this way.  Expressions containing spaces or shell -->
 <!-- metacharacters will need to be quoted.) -->
-
-     <p>(Not Rgui.exe) input line의 형태로 expression을 활용하세요. 하나 혹은 그 이상의 -e options이 사용될 수 있지만, -f 혹은 &ndash;file과 함께 사용될 순 없습니다. 그리고, 이는 &ndash;save가 설정되지 않는 한 &ndash;no-save를 의미합니다. (이와 같은 방식으로는, 전체 expression가 10,000 바이트 정도가 최대라고 할 수 있습니다. expression은 space 혹은 shell metacharacters를 가지고 있으며, 인용될 필요가 있습니다.)
+(<samp><span class="command">Rgui.exe</span></samp>에서는 사용할 수 없습니다). 
+<var>expression</var>을 한줄의 입력라인 (input line)으로 이용하세요. 
+하나 또는 그 이상의 <samp><span class="option">-e</span></samp> 옵션들이 사용될 수 있으나, <samp><span class="option">-f</span></samp> 또는 <samp><span class="option">--file</span></samp>과는 함께 사용할 수 없습니다. 
+<samp><span class="option">--save</span></samp>가 지정되어 있지 않다면 <samp><span class="option">--no-svae</span></samp>을 의미하게 됩니다. 
+(이러한 방식으로 expression 부분에 들어갈 수 있는 최대 길이는 10,000 바이트 입니다. 
+공백 또는 쉘 메타문자들을 포함하는 expressions들은 따옴표를 사용해야 할 필요가 있습니다)
 
      <br><dt><samp><span class="option">--no-readline</span></samp><dd><!-- (UNIX only) Turn off command-line editing via @strong{readline}.  This -->
 <!-- is useful when running @R{} from within Emacs using the @acronym{ESS} -->
@@ -8959,23 +8960,35 @@ R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부
 <!-- for more information.  Command-line editing is enabled by default -->
 <!-- interactive use (see @option{-interactive}).  This option also affects -->
 <!-- tilde-expansion: see the help for @code{path.expand}. -->
-
-     <p>(UNIX only) readline을 활용한 commend-line editing을 끄시기 바랍니다. (유닉스 환경). 이는 ESS(Emacs Speaks Statistics)를 사용하는 Emacs안에서 R이 활용될 때 유용합니다. 추가 정보를 원하시면, commend-line editor를 참조하시기 바랍니다. commend-line editing은 디폴트 인터렉티브 유즈(default interactive use)를 통해 가능합니다. (&ndash;interactive 참조) 이 옵션은 tilde-expansion에 영향을 끼칩니다. path.expand에 대한 내용은 도움말을 참조하세요.
+(UNIX에서만 사용됩니다). 
+<strong>readline</strong>을 통해서 명령어줄(command-line)을 편집하는 것을 끕니다. 
+이것은 <acronym>ESS</acronym>(&ldquo;Emacs Speaks Statistics&rdquo;) 패키지를 이용하여 Emacs상에서 R을 실행할 때 유용합니다. 
+더 많은 정보를 원하시면 See <a href="#The-command_002dline-editor">The command-line editor</a>를 살펴보시길 바랍니다. 
+명령어라인 편집은 기본적으로 대화식으로 사용합니다. 
+(<samp><span class="option">--interactive</span></samp>를 살펴보세요). 
+이 옵션은 또한 틸데확장(tilde-expansion)에 영향을 미칩니다. 
+이것에 대해서는 <code>path.expand</code>에 대한 도움말을 살펴보시길 바랍니다.
 
      <br><dt><samp><span class="option">--min-vsize=</span><var>N</var></samp><dt><samp><span class="option">--min-nsize=</span><var>N</var></samp><dd><!-- For expert use only: set the initial trigger sizes for garbage -->
 <!-- collection of vector heap (in bytes) and @emph{cons cells} (number) -->
 <!-- respectively.  Suffix @samp{M} specifies megabytes or millions of cells -->
 <!-- respectively.  The defaults are 6Mb and 350k respectively. -->
-
-     <p>고급사용을 위해서, 각각 cons cells과 vector heap(바이트 상)의 garbage collection에 대한 초기 trigger size를 설정합니다. 접미사 "M"은 각각 메가바이트(megabyte) 혹은 수백만 개의 cell을 구체화합니다. 디폴트는 각각 6Mb, 350k입니다.
+고급사용자들에게만 권장됩니다. 
+바이트단위의 벡터 힙(vector heap)과 <em>cons cells</em> (numbers)에 대한 가비지 컬렉션 (garbage collection)에 대한 초기 트리거 크기 (initial trigger sizes)를 설정합니다. 
+접미사 &lsquo;<samp><span class="samp">M</span></samp>&rsquo;은 메가바이트 (megabytes)또는 수백만개의 셀 (millions of cells)을 지정합니다. 
+기본값은 6Mb 와 350k 입니다.
 
      <br><dt><samp><span class="option">--max-ppsize=</span><var>N</var></samp><dd><!-- Specify the maximum size of the pointer protection stack as @var{N} -->
 <!-- locations.  This defaults to 10000, but can be increased to allow -->
 <!-- large and complicated calculations to be done.  Currently the maximum -->
 <!-- value accepted is 100000. -->
 
-     <p>N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다.
-
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- N 로케이션에 해당하는 pointer protection stack의 최대 사이즈를 구체화합니다. 이는 10000에 디폴트 됩니다. 하지만, 대규모의 복잡한 산술을 위해서 증가될 수 있습니다. 현재 최대 크기 값은 100000입니다. -->
      <br><dt><samp><span class="option">--max-mem-size=</span><var>N</var></samp><dd><!-- (Windows only) Specify a limit for the amount of memory to be used both -->
 <!-- for @R{} objects and working areas.  This is set by default to the -->
 <!-- smaller of the amount of physical RAM in the machine and for 32-bit -->
