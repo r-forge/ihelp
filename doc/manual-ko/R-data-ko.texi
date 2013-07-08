@@ -300,6 +300,8 @@ guesses may be possible and @command{file} may guess as it did in the
 example above), so you may simply have to ask the originator for some
 clues (e.g.@: `Russian on Windows').
 
+현대의 Mac OS X를 포함한 유닉스계열의 시스템은 UTF-8 파일을 만들어 낼 것입니다. 윈도우즈는 'Unicode' 파일이라 불리는(@code{UCS-2LE} 또는 단지 @code{UTF-16LE}@footnote{이 둘의 구분은 미묘하고, @uref{http://en.wikipedia.org/@/wiki/@/UTF-16/UCS-2}, 그 대행짝의 사용은 거의 없습니다.}). 그렇지 않은 대부분의 모든 파일들은 중국어/일본어/한국어 지역(일반적으로 보다 넓은 범위의 인코딩을 사용합니다)이 아닌한 8비트 인코딩을 따릅니다. (비록 추론이 가능하고 @command{file}이 위의 사례에서 처럼 작동한다 하더라도) 자동으로 8비트 인코딩인지 확실히 찾아낼 수는 없어서 최초 고안한 사람에게 단서를 요청하여야 합니다(예를 들어, '윈도우즈에서 러시아어')
+
 `BOMs' (Byte Order Marks,
 @uref{http://en.wikipedia.org/wiki/Byte_order_mark}) cause problems for
 Unicode files.  In the Unix world BOMs are rarely used, whereas in the
