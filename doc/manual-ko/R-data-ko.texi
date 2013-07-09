@@ -268,14 +268,11 @@ that repository but as a source package for download from
 @subsection Encodings
 @cindex Encodings
 
-@c Unless the file to be imported from is entirely in ASCII, it is usually
-@c necessary to know how it was encoded.  For text files, a good way to
-@c find out something about its structure is the @command{file}
-@c command-line tool (for Windows, included in @code{Rtools}).  This
-@c reports something like
-
-불러올 파일 전체가 ASCII로 되어 있지 않다면, 일반적으로 어떻게 인코드 되어 있는지 알 필요가 있습니다. 텍스트 파일의 경우 그것의 구조를 관해 어떤 것을 찾아내는 데 좋은 방법은 @command{file} 명령어 줄 도구(윈도우즈의 경우, @code{Rtools}에 포함되어 있습니다)입니다. 이것은 다음과 같은 결과를 보여줍니다.
-
+Unless the file to be imported from is entirely in ASCII, it is usually
+necessary to know how it was encoded.  For text files, a good way to
+find out something about its structure is the @command{file}
+command-line tool (for Windows, included in @code{Rtools}).  This
+reports something like
 
 @example
 text.Rd: UTF-8 Unicode English text
@@ -299,8 +296,6 @@ automatically detect with certainty which 8-bit encoding (although
 guesses may be possible and @command{file} may guess as it did in the
 example above), so you may simply have to ask the originator for some
 clues (e.g.@: `Russian on Windows').
-
-현대의 Mac OS X를 포함한 유닉스계열의 시스템은 UTF-8 파일을 만들어 낼 것입니다. 윈도우즈는 'Unicode' 파일이라 불리는(@code{UCS-2LE} 또는 단지 @code{UTF-16LE}@footnote{이 둘의 구분은 미묘하고, @uref{http://en.wikipedia.org/@/wiki/@/UTF-16/UCS-2}, 그 대행짝의 사용은 거의 없습니다.}). 그렇지 않은 대부분의 모든 파일들은 중국어/일본어/한국어 지역(일반적으로 보다 넓은 범위의 인코딩을 사용합니다)이 아닌한 8비트 인코딩을 따릅니다. (비록 추론이 가능하고 @command{file}이 위의 사례에서 처럼 작동한다 하더라도) 자동으로 8비트 인코딩인지 확실히 찾아낼 수는 없어서 최초 고안한 사람에게 단서를 요청하여야 합니다(예를 들어, '윈도우즈에서 러시아어')
 
 `BOMs' (Byte Order Marks,
 @uref{http://en.wikipedia.org/wiki/Byte_order_mark}) cause problems for
@@ -572,119 +567,92 @@ Windows).
 @section  Variations on @code{read.table}
 @findex read.table
 
-@c The function @code{read.table} is the most convenient way to read in a
-@c rectangular grid of data.  Because of the many possibilities, there are
-@c several other functions that call @code{read.table} but change a group
-@c of default arguments.
+The function @code{read.table} is the most convenient way to read in a
+rectangular grid of data.  Because of the many possibilities, there are
+several other functions that call @code{read.table} but change a group
+of default arguments.
 
-@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 
+@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
 
-@c Beware that @code{read.table} is an inefficient way to read in
-@c very large numerical matrices: see @code{scan} below.
+Beware that @code{read.table} is an inefficient way to read in
+very large numerical matrices: see @code{scan} below.
 
-주의할 점은 read.table은 아주 큰 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
-
-@c Some of the issues to consider are:
-
-이와 관련된 내용은 다음을 참고하십시오.
+Some of the issues to consider are:
 
 @enumerate
 @item @strong{Encoding}
 
-@c If the file contains non-ASCII character fields, ensure that it is read
-@c in the correct encoding.  This is mainly an issue for reading Latin-1
-@c files in a UTF-8 locale, which can be done by something like
-
-만약 파일에 ASCII 형태가 아닌 문자 변수들이 포함되어 있다면, 그것이 제대로 된 인코딩으로 읽어졌는지 반드시 확인해야 합니다. 이것은 주로 UTF-8 locale에서 Latin-1 파일을 읽는 것과 관련된 문제인데, 이것은 아래와 같은 방법으로 해결할 수 있습니다.
+If the file contains non-ASCII character fields, ensure that it is read
+in the correct encoding.  This is mainly an issue for reading Latin-1
+files in a UTF-8 locale, which can be done by something like
 
 @example
 read.table("file.dat", fileEncoding="latin1")
 @end example
 
 @noindent
-@c Note that this will work in any locale which can represent Latin-1
-@c strings, but not many Greek/Russian/Chinese/Japanese @dots{} locales.
+Note that this will work in any locale which can represent Latin-1
+strings, but not many Greek/Russian/Chinese/Japanese @dots{} locales.
 
-중요한 것은 Latin-1으로 표현된 모든 locale에 대해 이 방법을 사용할 수 있으나 많은 그리스/러시아/중국/일본 @dots{} 지역에서는 그렇지 않다는 것입니다.
 
 @item @strong{Header line}
 
-@c We recommend that you specify the @code{header} argument explicitly,
-@c Conventionally the header line has entries only for the columns and not
-@c for the row labels, so is one field shorter than the remaining lines.
-@c (If @R{} sees this, it sets @code{header = TRUE}.)  If presented with a
-@c file that has a (possibly empty) header field for the row labels, read
-@c it in by something like
-
-우리는 여러분들에게 헤더를 분명하게 표기하라고 권하고 싶습니다. 전통적으로 헤더에는 행 이름 대신 열 이름들만 들어가 있었는데, 그래서 하나의 변수가 다른 것들에 비해 길이가 짧습니다(만약 R이 이것을 판단할 수 있으면, header = TRUE로 세팅 할 것입니다). 만약에, 어떤
-파일이 행 이름에 대한(입력이 되지 않았을 수 있는) 헤더 변수를 포함한다면, 아래와 같은 방법으로 이 파일을 읽을 수 있습니다.
+We recommend that you specify the @code{header} argument explicitly,
+Conventionally the header line has entries only for the columns and not
+for the row labels, so is one field shorter than the remaining lines.
+(If @R{} sees this, it sets @code{header = TRUE}.)  If presented with a
+file that has a (possibly empty) header field for the row labels, read
+it in by something like
 
 @example
 read.table("file.dat", header = TRUE, row.names = 1)
 @end example
 
-@c Column names can be given explicitly via the @code{col.names}; explicit
-@c names override the header line (if present).
-
-열 이름들은 col.names을 사용해서 따로 정의될 수 있으며, 따로 정의된 이름은 헤더(만약 존재한다면)에 대해 우선합니다.
+Column names can be given explicitly via the @code{col.names}; explicit
+names override the header line (if present).
 
 @item @strong{Separator}
 
-@c Normally looking at the file will determine the field separator to be
-@c used, but with white-space separated files there may be a choice between
-@c the default @code{sep = ""} which uses any white space (spaces, tabs or
-@c newlines) as a separator, @code{sep = " "} and @code{sep = "\t"}.  Note
-@c that the choice of separator affects the input of quoted strings.  
+Normally looking at the file will determine the field separator to be
+used, but with white-space separated files there may be a choice between
+the default @code{sep = ""} which uses any white space (spaces, tabs or
+newlines) as a separator, @code{sep = " "} and @code{sep = "\t"}.  Note
+that the choice of separator affects the input of quoted strings.  
 
-보통은 파일을 보면 파일에 사용된 변수 구분자가 무엇인지 알 수 있지만, 공백으로 파일이 구분된 경우, 우리는 구분자로 어떤 종류의 공백이든(단순 여백, 탭, 혹은 새로운 행) 다 사용할 수 있는 디폴트 sep = ""과 sep = " ", sep = "＼t" 중에서 하나를 구분자로 선택할 수 있습니다. 구분자의 선택이 인용된 문자열의 입력에 영향을 줄 수도 있다는 점을 주의해야 합니다. 
+If you have a tab-delimited file containing empty fields be sure to use
+@code{sep = "\t"}.
 
-@c If you have a tab-delimited file containing empty fields be sure to use
-@c @code{sep = "\t"}.
-
-만약 당신이 여백을 포함하고 있는 탭을 구분자로 지정한(tab-delimited) 파일을 가지고 있다면, sep = "＼t"을 사용해야만 합니다.
 
 @item @strong{Quoting}
 @cindex Quoting strings
 
-@c By default character strings can be quoted by either @samp{"} or
-@c @samp{'}, and in each case all the characters up to a matching quote are
-@c taken as part of the character string.  The set of valid quoting
-@c characters (which might be none) is controlled by the @code{quote}
-@c argument.  For @code{sep = "\n"} the default is changed to @code{quote =
-@c ""}.
+By default character strings can be quoted by either @samp{"} or
+@samp{'}, and in each case all the characters up to a matching quote are
+taken as part of the character string.  The set of valid quoting
+characters (which might be none) is controlled by the @code{quote}
+argument.  For @code{sep = "\n"} the default is changed to @code{quote =
+""}.
 
-디폴트에 의해 문자형 문자열이 @samp{"} 또는 @samp{'}에 의해 인용되면, 각각의 경우에 그 인용부호(quote)가 나타나기 전의 모든 문자들이 문자형 문자열의 한 덩어리로 간주됩니다. 유효한 인용부호 문자들의 조합(만약 인용부호 지정이 없다면)은 @code{quote} 인수(argument)로 통제할 수 있습니다. @code{sep ="＼n"}에 대해서, 디폴트는 @code{quote = ""}로 변경되어야 합니다.
+If no separator character is specified, quotes can be escaped within
+quoted strings by immediately preceding them by @samp{\}, C-style.
 
-@c If no separator character is specified, quotes can be escaped within
-@c quoted strings by immediately preceding them by @samp{\}, C-style.
-
-아무런 구분자가 지정되지 않은 경우, C에서 그런 것처럼, 인용된 문자열 안에 든 인접한 바로 앞의 @samp{\}에 의해 인용 작업이 중단될 수 있습니다.
-
-@c If a separator character is specified, quotes can be escaped within
-@c quoted strings by doubling them as is conventional in spreadsheets.  For
-@c example
-
-특정 구분 문자가 지정된 경우에는, 스프레드 시트에서 많이 발생하는 것처럼, 인용된 문자열 내에서 중복된 구분 문자에 의한 인용 작업의 중단이 발생할 수도 있습니다. 예를 들면 다음과 같습니다.
+If a separator character is specified, quotes can be escaped within
+quoted strings by doubling them as is conventional in spreadsheets.  For
+example
 
 @example
 'One string isn''t two',"one more"
 @end example
 
-‟One string isn‟‟t two‟, "one more"
-
 @noindent
-@c can be read by
-
-은 다음에 의해 읽어들일 수 있습니다.
+can be read by
 
 @example
 read.table("testfile", sep = ",")
 @end example
 
 @noindent
-@c This does not work with the default separator.
-
-이것은 기본구분자와 작동하지 않습니다.
+This does not work with the default separator.
 
 @item @strong{Missing values}
 @cindex Missing values
@@ -694,24 +662,16 @@ to represent missing values, but this can be changed by the argument
 @code{na.strings}, which is a vector of one or more character
 representations of missing values.
 
-파일 안에 든 결측값들을 표기하기 위해 문자열 @code{NA}를 사용하도록 디폴트가 지정되어 있지만, 결측값을 표현하기 위한 한 개 이상의 문자 벡터를 지정하는 @code{na.strings}에 의해 이 표현은 달라질 수 있습니다. 
-
 Empty fields in numeric columns are also regarded as missing values.
-
-수치화된 열들 중에서 비워진 열들도 결측치로 간주됩니다. 
 
 In numeric columns, the values @code{NaN}, @code{Inf} and @code{-Inf} are
 accepted.
 
-숫자로 된 열에서는 @code{NaN}과 @code{Inf}, @code{-Inf}이 값 채워진 것으로 인정됩니다.
-
 @item @strong{Unfilled lines}
 
-@c It is quite common for a file exported from a spreadsheet to have all
-@c trailing empty fields (and their separators) omitted.  To read such
-@c files set @code{fill = TRUE}.
-
-스프레드 시트로부터 나온 파일이 줄줄 이어지는 빈 칸이 있는 열 들을 포함했거나 구분자가 빠져있는 경우는 매우 흔합니다. 이러한 파일을 읽기 위해서는 @code{fill = TRUE} 옵션을 사용합니다.
+It is quite common for a file exported from a spreadsheet to have all
+trailing empty fields (and their separators) omitted.  To read such
+files set @code{fill = TRUE}.
 
 @item @strong{White space in character fields}
 

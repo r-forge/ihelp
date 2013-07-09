@@ -16,6 +16,10 @@ conv2html:
 	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
 	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
 
+mv2www:
+	cp /home/gnustats/Documents/R-Project/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/R-Project/ihelp/www/docs/manual-ko/
+	rsync -auv /home/gnustats/Documents/R-Project/ihelp/www/* gnustats@korea.gnu.org:./www/
+
 rmAll:
 	rm -rf *.html *~ *.aux *.log
 #	make createHTML
