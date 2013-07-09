@@ -4,18 +4,21 @@ htmlDIR = ../../www/docs/manual-ko
 html2www:
 	rsync -auv *.html $(htmlDIR)/
 
-createHTML:
-	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-intro-ko.html R-intro-ko.texi
-#	rsync -auv ./../../branch-jung/R-data-ko.texi ./
-#	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-data-ko.html R-data-ko.texi
-#	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --output=R-FAQ-ko.html R-FAQ-ko.texi
-#	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-admin-ko.html R-admin-ko.texi
-#	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
-#	texi2html $(input).texi --html --no-split --css-include=Rman.css
+sub2ihelp:
+	cp /home/gnustats/Documents/R-Project/korean/src/doc/manual-ko/*.texi ./
 
-all:
+conv2html:
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-intro-ko.html R-intro-ko.texi
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-data-ko.html R-data-ko.texi
+	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --output=R-FAQ-ko.html R-FAQ-ko.texi
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-lang-ko.html R-lang-ko.texi 
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-admin-ko.html R-admin-ko.texi
+	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
+	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
+
+rmAll:
 	rm -rf *.html *~ *.aux *.log
-	make createHTML
+#	make createHTML
 #	make html2www
 #	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
 
