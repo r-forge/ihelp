@@ -1,7 +1,6 @@
 @c 
-@c 2013-JUL-07 (Sunday)
+@c 2013-JUL-09 (Tuesday) by Chel Hee Lee 
 @c 1.Begining ~ 1.11 by LIJIN)
-@c
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -14,7 +13,7 @@
 
 @c %**start of header
 @setfilename R-intro.info
-@settitle An Introduction to R (한국어 번역 - 2013.07.04, ver.0.93.2.)
+@settitle An Introduction to R (한국어 번역 - 2013.07.09, ver.0.93.2.)
 @setchapternewpage on
 @c %**end of header
 
@@ -9624,16 +9623,9 @@ Diff @R{} output ignoring headers etc
 (Windows에서만 사용가능합니다)  R 스타일 파일을 사용하는 (La)TeX 파일들을 프로세싱합니다.
 @end table
 
+@c Use
 
-
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-@c 
-@c START AGAIN FROM THIS POINT
-@c 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-
-Use
-
+@code{R CMD}를 통하여 사용이 가능한 도구들의 각각에 대한 사용방법을 알고 싶을 때는 다음과 같이 입력하세요. 
 @example
 R CMD @var{command} --help
 @end example
@@ -9641,8 +9633,6 @@ R CMD @var{command} --help
 @noindent
 @c to obtain usage information for each of the tools accessible via the
 @c @code{R CMD} interface.
-
-R CMD 인터페이스를 통한 접근 가능한 각각의 툴을 위한 사용정보
 
 @c In addition, you can use@footnote{as from @R{} 2.13.0.}  options
 @c @option{--arch=}, @option{--no-environ}, @option{--no-init-file},
@@ -9657,9 +9647,16 @@ R CMD 인터페이스를 통한 접근 가능한 각각의 툴을 위한 사용�
 @c exceptions are @command{INSTALL}, @command{REMOVE}, @command{Sweave} and
 @c @command{SHLIB} (which uses @option{--no-site-file --no-init-file}).
 
-추가로, --arch-, --no-environ, --no-init-file, --no-site-file, --vanilla 를 R과 CMD에서 사용할 수 있습니다. 이 옵션들은 툴에 의해 실행되는 R에 영향을 끼칩니다. (--vanilla는 --noenviron, --no-site-file, --no-init-file과 동일 합니다.) 하지만, R CMD는 R startup file을 사용하지 않습니다. (특히, 유저 그리고 site Renviron 파일에 적용은 되지 않습니다.) 그리고, 모든 R 프로세스들은 이러한 툴들에 의해 실행됩니다. (BATCH 제외) --no-restore를 사용합니다. 대부분은 --vanilla를 사용하고 R startup file을 invoke하지 않습니다. 현재 예외라고 할 수 있는 부분은 INSTALL.REMOVE, Sweave그리고 SHLIB입니다(SHLIB는 --no-site-file --no-init-file을 사용합니다.).
+추가적으로 도구들에 의해 실행되는 어떠한 @R{} 프로세스들에 영향을 미칠 수 있는 @option{--arch=}, @option{--no-environ}, @option{--no-init-file}, @option{--no-site-file} 그리고 @option{--vanilla} 옵션들을 @command{R}과 @command{CMD} 사이에 사용@footnote{@R{} 2.13.0부터}할 수 있습니다.  
+(여기에서 @option{--vanilla}는 @option{--no-environ --no-site-file --no-init-file}과 동일합니다.)
+그러나, @command{R CMD} 이 자체로는 어떠한 @R{} 스타드업 파일들을 사용하지 않는다는 것을 알고 계셔야 합니다 (특히, 사용자 또는 사이트 @file{Renviron} 파일 모두 이용하지 않습니다). 
+그리고, @command{BATCH}를 제외한 이러한 도구들에 의해서 실행되는 @R{} 프로세스들의 모두는 @option{--no-restore}를 사용합니다. 
+대부분은 @option{--vanilla}를 사용하고 @R{} 스타트업 파일들을 작동시키지 않습니다. 
+현재 예외라고 할 수 있는 것들은 @command{INSTALL}, @command{REMOVE}, @command{Sweave} 그리고 (@option{--no-site-file --no-init-file}을 이용하고 있는) @command{SHLIB} 입니다. 
 
 
+절대경로 (absolute filepath)에 의해서 주어진 또는 해당경로상에 있는 어떠한 다른 실행가능한 @command{@var{cmd}}을 사용하기 위해서는 아래와 같이 사용합니다. 
+ 
 @example
 R CMD @var{cmd} @var{args}
 @end example
@@ -9671,8 +9668,8 @@ R CMD @var{cmd} @var{args}
 @c @command{pdflatex}.  Under Windows @var{cmd} can be an executable or a
 @c batch file, or if it has extension @code{.sh} or @code{.pl} the
 @c appropriate interpreter (if available) is called to run it.
-
-경로에 위치해 있는 다른 실행 가능한 cmd와 absolute filepath를 고려하여, 이 옵션은 R과 같은 환경을 위해서 유용합니다. 그리고 특정 command는 예를 들어, 1dd 혹은 pdflatex 실행을 위해서 실행됩니다. 윈도우 상에서 cmd는 실행가능 혹은 batch 파일의 형태입니다. 그리고, 확장성을 가지고 있다면, .sh 혹은 .pl이 실행을 위해 call됩니다.
+이렇게 하는 것은 @R{} 또는 @command{ldd} 또는  @command{pdflatex}와 같은 어떤 특정한 명령어가 수행되어져야 하는 환경을 동일하게 해주는데 유용합니다.
+Windows 상에서 @var{cmd}는 실행이 가능할 수도 있고 배치파일 (batch file)일수도 있으며, 만약 @code{.sh} 또는 @code{.pl}과 같은 확장자를 가진다면 적합한 인터프리터(interpreter)가 이들을 실행시키기 위해서 호출되어집니다.
 
 @node Invoking R under Windows, Invoking R under Mac OS X, Invoking R from the command line, Invoking R
 @c @appendixsec Invoking R under Windows
@@ -9717,7 +9714,7 @@ Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home director
 @c Environment variables can be supplied as @samp{@var{name}=@var{value}}
 @c pairs on the command line.
 
-환경변수들은 명령어 command line에서 @samp{@var{name}=@var{value}} 페어로서 제공될 수 있습니다.
+환경변수들은 명령어 라인에서 @samp{@var{name}=@var{value}}와 같은 형식으로 제공됩니다.
 
 @c If there is an argument ending @file{.RData} (in any case) it is
 @c interpreted as the path to the workspace to be restored: it implies
@@ -9726,13 +9723,15 @@ Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home director
 @c association with @code{RGui.exe}, but also works for @code{Rterm.exe}.
 @c If the named file does not exist it sets the working directory
 @c if the parent directory exists.)
-
-.RDATA로 끝나는 아큐먼트가 존재할 경우, 이는 되찾기 위한 작업공간에 대한 경로로서, 인식됩니다. 이는 --restore를 의미하며 해당 파일의 상위에 작업 디렉토리를 설정합니다. (이 메커니즘은 RGui.exe와 관련 있는 파일 혹은 drag-and-drop을 위해 사용됩니다. 하지만, 또한 Rterm.exe를 위해 활용되며, 해당 파일이 존재하지 않고, 상위 디렉토리가 존재할 경우, working directory를 설정합니다.
+만약 어떠한 경우에라도 @file{.RData}로 끝나는 인자가 있다면, 이것은 불러오게 될 작업공간에 대한 경로로서 인식되어집니다.
+이것은 @option{--restore}를 의미하는 것이고, 주어진 이름을 가진 파일의 상위디렉토리에 대한 작업 디렉토리를 지정하는 것이기 때문입니다.
+(이러한 메카니즘은 드래그-앤-드랍(drag-and-drop)과 @code{RGui.exe}와 사용되는 파일연결(file association)을 위해 사용됩니다.  
+그러나, 또한 @code{Rterm.exe}를 위해 사용되기도 합니다. 
+만약 주어진 이름을 가진 파일이 존재하지 않는다면 이것은 작업디렉토리를 부모디렉토리가 있을경우에 지정하게 됩니다).
 
 @c The following additional command-line options are available when
 @c invoking @code{RGui.exe}.
-
-추가 command-line 옵션은 RGui.exe를 invoking할 때, 이용 가능합니다.
+@code{RGui.exe}를 작동시킬때 다음과 같은 추가적인 명령어 옵션들이 이용가능합니다. 
 
 @table @option
 @item --mdi
@@ -9743,14 +9742,22 @@ Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home director
 @c (with multiple top-level windows for the console, graphics and pager).  The 
 @c command-line setting overrides the setting in the user's @file{Rconsole} file.
 
-Rgui가 MDI 프로그램(하나의 주 윈도우 상에 여러 개의 작은 윈도우 창) 혹은 SDI 어플리케이션(콘솔, 그래픽 혹은 페이저를 위한 다수의 top-level 윈도우)으로서, 실행되는지 여부 판단. 커맨드라인 설정은 유저의 Rconsole 파일 상의 설정보다 우선합니다.
+@code{Rgui}가 하나의 주 윈도우 상에 여러 개의 작은 윈도우 창을 이용하는 MDI 프로그램 혹은 콘솔, 그래픽, 또는 페이저를 위한 다수의 최상의 윈도우들을 가진 SDI 어플리케이션으로 사용할 것인지를 조절합니다. 
+명령어라인을 이용한 설정은 사용자의 @file{Rconsole} 파일에 있는 설정을 덮어쓰게 됩니다. 
 
 @item --debug
 @c Enable the ``Break to debugger'' menu item in @code{Rgui}, and trigger
 @c a break to the debugger during command line processing.
+@code{Rgui}내에서 ``Break to debugger''라는 메뉴 항목을 이용할 수 있게 해주고, 커맨드 라인이 프로세싱되는 동안 디버거에게 브레이크를 작동시켜줍니다. 
 @end table
 
-Rgui에서 "Break to debugger" 매뉴 아이템을 이용할 수 있게 제공 하고 command line 처리하는 동안 break를 debugger를 위해서 작동합니다.
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c 
+@c START AGAIN FROM THIS POINT
+@c 
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+
 
 @c Under Windows with @code{R CMD} you may also specify your own
 @c @file{.bat}, @file{.exe}, @file{.sh} or @file{.pl} file.  It will be run

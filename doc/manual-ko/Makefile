@@ -14,8 +14,8 @@ createHTML:
 #	texi2html $(input).texi --html --no-split --css-include=Rman.css
 
 all:
-	rm -rf *.html *.*~
+	rm -rf *.html *~ *.aux *.log
 	make createHTML
-	make html2www
-	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
+#	make html2www
+#	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
 
