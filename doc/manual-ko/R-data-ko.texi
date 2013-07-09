@@ -572,24 +572,30 @@ Windows).
 @section  Variations on @code{read.table}
 @findex read.table
 
-The function @code{read.table} is the most convenient way to read in a
-rectangular grid of data.  Because of the many possibilities, there are
-several other functions that call @code{read.table} but change a group
-of default arguments.
+@c The function @code{read.table} is the most convenient way to read in a
+@c rectangular grid of data.  Because of the many possibilities, there are
+@c several other functions that call @code{read.table} but change a group
+@c of default arguments.
 
-@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
+@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 
 
-Beware that @code{read.table} is an inefficient way to read in
-very large numerical matrices: see @code{scan} below.
+@c Beware that @code{read.table} is an inefficient way to read in
+@c very large numerical matrices: see @code{scan} below.
 
-Some of the issues to consider are:
+주의할 점은 read.table은 아주 큰 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
+
+@c Some of the issues to consider are:
+
+이와 관련된 내용은 다음을 참고하십시오.
 
 @enumerate
 @item @strong{Encoding}
 
-If the file contains non-ASCII character fields, ensure that it is read
-in the correct encoding.  This is mainly an issue for reading Latin-1
-files in a UTF-8 locale, which can be done by something like
+@c If the file contains non-ASCII character fields, ensure that it is read
+@c in the correct encoding.  This is mainly an issue for reading Latin-1
+@c files in a UTF-8 locale, which can be done by something like
+
+만약 파일에 ASCII 형태가 아닌 문자 변수들이 포함되어 있다면, 그것이 제대로 된 인코딩으로 읽어졌는지 반드시 확인해야 합니다. 이것은 주로 UTF-8 locale에서 Latin-1 파일을 읽는 것과 관련된 문제인데, 이것은 아래와 같은 방법으로 해결할 수 있습니다.
 
 @example
 read.table("file.dat", fileEncoding="latin1")
