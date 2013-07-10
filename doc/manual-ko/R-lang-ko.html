@@ -256,11 +256,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
 <h2 class="unnumbered">R Language Definition</h2>
 
-<p>This is an introduction to the R language, explaining evaluation,
-parsing, object oriented programming, computing on the language, and so
-forth.
+<!-- This is an introduction to the @R{} language, explaining evaluation, -->
+<!-- parsing, object oriented programming, computing on the language, and so -->
+<!-- forth. -->
+<p>이 문서는 R 언어에 대한 소개자료로서 평가(evaluation), 구문 분석, 객체 지향 프로그래밍, R 언어 상에서의 컴퓨팅 등과
+같은 내용을 설명하고 있습니다.
 
-   <p>The current version of this document is 3.0.0 Under development (2013-02-11) <b>DRAFT</b>.
+<!-- The current version of this document is @value{VERSION} @b{DRAFT}. -->
+   <p>이 문서의 현재 버전은 3.0.1(2013-05-16) DRAFT입니다
 
    <p>ISBN 3-900051-13-5
 
@@ -312,13 +315,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- provides, among other things, a programming language, high level -->
 <!-- graphics, interfaces to other languages and debugging facilities.  This -->
 <!-- manual details and defines the @R{} language. -->
-<p>R은 통계적 계산과 그래픽을 위한 시스템입니다. R은 그 중에서도 프로그램 언어, 고급 그래픽, 다른 언어와의 호환 그리고 디버깅 도구를 제공합니다. 이 매뉴얼은 R 언어에 대해 자세히 설명하고 정의합니다.
+<p>R은 통계적 계산과 그래픽을 위한 시스템입니다. R이 제공하는 것들은 여러 가지가 있지만 그 중에서도 프로그래밍 언어, 고수준의
+그래픽, 다른 언어에 대한 인터페이스, 그리고 디버깅 기능들을 제공합니다. 이 매뉴얼에서는 R 언어를 상세히 기술하고 정의합니다.
 
 <!-- The @R{} language is a dialect of @Sl{} which was designed in the 1980s -->
 <!-- and has been in widespread use in the statistical community since. -->
 <!-- Its principal designer, John M. Chambers, was awarded the 1998 ACM -->
 <!-- Software Systems Award for @Sl{}. -->
-   <p>R 언어는 1980년대에 개발되어 이후 통계 커뮤니티에서 널리 사용된 S에서 파생된 것입니다. R의 주요 개발자인 John M. Chambers는 1998년 ACM Software System Award for S를 수상하기도 하였습니다.
+   <p>R 언어는, 1980년대에 설계된 이후로 통계학 커뮤니티 내에서 널리 사용되어 온 언어인 S로부터 파생된 언어입니다. S 언어의 주요
+설계자인 존 챔버스(John M. Chambers)는 S를 만든 공로로 1998년 ACM 소프트웨어 시스템 상을 수상한 바 있습니다.
 
 <!-- The language syntax has a superficial similarity with C, but the -->
 <!-- semantics are of the FPL (functional programming language) variety with -->
@@ -326,39 +331,63 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- allows ``computing on the language'', which in turn makes it possible to -->
 <!-- write functions that take expressions as input, something that is often -->
 <!-- useful for statistical modeling and graphics. -->
-   <p>R 언어의 문법은 표면상 C 언어와 유사합니다. 그러나 semantics는 Lisp와 <acronym>APL</acronym>과 더 강한 유사성이 있는 여러 종류의 FPL(functional programimg language) 중의 하나입니다. 특히 R은 R 언어 자체를 이용한 컴퓨팅이 가능하여 입력(input)과 같은 통계적 모델링과 그래픽 작업 등에 자주 쓰이는 함수를 쓸 수 있습니다.
+   <p>R 언어의 문법 구조(syntax)는 표면상 C 언어와 유사하지만, 의미 구조(semantics)는 기능적 프로그래밍 언어(FPL;
+functional programming language)의 일종으로 Lisp이나 APL과 상당한 유사성을 가지고 있습니다. 특히 R
+언어에서는 "언어 상에서의 컴퓨팅(computing on the language)"이 가능한데, 이를 통해
+표현식(expressions)을 입력으로 받아 들이는 함수를 작성할 수 있기 때문에 통계적 모델링과 그래픽에 유용합니다.
 
-   <p>It is possible to get quite far using R interactively, executing
-<a name="index-expression-1"></a>simple expressions from the command line.  Some users may never need to
-go beyond that level, others will want to write their own functions
-either in an ad hoc fashion to systematize repetitive work or with the
-perspective of writing add-on packages for new functionality.
+<!-- It is possible to get quite far using @R{} interactively, executing -->
+   <p><a name="index-expression-1"></a><!-- simple expressions from the command line.  Some users may never need to -->
+<!-- go beyond that level, others will want to write their own functions -->
+<!-- either in an ad hoc fashion to systematize repetitive work or with the -->
+<!-- perspective of writing add-on packages for new functionality. -->
 
-   <p>The purpose of this manual is to document the language <em>per se</em>. 
-That is, the objects that it works on, and the details of the expression
-evaluation process, which are useful to know when programming R
-functions.  Major subsystems for specific tasks, such as graphics, are
-only briefly described in this manual and will be documented separately.
+   <p>커맨드 라인 상에서 단순 표현식을 실행하는 것만으로도 상당한 정도로 R을 인터랙티브하게 사용하는 것이 가능합니다. 어떤 사용자들은
+아마도 그런 수준을 넘어 갈 필요가 결코 없겠지만, 다른 사용자들은 반복적인 작업을 즉석으로 시스템화 하기 위해서나 새로운 기능을 담은
+추가 패키지를 구성한다는 관점에서 자신만의 함수를 작성하고 싶어할 것입니다.
 
-   <p>Although much of the text will equally apply to S, there are also
-some substantial differences, and in order not to confuse the issue we
-shall concentrate on describing R.
+<!-- The purpose of this manual is to document the language @emph{per se}. -->
+<!-- That is, the objects that it works on, and the details of the expression -->
+<!-- evaluation process, which are useful to know when programming @R{} -->
+<!-- functions.  Major subsystems for specific tasks, such as graphics, are -->
+<!-- only briefly described in this manual and will be documented separately. -->
+   <p>이 매뉴얼의 목적은 R 언어 "그 자체"를 문서화하는 것입니다. 그것은 즉, R 언어가 동작하는 객체들 그리고 표현식 평가 과정의 세부
+사항들이며, 이런 것들을 알고 있으면 R 함수를 프로그래밍할 때 유용합니다. 그래픽과 같은 특정 작업을 위한 주요 하부 시스템은 이
+매뉴얼에서는 간략히 소개만 되고 별도 문서로 만들어질 것입니다.
 
-   <p>The design of the language contains a number of fine points and
-common pitfalls which may surprise the user.  Most of these are due to
-consistency considerations at a deeper level, as we shall explain. 
-There are also a number of useful shortcuts and idioms, which allow the
-user to express quite complicated operations succinctly.  Many of these
-become natural once one is familiar with the underlying concepts.  In
-some cases, there are multiple ways of performing a task, but some of
-the techniques will rely on the language implementation, and others work
-at a higher level of abstraction.  In such cases we shall indicate the
-preferred usage.
+<!-- Although much of the text will equally apply to @Sl{}, there are also -->
+<!-- some substantial differences, and in order not to confuse the issue we -->
+<!-- shall concentrate on describing @R{}. -->
+   <p>이 문서의 많은 내용들이 S에도 동일하게 적용됩니다만, 몇 가지 중요한 차이점도 있기 때문에 혼란을 일으키지 않도록 R을 설명하는 데
+집중할 것입니다.
 
-   <p>Some familiarity with R is assumed.  This is not an introduction to
-R but rather a programmers' reference manual.  Other manuals provide
-complementary information: in particular <a href="R-intro.html#Preface">Preface</a> provides an introduction to R and <a href="R-exts.html#System-and-foreign-language-interfaces">System and foreign language interfaces</a> details
-how to extend R using compiled code.
+<!-- The design of the language contains a number of fine points and -->
+<!-- common pitfalls which may surprise the user.  Most of these are due to -->
+<!-- consistency considerations at a deeper level, as we shall explain. -->
+<!-- There are also a number of useful shortcuts and idioms, which allow the -->
+<!-- user to express quite complicated operations succinctly.  Many of these -->
+<!-- become natural once one is familiar with the underlying concepts.  In -->
+<!-- some cases, there are multiple ways of performing a task, but some of -->
+<!-- the techniques will rely on the language implementation, and others work -->
+<!-- at a higher level of abstraction.  In such cases we shall indicate the -->
+<!-- preferred usage. -->
+   <p>R 언어 설계에는 여러 가지 훌륭한 잇점들이 포함되어 있지만, 흔히 빠지기 쉬운 함정들도 있어서 사용자들이 놀랄 지도 모릅니다. 그
+대부분은 조금 더 깊은 언어 수준에서의 일관성을 고려한 데서 비롯된 것으로, 나중에 설명하도록 하겠습니다. R 언어에는 몇 가지 유용한
+단축어(shortcut)와 관용구가 있는데, 이를 통해 꽤 복잡한 연산들을 간결하게 표현할 수 있습니다. 그러한 단축어와 관용구들은 그
+아래에 깔려 있는 근본적인 개념들에 익숙해지면 자연스러워질 것입니다. 어떤 경우에는 하나의 작업을 수행하는 여러 가지 방법이 있는데,
+이런 테크닉 중에 몇 가지는 언어 자체의 구현에 의존하는 것이고 다른 몇 가지는 고수준의 추상화 단계에서 작동하는 것입니다. 그런
+경우에는 선호되는 사용법을 명시할 것입니다.
+
+<!-- Some familiarity with @R{} is assumed.  This is not an introduction to -->
+<!-- @R{} but rather a programmers' reference manual.  Other manuals provide -->
+<!-- complementary information: in particular @ref{Preface, , , R-intro, An -->
+<!-- Introduction to R} provides an introduction to @R{} and @ref{System and -->
+<!-- foreign language interfaces, , , R-exts, Writing R Extensions} details -->
+<!-- how to extend @R{} using compiled code. -->
+   <p>독자들이 R에 어느 정도 익숙한 것으로 간주할 것입니다. 이 문서는 R에 대한 소개라기 보다는 프로그래머의 참조 매뉴얼입니다. 보충이
+필요한 정보들은 다른 매뉴얼을 참고하십시오. 특히 &lt;An Introduction to R&gt;의 '서문(Preface)'에 R에 대한
+소개가 잘 나와 있으며, &lt;Writing R Extensions&gt;의 '시스템과 외부 언어 인터페이스(System and foreign
+language interfaces)' 부분에 컴파일된 코드를 이용하여 R을 확장하는 방법이 상세히 설명되어 있습니다.
 
 <div class="node">
 <a name="Objects"></a>
@@ -373,74 +402,93 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <!-- needs to be clarified. What is a pointer, what is the pointed object, -->
 <!-- what is the context of the pointed object? -->
-<p>In every computer language
-<a name="index-variable-2"></a>variables provide a means of accessing the data stored in memory.  R
-does not provide direct access to the computer's memory but rather
-provides a number of specialized data structures we will refer to as
-<a name="index-object-3"></a>objects.  These objects
-are referred to through symbols or variables.  In R, however, the
-symbols are themselves objects and can be manipulated in the same way as
-any other object.  This is different from many other languages and has
-wide ranging effects.
+<!-- In every computer language -->
+<p><a name="index-variable-2"></a><!-- variables provide a means of accessing the data stored in memory.  @R{} -->
+<!-- does not provide direct access to the computer's memory but rather -->
+<!-- provides a number of specialized data structures we will refer to as -->
+<a name="index-object-3"></a><!-- objects.  These objects -->
+<!-- are referred to through symbols or variables.  In @R{}, however, the -->
+<!-- symbols are themselves objects and can be manipulated in the same way as -->
+<!-- any other object.  This is different from many other languages and has -->
+<!-- wide ranging effects. -->
 
-   <p>In this chapter we provide preliminary descriptions of the various data
-structures provided in R.  More detailed discussions of many of them
-will be found in the subsequent chapters.  The R specific function
-<code>typeof</code>
-<a name="index-typeof-4"></a><a name="index-type-5"></a>returns the <dfn>type</dfn> of an R object.  Note that in the C code
-underlying R, all objects are pointers to a structure with typedef
-<code>SEXPREC</code>; the different R data types are represented in C by
-<code>SEXPTYPE</code>, which determines how the information in the various
-parts of the structure is used.
+   <p>모든 컴퓨터 언어에서 변수(variable)는 메모리에 저장된 데이터에 접근하는 수단이 됩니다. R에서는 컴퓨터의 메모리에 직접
+접근하지는 못하지만, 대신 여러 가지 특화된 데이터 구조가 제공되며 이를 객체라고 부릅니다. 이러한 객체들은 기호(symbol)나
+변수를 통해 참조할 수 있습니다. 그러나, R에서는 기호는 그 자체로 객체이기도 하므로 다른 객체들과 마찬가지 방식으로 조작이
+가능합니다. 이 점이 여타의 컴퓨터 언어와 다른 점이며, R 프로그래밍에 광범위한 영향을 미칩니다.
 
-   <p>The following table describes the possible values returned by
-<code>typeof</code> and what they are.
+<!-- In this chapter we provide preliminary descriptions of the various data -->
+<!-- structures provided in @R{}.  More detailed discussions of many of them -->
+<!-- will be found in the subsequent chapters.  The @R{} specific function -->
+   <p><code>typeof</code>
+<a name="index-typeof-4"></a><a name="index-type-5"></a><!-- returns the @dfn{type} of an @R{} object.  Note that in the C code -->
+<!-- underlying @R{}, all objects are pointers to a structure with typedef -->
+<!-- @code{SEXPREC}; the different @R{} data types are represented in C by -->
+<!-- @code{SEXPTYPE}, which determines how the information in the various -->
+<!-- parts of the structure is used. -->
+
+   <p>이 장에서는 R에서 제공되는 다양한 데이터 구조에 대해 간략히 설명합니다. 보다 자세한 논의는 이후의 장을 참조하십시오. R의
+typeof 함수는 R 객체의 형식(type)을 반환합니다. R의 기저에 있는 C 코드에서 모든 객체들은 SEXPREC이라고 하는
+typedef 자료형으로 된 구조체를 가리키는 포인터들입니다. R의 여러 가지 데이터 형식들은 C 코드 내에서 SEXPTYPE이라는
+것으로 표현되는데, SEXPTYPE은 SEXPREC 구조체의 여러 부분에서 정보들이 어떻게 사용되는지를 결정합니다.
+
+<!-- The following table describes the possible values returned by -->
+<!-- @code{typeof} and what they are. -->
+   <p>다음 표에 typeof 함수에 의해 반환되는 값들과 그 값들이 무엇인지가 정리되어 있습니다.
 
    <blockquote>
    <p><table summary=""><tr align="left"><td valign="top" width="20%"><code>"NULL"</code> </td><td valign="top" width="70%">NULL
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"symbol"</code> </td><td valign="top" width="70%">a variable name
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"pairlist"</code></td><td valign="top" width="70%">a pairlist object (mainly internal)
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"closure"</code> </td><td valign="top" width="70%">a function
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"environment"</code> </td><td valign="top" width="70%">an environment
-<a name="index-evaluation_002c-lazy-6"></a><br></td></tr><tr align="left"><td valign="top" width="20%"><code>"promise"</code>  </td><td valign="top" width="70%">an object used to implement lazy evaluation
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"language"</code> </td><td valign="top" width="70%">an R language construct
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"special"</code>  </td><td valign="top" width="70%">an internal function that does not evaluate its arguments
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"builtin"</code> </td><td valign="top" width="70%">an internal function that evaluates its arguments
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"char"</code> </td><td valign="top" width="70%">a `scalar' string object (internal only) ***
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"logical"</code> </td><td valign="top" width="70%">a vector containing logical values
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"integer"</code> </td><td valign="top" width="70%">a vector containing integer values
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"double"</code>  </td><td valign="top" width="70%">a vector containing real values
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"complex"</code> </td><td valign="top" width="70%">a vector containing complex values
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"character"</code> </td><td valign="top" width="70%">a vector containing character values
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"..."</code> </td><td valign="top" width="70%">the special variable length argument ***
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"any"</code> </td><td valign="top" width="70%">a special type that matches all types: there are no objects of this type
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"expression"</code> </td><td valign="top" width="70%">an expression object
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"list"</code> </td><td valign="top" width="70%">a list
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"bytecode"</code> </td><td valign="top" width="70%">byte code (internal only) ***
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"externalptr"</code> </td><td valign="top" width="70%">an external pointer object
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"weakref"</code> </td><td valign="top" width="70%">a weak reference object
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"raw"</code> </td><td valign="top" width="70%">a vector containing bytes
-<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"S4"</code> </td><td valign="top" width="70%">an S4 object which is not a simple object
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"symbol"</code> </td><td valign="top" width="70%">a variable name 변수명
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"pairlist"</code></td><td valign="top" width="70%">a pairlist object (mainly internal)  페어리스트(pairlist) 객체 (주로 내부용)
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"closure"</code> </td><td valign="top" width="70%">a function 함수
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"environment"</code> </td><td valign="top" width="70%">an environment 환경
+<a name="index-evaluation_002c-lazy-6"></a><br></td></tr><tr align="left"><td valign="top" width="20%"><code>"promise"</code>  </td><td valign="top" width="70%">an object used to implement lazy evaluation  지연 평가(lazy evaluation)를 구현하는 데 사용되는 객체
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"language"</code> </td><td valign="top" width="70%">an R language construct   R 언어 구조물
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"special"</code>  </td><td valign="top" width="70%">an internal function that does not evaluate its arguments  입력 인자(arguments)를 평가하지 않는 내부 함수
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"builtin"</code> </td><td valign="top" width="70%">an internal function that evaluates its arguments  입력 인자(arguments)를 평가하는 내부 함수
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"char"</code> </td><td valign="top" width="70%">a `scalar' string object (internal only) ***  '스칼라(scalar)' 문자열 객체 (내부 전용)
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"logical"</code> </td><td valign="top" width="70%">a vector containing logical values  논리값을 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"integer"</code> </td><td valign="top" width="70%">a vector containing integer values  정수값을 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"double"</code>  </td><td valign="top" width="70%">a vector containing real values  실수값을 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"complex"</code> </td><td valign="top" width="70%">a vector containing complex values  복소수값을 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"character"</code> </td><td valign="top" width="70%">a vector containing character values  문자값을 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"..."</code> </td><td valign="top" width="70%">the special variable length argument ***  특수 변수 길이 인자
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"any"</code> </td><td valign="top" width="70%">a special type that matches all types: there are no objects of this type  모든 형식을 포괄할 수 있는 특수 형식(이 형식의 객체는 없음)
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"expression"</code> </td><td valign="top" width="70%">an expression object  표현식 객체
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"list"</code> </td><td valign="top" width="70%">a list   리스트
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"bytecode"</code> </td><td valign="top" width="70%">byte code (internal only) ***  바이트 코드 (내부 전용)
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"externalptr"</code> </td><td valign="top" width="70%">an external pointer object  외부 포인터 객체
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"weakref"</code> </td><td valign="top" width="70%">a weak reference object  약한 참조(weak reference) 객체
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"raw"</code> </td><td valign="top" width="70%">a vector containing bytes  바이트를 가지고 있는 벡터
+<br></td></tr><tr align="left"><td valign="top" width="20%"><code>"S4"</code> </td><td valign="top" width="70%">an S4 object which is not a simple object   S4 객체. 단순 객체가 아님
    <br></td></tr></table>
 </blockquote>
 
-<p class="noindent">Users cannot easily get hold of objects of types marked with a `***'.
+<p class="noindent"><!-- Users cannot easily get hold of objects of types marked with a `***'. -->
 
-   <p><a name="index-mode-7"></a><a name="index-mode-8"></a>Function <code>mode</code> gives information about the <dfn>mode</dfn> of an object
-in the sense of Becker, Chambers &amp; Wilks (1988), and is more compatible
-with other implementations of the S language. 
+   <p>*** 로 표시된 객체들은 사용자들이 쉽게 찾기가 힘듭니다. 
+<a name="index-mode-7"></a><a name="index-mode-8"></a><!-- Function @code{mode} gives information about the @dfn{mode} of an object -->
+<!-- in the sense of Becker, Chambers & Wilks (1988), and is more compatible -->
+<!-- with other implementations of the @Sl{} language. -->
 <!-- FIXME: -->
 <!-- Should say that many R functions, such as vector(), actually have an -->
 <!-- argument `mode' rather than `type'.  E.g., vector(mode = "double") -->
 <!-- actually creates an object of *type* "double" but *mode* "numeric". -->
 <!-- </FIXME> -->
-<a name="index-storage_002emode-9"></a>Finally, the function <code>storage.mode</code> returns the <dfn>storage mode</dfn>
-of its argument in the sense of Becker et al. (1988).  It is generally
-used when calling functions written in another language, such as C or
-FORTRAN, to ensure that R objects have the data type expected by the
-routine being called.  (In the S language, vectors with integer or
-real values are both of mode <code>"numeric"</code>, so their storage modes
-need to be distinguished.)
+<a name="index-storage_002emode-9"></a><!-- Finally, the function @code{storage.mode} returns the @dfn{storage mode} -->
+<!-- of its argument in the sense of Becker et al.@: (1988).  It is generally -->
+<!-- used when calling functions written in another language, such as C or -->
+<!-- FORTRAN, to ensure that @R{} objects have the data type expected by the -->
+<!-- routine being called.  (In the @Sl{} language, vectors with integer or -->
+<!-- real values are both of mode @code{"numeric"}, so their storage modes -->
+<!-- need to be distinguished.) -->
+
+   <p>mode 함수는 어떤 객체의 유형(mode)에 관한 정보를 알려줍니다. 여기서 '유형'의 의미는 &lt;&lt;The New S
+Language&gt;&gt;(Becker, Chambers and Wilks(1988))에 설명된 것과 같은 것으로, S 언어를 계승한 다른
+언어들에서도 더욱 잘 호환이 됩니다. 마지막으로, storage.mode 함수는 입력 인자의 저장 유형(storage mode)을
+반환합니다. 이 함수는 보통 C나 FORTRAN과 같은 다른 언어들로 작성된 함수들을 호출할 때 R 객체가 호출된 해당 루틴에서
+이용되는 데이터 형식을 가지고 있는 지 확인하기 위해 사용됩니다. (S 언어에서 정수나 실수값을 가지고 있는 벡터는 모두
+"numeric" 유형이기 때문에 저장 유형이 구분될 필요가 있습니다.)
 
 <pre class="example">     &gt; x &lt;- 1:3
      &gt; typeof(x)
@@ -450,15 +498,19 @@ need to be distinguished.)
      &gt; storage.mode(x)
      [1] "integer"
 </pre>
-   <p>R
-<a name="index-object-10"></a>objects are often coerced to different
-<a name="index-type-11"></a>types during computations. 
-There are also many functions available to perform explicit
-<a name="index-coercion-12"></a>coercion. 
-When programming in the R language the type of an object generally
-doesn't affect the computations, however, when dealing with foreign
-languages or the operating system it is often necessary to ensure that
-an object is of the correct type.
+   <!-- @R{} -->
+   <p><a name="index-object-10"></a><!-- objects are often coerced to different -->
+<a name="index-type-11"></a><!-- types during computations. -->
+<!-- There are also many functions available to perform explicit -->
+<a name="index-coercion-12"></a><!-- coercion. -->
+<!-- When programming in the @R{} language the type of an object generally -->
+<!-- doesn't affect the computations, however, when dealing with foreign -->
+<!-- languages or the operating system it is often necessary to ensure that -->
+<!-- an object is of the correct type. -->
+
+   <p>R의 객체들은 계산 과정에서 종종 다른 형식으로 강제로 변환되기도 합니다. 또한 명시적인 강제 변환을 수행하는 함수들도 많이 있습니다. 
+R 언어의 프로그래밍에서 객체의 형식은 일반적으로 계산 과정에 영향을 미치지 않지만, 다른 외부 언어나 운영 체제를 다룰 때는 어떤
+객체가 정확한 형식인지 확인하는 것이 종종 필요합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Basic-types">Basic types</a>
