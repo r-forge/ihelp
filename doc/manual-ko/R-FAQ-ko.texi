@@ -1,5 +1,5 @@
 @c 
-@c Modified by Chel Hee Lee on 2013-JUL-05
+@c Modified by Chel Hee Lee on 2013-JUL-10
 @c 
 @c 
 
@@ -92,8 +92,7 @@ Kurt Hornik                      @*
 @end ifnothtml
 
 @ifnottex
-@c @node Top, Introduction, (dir), (dir)
-@node Top, Acknowledgement, (dir), (dir)
+@node Top, Introduction, (dir), (dir)
 @top R FAQ
 @ifhtml
 @html
@@ -108,7 +107,6 @@ Kurt Hornik                      @*
 @end ifnottex
 
 @menu
-* Acknowledgement::
 * Introduction::                
 * R Basics::                    
 * R and S::                     
@@ -121,33 +119,28 @@ Kurt Hornik                      @*
 * Acknowledgments::             
 @end menu
 
-
-@node Acknowledgement, Introduction, Top, Top
-@c @unnumbered Acknowledgement
-@unnumbered 감사의 말씀
-
-본 한국어 문서는 @strong{The R Development Translation Teams}의 @strong{Korean}을 지원하는 @strong{The Korean R Translation Team}에 의해서 관리되고 있습니다. 
-이러한 문서의 수정과 재배포를 허락해 준 @strong{Kurt Hornik과 R Development Core Team}에게 감사를 드립니다.
-@c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada), 그리고 David Smith에 깊은 감사의 뜻을 표현합니다.  
-
-아래와 같은 분들이 이 문서에 대하여 여러차례의 제안, 수정 그리고 일부분의 번역 및 교정 등 다양한 방법으로 기여를 해주시고 계십니다.
-또한, 의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
-
-@itemize @bullet
-@item 이철희 (Chel Hee Lee), 2009-2013 - 제 1 역자 
-@item Heather Kim, Winnipeg, 2013 - 제 2 역자
-@end itemize
-
-본 문서에 대한 참여, 정정 및 제안, 그리고 번역의 제공등에 대해서는 메일링 알카이브 @url{http://lists.r-forge.r-project.org/pipermail/ihelp-translators/} 를 통하여 확인을 부탁드리며, @email{ihelp-translators@@ihelp.r-forge.r-project.org} 메일링을 통해주시면 감사드리겠습니다. 
-
-
-@node Introduction, R Basics, Acknowledgement, Top
+@node Introduction, R Basics, Top, Top
 @c @chapter Introduction
 @chapter 소개
 
 @c This document contains answers to some of the most frequently asked
 @c questions about R.
 이 문서는 R에 관하여 가장 많이 자주 물어보는 질문들에 대해서 정리한 문서입니다.
+
+본 한국어 문서는 @strong{The R Development Translation Teams}의 @strong{Korean} 섹션을 담당하는 @strong{The Korean R Translation Team}에 의해서 관리되고 있습니다. 
+문서의 수정과 재배포를 허락해 준 @strong{Kurt Hornik과 R Development Core Team}에게 감사를 드립니다.
+@c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
+
+아래와 같은 분들에 의하여 이 문서는 여러차례의 교정과 수정이 이루어졌습니다.
+의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
+
+@itemize @bullet
+@item Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
+@item Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
+@end itemize
+
+본 문서에 대한 참여 및 제안은 @email{ihelp-translators@@ihelp.r-forge.r-project.org} 메일링을 이용해 주시면 감사드리겠습니다. 
+
 
 @menu
 * Legalese::                    
@@ -162,21 +155,20 @@ Kurt Hornik                      @*
 
 @c This document is copyright @copyright{} 1998--@value{FAQ_YEAR} by Kurt
 @c Hornik.
-이 문서에 대한 저작권은 @copyright{} 1998--@value{FAQ_YEAR} 이래로 Kurt Hornik에게 있습니다. 
+이 문서의 영문본에 대한 저작권은 @copyright{} 1998--@value{FAQ_YEAR} Kurt Hornik에게 있으며, 한국어 번역본은 Chel Hee Lee @copyright{} 2009--@value{FAQ_YEAR}에 있습니다.
 
 @c This document is free software; you can redistribute it and/or modify it
 @c under the terms of the @acronym{GNU} General Public License as published
 @c by the Free Software Foundation; either version 2, or (at your option)
 @c any later version.
-
-그리고 이 문서는 자유소프트웨어이므로, 자유소프트웨어 재단 (Free Software Foundation)에 의해서 배포되는 @acronym{GNU} 일반공중라이센스 (General Public License) 버전 2 또는 그 이후의 버전들을 통하여 수정 및 재배포를 할 수 있습니다. 
+본 문서는 자유소프트웨어(free software)이므로, 자유소프트웨어 재단 (Free Software Foundation)에 의해서 배포되는 @acronym{GNU} 일반공중라이센스 (General Public License) 버전 2 또는 그 이후의 버전들을 통하여 수정 및 재배포를 할 수 있습니다. 
 
 @c This document is distributed in the hope that it will be useful, but
 @c WITHOUT ANY WARRANTY; without even the implied warranty of
 @c MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 @c @acronym{GNU} General Public License for more details.
-
-이 문서가 사용자에게 유용하길 바라는 희망에서 배포되고 있으나, 어떤 상업적 형태로서의 보증 또는 특수한 목적에 적합 등 그 어떠한 형태의 보증도 하지 않고 있음을 알려드립니다 (문장 참... 어색함).
+이 문서가 사용자에게 유용하길 바라는 희망에서 배포되고 있습니다.
+그러나, 어떤 상업적 형태(MERCHANTABILITY)로서의 보증 및 특수한 목적에 적합(FITNESS FOR A PARTICULAR PURPOSES)등 어떠한 형태의 보증을 하지 않습니다.
 보다 자세한 사항들은 @acronym{GNU} 일반공증라이센스를 참조하시길 부탁드립니다. 
 
 @c Copies of the @acronym{GNU} General Public License versions are
@@ -186,8 +178,6 @@ Kurt Hornik                      @*
 @display
 @url{http://www.R-project.org/Licenses/}
 @end display
-
-
 
 @node Obtaining this document, Citing this document, Legalese, Introduction
 @section Obtaining this document
@@ -339,7 +329,6 @@ R distribution은 많은 통계 관련 기능을 가지고 있습니다.
 그런 기능들 중에는 선형 모듈, 일반화 선형 모듈, 비선형 회귀 모델, 시계열 분석, 일반 모수 검정, 비모수 검정, 클러스터링, 평활화 등이 포함되어 있습니다. 
 데이터를 시각적으로 나타내기 위한 유연한 그래픽 환경을 제공하는 많은 함수들을 R은 제공하고 있습니다. 
 특정한 작업을 수행하기 위한  ``add-on packages''로 알려진 부가 모듈 또한 제공되고 있습니다. (자세한 부가 모듈에 대해서는 @ref{R Add-On Packages}를 참조하세요)
-
 
 @c R was initially written by @email{Ross.Ihaka@@R-project.org, Ross Ihaka}
 @c and @email{Robert.Gentleman@@R-project.org, Robert Gentleman} at the
