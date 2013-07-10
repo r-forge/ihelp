@@ -9957,28 +9957,28 @@ EOF
 @c line editor allowing recall, editing and re-submission of prior commands
 @c is used.  Note that other versions of @strong{readline} exist and may be
 @c used by the inbuilt command line editor: this used to happen on Mac OS X.
-
-GNU readline 라이브러리는 UNIX 환경에서 R이 설정될 때, 이용할 수 있으며, 커맨드 입력 전에 제출(Re-submission)과 에디팅, 리콜을 허용하는 내재되어 있는 command line 에디터(inbuilt)가 사용됩니다. readline의 다른 버전이 존재하고, 내재되어 있는 command line 에디터에 의해 사용될 수 있다는 것을 잊지 마세요. Mac OS X 환경에서 활용된 바 있습니다 .
+UNIX 상에서 컴파일을 위하여 @R{}의 환경설정을 할때 @acronym{GNU} @strong{readline} 라이브러리가 사용가능 할 때, 이전 명령어들의 기억기능(recall), 편집(editing), 그리고 재입력(resubmission) 기능을 허용하는 내재된 커맨드기반의 에디터가 이용됩니다. 
+다른 버전의 @strong{readline}이 존재 할 수 있고, 이들이 내재된 커맨드 기반의 명령어에 의해서 사용될 수도 있습니다.
+보통 Mac OS X에서 이러합니다 
 
 @c It can be disabled (useful for usage with @acronym{ESS} @footnote{The
 @c `Emacs Speaks Statistics' package; see the @acronym{URL}
 @c @uref{http://ESS.R-project.org}}) using the startup option
 @c @option{--no-readline}.
-
---no-readline startup 옵션을 사용해서 (ESS 활용에 유용) 억제(disabled)될 수 있습니다 .
+스타트업 옵션 @option{--no-readline}을 이용하여 사용되지 않도록 할 수도 있습니다.
+(이렇게 하는 것은 @acronym{ESS}@footnote{`Emacs Speaks Statistics'패키지를 말하며, @acronym{URL} @uref{http://ESS.R-project.org}를 살펴보시길 바랍니다}를 사용할 때 유용합니다).
 
 @c Windows versions of @R{} have somewhat simpler command-line editing: see
 @c @samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the
 @c file @file{README.Rterm} for command-line editing under
 @c @code{Rterm.exe}.
-
-윈도우 버전에서의 R은 더욱 간단한 command-line 에디팅을 선보입니다. GUI의 도움말 메뉴상의 'Console'과 Rterm.exe의 command-line 에디팅을 위해 README.Rterm 파일을 읽어 보세요 .
+Windows 버전에서 @R{}은 다소 간단한 형식의 커맨드라인 편집기능을 가지고 있습니다.
+@acronym{GUI}에서 @samp{Help} 메뉴에 있는 @samp{Console}을 살펴보시고, @code{Rterm.exe}내에 있는 커맨드라인을 위한 파일 @file{README.Rterm}을 살펴보시길 바랍니다. 
 
 @c When using @R{} with @strong{readline} capabilities, the functions
 @c described below are available, as well as others (probably) documented
 @c in @command{man readline} or @command{info readline} on your system.
-
-readline의 기능을 활용해서 R을 사용할 때, 아래의 기능들과 각 시스템의 readline 혹은 info readline 상의 다른 기능들도 이용 가능합니다 .
+@strong{readline}의 기능과 함께 @R{}을 사용할 때, (아마도) 당신의 시스템에 있는 @command{man readline} 또는 @command{info readline}에 기술되어 있는 함수들과 아래에 기술된 함수들을 이용할 수 있습니다.
 
 @c Many of these use either Control or Meta characters.  Control
 @c characters, such as @kbd{Control-m}, are obtained by holding the
@@ -9993,8 +9993,13 @@ readline의 기능을 활용해서 R을 사용할 때, 아래의 기능들과 �
 @c type @key{ESC}@key{b}.  The @kbd{ESC} character sequences are also
 @c allowed on terminals with real Meta keys.  Note that case is significant
 @c for Meta characters.
-
-Control 혹은 메타문자들(Meta characters)이 자주 사용 됩니다. Control-m과 같은 Control 문자들은 m과 <CTRL>을 입력하면서 얻을 수 있으며, 이하에서는 C-m으로 쓰입니다. Meta-b와 같은 메타문자들(Meta characters)은 META와 b를 눌러서 사용합니다. 그리고 M-b로 명명 됩니다. 귀하의 터미널에서 META 키를 사용할 수 없다면, ESC 키와 함께 두 문자의 열(two-character sequences)을 사용해서 메타문자들(Meta characters)을 입력 할 수 있습니다. 따라서, M-b를 위해, ESC와 b를 사용 할 수 있습니다. ESC 문자열(character sequences)은 또한 실제 Meta 키들을 활용하여 터미널 상에서 사용될 수 있습니다. 두 문자의 열(two-character sequences)에겐 상당한 의미가 있다고 볼 수 있습니다.
+이들중의 많은 것들이 컨트롤 (Control)과 메타(Meta) 문자들을 사용합니다.
+@kbd{Control-m}과 같은 형식으로 컨트롤 문자들은 @key{CTRL}키를 누른 상태에서 @key{m}키를 누르는 것입니다.
+그리고 이것을 @kbd{C-m}이라고 표시합니다.
+@kbd{Meta-b}와 같이 메타문자들은 @key{META}@footnote{PC 키보드에서는 이것은 일반적으로 Alt 키이거나 가끔 `Windows'키이기도 합니다. Mac 키보드에서는 일반적으로 사용가능한 메타키가 없습니다}를 누른 상태에서 @key{b}를 누르는 것이며, 이는 @kbd{M-b}라고 씁니다.
+만약에 당신의 터미널이 활성화된 @key{META}키를 가지고 있지 않다면, 당신은 @kbd{ESC}를 사용하여 메타문자들을 입력할 수 있습니다.
+그러므로, @kbd{M-b}를 입력하기 위해서는, 당신은 @key{ESC}@key{b}라고 입력합니다.
+다음은 중요한 메타 문자들을 정리한 것입니다. 
 
 @c @appendixsection Editing actions
 @appendixsection 편집하기 
@@ -10011,84 +10016,75 @@ Control 혹은 메타문자들(Meta characters)이 자주 사용 됩니다. Cont
 @c described here: for @emph{vi} mode see the @strong{readline}
 @c documentation.)
 
+@R{} 프로그램은 당신이 입력한 명령어 라인들에 대한 기록을 보관합니다. 
+이때 잘못 입력한 명령어도 보관이 되며, 기록상에 보관된 명령어들은 다시 불러올 수 있고, 필요하다면 변경하여, 새로운 명령어처럼 다시 사용될 수 있습니다. 
+이맥스 스타일(Emacs-style)의 명령어라인 편집환경에서는 당신이 입력하는 것들이 편집하는 명령어 속에 삽입되거나, 커서의 오른쪽에 있는 문자들을 변경하하기도 합니다. 
+@emph{vi} 모드에서는 @key{ESC}를 입력함으로서 문자가 입력되거나 삽입모드를 종료할 수 있습니다. 
+(기본적으로는 이맥스 스타일이 사용되며, @emph{vi} 모드에 대해서는 @strong{readline} 문서를 확인하시길 바랍니다).
+
 @c Pressing the @key{RET} command at any time causes the command to be
 @c re-submitted.
+어떤 상황이던지 간에 @key{RET}키를 누르는 것은 명령어를 실행하도록 전달하는 것과 같습니다. 
 
 @c Other editing actions are summarized in the following table.
-
-R은 에러가 존재하는 line들을 포함, command line에 대한 정보를 보관하고, 전에 사용하던 커맨드들은 필요하면 변경되거나, 혹은 재사용 될 수 있고, 완전히 새로운 커맨드로 바뀌어서 다시 사용 될 수도 있습니다. Emac-스타일의 command-line 에디팅 환경에서, 이 에디팅 단계에서 입력된 값으로 인해 캐릭터들이 여러분이 에디팅 하는 커맨드에 삽입 될 수 있고, 그리고 캐릭터들을 커서의 오른쪽으로 치환합니다.
-vi 모드에서 캐릭터 삽입 모드는 M-i 혹은 M-a에 의해 시작되고, 캐릭터들이 입력되고 삽입 모드 는 <ESC>키를 입력하여 마치게 됩니다(디폴트는 Emacs-style이며, 여기에 기술되어 있습니다. vi 모드를 더 자세히 알고 싶으시면, readline 문서를 참조하세요). 그리고 RET를 명령문을 입력하면 command를 다시 제출할 수 있습니다. 기타 다른 editing 실행에대한 내용도 나와 있습니다.
+다른 편집 기능들은 아래의 표에 정리되어 있습니다. 
 
 @c @appendixsection Command-line editor summary
-@appendixsection 명령어 기반의 에디터 
+@appendixsection 커맨드라인 에디터에 대한 요약 
 
 @c @subheading Command recall and vertical motion
-@subheading 커서의 상하이동을 통한 명령어 되불러 선택하기
+@subheading 커서의 상하이동을 통하여 명령어를 되부르기
 
 @table @kbd
 @item C-p
 @c Go to the previous command (backwards in the history).
-
-이전 커맨드로 이동(히스토리 상에서는 뒤로 이동)
+이전에 사용한 명령어로 이동합니다 (히스토리 상에서 한 단계 뒤로 이동하는 것입니다).
 
 @item C-n
 @c Go to the next command (forwards in the history).
-
-다음 커맨드로 이동(히스토리 상에서는 앞으로 이동)
+다음 명령어로 이동합니다 (히스토리상에서 한 단계 다음으로 이동하는 것입니다).
 
 @item C-r @var{text}
 @c Find the last command with the @var{text} string in it.
+@var{text}를 포함하는 마지막 명령어를 찾습니다. 
 @end table
 
-text 스트링과 함께 마지막 커맨드를 탐색
-
-On most terminals, you can also use the up and down arrow keys instead
-of @kbd{C-p} and @kbd{C-n}, respectively.
-
-대부분의 터미널에서는, C-p나 C-n 대신 각각 위, 아래 화살표 키를 이용할 수 있습니다 .
+@c On most terminals, you can also use the up and down arrow keys instead
+@c of @kbd{C-p} and @kbd{C-n}, respectively.
+대부분의 터미널에서 @kbd{C-p}와 @kbd{C-n}를 이용하는 대신에 당신은 위쪽 또는 아래쪽 방향의 화살표를 이용하여 이를 이용할 수 있습니다. 
 
 @c @subheading Horizontal motion of the cursor
-@subheading 커서의 좌우이동
-
-@c 커서의 상하 이동
+@subheading 커서를 좌우로 이동하여 할 수 있는 명령어들
 
 @table @kbd
 @item C-a
 @c Go to the beginning of the command.
-
-커맨드의 시작점으로 이동
+명령어의 가장 처음으로 이동합니다. 
 
 @item C-e
 @c Go to the end of the line.
-
-커맨드 라인의 끝으로 이동
+라인의 끝으로 이동합니다. 
 
 @item M-b
 @c Go back one word.
-
-한 단어 뒤로 이동
+한 단어 뒤로 이동합니다. 
 
 @item M-f
 @c Go forward one word.
-
-한 단어 앞으로 이동
+한 단어 앞으로 이동합니다. 
 
 @item C-b
 @c Go back one character.
-
-한 문자 뒤로 이동
+한 문자 뒤로 이동합니다. 
 
 @item C-f
 @c Go forward one character.
-
-한 문자 앞으로 이동
-
+한 문자 앞으로 이동합니다. 
 @end table
 
-On most terminals, you can also use the left and right arrow keys
-instead of @kbd{C-b} and @kbd{C-f}, respectively.
-
-대부분의 터미널에서는, C-b와 C-f 대신 왼쪽, 오른쪽 화살표 키를 사용할 수 있습니다.
+@c On most terminals, you can also use the left and right arrow keys
+@c instead of @kbd{C-b} and @kbd{C-f}, respectively.
+대부분의 터미널에서는 당신은 @kbd{C-b}와 @kbd{C-f}를 이용하는 대신에 좌측 또는 우측 화살표를 이용할 수 있습니다. 
 
 @c @subheading Editing and re-submission
 @subheading 편집 후 재실행하기 
@@ -10096,70 +10092,58 @@ instead of @kbd{C-b} and @kbd{C-f}, respectively.
 @table @kbd
 @item @var{text}
 @c Insert @var{text} at the cursor.
-커서 위치에서 @var{text} 삽입합니다.
+커서의 위치에 @var{text} 삽입합니다.
 
 @item C-f @var{text}
 @c Append @var{text} after the cursor.
-
-커서 위치 다음부터 @var{text}를 추가합니다.
+커서의 위치 다음부분 부터 @var{text}를 추가합니다.
 
 @item @key{DEL}
 @c Delete the previous character (left of the cursor).
-
-커서 위치의 바로 좌측에 있는 이전 문자를 삭제합니다.
+커서의 왼쪽에 위한 문자를 삭제합니다. 
 
 @item C-d
 @c Delete the character under the cursor.
-
-커서 위치의 바로 아래에 있는 문자를 삭제합니다.
+커서의 바로 아래 있는 문자를 삭제합니다. 
 
 @item M-d
 @c Delete the rest of the word under the cursor, and ``save'' it.
-
-커서위치의 아래에 남아 있는 모든 단어를 삭제하고 저장합니다.
+커서의 아래에 있는 위치하는 문자 이후의 모든 것을 삭제하고 ``저장'' 합니다. 
 
 @item C-k
 @c Delete from cursor to end of command, and ``save'' it.
-
-커서의 위치로부터 명령어 끝까지 삭제하고 저장합니다.
+커서의 위치로부터 명령어의 끝 부분까지 삭제한 뒤, ``저장'' 합니다. 
 
 @item C-y
 @c Insert (yank) the last ``saved'' text here.
-
-마지막에 저장된 텍스트를 삽입합니다.
+마지막으로 저장된 텍스트를 이곳에 삽입니다. 
 
 @item C-t
 @c Transpose the character under the cursor with the next.
-
-다음 문자와 함께 커서 아래의 문자를 이항
+다음 문자를 커서 아래에 있는 문자와 전치합니다. 
 
 @item M-l
 @c Change the rest of the word to lower case.
-
-나머지 단어들을 소문자로 변경
+단어의 남겨진 부분들을 소문자로 변경합니다. 
 
 @item M-c
 @c Change the rest of the word to upper case.
-
-나머지 단어들을 대분자로 변경
+단어의 남겨진 부분들을 대문자로 변경합니다. 
 
 @item @key{RET}
 @c Re-submit the command to @R{}.
-
-R에 커맨드를 다시 제출
-
+@R{}에 명령어를 다시 전달합니다.
 @end table
 
 @c The final @key{RET} terminates the command line editing sequence.
-마지막 @key{RET}는 명령어 라인의 편집 시퀀스를 종료합니다. 
+마지막 @key{RET} 키는 명령어 라인의 편집 시퀀스를 종료하는 것입니다.
 
 @c The @strong{readline} key bindings can be customized in the usual way
 @c @emph{via} a @file{~/.inputrc} file.  As from @R{} 2.12.0, these
 @c customizations can be conditioned on application @code{R}, that is
 @c by including a section like
-
-@strong{Readline} 키바인딩 (key binding)은  @file{~/.inputrc} 파일을 @emph{통해서} 일반적인 방법으로 맞춰질수 있습니다. 
-@R{} 2.12.0 부터는 이러한 커스터마이제이션이 @code{R} 어플리케이션 상에서 아래와 같은 방법을 통해서 조건적으로 수행이 될 수 있습니다. 
+@strong{Readline} 키바인딩 (key binding)은  @file{~/.inputrc} 파일을 @emph{통해서} 일반적인 방법으로 조정될 수 있습니다. 
+@R{} 2.12.0 부터는 이러한 개인설정 (customization)은 @code{R}에 따라 조건적일 수 있습니다. 
 
 @example
 $if R
@@ -10173,7 +10157,8 @@ $endif
 @printindex vr
 
 @node Concept index, References, Function and variable index, Top
-@appendix Concept index
+@c @appendix Concept index
+@appendix 주요 개념 인덱스 
 
 @printindex cp
 
