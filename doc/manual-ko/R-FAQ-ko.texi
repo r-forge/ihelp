@@ -1,12 +1,14 @@
 @c 
 @c Modified by Chel Hee Lee on 2013-JUL-10
 @c 
+@c 교정작업 실시: 2013-JUL-10 
+@c 처음부터 up to chapter 1
 @c 
 
 \input texinfo
 @c %**start of header
 @setfilename R-FAQ.info
-@settitle R FAQ (한국어 - 2013.07.09, ver.0.30)
+@settitle R FAQ (한국어 - 2013.07.09, ver.0.30, 오역 교정중)
 @setchapternewpage on
 @set FAQ_YEAR 2013
 @set FAQ_DATE @value{FAQ_YEAR}-02-08
@@ -127,11 +129,11 @@ Kurt Hornik                      @*
 @c questions about R.
 이 문서는 R에 관하여 가장 많이 자주 물어보는 질문들에 대해서 정리한 문서입니다.
 
-본 한국어 문서는 @strong{The R Development Translation Teams}의 @strong{Korean} 섹션을 담당하는 @strong{The Korean R Translation Team}에 의해서 관리되고 있습니다. 
+본 한국어 문서는 @strong{R Development Translation Teams} (@url{http://developer.r-project.org/TranslationTeams.html}) 에서 @strong{Korean} 섹션을 담당하는 @strong{Korean R Translation Team}에 의해서 관리되고 있습니다. 
 문서의 수정과 재배포를 허락해 준 @strong{Kurt Hornik과 R Development Core Team}에게 감사를 드립니다.
 @c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
 
-아래와 같은 분들에 의하여 이 문서는 여러차례의 교정과 수정이 이루어졌습니다.
+아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다.
 의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
 
 @itemize @bullet
@@ -183,23 +185,23 @@ Kurt Hornik                      @*
 @section Obtaining this document
 
 @c The latest version of this document is always available from
-이문서의 가장 최신 버전은 항상 아래의 주소에서 확인이 가능합니다. 
-
+가장 최신 버전의 문서는 항상 아래의 주소에서 확인이 가능합니다.
 @display
 @url{http://CRAN.R-project.org/doc/FAQ/}
 @end display
 
 @c From there, you can obtain versions converted to
-또한,  
+위의 주소로부터 
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.txt,, plain
 @acronym{ASCII} text},
-@c @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.dvi.gz,, DVI},
+@url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.dvi.gz,, DVI},
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.info.gz,, @acronym{GNU}
 info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.pdf,, PDF},
-@c @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.ps.gz,, PostScript}
+@url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.ps.gz,, PostScript}
+으로 변환되어진 문서형식을 가진 버전들을 얻을 수 있습니다.
 @c as well as the 
-그리고 이렇게 다양한 형식의 문서들을 생성하기 위해 사용된 
+또한, 이렇게 다양한 형식의 문서들을 생성하기 위해 사용된 
 @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.texi,,Texinfo source} 
 @c used for creating all these formats using the
 를 얻을 수 있습니다.
@@ -207,7 +209,7 @@ info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 
 @c You can also obtain the R @acronym{FAQ} from the @file{doc/FAQ}
 @c subdirectory of a @CRAN{} site (@pxref{What is CRAN?}).
-그외에도 R @acronym{FAQ}를 @CRAN{} 사이트 (@pxref{What is CRAN?} 참조)의 하위디렉토리 @file{doc/FAQ}에서 찾을 수 있습니다.
+그외에도 R @acronym{FAQ} 문서를 @CRAN{} 사이트 (@pxref{What is CRAN?} 참조)의 하위디렉토리 @file{doc/FAQ}에서 찾을 수 있습니다.
 
 @node Citing this document, Notation, Obtaining this document, Introduction
 @section Citing this document
@@ -215,8 +217,7 @@ info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 @c In publications, please refer to this @acronym{FAQ} as Hornik
 @c (@value{FAQ_YEAR}), ``The R @acronym{FAQ}'', and give the above,
 @c @emph{official} @acronym{URL} and the ISBN @value{FAQ_ISBN}:
-
-이 @acronym{FAQ}를 인용하고자 할때는 Hornik (@value{FAQ_YEAR}), ``The R @acronym{FAQ}''라고 하주시고, 위에서 언급한대로 @emph{공식적인} @acronym{URL} 과 ISBN @value{FAQ_ISBN}을 기재하면 됩니다:
+퍼블리케이션 (publication)에서 본 @acronym{FAQ} 문서를 인용하고자 할 때에는 Hornik (@value{FAQ_YEAR}), ``The R @acronym{FAQ}'' 이라고 해주시고, 위에서 언급한 @emph{공식적인} @acronym{URL}과 ISBN @value{FAQ_ISBN}을 기재해 주세요.
 
 @example
 @group
@@ -236,7 +237,8 @@ info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 
 @c Everything should be pretty standard.  @samp{R>} is used for the R
 @c prompt, and a @samp{$} for the shell prompt (where applicable).
-이 문서에서는 거의 표준에 가까운 기호들을 사용합니다.  @samp{R>} 은 R 프롬프트를 나타나는데 사용되고, @samp{$}는 쉘프롬프트를 나타내는데 사용됩니다.
+이 문서에서는 거의 대부분이 표준에 가까운 기호를 사용하였습니다. 
+예를들면, @samp{R>}은 R 프롬프트(prompt)를 나타내고, @samp{$}는 쉘프롬프트(shell prompt)를 의미합니다.
 
 @node Feedback,  , Notation, Introduction
 @section Feedback
@@ -244,7 +246,7 @@ info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 @c Feedback via email to @email{Kurt.Hornik@@R-project.org} is of course
 @c most welcome.
 @c 피드백은 @email{Kurt.Hornik@@R-project.org}로 보내주시면 감사드리겠습니다. 
-본 문서에 대한 피드백은 @email{gnustats@@korea.gnu.org}로 보내주시거나, @email{ihelp-translators@@lists.r-forge.r-project.org}로 보내주시길 부탁드립니다.
+본 문서에 대한 피드백은 @email{gnustats@@korea.gnu.org} 또는 @email{ihelp-translators@@lists.r-forge.r-project.org}로 보내주시길 부탁드립니다.
 
 @c In particular, note that I do not have access to Windows or Macintosh
 @c systems.  Features specific to the Windows and Mac OS X ports of R are
@@ -256,10 +258,12 @@ info}, @url{http://CRAN.R-project.org/doc/FAQ/R-FAQ.html,, @HTML{}},
 @c systems that you think should be added to this document, please let me
 @c know.
 
-다음의 내용에 대해서 알아주셨으면 합니다.  이 문서의 작성자는 윈도우즈 또는 맥킨토시 시스템을 가지고 있지 않습니다.  따라서, 윈도우즈 또는 맥 OS X와 관련된 특별한 내용에 대해서는 
+특히, 다음의 내용에 대해서 알아주셨으면 합니다.  
+이 문서의 작성자 (및 번역자 Chel Hee Lee)는 Windows 또는 Macintosh 시스템들을 가지고 있지 않습니다.
+따라서, Windows와 Mac OS X와 관련된 특별한 내용들에 대해서는 
 @url{http://CRAN.R-project.org/bin/windows/base/rw-FAQ.html, ``R for Windows @acronym{FAQ}''} 와
-@url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac OS X @acronym{FAQ}''}을 참고 부탁드립니다.
-만약 맥킨토시와 윈도우즈와 관련된 정보라도 당신이 생각하기에 이 문서에 필요하다면, 저에게 꼭 알려주셨으면 합니다. 
+@url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac OS X @acronym{FAQ}''}을 참고 해주세요.
+만약 Macintosh와 Windows 시스템들에 관련된 정보라고 할지라도, 이 문서내에 곡 포함되어야 한다고 생각되시면 꼭 알려주시기를 부탁드립니다.
 
 @c <FIXME>
 @c Should we maybe have direct links inside the R tree to the various
