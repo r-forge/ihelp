@@ -1,5 +1,5 @@
 @c 
-@c 2013-JUL-09 (Tuesday) by Chel Hee Lee 
+@c 2013-JUL-10 (Wendesday) by Chel Hee Lee 
 @c 1.Begining ~ 1.11 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
@@ -9751,22 +9751,15 @@ Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home director
 @code{Rgui}내에서 ``Break to debugger''라는 메뉴 항목을 이용할 수 있게 해주고, 커맨드 라인이 프로세싱되는 동안 디버거에게 브레이크를 작동시켜줍니다. 
 @end table
 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-@c 
-@c START AGAIN FROM THIS POINT
-@c 
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-
-
-
 @c Under Windows with @code{R CMD} you may also specify your own
 @c @file{.bat}, @file{.exe}, @file{.sh} or @file{.pl} file.  It will be run
 @c under the appropriate interpreter (Perl for @file{.pl}) with several
 @c environment variables set appropriately, including @env{R_HOME},
 @c @env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS} and @env{TEXINPUTS}.  For
 @c example, if you already have @file{latex.exe} on your path, then
-
-윈도우 상에서, R CMD를 활용하여, .bat, exe, .sh or .pl 파일들을 구체화할 수 있습니다. R_HOME, R_OSTYPE, PATH, BSTINPUTS, TEXINPUTS 포함해, 이미 설정된 일부 환경변수들과 함께, 적절한 interpreter (Perl for .pl)하에서 실행될 수 있습니다. 예를 들어, 만약 자신의 경로에 이미 latex.exe가 존재한다면, 그 다음으로,
+Windows에서 @code{R CMD}를 이용할 때 당신이 소유한  @file{.bat}, @file{.exe}, @file{.sh} 또는 @file{.pl} 파일들 또한 지정할 수 있습니다. 
+이것은 적합한 인터프리터 (즉, @file{.pl}파일은 Perl을 이용합니다)와 @env{R_HOME}, @env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS}, 그리고 @env{TEXINPUTS}를 포함하여 올바르게 지정된 여러가지의 환경변수들과 함께 실행될 것입니다. 
+예를들면, 당신의 경로에 @file{latex.exe}파일을 이미 가지고 있다면 아래와 같이 방법으로 @env{TEXINPUTS}에 추가되어 있는 @R{}의 @file{share/texmf} 매크로를 이용하여 @file{mydoc.tex}에 대해서 @LaTeX{}를  실행시킬 수 있습니다. 
 
 @example
 R CMD latex.exe mydoc
@@ -9776,8 +9769,8 @@ R CMD latex.exe mydoc
 @c @file{share/texmf} macros appended to @env{TEXINPUTS}.  (Unfortunately,
 @c this does not help with the MiKTeX build of @LaTeX{}, but
 @c @command{R CMD texify mydoc} will work in that case.)
-
-TEXINPUTS에 macros appended되어 있는 R의 share/texmf 경로와 함께 mydoc.tex상에서 LaTex를 실행할 수 있습니다. (안타깝게도, MiKTex LaTex는 적용이 되지 않습니다. 하지만, R CMD texify mydoc은 이 상황에 작동할 수 있습니다.)
+(안타깝게도, MiKTex @LaTeX{}에서는 적용되지 않습니다. 
+그러나, @command{R CMD texify mydoc}은 작동할 것입니다.)
 
 @node Invoking R under Mac OS X, Scripting with R, Invoking R under Windows, Invoking R
 @appendixsec Invoking R under Mac OS X
@@ -9788,15 +9781,19 @@ TEXINPUTS에 macros appended되어 있는 R의 share/texmf 경로와 함께 mydo
 @c default is installed in the @code{Applications} folder on your
 @c system.  It is a standard double-clickable Mac OS X application.
 
-Mac OS X 상에서 R을 실행할 수 있는 방법에는 두 가지가 있습니다. 첫 번째, subsection에서 설명된 것처럼 터미널 안에서, R invoking을 통한 .app window가 그것이며, 콘솔기반의 GUI(R.app)가 또 다른 방법입니다. 이는 시스템 상의 어플리케이션 폴더안에 디폴트로 설치가 되어 있습니다. 이는 표준 더블 클릭(standard double-clickable) Mac OS X 어플리케이션입니다.
+Mac OS X 상에서 @R{}을 실행하는 방법에는 두가지가 있습니다.
+첫 번째 서브섹션에서 설명된 방법처럼 @code{Terminal.app} 창을 이용하여 @code{R}을 작동하는 것입니다. 
+또 다른 방법은 당신의 시스템에 있는 @code{Applications} 폴더에 기본적으로 설치된 콘솔기반의 GUI (@code{R.app})을 이용하는것입니다. 
+이것은 더블클릭이 가능한 Mac OS X 응용프로그램입니다.
 
-The startup procedure under Mac OS X is very similar to that under UNIX.
-The `home directory' is the one inside the R.framework, but the startup
-and current working directory are set as the user's home directory
-unless a different startup directory is given in the Preferences window
-accessible from within the GUI.
+@c The startup procedure under Mac OS X is very similar to that under UNIX.
+@c The `home directory' is the one inside the R.framework, but the startup
+@c and current working directory are set as the user's home directory
+@c unless a different startup directory is given in the Preferences window
+@c accessible from within the GUI.
 
-Mac OS X 상에서 startup 프로시져는 유닉스 상의 그것과 비교해서 유사합니다. home directory는 R.framework 내부에 존재합니다. 하지만, GUI 내에서 preference window accessible에 다른 startup directory가 없는 경우, startup과 현재 working directory는 유저의home directory로서 설정됩니다.
+Mac OS X에 있는 스타트업 프로시져는 유닉스의 것과 유사합니다.
+`home directory' 는 R.framework 내부에 있지만, GUI내로부터 접근이 가능한 Preference 창에 있는 스타트업 디렉토이와 다르지 않다면 스타트업과 현재 작업디렉토리는 사용자의 홈디렉토리와 같이 지정됩니다. 
 
 
 @node Scripting with R,  , Invoking R under Mac OS X, Invoking R
