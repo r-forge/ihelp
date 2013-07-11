@@ -1,6 +1,6 @@
 @c 
 @c 2013-JUL-10 (Wendesday) by Chel Hee Lee 
-@c 1.Begining ~ 1.11 by LIJIN)
+@c 1.Begining ~ 2 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -853,9 +853,9 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c named @code{x}, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
 @c 6.4 and 21.7, use the @R{} command
 
-@R{}은 소위 말하는 @emph{data structures}(데이터 구조)를 기반으로 작동합니다.
-가장 단순한 구조는 일련의 숫자들이 오름차순의 형태로 하나로 묶여있는 수치형(numeric) @emph{vector}(벡터)입니다.
-예를들어, 10.4, 5.6, 3.1, 6.4, 그리고 21.7 이라는 일련의 숫자로 구성된 @code{x}라는 이름을 가진 벡터를 생성하기 위해서는 다음과 같은 @R{} 명령어를 입력합니다
+@R{}은 @emph{data structures}(데이터 구조)라는 것을 기반으로 작동합니다.
+가장 단순한 데이터의 구조는 임의의 숫자들의 정렬인 숫자형 (numeric) @emph{vector}(벡터)입니다.
+예를들어, 10.4, 5.6, 3.1, 6.4, 그리고 21.7 라는 일련의 숫자로 @code{x}라는 이름을 가진 벡터를 생성하기 위해서는 다음과 같은 @R{} 명령어를 입력합니다
 
 @example
 > x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
@@ -870,9 +870,9 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c such as @code{list} mode arguments, the action of @code{c()} is rather
 @c different.  See @ref{Concatenating lists}.}
 
-위에서 사용된 표현식을 @emph{assignment statement}(할당문) 이라고 하며, @code{c()}라는 @emph{function}(함수)를 이용하여 입력되어진 임의의 벡터들을 묶어 다시 하나의 벡터로 만들어 주는 역할을 하고 있습니다.
-이때 함수 @code{c()}내에서 컴마로 구분된 하나하나를 구성요소를 @emph{arguments}(입력인자 또는 인자)라고 하고, 이 예제에서는 숫자 하나 하나가 각각의 길이가 1인 벡터로 간주되었습니다.
-@footnote{@code{list}형과 같은 벡터형의 인자가 아닌 데이터형에 대해서는 @code{c()}함수는 다소 다르게 동작합니다. @ref{Concatenating lists}를 참고하하시길 바랍니다.}
+위에서 사용된 표현식을 @emph{assignment statement}(할당문) 이라고 하며, 여기서 사용된 @code{c()}라는 @emph{function}(함수)는 함수 안에 입력된 여러 개의 임의의 숫자들을 하나로 연결하여 하나의 벡터를 생성합니다. 여기서 쉽표 @code{,} 에 의해 구분된 하나 하나의 숫자는 그 자체로 길이가 1인 벡터로 볼 수도 있습니다.  
+
+@footnote{@code{list} 처럼 벡터형의 인자가 아닌 데이터에 대해 @code{c()} 함수를 사용하면, 그 결과가 다소 다르게 나타납니다. 자세한 것은 @ref{Concatenating lists}를 참고하시길 바랍니다.}
 
 @c A number occurring by itself in an expression is taken as a vector of
 @c length one.
@@ -885,15 +885,16 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c In this text, the assignment operator is printed as @samp{<-}, rather
 @c than ``@code{<-}''.
 
-또한, 띄어쓰기 없이 @samp{@code{<}}(좌측이 우측보다 작음을 표시하는 수학적 기호) 와 @samp{@code{-}}(마이너스 기호)를 한데 묶어 사용된 @samp{@code{<-}}라는 기호는 할당연산자(assignment operator)라고 불리며, 표현식에 의해 생성된 값을 넘겨받는 객체를 지시 (또는 지정)하도록 한다는 것을 의미합니다. 
-많은 경우에 이를 @samp{@code{=}} 연산자를 이용하여 나타내기도 합니다.
+또한, 띄어쓰기 없이 @samp{@code{<}}(부등호, 좌측이 우측보다 작음을 표시하는 수학적 기호) 와 @samp{@code{-}}(음수를 나타내는 기호)를 붙여 써서 만든 @samp{@code{<-}} 라는 기호는 할당 연산자(assignment operator)라고 하며, 이 기호의 오른쪽의 표현식에 의해 생성된 값을 갖는 객체를 왼쪽의 이름을 갖도록 지정합니다. 
+대부분의 경우 @samp{@code{=}} 연산자를 같은 작업을 이용하여 할 수 있습니다.
+
 @cindex Assignment
 
 @c Assignment can also be made using the function @code{assign()}.  An
 @c equivalent way of making the same assignment as above is with:
 
-할당이라는 것은 또한 @code{assign()} 함수를 통해 이루어질 수 있습니다.
-위에서 수행한 동일한 연산을 아래와 같은 방법으로 수행할 수 있습니다.
+할당(Assignment) 작업은 @code{assign()} 함수를 통해서도 이루어질 수 있습니다.
+위에서 수행한 것과 동일한 연산을 아래와 같은 방법으로도 할 수 있습니다.
 
 @example
 > assign("x", c(10.4, 5.6, 3.1, 6.4, 21.7))
@@ -902,24 +903,24 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @noindent
 @c The usual operator, @code{<-}, can be thought of as a syntactic
 @c short-cut to this.
-독자는 할당연산자 @code{<-}를 단순히 @code{assign()}함수에 문법적으로 상응하는 손쉬운 방법(short-cut)으로 생각하셔도 좋습니다.
+여러분은 할당 연산자 @code{<-}를 단순히 @code{assign()} 함수와 같은 작업을 하는, 문법적으로는 더 쉬운 방법(short-cut)이라고 생각하셔도 됩니다.
 
 @c Assignments can also be made in the other direction, using the obvious
 @c change in the assignment operator.  So the same assignment could be made
 @c using
 
-또한, 기호의 방향을 바꾸어 아래와 같은 방법으로 할당문을 표현할 수 있습니다.
+또, 이 할당 연산자의 방향을 바꾸어 아래와 같은 방법으로 사용할 수도 있습니다.
 
 @example
 > c(10.4, 5.6, 3.1, 6.4, 21.7) -> x
 @end example
 
 @c If an expression is used as a complete command, the value is printed
-@c @emph{and lost}@footnote{Actually, it is still available as
+@c @emph{and lost} @footnote{Actually, it is still available as
 @c @code{.Last.value} before any other statements are executed.}.  So now if we
 @c were to use the command
 
-만약 아래와 같이 할당연산자의 사용없이 표현식 자체만으로 완전한 형태의 명령문 형식으로 사용된다면 결과물은 출력이되나, @emph{값들을 저장하지 안ㅎ고 잃어버리게 됩니다}@footnote{실제로 이 값은 어떠한 명령문이라도 추후에 실행되지 않았다면 @code{.Last.value}를 통하여 확인할 수 있습니다.}.
+만약 아래와 같이 할당 연산자를 사용하지 않고 표현식만으로 명령문을 작성하면, 결과물은 출력 되지만, 이 값이 저장되지 않아 @emph{다시 불러 낼 수 없습니다}. @footnote{실제로 이 표현식 실행 후, 아직 다음 명령문을 실행하지 않았다면 @code{.Last.value} 함수를 사용하여 결과물을 한 번 더 확인하는 것은 가능합니다. }.
 
 @example
 > 1/x
@@ -929,11 +930,12 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c the reciprocals of the five values would be printed at the terminal (and
 @c the value of @code{x}, of course, unchanged).
 
-만약, 위의 명령문을 실행한다면 @code{x}를 구성하는 다섯개의 숫자들에 대한 각각의 역수들을 터미널에 보여줄 것입니다 (물론, @code{x}의 값은 변하지 않습니다).
+만약, 위의 명령문을 실행하면 (위에서 할당한) @code{x}의  다섯 개의 숫자의 역수 다섯 개가 출력 됩니다. 
 
 @c The further assignment
-이제 할당연산자를 적용해보도록 합니다.
-다음의 할당문은 2개의 @code{x}벡터사이에 0 이 끼워진 형태로 총 11개의 구성요소로 이루어진 @code{y}라는 새로운 벡터를 생성해냅니다.
+
+이제 여기에 할당 연산자를 적용해보도록 합니다.
+다음의 할당문은 2개의 @code{x} 벡터 사이에 0 을 입력한, 총 11개의 숫자로 구성된 @code{y} 라는 새로운 벡터를 생성 합니다.
 
 @example
 > y <- c(x, 0, x)
@@ -945,7 +947,10 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 
 @node Vector arithmetic, Generating regular sequences, Vectors and assignment, Simple manipulations numbers and vectors
 @c @section Vector arithmetic
-@section 벡터연산
+
+
+
+@section 벡터 연산
 
 @c Vectors can be used in arithmetic expressions, in which case the
 @c operations are performed element by element.  Vectors occurring in the
@@ -957,14 +962,11 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c particular a constant is simply repeated.  So with the above assignments
 @c the command
 
-벡터(vector)는 요소단위(element by element)의 산술연산 표현식(arithmetic expression)에서 이용됩니다. 
-이 때, 같은 표현식 내의 벡터가 꼭 같은 길이를 가질 필요는 없습니다.
-만약, 길이가 다르다면 상대적으로 짧은 길이를 가지는 벡터는 긴 벡터의 길이를 맞추기 위해서 그 구성요소를 재활용(@emph{recycled} 또는 리사이클링)하게 됩니다. 
-특히, 벡터의 길이가 하나인 상수(constant)를 사용한 경우에는 다른 벡터의 길이만큼 상수를 반복하여 길이를 맞춘 뒤 요소단위의 연산을 수행하게 됩니다. 
-위의 예제를 활용하여 다음의 다음의 명령문을 수행한다면 @R{}은 제일 먼저 @code{x}의 길이를 @code{y}에 맞추기 위해서 그 구성요소를 2.2배만큼 리사이클링합니다. 
-그리고, @code{x}앞에 있는 상수 2를 각 요소별로 곱한뒤에 (즉, 11번의 연산이 필요합니다), @code{y}의 더하기 연산을 요소단위별로 수행합니다.
-마지막으로 상수 @code{1} 역시 11번 리사이클링된 후 이전의 결과와 새로운 더하기 연산을 요소단위로 수행한 뒤 그 결과를 @code{v}에 할당하게 됩니다. 
-따라서, @code{v}의 길이는 11이어야 합니다.
+벡터(vector)는 요소 단위의 (element by element) 산술연산 표현식(arithmetic expression)에 사용 가능 합니다. 이 때, 같은 (산술) 표현식 내의 벡터들이 모두 같은 길이를 가질 필요는 없습니다.
+만약, 벡터들의 길이가 다르면 가장 긴 길이의 벡터를 기준으로, 상대적으로 짧은 길이를 갖는 벡터는 긴 벡터의 길이에 맞추기 위해 그 구성 요소를 재활용(@emph{recycled})하여 연산을 수행 합니다. 즉, 더 짧은 길이의 벡터는 가장 긴 벡터와 같은 길이를 같도록 구성 요소를 필요한 만큼 (경우에 따라서는 일부만) 반복 사용 합니다. 특히, 벡터의 길이가 1인 상수(constant)를 벡터와의 연산에 사용할 경우, 이 상수가 벡터의 길이만큼 반복되서 사용 됩니다. 
+
+위의 예제를 이용해서 설명하면, 다음 명령문을 실행하면 @R{}은 연산을 하기 전 @code{x}의 길이를 @code{y}에 맞추기 위해서 그 구성 요소를 2.2 번 반복해서 길이 11의 벡터를 만듭니다. 그리고, 2를 @code{x} 의 각 요소에 곱한 뒤 (11번의 곱하기 연산이 필요합니다), @code{y}의 각 요소와 더하기 연산을 수행합니다. 마지막으로 상수 @code{1}과의 더하기 연산 역시 11 번에 걸쳐 수행하며, 이렇게 벡터의 각 요소별로 수행된 연산의 결과는 길이 11의 벡터인 @code{v}에 할당 됩니다. 
+
  
 @cindex Recycling rule
 
@@ -982,7 +984,7 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c The elementary arithmetic operators are the usual @code{+}, @code{-},
 @c @code{*}, @code{/} and @code{^} for raising to a power.
 
-@R{}에서 제공하는 요소단위의 기초연산자는 @code{+}(더하기), @code{-}(빼기), @code{*}(곱하기), @code{/}(나누기), 그리고 @code{^}(자승)입니다.
+@R{}에서 제공하는 요소 단위 기본 연산자는 @code{+}(더하기), @code{-}(빼기), @code{*}(곱하기), @code{/}(나누기), 그리고 @code{^}(자승) 입니다.
 
 @findex +
 @findex -
@@ -994,7 +996,7 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c @code{log}, @code{exp}, @code{sin}, @code{cos}, @code{tan}, @code{sqrt},
 @c and so on, all have their usual meaning.
 
-@R{}은 또한 일반적인 수학적 연산에 자주 사용되는 @code{log}, @code{exp}, @code{sin}, @code{cos}, @code{tan}, @code{sqrt}와 같은 함수를 제공하며, 이들의 의미는 수학에서 사용하는 것과 동일합니다. 
+@R{}에서는 일반적인 수학 연산에 자주 사용되는 @code{log}, @code{exp}, @code{sin}, @code{cos}, @code{tan}, @code{sqrt}와 같은 함수가 모두 제공되며, 수학에서 사용하는 것과 동일한 방법으로 사용 됩니다. 
 
 @findex log
 @findex exp
@@ -1006,19 +1008,19 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c @code{max} and @code{min} select the largest and smallest elements of a
 @c vector respectively.
 
-@code{max}와 @code{min}는 벡터의 구성요소들 중에서 가장 큰 값과 작은 값을 알려주는 함수입니다. 
+@code{max}와 @code{min}는 벡터의 구성요소들 중에서 가장 큰 값과 작은 값을 보여주는 함수입니다. 
 
 @findex max
 @findex min
 
 @c @code{range} is a function whose value is a vector of length two, namely
 @c @code{c(min(x), max(x))}.
-@code{range}는 주어진 벡터 @code{x}의 최소값과 최대값을 @code{c(min(x), max(x))}의 형태로 알려주며, 함수명 그대로 범위를 구하고자 할 때 사용됩니다.
+@code{range}는 주어진 벡터 @code{x}의 최소값과 최대값을 @code{c(min(x), max(x))}의 형태로 출력하며, 이름 그대로 벡터 변수의 범위를 구하고자 할 때 사용됩니다.
 
 @findex range
 
 @c @code{length(x)} is the number of elements in @code{x},
-@code{length(x)}는 벡터의 @code{x}의 구성요소가 몇 개인가를 알려주며, 이를 보통 @code{x}의 길이라고 합니다.
+@code{length(x)}는 벡터 @code{x} 의 구성요소가 몇 개인가를 알려주며, 이를 보통 @code{x}의 길이라고 합니다.
 
 @findex length
 
@@ -1034,11 +1036,11 @@ UNIX 상에서는 이러한 명령문 히스토리를 불러오고 수정하는 
 @c Two statistical functions are @code{mean(x)} which calculates the sample
 @c mean, which is the same as @code{sum(x)/length(x)},
 
-통계에서 자주 이용되는 평균과 분산을 계산해 주는 함수들도 제공됩니다.
-샘플평균(sample mean)은 @code{sum(x)/length(x)}을 통해 얻을 수 있는데, 이를 @code{mean(x)}를 사용하여 그 값을 구할 수 있습니다. 
+R에서는 통계학에서 자주 이용되는 평균과 분산을 계산하는 함수들도 제공됩니다.
+샘플 평균(sample mean)은 @code{sum(x)/length(x)}으로 계산 되는데, @code{mean(x)}를 사용해서도 같은 결과를 얻을 수 있습니다. 
 @findex mean
 @c and @code{var(x)} which gives
-그리고, 샘플분산(sample variance)은 아래와 같은 공식을 통해서 얻을 수 있는데, 이 역시 @code{var(x)}를 사용하여 보다 편리하게 값을 구할 수 있습니다. 
+그리고, 샘플 분산(sample variance)은 아래와 같은 공식을 통해 계산하는데, 이 역시 @code{var(x)}를 사용하면 아주 간단하게 계산할 수 있습니다. 
 @example
 sum((x-mean(x))^2)/(length(x)-1)
 @end example
@@ -1049,14 +1051,14 @@ sum((x-mean(x))^2)/(length(x)-1)
 @c @math{n}-by-@math{p} matrix the value is a @math{p}-by-@math{p} sample
 @c covariance matrix got by regarding the rows as independent
 @c @math{p}-variate sample vectors.
-만약, @code{var()}에 사용되는 입력인자(argument)가 @math{n}-by-@math{p} 크기의 행렬이라면, @math{p}개의 변수들에 대한 @math{n}개의 관측치를 갖는 데이터로 인식되어 @math{p}-by-@math{p}크기의 샘플 공분산 행렬(sample covariance matrix)를 알려줍니다. 
+만약, @code{var()} 에 사용되는 입력인자(argument)가 @math{n}-by-@math{p} 크기의 행렬이라면, 입력인자가@math{p}개의 변수들에 대한 @math{n} 개의 관측치를 갖는 데이터로 인식되어 @math{p}-by-@math{p}크기의 샘플 공분산 행렬(sample covariance matrix)을 계산 합니다. 
 
 @c @code{sort(x)} returns a vector of the same size as @code{x} with the
 @c elements arranged in increasing order; however there are other more
 @c flexible sorting facilities available (see @code{order()} or
 @c @code{sort.list()} which produce a permutation to do the sorting).
-@code{sort(x)}는 벡터 @code{x}를 인수로 받아 @code{x}의 모든 구성요소들을 오름차순(increasing order, 즉, 작은 값에서 큰 값의 순서로) 재배열하여 @code{x}와 같은 길이의 벡터를 돌려주게 되며, 보다 유용한 정렬기능들도 제공이 됩니다.
-예를들면, 인자로 사용된 @code{x} 벡터의 정렬된 순서를 확인하고 할 때는 @code{order()} 또는 @code{sort.list()}를 사용할 수도 있습니다.
+@code{sort(x)}는 벡터 @code{x}를 인자로 받아 @code{x}의 모든 구성요소들을 오름차순(increasing order, 즉, 작은 값에서 큰 값의 순서로)으로 재배열하여 @code{x}와 같은 길이의 벡터를 돌려주며, 이와 비슷한 다른 정렬 기능들도 매우 유용하게 사용될 수 있을 것입니다.
+예를들면, 인자로 사용된 @code{x} 벡터의 정렬된 순서를 확인하기 위해 @code{order()} 또는 @code{sort.list()}를 사용할 수 있습니다.
 
 @findex sort
 @findex order
@@ -1068,8 +1070,8 @@ sum((x-mean(x))^2)/(length(x)-1)
 @c that contains in each element the largest (smallest) element in that
 @c position in any of the input vectors.
 
-@code{max}와 @code{min}에 여러개의 벡터가 입력인수로 사용되었을지라도, 이들을 구성하는 모든 구성요소들중에서 최대값과 최소값을 찾아줍니다.
-만약, 주어진 여러개의 입력인자들로부터 대한 최대값과 최소값을 병렬적(@emph{parallel})로 찾고자 한다면 @code{pmax}와 @code{pmin} 함수들을 이용할 수 있으며, 반환되는 벡터의 길이는 입력 인자중에서 가장 길이가 긴 벡터와 동일합니다. 
+@code{max}와 @code{min}에 여러 개의 벡터가 동시에 입력인수로 사용되었을지라도, 입력된 모든 구성요소들 중에서 최대값과 최소값 하나만을 출력합니다.
+만약, 여러 개의 입력인자들을 동시에 입력해서 최대값과 최소값을 병렬적으로 (@emph{parallel}, 즉 입력된 여러 개의 인자들 중 같은 행을 기준으로 가장 큰 값 혹은 작은 값을 찾는 것) 찾고자 한다면, @code{pmax}와 @code{pmin} 함수들을 이용할 수 있으며, 이 때 반환되는 벡터의 길이는 입력 인자들 중에서 가장 길이가 긴 벡터와 동일합니다. 
 
 @findex pmax
 @findex pmin
@@ -1079,12 +1081,12 @@ sum((x-mean(x))^2)/(length(x)-1)
 @c calculations are done as double precision real numbers, or double
 @c precision complex numbers if the input data are complex.
 
-대부분의 경우 사용자들은 수치형 벡터(numeric vector)를 구성하는 ``numbers''(숫자)들의 종류가 정수(integer), 실수(real) 또는 허수(complex)인지 신경을 쓰지 않습니다. 
-@R{}은 내부적으로 입력된 벡터가 실수라면 double precision을 가지는 실수로, 복소수라면 double precision을 가지는 복소수 연산을 수행하게 됩니다. 
+대부분의 경우 숫자형 벡터(numeric vector)를 구성하는 ``numbers''(숫자)들의 종류가 정수(integer), 실수(real) 또는 허수(complex)인지는 중요하지 않습니다. 
+@R{}은 내부적으로 입력된 벡터가 실수인 경우 double precision을 갖는 실수로, 복소수(허수)라면 double precision을 갖는 복소수로 연산을 수행하게 됩니다. 
 
 @c To work with complex numbers, supply an explicit complex part.  Thus
-단, 복소수를 다루게 된다면, 어느 부분이 허수부분(copmlex part)인지를 정확히 명시해주어야 합니다. 
-그렇지 않고 아래와 같이 사용한다면 @code{NaN}이라는 값과 경고(warning) 메시지를 보게 될 것입니다. 
+단, 복소수를 사용할 경우, 어느 부분이 허수 부분(copmlex part)인지를 정확히 명시해주어야 합니다. 
+이를 어기고 아래와 같이 명령문을 사용한다면 @code{NaN}이라는 값과 경고(warning) 메시지가 출력 될 것입니다. 
 
 @example
 sqrt(-17)
@@ -1093,7 +1095,7 @@ sqrt(-17)
 @noindent
 @c will give @code{NaN} and a warning, but
 
-따라서, 아래와 같이 사용을 해야지만 복소수 연산을 올바르게 수행하게 됩니다. 
+따라서, 아래와 같이 사용을 해야만 복소수 연산이 올바르게 수행 됩니다. 
 
 @example
 sqrt(-17+0i)
@@ -1114,8 +1116,8 @@ sqrt(-17+0i)
 @c @R{} has a number of facilities for generating commonly used sequences
 @c of numbers.  For example @code{1:30} is the vector @code{c(1, 2,
 @c @dots{}, 29, 30)}.
-@R{}은 시퀀스(sequence 또는 수열)을 생성하는 다양한 방법을 제공하고 있습니다.
-예를들면, @code{1:30}이라는 명령어는 @code{c(1, 2, @dots{}, 29, 30)}이라는 벡터를 생성합니다. 
+@R{}은 수열 (sequence)을 생성하는 다양한 방법을 제공합니다.
+예를 들면, @code{1:30}이라는 명령어는 @code{c(1, 2, @dots{}, 29, 30)}과 같이 벡터를 생성합니다. 
 @c <NOTE>
 @c Info cannot handle ':' as an index entry.
 @ifnotinfo
@@ -1126,14 +1128,14 @@ sqrt(-17+0i)
 @c example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}.
 @c Put @code{n <- 10} and compare the sequences @code{1:n-1} and
 @c @code{1:(n-1)}.
-콜론(colon) 연산자는 어떤 표현식보다도 최우선으로 처리됩니다. 
-예를들면, @code{2*1:15}은 @code{c(2, 4, @dots{}, 28, 30)}이라는 벡터를 생성합니다. 
-그럼, @code{n <- 10}을 입력하고 난뒤에 @code{1:n-1}과 @code{1:(n-1)}로부터 생성되는 두개의 벡터들을 비교해보시길 바랍니다.
+또 R에서는 콜론(colon) 연산자가 어떤 표현식보다도 최우선으로 처리됩니다. 
+예를 들면, @code{2*1:15}은 @code{c(2, 4, @dots{}, 28, 30)}과 같이 벡터를 생성합니다. 
+그럼, @code{n <- 10}을 입력한 뒤, @code{1:n-1}과 @code{1:(n-1)}로부터 생성되는 두개의 벡터들을 비교해보시길 바랍니다.
 
 @c The construction @code{30:1} may be used to generate a sequence
 @c backwards.
 
-만약 @code{30:1}이라는 명령을 통하여 역순으로 나열된 수열 역시 생성할 수 있습니다.
+또 @code{30:1}이라는 명령문은 역순으로 (큰 수부터 작은 수로) 나열된 수열을 생성합니다.
 
 @findex seq
 @c The function @code{seq()} is a more general facility for generating
@@ -1143,10 +1145,10 @@ sqrt(-17+0i)
 @c arguments given the result is the same as the colon operator.  That is
 @c @code{seq(2,10)} is the same vector as @code{2:10}.
 
-@code{seq()}라는 함수는 수열을 좀 더 일반적인 방식으로 생성하는 기능을 가지고 있습니다. 
-@code{seq()}는 5개의 인자를 가지고 있는데, 이중의 일부만을 가지고도 다양한 수열의 생성이 가능합니다.
-먼저, 처음 두개의 인자는 수열의 처음과 마지막 값을 지정합니다.
-이 두 개의 인자마나 지정된다면, 콜론 연산자를 사용한 것과 동일한 벡터를 생성합니다. 
+@code{seq()} 함수는 수열을 생성하는 좀 더 일반적인 방법 입니다. 
+@code{seq()}는 5개의 파라미터를 가질 수 있는데, 이중의 일부만 사용해도 다양한 수열의 생성이 가능합니다.
+먼저, 처음 두개의 파라미터는 수열의 처음과 마지막 값을 지정합니다.
+이 두 개의 인자만 지정하면, 콜론 연산자를 사용한 것과 동일한 결과를 얻게 됩니다. 
 즉, @code{seq(2,10)}에 의하여 생성된 수열은 @code{2:10}으로부터 생성된 수열과 동일합니다. 
 
 @c Parameters to @code{seq()}, and to many other @R{} functions, can also
@@ -1160,11 +1162,11 @@ sqrt(-17+0i)
 @c the sequence respectively.  If neither of these is given, the default
 @c @code{by=1} is assumed.
 
-@R{}에 사용되는 다른 많은 함수들과 같이 함수 @code{seq()}에 넘겨지는 파라미터들은 named form(즉, 인자의 이름과 이에 해당하는 파라미터의 값을 사용하고자 하는 함수에 함께 쓰는것)의 형태로 사용됩니다. 
-위에서 사용한 예제 @code{seq(1,30)}를 이용하여 다시 설명하면, @code{seq()}의 처음 두 파라미터들은 처음 시작값 @code{from=@var{value}}을 의미하고, 마지막 값 @code{to=@var{value}}을 의미하기 때문에, @code{seq(1,30)}, @code{seq(from=1, to=30)}, @code{seq(to=30, from=1)} 모두 @code{1:30}으로부터 생성된 수열과 동일한 수열을 생성합니다.  
-@code{seq()}의 다음 두개의 인자들은 @code{by=@var{value}}와 @code{length=@var{value}}입니다. 
-@code{by=@var{value}}는 나열되어질 숫자들간의 차이 (step size)를 지정하며, @code{length=@var{value}}는 나열되어질 숫자들 사이의 구간의 개수(length)를 지정하게 됩니다. 
-만약, 이 두가지 모두 지정되어지지 않는다면, 기본적으로  @code{by=1}로 가정한 상태에서 수열을 생성하게 됩니다. 
+@R{}의 다른 많은 함수들처럼 함수 @code{seq()}가 사용하는 파라미터들은 반드시 함수에 지정된 순서로 입력되야 하며, 이 경우  파라미터의 입력 순서가 좀 다르게 보이는 경우도 있습니다. 
+위에서 사용한 예제 @code{seq(1,30)}를 통해 설명하면, @code{seq()}의 처음 두 파라미터들은 처음 시작값 @code{from=@var{value}}과 마지막 값 @code{to=@var{value}}을 각각 의미하기 때문에, @code{seq(1,30)}, @code{seq(from=1, to=30)}, @code{seq(to=30, from=1)} 모두 @code{1:30}으로부터 생성된 수열과 동일한 수열을 생성합니다.  
+@code{seq()}의 다음 두개의 파라미터들(세번째와 네번째)은 @code{by=@var{value}}와 @code{length=@var{value}} 입니다. 
+@code{by=@var{value}}는 나열하게 될 숫자들 간의 차이 (step size)를 지정하며, @code{length=@var{value}}는 나열하게 될 숫자의 개수(length)를 지정합니다. 
+만약, 이 두가지 모두 지정되지 않는다면, 기본적으로  @code{by=1}를 가정한 상태에서 수열을 생성하게 됩니다. 
 
 @c For example
 
@@ -1178,8 +1180,8 @@ sqrt(-17+0i)
 @c generates in @code{s3} the vector @code{c(-5.0, -4.8, -4.6, @dots{},
 @c 4.6, 4.8, 5.0)}.  Similarly
 
-위의 명령어는 @code{c(-5.0, -4.8, -4.6, @dots{}, 4.6, 4.8, 5.0)}이라는 수열을 생성한 뒤, 이를 @code{s3}이라는 이름을 가진 벡터형 객체로서 저장하라는 의미입니다.
-이와 비슷한 논리로 아래와 같이 @code{s3}와 같은 수열을 가지는 @code{s4}를 생성할 수 있습니다. 
+위의 명령어를 실행하면 @code{c(-5.0, -4.8, -4.6, @dots{}, 4.6, 4.8, 5.0)}라는 수열을 생성한 뒤, 이를 @code{s3}라는 이름의 벡터형 객체로서 저장하게 됩니다.
+이와 비슷하게, 아래와 같이 @code{s3}와 같은 값을 갖는 벡터 @code{s4}를 생성할 수 있습니다. 
 
 @example
 > s4 <- seq(length=51, from=-5, by=.2)
@@ -1191,18 +1193,19 @@ sqrt(-17+0i)
 @c The fifth parameter may be named @code{along=@var{vector}}, which if
 @c used must be the only parameter, and creates a sequence @code{1, 2,
 @c @dots{}, length(@var{vector})}, or the empty sequence if the vector is
-@c empty (as it can be).
+@c empty (as it can be)
 
-@code{seq()} 함수의 다섯번째 인자는 @code{along=@var{vector}}입니다.
-만약 다른 인자들에 대한 입력없이 독립적으로 사용된다면 @code{1, 2, @dots{}, length(@var{vector})}이라는 수열을 생성하게 됩니다. 
+
+마지막으로 @code{seq()} 함수의 다섯번 째 파라미터는 @code{along=@var{vector}}와 같이 사용할 수 있습니다.
+만약 다른 인자들의 입력 없이 이 파라미터만 사용하면, @code{1, 2, @dots{}, length(@var{vector})}인 수열을 생성 합니다. 
 
 @c A related function is @code{rep()}
 @findex rep
 @c which can be used for replicating an object in various complicated ways.
 @c The simplest form is
 
-@code{seq()}유사한 함수로서 다양한 방법으로 객체를 반복하는데 사용될 수 있는 @code{rep()}라는 함수가 있습니다. 
-이 함수에 대한 가장 간단한 형태는 아래와 같습니다.
+@code{seq()}와 유사해게 다양한 방법으로 객체를 반복하는데 사용핳 수 있는 @code{rep()}라는 함수가 있습니다. 
+이 함수는 아래와 같이 간단하게 사용할 수 있습니다.
 
 @example
 > s5 <- rep(x, times=5)
@@ -1212,8 +1215,8 @@ sqrt(-17+0i)
 @c which will put five copies of @code{x} end-to-end in @code{s5}.  Another
 @c useful version is
 
-위의 명령어는 @code{x}라는 벡터를 5번 반복하여 나열함으로서 생성한 객체에 @code{s5}에 두는 것입니다.
-이에 대한 또다른 사용법을 아래의 예제를 통해 알 수 있습니다. 
+위 명령어는 @code{x}라는 벡터를 처음부터 끝까지 5번 반복해서 나열한 객체를 @code{s5}로 지정할 것 입니다.
+위 함수와 같은 결과를 얻기 위해 아래와 같은 방법을 사용할 수도 있습니다. 
 
 @example
 > s6 <- rep(x, each=5)
@@ -1223,7 +1226,7 @@ sqrt(-17+0i)
 @c which repeats each element of @code{x} five times before moving on to
 @c the next.
 
-이것은 @code{x}란 벡터가 가지고 있는 각각의 요소들을 5번씩 반복하여 생성한 수열을 의미합니다. 
+둘 다 @code{x}란 벡터가 가지고 있는 각각의 요소들을 5번씩 반복하여 수열을 생성 합니다. 
 
 @node Logical vectors, Missing values, Generating regular sequences, Simple manipulations numbers and vectors
 @c @section Logical vectors
@@ -1237,11 +1240,11 @@ sqrt(-17+0i)
 @c variables which are set to @code{TRUE} and @code{FALSE} by default, but
 @c are not reserved words and hence can be overwritten by the user.  Hence,
 @c you should always use @code{TRUE} and @code{FALSE}.
-수치형 벡터 외에도 @R{}은 논리값에 대한 조작이 가능합니다.
-논리형 벡터는 그 구성요소의 값들이 @code{TRUE}, @code{FALSE}, 그리고 @code{NA} (즉 ``not available'' - 이용가능하지 않아 유용하지 않음)을 가지는 것을 의미합니다.
-처음 두 개의 값들을 각각 @code{T}와 @code{F}라는 약어로도 표기하기도 합니다. 
-그러나, 예약어가 아닌 기본값인 @code{TRUE}와 @code{FALSE}를 가지는 변수명으로서의 @code{T}와 @code{F}를 사용할 수도 있어 사용자가 사용자가 사용하는 동일한 변수명에 의해서 덮여씌여질 수도 있습니다. 
-따라서, 논리값을 표현할 때에는 @code{TRUE}와 @code{FALSE}라고 완전하게 사용해야 합니다. 
+@R{}은 수치형 벡터 뿐만 아니라 논리값에 대한 연산도 가능합니다.
+논리형 벡터는 @code{TRUE}, @code{FALSE}, 그리고 @code{NA} (즉 ``not available'' - 해당 값이 이용가능하지 않아 사용에는 많은 제약이 따름)와 같은 구성요소를 포함 합니다.
+처음 두 개의 값은 각각 @code{T}와 @code{F}라는 약어로 표기하기도 합니다. 
+R에서는 초기값으로 @code{TRUE}와 @code{FALSE}가 각각 @code{T}와 @code{F}와 같은 값으로 지정되어 있긴 하지만, 따로 지정된 값은 아니므로, 사용자가 다른 변수의 이름으로 이 두 문자를 사용하면 더 이상 이런 약어 관계가 성립하지 않습니다. 
+따라서, 논리값을 표현할 때에는 @code{TRUE}와 @code{FALSE}와 같이 정확하게 표기할 것을 권장 합니다. 
 @findex FALSE
 @findex TRUE
 @findex F
@@ -1249,7 +1252,7 @@ sqrt(-17+0i)
 
 Logical vectors are generated by @emph{conditions}.  For example
 논리형 벡터는 조건문 (@emph{conditions})에 의해서 생성됩니다.
-예를 들면, 아래의 명령문과 같이 @code{x}라는 벡터의 구성요소들을 13 보다 크다는 조건을 만족한다면 @code{TRUE}라는 논리값을 생성하고, 그렇지 않다면 @code{FALSE}라는 논리값을 저장하는 새로운 벡터를 생성하여 @code{temp}에 대입할 수 있습니다. 
+예를 들어, 아래의 명령문을 입력하면 @code{x} 벡터의 각 구성요소에 대해 13 보다 크다는 조건이  @code{TRUE}라는 논리값을 생성하고, 그렇지 않다면 @code{FALSE}라는 논리값을 저장하는 새로운 벡터를 생성하여 @code{temp}에 대입할 수 있습니다. 
 
 @example
 > temp <- x > 13

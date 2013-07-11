@@ -308,7 +308,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- a language plus a run-time environment with graphics, a debugger, access -->
 <!-- to certain system functions, and the ability to run programs stored in -->
 <!-- script files. -->
-<p>R 은 통계 계산 및 그래픽을 위한 시스템으로서, 프로그래밍 언어, 그래픽스 실행환경, 디버거, 특정시스템에 대한 접근과 함께 스크립트 파일로 저장된 프로그램등을 실행시키는 요소들로 구성되어 있습니다.
+<p>R은 통계 계산 (statistical computation)과 그래픽 (graphics)를 위한 시스템입니다. 
+이것은 언어(language), 그래픽을 사용하는 실행환경 (run-time environment), 디버거(debugger), 특정시스템 함수들에 대한 접근, 그리고 스크립트 파일들에 저장되어 있는 프로그램들을 실행시키는 요소들로 구성되어 있습니다.
 
 <!-- The design of R has been heavily influenced by two existing languages: -->
 <!-- Becker, Chambers & Wilks' S (@pxref{What is S?}) and Sussman's -->
@@ -316,9 +317,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- Whereas the resulting language is very similar in appearance to S, the -->
 <!-- underlying implementation and semantics are derived from Scheme. -->
 <!-- @xref{What are the differences between R and S?}, for further details. -->
-   <p>R의 디자인은 Becker, Chambers &amp; Wilks의 S (see <a href="#What-is-S_003f">What is S?</a>)와 Sussman's <a href="http://www.cs.indiana.edu/scheme-repository/home.html">Scheme</a>으로부터 크게 영향을 받았습니다. 
-따라서, 결과적으로 보이는 R 언어는 S와 매우 흡사하지만, 근본적인 구현방법과 시맨틱은 Scheme 으로부터 유래되었습니다. 
-<a href="#What-are-the-differences-between-R-and-S_003f">What are the differences between R and S?</a>를 참고하시길 바랍니다.
+   <p>R의 디자인은 Becker, Chambers &amp; Wilks의 S (see <a href="#What-is-S_003f">What is S?</a>)와 Sussman의 <a href="http://www.cs.indiana.edu/scheme-repository/home.html">Scheme</a>으로부터 크게 영향을 받았습니다. 
+결과적으로 보이는 언어는 S의 외형과 매우 흡사하지만, 근본적인 구현방법과 시맨틱스(sematics)는 Scheme으로부터 유래되었습니다. 
+더 많은 내용을 알고 싶으시다면 <a href="#What-are-the-differences-between-R-and-S_003f">What are the differences between R and S?</a>를 참고하시길 바랍니다.
 
 <!-- The core of R is an interpreted computer language which allows branching -->
 <!-- and looping as well as modular programming using functions.  Most of the -->
@@ -332,15 +333,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- flexible graphical environment for creating various kinds of data -->
 <!-- presentations.  Additional modules (``add-on packages'') are available -->
 <!-- for a variety of specific purposes (@pxref{R Add-On Packages}). -->
-   <p>R의 핵심은 통합적인 컴퓨터 언어라는 것에 있습니다. 
-이것은 분기(branching), 루핑(Looping) 그리고 함수를 이용한 모듈 형태의 프로그래밍을 지원하고 있습니다. 
-R에서 사용자가 찾아볼 수 있는 함수의 대부분은 R 언어로 작성되었습니다. 
-R은 사용자로 하여금 C,C++, 혹은 포트란과 같은 언어와 효율적으로 연계할 수 있도록 지원하고 있습니다. 
-R distribution은 많은 통계 관련 기능을 가지고 있습니다. 
-그런 기능들 중에는 선형 모듈, 일반화 선형 모듈, 비선형 회귀 모델, 시계열 분석, 일반 모수 검정, 비모수 검정, 클러스터링, 평활화 등이 포함되어 있습니다. 
-데이터를 시각적으로 나타내기 위한 유연한 그래픽 환경을 제공하는 많은 함수들을 R은 제공하고 있습니다. 
-특정한 작업을 수행하기 위한  &ldquo;add-on packages&rdquo;로 알려진 부가 모듈 또한 제공되고 있습니다. (자세한 부가 모듈에 대해서는 <a href="#R-Add_002dOn-Packages">R Add-On Packages</a>를 참조하세요)
+   <p>R의 핵심은 인터프리트된 컴퓨터 언어 (interpreted computer language)입니다. 
+이것은 분기(branching), 루핑(Looping) 그리고 함수(functions)를 이용한 모듈(modular) 프로그래밍을 가능하게 합니다. 
+R에서 사용자가 사용하는 함수들의 대부분은 R로 작성되었습니다. 
+또한, 사용자가 효율성(efficiency)를 위한 목적으로 C, C++, 또는 FORTRAN과 같은 언어로 작성된 프로시져들에 인터페이싱(interface)하는 것이 가능합니다. 
+R 배포판 (distribution)은 방대한 양의 통계적 프로시져(statistical procedure)들을 위한 기능(functionalities)들을 포함하고 있습니다. 
+이들중에는 선형 및 일반화 선형 모델 (linear and generalized linear models), 비선형모델 (nonlinear regression model), 시계열분석 (time series analysis), 전통적인 모수 및 비모수 테스트 (classical parametric and nonparametric tests), 클러스터링 (clustering)과 평활화 (smoothing)이 있습니다. 
+또한 매우 다양한 종류의 데이터 시각적 표현들을 생성할 수 있는 매우 유연한 그래픽 환경을 제공해주는 방대한 양의 함수들의 집합이 있습니다. 
+특수한 목적을 달성하기 위해서 개발된 애드온 패키지(&ldquo;add-on packages&rdquo;)로 알려져 있는 부가적인 모듈들 역시 이용이 가능합니다. 
+(이들에 대해서 더 알고 싶으시면 <a href="#R-Add_002dOn-Packages">R Add-On Packages</a>를 참고해주세요).
 
+<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+<!-- STARTING AGAIN FROM THIS POINT -->
+<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
 <!-- R was initially written by @email{Ross.Ihaka@@R-project.org, Ross Ihaka} -->
 <!-- and @email{Robert.Gentleman@@R-project.org, Robert Gentleman} at the -->
 <!-- Department of Statistics of the University of Auckland in Auckland, New -->
