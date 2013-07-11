@@ -14,7 +14,7 @@ conv2html:
 	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
 
 mv2www:
-	cp /home/gnustats/Documents/R-Project/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/R-Project/ihelp/www/ 
+	cp /home/gnustats/Documents/R-Project/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/R-Project/ihelp/www/docs/manual-ko/
 	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/gnustats/Documents/R-Project/ihelp/www/* gnustats@korea.gnu.org:./www/
 # file permission set to 644, and folder permission set to 755.
 # http://serverfault.com/questions/233567/how-to-set-file-folder-permissions-using-rsync-from-windows-to-linux
