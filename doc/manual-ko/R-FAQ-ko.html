@@ -129,6 +129,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 </div>
 
+<!-- @section Legalese -->
 <h3 class="section">1.1 Legalese</h3>
 
 <!-- This document is copyright @copyright{} 1998-@value{FAQ_YEAR} by Kurt -->
@@ -164,7 +165,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 </div>
 
-<h3 class="section">1.2 Obtaining this document</h3>
+<!-- @section Obtaining this document -->
+<h3 class="section">1.2 이 문서를 얻는 방법</h3>
 
 <!-- The latest version of this document is always available from -->
 <p>가장 최신 버전의 문서는 항상 아래의 주소에서 확인이 가능합니다.
@@ -198,7 +200,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 </div>
 
-<h3 class="section">1.3 Citing this document</h3>
+<!-- @section Citing this document -->
+<h3 class="section">1.3 이 문서를 인용하는 방법</h3>
 
 <!-- In publications, please refer to this @acronym{FAQ} as Hornik -->
 <!-- (@value{FAQ_YEAR}), ``The R @acronym{FAQ}'', and give the above, -->
@@ -222,11 +225,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 </div>
 
-<h3 class="section">1.4 Notation</h3>
+<!-- @section Notation -->
+<h3 class="section">1.4 표기법</h3>
 
 <!-- Everything should be pretty standard.  @samp{R>} is used for the R -->
 <!-- prompt, and a @samp{$} for the shell prompt (where applicable). -->
-<p>이 문서에서는 거의 대부분이 표준에 가까운 기호를 사용하였습니다. 
+<p>이 문서에서는 거의 대부분이 표준에 가까운 표기법을 사용합니다. 
 예를들면, &lsquo;<samp><span class="samp">R&gt;</span></samp>&rsquo;은 R 프롬프트(prompt)를 나타내고, &lsquo;<samp><span class="samp">$</span></samp>&rsquo;는 쉘프롬프트(shell prompt)를 의미합니다.
 
 <div class="node">
@@ -237,7 +241,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
 
 </div>
 
-<h3 class="section">1.5 Feedback</h3>
+<!-- @section Feedback -->
+<h3 class="section">1.5 피드백 보내기</h3>
 
 <!-- Feedback via email to @email{Kurt.Hornik@@R-project.org} is of course -->
 <!-- most welcome. -->
@@ -273,7 +278,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">2 R Basics</h2>
+<!-- @chapter R Basics -->
+<h2 class="chapter">2 R의 기본적인 사항들</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#What-is-R_003f">What is R?</a>
@@ -302,7 +308,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 
 </div>
 
-<h3 class="section">2.1 What is R?</h3>
+<!-- @section What is R? -->
+<h3 class="section">2.1 R이란 무엇인가?</h3>
 
 <!-- R is a system for statistical computation and graphics.  It consists of -->
 <!-- a language plus a run-time environment with graphics, a debugger, access -->
@@ -343,15 +350,13 @@ R 배포판 (distribution)은 방대한 양의 통계적 프로시져(statistica
 특수한 목적을 달성하기 위해서 개발된 애드온 패키지(&ldquo;add-on packages&rdquo;)로 알려져 있는 부가적인 모듈들 역시 이용이 가능합니다. 
 (이들에 대해서 더 알고 싶으시면 <a href="#R-Add_002dOn-Packages">R Add-On Packages</a>를 참고해주세요).
 
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-<!-- STARTING AGAIN FROM THIS POINT -->
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
 <!-- R was initially written by @email{Ross.Ihaka@@R-project.org, Ross Ihaka} -->
 <!-- and @email{Robert.Gentleman@@R-project.org, Robert Gentleman} at the -->
 <!-- Department of Statistics of the University of Auckland in Auckland, New -->
 <!-- Zealand.  In addition, a large group of individuals has contributed to R -->
 <!-- by sending code and bug reports. -->
-   <p>R은 초기에  <a href="mailto:Ross.Ihaka@R-project.org">Ross Ihaka</a>와 <a href="mailto:Robert.Gentleman@R-project.org">Robert Gentleman</a>(당시 뉴질랜드의 오클랜드대학 통계학과 소속)에 의해서 작성되었습니다. 이에 덧붙여서, 많은 개인들이 코드와 버그 보고서를 보내주는 기여활동을 하였습니다.
+   <p>최초의 R은 <a href="mailto:Ross.Ihaka@R-project.org">Ross Ihaka</a>와 <a href="mailto:Robert.Gentleman@R-project.org">Robert Gentleman</a>가 New Zealand의 Auckland 에 있는 University of Auckland의 통계학과에 재직중일 당시 작성되었습니다. 
+그 이후, 많은 사용자들이 코드를 제공하고 버그를 리포팅 함으로서 R에 기여 해왔습니다.
 
 <!-- Since mid-1997 there has been a core group (the ``R Core Team'') who can -->
 <!-- modify the R source code archive.  The group currently consists of Doug -->
@@ -360,7 +365,8 @@ R 배포판 (distribution)은 방대한 양의 통계적 프로시져(statistica
 <!-- Thomas Lumley, Martin Maechler, Duncan Murdoch, Paul Murrell, Martyn -->
 <!-- Plummer, Brian Ripley, Deepayan Sarkar, Duncan Temple Lang, Luke -->
 <!-- Tierney, and Simon Urbanek. -->
-   <p>1997년 중반 이후, R의 소스 코드 보관물을 수정할 수 있는 &ldquo;R Core Team&rdquo;이라는 핵심 집단이 있어 왔습니다.  이 집단은 현재 Doug Bates, John Chambers, Peter Dalgaard, Seth Falcon, Robert Gentleman, Kurt Hornik, Stefano Iacus, Ross Ihaka, Friedrich Leisch, Uwe Ligges, Thomas Lumley, Martin Maechler, Duncan Murdoch, Paul Murrell, Martyn Plummer, Brian Ripley, Deepayan Sarkar, Duncan Temple Lang, Luke Tierney, Simon Urbanek 등으로 구성되어 있습니다.
+   <p>1997년 중반 이래로 &ldquo;R Core Team&rdquo;이라는 이름의 그룹에 의해서 R의 소스 코드 아카이브를 수정 및 관리되어지고 있습니다. 
+이 그룹은 Doug Bates, John Chambers, Peter Dalgaard, Seth Falcon, Robert Gentleman, Kurt Hornik, Stefano Iacus, Ross Ihaka, Friedrich Leisch, Uwe Ligges, Thomas Lumley, Martin Maechler, Duncan Murdoch, Paul Murrell, Martyn Plummer, Brian Ripley, Deepayan Sarkar, Duncan Temple Lang, Luke Tierney, Simon Urbanek 으로 구성되어 있습니다.
 
 <!-- R has a home page at @url{http://www.R-project.org/}.  It is -->
 <!-- @url{http://www.gnu.org/philosophy/free-sw.html, free software} -->
@@ -368,7 +374,9 @@ R 배포판 (distribution)은 방대한 양의 통계적 프로시져(statistica
 <!-- @url{http://www.gnu.org/copyleft/copyleft.html, copyleft}, and an -->
 <!-- official part of the @url{http://www.gnu.org/, @acronym{GNU}} project -->
 <!-- (``@acronym{GNU} S''). -->
-   <p>R은 <a href="http://www.R-project.org/">http://www.R-project.org/</a>라는 인터넷 홈페이지를 갖고 있습니다. <acronym>GNU</acronym>-스타일 <a href="http://www.gnu.org/copyleft/copyleft.html">copyleft</a>에 기초하여 <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a>로 배포되고 있으며, <a href="http://www.gnu.org/"><acronym>GNU</acronym></a> 프로젝트의 공식부문(&ldquo;<acronym>GNU</acronym> S&rdquo;)입니다.
+   <p>R은 홈페이지 <a href="http://www.R-project.org/">http://www.R-project.org/</a>를 가지고 있습니다. 
+<acronym>GNU</acronym> <a href="http://www.gnu.org/copyleft/copyleft.html">copyleft</a>를 기반으로 배포되는 <a href="http://www.gnu.org/philosophy/free-sw.html">free software</a>입니다. 
+이는 &ldquo;<acronym>GNU</acronym> S&rdquo;라고 불리는 <a href="http://www.gnu.org/"><acronym>GNU</acronym></a> 공식 프로젝트의 일부입니다.
 
 <div class="node">
 <a name="What-machines-does-R-run-on%3f"></a>
@@ -380,12 +388,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 
 </div>
 
-<h3 class="section">2.2 What machines does R run on?</h3>
+<!-- @section What machines does R run on? -->
+<h3 class="section">2.2 R이 실행이 가능한 기계들</h3>
 
 <!-- R is being developed for the Unix-like, Windows and Mac families of -->
 <!-- operating systems.  Support for Mac OS Classic ended with R 1.7.1. -->
-<p>R은 유닉스계열, 윈도우즈와 맥 운영체제용으로 개발되고 있습니다. 
-예전 맥 운영체제(Classic)지원은 R.1.7.1로 종료되었습니다.
+<p>R은 Unix, Windows와 Mac 계열의 환경에서 개발되어져 왔습니다. 
+R 1.7.1 이후로는 Mac OS Classic 에 대한 지원이 종료되었습니다.
 
 <!-- The current version of R will configure and build under a number of -->
 <!-- common Unix-like (e.g., @uref{http://en.wikipedia.org/wiki/Unix-like}) -->
@@ -394,6 +403,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- @acronym{CPU}s (e.g., @url{http://buildd.debian.org/build.php?&pkg=r-base}), -->
 <!-- i386-hurd-gnu, @var{cpu}-kfreebsd-gnu for i386 and amd64, -->
 <!-- powerpc-apple-darwin, mips-sgi-irix, -->
+   <p>현 버전의 R은 보편적인 유닉스와 같은 (<a href="http://en.wikipedia.org/wiki/Unix-like">http://en.wikipedia.org/wiki/Unix-like</a>) 플랫폼을 기반으로 개발되고 설정됩니다. 
+<var>cpu</var>-linux-gnu for the i386, amd64, alpha, arm/armel, hppa, ia64, m68k, mips/mipsel, powerpc, s390 and sparc <acronym>CPU</acronym>s (e.g., <a href="http://buildd.debian.org/build.php?&amp;pkg=r-base">http://buildd.debian.org/build.php?&amp;pkg=r-base</a>), i386-hurd-gnu, <var>cpu</var>-kfreebsd-gnu for i386 and amd64, powerpc-apple-darwin, mips-sgi-irix, rs6000-ibm-aix, 그리고 sparc-sun-solaris이 이에 해당합니다.
+
 <!-- <FIXME> -->
 <!-- Not sure anymore ... -->
 <!-- alpha-dec-osf4, -->
@@ -407,19 +419,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- hppa-hp-hpux, -->
 <!-- </FIXME> -->
 <!-- rs6000-ibm-aix, and sparc-sun-solaris. -->
-   <p>현재 버젼의 R은 보편적인 유닉스 계열 (<a href="http://en.wikipedia.org/wiki/Unix-like">http://en.wikipedia.org/wiki/Unix-like</a>)의 플랫폼을 기반으로 개발되고 설정되었습니다. 
-그러한 유닉스 계열의 플랫폼은 다음과 같습니다
-<var>cpu</var>-linux-gnu for the i386, amd64, alpha,
-arm/armel, hppa, ia64, m68k, mips/mipsel, powerpc, s390 and sparc
-<acronym>CPU</acronym>s (e.g., <a href="http://buildd.debian.org/build.php?&amp;pkg=r-base">http://buildd.debian.org/build.php?&amp;pkg=r-base</a>),
-i386-hurd-gnu, <var>cpu</var>-kfreebsd-gnu for i386 and amd64,
-powerpc-apple-darwin, mips-sgi-irix, i386-freebsd, rs6000-ibm-aix, and sparc-sun-solaris. 
-만약, 사용자가 위에 명시된 것 외의 다른 플랫폼에 대해서 알고 계신다면 저희에게 알려주시길 부탁드립니다.
-
 <!-- and according to @email{jlindsey@@luc.ac.be, Jim Lindsey} also on -->
 <!-- Mac, Amiga and Atari under m68k-linux. -->
+   <p><a href="mailto:jlindsey@luc.ac.be">Jim Lindsey</a>에 따르면 m68k-linux에 속하는 Mac, Amiga 그리고 Atari 에서도 가능합니다.
+
 <!-- If you know about other platforms, please drop us a note. -->
-   <p>귀하께서 다른 운영체제를 알고 계신다면, 연락을 남겨주십시오.
+   <p>만약, 다른 플랫폼에 대해서 알고 계신다면 저희에게 알려주시길 부탁드립니다.
 
 <div class="node">
 <a name="What-is-the-current-version-of-R%3f"></a>
@@ -431,7 +436,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 
 </div>
 
-<h3 class="section">2.3 What is the current version of R?</h3>
+<!-- @section What is the current version of R? -->
+<h3 class="section">2.3 R의 현재 발표된 버전은 무엇인가요?</h3>
 
 <!-- The current released version is @value{REL_VERSION}.  Based on this -->
 <!-- `major.minor.patchlevel' numbering scheme, there are two development -->
@@ -439,10 +445,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 <!-- and one working towards the next minor or eventually major (`r-devel') -->
 <!-- releases of R, respectively.  Version r-patched is for bug fixes mostly. -->
 <!-- New features are typically introduced in r-devel. -->
-<p>현 배포판은 2.15.3입니다. 
-이러한 `major.minor.patchlevel' 번호체계에 기초하여, 두 개의 개발 버전, 각각 현 배포판의 패치 버전 (`r-patched') 하나와 다음의 minor 또는 최종적으로 major 배포판(`r-devel')하나가 있습니다. 
-패치 버전은 대개 버그 수정을 위한 것입니다. 
-새로운 기능들은 보통 개발 버전에서 소개됩니다.
+<p>현재 발표된 (released) 버전은 2.15.3입니다. 
+`major.minor.patchlevel'의 형식을 가지는 번호체계(numbering scheme)에 기초하여, R은 두 개발버전 (development version)들과 현재 발표된 버전의 일부를 수정한 'r-patched'라는 이름의 패치된 버전이 있으며, 다음 단계의 마이너(minor) 버전 또는 결과적으로는 주버전(major)이 될 `r-devel'라는 이름으로 발표된 R이 있습니다. 
+패치 버전 (r-patched)은 대개 버그 수정을 한 것입니다. 
+새로운 기능 및 형상들은 일반적으로 r-devel 에서 소개됩니다.
 
 <div class="node">
 <a name="How-can-R-be-obtained%3f"></a>
@@ -454,21 +460,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 
 </div>
 
-<h3 class="section">2.4 How can R be obtained?</h3>
+<!-- @section How can R be obtained? -->
+<h3 class="section">2.4 어떻게 R을 얻을 수 있나요?</h3>
 
 <!-- Sources, binaries and documentation for R can be obtained via @CRAN{}, -->
 <!-- the ``Comprehensive R Archive Network'' (see @ref{What is CRAN?}). -->
-<p>R 소스, 바이너리, 그리고 문서들은 &ldquo;Comprehensive R Archive Network&rdquo;라고 불리는 <acronym>CRAN</acronym>을 통하여 얻을 수 있습니다. (<a href="#What-is-CRAN_003f">What is CRAN?</a> 섹션을 살펴보세요).
+<p>R 원시코드 (sources), 바이너리 (binaries), 그리고 문서들(documentation)은 <acronym>CRAN</acronym>(&ldquo;Comprehensive R Archive Network&rdquo;)을 통하여 얻을 수 있습니다. 
+(<a href="#What-is-CRAN_003f">What is CRAN?</a>을 살펴보세요).
 
 <!-- Sources are also available via @url{https://svn.R-project.org/R/}, the -->
 <!-- R Subversion repository, but currently not via anonymous rsync (nor -->
 <!-- CVS). -->
-   <p>소스는 또한 R 서브버전 저장소 (subversion repository)인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>를 통하여 얻을 수 있습니다. 그러나, rsync 와 cvs 는 지원하지 않습니다.
+   <p>원시코드 (sources)는 또한 R 서브버전 저장소 (subversion repository)인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>를 통하여 얻을 수 있습니다. 
+그러나, 익명 rsync (그리고 CVS)를 사용할 수 없습니다.
 
 <!-- Tarballs with daily snapshots of the r-devel and r-patched development -->
 <!-- versions of R can be found at -->
 <!-- @url{ftp://ftp.stat.math.ethz.ch/Software/R}. -->
-   <p>r-devel와 r-patched 개발버전은 <a href="ftp://ftp.stat.math.ethz.ch/Software/R">ftp://ftp.stat.math.ethz.ch/Software/R</a>에서 찾을 수 있습니다.
+   <p>R의 r-devel와 r-patched 버전들에 대한 일일 스냅샷(daily snapshot)을 <a href="ftp://ftp.stat.math.ethz.ch/Software/R">ftp://ftp.stat.math.ethz.ch/Software/R</a>에서 타르볼(tarball)의 형태로 찾을 수 있습니다.
 
 <!-- Sources are also available via anonymous rsync.  Use -->
 <!-- @example -->
@@ -504,7 +513,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Basics">R Basics</a>
 
 </div>
 
-<h3 class="section">2.5 How can R be installed?</h3>
+<!-- @section How can R be installed? -->
+<h3 class="section">2.5 어떻게 R을 설치할 수 있나요?</h3>
 
 <ul class="menu">
 <li><a accesskey="1" href="#How-can-R-be-installed-_0028Unix_002dlike_0029">How can R be installed (Unix-like)</a>
@@ -522,8 +532,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#How-can-R-be-installed_003f">How can R
 
 </div>
 
-<h4 class="subsection">2.5.1 How can R be installed (Unix-like)</h4>
+<!-- @subsection How can R be installed (Unix-like) -->
+<h4 class="subsection">2.5.1 Unix와 같은 환경에서 R을 어떻게 설치할 수 있나요?</h4>
 
+<!-- STARTING FROM THIS POINT NEXT TIME CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC -->
 <!-- If R is already installed, it can be started by typing @kbd{R} at the -->
 <!-- shell prompt (of course, provided that the executable is in your path). -->
 <p>만약 R이 이미 설치되어 있다면, 쉘 프롬프트에서 <kbd>R</kbd>이라고 입력을 함으로서 실행할 수 있습니다.
