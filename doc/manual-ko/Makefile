@@ -1,8 +1,4 @@
-# input = filename
-htmlDIR = ../../www/docs/manual-ko
- 
-html2www:
-	rsync -auv *.html $(htmlDIR)/
+# This file is intended for ./ihelp/doc/manual-ko/
 
 sub2ihelp:
 	cp /home/gnustats/Documents/R-Project/korean/src/doc/manual-ko/*.texi ./
@@ -18,11 +14,5 @@ conv2html:
 
 mv2www:
 	cp /home/gnustats/Documents/R-Project/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/R-Project/ihelp/www/docs/manual-ko/
-	rsync -auv /home/gnustats/Documents/R-Project/ihelp/www/* gnustats@korea.gnu.org:./www/
-
-rmAll:
-	rm -rf *.html *~ *.aux *.log
-#	make createHTML
-#	make html2www
-#	rsync -auv ../../www/* gnustats@korea.gnu.org:./www/
+	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/gnustats/Documents/R-Project/ihelp/www/* gnustats@korea.gnu.org:./www/
 
