@@ -492,18 +492,14 @@ R의 r-devel와 r-patched 버전들에 대한 일일 스냅샷(daily snapshot)�
 @c @subsection How can R be installed (Unix-like)
 @subsection Unix와 같은 환경에서 R을 어떻게 설치할 수 있나요?
 
-@c  STARTING FROM THIS POINT NEXT TIME CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-
 @c If R is already installed, it can be started by typing @kbd{R} at the
 @c shell prompt (of course, provided that the executable is in your path).
-
-만약 R이 이미 설치되어 있다면, 쉘 프롬프트에서 @kbd{R}이라고 입력을 함으로서 실행할 수 있습니다. 
+만약 R이 이미 설치되어 있다면, 쉘 프롬프트(shell prompt)에서 @kbd{R}이라고 입력을 함으로서 실행할 수 있습니다 (물론, 실행가능한 파일이 경로에 올바르게 위치해 있다는 가정하에서 입니다). 
 
 @c If binaries are available for your platform (see @ref{Are there
 @c Unix-like binaries for R?}), you can use these, following the
 @c instructions that come with them.
-
-만약 사용자의 플랫폼에 바이너리가 지원된다면 (@ref{Are there Unix-like binaries for R?} 이라는 섹션을 살펴보세요), 사용자는 이와 함께 제공되는 지시사항을 따른다면 사용할 수 있습니다.
+만약 사용자의 플랫폼에 바이너리(binaries)가 사용가능하다면 (@ref{Are there Unix-like binaries for R?} 섹션을 살펴보세요), 이와 함께 제공되는 지시사항들을 따른다면 이들을 사용할 수 있습니다.
 
 @c Otherwise, you can compile and install R yourself, which can be done
 @c very easily under a number of common Unix-like platforms (see @ref{What
@@ -511,20 +507,17 @@ R의 r-devel와 r-patched 버전들에 대한 일일 스냅샷(daily snapshot)�
 @c R distribution contains a brief introduction, and the ``R Installation
 @c and Administration'' guide (@pxref{What documentation exists for R?})
 @c has full details.
-
-그렇지 않다면, 사용자는 R 을 직접 컴파일하여 설치하여야 합니다. 
-이 과정은 일반적인 유닉스계열의 플랫폼 (@ref{What machines does R run on?}를 참고해주세요) 에서는 매우 쉽습니다. 
-R 의 배포판에 함께 제공되는 @file{INSTALL} 파일은 간단한 설치지침을 포함하고 있으면 ``R Installation and Administration'' 문서에는 설치와 관련한 자세한 세부사항들이 기록되어 있습니다. (@ref{What documentation exists for R?} 섹션을 참고하세요).
+그렇지 않다면, R을 직접 컴파일하여 설치하여야 합니다. 
+일반적인 Unix와 같은 플랫폼(@ref{What machines does R run on?}를 참고해주세요)에서 이 과정을 수행하는 것은 매우 쉽쉽니다. 
+R의 배포판과 함께 제공되는 @file{INSTALL} 파일은 간단한 설치지침을 포함하고 있으면 ``R Installation and Administration''라는 가이드는 설치와 관련한 자세한 내용들이 잘 문서화 되어 있습니다 (@ref{What documentation exists for R?}을 참고하세요).
 
 @c Note that you need a @FORTRAN{} compiler or perhaps @command{f2c} in
 @c addition to a C compiler to build R.
-
-참고로, 사용자는 R 을 설치하기 위해서는 C 컴파일러 외에 @FORTRAN{} 컴파일러 혹은 아마도 @command{f2c}라는 것이 필요할 것입니다.
+참고로 R을 빌드(build)하기 위해서는 C 컴파일러(compiler) 외에도 @FORTRAN{} 컴파일러 혹은 아마도 @command{f2c}라는 것이 필요할 수도 있습니다.
 
 @c In the simplest case, untar the R source code, change to the directory
 @c thus created, and issue the following commands (at the shell prompt):
-
-가장 단순한 방법은, R 소스코드의 압축을 풀고 난뒤, 압축이 풀린 디렉토리로 이동한 후, 쉘프롬프트에서 다음의 명령어들을 입력합니다.
+가장 간단한 방법은 R 원시코드(source code)의 압축을 풀고, 압축이 풀어 생성된 디렉토리로 이동한 후, (쉘 프롬프트상에서) 다음과 같은 명령어를 입력하는 것입니다.
 
 @example
 $ ./configure
@@ -537,11 +530,20 @@ $ make
 @c it, for example to @file{/usr/local/bin}.  In addition, plain text help
 @c pages as well as @HTML{} and @LaTeX{} versions of the documentation are
 @c built.
-
-만약 이러한 명령어들이 성공적으로 수행된다면, R 바이너리와 @file{R}이라는 쉘스크립트 프론트-엔드가 생성될 것이고, 이들은 @file{bin} 디렉토리로 복사되어 집니다. 
-사용자는 스크립트를 단지 사용자가 실행시키고자 하는 장소로 스크립트를 복사해 넣으면 됩니다. 
+만약 명령어들이 성공적으로 수행된다면, R 바이너리와 쉘 스크립트로 작성된 사용자가 이용이 가능한 @file{R}이라는 이름을 가진 파일이 생성되고, 이는 @file{bin} 디렉토리에 복사되어 질 것입니다. 
+사용자는 이 스크립트를 실행시키고자 하는 위치로 스크립트를 복사해 넣기만 하면 됩니다.
 예를들면, @file{/usr/local/bin} 디렉토리입니다. 
-추가적으로 @HTML{}, @LaTeX{}, 혹은 텍스트 버전의 문서들도 함께 설치됩니다.
+또한, 텍스트로만 구성된 도움말 페이지 뿐만아니라 @HTML{}, @LaTeX{} 버전의 문서들도 함께 설치됩니다. 
+
+@c 
+@c  start from this point
+@c 
+@c 
+@c  start from this point
+@c 
+@c 
+@c  start from this point
+@c 
 
 @c Use @kbd{make dvi} to create DVI versions of the R manuals, such as
 @c @file{refman.dvi} (an R object reference index) and @file{R-exts.dvi},
