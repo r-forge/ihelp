@@ -576,9 +576,6 @@ R의 배포판과 함께 제공되는 <samp><span class="file">INSTALL</span></s
 예를들면, <samp><span class="file">/usr/local/bin</span></samp> 디렉토리입니다. 
 또한, 텍스트로만 구성된 도움말 페이지 뿐만아니라 <acronym>HTML</acronym>, LaTeX 버전의 문서들도 함께 설치됩니다.
 
-<!-- start from this point -->
-<!-- start from this point -->
-<!-- start from this point -->
 <!-- Use @kbd{make dvi} to create DVI versions of the R manuals, such as -->
 <!-- @file{refman.dvi} (an R object reference index) and @file{R-exts.dvi}, -->
 <!-- the ``R Extension Writers Guide'', in the @file{doc/manual} -->
@@ -590,51 +587,56 @@ R의 배포판과 함께 제공되는 <samp><span class="file">INSTALL</span></s
 <!-- suitable for reading online with Emacs or stand-alone @acronym{GNU} -->
 <!-- Info; use @kbd{make info} to create these versions (note that this -->
 <!-- requires Makeinfo version 4.5). -->
-   <p><samp><span class="file">refman.dvi</span></samp> (R 객체 레퍼런스 인덱스문서) 혹은 <samp><span class="file">R-exts.dvi</span></samp> (<samp><span class="file">doc/manual</span></samp> 디렉토리에 있는 &ldquo;R Extension Writers Guide&rdquo;)와 같은 R 매뉴얼들의 DVI 버전을 생성하기 위해서는 <kbd>make dvi</kbd>를 사용하시길 바랍니다. 
-이러한 파일들은 xdvi 혹은 dvips 와 같은 기본 프로그램을 이용하여 미리보거나 프린트를 할 수 있습니다. 
-또한, 매뉴얼들의 PDF (Portable Document Format) 과 같은 문서를 생성하기 위해서는 make pdf 를 사
-용하세요. 이들은 Arobat 과 같은 프로그램을 이용하여 볼 수 있습니다. GNU Texinfo 시스템으로 작성된
-매뉴얼들은 Emacs 혹은 독립적인 GNU Info 에서 온라인으로 읽을 수 있도록 하는 info 파일들로 변환이
-가능합니다. 이러한 버전들을 생성하기 위해서는 make info 파일을 이용하시길 바랍니다. (단, 이경우에는
-Makeinfo 의 버전이 4.5 이상이 요구됩니다).
+   <p><samp><span class="file">doc/manual</span></samp>에 놓여있는 <samp><span class="file">refman.dvi</span></samp> (R object reference index) 혹은 <samp><span class="file">R-exts.dvi</span></samp> (&ldquo;R Extension Writers Guide&rdquo;)와 같은 R 매뉴얼들의 DVI 버전을 생성하기 위해서는 <kbd>make dvi</kbd>를 이용해보세요. 
+이러한 파일들은 <samp><span class="command">xdvi</span></samp> 또는 <samp><span class="command">dvips</span></samp>와 같은 표준 프로그램들을 이용하여 미리 보거나 프린트를 할 수 있습니다. 
+또한, <kbd>make pdf</kbd>의 사용은 매뉴얼들을 PDF (Portable Document Format)의 형식으로 생성하게 해줍니다. 
+이들은 Arobat을 이용하여 볼 수 있습니다. 
+<acronym>GNU</acronym> Texinfo 시스템에 의하여 작성된 매뉴얼들 (본 한국어 매뉴얼 역시 <acronym>GNU</acronym> Texinfo 시스템을 이용하여 작성되었습니다) 은 또한 Emacs 또는 독립적인 <acronym>GNU</acronym> Info 와 함께 온라인으로 읽을 수 읽을 수 있도록 info 파일들로 변환할 수 있습니다. 
+이들을 생성하기 위해서는 <kbd>make info</kbd>를 이용하시길 바랍니다. 
+(단, 이경우에는 Makeinfo 의 버전이 4.5 이상이 요구됩니다).
 
 <!-- Finally, use @kbd{make check} to find out whether your R system works -->
 <!-- correctly. -->
-   <p>마지막으로 R 시스템이 올바르게 작동하는지 확인하기 위해서는 make check 를 사용하세요.
+   <p>마지막으로 R 시스템이 정상적으로 작동하는지 확인하기 위해서 <kbd>make check</kbd>를 이용해 보세요.
 
 <!-- You can also perform a ``system-wide'' installation using @kbd{make -->
 <!-- install}.  By default, this will install to the following directories: -->
-   <p>사용자는 또한 make install 을 이용하여 "system-wide" 설치를 수행할 수 있습니다. 기본적으로, 이 설치
-는 아래와 같은 디렉토리에 설치될 것입니다.
+   <p><kbd>make install</kbd>을 이용하여 &ldquo;system-wide&rdquo;(시스템 전체에서 사용이 가능한) 설치를 수행할 수도 있습니다. 
+기본적으로 이것은 다음의 디렉토리에 설치됩니다.
 
      <dl>
 <dt><samp><span class="file">${prefix}/bin</span></samp><dd><!-- the front-end shell script -->
-프론트엔드 쉘스크립트
+사용자가 직접 이용하는 쉘 스크립트 (front-end shell script)
 <br><dt><samp><span class="file">${prefix}/man/man1</span></samp><dd><!-- the man page -->
 도움말 페이지
 <br><dt><samp><span class="file">${prefix}/lib/R</span></samp><dd><!-- all the rest (libraries, on-line help system, @dots{}).  This is the ``R -->
 <!-- Home Directory'' (@env{R_HOME}) of the installed system. -->
-위의 내용을 제외한 나머지 모두 (라이브러리, 온라인 도움말, 등등). 이것을 우리는 설치된 R의 홈디렉토리 (R_HOME) 이라고 부릅니다
+위의 내용을 제외한 나머지 모두 (라이브러리, 온라인 도움말, <small class="dots">...</small>)이 이곳에 설치됩니다. 
+이것을 설치된 시스템의 &ldquo;R Home Directory&rdquo;(R 홈디렉토리, <samp><span class="env">R_HOME</span></samp>)이라고 합니다. 
 </dl>
 
 <p class="noindent"><!-- In the above, @code{prefix} is determined during configuration -->
 <!-- (typically @file{/usr/local}) and can be set by running -->
 <!-- @command{configure} with the option -->
-위에서 prefix 는 주로 설치환경을 확인하는 동안 결정되어지며 (주로 /usr/local 입니다), 이는 보통 아래와
-같은 옵션을 통하여 변경할 수도 있습니다.
+위에서 <code>prefix</code>는 환경설정을 하는 동안에 결정되어 지며 (일반적으로 <samp><span class="file">/usr/local/</span></samp>입니다), 아래에 보이는 것과 같이 <samp><span class="command">configure</span></samp>에 옵션을 이용하여 설치시에 정할 수도 있습니다.
 
 <pre class="example">     $ ./configure --prefix=/where/you/want/R/to/go
 </pre>
    <p class="noindent"><!-- (E.g., the R executable will then be installed into -->
 <!-- @file{/where/you/want/R/to/go/bin}.) -->
-즉, R 은 /where/you/want/R/to/go/bin 이라는 곳에 설치되어지고 실행이 가능해질 것입니다.
+(즉, R의 실행파일들은 <samp><span class="file">/where/you/want/R/to/go/bin</span></samp>에 설치될 것입니다).
 
 <!-- To install DVI, info and PDF versions of the manuals, use @kbd{make -->
 <!-- install-dvi}, @kbd{make install-info} and @kbd{make install-pdf}, -->
 <!-- respectively. -->
-   <p>매뉴얼들의 DVI, info, 그리고 PDF 버전들을 설치하기 위해서는 make install-dvi, make install-info,
-make install-pdf 를 실행하도록 하세요.
+   <p>DVI, info, PDF 버전의 매뉴얼들을 설치하기 위해서는 <kbd>make install-dvi</kbd>, <kbd>make install-info</kbd>, <kbd>make install-pdf</kbd>을 각각 실행시키세요.
 
+<!-- starting from this point next time -->
+<!-- starting from this point next time -->
+<!-- starting from this point next time -->
+<!-- starting from this point next time -->
+<!-- starting from this point next time -->
+<!-- starting from this point next time -->
 <div class="node">
 <a name="How-can-R-be-installed-(Windows)"></a>
 <a name="How-can-R-be-installed-_0028Windows_0029"></a>
