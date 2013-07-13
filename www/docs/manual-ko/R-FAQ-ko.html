@@ -1550,7 +1550,7 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 </pre>
    <!-- In R, the ``environment'' created when @code{cube()} was invoked is -->
 <!-- also looked in: -->
-   <p>R에서는 <code>()</code>가 실행되었을때 생성된 &ldquo;environment&rdquo;(환경)이 살펴지게 됩니다:
+   <p>R에서는 <code>cube()</code>가 실행되었을때 생성된 &ldquo;environment&rdquo;(환경)이 살펴지게 됩니다:
 
 <pre class="example">     R&gt; cube(2)
      [1] 8
@@ -1591,12 +1591,13 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- distribution.  For simplicity, we shall use both the cdf and pdf of the -->
 <!-- distribution as explicit arguments.  (Example compiled from various -->
 <!-- postings by Luke Tierney.) -->
-   <p>더욱 “흥미로운” 실전 문제로, (연속) 분포도에서의 sample size n에서 r번째 order statistic의 밀도 함수를 구하는 함수를 쓰고 싶다고 가정해 봅니다. 
-간단하게하기위해서는, cdf 와 pdf  두 가지 모두를 explicit argument로  써야 할 것입니다. ( 예시는 Luke Tierney의 여러가지 포스팅에서 수집 하였습니다)
+   <p>실제로 다루어 볼 수 있는 흥미로운 문제로서, (연속)분포에서 샘플의 크기 n으로부터 r 번째의 order statistic (순서통계량)의 밀도함수를 구하는 함수를 작성해본다고 가정해 봅니다. 
+단순한 방법으로 우리는 분포의 cdf와 pdf 모두를 explicit arguments(명시적 인자들)로 사용해야 합니다. 
+(이는 Luke Tierney에 의하여 작성된 다양한 포스팅으로부터 뽑아낸 예제입니다).
 
 <!-- The @SPLUS{} documentation for @code{call()} basically suggests the -->
 <!-- following: -->
-   <p>call()을 위한S-Plus 문서는 기본적으로 다음을 제시합니다:
+   <p><code>call()</code>에 대한 <span class="sc">S-Plus</span> 문서는 기본적으로 다음과 같이 하도록 안내합니다.
 
 <pre class="example">     dorder &lt;- function(n, r, pfun, dfun) {
        f &lt;- function(x) NULL
@@ -1615,11 +1616,13 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- functions are just lists of special mode with the function body as the -->
 <!-- last argument, and hence does not work in R (one could make the idea -->
 <!-- work, though). -->
-   <p>헷갈리지 않습니까? 이 코드들은 S의 fact를 사용하고, 함수들은 마지막 argument같은 함수의 body와 special mode의 목록일 뿐이며, 그러므로 R에서는 작동하지 않습니다 (아이디어는 쓸 수 있을지도 모릅니다).
+   <p>다소 혼란스럽지 않나요? 
+이 코드는 S에서는 함수들이 마지막 인자와 같이 함수의 본체의 특정한 방식(mode)의 목록들이라는 사실을 이용하고 있습니다. 
+이러한 방식은 R에서 작동하지 않습니다 (누군가는 여기에서 사용된 아이디어를 성공적으로 구현할 수도 있을것입니다).
 
 <!-- A version which makes heavy use of @code{substitute()} and seems to work -->
 <!-- under both S and R is -->
-   <p>S와 R 두 개 모두에서 작동하는 것 처럼 보이는substitute()의 사용빈도가 높은 버전은
+   <p><code>substitute()</code>의 사용빈도가 매우 높으며 S와 R 모두 작동하는 것처럼 보이는 버전은 다음과 같습니다.
 
 <pre class="example">     dorder &lt;- function(n, r, pfun, dfun) {
        con &lt;- round(exp(lgamma(n + 1) - lgamma(r) - lgamma(n - r + 1)))
@@ -1630,10 +1633,10 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 </pre>
    <!-- @noindent -->
 <!-- (the @code{eval()} is not needed in S). -->
-   <p>(S 에서는 eval() 이 필요하지 않습니다).
+   <p>(S에서는 <code>eval()</code>이 필요하지 않습니다).
 
 <!-- However, in R there is a much easier solution: -->
-   <p>하지만, R에는 더욱 쉬운 해결책이 있습니다:
+   <p>그러나, R에서는 다음과 같은 더욱 쉬운 해결책이 있습니다:
 
 <pre class="example">     dorder &lt;- function(n, r, pfun, dfun) {
        con &lt;- round(exp(lgamma(n + 1) - lgamma(r) - lgamma(n - r + 1)))
@@ -1645,15 +1648,16 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
    <p class="noindent"><!-- This seems to be the ``natural'' implementation, and it works because -->
 <!-- the free variables in the returned function can be looked up in the -->
 <!-- defining environment (this is lexical scope). -->
-
-   <p>이는 “자연스러운” 실행처럼 보이고, 지정된 환경에서 returned 함수의 free variable들을 찾을 수 있기 때문에 작동합니다 (이것이 lexical scope입니다).
+이것은 &ldquo;natural(자연스러운)&rdquo; 구현 같이 보이며, 귀환된 함수(returned function)내에 있는 자유변수(free variable)들이 환경을 규정한 내부에서 찾아질 수 있기 때문에 잘 실행됩니다 (이것을 렉시컬 스코프(lexical scope)라고 합니다).
 
 <!-- Note that what you really need is the function @emph{closure}, i.e., the -->
 <!-- body along with all variable bindings needed for evaluating it.  Since -->
 <!-- in the above version, the free variables in the value function are not -->
 <!-- modified, you can actually use it in S as well if you abstract out the -->
 <!-- closure operation into a function @code{MC()} (for ``make closure''): -->
-   <p>함수 closure이 당신이 진정으로 필요한 것이라는 것을 유의하십시오.  즉, 이를 평가하기위한 모든 variable binding들이 있는 body. 위의 버전에서는 value 함수안의 free variable들이 변경되지 않았기 때문에, 이를 S에서 쓸 수 있을 뿐만 아니라, 만약 closure operation에서 mc() 함수로 요약한다면:
+   <p>꼭 알아야 할 것은 함수 <em>closure</em>라는 것입니다. 
+즉, 함수를 평가하기 위하여 필요한 모든 variable binding(변수 바인딩)들 있는 본체를 의미합니다. 
+위의 버전의 경우, 값을 지닌 함수내의 자유변수들은 변경되지 않았기 때문에 S에서 이를 사용할 수 있을 뿐아니라, 만약 클로저 작동 (closure operation)을 함수 <code>MC()</code>로 이끌어 내고자 한다면 (클로져를 만들기 위해서) 다음과 같이 할 수 있습니다.
 
 <pre class="example">     dorder &lt;- function(n, r, pfun, dfun) {
        con &lt;- round(exp(lgamma(n + 1) - lgamma(r) - lgamma(n - r + 1)))
@@ -1667,14 +1671,15 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- both R and S, and is much ``cleaner'' than a substitute/eval solution -->
 <!-- (or one which overrules the default scoping rules by using explicit -->
 <!-- access to evaluation frames, as is of course possible in both R and S). -->
-   <p>적합한 closure operator의 정의에 의하면, 이는 R과 S 모두에서 작동하고, substitute/eval 보다 “깨끗한” 해결책입니다 (혹은 R과 S에서 확실히 가능한, evaluation frame에 explicit access를 사용하여 기본 scoping rule들을 무효화 시키는 것).
+   <p>적절한 클로져 연산자(closure operator)의 정의가 주어진다면 이것은 R과 S에서 모두 작동하며 substitute/eval을 활용한 것 (혹은 기본 스코핑 규칙(default scoping rule)을 평가 프레임(evaluation frame)에 대한 명시적 접근(explicit access)을 이용하여 무효화 하는 해결책, 물론 R과 S 모두 가능한) 보다 말끔한 해결책이라고 할 수 있습니다.
 
 <!-- For R, @code{MC()} simply is -->
-   <p>R 에서, 간단하게 MC()는
+   <p>R에서는 <code>MC()</code>는 단순히 아래와 같습니다.
 
 <pre class="example">     MC &lt;- function(f, env) f
 </pre>
-   <p class="noindent">(lexical scope!), a version for S is
+   <!-- @noindent (lexical scope!), a version for S is -->
+<p class="noindent">(렉시컬 스코프입니다!), S를 위한 버전은 다음과 같습니다.
 
 <pre class="example">     MC &lt;- function(f, env = NULL) {
        env &lt;- as.list(env)
@@ -1701,7 +1706,9 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- it.  With S, one solution is to add an extra parameter to the function -->
 <!-- and to the optimizer to pass in these extras, which however can only -->
 <!-- work if the optimizer supports this. -->
-   <p>마찬가지로, 대부분이 optimization(혹은 zero-finding) routine들은 optimize되고 데이타에는 의존하지만, optimization에 관해서는 고정된 다른 parameter들을 가진 argument들이 필요합니다. R scoping 룰들로, 이는 대수롭지 않은 문제입니다; 간단하게 같은 환경에서 필요한 정의들로 함수를 만들면 scoping이 알아서 처리를 합니다. S로는, 한가지 방법으로, 함수와 extra parameter들을 전달하기위한 optimizer에 하나의 extra parameter를 더하는 것인데, 이는 optimizer가 이를 지원할 때만 작동합니다.
+   <p>유사하게 대부분의 최적화 (optimization 또는 zero-finding) 루틴(rountine)들은 최적화 되어야 할 일부 인자들이 필요하며, 데이터에 의존하지만 최적화와 관련해서는 영향을 미치지 않는 다른 인자들을 가집니다. 
+이것은 R 스코핑 규칙(scoping rules)을 이용하면 단순하게 같은 환경내에서 필요한 정의들만을 가지고 함수를 만들게 되면 나머지는 스코핑이 알아서 처리하게 되므로 매우 간단한 문제입니다. 
+S를 이용한 한가지 방법은 별도의 인자(extra parameter)를 함수와 이러한 별도의 인자들이 넘겨지게 될 옵티마이저(optimizer)에 추가하는 것이지만, 이는 오로지 옵티마이저가 지원될 경우에만 가능합니다.
 
 <!-- Nested lexically scoped functions allow using function closures and -->
 <!-- maintaining local state.  A simple example (taken from Abelson and -->
@@ -1712,7 +1719,9 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- Scope and Statistical Computing'', -->
 <!-- @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of -->
 <!-- Computational and Graphical Statistics}}, @strong{9}, 491-508. -->
-   <p>Nested lexically scoped 함수들은 function closure들의 사용과 local state을 유지하는 것을 허용합니다. 간단한 예로 (Abelson and Sussman에서 인용) R prompt에서 demo(“scoping”)를 입력 함으로써 얻어지는 것입니다. 더 자세한 정보는 기본 R reference의 “R: A Language for Data Analysis and Graphics” (What documentation exists for R을 참고하십시오)와 Robert Gentleman and Ross Ihaka (2000)의 “Lexical Scope and Statistical Computing”,   Journal of Computational and Graphical Statistics, 9, 491–508 를 참고하십시오.
+   <p>중첩된 구조의 렉시컬 스코프를 따르는 함수들(nested lexically scoped functions)은 함수 클로져 (function closure)의 사용과 지역적 상태(local state)를 유지하는 것을 허용합니다. 
+(Abelson과 Sussman으로부터 가져온) 간단한 예는 R 프롬프트에서 <kbd>demo("scoping")</kbd>이라고 입력함으로서 확인해 볼 수 있습니다. 
+이에 대한 더 많은 정보는 표준 R 참고자료인 &ldquo;R: A Language for Data Analysis and Graphics&rdquo; (see <a href="#What-documentation-exists-for-R_003f">What documentation exists for R?</a>)과 Robert Gentleman and Ross Ihaka (2000), &ldquo;Lexical Scope and Statistical Computing&rdquo;, <a href="http://www.amstat.org/publications/jcgs/"><em>Journal of Computational and Graphical Statistics</em></a>, <strong>9</strong>, 491&ndash;508. 으로부터 찾아 볼 수 있습니다.
 
 <!-- Nested lexically scoped functions also imply a further major difference. -->
 <!-- Whereas S stores all objects as separate files in a directory somewhere -->
@@ -1724,7 +1733,13 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- not really possible to externally maintain all relevant ``environments'' -->
 <!-- of symbol/value pairs.  This difference also seems to make R -->
 <!-- @emph{faster} than S. -->
-   <p>Nested lexically scoped 함수들은 더 큰 차이도 의미합니다. S가 모든 object들을 하나의 directory 어딘가에 (보통 현재 directory의  .Data) 다른 파일들로 저장하는 반면, R은 그렇지 않습니다. R에 있는 모든 object들은 내부로 저장 됩니다. R이 시작되면 이는 memory의 조각을 붙잡고 object들을 저장하는데 사용합니다. R은 필요한대로 사이즈를 늘리고 줄이며이 memory 조각들의 memory 관리를 실행합니다. Symbol/ value pair들의 모든 관련된 “환경들”을 externally 유지하는것이 거의 가능하지 않기 때문에, memory에 모든것을 가지고 있는 것이 필요합니다. 이 다른점 또한 R이 S보다 빠르게 만드는것 처럼 보입니다.
+   <p>중첩된 구조의 렉시컬 스코프를 따르는 함수들 (nested lexically scoped functions)은 더 중요한 다른 점을 의미합니다. 
+S는 모든 객체들을 디렉토리의 어딘가에 (보통은 현재 디렉토리내에  <samp><span class="file">.Data</span></samp>의 형식으로) 각각 다른 파일들로 저장하는 반면, R은 그러하지 않습니다. 
+R의 모든 객체들은 내부적으로 저장됩니다. 
+R이 실행되었을때, R은 메모리(memory)의 한 조각을 붙잡고 이를 객체를 저장하는데 사용합니다. 
+R은 이러한 메모리 사용을 위한 메모리 관리기능(memory management)을 수행하고, 필요한 만큼의 크기를 늘이고 줄이게 됩니다. 
+심볼과 값들간의 바인딩(symbol/value pairs)에 관련된 모든 &ldquo;환경(environments)&rdquo;를 외부에서 유지하는 것은 거의 가능하지 않기 때문에 모든 것을 메모리내에서 관리할 필요가 있습니다. 
+이러한 차이 또한 R이 S보다 빠른 것 처럼 보이게 합니다.
 
 <!-- The down side is that if R crashes you will lose all the work for the -->
 <!-- current session.  Saving and restoring the memory ``images'' (the -->
@@ -1739,15 +1754,21 @@ R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결
 <!-- crashes.  Other possibilities are logging your sessions, or have your R -->
 <!-- commands stored in text files which can be read in using -->
 <!-- @code{source()}. -->
-   <p>불리한 점은 만약 R이 crash되면 지금 현재 세션의 모든 work를 잃게 될 것입니다. Memory “이미지” (R의 internal memory에 at any time 저장된 함수들과 데이터)를 저장하고 복원하는것이, 특히 이들의 크기가 크면, 약간 느릴 수도 있습니다. S에서는 이 같은 것이 일어나지 않는데, 이는 모든 것이 디스크 파일에 저장되어있고 crash가 거의 일어나지 않습니다.(의역) (사실적으로, 누군가는 S 개발자들이 lexical scope를 수용하기 위해서만 persistent storage로의 그들의 접근방법을 바꾸는 것의 가격이 너무 비싸다고 느꼈다고 추측할 수 있습니다.) 그래서, 중요한 일을 할 때에는, 가능한 crash들에서 안전하기 위해 저장을 자주하는 것 (How can I save my workspace?를 참조)을 고려할 수도 있습니다. 다른 가능성으로는 세션을 logging하거나 R 명령어들을 source()를 사용하여 읽을 수 있는 텍스트 파일로 저장하는 것 입니다
+   <p>다소 불편한 점이 있다면 R이 크래쉬(crash)되면 현재 세션에서 작업하는 모든 것을 잃게 됩니다. 
+메모리를 저장하고 복원하는 &ldquo;images&rdquo;(이미지라는 것은 R의 내부 메모리에 항시 저장되는 함수들과 데이터를 의미합니다)의 크기가 크다면 다소 느릴 수 있습니다. 
+S에서는 이와 같은 일이 발생하지 않습니다. 
+그 이유는 모든것이 디스크 파일의 형식으로 저장되기 때문입니다
+(누군가는 S 개발자들이 렉시컬 스코프을 위한 공간을 제공하는 것이 지속적인 저장방식을 사용하는 것보다 더 많은 비용이 들것이라고 느꼈을 것이라고 추측할 수도 있습니다). 
+그래서, 중요한 작업을 할때에는 가능한 크래쉬(crash)들로부터 보호하기 위해서 자주 저장하는 것을 생각해 볼 수 있습니다 (<a href="#How-can-I-save-my-workspace_003f">How can I save my workspace?</a>를 살펴보세요). 
+또 다른 방법으로는 세션(session)을 기록(logging)하거나, <code>source()</code>를 이용하여 읽어들일 수 있는 텍스트 파일에 저장된 R 명령어들을 가지는 것입니다.
 
-<!-- @quotation Note -->
-<!-- If you run R from within Emacs (see @ref{R and Emacs}), you can save the -->
+   <blockquote>
+<b>Note:</b> <!-- If you run R from within Emacs (see @ref{R and Emacs}), you can save the -->
 <!-- contents of the interaction buffer to a file and conveniently manipulate -->
 <!-- it using @code{ess-transcript-mode}, as well as save source copies of -->
 <!-- all functions and data used. -->
-<!-- @end quotation -->
-   <p>Note: 만약 Emacs (R and Emacs를 참조) 안에서 R을 실행한다면, interaction buffer의 content들을 파일로 저장하고 편리하게 이를 ess-transcript-mode를 사용하여 조작할 수 있고, 사용된 모든 함수들과 데이터의 source copy들을 저장할 수 있습니다.
+만약 R을 Emacs내에서 실행한다면 (<a href="#R-and-Emacs">R and Emacs</a>을 살펴보세요), 인터랙션버퍼(interaction buffer)안의 내용들(contents)를 파일에 저장하고 이들을 <code>ess-transcript-mode</code>를 이용하여 쉽게 조작할 수 있으며, 사용된 모든 함수와 데이터들의 원시복제(source copy)를 저장할 수 있습니다. 
+</blockquote>
 
 <div class="node">
 <a name="Models"></a>
@@ -1758,8 +1779,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 
 </div>
 
-<h4 class="subsection">3.3.2 Models</h4>
+<!-- @subsection Models -->
+<h4 class="subsection">3.3.2 모델(Models)</h4>
 
+<!-- start from this point next time -->
+<!-- start from this point next time -->
+<!-- start from this point next time -->
+<!-- start from this point next time -->
+<!-- start from this point next time -->
+<!-- start from this point next time -->
 <!-- There are some differences in the modeling code, such as -->
 <p>Modeling 코드에는 몇가지의 다른점들이 있습니다. 예를 들어,
 

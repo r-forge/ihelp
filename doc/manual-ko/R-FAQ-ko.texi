@@ -1248,7 +1248,8 @@ SVN에 최적화된 손쉬운 접근, 매일 빌드되고 체크되는 패키지
 R-Forge 웹페이지와 Stefan Theu@ss{}l and Achim Zeileis (2009), ``Collaborative software development using R-Forge'', @url{http://journal.R-project.org/, , @emph{The R Journal}}, @strong{1}(1):9--14 로부터 더 많은 내용을 얻을 수 있습니다.
 
 @node R and S, R Web Interfaces, R Basics, Top
-@chapter R and S
+@c @chapter R and S
+@chapter R과 S
 
 @menu
 * What is S?::                  
@@ -1259,17 +1260,15 @@ R-Forge 웹페이지와 Stefan Theu@ss{}l and Achim Zeileis (2009), ``Collaborat
 @end menu
 
 @node What is S?, What is S-PLUS?, R and S, R and S
-@section What is S?
+@c @section What is S?
+@section S란 무엇인가요?
 
 @c S is a very high level language and an environment for data analysis and
 @c graphics.  In 1998, the Association for Computing Machinery
 @c (@acronym{ACM}) presented its Software System Award to John M. Chambers,
 @c the principal designer of S, for
-
-S 는 데이터 분석과 그래픽스를 위한 하이레벨 언어 (high level language) 이며 환경입니다. Association
-for Computing Machinery (ACM) 은 S 언어(S 시스템은 오랜 시간동안 사람들이 데이터를 분석하고, 시
-각화하며, 다양화 하는 방법을 변화시켜오고 있다) 의 설계자인 John M. Chambers 에게 아래와 같이 치하
-하고 상을 수여하였습니다.
+S는 데이터 분석과 그래픽스를 위한 하이레벨 언어 (high level language)이며 환경입니다. 
+1998년에 Association for Computing Machinery (@acronym{ACM})는 1998년에 S언어의 주요설계자인 John M. Chambers에게 아래와 같이 치하하며 Software System Award를 수여하였습니다.
 
 @quotation
 the S system, which has forever altered the way people analyze,
@@ -1282,8 +1281,8 @@ Chambers.
 
 @c The evolution of the S language is characterized by four books by John
 @c Chambers and coauthors, which are also the primary references for S.
-S을 중요하게 추천하고 있는 Chambers 와 coauthors에 의해
-발간된 네 가지의 책들은 S 언어의 혁명을 특징적으로 묘사하고 있습니다.
+S 언어의 발전은 John Chambers와 공동저자들에 의하여 쓰여진 네권의 책들에 잘 설명되어 있습니다.
+이들은 또한 S에 대한 주요 참고문헌이기도 합니다.
 
 @itemize @bullet
 @item
@@ -1291,45 +1290,53 @@ Richard A. Becker and John M. Chambers (1984), ``S.  An Interactive
 Environment for Data Analysis and Graphics,'' Monterey: Wadsworth and
 Brooks/Cole.
 
-This is also referred to as the ``@emph{Brown Book}'', and of historical
-interest only.
+@c This is also referred to as the ``@emph{Brown Book}'', and of historical
+@c interest only.
+이 책은 ``@emph{Brown Book}''(브라운 북)이라고도 알려져 있으며, 역사적 관심으로서입니다.
 
 @item
 Richard A. Becker, John M. Chambers and Allan R. Wilks (1988), ``The New
 S Language,'' London: Chapman & Hall.
 
-This book is often called the ``@emph{Blue Book}'', and introduced what
-is now known as S version 2.
+@c This book is often called the ``@emph{Blue Book}'', and introduced what
+@c is now known as S version 2.
+이 책은 ``@emph{Blue Book}''(블루 북)이라고도 하며, S 버전 2로 알려진 것이 무엇인지를 소개합니다. 
 
 @item
 John M. Chambers and Trevor J. Hastie (1992), ``Statistical Models in
 S,''  London: Chapman & Hall.
 
-This is also called the ``@emph{White Book}'', and introduced S version
-3, which added structures to facilitate statistical modeling in S.
+@c This is also called the ``@emph{White Book}'', and introduced S version
+@c 3, which added structures to facilitate statistical modeling in S.
+이 책은 @emph{White Book}라고도 하며, S에서 통계모델링(statistical modeling)의 기능을 수행하기 위한 구조들이 추가되어진 S 버전 3로 알려진 것을 소개합니다. 
 
 @item
 John M. Chambers (1998), ``Programming with Data,'' New York: Springer,
 ISBN 0-387-98503-4
 (@url{http://cm.bell-labs.com/cm/ms/departments/sia/Sbook/}).
 
-This ``@emph{Green Book}'' describes version 4 of S, a major revision of
-S designed by John Chambers to improve its usefulness at every stage of
-the programming process.
+@c This ``@emph{Green Book}'' describes version 4 of S, a major revision of
+@c S designed by John Chambers to improve its usefulness at every stage of
+@c the programming process.
+``@emph{Green Book}''(그린 북)은 프로그래밍 프로세스의 매 단계마다 유용성을 향상시킬 수 있도록 John Chambers에 의하여 설계된 S의 주요수정사항들이 있는 S 버전 4를 설명합니다. 
 @end itemize
 
-See @url{http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html}
-for further information on ``Stages in the Evolution of S''.
+@c See @url{http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html}
+@c for further information on ``Stages in the Evolution of S''.
+더 자세한 내용은 @url{http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html}에서 ``Stages in the Evolution of S''를 살펴보시길 바랍니다.
 
-There is a huge amount of user-contributed code for S, available at the
-@url{http://lib.stat.cmu.edu/S/, S Repository} at @acronym{CMU}.
+@c There is a huge amount of user-contributed code for S, available at the
+@c @url{http://lib.stat.cmu.edu/S/, S Repository} at @acronym{CMU}.
+@acronym{CMU}에 있는 @url{http://lib.stat.cmu.edu/S/, S Repository}에 가시면 사용자들이 제공한 매우 방대한 양의 S코드들을 있습니다.
 
 @c The @url{http://lib.stat.cmu.edu/S/faq, ``Frequently Asked Questions
 @c about S''} contains further information about S, but is not
 @c up-to-date.
+@url{http://lib.stat.cmu.edu/S/faq, ``Frequently Asked Questions about S''}페이지는 S에 대한 더 많은 정보를 담고 있으나, 이는 최신의 정보가 아닙니다.
 
 @node What is S-PLUS?, What are the differences between R and S?, What is S?, R and S
-@section What is @sc{S-Plus}?
+@c @section What is @sc{S-Plus}?
+@section @sc{S-Plus}란 무엇인가요?
 
 @c @SPLUS{} is a value-added version of S sold by
 @c @url{http://www.insightful.com, Insightful Corporation}, which in 2008
@@ -1338,11 +1345,12 @@ There is a huge amount of user-contributed code for S, available at the
 @c page} and the
 @c @url{http://spotfire.tibco.com/Products/S-Plus-Overview.aspx, , TIBCO
 @c Spotfire S+ Products page} for further information.
-
-S-PLUS는 TIBCO Software Inc.에서 2008년에 인수한Insightful Corporation에서 판매하는 S의 value-added 버전 입니다.  더 많은 정보를 원하시면 Insightful S-PLUS 페이지와 TIBCO Spotfire S+ 제품 페이지를 참조하십시오. 
+@SPLUS{}는 @url{http://www.tibco.com/, TIBCO Software Inc}에서 2008년에 인수한 @url{http://www.insightful.com, Insightful Corporation}에서 판매하는 S의 부가가치된(value-added) 버전입니다 (즉, 상업용입니다).  
+더 많은 정보를 원하시면 @url{http://www.insightful.com/products/splus/, Insightful @SPLUS{} page}페이지와 @url{http://spotfire.tibco.com/Products/S-Plus-Overview.aspx, , TIBCO Spotfire S+ Products page}제품 페이지를 참조하세요.
 
 @node What are the differences between R and S?, Is there anything R can do that S-PLUS cannot?, What is S-PLUS?, R and S
-@section What are the differences between R and S?
+@c @section What are the differences between R and S?
+@section R과 S의 다른 점은 무엇입니까?
 
 @c We can regard S as a language with three current implementations or
 @c ``engines'', the ``old S engine'' (S version 3; @SPLUS{} 3.x and 4.x),
@@ -1351,13 +1359,14 @@ S-PLUS는 TIBCO Software Inc.에서 2008년에 인수한Insightful Corporation�
 @c really amounts to asking for the specifics of the R implementation of
 @c the S language, i.e., the difference between the R and S @emph{engines}.
 
+S는 현재 세가지 종류의 구현체 또는 ``engines''(엔진)을 가진 언어로서 여길 수 있습니다. 
+이는 ``old S engine'' (S version 3; S-Plus 3.x 그리고 4.x), ``new S engine'' (S version 4; S-Plus 5.x 혹은 그 이후의 버전), 그리고 R입니다.
+이러한 내용을 바탕으로 보면, ``R과 S 사이의 다른점''에 대한 질문은 S언어를 이용하여 구현된 R의 세부사항들을 묻는것과 같습니다. 
+즉, R의 엔진과 S의 엔진 사이에 다른 점의 다른 점입니다.
+
 @c For the remainder of this section, ``S'' refers to the S engines and not
 @c the S language.
-
-S를 세가지의 현재 실행 언어 혹은 “engines”, “old S engine” (S version 3; S-Plus 3.x and 4.x), “new S engine” (S version 4; S-Plus 5.x 혹은 그 이후의 버전), 그리고  R로 생각 할 수 있습니다. 이 지식들을 사용하여, “R과 S의 다른점들”을 물어보는 것은 S 언어의 R 실행의 구체적인 것, 즉 R과 S engine들의 다른점들을 물어보는 것에 해당합니다.
-이 섹션의 끝으로, “S”는 S engine을 나타내는 것이지 S 언어를 뜻 하는 것이 아닙니다. 
-
-
+이 섹션의 나머지 부분에서 ``S''는 S 엔진(engine)을 지칭하며 S 언어(language)를 의미하는 것이 아님을 기억하시길 바랍니다.
 
 @menu
 * Lexical scoping::             
@@ -1372,6 +1381,9 @@ S를 세가지의 현재 실행 언어 혹은 “engines”, “old S engine” 
 @c evaluation model in which nested function definitions are lexically
 @c scoped.  This is analogous to the evaluation model in Scheme.
 
+S언어를 이용한 다른 구현체들과는 다르게 R은 내포된 함수 정의들(nested function definitions)이 렉시컬 스코프(lexically scoped)된 평가모델(evaluation model)을 사용합니다.
+이것은 Scheme의 평가모델과 유사합니다.
+
 @c This difference becomes manifest when @emph{free} variables occur in a
 @c function.  Free variables are those which are neither formal parameters
 @c (occurring in the argument list of the function) nor local variables
@@ -1380,12 +1392,11 @@ S를 세가지의 현재 실행 언어 혹은 “engines”, “old S engine” 
 @c (similar to C, there is only local and global scope).  In R, they are
 @c determined by the environment in which the function was created.
 
-S언어의 다른 실행들과는 다르게, R은 nested 함수 정의들이 사전적으로 정의된 평가 모델을 채택 했습니다. 
-이는 Scheme의 평가 모델과 유사합니다. 
-이 차이점은 free variable들이 함수에서 발생할 때 분명해 집니다. 
-Free variable들은  전의 parameter (함수의 argument list에서 발생하는)들도 아닐 뿐더러 local variable (함수의 body에 이들을 배치함으로써 생겨나는)들도 아닙니다. 
-S에서, free variable들의 값들은 global variable 세트에 의하여 정해집니다 (C와 마찬가지로, 여기에도 local과 global scope만이 존재합니다) .
-R에서는 이들은 함수가 생성된 환경에 의하여 결정됩니다. 
+이 차이점은 함수(function)내에서 @emph{free}(자유)변수들이 발생할때 분명해집니다. 
+자유변수들은 함수의 인자목록에서 사용된 형식인자(formal argument)도 아니고, 함수의 본체에서 이들에 할당함으로서 생성된 지역변수(local variables)도 아닙니다. 
+S에서는 자유변수들은 C와 유사하게 전역변수(global variable)들의 묶음에 의해서 결정되어 집니다.
+(C에서는 지역적 범위와 전역적 범위만이 있습니다). 
+R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결정되어집니다.
 
 @c Consider the following function:
 다음의 함수를 보십시오:
@@ -1401,7 +1412,7 @@ cube <- function(n) @{
 
 @c Under S, @code{sq()} does not ``know'' about the variable @code{n}
 @c unless it is defined globally:
-S에서, sq()는 variable n이 global하게 정의되지 않은 이상 variable n을 알지 못합니다: 
+S에서, @code{sq()}는 변수 @code{n}이 전역적으로 정의되지 않는 이상은 이에 대해서 알지 못합니다:
 
 @example
 @group
@@ -1416,7 +1427,7 @@ S> cube(2)
 
 @c In R, the ``environment'' created when @code{cube()} was invoked is
 @c also looked in:
-R에서는, “environment(환경)”은  cube()가 적용되었을 때 생성되며 아래에서도 찾을 수 있습니다: 
+R에서는 @code{cube()}가 실행되었을때 생성된 ``environment''(환경)이 살펴지게 됩니다:
 
 @example
 @group
@@ -1468,12 +1479,13 @@ R> cube(2)
 @c distribution as explicit arguments.  (Example compiled from various
 @c postings by Luke Tierney.)
 
-더욱 “흥미로운” 실전 문제로, (연속) 분포도에서의 sample size n에서 r번째 order statistic의 밀도 함수를 구하는 함수를 쓰고 싶다고 가정해 봅니다. 
-간단하게하기위해서는, cdf 와 pdf  두 가지 모두를 explicit argument로  써야 할 것입니다. ( 예시는 Luke Tierney의 여러가지 포스팅에서 수집 하였습니다)
+실제로 다루어 볼 수 있는 흥미로운 문제로서, (연속)분포에서 샘플의 크기 @math{n}으로부터 @math{r} 번째의 order statistic (순서통계량)의 밀도함수를 구하는 함수를 작성해본다고 가정해 봅니다.
+단순한 방법으로 우리는 분포의 cdf와 pdf 모두를 explicit arguments(명시적 인자들)로 사용해야 합니다. 
+(이는 Luke Tierney에 의하여 작성된 다양한 포스팅으로부터 뽑아낸 예제입니다).
 
 @c The @SPLUS{} documentation for @code{call()} basically suggests the
 @c following:
-call()을 위한S-Plus 문서는 기본적으로 다음을 제시합니다: 
+@code{call()}에 대한 @SPLUS{} 문서는 기본적으로 다음과 같이 하도록 안내합니다.
 
 @example
 @group
@@ -1496,12 +1508,13 @@ dorder <- function(n, r, pfun, dfun) @{
 @c functions are just lists of special mode with the function body as the
 @c last argument, and hence does not work in R (one could make the idea
 @c work, though).
-
-헷갈리지 않습니까? 이 코드들은 S의 fact를 사용하고, 함수들은 마지막 argument같은 함수의 body와 special mode의 목록일 뿐이며, 그러므로 R에서는 작동하지 않습니다 (아이디어는 쓸 수 있을지도 모릅니다).
-
+다소 혼란스럽지 않나요? 
+이 코드는 S에서는 함수들이 마지막 인자와 같이 함수의 본체의 특정한 방식(mode)의 목록들이라는 사실을 이용하고 있습니다.
+이러한 방식은 R에서 작동하지 않습니다 (누군가는 여기에서 사용된 아이디어를 성공적으로 구현할 수도 있을것입니다).
+  
 @c A version which makes heavy use of @code{substitute()} and seems to work
 @c under both S and R is
-S와 R 두 개 모두에서 작동하는 것 처럼 보이는substitute()의 사용빈도가 높은 버전은
+@code{substitute()}의 사용빈도가 매우 높으며 S와 R 모두 작동하는 것처럼 보이는 버전은 다음과 같습니다. 
 
 @example
 @group
@@ -1516,11 +1529,11 @@ dorder <- function(n, r, pfun, dfun) @{
 
 @c @noindent
 @c (the @code{eval()} is not needed in S).
-(S 에서는 eval() 이 필요하지 않습니다). 
+(S에서는 @code{eval()}이 필요하지 않습니다).
 
 
 @c However, in R there is a much easier solution:
-하지만, R에는 더욱 쉬운 해결책이 있습니다:
+그러나, R에서는 다음과 같은 더욱 쉬운 해결책이 있습니다:
 
 @example
 @group
@@ -1537,17 +1550,16 @@ dorder <- function(n, r, pfun, dfun) @{
 @c This seems to be the ``natural'' implementation, and it works because
 @c the free variables in the returned function can be looked up in the
 @c defining environment (this is lexical scope).
-
-이는 “자연스러운” 실행처럼 보이고, 지정된 환경에서 returned 함수의 free variable들을 찾을 수 있기 때문에 작동합니다 (이것이 lexical scope입니다). 
+이것은 ``natural(자연스러운)'' 구현 같이 보이며, 귀환된 함수(returned function)내에 있는 자유변수(free variable)들이 환경을 규정한 내부에서 찾아질 수 있기 때문에 잘 실행됩니다 (이것을 렉시컬 스코프(lexical scope)라고 합니다). 
 
 @c Note that what you really need is the function @emph{closure}, i.e., the
 @c body along with all variable bindings needed for evaluating it.  Since
 @c in the above version, the free variables in the value function are not
 @c modified, you can actually use it in S as well if you abstract out the
 @c closure operation into a function @code{MC()} (for ``make closure''):
-
-함수 closure이 당신이 진정으로 필요한 것이라는 것을 유의하십시오.  즉, 이를 평가하기위한 모든 variable binding들이 있는 body. 위의 버전에서는 value 함수안의 free variable들이 변경되지 않았기 때문에, 이를 S에서 쓸 수 있을 뿐만 아니라, 만약 closure operation에서 mc() 함수로 요약한다면: 
-
+꼭 알아야 할 것은 함수 @emph{closure}라는 것입니다.
+즉, 함수를 평가하기 위하여 필요한 모든 variable binding(변수 바인딩)들 있는 본체를 의미합니다.
+위의 버전의 경우, 값을 지닌 함수내의 자유변수들은 변경되지 않았기 때문에 S에서 이를 사용할 수 있을 뿐아니라, 만약 클로저 작동 (closure operation)을 함수 @code{MC()}로 이끌어 내고자 한다면 (클로져를 만들기 위해서) 다음과 같이 할 수 있습니다. 
 
 @example
 @group
@@ -1565,17 +1577,17 @@ dorder <- function(n, r, pfun, dfun) @{
 @c both R and S, and is much ``cleaner'' than a substitute/eval solution
 @c (or one which overrules the default scoping rules by using explicit
 @c access to evaluation frames, as is of course possible in both R and S).
-
-적합한 closure operator의 정의에 의하면, 이는 R과 S 모두에서 작동하고, substitute/eval 보다 “깨끗한” 해결책입니다 (혹은 R과 S에서 확실히 가능한, evaluation frame에 explicit access를 사용하여 기본 scoping rule들을 무효화 시키는 것). 
+적절한 클로져 연산자(closure operator)의 정의가 주어진다면 이것은 R과 S에서 모두 작동하며 substitute/eval을 활용한 것 (혹은 기본 스코핑 규칙(default scoping rule)을 평가 프레임(evaluation frame)에 대한 명시적 접근(explicit access)을 이용하여 무효화 하는 해결책, 물론 R과 S 모두 가능한) 보다 말끔한 해결책이라고 할 수 있습니다.
 
 @c For R, @code{MC()} simply is
-R 에서, 간단하게 MC()는
+R에서는 @code{MC()}는 단순히 아래와 같습니다. 
 
 @example
 MC <- function(f, env) f
 @end example
 
-@noindent (lexical scope!), a version for S is
+@c @noindent (lexical scope!), a version for S is
+@noindent (렉시컬 스코프입니다!), S를 위한 버전은 다음과 같습니다. 
 
 @example
 @group
@@ -1606,8 +1618,9 @@ MC <- function(f, env = NULL) @{
 @c it.  With S, one solution is to add an extra parameter to the function
 @c and to the optimizer to pass in these extras, which however can only
 @c work if the optimizer supports this.
-
-마찬가지로, 대부분이 optimization(혹은 zero-finding) routine들은 optimize되고 데이타에는 의존하지만, optimization에 관해서는 고정된 다른 parameter들을 가진 argument들이 필요합니다. R scoping 룰들로, 이는 대수롭지 않은 문제입니다; 간단하게 같은 환경에서 필요한 정의들로 함수를 만들면 scoping이 알아서 처리를 합니다. S로는, 한가지 방법으로, 함수와 extra parameter들을 전달하기위한 optimizer에 하나의 extra parameter를 더하는 것인데, 이는 optimizer가 이를 지원할 때만 작동합니다.
+유사하게 대부분의 최적화 (optimization 또는 zero-finding) 루틴(rountine)들은 최적화 되어야 할 일부 인자들이 필요하며, 데이터에 의존하지만 최적화와 관련해서는 영향을 미치지 않는 다른 인자들을 가집니다.
+이것은 R 스코핑 규칙(scoping rules)을 이용하면 단순하게 같은 환경내에서 필요한 정의들만을 가지고 함수를 만들게 되면 나머지는 스코핑이 알아서 처리하게 되므로 매우 간단한 문제입니다.
+S를 이용한 한가지 방법은 별도의 인자(extra parameter)를 함수와 이러한 별도의 인자들이 넘겨지게 될 옵티마이저(optimizer)에 추가하는 것이지만, 이는 오로지 옵티마이저가 지원될 경우에만 가능합니다.
 
 @c Nested lexically scoped functions allow using function closures and
 @c maintaining local state.  A simple example (taken from Abelson and
@@ -1618,9 +1631,9 @@ MC <- function(f, env = NULL) @{
 @c Scope and Statistical Computing'',
 @c @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of
 @c Computational and Graphical Statistics}}, @strong{9}, 491--508.
-
-Nested lexically scoped 함수들은 function closure들의 사용과 local state을 유지하는 것을 허용합니다. 간단한 예로 (Abelson and Sussman에서 인용) R prompt에서 demo(“scoping”)를 입력 함으로써 얻어지는 것입니다. 더 자세한 정보는 기본 R reference의 “R: A Language for Data Analysis and Graphics” (What documentation exists for R을 참고하십시오)와 Robert Gentleman and Ross Ihaka (2000)의 “Lexical Scope and Statistical Computing”,   Journal of Computational and Graphical Statistics, 9, 491–508 를 참고하십시오. 
-
+중첩된 구조의 렉시컬 스코프를 따르는 함수들(nested lexically scoped functions)은 함수 클로져 (function closure)의 사용과 지역적 상태(local state)를 유지하는 것을 허용합니다.
+(Abelson과 Sussman으로부터 가져온) 간단한 예는 R 프롬프트에서 @kbd{demo("scoping")}이라고 입력함으로서 확인해 볼 수 있습니다.  
+이에 대한 더 많은 정보는 표준 R 참고자료인 ``R: A Language for Data Analysis and Graphics'' (@pxref{What documentation exists for R?})과 Robert Gentleman and Ross Ihaka (2000), ``Lexical Scope and Statistical Computing'', @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of Computational and Graphical Statistics}}, @strong{9}, 491--508. 으로부터 찾아 볼 수 있습니다.
 
 @c Nested lexically scoped functions also imply a further major difference.
 @c Whereas S stores all objects as separate files in a directory somewhere
@@ -1632,8 +1645,13 @@ Nested lexically scoped 함수들은 function closure들의 사용과 local stat
 @c not really possible to externally maintain all relevant ``environments''
 @c of symbol/value pairs.  This difference also seems to make R
 @c @emph{faster} than S.
-
-Nested lexically scoped 함수들은 더 큰 차이도 의미합니다. S가 모든 object들을 하나의 directory 어딘가에 (보통 현재 directory의  .Data) 다른 파일들로 저장하는 반면, R은 그렇지 않습니다. R에 있는 모든 object들은 내부로 저장 됩니다. R이 시작되면 이는 memory의 조각을 붙잡고 object들을 저장하는데 사용합니다. R은 필요한대로 사이즈를 늘리고 줄이며이 memory 조각들의 memory 관리를 실행합니다. Symbol/ value pair들의 모든 관련된 “환경들”을 externally 유지하는것이 거의 가능하지 않기 때문에, memory에 모든것을 가지고 있는 것이 필요합니다. 이 다른점 또한 R이 S보다 빠르게 만드는것 처럼 보입니다. 
+중첩된 구조의 렉시컬 스코프를 따르는 함수들 (nested lexically scoped functions)은 더 중요한 다른 점을 의미합니다.
+S는 모든 객체들을 디렉토리의 어딘가에 (보통은 현재 디렉토리내에  @file{.Data}의 형식으로) 각각 다른 파일들로 저장하는 반면, R은 그러하지 않습니다.
+R의 모든 객체들은 내부적으로 저장됩니다. 
+R이 실행되었을때, R은 메모리(memory)의 한 조각을 붙잡고 이를 객체를 저장하는데 사용합니다. 
+R은 이러한 메모리 사용을 위한 메모리 관리기능(memory management)을 수행하고, 필요한 만큼의 크기를 늘이고 줄이게 됩니다. 
+심볼과 값들간의 바인딩(symbol/value pairs)에 관련된 모든 ``환경(environments)''를 외부에서 유지하는 것은 거의 가능하지 않기 때문에 모든 것을 메모리내에서 관리할 필요가 있습니다. 
+이러한 차이 또한 R이 S보다 빠른 것 처럼 보이게 합니다. 
 
 @c The down side is that if R crashes you will lose all the work for the
 @c current session.  Saving and restoring the memory ``images'' (the
@@ -1648,23 +1666,37 @@ Nested lexically scoped 함수들은 더 큰 차이도 의미합니다. S가 모
 @c crashes.  Other possibilities are logging your sessions, or have your R
 @c commands stored in text files which can be read in using
 @c @code{source()}.
+다소 불편한 점이 있다면 R이 크래쉬(crash)되면 현재 세션에서 작업하는 모든 것을 잃게 됩니다.
+메모리를 저장하고 복원하는 ``images''(이미지라는 것은 R의 내부 메모리에 항시 저장되는 함수들과 데이터를 의미합니다)의 크기가 크다면 다소 느릴 수 있습니다.
+S에서는 이와 같은 일이 발생하지 않습니다.
+그 이유는 모든것이 디스크 파일의 형식으로 저장되기 때문입니다
+(누군가는 S 개발자들이 렉시컬 스코프을 위한 공간을 제공하는 것이 지속적인 저장방식을 사용하는 것보다 더 많은 비용이 들것이라고 느꼈을 것이라고 추측할 수도 있습니다). 
+그래서, 중요한 작업을 할때에는 가능한 크래쉬(crash)들로부터 보호하기 위해서 자주 저장하는 것을 생각해 볼 수 있습니다 (@ref{How can I save my workspace?}를 살펴보세요).
+또 다른 방법으로는 세션(session)을 기록(logging)하거나, @code{source()}를 이용하여 읽어들일 수 있는 텍스트 파일에 저장된 R 명령어들을 가지는 것입니다.
 
-불리한 점은 만약 R이 crash되면 지금 현재 세션의 모든 work를 잃게 될 것입니다. Memory “이미지” (R의 internal memory에 at any time 저장된 함수들과 데이터)를 저장하고 복원하는것이, 특히 이들의 크기가 크면, 약간 느릴 수도 있습니다. S에서는 이 같은 것이 일어나지 않는데, 이는 모든 것이 디스크 파일에 저장되어있고 crash가 거의 일어나지 않습니다.(의역) (사실적으로, 누군가는 S 개발자들이 lexical scope를 수용하기 위해서만 persistent storage로의 그들의 접근방법을 바꾸는 것의 가격이 너무 비싸다고 느꼈다고 추측할 수 있습니다.) 그래서, 중요한 일을 할 때에는, 가능한 crash들에서 안전하기 위해 저장을 자주하는 것 (How can I save my workspace?를 참조)을 고려할 수도 있습니다. 다른 가능성으로는 세션을 logging하거나 R 명령어들을 source()를 사용하여 읽을 수 있는 텍스트 파일로 저장하는 것 입니다
-
-@c @quotation Note
+@quotation Note
 @c If you run R from within Emacs (see @ref{R and Emacs}), you can save the
 @c contents of the interaction buffer to a file and conveniently manipulate
 @c it using @code{ess-transcript-mode}, as well as save source copies of
 @c all functions and data used.
-@c @end quotation
+만약 R을 Emacs내에서 실행한다면 (@ref{R and Emacs}을 살펴보세요), 인터랙션버퍼(interaction buffer)안의 내용들(contents)를 파일에 저장하고 이들을 @code{ess-transcript-mode}를 이용하여 쉽게 조작할 수 있으며, 사용된 모든 함수와 데이터들의 원시복제(source copy)를 저장할 수 있습니다.
+@end quotation
 
-Note: 만약 Emacs (R and Emacs를 참조) 안에서 R을 실행한다면, interaction buffer의 content들을 파일로 저장하고 편리하게 이를 ess-transcript-mode를 사용하여 조작할 수 있고, 사용된 모든 함수들과 데이터의 source copy들을 저장할 수 있습니다. 
 
 @node Models, Others, Lexical scoping, What are the differences between R and S?
-@subsection Models
+@c @subsection Models
+@subsection 모델(Models)
+
+
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+
 
 @c There are some differences in the modeling code, such as
-
 Modeling 코드에는 몇가지의 다른점들이 있습니다. 예를 들어, 
 
 @itemize @bullet
@@ -2024,7 +2056,8 @@ Random Technologies, R을 기업용 validation, documentation, 소프트웨어 �
 
 
 @node R Web Interfaces, R Add-On Packages, R and S, Top
-@chapter R Web Interfaces
+@c @chapter R Web Interfaces
+@chapter R 웹 인터페이스 
 
 @c @strong{Rweb} is developed and maintained by
 @c @email{jeff@@math.montana.edu, Jeff Banfield}.  The
@@ -2189,7 +2222,8 @@ Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 �
 
 
 @node R Add-On Packages, R and Emacs, R Web Interfaces, Top
-@chapter R Add-On Packages
+@c @chapter R Add-On Packages
+@chapter R 애드온 패키지들 
 
 @menu
 * Which add-on packages exist for R?::  
@@ -2709,7 +2743,8 @@ R Developer Page는 더도 말고 덜도 말고 R 통계 시스템을 위해 마
 
 
 @node R and Emacs, R Miscellanea, R Add-On Packages, Top
-@chapter R and Emacs
+@c @chapter R and Emacs
+@chapter R과 이맥스 
 
 @menu
 * Is there Emacs support for R?::  
@@ -2872,6 +2907,7 @@ dir /opt/R/src/unix
 @end example
 
 @node R Miscellanea, R Programming, R and Emacs, Top
+@c @chapter R Miscellanea
 @chapter R Miscellanea
 
 @menu
@@ -4317,7 +4353,8 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 
 
 @node R Programming, R Bugs, R Miscellanea, Top
-@chapter R Programming
+@c @chapter R Programming
+@chapter R 프로그래밍 
 
 @menu
 * How should I write summary methods?::  
@@ -4430,7 +4467,8 @@ Writing R Extensions}.
 브라우저로 call들을 추가하기위해 argument signature=가 있는trace() function이나 상응하는 서명에 대해 dispath될 다른 코드들을 사용하십시오. 자세한 사항들은 ?trace를 참조하십시오. 
 
 @node R Bugs, Acknowledgments, R Programming, Top
-@chapter R Bugs
+@c @chapter R Bugs
+@chapter R 버그 
 
 @menu
 * What is a bug?::              
@@ -4613,7 +4651,8 @@ R의 Windows port에 대한 코멘트나 제안사항들은  @email{R-windows@@R
 
 
 @node Acknowledgments,  , R Bugs, Top
-@chapter Acknowledgments
+@c @chapter Acknowledgments
+@chapter 감사의 말씀
 
 @c Of course, many many thanks to Robert and Ross for the R system, and to
 @c the package writers and porters for adding to it.
