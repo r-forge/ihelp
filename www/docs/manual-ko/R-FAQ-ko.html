@@ -1351,7 +1351,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">3 R and S</h2>
+<!-- @chapter R and S -->
+<h2 class="chapter">3 R과 S</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#What-is-S_003f">What is S?</a>
@@ -1371,16 +1372,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 
 </div>
 
-<h3 class="section">3.1 What is S?</h3>
+<!-- @section What is S? -->
+<h3 class="section">3.1 S란 무엇인가요?</h3>
 
 <!-- S is a very high level language and an environment for data analysis and -->
 <!-- graphics.  In 1998, the Association for Computing Machinery -->
 <!-- (@acronym{ACM}) presented its Software System Award to John M. Chambers, -->
 <!-- the principal designer of S, for -->
-<p>S 는 데이터 분석과 그래픽스를 위한 하이레벨 언어 (high level language) 이며 환경입니다. Association
-for Computing Machinery (ACM) 은 S 언어(S 시스템은 오랜 시간동안 사람들이 데이터를 분석하고, 시
-각화하며, 다양화 하는 방법을 변화시켜오고 있다) 의 설계자인 John M. Chambers 에게 아래와 같이 치하
-하고 상을 수여하였습니다.
+<p>S는 데이터 분석과 그래픽스를 위한 하이레벨 언어 (high level language)이며 환경입니다. 
+1998년에 Association for Computing Machinery (<acronym>ACM</acronym>)는 1998년에 S언어의 주요설계자인 John M. Chambers에게 아래와 같이 치하하며 Software System Award를 수여하였습니다.
 
    <blockquote>
 the S system, which has forever altered the way people analyze,
@@ -1393,47 +1393,55 @@ Chambers.
 
 <!-- The evolution of the S language is characterized by four books by John -->
 <!-- Chambers and coauthors, which are also the primary references for S. -->
-   <p>S을 중요하게 추천하고 있는 Chambers 와 coauthors에 의해
-발간된 네 가지의 책들은 S 언어의 혁명을 특징적으로 묘사하고 있습니다.
+   <p>S 언어의 발전은 John Chambers와 공동저자들에 의하여 쓰여진 네권의 책들에 잘 설명되어 있습니다. 
+이들은 또한 S에 대한 주요 참고문헌이기도 합니다.
 
      <ul>
 <li>Richard A. Becker and John M. Chambers (1984), &ldquo;S.  An Interactive
 Environment for Data Analysis and Graphics,&rdquo; Monterey: Wadsworth and
 Brooks/Cole.
 
-     <p>This is also referred to as the &ldquo;<em>Brown Book</em>&rdquo;, and of historical
-interest only.
+     <!-- This is also referred to as the ``@emph{Brown Book}'', and of historical -->
+     <!-- interest only. -->
+     <p>이 책은 &ldquo;<em>Brown Book</em>&rdquo;(브라운 북)이라고도 알려져 있으며, 역사적 관심으로서입니다.
 
      <li>Richard A. Becker, John M. Chambers and Allan R. Wilks (1988), &ldquo;The New
 S Language,&rdquo; London: Chapman &amp; Hall.
 
-     <p>This book is often called the &ldquo;<em>Blue Book</em>&rdquo;, and introduced what
-is now known as S version 2.
+     <!-- This book is often called the ``@emph{Blue Book}'', and introduced what -->
+     <!-- is now known as S version 2. -->
+     <p>이 책은 &ldquo;<em>Blue Book</em>&rdquo;(블루 북)이라고도 하며, S 버전 2로 알려진 것이 무엇인지를 소개합니다.
 
      <li>John M. Chambers and Trevor J. Hastie (1992), &ldquo;Statistical Models in
 S,&rdquo;  London: Chapman &amp; Hall.
 
-     <p>This is also called the &ldquo;<em>White Book</em>&rdquo;, and introduced S version
-3, which added structures to facilitate statistical modeling in S.
+     <!-- This is also called the ``@emph{White Book}'', and introduced S version -->
+     <!-- 3, which added structures to facilitate statistical modeling in S. -->
+     <p>이 책은 <em>White Book</em>라고도 하며, S에서 통계모델링(statistical modeling)의 기능을 수행하기 위한 구조들이 추가되어진 S 버전 3로 알려진 것을 소개합니다.
 
      <li>John M. Chambers (1998), &ldquo;Programming with Data,&rdquo; New York: Springer,
 ISBN 0-387-98503-4
 (<a href="http://cm.bell-labs.com/cm/ms/departments/sia/Sbook/">http://cm.bell-labs.com/cm/ms/departments/sia/Sbook/</a>).
 
-     <p>This &ldquo;<em>Green Book</em>&rdquo; describes version 4 of S, a major revision of
-S designed by John Chambers to improve its usefulness at every stage of
-the programming process. 
+     <!-- This ``@emph{Green Book}'' describes version 4 of S, a major revision of -->
+     <!-- S designed by John Chambers to improve its usefulness at every stage of -->
+     <!-- the programming process. -->
+     <p>&ldquo;<em>Green Book</em>&rdquo;(그린 북)은 프로그래밍 프로세스의 매 단계마다 유용성을 향상시킬 수 있도록 John Chambers에 의하여 설계된 S의 주요수정사항들이 있는 S 버전 4를 설명합니다. 
 </ul>
 
-   <p>See <a href="http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html">http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html</a>
-for further information on &ldquo;Stages in the Evolution of S&rdquo;.
+<!-- See @url{http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html} -->
+<!-- for further information on ``Stages in the Evolution of S''. -->
+   <p>더 자세한 내용은 <a href="http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html">http://cm.bell-labs.com/cm/ms/departments/sia/S/history.html</a>에서 &ldquo;Stages in the Evolution of S&rdquo;를 살펴보시길 바랍니다.
 
-   <p>There is a huge amount of user-contributed code for S, available at the
-<a href="http://lib.stat.cmu.edu/S/">S Repository</a> at <acronym>CMU</acronym>.
+<!-- There is a huge amount of user-contributed code for S, available at the -->
+<!-- @url{http://lib.stat.cmu.edu/S/, S Repository} at @acronym{CMU}. -->
+   <p><acronym>CMU</acronym>에 있는 <a href="http://lib.stat.cmu.edu/S/">S Repository</a>에 가시면 사용자들이 제공한 매우 방대한 양의 S코드들을 있습니다.
 
 <!-- The @url{http://lib.stat.cmu.edu/S/faq, ``Frequently Asked Questions -->
 <!-- about S''} contains further information about S, but is not -->
 <!-- up-to-date. -->
+   <p><a href="http://lib.stat.cmu.edu/S/faq">&ldquo;Frequently Asked Questions about S&rdquo;</a>페이지는 S에 대한 더 많은 정보를 담고 있으나, 이는 최신의 정보가 아닙니다.
+
 <div class="node">
 <a name="What-is-S-PLUS%3f"></a>
 <a name="What-is-S_002dPLUS_003f"></a>
@@ -1444,7 +1452,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 
 </div>
 
-<h3 class="section">3.2 What is <span class="sc">S-Plus</span>?</h3>
+<!-- @section What is @sc{S-Plus}? -->
+<h3 class="section">3.2 <span class="sc">S-Plus</span>란 무엇인가요?</h3>
 
 <!-- @SPLUS{} is a value-added version of S sold by -->
 <!-- @url{http://www.insightful.com, Insightful Corporation}, which in 2008 -->
@@ -1453,7 +1462,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 <!-- page} and the -->
 <!-- @url{http://spotfire.tibco.com/Products/S-Plus-Overview.aspx, , TIBCO -->
 <!-- Spotfire S+ Products page} for further information. -->
-<p>S-PLUS는 TIBCO Software Inc.에서 2008년에 인수한Insightful Corporation에서 판매하는 S의 value-added 버전 입니다.  더 많은 정보를 원하시면 Insightful S-PLUS 페이지와 TIBCO Spotfire S+ 제품 페이지를 참조하십시오.
+<p><span class="sc">S-Plus</span>는 <a href="http://www.tibco.com/">TIBCO Software Inc</a>에서 2008년에 인수한 <a href="http://www.insightful.com">Insightful Corporation</a>에서 판매하는 S의 부가가치된(value-added) 버전입니다 (즉, 상업용입니다). 
+더 많은 정보를 원하시면 <a href="http://www.insightful.com/products/splus/">Insightful <span class="sc">S-Plus</span> page</a>페이지와 <a href="http://spotfire.tibco.com/Products/S-Plus-Overview.aspx">TIBCO Spotfire S+ Products page</a>제품 페이지를 참조하세요.
 
 <div class="node">
 <a name="What-are-the-differences-between-R-and-S%3f"></a>
@@ -1465,7 +1475,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 
 </div>
 
-<h3 class="section">3.3 What are the differences between R and S?</h3>
+<!-- @section What are the differences between R and S? -->
+<h3 class="section">3.3 R과 S의 다른 점은 무엇입니까?</h3>
 
 <!-- We can regard S as a language with three current implementations or -->
 <!-- ``engines'', the ``old S engine'' (S version 3; @SPLUS{} 3.x and 4.x), -->
@@ -1473,10 +1484,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 <!-- Given this understanding, asking for ``the differences between R and S'' -->
 <!-- really amounts to asking for the specifics of the R implementation of -->
 <!-- the S language, i.e., the difference between the R and S @emph{engines}. -->
+<p>S는 현재 세가지 종류의 구현체 또는 &ldquo;engines&rdquo;(엔진)을 가진 언어로서 여길 수 있습니다. 
+이는 &ldquo;old S engine&rdquo; (S version 3; S-Plus 3.x 그리고 4.x), &ldquo;new S engine&rdquo; (S version 4; S-Plus 5.x 혹은 그 이후의 버전), 그리고 R입니다. 
+이러한 내용을 바탕으로 보면, &ldquo;R과 S 사이의 다른점&rdquo;에 대한 질문은 S언어를 이용하여 구현된 R의 세부사항들을 묻는것과 같습니다. 
+즉, R의 엔진과 S의 엔진 사이에 다른 점의 다른 점입니다.
+
 <!-- For the remainder of this section, ``S'' refers to the S engines and not -->
 <!-- the S language. -->
-<p>S를 세가지의 현재 실행 언어 혹은 “engines”, “old S engine” (S version 3; S-Plus 3.x and 4.x), “new S engine” (S version 4; S-Plus 5.x 혹은 그 이후의 버전), 그리고  R로 생각 할 수 있습니다. 이 지식들을 사용하여, “R과 S의 다른점들”을 물어보는 것은 S 언어의 R 실행의 구체적인 것, 즉 R과 S engine들의 다른점들을 물어보는 것에 해당합니다. 
-이 섹션의 끝으로, “S”는 S engine을 나타내는 것이지 S 언어를 뜻 하는 것이 아닙니다.
+   <p>이 섹션의 나머지 부분에서 &ldquo;S&rdquo;는 S 엔진(engine)을 지칭하며 S 언어(language)를 의미하는 것이 아님을 기억하시길 바랍니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Lexical-scoping">Lexical scoping</a>
@@ -1498,6 +1513,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 <!-- Contrary to other implementations of the S language, R has adopted an -->
 <!-- evaluation model in which nested function definitions are lexically -->
 <!-- scoped.  This is analogous to the evaluation model in Scheme. -->
+<p>S언어를 이용한 다른 구현체들과는 다르게 R은 내포된 함수 정의들(nested function definitions)이 렉시컬 스코프(lexically scoped)된 평가모델(evaluation model)을 사용합니다. 
+이것은 Scheme의 평가모델과 유사합니다.
+
 <!-- This difference becomes manifest when @emph{free} variables occur in a -->
 <!-- function.  Free variables are those which are neither formal parameters -->
 <!-- (occurring in the argument list of the function) nor local variables -->
@@ -1505,12 +1523,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 <!-- values of free variables are determined by a set of global variables -->
 <!-- (similar to C, there is only local and global scope).  In R, they are -->
 <!-- determined by the environment in which the function was created. -->
-<p>S언어의 다른 실행들과는 다르게, R은 nested 함수 정의들이 사전적으로 정의된 평가 모델을 채택 했습니다. 
-이는 Scheme의 평가 모델과 유사합니다. 
-이 차이점은 free variable들이 함수에서 발생할 때 분명해 집니다. 
-Free variable들은  전의 parameter (함수의 argument list에서 발생하는)들도 아닐 뿐더러 local variable (함수의 body에 이들을 배치함으로써 생겨나는)들도 아닙니다. 
-S에서, free variable들의 값들은 global variable 세트에 의하여 정해집니다 (C와 마찬가지로, 여기에도 local과 global scope만이 존재합니다) . 
-R에서는 이들은 함수가 생성된 환경에 의하여 결정됩니다.
+   <p>이 차이점은 함수(function)내에서 <em>free</em>(자유)변수들이 발생할때 분명해집니다. 
+자유변수들은 함수의 인자목록에서 사용된 형식인자(formal argument)도 아니고, 함수의 본체에서 이들에 할당함으로서 생성된 지역변수(local variables)도 아닙니다. 
+S에서는 자유변수들은 C와 유사하게 전역변수(global variable)들의 묶음에 의해서 결정되어 집니다. 
+(C에서는 지역적 범위와 전역적 범위만이 있습니다). 
+R에서 이들은 함수가 생성되어진 환경(environment)에 의해서 결정되어집니다.
 
 <!-- Consider the following function: -->
    <p>다음의 함수를 보십시오:
@@ -1522,7 +1539,7 @@ R에서는 이들은 함수가 생성된 환경에 의하여 결정됩니다.
 </pre>
    <!-- Under S, @code{sq()} does not ``know'' about the variable @code{n} -->
 <!-- unless it is defined globally: -->
-   <p>S에서, sq()는 variable n이 global하게 정의되지 않은 이상 variable n을 알지 못합니다:
+   <p>S에서, <code>sq()</code>는 변수 <code>n</code>이 전역적으로 정의되지 않는 이상은 이에 대해서 알지 못합니다:
 
 <pre class="example">     S&gt; cube(2)
      Error in sq():  Object "n" not found
@@ -1533,7 +1550,7 @@ R에서는 이들은 함수가 생성된 환경에 의하여 결정됩니다.
 </pre>
    <!-- In R, the ``environment'' created when @code{cube()} was invoked is -->
 <!-- also looked in: -->
-   <p>R에서는, “environment(환경)”은  cube()가 적용되었을 때 생성되며 아래에서도 찾을 수 있습니다:
+   <p>R에서는 <code>()</code>가 실행되었을때 생성된 &ldquo;environment&rdquo;(환경)이 살펴지게 됩니다:
 
 <pre class="example">     R&gt; cube(2)
      [1] 8
@@ -2078,7 +2095,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">4 R Web Interfaces</h2>
+<!-- @chapter R Web Interfaces -->
+<h2 class="chapter">4 R 웹 인터페이스</h2>
 
 <!-- @strong{Rweb} is developed and maintained by -->
 <!-- @email{jeff@@math.montana.edu, Jeff Banfield}.  The -->
@@ -2233,7 +2251,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">5 R Add-On Packages</h2>
+<!-- @chapter R Add-On Packages -->
+<h2 class="chapter">5 R 애드온 패키지들</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Which-add_002don-packages-exist-for-R_003f">Which add-on packages exist for R?</a>
@@ -2760,7 +2779,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">6 R and Emacs</h2>
+<!-- @chapter R and Emacs -->
+<h2 class="chapter">6 R과 이맥스</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Is-there-Emacs-support-for-R_003f">Is there Emacs support for R?</a>
@@ -2928,6 +2948,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
+<!-- @chapter R Miscellanea -->
 <h2 class="chapter">7 R Miscellanea</h2>
 
 <ul class="menu">
@@ -4503,7 +4524,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">8 R Programming</h2>
+<!-- @chapter R Programming -->
+<h2 class="chapter">8 R 프로그래밍</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#How-should-I-write-summary-methods_003f">How should I write summary methods?</a>
@@ -4636,7 +4658,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">9 R Bugs</h2>
+<!-- @chapter R Bugs -->
+<h2 class="chapter">9 R 버그</h2>
 
 <ul class="menu">
 <li><a accesskey="1" href="#What-is-a-bug_003f">What is a bug?</a>
@@ -4817,7 +4840,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">10 Acknowledgments</h2>
+<!-- @chapter Acknowledgments -->
+<h2 class="chapter">10 감사의 말씀</h2>
 
 <!-- Of course, many many thanks to Robert and Ross for the R system, and to -->
 <!-- the package writers and porters for adding to it. -->
