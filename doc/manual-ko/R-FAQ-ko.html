@@ -98,20 +98,6 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- questions about R. -->
 <p>이 문서는 R에 관하여 가장 많이 자주 물어보는 질문들에 대해서 정리한 문서입니다.
 
-   <p>본 한국어 문서는 <strong>R Development Translation Teams</strong> (<a href="http://developer.r-project.org/TranslationTeams.html">http://developer.r-project.org/TranslationTeams.html</a>) 에서 <strong>Korean</strong> 섹션을 담당하는 <strong>Korean R Translation Team</strong>에 의해서 관리되고 있습니다. 
-문서의 수정과 재배포를 허락해 준 <strong>Kurt Hornik과 R Development Core Team</strong>에게 감사를 드립니다. 
-<!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다. -->
-
-   <p>아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다. 
-의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>로 연락을 부탁드립니다.
-
-     <ul>
-<li>Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
-<li>Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
-</ul>
-
-   <p>본 문서에 대한 참여 및 제안은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a> 메일링을 이용해 주시면 감사드리겠습니다.
-
 <ul class="menu">
 <li><a accesskey="1" href="#Legalese">Legalese</a>
 <li><a accesskey="2" href="#Obtaining-this-document">Obtaining this document</a>
@@ -1782,43 +1768,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 <!-- @subsection Models -->
 <h4 class="subsection">3.3.2 모델(Models)</h4>
 
-<!-- start from this point next time -->
-<!-- start from this point next time -->
-<!-- start from this point next time -->
-<!-- start from this point next time -->
-<!-- start from this point next time -->
-<!-- start from this point next time -->
 <!-- There are some differences in the modeling code, such as -->
-<p>Modeling 코드에는 몇가지의 다른점들이 있습니다. 예를 들어,
+<p>모델링 코드(modeling code)에는 아래와 같이 몇가지 다른 점들을 볼 수 있습니다.
 
      <ul>
 <li><!-- Whereas in S, you would use @code{lm(y ~ x^3)} to regress @code{y} on -->
 <!-- @code{x^3}, in R, you have to insulate powers of numeric vectors (using -->
 <!-- @code{I()}), i.e., you have to use @code{lm(y ~ I(x^3))}. -->
-S에서는 y를 x^3에 regress하기위해lm(y ~ x^3)를 사용하는 반면, R에서는 (I()를 사용한) 숫자 벡터들의 파워를 격리시켜주어야만 합니다. 즉, lm(y ~ I(x^3))를 사용해야 합니다.
+S에서는 <code>y</code>를 <code>x^3</code>을 이용하여 회귀(regress)하기 위해서는 <code>lm(y ~ x^3)</code>를 사용하는 반면, R에서는 수치벡터의 자승부분을 <code>I()</code>를 이용하여 따로 보호처리를 해야합니다. 
+즉, <code>lm(y ~ I(x^3))</code>이라고 사용해야 합니다.
 
      <li><!-- The glm family objects are implemented differently in R and S.  The same -->
 <!-- functionality is available but the components have different names. -->
-
-     <p>glm family object들은 R과 S에서 다르게 실행됩니다. 같은 기능이 있기는 하지만 component들은 다른 이름드을 가지고 있습니다.
+일반선형화모델 페밀리 객체들(glm family objects)는 R과 S에서 다르게 구현되어 있습니다. 
+같은 기능을 이용할 수 있으나, 구성요소들은 서로 다른 이름들을 가지고 있습니다.
 
      <li><!-- Option @code{na.action} is set to @code{"na.omit"} by default in R, -->
 <!-- but not set in S. -->
-
-     <p>옵션na.action가 R에서는 기본값으로 "na.omit"로 설정되지만, S에서는 설정되지 않습니다.
+<code>na.action</code>이라는 옵션은 <code>"na.omit"</code>이라는 값으로 R에서는 기본적으로 설정되어 있으나, S에서는 그렇지 않습니다.
 
      <li><!-- Terms objects are stored differently.  In S a terms object is an -->
 <!-- expression with attributes, in R it is a formula with attributes.  The -->
 <!-- attributes have the same names but are mostly stored differently. -->
-Terms object들이 다르게 저장됩니다. S에서 Terms object는 attribute들이 있는 표현이고, R에서는 attribute들이 있는 식입니다. attribute들은 같은 이름들을 가지고 있지만 대부분 다르게 저장됩니다.
+항 객체(terms objects)들은 다른 방식으로 저장됩니다. 
+S에서는 항 객체(terms objects)은 속성(attributes)와 함께 이용된 표현식(expression)이지만, R에서는 속성과 함께 이용된 formula (공식 또는 포뮬러)입니다. 
+속성들은 같은 이름들을 가지고 있으나 대부분 다르게 저장됩니다.
 
      <li><!-- Finally, in R @code{y ~ x + 0} is an alternative to @code{y ~ x - 1} for -->
 <!-- specifying a model with no intercept.  Models with no parameters at all -->
 <!-- can be specified by @code{y ~ 0}. -->
-
-     <p>마지막으로, R에서y ~ x + 0는 절편이 없는 모델을 명시하기위한y ~ x – 1 대체입니다. parameter들이 없는 모델은 모두 y ~ 0로 명시될 수 있습니다.
-
-   </ul>
+마지막으로 절편(intercept)가 없는 모델을 정의하기 위해서 R에서는 <code>y ~ x + 0</code>이라는 표현은 <code>y ~ x - 1</code>의 또 다른 표현입니다. 
+아무런 파라미터들(parameters)를 없는 모델을 <code>y ~ 0</code>로 표현할 수 있습니다. 
+</ul>
 
 <div class="node">
 <a name="Others"></a>
@@ -1828,7 +1809,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 
 </div>
 
-<h4 class="subsection">3.3.3 Others</h4>
+<!-- @subsection  Others -->
+<h4 class="subsection">3.3.3 그외의 다른 내용들</h4>
 
 <!-- Apart from lexical scoping and its implications, R follows the S -->
 <!-- language definition in the Blue and White Books as much as possible, and -->
@@ -1836,18 +1818,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
 <!-- differences where the behavior of S is considered ``not clean''.  In -->
 <!-- general, the rationale is that R should help you detect programming -->
 <!-- errors, while at the same time being as compatible as possible with S. -->
-<p>Lexical scoping과 그에 연관 된 것들을 떠나서, R은 Blue and White Books의 S 언어 정의를 가능한한 많이 따고, 그렇기 때문에 사실상은 S의 “실행” 입니다. S의 behaviour이 “깨끗하지 않다고: 간주되는 곳에는 의도되는 다른 점들이 있습니다. 일반적으로, R은 당신이 같은 시간동안 S와 호환하면서 프로그래밍 에러를 발견하도록 도와주는 것입니다.
+<p>렉시컬 스코핑(lexical scoping)과 이것의 의미를 떠나서, R은 Blue와 White 책에 있는 S 랭귀지 정의(language definition)을 가능하면 많이 본땄기 때문에 결과적으로는 S를 이용한 &ldquo;implementation&rdquo;(구현물)입니다. 
+S의 작동방식(behaviour)가 &ldquo;not clean&rdquo;(깔끔하지 못하다고) 고려되는 부분들에 있어서는 의도적인 다른 점들을 가지고 있습니다. 
+일반적 방침은 R은 S와 가능하면 호환될 수 있게 함과 동시에 사용자가 프로그래밍 에러를 찾을수 있게 도와주도록 하는 것입니다.
 
 <!-- Some known differences are the following. -->
-   <p>몇가지의 알려진 다른 점들이 아래에 설명되어 있습니다.
+   <p>몇 가지 알려진 다른 점들을 아래에 설명하였습니다.
 
      <ul>
 <li><!-- In R, if @code{x} is a list, then @code{x[i] <- NULL} and @code{x[[i]] -->
 <!-- <- NULL} remove the specified elements from @code{x}.  The first of -->
 <!-- these is incompatible with S, where it is a no-op.  (Note that you can -->
 <!-- set elements to @code{NULL} using @code{x[i] <- list(NULL)}.) -->
-
-     <p>R에서, 만약 x가 목록 형태라면, x[i] &lt;- NULL 과 x[[i]] &lt;- NULL는 x에서 지정된 element들을 없앱니다. 이 중 첫번째는 no-op인 곳에서 S와 호환하지 않습니다. (element를 x[i] &lt;- list(NULL)를 사용하여NULL 지정할 수 있다는 것을 유의하십시오.)
+R에서는 만약 <code>x</code>가 리스트(list)라면 <code>x[i] &lt;- NULL</code>과 <code>x[[i]] &lt;- NULL</code>이라고 하는 것은 <code>x</code>로부터 지정된 구성요소들을 삭제합니다. 
+이들중 첫번째 표현은 no-op인 곳에서는 S에서 사용할 수 없습니다. 
+(<code>x[i] &lt;- list(NULL)</code>을 이용하여 <code>NULL</code>이라는 구성요소를 지정할 수 있습니다).
 
      <!-- @item -->
      <!-- In R @code{x[-4]} fails if @code{x} is not @code{NULL} but has fewer -->
@@ -1855,7 +1840,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#What-are-the-differences-between-R-and
      <li><!-- In S, the functions named @code{.First} and @code{.Last} in the -->
 <!-- @file{.Data} directory can be used for customizing, as they are executed -->
 <!-- at the very beginning and end of a session, respectively. -->
-S에서, .Data 디렉토리 안에서 .First 와 .Last로 이름이 지어진 함수들은 순서대로 세션의 제일 시작과 맨 끝에서 실행될 때 customizing을 위해 사용될 수 있습니다.
+S에서, <samp><span class="file">.Data</span></samp> 디렉토리 내에서 <code>.First</code>와 <code>.Last</code>라는 이름을 가진 함수들은 세션의 가장 처음과 마지막에서 실행되기 때문에 커스터마이징(customizing)을 위한 목적으로 사용될 수 있습니다.
 
      <!-- In R, the startup mechanism is as follows.  Unless @option{-no-environ} -->
      <!-- was given on the command line, R searches for site and user files to -->
@@ -1874,47 +1859,78 @@ S에서, .Data 디렉토리 안에서 .First 와 .Last로 이름이 지어진 �
      <!-- and @code{.Last()} should be defined in the appropriate startup -->
      <!-- profiles.  See the help pages for @code{.First} and @code{.Last} for -->
      <!-- more details. -->
-     <p>R에서, startup mechanism은 다음과 같습니다. &ndash;no-environ이 명령줄에 주어지지 않은 이상, R은 environment variable들을 지정하기위한 프로세스를 하기위해 사이트와 사용자 파일을 검색합니다. 그리고나서 R은 명령줄 옵션&ndash;no-site-file가 주어지지 않은 이상 사이트 전체의 시작 프로필을 검색합니다. 이 코드는 base 패키지에 로드되어 있습니다. 그리고나서, &ndash;no-init-file가 주어지지 않은 이상, R은 사용자 프로필 파일을 검색하고, 그것을 사용자 workspace로 공급합니다.  그리고나서 그것은 있을 경우를 대비하여 .RData로부터 사용자 workspace의 저장된 이미지로 로드합니다 (&ndash;no-restore-data 혹은 &ndash;no-restore 가 명시되지 않은 이상). 그 다음, .First() 함수는 검색 경로에서 찾아지면 실행 됩니다. 마지막으로, base 패키지의.First.sys 함수가 실행됩니다. R 세션이 종료되면, .Last.sys 다음에 만약 검색 경로에서 찾아진다면 기본 함수 .Last가 실행됩니다. 만약 필요하다면, 함수.First() 와 .Last()는 적절한 startup 프로필들에서 정의되어야만 할 것입니다. 더 많은 정보는 help 페이지에서 .First 와 .Last를 참고하십시오.
+     <p>R에서 스타트업(startup) 메카니즘은 다음과 같습니다. 
+만약 명령어 라인에 <samp><span class="option">--no-environ</span></samp>이 주어지지 않았다면, R은 환경변수들(environment variables)들을 설정하기 위한 사이트와 사용자 파일들(site and user files)으르 찾습니다. 
+그리고 나서, 명령어 라인에 <samp><span class="option">--no-site-file</span></samp>이 주어지지 않았다면, 사이트-와이드 스타트업 프로파일 (site-wide startup profile)을 탐색합니다. 
+이 코드는 패키지 <strong>base</strong>에 로드되어 있습니다. 
+그리고 나서, <samp><span class="option">--no-init-file</span></samp>이 주어지지 않았다면 R은 사용자 프로파일 파일(user profile file)을 탐색하고 이를 사용자의 작업공간(user workspace)로 읽어(source)들입니다. 
+그런 후에, 만약 <samp><span class="option">--no-restore-data</span></samp> 또는 <samp><span class="option">--no-restore</span></samp>가 지정되지 않는 이상 <samp><span class="file">.RData</span></samp>에 사용자 작업공간의 저장된 이미지가 있다면 이를 불러옵니다. 
+그런 다음, 함수 <code>.First()</code>가 검색경로(serach path)위에 있다면 실행됩니다. 
+마지막으로 패키지 <strong>base</strong> 내에 있는 함수 <code>.First.sys</code>가 실해됩니다. 
+R 세션을 종료할 때, 만약 <code>.Last</code>가 검색경로에서 찾아진다면 이를 실행한 뒤에 <samp><span class="option">.Last.sys</span></samp>가 실행됩니다. 
+만약 필요하다면 함수들 <code>.First()</code>와 <code>.Last()</code>들은 적절한 스타트업 프로파일에 정의되어야 합니다. 
+더 구체적인 내용은 <code>.First</code>와 <code>.Last</code>에 대한 도움말을 참고하세요.
 
      <li><!-- In R, @code{T} and @code{F} are just variables being set to @code{TRUE} -->
 <!-- and @code{FALSE}, respectively, but are not reserved words as in S and -->
 <!-- hence can be overwritten by the user.  (This helps e.g.@: when you have -->
 <!-- factors with levels @code{"T"} or @code{"F"}.)  Hence, when writing code -->
 <!-- you should always use @code{TRUE} and @code{FALSE}. -->
-
-     <p>R에서, T와 F는, 순서대로, TRUE와 FALSE로 지정되는 값이지만, S에서는 reserve된 단어는 아니기 때문에 사용자에의해 덮어쓰여질 수 있습니다. (이는 예를들어 “T” 혹은 “F”레벨들의 factor들이 있을때 도움이 됩니다.) 그러므로, 코드를 쓸때에는 항상 TRUE와 FALSE를 사용해야만 합니다.
+R에서는 <code>T</code>와 <code>F</code>는 단순히 <code>TRUE</code>와 <code>FALSE</code>로 정해지는 변수들이지만, S에서는 예약어(reserved words)가 아니기 때문에 사용자에 의해서 덮어씌여질 수 있습니다. 
+(이는 <code>"T"</code>와 <code>"F"</code>라는 요인의 수준들을 이용할 때 유용합니다). 
+그러므로, 코드를 작성할 때 <code>TRUE</code>와 <code>FALSE</code>를 항상 이용해야만 합니다.
 
      <li><!-- In R, @code{dyn.load()} can only load @emph{shared objects}, as created -->
 <!-- for example by @kbd{R CMD SHLIB}. -->
-
-     <p>R에서, dyn.load()는R CMD SHLIB에의한 예제를위해 생성되었기 때문에 공유된 object들만을 로드할 수 있습니다.
+R에서, <code>dyn.load()</code>는 오로지 공유된 객체들(shared objects)만을 불러옵니다. 
+예를들면, <kbd>R CMD SHLIB</kbd>에 의해 생성된 것들입니다.
 
      <li><!-- In R, @code{attach()} currently only works for lists and data frames, -->
 <!-- but not for directories.  (In fact, @code{attach()} also works for R -->
 <!-- data files created with @code{save()}, which is analogous to attaching -->
 <!-- directories in S.)  Also, you cannot attach at position 1. -->
-
-     <p>R에서, attach()는 현재 목록들과 데이터 프레임들에서만 실행되지만, 디렉토리들에서는 실행되지 않습니다. (실제로, attach()는S에서의 디렉토리를 첨부하는것과 유사하게, save()와 함께 생성된 R 데이터 파일들을 위해서도 실행됩니다.) 또한, position 1에는 첨부할 수 없습니다
+R에서 <code>attach()</code>는 현재의 리스트들과 데이터프레임들만을 결합하는데 이용되지만 디렉토리에는 적용되지 않습니다. 
+(실제로는 <code>attach()</code>는 <code>save()</code>에 의하여 생성된 R 데이터 파일들을 결합하는데, 이는 S에서 디렉토리를 결합하는 것과 유사합니다). 
+또한 위치 1(position 1)에서는 결합할 수 없습니다.
 
      <li><!-- Categories do not exist in R, and never will as they are deprecated now -->
 <!-- in S.  Use factors instead. -->
-R에서 카테고리는 존재하지않고, S에서 되었기 때문에 앞으로도 존재하지 않을 것 입니다. 대신 factor들을 사용하십시오.
+R에서는 카테고리 (categories)라는 개념은 존재하지 않으며, S에서 더 이상 사용을 하지 않기 때문에 앞으로도 존재하지 않을 것입니다. 
+대신에 요인 (factors)를 이용하시길 바랍니다.
 
      <li><!-- In R, @code{For()} loops are not necessary and hence not supported. -->
-R에서, For() loop들은 필요하지않고 그러므로 지원되지 않습니다.
+R에서는 <code>For()</code> 루프는 필요하지 않으므로 지원되지 않습니다.
 
      <li><!-- In R, @code{assign()} uses the argument @option{envir=} rather than -->
 <!-- @option{where=} as in S. -->
-R에서, assign()은  S에서와 같이 where= 보다는envir= argument를 사용합니다.
+R에서는 <code>assign()</code>은 S에서 인자 <samp><span class="option">where=</span></samp>를 사용하는 것과는 달리 인자 <samp><span class="option">envir=</span></samp>를 이용합니다.
 
      <li><!-- The random number generators are different, and the seeds have different -->
 <!-- length. -->
-랜덤 숫자 생성기들은 다르고, seed들은 다른 길이를 가지고 있습니다.
+난수발생기(random number generators)가 다르며, 시드(seeds)의 길이가 다릅니다.
 
      <li><!-- R passes integer objects to C as @code{int *} rather than @code{long *} -->
 <!-- as in S. -->
-R은 S에서와 같이 long* 대신 int* 처럼 정수 object들을 C로 패스합니다.
+R은 정수형 객체를 C로 패스할 때 S가 <code>long *</code>를 사용하는 것과 달리 <code>int *</code>를 이용합니다.
 
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
+     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
      <li><!-- R has no single precision storage mode.  However, as of version 0.65.1, -->
 <!-- there is a single precision interface to C/@FORTRAN{} subroutines. -->
 R은 단일 정밀도 저장 모드가 없습니다. 하지만, 0.65.1버전부터, C/FORTRAN 서브루틴들로의 단일 정밀도 인터페이스가 존재합니다.
@@ -2084,15 +2100,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 
 </div>
 
-<h3 class="section">3.5 What is R-plus?</h3>
+<!-- @section What is R-plus? -->
+<h3 class="section">3.5 R-plus는 무엇인가요?</h3>
 
 <!-- For a very long time, there was no such thing. -->
-<p>매우 오랜 시간동안, 다음의 것들은 없었습니다.
+<p>매우 오랜 기간동안 다음과 같은 것들은 존재하지 않았습니다.
 
 <!-- @url{http://www.xlsolutions-corp.com/, XLSolutions Corporation} is -->
 <!-- currently beta testing a commercially supported version of R named R+ -->
 <!-- (read R plus). -->
-   <p>XLSolutions Corporation 은(R 플러스라고 읽는)R+ 라고 이름지어진 상업적으로 지원되는 R버전이 현재 베타 테스팅 중입니다.
+   <p><a href="http://www.xlsolutions-corp.com/">XLSolutions Corporation</a>은 R 플러스라고 읽는 R+라는 상업용 버전을 현재 베타 테스팅 하고 있습니다.
 
 <!-- @url{http://www.revolution-computing.com/, REvolution Computing} has -->
 <!-- released -->
@@ -2100,19 +2117,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-and-S">R and S</a>
 <!-- REvolution R}, an enterprise-class statistical analysis system based on -->
 <!-- R, suitable for deployment in professional, commercial and regulated -->
 <!-- environments. -->
-   <p>REvolution Computing은, 전문가용, 상업용, 그리고 규제된 환경 배치에 적합한 R을 베이스로 한 기업용 통계시스템 , REvolution R을 선보였습니다.
+   <p><a href="http://www.revolution-computing.com/">REvolution Computing</a>은 R에 기초를 둔 기업용 통계시스템(enterprise-class statistical analysis system), 전문가용, 상업용, 그리고 규제된 환경 배치에 적합한 <a href="http://www.revolution-computing.com/products/revolution-r.php">REvolution R</a>을 선보였습니다.
 
 <!-- @url{http://www.random-technologies-llc.com/, Random Technologies} -->
 <!-- offers @url{http://random-technologies-llc.com/products/RStat/rstat, -->
 <!-- RStat}, an enterprise-strength statistical computing environment which -->
 <!-- combines R with enterprise-level validation, documentation, software -->
 <!-- support, and consulting services, as well as related R-based products. -->
-   <p>Random Technologies, R을 기업용 validation, documentation, 소프트웨어 지원과 상담 서비스들, 그리고 R-based 제품들을 결합한 기업 강화 통계 컴퓨터 조작 환경인, RStat을 제공합니다.
+   <p><a href="http://www.random-technologies-llc.com/">Random Technologies</a>, R을 기업용 validation, documentation, 소프트웨어 지원과 상담 서비스들, 그리고 R-based 제품들을 결합한 기업 강화 통계 컴퓨터 조작 환경인, <a href="http://random-technologies-llc.com/products/RStat/rstat">RStat</a>을 제공합니다.
 
 <!-- See also -->
 <!-- @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R} -->
 <!-- for pointers to commercialized versions of R. -->
-   <p>상업화 버전의 R의 지표는 http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R 를 참고하십시오.
+   <p>상업화 버전의 R의 지표는 <a href="http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R">http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R</a> 를 참고하십시오.
 
 <div class="node">
 <a name="R-Web-Interfaces"></a>
@@ -4852,13 +4869,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 
 <!-- Comments on and suggestions for the Windows port of R should be sent to -->
 <!-- @email{R-windows@@R-project.org}. -->
-   <p>R의 Windows port에 대한 코멘트나 제안사항들은  <a href="mailto:R-windows@R-project.org">R-windows@R-project.org</a>로 보내져야만합니다.
+   <p>R의 Windows 포트에 대한 조언 및 제안사항들은 <a href="mailto:R-windows@R-project.org">R-windows@R-project.org</a>로 보내져야 합니다.
 
 <!-- Corrections to and comments on message translations should be sent to the -->
 <!-- last translator (listed at the top of the appropriate @samp{.po} file) -->
 <!-- or to the translation team as listed at -->
 <!-- @url{http://developer.R-project.org/TranslationTeams.html}. -->
-   <p>메시지 번역에 대한 수정과 코멘트는 최근 번역자나 (적절한 ‘.po’ 파일의 상단에 리스트되어있는)  http://developer.R-project.org/TranslationTeams.html에 리스트된 번역팀에게 보내져야 합니다.
+   <p>메시지 번역에 관련한 수정 및 제안사항들은 해당 내용을 담고 있는 &lsquo;<samp><span class="samp">.po</span></samp>&rsquo; 파일 상단에 명시된 마지막 번역자 또는 <a href="http://developer.R-project.org/TranslationTeams.html">http://developer.R-project.org/TranslationTeams.html</a>에 나열되어 있는 번역팀에게 보내어져야 합니다.
 
 <div class="node">
 <a name="Acknowledgments"></a>
@@ -4878,11 +4895,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- D. Ripley, Anthony Rossini, and Andreas Weingessel for their comments -->
 <!-- which helped me improve this @acronym{FAQ}. -->
 <!-- More to come soon @dots{} -->
-<p>물론, R 시스템의 Robert와 Ross, 그리고 패키지 writer들과 porter들에게도 추가로 대단히 감사합니다. 
-특별히이 FAQ를 향상시키도록 저를 도와주신 Doug Bates, Peter Dalgaard, Paul Gilbert, Stefano
-Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D. 
-Ripley, Anthony Rossini, 그리고 Andreas Weingessel의 comment들에 감사합니다. 
-More to come soon ...
+<p>R 시스템을 제공해 준 Robert와 Ross에게 감사의 말씀을 올리며, 패키지 작성자들과 포터(porters)들에게 또한 감사드립니다. 
+특히 본 <acronym>FAQ</acronym> 문서를 향상시킬 수 있는 코멘트를 제공해준 Doug Bates, Peter Dalgaard, Paul Gilbert, Stefano
+Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D. Ripley, Anthony Rossini, 그리고 Andreas Weingessel에게 감사드립니다.
+
+   <p>더 많은 내용들이 추가될 것입니다<small class="dots">...</small>
+
+   <p>본 한국어 문서는 <strong>R Development Translation Teams</strong> (<a href="http://developer.r-project.org/TranslationTeams.html">http://developer.r-project.org/TranslationTeams.html</a>) 에서 <strong>Korean</strong> 섹션을 담당하는 <strong>Korean R Translation Team</strong>에 의해서 관리되고 있습니다. 
+문서의 수정과 재배포를 허락해 준 <strong>Kurt Hornik과 R Development Core Team</strong>에게 감사를 드립니다. 
+<!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다. -->
+
+   <p>아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다. 
+의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 이 문서의 관리자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>로 연락을 부탁드립니다.
+
+     <ul>
+<li>Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
+<li>Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
+</ul>
+
+   <p>본 문서에 대한 참여 및 제안은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a> 메일링을 이용해주시길 부탁드립니다.
 
 </body></html>
 

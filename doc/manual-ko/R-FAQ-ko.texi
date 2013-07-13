@@ -129,20 +129,6 @@ Kurt Hornik                      @*
 @c questions about R.
 이 문서는 R에 관하여 가장 많이 자주 물어보는 질문들에 대해서 정리한 문서입니다.
 
-본 한국어 문서는 @strong{R Development Translation Teams} (@url{http://developer.r-project.org/TranslationTeams.html}) 에서 @strong{Korean} 섹션을 담당하는 @strong{Korean R Translation Team}에 의해서 관리되고 있습니다. 
-문서의 수정과 재배포를 허락해 준 @strong{Kurt Hornik과 R Development Core Team}에게 감사를 드립니다.
-@c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
-
-아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다.
-의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
-
-@itemize @bullet
-@item Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
-@item Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
-@end itemize
-
-본 문서에 대한 참여 및 제안은 @email{ihelp-translators@@ihelp.r-forge.r-project.org} 메일링을 이용해 주시면 감사드리겠습니다. 
-
 
 @menu
 * Legalese::                    
@@ -1687,54 +1673,47 @@ S에서는 이와 같은 일이 발생하지 않습니다.
 @c @subsection Models
 @subsection 모델(Models)
 
-
-@c start from this point next time
-@c start from this point next time
-@c start from this point next time
-@c start from this point next time
-@c start from this point next time
-@c start from this point next time
-
-
 @c There are some differences in the modeling code, such as
-Modeling 코드에는 몇가지의 다른점들이 있습니다. 예를 들어, 
+모델링 코드(modeling code)에는 아래와 같이 몇가지 다른 점들을 볼 수 있습니다.
 
 @itemize @bullet
 @item
 @c Whereas in S, you would use @code{lm(y ~ x^3)} to regress @code{y} on
 @c @code{x^3}, in R, you have to insulate powers of numeric vectors (using
 @c @code{I()}), i.e., you have to use @code{lm(y ~ I(x^3))}.
-S에서는 y를 x^3에 regress하기위해lm(y ~ x^3)를 사용하는 반면, R에서는 (I()를 사용한) 숫자 벡터들의 파워를 격리시켜주어야만 합니다. 즉, lm(y ~ I(x^3))를 사용해야 합니다.
+S에서는 @code{y}를 @code{x^3}을 이용하여 회귀(regress)하기 위해서는 @code{lm(y ~ x^3)}를 사용하는 반면, R에서는 수치벡터의 자승부분을 @code{I()}를 이용하여 따로 보호처리를 해야합니다.  
+즉, @code{lm(y ~ I(x^3))}이라고 사용해야 합니다.
 
 @item
 @c The glm family objects are implemented differently in R and S.  The same
 @c functionality is available but the components have different names.
-
-glm family object들은 R과 S에서 다르게 실행됩니다. 같은 기능이 있기는 하지만 component들은 다른 이름드을 가지고 있습니다. 
+일반선형화모델 페밀리 객체들(glm family objects)는 R과 S에서 다르게 구현되어 있습니다.
+같은 기능을 이용할 수 있으나, 구성요소들은 서로 다른 이름들을 가지고 있습니다.
 
 @item
 @c Option @code{na.action} is set to @code{"na.omit"} by default in R,
 @c but not set in S.
-
-옵션na.action가 R에서는 기본값으로 "na.omit"로 설정되지만, S에서는 설정되지 않습니다. 
+@code{na.action}이라는 옵션은 @code{"na.omit"}이라는 값으로 R에서는 기본적으로 설정되어 있으나, S에서는 그렇지 않습니다. 
 
 @item
 @c Terms objects are stored differently.  In S a terms object is an
 @c expression with attributes, in R it is a formula with attributes.  The
 @c attributes have the same names but are mostly stored differently.
-Terms object들이 다르게 저장됩니다. S에서 Terms object는 attribute들이 있는 표현이고, R에서는 attribute들이 있는 식입니다. attribute들은 같은 이름들을 가지고 있지만 대부분 다르게 저장됩니다.
+항 객체(terms objects)들은 다른 방식으로 저장됩니다. 
+S에서는 항 객체(terms objects)은 속성(attributes)와 함께 이용된 표현식(expression)이지만, R에서는 속성과 함께 이용된 formula (공식 또는 포뮬러)입니다.
+속성들은 같은 이름들을 가지고 있으나 대부분 다르게 저장됩니다.
 
 @item
 @c Finally, in R @code{y ~ x + 0} is an alternative to @code{y ~ x - 1} for
 @c specifying a model with no intercept.  Models with no parameters at all
 @c can be specified by @code{y ~ 0}.
-
- 마지막으로, R에서y ~ x + 0는 절편이 없는 모델을 명시하기위한y ~ x – 1 대체입니다. parameter들이 없는 모델은 모두 y ~ 0로 명시될 수 있습니다. 
-
+마지막으로 절편(intercept)가 없는 모델을 정의하기 위해서 R에서는 @code{y ~ x + 0}이라는 표현은 @code{y ~ x - 1}의 또 다른 표현입니다.
+아무런 파라미터들(parameters)를 없는 모델을 @code{y ~ 0}로 표현할 수 있습니다. 
 @end itemize
 
 @node Others,  , Models, What are the differences between R and S?
-@subsection  Others
+@c @subsection  Others
+@subsection  그외의 다른 내용들
 
 @c Apart from lexical scoping and its implications, R follows the S
 @c language definition in the Blue and White Books as much as possible, and
@@ -1743,11 +1722,12 @@ Terms object들이 다르게 저장됩니다. S에서 Terms object는 attribute�
 @c general, the rationale is that R should help you detect programming
 @c errors, while at the same time being as compatible as possible with S.
 
-Lexical scoping과 그에 연관 된 것들을 떠나서, R은 Blue and White Books의 S 언어 정의를 가능한한 많이 따고, 그렇기 때문에 사실상은 S의 “실행” 입니다. S의 behaviour이 “깨끗하지 않다고: 간주되는 곳에는 의도되는 다른 점들이 있습니다. 일반적으로, R은 당신이 같은 시간동안 S와 호환하면서 프로그래밍 에러를 발견하도록 도와주는 것입니다. 
-
+렉시컬 스코핑(lexical scoping)과 이것의 의미를 떠나서, R은 Blue와 White 책에 있는 S 랭귀지 정의(language definition)을 가능하면 많이 본땄기 때문에 결과적으로는 S를 이용한 ``implementation''(구현물)입니다.
+S의 작동방식(behaviour)가 ``not clean''(깔끔하지 못하다고) 고려되는 부분들에 있어서는 의도적인 다른 점들을 가지고 있습니다. 
+일반적 방침은 R은 S와 가능하면 호환될 수 있게 함과 동시에 사용자가 프로그래밍 에러를 찾을수 있게 도와주도록 하는 것입니다. 
 
 @c Some known differences are the following.
-몇가지의 알려진 다른 점들이 아래에 설명되어 있습니다. 
+몇 가지 알려진 다른 점들을 아래에 설명하였습니다. 
 
 @itemize @bullet
 
@@ -1756,8 +1736,9 @@ Lexical scoping과 그에 연관 된 것들을 떠나서, R은 Blue and White Bo
 @c <- NULL} remove the specified elements from @code{x}.  The first of
 @c these is incompatible with S, where it is a no-op.  (Note that you can
 @c set elements to @code{NULL} using @code{x[i] <- list(NULL)}.)
-
- R에서, 만약 x가 목록 형태라면, x[i] <- NULL 과 x[[i]] <- NULL는 x에서 지정된 element들을 없앱니다. 이 중 첫번째는 no-op인 곳에서 S와 호환하지 않습니다. (element를 x[i] <- list(NULL)를 사용하여NULL 지정할 수 있다는 것을 유의하십시오.)
+R에서는 만약 @code{x}가 리스트(list)라면 @code{x[i] <- NULL}과 @code{x[[i]] <- NULL}이라고 하는 것은 @code{x}로부터 지정된 구성요소들을 삭제합니다. 
+이들중 첫번째 표현은 no-op인 곳에서는 S에서 사용할 수 없습니다.
+(@code{x[i] <- list(NULL)}을 이용하여 @code{NULL}이라는 구성요소를 지정할 수 있습니다).
 
 @c @item
 @c In R @code{x[-4]} fails if @code{x} is not @code{NULL} but has fewer
@@ -1767,7 +1748,7 @@ Lexical scoping과 그에 연관 된 것들을 떠나서, R은 Blue and White Bo
 @c In S, the functions named @code{.First} and @code{.Last} in the
 @c @file{.Data} directory can be used for customizing, as they are executed
 @c at the very beginning and end of a session, respectively.
-S에서, .Data 디렉토리 안에서 .First 와 .Last로 이름이 지어진 함수들은 순서대로 세션의 제일 시작과 맨 끝에서 실행될 때 customizing을 위해 사용될 수 있습니다. 
+S에서, @file{.Data} 디렉토리 내에서 @code{.First}와 @code{.Last}라는 이름을 가진 함수들은 세션의 가장 처음과 마지막에서 실행되기 때문에 커스터마이징(customizing)을 위한 목적으로 사용될 수 있습니다.
 
 @c In R, the startup mechanism is as follows.  Unless @option{--no-environ}
 @c was given on the command line, R searches for site and user files to
@@ -1786,9 +1767,17 @@ S에서, .Data 디렉토리 안에서 .First 와 .Last로 이름이 지어진 �
 @c and @code{.Last()} should be defined in the appropriate startup
 @c profiles.  See the help pages for @code{.First} and @code{.Last} for
 @c more details.
-
-R에서, startup mechanism은 다음과 같습니다. --no-environ이 명령줄에 주어지지 않은 이상, R은 environment variable들을 지정하기위한 프로세스를 하기위해 사이트와 사용자 파일을 검색합니다. 그리고나서 R은 명령줄 옵션--no-site-file가 주어지지 않은 이상 사이트 전체의 시작 프로필을 검색합니다. 이 코드는 base 패키지에 로드되어 있습니다. 그리고나서, --no-init-file가 주어지지 않은 이상, R은 사용자 프로필 파일을 검색하고, 그것을 사용자 workspace로 공급합니다.  그리고나서 그것은 있을 경우를 대비하여 .RData로부터 사용자 workspace의 저장된 이미지로 로드합니다 (--no-restore-data 혹은 --no-restore 가 명시되지 않은 이상). 그 다음, .First() 함수는 검색 경로에서 찾아지면 실행 됩니다. 마지막으로, base 패키지의.First.sys 함수가 실행됩니다. R 세션이 종료되면, .Last.sys 다음에 만약 검색 경로에서 찾아진다면 기본 함수 .Last가 실행됩니다. 만약 필요하다면, 함수.First() 와 .Last()는 적절한 startup 프로필들에서 정의되어야만 할 것입니다. 더 많은 정보는 help 페이지에서 .First 와 .Last를 참고하십시오.
-
+R에서 스타트업(startup) 메카니즘은 다음과 같습니다. 
+만약 명령어 라인에 @option{--no-environ}이 주어지지 않았다면, R은 환경변수들(environment variables)들을 설정하기 위한 사이트와 사용자 파일들(site and user files)으르 찾습니다.
+그리고 나서, 명령어 라인에 @option{--no-site-file}이 주어지지 않았다면, 사이트-와이드 스타트업 프로파일 (site-wide startup profile)을 탐색합니다. 
+이 코드는 패키지 @pkg{base}에 로드되어 있습니다. 
+그리고 나서, @option{--no-init-file}이 주어지지 않았다면 R은 사용자 프로파일 파일(user profile file)을 탐색하고 이를 사용자의 작업공간(user workspace)로 읽어(source)들입니다.
+그런 후에, 만약 @option{--no-restore-data} 또는 @option{--no-restore}가 지정되지 않는 이상 @file{.RData}에 사용자 작업공간의 저장된 이미지가 있다면 이를 불러옵니다.
+그런 다음, 함수 @code{.First()}가 검색경로(serach path)위에 있다면 실행됩니다.
+마지막으로 패키지 @pkg{base} 내에 있는 함수 @code{.First.sys}가 실해됩니다. 
+R 세션을 종료할 때, 만약 @code{.Last}가 검색경로에서 찾아진다면 이를 실행한 뒤에 @option{.Last.sys}가 실행됩니다. 
+만약 필요하다면 함수들 @code{.First()}와 @code{.Last()}들은 적절한 스타트업 프로파일에 정의되어야 합니다. 
+더 구체적인 내용은 @code{.First}와 @code{.Last}에 대한 도움말을 참고하세요.
 
 @item
 @c In R, @code{T} and @code{F} are just variables being set to @code{TRUE}
@@ -1796,47 +1785,72 @@ R에서, startup mechanism은 다음과 같습니다. --no-environ이 명령줄�
 @c hence can be overwritten by the user.  (This helps e.g.@: when you have
 @c factors with levels @code{"T"} or @code{"F"}.)  Hence, when writing code
 @c you should always use @code{TRUE} and @code{FALSE}.
-
-R에서, T와 F는, 순서대로, TRUE와 FALSE로 지정되는 값이지만, S에서는 reserve된 단어는 아니기 때문에 사용자에의해 덮어쓰여질 수 있습니다. (이는 예를들어 “T” 혹은 “F”레벨들의 factor들이 있을때 도움이 됩니다.) 그러므로, 코드를 쓸때에는 항상 TRUE와 FALSE를 사용해야만 합니다. 
+R에서는 @code{T}와 @code{F}는 단순히 @code{TRUE}와 @code{FALSE}로 정해지는 변수들이지만, S에서는 예약어(reserved words)가 아니기 때문에 사용자에 의해서 덮어씌여질 수 있습니다. 
+(이는 @code{"T"}와 @code{"F"}라는 요인의 수준들을 이용할 때 유용합니다).
+그러므로, 코드를 작성할 때 @code{TRUE}와 @code{FALSE}를 항상 이용해야만 합니다. 
 
 @item
 @c In R, @code{dyn.load()} can only load @emph{shared objects}, as created
 @c for example by @kbd{R CMD SHLIB}.
-
-R에서, dyn.load()는R CMD SHLIB에의한 예제를위해 생성되었기 때문에 공유된 object들만을 로드할 수 있습니다. 
+R에서, @code{dyn.load()}는 오로지 공유된 객체들(shared objects)만을 불러옵니다. 
+예를들면, @kbd{R CMD SHLIB}에 의해 생성된 것들입니다. 
 
 @item
 @c In R, @code{attach()} currently only works for lists and data frames,
 @c but not for directories.  (In fact, @code{attach()} also works for R
 @c data files created with @code{save()}, which is analogous to attaching
 @c directories in S.)  Also, you cannot attach at position 1.
-
- R에서, attach()는 현재 목록들과 데이터 프레임들에서만 실행되지만, 디렉토리들에서는 실행되지 않습니다. (실제로, attach()는S에서의 디렉토리를 첨부하는것과 유사하게, save()와 함께 생성된 R 데이터 파일들을 위해서도 실행됩니다.) 또한, position 1에는 첨부할 수 없습니다
+R에서 @code{attach()}는 현재의 리스트들과 데이터프레임들만을 결합하는데 이용되지만 디렉토리에는 적용되지 않습니다.
+(실제로는 @code{attach()}는 @code{save()}에 의하여 생성된 R 데이터 파일들을 결합하는데, 이는 S에서 디렉토리를 결합하는 것과 유사합니다). 
+또한 위치 1(position 1)에서는 결합할 수 없습니다. 
 
 @item
 @c Categories do not exist in R, and never will as they are deprecated now
 @c in S.  Use factors instead.
-R에서 카테고리는 존재하지않고, S에서 되었기 때문에 앞으로도 존재하지 않을 것 입니다. 대신 factor들을 사용하십시오.
+R에서는 카테고리 (categories)라는 개념은 존재하지 않으며, S에서 더 이상 사용을 하지 않기 때문에 앞으로도 존재하지 않을 것입니다. 
+대신에 요인 (factors)를 이용하시길 바랍니다.
 
 @item
 @c In R, @code{For()} loops are not necessary and hence not supported.
-R에서, For() loop들은 필요하지않고 그러므로 지원되지 않습니다.
+R에서는 @code{For()} 루프는 필요하지 않으므로 지원되지 않습니다. 
 
 @item
 @c In R, @code{assign()} uses the argument @option{envir=} rather than
 @c @option{where=} as in S.
-R에서, assign()은  S에서와 같이 where= 보다는envir= argument를 사용합니다. 
+R에서는 @code{assign()}은 S에서 인자 @option{where=}를 사용하는 것과는 달리 인자 @option{envir=}를 이용합니다. 
 
 @item
 @c The random number generators are different, and the seeds have different
 @c length.
-랜덤 숫자 생성기들은 다르고, seed들은 다른 길이를 가지고 있습니다. 
+난수발생기(random number generators)가 다르며, 시드(seeds)의 길이가 다릅니다. 
 
 @item
 @c R passes integer objects to C as @code{int *} rather than @code{long *}
 @c as in S.
-R은 S에서와 같이 long* 대신 int* 처럼 정수 object들을 C로 패스합니다.
+R은 정수형 객체를 C로 패스할 때 S가 @code{long *}를 사용하는 것과 달리 @code{int *}를 이용합니다. 
 
+
+
+
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+@c 
 @item
 @c R has no single precision storage mode.  However, as of version 0.65.1,
 @c there is a single precision interface to C/@FORTRAN{} subroutines.
@@ -2020,15 +2034,16 @@ R은 선 종류의 더 나은 처리, (palette를 통한) 더 편리한 색 처�
 
 
 @node What is R-plus?,  , Is there anything R can do that S-PLUS cannot?, R and S
-@section What is R-plus?
+@c @section What is R-plus?
+@section R-plus는 무엇인가요?
 
 @c For a very long time, there was no such thing.
-매우 오랜 시간동안, 다음의 것들은 없었습니다. 
+매우 오랜 기간동안 다음과 같은 것들은 존재하지 않았습니다. 
 
 @c @url{http://www.xlsolutions-corp.com/, XLSolutions Corporation} is
 @c currently beta testing a commercially supported version of R named R+
 @c (read R plus).
-XLSolutions Corporation 은(R 플러스라고 읽는)R+ 라고 이름지어진 상업적으로 지원되는 R버전이 현재 베타 테스팅 중입니다. 
+@url{http://www.xlsolutions-corp.com/, XLSolutions Corporation}은 R 플러스라고 읽는 R+라는 상업용 버전을 현재 베타 테스팅 하고 있습니다. 
 
 @c @url{http://www.revolution-computing.com/, REvolution Computing} has
 @c released
@@ -2037,7 +2052,7 @@ XLSolutions Corporation 은(R 플러스라고 읽는)R+ 라고 이름지어진 �
 @c R, suitable for deployment in professional, commercial and regulated
 @c environments.
 
-REvolution Computing은, 전문가용, 상업용, 그리고 규제된 환경 배치에 적합한 R을 베이스로 한 기업용 통계시스템 , REvolution R을 선보였습니다.  
+@url{http://www.revolution-computing.com/, REvolution Computing}은 R에 기초를 둔 기업용 통계시스템(enterprise-class statistical analysis system), 전문가용, 상업용, 그리고 규제된 환경 배치에 적합한 @url{http://www.revolution-computing.com/products/revolution-r.php, REvolution R}을 선보였습니다.  
 
 
 @c @url{http://www.random-technologies-llc.com/, Random Technologies}
@@ -2046,13 +2061,13 @@ REvolution Computing은, 전문가용, 상업용, 그리고 규제된 환경 배
 @c combines R with enterprise-level validation, documentation, software
 @c support, and consulting services, as well as related R-based products.
 
-Random Technologies, R을 기업용 validation, documentation, 소프트웨어 지원과 상담 서비스들, 그리고 R-based 제품들을 결합한 기업 강화 통계 컴퓨터 조작 환경인, RStat을 제공합니다. 
+@url{http://www.random-technologies-llc.com/, Random Technologies}, R을 기업용 validation, documentation, 소프트웨어 지원과 상담 서비스들, 그리고 R-based 제품들을 결합한 기업 강화 통계 컴퓨터 조작 환경인, @url{http://random-technologies-llc.com/products/RStat/rstat, RStat}을 제공합니다. 
 
 @c See also
 @c @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R}
 @c for pointers to commercialized versions of R.
 
-상업화 버전의 R의 지표는 http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R 를 참고하십시오.
+상업화 버전의 R의 지표는 @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R} 를 참고하십시오.
 
 
 @node R Web Interfaces, R Add-On Packages, R and S, Top
@@ -4591,14 +4606,12 @@ R> data.frame(x, y, z, monday, tuesday)
 @c explanations or solutions.  Please include an example that reproduces
 @c (e.g., @url{http://en.wikipedia.org/wiki/Reproducibility}) the problem,
 @c preferably the simplest one you have found.
-
 같은 버그를 생성하는 것 처럼 보이는 간단한 예제를 찾아서 시도해 보는것은 굉장히 유용하고, bug가 생성될 것 같지만 실제로는 그렇지 않은 간단한 예제를 찾아서 시도해 보는 것도 다소 유용합니다. 만약 문제를 debug하고 정확하게 어떤 것이 bug를 생성했는지를 찾고싶다면, 당신은 아주 훌륭합니다. 계속해서 실제 일어난 것을 보고해야만 하는 동시에 설명과 해결책들도 같이 보고해야합니다. 문제를 일으키는 예제를, 당신이 찾은 것들 중 가장 간단한 것들 (예, http://en.wikipedia.org/wiki/Reproducibility), 포함해 주십시오. 
 
 
 @c Invoking R with the @option{--vanilla} option may help in isolating a
 @c bug.  This ensures that the site profile and saved data files are not
 @c read.
-
 --vanilla옵션이 있는 R을 적용하는 것이 bug를 분리시키는데 도움을 줄지도 모릅니다. 이는 사이트 프로필과 저장된 데이터 파일들이 읽히지 않도록 확실히 합니다. 
 
 
@@ -4616,7 +4629,6 @@ R> data.frame(x, y, z, monday, tuesday)
 @c should be sent first to the package maintainer, and only submitted to
 @c the R-bugs repository by package maintainers, mentioning the package in
 @c the subject line.
-
 Bug 보고서를 실제로 제출하기 전에, 그 bug가 이미 보고되고/보고되거나 고쳐졌는지를 확인해야만 합니다. 첫번째로, “Show open bugs new-to-old”나http://bugs.R-project.org/의 검색 기능을 시도해 보십시오. 두번째로, Bug Tracker에도 나타나지 않는 고쳐진 bug들도 포함된, 다음번에 나올 R에서 보여질 수정사항들이 보고된 https://svn.R-project.org/R/trunk/doc/NEWS.Rd와 상담을 해 보십시오. 세번째로, 가능하다면 R의 현재 r-patched나 r-devel 버전을 시도해 보십시오. 만약 bug가 이미 보고되거나 고쳐졌다면, 추가의 bug 보고서들을 제출하지 말아주십시오. 마지막으로, bug가 R에 있는지, 혹은 기여 패키지에 있는지를 잘 체크 하십시오. 기여 패키지들에 대한 bug 보고서들은 패키지 관리자에게 첫번째로 보내져야만하고, 주제 라인에 패키지를 언급하여 패키지 관리자에 의해서만 R-bugs 저장소로 제출될 것입니다. 
 
 
@@ -4625,7 +4637,6 @@ Bug 보고서를 실제로 제출하기 전에, 그 bug가 이미 보고되고/�
 @c @url{http://bugs.R-project.org/}: for a contributed package it will open
 @c the package's bug tracker Web page or help you compose an email to the
 @c maintainer.
-
 Bug 보고서는function bug.report()를 사용하여 생성될 수 있습니다. R의 보고서들을 위해서 이는 http://bugs.R-project.org/ 웹페이지를 열 것입니다: 기여 패키지를 위해서 이는 패키지의 bug tracker 웹페이지를 열거나 관리자에게 이메일을 쓰는 것을 도와 줄 것입니다. 
 
 @c There is a section of the bug repository for suggestions for
@@ -4633,22 +4644,18 @@ Bug 보고서는function bug.report()를 사용하여 생성될 수 있습니다
 @c submitted in the same ways as bugs, but please ensure that the subject
 @c line makes clear that this is for the wishlist and not a bug report, for
 @c example by starting with @samp{Wishlist:}.
-
 R labeled ‘wishlist’의 향상을위한 제안들을 위한 bug 저장소의 섹션이 있습니다. 제안들은 bug들과 비슷한 방법으로 제출 할 수 있으나, subject line에, 예를들어 시작을‘Wishlist:’로 하는, 이가 bug 보고서가 아닌 wishlist를 위한 것이라는 것을 확실하게 해 주십시오. 
 
 
 @c Comments on and suggestions for the Windows port of R should be sent to
 @c @email{R-windows@@R-project.org}.
-
-R의 Windows port에 대한 코멘트나 제안사항들은  @email{R-windows@@R-project.org}로 보내져야만합니다.
+R의 Windows 포트에 대한 조언 및 제안사항들은 @email{R-windows@@R-project.org}로 보내져야 합니다.
 
 @c Corrections to and comments on message translations should be sent to the
 @c last translator (listed at the top of the appropriate @samp{.po} file)
 @c or to the translation team as listed at
 @c @url{http://developer.R-project.org/TranslationTeams.html}.
-
-메시지 번역에 대한 수정과 코멘트는 최근 번역자나 (적절한 ‘.po’ 파일의 상단에 리스트되어있는)  http://developer.R-project.org/TranslationTeams.html에 리스트된 번역팀에게 보내져야 합니다.
-
+메시지 번역에 관련한 수정 및 제안사항들은 해당 내용을 담고 있는 @samp{.po} 파일 상단에 명시된 마지막 번역자 또는 @url{http://developer.R-project.org/TranslationTeams.html}에 나열되어 있는 번역팀에게 보내어져야 합니다. 
 
 @node Acknowledgments,  , R Bugs, Top
 @c @chapter Acknowledgments
@@ -4664,12 +4671,25 @@ R의 Windows port에 대한 코멘트나 제안사항들은  @email{R-windows@@R
 
 @c More to come soon @dots{}
 
-물론, R 시스템의 Robert와 Ross, 그리고 패키지 writer들과 porter들에게도 추가로 대단히 감사합니다.
-특별히이 FAQ를 향상시키도록 저를 도와주신 Doug Bates, Peter Dalgaard, Paul Gilbert, Stefano
-Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D.
-Ripley, Anthony Rossini, 그리고 Andreas Weingessel의 comment들에 감사합니다.
-More to come soon ...
+R 시스템을 제공해 준 Robert와 Ross에게 감사의 말씀을 올리며, 패키지 작성자들과 포터(porters)들에게 또한 감사드립니다. 
+특히 본 @acronym{FAQ} 문서를 향상시킬 수 있는 코멘트를 제공해준 Doug Bates, Peter Dalgaard, Paul Gilbert, Stefano
+Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D. Ripley, Anthony Rossini, 그리고 Andreas Weingessel에게 감사드립니다.
 
+더 많은 내용들이 추가될 것입니다@dots{}
+
+본 한국어 문서는 @strong{R Development Translation Teams} (@url{http://developer.r-project.org/TranslationTeams.html}) 에서 @strong{Korean} 섹션을 담당하는 @strong{Korean R Translation Team}에 의해서 관리되고 있습니다. 
+문서의 수정과 재배포를 허락해 준 @strong{Kurt Hornik과 R Development Core Team}에게 감사를 드립니다.
+@c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
+
+아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다.
+의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 이 문서의 관리자 @email{gnustats@@korea.gnu.org}로 연락을 부탁드립니다. 
+
+@itemize @bullet
+@item Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
+@item Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
+@end itemize
+
+본 문서에 대한 참여 및 제안은 @email{ihelp-translators@@ihelp.r-forge.r-project.org} 메일링을 이용해주시길 부탁드립니다.
 
 @bye
 
