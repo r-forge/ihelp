@@ -598,16 +598,10 @@ $ ./configure --prefix=/where/you/want/R/to/go
 @c respectively.
 DVI, info, PDF 버전의 매뉴얼들을 설치하기 위해서는 @kbd{make install-dvi}, @kbd{make install-info}, @kbd{make install-pdf}을 각각 실행시키세요.
 
-@c starting from this point next time
-@c starting from this point next time
-@c starting from this point next time
-@c starting from this point next time
-@c starting from this point next time
-@c starting from this point next time
-
 
 @node How can R be installed (Windows), How can R be installed (Macintosh), How can R be installed (Unix-like), How can R be installed?
-@subsection How can R be installed (Windows)
+@c @subsection How can R be installed (Windows)
+@subsection Windows 에서는 R을 어떻게 설치해야 하나요?
 
 @c The @file{bin/windows} directory of a @CRAN{} site contains binaries for
 @c a base distribution and a large number of add-on packages from @CRAN{}
@@ -616,11 +610,9 @@ DVI, info, PDF 버전의 매뉴얼들을 설치하기 위해서는 @kbd{make ins
 @c Gentleman and Guido Masarotto, and is now being developed and maintained
 @c by @email{murdoch@@stats.uwo.ca, Duncan Murdoch} and
 @c @email{Brian.Ripley@@R-project.org, Brian D. Ripley}.
-
-CRAN 사이트의 bin/windows 디렉토리는 ix86 과 x86_64 칩상에서 돌아가는 Windows 2000 과 그 이후
-의 버전들 (64비트 포함)에서 돌아갈 수 있는 R base 배포판과 CRAN으로 부터 얻을 수 있는 방대한 양의
-애드온 패키지들에 대한 바이너리들을 포함하고 있습니다. 윈도우 버전의 R 은 Robert Gentleman 과
-Guido Masarotto 에 의해서 만들어 졌으고, 현재 Duncan Murdoch 와 Brian D. Ripley 에 의해서 개발
+@CRAN{} 사이트의 @file{bin/windows} 디렉토리는 ix86 과 x86_64 칩상에서 돌아가는 Windows 2000 과 그 이후
+의 버전들 (64비트 포함)에서 돌아갈 수 있는 R base 배포판과 방대한 양의 애드온(add-on) 패키지들에 대한 바이너리들을 포함하고 있습니다. 
+Windows 버전의 R은 Robert Gentleman과 Guido Masarotto에 의해서 만들어졌으며, 현재는 @email{murdoch@@stats.uwo.ca, Duncan Murdoch}와 @email{Brian.Ripley@@R-project.org, Brian D. Ripley}에 의해서 개발
 및 유지보수가 되고 있습니다.
 
 @c Note that when uncompressing the zip files, the pkunzip program needs to
@@ -630,15 +622,15 @@ Guido Masarotto 에 의해서 만들어 졌으고, 현재 Duncan Murdoch 와 Bri
 
 @c For most installations the Windows installer program will be the easiest
 @c tool to use.
+대부분의 경우, Windows 설치 프로그램 (installer)은 이용하기에 가장 쉬운 도구일 것입니다.
 
 @c See the @url{http://CRAN.R-project.org/bin/windows/base/@/rw-FAQ.html,
 @c ``R for Windows @acronym{FAQ}''} for more details.
-
-대부분의 경우, Windows 인스톨러 프로그램은 사용하기에 가장 쉬운 도구 일 것입니다. 보다 더 자세한 사
-항에 대해서는 "R for Windows FAQ" 를 참고하세요.
+보다 더 자세한 사항에 대해서는 @url{http://CRAN.R-project.org/bin/windows/base/@/rw-FAQ.html, ``R for Windows @acronym{FAQ}''}를 참고하세요.
 
 @node How can R be installed (Macintosh),  , How can R be installed (Windows), How can R be installed?
-@subsection How can R be installed (Macintosh)
+@c @subsection How can R be installed (Macintosh)
+@subsection Macintosh에서는 어떻게 R을 설치하나요? 
 
 @c The @file{bin/macosx} directory of a @CRAN{} site contains a standard
 @c Apple installer package inside a disk image named @file{R.dmg}.  Once
@@ -653,26 +645,26 @@ Guido Masarotto 에 의해서 만들어 졌으고, 현재 Duncan Murdoch 와 Bri
 @c @email{Stefano.Iacus@@R-project.org, Stefano Iacus}.  The
 @c @url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac
 @c OS X @acronym{FAQ}} has more details.
+@CRAN{} 사이트내의 @file{bin/macosx} 디렉토리는 @file{R.dmg}라는 이름의 디스크 이미지가 표준 Apple 인스톨러 패키지를 포함하고 있습니다. 
+이것을 다운로드 받아 실행시키면, 설치프로그램은 비개발자 배포판non-developer release)을 설치하게 될 것입니다.
+RAqua 는 네이브(naive) Mac OS X Darwin 버전의 R과 R.app Mac OS X @acronym{GUI}를 지칭합니다.
+@file{bin/macosx/powerpc/contrib/@var{x}.@var{y}} 디렉토리 내에는, R의 ``@var{x}.@var{y}'' 릴리즈에 대응되는 RAqua 와 함께 사용될 (Mac OS X 의 powerpc 버전을 위하여) 미리 빌드된 바이너리 패키지들이 있을 것입니다. 
+이러한 패키지들의 설치는 R.app @acronym{GUI}에 있는 ``Package'' 메뉴를 통하여 가능합니다. 
+Mac OS X 에 대한 이러한 R 포트 (port) 는 @email{Stefano.Iacus@@R-project.org, Stefano Iacus}에 의하여 유지 보수 됩니다. 
+더 자세한 사항에 대해서는 @url{http://CRAN.R-project.org/bin/macosx/RMacOSX-FAQ.html, ``R for Mac OS X @acronym{FAQ}} 를 참고하길 바랍니다.
 
 @c The @file{bin/macos} directory of a @CRAN{} site contains bin-hexed
 @c (@file{hqx}) and stuffit (@file{sit}) archives for a base distribution
 @c and a large number of add-on packages of R 1.7.1 to run under Mac OS 8.6
 @c to Mac OS 9.2.2.  This port of R for Macintosh is no longer supported.
 
-CRAN 사이트내의 bin/macosx 라는 디렉토리는 표준 Apple 인스톨러 패키지가 R.dmg 라는 디스크 이미
-지 안에 포함되어 있습니다. 이것을 다운로드 받아 실행시킨다면, 인스톨러는 현 비개발자 배포판을 설치하
-게 될 것입니다. RAqua 는 네이브(naive) Mac OS X Darwin 버전의 R 과 R.app Mac OS X GUI 을 지칭
-합니다. bin/macosx/powerpc/contrib/x.y 디렉토리 내에는, R의 "x.y" 릴리즈에 대응되는 RAqua 와 함께
-사용될 (Mac OS X 의 powerpc 버전을 위하여) 미리 빌드된 바이너리 패키지들이 있을 것입니다. 이러한
-패키지들의 설치는 R.app GUI 에 있는 "Package" 메뉴를 통하여 가능합니다. Mac OS X 에 대한 이러한
-R 포트 (port) 는 Stefano Iacus 에 의하여 유지 보수 됩니다. 더 자세한 사항에 대해서는 "R for Mac OS X
-FAQ" 를 참고하길 바랍니다.
 
 @node Are there Unix-like binaries for R?, What documentation exists for R?, How can R be installed?, R Basics
-@section Are there Unix-like binaries for R?
+@c @section Are there Unix-like binaries for R?
+@section Unix와 같은 바이너리들이 있나요?
 
 @c Linux binaries as of 2011-07-05:
-@c
+
 @c debian
 @c   etch-cran
 @c            i386   2.11.0  Johannes Ranke
@@ -708,8 +700,7 @@ FAQ" 를 참고하길 바랍니다.
 
 @c The @file{bin/linux} directory of a @CRAN{} site contains the following
 @c packages.
-
-CRAN 사이트의 bin/linux 디렉토리는 아래와 같은 패키지들을 포함하고 있습니다.
+@CRAN{} 사이트의 @file{bin/linux} 디렉토리는 다음과 같은 패키지들을 포함하고 있습니다.
 
 @quotation
 @multitable {Red Hat} {i386/x86_64} {hardy/lucid/natty/oneiric/precise} {Martyn Plummer}
@@ -734,16 +725,14 @@ CRAN 사이트의 bin/linux 디렉토리는 아래와 같은 패키지들을 포
 @c suitable for other Debian derivatives.  Native backports for Ubuntu are
 @c provided by Michael Rutter.
 
-Dirk Eddelbuettel 에 의해 유지보수되는 Debian 패지들은 오랜시간에 걸쳐 데비안 배포판의 일부분이 되
-어가고 있으며, 데비안 패키지 관리도구인 APT 를 통하여 쉽게 엑세스 될 수 있습니다. 즉, R 베이스 기본
-환경 구축 및 추천패키지들을 설치하기 위해서는 apt-get install r-base r-recommended 이라고 하시면
-됩니다. 만약, 소스로부터 R 패키지를 구축하기 원한다면, 이에 필요한 도구들을 설치하기 위해서 apt-get
-install r-base-dev 를 실행하면 됩니다. 안정적인 데비안 버전을 기반으로 하여 "backports" (백포트)라고
-불리는 현재의 R 패키지들은 Johannes Ranke 에 의하여 제공되며, CRAN 에서 엑세스가 가능합니다. 이
-와 관련하여 R 데비안 패키지들과 백포트를 설치하는 방법에 대해서는 http://CRAN.r-project.org
-/bin/linux/debian/README 를 읽어보시길 바랍니다. 중요한 점은 데비안으로 파생된 다른 배포판에서
-도 안정적으로 작동하게끔 해야합니다. 우분투에 대한 네이티브 백포트 (native backports)는 Michael
-Rutter 에 의해서 제공되어졌습니다.
+Dirk Eddelbuettel에 의해 유지보수되는 데비안(Debian) 패지들은 오랜 시간에 걸쳐 데비안 배포판의 일부분이 되어가고 있으며, 데비안 패키지 관리도구인 APT 를 통하여 쉽게 엑세스 될 수 있습니다. 
+R 기본 환경 및 추천 패키지들을 설치하기 위해서는 @code{apt-get install r-base r-recommended}을 입력하면 됩니다.
+만약, 원시코드(source)로부터 R 패키지를 빌드하고자 한다면, 이에 필요한 도구들을 설치하기 위해서 @code{apt-get
+install r-base-dev}이라고 입력하면 됩니다.
+최소한 @dfn{stable}(안정적인 버전의) 데비안에 적용이 될 수 있는 ``backport''라고 불리우는 R 패키지들은 Johannes Ranke에 의하여 제공되며, @CRAN{}으로부터 받을 수 있습니다.
+R 데비안 패키지들에 대한 사항들과 백포트(backport)를 설치하는 하는 방법에 대해서는 @url{http://CRAN.R-project.org/bin/linux/debian/README}를 살펴보시길 바랍니다.
+이는 데비안으로부터 파생된 다른 배포판에서도 안정적으로 작동될 것입니다.
+우분투를 위한 네이티브 백포트 (native backports)는 Michael Rutter에 의해서 제공됩니다.
 
 @c R binaries for Fedora, maintained by Tom ``Spot'' Callaway, are provided
 @c as part of the Fedora distribution and can be accessed through
@@ -759,21 +748,16 @@ Rutter 에 의해서 제공되어졌습니다.
 @c weeks until the Fedora RPM becomes publicly available, as it must pass
 @c through the statutory Fedora review process.
 
-Tom "Spot" Callaway 에 의해서 유지보수되는 Fedora (페도라)에 이용되는 R 바이너리는 페도라 배포판
-의 일부로서 제공되며 RPM 설치 및 업데이트 관리자인 yum 에 의해서 엑세스될 수 있습니다. 페도라 R
-RPM 은 사용자와 개발자에게 필요한 모든 구성요소들을 다 함께 설치해주는 메타패키지("meta-
-package")인데, 이는 R-core 와 R-devel 으로 구분되어집니다. 또한, 독립적인 R math library (libRmath
-와 libRmath-devel)를 설치할 수도 있으며, R 패키지들을 선택하여 설치하는 기능을 제공하고 있습니다.
-Enterprise Linux (EPEL) 프로젝트 (http://fedoraproject.org/wiki/EPEL) 에 대한 추가적인 패키지들은
-RedHat Enterprise Linux 와 이에 호환되는 배포판들에 대한 포트를 제공해줍니다. 새로운 버전의 R이 릴
-리즈될때, 페도라 RPM 에서 새버전을 사용하기 위해서는 최대 2주까지 지연될 가능성이 있습니다. 이는
-반드시 페도라내에 지정된 검증프로세스를 반드시 통과해야하기 때문입니다.
+Fedora(페도라)를 위한 R 바이너리들은 Tom ``Spot'' Callaway에 의해서 유지보수되며, 페도라 배포판의 일부로서 제공되며 RPM 설치 및 업데이트 관리프로그램인 @command{yum}을 통하여 엑세스 할 수 있습니다.
+페도라 R RPM 은 사용자와 개발자에게 필요한 모든 구성요소들을 다 함께 설치해주는 메타패키지(``meta-package'')인데, 이는 @code{R-core}와 @code{R-devel}으로 구분되어집니다. 
+또한, 독립적인 (standalone) R math library (@code{libRmath}와 @code{libRmath-devel})를 설치할 수 있으며, R 패키지들을 선택하여 설치하는 기능 역시 포함하고 있습니다.
+Enterprise Linux (EPEL) 프로젝트 (@url{http://fedoraproject.org/wiki/EPEL})를 위한 추가적인 패키지들은 RedHat Enterprise Linux와 이와 호환되는 배포판들을 위한 Fedora RPM의 포트를 제공합니다.
+새로운 버전의 R이 배포될때, 페도라 RPM 에서 새버전을 사용하기 위해서는 최대 2주까지 지연될 가능성이 있습니다. 
+이는 반드시 페도라내에 지정된 검증프로세스 (statuory Fedora review process)를 반드시 거쳐야 하기 때문입니다.
 
 @c See @url{http://CRAN.R-project.org/bin/linux/suse/README.html} for
 @c information about RPMs for openSUSE.
-
-openSUSE 에서 이용되는 RPM에 관한 정보는 http://cran.r-project.org/bin/linux/suse/README.html
-에서 살펴보시길 바랍니다.
+openSUSE 에서 이용되는 RPM에 관한 정보는 @url{http://CRAN.R-project.org/bin/linux/suse/README.html}를 살펴보시길 바랍니다.
 
 @c The @file{bin/osf} directory of a @CRAN{} site contains RPMs
 @c by Albrecht Gebhardt for alpha systems running Alpha Unix
@@ -789,8 +773,7 @@ openSUSE 에서 이용되는 RPM에 관한 정보는 http://cran.r-project.org/b
 
 @c No other binary distributions are currently publically available via
 @c @CRAN{}.
-
-현재로서는 CRAN 에서는 다른 바이너리 배포에 대해서 지원하지 않습니다.
+현재 다른 종류들에 대하여 공개적으로 @CRAN{}을 통해 이용가능한 바이너들은 없습니다.
 
 @c A ``live'' Linux distribution with a particular focus on R is
 @c @dfn{Quantian}, which provides a directly bootable and self-configuring
@@ -803,7 +786,8 @@ openSUSE 에서 이용되는 RPM에 관한 정보는 http://cran.r-project.org/b
 @c well download information.
 
 @node What documentation exists for R?, Citing R, Are there Unix-like binaries for R?, R Basics
-@section What documentation exists for R?
+@c @section What documentation exists for R?
+@section R에 대해서 어떤 문서들이 존재하나요?
 
 @c Online documentation for most of the functions and variables in R
 @c exists, and can be printed on-screen by typing @kbd{help(@var{name})}
@@ -811,90 +795,79 @@ openSUSE 에서 이용되는 RPM에 관한 정보는 http://cran.r-project.org/b
 @c the topic help is sought for.  (In the case of unary and binary
 @c operators and control-flow special forms, the name may need to be be
 @c quoted.)
-
-R 에서 사용할 수 있는 대부분의 함수들과 변수명에 대해서는 온라인 문서에 대한 지원이 이루어지고 있으
-며, 이들 문서에 대한 열람은 R 프롬프트에서 help(검색어) 혹은 ?검색어 라는 기능을 이용함으로서 확인
-해 볼 수 있습니다. 여기에서 사용되는 검색어는 도움을 얻고자하는 주제어입니다. (단항과 이항 연산자, 그
-리고 분기문과 같은 특수한 형태의 경우에는 검색어를 입력할때 따옴표를 함께 넣어주어야 할 경우도 있습
-니다).
+R에서 사용할 수 있는 대부분의 함수들과 변수들에 대해서는 온라인 문서가 있으며, 이들은 R 프롬프트에서 @kbd{help(@var{name})} (또는 @kbd{?@var{name}})이라고 입력함으로서 스크린을 통하여 확인할 수 있습니다.
+여기에서 @var{name}은 도움을 받고자 하는 주제를 의미합니다.
+(단항과 이항 연산자 (unary and binary operators), 그리고 분기문(control-flow)과 같은 특수한 형태의 경우에는 검색어를 입력할때 따옴표를 함께 넣어주어야 할 수도 있습니다).
 
 @c This documentation can also be made available as one reference manual
 @c for on-line reading in @HTML{} and PDF formats, and as hardcopy via
 @c @LaTeX{}, see @ref{How can R be installed?}.  An up-to-date @HTML{}
 @c version is always available for web browsing at
 @c @url{http://stat.ethz.ch/R-manual/}.
-
-본 문서 역시 온라인으로 HTML 과 PDF 을 통하여 읽을 수 있으며 LaTeX 를 이용하여 출력물으로 만들
-수도 있습니다. How can R be installed? 라는 섹션을 참고하세요. 가장 최신버전의 HTML 문서들은 항
-상 http://stat.ethz.ch/R-manual/ 에서 확인해 보실수 있습니다.
+본 문서 또한 @HTML{}과 PDF 형식으로 온라인으로 읽을 수 있는 하나의 참고메뉴얼(reference manual)이며, @LaTeX{}를 통하여 출력할 수도 있습니다.
+@ref{How can R be installed?}를 참고하시길 바랍니다.
+가장 최신버전의 @HTML{} 버전은 항상 @url{http://stat.ethz.ch/R-manual/}에서 확인해 보실수 있습니다.
 
 @c Printed copies of the R reference manual for some version(s) are
 @c available from Network Theory Ltd, at
 @c @url{http://www.network-theory.co.uk/R/base/}.  For each set of manuals
 @c sold, the publisher donates USD 10 to the R Foundation (@pxref{What is
 @c the R Foundation?}).
-
-R reference manual 의 몇몇 버전들은 Network Theory Ltd (http://www.network-theory.co.uk
-/R/base/) 에서 출판물로 간행되었습니다. 한 권의 매뉴얼이 판매될 때마다, 출판사는 R Foundation 에
-USD 10 (미국돈으로 10달러)를 기부합니다 (What is the R Foundation? 이라는 섹션을 참고하세요).
+일부 버전들에 대한 참고매뉴얼 (R reference manual)들은 Network Theory Ltd @url{http://www.network-theory.co.uk/R/base/}에서 구매할 수 있습니다.
+매뉴얼 한 부가 판매될 때마다, 출판사는 R Foundation (@pxref{What is the R Foundation?})에 USD 10 (미국돈으로 10달러)를 기부합니다.
 
 @c The R distribution also comes with the following manuals.
+R은 다음과 같은 매뉴얼들과 함께 배포되고 있습니다.
 
-R 은 아래와 같은 매뉴얼과 함께 배포됩니다.
 
+@c start from this point next time 
+@c start from this point next time 
+@c start from this point next time 
+@c start from this point next time 
+@c start from this point next time 
+@c start from this point next time 
 
 @itemize @bullet
 @item ``An Introduction to R'' (@file{R-intro})
 @c includes information on data types, programming elements, statistical
 @c modeling and graphics.  This document is based on the ``Notes on
 @c @SPLUS{}'' by Bill Venables and David Smith.
-문서는 데이터형, 프로그래밍에 필요한 기초요소들, 통계 모델링
-과 그래픽에 대한 기본적인 정보를 포함하고 있습니다. 이 문서는 본래 Bill Venables 과 David Smith
-가 작성한 "Notes on S-Plus" 라는 문서를 기초로 하여 작성되었습니다.
+는 데이터의 유형, 프로그래밍 구성요소들, 통계 모델링과 그래픽스에 대한 정보를 포함하고 있습니다. 
+이 문서는 Bill Venables과 David Smith가 작성한 ``Notes on S-Plus''라는 문서를 토대로 하고 있습니다.
 
 @item ``Writing R Extensions'' (@file{R-exts})
 @c currently describes the process of creating R add-on packages, writing R
 @c documentation, R's system and foreign language interfaces, and the R
 @c @acronym{API}.
-
-문서는 R 애드온 패키지들을 제작하는 과정, R 문서를 작성하는
-요령, R 시스템과 다른 프로그래밍 언어들과 인터페이싱, 그리고 R API 에 대해서 기술하고 있습니
-다.
+는 R 애드온(add-on) 패키지의 작성절차, R 문서 작성요령, R과 다른 언어들과의 인터페이스, 그리고 @acronym{API}에 대해서 기술하고 있습니다.
 
 @item ``R Data Import/Export'' (@file{R-data})
 @c is a guide to importing and exporting data to and from R.
-는 데이터 입출력에 대한 가이드입니다
+는 데이터 입출력에 대한 가이드입니다.
 
 @item ``The R Language Definition'' (@file{R-lang}),
 @c a first version of the ``Kernighan & Ritchie of R'', explains
 @c evaluation, parsing, object oriented programming, computing on the
 @c language, and so forth.
-
-은 "Kernighan & Ritchie of R" 이라는 문서의 가장 처음버
-전이며, 이 문서는 이밸류에이션 (evaluation), 파싱 (parsing, 구문해석), 객체지향 프로그래밍
-(object oriented programming), 컴퓨팅 (computing) 과 같은 내용들을 다루고 있습니다.
+는 ``Kernighan & Ritchie of R''이라는 문서의 최초 버전이기도 하며, 이밸류에이션(evaluation, 평가, 파싱(parsing, 구문해석), 객체지향 프로그래밍 (object oriented programming), 연산(computing) 등의 내용을 다루고 있습니다.
 
 @item ``R Installation and Administration'' (@file{R-admin}).
 @item ``R Internals'' (@file{R-ints})
 @c is a guide to R's internal structures.
 @c (Added in R 2.4.0.)
-
-R의 내부구조에 대한 안내서이며 R-2.4.0 버전부터 추가되었습니다.
+R의 내부구조(internal structure)에 대한 가이드입니다 (R-2.4.0에서 추가되었습니다).
 @end itemize
 
 @c An annotated bibliography (Bib@TeX{} format) of R-related publications
 @c can be found at
-R 과 관련된 출판물들에 대한 정보는 BibTex 형식으로 아래의 주소에서 제공됩니다.
-
+R과 관련된 문헌(publications)들에 대한 정보는 Bib@TeX{} 형식으로 아래의 주소에서 찾아 볼 수있습니다.
 
 @display
 @url{http://www.R-project.org/doc/bib/R.bib}
 @end display
 
 @c Books on R by R Core Team members include
-
-R Core Team 멤버들에 의해서 작성된 책들은 다음과 같습니다.
-
+R 코어팀 멤버들에 의해서 씌여진 책들은 아래와 같습니다.
 
 @quotation
 John M. Chambers (2008), ``Software for Data Analysis: Programming with
@@ -932,20 +905,20 @@ Jose C. Pinheiro and Douglas M. Bates (2000), ``Mixed-Effects Models in
 S and S-Plus''. Springer, ISBN 0-387-98957-0.
 @end quotation
 
-마지막으로, 최근것은 아니지만, Ross 와 Robert 가 R 을 디자인하고 구현하면서 겪은 경험들에 대해서는
-다음의 문서에 기록되어 있습니다.
 @c Last, but not least, Ross' and Robert's experience in designing and
 @c implementing R is described in 
+마지막으로, 최근의 것은 아니지만, Ross와 Robert가 R을 디자인하고 구현하면서 겪은 경험이 다음의 문서에 기록되어 있습니다.
 Ihaka & Gentleman (1996), ``R: A Language
 for Data Analysis and Graphics'',
 @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of
 Computational and Graphical Statistics}}, @strong{5}, 299--314.
 
 @node Citing R, What mailing lists exist for R?, What documentation exists for R?, R Basics
-@section Citing R
+@c @section Citing R
+@section R을 인용하는 방법
 
 @c To cite R in publications, use
-R 을 출판물에 인용하고자 한다면 다음의 BibTeX 정보를 이용하세요.
+R을 참고자료로서 인용하고자 한다면, 아래의 Bib@TeX{}를 이용하시면 됩니다.
 @example
 @group
 @@Manual@{,
@@ -963,30 +936,27 @@ R 을 출판물에 인용하고자 한다면 다음의 BibTeX 정보를 이용�
 
 @c Citation strings (or Bib@TeX{} entries) for R and R packages can also be
 @c obtained by @code{citation()}.
-
-R 과 R 패키지들에 대한 BibTeX 엔트리 혹은 인용정보는 citation() 을 통하여 얻을 수 있습니다.
+R과 R 패키지들에 대한 Bib@TeX{} 항목들또는 인용정보들은 @code{citation()}을 통하여 얻을 수 있습니다.
 
 @node What mailing lists exist for R?, What is CRAN?, Citing R, R Basics
-@section What mailing lists exist for R?
+@c @section What mailing lists exist for R?
+@section 어떤 메일링 리스트가 있나요?
 
 @c Thanks to @email{Martin.Maechler@@R-project.org, Martin Maechler}, there
 @c are four mailing lists devoted to R.
-우리는 R 에 아래의 네가지 메일링 리스트를 제공해준 Martin Maechler 에 감사를 드립니다.
+이러한 서비스를 제공해 준 @email{Martin.Maechler@@R-project.org, Martin Maechler}에게 감사를 드립니다.
+네가지 종류의 메일링 리스트가 있습니다.
 
 @table @code
 @item R-announce
 @c A moderated list for major announcements about the development of R and
 @c the availability of new code.
-
-R 의 개발과 새로운 코드들에 대한 이용가능성에 대한 중요한 공지사항들에 대한 메
-일링 리스트입니다.
+는 R의 개발과 새로운 코드의 유용성에 관한 주요 공지사항들을 위한 (moderated) 리스트입니다.
 
 @item R-packages
 @c A moderated list for announcements on the availability of new or
 @c enhanced contributed packages.
-
-새롭게 개발되거나, 주요기능들이 강화된 패키지들에 대한 공지사항들에 대한 소식을
-접할 수 있습니다.
+는 새롭게 개발되거나 주요기능들이 강화된 패키지들의 유용성에 대한 공지사항들을 위한 (moderated) 리스트입니다.
 
 @item R-help
 @c The `main' R mailing list, for discussion about problems and solutions
@@ -995,36 +965,32 @@ R 의 개발과 새로운 코드들에 대한 이용가능성에 대한 중요�
 @c enhancements and patches to the source code and documentation of R,
 @c comparison and compatibility with S and @SPLUS{}, and for the posting of
 @c nice examples and benchmarks.
-
-R 을 사용함에 있어서 겪는 문제점들과 이들에 대한 해법에 대하여 논의하는 가장 중요한
-메일링 리스트라고 할 수 있습니다. R-announce와 R-packages 에서는 공지되지 않았지만 R 의 개
-발 및 새코드의 이용가능성에 대한 내용을 접할 수 있습니다.
+은 R을 사용하면서 겪는 문제들과 이들에 대한 해법들을 논의하는 목적으로 사용되는 주된 메일링 리스트입니다.
+R의 개발과 새로운 코드들의 유용성에 관하여 `R-announce'와 `R-packages'에서 다루지 않은 공지사항들을 포함하기도 하며, R의 원시코드와 문서에 대한 강화된 기능 및 패치들에 대한 내용을 다루기도 합니다.
+S와 @SPLUS{}와의 호환성과 비교에 대한 내용도 있으며, 좋은 예제들과 벤치마크들을 포스팅할 목적으로도 사용합니다.
 
 @item R-devel
 @c This list is for questions and discussion about code development in R.
 @c discussions about the future of R, proposals of new functionality, and
 @c pre-testing of new versions.  It is meant for those who maintain an
 @c active position in the development of R.
-
-R 의 코드개발에 대한 질문과 토론내용을 담고 있는 리스트입니다
+는 R의 코드개발 (code development)에 관한 질문들과 논의를 위한 리스트입니다.
+R의 미래에 대한 논의, 새로운 기능에 대한 제안, 그리고 새로운 버전에 대한 테스트를 목적으로 이용될 수 있습니다.
+이 리스트는 R의 개발에 적극적인 자세 (active position)을 유지하는 사람을 위한 것입니다.
 @end table
 
 @noindent
 @c Please read the @url{http://www.R-project.org/posting-guide.html,
 @c posting guide} @emph{before} sending anything to any mailing list.
-
-위에 있는 어느 메일링 리스트에 내용을 보내기전에 먼저 포스팅 가이드를 읽어보시길 바랍니다.
+위에서 나열한 어떠한 종류의 메일링 리스트에 어떤 내용을 보내기 @emph{전에 반드시} @url{http://www.R-project.org/posting-guide.html, posting guide(포스팅 가이드)}를 읽어보시길 바랍니다.
 
 @c Note in particular that R-help is intended to be comprehensible to
 @c people who want to use R to solve problems but who are not necessarily
 @c interested in or knowledgeable about programming.  Questions likely to
 @c prompt discussion unintelligible to non-programmers (e.g., questions
 @c involving C or C++) should go to R-devel.
-
-R-help 는 본래 R 을 이용하여 본인의 문제를 해결하고자 하지만, 프로그래밍에 대한 지식이 부족한 분들
-을 위해서 개설되었습니다. 그래서, 프로그래머가 아닌 사람들이 이해하기 어려운 질문들 (즉, C 혹은 C++
-과 같은 내용)은 R-devel 에 올리셔야 합니다.
-
+R-help 는 본래 R을 이용하여 본인의 문제를 해결하고자 하지만 프로그래밍에 대한 지식이 부족한 분들을 위해서 개설되었다는 것을 아셨으면 합니다. 
+따라서, 프로그래머가 아닌 사람들이 이해하기 어려운 질문들 (즉, C 혹은 C++ 과 연관된 내용)은 R-devel을 이용하시길 부탁드립니다.
 
 @c Convenient access to information on these lists, subscription, and
 @c archives is provided by the web interface at
@@ -1032,11 +998,8 @@ R-help 는 본래 R 을 이용하여 본인의 문제를 해결하고자 하지�
 @c (or unsubscribe) via email, e.g.@: to R-help by sending @samp{subscribe}
 @c (or @samp{unsubscribe}) in the @emph{body} of the message (not in the
 @c subject!) to @email{R-help-request@@lists.R-project.org}.
-
-이러한 메일링 리스트들에 대한 구독 및 보관된 자료들에 대한 열람은 http://stat.ethz.ch/mailman
-/listinfo/ 에서 손쉽게 하실 수 있으며, 이메일을 통한 구독 (혹은 비구독)을 할 수 도 있습니다. R-help 에
-대한 메일링을 구독하기 위해서는 r-help-request@@lists.r-project.org 로 이메일을 보낼때 이메일 제목이
-아닌 이메일 본문에 단순히 'subscribe'(구독) 혹은 'unsubscribe' (구독안함) 이라고 보내주세요.
+이러한 메일링 리스트들에 대한 구독 및 보관된 자료들에 대한 열람은 @url{http://stat.ethz.ch/mailman/listinfo/}을 통하여 손쉽게 하실 수 있습니다.
+이는 @email{R-help-request@@lists.R-project.org}에 이메일을 보낼 때 subject(제목)이 아닌 @emph{body(본문)}에 @samp{subscribe(구독)} (또는 @samp{unsubscribe(구독해지)}라고 이메일을 보냄으로서 이용하실 수 있습니다.
 
 @c Send email to @email{R-help@@lists.R-project.org} to send a message to
 @c everyone on the R-help mailing list.  Subscription and posting to the
@@ -1045,43 +1008,34 @@ R-help 는 본래 R 을 이용하여 본인의 문제를 해결하고자 하지�
 @c Note that the R-announce and R-packages lists are gatewayed into R-help.
 @c Hence, you should subscribe to either of them only in case you are not
 @c subscribed to R-help.
-
-R-help 메일링 리스트에 있는 모든 사람들에게 메시지를 보내기 위해서는 r-help@@lists.r-project.org 로
-이메일을 보내세요. 다른 메일링 리스트에 대하여 구독 및 포스팅 요령은 r-help 와 동일합니다. 단순히,
-'R-help' 대신에 'R-announce', 'R-packages', 그리고 'R-devel' 이라고만 변경해주시면됩니다. 여기에서
-알아두어야 할 점은 R-announce 와 R-packages 메일링 리스트들은 R-help 를 구독하기 위한 일종의 게
-이트웨이이므로, 만약 R-help 를 구독하지 않는 상태라면 둘중에 하나는 구독해야 합니다.
+R-help 메일링 리스트를 구독하는 모든 이들에게 메시지를 보내기 위해서는 @email{R-help@@lists.R-project.org}로 이메일을 보내주세요.
+다른 메일링 리스트들의 구독 및 포스팅 요령은 r-help와 동일합니다. 
+@samp{R-help} 대신에 @samp{R-announce}, @samp{R-packages}, @samp{R-devel} 이라고만 변경해주시면 됩니다.
+R-announce과 R-packages는 R-help에 이르는 과정이라는 점을 아시길 바랍니다.
+만약 R-help를 구독하고 있지 않다면 둘 중 어느 하나는 구독을 해야합니다.
 
 @c It is recommended that you send mail to R-help rather than only to the R
 @c Core developers (who are also subscribed to the list, of course).  This
 @c may save them precious time they can use for constantly improving R, and
 @c will typically also result in much quicker feedback for yourself.
-
-@strong{사용자가 R 코어멤버들에게 이메일을 보내기 보다는 R-help 메일링을 통하여 커뮤니케이션을 하기를 권
-장합니다} (R 코어멤버들 역시 메일링을 받고 있습니다). 그 이유는 지속적으로 R을 향상시키는데 있어서
-많은 시간을 줄여주기도 할 뿐더러, 질문자가 가장 빠른시간내에 답변을 받을 수 있는 길이기도 하기 때문
-입니다.
+@strong{사용자가 R 코어 개발자들에게 개별적으로 이메일을 보내기 보다는 R-help에 메일을 보내주시길 부탁드립니다 (코어 멤버들 역시 메일링을 사용하고 있습니다)}. 
+이러한 부탁을 하는 이유는 코어 개발자들이 지속적으로 R을 향상시키는데 있어서 많은 시간을 줄여주기도 할 뿐더러, 질문자가 가장 빠른 시간내에 답변을 받을 수 있기 때문입니다. 
 
 @c Of course, in the case of bug reports it would be very helpful to have
 @c code which reliably reproduces the problem.  Also, make sure that you
 @c include information on the system and version of R being used.  See
 @c @ref{R Bugs} for more details.
-
-당연히, 버그를 정확하게 재구현할 수 있도록 코드를 올려주는 형식의 버그리포팅은 매우 도움이 됩니다.
-또한, 이러한 버그를 보고할 때 사용자가 어떤 시스템과 어떤 버전의 R 을 사용하는지 꼭 알려주십시요. 더
-자세한 사항에 대해서는 R Bugs 섹션을 참고 하세요.
+버그리포트를 할 때에는 버그를 정확하게 재구현할 수 있도록 코드를 함께 올려주시면 매우 도움이 됩니다.
+또한, 이러한 버그를 보고할 때 사용자가 어떤 시스템과 어떤 버전의 R 을 사용하는지 알려주시길 부탁드립니다.
+더 자세한 사항들에 대해서는 @ref{R Bugs}를 살펴보세요.
 
 @c See @url{http://www.R-project.org/mail.html} for more information on
 @c the R mailing lists.
-
-R 메일링 리스트들에 대한 좀 더 많은 정보를 구독하기 위해서는 http://www.r-project.org/mail.html 을
-확인하기 부탁바랍니다.
+R 메일링 리스트들에 대한 좀 더 많은 정보를 알고 싶으시다면 @url{http://www.R-project.org/mail.html}을 살펴보시길 바랍니다.
 
 @c The R Core Team can be reached at @email{R-core@@lists.R-project.org}
 @c for comments and reports.
-
-R 코어팀 멤버들은 코멘트와 보고사항에 대해서 r-core@@lists.r-project.org 메일링 리스트에 접속할 수 있
-습니다.
+코멘트와 리포트들을 @email{R-core@@lists.R-project.org}을 통하여 R 코어팀에 보내주실 수 있습니다.
 
 @c Many of the R project's mailing lists are also available via
 @c @url{http://gmane.org, Gmane}, from which they can be read with a web
@@ -1089,28 +1043,22 @@ R 코어팀 멤버들은 코멘트와 보고사항에 대해서 r-core@@lists.r-
 @c @uref{http://dir.gmane.org/@/index.php?prefix=gmane.comp.lang.r.}@: for
 @c the available mailing lists, and @uref{http://www.gmane.org/rss.php} for
 @c details on RSS feeds.
-
-R project 의 메일링 리스트들의 대부분은 또한 웹브라우저에서 NNTP 뉴스리더 혹은 RSS 피드를 통하여
-읽을 수 있는 Gmane 을 통해서 볼 수 있습니다. 더 구체적인 사항은 http://dir.gmane.org
-/index.php?prefix=gmane.comp.lang.r. 에서 확인하시길 바라고, RSS 피드에 대한 내용은
-http://www.gmane.org/rss.php 에서 확인해주세요.
+R project의 메일링 리스트들의 대부분은 또한 NNTP 뉴스리더를 이용하는 웹브라우저를 이용하여 읽을 수 있는 @url{http://gmane.org, Gmane} 또는 RSS 피드를 통해서 이용할 수 있습니다.
+사용가능한 메일링 리스트들에 대해서는 @uref{http://dir.gmane.org/@/index.php?prefix=gmane.comp.lang.r.}에서 확인하시길 바라며, RSS 피드에 대한 더 자세한 사항들은 @uref{http://www.gmane.org/rss.php}에서 확인부탁드립니다.
 
 @node What is CRAN?, Can I use R for commercial purposes?, What mailing lists exist for R?, R Basics
-@section What is @acronym{CRAN}?
+@c @section What is @acronym{CRAN}?
+@section @acronym{CRAN}이란 무엇인가요?
 
 @c The ``Comprehensive R Archive Network'' (@CRAN{}) is a collection of
 @c sites which carry identical material, consisting of the R
 @c distribution(s), the contributed extensions, documentation for R, and
 @c binaries.
-
-"Comprehensive R Archive Network" (CRAN) 은 R 배포판(들), 기여된 확장요소들 (즉, 패키지들), R 에
-관련된 문서들, 그리고 바이너리들을 동일하게 제공할 수 있는 사이트들의 모음을 의미합니다.
+``Comprehensive R Archive Network'' (@CRAN{})은 R 배포판, 기여된 확장 프로그램들 (즉, 패키지들), R과 관련된 문서들, 그리고 바이너리들로 구성되어 있는 동일한 자료들을 전달하는 사이트들의 모음을 의미합니다.
 
 @c The @CRAN{} master site at Wirtschaftsuniversit@"at Wien, Austria, can
 @c be found at the @acronym{URL}
-
-Austria 의 Wirtschaftsuniversität Wien 에 있는 CRAN 마스터 사이트는 아래의 주소로부터 찾을 수 있습
-니다.
+다음의 @acronym{URL}로부터 오스트리아(Austria) 빈(Wien) Wirtschaftsuniversit@"에서 @CRAN{} 마스터 사이트를 찾을 수 있습니다.
 
 @quotation
 @c @multitable @columnfractions .45 .30
@@ -1123,10 +1071,7 @@ Austria 의 Wirtschaftsuniversität Wien 에 있는 CRAN 마스터 사이트는 
 @noindent
 @c (which is the same as @url{http://cran.at.R-project.org/})
 @c Daily mirrors are available at @acronym{URL}s including
-
-
-Daily 미러들은 아래와 같습니다.
-
+데일리 미러(daily mirrors)들은 @acronym{URL}에서 찾을 수 있습니다.
 
 @quotation
 @multitable @columnfractions .45 .40
@@ -1161,10 +1106,18 @@ Daily 미러들은 아래와 같습니다.
 @c See @url{http://CRAN.R-project.org/mirrors.html} for a complete list of
 @c mirrors.  Please use the @CRAN{} site closest to you to reduce network
 @c load.
+미러들의 모든 목록에 대해서는 @url{http://CRAN.R-project.org/mirrors.html} 를 참고해주세요.
+네트워크 부담을 줄이기 위해서 현재 접속하고 계신 위치에서 가장 가까운 위치에 있는 @CRAN{} 사이트를 이용해주세요.
 
-미러들에 대한 목록에 대해서는 http://cran.r-project.org/mirrors.html 페이지를 참고 해주세요. 네트워
-크의 부담을 줄이기 위해서 사용자가 현재 접속하고 있는 위치에서 가장 가까운 CRAN 사이트를 이용해주
-세요.
+
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+@c start from this point next time
+
+
 
 @c From @CRAN{}, you can obtain the latest official release of R, daily
 @c snapshots of R (copies of the current source trees), as gzipped and
