@@ -1,8 +1,8 @@
 @c 
-@c Modified by Chel Hee Lee on 2013-JUL-10
+@c Modified by Chel Hee Lee on 2013-JUL-14
 @c 
 @c 교정작업 실시: 2013-JUL-10 
-@c 처음부터 up to chapter 2 R Basics
+@c 처음부터 up to chapter 3 R and S
 @c 
 
 \input texinfo
@@ -2000,14 +2000,14 @@ S에서 @code{atan(x1, x2)}라고 호출을 하는 것은 R에서  @code{atan2(x
 물론, 스스로가 변경을 해 본뒤에 이 변경이 확실하게 작동하는가를 확인해준다면 더욱 유용합니다. 
 
 @node Is there anything R can do that S-PLUS cannot?, What is R-plus?, What are the differences between R and S?, R and S
-@section Is there anything R can do that @sc{S-Plus} cannot?
+@c @section Is there anything R can do that @sc{S-Plus} cannot?
+@section @sc{S-Plus}는 할 수 없지만 R이 할 수 있는것이 있나요?
 
 @c Since almost anything you can do in R has source code that you could
 @c port to @SPLUS{} with little effort there will never be much you can do
 @c in R that you couldn't do in @SPLUS{} if you wanted to.  (Note that
 @c using lexical scoping may simplify matters considerably, though.)
-
-R에서 할수있는 거의 모든 것들은 약간의 노력만으로 S-Plus로 포트할 수 있는 소스 코드들이 있기때문에 S-Plus에서 하지 못했던것을 R에서 할 수 있는 것은 절대 없을 것 입니다. (lexical scoping의 사용이 문제를 상당히 단순화 시킬지도 모른다는것을 유의하십시오.)
+R에서 할 수 있는 거의 모든 것들은 약간의 노력만으로 @SPLUS{}로 포트할 수 있는 소스 코드들이 있기때문에 @SPLUS{}에서 하지 못하는 것을 R에서 할 수 있지는 않을 것입니다 (그러나, 렉시컬 스코핑을 이용하는 것은 상당히 문제를 단순화 시킬 수도 있습니다).
 
 @c R offers several graphics features that @SPLUS{} does not, such as finer
 @c handling of line types, more convenient color handling (via palettes),
@@ -2019,9 +2019,10 @@ R에서 할수있는 거의 모든 것들은 약간의 노력만으로 S-Plus로
 @c Annotation in Plots'', @url{http://www.amstat.org/publications/jcgs/, ,
 @c @emph{Journal of Computational and Graphical Statistics}}, @strong{9},
 @c 582--599.
-
-R은 선 종류의 더 나은 처리, (palette를 통한) 더 편리한 색 처리, 색 gamma 보정, 그리고 가장 중요하게,  TeX construct들을 연상시키는 input 표현들을 통한  plot text들의 수학 주석과 같은 S-Plus에는 없는 몇몇의 그래픽 기능들을 제공합니다. 온라인 인상적인 예시를 포함하고있는 Plotmath는 help page를 참고하십시오. 더 자세한 내용은Paul Murrell and Ross Ihaka (2000), “An Approach to Providing Mathematical Annotation in Plots”, Journal of Computational and Graphical Statistics, 9, 582–599 에서 찾을 수 있습니다.  
-
+R은 @SPLUS{}에서는 없는 몇가지 그래픽 기능들을 제공합니다.
+라인(line)의 종류를 다루는데 더 나은 처리, (팔레트를 통한) 더 편리한 색상 관리, 색의 감마 보정, 그리고 가장 중요한 것은 @TeX{}와 같은 입력을 이용하여 플랏 텍스트에 수학적 주석을 나타내는 것등입니다.
+이러한 기능들을 볼 수 있는 좋은 예제들을 @code{plotmath} 도움말을 살펴보시길 바랍니다.
+더 자세한 내용들은 Paul Murrell and Ross Ihaka (2000), ``An Approach to Providing Mathematical Annotation in Plots'', @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal of Computational and Graphical Statistics}}, @strong{9}, 582--599 에서 찾아 볼 수 있습니다. 
 
 @node What is R-plus?,  , Is there anything R can do that S-PLUS cannot?, R and S
 @c @section What is R-plus?
@@ -2041,7 +2042,6 @@ R은 선 종류의 더 나은 처리, (palette를 통한) 더 편리한 색 처�
 @c REvolution R}, an enterprise-class statistical analysis system based on
 @c R, suitable for deployment in professional, commercial and regulated
 @c environments.
-
 @url{http://www.revolution-computing.com/, REvolution Computing}은 R에 기초를 둔 기업용 통계시스템(enterprise-class statistical analysis system), 전문가용, 상업용, 그리고 규제된 환경 배치에 적합한 @url{http://www.revolution-computing.com/products/revolution-r.php, REvolution R}을 선보였습니다.  
 
 
@@ -2050,14 +2050,12 @@ R은 선 종류의 더 나은 처리, (palette를 통한) 더 편리한 색 처�
 @c RStat}, an enterprise-strength statistical computing environment which
 @c combines R with enterprise-level validation, documentation, software
 @c support, and consulting services, as well as related R-based products.
-
-@url{http://www.random-technologies-llc.com/, Random Technologies}, R을 기업용 validation, documentation, 소프트웨어 지원과 상담 서비스들, 그리고 R-based 제품들을 결합한 기업 강화 통계 컴퓨터 조작 환경인, @url{http://random-technologies-llc.com/products/RStat/rstat, RStat}을 제공합니다. 
+@url{http://www.random-technologies-llc.com/, Random Technologies}는 R을 기업수준의 밸리데이션, 문서화 및 소프트웨어 지원과 상담 서비스들, 그리고 R 기반의 제품들을 결합한 기업의 통계컴퓨팅 환경인 @url{http://random-technologies-llc.com/products/RStat/rstat, RStat}을 제공합니다. 
 
 @c See also
 @c @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R}
 @c for pointers to commercialized versions of R.
-
-상업화 버전의 R의 지표는 @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R} 를 참고하십시오.
+커머셜 버전의 R에 대해서는 @url{http://en.wikipedia.org/wiki/R_programming_language#Commercialized_versions_of_R} 를 참고하십시오.
 
 
 @node R Web Interfaces, R Add-On Packages, R and S, Top
