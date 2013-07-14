@@ -94,7 +94,7 @@ p {
 <ul>
 <li><a href="#Vectors-and-assignment">2.1 벡터와 할당</a>
 <li><a href="#Vector-arithmetic">2.2 벡터 연산</a>
-<li><a href="#Generating-regular-sequences">2.3 일반적인 수열 생성하기</a>
+<li><a href="#Generating-regular-sequences">2.3 일반적인 수열의 생성</a>
 <li><a href="#Logical-vectors">2.4 논리형 벡터</a>
 <li><a href="#Missing-values">2.5 결측값</a>
 <li><a href="#Character-vectors">2.6 문자형 벡터</a>
@@ -1149,10 +1149,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
    <p class="noindent"><!-- the reciprocals of the five values would be printed at the terminal (and -->
 <!-- the value of @code{x}, of course, unchanged). -->
 
-   <p>만약, 위의 명령문을 실행하면 (위에서 할당한) <code>x</code>의  다섯 개의 숫자의 역수 다섯 개가 출력 됩니다.
+   <p>이제 위의 명령문을 실행하여 (위에서 할당한) <code>x</code>의  다섯 개 숫자의 역수 다섯 개를 출력 해 봅시다.
 
 <!-- The further assignment -->
-   <p>이제 여기에 할당 연산자를 적용해보도록 합니다. 
+   <p>다음은 여기에 할당 연산자를 적용해보도록 합니다. 
 다음의 할당문은 2개의 <code>x</code> 벡터 사이에 0 을 입력한, 총 11개의 숫자로 구성된 <code>y</code> 라는 새로운 벡터를 생성 합니다.
 
 <pre class="example">     &gt; y &lt;- c(x, 0, x)
@@ -1184,7 +1184,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <p>벡터(vector)는 요소 단위의 (element by element) 산술연산 표현식(arithmetic expression)에 사용 가능 합니다. 이 때, 같은 (산술) 표현식 내의 벡터들이 모두 같은 길이를 가질 필요는 없습니다. 
 만약, 벡터들의 길이가 다르면 가장 긴 길이의 벡터를 기준으로, 상대적으로 짧은 길이를 갖는 벡터는 긴 벡터의 길이에 맞추기 위해 그 구성 요소를 재활용(<em>recycled</em>)하여 연산을 수행 합니다. 즉, 더 짧은 길이의 벡터는 가장 긴 벡터와 같은 길이를 같도록 구성 요소를 필요한 만큼 (경우에 따라서는 일부만) 반복 사용 합니다. 특히, 벡터의 길이가 1인 상수(constant)를 벡터와의 연산에 사용할 경우, 이 상수가 벡터의 길이만큼 반복되서 사용 됩니다.
 
-   <p>위의 예제를 이용해서 설명하면, 다음 명령문을 실행하면 R은 연산을 하기 전 <code>x</code>의 길이를 <code>y</code>에 맞추기 위해서 그 구성 요소를 2.2 번 반복해서 길이 11의 벡터를 만듭니다. 그리고, 2를 <code>x</code> 의 각 요소에 곱한 뒤 (11번의 곱하기 연산이 필요합니다), <code>y</code>의 각 요소와 더하기 연산을 수행합니다. 마지막으로 상수 <code>1</code>과의 더하기 연산 역시 11 번에 걸쳐 수행하며, 이렇게 벡터의 각 요소별로 수행된 연산의 결과는 길이 11의 벡터인 <code>v</code>에 할당 됩니다.
+   <p>위의 예제를 이용해서 설명하면, 다음 명령문을 실행하면 R은 연산을 하기 전 <code>x</code>의 길이를 <code>y</code>에 맞추기 위해서 그 구성 요소를 대략 2.2 번 반복하여 길이 11의 벡터를 만듭니다. 그리고, 2를 <code>x</code> 의 각 요소에 곱한 뒤 (11번의 곱하기 연산이 필요합니다), <code>y</code>의 각 요소와 더하기 연산을 수행합니다. 마지막으로 상수 <code>1</code>과의 더하기 연산 역시 11 번에 걸쳐 수행하며, 이렇게 벡터의 각 요소별로 수행된 연산의 결과는 길이 11의 벡터인 <code>v</code>에 할당 됩니다.
 
    <p><a name="index-Recycling-rule-19"></a>
 <pre class="example">     &gt; v &lt;- 2*x + y + 1
@@ -1214,7 +1214,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
    <p><a name="index-max-32"></a><a name="index-min-33"></a>
 <!-- @code{range} is a function whose value is a vector of length two, namely -->
 <!-- @code{c(min(x), max(x))}. -->
-<code>range</code>는 주어진 벡터 <code>x</code>의 최소값과 최대값을 <code>c(min(x), max(x))</code>의 형태로 출력하며, 이름 그대로 벡터 변수의 범위를 구하고자 할 때 사용됩니다.
+<code>range</code>는 주어진 벡터 <code>x</code>의 모든 구성요소 중 최소값과 최대값을 <code>c(min(x), max(x))</code>의 형태로 출력하며, 이름 그대로 벡터 변수의 범위를 구할 때 사용 합니다.
 
    <p><a name="index-range-34"></a>
 <!-- @code{length(x)} is the number of elements in @code{x}, -->
@@ -1242,14 +1242,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- @math{n}-by-@math{p} matrix the value is a @math{p}-by-@math{p} sample -->
 <!-- covariance matrix got by regarding the rows as independent -->
 <!-- @math{p}-variate sample vectors. -->
-만약, <code>var()</code> 에 사용되는 입력인자(argument)가 n-by-p 크기의 행렬이라면, 입력인자가p개의 변수들에 대한 n 개의 관측치를 갖는 데이터로 인식되어 p-by-p크기의 샘플 공분산 행렬(sample covariance matrix)을 계산 합니다.
+만약, <code>var()</code> 에 사용되는 입력인자(argument)가 n-by-p 크기의 행렬이라면, 입력인자가p개의 변수들에 대한 n 개의 관측치를 갖는 데이터로 인식되어 p-by-p 크기의 샘플 공분산 행렬(sample covariance matrix)을 계산 합니다.
 
 <!-- @code{sort(x)} returns a vector of the same size as @code{x} with the -->
 <!-- elements arranged in increasing order; however there are other more -->
 <!-- flexible sorting facilities available (see @code{order()} or -->
 <!-- @code{sort.list()} which produce a permutation to do the sorting). -->
-   <p><code>sort(x)</code>는 벡터 <code>x</code>를 인자로 받아 <code>x</code>의 모든 구성요소들을 오름차순(increasing order, 즉, 작은 값에서 큰 값의 순서로)으로 재배열하여 <code>x</code>와 같은 길이의 벡터를 돌려주며, 이와 비슷한 다른 정렬 기능들도 매우 유용하게 사용될 수 있을 것입니다. 
-예를들면, 인자로 사용된 <code>x</code> 벡터의 정렬된 순서를 확인하기 위해 <code>order()</code> 또는 <code>sort.list()</code>를 사용할 수 있습니다.
+   <p><code>sort(x)</code>는 벡터 <code>x</code>를 인자로 받아 <code>x</code>의 모든 구성요소들을 오름차순(increasing order, 즉, 작은 값에서 큰 값의 순서로)으로 재배열하여 <code>x</code>와 같은 길이의 벡터를 출력하는 함수 입니다. 이와 비슷한 다른 정렬 함수들 역시 매우 유용하며, 가장 빈번하게 사용되는 예로는 인자로 사용된 <code>x</code> 벡터의 정렬 순서를 확인하기 위해 <code>order()</code> 또는 <code>sort.list()</code>를 사용하는 것을 들 수 있습니다.
 
    <p><a name="index-sort-40"></a><a name="index-order-41"></a>
 <!-- Note that @code{max} and @code{min} select the largest and smallest -->
@@ -1259,8 +1258,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- that contains in each element the largest (smallest) element in that -->
 <!-- position in any of the input vectors. -->
 
-   <p><code>max</code>와 <code>min</code>에 여러 개의 벡터가 동시에 입력인수로 사용되었을지라도, 입력된 모든 구성요소들 중에서 최대값과 최소값 하나만을 출력합니다. 
-만약, 여러 개의 입력인자들을 동시에 입력해서 최대값과 최소값을 병렬적으로 (<em>parallel</em>, 즉 입력된 여러 개의 인자들 중 같은 행을 기준으로 가장 큰 값 혹은 작은 값을 찾는 것) 찾고자 한다면, <code>pmax</code>와 <code>pmin</code> 함수들을 이용할 수 있으며, 이 때 반환되는 벡터의 길이는 입력 인자들 중에서 가장 길이가 긴 벡터와 동일합니다.
+   <p><code>max</code>와 <code>min</code>에 여러 개의 벡터가 동시에 입력인수로 사용되었을지라도, 입력된 모든 구성요소들 중에서 최대값과 최소값 하나씩 만을 출력합니다. 
+만약, 여러 개의 벡터 입력인자들을 동시에 입력해서 최대값과 최소값의 병렬(<em>parallel</em> 원한다면, 즉 입력된 여러 개 벡터 인자들을 입력순서 별 최대값 혹은 최소값을 찾는 과정) 원한다면, <code>pmax</code>와 <code>pmin</code> 함수를 각각 이용할 수 있습니다. 이 때 반환되는 벡터의 길이는 입력 인자들 중에서 가장 길이가 긴 벡터와 동일합니다. (즉, 길이가 다른 벡터들의 입력시, 길이가 짧은 벡터와 긴 벡터의 비교가 불가능한 구간에서는 오직 비교 가능한 벡터들끼리만 비교해서, 혹은 가장 길기가 긴 벡터의 구성요소를 그대로 출력하게 됩니다).
 
    <p><a name="index-pmax-42"></a><a name="index-pmin-43"></a>
 <!-- For most purposes the user will not be concerned if the ``numbers'' in a -->
@@ -1268,18 +1267,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- calculations are done as double precision real numbers, or double -->
 <!-- precision complex numbers if the input data are complex. -->
 
-   <p>대부분의 경우 숫자형 벡터(numeric vector)를 구성하는 &ldquo;numbers&rdquo;(숫자)들의 종류가 정수(integer), 실수(real) 또는 허수(complex)인지는 중요하지 않습니다. 
-R은 내부적으로 입력된 벡터가 실수인 경우 double precision을 갖는 실수로, 복소수(허수)라면 double precision을 갖는 복소수로 연산을 수행하게 됩니다.
+   <p>대부분의 연산에서, 숫자형 벡터(numeric vector)의 구성요소인 &ldquo;numbers&rdquo;(숫자)의 종류가 정수(integer)인지, 실수(real)인지, 또는 허수(complex)인지는 중요하지 않습니다. 
+R은 자체적으로 입력된 벡터가 실수인 경우 double precision을 갖는 실수로, 복소수(허수)이면 double precision을 갖는 복소수로 연산을 수행할 수 있습니다.
 
 <!-- To work with complex numbers, supply an explicit complex part.  Thus -->
-   <p>단, 복소수를 사용할 경우, 어느 부분이 허수 부분(copmlex part)인지를 정확히 명시해주어야 합니다. 
-이를 어기고 아래와 같이 명령문을 사용한다면 <code>NaN</code>이라는 값과 경고(warning) 메시지가 출력 될 것입니다.
+   <p>단, 복소수 연산의 경우, 어느 부분이 허수 부분(copmlex part)인지는 정확히 명시해주어야 합니다. 
+아래 예시와 같이 허수 부분이 지정하지 않고 명령문을 사용하면, <code>NaN</code> 값과 경고(warning) 메시지가 출력 될 것입니다.
 
 <pre class="example">     sqrt(-17)
 </pre>
    <p class="noindent"><!-- will give @code{NaN} and a warning, but -->
 
-   <p>따라서, 아래와 같이 사용을 해야만 복소수 연산이 올바르게 수행 됩니다.
+   <p>따라서, 다음과 같이 명령문을 입력해야 복소수 연산이 올바르게 수행 됩니다.
 
 <pre class="example">     sqrt(-17+0i)
 </pre>
@@ -1299,14 +1298,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 </div>
 
 <!-- @section Generating regular sequences -->
-<h3 class="section">2.3 일반적인 수열 생성하기</h3>
+<h3 class="section">2.3 일반적인 수열의 생성</h3>
 
 <p><a name="index-Regular-sequences-44"></a>
 <!-- @R{} has a number of facilities for generating commonly used sequences -->
 <!-- of numbers.  For example @code{1:30} is the vector @code{c(1, 2, -->
 <!-- @dots{}, 29, 30)}. -->
 R은 수열 (sequence)을 생성하는 다양한 방법을 제공합니다. 
-예를 들면, <code>1:30</code>이라는 명령어는 <code>c(1, 2, ..., 29, 30)</code>과 같이 벡터를 생성합니다. 
+예를 들면, <code>1:30</code>이라는 명령어는 <code>c(1, 2, ..., 29, 30)</code>과 같은 벡터를 생성합니다. 
 <!-- <NOTE> -->
 <!-- Info cannot handle ':' as an index entry. -->
 <a name="index-g_t_003a-45"></a><!-- </NOTE> -->
@@ -1314,9 +1313,9 @@ R은 수열 (sequence)을 생성하는 다양한 방법을 제공합니다.
 <!-- example @code{2*1:15} is the vector @code{c(2, 4, @dots{}, 28, 30)}. -->
 <!-- Put @code{n <- 10} and compare the sequences @code{1:n-1} and -->
 <!-- @code{1:(n-1)}. -->
-또 R에서는 콜론(colon) 연산자가 어떤 표현식보다도 최우선으로 처리됩니다. 
-예를 들면, <code>2*1:15</code>은 <code>c(2, 4, ..., 28, 30)</code>과 같이 벡터를 생성합니다. 
-그럼, <code>n &lt;- 10</code>을 입력한 뒤, <code>1:n-1</code>과 <code>1:(n-1)</code>로부터 생성되는 두개의 벡터들을 비교해보시길 바랍니다.
+또 R의 표현식에서는 콜론(colon) 연산자가 다른 어떤 연산 보다 최우선으로 처리됩니다. 
+예를 들면, <code>2*1:15</code>은 <code>c(2, 4, ..., 28, 30)</code>과 같은 벡터를 생성합니다. 
+좀 더 정확한 이해를 위해, <code>n &lt;- 10</code>을 입력한 뒤, <code>1:n-1</code>과 <code>1:(n-1)</code>로부터 생성되는 두개의 벡터를 비교해보시길 바랍니다.
 
 <!-- The construction @code{30:1} may be used to generate a sequence -->
 <!-- backwards. -->
@@ -1345,22 +1344,22 @@ R은 수열 (sequence)을 생성하는 다양한 방법을 제공합니다.
 <!-- @code{length=@var{value}}, which specify a step size and a length for -->
 <!-- the sequence respectively.  If neither of these is given, the default -->
 <!-- @code{by=1} is assumed. -->
-   <p>R의 다른 많은 함수들처럼 함수 <code>seq()</code>가 사용하는 파라미터들은 반드시 함수에 지정된 순서로 입력되야 하며, 이 경우  파라미터의 입력 순서가 좀 다르게 보이는 경우도 있습니다. 
+   <p>R의 다른 많은 함수들처럼 함수 <code>seq()</code>가 사용하는 파라미터들은 반드시 함수에 지정된 순서로 입력되야 하며, 이 지정된 순서를 따를 경우 파라미터의 입력이 언뜻 이상하게 보일 수도 있습니다. 
 위에서 사용한 예제 <code>seq(1,30)</code>를 통해 설명하면, <code>seq()</code>의 처음 두 파라미터들은 처음 시작값 <code>from=</code><var>value</var>과 마지막 값 <code>to=</code><var>value</var>을 각각 의미하기 때문에, <code>seq(1,30)</code>, <code>seq(from=1, to=30)</code>, <code>seq(to=30, from=1)</code> 모두 <code>1:30</code>으로부터 생성된 수열과 동일한 수열을 생성합니다. 
-<code>seq()</code>의 다음 두개의 파라미터들(세번째와 네번째)은 <code>by=</code><var>value</var>와 <code>length=</code><var>value</var> 입니다. 
-<code>by=</code><var>value</var>는 나열하게 될 숫자들 간의 차이 (step size)를 지정하며, <code>length=</code><var>value</var>는 나열하게 될 숫자의 개수(length)를 지정합니다. 
+<code>seq()</code>의 다음 두개(세번째와 네번째)의 파라미터들은 <code>by=</code><var>value</var>와 <code>length=</code><var>value</var> 입니다. 
+<code>by=</code><var>value</var>는 나열하게 될 숫자들 간의 차이 (step size)를 지정하며, <code>length=</code><var>value</var>는 나열하게 될 숫자의 길이(length)를 지정합니다. 
 만약, 이 두가지 모두 지정되지 않는다면, 기본적으로  <code>by=1</code>를 가정한 상태에서 수열을 생성하게 됩니다.
 
 <!-- For example -->
-   <p>다음의 예를 살펴봅니다.
+   <p>다음의 예시를 살펴봅니다.
 
 <pre class="example">     &gt; seq(-5, 5, by=.2) -&gt; s3
 </pre>
    <p class="noindent"><!-- generates in @code{s3} the vector @code{c(-5.0, -4.8, -4.6, @dots{}, -->
 <!-- 4.6, 4.8, 5.0)}.  Similarly -->
 
-   <p>위의 명령어를 실행하면 <code>c(-5.0, -4.8, -4.6, ..., 4.6, 4.8, 5.0)</code>라는 수열을 생성한 뒤, 이를 <code>s3</code>라는 이름의 벡터형 객체로서 저장하게 됩니다. 
-이와 비슷하게, 아래와 같이 <code>s3</code>와 같은 값을 갖는 벡터 <code>s4</code>를 생성할 수 있습니다.
+   <p>위 명령어를 실행하면 <code>c(-5.0, -4.8, -4.6, ..., 4.6, 4.8, 5.0)</code>라는 수열을 생성하여, 이를 <code>s3</code>라는 이름의 벡터형 객체로 저장하게 됩니다. 
+아래와 같은 방법으로도 <code>s3</code>와 같은 벡터 <code>s4</code>를 생성할 수 있습니다.
 
 <pre class="example">     &gt; s4 &lt;- seq(length=51, from=-5, by=.2)
 </pre>
@@ -1370,30 +1369,29 @@ R은 수열 (sequence)을 생성하는 다양한 방법을 제공합니다.
 <!-- used must be the only parameter, and creates a sequence @code{1, 2, -->
 <!-- @dots{}, length(@var{vector})}, or the empty sequence if the vector is -->
 <!-- empty (as it can be) -->
-   <p>마지막으로 <code>seq()</code> 함수의 다섯번 째 파라미터는 <code>along=</code><var>vector</var>와 같이 사용할 수 있습니다. 
-만약 다른 인자들의 입력 없이 이 파라미터만 사용하면, <code>1, 2, ..., length(</code><var>vector</var><code>)</code>인 수열을 생성 합니다.
+   <p>마지막으로 <code>seq()</code> 함수의 다섯번 째 파라미터는 <code>along=</code><var>vector</var>이며, 다른 파라이터의 입력 없이 이 파라미터만 사용할 경우, <code>1, 2, ..., length(</code><var>vector</var><code>)</code>인 수열을 생성 합니다.
 
 <!-- A related function is @code{rep()} -->
    <p><a name="index-rep-47"></a><!-- which can be used for replicating an object in various complicated ways. -->
 <!-- The simplest form is -->
 
-   <p><code>seq()</code>와 유사해게 다양한 방법으로 객체를 반복하는데 사용핳 수 있는 <code>rep()</code>라는 함수가 있습니다. 
-이 함수는 아래와 같이 간단하게 사용할 수 있습니다.
+   <p><code>seq()</code>와 비슷한 수열 생성 함수 중, 객체를 반복하는데 사용할 수 있는 <code>rep()</code>라는 함수가 있습니다. 
+이 함수의 사용법은 아래와 같습니다.
 
 <pre class="example">     &gt; s5 &lt;- rep(x, times=5)
 </pre>
    <p class="noindent"><!-- which will put five copies of @code{x} end-to-end in @code{s5}.  Another -->
 <!-- useful version is -->
 
-   <p>위 명령어는 <code>x</code>라는 벡터를 처음부터 끝까지 5번 반복해서 나열한 객체를 <code>s5</code>로 지정할 것 입니다. 
-위 함수와 같은 결과를 얻기 위해 아래와 같은 방법을 사용할 수도 있습니다.
+   <p>위 명령어는 <code>x</code>라는 벡터를 처음부터 끝까지 5번 반복해서 나열한 객체를 <code>s5</code>로 지정 합니다. 
+위 함수와 같은 결과를 얻기 위해 아래와 같은 명령문을 사용할 수도 있습니다.
 
 <pre class="example">     &gt; s6 &lt;- rep(x, each=5)
 </pre>
    <p class="noindent"><!-- which repeats each element of @code{x} five times before moving on to -->
 <!-- the next. -->
 
-   <p>둘 다 <code>x</code>란 벡터가 가지고 있는 각각의 요소들을 5번씩 반복하여 수열을 생성 합니다.
+   <p>둘 다 <code>x</code>란 벡터가 가지고 있는 각각의 요소들을 5번씩 반복 나열하여 수열을 생성 합니다.
 
 <div class="node">
 <a name="Logical-vectors"></a>
@@ -1416,14 +1414,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- are not reserved words and hence can be overwritten by the user.  Hence, -->
 <!-- you should always use @code{TRUE} and @code{FALSE}. -->
 <p>R은 수치형 벡터 뿐만 아니라 논리값에 대한 연산도 가능합니다. 
-논리형 벡터는 <code>TRUE</code>, <code>FALSE</code>, 그리고 <code>NA</code> (즉 &ldquo;not available&rdquo; - 해당 값이 이용가능하지 않아 사용에는 많은 제약이 따름)와 같은 구성요소를 포함 합니다. 
-처음 두 개의 값은 각각 <code>T</code>와 <code>F</code>라는 약어로 표기하기도 합니다. 
-R에서는 초기값으로 <code>TRUE</code>와 <code>FALSE</code>가 각각 <code>T</code>와 <code>F</code>와 같은 값으로 지정되어 있긴 하지만, 따로 지정된 값은 아니므로, 사용자가 다른 변수의 이름으로 이 두 문자를 사용하면 더 이상 이런 약어 관계가 성립하지 않습니다. 
+논리형 벡터는 <code>TRUE</code>, <code>FALSE</code>, 그리고 <code>NA</code> (즉 &ldquo;not available&rdquo; - 해당 값이 이용가능하지 않아 사용에는 많은 제약이 따름)와 같은 요소로 구성 됩니다. 
+처음 두 개의 요소인 <code>TRUE</code>와 <code>FALSE</code>가 각각 <code>T</code>와 <code>F</code>라는 약어로 표기하기도 하며, 이러한 약어 사용은 R에서 초기값으로 지정된 것입니다. 하지만, 사용자가 이 두 문자를 다른 변수나 함수 이름으로 사용할 경우, 더 이상 이러한 초기 약어 지정은 성립하지 않습니다. 
 따라서, 논리값을 표현할 때에는 <code>TRUE</code>와 <code>FALSE</code>와 같이 정확하게 표기할 것을 권장 합니다. 
 <a name="index-FALSE-48"></a><a name="index-TRUE-49"></a><a name="index-F-50"></a><a name="index-T-51"></a>
 Logical vectors are generated by <em>conditions</em>.  For example
 논리형 벡터는 조건문 (<em>conditions</em>)에 의해서 생성됩니다. 
-예를 들면, 아래의 명령문을 입력하면 <code>x</code> 벡터의 각 구성요소에 대해 13 보다 크다는 조건문이 참인지 거짓인지를 판단하여 <code>TRUE</code> 또는 <code>FALSE</code> 라는 논리값을 계산하여 원래의 <code>x</code> 벡터와 같은 길이를 갖는 새 벡터<code>temp</code>를 생성 합니다.
+예를 들어 아래의 명령문을 입력하면, <code>x</code> 벡터의 각 구성요소에 대해 13 보다 크다는 조건문이 참인지 거짓인지를 판단하여, 해당 구성 요소가 13 보다 큰 위치에는 <code>TRUE</code>, 그렇지 않은 경우에는 <code>FALSE</code>를 출력하여 원래의 <code>x</code>와 같은 길이를 갖는 새 벡터<code>temp</code>를 생성 합니다.
 
 <pre class="example">     &gt; temp &lt;- x &gt; 13
 </pre>
@@ -1433,13 +1430,13 @@ Logical vectors are generated by <em>conditions</em>.  For example
 
 <!-- The logical operators are @code{<}, @code{<=}, @code{>}, @code{>=}, -->
 <!-- @code{==} for exact equality and @code{!=} for inequality. -->
-   <p>논리 연산자로는 <code>&lt;</code> (작음), <code>&lt;=</code> (작거나 같음), <code>&gt;</code> (큼), <code>&gt;=</code> (크거나 같음), <code>==</code> (같음), 그리고 <code>!=</code> (다름) 등이 있습니다. 
+   <p>논리 연산자에는 <code>&lt;</code> (작음), <code>&lt;=</code> (작거나 같음), <code>&gt;</code> (큼), <code>&gt;=</code> (크거나 같음), <code>==</code> (같음), 그리고 <code>!=</code> (다름) 등이 있습니다. 
 <a name="index-g_t_003c-52"></a><a name="index-g_t_003c_003d-53"></a><a name="index-g_t_003e-54"></a><a name="index-g_t_003e_003d-55"></a><a name="index-g_t_003d_003d-56"></a><a name="index-g_t_0021_003d-57"></a>
 <!-- In addition if @code{c1} and @code{c2} are logical expressions, then -->
 <!-- @w{@code{c1 & c2}} is their intersection (@emph{``and''}), @w{@code{c1 | c2}} -->
 <!-- is their union (@emph{``or''}), and @code{!c1} is the negation of -->
 <!-- @code{c1}. -->
-또한, <code>c1</code>과 <code>c2</code>와 같이 두 개의 논리 표현식이 있다면, <code>c1&nbsp;&amp;&nbsp;c2</code><!-- /@w -->는 (<em>&ldquo;and&rdquo;</em>)를 나타내는 교집합을 <code>c1&nbsp;|&nbsp;c2</code><!-- /@w -->는 (<em>&ldquo;or&rdquo;</em>)를 나타내는 합집합을 의미하며, <code>!c1</code>는 <code>c1</code>를 만족하지 않는 차집합을 의미 합니다.
+또한, <code>c1</code>과 <code>c2</code>와 같이 두 개의 논리 표현식이 있는 경우, <code>c1&nbsp;&amp;&nbsp;c2</code><!-- /@w -->는 (<em>&ldquo;and&rdquo;</em>)를 나타내는 교집합을 <code>c1&nbsp;|&nbsp;c2</code><!-- /@w -->는 (<em>&ldquo;or&rdquo;</em>)를 나타내는 합집합을 의미하며, <code>!c1</code>는 <code>c1</code>를 만족하지 않는 차집합을 의미 합니다.
 
    <p><a name="index-g_t_0021-58"></a><a name="index-g_t_007c-59"></a><a name="index-g_t_0026-60"></a>
 <!-- Logical vectors may be used in ordinary arithmetic, in which case they -->
@@ -1448,10 +1445,9 @@ Logical vectors are generated by <em>conditions</em>.  For example
 <!-- logical vectors and their coerced numeric counterparts are not -->
 <!-- equivalent, for example see the next subsection. -->
 
-   <p>논리값을 가지는 벡터들을 일반적인 산술연산에 사용할 수도 있습니다. 
-이 경우 논리형 벡터는 수치형 벡터로 변환되어야 하는데, <code>FALSE</code>는 <code>0</code>으로 <code>TRUE</code>는 <code>1</code>로 변환 됩니다. 
+   <p>논리형 벡터들은 일반적인 산술연산에 사용할 수도 있으며, 이 경우 논리값인 <code>FALSE</code>는 숫자 <code>0</code>으로 <code>TRUE</code>는 숫자 <code>1</code>로 변환 되어야 합니다. 
 이러한 변환을 <em>coerced</em>(강제형변환)이라고 합니다. 
-그러나 논리형 벡터들이 수치형 벡터로의 강제형변환이 반드시 위와 같은 방식으로만 이루어지는 것은 아니며, 여기에 대해서는 다음섹션에서 살펴보도록 하겠습니다.
+그러나 논리형 벡터들이 수치형 벡터로의 강제형변환이 항상 위와 같은 방식으로만 이루어지는 것은 아니며, 여기에 대해서는 다음 섹션에서 살펴보도록 하겠습니다.
 
 <div class="node">
 <a name="Missing-values"></a>
@@ -1477,14 +1473,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- operation is incomplete, the result cannot be known and hence is not -->
 <!-- available. -->
 
-   <p>일반적으로 <code>NA</code>에 대한 연산의 결과는 <code>NA</code>가 됩니다. 
-이러한 규칙을 만들게 된 동기는 단순합니다. 이러한 결측값의 연산을 따로 지정하지 않는다면, 이러한 값들로 인해 해당 연산이 정의되지 않거나 결과를 출력할 수 없기 때문입니다. 
+   <p>일반적으로 어떤 연산이든 <code>NA</code>에 대한 연산의 결과는 <code>NA</code>가 됩니다. 
+이러한 규칙을 만들게 된 동기는 단순합니다. 이러한 결측치의 연산법을 따로 지정하지 않으면, 결측치의 포함으로 인해 해당 연산이 정의되지 않거나 결과가 출력되지 않기 때문입니다. 
 <a name="index-is_002ena-63"></a><!-- The function @code{is.na(x)} gives a logical vector of the same size as -->
 <!-- @code{x} with value @code{TRUE} if and only if the corresponding element -->
 <!-- in @code{x} is @code{NA}. -->
 
-   <p>함수 <code>is.na(x)</code>는 <code>x</code>의 각 구성요소 중 <code>NA</code>가 포함되었는지를 확인하여, 논리값인 <code>TRUE</code>또는 <code>FALSE</code>를 갖는 새로운 벡터를 생성하게 됩니다. 
-따라서, 생성된 벡터의 길이는 <code>x</code>와 같아야 하며, 이는 아래의 명령문을 통해 확인해 볼 수 있습니다.
+   <p>함수 <code>is.na(x)</code>는 <code>x</code>의 각 구성요소 중 <code>NA</code>가 포함되었는지를 확인하여, 논리값인 <code>TRUE</code>또는 <code>FALSE</code>를 갖는 새로운 벡터를 생성 합니다. 
+따라서, 생성된 벡터의 길이는 원래 벡터인 <code>x</code>와 같아야 하며, 이는 아래의 명령문을 통해 확인해 볼 수 있습니다.
 
 <pre class="example">     &gt; z &lt;- c(1:3,NA);  ind &lt;- is.na(z)
 </pre>
@@ -1493,15 +1489,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <!-- for a quantity that is not available.  Thus @code{x == NA} is a vector -->
 <!-- of the same length as @code{x} @emph{all} of whose values are @code{NA} -->
 <!-- as the logical expression itself is incomplete and hence undecidable. -->
-   <p>그러나, <code>NA</code>라는 것은 실제로 단순히 벡터를 구성하는 요소에 값이 사용가능한지에 대한 마커일 뿐이기 때문에 <code>x == NA</code>이라는 논리적 표현식은 <code>is.na(x)</code>와의 결과와는 다르다는 것을 아셔야 합니다. 
-따라서, <code>x == NA</code>는 벡터 <code>x</code>와 길이는 같지만 그 구성요소  <em>모두</em>가 <code>NA</code>값을 가지게 됩니다. 
-그 이유는 논리적 표현식 자체가 <code>==</code>라는 연산을 수행하기에는 불완전하고 결정할 수 없기 때문입니다.
+   <p>그러나, <code>NA</code>라는 것은 실제로 단순히 벡터를 구성하는 요소의 값이 사용가능한지에 대한 마커일 뿐 해당 요소에 대한 값이 아니기 때문에 <code>x == NA</code>이라는 논리적 표현식과 <code>is.na(x)</code>는 서로 다른 것을 의미한다는 점을 이해하셔야 합니다. 
+즉 <code>x == NA</code>는 벡터 <code>x</code>와 길이는 같지만 그 구성요소 <em>모두</em>가 <code>NA</code>값을 가지므로, 이 식 자체가 논리형 표현식이라 어떤 연산을 수행하기에는 불완전하고 불충분하기 때문입니다.
 
 <!-- Note that there is a second kind of ``missing'' values which are -->
 <!-- produced by numerical computation, the so-called @emph{Not a Number}, -->
 <!-- @code{NaN}, -->
    <p><a name="index-NaN-64"></a><!-- values.  Examples are -->
-또한 수치연산의 결과로서 발생하는 &ldquo;missing&rdquo;이라는 의미의 <code>NaN</code>은 <em>Not a Number</em>(숫자가 아님)이라고 하며, 다음의 두 예제를 통해서 알 수 있습니다.
+또한 수치연산의 결과로서 발생하는 또 다른 종류의 결측치(&ldquo;missing&rdquo;)인 <code>NaN</code>은 <em>Not a Number</em>(숫자가 아님)을 의미 합니다. 다음의 두 예제를 통해서 좀 더 자세히 알아 봅시다.
 
 <pre class="example">     &gt; 0/0
 </pre>
@@ -1510,17 +1505,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Simple-manipulations-numbers-and-vecto
 <pre class="example">     &gt; Inf - Inf
 </pre>
    <p class="noindent"><!-- which both give @code{NaN} since the result cannot be defined sensibly. -->
-위의 두가지 경우 모두 수학적 정의에 따라 계산을 수행할 수 없기 때문에 <code>NaN</code>이라는 결과를 주게 됩니다.
+위의 두가지 경우 모두 수학적 정의에 따른 계산을 수행할 수 없기 때문에 <code>NaN</code>이라는 결과를 출력하게 됩니다.
 
 <!-- In summary, @code{is.na(xx)} is @code{TRUE} @emph{both} for @code{NA} -->
 <!-- and @code{NaN} values.  To differentiate these, @code{is.nan(xx)} is only -->
 <!-- @code{TRUE} for @code{NaN}s. -->
-   <p><a name="index-is_002enan-65"></a>요약해보면, <code>is.na(xx)</code>는 <code>NA</code>와 <code>NaN</code>라는 두가지 경우 모두 <code>TRUE</code> 값을 돌려줍니다. 
-그러나, <code>is.nan(xx)</code>은 오로지 값이 <code>NaN</code>일때만 <code>TRUE</code>가 됩니다.
+   <p><a name="index-is_002enan-65"></a>요약해보면, <code>is.na(xx)</code>는 구성요소 중 하나 이상이 <code>NA</code>이거나 <code>NaN</code>인 두가지 경우 모두 <code>TRUE</code> 값을 돌려줍니다. 
+그러나, <code>is.nan(xx)</code>은 오직 구성 요소에 <code>NaN</code>이 포함될 때만 <code>TRUE</code>가 됩니다.
 
 <!-- Missing values are sometimes printed as @code{<NA>} when character -->
 <!-- vectors are printed without quotes. -->
-   <p>어떤 경우에는 이렇게 알 수 없는 값들에 대해서 <code>&lt;NA&gt;</code>로 표시가 되는 경우가 있는데 이는 문자형 벡터가 사용되었기 때문입니다.
+   <p>때때로 이렇게 <code>&lt;NA&gt;</code>로 표시된 값들 중, 실제 결측치가 아니라 단지 문자형 벡터가 인용 부호 ("quotes") 없이 사용되었기 때문인 경우도 있으므로 주의하시기 바랍니다.
 
 <div class="node">
 <a name="Character-vectors"></a>

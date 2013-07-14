@@ -1913,38 +1913,22 @@ R에서는 <code>assign()</code>은 S에서 인자 <samp><span class="option">wh
 <!-- as in S. -->
 R은 정수형 객체를 C로 패스할 때 S가 <code>long *</code>를 사용하는 것과 달리 <code>int *</code>를 이용합니다.
 
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
-     <!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
      <li><!-- R has no single precision storage mode.  However, as of version 0.65.1, -->
 <!-- there is a single precision interface to C/@FORTRAN{} subroutines. -->
-R은 단일 정밀도 저장 모드가 없습니다. 하지만, 0.65.1버전부터, C/FORTRAN 서브루틴들로의 단일 정밀도 인터페이스가 존재합니다.
+R은 단정도 (single precision) 저장모드 (storage mode). 
+그러나, 0.65.1부터는 C/FORTRAN 서브루틴에 접속하는(interface) 단정도가 있습니다.
 
      <li><!-- By default, @code{ls()} returns the names of the objects in the current -->
 <!-- (under R) and global (under S) environment, respectively.  For example, -->
 <!-- given -->
-기본값으로, ls()는 순서대로 현재 (R에서)와 global (S에서) 환경안의 object들의 이름을 return합니다. 예를들어,
+기본적으로 <code>ls()</code>는 R에서 현재의 환경(current environment)에 있는 객체들의 이름을 반환하지만, S는 전역환경(global environment)에 있는 객체들의 이름을 반환합니다. 
+예를들면,
 
      <pre class="example">          x &lt;- 1; fun &lt;- function() {y &lt;- 1; ls()}
 </pre>
      <p class="noindent"><!-- then @code{fun()} returns @code{"y"} in R and @code{"x"} (together with -->
 <!-- the rest of the global environment) in S. -->
-이 주어지면, fun()은 R에서는"y"을, S에서는"x" (나머지 global 환경과 함께)를 return합니다.
+<code>fun()</code>은 R에서는 <code>"y"</code>를 반환하고 S에서는 <code>"x"</code> 그리고 전역환경(global environment)에 있는 다른 객체들을 함께 반환합니다.
 
      <li><!-- R allows for zero-extent matrices (and arrays, i.e., some elements of -->
 <!-- the @code{dim} attribute vector can be 0).  This has been determined a -->
@@ -1954,28 +1938,34 @@ R은 단일 정밀도 저장 모드가 없습니다. 하지만, 0.65.1버전부�
 <!-- need to be tested for by checking whether their @code{length()} is zero -->
 <!-- (which works in both R and S), and not using @code{is.null()}. -->
 
-     <p>R은 zero-extent 행렬들(그리고 array들, 즉 dim attribute 벡터의 몇몇의 element들은 0가 될 수 있습니다)을 허용합니다. 이는 빈 subset에 대한 특별한 테스트들의 필요성을 줄이는데 도움을 주기때문에 유용한 기능이라고 여겨져 왔습니다. 예ㄹㄹㄷㄹ어, 만약 x가 행렬이라면, x[, FALSE]는NULL이 아니고 0 행들로 이루어진 하나의 “행렬”입니다. 그러므로, 이러한 object들은length()가 제로인지 (R과 S 둘 다에서 실행됩니다) 테스트를 해야할 필요가 있고, is.null()를 사용하지 않습니다.
+     <p>R은 0의 크기를 가진 행렬 (zero-extent matrices)와 배열 (즉, <code>dim</code> 속성벡터(attribute vector)의 일부 구성요소가 0이 될 수 있습니다)를 허용합니다. 
+이것은 비어있는 부분집합 (empty subset)에 대한 특별한 테스트들의 필요성을 도움을 주기 때문에 유용한 기능이라고 여겨져 왔습니다. 
+만약, <code>x</code>가 행렬이며, <code>x[,FALSE]</code>는 <code>NULL</code>이 아니라, 아무런 행을 가지지 않는 &ldquo;행렬&rdquo;입니다. 
+그러므로, 이러한 객체들은 <code>is.null()</code>을 이용하는 것이 아니라 <code>length()</code>가 0인지를 확인해야 합니다 (R과 S 둘 다 작동합니다).
 
      <li><!-- Named vectors are considered vectors in R but not in S (e.g., -->
 <!-- @code{is.vector(c(a = 1:3))} returns @code{FALSE} in S and @code{TRUE} -->
 <!-- in R). -->
-이름이 주어진 벡터들은 R에서는 벡터로 간주되지만 S에서는 그렇지 않습니다 (예를들어, is.vector(c(a = 1:3))는 S에서는 FALSE를 R에서는 TRUE를 return합니다).
+벡터의 구성요소에 이름이 있는 벡터(named vector)들은 R에서는 벡터로 여겨지지만, S에서는 그렇지 않습니다 (즉, <code>is.vector(c(a=1:3))</code>은 S에서 <code>FALSE</code>이지만, R에서는 <code>TRUE</code>입니다).
 
      <li><!-- Data frames are not considered as matrices in R (i.e., if @code{DF} is a -->
 <!-- data frame, then @code{is.matrix(DF)} returns @code{FALSE} in R and -->
 <!-- @code{TRUE} in S). -->
-데이터 프레임은 R에서 행렬처럼 간주되지 않습니다 (예를들어, 만약 DF가 데이터 프레임이라면, is.matrix(DF)는 R에서는 FALSE를 S에서는 TRUE를 return합니다).
+R에서는 데이터프레임은 행렬로 여겨지지 않습니다 (즉, 만약에 <code>DF</code>가 데이터 프레임이라면, <code>is.matrix(DF)</code>의 결과는 R에서는 <code>FALSE</code>이지만 S에서는 <code>TRUE</code>입니다).
 
      <li><!-- R by default uses treatment contrasts in the unordered case, whereas S -->
 <!-- uses the Helmert ones.  This is a deliberate difference reflecting the -->
 <!-- opinion that treatment contrasts are more natural. -->
- R은 기본값으로 정렬되지 않은 경우에 treatment contrast를 사용하는반면, S는 Helmert들을 사용합니다. 이는 treatment contrast들이 더 자연수럽다는 의견이 반영된 의도된 다른점입니다.
+R에서는 기본적으로 순서가 없는 경우(unordered case)에는 treatment contrast를 사용하는 반면 S는 Helmert 대조를 사용합니다. 
+이것은 treatment contrast가 더 자연스럽다는 의견이 반영된 다른 점입니다.
 
      <li><!-- In R, the argument of a replacement function which corresponds to the -->
 <!-- right hand side must be named @samp{value}.  E.g., @code{f(a) <- b} is -->
 <!-- evaluated as @code{a <- "f<-"(a, value = b)}.  S always takes the last -->
 <!-- argument, irrespective of its name. -->
-R에서, 오른쪽에 해당하는 치환 함수의 argument는‘value’로 이름이 지어져야만 합니다. 예를들어, f(a) &lt;- b는 a &lt;- "f&lt;-"(a, value = b)처럼 평가됩니다. S는 이름에 관계없이, 항상 마지막 argument를 취합니다.
+R에서는 우변(right hand side)에 해당하는 치환함수의 인자는 &lsquo;<samp><span class="samp">value</span></samp>&rsquo;라고 반드시 이름지어져야 합니다. 
+즉, <code>f(a) &lt;- b</code>는 <code>a &lt;- "f&lt;-"(a, value = b)</code>처럼 평가됩니다. 
+S는 명칭에 관계없이 항상 마지막 인자를 취합니다.
 
      <li><!-- In S, @code{substitute()} searches for names for substitution in the -->
 <!-- given expression in three places: the actual and the default arguments -->
@@ -1984,18 +1974,20 @@ R에서, 오른쪽에 해당하는 치환 함수의 argument는‘value’로 �
 <!-- variable is not evaluated.  Since the local frame is initialized with -->
 <!-- the actual arguments or the default expressions, this is usually -->
 <!-- equivalent to S, until assignment takes place. -->
-
-     <p>S에서, substitute()는 세 군데에서 주어진 표현들안의 대체할 이름들을 검색합니다: matching call의 실제와 기본 argument들, 그리고 local  프레임(순서대로). R은 만약 값이 평가되지 않았다면 “promise”를 사용하기위해 특별한 룰을 사용하여, local 프레임 안에서만 찾습니다. Local 프레임이assignment가 일어나기 전까지는 실제 argument들 혹은 기본 표현들로 초기설정 되어있지때문에, 이는 보통 S와 같습니다.
+S에서는 <code>substitute()</code>는 주어진 표현(expression)으로부터 대체에 이용될 이름들을 검색합니다:
+매칭호출(matching call)의 실제적(actual) 인자와 기본(default) 인자, 그리고 이의 순서에 따른 지역적 프레임(local frame). 
+R은 변수가 평가되지 않았다면, &ldquo;promise&rdquo;를 사용하기 위한 특별한 규칙과 함께 지역적 프레임 내를 살펴보게 됩니다. 
+지역적 프레임은 할당(assignment)이 일어나기 전에 실제적 인자 (actual argument) 또는 디폴트 표현(default expression)으로 초기화 되기 때문에 이는 보통 S와 일치하게 됩니다.
 
      <li><!-- In S, the index variable in a @code{for()} loop is local to the inside -->
 <!-- of the loop.  In R it is local to the environment where the @code{for()} -->
 <!-- statement is executed. -->
-
-     <p>S에서는, for() loop안의 index 값이 loop안으로의 local입니다. R에서 이는 for() statement가 실행된 환경으로의 local입니다.
+S에서는 <code>for()</code> 루프내의 인덱스 변수(index variable)은 루프내에서 지역적으로 이용됩니다. 
+R에서는 <code>for()</code>문이 실행되어진 곳의 환경(environment)에 지역적입니다.
 
      <li><!-- In S, @code{tapply(simplify=TRUE)} returns a vector where R returns a -->
 <!-- one-dimensional array (which can have named dimnames). -->
-S에서, tapply(simplify=TRUE)는 R이 1-차원 배열(dimnames로 이름지어졌을수도 있는)을 return한 벡터를 return합니다.
+S에서는 <code>tapply(simplify=TRUE)</code>는 R이 1-차원 배열(dimnames이라고 이름을 가질 수도 있는)을 반환하는 벡터를 반환하게 됩니다.
 
      <li><!-- In S(-@sc{Plus}) the C locale is used, whereas in R the current -->
 <!-- operating system locale is used for determining which characters are -->
@@ -2004,25 +1996,26 @@ S에서, tapply(simplify=TRUE)는 R이 1-차원 배열(dimnames로 이름지어�
 <!-- ordering in sorts and comparisons (such as whether @code{"aA" < "Bb"} is -->
 <!-- true or false).  From version 1.2.0 the locale can be (re-)set in R by -->
 <!-- the @code{Sys.setlocale()} function. -->
-
-     <p>S(-Plus)에서 C locale이 사용되는 반면, R에서는 현재 실행 시스탬 locale이 어떤 character들이 alphanumeric이고 그들이 어떻게 분류되었는지를 알아보기위해 사용됩니다. 이는 R object들의 유효한 이름들의 세트와 (예를들어 R에서 accented chars가 허용될지도 모릅니다) 분류들의 정렬 그리고 비교 ("aA" &lt; "Bb"가 맞는지 틀린지 같은)들에 영향을 줍니다. 1.2.0버전부터 locale은 Sys.setlocale() 함수에의해 R에서 (re-)set될 수 있습니다.
+S(-<span class="sc">Plus</span>)에서는 C 로케일이 사용되는 반면 R은 현재 운영체제의 로케일이 문자들이 알파벳인지 어떻게 분류되는지를 결정하기 위해서 사용됩니다. 
+이것은 R 객체에 유효한 이름들(예를들면, 엑센트가 있는 문자들도 R에서는 허용될 수도 있습니다), 정렬의 순서와 비교 (<code>"aA" &lt; "Bb"</code>가 참 또는 거짓인지를 결정)에 영향을 줍니다. 
+1.2.0 버전부터는 로케일은 <code>Sys.setlocale()</code>함수를 이용하여 R내부에서 재설정될 수 있습니다.
 
      <li><!-- In S, @code{missing(@var{arg})} remains @code{TRUE} if @var{arg} is -->
 <!-- subsequently modified; in R it doesn't. -->
-
-     <p>S에서, missing(arg)은 만약 arg가 나중에 수정되면 TRUE로 남아있습니다; R에서는 그렇지 않습니다.
+S에서는 <code>missing(</code><var>arg</var><code>)</code>는 만약 <var>arg</var>가 실제적으로 수정이 되면 <code>TRUE</code>로 남아있게 되나, R에서는 그렇지 않습니다.
 
      <li><!-- From R version 1.3.0, @code{data.frame} strips @code{I()} when creating -->
 <!-- (column) names. -->
-R 버전 1.3.0에서부터, data.frame는 (행) 이름을 생성할 때I()를 분해합니다.
+버전 1.3.0 부터는 <code>data.frame</code>은 (행의) 이름을 생성할때 <code>I()</code>를 분해합니다.
 
      <li><!-- In R, the string @code{"NA"} is not treated as a missing value in a -->
 <!-- character variable.  Use @code{as.character(NA)} to create a missing -->
 <!-- character value. -->
- R에서, "NA" string은 character값에서 missing 값처럼 여겨지지 않습니다. Missing character 값을 생성할 때 as.character(NA)를 사용하십시오.
+R에서는 문자열 <code>"NA"</code>는 문자형 변수에서 결측값(missing value)로 처리되지 않습니다. 
+결측을 의미하는 문자값(missing character value)를 생성하기 위해서는 <code>as.character(NA)</code>를 활용하세요.
 
      <li><!-- R disallows repeated formal arguments in function calls. -->
-R은 함수 call들에서 반복된 전 argument들을 허용하지 않습니다.
+R은 함수호출에서 중복되는 형식인자(formal argument)를 허용하지 않습니다.
 
      <li><!-- In S, @code{dump()}, @code{dput()} and @code{deparse()} are essentially -->
 <!-- different interfaces to the same code.  In R from version 2.0.0, this is -->
@@ -2030,13 +2023,15 @@ R은 함수 call들에서 반복된 전 argument들을 허용하지 않습니다
 <!-- is not.  By default @code{dump()} tries to write code that will evaluate -->
 <!-- to reproduce the object, whereas @code{dput()} and @code{deparse()} -->
 <!-- default to options for producing deparsed code that is readable. -->
-S에서, dump(), dput() 그리고 deparse()는 같은 코드로의 근본적으로 다른 인터페이스들 입니다. R의 버저 2.0.0 부터, 이는 만약 control argument가 사용되었을 때만 true이지만, 기본값으로는 사실이 아닙니다. 기본값으로dump()는 object를 다시 생성하기위한 평가를 할 코드를 쓰려고 노력하는반면, dput()와 deparse()는 읽혀질 수 있는 deparsed 코드를 생성하기위한 기본 옵션들 입니다.
+S에서는 <code>dump()</code>, <code>dput()</code>, 그리고 <code>deparse()</code>는 같은 코드에 근본적으로 다른 인터페이스입니다. 
+R에서는 버전 2.0.0부터 같은 <code>control</code> 인자가 이용될 때에만 참(true)이지만, 기본적으로 그렇지는 않습니다. 
+기본적으로는 <code>dump()</code>는 색체를 재생산하기 위한 평가를 하는 코드를 작성하는 반면, <code>dput()</code>과  <code>deparse()</code>는 기본적으로 읽기가 가능한 구문분석이 되지 않은 코드(deparsed code)를 생성하기 위한 옵션들입니다.
 
      <li><!-- In R, indexing a vector, matrix, array or data frame with @code{[} using -->
 <!-- a character vector index looks only for exact matches (whereas @code{[[} -->
 <!-- and @code{$} allow partial matches).  In S, @code{[} allows partial -->
 <!-- matches. -->
-R에서, character 벡터 인덱스를 사용한 [ 와 함께 벡터, 행렬, array를 인덱스 하는 것은 정확한 매치들만을 찾습니다 (반면에 [[와 $는 부분 매치를 허용합니다).
+R에서는 문자벡터 인덱스(character vector index)를 이용하여 <code>[</code>와 함께 벡터, 행렬, 배열, 또는 데이터프레임을 인덱싱하는 것은 오로지 정확한 매치(exact matches)들만을 찾습니다 (그러나, <code>[[</code>와 <code>$</code>는 부분매치를 허용합니다).
 
      <li><!-- S has a two-argument version of @code{atan} and no @code{atan2}.  A call -->
 <!-- in S such as @code{atan(x1, x2)} is equivalent to R's @code{atan2(x1, -->
@@ -2045,13 +2040,15 @@ R에서, character 벡터 인덱스를 사용한 [ 와 함께 벡터, 행렬, ar
 <!-- of @code{x} and @code{y} interchanged.  (R used to have undocumented -->
 <!-- support for a two-argument @code{atan} with positional arguments, but -->
 <!-- this has been withdrawn to avoid further confusion.) -->
-S는 atan의 두개의 argument 버전이 있고 atan2는 없습니다. S에서의 as atan(x1, x2)와 같은 call은 R의atan2(x1, x2)와 같습니다. 하지만, x와 y가 교환 되었다는 뜻의 S의atan(x = a, y = b)이atan2(y = a, x = b)과 같으므로 이름이 주어진 argument들은 주의하십시오. (R은 위치 매개변수가 있는 두개의 argument atan을 위한 자료가 없는 지원을 하기도 했지만, 이는 더이상의 혼돈을 막기위해 제거되었습니다.
+S는 두개의 인자를 가지는 <code>atan</code>이 있으나, <code>atan2</code>는 없습니다. 
+S에서 <code>atan(x1, x2)</code>라고 호출을 하는 것은 R에서  <code>atan2(x1, x2)</code>라고 하는 것과 같습니다. 
+그러나, S의 코드 <code>atan(x=a, y=b)</code>는 R에서 <code>atan2(y=a, x=b)</code>이기 때문에 <code>x</code>와 <code>y</code>가 서로 바뀌어 있음을 아셔야 합니다. 
+(R은 위치인수(positional arguments)와 함께 사용되는 2개의 인자를 가지는 <code>atan</code>에 대하여 문서가 없이 지원을 했었으나, 이는 더이상의 혼란을 피하기 위하여 제거되었습니다).
 
      <li><!-- Numeric constants with no fractional and exponent (i.e., only integer) -->
 <!-- part are taken as integer in @SPLUS{} 6.x or later, but as double in R. -->
-분수나 지수가 없는 수치상수들 (즉, 정수들만)은S-Plus 6.x나 이후에서는 정수처럼 취해지지만, R에서는 double처럼 취해집니다.
-
-   </ul>
+분수와 지수부분이 없는 숫자형 상수들은 in<span class="sc">S-Plus</span> 6.x 또는 그 이후버전에서는 정수로 처리하지만, R에서는 이를 더블(double)로 처리합니다. 
+</ul>
 
 <!-- There are also differences which are not intentional, and result from -->
 <!-- missing or incorrect code in R.  The developers would appreciate hearing -->
@@ -2059,7 +2056,9 @@ S는 atan의 두개의 argument 버전이 있고 atan2는 없습니다. S에서�
 <!-- documenting the difference as you see it).  Of course, it would be -->
 <!-- useful if you were to implement the change yourself and make sure it -->
 <!-- works. -->
-   <p>의도되지 않은 다른점들 또한 있고, 잃어버리거나 잘못된 R의 코드들로부터의 결과도 있습니다. 개발자들은 당신이 찾는 어떠한 부족한 것(당신이 보는것 처럼 다른점들에 대해 충분하게 설명된 기록된 보고서)에 대하여 듣는 것을 감사하게 여길 것 입니다. 물론, 당신이 바꾼것을 실행해보고 그것이 확실하게 실행이되는 것을 확인하면 유용할 것입니다.
+   <p>의도하지 않았지만, R에서 잘못된 코드 또는 누락된 부분으로 인한 다른 점 또한 있을 수 있습니다. 
+개발자들은 사용자가 찾게 되는 어떠한 결점들에 대하여 (사용자가 찾은 다른 점들에 대해서 충분하게 문서화된 보고서의 형태로서) 듣는것을 매우 감사히 여깁니다. 
+물론, 스스로가 변경을 해 본뒤에 이 변경이 확실하게 작동하는가를 확인해준다면 더욱 유용합니다.
 
 <div class="node">
 <a name="Is-there-anything-R-can-do-that-S-PLUS-cannot%3f"></a>
