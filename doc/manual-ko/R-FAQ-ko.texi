@@ -2072,14 +2072,16 @@ R은 @SPLUS{}에서는 없는 몇가지 그래픽 기능들을 제공합니다.
 @c of the R language.  All of the Rweb versions can analyze Web accessible
 @c datasets if a @acronym{URL} is provided.
 
-Rweb 은 Jeff Banfield에 의해 개발되고 유지되었습니다. Rweb Home Page는 Rweb의 세가지 버전 모두로의 액세스를 제공합니다 – output과 그래프들을 returm하는 간단한 텍스트 입력 방식, 여러개의 윈도우 환경을 제공하는 더 정교한 JavaScript 버전, 그리고 R 언어가 필요없는 기초 통계 과목을을 위한 유용한 포인트와 클릭 모듈들의 세트. 모든 Rweb 버전들은 URL이 제공되어있으면 웹에서 액세스 할 수 있는 dataset들을 분석할 수 있습니다. 
+@strong{Rweb}은 @email{jeff@@math.montana.edu, Jeff Banfield}에 의해 개발되고 유지되고 있습니다.
+@url{http://www.math.montana.edu/Rweb/, Rweb Home Page}는 다음과 같은 세가지 버전의 Rweb을 제공합니다 --- 결과물과 그래프를 반환해주는 간단한 텍스트 입력 방식, 여러 개의 창을 제공하며 좀 더 보기에 좋은 JavaScript 버전, 그리고 R 언어에 대한 지식이 요구되지 않고 기초 통계 과목들에 유요한 포인트와 클릭만으로 이루어진 버전들입니다.
+만약 @acronym{URL}이 제공되어 있다면, 모든 Rweb 버전들은 웹에서 접근이 가능한 데이터들을 분석할 수 있습니다.
 
 @c The paper ``Rweb: Web-based Statistical Analysis'', providing a detailed
 @c explanation of the different versions of Rweb and an overview of how
 @c Rweb works, was published in the Journal of Statistical Software
 @c (@url{http://www.jstatsoft.org/v04/i01/}).
 
-다른 버전들의 Rweb에 대한 자세한 설명과 Rweb이 어떻게 작동하는지의 개요를 제공하는 논문“Rweb: Web-based Statistical Analysis”은the Journal of Statistical Software (http://www.jstatsoft.org/v04/i01/)에서 출간되었습니다. 
+다른 버전들의 Rweb에 대한 자세한 설명과 Rweb이 어떻게 작동하는지에 대한 개요는 Journal of Statistical Software (@url{http://www.jstatsoft.org/v04/i01/})에서 출간된 ``Rweb: Web-based Statistical Analysis''에 설명되어 있습니다.
 
 @c @email{ulfi@@cs.tu-berlin.de, Ulf Bartel} has developed
 @c @strong{R-Online}, a simple on-line programming environment for R which
@@ -2089,7 +2091,9 @@ Rweb 은 Jeff Banfield에 의해 개발되고 유지되었습니다. Rweb Home P
 @c JavaScript capable browser.  See @url{http://osvisions.com/r-online/}
 @c for more information.
 
-Ulf Bartel은 R을 이용한 통계 프록래밍의 첫 단계들을 (특히 시계열에서) 가능한한 쉽게 만들도록 의도한 R의 간단한 온라인 프로그래밍 환경인 R-Online을 개발하였습니다. JavaScript가 가능한 브라우저만이 유일한 필요조건이기 때문에 로컬 설치는 필요하지 않습니다.  더 많은 정보를 위해서는http://osvisions.com/r-online/를 참조하십시오. 
+@email{ulfi@@cs.tu-berlin.de, Ulf Bartel}은 R을 이용한 통계 프로그래밍의 기초 단계들(특히 시계열에 이용이 가능한)을 가능한 쉽게 만들수 있도록 간단한 R 온라인 프로그래밍 환경인 @strong{R-Online}을 개발하였습니다. 
+이를 사용하기 위해서는 사용자는 JavaScript가 가능한 브라우저만이 요구되기 때문에 추가적인 로컬 설치는 요구되지 않습니다.
+더 많은 정보를 @url{http://osvisions.com/r-online/}에서 찾을 수 있습니다.
 
 @c @strong{Rcgi} is a CGI WWW interface to R by @email{mjr@@dsl.pipex.com,
 @c MJ Ray}.  It had the ability to use ``embedded code'': you could mix
@@ -2105,7 +2109,8 @@ Ulf Bartel은 R을 이용한 통계 프록래밍의 첫 단계들을 (특히 시
 @c (bitmap) graphics and one without) as well as the original code are
 @c available from @url{http://www.ms.uky.edu/~statweb/}.
 
-Rcgi는MJ Ray에 의한R로의CGI WWW 인터페이스입니다. 이는 “embedded code”의 사용을 가능하게 합니다: HTML author이 CGI 스크립들을 쓰지 않고 사용자가 데이터 셋을 로드하는 것 으로부터  대부분의 명령어들을 입력하는 것 까지 어떤 것이든 하도록 허용하는, 사용자 input과 코드를 섞을 수 있습니다. Graphical output은  PostScript 이나 GIF형식들에서 가능했었고 실행된 코드는 수정을 위해 사용자에게 주어졌습니다. 하지만, 프로젝트가 아직 활성화 되 있는지는 확실하지 않습니다. 현재, Mai Zhou에 의한 수정된 버전의 Rcgi (실제로, 두가지 버전입니다: (bitmap) 그래픽이있는 것과 없는 것)와 어울러 기존 코드가http://www.ms.uky.edu/~statweb/에서 사용가능합니다. 
+@strong{Rcgi}는 @email{mjr@@dsl.pipex.com, MJ Ray}에서 만들어진 CGI WWW 인터페이스입니다. 
+이는 ``embedded code''의 사용을 가능하게 합니다: @HTML{} author이 CGI 스크립들을 쓰지 않고 사용자가 데이터 셋을 로드하는 것 으로부터  대부분의 명령어들을 입력하는 것 까지 어떤 것이든 하도록 허용하는, 사용자 input과 코드를 섞을 수 있습니다. Graphical output은  PostScript 이나 GIF형식들에서 가능했었고 실행된 코드는 수정을 위해 사용자에게 주어졌습니다. 하지만, 프로젝트가 아직 활성화 되 있는지는 확실하지 않습니다. 현재, @email{mai@@ms.uky.edu, Mai Zhou}에 의한 수정된 버전의 Rcgi (실제로, 두가지 버전입니다: (bitmap) 그래픽이있는 것과 없는 것)와 어울러 기존 코드가 @url{http://www.ms.uky.edu/~statweb/}에서 사용가능합니다. 
 
 
 @c CGI-based web access to R is also provided at
@@ -2114,7 +2119,7 @@ Rcgi는MJ Ray에 의한R로의CGI WWW 인터페이스입니다. 이는 “embedd
 @c to a remote server, see for example the collection of links available from
 @c @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}.
 
-R로의 CGI에 기초한 웹 액세스또한 http://hermes.sdu.dk/cgi-bin/go/에서 제공됩니다. 근본적으로 Remote server로 R 코드를 주는 것을 허용하는 추가의 R로의 웹 인터페이스 예시들이 많고, 이 예시들의 모음 링크들은http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse에서 찾을 수 있으니 참조하십시오.
+R로의 CGI에 기초한 웹 액세스또한 @url{http://hermes.sdu.dk/cgi-bin/go/}에서 제공됩니다. 근본적으로 Remote server로 R 코드를 주는 것을 허용하는 추가의 R로의 웹 인터페이스 예시들이 많고, 이 예시들의 모음 링크들은 @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}에서 찾을 수 있으니 참조하십시오.
 
 @c @url{http://www.warwick.ac.uk/go/dfirth, David Firth} has written
 @c @CRANpkg{CGIwithR}, an R add-on package available from @CRAN{}.  It
