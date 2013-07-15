@@ -1,6 +1,6 @@
 @c 
-@c 2013-JUL-11 (Thursday)
-@c 1.Begining ~ 2 by LIJIN)
+@c 2013-JUL-15 (Monday)
+@c 1.Begining ~ 2.8 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -1538,7 +1538,7 @@ for @code{sub} and @code{substring}.}
 @c In this case a sub-vector of the names vector may be used in the same way
 @c as the positive integral labels in item 2 further above.
 
-@strong{문자형 벡터}: 이 경우는 객체의 각 구성요소들이 @code{names}라는 속성을 가지고 있을 때에만 이용이 가능합니다. 이때, @code{names}를 한 데 묶어 나열한 벡터를 네임벡터 (names vector)하며, 위에서 설명한 바 있는 양의 값만을 가지는 인덱스 벡터와 동일한 방식으로 작동하게 됩니다.
+@strong{문자형 벡터}: 이 경우는 벡터의 각 구성요소들이 @code{names}라는 속성을 가지고 있을 때에만 이용이 가능합니다. 이때, @code{names}를 한 데 묶어 나열한 벡터를 네임벡터 (names vector)하며, 위에서 설명한 바 있는 양의 값만을 가지는 인덱스 벡터와 동일한 방식으로 작동하게 됩니다.
 다음의 예제를 살펴보면, @code{fruit}이라는 수치형 벡터에 @code{names()} 라는 함수를 이용하여 각각의 구성요소에 @code{"orange", "banana", "apple", "peach"}라는 @code{names} 속성을 부여했습니다.
 만약, @code{fruit} 벡터의 세번째와 첫번째 요소를 선택하고자 할 때, @code{[c("apple","orange")]}라고 하면 됩니다.
   
@@ -1548,6 +1548,7 @@ for @code{sub} and @code{substring}.}
 > lunch <- fruit[c("apple","orange")]
 @end example
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @c The advantage is that alphanumeric @emph{names} are often easier to
 @c remember than @emph{numeric indices}.  This option is particularly
 @c useful in connection with data frames, as we shall see later.

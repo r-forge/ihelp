@@ -1,8 +1,8 @@
 @c 
-@c Modified by Chel Hee Lee on 2013-JUL-14
+@c Modified by Chel Hee Lee on 2013-JUL-15
 @c 
 @c 교정작업 실시: 2013-JUL-10 
-@c 처음부터 up to chapter 3 R and S
+@c 처음부터 up to chapter 4 R 웹인터페이스 
 @c 
 
 \input texinfo
@@ -2110,16 +2110,19 @@ R은 @SPLUS{}에서는 없는 몇가지 그래픽 기능들을 제공합니다.
 @c available from @url{http://www.ms.uky.edu/~statweb/}.
 
 @strong{Rcgi}는 @email{mjr@@dsl.pipex.com, MJ Ray}에서 만들어진 CGI WWW 인터페이스입니다. 
-이는 ``embedded code''의 사용을 가능하게 합니다: @HTML{} author이 CGI 스크립들을 쓰지 않고 사용자가 데이터 셋을 로드하는 것 으로부터  대부분의 명령어들을 입력하는 것 까지 어떤 것이든 하도록 허용하는, 사용자 input과 코드를 섞을 수 있습니다. Graphical output은  PostScript 이나 GIF형식들에서 가능했었고 실행된 코드는 수정을 위해 사용자에게 주어졌습니다. 하지만, 프로젝트가 아직 활성화 되 있는지는 확실하지 않습니다. 현재, @email{mai@@ms.uky.edu, Mai Zhou}에 의한 수정된 버전의 Rcgi (실제로, 두가지 버전입니다: (bitmap) 그래픽이있는 것과 없는 것)와 어울러 기존 코드가 @url{http://www.ms.uky.edu/~statweb/}에서 사용가능합니다. 
-
+이는 @HTML{} 작성자가 CGI 스크립들을 쓰지 않고도 데이터 셋을 로드하는 것부터 사용자가 대부분의 명령어들을 입력하며, 사용자의 입력과 코드를 섞어 사용할 수 있는 ``embedded code''을 사용할 수 있었습니다.
+PostScript 또는 GIF 형식들의 그래픽적 결과물이 가능했으며, 실행된 코드는 사용자가 수정할 수 있도록 보여졌습니다.
+그러나, 이 프로젝트가 아직도 진행중인지는 확실하지 않습니다.
+현재 @email{mai@@ms.uky.edu, Mai Zhou}에 의한 수정된 버전의 @strong{Rcgi} (실제로는 (bitmap) 그래픽스가 있는 것과 없는 것 두가지가 존재합니다)가 있으며, 본래의 코드는 @url{http://www.ms.uky.edu/~statweb/}에서 찾아 볼 수 있습니다.
 
 @c CGI-based web access to R is also provided at
 @c @url{http://hermes.sdu.dk/cgi-bin/go/}.  There are many additional
 @c examples of web interfaces to R which basically allow to submit R code
 @c to a remote server, see for example the collection of links available from
 @c @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}.
-
-R로의 CGI에 기초한 웹 액세스또한 @url{http://hermes.sdu.dk/cgi-bin/go/}에서 제공됩니다. 근본적으로 Remote server로 R 코드를 주는 것을 허용하는 추가의 R로의 웹 인터페이스 예시들이 많고, 이 예시들의 모음 링크들은 @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}에서 찾을 수 있으니 참조하십시오.
+CGI에 기초한 웹 액세스 또한 @url{http://hermes.sdu.dk/cgi-bin/go/}에서 제공됩니다. 
+기본적으로 원격서버로 R코드를 보낼 수 있도록 해주는 웹 인터페이스 구현예들이 많이 있습니다.
+예를들면, @url{http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/StatCompCourse}으로부터 링크들의 모음을 찾을 수 있습니다.
 
 @c @url{http://www.warwick.ac.uk/go/dfirth, David Firth} has written
 @c @CRANpkg{CGIwithR}, an R add-on package available from @CRAN{}.  It
@@ -2134,22 +2137,25 @@ R로의 CGI에 기초한 웹 액세스또한 @url{http://hermes.sdu.dk/cgi-bin/g
 @c maintained by @email{duncan@@wald.ucdavis.edu, Duncan Temple Lang} and
 @c has a web page at @url{http://www.omegahat.org/CGIwithR/}.
 
-David Firth는  CRAN에서 사용가능한 R add-on패지키인, CGIwithR을 집필했습니다.  이는 CGI 인터페이스를 통하여 웹서버로 R script들을 실행하는 것을 가능하게하는 간단한 R의 extension들을 제공하고, GET과 POST 방법들 두가지 모두를 이용하여 데이터의 접수를 가능하게 합니다. 이는 Linux의 Apache를 사용하여 쉽게 설치되고 원칙적으로는 R을 지원하는 모든 플랫폼과 설치자가 필요한 보안 허가들을 가지고 있는 것을 제공한 웹서버에서 작동을 해야 합니다. David의 논문  “CGIwithR: Facilities for Processing Web Forms Using R”은the Journal of Statistical Software (http://www.jstatsoft.org/v08/i10/)에서 출간되었습니다. 이 패키지는Duncan Temple Lang에 의해 관리되며 웹페이지는 http://www.omegahat.org/CGIwithR/입니다. 
+@url{http://www.warwick.ac.uk/go/dfirth, David Firth}는 @CRAN{}으로부터 얻을 수 있는 R 애드온 패키지인 @CRANpkg{CGIwithR}을 작성하였습니다. 
+이것은 웹서버에 대한 CGI 인터페이스를 통하여 R script들을 실행할 수 있도록 하는 다소 간단한 R 익스텐션(extension)을 제공하며, GET과 POST 메소드들을 이용한 데이터의 서브미션 또한 가능합니다.
+기본적으로 Linux의 Apache를 사용하여 쉽게 설치되고 R을 지원하는 모든 플랫폼과 인스톨러가 필요한 보안 권한(necessary security permissions)들을 모두 가지고 있는 있는 웹서버에서 작동을 해야 합니다.
+이는 the Journal of Statistical Software (@url{http://www.jstatsoft.org/v08/i10/})에 출판된 David의 논문 ``CGIwithR: Facilities for Processing Web Forms Using R''에 있습니다.
+현재 이 패키지는 @email{duncan@@wald.ucdavis.edu, Duncan Temple Lang}에 의하여 관리되고 있으며, 웹페이지는 @url{http://www.omegahat.org/CGIwithR/}입니다.
 
 @c @url{http://www.rpad.org/Rpad, Rpad}, developed and actively maintained
 @c by Tom Short, provides a sophisticated environment which combines some
 @c of the features of the previous approaches with quite a bit of
 @c JavaScript, allowing for a @acronym{GUI}-like behavior (with sortable
 @c tables, clickable graphics, editable output), etc.
-
-Tom Short에 의해 개발되고 활동적으로 관리되고 있는 Rpad는 꽤 많은 양의 JaveScript와 GUI-와 같은 작용을 하는 것들 등 (배열가능한 테이블들, 클릭할 수 있는 그래픽들, 고칠수 있는 output) 과 같은 이전의 approach들의 몇가지 특징들을 합한 정교한 환경을 제공합니다. 
+Tom Short에 의해 개발되고 활동적으로 관리되고 있는 @url{http://www.rpad.org/Rpad, Rpad}는 꽤 많은 양의 JaveScript와 @acronym{GUI}와 같이 작동하는 것들 (정렬이 가능한 테이블들, 클릭할 수 있는 그래픽들, 편집이 가능한 결과물) 등 이전 접근법들에 몇가지 기능들을 추가한 정교한 환경을 제공합니다.
 
 @c Jeff Horner is working on the R/Apache Integration Project which embeds
 @c the R interpreter inside Apache 2 (and beyond).  A tutorial and
 @c presentation are available from the project web page at
 @c @url{http://biostat.mc.vanderbilt.edu/@/twiki/@/bin/@/view/@/Main/@/RApacheProject}.
-
-Jeff Horner은Apache 2 (와 그 이후) 안의 R interpreter를 보관하는 R/Apache Integration 프로젝트에 공을 들이고 있습니다.  튜토리얼과 프레젠테이션은 프로젝트 웹페이지http://biostat.mc.vanderbilt.edu/twiki/bin/view/Main/RApacheProject에서 이용가능합니다. 
+Jeff Horner은 Apache 2(그리고 이후버전)내의 R 인터프리터(interpreter)를 보관하는 R/Apache 융합 프로젝트(Integration project)를 진행하고 있습니다.
+튜토리얼과 프레젠테이션은 프로젝트 웹페이지 @url{http://biostat.mc.vanderbilt.edu/@/twiki/@/bin/@/view/@/Main/@/RApacheProject}에서 이용가능합니다.
 
 @c @url{http://stats.math.uni-augsburg.de/Rserve/, Rserve} is a project
 @c actively developed by Simon Urbanek.  It implements a TCP/IP server which
@@ -2157,16 +2163,17 @@ Jeff Horner은Apache 2 (와 그 이후) 안의 R interpreter를 보관하는 R/A
 @c the web site for Java and C++ (and could be written for other languages
 @c that support TCP/IP sockets).
 
-Rserve는Simon Urbanek에 의해 활동적으로 개발 된 프로젝트입니다. 이는 다른 프로그램들이  R의 facility들을 사용할 수 있도록 허용하는 TCP/IP 서버를 이행합니다. 클라이언트들은 Java와 C++를 위한 웹사이트 (TCP/IP socket들을 지원하는 다른 언어로도 쓰여질 수 있습니다)에서 이용가능합니다. 
+@url{http://stats.math.uni-augsburg.de/Rserve/, Rserve}는 Simon Urbanek에 의해 활발히 개발되는 프로젝트입니다.
+이는 다른 프로그램들이 R의 기능들을 사용할 수 있도록 허용하는 TCP/IP 서버를 구현하는 것입니다.
+Java와 C++ (TCP/IP socket들을 지원하는 다른 언어로도 쓰여질 수 있습니다) 클라이언트들은 웹사이트로부터 얻을 수 있습니다.
 
 @c @url{http://openstatserver.org/index.html, OpenStatServer} is being
 @c developed by a team lead by Greg Warnes; it aims ``to provide clean access
 @c to computational modules defined in a variety of computational
 @c environments (R, SAS, Matlab, etc) via a single well-defined client
 @c interface'' and to turn computational services into web services.
-
-OpenStatServer는 Greg Warnes이 지휘하는 팀에의해 개발되고 있습니다; 이는 “단일화된 잘-정의된 클라이언트 인터페이스를 통해 여러가지 computational 환경 (R, SAS, Matlab, 등)에서 정의된 computational 모듈들로의 더 깨끗한 access를 제공하는 것”과 computational 서비스를 웹 서비스로 바꾸는 것을 목표로 합니다. 
-두가지 프로젝트는 R로의 웹 인터페이스를 제공하기위해 PHP를 사용합니다. 
+@url{http://openstatserver.org/index.html, OpenStatServer}는 Greg Warnes이 지휘하는 팀에의해 개발되고 있습니다;
+이는 ``R, SAS, Matlab 등과 같은 다양한 컴퓨팅 환경으로부터 정의되어 있는 컴퓨팅 모듈들에 대하여 하나의 잘 정의된 클라이언트 인터페이스를 통하여 깔끔한 엑세스를 제공하는 것''과 이러한 컴퓨테이션 서비스를 웹서비스로 전환하는 것을 목표로 하고 있습니다.
 
 @c Two projects use PHP to provide a web interface to R.
 @c @url{http://steve-chen.net/R_PHP/, R_PHP_Online} by Steve Chen (though
@@ -2175,22 +2182,23 @@ OpenStatServer는 Greg Warnes이 지휘하는 팀에의해 개발되고 있습�
 @c R-php} is actively developed by Alfredo Pontillo and Angelo Mineo and
 @c provides both a web interface to R and a set of pre-specified analyses
 @c that need no R code input.
-
-Steve Chen의R_PHP_Online은 (이 프로젝트가 아직 활성적인지는 미지수이지만) 위의 Rcgi와 Rweb과 다소 비슷합니다. R-php는  Alfredo Pontillo와Angelo Mineo에 의해 활성적으로 개발되었고 R로의 웹 인터페이스와 R 코드 input이 필요하지 않은 미리 지정된 analysis들의 set을 제공합니다. 
+R 웹인터페이스를 제공하는데 PHP를 사용한 두 개의 프로젝트가 있습니다.
+Steve Chen에 의해서 개발되는 @url{http://steve-chen.net/R_PHP/, R_PHP_Online}(이 프로젝트가 아직 진행중인지는 불분명합니다)는 위의 Rcgi와 Rweb과 다소 비슷합니다. 
+@url{http://dssm.unipa.it/R-php/?cmd=home, R-php}는  Alfredo Pontillo와 Angelo Mineo에 의해 활발히 개발중이며, R 코드 입력이 필요하지 않은 미리 정의된 특수한 분석도구들이 제공됩니다.
 
 @c @url{http://www.bioconductor.org/, webbioc} is ``an integrated web
 @c interface for doing microarray analysis using several of the
 @c Bioconductor packages'' and is designed to be installed at local sites
 @c as a shared computing resource.
-
-Webbioc 은 “몇몇의 Bioconductor 패키지들을 사용하여 microarray analysis를 하는 통합적인 웹 인터페이스”이고 공유된 컴퓨팅 resource처럼 local 사이트에 인스톨 되도록 디자인 되었습니다.
+@url{http://www.bioconductor.org/, webbioc}은 ``여러가지 Bioconductor 패키지들을 이용하여 마이크로어레이 분석 (microarray analysis)을 수행하는 통합적인 웹 인터페이스''이며, 마치 공유되어 있은 컴퓨팅 자원(computing resources)와 같이 로컬사이트(local site)에서 설치될 수있도록 설계되었습니다. 
 
 @c @url{http://sysbio.mrc-bsu.cam.ac.uk/Rwui, Rwui} is a web application to
 @c create user-friendly web interfaces for R scripts.  All code for the web
 @c interface is created automatically.  There is no need for the user to do
 @c any extra scripting or learn any new scripting techniques.
-
-Rwui는 R 스크립들의 사용하기 쉬운 웹 인터페이스를 만들기 위한 웹 어플리케이션입니다. 웹 인터페이스의 모든 코드는 자동으로 생성됩니다. 사용자는 추가의 스크립트를 하거나 새로운 스크립팅  기술을 배울 필요가 없습니다.
+@url{http://sysbio.mrc-bsu.cam.ac.uk/Rwui, Rwui}는 R 스크립트를 사용할 수 있도록 사용자 기반의 웹인터페이스를 생성해주는 웹 어플리케이션입니다. 
+웹 인터페이스에 대한 모든 코드가 자동으로 생성됩니다. 
+사용자가 추가적인 스크립트 작업을 하거나 새로운 스크립팅 기술들을 배울 필요가 없습니다.
 
 @c The @CRANpkg{R.rsp} package by Henrik Bengtsson introduces ``R Server
 @c Pages''.  Analogous to Java Server Pages, an R server page is typically
@@ -2200,13 +2208,14 @@ Rwui는 R 스크립들의 사용하기 쉬운 웹 인터페이스를 만들기 �
 @c user interfaces in packages.  The approach is similar to the use of the
 @c @CRANpkg{brew} package with @url{http://rapache.net/, Rapache} with the
 @c advantage of cross-platform support and easy installation.
-
-Henrik Bengtsson 의 R.rsp 패키지는 “R server Pages”를 소개합니다. Java Server Page들과 유사하게, Rserver page는 보통 페이지가 요구되었을 때 평가되는 저정된 R 코드로 된 HTML입니다. 이 패키지는 Tcl안에서 실행되는internal cross-platform HTTP server를 포함하고, 그래서 패키지의 웹에 기초한 사용자 인터페이스를 포함한 좋은 framework를 제공합니다. 접근성은 cross-platform의 지원과 쉬운 설치의 이점이 있는 Rapach를 가지고 있는 brew패키지의 사용법과 비슷합니다. 
+Henrik Bengtsson에 의해서 개발된 @CRANpkg{R.rsp}패키지는 ``R server Pages''를 소개합니다.
+Java Server 페이지들과 유사하게, Rserver Pasge는 페이지가 요구되었을 때 평가된 R코드가 포함된 @HTML{} 페이지입니다. 
+이 패키지는 Tcl로 구현된 내부 클로스 플랫폼 HTTP 서버(internal cross-platform HTTP server)를 포함하고 있어, 웹 기반의 사용자 인터페이스를 포함하게 해주는 좋은 프레임워크를 제공합니다.  
+크로스 플랫폼(cross-platform)에 대한 지원과 쉬운 설치 이점이 있는 @url{http://rapache.net/, Rapache}와 함께 사용하는 @CRANpkg{brew}의 사용과 유사합니다.
 
 @c The @CRANpkg{Rook} package by Jeffrey Horner provides a web server
 @c interface borrowing heavily from Ruby's Rack project.
-
-Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 많이 빌리는 웹 서버 인터페이스를 제공합니다. 
+Jeffrey Horner의 @CRANpkg{Rook} 패키지는 Ruby의 Rack project의 많은 부분을 가져와 사용하는 웹서버 인터페이스를 제공합니다.
 
 @c Finally, @uref{http://code.google.com/p/concerto-platform/, Concerto} is
 @c a user friendly open-source Web Interface to R developed at the
@@ -2220,13 +2229,14 @@ Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 �
 @c server (exchange and storage of the data), @uref{http://rstudio.org/,
 @c Rstudio} (R code designing and testing, file management), CKEditor
 @c (@HTML{} Layer design), and PHP.
-
-마지막으로, Concerto는the Psychometrics Centre of Cambridge University에서 개발된 사용이 쉬운 오픈소스 R로의 웹 인터페이스 입니다. 이는Computerized Adaptive Test를 디자인하고 작동하는 온라인 플랫폼 처럼 디자인 되었으나, R 웹 인터페이스의 일반적인 목적으로도 쓰여질 수 있습니다. 이는 프로그래밍이나 웹디자인의 기초 지식이 없는 R 사용자들이 융통성 있고 강력한 온라인 application들과 웹사이트들, 그리고 심리측정 테스트들을 빨리 개발 할 수 있도록 허용합니다. 신뢰성과 안전성, 그리고 성능을 극대화 시키기위해, Concerto는 MySQL 서버 (데이터의 교환과 저장), Rstudio (R코ㄷ를 디자인하고 테스트, 파일 관리), CKEditor (HTML Layer 디자인), 그리고 PHP와 같은 대중적이고 신뢰할 수 있는 오픈소스 element들에 의존합니다. 
+마지막으로 @uref{http://code.google.com/p/concerto-platform/, Concerto}는 the Psychometrics Centre of Cambridge University에서 개발된 사용이 쉬운 오픈소스 웹 인터페이스 입니다. 
+이는 Computerized Adaptive Test를 디자인하고 작동하는 온라인 플랫폼과 같이 디자인 되었으나, 일반적인 목적의 R 웹 인터페이스로도 사용할 수 있습니다.
+이는 프로그래밍이나 웹디자인의 기초 지식이 없는 R 사용자들이 융통성 있고 강력한 온라인 어플리케이션과 웹사이트, 그리고 심리측정 테스트(psychometrics tests)들을 빠르게 개발해 줄 수 있도록 해줍니다.
+신뢰성(reliability), 보안성(security), 그리고 성능(performance)를 최대화 하기 위하여 Concerto는 MySQL 서버 (데이터의 교환과 저장), @uref{http://rstudio.org/, Rstudio} (R코드의 디자인, 테스트, 그리고 파일관리), CKEditor (@HTML{} Layer 디자인), 그리고 PHP와 같은 인기있고 신뢰할 수 있는 오픈소스들로 구성되어 있습니다.
 
 @c See @url{http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces} for
 @c additional information.
-
-추가의 정보를 위해서는http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces를 참조하십시오.
+더 많은 정보를 @url{http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces}에서 찾을 수 있습니다.
 
 
 @node R Add-On Packages, R and Emacs, R Web Interfaces, Top
@@ -2243,7 +2253,8 @@ Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 �
 @end menu
 
 @node Which add-on packages exist for R?, How can add-on packages be installed?, R Add-On Packages, R Add-On Packages
-@section Which add-on packages exist for R?
+@c @section Which add-on packages exist for R?
+@section 어떤 애드온 패키지들이 있나요?
 
 @menu
 * Add-on packages in R::        
@@ -2254,57 +2265,58 @@ Jeffrey Horner의 Rook 패키지는 Ruby의 Rack 프로젝트로 부터 아주 �
 @end menu
 
 @node Add-on packages in R, Add-on packages from CRAN, Which add-on packages exist for R?, Which add-on packages exist for R?
-@subsection Add-on packages in R
+@c @subsection Add-on packages in R
+@subsection 애드온 패키지들
 
 @c The R distribution comes with the following packages:
-R distribution은 다음의 패키지들과 함께 옵니다
+R은 다음과 같은 패키지들과 함께 배포됩니다.
 
 @table @strong
 @c <FIXME>
 @c 3.0.0
 @item base
 @c Base R functions (and datasets before R 2.0.0).
-기본 R 함수들 (과 R 2.0.0 전의 dataset들).
+Base R 함수들 (그리고 R 2.0.0 전의 데이터셋들).
 
 @item compiler
 @c R byte code compiler (added in R 2.13.0).
-R byte 코드 compiler (R 2.13.0에 더해진). 
+(R 2.13.0에서 더해진) R 바이트 코드 컴파일러(byte code compiler).
 
 @item datasets
 @c Base R datasets (added in R 2.0.0).
-기본 R dataset들 (R 2.0.0에 더해진). 
+(R 2.0.0에서 더해진) Base R 데이터셋들.
 
 @item grDevices
 @c Graphics devices for base and grid graphics (added in R 2.0.0).
-기본 그리고 grid 그래픽들을 위한 그래픽 장치들 (R 2.0.0에 더해진). 
+(R 2.0.0에 더해진) base와 grid 그래픽스를 위한 그래픽 장치들.
 
 @c </FIXME>
 @item graphics
 @c R functions for base graphics.
-기본 그래픽들을 위한 R 함수들. 
+base 그래픽스를 위한 R 함수들.
 
 @item grid
 @c A rewrite of the graphics layout capabilities, plus some support for
 @c interaction.
-그래픽들의 레이아웃 기능의 재 작성, 플러스 상호작용을위한 일부 지원. 
+그래픽스 레이아웃 성능을 재작성하고 인터랙션을 위한 일부 지원이 추가됨.
 
 @item methods
 @c Formally defined methods and classes for R objects, plus other
 @c programming tools, as described in the Green Book.
-R object들을 위한 공식적으로 정의된 방법들과 클래스, 그리고 Green Book에 설명되어있는 것과 같은, 다른 프로그래밍 툴들.
+그린북에 설명되어 있는 것과 같이 R 객체들에 대하여 형식적으로 정의된 메소드들과 클래스들, 그리고 다른 프로그래밍 툴들.
 
 @item parallel
 @c Support for parallel computation, including by forking and by sockets, 
 @c and random-number generation (added in R 2.14.0).
-by forking과 by socket들 그리고 random number generation(R 2.14.0에 더해진)을 포함한, 병렬 계산을 지원.
+포킹(forking), 소켓(sockets), 그리고 (R 2.14.0에 더해진) 난수생성(random-number generation) 기능을 포함한 병렬 연산(parallel computation)을 지원.
 
 @item splines
 @c Regression spline functions and classes.
-Regression spline 함수와 class들. 
+리그레션 스플라인(regression spline)함수들과 클래스들.
 
 @item stats
 @c R statistical functions.
-R 통계 기능들. 
+R 통계관련 함수들.
 
 @item stats4
 @c Statistical functions using S4 classes.
@@ -2312,17 +2324,17 @@ S4 클래스들을 이용한 통계 함수들.
 
 @item tcltk
 @c Interface and language bindings to Tcl/Tk @acronym{GUI} elements.
-Tcl/Tk GUI element들로의 인터페이스와 언어 묶음들.
+Tcl/Tk @acronym{GUI} 구성요소들에 인터페이스와 랭귀지 바인딩 (interface and language bindings).
 
 @item tools
 @c Tools for package development and administration.
-패키지 개발과 관리를 위한 툴. 
+패키지 개발과 관리를 위한 도구들. 
 
 @item utils
 @c R utility functions.
 R 유틸리티 함수들.
-
 @end table
+
 @c These ``base packages'' were substantially reorganized in R 1.9.0.  The
 @c former @pkg{base} was split into the four packages @pkg{base},
 @c @pkg{graphics}, @pkg{stats}, and @pkg{utils}.  Packages @pkg{ctest},
@@ -2330,16 +2342,18 @@ R 유틸리티 함수들.
 @c @pkg{ts} were merged into @pkg{stats}, package @pkg{lqs} returned to the
 @c recommended package @CRANpkg{MASS}, and package @pkg{mle} moved to
 @c @pkg{stats4}.
-이 “기본 패키지드”은 R 1.9.0에서 실질적으로 개편되었습니다. 전의 base는 base, graphics, stats, 그리고 utils의 네가지의 패키지로 나누어져 있었습니다. ctest, eda, modreg, mva, nls, stepfun 그리고 ts 패키지들은 stats로 통합되었고 lqs 패키지는 권장된 패키지 MASS로 return되었으며, mle 패키지는 stats4로 옮겨졌습니다.
+``base packages''(베이스 패키지)은 R 1.9.0에서 크게 재구성되었습니다.
+이전의 @pkg{base}는 @pkg{base}, @pkg{graphics}, @pkg{stats}, @pkg{utils}의 네가지로 나뉘어졌습니다. 
+@pkg{ctest}, @pkg{eda}, @pkg{modreg}, @pkg{mva}, @pkg{nls}, @pkg{stepfun}, @pkg{ts}는 @pkg{stats}로 병합되었으며, @pkg{lqs}는 추천패키지인 @CRANpkg{MASS}로 다시 옮겨지고, 패키지 @pkg{mle}는 @pkg{stats4}로 이동되었습니다.
 
 @node Add-on packages from CRAN, Add-on packages from Omegahat, Add-on packages in R, Which add-on packages exist for R?
-@subsection Add-on packages from @acronym{CRAN}
+@c @subsection Add-on packages from @acronym{CRAN}
+@subsection @acronym{CRAN}으로부터 이용가능한 애드온 패키지들 
 
 @c The @CRAN{} @file{src/contrib} area contains a wealth of add-on
 @c packages, including the following @emph{recommended} packages which are
 @c to be included in all binary distributions of R.
-
-CRAN src/contrib area는 모든 R의 binary distribution에 포함되어질 다음의 권장된 패키지들을 포함한 다량의 add-on 패키지를 포함하고 있습니다. 
+@CRAN{}의 @file{src/contrib} 디렉토리는 R의 모든 바이너리 배포에 포함되어질 @emph{recommended}(추천) 패키지들을 포함하여 방대한 양의 애드온 패키지들을 포함하고 있습니다.
 
 @c <FIXME>
 @c 3.0.0
@@ -2347,98 +2361,88 @@ CRAN src/contrib area는 모든 R의 binary distribution에 포함되어질 다�
 @item KernSmooth
 @c Functions for kernel smoothing (and density estimation) corresponding to
 @c the book ``Kernel Smoothing'' by M. P. Wand and M. C. Jones, 1995.
-1995년에M. P. Wand 와 M. C. Jones 에 의해 쓰여진 책“Kernel Smoothing”에 해당하는 Kernel smoothing을 위한 function들 (그리고 밀도 추정).
+1995년에 M. P. Wand와 M. C. Jones에 의해 쓰여진 책 ``Kernel Smoothing''을 바탕으로 한 Kernel smoothing(커널스무딩 또는 커널평활법)을 위한 함수들(그리고 밀도추정)을 포함합니다.
 
 @item MASS
 @c Functions and datasets from the main package of Venables and Ripley,
 @c ``Modern Applied Statistics with S''.
 @c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
-Venables 와 Ripley, “Modern Applied Statistics with S” (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)의 메인 패키지로부터의 function들과 dataset들.
+Venables 와 Ripley의 핵심 패키지 ``Modern Applied Statistics with S''으로부터의 함수와 데이터셋들을 포함합니다 (2.10.0 이전의 R 버전들을 위한 @file{VR}번들에 포함되어 있습니다).
 
 @item Matrix
 @c A Matrix package.
 @c (Recommended for R 2.9.0 or later.)
-
-행렬 패키지 (R 2.9.0 혹은 이후의 버전에 권장).
+(R 2.9.0 또는 이후 버전에 권장되는) 행렬 패키지입니다.
 
 @item boot
 @c Functions and datasets for bootstrapping from the book ``Bootstrap
 @c Methods and Their Applications'' by A. C. Davison and D. V. Hinkley,
 @c 1997, Cambridge University Press.
-
-1997년에  Cambridge University Press에서 A. C. Davison 과 D. V. Hinkley에 의해 쓰여진  “Bootstrap Methods and Their Applications”, 책에서의 booststrapping을 위한 function와 dataset들.
+1997년에 Cambridge University Press로부터 출판된 A. C. Davison과 D. V. Hinkley에 의해 쓰여진 ``Bootstrap Methods and Their Applications''이라는 책으로부터 부츠트랩핑(bootstrapping)에 이용된 함수들과 데이터셋들을 포함하고 있습니다.
 
 @item class
 @c Functions for classification (@math{k}-nearest neighbor and LVQ).
 @c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
-
-분류를 위한 function들 (k-nearest neighbor과 LVQ). (2.10.0 전의 R 버전들을위한 VR 번들에 포함된)
+(@math{k}-nearest neighbor와 LVQ 같은) 클래시피케이션에 사용되는 함수들을 포함하고 있습니다 (2.10.0 이전의 R 버전들에는 @file{VR} 번들내에 포함되어 있었습니다).
 
 @item cluster
 @c Functions for cluster analysis.
-
-Cluster 분석을 위한 function들.
-
+클러스터 분석(cluster analysis)를 위한 함수들이 포함되어 있습니다.
 
 @item codetools
 @c Code analysis tools.
 @c (Recommended for R 2.5.0 or later.)
-코드 분석 툴들. (R 2.5.0. 혹은 이후 버전에 권장)
-
+(R 2.5.0 또는 그 이후의 버전들에 추천되는) 코드 분석 도구들이 포함되어 있습니다.
 
 @item foreign
 @c Functions for reading and writing data stored by statistical software
 @c like Minitab, S, SAS, SPSS, Stata, Systat, etc.
-@c Minitab, S, SAS, SPSS, Stata, Systat 등과 같은 통계 소프트웨어에 의해 저장된 읽고 쓰는 데이터를 위한 function들. 
+Minitab, S, SAS, SPSS, Stata, Systat등과 같은 통계 소프트웨어에 의해 저장된 데이터르르 읽고 쓰는데 필요한 함수들이 포함되어 있습니다. 
 
 @item lattice
 @c Lattice graphics, an implementation of Trellis Graphics functions.
-
-Trellis 그래픽 function들의 실행인, 격자 그래픽들
-
+트렐리스(Trellis) 그래픽 함수들의 구현체인 라띠스(lattice) 그래픽스가 포함되어 있습니다.
 
 @item mgcv
 @c Routines for GAMs and other generalized ridge regression problems with
 @c multiple smoothing parameter selection by GCV or UBRE.
-
-GCV와 UBRE에 의한 복합적인 smoothing parameter 선택들을 가진 GAM들과 다른 일반적인 ridge regression 문제들을 위한 루틴.
+GCV 또는 UBRE을 이용한 multiple soomthing parameter selection을 포함한 GAM 그리고 다른 generalized ridge regression 문제들을 위한 루틴들이 포함되어 있습니다. 
 
 @item nlme
 @c Fit and compare Gaussian linear and nonlinear mixed-effects models.
-Gaussian 선형과 비선형의 혼합 효과 모델들을 형성하고 비교.
+가우시안(Gaussian) 선형과 비선형의 혼합 모델들(linear and nonlinear mixed-effects models)을 적합하고 비교하는 함수들이 포함되어 있습니다.
 
 @item nnet
 @c Software for single hidden layer perceptrons (``feed-forward neural
 @c networks''), and for multinomial log-linear models.
 @c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
-@c 단일로 숨겨진 layer perceptron의 소프트웨어 (“feed-forward neural 네트워크들”)와, 다항 로그 선형 모형들 (2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된).
+Single hideen perceptrons (``feed-forward neural networks'')와 다항로그선형모델(multinomial log-linear models)을 위한 소프트웨어입니다 (2.10.0 이전의 R 버전들에서는 @file{VR} 번들내에 포함되어 있었습니다).
 
 @item rpart
 @c Recursive PARTitioning and regression trees.
-반복되는PARTitioning과 회귀나무.
+재귀적 파티셔닝(recursive partioning)과 회귀나무(regression trees)를 수행하는 함수들이 포함되어 있습니다.
 
 @item spatial
 @c Functions for kriging and point pattern analysis from ``Modern Applied
 @c Statistics with S'' by W. Venables and B. Ripley.
 @c (Contained in the @file{VR} bundle for R versions prior to 2.10.0.)
-
-W. Venables와 B. Ripley의 “Modern Applied Statistics with S”에서의 그리그격자법과 point pattern analysis를 위한 function들(2.10.0 과 이전의 R 버전들을 위한 VR 번들에 포함된).
-
+W. Venables와 B. Ripley에 의하여 씌여진 ``Modern Applied Statistics with S''으로부터 크리깅과 포인트 패턴분석 (kriging and point pattern analysis)를 위한 함수들이 포함되어 있습니다 (2.10.0 이전의 R 버전들에서는 @file{VR} 번들내에 포함되어 있었습니다).
 
 @item survival
 @c Functions for survival analysis, including penalized likelihood.
-
-Penalized likelihood를 포함한, survival analysis을위한 function들. 
-
+벌점가능성 함수(penalized likelihood)함수를 포함한 생존분석(survival analysis)에 필요한 함수들을 포함하고 있습니다.
 @end table
 @c </FIXME>
+
 @c See the @url{http://CRAN.R-project.org/web/packages/, , @CRAN{}
 @c contributed packages page} for more information.
+더 많은 정보를 정보를 @url{http://CRAN.R-project.org/web/packages/, , @CRAN{} contributed packages page}에서 찾을 수 있습니다. 
 
 @c Many of these packages are categorized into
 @c @url{http://CRAN.R-project.org/web/views/, @CRAN{} Task Views}, allowing
 @c to browse packages by topic and providing tools to automatically install
 @c all packages for special areas of interest.
+많은 패키지들이 주제별로 검색이 가능하고 특정 주제에 대한 모든 패키지들을 자동적으로 설치할 수 있는 도구를 제공해주는 @url{http://CRAN.R-project.org/web/views/, @CRAN{} Task Views}내에 정리되어 있습니다.
 
 @c Some @CRAN{} packages that do not build out of the box on Windows,
 @c require additional software, or are shipping third party libraries for
@@ -2448,14 +2452,13 @@ Penalized likelihood를 포함한, survival analysis을위한 function들.
 @c @url{http://www.stats.ox.ac.uk/pub/RWin/} kindly provided by Brian
 @c D. Ripley.  Note that this repository is a default repository for recent
 @c versions of R for Windows.
-
-더 많은 정보를 위해서는CRAN contributed packages page를 참조하십시오.
-이 패키지들중 많은 것이 주제별로 패키지들을 브라우즈하도록 허락하고 특별한 관심 구역으로의 자동설치를 하도록하는 툴을 제공하는 CRAN Task Views로 분류됩니다. 
-Windows에서 패키지로 build되지 않는 몇몇의 CRAN 패키지들은 추가의 소프트웨어가 필요하거나, Windows binary 패키지들의 형태의 CRAN에서 이용가능하게 만들어지지 못한 Windows를 위한 third party library들을 배송합니다. 그럼에도 불구하고, 이 몇몇의 패키지들은Brian D. Ripley가 친절하게 제공한http://www.stats.ox.ac.uk/pub/RWin/의 저장소인the “CRAN extras”에서 이용이 가능합니다. 이 저장소는 Windows를 위한 최신 R 버전들의 기본 저장소라는것을 유의하십시오. 
-
+Windows에서 특수하게 빌드되어지지 않거나, 추가적인 소프트웨어를 필요로 하거나, 또는 Windows에 제삼의 라이브러리를 구입해야하는 일부 @CRAN{}패키지들은 Windows 바이너리 패키지의 형태로 이용할 수 없습니다.
+그럼에도 불구하고, 이러한 패키지들의 일부는 Brian D. Ripley에 의하여 친절하게 제공되어지는 ``@CRAN{} extras'' 저장소 @url{http://www.stats.ox.ac.uk/pub/RWin/}로부터 얻을 수 있습니다.
+이 저장소는 Windows를 위한 최근의 R 버전들을 위한 기본저장소입니다.
 
 @node Add-on packages from Omegahat, Add-on packages from Bioconductor, Add-on packages from CRAN, Which add-on packages exist for R?
-@subsection Add-on packages from Omegahat
+@c @subsection Add-on packages from Omegahat
+@subsection Omegahat으로부터의 애드온 패키지들 
 
 @c The @url{http://www.omegahat.org/, Omega Project for Statistical
 @c Computing} provides a variety of open-source software for statistical
@@ -2464,11 +2467,13 @@ Windows에서 패키지로 build되지 않는 몇몇의 CRAN 패키지들은 추
 @c R package repository is available via @url{http://www.omegahat.org/R/}.
 @c See @url{http://www.omegahat.org/} for information on most R packages
 @c available from the Omega project.
-
-통계적 컴퓨팅을 위한 Omega 프로젝트는 웹에 기초한 소프트웨어, Java, Java virtual machine, 그리고 distributed computing에 특별한 주안점을 둔, 통계 응용프로그램들을 위한 다양한 오픈소스 소프트웨어를 제공합니다. CRAN 스타일 R 패키지 저장소는http://www.omegahat.org/R/를 통해 이용가능합니다. Omega 프로젝트의 대부분의 R 패키지에 대한 정보는http://www.omegahat.org/를 참조하십시오.
+@url{http://www.omegahat.org/, Omega Project for Statistical Computing}은 웹기반의 소프트웨어에 특별한 주안점을 두고 있는 통계 어플리케이션, Java, Java 버츄얼 머신, 그리고 분산 컴퓨팅(distributed computing)을 위한 다양한 오픈소스 소프트웨어를 제공하고 있습니다. 
+@acronym{CRAN} 스타일의 R 패키지 저장소는 @url{http://www.omegahat.org/R/}를 통하여 이용할 수 있습니다.
+Omega project로부터 가능한 대부분의 R 패키지들에 대한 정보는 @url{http://www.omegahat.org/}에서 찾을 수 있습니다.
 
 @node Add-on packages from Bioconductor, Other add-on packages, Add-on packages from Omegahat, Which add-on packages exist for R?
-@subsection Add-on packages from Bioconductor
+@c @subsection Add-on packages from Bioconductor
+@subsection Bioconductor로부터의 애드온 패키지들 
 
 @c @url{http://www.bioconductor.org/, Bioconductor} is an open source and
 @c open development software project for the analysis and comprehension of
@@ -2482,71 +2487,68 @@ Windows에서 패키지로 build되지 않는 몇몇의 CRAN 패키지들은 추
 @c (annotation, CDF and probe) and experiment data packages.  See
 @c @url{http://www.bioconductor.org/download/} for available packages and a
 @c complete taxonomy via BioC Views.
-
-Bioconductor은 오픈소스이고 분석과 지놈 데이터의 이해를 위한 오픈 개발 소프트웨어 프로젝트입니다. 대부분의 Bioconductor 구성요소들은 R의 add-on 패키지들처럼 분배되어 있습니다. 처음 Bioconductor 소프트웨어 패키지들의 대부분은 주로 DNA microarray 데이터 분석에 주력했습니다. 프로젝트가 성숙해질수록, SAGE, sequence, 혹은 SNP 데이터와 같은 모든 종류의 지놈 데이터의 분석을 포함한 소프트웨어 패키지들의 기능 범위가 넓어졌습니다. 추가로, metadata(주석, CDF와 probe)와 실험 데이터 패키지들이 있습니다.  이용가능한 패키지들과BioC Views를 통한 완전한 분류 체계를 위해서는 http://www.bioconductor.org/download/를 참조하십시오.  
-
+@url{http://www.bioconductor.org/, Bioconductor}는 오픈소스이며 게놈 데이터의 분석과 이해를 위한 오픈 개발 소프트웨어 프로젝트입니다. 
+대부분의 Bioconductor 구성요소들은 R 애드온 패키지들과 같이 배포됩니다.
+대부분의 @url{http://www.bioconductor.org/packages/bioc/, Bioconductor software packages}들은 주로 DNA 마이크로어레이(microarray) 데이터 분석에 주력하였습니다.
+프로젝트가 점점 발전하게 되면서, SAGE, sqeuence, 또는 SNP 데이터와 같은 모든 종류의 게놈 데이터 분석을 포함한 소프트웨어 패키지들의 기능적 범위가 넓어지게 되었습니다. 
+게다가 메타데이터(annotation, CDF, 그리고 probe)들과 실험데이터(experiment data) 패키지들도 존재합니다.
+이용 가능한 패키지들과 BioC View를 통한 완전한 분류체계를 위해서는 @url{http://www.bioconductor.org/download/}를 살펴보세요.
 
 @node Other add-on packages,  , Add-on packages from Bioconductor, Which add-on packages exist for R?
-@subsection Other add-on packages
+@c @subsection Other add-on packages
+@subsection 다른 애드온 패키지들
 
 @c Many more packages are available from places other than the three
 @c default repositories discussed above (@CRAN{}, Bioconductor and
 @c Omegahat).  In particular, R-Forge provides a @CRAN{} style repository
 @c at @url{http://R-Forge.R-project.org/}.
+더 많은 패키지들을 위에서 언급된 세가지 기본 저장소 (@CRAN{}, Bioconductor 그리고 Omegahat) 외에서도 찾을 수 있습니다. 
+특히, R-Forge는 @CRAN{} 스타일의 저장소 @url{http://R-Forge.R-project.org/}를 제공합니다. 
 
 @c More code has been posted to the R-help mailing list, and can be
 @c obtained from the mailing list archive.
-
-더 많은 패키지들이 위에서 언급된 세가지 기본 저장소 (CRAN, Bioconductor 그리고 Omegahat) 외의 장소에서도 이용가능합니다. 특히, R-Forge는http://R-Forge.R-project.org/에서 CRAN 스타일 저장소를 제공합니다. 
-더 많은 코드는 R-help 메일링 리스트에 포스트되어 있으며, 메일링 리스트 archive에서 얻을 수도 있습니다. 
+더 많은 코드들이 R-help 메일링 리스트에 올라오고 있으며, 메일링 리스트 보관소로부터 이들을 확인할 수 있습니다.
 
 @node How can add-on packages be installed?, How can add-on packages be used?, Which add-on packages exist for R?, R Add-On Packages
-@section How can add-on packages be installed?
+@c @section How can add-on packages be installed?
+@section 어떻게 애드온 패키지들을 설치할 수 있나요?
 
 @c (Unix-like only.)  The add-on packages on @CRAN{} come as gzipped tar
 @c files named @code{@var{pkg}_@var{version}.tar.gz}, which may in fact be
 @c ``bundles'' containing more than one package.  Let @var{path} be the
 @c path to such a package file.  Provided that @command{tar} and
 @c @command{gzip} are available on your system, type
-
-(Unix 같은것 에서만) CRAN의 Add-on 패키지들은 실제로 한개 이상의 “bundle들”을 포함할 수도 있는, pkg_version.tar.gz으로 이름지어진gzipped tar파일들처럼 옵니다. Path를 그런 패키지 파일로의 경로로 놓읍시다. 당신의 시스템에 tar 과 gzip이 이용가능하다는 전제하에, 당신의 library 검색 경로의 첫번째 디렉토리에 근원을 가진 library tree로의 설치를 shell  prompt하는 
-
+(Unix와 같은 환경에서만 사용할 수 있습니다) @CRAN{}의 애드온 패키지들은 실제로 한개 이상의 패키지들은 포함하는 ``bundles''(번들)과 같이 @code{@var{pkg}_@var{version}.tar.gz}의 이름을 가진 gzip으로 압축된 tar 파일로 제공되어집니다. 
+@var{path}를 그러한 패키지 파일에 대한 경로라고 가정합니다.
+만약 @command{tar}와 @command{gzip}을 사용가능하다면, 라이브러리 검색경로 (library search path)내 첫번째 디렉토리에서 갈려져 나오는 라이브러리 트리(library tree)에 설치하고자 한다면 쉘프롬프트에서 아래와 같이 입력해 보세요.
+(검색경로가 어떻게 결정되는지에 대한 자세한 사항은 @code{.libPahts()}에 대한 도움말 페이지를 살펴보시길 바랍니다).
 
 @example
 $ R CMD INSTALL @var{path}/@var{pkg}_@var{version}.tar.gz
 @end example
-
-@c     $ R CMD INSTALL path/pkg_version.tar.gz
-를 타입합니다. (검색 경로가 어떻게 결정되는지의 자세한 설명은 .libPaths()에 대한 help page를 참조하십시오. 
-
 
 @noindent
 @c at the shell prompt to install to the library tree rooted at the first
 @c directory in your library search path (see the help page for
 @c @code{.libPaths()} for details on how the search path is determined).
 
-
 @c To install to another tree (e.g., your private one), use
-
-다른 tree를 설치하려면 (예, 당신의 개인적인 것), lib 가  설치하는 library tree에대한 경로를 제공하는
+다른 트리에 설치를 하려면 (즉, 사용자의 개인적인 곳), 다음의 명령어를 이용하길 바랍니다.
 
 @example
 $ R CMD INSTALL -l @var{lib} @var{path}/@var{pkg}_@var{version}.tar.gz
 @end example
 
-@c      $ R CMD INSTALL -l lib path/pkg_version.tar.gz
-을 사용하십시오.
-
 @noindent
 @c where @var{lib} gives the path to the library tree to install to.
+여기에서 @var{lib}는 설치를 하고자 하는 라이브러리 트리(library tree)에 대한 경로를 의미합니다.
 
 @c Even more conveniently, you can install and automatically update
 @c packages from within R if you have access to repositories such as
 @c @CRAN{}.  See the help page for @code{available.packages()} for more
 @c information.
-
-더욱더 편리하게, CRAN과 같은 저장소로의 액세스가 있으면 R 내에서부터 패키지들의 설치와 자동 업데이트를 할 수 있습니다.  더 많은 정보를 위해서는available.packages()에 대한 help page를 참조하십시오. 
-
+만약 @CRAN{}과 같은 저장소들에 접근할 수 있다면, 더욱 더 편리하게 사용자는 R 내에서 패키지들을 설치하고 이들을 자동으로 업데이트 할 수 있습니다. 
+이에 대한 더 많은 정보들을 @code{available.packages()}의 도움말 페이지로부터 찾을 수 있습니다. 
 
 @c <COMMENT>
 @c This is really no longer quite accurate (R_LIBS_USER is preferred to
@@ -2575,11 +2577,11 @@ $ R CMD INSTALL -l @var{lib} @var{path}/@var{pkg}_@var{version}.tar.gz
 @c on-line help for @code{Startup} for more information.)
 
 @node How can add-on packages be used?, How can add-on packages be removed?, How can add-on packages be installed?, R Add-On Packages
-@section How can add-on packages be used?
+@c @section How can add-on packages be used?
+@section 어떻게 애드온 패키지들을 이용할 수 있나요?
 
 @c To find out which additional packages are available on your system, type
-
-당신의 시스템에 어떤 추가의 패키지들이 이용가능한지를 찾아내기위해서는R prompt에
+사용자의 시스템에 이용이 가능한 추가적인 패키지들을 확인하기 위해서는 R 프롬프트에 아래와 같이 입력해보세요.
 
 @example
 library()
@@ -2588,10 +2590,8 @@ library()
 @noindent
 @c at the R prompt.  
 
-를 타입하십시오.
-
 @c This produces something like
-이는 다음과 같은 것을 생성합니다.
+다음과 같은 결과를 생성해 줄 것입니다.
 
 @quotation
 @cartouche
@@ -2637,38 +2637,37 @@ utils         The R Utils Package
 @end quotation
 
 @c You can ``load'' the installed package @var{pkg} by
-에 의해 설치된 pkg 패키지를 “load”할 수 있습니다.
+설치된 패키지 @var{pkg}를 다음과 같은 방법으로 로드할 수 있습니다.
 
-그러고 나서
 @example
 library(@var{pkg})
 @end example
 
 @c You can then find out which functions it provides by typing one of
+어떤 함수들이 해당 패키지들로부터 제공되는지 아래에 나열된 명령어들 중 하나를 입력해봄으로서 확인할 수 있습니다.
 @example
 library(help = @var{pkg})
 help(package = @var{pkg})
 @end example
-들 중 하나를 타입하는것으로 어떤 function들이 이를 제공하는지를 알아낼 수 있습니다.
+
 
 @c You can unload the loaded package @var{pkg} by
+사용자는 다음과 같은 방법으로 패키지 @var{pkg}를 로드하거나 언로드 할 수 있습니다.
 @example
 detach("package:@var{pkg}", unload = TRUE)
 @end example
-에 의해 Loaded 패키지인 pkg를 unload할 수 있습니다.
-(namespace가있는 패키지들만이 unload = TRUE가 필요한 곳, ?unload를 참조하십시오).
 
 @noindent
-(where @code{unload = TRUE} is needed only for packages with a
-namespace, see @code{?unload}).
-
-
+@c (where @code{unload = TRUE} is needed only for packages with a
+@c namespace, see @code{?unload}).
+(여기에서 @code{unload=TRUE}는 네임스페이스가 있는 패키지들에만 필요합니다. @code{?unload}를 살펴보세요).
 
 @node How can add-on packages be removed?, How can I create an R package?, How can add-on packages be used?, R Add-On Packages
-@section How can add-on packages be removed?
-
+@c @section How can add-on packages be removed?
+@section 어떻게 애드온 패키지들을 제거할 수 있나요?
 
 @c Use
+아래와 같이 입력해보세요.
 
 @example
 $ R CMD REMOVE @var{pkg_1} @dots{} @var{pkg_n}
@@ -2680,19 +2679,21 @@ $ R CMD REMOVE @var{pkg_1} @dots{} @var{pkg_n}
 @c is set and non-null, and from the default library otherwise.  (Versions
 @c of R prior to 1.3.0 removed from the default library by default.)
 
-를 만약 이가 세트와 null이 아니고, 그렇지 않으면 기본 library에서부터인 R_LIBS안의 첫번째 디렉토리에 근원을 둔 library tree에서부터의pkg_1, ..., pkg_n 패키지를 없애기 위해서 사용합니다. (1.3.0 전의 R의 버전들은 기본으로 기본 library에서부터 지워졌습니다.) 
-Library lib에서부터 지우려면,
+만약, @env{R_LIBS}가 설정되어 null이 아니면, @env{R_LIBS}내에 주어진 첫번째 디렉토리부터 갈려나오는 라이브러리 트리로부터 @var{pkg_1}, @dots{}, @var{pkg_n}을 제거합니다. 
+그렇지 않다면 디폴트 라이브러리로부터 제거됩니다. 
+(1.3.0 이전의 R 버전들은 기본적으로 디폴트 라이브러리로부터 제거되었습니다).
 
 
 @c To remove from library @var{lib}, do
+라이브러리 @var{lib}으로부터 제거하기 위해서는 아래와 같이 입력하세요. 
 
 @example
 $ R CMD REMOVE -l @var{lib} @var{pkg_1} @dots{} @var{pkg_n}
 @end example
 
-를 하십시오. 
 @node How can I create an R package?, How can I contribute to R?, How can add-on packages be removed?, R Add-On Packages
-@section How can I create an R package?
+@c @section How can I create an R package?
+@section 어떻게 R 패키지를 만들 수 있나요?
 
 @c A package consists of a subdirectory containing a file
 @c @file{DESCRIPTION} and the subdirectories @file{R}, @file{data},
@@ -2701,9 +2702,8 @@ $ R CMD REMOVE -l @var{lib} @var{pkg_1} @dots{} @var{pkg_n}
 @c package subdirectory may also contain files @file{INDEX},
 @c @file{NAMESPACE}, @file{configure}, @file{cleanup}, @file{LICENSE},
 @c @file{LICENCE}, @file{COPYING} and @file{NEWS}.
-
-파일DESCRIPTION과 subdirectori들 R, data, demo, exec, inst, man, po, src, 그리고 tests (몇몇은 missing되었을 수도 있습니다)들을 포함한 subdirectory를 포함한 패키지 입니다. 패키지 subdirectory는INDEX, NAMESPACE, configure, cleanup, LICENSE, LICENCE, COPYING 그리고 NEWS파일들 또한 포함할 수도 있습니다.   
-
+패키지는 @file{DESCRIPTION}을 포함하는 서브디렉토리와 @file{R}, @file{data}, @file{demo}, @file{exec}, @file{inst}, @file{inst}, @file{man}, @file{po}, @file{src}, 그리고 @file{tests}라는 서브디렉토리들로 구성되어 있습니다 (이들 중 몇가지는 빠질 수도 있습니다).
+패키지 서브디렉토리느느 또한 @file{INDEX}, @file{NAMESPACE}, @file{configure}, @file{cleanup}, @file{LICENSE}, @file{LICENCE}, @file{COPYING}, 그리고 @file{NEWS} 파일들을 포함할 수도 있습니다.
 
 @ifclear UseExternalXrefs
 @c See section ``Creating R packages'' in @cite{Writing R Extensions}, for
@@ -2711,44 +2711,42 @@ $ R CMD REMOVE -l @var{lib} @var{pkg_1} @dots{} @var{pkg_n}
 @c documentation exists for R?}, and gives information on package
 @c structure, the configure and cleanup mechanisms, and on automated
 @c package checking and building.
-
-자세한 사항으로는Writing R Extensions의 “Creating R packages” 섹션을 참고하십시오. 이 매튜얼은 R distribution에 포함되어있고, What documentation exists for R?를 참조하십시오,  패키지 구조, configure과 cleanup mechanism들, 그리고 자동 패키지 체크와 building들에 대한 정보를 줍니다. 
+더 자세한 사항은 @cite{Writing R Extensions} 문서의 ``Creating R packages'' 섹션을 살펴보세요.
+이 매뉴얼은 R 배포에 포함되어 있으며 @pxref{What documentation exists for R?}, 패키지의 구조, 설정(configure)과 클린업(cleanup) 메카니즘, 그리고 패키지의 확인(checking)과 구축(building)에 대한 정보를 제공합니다.
 
 @end ifclear
 @ifset UseExternalXrefs
-@xref{Creating R packages, , Creating R packages, R-exts, Writing R
-Extensions}, for details.
+@c @xref{Creating R packages, , Creating R packages, R-exts, Writing R
+@c Extensions}, for details.
+더 자세한 사항은 @xref{Creating R packages, , Creating R packages, R-exts, Writing R Extensions}를 살펴보시길 바랍니다.
 @end ifset
 
 @c R version 1.3.0 has added the function @code{package.skeleton()} which
 @c will set up directories, save data and code, and create skeleton help
 @c files for a set of R functions and datasets.
-
-R 버전 1.3.0은 디렉토리들를 셋업하고, 데이터와 코드를 저장하고, R function들과 dataset들의 skeleton 도움 파일들을 생성하는 package.skeleton() function을 추가했습니다. 
-
+디렉토리들을 지정하고, 데이터와 코드를 저장하며, R함수들과 데이터세들에 대한 도움말 파일들의 구조를 생성하는데 사용되는 함수 @code{package.skeleton()}가 R 버전 1.3.0에서 추가되었습니다. 
 
 @c @xref{What is CRAN?}, for information on uploading a package to @CRAN{}.
-
-CRAN으로의 파일을 업로드를하는 정보을 위해서는, What is CRAN?를 참조하십시오. 
-
+@CRAN{}에 패키지들 업로드하는 방법에 대해서는 @ref{What is CRAN?}를 살펴보시길 바랍니다.
 
 @node How can I contribute to R?,  , How can I create an R package?, R Add-On Packages
-@section How can I contribute to R?
+@c @section How can I contribute to R?
+@section 어떻게 R에 기여할 수 있나요?
 
 @c R is in active development and there is always a risk of bugs creeping
 @c in.  Also, the developers do not have access to all possible machines
 @c capable of running R.  So, simply using it and communicating problems is
 @c certainly of great value.
-
-R은 활성적인 개발중이고 버그가 생기기 시작할 위험요소가 항상 있습니다. 또한, 개발자들은 R을 실행할 수 있는 가능한 모든 컴퓨터에 액세스 할 수가 없습니다. 그래서, 단순히 이를 사용하며 문제들에 대해 의사소통하는 것이 확실히 큰 가치입니다. 
+R은 활발히 개발중이므로, 버그가 생길 수 있는 위험이 항상 존재합니다.
+또한 개발자들은 R을 실행할 수 있는 모든 가능한 기계들에 대하여 접근하지 못합니다.
+따라서, 이들을 이요하면서 문제들에 대해서 알려주는 것은 대단히 큰 가치를 가지고 있습니다.
 
 @c The @url{http://developer.R-project.org/, R Developer Page} acts as an
 @c intermediate repository for more or less finalized ideas and plans for
 @c the R statistical system.  It contains (pointers to) TODO lists, RFCs,
 @c various other writeups, ideas lists, and SVN miscellanea.
-
-R Developer Page는 더도 말고 덜도 말고 R 통계 시스템을 위해 마무리지어진 아이디어들과 플랜들을 위한 중간의 저장소처럼 행동합니다. 그는 (pointers to) TODO 목록들과 RFC들, 여러가지 writeup들, 아이디어 목록들, 그리고 SVN miscellanea를 포함합니다.  
-
+@url{http://developer.R-project.org/, R Developer Page}는 더도 아니고 덜도 아니게 R 통게시스템을 위한 아이디어들과 플랜들을 위한 중간 저장소와 같이 이용됩니다. 
+여기에는 TODO 목록, RFC, 다양한 기록들, 아이디어 목록, 그리고 SVN miscelanea등이 포함되어 있습니다. 
 
 @node R and Emacs, R Miscellanea, R Add-On Packages, Top
 @c @chapter R and Emacs
