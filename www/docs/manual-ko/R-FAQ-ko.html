@@ -3506,12 +3506,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 </div>
 
-<h3 class="section">7.11 Are Trellis displays implemented in R?</h3>
+<!-- @section Are Trellis displays implemented in R? -->
+<h3 class="section">7.11 트레릴스 기능이 R에 있나요?</h3>
 
 <!-- The recommended package @CRANpkg{lattice} (which is based on base -->
 <!-- package @pkg{grid}) provides graphical functionality that is compatible -->
 <!-- with most Trellis commands. -->
-<p>권장된 패키지 lattice (베이스 패키지 grid에 기초를 두고있는)는 대부분의 Trellis 명령어들과 호환 가능한 그래픽 기능을 제공합니다.
+<p>추천 패키지인 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a>는 베이스 패키지인 <strong>grid</strong>에 기초를 두고 있습니다. 
+이 패키지는 대부분의 트렐리스(Trellis) 명령어와 호환되는 그래픽 기능을 제공하고 있습니다.
 
 <!-- You could also look at @code{coplot()} and @code{dotchart()} which might -->
 <!-- do at least some of what you want.  Note also that the R version of -->
@@ -3519,12 +3521,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- of @code{splom()}, and that R's default plot method has an argument -->
 <!-- @code{asp} allowing to specify (and fix against device resizing) the -->
 <!-- aspect ratio of the plot. -->
-   <p>적어도 당신이 원하는 몇개는 할 수도 있는 coplot()와 dotchart() 또한 살펴볼 수 있습니다. Pairs()의 R버전이 꽤나 일반적이고 splom()의 거의 모든 기능들을 제공하며, R의 기본 plot method가 plot의 aspect ratio를 지정하는 것을 허락하는 (그리고 device 크기를 재조정하는 것에 반하여 fix하는) argument asp를 가지고 있다는 것 또한 유의하십시오.
+   <p>사용자가 원하는 것들 중 적어도 몇 가지는 가능한 <code>coplot()</code>과 <code>dotchart()</code>를 살펴보세요. 
+R에서 제공하는 <code>pairs()</code>는 꽤 일반적이며, <code>splom()</code>의 대부분의 기능을 제공하고 있습니다. 
+또한, R의 기본적인 플랏 메소드는 플랏의 영상비(aspect ratio)를 지정 (및 장치의 크기에 따라 수정)할 수 있는 인자를 가지고 있습니다.
 
 <!-- (Because the word ``Trellis'' has been claimed as a trademark we do not -->
 <!-- use it in R.  The name ``lattice'' has been chosen for the R -->
 <!-- equivalent.) -->
-   <p>(단어 “Trellis”가 상표처럼 주장되었기 떄문에 R에서는 이 단어를 사용하지 않습니다. 이름 “lattice”는 R equivalent에서 선택되었습니다.)
+   <p>(단어 &ldquo;Trellis&rdquo;라는 단어가 상표(trademark)와 같이 사용되기 때문에, R에서는 이 단어를 사용하지 않습니다. 
+R과 같은 것들에 대해서는 &ldquo;lattice&rdquo;라는 단어를 사용합니다).
 
 <div class="node">
 <a name="What-are-the-enclosing-and-parent-environments%3f"></a>
@@ -3536,12 +3541,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 </div>
 
-<h3 class="section">7.12 What are the enclosing and parent environments?</h3>
+<!-- @section What are the enclosing and parent environments? -->
+<h3 class="section">7.12 인클로징(enclosing)과 패런트(parent) 환경이란 무엇인가요?</h3>
 
 <!-- Inside a function you may want to access variables in two additional -->
 <!-- environments: the one that the function was defined in (``enclosing''), -->
 <!-- and the one it was invoked in (``parent''). -->
-<p>Function 안에서 두 개의 추가 환경들안의 값들로의 액세스를 원할지도 모릅니다: function이 정의되지 않은 것(“enclosing”)과 function이 적용된 것 (“parent”).
+<p>함수내에서 당신은 아마도 두 개의 추가적인 환경들에 있는 변수들에 접근하고 싶을 수도 있습니다. 
+하나는 (&ldquo;enclosing(인클로징)&rdquo;)이라는 환경내에 정의된 함수이고, 다른 하나는 (&ldquo;parent(패런트)&rdquo;)로부터 실행된 환경입니다.
 
 <!-- If you create a function at the command line or load it in a package its -->
 <!-- enclosing environment is the global workspace.  If you define a function -->
@@ -3550,7 +3557,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- function is fixed when the function is created.  You can find out the -->
 <!-- enclosing environment for a function @code{f()} using -->
 <!-- @code{environment(f)}. -->
-   <p>만약 명령줄에 function을 생성했거나 패키지 안에 그를 load했다면, 그의 enclosing환경은 global workspace입니다. 만약 function f()를 다른 function g()에 지정했다면, 그의 enclosing 환경은 g()안의 환경입니다. 그 function에 대한 enclosing 환경은 function이 생성되었을 떄 고정되었습니다. Function f()에 대한 enclosing 환경은 environment(f)를 사용하여 찾을 수 있습니다.
+   <p>만약 명령어 라인에서 함수를 생성하거나 패키지내에서 로드를 하였다면, 이것의 인클로징 환경은 글로벌 작업공간(global workspace)입니다. 
+만약 <code>f()</code>라는 함수를 <code>g()</code>라는 또 다른 함수내에서 정의를 했다면, 이것의 인클로징 환경은 <code>g()</code>내에 있는 환경입니다. 
+함수에 대한 인클로징 환경은 함수가 생설될때 고정됩니다. 
+함수 <code>f()</code>에 대한 인클로징 환경은 <code>envrionment(f)</code>를 이용하여 찾을 수 있습니다.
 
 <!-- The ``parent'' environment, on the other hand, is defined when you -->
 <!-- invoke a function.  If you invoke @code{lm()} at the command line its -->
@@ -3559,7 +3569,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- inside @code{f()}.  You can find out the parent environment for an -->
 <!-- invocation of a function by using @code{parent.frame()} or -->
 <!-- @code{sys.frame(sys.parent())}. -->
-   <p>반면에, “parent” 환경은 function을 적용할 떄 정의됩니다. 만약 명령줄에 lm()을 적용한다면, 이의 parent 환경이 global workspace이고, 만약 이를 function f() 안에 지정한다면, 이의 parent 환경은 f() 안의 환경입니다. parent.frame() 이나 sys.frame(sys.parent())를 사용하여 function의 invocation을 위한 parent 환경을 찾아낼 수 있습니다.
+   <p>반면에 &ldquo;parent(패런트)&rdquo;환경은 함수를 실행할 때 정의되어 집니다. 
+만약 명령어 라인에서 <code>lm()</code>를 실행하면, 이것의 패런트 환경은 글로벌 작업공간(global workspace)가 됩니다. 
+만약 함수 <code>f()</code>에서 이것이 실행된다면 이의 패런트 환경은 <code>f()</code>내에 있는 환경이 됩니다. 
+<code>parent.frame()</code> 또는 <code>sys.frame(sys.parent())</code>를 이용하여 함수의 실행에 대한 패런트 환경을 찾을 수 있습니다.
 
 <!-- So for most user-visible functions the enclosing environment will be the -->
 <!-- global workspace, since that is where most functions are defined.  The -->
