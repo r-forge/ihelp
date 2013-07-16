@@ -2,8 +2,9 @@
 @c Modified by Chel Hee Lee on 2013-JUL-15
 @c 
 @c 교정작업 실시: 2013-JUL-10 
-@c 처음부터 up to chapter 4 R 웹인터페이스 
-@c 
+@c 처음부터 up to chapter 6 R과 Emacs 
+@c 7장 최소 2일 걸림 
+@c 이 문서의 마지막 교정은 2013-JUL-30
 
 \input texinfo
 @c %**start of header
@@ -2993,25 +2994,28 @@ dir /opt/R/src/unix
 
 @node How can I set components of a list to NULL?, How can I save my workspace?, R Miscellanea, R Miscellanea
 @c @section How can I set components of a list to NULL?
-@section 어떻게 해야 list의 구성요소들을 NULL로 지정할 수 있을까요?
+@section 어떻게 해야 리스트(list)의 구성요소들을 NULL로 지정할 수 있나요?
 
 @c You can use
-먼저 아래의 코드를 보세요.
+다음과 같이 할 수 있습니다.
 @example
 x[i] <- list(NULL)
 @end example
 
-@c @noindent
+@noindent
 @c to set component @code{i} of the list @code{x} to @code{NULL}, similarly
 @c for named components.  Do not set @code{x[i]} or @code{x[[i]]} to
 @c @code{NULL}, because this will remove the corresponding component from
 @c the list.
-@noindent
-이것은 리스트 @code{x}의 @code{i}번째 구성요소를 @code{NULL}로 지정하게 해줍니다. 이름이 주어져 있는 구성요소 역시 이와 같은 방식으로 할 수 있습니다. 그러나, @code{x[i]} 또는 @code{x[[i]]}를 @code{NULL}의 값을 대입하지는 마시길 바랍니다.  그 이유는 이러한 대입은 해당 구성요소 자체를 리스트로부터 삭제합니다. 
+이렇게 하는 것은 리스트 @code{x}의 @code{i}번째 구성요소를 @code{NULL}로 지정하게 해줍니다.
+동일한 방식이 구성요소의 이름을 이용할 때도 적용됩니다.
+그러나, @code{x[i]} 또는 @code{x[[i]]}를 @code{NULL}의 값을 대입하지는 마시길 바랍니다.  
+그 이유는 이러한 대입은 해당 구성요소 자체를 리스트로부터 삭제합니다. 
 
 @c For dropping the row names of a matrix @code{x}, it may be easier to use
 @c @code{rownames(x) <- NULL}, similarly for column names.
-행렬 @code{x}의 행의 이름들을 없애기 위해서는 @code{rownames(x) <- NULL}를 하세요.  이러한 방법은 열의 이름들을 없애는데에도 유사하게 적용됩니다.
+행렬 @code{x}의 행의 이름들을 없애기 위해서는 @code{rownames(x) <- NULL}를 하세요.  
+이러한 방법은 열의 이름들을 없애는데에도 유사하게 적용됩니다.
 
 @node How can I save my workspace?, How can I clean up my workspace?, How can I set components of a list to NULL?, R Miscellanea
 @c @section How can I save my workspace?
@@ -3021,16 +3025,16 @@ x[i] <- list(NULL)
 @c the file @file{.RData} in the R startup directory.  (This is also what
 @c happens after @kbd{q("yes")}.)  Using @code{save.image(@var{file})} one
 @c can save the image under a different name.
-@code{save.image()} 함수는 사용자의 @code{.GlobalEnv}에 있는 객체들을 @file{.RData}의 형식으로 R의 스타트업 디렉토리에 저장합니다. (이것은 @kbd{q("yes")}과 동일합니다.)  @code{save.image(@var{file})}을 이용하여 다른 이름으로 저장하는 할 수도 있습니다. 
+@code{save.image()} 함수는 사용자의 @code{.GlobalEnv}에 있는 객체들을 @file{.RData}의 형식으로 R의 스타트업 디렉토리에 저장합니다. (이것은 @kbd{q("yes")}라고 하는 것과 동일합니다).  
+@code{save.image(@var{file})}을 이용하여 다른 이름으로 저장하는 할 수도 있습니다. 
 
 
 @node How can I clean up my workspace?, How can I get eval() and D() to work?, How can I save my workspace?, R Miscellanea
 @c @section How can I clean up my workspace?
-@section 어떻게 해야 나의 작업공간을 깨끗하게 할 수 있을까요?
+@section 어떻게 해야 나의 작업공간을 깨끗하게 비울 수 있나요?
 
 @c To remove all objects in the currently active environment (typically
 @c @code{.GlobalEnv}), you can do
-
 현재 활성화 되어있는 프로그래밍 환경 (주로 @code{.GlobalEnv}를 의미함)에 있는 모든 객체를 지우려고 한다면 다음과 같이 하면 됩니다.
 
 @example
@@ -3040,18 +3044,17 @@ rm(list = ls(all = TRUE))
 @noindent
 @c (Without @option{all = TRUE}, only the objects with names not starting
 @c with a @samp{.} are removed.)
-
 (만약 @option{all = TRUE}을 사용하지 않는다면, @samp{.}으로 시작하지 않는 객체들만이 삭제됩니다.)
 
 @node How can I get eval() and D() to work?, Why do my matrices lose dimensions?, How can I clean up my workspace?, R Miscellanea
-@section How can I get eval() and D() to work?
+@c @section How can I get eval() and D() to work?
+@section 어떻게 해야 eval()와 D()가 제대로 작동하나요?
 
 @c Strange things will happen if you use @code{eval(print(x), envir = e)}
 @c or @code{D(x^2, "x")}.  The first one will either tell you that
 @c "@code{x}" is not found, or print the value of the wrong @code{x}.
 @c The other one will likely return zero if @code{x} exists, and an error
 @c otherwise.
-
 만약 @code{eval(print(x), envir = e)} 또는 @code{D(x^2, "x")}를 실행하고자 한다면 예상치 않은 결과가 나타날 것입니다.
 전자는 "@code{x}"를 찾을 수 없다고 하거나, 잘못된 @code{x}의 값을 출력할 것입니다. 
 후자는 만약 @code{x}가 존재한다면 0값을 돌려줄 수 있으며, 그렇지 않다면 에러를 보여줄 것입니다. 
@@ -3062,7 +3065,6 @@ rm(list = ls(all = TRUE))
 @c differentiated.  What you (most likely) really want is obtained by
 @c ``quoting'' the first argument upon surrounding it with
 @c @code{expression()}.  For example,
-
 두가지 경우 모두 다 불러들어온 환경 내에서 첫번째 인자가 평가되기 때문입니다. 
 객체의 모드가 반드시 @code{"expression"} 또는 @code{"call"}이어야 하고 그 결과가 평가되거나 미분된 것입니다.
 이를 해결하기 위해서는 아래와 같이 반드시 첫번째 인자를 큰 따옴표로 묶어줘야 한다는것입니다. 
@@ -3077,8 +3079,9 @@ R> D(expression(x^2), "x")
 @c implemented, but problems would arise whenever the expression is
 @c contained in a variable, passed as a parameter, or is the result of a
 @c function call.  Consider for instance the semantics in cases like
-
-이렇게 하는 것이 처음에는 다소 이상해 보일 수 있으나, 완전히 논리적인 부분일 뿐입니다.
+이렇게 하는 것이 처음에는 다소 이상해 보일 수 있으나, 이것은 논리적으로인 것 뿐입니다.
+직관적으로 작동하는 방식은 구현하기 쉬울 수도 있지만, 인자로서 변수를 포함하는 표현식 또는 호출하는 함수의 결과는 문제를 야기합니다. 
+예를들면, 다음과 같은 경우들입니다. 
 
 @example
 D2 <- function(e, n) D(D(e, n), n)
@@ -3097,7 +3100,8 @@ g(a * b)
 더 많은 예제들을 @code{deriv()}의 도움말 페이지를 통하여 확인할 수 있습니다. 
 
 @node Why do my matrices lose dimensions?, How does autoloading work?, How can I get eval() and D() to work?, R Miscellanea
-@section Why do my matrices lose dimensions?
+@c @section Why do my matrices lose dimensions?
+@section 왜 행렬이 차원정보를 잃어버리게 되나요?
 
 @c When a matrix with a single row or column is created by a subscripting
 @c operation, e.g., @code{row <- mat[2, ]}, it is by default turned into a
@@ -3105,24 +3109,26 @@ g(a * b)
 @c x 4} is created by subscripting it will be coerced into a @w{2 x 3 x 4}
 @c array, losing the unnecessary dimension.  After much discussion this has
 @c been determined to be a @emph{feature}.
-
-단일의 열이나 행으로 이루어진 행렬은 subscripting operation에 의해 생성됩니다, 예로, row <- mat[2, ], 이는 자동적으로 벡터로 바뀝니다. 비슷한 방법으로 만약2 x 3 x 1 x 4라고 하는 dimension이 있는 array는 이를 subscripting에 의해  불필요한 dimension을 잃은 2 x 3 x 4 array로 강제 생성됩니다. 많은  논의 후 이는 feature로 결정되었습니다.  
+하나의 열이나 행으로 이루어진 행렬은 서브스크립팅 연산(subscripting operation)에 의해 생성됩니다.
+예를들면 @code{row <- mat[2,]}과 같습니다.
+이는 기본적으로 벡터로 변환됩니다.
+이와 유사하게 @w{2 x 3 x 1 x 4}이라는 차원을 가고 있는 배열을 서브스크립팅에 의해서 생성되어진다고 하면, 불필요한 차원을 삭제되어 @w{2 x 3 x 4}이라는 차원을 가진 배열로 강제변환이 되게 됩니다.
+많은 논의를 거쳐 이는 @emph{feature}로 결정되었습니다.
 
 @c To prevent this happening, add the option @option{drop = FALSE} to the
 @c subscripting.  For example,
-
-이런 일을 막기 위해서, subscripting에 옵션drop = FALSE를 더하십히오. 예를들어,
+이러한 경우를 방지하기 위해는 서브스크립팅을 할 때 @option{drop=FALSE}를 사용해보세요.
 
 @example
-rowmatrix <- mat[2, , drop = FALSE]  # @r{creates a row matrix}
-colmatrix <- mat[, 2, drop = FALSE]  # @r{creates a column matrix}
-a <- b[1, 1, 1, drop = FALSE]        # @r{creates a 1 x 1 x 1 array}
+rowmatrix <- mat[2, , drop = FALSE]  # @r{행 벡터를 생성합니다}
+colmatrix <- mat[, 2, drop = FALSE]  # @r{열 벡터를 생성합니다}
+a <- b[1, 1, 1, drop = FALSE]        # @r{1 x 1 x 1 인 배열이 생성됩니다}
 @end example
 
 @c The @option{drop = FALSE} option should be used defensively when
 @c programming.  For example, the statement
-
-drop = FALSE 옵션은 프로그래밍을 할 때에 수동적으로 사용되어야만 합니다. 예를들어, 문장
+@option{drop = FALSE} 옵션은 프로그래밍을 할 때에 디펜시브하게(defensively) 사용되어야만 합니다. 
+예를들어, 다음과 같은 표현에서 @code{index}의 길이가 1 이라면 행렬이 아닌 벡터를 반환하므로 에러를 불러일으킬 것입니다.
 
 @example
 somerows <- mat[index, ]
@@ -3132,15 +3138,15 @@ somerows <- mat[index, ]
 @c will return a vector rather than a matrix if @code{index} happens to
 @c have length 1, causing errors later in the code.  It should probably be
 @c rewritten as
-
-은 만약 index가 이 코드에서 나중에 오류의 원인이 되는 길이 1을 가지고 있다면, 행렬대신 벡터를 return 할 것입니다. 이는 다음과같이 다시 쓰여져야만 할 것입니다.
+이것은 아래와 같이 쓰여야 할 것입니다.
 
 @example
 somerows <- mat[index, , drop = FALSE]
 @end example
 
 @node How does autoloading work?, How should I set options?, Why do my matrices lose dimensions?, R Miscellanea
-@section How does autoloading work?
+@c @section How does autoloading work?
+@section 자동 로딩은 어떻게 이루어지는 것인가요?
 
 @c R has a special environment called @code{.AutoloadEnv}.  Using
 @c @kbd{autoload(@var{name}, @var{pkg})}, where @var{name} and
@@ -3149,21 +3155,20 @@ somerows <- mat[index, , drop = FALSE]
 @c tries to evaluate @var{name}, it loads the corresponding package
 @c @var{pkg} and reevaluates @var{name} in the new package's
 @c environment.
-
-R은.AutoloadEnv라고 불리우는 특별한 환경이 있습니다. Name 과 pkg가 object의 이름과 그를 포함하는 패키지를 주는 string인 곳에서, autoload(name, pkg)를 사용하여, 이 환경 안에서 몇몇의 정보를 저장합니다. R이 name을 평가하려고 할 떄, 이는 해당하는 패키지 pkg를 로드하고 새로운 패키지의 환경안의 name을 재 평가 합니다. 
+R은 @code{.AutoloadEnv}이라고 불리는 특별한 환경(environment)가 있습니다.
+@var{name}과  @var{pkg}가 객체의 이름과 이를 포함하는 패키지를 건네주는 문자열(string)인 곳에서 @kbd{autoload(@var{name}, @var{pkg})}를 이용하여 이 환경내에 정보를 저장하게 됩니다.
+R이 @var{name}을 평가하려고 할때, 이에 해당하는 패키지 @var{pkg}를 로드하고 새로운 패키지의 환경내에서 @var{name}을 재 평가합니다.
 
 @c Using this mechanism makes R behave as if the package was loaded, but
 @c does not occupy memory (yet).
-
-이 mechanism을 사용하여 패키지가 로드되었지만 (아직) 메모리를 차지하지 않은 것처럼 R이 행동하도록 만듭니다.
+이러한 메카니즘을 이용하여 R은 만약 패키지가 로드되었더라도 (아직) 메모리를 차지않는 것과 같이 작동하도록 합니다.
 
 @c See the help page for @code{autoload()} for a very nice example.
-
-매우 좋은 예제들은help 페이지에서 autoload()를 참조하십시오. 
-
+매우 좋은 예제들이 @code{autoload()} 도움말에 있으므로 살펴보시길 바랍니다.
 
 @node How should I set options?, How do file names work in Windows?, How does autoloading work?, R Miscellanea
-@section How should I set options?
+@c @section How should I set options?
+@section 옵션들을 어떻게 조정할 수 있나요?
 
 @c The function @code{options()} allows setting and examining a variety of
 @c global ``options'' which affect the way in which R computes and displays
@@ -3171,12 +3176,12 @@ R은.AutoloadEnv라고 불리우는 특별한 환경이 있습니다. Name 과 p
 @c these options, but should never directly be assigned to unless you want
 @c to drive yourself crazy---simply pretend that it is a ``read-only''
 @c variable.
-
-options() function은 R이 결과를 compute하고 display하는데의 방법에 영향을 미치는 다양한 global “옵션들”을 setting하고 examining하는 것을 허용합니다. .Options 값은 현재 이 옵션들의 값을 가지고 있지만, 당신을 미치게 만들고 싶지 않은 이상 직접적으로 배정되어서는 안됩니다 – 간단하게 이것이 “읽기 전용”값인 것 처럼 하십시오. 
+함수 @code{options()}는 R이 연산을 수행하고 이의 결과를 보여주는데 방법들에 있어서 영향을 미치는 다양한 전역(global) 옵션들을 설정하고 확인하도록 해줍니다.
+@code{.Options}의 값은 이러한 옵션들의 현재 값을 가지고 있으나, 만약 당신이 미쳐버리고 싶지 않다면 (unless you want to drive yourself crazy) 가급적이면 이를 ``read-only''(읽기 전용)으로 두고, 직접적으로 조절하지 마시길 바랍니다.
 
 @c For example, given
+예를들어, 아래의 예를 살펴보세요.
 
-예를들어, 주어진
 @example
 test1 <- function(x = pi, dig = 3) @{
   oo <- options(digits = dig); on.exit(options(oo));
@@ -3190,7 +3195,7 @@ test2 <- function(x = pi, dig = 3) @{
 
 @noindent
 @c we obtain:
-우리는 아래를 얻습니다. 
+위의 예제로부터 우리는 아래의 결과를 얻을 것입니다.
 
 @example
 R> test1()
@@ -3203,27 +3208,29 @@ R> test2()
 @c using @kbd{options(OPT = VAL)} correctly updates it.  Local copies of
 @c @code{.Options}, either in @code{.GlobalEnv} or in a function
 @c environment (frame), are just silently disregarded.
-
-실제로 쓰여진 것은.Options의 global 값이고, options(OPT = VAL)를 씀으로 이를 정확하게 업데이트 합니다. .Options의 local copy들은, .GlobalEnv 안이나 function 환경 (frame)안에, 조용히 무시되어 집니다. 
+실제로 쓰여지는 것은 @code{.Options}가 가지고 있는 @emph{global}(전역)값이며, @kbd{options(OPT=VAL)}을 이용하여 이를 정확하게 업데이트 합니다.
+@code{.GlobalEnv} 또는 함수환경 (function frame, 즉 frame)내에 있는 @code{.Options}내의 로컬카피(local copies)들은 조용히 무시될 것입니다.
 
 @node How do file names work in Windows?, Why does plotting give a color allocation error?, How should I set options?, R Miscellanea
-@section How do file names work in Windows?
+@c @section How do file names work in Windows?
+@section Windows에서 파일명은 어떻게 작동하나요?
 
 @c As R uses C-style string handling, @samp{\} is treated as an escape
 @c character, so that for example one can enter a newline as @samp{\n}.
 @c When you really need a @samp{\}, you have to escape it with another
 @c @samp{\}.
-
-R이 C-style string handling을 사용함으로써, ‘\’는 escape character처럼 대해지고, 예로써 새로운 줄을 ‘\n’로 쓸 수 있습니다. ‘\’가 정말로 필요할 때, 다른‘\’와 함께 이를 escape 해야만 합니다. 
+R은 C-스타일의 문자열조작(string handling)을 이용하기 때문에, @samp{\}를 이스케이프 문자(escape character)와 같이 처리하게 됩니다. 
+예를들면 @samp{\n}은 개행문자(newline)을 입력하기 위해서 사용합니다. 
+@samp{\}이라는 문자가 정말로 필요할 때는 또 다른 @samp{\}을 이용하여 함께 사용해야 합니다. 
 
 @c Thus, in filenames use something like @code{"c:\\data\\money.dat"}.  You
 @c can also replace @samp{\} by @samp{/} (@code{"c:/data/money.dat"}).
-
-그리하여, 파일 이름 안에 "c:\\data\\money.dat"와 같은 것을 씁니다. ‘\’를 ‘/’로 교체 할 수도 있습니다 ("c:/data/money.dat").  
-
+따라서, @code{"c:\\data\\money.dat"}와 같은 파일명을 작성하게 됩니다. 
+또한 @samp{\}를 @samp{/}로 변경하여 @code{"c:/data/money.dat"}와 같이 사용할 수도 있습니다.
 
 @node Why does plotting give a color allocation error?, How do I convert factors to numeric?, How do file names work in Windows?, R Miscellanea
-@section Why does plotting give a color allocation error?
+@c @section Why does plotting give a color allocation error?
+@section 플랏팅에서 왜 색상을 할당할때 에러가 생기나요?
 
 @c On an X11 device, plotting sometimes, e.g., when running
 @c @code{demo("image")}, results in ``Error: color allocation error''.
@@ -3231,23 +3238,23 @@ R이 C-style string handling을 사용함으로써, ‘\’는 escape character�
 @c applications started prior to R have used all the available colors.
 @c (How many colors are available depends on the X configuration; sometimes
 @c only 256 colors can be used.)
-
-X11 장치에서, 가끔하는 plotting은, 예를들어demo("image")를 실행할 때, “오류: 색상 할당 오류”의 결과를 초래합니다. 이는 X 문제이고, R과 간접적으로만 관련이 있습니다. 이는 R전에 시작되었던 application들이 모든 이용가능한 색들을 써버렸을 때 일어납니다. (얼마나 많은 색상이 이용가능한지는 X configuration에 의해 결정됩니다; 가끔은 256 색만이 사용할 가능할 수도 있습니다.)
-
+X11 장치를 이용할 때 @code{demo("image")}와 같이 플랏팅(plotting) 할때 ``Error: color allocation error'' (오류: 색상 할당 에러입니다)라는 메시지들 보게 될 때가 있습니다.
+이것은 X의 문제이며 R과 간접적으로 관련이 있는 것입니다.
+이것은 R을 실행하기 전에 어플리케이션들이 가능한 모든 색상들을 사용했을 때 발생하게 됩니다.
+(얼마나 많은 색상의 사용이 가능한지는 X의 설정에 따라 다릅니다; 때때로 오로지 256색상만이 사용될 수도 있습니다).
 
 @c One application which is notorious for ``eating'' colors is Netscape.
 @c If the problem occurs when Netscape is running, try (re)starting it with
 @c either the @option{-no-install} (to use the default colormap) or the
 @c @option{-install} (to install a private colormap) option.
-
-“먹는”색으로 악명이 높은 application은 Netscape입니다. 만약 Netscape이 실행되는 도중에 이 문제가 발생하면, -no-install (기본 colormap을 사용하도록하는) 혹은 –install (개인 소유의 colormap을 설치하도록 하는)옵션을 사용하여 (재)시작을 해 보십시오.
+``eating'' color (먹는 색, 즉 보여지지 않는 색)으로 악명이 높은 어플리케이션은  Netscape입니다.
+만약 Netscape를 실행할때 이러한 문제가 발생한다면, 기본 컬러맵(default colormap)을 이용하는 @option{-no-install} 또는 특정컬러맵(private colormap)을 이용하는 @option{-install} 옵션을 이용하여 재시작을 시도해보세요.
 
 @c You could also set the @code{colortype} of @code{X11()} to
 @c @code{"pseudo.cube"} rather than the default @code{"pseudo"}.  See the
 @c help page for @code{X11()} for more information.
-
-X11()의 colortype을 기본값 "pseudo" 대신에"pseudo.cube"로 설정할 수도 있습니다. 더 많은 정보를 위해서는 help 페이지의 X11()을 참조하십시오.
-
+@code{X11()}의 기본값인 @code{"pseudo"}를 사용하기 대신에 @code{"pseudo.cube"}로 설정할 수도 있습니다.
+더 많은 내용에 대해서는 @code{X11()} 도움말 페이지를 참고해주세요.
 
 @c  @node Is R Y2K-compliant?, How do I convert factors to numeric?, Why does plotting give a color allocation error?, R Miscellanea
 @c  @section Is R Y2K-compliant?
@@ -3262,13 +3269,14 @@ X11()의 colortype을 기본값 "pseudo" 대신에"pseudo.cube"로 설정할 수
 @c  and manipulate data in ways that are not Y2K compliant.
 
 @node How do I convert factors to numeric?, Are Trellis displays implemented in R?, Why does plotting give a color allocation error?, R Miscellanea
-@section How do I convert factors to numeric?
+@c @section How do I convert factors to numeric?
+@section 어떻게 요인을 숫자형으로 변경할 수 있나요?
 
 @c It may happen that when reading numeric data into R (usually, when
 @c reading in a file), they come in as factors.  If @code{f} is such a
 @c factor object, you can use
-
-R로 숫자 데이터를 읽을 때 (보통, 파일을 읽을 때), 이들이 factor들 처럼 오는 경우가 있을 수도 있습니다. 만약 f가 그런 factor object라면, 당신은 
+R로 수치형 데이터를 읽어 들일때 (일반적으로 파일을 읽을때), 이들은 요인형(factor)로 인식되어 읽어지는 경우가 있습니다.
+만약 @code{f}가 이러한 요인형 객체라면, 아래와 같이 한다면 수치형으로 다시 돌려주게 됩니다. 
 
 @example
 as.numeric(as.character(f))
@@ -3276,7 +3284,7 @@ as.numeric(as.character(f))
 
 @noindent
 @c to get the numbers back.  More efficient, but harder to remember, is
-를 숫자들을 다시 가져오기위해 사용할 수 있습니다. 더 효율적이지만, 기억하기는 더 어려운,
+좀 더 효율적이지만, 기억하기는 어려운 방법으로는 아래와 같이 합니다. 
 
 @example
 as.numeric(levels(f))[as.integer(f)]
@@ -3285,7 +3293,7 @@ as.numeric(levels(f))[as.integer(f)]
 @c In any case, do not call @code{as.numeric()} or their likes directly for
 @c the task at hand (as @code{as.numeric()} or @code{unclass()} give the
 @c internal codes).
-어떠한 경우에도, 주어진 일(as.numeric()나 unclass() 는 내부 코드들을 줍니다.)에 직접적으로 as.numeric()나 그 비슷한 것을 부르지 마십시오. 
+어떠한 경우라도 주어진 작업에 대해서 @code{as.numeric()} 또는 그 비슷한 것들을 호출하지 마시길 바랍니다 (그 이유는 @code{as.numeric()} 또는 @code{unclass()}는 내부코드들을 보여줄 것이기 때문입니다).
 
 
 @node Are Trellis displays implemented in R?, What are the enclosing and parent environments?, How do I convert factors to numeric?, R Miscellanea

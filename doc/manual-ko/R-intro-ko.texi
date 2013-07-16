@@ -1463,7 +1463,7 @@ for @code{sub} and @code{substring}.}
 @c Values corresponding to @code{TRUE} in the index vector are selected and
 @c those corresponding to @code{FALSE} are omitted.  For example
 
-@strong{논리형 벡터}:  이 경우는 인덱스 벡터는 반드시 선택할 구성요소를 포함한 벡터와 길이가 같아야 합니다. 
+@strong{논리형 인덱스 벡터}:  이 경우는 인덱스 벡터는 반드시 선택할 구성요소를 포함한 벡터와 길이가 같아야 합니다. 
 인덱스 벡터에서 @code{TRUE}에 대응하는 요소들만 선택되고, @code{FALSE}에 대응하는 요소들은 제거될 것입니다. 
 예를 들면, 아래의 명령문은 @code{x} 벡터 중 결측치가 아닌 요소들만을 원래의 순서대로 포함하는 객체 @code{y}를 생성합니다. 
 만약 @code{x}에 결측치가 포함되어 있다면 새로 생성된 @code{y}의 길이는 @code{x} 보다 짧을 것입니다. 
@@ -1498,7 +1498,7 @@ for @code{sub} and @code{substring}.}
 @c as the index vector.  For example @code{x[6]} is the sixth component of
 @c @code{x} and
 
-@strong{양의 정수 벡터}: 이 경우의 인덱스 벡터는 반드시 @{1, 2, @dots{}, @code{length(x)}@} 범위 내에 있어야 합니다. 선택된 구성요소들은 인덱스 벡터에서 @emph{지정한 순서} 대로 선택되어 하나로 묶여지게 됩니다. 선택된 결과는 사용된 인덱스 벡터의 길이와 같으며, 인덱스 벡터의 길이는 임의로 선택 가능합니다. 
+@strong{양의 정수 인덱스 벡터}: 이 경우의 인덱스 벡터는 반드시 @{1, 2, @dots{}, @code{length(x)}@} 범위 내에 있어야 합니다. 선택된 구성요소들은 인덱스 벡터에서 @emph{지정한 순서} 대로 선택되어 하나로 묶여지게 됩니다. 선택된 결과는 사용된 인덱스 벡터의 길이와 같으며, 인덱스 벡터의 길이는 임의로 선택 가능합니다. 
 예를 들어, @code{x[6]}는 @code{x}의 여섯번째 구성요소를 선택하며, 아래 명령문은 (@code{x}의 길이가 10보다 작지만 않다면,) @code{x}가 가진 구성요소 중 처음 10개의 요소들을 선택 합니다. 
 
 @example
@@ -1522,7 +1522,7 @@ for @code{sub} and @code{substring}.}
 @item
 @c @strong{A vector of negative integral quantities}.  Such an index vector
 @c specifies the values to be @emph{excluded} rather than included.  Thus
-@strong{음의 정수 벡터}:  이 경우, 인덱스 벡터는 선택된 요소들을 포함하는 것이 아니라 @emph{제외}할 목적으로 사용됩니다. 
+@strong{음의 정수 인덱스 벡터}:  이 경우, 인덱스 벡터는 선택된 요소들을 포함하는 것이 아니라 @emph{제외}할 목적으로 사용됩니다. 
 따라서, 아래 명령문은 @code{x}의 처음 5개의 구성요소들만 제외시켜 @code{y}를 생성 합니다. 
 
 @example
@@ -1538,9 +1538,9 @@ for @code{sub} and @code{substring}.}
 @c In this case a sub-vector of the names vector may be used in the same way
 @c as the positive integral labels in item 2 further above.
 
-@strong{문자형 벡터}: 이 경우는 벡터의 각 구성요소들이 @code{names}라는 속성을 가지고 있을 때에만 이용이 가능합니다. 이때, @code{names}를 한 데 묶어 나열한 벡터를 네임벡터 (names vector)하며, 위에서 설명한 바 있는 양의 값만을 가지는 인덱스 벡터와 동일한 방식으로 작동하게 됩니다.
-다음의 예제를 살펴보면, @code{fruit}이라는 수치형 벡터에 @code{names()} 라는 함수를 이용하여 각각의 구성요소에 @code{"orange", "banana", "apple", "peach"}라는 @code{names} 속성을 부여했습니다.
-만약, @code{fruit} 벡터의 세번째와 첫번째 요소를 선택하고자 할 때, @code{[c("apple","orange")]}라고 하면 됩니다.
+@strong{문자형 인덱스 벡터}: 이 경우는 객체의 각 구성요소들이 @code{names}라는 속성(i.e.객체 안의 각 구성요소(변수)의 이름)을 가지고 있을 때에만 인덱스 벡터의 이용이 가능합니다. 이때, @code{names}를 한 데 묶어 나열한 벡터를 네임벡터 (names vector)라고하며, 위에서 설명한 양의 정수 인덱스 벡터와 동일한 방식으로 사용하면 됩니다.
+다음의 예제를 보면,  우선 @code{fruit}이라는 수치형 벡터에 @code{names()} 라는 함수를 이용하여 각각의 구성요소에 @code{"orange", "banana", "apple", "peach"}라는 @code{names} 속성을 부여합니다.
+이제, 만약 @code{fruit} 벡터의 세번째와 첫번째 요소를 선택하고 싶다면, @code{[c("apple","orange")]}를 사용하면 됩니다.
   
 @example
 > fruit <- c(5, 10, 1, 20)
@@ -1548,13 +1548,12 @@ for @code{sub} and @code{substring}.}
 > lunch <- fruit[c("apple","orange")]
 @end example
 
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @c The advantage is that alphanumeric @emph{names} are often easier to
 @c remember than @emph{numeric indices}.  This option is particularly
 @c useful in connection with data frames, as we shall see later.
 
-이렇게 @emph{names}속성을 이용하는 것은 @emph{수치형 인덱스}를 이용하여 그 구성요소들을 찾아내는 것보다 종종 편리한 경우가 있습니다. 
-이 옵션은 추후에 보게될 데이터 프레임과 연관이 있습니다. 
+이렇게 영문과 숫자의 조합(alphanumeric)인 @emph{names}를 이용할 경우 @emph{수치형 인덱스}를 이용하여 구성요소를 선택할 때 보다 기억하기에 편리하다는 장점이 있습니다. 이 옵션은 특히 나중에 설명하게 될 데이터 프레임과 연관이 있습니다.
+ 
 @end enumerate
 
 @c An indexed expression can also appear on the receiving end of an
@@ -1563,9 +1562,11 @@ for @code{sub} and @code{substring}.}
 @c the form @code{vector[@var{index_vector}]} as having an arbitrary
 @c expression in place of the vector name does not make much sense here.
 
-인덱스를 활용한 표현식은 또한 벡터의 결과를 할당을 받게 되는 대입문의 마지막에 나타나기도 합니다. 
-이 경우는 주로 대입문이 사용되는 벡터의 그 자신에게 적용됩니다. 
-아래의 예제는 @code{x}에 결측값이 있는 위치를 확인하여 이 위치에 해당하는 @code{x}의 값들 (즉, 결측값)을 0으로 대체하는 방법을 알려줍니다. 
+인덱스를 사용한 표현식은 벡터의 일부 구성요소에 새로운 값을  할당하기 위한 목적으로도 사용 되는데,
+이 경우 주로 인덱스 벡터를 적용한 벡터 그 자신이 할당의 대상이 됩니다. 여기서 표현식은 반드시@code{vector[@var{index_vector}]}의 형태로 사용되야 하며, 네임벡터의 위치에 어떠한 표현식이든 자유롭게 사용될 수 있는 것은 아닙니다. 
+
+예제를 통해 살펴보면, 다음과 같은 명령문을 사용하면 @code{x}에서 결측값이 있는 위치를 확인하여 이 위치의 결측값에 0을 할당 하는 것이 가능합니다.
+ 
 @c For example
 
 @example
@@ -1575,14 +1576,14 @@ for @code{sub} and @code{substring}.}
 @noindent
 @c replaces any missing values in @code{x} by zeros and
 
-아래의 예제를 살펴보면 @code{y}의 값들중 0 보다 작은 값들의 위치를 찾아 이 위치에 상응하는 @code{y}의 값의 부호를 바꾸어줍니다.
+또 다음의 예제에서는 @code{y}의 값들 중 0 보다 작은 값들을 찾고 이들의 부호를 바꿔줍니다.
 @example
 > y[y < 0] <- -y[y < 0]
 @end example
 
 @noindent
 @c has the same effect as
-결과적으로 위의 예제는 아래와 같은 명령문을 수행한 것과 동일합니다. 
+결과적으로 위의 예제는 아래의 명령문을 수행한 것과 같은 결과를 얻습니다. 
 
 @example
 > y <- abs(y)
@@ -1595,8 +1596,7 @@ for @code{sub} and @code{substring}.}
 @c Vectors are the most important type of object in @R{}, but there are
 @c several others which we will meet more formally in later sections.
 
-벡터는 @R{}에서 가장 중요한 객체입니다. 
-다음은 앞으로 다루게 될 다른 형태들의 객체들에 대한 간략한 설명입니다. 그러나, 이들은 모두 벡터를 기반으로 하는 것입니다. 
+벡터는 @R{}에서 가장 중요한 객체입니다. 하지만 이번 섹션에서는 다른 유형의 객체들에 대해 간단히 소개하도록 하겠습니다. 
 
 @itemize @bullet
 @item
@@ -1605,15 +1605,15 @@ for @code{sub} and @code{substring}.}
 @c be indexed by two or more indices and will be printed in special ways.
 @c @xref{Arrays and matrices}.
 
-@emph{matrices}(행렬) 또는 좀 더 일반적으로 @emph{arrays} (배열)이라는 것은 1차원적인 벡터를 다차원에 일반화 시킨 것입니다.
-사실은 행렬과 배열 @emph{모두} 단순히 두개 또는 그 이상의 인덱스를 이용하여 특정한 방법으로 표현되도록 한 벡터입니다.
+@emph{matrices}(행렬) 또는 좀 더 일반적으로 @emph{arrays}(배열)이라는 것은 1차원인 벡터를 다차원으로 일반화시킨 것 입니다. 실제로, 행렬과 배열은 두개 또는 그 이상의 인덱스를 사용하여 표현되는 @emph{벡터}로 볼 수 있으며, 정해진 형태로 출력될 것입니다.
+
 @xref{Arrays and matrices}.
 
 @item
 @c @emph{factors} provide compact ways to handle categorical data.
 @c @xref{Factors}.
 
-@emph{factors}(요인)은 카테고리컬 데이터 (categorical data)를 처리하는 편리한 방법을 제공합니다.
+@emph{factors}(요인)을 이용하면 범주형 자료(categorical data)를 간단하게 다룰 수 있습니다. 
 @xref{Factors}. 
 
 @item
@@ -1622,8 +1622,8 @@ for @code{sub} and @code{substring}.}
 @c Lists provide a convenient way to return the results of a statistical
 @c computation.  @xref{Lists}.
 
-@emph{lists}는 가장 일반적인 형태의 벡터로서 각 구성요소들이 같은 데이터형을 가지고 있어야 한다는 제약이 없으며, 이들 자체가 벡터 또는 리스트이기도 합니다. 
-리스트는 통계연산의 결과를 반환할 때 매우 편리한 방법을 제공해주니다.
+@emph{lists}는 가장 일반적인 형태의 벡터로 각 구성요소들이 같은 데이터 형태로 되어야한다는 제약이 없으며, 종종 벡터나 리스트를 그 자체로 포함하기도 합니다. 
+또한 리스트는 통계연산의 결과를 편리하게 출력하기 위해 사용될 수도 있습니다.
 @xref{Lists}.
 
 @item
@@ -1634,20 +1634,22 @@ for @code{sub} and @code{substring}.}
 @c frames: the treatments are categorical but the response is numeric.
 @c @xref{Data frames}.
 
-@emph{data frames}은 행렬과 같은 구조를 가지고 있는데 각각의 열들은 다른 데이터형을 가질 있습니다. 데이터 프레임을 각 행들이 하나의 관측단위이며 열들은 이 관측단위로부터 얻어진 연속형과 이산형 변수들에 대한 값을 가지고 있는 `데이터 행렬'로 생각해도 무방합니다. 예를들어, 실험의 종류 및 방법들을 이산형으로 정리하고, 이에 해당하는 결과들은 연속형으로서 데이터 프레임내에 잘 정리될 수 있습니다. 
+@emph{data frames}은 행렬과 비슷한 구조를 가지고 있지만, 각각의 열이 다른 데이터 형태일 수 있습니다. 데이터 프레임은, 각 행이 하나의 관측 단위이고 각 열은 이 관측단위에서 얻어진 연속형 또는 이산형 변수인 `데이터 행렬'이라고 생각해도 무방할 것 입니다. 예를들어, 실험의 처리 수준을 범주화(categorical)해서 나타내고, 각 처리에서 얻어진 결과물(반응 변수)은 연속형일 경우, 데이터 프레임을 사용하는 것이 이 실험을 가장 잘 기록할 수 있는 방법일 것입니다. 
 @xref{Data frames}.
 
 @item
 @c @emph{functions} are themselves objects in @R{} which can be stored in
 @c the project's workspace.  This provides a simple and convenient way to
 @c extend @R{}.  @xref{Writing your own functions}.
-@R{}에서 @emph{functions}(함수)는 그 자신이 프로젝트의 작업공간내에 저장이 될 수 있는 객체입니다. 이것은 @R{}을 확장하는데 매우 간편한 방법을 제공합니다. 
+
+@R{}에서 @emph{functions}(함수)는 그 자체로 프로젝트의 작업공간 내에 저장 될 수 있는 객체이기도 합니다. 함수의 사용은 @R{}의 기능을 좀 더 간편하게 확장할 수 있게 합니다 . 
 @xref{Writing your own functions}.
 @end itemize
 
+
 @node Objects, Factors, Simple manipulations numbers and vectors, Top
 @c @chapter Objects, their modes and attributes
-@chapter 객체, 이것에 대한 속성과 모드
+@chapter 객체의 속성과 모드
 @cindex Objects
 @cindex Attributes
 
