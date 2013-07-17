@@ -3580,13 +3580,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- from.  If a function @code{f()} is defined inside another function -->
 <!-- @code{g()} it will probably be used inside @code{g()} as well, so its -->
 <!-- parent environment and enclosing environment will probably be the same. -->
-   <p>그래서, 대부분의 사용자가 볼수있는 function들에 대해 대부분의 function들이 정의된 곳이기 때문에enclosing 환경이 global workspace가 될 것입니다. Parent 환경은 function의 호출이 일어나는 곳 어디든지가 될 것입니다. 만약 function f()가 다른 function g()안에서 정의된다면, 이는 g() 안에서도 사용될 것이고, 그리하여 그의 parent 환경과 enclosing 환경은 아마도 같을 것 입니다.
+   <p>여지까지 사용자가 볼 수 있는 함수들의 인클로징 환경은 글로벌 작업공간일 것입니다. 
+그 이유는 대부분의 함수들의 정의된 위치가 글로벌 작업공간이기 때문입니다. 
+패런트 환경은 함수가 불러지는 곳이면 어디든지 될 수 있습니다. 
+만약 함수 <code>f()</code>가 다른 함수 <code>g()</code>안에 정의 되어 있다고 한다면, 이것은 <code>g()</code>함수 내에서 사용될 수 있기 때문에 패런트 환경과 인클로징 환경은 아마도 동일할 것입니다.
 
 <!-- Parent environments are important because things like model formulas -->
 <!-- need to be evaluated in the environment the function was called from, -->
 <!-- since that's where all the variables will be available.  This relies on -->
 <!-- the parent environment being potentially different with each invocation. -->
-   <p>Parent 환경들은 model formula들 같은 것들이 모든 값들이 이용가능한 장소인 function이 불려온 환경을 평가하는데 필요하기 때문에 중요합니다. 이는 각각의 invocation에 따라 잠재적으로 다른 parent 환경에 의지합니다.
+   <p>패런트 환경들은 모델 포뮬러(model formulas)와 같은 것들이 모든 변수들을 이용가능한 장소인, 즉, 함수가 호출된 환경에서 평가되는 것이 필요하므로 매우 중요합니다. 
+이것은 매번 실행에 따라 달라질 수도 있는 패런트 환경에 크게 영향을 받습니다.
 
 <!-- Enclosing environments are important because a function can use -->
 <!-- variables in the enclosing environment to share information with other -->
@@ -3594,7 +3598,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- lexical scoping).  This relies on the enclosing environment being the -->
 <!-- same each time the function is invoked.  (In C this would be done with -->
 <!-- static variables.) -->
-   <p>Enclosing 환경들은 function이 enclosing 환경 안의 값들을 다른 function들과 혹은 다른 그자신의 invocation들을 가진 정보를 공유하도록 사용할 수 있기 때문에 중요합니다 (lexical scoping에 대한 섹션은 참조하십시오). 이는 function이 invoke될 때마다 enclosing 환경이 같다는 것을 필요로 합니다. (C에서 이는 정적 변수로 행해 질 것입니다.)
+   <p>인클로징 환경은 함수가 인크로징 환경내의 변수들을 다른 함수들 또는 자기 자신의 또다른 실행으로 가진 정보들을 공유하기 위하여 사용할 수 있기 때문에 중요합니다 (렉시컬 스코핑 섹션을 살펴보시길 바랍니다). 
+이는 함수가 매번 실행될때마다 동일한 인클로징 환경을 가져야 한다는 것을 필요로 합니다 (C에서는 이것을 정적변수(static variable)로 행하게 됩니다).
 
 <!-- Scoping @emph{is} hard.  Looking at examples helps.  It is particularly -->
 <!-- instructive to look at examples that work differently in R and S and try -->
@@ -3602,7 +3607,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- between R and S is to say that in S the enclosing environment is -->
 <!-- @emph{always} the global workspace, but in R the enclosing environment -->
 <!-- is wherever the function was created. -->
-   <p>Scoping은 어렵습니다. 예제들을 보는 것이 도움이 됩니다. 이는 R과 S에서 다르게 실행되고 왜 그들이 다른지를 보려고 노력하는 예제들을 보는 것이 특히 유익합니다. R과 S사이의 다른 scoping를 설명하는 하나의 방법으로는 S 안에서 enclosing 환경은 항상 global workspace이지만, R 안에서의 enclosing 환경은function이 생성된 곳 어디든지라는 것 입니다.
+   <p>스코핑(scoping)은 어렵습니다. 
+예제들을 살펴보는 것이 도움이 됩니다. 
+왜 R과 S에서 다르게 실행이 되며, 이들이 왜 다른가를 살펴보는 것이 중요합니다. 
+R과 S의 스코핑이 다른 점을 설명하는 하나의 방법은 S는 인클로징 환경이 항상 클로벌 작업공간인데 반해 R은 인클로징 환경이 함수가 생성되는 곳에서 발생하게 됩니다.
 
 <div class="node">
 <a name="How-can-I-substitute-into-a-plot-label%3f"></a>
@@ -3614,7 +3622,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 </div>
 
-<h3 class="section">7.13 How can I substitute into a plot label?</h3>
+<!-- @section How can I substitute into a plot label? -->
+<h3 class="section">7.13 플랏 라벨에 어떻게 값을 넣을 수 있나요?</h3>
 
 <!-- Often, it is desired to use the value of an R object in a plot label, -->
 <!-- e.g., a title.  This is easily accomplished using @code{paste()} if the -->
@@ -3623,21 +3632,27 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 <!-- case, either use @code{parse()} on your pasted character string or use -->
 <!-- @code{substitute()} on an expression.  For example, if @code{ahat} is an -->
 <!-- estimator of your parameter @math{a} of interest, use -->
-<p>자주, plot label 안에 R object의 값을 사용하는 것, 예, 제목, 이 원해 집니다. 이는 만약 label이 단순한 문자열일경우 paste()를 사용하여 쉽게 이뤄지지만, label이 expression (재 정비된 수학 주석에 대한)일때와 같은 경우는 항상 분명하지는 않습니다. 이런 경우에는, 복사하여 붙여진 문자열에parse()를 사용하거나 expression에substitute()를 사용합니다. 예를들어, 만약 ahat이 당신이 관심있어하는 parameter의 estimator이라면,
+<p>종종 제목(title)과 같은 플랏 라벨(plot label)내에서 R 객체의 값을 사용하고자 할 때가 있습니다. 
+만약 라벨이 단순한 문자열이라면 <code>paste()</code>를 이용하여 쉽게 이루어지지만, 라벨이 정교한 수식을 가지는 표현일 경우에는 다소 어려움이 있습니다. 
+이 경우에는 연결된 문자열에 <code>parse()</code>를 이용하거나 수식에 대해서 <code>substitute()</code>를 이용합니다. 
+예를 들면, 만약 <code>hat</code>이 파라미터 a의 추정치라면, 다음과 같이 해 볼 수 있습니다.
 
 <pre class="example">     title(substitute(hat(a) == ahat, list(ahat = ahat)))
 </pre>
    <p class="noindent"><!-- (note that it is @samp{==} and not @samp{=}).  Sometimes @code{bquote()} -->
 <!-- gives a more compact form, e.g., -->
-를 사용하십시오(‘=’이 아니라 ‘==’ 이라는 것에 유의하십시오). 가끔 bquote()가 더 간편한  형태를 줍니다, 예로, ‘.()’ 안의 subexpression들이 그들의 값에 의해 대체된
+(여기에서 &lsquo;<samp><span class="samp">==</span></samp>&rsquo;는 &lsquo;<samp><span class="samp">=</span></samp>&rsquo;이 아닙니다). 
+때때로 <code>bquote()</code>는 간결한 형식을 제공합니다.
 
 <pre class="example">     title(bquote(hat(a) = .(ahat)))
 </pre>
    <p class="noindent"><!-- where subexpressions enclosed in @samp{.()} are replaced by their -->
 <!-- values. -->
-메일링 리스트 archives에 더 많은 풀어진 예제들이 있습니다.
+여기에서 &lsquo;<samp><span class="samp">.()</span></samp>&rsquo;내에 닫혀진 부분은 값으로 대체됩니다.
 
 <!-- There are more worked examples in the mailing list archives. -->
+   <p>더 많은 예제들이 메일링 리스트 저장소에 있습니다.
+
 <div class="node">
 <a name="What-are-valid-names%3f"></a>
 <a name="What-are-valid-names_003f"></a>
@@ -3648,14 +3663,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Miscellanea">R Miscellanea</a>
 
 </div>
 
-<h3 class="section">7.14 What are valid names?</h3>
+<!-- @section What are valid names? -->
+<h3 class="section">7.14 유효한 이름은 무엇인가요?</h3>
 
 <!-- When creating data frames using @code{data.frame()} or -->
 <!-- @code{read.table()}, R by default ensures that the variable names are -->
 <!-- syntactically valid.  (The argument @option{check.names} to these -->
 <!-- functions controls whether variable names are checked and adjusted by -->
 <!-- @code{make.names()} if needed.) -->
-<p>data.frame() 이나 read.table()을 사용하여 데이터 프레임을 생성할 때, R은 기본적으로 변수 이름들이 구문상으로 반드시 유효하도록 합니다.  ( 이 함수들로의 argument check.names는 변수 이름들이 체크 되었는지를 조정하고, 만약 필요하면make.names()로 조절합니다.)
+<p><code>data.frame()</code> 또는 <code>read.table()</code>을 이용하여 데이터 프레임을 생성하고자 할 때,
+data.frame() 이나 read.table()을 사용하여 데이터 프레임을 생성할 때, R은 기본적으로 변수 이름들이 구문상으로 반드시 유효하도록 합니다.  ( 이 함수들로의 argument check.names는 변수 이름들이 체크 되었는지를 조정하고, 만약 필요하면make.names()로 조절합니다.)
 
 <!-- To understand what names are ``valid'', one needs to take into account -->
 <!-- that the term ``name'' is used in several different (but related) ways -->
