@@ -567,105 +567,137 @@ Windows).
 @section  Variations on @code{read.table}
 @findex read.table
 
-The function @code{read.table} is the most convenient way to read in a
-rectangular grid of data.  Because of the many possibilities, there are
-several other functions that call @code{read.table} but change a group
-of default arguments.
+@c The function @code{read.table} is the most convenient way to read in a
+@c rectangular grid of data.  Because of the many possibilities, there are
+@c several other functions that call @code{read.table} but change a group
+@c of default arguments.
 
-@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다.
+@code{read.table}은 사각형 격자 형태의 데이터를 읽기 위한 가장 편리한 방법입니다. 다양한 가능성 때문에, @code{read.table}을 호출하는 다른 다양한 함수들이 존재하지만, 이러한 함수들은 단지 몇 개의 디폴트 지정만 달리한 것입니다. 
 
-Beware that @code{read.table} is an inefficient way to read in
-very large numerical matrices: see @code{scan} below.
+@c Beware that @code{read.table} is an inefficient way to read in
+@c very large numerical matrices: see @code{scan} below.
 
-Some of the issues to consider are:
+주의할 점은 read.table은 대용량 수치 행렬을 읽기에는 비효율적인 방법이라는 점입니다. 보다 자세한 내용은 다음에 나올 @code{scan}을 참고하십시오.
+
+@c Some of the issues to consider are:
+
+몇 개의 중요한 사항은 다음과 같습니다.
 
 @enumerate
 @item @strong{Encoding}
 
-If the file contains non-ASCII character fields, ensure that it is read
-in the correct encoding.  This is mainly an issue for reading Latin-1
-files in a UTF-8 locale, which can be done by something like
+@c If the file contains non-ASCII character fields, ensure that it is read
+@c in the correct encoding.  This is mainly an issue for reading Latin-1
+@c files in a UTF-8 locale, which can be done by something like
+
+만약 파일에 ASCII 형태가 아닌 문자 변수들이 포함되어 있다면, 그것이 제대로 부호화 되어 읽어졌는지 반드시 확인해야 합니다. 이것은 주로 UTF-8 locale에서 Latin-1 파일을 읽는 것과 관련된 문제인데, 이것은 아래와 같은 방법으로 해결할 수 있습니다.
 
 @example
 read.table("file.dat", fileEncoding="latin1")
 @end example
 
 @noindent
-Note that this will work in any locale which can represent Latin-1
-strings, but not many Greek/Russian/Chinese/Japanese @dots{} locales.
+@c Note that this will work in any locale which can represent Latin-1
+@c strings, but not many Greek/Russian/Chinese/Japanese @dots{} locales.
 
+중요한 것은 그리스/러시아/중국/일본 @dots{} locales를 제외하고 Latin-1으로 표현된 모든 locale에 대해 이 방법을 사용할 수 있다는 점입니다.
 
 @item @strong{Header line}
 
-We recommend that you specify the @code{header} argument explicitly,
-Conventionally the header line has entries only for the columns and not
-for the row labels, so is one field shorter than the remaining lines.
-(If @R{} sees this, it sets @code{header = TRUE}.)  If presented with a
-file that has a (possibly empty) header field for the row labels, read
-it in by something like
+@c We recommend that you specify the @code{header} argument explicitly,
+@c Conventionally the header line has entries only for the columns and not
+@c for the row labels, so is one field shorter than the remaining lines.
+@c (If @R{} sees this, it sets @code{header = TRUE}.)  If presented with a
+@c file that has a (possibly empty) header field for the row labels, read
+@c it in by something like
+
+우리는 여러분들에게 헤더를 분명하게 표기하라고 권하고 싶습니다. 전통적으로 헤더에는 행 이름 대신 열 이름들만 들어가 있었는데, 그래서 하나의 변수가 다른 것들에 비해 길이가 짧습니다(만약 R이 이것을 판단할 수 있으면, header = TRUE로 세팅 할 것입니다). 만약에, 어떤 파일이 행 이름에 대한(입력이 되지 않았을 수 있는) 헤더 변수를 포함한다면, 아래와 같은 방법으로 이 파일을 읽을 수 있습니다.
 
 @example
 read.table("file.dat", header = TRUE, row.names = 1)
 @end example
 
-Column names can be given explicitly via the @code{col.names}; explicit
-names override the header line (if present).
+@c Column names can be given explicitly via the @code{col.names}; explicit
+@c names override the header line (if present).
+
+열 이름들은 @code{col.names}을 사용해서 따로 정의될 수 있으며, 따로 정의된 이름은 헤더(만약 존재한다면)에 대해 우선합니다.
 
 @item @strong{Separator}
 
-Normally looking at the file will determine the field separator to be
-used, but with white-space separated files there may be a choice between
-the default @code{sep = ""} which uses any white space (spaces, tabs or
-newlines) as a separator, @code{sep = " "} and @code{sep = "\t"}.  Note
-that the choice of separator affects the input of quoted strings.  
+@c Normally looking at the file will determine the field separator to be
+@c used, but with white-space separated files there may be a choice between
+@c the default @code{sep = ""} which uses any white space (spaces, tabs or
+@c newlines) as a separator, @code{sep = " "} and @code{sep = "\t"}.  Note
+@c that the choice of separator affects the input of quoted strings.  
 
-If you have a tab-delimited file containing empty fields be sure to use
-@code{sep = "\t"}.
+보통은 파일을 보면 파일에 사용된 변수 구분자가 무엇인지 알 수 있지만, 공백으로 파일이 구분된 경우, 우리는 구분자로 어떤 종류의 공백이든(단순 여백, 탭, 혹은 새로운 행) 다 사용할 수 있는 디폴트 @code{sep = ""}과 @code{sep = " "}, @code{sep = "＼t"} 중에서 하나를 구분자로 선택할 수 있습니다. 구분자의 선택이 인용된 문자열의 입력에 영향을 줄 수도 있다는 점을 주의해야 합니다.
 
+@c If you have a tab-delimited file containing empty fields be sure to use
+@c @code{sep = "\t"}.
+
+만약 당신이 여백을 포함하고 있는 탭을 구분자로 지정한(tab-delimited) 파일을 가지고 있다면, @code{sep = "＼t"}을 사용해야만 합니다.
 
 @item @strong{Quoting}
 @cindex Quoting strings
 
-By default character strings can be quoted by either @samp{"} or
-@samp{'}, and in each case all the characters up to a matching quote are
-taken as part of the character string.  The set of valid quoting
-characters (which might be none) is controlled by the @code{quote}
-argument.  For @code{sep = "\n"} the default is changed to @code{quote =
-""}.
+@c By default character strings can be quoted by either @samp{"} or
+@c @samp{'}, and in each case all the characters up to a matching quote are
+@c taken as part of the character string.  The set of valid quoting
+@c characters (which might be none) is controlled by the @code{quote}
+@c argument.  For @code{sep = "\n"} the default is changed to @code{quote =
+@c ""}.
 
-If no separator character is specified, quotes can be escaped within
-quoted strings by immediately preceding them by @samp{\}, C-style.
+디폴트에 의해 문자형 문자열이 @samp{"} 또는 @samp{'}에 의해 인용되면, 각각의 경우에 그 인용부호(quote)가 나타나기 전의 모든 문자들이 문자형 문자열의 한 덩어리로 간주됩니다. 유효한 인용부호 문자들의 조합(만약 인용부호 지정이 없다면)은 @code{quote} 인수(argument)로 통제할 수 있습니다. @code{sep ="＼n"}에 대해서, 디폴트는 @code{quote = ""}로 변경되어야 합니다.
 
-If a separator character is specified, quotes can be escaped within
-quoted strings by doubling them as is conventional in spreadsheets.  For
-example
+@c If no separator character is specified, quotes can be escaped within
+@c quoted strings by immediately preceding them by @samp{\}, C-style.
+
+아무런 구분자가 지정되지 않은 경우, C에서 그런 것처럼, 인용된 문자열 안에 든 인접한 바로 앞의 „＼‟에 의해 인용 작업이 중단될 수 있습니다. 
+
+@c If a separator character is specified, quotes can be escaped within
+@c quoted strings by doubling them as is conventional in spreadsheets.  For
+@c example
+
+특정 구분 문자가 지정된 경우에는 인용된 문자열 내에서 중복된 구분 문자에 의한 인용 작업의 중단이 발생할 수도 있습니다. 예를 들면, 
 
 @example
 'One string isn''t two',"one more"
 @end example
 
+을 읽어 들일 때는 
+
 @noindent
-can be read by
+@c can be read by
 
 @example
 read.table("testfile", sep = ",")
 @end example
 
+read.table("testfile", sep = ",")을 사용해야 합니다. 
+
 @noindent
 This does not work with the default separator.
+
+이렇게 하면 디폴트 구분자에 대해 작동하지 않습니다
 
 @item @strong{Missing values}
 @cindex Missing values
 
-By default the file is assumed to contain the character string @code{NA}
-to represent missing values, but this can be changed by the argument
-@code{na.strings}, which is a vector of one or more character
-representations of missing values.
+@c By default the file is assumed to contain the character string @code{NA}
+@c to represent missing values, but this can be changed by the argument
+@c @code{na.strings}, which is a vector of one or more character
+@c representations of missing values.
 
-Empty fields in numeric columns are also regarded as missing values.
+파일 안에 든 결측값들을 표기하기 위해 문자열 @code{NA}를 사용하도록 디폴트가 지정되어 있지만, 결측값을 표현하기 위한 한 개 이상의 문자 벡터를 지정하는 @code{na.strings}에 의해 이 표현은 달라질 수 있습니다. 
 
-In numeric columns, the values @code{NaN}, @code{Inf} and @code{-Inf} are
-accepted.
+@c Empty fields in numeric columns are also regarded as missing values.
+
+또한 수치화된 열들 중에서 비워진 열들도 결측치로 간주됩니다. 
+
+@c In numeric columns, the values @code{NaN}, @code{Inf} and @code{-Inf} are
+@c accepted.
+
+숫자로 된 열에서는 @code{NaN}과 @code{Inf}, @code{-Inf}이 채워진 것으로 인정됩니다.
 
 @item @strong{Unfilled lines}
 

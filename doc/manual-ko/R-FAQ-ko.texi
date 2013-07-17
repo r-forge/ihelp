@@ -3,13 +3,12 @@
 @c 
 @c 교정작업 실시: 2013-JUL-10 
 @c 처음부터 up to chapter 6 R과 Emacs 
-@c 7장 최소 2일 걸림 
 @c 이 문서의 마지막 교정은 2013-JUL-30
 
 \input texinfo
 @c %**start of header
 @setfilename R-FAQ.info
-@settitle R FAQ (한국어 - 2013.07.09, ver.0.30, 오역 교정중)
+@settitle R FAQ (한국어 - 2013.07.17, ver.0.60, 오역 교정중)
 @setchapternewpage on
 @set FAQ_YEAR 2013
 @set FAQ_DATE @value{FAQ_YEAR}-02-08
@@ -3441,14 +3440,13 @@ title(bquote(hat(a) = .(ahat)))
 @c syntactically valid.  (The argument @option{check.names} to these
 @c functions controls whether variable names are checked and adjusted by
 @c @code{make.names()} if needed.)
-@code{data.frame()} 또는 @code{read.table()}을 이용하여 데이터 프레임을 생성하고자 할 때, 
-data.frame() 이나 read.table()을 사용하여 데이터 프레임을 생성할 때, R은 기본적으로 변수 이름들이 구문상으로 반드시 유효하도록 합니다.  ( 이 함수들로의 argument check.names는 변수 이름들이 체크 되었는지를 조정하고, 만약 필요하면make.names()로 조절합니다.)
+@code{data.frame()} 또는 @code{read.table()}을 이용하여 데이터 프레임을 생성하고자 할 때, R은 기본적으로 변수명이 구문상 (syntactically) 올바른지 확인하게 됩니다.
+(이러한 함수들에 인자 @option{check.names}는 변수명을 확인할 것인지에 대한 여부를 조정하고 만약 필요하다면 @code{make.names()}을 이용하여 조정하게 됩니다).
 
 @c To understand what names are ``valid'', one needs to take into account
 @c that the term ``name'' is used in several different (but related) ways
 @c in the language:
-
-어떤 이름들이 “유효한지”를 이해하기 위해서는, 언어 안에서 “이름”이 몇몇의 다른 (하지만 연관된) 방법으로 쓰여지는지를 생각 해 보아야 합니다.
+어떠한 이름들이 ``유효한가''를 이해하기 위해서는 ``name''(이름)이 어떤 방법으로 사용되는가를 알아야 할 필요가 있습니다.
 
 @enumerate
 @item
@@ -3457,7 +3455,9 @@ data.frame() 이나 read.table()을 사용하여 데이터 프레임을 생성�
 @c version of R at least 1.9.0) underscore characters, and starts with
 @c either a letter or a dot not followed by a number.  Reserved words are
 @c not syntactic names.
-Syntactic name은 parser가 expression의 형태처럼 해석하는 string입니다. 이는 문자들과 숫자들, 그리고 점들과 (적어도 1.9.0 버전의 R에서) 밑줄 표시된 글자들을 포함하고, 숫자가 바로 뒤에 오지 않는 문자나 점으로 시작합니다. 예약어들은 syntactic name들이 아닙니다. 
+@emph{syntatic name}(구문명)은 파서(parser)가 마치 표현식(expression)과 같은 유형으로 해석하게 되는 문자열을 의미합니다.
+이것은 문자(letters), 숫자, 닷기호(dot), 언더스코어(underscore), 그리고 숫자바로 뒤에 오지 않는 문자 또는 닷기호로 시작하게 됩니다.
+예약어(reserved words)는 구문명이 아닙니다.
 
 @item
 @c An @emph{object name} is a string associated with an object that is
@@ -3466,14 +3466,17 @@ Syntactic name은 parser가 expression의 형태처럼 해석하는 string입니
 @c function.  It is usually a syntactic name as well, but can be any
 @c non-empty string if it is quoted (and it is always quoted in the call to
 @c @code{assign()}).
-Object name은 assignment operation의 왼쪽에 있는 object 이름을 가지고 있는 것이나 assign() function으로의 argument에 의한 expression안에 배정된 object와 관련이 있는 string입니다.  이는 보통 syntactic name이기도 하지만, 만약 quoted(assign()으로 불러지면 항상 quoted입니다)되었다면 비어있지 않은 어떠한 string이 될 수도 있습니다. 
+@emph{object name}(객체명)은 표현식내에서 객체와 연관된 문자열을 의미합니다.
+이 표현식은 할당연산자 (assignment operation)의 좌측에 있는 객체명을 가지거나 @code{assign()}함수에 이용되는 인자의 형태를 가지고 있습니다.
+이것은 주로 구문명(syntatic name)이기도 하지만, 만약 따옴표로 묶인다면 공백을 가지지 않는 어떠한 문자열이라도 될 수 있습니다 (그리고 @code{assign()} 함수에 호출되는 된다면 이는 항상 따옴표로 묶이게 됩니다).
 
 @item
 @c An @emph{argument name} is what appears to the left of the equals sign
 @c when supplying an argument in a function call (for example,
 @c @code{f(trim=.5)}).  Argument names are also usually syntactic names,
 @c but again can be anything if they are quoted.
-Argument name은 function call (예로, f(trim=.5)) 안의 argument를 제공할 때 등부호의 왼쪽에 나타나는 것 입니다. Argument name들 또한 보통 syntactic name들이지만, 이 또한 만약 quoted면 어떤 것이든 될 수 있습니다. 
+@emph{argument name}(인자명)은 @code{f(trim=.5)}와 같이 함수호출(function call)에 사용되는 인자로서 등부호(equal sign) 좌측에 나타나는 것입니다.
+인자명은 또한 구문명(syntactic name)이기도 하지만, 위와 마찬가지로 따옴표로 묶여진다면 어떤 것이든 될 수 있습니다.
 
 @item
 @c An @emph{element name} is a string that identifies a piece of an object
@@ -3482,7 +3485,10 @@ Argument name은 function call (예로, f(trim=.5)) 안의 argument를 제공할
 @c Otherwise, element names can be any strings.  (When an object is used as
 @c a database, as in a call to @code{eval()} or @code{attach()}, the
 @c element names become object names.)
-Element name은 object의 조각 (예를들어, 목록의 구성요소)을 확인하는 string입니다. ‘$’ operator의 오른쪽에 사용되면, 이는 syntactic name 혹은 quoted여야만 합니다. 그렇지 않으면, element name들은 어떠한 string들이든 될 수 있습니다. (object는 eval()혹은 attach()로 불러지는 것 처럼, 데이터베이스처럼 사용될 때, element name들은 object name들이 됩니다.)
+@emph{element name}(구성요소의 명칭 또는 요소명)은 리스트의 구성요소와 같이 객체의 조각을 구분하기 위한 문자열입니다.
+이것이 @samp{$}연산자의 우측에 사용될 때에는 반드시 구문명(syntactic name)이거나 따옴표로 묶여져야 합니다.
+그렇지 않다면 요소명은 어떠한 문자열이든 될 수 있습니다.
+(객체가 @code{eval()} 또는 @code{attach()}에 호출될 때와 같이 데이터베이스로서 사용될 때, 요소명은 객체의 이름이 됩니다).
 
 
 @item
@@ -3490,11 +3496,13 @@ Element name은 object의 조각 (예를들어, 목록의 구성요소)을 확�
 @c operating system for reading, writing, etc.  It really has nothing much
 @c to do with names in the language, but it is traditional to call these
 @c strings file ``names''.
-마지막으로, file name은 읽고 쓰는 것 등을 위한 운영체계안의 파일을 확인하는 string입니다. 이는 언어 안의 이름들과 아무런 관련도 없지만, 이 string들을 파일 “이름들” 이라고 부르는 것이 인습입니다. 
+마지막으로 @emph{file name}(파일명)은 운영체제 내에서 읽거나 쓰기를 위한 파일을 구분하는데 이용되는 문자열입니다.
+이것은 R언어와는 아무런 연관이 없지만, 이러한 문자열 파일을 ``names''라고 부르는 것은 관습입니다.
 @end enumerate
 
 @node Are GAMs implemented in R?, Why is the output not printed when I source() a file?, What are valid names?, R Miscellanea
-@section Are GAMs implemented in R?
+@c @section Are GAMs implemented in R?
+@section R에서 GAM을 이용할 수 있나요?
 
 @c Package @CRANpkg{gam} from @CRAN{} implements all the Generalized
 @c Additive Models (GAM) functionality as described in the GAM chapter of
@@ -3505,22 +3513,26 @@ Element name은 object의 조각 (예를들어, 목록의 구성요소)을 확�
 @c for example).  Package @CRANpkg{gss} can fit spline-based GAMs too.  And
 @c if you can accept regression splines you can use @code{glm()}.  For
 @c Gaussian GAMs you can use @code{bruto()} from package @CRANpkg{mda}.
-
-CRAN에서부터의 패키지 gam은White Book의 GAM 챕터에서 설명된 것처럼 모든Generalized Additive Models (GAM) 기능을 시행합니다. 특히, 이는 local regresion과 smoothing sline들 둘 다를 사용하는 backfitting을 시행하고, 이는 연장 가능합니다. 패키지mgcv 안에는 GAM을 위한 gam() function이 있는데, 이는 White Book에 설명되어있는 것과 완전히 똑같지 않습니다 (한 예로 lo()가 없습니다). 패키지 gss는 spline-based GAM에도 적합할 수 있습니다. 그리고 만약 regression spline들을 받아들일 수 있다면 glm()을 사용할 수도 있습니다. Gaussian GAM들에는, 패키지 mda에서의 bruto()를 사용할 수 있습니다. 
+@CRAN{}으로부터 얻을 수 있는 패키지 @CRANpkg{gam}은 화이트 북(the White book)의 GAM 챕터에 설명된 모든 Generalized Additive Models (GAM)을 구현하였습니다.
+특히, 이는 local regression과 smoothing spline를 사용하는 백피팅(backfitting)을 구현하였고, 확장할 수있습니다.
+패키지 @CRANpkg{mgcv}는 GAM을 위한 @code{gam()} 함수가 있는데, 이는 화이트북에 설명된 것과 완전히 동일하지는 않습니다 (예를들면 @code{lo()}라는 것은 없습니다).
+패키지 @CRANpkg{gss}는 스플라인 기반(spline-based)의 GAM을 이용할 수 있습니다.
+만약 리그레션 스플라인(regression spline)을 수용한다면, @code{glm()}을 사용할 수도 있습니다.
+Gaussian GAM의 경우에는 @CRANpkg{mda}라는 패키지에 있는 @code{bruto()}를 사용할 수 있습니다.
 
 @node Why is the output not printed when I source() a file?, Why does outer() behave strangely with my function?, Are GAMs implemented in R?, R Miscellanea
-@section Why is the output not printed when I source() a file?
+@c @section Why is the output not printed when I source() a file?
+@section source()를 이용하여 파일을 읽었는데 결과물이 왜 보이지 않나요?
 
 @c Most R commands do not generate any output. The command
-
-대부분의 R 명령어들은 어떠한 output도 생성하지 않습니다. 명령어
+대부분의 R 명령어들은 어떠한 결과물을 생성하지 않습니다.
 @example
 1+1
 @end example
 
 @noindent
 @c computes the value 2 and returns it; the command
-은 value 2를 산출하고 그를 return 합니다; 명령어 
+위와 같이 명령어를 입력하면 2라는 값을 반환합니다.
 
 @example
 summary(glm(y~x+z, family=binomial))
@@ -3530,24 +3542,25 @@ summary(glm(y~x+z, family=binomial))
 @c fits a logistic regression model, computes some summary information and
 @c returns an object of class @code{"summary.glm"} (@pxref{How should I
 @c write summary methods?}).
-는 logistic regression model을 fit하고 몇몇의 요약 정볼ㄹ 산출하며 class의 object "summary.glm" 를 return합니다. (How should I write summary methods?를 참조하십시오). 
+위의 명령어는 로지스틱 리그레션 모델(logistic regression model)을 적합한뒤, 요약된 정보를 산출한뒤 @code{"summary.glm"}이라는 클래스의 객체를 반환합니다 (@pxref{How should I write summary methods?}).
 
 @c If you type @samp{1+1} or @samp{summary(glm(y~x+z, family=binomial))} at
 @c the command line the returned value is automatically printed (unless it
 @c is @code{invisible()}), but in other circumstances, such as in a
 @c @code{source()}d file or inside a function it isn't printed unless you
 @c specifically print it.
-만약 명령줄에 ‘1+1’ 혹은 ‘summary(glm(y~x+z, family=binomial))’를 타입한다면, return된 겂은 자동으로 프린트되지만 (invisible()가 아닌한), source() 파일이나 function 안에있는 다른 상황에서는, 이는 당신이 특별히 프린트하지 않는 이상 프린트 되지 않습니다.  
+만약 명령어 라인에서 @samp{1+1} 또는 @samp{summary(glm(y~x+z, family=binomial))} 이라고 입력한다면, 반환된 값들이 @code{invisible()}이 아닌 이상은 자동으로 출력됩니다.
+그러나, @code{source()}를 이용하여 파일을 읽어들이거나 함수내에서 사용되는 경우에는 특별히 프린트라는 명령을 지정하지 않는 이상은 보여지지 않습니다.
 
 @c To print the value use
-값을 프린트 하기 위해서는
+이러한 값을 출력하기 위해서는 다음과 같이 해야 합니다.
 
 @example
 print(1+1)
 @end example
 
 @noindent
-를 사용하거나, 대신
+또는 
 
 @example
 print(summary(glm(y~x+z, family=binomial)))
@@ -3555,10 +3568,11 @@ print(summary(glm(y~x+z, family=binomial)))
 
 @noindent
 @c instead, or use @code{source(@var{file}, echo=TRUE)}.
-, 혹은source(file, echo=TRUE)를 사용하십시오. 
+혹은 @code{source(@var{file}, echo=TRUE)}라고 해야합니다.
 
 @node Why does outer() behave strangely with my function?, Why does the output from anova() depend on the order of factors in the model?, Why is the output not printed when I source() a file?, R Miscellanea
-@section Why does outer() behave strangely with my function?
+@c @section Why does outer() behave strangely with my function?
+@section 왜 outer()가 예상하지 못한 방식으로 작동하나요?
 
 @c As the help for @code{outer()} indicates, it does not work on arbitrary
 @c functions the way the @code{apply()} family does.  It requires functions
@@ -3567,14 +3581,17 @@ print(summary(glm(y~x+z, family=binomial)))
 @c containing every possible combination of elements of @code{x} and
 @c @code{y} and then passes this to @code{FUN} all at once.  Your function
 @c probably cannot handle two large vectors as parameters.
-
-outer()의 도움말이 나타내듯이, 이는 apply() family가 하는 방법으로 arbitrary function들에는 실행되지 않습니다. 이는 array들에 elementwise처럼 실행되기위한 벡터화 된 fuction들을 필요로 합니다. 코드outer(x, y, FUN)를 보면 알 수 있듯이, 이는 x와 y의 element들의 모든 가능한 조합들을 포함한 두개의 큰 벡터들을 생성하고나서 FUN으로 한꺼번에 전달합니다. 당신의 function은 아마도 두개의 큰 벡터들을 parameter들 처럼 다루지 못할 것 입니다. 
+@code{outer()}의 도움말에 명시된 것과 같이, 이는 @code{apply()}계열의 함수들이 작동하는 방식을 가지는 함수들과는 함께 쓰일 수 없습니다.
+이를 사용하기 위해서는 배열의 구성요소단위별로 작동하는 벡터라이즈된 함수가 필요합니다.
+코드 @code{outer(x,y, FUN)}를 보면 알 수 있듯이, 이는 @code{x}와 @code{y}의 모든 가능한 조합들을 포함하는 두 개의 큰 벡터들을 생성한 뒤, 이를 @code{FUN}에 전달하게 됩니다. 
+사용자의 함수는 아마도 이렇게 큰 두개의 벡터들을 파라미터로서 다룰 수 없을 것입니다.
 
 @c If you have a function that cannot handle two vectors but can handle two
 @c scalars, then you can still use @code{outer()} but you will need to wrap
 @c your function up first, to simulate vectorized behavior.  Suppose your
 @c function is
-만약 두 개의 벡터는 다루지 못하지만 두 개의 scalar는 다룰 수 있는 function을 가지고 있다면, outer()를 계속 쓸 수는 있지만 벡터화 behavior를 simulate하기 위해서는 첫번째로 function을 둘러싸야만 할 것입니다. 당신의 function이 다음과 같다고 가정해 봅시다. 
+만약 두 개의 벡터를 다룰 수는 없지만 두개의 스칼라(scalars)를 다룰 수 있는 함수를 가지고 있다면, @code{outer()}를 사용할 수는 있으나, 사용자의 함수에 이를 둘러쌓아야만 합니다.
+아래와 같은 사용자 함수를 생각해 봅니다.
 
 @example
 foo <- function(x, y, happy) @{
@@ -3585,7 +3602,7 @@ foo <- function(x, y, happy) @{
 
 @noindent
 @c If you define the general function
-만약 일반 function을 아래와 같이 정의한다면,
+만약, 사용자가 다음과 같이 일반적인 함수를 정의한다면, @code{outer()}를 사용할 수 있습니다. 
 
 @example
 wrapper <- function(x, y, my.fun, ...) @{
@@ -3595,14 +3612,15 @@ wrapper <- function(x, y, my.fun, ...) @{
 
 @noindent
 @c then you can use @code{outer()} by writing, e.g.,
-outer()를 사용할 수 있습니다. 예제, 
+아래와 같이 적용할 수 있습니다. 
 
 @example
 outer(1:4, 1:2, FUN = wrapper, my.fun = foo, happy = 10)
 @end example
 
 @node Why does the output from anova() depend on the order of factors in the model?, How do I produce PNG graphics in batch mode?, Why does outer() behave strangely with my function?, R Miscellanea
-@section Why does the output from anova() depend on the order of factors in the model?
+@c @section Why does the output from anova() depend on the order of factors in the model?
+@section anova()의 결과가 왜 모델에 있는 요인들의 순서에 영향을 받나요?
 
 @c In a model such as @code{~A+B+A:B}, R will report the difference in sums
 @c of squares between the models @code{~1}, @code{~A}, @code{~A+B} and
@@ -3613,8 +3631,10 @@ outer(1:4, 1:2, FUN = wrapper, my.fun = foo, happy = 10)
 @c @code{~B} and @code{~B+A}.  In a non-orthogonal design (i.e., most
 @c unbalanced designs) these comparisons are (conceptually and numerically)
 @c different.
-
-~A+B+A:B와 같은 모델 안에서, R은~1, ~A, ~A+B 와 ~A+B+A:B 모델들 사이의 sums of squares의 다른점을 보고할 것입니다. 만약 모델이~B+A+A:B였다면, R은~1, ~B, ~A+B, 와 ~A+B+A:B의 다른 점을 보고할 것입니다. Non-orthogonal design에서 (즉, 대부분의 불균형한 디자인들)이 비교들은 (개념상으로와 숫자상으로) 다릅니다.
+@code{~A+B+A:B}와 같은 모델내에서, R은 @code{~1}, @code{~A}, @code{~A+B}, @code{~A+B+A:B} 모델들의 제곱합(sums of squares)를 모두 다르게 보여줄 것입니다.
+만약, 모델이  @code{~B+A+A:B}이었다면 @code{~1}, @code{~B}, @code{~A+B}, @code{~A+B+A:B} 역시 다르게 보여줄 것입니다.
+첫번째의 경우에는 @code{A}에 대한 제곱합은 @code{~1}과 @code{~A}에 비교되고, 두번째의 경우에는 @code{~B}와 @code{~B+A}와 비교됩니다.
+대부분의 언밸런스드 디자인(unbalanced design)인 비직교디자인(Non-orthogonal design)에서는 이러한 비교는 개념상으로나 수치연산상으로 다릅니다.
 
 @c Some packages report instead the sums of squares based on comparing the
 @c full model to the models with each factor removed one at a time (the
@@ -3622,20 +3642,22 @@ outer(1:4, 1:2, FUN = wrapper, my.fun = foo, happy = 10)
 @c depend on the order of factors in the model.  The question of which set
 @c of sums of squares is the Right Thing provokes low-level holy wars on
 @c R-help from time to time.
-
-몇몇의 패키지들은, 비교에 기초한 sums of squares 대신에, full 모델에서 각각의 factor가 한번에 하나씩 지워지는 모델(한 예로, 유명한 SAS에서의 ‘Type III sums of suqares’)을 보고합니다. 이는 모델 안의 factor들의 순서에 의존하지 않습니다. 어떤 sums of squares의 세트가 Right Thing (맞는 것) 인지의 질문은 이따금 R-help에서 낮은 레벨의 holy war들을 유발합니다. 
+일부 패키지들은 풀모델(full model)에서 요인(factor)를 한번에 하나씩 지워나가는 모델들과 비교한 제곱합 (예를들면, SAS 에서 `Type III sums of suqares')를 보고합니다.
+이는 모델에서 사용된 요인의 순서에 영향을 받지 않습니다.
+어떤 종류의 제곱합이 올바른것인지에 대한 질문은 때때로 R-help에서 많은 논쟁거리를 유발합니다 (provokes low-level holy wars). 
 
 @c There is no need to be agitated about the particular sums of squares
 @c that R reports.  You can compute your favorite sums of squares quite
 @c easily.  Any two models can be compared with @code{anova(@var{model1},
 @c @var{model2})}, and @code{drop1(@var{model1})} will show the sums of
 @c squares resulting from dropping single terms.
-
-R이 보고하는 특정한 sums of squares에 대해 불안해 할 필요가 없습니다. 당신은 당신이 가장 좋아하는 sums of squares를 꽤나 쉽게 산출할 수 있습니다. anova(model1, model2), 와 drop1(model1)를 사용하요 비교될 수 있는 모든 두개의 모델들은 단일항을 떨어뜨리는 것을 초례하는 sums of squares를 보여줄 것 입니다. 
-
+R이 알려주는 특정한 제곱합에 대해서는 걱정할 필요는 없습니다.
+사용자가 선호하는 제곱합을 손쉽게 계산할 수 있습니다.
+두 모델은 @code{anova(@var{model1}, @var{model2})}을 이용하여 비교되어지고, @code{drop1(@var{model1})}은 한 개의 항을 빼낸뒤 얻어낸 제곱합을 보여줄 것입니다.
 
 @node How do I produce PNG graphics in batch mode?, How can I get command line editing to work?, Why does the output from anova() depend on the order of factors in the model?, R Miscellanea
-@section How do I produce PNG graphics in batch mode?
+@c @section How do I produce PNG graphics in batch mode?
+@section 배치모드에서 어떻게 PNG 그래픽스를 생성할 수 있나요?
 
 @c Under a Unix-like, if your installation supports the
 @c @code{type="cairo"} option to the @code{png()} device there should be no
@@ -3643,8 +3665,9 @@ R이 보고하는 특정한 sums of squares에 대해 불안해 할 필요가 �
 @c available for versions of R prior to 2.7.0, or without support for
 @c cairo.  From R 2.7.0 @code{png()} by default uses the Quartz device
 @c on Mac OS X, and that too works in batch mode.
-
-Unix –like 에서, 만약 당신의 설치가 png()로의type="cairo" 옵션을 지원한다면, 거기의 device는 아무런 문제가 없어야하고, 기본 세팅들이 그냥 실행되어야 합니다. 이 옵션은 2.7.0 이전의 R 버전들이나 cairo의 지원이 없이는 사용이 가능하지 않습니다. R 2.7.0 에서 png()는 기본으로 Mac OS X에서 Quartz device를 사용하고, 이것 또한 batch 모드에서 실행합니다. 
+Unix와 같은 환경에서 설치시 @code{png()} 장치에 대하여 @code{type="cairo"}를 지원된다면, 아무런 문제가 없어야 하며 기본설정대로 작동해야합니다.
+이 옵션은 2.7.0 이전 버전에서는 사용할 수 없거나, cario에 대한 지원이 없습니다. 
+R 2.7.0부터는 기본적으로 @code{png()}는 Mac OS X에서는 Quartz 장치를 이용하며 이는 배치모드에서도 실행됩니다.
 
 @c Earlier versions of the @code{png()} device uses the X11 driver, which
 @c is a problem in batch mode or for remote operation.  If you have
@@ -3656,12 +3679,16 @@ Unix –like 에서, 만약 당신의 설치가 png()로의type="cairo" 옵션�
 @c install), which is an X11 server that does not require a screen; and
 @c there is the @CRANpkg{GDD} package from @CRAN{}, which produces PNG,
 @c JPEG and GIF bitmaps without X11.
-
-png() device의 이전 버전들에서는 batch 모드나 remote operation에서 무네가 있는 X11 드라이버를 사용합니다. 만약Ghostscript가 있다면, PostScript나 PDF 파일을 생산할 수 있는  bitmap()을 사용할 수 있고, 그러고 나서Ghostscript에서 지원하는 모든 bitmap 형식으로 이를 전환할 수 있습니다. 몇몇의 설치들에서 이는 보기 싫은 output을 생성하고, 다른 곳에서는 완벽하게 만족스럽습니다. 요즈음의 많은 시스템들은 스크린을 필요치 않는 X11 서버인 X.Org(옵션적인 설치일 수도 있습니다)에서 나온Xvfb와 함께 옵니다; 그리고 X11 없이 PNG, JPEG, 그리고 GIF bitmap들을 생성하는 CRAN에서 나온 GDD 패키지가 있습니다.  
+@code{png()}장치의 이전 버전들은 배치모드 또는 원격조작시에 문제가 되기도 하는 X11 드라이버를 사용합니다.
+만약 Ghostscript를 가지고 있다면 Postscript나 PDF파일을 생성한뒤 고스트스크립트에 의하여 지원된는 어떠한 종류의 bitmap형식으로의 전환 할 수 있는 이미지를 @code{bitmap()}를 이용하여 생성할 수 있습니다.
+일부 설치에서는 이는 보기에 좋지 않는 결과를 생성하기도 하고, 매우 만족스러운 결과를 생성하기도 합니다.
+현재 많은 시스템들이  스크린을 필요로 하지 않는 X11 서버인 @url{http://www.x.org/Downloads.html, X.Org}와 함께 나옵니다. 
+그리고 X11 없이도 PNG, JPEG, 그리고 GIF 비트맵들을 생성해주는 @CRANpkg{GDD}를 @CRAN{}에서 얻을 수 있습니다.
 
 
 @node How can I get command line editing to work?, How can I turn a string into a variable?, How do I produce PNG graphics in batch mode?, R Miscellanea
-@section How can I get command line editing to work?
+@c @section How can I get command line editing to work?
+@section 명령어 라인 편집기능을 어떻게 사용할 수 있나요?
 
 @c The Unix-like command-line interface to R can only provide the inbuilt
 @c command line editor which allows recall, editing and re-submission of
@@ -3671,14 +3698,16 @@ png() device의 이전 버전들에서는 batch 모드나 remote operation에서
 @c needed: users of Linux binary distributions will need to install
 @c packages such as @code{libreadline-dev} (Debian) or
 @c @code{readline-devel} (Red Hat).
-
-R로의 Unix-like 명령줄 인터페이스는 R이 compilation을 위한 구성을 할 때 사용가능한 GNU readline library를 제공하는 전 명령들의 recall, editing 그리고 re-submission을 허용하는 내장된 명령줄 editor만을 제공할 수 있습니다. Readline의 ‘개발’버전은 적합한 header들이 필요하다는 것을 유의하십시오: Linux binary distribution들의 사용자는libreadline-dev (Debian) 나readline-devel (Red Hat)와 같은 설치 패키지가 필요할 것입니다. 
+R과 함께 사용되는 Unix와 같은 커맨드라인은 오로지 빌트인 커맨드 라인 편집기(inbuilt command line editor)만을 제공합니다.
+이 편집기는 만약 @acronym{GNU} readline 라이브러리가 컴파일에서 R에서 설정되었을때만 불러오기, 편집하기, 이전 명령어를 재실행할 수 있습니다. 
+이를 위해서는 적합한 헤더(headers)를 포함하고 있는 개발버전의 readline이 필요하므로, 리눅스 바이너리 배포를 사용하는 사용자들은 @code{libreadline-dev} (Debian) 또는 @code{readline-devel} (Red Hat)과 같은 패키지가 필요할 수 있습니다.
 
 @node How can I turn a string into a variable?, Why do lattice/trellis graphics not work?, How can I get command line editing to work?, R Miscellanea
-@section How can I turn a string into a variable?
+@c @section How can I turn a string into a variable?
+@section 문자열을 변수로 어떻게 변경할 수 있나요?
 
 @c If you have
-만약 
+만약 아래와 같은 명령을 실행했다고 가정합니다. 
 
 @example
 varname <- c("a", "b", "d")
@@ -3686,7 +3715,7 @@ varname <- c("a", "b", "d")
 
 @noindent
 @c you can do
-를 가지고 있다면 당신은
+다음과 같이 해보세요.
 
 @example
 get(varname[1]) + 2
@@ -3694,7 +3723,7 @@ get(varname[1]) + 2
 
 @noindent
 @c for
-를 다음에 대하여 
+이는 다음을 계산해줍니다.
 
 @example
 a + 2
@@ -3702,7 +3731,7 @@ a + 2
 
 @noindent
 @c or
-혹은 
+또는 아래와 같이 해보시길 바랍니다.
 
 @example
 assign(varname[1], 2 + 2)
@@ -3710,7 +3739,7 @@ assign(varname[1], 2 + 2)
 
 @noindent
 @c for
-다음에 대하여
+이것은 다음을 계산해줍니다.
 
 @example
 a <- 2 + 2
@@ -3718,7 +3747,7 @@ a <- 2 + 2
 
 @noindent
 @c or
-혹은
+또는 아래와 같이 해보세요.
 
 @example
 eval(substitute(lm(y ~ x + variable),
@@ -3727,7 +3756,7 @@ eval(substitute(lm(y ~ x + variable),
 
 @noindent
 @c for
-다음에 대하여
+이것은 다음을 계산하게 됩니다. 
 
 @example
 lm(y ~ x + a)
@@ -3735,7 +3764,7 @@ lm(y ~ x + a)
 
 @c At least in the first two cases it is often easier to just use a list,
 @c and then you can easily index it by name
-할 수 있습니다.
+최소한 처음 두가지 경우에는 리스트(list)를 이용한 뒤, 아래와 같이 요소명을 이용하여 보다 쉽게 사용할 수 있습니다. 
 
 @example
 vars <- list(a = 1:10, b = rnorm(100), d = LETTERS)
@@ -3744,10 +3773,10 @@ vars[["a"]]
 
 @noindent
 @c without any of this messing about.
-적어도 처음 두가지의 경우에, 목록을 부르는 것이 종종 쉽고, 그러면 이에 대해 아무것도 지저분하게 만들지 않고 이름에 대해 쉽게 index를 할 수 있습니다. 
 
 @node Why do lattice/trellis graphics not work?, How can I sort the rows of a data frame?, How can I turn a string into a variable?, R Miscellanea
-@section Why do lattice/trellis graphics not work?
+@c @section Why do lattice/trellis graphics not work?
+@section lattice/trellis 그래픽스가 왜 작동하지 않나요?
 
 @c The most likely reason is that you forgot to tell R to display the
 @c graph.  Lattice functions such as @code{xyplot()} create a graph object,
@@ -3757,28 +3786,31 @@ vars[["a"]]
 @c interactively at the command line, the result is automatically printed,
 @c but in @code{source()} or inside your own functions you will need an
 @c explicit @code{print()} statement.
-
-대부분의 이유는 당신이 R에 그래프를 display하라고 명령을 내리는 것을 잊은것이 원인입니다. xyplot()과 같은 lattice function들은 그래프 object를 생성하지만, display하지는 않습니다 (ggplot2 그래픽과 S-Plus의 Trellis 그래픽들에서도 마찬가지입니다). 그래프 object를 위한 print() 방법은 실제 display를 생성합니다. 명령줄게 이 function들을 상호 작용적으로 사용한다면, 결과는 자동적으로 프린트 되지만, source() 안 혹은 당신의 function 안에서는 명확한print()문장이 필요할 것입니다. 
+가장 큰 이유는 R에 그래프를 보여줄 것을 명령하는 것을 잊은 것입니다.
+@code{xyplot()}과 같은 라띠스 함수(lattice function)들은 그래프 객체를 생성하지만, 보여주지는 않습니다.
+(@CRANpkg{ggplot2} 그래픽스와 @SPLUS{}의 Trellis 그래픽스 또한 마찬가지입니다).
+그래프 객체를 실제적으로 보여주기 위해서는 @code{print()} 메소드를 이용해야 합니다.
+커맨드 라인에서 이러한 함수들이 대화식으로 사용될때에는 자동적으로 보여지게 되지만, @code{source()}를 이용하거나 사용자가 작성한 함수내에서 이용될 때에는 명시적으로 @code{print()}를 사용해야 합니다.
 
 @node How can I sort the rows of a data frame?, Why does the help.start() search engine not work?, Why do lattice/trellis graphics not work?, R Miscellanea
-@section How can I sort the rows of a data frame?
+@c @section How can I sort the rows of a data frame?
+@section 데이터 프레임에 있는 행들을 어떻게 정렬할 수 있나요?
 
 @c To sort the rows within a data frame, with respect to the values in one
 @c or more of the columns, simply use @code{order()} (e.g.,
 @c @code{DF[order(DF$a, DF[["b"]]), ]} to sort the data frame @code{DF} on
 @c columns named @code{a} and @code{b}).
-
-데이터 프레임 안에서, 한 개 이상의 행 안의 값들에 대하여, 열을 순서대로 정리하려면, 간단하게order()를 사용하십시오 (예, a와 b라고 이름 지어진 행의 데이터 프레임 DF를 순서대로 정리하기 위한DF[order(DF$a, DF[["b"]]), ]).
-
+데이터 프레임내에 있는 한 개 이상의 열들안에 있는 값들에 대해서 행들을 정렬하고자 한다면, @code{order()}를 이용하면 됩니다. 
+(예를들어, @code{DF[order(DF$a, DF[["b"]]), ]} 라고 하는 것은 데이터 프레임 @code{DF}을 @code{a}와 @code{b}라는 열들을 이용하여 정렬해줍니다).
 
 @node Why does the help.start() search engine not work?, Why did my .Rprofile stop working when I updated R?, How can I sort the rows of a data frame?, R Miscellanea
-@section Why does the help.start() search engine not work?
+@c @section Why does the help.start() search engine not work?
+@section 왜 help.start() 검색엔진이 작동하지 않나요?
 
 @c The browser-based search engine in @code{help.start()} utilizes a Java
 @c applet.  In order for this to function properly, a compatible version of
 @c Java must installed on your system and linked to your browser, and both
 @c Java @emph{and} JavaScript need to be enabled in your browser.
-
 help.start() 안의 brower-based 검색 엔진은 Java applet을 활용합니다. 이것이 올바르게 작동하게하기 위해서는, Java의 호환가능한 버전이 당신의 시스템에 설치되어있고 당신의 브라우저에 링크가 되어있어야만 하고, Java와 JavaScript 모두 당신의 브라우저에서 가능해야만 합니다.  
 
 
