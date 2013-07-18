@@ -3811,12 +3811,12 @@ vars[["a"]]
 @c applet.  In order for this to function properly, a compatible version of
 @c Java must installed on your system and linked to your browser, and both
 @c Java @emph{and} JavaScript need to be enabled in your browser.
-help.start() 안의 brower-based 검색 엔진은 Java applet을 활용합니다. 이것이 올바르게 작동하게하기 위해서는, Java의 호환가능한 버전이 당신의 시스템에 설치되어있고 당신의 브라우저에 링크가 되어있어야만 하고, Java와 JavaScript 모두 당신의 브라우저에서 가능해야만 합니다.  
-
+@code{help.start()}내의 브라우저 기반의 검색엔진은 Java applet을 이용합니다.
+이것이 올바르게 작동하게하기 위해서는 Java와 호환가능한 버전이 설치되어야 하고, Java와 Javascript 모두 브라우저에서 사용가능하도록 설정되어 있어야 합니다.
 
 @c There have been a number of compatibility issues with versions of Java
 @c and of browsers.  
-Java와 브라우저의 버전들에 많은 호환성 문제들이 있었습니다. 
+Java와 브라우저의 버전들에 많은 호환성 문제들이 존재합니다.
 
 @ifclear UseExternalXrefs
 @c For further details please consult section ``Enabling search in HTML
@@ -3824,21 +3824,27 @@ Java와 브라우저의 버전들에 많은 호환성 문제들이 있었습니�
 @c included in the R distribution, @pxref{What documentation exists for
 @c R?}, and its @acronym{HTML} version is linked from the @acronym{HTML}
 @c search page.
-더 자세한 사항은 R installation and Administration의 “Enabling search in HTML help” 섹션에서 상담해 주십시오. 이 메뉴얼은 R distribution에 포함되어 있고, What documentation exists for R?을 참조하십시오, HTML버전은 HTML 검색 페이지에 링크되어 있습니다
+더 자세한 사항은 @cite{R Installation and Administration} 문서내의 ``Enabling search in HTML help'' 섹션을 살펴보세요.
+이 매뉴얼은 R 배포판에 포함 @pxref{What documentation exists for R?}되어 있으며, 이의 @acronym{HTML} 버전은 @acronym{HTML} 검색페이지와도 링크가 되어 있습니다.
+
 @end ifclear
 @ifset UseExternalXrefs
-@xref{Enabling search in HTML help, , Enabling search in HTML help,
+@c @xref{Enabling search in HTML help, , Enabling search in HTML help,
 R-admin, R Installation and Administration}, for further details.
+더 자세한 사항은 @xref{Enabling search in HTML help, , Enabling search in HTML help, R-admin, R Installation and Administration}을 참고해주세요.
 @end ifset
 
 @node Why did my .Rprofile stop working when I updated R?, Where have all the methods gone?, Why does the help.start() search engine not work?, R Miscellanea
-@section Why did my .Rprofile stop working when I updated R?
+@c @section Why did my .Rprofile stop working when I updated R?
+@section R을 업데이트 했을 때 왜 .Rprofile이 더이상 작동하지 않나요?
 
 @c Did you read the @file{NEWS} file?  For functions that are not in the
 @c @pkg{base} package you need to specify the correct package namespace,
 @c since the code will be run @emph{before} the packages are loaded.  E.g.,
-
-NEWS 파일을 읽어 보셨습니까? base 패키지에 없는 function들에 대해, 코드들이 패키지가 로드되기 전에 실행될 것이기 떄문에, 정확한 패키지 namespace를 명시해야만 합니다. 예로,
+@file{NEWS} 파일을 읽어 보셨나요?
+@pkg{base} 패키지에 없는 함수들을 이용하기 위해서는 올바른 패키지 네임스페이지를 지정해야만 합니다.
+그 이유는 코드들은 패키지들이 로드되기 전에 실행될 것이기 때문입니다.
+예를들면, 다음을 살펴보세요.	
 
 @example
 ps.options(horizontal = FALSE)
@@ -3848,7 +3854,7 @@ help.start()
 @noindent
 @c needs to be
 
-는
+위의 코드들은 아래와 같이 될 필요가 있습니다. 
 
 @example
 grDevices::ps.options(horizontal = FALSE)
@@ -3862,6 +3868,7 @@ utils::help.start()
 @c </FIXME>
 
 @node Where have all the methods gone?, How can I create rotated axis labels?, Why did my .Rprofile stop working when I updated R?, R Miscellanea
+@c @section Where have all the methods gone?
 @section Where have all the methods gone?
 
 @c Many functions, particularly S3 methods, are now hidden in namespaces.
