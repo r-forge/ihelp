@@ -2,13 +2,12 @@
 @c Modified by Chel Hee Lee on 2013-JUL-15
 @c 
 @c 교정작업 실시: 2013-JUL-10 
-@c 처음부터 up to chapter 6 R과 Emacs 
-@c 이 문서의 마지막 교정은 2013-JUL-30
+@c 1차 완료: 2013-JUL-18
 
 \input texinfo
 @c %**start of header
 @setfilename R-FAQ.info
-@settitle R FAQ (한국어 - 2013.07.17, ver.0.60, 오역 교정중)
+@settitle R FAQ in Korean (한국어 번역, ver.0.93.2013.07.18)
 @setchapternewpage on
 @set FAQ_YEAR 2013
 @set FAQ_DATE @value{FAQ_YEAR}-02-08
@@ -3869,51 +3868,58 @@ utils::help.start()
 
 @node Where have all the methods gone?, How can I create rotated axis labels?, Why did my .Rprofile stop working when I updated R?, R Miscellanea
 @c @section Where have all the methods gone?
-@section Where have all the methods gone?
+@section 메소드들은 어디로 옮겨졌나요?
 
 @c Many functions, particularly S3 methods, are now hidden in namespaces.
 @c This has the advantage that they cannot be called inadvertently with
 @c arguments of the wrong class, but it makes them harder to view.
-
-많은 function들, 특히 S3 method들, 은 이제 namespace들 안에 숨겨져 있습니다. 이는 틀린 class의 argument와 함께 의도하지 않은 call을 할 수 없는 장점이 있지만, 이는 이들을 보기에 힘들어 지도록 만듭니다. 
+현재 많은 함수들 (특히 S3 메소드들)은 네임스페이스(namespaces)에서 보여지지 않습니다.
+이렇게 하는 것은 부주의하게 잘못된 클래스들을 인자로 호출되지 않게 하는 장점이 있지만 확인하기가 더 힘들어 지게 됩니다.
 
 @c To see the code for an S3 method (e.g., @code{[.terms}) use
-@c S3 method에 대한 코드를 보려면 (예, [.terms) 
-
+S3 메소드 (즉, @code{[.terms]})에 해당하는 원시코드를 확인하고 싶다면 아래의 함수를 이용해 보세요.
 @example
 getS3method("[", "terms")
 @end example
-를 사용하십시오.
 
 @noindent
 @c To see the code for an unexported function @code{foo()} in the namespace
 @c of package @code{"bar"} use @code{bar:::foo}.  Don't use these
 @c constructions to call unexported functions in your own code---they are
 @c probably unexported for a reason and may change without warning.
-패키지 “bar”의 namespace안의 내보내지지않은 function foo()에 대한 코드를 보기위해서는bar:::foo를 사용합니다. 당신만의 코드 안의 내보내지지 않은 function들을 부르기 위해서는 이 construction들을 사용하지 마십시오 – 그들은 아마도 이유가 있어서 내보내지지 않았을 것으고 경고 없이 바뀔지도 모릅니다. 
-
+패키지 @code{"bar"}의 네임스페이스 내에서 아직 내보지지 않은 함수 @code{foo()}의 원시코드를 확인하기 위해서는 @code{foo()}를 이용하세요.
+사용자가 작성한 코드내에서 내보어지지 않은 함수들을 호출하려고 할때는 이렇게 사용하지 마시길 바랍니다.
+그들은 아마도 어떠한 이유에서 내보어내어지지 않았거나 경고가 없이 변경될 수도 있기 때문입니다.
 
 @node How can I create rotated axis labels?, Why is read.table() so inefficient?, Where have all the methods gone?, R Miscellanea
-@section How can I create rotated axis labels?
+@c @section How can I create rotated axis labels?
+@section 어떻게 회전된 축라벨을 생성할 수 있나요?
 
 @c To rotate axis labels (using base graphics), you need to use
 @c @code{text()}, rather than @code{mtext()}, as the latter does not
 @c support @code{par("srt")}.
-(base 그래픽들을 이용하여)축의 label들을 회전하기위해서는, par("srt")을 지원하지 않는  mtext()대신에text()를 사용하여야 합니다. 
+(base 그래픽스를 이용하여) 축 라벨들을 회전시키기 위해서는 @code{mtext()} 보다는 @code{text()}를 사용해야 합니다.
+그 이유는 @code{par("srt")}를 지원하지 않기 때문입니다. 
 
 @example
-## @r{Increase bottom margin to make room for rotated labels}
+@c ## @r{Increase bottom margin to make room for rotated labels}
+## @r{가장 아랫부분에 회전된 라벨을 위한 공간을 늘립니다}
 par(mar = c(7, 4, 4, 2) + 0.1)
-## @r{Create plot with no x axis and no x axis label}
+@c ## @r{Create plot with no x axis and no x axis label}
+## @r{x축 라벨과 y축 라벨이 없는 플랏을 생성합니다}
 plot(1 : 8, xaxt = "n",  xlab = "")
-## @r{Set up x axis with tick marks alone}
+@c ## @r{Set up x axis with tick marks alone}
+## @r{틱마크만 존재하는 x축을 생성합니다}
 axis(1, labels = FALSE)
-## @r{Create some text labels}
+@c ## @r{Create some text labels}
+## @r{일부 텍스트 라벨을 생성합니다}
 labels <- paste("Label", 1:8, sep = " ")
-## @r{Plot x axis labels at default tick marks}
+@c ## @r{Plot x axis labels at default tick marks}
+## @r{기본 틱마크가 있는 자리에 x축 라벨들을 플랏합니다}
 text(1:8, par("usr")[3] - 0.25, srt = 45, adj = 1,
      labels = labels, xpd = TRUE)
-## @r{Plot x axis label at line 6 (of 7)}
+@c ## @r{Plot x axis label at line 6 (of 7)}
+## @r{(7개의 라인들 중) 6번째 라인에 x축 라벨을 플랏합니다}
 mtext(1, text = "X Axis Label", line = 6)
 @end example
 
@@ -3924,15 +3930,18 @@ mtext(1, text = "X Axis Label", line = 6)
 @c region.  You can adjust the value of the @code{0.25} offset as required
 @c to move the axis labels up or down relative to the x axis.  See
 @c @code{?par} for more information.
-x 축 label들을 plot할 때, 문자 회전 각도로srt = 45, 문자의 오른쪽 끝을 tick marks에 놓도록adj = 1, 그리고 바깥쪽의 plot region의 문자를 허용하기 위해xpd = TRUE를 사용합니다. 0.25 offset의 값을 x축에 관하여 축의 label들을 위로나 아래로 움직이도록 필요한 대로 조정할 수 있습니다. 더 많은 정보는?par를 참고하십시오. 
+x 축라벨들을 플랏할때, 문자회전의 각도로 @code{srt=45}를 사용했고, 틱마크의 위치에 문자의 오른쪽 끝을 위치시키기 위해서 @code{adj=1}을 이용했으며, 플랏영역 바깥쪽의 텍스트를 위하여 @code{xpd=TRUE}가 사용되었습니다.
+x축에 비례하여 위 또는 아래로 축라벨을 이동시키는데 필요한 @code{0.25} 오프셋의 값을 조정할 수도 있습니다.
+더 많은 정보를 위해서는 @code{?par}를 살펴보세요.
 
 @c Also see Figure 1 and associated code in Paul Murrell (2003),
 @c ``Integrating grid Graphics Output with Base Graphics Output'',
-@emph{R News}, @strong{3/2}, 7--12.
-또한 Figure 1과Paul Murrell (2003), “Integrating grid Graphics Output with Base Graphics Output”, R News, 3/2, 7–12 안의 연관된 코드들을 참조하십시오. 
+@c @emph{R News}, @strong{3/2}, 7--12.
+Figure 1를 보시고, 이와 관련된 코드를 Paul Murrell (2003), ``Integrating grid Graphics Output with Base Graphics Output'', @emph{R News}, @strong{3/2}, 7--12 에서 찾아보시길 바랍니다.
 
 @node Why is read.table() so inefficient?, What is the difference between package and library?, How can I create rotated axis labels?, R Miscellanea
-@section Why is read.table() so inefficient?
+@c @section Why is read.table() so inefficient?
+@section 왜 read.table()이 비효율적인가요?
 
 @c By default, @code{read.table()} needs to read in everything as character
 @c data, and then try to figure out which variables to convert to numerics
@@ -3941,10 +3950,13 @@ x 축 label들을 plot할 때, 문자 회전 각도로srt = 45, 문자의 오른
 @c @code{colClasses} argument to specify the classes to be assumed for the
 @c columns of the table.
 
-기본값으로, read.table()는 character 데이터 처럼 모든것을 읽어야만 하고, 어떤 값을 숫자로나 factor들로 바꿔야 하는지를 알아내려 노력합니다. 큰 데이터 세트에서, 이는 꽤나 많은 양의 시간과 메모리를 차지합니다. 성능은 테이블의 행에 대하여 가정되어질 클래스를 명시하는 colClasses argument를 사용함으로인해 상당히 향상될 수 있습니다. 
+기본적으로 @code{read.table()}은 모든 것들을 문자형 데이터로서 읽어들인 뒤, 어떤 변수가 숫자 또는 요인으로 변경되어야 하는지에 대하여 결정을 하게 됩니다. 
+크기가 큰 데이터셋의 경우에는 이러한 방식은 꽤 많은 시간과 메모리를 필요로 합니다.
+테이블의 열들을 어떤 클래스로 읽어들일 것인지를 지정하는데 이용되는 @code{colClasses} 인자를 사용하면 성능이 상당히 향상될 수 있습니다.
 
 @node What is the difference between package and library?, I installed a package but the functions are not there, Why is read.table() so inefficient?, R Miscellanea
-@section What is the difference between package and library?
+@c @section What is the difference between package and library?
+@section 패키지와 라이브러리와는 어떤 차이가 있나요?
 
 @c A @dfn{package} is a standardized collection of material extending R,
 @c e.g.@: providing code, data, or documentation.  A @dfn{library} is a
@@ -3953,28 +3965,32 @@ x 축 label들을 plot할 때, 문자 회전 각도로srt = 45, 문자의 오른
 @c add it to the search path) via calls to the function @code{library}.
 @c I.e., @code{library()} is employed to load a package from libraries
 @c containing packages.
-package는 R을 연장하는 material들, 예로, 코드, 데이터 혹은 documentation을 제공하는,의 표준화 된 컬렉센 입니다. library는 R이 사용할 수 있는 패키지들(즉, 설치된)을 찾는 장소(directory)입니다. R은 function library로의 call을 통해 패키지를 (“로드”하고 검색 경로에 그를 추가하라고) 사용하라고 명령됩니다. 즉, library()는 library들을 포함하고있는 패키지들에서의 패키지를 로드하도록 쓰여집니다.
+@dfn{package}(패키지)는 표준화된 방식으로 코드, 데이터, 그리고 문서를 제공함으로서 R을 확장할 수 있는 자료들의 모음입니다. 
+@dfn{library}(라이브러리)는 R이 사용할 수 있는 (설치된) 패키지들을 찾는 디렉토리를 의미압니다.
+R은 함수 @code{library}로의 호출을 통하여 패키지를 (``load(로드)''하고, 이를 검색경로에 추가하라고) 사용하라고 전달하게 됩니다. 
+즉, @code{library()}는 패키지들을 포함하고 있는 라이브러리들로부터 패키지를 로드하는데 쓰입니다.
 
 @c @xref{R Add-On Packages}, for more details.  See also Uwe Ligges (2003),
 @c ``R Help Desk: Package Management'', @emph{R News}, @strong{3/3},
 @c 37--39.
-더 자세한 사항으로는R Add-On Packages를 참조하십시오. 또한Uwe Ligges (2003), “R Help Desk: Package Management”, R News, 3/3, 37–39도 참조하십시오. 
-
+더 자세한 사항은 @ref{R Add-On Packages}을 살펴보시길 바랍니다.
+Uwe Ligges (2003), `R Help Desk: Package Management'', @emph{R News}, @strong{3/3}, 37--39 또한 살펴보시면 도움이 됩니다.
 
 @node I installed a package but the functions are not there, Why doesn't R think these numbers are equal?, What is the difference between package and library?, R Miscellanea
-@section I installed a package but the functions are not there
+@c @section I installed a package but the functions are not there
+@section 패키지를 설치했지만 함수들이 없다고 합니다.
 
 @c To actually @emph{use} the package, it needs to be @emph{loaded} using
 @c @code{library()}.
-실제로 패키지를 사용하려면, library() 사용하여 로드가 되어있어야만 합니다. 
-
+패키지를 실제적으로 이용하기 위해서는 @code{library()}를 이용하여 로드되어져야 합니다.
 
 @c See @ref{R Add-On Packages} and @ref{What is the difference between
 @c package and library?} for more information.
-더 자세한 정보는R Add-On Packages 와 What is the difference between package and library?를 참조하십시오.
+더 많은 정보는 @ref{R Add-On Packages}와 @ref{What is the difference between package and library?}를 살펴보시길 바랍니다.
 
 @node Why doesn't R think these numbers are equal?, How can I capture or ignore errors in a long simulation?, I installed a package but the functions are not there, R Miscellanea
-@section Why doesn't R think these numbers are equal?
+@c @section Why doesn't R think these numbers are equal?
+@section 왜 R은 이러한 숫자들이 같지 않다고 하나요?
 
 @c The only numbers that can be represented exactly in R's numeric type 
 @c are integers and fractions whose denominator is a power of 2.  Other 
@@ -3982,8 +3998,10 @@ package는 R을 연장하는 material들, 예로, 코드, 데이터 혹은 docum
 @c result, two floating point numbers will not reliably be equal unless they 
 @c have been computed by the same algorithm, and not always even then.  For 
 @c example
-
-R의 숫자 형식에 정확하게 표시될 수 있는 숫자들은 분모가 power of 2인 정수와 분수들 뿐입니다. 다른 숫자들은 (보통) 53 이진 숫자의 정확성으로 어림되어야만 합니다. 결과적으로, 두개의 floating point 숫자들은 같은 알고리즘에 의해 산출되지 않은 이상 확실하게 같이 않을 것이고, 항상 동등하지도 않을 것 입니다. 예를 들어,
+R의 숫자의 유형들 중에서 정확하게 표현될 수 있는 숫자들은 정수(intergers)과 분모가 2의 자승(power of 2)인 분수(fractions) 뿐입니다.
+다른 숫자들은 (일반적으로) 이진법으로 53자리숫자에서 반올림 되어집니다.
+그 결과 같은 알고리즘에 의하여 얻어진 결과가 아니라면 두 부동소수점(floating point numbers)들은 같지 않을 것입니다.
+예를들면, 다음과 같습니다. 
 
 @example
 R> a <- sqrt(2)
@@ -3997,36 +4015,35 @@ R> a * a - 2
 @c tolerance of @code{.Machine$double.eps ^ 0.5}.  If you want much greater
 @c accuracy than this you will need to consider error propagation
 @c carefully.
-
-Function all.equal()은.Machine$double.eps ^ 0.5의 numeric tolerance를 사용하여 두 개의 object들을 비교합니다. 만약 이보다 훨씬 더 좋은 정확도를 원한다면, error propagation을 조심스럽게 생각해 보아야 할 것입니다. 
+함수 @code{all.equal()}은 @code{.Machine$double.eps ^ 0.5}의 오차범위내에서 두개의 객체를 비교합니다.
+만약, 이보다 더 높은 수준의 정확도를 원한다면 에러전파(error propagation)을 조심스럽게 생각해보아야 합니다.
 
 @c For more information, see e.g.@: David Goldberg (1991), ``What Every
 @c Computer Scientist Should Know About Floating-Point Arithmetic'',
 @c @emph{ACM Computing Surveys}, @strong{23/1}, 5--48, also available via
 @c @url{http://www.validlab.com/goldberg/paper.pdf}.
 
-더 많은 정보를 위해서는, e.g. David Goldberg (1991), “What Every Computer Scientist Should Know About Floating-Point Arithmetic”, ACM Computing Surveys, 23/1, 5–48를 참고하시고, 또한http://www.validlab.com/goldberg/paper.pdf를 통해서도 이용가능합니다. 
-
+더 많은 정보를 David Goldberg (1991), ``What Every Computer Scientist Should Know About Floating-Point Arithmetic'', @emph{ACM Computing Surveys}, @strong{23/1}, 5--48 에서 찾아 볼 수 있으며, 또한 @url{http://www.validlab.com/goldberg/paper.pdf}에서도 볼 수 있습니다.
 
 @c To quote from ``The Elements of Programming Style'' by Kernighan and
 @c Plauger:
- “The Elements of Programming Style” by Kernighan and Plauger에서부터 quote하기를: 
-
+Kernighan과 Plauger에 의해서 씌여진 ``The Elements of Programming Style''에서 인용을 하자면, 다음과 같습니다.
 
 @quotation
 @c @emph{10.0 times 0.1 is hardly ever 1.0}.
-10.0 곱하기 0.1 는 거의 1.0이 아니다. 
+10.0 곱하기 0.1은 1.0이 되기 어렵다.
 @end quotation
 
 
 @node How can I capture or ignore errors in a long simulation?, Why are powers of negative numbers wrong?, Why doesn't R think these numbers are equal?, R Miscellanea
-@section How can I capture or ignore errors in a long simulation?
+@c @section How can I capture or ignore errors in a long simulation?
+@section 절차가 긴 시뮬레이션에서 에러들을 잡거나 무시하려면 어떻게 해야하나요?
 
 @c Use @code{try()}, which returns an object of class @code{"try-error"}
 @c instead of an error, or preferably @code{tryCatch()}, where the return
 @c value can be configured more flexibly.  For example
-
-에러 대신 class "try-error"의 object를 return하는try(), 혹은 가급적이면 return 값이 더 융통성 있게 구성될 수 있는tryCatch()를 사용하십시오. 예를들어, 
+에러 대신에 @code{"try-error"}라는 클래스의 객체를 반환하고자 한다면 @code{try()}를 이용하거나, 좀 더 유연하게 다른 값을 반환할 수 있는 @code{tryCatch()}를 이용해 보세요.
+예를들어, 다음의 예제는 성공적으로 수행된다면 @code{lm()}의 계수(coefficients)를 반환하고, 실패할 경우에는 @code{c(NaN, NaN, NaN, NaN)}을 돌려주게 됩니다 (이 경우에는 계수가 4개라고 가정했습니다).
 
 @example
 beta[i,] <- tryCatch(coef(lm(formula, data)),
@@ -4037,15 +4054,15 @@ beta[i,] <- tryCatch(coef(lm(formula, data)),
 @c would return the coefficients if the @code{lm()} call succeeded and
 @c would return @code{c(NaN, NaN, NaN, NaN)} if it failed (presumably there
 @c are supposed to be 4 coefficients in this example).
-는 만약lm() call이 성공하면 coefficient들을 return하고, 실패하면 c(NaN, NaN, NaN, NaN)를 return할 것입니다 (짐작컨대 이 예제에는 4개의 coefficient들이 있을 것이라고 추정됩니다). 
-
 
 
 @node Why are powers of negative numbers wrong?, How can I save the result of each iteration in a loop into a separate file?, How can I capture or ignore errors in a long simulation?, R Miscellanea
-@section Why are powers of negative numbers wrong?
+@c @section Why are powers of negative numbers wrong?
+@section 왜 음수의 거듭제곱의 값이 틀리나요?
 
 @c You are probably seeing something like
-아마 당신은 다음과 같은 것을 보고
+아마 다음과 같은 경우에 이러한 질문이 생길 수 있으며, 이는 R의 표현식에 대한 우선순위 규칙(precedence rules)를 잘 못 이해한 경우에 해당합니다.
+
 @example
 R> -2^2
 [1] -4
@@ -4054,8 +4071,9 @@ R> -2^2
 @noindent
 @c and misunderstanding the precedence rules for expressions in R.
 @c Write
-R에 있는 expression들을 위한 선행 규직을 잘못 이해 할 것입니다. 
-and misunderstanding the precedence rules for expressions in R. Square of -2를 얻기위해
+
+올바른 결과를 얻기 위해서는 다음과 같이 해야 @math{-2}의 제곱에 대한 올바른 값을 얻을 수 있습니다.
+
 @example
 R> (-2)^2
 [1] 4
@@ -4063,11 +4081,11 @@ R> (-2)^2
 
 @noindent
 @c to get the square of @math{-2}.
-를 쓰십시오.
 
 @c The precedence rules are documented in @code{?Syntax}, and to see how R
 @c interprets  an expression you can look at the parse tree
-선행 규칙은 ?Syntax 안에 기록되어 있고, R이 expression을 어떻게 해석하는지를 보기윟서는 다음의 parse tree를 볼 수 있습니다.
+우선순위 규칙은 @code{?Syntax} 내에 정리되어 있으며, 어떻게 R이 해석하는지를 알기 위해서는 구문트리(parse tree)를 보시길 바랍니다. 
+
 @example
 R> as.list(quote(-2^2))
 [[1]]
@@ -4078,7 +4096,8 @@ R> as.list(quote(-2^2))
 @end example
 
 @node How can I save the result of each iteration in a loop into a separate file?, Why are p-values not displayed when using lmer()?, Why are powers of negative numbers wrong?, R Miscellanea
-@section How can I save the result of each iteration in a loop into a separate file?
+@c @section How can I save the result of each iteration in a loop into a separate file?
+@section 어떻게 해야 루프의 각 단계마다 생성되는 결과를 각각의 다른 파일에 저장할 수 있나요?
 
 @c One way is to use @code{paste()} (or @code{sprintf()}) to concatenate a
 @c stem filename and the iteration number while @code{file.path()}
@@ -4086,7 +4105,8 @@ R> as.list(quote(-2^2))
 @c @file{result1.rda}, @dots{}, @file{result100.rda} in the subdirectory
 @c @file{Results} of the current working directory, one can use
 
-한가지 방법으로 file.path() 이 경로를 구축하는 동안 Stem filename과 반복되는 숫자를 연결시키기위한 paste()(혹은sprintf())를 사용하는 것입니다. 예를 들어, 현재 실행되고있는 디렉토리의 subdirectory Results안의result1.rda, ..., result100.rda파일들로 저장을 하려면, 아래를 사용할 수 있습니다. 
+이를 수행하는 한가지 방법으로는 @code{file.path()}로 경로를 지정해주면서 파일명과 각 반복단계를 나타내는 숫자를 한데 결합시켜줄 수 있는 @code{paste()} (또는 @code{sprintf()})를 이용하는 것입니다. 
+예를들면, 결과물을 현재의 작업디렉토리인 @file{Results}에 @file{result1.rda}, @dots{}, @file{result100.rda}이라는 파일에 저장하기 위해서는 다음과 같이 할 수 있습니다. 
 
 @example
 for(i in 1:100) @{
@@ -4097,98 +4117,105 @@ for(i in 1:100) @{
 @end example
 
 @node Why are p-values not displayed when using lmer()?, Why are there unwanted borders, How can I save the result of each iteration in a loop into a separate file?, R Miscellanea
-@section Why are @math{p}-values not displayed when using lmer()?
+@c @section Why are @math{p}-values not displayed when using lmer()?
+@section lmer()을 이용할 때 왜 @math{p}-values들이 보여지지 않나요?
 
 @c Doug Bates has kindly provided an extensive response in a post to the 
 @c r-help list, which can be reviewed at
 @c @uref{https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html}.
 
-Doug Bates는https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html에서 review할 수 있는 친절하게 r-help list의 포스트 안에 폭넓은 응답을 제공해 주었습니다. 
-
+r-help 리스트에 포스트된 이 질문에 대해서 Doug Bates는 매우 친절하게 폭넓은 응답을 해주었으며, 이는 @uref{https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html}에서 확인할 수 있습니다.
 
 @node Why are there unwanted borders, Why does backslash behave strangely inside strings?, Why are p-values not displayed when using lmer()?, R Miscellanea
-@section Why are there unwanted borders, lines or grid-like artifacts when viewing a plot saved to a PS or PDF file?
+@c @section Why are there unwanted borders, lines or grid-like artifacts when viewing a plot saved to a PS or PDF file?
+@section PS 또는 PDF 파일로 플랏을 저장할 때 원하지 않는 경계선, 라인들 또는 격자와 같은 것들이 생기나요?
 
 @c This can occur when using functions such as @code{polygon()},
 @c @code{filled.contour()}, @code{image()} or other functions which may
 @c call these internally.  In the case of @code{polygon()}, you may observe
 @c unwanted borders between the polygons even when setting the
 @c @code{border} argument to @code{NA} or @code{"transparent"}.
-
-이는polygon(), filled.contour(), image() 혹은 내부에서 이들을 부를 지도 모르는 다른 function들과 같은 function들을 사용할 때 발생합니다. polygon() 같은 경우, NA나 “transparent”로의 border argument가 세팅 되었을 때에도 polygon들 사이에서 원하지 않는 border들을 발견 할지도 모릅니다. 
+이것은 @code{polygon()}, @code{filled.contour()}, @code{image()}, 또는 이런 함수들을 내부적으로 호출하게 되는 함수들을 이용할 때 발생합니다. 
+@code{polygon()}의 경우에는 @code{border}인자를 @code{NA} 또는 @code{"transparent"}로 지정해주었음에도 다각형(polygon)들 사이에 원하지 않는 경계(border)가 생기는 것을 볼 수 있을 수도 있습니다. 
 
 @c The source of the problem is the PS/PDF viewer when the plot is
 @c anti-aliased.  The details for the solution will be different depending
 @c upon the viewer used, the operating system and may change over time.
 @c For some common viewers, consider the following:
+이 문제의 원인은 플랏이 anti-aliased되어 있을때 PS/PDF 뷰어에 있습니다. 
 
-이 문제들의 근원은 plot이 anti-aliased되었을 때의 PS/PDF 뷰어입니다. 문제 해결의 자세한 사항은 사용된 뷰어, 운영 체제에 따라 다르며, 시간이 지나면서 바뀔지도 모릅니다. 몇몇의 평범한 뷰어들은, 다음을 생각해 보십시오:
+이 문제들의 근원은 plot이 안티얼라이스드(anti-aliased, 그래픽에서 계단식 모양의 가장자리를 제거하는 처리 과정)되었을 때의 PS/PDF 뷰어입니다. 
+문제해결에 대한 자세한 사항은 사용하는 뷰어 및 운영체제에 따라 다르며, 시간이 지남에 따라서 달라질 수도 있습니다.
+일부 일반적인 뷰어들에서는 다음과 같이 해 볼 수 있습니다. 
 
 @ftable @asis
 @item Acrobat Reader (cross platform)
 @c There are options in Preferences to enable/disable text smoothing, image
 @c smoothing and line art smoothing.
 @c Disable line art smoothing.
-
-Text smoothing, image smoothing과 line art smoothing을 enable/disable하는 Preferences안의 옵션이 있습니다. Line art smoothing을 disable하십시오.
+개인설정(Preference)메뉴에 텍스트 스무딩(Text smoothing), 이미지 스무딩(image smoothing)과 라인아트 스무딩(line art smoothing)을 활성/비활성하는 옵션이 있습니다.
+여기에서 라인아트 스무딩을 사용하지 않도록 조정하세요.
 
 @item Preview (Mac OS X)
 @c There is an option in Preferences to enable/disable anti-aliasing of
 @c text and line art.
 @c Disable this option. 
-
-Text의 anti-aliasing과 line art를 enable/disable하는 Preferences 안의 옵션이 있습니다. 이 옵션을 disable하십시오.
+개인설정(Preference)에서 텍스트(text)와 라인아트(line art)에 대한 안티얼라이싱(anti-aliasing)을 활성/비활성하는 옵션션이 있습니다. 
+이 옵션을 비활성화 하세요.
 
 @item GSview (cross platform)
 @c There are settings for Text Alpha and Graphics Alpha.
 @c Change Graphics Alpha from 4 bits to 1 bit to disable graphic
 @c anti-aliasing.
-
-Text Alpha와 Graphics Alpha에 대한 세팅이 있습니다. Graphics Alpha를 graphic anti-aliasing을 disable하기위해 4bits에서 1bit로 바꾸십시오. 
+텍스트 알파(Text Alpha)와 그래픽 알파(Graphics Alpha)를 설정하도록 합니다. 
+그래픽 안티얼라이싱 (graphic anti-aliasing)을 비활성화 하기 위해서 그래픽 알파를 4비트에서 1비트로 변경하세요.
 
 @item gv (Unix-like X)
 @c There is an option to enable/disable anti-aliasing.
 @c Disable this option.
-
-anti-aliasing을 enable/disable 하는 옵션이 있습니다. 이 업션을 disable하십시오
+안티얼라이싱(anti-aliasing)을 활성/비활성화하는 옵션이 있습니다. 
+이 옵션을 비활성화하세요.
 
 @item Evince (Linux/GNOME)
 @c There is not an option to disable anti-aliasing in this viewer.
-
-이 뷰어에는 anti-aliasing을 disable하는 옵션이 없습니다.
+이 뷰어에는 안티얼라이싱을 비활성하는 옵션이 없습니다. 
 
 @item Okular (Linux/KDE)
 @c There is not an option in the GUI to enable/disable anti-aliasing.
 @c From a console command line, use:
+GUI에서 안티얼라이싱의 활성/비활성을 조절하는 옵션이 없습니다. 
+콘솔상에서 명령어라인으로 아래와 같이 해보세요.
 
-GUI에는 anti-aliasing을 disable하는 옵션이 없습니다. Console 명령줄에서, 다음을 사용하십시오:
 @smallexample
 $ kwriteconfig --file okularpartrc --group 'Dlg Performance' \
                --key GraphicsAntialias Disabled
 @end smallexample
-Then restart Okular.  Change the final word to @samp{Enabled} to restore
-the original setting.
+@c Then restart Okular.  Change the final word to @samp{Enabled} to restore
+@c the original setting.
+Okular를 재실행 보세요.
+본래의 설정으로 되돌리기 위해서는 마지막 단어를 @samp{Enabled}로 변경하세요.
 @end ftable
 
 @node Why does backslash behave strangely inside strings?, How can I put error bars or confidence bands on my plot?, Why are there unwanted borders, R Miscellanea
-@section Why does backslash behave strangely inside strings?
+@c @section Why does backslash behave strangely inside strings?
+@section 왜 백슬래쉬가 문자열내에서 이상하게 작동하나요?
 
 @c This question most often comes up in relation to file names (see
 @c @ref{How do file names work in Windows?})  but it also happens that
 @c people complain that they cannot seem to put a single @samp{\} character
 @c into a text string unless it happens to be followed by certain other
 @c characters.
-
-이 질문은 대부분 파일 이름들과 관련하여 종종 올라오지만(How do file names work in Windows?를 참조하십시오), 이는 특정한 다른 character에 뒤이어 일어나지 않는 이상 문자열로의 단일의 ‘\’ character를 넣을 수 없는 것 처럼 보이는 것에 분만을 제기할 때 발생하기도 합니다. 
+이 질문은 종종 파일명과 관계되어 올라오곤 하지만 (@ref{How do file names work in Windows?}를 살펴보세요), 만약 어떤 특정 문자들에 뒤이어 일어나지 않는 이상 문자열로 단일 @samp{\} 문자를 넣을 수 없는 것처럼 보일때 불평이 나오곤 합니다. 
 
 @c To understand this, you have to distinguish between character strings
 @c and @emph{representations} of character strings.  Mostly, the
 @c representation in R is just the string with a single or double quote at
 @c either end, but there are strings that cannot be represented that way,
 @c e.g., strings that themselves contains the quote character.  So
-
-이를 이해하기 위해서는, 문자열과 문자열의 표현을 구분해야만 합니다. 대부분, R에서의 표현은 단지 어떤쪽의 끝이던지에 single quote혹은 double quote가 있는 string이지만, 그런 방법으로 표현 될 수 없는 string들도 있습니다, 예로, quote character를 포함하고있는 string들입니다. 그래서
-
+이를 이해하기 위해서는ㄴ 문자열(character strings)와 문자열의 리프레젠테이션(represenation of character strings)를 구분해야만 합니다. 
+대부분의 경우에는 R에서의 리프레젠테이션(representation)은 단순히 어느쪽이 끝이던지 작은 따옴표 또는 큰 따옴표가 함께 사용된 문자열입니다. 
+그러나, 이런 방법으로 사용할 수 없는 문자열들이 있습니다. 
+이러한 것에 해당하는 것은 따옴표 문자를 포함하고 있는 문자열들입니다. 
 
 @example
 > str <- "This \"text\" is quoted"
@@ -4206,8 +4233,12 @@ This "text" is quoted
 @c string as-is. Notice that @samp{"\n"} is a one-character string, not
 @c two; the backslash is not actually in the string, it is just generated
 @c in the printed representation.
+이스케이프 시퀀스(escape sequences) 문자인 @samp{\"}와 @samp{\n}은 큰 따옴표와 개행을 나타냅니다.
+@code{print()} 또는 프롬프트에서 이름을 입력하여 텍스트 문자열을 출력하는 것 역시 이스케이프 시퀀스를 이용합니다. 
+그러나, @code{cat()}함수는 문자열 그대로를 보여줄 것입니다.
+@samp{"\n"}은 두개가 아닌 하나의 문자임을 알아두시길 바랍니다.
+백슬래쉬는 실제로 문자열내에 포함되는 것이 아니고 단지 프린트된 리프레젠테이션에서 생성된 것 뿐입니다.
 
-escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로운 줄의 character를 나타냅니다. print()나 prompt에 이름을 타입하는 것을 사용하여 문자열을 프린트 하는 것 또한 escape sequence들을 사용 할 것이지만, cat() function은 string을 그래로 display할 것입니다. ‘"\n"’이 둘이 아닌 하나의 문자열이라는 것을 주목하십시오; backslash는 실제로 string안에 있는것이 아니고, 프린트 된 표현 안에 생성 된 것일 뿐입니다. 
 @example
 > nchar("\n")
 [1] 1
@@ -4218,7 +4249,9 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @c So how do you put a backslash in a string? For this, you have to
 @c escape the escape character. I.e., you have to double the backslash.
 @c as in
-그래서 backslash를 string안에 어떻게 넣겠습니까? 여기에서, escape character를 escape해야만 합니다. 즉, 다음과 같이 두개의 backslash를 써야합니다. 
+어떻게 백슬래쉬를 문자열 안에 표현할 수 있나요? 
+이렇게 하기 위해서는 이스케이프 문자를 피해야만 합니다. 
+즉, 백슬래쉬를 두번 사용해야 합니다.
 
 @example
 > cat("\\n", "\n")
@@ -4229,19 +4262,18 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @c matching, themselves use metacharacters, which may need to be escaped by
 @c the backslash mechanism.  In those cases you may need a @emph{quadruple}
 @c backslash to represent a single literal one.
-
-특히 일반적인 expression matching을 포함한 몇몇의 function들은backslash mechanism에 의해escape를 해야 항 수도 있는metacharacter들을 사용합니다. 그런 경우에는, single literal을 표현하기위해 4개의 backlash를 써야할 수도 있습니다. 
-
+레귤러 익스프레이션 매칭 (regular expression matching)을 이용하는 종류의 일부 함수들은 백슬래쉬 메카니즘에 의하여 피해질 필요가 있는 메타문자들(metacharacters)들을 사용합니다. 
+그러한 경우에는 한개의 문자를 표현하기 위해서 4개의 백슬래쉬를 써야 할 경우도 있습니다. 
 
 @c In versions of R up to 2.4.1 an unknown escape sequence like @samp{\p}
 @c was quietly interpreted as just @samp{p}.  Current versions of R emit a
 @c warning.
-
-2.4.1까지의 R 버전에서‘\p’와 같은 알려지지않은 escape sequence는 ‘p’처럼 조용히 해석되었습니다. 현재 R 버전들은 경고를 줍니다.
-
+2.4.1Rkwlsms @samp{\p}와 같은 알려지지 않는 이스케이프 문자들은 @samp{p}로 에러의 출력없이 해석되었습니다.
+현재 버전의 R은 경고를 표시합니다. 
 
 @node How can I put error bars or confidence bands on my plot?, How do I create a plot with two y-axes?, Why does backslash behave strangely inside strings?, R Miscellanea
-@section How can I put error bars or confidence bands on my plot?
+@c @section How can I put error bars or confidence bands on my plot?
+@section 플랏에 어떻게 에러바 또는 신뢰구간을 표시할 수 있나요?
 
 @c Some functions will display a particular kind of plot with error bars,
 @c such as the @code{bar.err()} function in the @CRANpkg{agricolae}
@@ -4257,9 +4289,11 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @c function in the @CRANpkg{plotrix} package.  Most of the above functions
 @c use the @code{arrows()} function in the base @pkg{graphics} package to
 @c draw the error bars.
-
-몇몇의 function들은agricolae 패키지 안의 bar.err() function, glots 패키지 안의plotCI() function, plotrix 패키지 안의plotCI() 과 brkdn.plot() function들 그리고psych 패키지 안의error.bars(), error.crosses() 그리고 error.bars.by() function들과 같이 error bar들을 가지고 있는 특정한 종류의 plot을 display할 것입니다. 이론 function드르이 종류안에서, 몇몇은 dispersion의 measure들을 허용 할 것이고(예, plotCI), 몇몇은 raw value들에서부터의 dispersion measure들을 계산할 것이며(bar.err, brkdn.plot), 몇몇은 두가지 다를 할 것입니다(error.bars). 아직까지 다른 function들은plotrix 패키지 않의 dispersion function처럼 error bar들을 display 할 것입니다. 위의 대부분의 function들은 error bar들을 그리기 위해 base graphics 패키지에 있는 arrows() function을 사용합니다. 
-
+특정한 종류의 플랏들에 대해서 에러바를 보여주는 일부 함수들이 있습니다.
+@CRANpkg{agricolae} 패키지내의 @code{bar.err()} 함수, @CRANpkg{gplots} 패키지내의 @code{plotCI()} 함수, @CRANpkg{plotrix} 패키지내의 @code{plotCI()}와 @code{brkdn.plot()} 함수, @CRANpkg{psych} 패키지내의 @code{error.bars()}, @code{error.crosses()}, 그리고 @code{error.bars.by()} 함수가 있습니다. 
+이러한 유형의 함수 중 @code{plotCI()}과 같은 몇몇 함수들은 dispersion(분산)을 계산해주고, @code{bar.err}와 @code{brkdn.plot}와 같은 것들은 원래의 값들 (raw values)로부터의 dispersion measure(분산 측도)를 계산해주며, @code{error.bars}와 같은 것들은 두가지 모두를 제공합니다. 
+@code{plotrix} 패키지내에 있는 dispersion 함수와 같은 것들은 에러바들만을 보여주기도 합니다.
+위에서 언급한 함수들의 대부분은 에러바를 그리기 위해서 base @pkg{graphics} 패키지 내에 있는 @code{arrows()}를 사용합니다. 
 
 @c The above functions all use the base graphics system.  The grid and
 @c lattice graphics systems also have specific functions for displaying
@@ -4271,12 +4305,14 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @c displayed with @code{Dotplot()} or @code{xYplot()} in the
 @c @CRANpkg{Hmisc} package and @code{segplot()} in the
 @c @CRANpkg{latticeExtra} package.
-
-위의 function들은 모두 base 그래픽 시스템을 사용합니다. Grid와 lattice 그래픽 시스템들 또한 error bar들을 display하기위한 특정한 functin을 가지고 있습니다. 예, grid 패키지 안의grid.arrow() function, ggplot2 패키지 안의geom_errorbar(), geom_errorbarh(), geom_pointrange(), geom_linerange(), geom_crossbar()과 geom_ribbon() function들. Lattice system에서, error bar들은Hmisc 패키지 안의Dotplot() or xYplot()와latticeExtra 패키지 안의segplot()을 사용하여 display될 수도 있습니다. 
-
+위에서 언급한 함수 모두는 base graphics 시스템 (즉, base 배포에 있는 graphics 패키지를 이용한 그래픽 시스템)을 이용합니다. 
+grid와 lattice 그래픽 시스템들 또한 에러바를 보여주는데 필요한 특정한 함수들을 가지고 있습니다. 
+예를들면, @pkg{grid} 패키지내의 @code{grid.arrow()} 함수와 @CRANpkg{ggplot2} 패키지 내의 @code{geom_errorbar()}, @code{geom_errorbarh()}, @code{geom_pointrange()}, @code{geom_linerange()}, @code{geom_crossbar()}, 그리고 @code{geom_ribbon()}함수등입니다.
+라띠스 시스템에서는 @CRANpkg{Hmisc} 패키지에 있는 @code{Dotplot()} 또는 @code{xYplot()} 함수들, @CRANpkg{latticeExtra} 패키지에 있는 @code{segplot()} 함수가 에러바를 보여줄 수 있습니다. 
 
 @node How do I create a plot with two y-axes?, How do I access the source code for a function?, How can I put error bars or confidence bands on my plot?, R Miscellanea
-@section How do I create a plot with two y-axes?
+@c @section How do I create a plot with two y-axes?
+@section 어떻게 해야 두 개의 y 축을 가진 플랏을 생성할 수 있나요?
 
 @c Creating a graph with two y-axes, i.e., with two sorts of data that are
 @c scaled to the same vertical size and showing separate vertical axes on
@@ -4290,29 +4326,33 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @c for more information, including strong arguments against this sort of
 @c graph.
 
-두 개의 y 축을 사용하여 그래프를 생성하는 것, 즉, 같은 수직 크기로 측정되고 데이터의 원래 측정값을 나타내는 plot의 왼쪽과 오른쪽위의 서로다른 수직축을 보여주는 두 종류의 데이터, 가 R에서 가능하지만 권장되지는 않습니다. 이런 그래프를 구성하기위한 기본 접근법은par(new=TRUE)를 사용하는 것입니다 (?par를 참조하십시오); twoord.plot() (plotrix 패키지 안의) 과 doubleYScale() (latticeExtra 패키지 안의) function은 어느정도 자동화된 프로세스 입니다. 이런 종류의 그래프에 반하는 강력한 argument들은 포함한, 더 많은 정보를 위해서는http://rwiki.sciviews.org/doku.php?id=tips:graphics-base:2yaxes를 참조하십시오.
-
+예를들어, 두가지 다른 종류의 데이터가 같은 높이를 가지도록 스케일되어 있으되, 플랏의 좌측과 우측이 서로 다른 값의 범위를 가지는 두개의 y 축을 가지는 그래프를 생성하고자 한다면, 이는 R에서 가능합니다. 
+그러나, 권장되지는 않습니다. 
+이러한 그래프를 생성하기 위해서는 기본적으로 @code{par(new=TRUE)} (@code{?par}를 참조하세요)를 이용하는 것입니다. 
+@CRANpkg{plotrix} 패키지내의 @code{twoord.plot()} 함수와 @CRANpkg{latticeExtra} 패키지의 @code{doubleYScale()} 함수들이 어느정도 자동화 된 프로세스를 제공합니다. 
+더 많은 정보를 위해서는 @url{http://rwiki.sciviews.org/@/doku.php?id=tips:graphics-base:2yaxes}를 살펴보시길 바랍니다. 
 
 @node How do I access the source code for a function?, Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?, How do I create a plot with two y-axes?, R Miscellanea
-@section How do I access the source code for a function?
+@c @section How do I access the source code for a function?
+@section 어떻게 함수의 원시코드에 접근할 수 있나요? 
 
 @c In most cases, typing the name of the function will print its source 
 @c code. However, code is sometimes hidden in a namespace, or compiled.  For 
 @c a complete overview on how to access source code, see Uwe Ligges (2006),
 @c ``Help Desk: Accessing the sources'', @emph{R News}, @strong{6/4},
 @c 43--45 (@url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf}).
-
-대부분의 경우, function의 이름을 타입하는 것은 그의 소스 코드를 프린트 할 것입니다. 하지만, 때때로 코드는 namespace안에 숨어져 있거나 compile되어져 있습니다. 어떻게 소스 코드에 액세스를 하는지에 대한 완전한 개요는Uwe Ligges (2006), “Help Desk: Accessing the sources”, R News, 6/4, 43–45 (http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf)를 참조하십시오. 
-
+대부분의 경우에, 함수의 이름을 입력하면 원시 코드를 확인할 수 있습니다. 
+그런데, 네임스페이스 내에 있어 보여지지 않거나 컴파일되어 보여지지 않는 경우가 있습니다. 
+원시코드에 대한 접근을 어떻게 하는가에 대한 전반적인 개요는 Uwe Ligges (2006), ``Help Desk: Accessing the sources'', @emph{R News}, @strong{6/4}, 43--45 (@url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf})를 살펴보시길 바랍니다.
 
 @node Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?, Why is R apparently not releasing memory?, How do I access the source code for a function?, R Miscellanea
-@section Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?
+@c @section Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?
+@section 절편이 없는 선형모형을 적합했을때 summary()가 보여주는 R^2 값이 왜 이상한가요?
 
 @c As described in @code{?summary.lm}, when the intercept is zero (e.g.,
 @c from @code{y ~ x - 1} or @code{y ~ x + 0}), @code{summary.lm()} uses the
 @c formula
-
-?summary.lm에 설명되어 있듯이, 절편이 제로일 때 (예, y ~ x - 1 나 y ~ x + 0 에서), summary.lm()는 보통 쓰이는R^2 = 1 - Sum(R[i]^2) / Sum((y[i] - mean(y))^2)과는 다른R^2 = 1 - Sum(R[i]^2) / Sum((y[i])^2) 식을 사용합니다. 
+@code{?summary.lm}에 설명되어 있는 것과 같이 절편이 0일때 (즉, @code{y~x-1} 또는 @code{y~x+0} 이라고 사용하는 경우), @code{summary.lm()}은 다음의 포뮬러를 사용합니다. 
 
 @ifnottex
   R^2 = 1 - Sum(R[i]^2) / Sum((y[i])^2)
@@ -4320,7 +4360,8 @@ escape sequences ‘\"’ 와 ‘\n’ 은 순서대로 double quote와 새로�
 @tex
 $ R^2 = 1 - \sum_i R_i^2 / \sum_i y_i^2 $
 @end tex
-which is different from the usual
+@c which is different from the usual
+위의 포뮬러는 다음의 일반적인 포뮬러와 다릅니다. 
 @ifnottex
   R^2 = 1 - Sum(R[i]^2) / Sum((y[i] - mean(y))^2).
 @end ifnottex
@@ -4328,24 +4369,24 @@ which is different from the usual
 $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $ 
 @end tex
 @c There are several reasons for this:
-여기에는 몇가지의 이유들이 있습니다:
+여기에는 다음과 같은 몇 가지의 이유들이 있습니다:
 
 @itemize
 @item
 @c Otherwise the @math{R^2} could be negative (because the model with zero
 @c intercept can fit @emph{worse} than the constant-mean model it is
 @c implicitly compared to).
-그렇지 않으면R^2가 음수가 될 수 있습니다 (제로 절편이 있는 모델은 잠재적으로 비교되는 constant-mean 모델보다 못하게 fit될 수도 있기 때문입니다).
+@math{R^2}는 음수가 될 수 있습니다 (절편이 없는 모델은 비교되어지는 상수-평균(constant-mean) 모델보다 설명력이 안 좋게 적합될수도 있기 때문입니다).
 
 @item
 @c If you set the slope to zero in the model with a line through the
 @c origin you get fitted values y*=0
-원점을 지나는 선 모델에서 기울기를 제로로 설정한다면,  fitted value y*=0를 얻습니다.
+만약 원점을 지나는 직선을 가진 모델의 기울기가 0으로 설정되면, 적합된 값 y*=0를 가지게 됩니다. 
 
 @item
 @c The model with constant, non-zero mean is not nested in the model
 @c with a line through the origin.
-상수를 가지고 있는 모덴, non-zero mean은 원점을 지나는 선 모델로 nested되어져 있지 않습니다. 
+원점을 지나는 직선을 가진 모델에 상수, 즉 0이 아닌 평균을 가지는 모델은 중첩되지 않습니다. 
 @end itemize
 
 @c All these come down to saying that if you know @emph{a priori} that
@@ -4354,17 +4395,17 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @c of the variance, is the model where @math{E[Y]=0} everywhere.  (If you
 @c don't know a priori that @math{E[Y]=0} when @math{x=0}, then you
 @c probably shouldn't be fitting a line through the origin.)
-이 모든 것들은 x=0일 때E[Y]=0이라는 것을 미리 알고 있다면 fitted line과 비교해야하는 ‘null’ 모델, x가 어떠한 variance도 설명하지 않는 모델,이  모든 곳이E[Y]=0인 모델이라는 것을 말해 주는 것으로 설명됩니다. (만약 x=0일 때E[Y]=0라는 것을 미리 알지 못한다면, 선을 원점을 통하도록 fitting하면 안될 것입니다.)
+만약 @math{x=0}이면 @math{E[Y]=0}이라는 것을 미리 알고 있다면 적합된 직선에 비교해야 할 `null' 모델은 모든 곳에서 @math{E[Y]=0}인, 즉 @math{x}가 어떠한 분산도 설명할 수 없는 모델입니다 (만약 @math{x=0}일 때 @math{E[Y]=0}이라는 것을 사전에 모른다면 원점을 지나는 직선에 적합하는 것은 아마도 하지 말아야 할 것입니다).
 
 @node Why is R apparently not releasing memory?,  , Why does summary() report strange results for the R^2 estimate when I fit a linear model with no intercept?, R Miscellanea
-@section Why is R apparently not releasing memory?
+@c @section Why is R apparently not releasing memory?
+@section 왜 R은 마치 메모리를 풀어주지 않는것처럼 보이나요?
 
 @c This question is often asked in different flavors along the lines of
 @c ``I have removed objects in R and run @code{gc()} and yet
 @c @code{ps}/@code{top} still shows the R process using a lot of
 @c memory'', often on Linux machines.
-
-이 질문은, 자주 Linux 기계에서의 “R 안의 object들을 지우고 gc()를 실행했는데 ps/top이 아직도 메모리의 ㅁ낳은 부분을 사용하여 R 프로세스를 보여줍니다”의 문장과 다른 의미로 종종 물어집니다.
+종종 리눅스를 이용하는 사용자들은 ``R 내부의 객체들을 지우고 @code{gc()}를 실행하여 보니 @code{ps}/@code{top}에 따르면 R 프로세스가 많은 양의 메모리를 사용하는 것으로 보인다''라는 의미와는 다른 의미로 질문이 되어집니다.
 
 @c This is an artifact of the way the operating system (OS) allocates
 @c memory.  In general it is common that the OS is not capable of
@@ -4375,17 +4416,20 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @c though R has released all that memory.  In general such tools do
 @c @emph{not} report the actual memory usage of the process but rather
 @c what the OS is reserving for that process.
-
-이는 운영 체제 (OS)가 인공으로 메모리를 지정하는 방법입니다. 일반적으로, 이는 OS가 모든 사용되지 않은 메모리를 방출할 수 없는 것이 흔합니다.  극단적인 경우에는, R이 거의 모든 메모리를 자유롭게 한다고 하더라도, OS가 자기의 디자인 때문에R이 모든 메모리를 방출할다고 하더라도 ps나 top가 R 프로세스에 의해 사용된 resident RAM의 상당한 사용량을 리포트 하는 것과 같은 tool들 때문에 어느것도 방출할 수 없을 가능성도 있습니다. 일반적으로 이런 tool들은 프로세스의 실제 메모리 사용랑을 리포트하지 않고, OS가 프로세스를 위해 reserve해 놓은 것을 리포트 합니다. 
-
+이것은 운영체제가 메모리를 인공적으로 할당하는 방법입니다.
+일반적으로 운영체제가 사용되지 않은 모든 메모리를 풀어줄 수 없습니다. 
+극단적인 경우에, 만약 R이 거의 모든 메모리를 자유롭게 할지라도 운영체제는 자체 설계 때문에 이들 중 어떤 것이라도 풀수 없습니다. 
+따라서, @code{ps}와 @code{top}과 같은 도구들은 R이 메모리를 아예 사용하지 않을지라도 R 프로세스에 의하여 사용되어진 상주된 RAM의 실질적인 양을 보고하게 됩니다.
+일반적으로 이러한 도구들은 프로세스의 실제 메모리 사용을 보고 하지 않고 운영체제가 해당 프로세스를 위하여 예약해 둔 것을 보고 합니다. 
 
 @c The short answer is that this is a limitation of the memory allocator
 @c in the operating system and there is nothing R can do about it. That
 @c space is simply kept by the OS in the hope that R will ask for it
 @c later.  The following paragraph gives more in-depth answer with
-@c technical details on how this happens.
-
-짧은 답으로 운영 체제의 메모리 할당기의 한계이고 R이 할 수 있는 것이 아무것도 없습니다. 공간은 간단히 R이 나중에 물어볼 것이라는 희망을 가지고 OS에 의해 관리됩니다. 다음의 문단은 어떻게 이가 발생하는지에대한 기술적인 detail들로 더 심도있는 답을 줍니다. 
+@c technical details on how this happens. 
+간단히 말하면 이는 운영체제 내의 메모리 할당기(memory allocator)의 한계이며 이것과 관련하여 R이 할 수 있는 것은 아무것도 없습니다. 
+그 공간은 R이 나중에 물어볼 것이라는 기대하에 단순히 운영체제에 잡혀있습니다.
+다음의 내용은 어떻게 이것이 발생되는지에 대한 다소 심도있는 답변을 줍니다. 
 
 @c Most systems use two separate ways to allocate memory. For allocation
 @c of large chunks they will use @code{mmap} to map memory into the
@@ -4393,7 +4437,7 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @c they are completely free, because they can reside anywhere in the
 @c virtual memory.  However, this is a relatively expensive operation and
 @c many OSes have a limit on the number of such allocated chunks, so this
-@c is only used for allocating large memory regions.  For smaller
+@c is only used for allocating large memory regions. For smaller
 @c allocations the system can expand the data segment of the process
 @c (historically using the @code{brk} system call), but this whole area
 @c is always contiguous.  The OS can only move the end of this space, it
@@ -4418,9 +4462,25 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @c query the allocator about the layout of the allocations, including the
 @c actually used memory as well as unused memory that cannot be released.
 
-대부분의 시스템들은 메모리를 지정하기위해 두 가지 다른 방법을 사용합니다. 큰 chunk들의 지정에 프로세스 address 공간으로 메모리를 인도하기위해 mmap을 사용할 것입니다. 이러한 chunk들은 가상 메모리 어디에든 속해있을 수 있기 때문에 완전히 자유로울 때에 바로 방출이 가능합니다. 하지만, 이는 꽤나 비싼 operation이고 많은 운영 체제들이 그런 지정chunk들의 숫자에 한계가 있기 때문에, 이는 큰 메모리 region들을 지정하는 데에만 사용됩니다. 작은 지정들을 위해서, 시스템은 프로세스의 data segment(역사적으로 brk 시스템 call을 사용하여)를 확장 할 수 있지만, 이 전체 area는 항상 근접합니다.  OS는 이 공간의 끝만 움직일수 있고, 이는 어떠한 “hole들”도 생성할 수 없습니다. 이 operatin은 꽤나 싸기때문에, 이는 메모리의 작은 조각들의 지정을 위해 사용됩니다. 하지만, 부작용으로 data segment의 끝에 고작 1 byte의 사용되고있는 것이 있더라도, 그 byte의 주소를 바꿀 수 없기 떄문에, OS는 어떠한 메모리도 방출할 수 없습니다. 많은 양의 intermediate object들을 지정하고나서, result object를 지정하고 모든 intermediate object들을 지우는 것이 매우 흔한 연습이기때문에, 이는 실제로 보기보다 더 흔합니다. 결과가 끝에 지정되기 때문에, 이는 OS가 intermediate object들에의해 사용된 어떠한 메모리라도 방출 하는 것을 막을 것 입니다. 실제로, 현대의 운영체제는 쓰이지 않은 가상 메모리 부분을 page out할 수 있고 이가 다른 application들에서 사용가능한 실제 메모리의 양을 줄이지는 않으므로, 이는 문제가 되지는 않습니다. 전형적으로, mmap을 사용하여 지정되어질 긴 벡터들과 같은 큰 object들은 영향을 받지 않는 반면, string들이나 pairlist들 같은 작은 object들은 이런 작용에 영향을 받을 것 입니다. Linux에서 (그리고 아마 Unix-like 시스템들에서도) 실제 사용된 메모리와 함께 방출되지 못하는 사용되지 않은 메모리를 포함한 allocation들의 layout에 대한 할당기에 문의를 하기위한 mallinfo 시스템 call(mallinfo 패키지도 참조하십시오)을 사용할 수도 있습니다. 
+대부분의 시스템들은 메모리를 지정하기 위해 두 가지 다른 방법을 사용합니다. 
+큰 청크(chunks, 즉 지정한 데이터의 양)의 할당에 대해서 그들은 프로세스 주소공간(process address space)로 맵 메모리(map memory)로 안내하기 위해서 @code{mmap}을 이용합니다. 
+이러한 조각들은 그들이 사용되지 않을때 즉각적으로 풀려집니다. 
+그러나, 이것은 상대적으로 비싼 연산에 해당되며 많은 운영체제들이 그러한 할당된 청크의 양에는 한계를 가지고 있으므로 이것은 오로지 큰 메모리 영역(memory regions)을 할당하는 목적으로만 사용됩니다. 
 
+작은 청크의 할당에 대해서는 시스템은 프로세스의 데이터 세그멘트(data segment)를 확장할 수 있습니다 (역사상으로는 @code{brk} 시스템 호출을 이용합니다). @c  그러나 이 전체 area는 항상 근접합니다.
+운영체제는 이 공간의 끝만을 이동할 수 있고, 어떠한 ``holes''를 생성할 수 없습니다.   
+이러한 작동에 대한 비용은 꽤 싼 편에 속하기 때문에 메모리의 작은 조작들에 대한 할당을 위한 목적으로 사용됩니다. 
+그러나, 부작용으로는 데이터 세그먼트의 끝에서 오로지 1 바이트만이 사용되고 있을지라도 운영체제는 어떠한 메모리라도 풀어주지 않습니다. 
+그 이유는 해당 바이트의 주소를 변경할 수 없기 때문입니다. 
+이것은 실제로 보기 흔합니다. 
+그 이유는 중간단계의 객체들을 할당하고 난뒤에 결과 객체를 할당하고 모든 중간단계의 객체를 삭제하는 것은 흔하기 때문입니다. 
+결과는 맨 마지막에 할당되기 때문에 중간단계의 객체에 의해서 사용된 어떤 메모리를 운영체제는 풀어주지 않습니다. 
 
+실제로 이것이 큰 문제가 되는 것은 아닙니다.
+왜냐하면 현대의 운영체제는 쓰이지 않는 가상 메모리 부분을 페이지 아웃(page out)을 할 수 있어, 다른 어플리케이션에 이용될 실제 메모리의 양을 줄이는 것이 아니기 때문입니다. 
+일반적으로 문자열(strings)과 페어리스트(pairlists)와 같은 작은 객체들은 이러한 작동방식에 의하여 영향을 받을 것입니다.
+반면에 긴 벡터와 같은 큰 객체들은 @code{mmap}을 이용하게 될것이므로 영향을 받지 않습니다.
+리눅스 (그리고 Unix와 같은 시스템들)에서는 실제적으로 사용되지 않은 메모리, 풀어줄 수 없는 메모리를 포함하여 할당 레이아웃(layout of allocation)에 관하여 할당기(allocator)를 질의하기 위하여 @code{mallinfo} 시스템호출을 이용하는 것이 가능합니다 (@url{http://rforge.net/mallinfo, mallinfo} 패키지를 살펴보세요) 
 
 @node R Programming, R Bugs, R Miscellanea, Top
 @c @chapter R Programming
@@ -4435,7 +4495,8 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @end menu
 
 @node How should I write summary methods?, How can I debug dynamically loaded code?, R Programming, R Programming
-@section How should I write summary methods?
+@c @section How should I write summary methods?
+@section 어떻게 summary 메소드를 작성해야 하나요?
 
 @c Suppose you want to provide a summary method for class @code{"foo"}.
 @c Then @code{summary.foo()} should not print anything, but return an
@@ -4446,22 +4507,26 @@ $ R^2 = 1 - \sum R_i^2 / \sum_i (y_i - \hbox{mean}(y))^2. $
 @c return something useful, as sometimes you need to grab something
 @c computed by @code{summary()} inside a function or similar.  In such
 @c cases you don't want anything printed.
-
-당신이 class “foo”를 위한 summary method를 제공하고 싶다고 가정해 봅시다. 그러면summary.foo()는 어떤것도 프린트하지 않아야하지만, class "summary.foo" 의 object를 return해야하며, 요약된 정보를 보기 좋게 프린트하고 그의 object를 보이지 않게 return하는method인 print.summary.foo()를 써야만 합니다. 이 접근법은summary.foo()를 쓰는 것 보다 더 선호 하는데 이는 가끔function이나 비슷한 것들 안에서 summary()에 의해 산출된 것을 grab해야할 때, 요약된 정보를 프린트하고 유용한 것을 return하기 때문입니다. 이런 경우에서, 어떤것도 프린트되는 것을 원하지 않을 것입니다. 
+만약 @code{"foo"}라는 클래스에 대한 summary 메소드를 만들고 싶다면, @code{summary.foo()}는 아무것도 출력해서는 안됩니다. 
+그러나, 클래스의 객체 @code{"summary.foo"}를 반환해야 하며, summary의 정보를 보기 좋게 출력해주며 이 객체를 보이지 않게 반환하는 @code{print.summary.foo()}라는 메소드를 작성해야 합니다.
+이러한 접근은 요약정보를 출력하는 @code{summary.foo()} 보다 선호됩니다.
+그 이유는 때때로 함수 또는 유사한 곳의 내부에서 @code{summary()}에 의하여 계산된 결과를 사용할 필요가 때때로 있기 때문입니다.
+그런 경우에 메소드 작성자는 어떠한 것도 출력되기를 원하지 않을 것입니다.
 
 @node How can I debug dynamically loaded code?, How can I inspect R objects when debugging?, How should I write summary methods?, R Programming
-@section How can I debug dynamically loaded code?
+@c @section How can I debug dynamically loaded code?
+@section 어떻게 로드된 코드를 다이나믹하게 디버그 할 수 있나요?
 
 @c Roughly speaking, you need to start R inside the debugger, load the
 @c code, send an interrupt, and then set the required breakpoints.
-
-대략, debugger 안에서 R을 시작하고, 코드를 로드, interrupt를 보내며, 그리고 요구되는 breakpoint를 설정해야만 합니다. 
+대략적으로 말하면, 디버거 내에서 R을 시작할 필요가 있고, 코드를 로드하고, 인터럽트(interrupt)를 보내고, 브레이크포인트(breakpoint)을 설정해야만 합니다.
 
 @ifclear UseExternalXrefs
 @c See section ``Finding entry points in dynamically loaded code'' in
 @c @cite{Writing R Extensions}.  This manual is included in the R
 @c distribution, @pxref{What documentation exists for R?}.
-Writing R Extensions에서“Finding entry points in dynamically loaded code” 섹션을 참조하십시오. 이 메뉴얼은 R distribution에 포함되어 있습니다, What documentation exists for R?를 참조하십시오.
+@cite{Writing R Extensions} 문서에서 ``Finding entry points in dynamically loaded code'' 섹션을 참고하시길 바랍니다.
+이 매뉴얼은 R 배포에 포함되어 있습니다, @pxref{What documentation exists for R?}.
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Finding entry points, , Finding entry points in dynamically loaded
@@ -4469,41 +4534,39 @@ code, R-exts, Writing R Extensions}.
 @end ifset
 
 @node How can I inspect R objects when debugging?, How can I change compilation flags?, How can I debug dynamically loaded code?, R Programming
-@section How can I inspect R objects when debugging?
+@c @section How can I inspect R objects when debugging?
+@section 디버깅 할 때 어떻게 R 객체들을 조사할 수 있나요?
 
 @c The most convenient way is to call @code{R_PV} from the symbolic
 @c debugger.
-
-가장 편리한 방법은 symbolic debugger에서 R_PV를 부르는 것입니다.
+가장 편리한 방법은 심볼릭 디버거(symbolic debugger)로부터 @code{R_PV}를 호출하는 것입니다.
 
 @ifclear UseExternalXrefs
-See section ``Inspecting R objects when debugging'' in @cite{Writing R
-Extensions}.
+@c See section ``Inspecting R objects when debugging'' in @cite{Writing R
+@c Extensions}.
+@cite{Writing R Extensions} 문서에서 ``Inspecting R objects when debugging'' 섹션을 참고하세요. 
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Inspecting R objects, , Inspecting R objects when debugging,
 R-exts, Writing R Extensions}.
-Writing R Extensions에서“Inspecting R objects when debugging” 섹션을 참조하십시오. 
 @end ifset
 
 @node How can I change compilation flags?, How can I debug S4 methods?, How can I inspect R objects when debugging?, R Programming
-@section How can I change compilation flags?
+@c @section How can I change compilation flags?
+@section 컴파일레이션 플래그를 어떻게 변경할 수 있나요?
 
 @c Suppose you have C code file for dynloading into R, but you want to use
 @c @code{R CMD SHLIB} with compilation flags other than the default ones
 @c (which were determined when R was built).
-
-R로 dynloading하기위한 C 코드 파일이 있지만, 기본값(R이 생성되었을 때 지정된)이 아닌 compilation flag들을 가지고 있는 R CMD SHLIB를 사용하고 싶다고 가정해 보십시오. 
+R로 dynloading하기위한 C 코드 파일이 있지만, 기본값(R이 빌드되었을때 정해놓은)이 아닌 컴파일레이션 플래그들을 가지고 있는 @code{R CMD SHLIB}를 사용하고 싶다고 가정합니다.
 
 @c Starting with R 2.1.0, users can provide personal Makevars configuration
 @c files in @file{$@env{HOME}/.R} to override the default flags.
-
-R 2.1.0부터, 사용자는$HOME/.R에 기본 flag들을 override하기위해 개인의 Makevars configuration file들을 제공할 수 있습니다. R Installation and 
+R 2.1.0 부터 사용자는 디폴트 플래그를 덮어쓰기 위하여 @file{$@env{HOME}/.R}내에 있는 개인 Makevars 설정파일을 제공합니다. 
 @ifclear UseExternalXrefs
 @c See section ``Add-on packages'' in @cite{R Installation and
 @c Administration}.
-Administration의“Add-on packages” 섹션은 참조하십시오 
-
+@cite{R Installation and Administration} 문서의 ``Add-on packages'' 섹션을 살펴보세요
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Add-on packages, , Add-on packages, R-admin,
@@ -4514,12 +4577,11 @@ R Installation and Administration}.
 @c @file{@var{R_HOME}/etc/Makeconf} to reflect your preferences, or (at
 @c least for systems using @acronym{GNU} Make) override them by the
 @c environment variable @env{MAKEFLAGS}.
-이전 버전의 R에서는, 당신의 선호를 반영하기위해서 파일 R_HOME/etc/Makeconf를 바꿀수 있었거나, 혹은 (적어도 GNU Make를 사용하는 시스템을위해서)  
-MAKEFLAGS 환경값에의해 그들을 override합니다. 
+이전 버전의 R에서는 개인설정을 반영하기 위하여 @file{@var{R_HOME}/etc/Makeconf} 파일을 변경할 수 있거나, (최소한 @acronym{GNU} Make를 이용하는 시스템들에서) 환경변수 @env{MAKEFLAGS}를 이용하여 값들을 덮어 쓸 수 있었습니다. 
 
 @ifclear UseExternalXrefs
 @c See section ``Creating shared objects'' in @cite{Writing R Extensions}.
-Writing R Extensions의 “Creating shared objects” 섹션을 참조하십시오. 
+@cite{Writing R Extensions} 문서에서 ``Creating shared objects'' 섹션을 참조하세요.
 @end ifclear
 @ifset UseExternalXrefs
 @xref{Creating shared objects, , Creating shared objects, R-exts,
@@ -4527,14 +4589,16 @@ Writing R Extensions}.
 @end ifset
 
 @node How can I debug S4 methods?,  , How can I change compilation flags?, R Programming
-@section How can I debug S4 methods?
+@c @section How can I debug S4 methods?
+@section S4 메소드를 어떻게 디버그 하나요?
 
 @c Use the @code{trace()} function with argument @code{signature=} to add
 @c calls to the browser or any other code to the method that will be
 @c dispatched for the corresponding signature.  See @code{?trace} for
 @c details.
 
-브라우저로 call들을 추가하기위해 argument signature=가 있는trace() function이나 상응하는 서명에 대해 dispath될 다른 코드들을 사용하십시오. 자세한 사항들은 ?trace를 참조하십시오. 
+브라우저로 호출을 추가하기 위하여 인자 @code{signature=}와 함께 @code{trace()} 함수를 이용하거나 상응하는 서명에 대해서 디스패치될 다른 코드를 이용하세요. 
+더 자세한 내용은 @code{?trace}를 참조하세요.
 
 @node R Bugs, Acknowledgments, R Programming, Top
 @c @chapter R Bugs
