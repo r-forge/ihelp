@@ -5015,7 +5015,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 
 </div>
 
-<h3 class="section">9.1 What is a bug?</h3>
+<!-- @section What is a bug? -->
+<h3 class="section">9.1 버그란 무엇인가요?</h3>
 
 <!-- If R executes an illegal instruction, or dies with an operating system -->
 <!-- error message that indicates a problem in the program (as opposed to -->
@@ -5024,7 +5025,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- @code{.Internal()}) yourself (or in a function you wrote), you can -->
 <!-- always crash R by using wrong argument types (modes).  This is not a -->
 <!-- bug. -->
-<p>만약 R이 불법적인 설명을 수행하거나, 프로그램 내의 문제를 나타내는 (“disk full” 같은것과 반대되는) 운영체제 오류 메세지와 함께 죽는다면, 이는 확실하게 bug입니다. 만약 .C(), .Fortran(), .External() 혹은 .Call() (혹은 .Internal())을 직접 (혹은 , 당신이 쓴 function에)부른다면, 잘못된 argument type들 (mode들)을 사용함으로 인해서 R을 항상 crash 할 수 있습니다.  이는 bug가 아닙니다.
+<p>만약 R이 정의되어 있는 방식대로 작동하지 않거나, 운영체제로부터의 프로그램에 문제가 있다 (디스크가 꽉 찼다는 것과 반대)는 에러메시지와 함께 프로그램이 죽는다면 이는 확실히 버그입니다. 
+만약 <code>.C()</code>, <code>.Fortran()</code>, <code>.External()</code>, 또는 <code>.Call()</code> (또는 <code>.Internal()</code>), 작성한 함수내에서 자기자신을 호출할때, 잘못된 인자유형을 사용하면 R은 작동하지 않을 수도 있습니다. 
+이것은 버그가 아닙니다.
 
 <!-- Taking forever to complete a command can be a bug, but you must make -->
 <!-- certain that it was really R's fault.  Some commands simply take a long -->
@@ -5032,7 +5035,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- processed quickly, report a bug.  If you don't know whether the command -->
 <!-- should take a long time, find out by looking in the manual or by asking -->
 <!-- for assistance. -->
-   <p>명령을 완성하는데 시간이 오래 걸리면 bug일 수 있지만, 이것이 정말 R의 잘못인지를 확실하게 해야만 합니다. 몇몇의 명령들은 원래 오랜시간이 걸립니다. 만약 input이 빨리 프로세스가 되어야만 한다는 것을 알고있다면, bug를 보고하십시오. 만약 명령이 시간이 오래 걸리는지 확실하지 않다면, 메뉴얼에서 찾아보거나 도움을 청하여 알아내십시오.
+   <p>명령을 수행시 명령이 끝나지 않고 계속 지속되는 것은 버그일 수도 있으나, 이것이 정말 R의 잘못인지를 반드시 확인해 보아야 합니다. 
+일부 명령어들은 단순히 오랜 시간이 걸릴 수도 있기 때문입니다. 
+만약 입력이 빨리 프로세스 되어야 한다는 것을 명백히 알고 있다면, 버그로 보고하시길 바랍니다. 
+만약에 명령어가 오래 걸릴지 안 걸릴지를 확신할 수 없다면 도움을 청하거나 매뉴얼을 읽어보면서 이를 알아내길 바랍니다.
 
 <!-- If a command you are familiar with causes an R error message in a case -->
 <!-- where its usual definition ought to be reasonable, it is probably a bug. -->
@@ -5046,7 +5052,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- Unexpected results of comparison of decimal numbers, for example -->
 <!-- @code{0.28 * 100 != 28} or @code{0.1 + 0.2 != 0.3}, are not a bug. -->
 <!-- @xref{Why doesn't R think these numbers are equal?}, for more details. -->
-   <p>만약 익숙한 명령이 보통의 정의가 합리적인 경우에 R 오류 메세지를 초래한다면, 이는 아마도 bug일 것입니다. 만약 명령어가 틀린것을 한다면, 이는 버그입니다. 하지만 무엇이 되어야만하는지를 당신이 반드시 확실하게 알도록 하십시오. 만약 당신이 명령에 익숙하지 않다거나, 명령이 어떻게 실행되어야하는지를 확실하게 알지 못한다면, 이는 실제로 잘 실행되고 있는것일 것입니다. 예를들어, 사람들은 R의 mathematics 안에 버그가 있다고 생각하는데 이는finite-precision arithmetic이 어떻게 기능하는지 모르기 때문입니다. 결론들로 바로 가기보다는, 확실하게 아는 누군가에게 문제를 보여주십시오. 예상하지 못한 소수의 비교 결과, 예로, 0.28 * 100 != 28 혹은 0.1 + 0.2 != 0.3, 는 bug가 아닙니다. 더 자세한 사항들은 Why doesn't R think these numbers are equal?을 참조하십시오.
+   <p>만약 익숙한 명령어가 정상적으로 작동해야 할 경우에 에러메시지를 발생시킨다면, 이것은 아마도 버그일 것입니다. 
+만약 명령어가 잘못된 작업을 수행한다면, 이는 버그입니다. 
+그러나, 사용자는 반드시 무엇이 수행되어야 하는지를 반드시 알고 있어야 합니다. 
+만약 명령어가 익숙한 것이 아니라면 또는 어떻게 명령어가 작동되는가를 정확히 모른다면, 실제로 정상적으로 작동하는 것일 수도 있습니다. 
+예를들면, 일부 사용자들은 때때로 R의 수학적 연산에 버그가 있다고 생각합니다. 
+그러나, 이는 finite-precision arithmetic work를 이해하지 못하기 때문입니다. 
+결론을 내리기 전에 문제를 확실히 알고있는 누군가에게 보여주길 바랍니다. 
+예를들어 <code>0.28 * 100 != 28</code> 또는 <code>0.1 + 0.2 != 0.3</code>과 같은 것은 버그가 아닙니다. 
+더 자세한 사항은 <a href="#Why-doesn_0027t-R-think-these-numbers-are-equal_003f">Why doesn't R think these numbers are equal?</a>를 참고해주세요.
 
 <!-- Finally, a command's intended definition may not be best for statistical -->
 <!-- analysis.  This is a very important sort of problem, but it is also a -->
@@ -5060,11 +5074,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- make everything clear.  It is just as important to report documentation -->
 <!-- bugs as program bugs.  However, we know that the introductory -->
 <!-- documentation is seriously inadequate, so you don't need to report this. -->
-   <p>마지막으로,  명령의 목적 정의어는 통계 분석에 대해 가장 좋지 않을지도 모릅니다. 이는 이런 종류의 문제에서 매우 중요하지만, 이는 판단력의 문제이기도 합니다. 또한, 몇몇의 기존 기능들의 무지에서의 결론과 같은 것에서 나오기 십상입니다. 이는 아마도 당신이 평소의 방법으로 documentation을 체크하고, 그를 이해하는 것에 대해 자신감이 있고 당신이 원하는 것이 이용가능하지 않다는 것을 확실하게 알기 전까지는 이런 문제들에 대하여 불평하지 않는 것이 좋을 것 입니다. 만약 당신이 메뉴얼을 정독 한 후에도 어떤 명령이 실행되어야하는지 확실하지 않을때에는, 메뉴얼에 bug가 있다는 것을 나타냅니다. 이 메뉴얼의 역할은 모든것을 확실하게 만드는 것입니다. Documentation bug들을 보고하는것이 프로그램 bug들만큼 중요합니다. 그렇지만, 서두 문서가 심각하게 무능하다는 것을 알고 있기때문에, 이는 보고하지 않아도 됩니다.
+   <p>마지막으로, 명령어의 계획된 정의가 통계분석에 가장 잘 맞는 것은 아닙니다. 
+이것은 매우 중요한 문제이기도 한데, 이는 또한 문제에 대한 판단의 문제이기도 합니다. 
+또한, 이들은 이전에 존재하는 기능들에 대해서 모르기 때문에 내리는 결론이기도 합니다. 
+이러한 종류의 문제에 대해서는 일반적인 방법으로 문서를 확인하고, 이를 제대로 이해했다고 확신한뒤, 원하는 무엇인가를 이용가능하지 않다는 것을 확실하게 알기전까지는 불평하지 않는 것이 좋습니다. 
+만약 매뉴얼을 정독한 후에도 명령어가 어떻게 무엇을 수행해야 하는지를 정확히 이해할 수 없다면, 이는 매뉴얼에 버그가 있음을 의미합니다. 
+매뉴얼의 역할은 모든 것을 확실히 보여주는 것입니다. 
+프로그램 버그도 중요하지만 문서의 버그를 보고하는 것도 중요합ㄴ디ㅏ. 
+그런데, introductory documentation은 심각하게 불충분하다는 것을 알고 이미 알고 있기 때문에 이것을 보고할 필요는 없습니다.
 
 <!-- If the online argument list of a function disagrees with the manual, one -->
 <!-- of them must be wrong, so report the bug. -->
-   <p>만약 function의 온라인 argument 목록이 메뉴얼과 일치하지 않는다면, 둘 중하나는 틀린것이므로, bug를 보고하십시오.
+   <p>만약 함수의 온라인 인자목록이 매뉴얼과 일치하지 않는다면, 둘 중에 하나가 잘 못된 것이므로 버그로 보고해 주시길 바랍니다.
 
 <div class="node">
 <a name="How-to-report-a-bug"></a>
@@ -5074,7 +5095,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 
 </div>
 
-<h3 class="section">9.2 How to report a bug</h3>
+<!-- @section How to report a bug -->
+<h3 class="section">9.2 어떻게 버그를 보고하나요?</h3>
 
 <!-- When you decide that there is a bug, it is important to report it and to -->
 <!-- report it in a way which is useful.  What is most useful is an exact -->
@@ -5082,7 +5104,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- to run R, until the problem happens.  Always include the version of R, -->
 <!-- machine, and operating system that you are using; type @kbd{version} in -->
 <!-- R to print this. -->
-<p>Bug가 있다고 판단했을 때, 유용한 방법으로 보고하는 것이 중요합니다. 가장 유용한 것은R을 실행하기위한 shell command로 시작하여 어떤 명령을 타입했는지의 정확한 설명을 문제가 나타날때까지 하는 것입니다. 항상 당신이 사용하는 R의 버전, machine, 그리고 운영 체제를 포함하십시오; 이를 프린트하려면 R에 version을 타입하십시오.
+<p>버그가 있다고 판단될때, 이것을 보고하는 것도 중요하고, 어떻게 잘 보고하는가도 중요합니다. 
+가장 좋은 방법은 쉘 커맨드에서 R을 입력하면서부터 문제가 발생한 부분까지의 사용된 명령어들에 대한 설명을 제공하는 것입니다. 
+항상 사용하는 R의 버전, 사용기기, 운영체제를 함께 알려주시길 바랍니다. 
+이들에 대한 정보는 <kbd>version</kbd>이라고 입력하면 출력됨을 확인할 수 있습니다.
 
 <!-- The most important principle in reporting a bug is to report -->
 <!-- @emph{facts}, not hypotheses or categorizations.  It is always easier to -->
@@ -5092,11 +5117,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- have to try to figure out what the facts must have been to lead to such -->
 <!-- speculations.  Sometimes this is impossible.  But in any case, it is -->
 <!-- unnecessary work for the ones trying to fix the problem. -->
-   <p>Bug를 보고할 때 가장 중요한 원칙은 가설이나 categorization들이 아닌, 실제 일어난 것을 보고하십시오. 실제 일어난 것을 보고하는것이 항상 더 쉽지만, 사람들은 이를 사실로 받아여진 설명에 압박감을 받고 그들을 대신 보고하는 것을 더 좋아하는 것 처럼 보입니다. 만약 설명이 R이 어떻게 실행되었는지에 관한 추측에 기초한 것이라면, 그들은 쓸모가 없을 것 입니다; 다른 사람들이 그러한 추측들로 끌어도록 만든 실제 일어난 일이 무엇인지를 알아내려고 노력해야하기 때문입니다. 때때로 이는 가능하지 않습니다. 하지만 어떤 경우에는, 이는 문제를 고치려고 노력하는 사람에게 불필요한 일 입니다.
+   <p>버그를 보고할 때 가장 중요한 원칙은 가설이나 분류를 하지 않고 실제 일어난 사실들만을 보고 하는 것입니다. 
+사실만을 보고하는 것이 더 쉬움에도 불구하고, 많은 분들은 이러한 사실이 왜 일어났는가를 설명하곤 합니다. 
+만약 이러한 설명들이 R이 어떻게 구현되었는가에 대한 추측에 기초한 것이라면, 쓸모가 없을 것입니다. 
+그 이유는 그러한 추측이 나오게 된 어떤 사실들을 밝혀내야만 하기 때문입니다. 
+때때로 이것은 불가능합니다. 
+그러나, 대부분의 경우에는 문제를 고치려고 노력하는 사람에게는 불필요한 일입니다.
 
 <!-- For example, suppose that on a data set which you know to be quite large -->
 <!-- the command -->
-   <p>예를 들어, 데이터셋에 당신이 꽤나 큰 명령일 것이라고 알고있는
+   <p>예를들어, 꽤 큰 크기의 데이터셋을 가지고 있다고 가정하고, 다음과 같은 명령어를 입력합니다.
 
 <pre class="example">     R&gt; data.frame(x, y, z, monday, tuesday)
 </pre>
@@ -5107,14 +5137,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- the week variable name, and not see any problem.  There is no way in the -->
 <!-- world that others could guess that they should try a day of the week -->
 <!-- variable name. -->
-는 절대 return하지 않습니다. data.frame()이 큰 데이터에 대해 실패했다고 보고하지 마십시오. 아마도 이는 variable 이름이 요일로 되어있을 때 실패하는 것 일것입니다. 만일 그렇다면 다른 사람들이 당신이 보고한 것을 보았을 때 그들은 큰 데이터 셋에 아마 요일이 들어가지 않은 variable 이름을 가진 data.frame() 명령을 시도해 보고, 아무런 문제도 일어나지 않는 것을 볼 것입니다. 다른사람들이 요일을 variable 이름으로 시도해 보아야만 하는지를 알 길은 전혀 없습니다.
+이것은 절대로 반환되지 않습니다. 
+<code>data.frame()</code>이 큰 데이터셋에서 실패했다고 보고하지는 말아 주세요. 
+아마도 변수명이 요일로 되어 있을 때 실패하는 것일수도 있습니다. 
+data.frame()이 큰 데이터에 대해 실패했다고 보고하지 마십시오. 
+만약 정말 그러하다면 다른 사람들이 보고되어진 것을 보았을때 요일명이 아닌 변수명을 이용하여 아무런 문제가 일어나지 않는 것을 확인할 것입니다.
 
 <!-- Or perhaps the command fails because the last command you used was a -->
 <!-- method for @code{"["()} that had a bug causing R's internal data -->
 <!-- structures to be corrupted and making the @code{data.frame()} command -->
 <!-- fail from then on.  This is why others need to know what other commands -->
 <!-- you have typed (or read from your startup file). -->
-   <p>혹은 어쩌면 당신이 마지막에 사용한 명령이 R 내부 데이터 구조에 오류가 나게하고 그 지점부터data.frame() 명령이 실패하는 원인을 제공하는 bug를 가지고 있는 "["()에 대한 method였기 때문에 명령이 실패하는 것일지도 모릅니다. 이것이 다른사람들이 당신이 어떠한 다른 명령을 입력했는지 (혹은 당신의 시작 파일을 읽거나)를 알아야만하는 이유입니다.
+   <p>혹은 마지막으로 사용한 명령어가 내부 데이터 구조에 오류를 발생시키고 그 이후부터 <code>data.frame()</code> 명령어가 실패하게 되는 원인을 가진 버그를 가졌던 <code>"["()</code>에 대한 메소드일 수도 있기 때문입니다. 
+이것은 왜 어떤 명령어들이 (시작파일부터) 이전에 입력되었는가를 알아야 하는 이유이기도 합니다.
 
 <!-- It is very useful to try and find simple examples that produce -->
 <!-- apparently the same bug, and somewhat useful to find simple examples -->
@@ -5124,12 +5159,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- explanations or solutions.  Please include an example that reproduces -->
 <!-- (e.g., @url{http://en.wikipedia.org/wiki/Reproducibility}) the problem, -->
 <!-- preferably the simplest one you have found. -->
-   <p>같은 버그를 생성하는 것 처럼 보이는 간단한 예제를 찾아서 시도해 보는것은 굉장히 유용하고, bug가 생성될 것 같지만 실제로는 그렇지 않은 간단한 예제를 찾아서 시도해 보는 것도 다소 유용합니다. 만약 문제를 debug하고 정확하게 어떤 것이 bug를 생성했는지를 찾고싶다면, 당신은 아주 훌륭합니다. 계속해서 실제 일어난 것을 보고해야만 하는 동시에 설명과 해결책들도 같이 보고해야합니다. 문제를 일으키는 예제를, 당신이 찾은 것들 중 가장 간단한 것들 (예, http://en.wikipedia.org/wiki/Reproducibility), 포함해 주십시오.
+   <p>겉으로 보기에 똑같은 버그를 생성하는 간단한 예제를 찾아 시도하는 것은 매우 유익합니다. 
+실제로는 버그가 아니지만 버그를 생성할 것이라고 예상되는 단순한 예제를 테스트 하는 것도 유용합니다. 
+만약 문제를 디버그하고 무엇이 문제를 야기하는지 정확히 찾아내고 싶다면, 이것은 매우 훌륭합니다. 
+당신은 실제로 일어난 사실만을 보고해야 하면서도 어떠한 설명 또는 해법을 함께 보고할 수 있습니다. 
+당신이 찾았던 문제들중에서 그 문제가 똑같이 일어남을 확인해 줄 수 있는 가장 단순한 예제를 꼭 포함해주시길 부탁드립니다  (즉, <a href="http://en.wikipedia.org/wiki/Reproducibility">http://en.wikipedia.org/wiki/Reproducibility</a> 입니다).
 
 <!-- Invoking R with the @option{-vanilla} option may help in isolating a -->
 <!-- bug.  This ensures that the site profile and saved data files are not -->
 <!-- read. -->
-   <p>&ndash;vanilla옵션이 있는 R을 적용하는 것이 bug를 분리시키는데 도움을 줄지도 모릅니다. 이는 사이트 프로필과 저장된 데이터 파일들이 읽히지 않도록 확실히 합니다.
+   <p><samp><span class="option">--vanilla</span></samp> 옵션과 함께 R을 실행하는 것은 버그를 분리해 내는데 도움을 줄 것입니다. 
+이것은 사이트 프로파일과 저장된 데이터 파일들이 읽혀지지 않도록 합니다.
 
 <!-- Before you actually submit a bug report, you should check whether the -->
 <!-- bug has already been reported and/or fixed.  First, try the ``Show open -->
@@ -5145,21 +5185,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#R-Bugs">R Bugs</a>
 <!-- should be sent first to the package maintainer, and only submitted to -->
 <!-- the R-bugs repository by package maintainers, mentioning the package in -->
 <!-- the subject line. -->
-   <p>Bug 보고서를 실제로 제출하기 전에, 그 bug가 이미 보고되고/보고되거나 고쳐졌는지를 확인해야만 합니다. 첫번째로, “Show open bugs new-to-old”나http://bugs.R-project.org/의 검색 기능을 시도해 보십시오. 두번째로, Bug Tracker에도 나타나지 않는 고쳐진 bug들도 포함된, 다음번에 나올 R에서 보여질 수정사항들이 보고된 https://svn.R-project.org/R/trunk/doc/NEWS.Rd와 상담을 해 보십시오. 세번째로, 가능하다면 R의 현재 r-patched나 r-devel 버전을 시도해 보십시오. 만약 bug가 이미 보고되거나 고쳐졌다면, 추가의 bug 보고서들을 제출하지 말아주십시오. 마지막으로, bug가 R에 있는지, 혹은 기여 패키지에 있는지를 잘 체크 하십시오. 기여 패키지들에 대한 bug 보고서들은 패키지 관리자에게 첫번째로 보내져야만하고, 주제 라인에 패키지를 언급하여 패키지 관리자에 의해서만 R-bugs 저장소로 제출될 것입니다.
+   <p>버그리포트를 실제로 제출하기 전에, 해당 버그가 이미 보고되었거나 수정되었는지를 확인하시길 바랍니다. 
+제일 먼저 <a href="http://bugs.R-project.org/">http://bugs.R-project.org/</a>에 있는 검색 기능 또는 &ldquo;Show open bugs new-to-old&rdquo;을 시도해보시길 바랍니다. 
+그리고 나서 버그트래커에는 고쳤다고 나오지 않았는지 혹은 다음에 배포되는 R에 변경사항을 기록한 <a href="https://svn.R-project.org/R/trunk/doc/NEWS.Rd">https://svn.R-project.org/R/trunk/doc/NEWS.Rd</a>에는 있는지 없는지 확인해 보시길 바랍니다. 
+세번째로 가능하다면 R의 현재 r-patched나 r-devel 버전을 시도해 보십시오. 
+만약 버그가 이미 보고되거나 고쳐졌다면, 추가적인 버그 보고서를 제출하지 말아주시길 바랍니다. 
+마지막으로 버그가 R에 존재하는지 기여 패키지에 존재하는지에 대해서 주의 깊게 확인해 주시길 부탁드립니다. 
+기여된 패키지들에 대한 버그보고서는 가장 먼저 패키지 관리자에게 보내져야 하며, 패키지 관라자에 의해서 해당패키지명이 제목에 명시된 버그리포드만이 R-bug 저장소에 제출될 수 있습니다.
 
 <!-- A bug report can be generated using the function @code{bug.report()}. -->
 <!-- For reports on R this will open the Web page at -->
 <!-- @url{http://bugs.R-project.org/}: for a contributed package it will open -->
 <!-- the package's bug tracker Web page or help you compose an email to the -->
 <!-- maintainer. -->
-   <p>Bug 보고서는function bug.report()를 사용하여 생성될 수 있습니다. R의 보고서들을 위해서 이는 http://bugs.R-project.org/ 웹페이지를 열 것입니다: 기여 패키지를 위해서 이는 패키지의 bug tracker 웹페이지를 열거나 관리자에게 이메일을 쓰는 것을 도와 줄 것입니다.
+   <p>버그 리포트는 함수 <code>bug.report()</code>을 이용하여 생성할 수 있습니다. 
+이것은 <a href="http://bugs.R-project.org/">http://bugs.R-project.org/</a>이라는 웹페이지를 열어줄 것입니다. 
+사용자 기여패키지(contributed package)에 대해서는 패키지의 버그 트래커 웹 페이지 또는 패키지 관리자에게 이메일을 작성할 수 있도록 도와줄 것입니다.
 
 <!-- There is a section of the bug repository for suggestions for -->
 <!-- enhancements for R labelled @samp{wishlist}.  Suggestions can be -->
 <!-- submitted in the same ways as bugs, but please ensure that the subject -->
 <!-- line makes clear that this is for the wishlist and not a bug report, for -->
 <!-- example by starting with @samp{Wishlist:}. -->
-   <p>R labeled ‘wishlist’의 향상을위한 제안들을 위한 bug 저장소의 섹션이 있습니다. 제안들은 bug들과 비슷한 방법으로 제출 할 수 있으나, subject line에, 예를들어 시작을‘Wishlist:’로 하는, 이가 bug 보고서가 아닌 wishlist를 위한 것이라는 것을 확실하게 해 주십시오.
+   <p>&lsquo;<samp><span class="samp">wishlist</span></samp>&rsquo;라고 라벨과 함께 R의 기능강화에 관한 제안들을 위한 버그저장소 섹션이 있습니다. 
+제안사항들은 버그를 보고하는 것과 같은 방법으로 할 수 있으나, 제목에 반드시 이것은 wishlist 이지 버그리포트가 아니라는 것을 명시해주셔야 합니다. 
+예를들면, &lsquo;<samp><span class="samp">Wishlist:</span></samp>&rsquo; 라고 시작해 주시면 됩니다.
 
 <!-- Comments on and suggestions for the Windows port of R should be sent to -->
 <!-- @email{R-windows@@R-project.org}. -->
@@ -5195,19 +5245,14 @@ Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D. Riple
 
    <p>더 많은 내용들이 추가될 것입니다<small class="dots">...</small>
 
-   <p>본 한국어 문서는 <strong>R Development Translation Teams</strong> (<a href="http://developer.r-project.org/TranslationTeams.html">http://developer.r-project.org/TranslationTeams.html</a>) 에서 <strong>Korean</strong> 섹션을 담당하는 <strong>Korean R Translation Team</strong>에 의해서 관리되고 있습니다. 
-문서의 수정과 재배포를 허락해 준 <strong>Kurt Hornik과 R Development Core Team</strong>에게 감사를 드립니다. 
+   <p>본 한국어 문서는 <strong>R Development Translation Teams</strong> (<a href="http://developer.r-project.org/TranslationTeams.html">http://developer.r-project.org/TranslationTeams.html</a>) <strong>Korean</strong> 섹션리더 Chel Hee Lee (University of Saskatchewan, Saskatoon, Saskatchewan, Canada, <a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>)에 의해서 번역되었습니다. 
+제 2역자로서 Heather Kim (University of Mantioba, Winnipeg, Manitoba, Canada)이 함께 이 문서의 번역작업에 참가 하였습니다.
+
+   <p>문서의 수정과 재배포를 허락해 준 <strong>Kurt Hornik과 R Development Core Team</strong>에게 감사를 드립니다. 
 <!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다. -->
 
-   <p>아래와 같은 분들에 의하여 이 문서는 2009년 이래로 여러차례의 교정과 수정이 이루어졌습니다. 
-의도하지 않게 관리부실로 인하여 성함이 누락되신 분이 있다면 꼭 이 문서의 관리자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>로 연락을 부탁드립니다.
-
-     <ul>
-<li>Chel Hee Lee, University of Saskatchewan, Saskatoon, Canada, 2009-2013
-<li>Heather Kim, University of Manitoba, Winnipeg, Canada, 2013
-</ul>
-
-   <p>본 문서에 대한 참여 및 제안은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a> 메일링을 이용해주시길 부탁드립니다.
+   <p>본 문서는 언급된 전문용어들에 대한 추가적인 해석, 오역교정, 그리고 이해를 돕기 위한 내용을 추가함으로서, 새로운 R의 배포에 맞추어 지속적으로 관리되어집니다. 
+본 문서에 대한 참여 및 제안은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>으로 보내주신다면 감사하겠습니다.
 
 </body></html>
 
