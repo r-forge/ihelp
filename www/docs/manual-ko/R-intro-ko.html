@@ -74,7 +74,6 @@ p {
 <h2>Table of Contents</h2>
 <ul>
 <li><a name="toc_Top" href="#Top">R에 대한 소개서</a>
-<li><a name="toc_Acknowledgement" href="#Acknowledgement">감사의 말씀</a>
 <li><a name="toc_Preface" href="#Preface">서문</a>
 <li><a name="toc_Introduction-and-preliminaries" href="#Introduction-and-preliminaries">1 소개와 본문에 들어가기 전에</a>
 <ul>
@@ -283,11 +282,10 @@ p {
 
 
 <!-- @end ifnothtml -->
-<!-- @node Top, Preface, (dir), (dir) -->
 <div class="node">
 <a name="Top"></a>
 <p><hr>
-Next:&nbsp;<a rel="next" accesskey="n" href="#Acknowledgement">Acknowledgement</a>,
+Next:&nbsp;<a rel="next" accesskey="n" href="#Preface">Preface</a>,
 Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 
@@ -310,9 +308,32 @@ R은 벨랩에서 John Chambers 외 다수에 의해서 개발된 이래로 여�
 선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계분석 방법들과 그래픽 기능들을 제공합니다. 
 이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형, 프로그래밍의 기본 요소들, 그리고 통계 모델링과 그래픽 구현에 대한 기본적인 정보가 이 문서에서 다루어질 것입니다.
 
-   <p>본 한글문서에 대한 영어원문의 버전은 3.0.0 Under development (2013-02-11)이며, 한국어 버전의 마지막 업데이트는 2013.04.03입니다.
+   <p>본 한글문서에 대한 영어원문의 버전은 3.0.0 Under development (2013-02-11).
 
    <p>ISBN 3-900051-12-7
+
+   <p>본 한국어 문서는 <strong>R Development Translation Teams</strong> (<a href="http://developer.r-project.org/TranslationTeams.html">http://developer.r-project.org/TranslationTeams.html</a>) <strong>Korean</strong> 섹션에서 진행하는 프로젝트의 일환으로 제공되어집니다. 
+본 문서의 역자는 아래와 같습니다.
+     <ul>
+<li>Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, <a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>, 2009 &ndash; 2013
+<li>Lijin Joo (주이진), New York University, New York, New York, U.S.A., <a href="mailto:lijin.joo@nyu.edu">lijin.joo@nyu.edu</a>, 2009&ndash;2013
+<li>Eugene Jung (정우준), Hongik University, Seoul, Korea, <a href="mailto:muoe78@gmail.com">muoe78@gmail.com</a>, 2009-2013. 
+</ul>
+
+   <p>문서의 수정과 재배포를 허락해 주신 <strong>R Development Core Team</strong>에게 감사를 드립니다. 
+<!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다. -->
+
+   <p>본 문서에 대한 최초의 직역은 2009년 07월에 R-2.9.1를 기초로 이루어졌으나, 많은 수정과 내용의 갱신이 R의 버전이 업드레이드 될 때마다 이루어지고 있습니다. 
+이러한 계속 된 문서의 업데이트는 아래에 기재되신 분들의 문서 각 부분의 번역 및 교정, 그리고 다양한 관점에서의 검토를 통하여 가능할 수 있었습니다. (의도적인 것은 아니지만 문서의 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 혹시 빠져 있을 수도 있습니다. 부디 문서의 책임자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>에게 직접 연락주시면 감사하겠습니다).
+
+     <ul>
+<li>Heather Kim, University of Manitoba, Winnipeg, Manitoba, Canada, 2010-2011
+<li>정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
+<li>이세연, 이화여자대학교, 2009
+</ul>
+
+   <p>본 문서는 언급된 전문용어들에 대한 추가적인 해석, 오역교정, 그리고 이해를 돕기 위한 내용을 추가함으로서, 새로운 R의 배포에 맞추어 지속적으로 관리되어 질 것입니다. 
+본 문서에 대한 참여 및 제안은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>으로 보내주신다면 감사하겠습니다.
 
    <p>Copyright &copy; 1990 W. N. Venables<br>
 Copyright &copy; 1992 W. N. Venables &amp; D. M. Smith<br>
@@ -337,16 +358,15 @@ except that this permission notice may be stated in a translation
 approved by the R Core Team.
 
 <ul class="menu">
-<li><a accesskey="1" href="#Acknowledgement">Acknowledgement</a>
-<li><a accesskey="2" href="#Preface">Preface</a>
-<li><a accesskey="3" href="#Introduction-and-preliminaries">Introduction and preliminaries</a>
-<li><a accesskey="4" href="#Simple-manipulations-numbers-and-vectors">Simple manipulations numbers and vectors</a>
-<li><a accesskey="5" href="#Objects">Objects</a>
-<li><a accesskey="6" href="#Factors">Factors</a>
-<li><a accesskey="7" href="#Arrays-and-matrices">Arrays and matrices</a>
-<li><a accesskey="8" href="#Lists-and-data-frames">Lists and data frames</a>
-<li><a accesskey="9" href="#Reading-data-from-files">Reading data from files</a>
-<li><a href="#Probability-distributions">Probability distributions</a>
+<li><a accesskey="1" href="#Preface">Preface</a>
+<li><a accesskey="2" href="#Introduction-and-preliminaries">Introduction and preliminaries</a>
+<li><a accesskey="3" href="#Simple-manipulations-numbers-and-vectors">Simple manipulations numbers and vectors</a>
+<li><a accesskey="4" href="#Objects">Objects</a>
+<li><a accesskey="5" href="#Factors">Factors</a>
+<li><a accesskey="6" href="#Arrays-and-matrices">Arrays and matrices</a>
+<li><a accesskey="7" href="#Lists-and-data-frames">Lists and data frames</a>
+<li><a accesskey="8" href="#Reading-data-from-files">Reading data from files</a>
+<li><a accesskey="9" href="#Probability-distributions">Probability distributions</a>
 <li><a href="#Loops-and-conditional-execution">Loops and conditional execution</a>
 <li><a href="#Writing-your-own-functions">Writing your own functions</a>
 <li><a href="#Statistical-models-in-R">Statistical models in R</a>
@@ -361,40 +381,10 @@ approved by the R Core Team.
 </ul>
 
 <div class="node">
-<a name="Acknowledgement"></a>
-<p><hr>
-Next:&nbsp;<a rel="next" accesskey="n" href="#Preface">Preface</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
-
-</div>
-
-<!-- @unnumbered Acknowledgement -->
-<h2 class="unnumbered">감사의 말씀</h2>
-
-<p>본 한국어 문서는 <strong>R Development Translation Teams</strong>의 한국어 섹션인 <strong>Korean R Translation Team</strong>에 의하여 번역되고 관리되고 있습니다. 
-문서의 수정과 재배포를 허락해 주신 <strong>R Development Core Team</strong>에게 감사를 드립니다. 
-<!-- 특히, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주시는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)  , 그리고 David Smith에 진심으로 감사드립니다. -->
-
-   <p>본 문서에 대한 최초의 직역은 2009년 07월에 R-2.9.1를 기초로 이루어졌으나, 많은 수정과 내용의 갱신이 R의 버전이 업드레이드 될 때마다 이루어지고 있습니다. 
-이러한 계속 된 문서의 업데이트는 아래에 기재되신 분들의 문서 각 부분의 번역 및 교정, 그리고 다양한 관점에서의 검토를 통하여 가능할 수 있었습니다. (의도적인 것은 아니지만 문서의 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 혹시 빠져 있을 수도 있습니다. 부디 문서의 책임자 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>에게 직접 연락주시면 감사하겠습니다).
-
-     <ul>
-<li>이철희, University of Saskatchewan, 2009&ndash;2013
-<li>주이진, New York University, 2009&ndash;2013
-<li>정우준, 홍익대학교, 2009-2013
-<li>Heather Kim, University of Manitoba, 2010-2011
-<li>정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
-<li>이세연, 이화여자대학교, 2009
-</ul>
-
-   <p>본 문서에 대한 수정 및 추가 및 제안 사항에 대해서 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>로 연락주시기 바랍니다.
-
-<div class="node">
 <a name="Preface"></a>
 <p><hr>
 Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction-and-preliminaries">Introduction and preliminaries</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="#Acknowledgement">Acknowledgement</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
 Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
