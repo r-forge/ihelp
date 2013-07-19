@@ -1,7 +1,16 @@
+@c Initial setting: 2013.07.09
+@c Translators: 
+@c Chel Hee Lee
+@c Heather Kim
+@c 
+@c Acknowledgement
+@c Hongseok Kim  
+@c 
+@c 
 \input texinfo
 @c %**start of header
 @setfilename R-lang.info
-@settitle R Language Definition (한국어 - 2013.07.09, ver.0.00 초기셋팅완료)
+@settitle R Language Definition (한국어 - 2013.07.19, ver.0.10)
 @setchapternewpage on
 @c %**end of header
 
@@ -57,13 +66,10 @@ notice identical to this one except for the removal of this paragraph
 @c parsing, object oriented programming, computing on the language, and so
 @c forth.
 
-이 문서는 R 언어에 대한 소개자료로서 평가(evaluation), 구문 분석, 객체 지향 프로그래밍, R 언어 상에서의 컴퓨팅 등과
-같은 내용을 설명하고 있습니다.
+이 문서는 @R{} 언어에 대한 소개자료로서 평가(evaluation), 구문 분석(parsing), 객체 지향 프로그래밍 (objective oriented programming), R 언어 상에서의 컴퓨팅 (computing) 등과 같은 내용을 설명하고 있습니다.
 
 @c The current version of this document is @value{VERSION} @b{DRAFT}.
-
-
-이 문서의 현재 버전은 3.0.1(2013-05-16) DRAFT입니다
+이 문서의 현재 버전은 @value{VERSION} @b{DRAFT} 입니다
 
 @value{ISBN-lang}
 
@@ -91,15 +97,17 @@ notice identical to this one except for the removal of this paragraph
 
 @node Introduction, Objects, Top, Top
 @comment  node-name,  next,  previous,  up
-@chapter Introduction
+@c @chapter Introduction
+@chapter 서문 
 
 @c @R{} is a system for statistical computation and graphics. It
 @c provides, among other things, a programming language, high level
 @c graphics, interfaces to other languages and debugging facilities.  This
 @c manual details and defines the @R{} language.
 
-R은 통계적 계산과 그래픽을 위한 시스템입니다. R이 제공하는 것들은 여러 가지가 있지만 그 중에서도 프로그래밍 언어, 고수준의
-그래픽, 다른 언어에 대한 인터페이스, 그리고 디버깅 기능들을 제공합니다. 이 매뉴얼에서는 R 언어를 상세히 기술하고 정의합니다.
+@R{}은 통계적 계산과 그래픽을 위한 시스템입니다. 
+R이 제공하는 것들은 여러 가지가 있지만 그 중에서도 프로그래밍 언어, 고수준의 그래픽, 다른 언어에 대한 인터페이스, 그리고 디버깅 기능들을 제공합니다. 
+이 매뉴얼에서는 @R{} 언어를 상세히 기술하고 정의합니다.
 
 @c The @R{} language is a dialect of @Sl{} which was designed in the 1980s
 @c and has been in widespread use in the statistical community since.
