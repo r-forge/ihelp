@@ -104,18 +104,16 @@ notice identical to this one except for the removal of this paragraph
 @c provides, among other things, a programming language, high level
 @c graphics, interfaces to other languages and debugging facilities.  This
 @c manual details and defines the @R{} language.
-
 @R{}은 통계적 계산과 그래픽을 위한 시스템입니다. 
-R이 제공하는 것들은 여러 가지가 있지만 그 중에서도 프로그래밍 언어, 고수준의 그래픽, 다른 언어에 대한 인터페이스, 그리고 디버깅 기능들을 제공합니다. 
-이 매뉴얼에서는 @R{} 언어를 상세히 기술하고 정의합니다.
+R이 제공하는 것들은 여러 가지가 있지만 그 중에서도 프로그래밍 언어, 고수준의 그래픽스, 다른 언어와의 인터페이스, 그리고 디버깅 기능들을 제공합니다. 
+이 매뉴얼에서는 @R{} 언어에 대해서 상세히 기술하고 이를 정의합니다.
 
 @c The @R{} language is a dialect of @Sl{} which was designed in the 1980s
 @c and has been in widespread use in the statistical community since.
 @c Its principal designer, John M. Chambers, was awarded the 1998 ACM
 @c Software Systems Award for @Sl{}.
-
-R 언어는, 1980년대에 설계된 이후로 통계학 커뮤니티 내에서 널리 사용되어 온 언어인 S로부터 파생된 언어입니다. S 언어의 주요
-설계자인 존 챔버스(John M. Chambers)는 S를 만든 공로로 1998년 ACM 소프트웨어 시스템 상을 수상한 바 있습니다.
+@R{} 언어는, 1980년대에 설계된 이후로 통계학 커뮤니티 내에서 널리 사용되어 온 @Sl{}라는 언어로부터 파생되었습니다.
+이 @Sl{} 언어의 주 설계자인 존 챔버스 (John M. Chambers)는 1998 ACM Software Systems Awards을 수상한 바 있습니다.
 
 @c The language syntax has a superficial similarity with C, but the
 @c semantics are of the FPL (functional programming language) variety with
@@ -123,11 +121,9 @@ R 언어는, 1980년대에 설계된 이후로 통계학 커뮤니티 내에서 
 @c allows ``computing on the language'', which in turn makes it possible to
 @c write functions that take expressions as input, something that is often
 @c useful for statistical modeling and graphics.
-
-R 언어의 문법 구조(syntax)는 표면상 C 언어와 유사하지만, 의미 구조(semantics)는 기능적 프로그래밍 언어(FPL;
-functional programming language)의 일종으로 Lisp이나 APL과 상당한 유사성을 가지고 있습니다. 특히 R
-언어에서는 "언어 상에서의 컴퓨팅(computing on the language)"이 가능한데, 이를 통해
-표현식(expressions)을 입력으로 받아 들이는 함수를 작성할 수 있기 때문에 통계적 모델링과 그래픽에 유용합니다.
+R 언어의 문법(syntax)은 겉으로 보기에는 C 언어와 유사하지만, 의미 구조(semantics)는 Lisp와  @acronym{APL}과 같은 언어들과 상당한 유사성을 가진 기능적 프로그래밍 언어(FPL; functional programming language)의 일종입니다.
+특히, R 언어에서는 표현식(expression)을 입력으로서 받아들이는 함수를 작성하는 것이 가능하게 해주는 ``computing on the language (랭귀지를 이용한 컴퓨팅)''이 가능합니다.
+이는 종종 통계 모델링(statistical modelling)과 그래픽에 유용합니다.
 
 @c It is possible to get quite far using @R{} interactively, executing
 @cindex expression
@@ -135,28 +131,23 @@ functional programming language)의 일종으로 Lisp이나 APL과 상당한 유
 @c go beyond that level, others will want to write their own functions
 @c either in an ad hoc fashion to systematize repetitive work or with the
 @c perspective of writing add-on packages for new functionality.
-
-커맨드 라인 상에서 단순 표현식을 실행하는 것만으로도 상당한 정도로 R을 인터랙티브하게 사용하는 것이 가능합니다. 어떤 사용자들은
-아마도 그런 수준을 넘어 갈 필요가 결코 없겠지만, 다른 사용자들은 반복적인 작업을 즉석으로 시스템화 하기 위해서나 새로운 기능을 담은
-추가 패키지를 구성한다는 관점에서 자신만의 함수를 작성하고 싶어할 것입니다.
+커맨드 라인 상에서 단순 표현식(simple expressions)을 대화식으로 @R{}을 사용하는 것만으로도 상당한 것들을 할 수 있습니다.
+일부 사용자들은 그러한 수준을 넘어갈 필요가 없겠지만, 어떤 사용자들은 반복적인 작업을 시스템화하거나 새로운 기능을 담은 애드온(add-on) 패키지를 작성하는 관점에서 사용자 자신만의 함수들을 만들고 싶어 할 것입니다.
 
 @c The purpose of this manual is to document the language @emph{per se}.
 @c That is, the objects that it works on, and the details of the expression
 @c evaluation process, which are useful to know when programming @R{}
 @c functions.  Major subsystems for specific tasks, such as graphics, are
 @c only briefly described in this manual and will be documented separately.
-
-이 매뉴얼의 목적은 R 언어 "그 자체"를 문서화하는 것입니다. 그것은 즉, R 언어가 동작하는 객체들 그리고 표현식 평가 과정의 세부
-사항들이며, 이런 것들을 알고 있으면 R 함수를 프로그래밍할 때 유용합니다. 그래픽과 같은 특정 작업을 위한 주요 하부 시스템은 이
-매뉴얼에서는 간략히 소개만 되고 별도 문서로 만들어질 것입니다.
+이 매뉴얼의 목적은 R 언어 "그 자체"를 문서화하는 것입니다. 
+즉, R 언어가 동작하는 객체들 그리고 표현식 평가 과정의 세부사항들과 같이 알고 있으면 @R{} 함수를 프로그래밍 할 때 유용한 내용들을 담고 있습니다.
+그래픽과 같은 특정 작업을 위한 주요 하부 시스템은 이 매뉴얼에서는 간략히 소개만 되고 별도 문서로 만들어질 것입니다.
 
 @c Although much of the text will equally apply to @Sl{}, there are also
 @c some substantial differences, and in order not to confuse the issue we
 @c shall concentrate on describing @R{}.
-
-
-이 문서의 많은 내용들이 S에도 동일하게 적용됩니다만, 몇 가지 중요한 차이점도 있기 때문에 혼란을 일으키지 않도록 R을 설명하는 데
-집중할 것입니다.
+이 문서의 많은 내용들이 @Sl{}에도 동일하게 적용됩니다. 
+그러나, 몇 가지 중요한 차이점도 존재하기 때문에 혼란을 일으키지 않도록 @R{}을 설명하는 데에만 집중할 것입니다.
 
 @c The design of the language contains a number of fine points and
 @c common pitfalls which may surprise the user.  Most of these are due to
@@ -168,13 +159,12 @@ functional programming language)의 일종으로 Lisp이나 APL과 상당한 유
 @c the techniques will rely on the language implementation, and others work
 @c at a higher level of abstraction.  In such cases we shall indicate the
 @c preferred usage.
-
-R 언어 설계에는 여러 가지 훌륭한 잇점들이 포함되어 있지만, 흔히 빠지기 쉬운 함정들도 있어서 사용자들이 놀랄 지도 모릅니다. 그
-대부분은 조금 더 깊은 언어 수준에서의 일관성을 고려한 데서 비롯된 것으로, 나중에 설명하도록 하겠습니다. R 언어에는 몇 가지 유용한
-단축어(shortcut)와 관용구가 있는데, 이를 통해 꽤 복잡한 연산들을 간결하게 표현할 수 있습니다. 그러한 단축어와 관용구들은 그
-아래에 깔려 있는 근본적인 개념들에 익숙해지면 자연스러워질 것입니다. 어떤 경우에는 하나의 작업을 수행하는 여러 가지 방법이 있는데,
-이런 테크닉 중에 몇 가지는 언어 자체의 구현에 의존하는 것이고 다른 몇 가지는 고수준의 추상화 단계에서 작동하는 것입니다. 그런
-경우에는 선호되는 사용법을 명시할 것입니다.
+설계된 디자인은 여러가지 좋은 점들도 있지만 사용자를 놀라게 할 수도 있는 위험요소들도 있습니다.
+이러한 것들의 대부분은 언어를 좀 더 깊은 수준에서의 일관성 때문에 존재하는 것으로 이들에 대해서는 나중에 설명하도록 하겠습니다.
+꽤 복잡한 연산들을 간결하게 표현해 줄 수 있는 손 쉬운 방법들(shortcuts)과 특정한 방법(idioms)들이 있습니다.
+이러한 것들의 대부분은 근본적인 개념들에 익숙해 진다면 사용에 있어 자연스러워 질 것입니다. 
+어떤 경우에는 하나의 작업을 수행하는 여러 가지 방법이 있는데, 이들 중 몇 가지는 랭귀지 구현에 의존하는 것이고 또 다른 몇 가지는 상위단계 추상화로부터 비롯되는 것입니다.
+그러한 경우에는 선호되는 사용법을 명시하도록 할 것입니다.
 
 @c Some familiarity with @R{} is assumed.  This is not an introduction to
 @c @R{} but rather a programmers' reference manual.  Other manuals provide
@@ -182,16 +172,14 @@ R 언어 설계에는 여러 가지 훌륭한 잇점들이 포함되어 있지�
 @c Introduction to R} provides an introduction to @R{} and @ref{System and
 @c foreign language interfaces, , , R-exts, Writing R Extensions} details
 @c how to extend @R{} using compiled code.
-
-
-독자들이 R에 어느 정도 익숙한 것으로 간주할 것입니다. 이 문서는 R에 대한 소개라기 보다는 프로그래머의 참조 매뉴얼입니다. 보충이
-필요한 정보들은 다른 매뉴얼을 참고하십시오. 특히 <An Introduction to R>의 '서문(Preface)'에 R에 대한
-소개가 잘 나와 있으며, <Writing R Extensions>의 '시스템과 외부 언어 인터페이스(System and foreign
-language interfaces)' 부분에 컴파일된 코드를 이용하여 R을 확장하는 방법이 상세히 설명되어 있습니다.
-
+독자들은 이미 어느 정도 @R{}에 익숙하다고 가정한 상태에서 문서가 작성되었습니다.
+이 문서는 @R{}에 대한 소개서라고 하기 보다는 프로그래머의 레퍼런스 매뉴얼입니다.
+추가적으로 필요한 내용들에 대해서는 다른 문서를 참고 해주시길 바랍니다.
+@ref{Preface, , , R-intro, An Introduction to R}은 @R{}에 대한 소개가 잘 되어 있으며, @ref{System and foreign language interfaces, , , R-exts, Writing R Extensions}은 컴파일된 코드를 이용하여 @R{}을 어떻게 확장하는지에 대하여 상세히 설명되어 있습니다.
 
 @node Objects, Evaluation of expressions, Introduction, Top
-@chapter Objects
+@c @chapter Objects
+@chapter 객체 
 
 @c needs to be clarified. What is a pointer, what is the pointed object,
 @c what is the context of the pointed object?
@@ -207,17 +195,16 @@ language interfaces)' 부분에 컴파일된 코드를 이용하여 R을 확장�
 @c symbols are themselves objects and can be manipulated in the same way as
 @c any other object.  This is different from many other languages and has
 @c wide ranging effects.
-
-
-모든 컴퓨터 언어에서 변수(variable)는 메모리에 저장된 데이터에 접근하는 수단이 됩니다. R에서는 컴퓨터의 메모리에 직접
-접근하지는 못하지만, 대신 여러 가지 특화된 데이터 구조가 제공되며 이를 객체라고 부릅니다. 이러한 객체들은 기호(symbol)나
-변수를 통해 참조할 수 있습니다. 그러나, R에서는 기호는 그 자체로 객체이기도 하므로 다른 객체들과 마찬가지 방식으로 조작이
-가능합니다. 이 점이 여타의 컴퓨터 언어와 다른 점이며, R 프로그래밍에 광범위한 영향을 미칩니다.
+모든 컴퓨터 언어에서 변수(variable)는 메모리에 저장된 데이터에 접근하는 수단을 제공합니다.
+@R{}은 컴퓨터 메모리에 직접적인 접근을 제공하지 않지만, 대신 여러가지 특수화되어 있는 데이터 구조를 제공하며, 우리는 이들을 객체(object)라고 합니다. 
+이러한 객체들은 심볼 (symbol) 또는 변수를 통해 참조될 수 있습니다. 
+그러나, @R{}에서는 심볼은 그 자체로서 객체이기도 하므로 다른 객체들과 동일한 방식으로 조작 할 수 있습니다.
+이 점이 다른 컴퓨터 언어와 다른 점이며, R 프로그래밍에 있어 광범위하게 영향을 미칩니다.
 
 @c In this chapter we provide preliminary descriptions of the various data
 @c structures provided in @R{}.  More detailed discussions of many of them
 @c will be found in the subsequent chapters.  The @R{} specific function
-@code{typeof}
+@c @code{typeof}
 @findex typeof
 @cindex type
 @c returns the @dfn{type} of an @R{} object.  Note that in the C code
@@ -225,43 +212,41 @@ language interfaces)' 부분에 컴파일된 코드를 이용하여 R을 확장�
 @c @code{SEXPREC}; the different @R{} data types are represented in C by
 @c @code{SEXPTYPE}, which determines how the information in the various
 @c parts of the structure is used.
-
-이 장에서는 R에서 제공되는 다양한 데이터 구조에 대해 간략히 설명합니다. 보다 자세한 논의는 이후의 장을 참조하십시오. R의
-typeof 함수는 R 객체의 형식(type)을 반환합니다. R의 기저에 있는 C 코드에서 모든 객체들은 SEXPREC이라고 하는
-typedef 자료형으로 된 구조체를 가리키는 포인터들입니다. R의 여러 가지 데이터 형식들은 C 코드 내에서 SEXPTYPE이라는
-것으로 표현되는데, SEXPTYPE은 SEXPREC 구조체의 여러 부분에서 정보들이 어떻게 사용되는지를 결정합니다.
-
+이번 챕터에서 우리는 @R{}에서 제공되는 다양한 자료구조(data structure)에 대해 간략히 설명합니다. 
+이들에 대한 많은 부분들을 아래에서 설명되는 챕터들을 통하여 알 수 있을 것입니다. 
+@R{}은 @R{} 객체의 유형(@dfn{type} of @R{} object)을 알려주는 @code{typeof} 이라는 함수를 가지고 있습니다.
+R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXPREC}이라는 불리는 typedef 자료형으로 된 구조체(structure)를 가리키는 포인터(pointer)들입니다. 
+@R{}의 여러 가지 데이터 형(data types)들은 구조체(structure)의 다양한 부분에 어떻게 정보가 사용되는가를 결정해주는 @code{SEXPTYPE}에 의해서 C코드로 표현됩니다.
 
 @c The following table describes the possible values returned by
 @c @code{typeof} and what they are.
-
-
-다음 표에 typeof 함수에 의해 반환되는 값들과 그 값들이 무엇인지가 정리되어 있습니다.
+아래의 표에서 @code{typeof} 함수에 의해 반환되는 값들과 그 값들이 무엇인지를 정리하였습니다.
 
 @quotation
 @multitable @columnfractions 0.2 0.7
 @item @code{"NULL"} @tab NULL
-@item @code{"symbol"} @tab a variable name 변수명
-@item @code{"pairlist"}@tab a pairlist object (mainly internal)  페어리스트(pairlist) 객체 (주로 내부용)
-@item @code{"closure"} @tab a function 함수
-@item @code{"environment"} @tab an environment 환경
+@item @code{"symbol"} @tab 변수명 (a variable name)
+@item @code{"pairlist"}@tab 패어리스트 객체 (a pairlist object, 주로 내부용)
+@item @code{"closure"} @tab 함수 (a function)
+@item @code{"environment"} @tab 환경 (an environment)
 @cindex evaluation, lazy
-@item @code{"promise"}  @tab an object used to implement lazy evaluation  지연 평가(lazy evaluation)를 구현하는 데 사용되는 객체
-@item @code{"language"} @tab an @R{} language construct   R 언어 구조물
-@item @code{"special"}  @tab an internal function that does not evaluate its arguments  입력 인자(arguments)를 평가하지 않는 내부 함수
-@item @code{"builtin"} @tab an internal function that evaluates its arguments  입력 인자(arguments)를 평가하는 내부 함수
-@item @code{"char"} @tab a `scalar' string object (internal only) ***  '스칼라(scalar)' 문자열 객체 (내부 전용)
-@item @code{"logical"} @tab a vector containing logical values  논리값을 가지고 있는 벡터
-@item @code{"integer"} @tab a vector containing integer values  정수값을 가지고 있는 벡터
-@item @code{"double"}  @tab a vector containing real values  실수값을 가지고 있는 벡터
-@item @code{"complex"} @tab a vector containing complex values  복소수값을 가지고 있는 벡터
-@item @code{"character"} @tab a vector containing character values  문자값을 가지고 있는 벡터
-@item @code{"..."} @tab the special variable length argument ***  특수 변수 길이 인자
-@item @code{"any"} @tab a special type that matches all types: there are no objects of this type  모든 형식을 포괄할 수 있는 특수 형식(이 형식의 객체는 없음)
-@item @code{"expression"} @tab an expression object  표현식 객체
-@item @code{"list"} @tab a list   리스트
-@item @code{"bytecode"} @tab byte code (internal only) ***  바이트 코드 (내부 전용)
-@item @code{"externalptr"} @tab an external pointer object  외부 포인터 객체
+@item @code{"promise"}  @tab 지연 평가를 구현하는데 사용된 객체 (an object used to implement lazy evaluation)
+@item @code{"language"} @tab @R{} 언어구조물 (an @R{} language construct)
+@item @code{"special"}  @tab 입력인자를 평가하지 않는 내부 함수 (an internal function that does not evaluate its arguments)
+@item @code{"builtin"} @tab 입력인자를 평가하는 내부 함수 (an internal function that evaluates its arguments)
+@item @code{"char"} @tab 스칼라 문자열 객체 (a `scalar' string object, 내부전용) ***
+@item @code{"logical"} @tab 논리값을 가지는 벡터 (a vector containing logical values)
+@item @code{"integer"} @tab 정수값을 가지는 벡터 (a vector containing integer values)
+@item @code{"double"}  @tab 실수값을 가지는 벡터 (a vector containing real values)
+@item @code{"complex"} @tab 복소수를 가지는 벡터 (a vector containing complex values)
+@item @code{"character"} @tab 문자값을 가지는 벡터 (a vector containing character values)
+@item @code{"..."} @tab 특수 변수 길이 인자 (the special variable length argument) ***  
+@item @code{"any"} @tab 모든 유형에 부합하는 특별한 유형 (a special type that matches all types: there are no objects of this type)
+@item @code{"expression"} @tab 표현식 객체 (an expression object)
+@item @code{"list"} @tab 리스트 (a list)
+@item @code{"bytecode"} @tab 바이트 코드 (byte code, 내부 전용) ***
+@item @code{"externalptr"} @tab 외부 포인터 객체 (an external pointer object)
+  외부 포인터 객체
 @item @code{"weakref"} @tab a weak reference object  약한 참조(weak reference) 객체
 @item @code{"raw"} @tab a vector containing bytes  바이트를 가지고 있는 벡터
 @item @code{"S4"} @tab an S4 object which is not a simple object   S4 객체. 단순 객체가 아님
