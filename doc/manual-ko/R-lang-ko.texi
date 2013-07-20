@@ -246,19 +246,16 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 @item @code{"list"} @tab 리스트 (a list)
 @item @code{"bytecode"} @tab 바이트 코드 (byte code, 내부 전용) ***
 @item @code{"externalptr"} @tab 외부 포인터 객체 (an external pointer object)
-  외부 포인터 객체
-@item @code{"weakref"} @tab a weak reference object  약한 참조(weak reference) 객체
-@item @code{"raw"} @tab a vector containing bytes  바이트를 가지고 있는 벡터
-@item @code{"S4"} @tab an S4 object which is not a simple object   S4 객체. 단순 객체가 아님
+@item @code{"weakref"} @tab 약한 참조 객체 (a weak reference object)
+@item @code{"raw"} @tab 바이트를 포함하는 벡터 (a vector containing bytes)
+@item @code{"S4"} @tab 단순 객체가 아닌 S4 객체 (an S4 object which is not a simple object)
 @end multitable
 @end quotation
 
 
-
 @noindent
 @c Users cannot easily get hold of objects of types marked with a `***'.
-
-*** 로 표시된 객체들은 사용자들이 쉽게 찾기가 힘듭니다.
+사용자는 `***'로 표시된 유형의 객체들을 쉽게 찾을 수 없습니다.
 @findex mode
 @cindex mode
 @c Function @code{mode} gives information about the @dfn{mode} of an object
@@ -277,13 +274,12 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 @c routine being called.  (In the @Sl{} language, vectors with integer or
 @c real values are both of mode @code{"numeric"}, so their storage modes
 @c need to be distinguished.)
-
-mode 함수는 어떤 객체의 유형(mode)에 관한 정보를 알려줍니다. 여기서 '유형'의 의미는 <<The New S
-Language>>(Becker, Chambers and Wilks(1988))에 설명된 것과 같은 것으로, S 언어를 계승한 다른
-언어들에서도 더욱 잘 호환이 됩니다. 마지막으로, storage.mode 함수는 입력 인자의 저장 유형(storage mode)을
-반환합니다. 이 함수는 보통 C나 FORTRAN과 같은 다른 언어들로 작성된 함수들을 호출할 때 R 객체가 호출된 해당 루틴에서
-이용되는 데이터 형식을 가지고 있는 지 확인하기 위해 사용됩니다. (S 언어에서 정수나 실수값을 가지고 있는 벡터는 모두
-"numeric" 유형이기 때문에 저장 유형이 구분될 필요가 있습니다.)
+함수 @code{mode}는 Becker, Chambers & Wilks (1988)에서 설명된 객체의 모드(@dfn{mode})에 대한 정보를 알려줍니다.
+그리고 이는 @Sl{} 언어를 이용하여 구현된 것들과 더 잘 호환됩니다. 
+마지막으로, 함수 @code{storage.mode}는 Becker et al.@: (1988)에서 설명된 입력인자의 저장유형(@dfn{storage mode})를 반환합니다.
+이 함수는 보통 C나 FORTRAN과 같은 다른 언어들로 작성된 함수들을 호출할 때 @R{} 객체가 호출된 해당 루틴에서
+이용되는 데이터 형식을 가지고 있는 지 확인하기 위해 사용됩니다. 
+(@Sl{} 언어에서는 정수 또는 실수를 가지는 벡터는 모두 @code{"numeric"} 모드를 가지기 때문에 저장모드가 구분될 필요가 있습니다).
 
 @example
 > x <- 1:3
