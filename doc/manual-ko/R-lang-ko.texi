@@ -315,8 +315,8 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 
 @node Basic types, Attributes, Objects, Objects
 @cindex type
-@section Basic types
-
+@c @section Basic types
+@section 기본 유형
 
 @menu
 * Vector objects::              
@@ -334,22 +334,29 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 @end menu
 
 @node Vector objects, List objects, Basic types, Basic types
-@subsection Vectors
+@c @subsection Vectors
+@subsection 벡터 
 
 @cindex vector
-Vectors can be thought of as contiguous cells containing data.  Cells
-are accessed through
+@c Vectors can be thought of as contiguous cells containing data.  Cells
+@c are accessed through
 @cindex index
-indexing operations such as
-@code{x[5]}.  More details are given in @ref{Indexing}.
+@c indexing operations such as
+@c @code{x[5]}.  More details are given in @ref{Indexing}.
 @c @ref{Data structures}
+벡터들은 데이터를 포함하고 있는 인접한 셀들과 같이 생각될 수 있습니다.
+셀들은 @code{x[5]}와 같이 인덱싱 조작(indexing operation)을 통하여 접근 되어집니다.  
+더 자세한 사항은 @ref{Indexing}에 설명되어 있습니다. 
 
 @cindex type
 @cindex mode
 @cindex atomic
-@R{} has six basic (`atomic') vector types: logical, integer, real,
-complex, string (or character) and raw.  The modes and storage modes for
-the different vector types are listed in the following table.
+@c @R{} has six basic (`atomic') vector types: logical, integer, real,
+@c complex, string (or character) and raw.  The modes and storage modes for
+@c the different vector types are listed in the following table.
+@R{}은 여섯 가지의 기본 (`atomic') 벡터를 가지고 있습니다.
+이들은 논리형(logical), 정수형(integer), 실수형(real), 복소수형(complex), 문자열 (string) 또는 문자 (character), 그리고 원형(raw)입니다.
+다음의 표는 유형이 다른 벡터들의 모드와 저장모드들을 정리하였습니다.
 
 @quotation
 @multitable {@code{character}} {@code{character}} {@code{character}}
@@ -363,17 +370,22 @@ the different vector types are listed in the following table.
 @end multitable
 @end quotation
 
-Single numbers, such as @code{4.2}, and strings, such as @code{"four
-point two"} are still vectors, of length 1; there are no more basic
-types.  Vectors with length zero are possible (and useful).
+@c Single numbers, such as @code{4.2}, and strings, such as @code{"four
+@c point two"} are still vectors, of length 1; there are no more basic
+@c types.  Vectors with length zero are possible (and useful).
+@code{4.2}와 같은 하나의 숫자와 @code{"four point two"}와 같은 문자열도 길이가 1인 벡터입니다.
+이외의 다른 기본유형은 없습니다.
+길이가 0인 벡터 또한 가능하며 (유용합니다).
 
-String vectors have mode and storage mode @code{"character"}. A single
-element of a character vector is often referred to as a @emph{character
-string}.
-
+@c String vectors have mode and storage mode @code{"character"}. A single
+@c element of a character vector is often referred to as a @emph{character
+@c string}.
+문자열 벡터들은 둘 다 @code{"character"} (문자형) 모드와 저장모드를 가집니다.
+문자형 벡터의 구성요소 하나를 종종 @emph{character string}(문자형 문자열)라고도 합니다.
 
 @node List objects, Language objects, Vector objects, Basic types
-@subsection Lists
+@c @subsection Lists
+@subsection 리스트 
 
 Lists (``generic vectors'') are another kind of data storage.  Lists
 have elements, each of which can contain any type of @R{} object, i.e.@:
@@ -384,11 +396,19 @@ indexing operations.
 These are explained in detail in @ref{Indexing}.
 @c @ref{Data structures}.
 
+List들 (“일반 벡터들”)은 데이터 저장소의 다른 종류입니다. List들은 R object의 어떤 종류라도 포함할 수 있는 요소를 가지고 있습니다, 즉, list의 요소들은 같은 종류일 필요가 없습니다. List 요소들은 세 가지의 다른 indexing operation들을 통해 액세스됩니다. 더 자세한 사항은 Indexing에 설명되어 있습니다. 
+List들은 벡터들이며, 기본 벡터 종류들은 list를 배제하야만하는 atomic vectors와 관계가 있습니다.
+
+
 Lists are vectors, and the basic vector types are referred to as
 @emph{atomic vectors} where it is necessary to exclude lists.
 
 @node Language objects, Expression objects, List objects, Basic types
 @subsection Language objects
+
+R 언어를 구성하는 세가지 종류의 object들이 있습니다. 그들은 calls, expressions, 그리고 names입니다. R이 “expression”이라는 종류의 object들을 가지고 있기 때문에 다른 문맥들에서는 expression이라는 단어의 사용을 피하도록 노력할 것입니다. 특히 종합적으로 맞는 expression들은 statements처럼 여겨질 것입니다. 이 object들은 순서대로 “call”, “expression”, 그리고 “name”이라는 모드들을 가질 것입니다.
+이들은 quote 메커니즘을 사용하여 expression들에서 바로 창출될 수도 있고 as.list와 as.call fuction들에 의해 list들로와 list로 부터로 전환될 수도 있습니다. Parse tree의 구성요소들은 기본적인 indexing operation들을 사용하여 얻어질 수 있습니다. 
+
 
 There are three types of objects that constitute the @R{} language.
 They are @emph{calls}, @emph{expressions}, and @emph{names}.
@@ -427,6 +447,8 @@ indexing operations.
 @node Symbol objects,  , Language objects, Language objects
 @subsubsection Symbol objects
 
+부호들은 R object들을 의미합니다. 모든 R object의 이름은 보통 부호입니다. 부호들은 as.name과 quote fuction들을 통해 창출될 수 있습니다. 
+Symbol들은 모드“name”, 저장 모드 “symbol”, 그리고 종류 “symbol”을 가지고 있습니다. 이들은 as.character과 as.name을 사용하여 문자 string들로와 문자 string으로부터 강제될 수 있습니다. 이들은 분석된 표현들의 원자처럼 자연스럽게 나타납니다, 예제인 as.list(quote(x + y))를 시도해 보십시오.
 
 @cindex symbol
 Symbols refer to @R{}
@@ -453,6 +475,10 @@ They naturally appear as atoms of parsed expressions, try e.g.@:
 @node Expression objects, Function objects, Language objects, Basic types
 @subsection Expression objects
 
+R에서 “expression” 종류의 object를 가질 수 있습니다. Expression은 한 개 이상의 statement들을 포함합니다. Statement는token들의종합적으로 정확한 컬렉션입니다. Expression object들은 부분적인, 하지만 평가되지않은 R statement들을 포함한 특별한 언어 object들 입니다. 가장 큰 다른점은 expression object가 여러개의 그런 expression들을 포함할 수 있다는 것입니다. 다른 더 미묘한 다른점은 다른 언어 object들은 몇몇의 예상되지 못한 경우에서도 평가되는 반면, “expression” 종류의 object들이 오로지 eval로 분명하게 전해질 때만 평가된다는 것입니다.  
+Expression object는 list와 매우 비슷하게 행동하고 이의 구성요소들은 list의 구성요소들과 같은 방법으로 접근되어야만 합니다. 
+
+
 In @R{} one can have objects of type @code{"expression"}.  An
 @emph{expression} contains one or more statements.  A statement is a
 syntactically correct collection of
@@ -475,6 +501,14 @@ be accessed in the same way as the components of a list.
 
 @node Function objects, NULL object, Expression objects, Basic types
 @subsection Function objects
+R function들에서의 object들은 다른 object들과 같은 방법으로 다뤄질 수 있습니다. Function들 (혹은 더 자세하게 이야기 하자면, function closure들)은 세 개의 기본 구성요소들을 가지고 있습니다: formal argument list, body와 환경. Argument list는 comma로 분리된 argument들의 목록입니다. Argument는 부호일 수도 있고, 혹은 ‘symbol = default’ 구성, 혹은 특별한 argument ‘...’일 수도 있습니다. 두 번째 argument의 형태는 argument의 기본 값을 지정하기위하여 사용됩니다 이 값은 argument에 대한 어떠한 값도 지정되지 않고 function이 불러졌을 떄 사용될 것입니다. ‘...’ argument는 특별하며 argument들의 갯수라도 포함할 수 있습니다. 이는 보통 argument의 갯수를 모르거나 argument들이 다른 function으로 넘어갈 것인 경우에 쓰여집니다.
+Body는 부분적인 R statement입니다. 이는 보통 brace들 안의 statement들의 집합체이지만, 이는 단일 statement, 부호, 혹은 심지어 constant일 수도 있습니다. 
+Function의 환경은 function이 생성되었을 때 활성적이엇던 환경입니다. 환경안에 묶여있는 모든 부호들은 captured되어있고 function에 사용가능합니다. 이 환경안의 이와 같은 function의 코드의 조합과 binding들은 functional programming theory에서의 용어인 ‘function closure’이라고 불립니다. 이 문서에서는 일반적으로 ‘function’이라는 용어를 사용하지만, attached (첨부/소속) 환경의 중요성을 강조하기위해서는 ‘closure’을 사용합니다.
+formals, body, 그리고environment  구성을 사용하여 closure object의 세개의 파트들을 extract하고 조작하는 것이 가능합니다 (세 가지 모두가 assignment의 왼쪽에서도 사용가능합니다). 이들의 마지막 것은 원하지 않는 환경 capture를 없애기위해 사용될 수 있습니다.  
+Function이 불러졌을때, enclosure( Environment objects를 참고)이 function closure에서의 환경인 (evaluation environment라고 불리는) 새로운 환경이 창출됩니다. 이 새로운 환경은 function으로의 평가되지않은 argument들로 처음에는 이루어져 있습니다; evaluation이 진행됩어따라, local 값들이 그 안에서 생성됩니다. 
+as.list와 as.function을 사용하는 list structure들로와 list structure들로 부터 function들을 전환하는 기능도 있습니다. 이들은 S와의 호환을 제공하고 그들의 사용을 막기위해 포함되었습니다. 
+
+
 
 @cindex function
 In @R{} functions are objects and can be manipulated in much the same
@@ -535,6 +569,8 @@ use is discouraged.
 
 @node NULL object, Builtin objects and special forms, Function objects, Basic types
 @subsection NULL
+NULL이라고 불리우는 특별한 object가 있습니다. 이는 object의 부재를 나타내거나 지정하는 것이 필요할 때 사용됩니다. 이는 길이가 0인 벡터나 list와 혼동되면 안됩니다. NULL object는 종류도 없고 수정할 수 있는 틍성을 가지고 있지도 않습니다. R에는 모든 경우에 나타내는 오직 하나의 NULL object가 있습니다. NULL을 테스트하기위해서는 is.null을 사용하십시오. NULL에 attribute들을 설정할 수 없습니다. 
+
 
 There is a special object called @code{NULL}.  It is used whenever there
 is a need to indicate or specify that an object is absent.  It should not be
@@ -549,6 +585,11 @@ test for @code{NULL} use @code{is.null}.  You cannot set attributes on
 
 @node Builtin objects and special forms, Promise objects, NULL object, Basic types
 @subsection Builtin objects and  special forms
+
+이 object의 두 종류는 R의 builtin function들을 포함합니다, 즉, 코드 목록들에 .Primitive처럼 디스플레이 된 것들입니다 (.Internal function을 통해 접근된 것들 또한 그리하여 object들 처럼 사용자가 볼 수 없는). Argument handling에서 두 개의 lies의 다른점. Builtin function들은 특별한 function들이 internal function으로 평가되지 않은 argument들을 넘기는 반면, call-by-value에 부합되게, 그들의 모든 argument들이 평가되게하고 internal function으로 넘깁니다. 
+R 언어에서, 이 object들은 function의 다른 종류일 뿐입니다. is.primitive function은 그들을 interpreted function들에서부터 구분지을 수 있습니다. 
+
+
 
 These two kinds of object contain the builtin
 @cindex function
@@ -569,6 +610,11 @@ functions.
 
 @node Promise objects, Dot-dot-dot, Builtin objects and special forms, Basic types
 @subsection Promise objects
+
+Promise object들은 R의 게으른 진화 mechanism의 부분입니다. 이들은 세 개의 자리를 포함합니다: 값, expression, 그리고 환경. Function이 불러졌을때, argument들은 짝지어지고 그리고 나서 각각의 formal argument들은 promise로 bound됩니다. Formal argument와 function이 불려졌던 환경으로이 pointer을 위해 주어졌던 expression은 promise에 저장됩니다. 
+Argument가 액세스될 때 까지 promise와 관련된 값은 없습니다. Argument가 액세스 되었을 때, 저장되었던 expression은 저장되었던 환경에서 평가되고, 그 결과를 돌려줍니다. 그 결과 또한 promise에 의해 저장됩니다. Substitute function은 express slot의 내용을extract 할 것입니다. 이는 프로그래머가 promise에 관련된 값 혹은 expression에 엑세스하도록 허용합니다.
+R 언어안에서, promise object들은 거의 함축적으로만 보여집니다: 실질적인 function argument들은 이 종류입니다. 또한 promise가 expression을 잃도록 만드는 delayedAssign function도 있습니다. 보통 object가promise인지 아닌지를 확인하는 방법이 R코드에서는 없고, promise의 환경을 확인하기위해 R 코드를 사용하는 방법 또한 없습니다. 
+
 
 @cindex promise
 Promise objects are part of @R{}'s lazy evaluation mechanism.  They
@@ -601,6 +647,11 @@ determine the environment of a promise.
 @node Dot-dot-dot, Environment objects, Promise objects, Basic types
 @subsection Dot-dot-dot
 
+‘...’ object 종류는 pairlist의 종류처럼 저장됩니다. ‘...’의 구성요소는 C 코드의 보통 pairlist처럼 접근될 수도 있지만, 번역된 코드의 object처럼 쉽게 접근되지는 않습니다. 이 object는 list처럼 capture될 수 있고, 그래서 table이 예제에서 다음을 보게됩니다.
+
+만약 function이‘...’를 formal argument처럼 가지고 있다면, formal argument와 매치하지 않는 어떠한 진짜 argument들도 ‘...’와 매치하지 않습니다. 
+	
+
 The @samp{...} object type is stored as a type of pairlist.  The
 components of @samp{...} can be accessed in the usual pairlist manner
 from C code, but is not easily accessed as an object in interpreted
@@ -622,6 +673,12 @@ arguments that do not match a formal argument are matched with
 
 @node Environment objects, Pairlist objects, Dot-dot-dot, Basic types
 @subsection Environments
+
+환경들은 두가지로 이루어져 있다고 생각할 수 있습니다. 부호값 pair의 세트로 이루어져있는 frame과 enclosing 환경로의 포인터인 enclosure입니다. R이 프레임이 검사한 부호의 값을 찾고 만약 matching 부호가 그 값을 찾았을 때, 그 값이 return될 것입니다. 만약 그렇지 않다면, enclosing 환경이 접근을 하고 프로세스가 반복될 것입니다. 환경은 enclosure이 parents의 역할을 하는 tree structure를 형성합니다. 환경의 tree는 parent가 없는emptyenv()를 통해 사용가능한 빈 환경에 뿌리를 내립니다. 이는 기본 패키지(baseenv() function을 통해 사용가능한)의 환경의 직접적인 parent입니다. Baseenv()는 전에 특별한 값 NULL을 가지고 있었지만, 2.4.0 버전부터 환경으로써의 NULL의 사용은 존재하지 않습니다. 
+환경들은Function objects와 Lexical environment에서 설명된 것과 같이, function call에의해서 내포되어 생성됩니다. 이 경우에 환경은 (argument를 포함한) local에서 부터 function까지의 값들을 포함하고있고, 그의 enclosure은 현재 불려진 function의 환경입니다. 환경들은 또한 new.env에 의해 직접적으로 생성될 지도 모릅니다. 환경의 frame content는 ls, get과 assign 그리고 eval과 evalq의 사용에의해 접근되고 조작될 수 있습니다. 
+parent.env function은 환경의 enclosure에 접근하기위해 사용될 수도 있습니다. 
+대부분의 R object들과는 달리, 환경들은 function들로 전달되거나 assignment들에 사용될 때 복사되지 않습니다. 그러므로, 만약 같은 환경을 여러개의 부호들에 지정하고 하나를 바꾼다면, 다른 것들 또한 바뀔 것 입니다. 특히 attribute들을 환경에 지정하는 것은 놀라움을 자아낼 수도 있습니다. 
+
 
 @cindex environment
 Environments can be thought of as consisting of two things.  A
@@ -662,6 +719,11 @@ surprises.
 @node Pairlist objects, Any-type, Environment objects, Basic types
 @subsection Pairlist objects
 
+Pairlist object들은 Lisp의 dotted-pair 목록들과 비슷합니다. 그들은 R의 내부에서 광범위하게 쓰여지지만, 그들이 formals에 의해 return되고 (예를들어) pairlist function에 의해 생성될 수도 있음에도 불구하고, 변환된 코드에서는 드물게 보여집니다. Lisp에서 예상되는 것 처럼 길이가 0인 pairlist는 NULL이지만 길이가 0인 목록과는 반대입니다. 각각의 object들은 CAR 값, CDR값과 TAG값의 세 개의 자리가 있습니다. TAG 값은 text string이고 CAR과 CDR는 순서대로 보통 나타내는 list item (head)과 목록의 NULL object를 terminator처럼 가지고있는 목록의 remainder (tail)입니다 (CAR/CDR 용어는 전통적인 Lisp이고 처음으로 address를 나타냈고 60년대 초반 IBM 컴퓨터에서 감소가 되었습니다???).  
+Pairlist들은 포괄적인 벡터들 (“lists”)와 똑같은 방법으로 R 언어에서 다루어 집니다. 특히, element들은 같은[[]] syntax를 사용하여 접근됩니다. 내부의 pairlist가 R에서부터 접근되었을때, 이는 일반적으로 (subset이 되었을때를 포함) 포괄적인 벡터로 전환됩니다. 
+아주 드문 경우들로 pairlist들이 user-visible합니다: 한 개의 예는 .Options입니다.
+
+
 Pairlist objects are similar to Lisp's dotted-pair lists.  They are used
 extensively in the internals of @R{}, but are rarely visible in
 interpreted code, although they are returned by @code{formals}, and can
@@ -692,6 +754,9 @@ In a very few cases pairlists are user-visible: one is @code{.Options}.
 @node Any-type,  , Pairlist objects, Basic types
 @subsection The ``Any'' type
 
+Object가 “Any” 의 종류가 되는 것은 거의 가능하지 않지만, 그럼에도 불구하고 이는 유효한 type 값입니다. 이는 예를들어 type coercion이 되지 않아야함을 나타내주는 as.vector(x, "any")와 같은 특정한 상황들에 사용됩니다 (매우 드물게).
+
+
 It is not really possible for an object to be of ``Any'' type, but it is
 nevertheless a valid type value.  It gets used in certain (rather rare)
 circumstances, e.g.@: @code{as.vector(x, "any")}, indicating that type
@@ -704,6 +769,12 @@ coercion should not be done.
 @node Attributes, Special compound objects, Basic types, Objects
 @section Attributes
 @cindex attributes
+
+NULL을 제외한 모든 object들은 그들에게 부여된 하나 이상의 attribute들을 가질 수 있습니다. Attribute들은 모든 element들이 이름지어진 곳에 pairlist처럼 저장되지만, name=value pair들의 세트처럼 생각되어야만 합니다. attribute들의 목록은 attributes를 사용하여 얻을 수 있고 attributes<-에 의해 설정됩니다. 각각의 구성요소들은 attr와 attr<-를 사용하여 접근됩니다. 
+몇몇의 attribute들은 (예를들어 factor들을 위한 levels<-) 특별한 accessor function들을 가지고있고 이들은 사용가능할 때만 사용되어야만 합니다. 실행의 숨겨진 디테일에 추가적으로, 그들은 추가적인operation들을 실행할 지도 모릅니다. R은 특별한 attribute을 포함하고 일관적인 확인들을 강요하는 attr<-와 attributes<-로의 call들을 가로채려고 시도합니다. 
+행렬들과 열들은 간단하게말해서 dim attribute를 가진 벡터들이고 옵션적으로 dimnames가 벡터에 부여되어있습니다. 
+Attribute들은 R에 사용된 class structure을 이행하하기위해 사용되었습니다. 만약 object가 class attribute를 가지고 있다면 그 attribute는 평가 도중 검토될 것입니다. R의 class structure은 Object-oriented programming에 자세하게 설명되어있습니다. 
+
 
 @cindex object
 All objects except @code{NULL} can have one or more attributes attached
@@ -750,6 +821,12 @@ in @ref{Object-oriented programming}.
 @node Names, Dimensions, Attributes, Attributes
 @subsection Names
 
+
+Names 속성은, 존재할 때, 벡터나 목록의 각각의 요소들에 label을 합니다. Object가 존재하는 names의 속성을 프린트하려고 할 때,  요소들을 label하기위하여 쓰여집니다. Names 속성은 예를들어quantile(x)["25%"]와 같은 indexing 목적으로도 쓰여질 수 있습니다. 
+names와 names<- 구성들을 사용하여 name들을 얻거나 설정할 수도 있습니다. 뒷쪽 것 (names<-)은 names 속성이 적합한 타입과 길이를 가지고있는지를 확실히 하기 위해 필요한 일관적인 체크를 수행할 것입니다. 
+Pairlist들과 일차원 행들은 특별하게 대해집니다. Pairlist object들에는, 가상의 names 속성이 사용되어집니다; names 속성은 사실상 목록 구성요소들의 태그에서부터 구성됩니다. 일차원 행들에서 names 속성은 실제로dimnames[[1]]에 접근합니다.
+
+
 A @code{names} attribute, when present, labels the individual elements of
 a vector or list.  When an object is printed the @code{names} attribute,
 when present, is used to label the elements.  The @code{names} attribute
@@ -773,6 +850,10 @@ For one-dimensional arrays the @code{names} attribute really accesses
 @node Dimensions, Dimnames, Names, Attributes
 @subsection Dimensions
 
+
+dim 속성은 행들을 이행하기위하여 쓰여집니다. 행의 내용은 열방향순서의 벡터안에 저장되고, 그 dim 속성은 각각의 행의 규모를 명시하는 정수의 벡터입니다. R은 벡터의 길이가dimension 길이의 산출물임을 확실하게 합니다. 하나 이상의 dimension의 길이가 0일 수도 있습니다. 
+벡터는 dim 속성이 없는 반면, 일차원 행은 길이가 1인 dim 속성을 가지고 있기때문에, 일차원 행과 같지 않습니다. 
+
 The @code{dim} attribute is used to implement arrays.  The content of
 the array is stored in a vector in column-major order and the @code{dim}
 attribute is a vector of integers specifying the respective extents of
@@ -788,6 +869,8 @@ a @code{dim} attribute of length one, whereas the former has no
 @node Dimnames, Classes, Dimensions, Attributes
 @subsection Dimnames
 
+행은 문자 벡터의 목록인 dimnames 속성을 사용하여 각각의 dimension을 따로 이름지을 수도 있습니다. dimnames 목록이 자기 자신의 이름을 가지고 있을 수 있으며, 그러면 이는 행들을 프린트 할 때 extent heading들로 쓰여집니다. 
+
 Arrays may name each dimension separately using the @code{dimnames}
 attribute which is a list of character vectors.  The @code{dimnames}
 list may itself have names which are then used for extent headings when
@@ -795,6 +878,9 @@ printing arrays.
 
 @node Classes, Time series attributes, Dimnames, Attributes
 @subsection Classes
+
+R은class 속성을 통해 주로 컨트롤되는 정교한 class 시스테을 가지고 있습니다. 이 속성은object가 inherit하는 곳의 class들의 목록을 포함하고있는 문자 벡터입니다. 이 형태들은 R의 “일반적인 방법을” 기능의 기초를 형성합니다. 
+이 속성은 사용자에의한 제한 없이도 가상적으로 접근되고 조작될 수 있습니다. 여기에는 object가 class 방법들이 예상하는 구성요소들을 확실히 포함하고 있는지를 확인하는 것이 없습니다. 그러므로 class 속성을 대신하는 것은 조심해서 해야만하며, 이들이 사용 가능할 때는 구체적인 창출과 강제 function들이 선호되어야만합니다. 
 
 @R{} has an elaborate class system@footnote{actually two, but this draft
 manual predates the @pkg{methods} package.}, principally controlled via
@@ -813,12 +899,22 @@ coercion functions should be preferred.
 @node Time series attributes, Copying of attributes, Classes, Attributes
 @subsection Time series attributes
 
+tsp 속성은 시계열 분석, 시작, 끝, 그리고 빈도의 매개변수를 붙잡고 있기위해 사용됩니다. 이 구성은 월간 혹은 분기별 데이터처럼 주기적인 하부구조를 가진 series들을 다루기위해 주로 사용됩니다. 
+
+
 The @code{tsp} attribute is used to hold parameters of time series,
 start, end, and frequency.  This construction is mainly used to handle
 series with periodic substructure such as monthly or quarterly data.
 
 @node Copying of attributes,  , Time series attributes, Attributes
 @subsection Copying of attributes
+
+Object가 변경되었을 때 속성이 복사가 되어야만 하는지 아닌지는 복잡한 영역이지만, 몇몇의 일반적인 규칙들이 있습니다(Becker, Chambers & Wilks, 1988, pp. 144–6). 
+Scalar function들 (벡터에서 요소에서 요소로 실행하고 output이 input과 비슷한)은 속성들을 보존해야만 합니다 (class는 제외할 수도 있습니다).
+2항 연산은 보통 더 긴 argument에서부터의 대부분의 속성들을 복사합니다 (그리고 만약 그들이 두 개 모두에서부터 같은 길이라면, 처음의 값을 선호합니다). 여기에서 ‘대부분’은 operator의 코드에의해 알맞게 설정된 names, dim, 그리고 dimnames를 제외한 모든 것 이라는 뜻입니다. 
+(빈 index에 의한 것을 제외한) subsetting은 일반적으로 알맞게 reset되는 names, dim, 그리고 dimnames를 제외한 모든 속성을 drop합니다. 반면에, subassignment는 일반적으로 길이가 바뀌더라도 속성을 보존합니다. Coercion은 모든 속성을 drop합니다. 
+Sorting의 기본 방법은 object와 마찬가지로 구분/정렬되는 names를 제외한 모든 속성들을 drop하는 것입니다.
+
 
 Whether attributes should be copied when an object is altered is a
 complex area, but there are some general rules (Becker, Chambers &
@@ -855,6 +951,11 @@ are sorted along with the object.
 @node Factors, Data frame objects, Special compound objects, Special compound objects
 @subsection Factors
 
+Factor들은 유한 값들을 가질 수 있는 아이템들 (성별, 사회계층 등)을 설명하기위하여 사용됩니다. Factor는 levels 속성과 “factor” class를 가집니다. 선택적으로, factor이 modeling function들에 사용되었을 때 사용된 parametrisation을 조정하기위한 contrasts 속성도 포함하고 있을 수 있습니다. 
+Factor는 순수하게 명목상이거나 순차적인 카테고리일 수도 있습니다. 순차적인 카테고리일 경우, 그렇게 정의되어야만하고 class 벡터c("ordered"," factor")를 가집니다.
+Factor들은 현재 실질적인 레벨과 정수로 연결된 names의 두 번째 행을 지정하기위한 정수 행을 사용하여 실행됩니다. 불행하게도, 사용자들은 때때로 몇몇의 계산을 조금 더 쉬게 맘ㄴ들기 위하여 실행을 사용합니다. 그러나 이는 이행 문제이고 R의 모든 이행들을 할 수 있다고 장담할 수 없습니다. 
+
+
 Factors are used to describe items that can have a finite number of
 values (gender, social class, etc.).  A factor has a @code{levels}
 attribute and class @code{"factor"}.  Optionally, it may also contain a
@@ -877,6 +978,10 @@ implementations of @R{}.
 
 @node Data frame objects,  , Factors, Special compound objects
 @subsection Data frame objects
+
+데이터 프레임은 SAS 혹은 SPSS 데이터 셋을 가장 비슷하게 흉내내는 R structure들 입니다, 즉 데이터의 “값에 의한 경우들” 행렬.
+데이터 프레임은 모두가 같은 길이(행렬일 경우에는 열의 갯수)를 가지고있는 벡터들, factor들, 그리고/또는 행렬들의 목록입니다. 추가적으로, 데이터 프레임은 일반적으로 값들을 label하는 names 속성과 경우들을 label하는 row.names 속성을 가지고 있습니다. 
+데이터 프레임은 다른 구성요소들처럼 같은 길이의 목록을 포함할 수 있습니다. 목록은 상이한 길이의 요소들을 포함할 수 있고 그렇게 함으로써 rag된 배열들의 데이터 structure을 제공합니다. 그러나, 현재 이 글에서 그러한 배열들은 일반적으로 올바르게 다루어지지 않습니다.
 
 Data frames are the @R{} structures which most closely mimic the SAS or
 SPSS data set, i.e.@: a ``cases by variables'' matrix of data.
