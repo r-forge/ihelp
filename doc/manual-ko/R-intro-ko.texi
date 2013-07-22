@@ -1,6 +1,6 @@
 @c 
-@c 2013-JUL-15 (Monday)
-@c 1.Begining ~ 2.8 by LIJIN)
+@c 2013-JUL-22 (Sunday)
+@c 1.Begining ~ 3 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -1643,7 +1643,7 @@ for @code{sub} and @code{substring}.}
 @c the project's workspace.  This provides a simple and convenient way to
 @c extend @R{}.  @xref{Writing your own functions}.
 
-@R{}에서 @emph{functions}(함수)는 그 자체로 프로젝트의 작업공간 내에 저장 될 수 있는 객체이기도 합니다. 함수의 사용은 @R{}의 기능을 좀 더 간편하게 확장할 수 있게 합니다 . 
+@R{}에서 @emph{functions}(함수)는 그 자체로 프로젝트의 작업공간 내에 저장 될 수 있는 객체이기도 합니다. 함수의 사용은 @R{}의 기능을 좀 더 간편하게 확장할 수 있게 합니다. 
 @xref{Writing your own functions}.
 @end itemize
 
@@ -1680,11 +1680,10 @@ for @code{sub} and @code{substring}.}
 @c @emph{double} precision, as explained in the manual.}, @emph{complex},
 @c @emph{logical}, @emph{character} and @emph{raw}.
 
-전문적으로 말해보자면 @R{}에서 정보처리 (연산 및 수행)의 기본단위는 @emph{objects}(객체)라고 알려진 것입니다.
-이러한 객체들에 가장 간단한 예는 (실수) 수치형 및 복소수형 벡터, 논리형 또는 문자열 벡터등과 같은 벡터입니다.
-이들은 ``atomic'' 구조로서 알려져 있습니다. 
-왜냐하면 이들 벡터들에 대한 구성요소는 반드시 같은 타입 또는 @emph{numeric} 
-@footnote{@emph{numeric}(수치형) 모드라는 것은 실제로는 @emph{integer}(정수형)과 @emph{double} precision (배정밀도)라는 두가지의 다른 모드가 합쳐진 것입니다}, @emph{complex}, @emph{logical}, @emph{character}, 그리고 @emph{raw}와 같은 @emph{mode}(모드)를 가지고 있기 때문입니다. 
+@R{}에서 정보처리 (연산 및 수행)의 기본단위는 전문용어로 @emph{objects}(객체)라고 부르는 요소들입니다.
+이러한 객체의 종류에는 (실수) 수치형 및 복소수형, 논리형 그리고 문자형 벡터등이 있습니다.
+이러한 벡터의 구조를 ``atomic'' 이라고 하는데, 그 이유는 이들 벡터의 구성요소는 반드시 @emph{numeric} 
+@footnote{@emph{numeric}(수치형) 모드라는 것은 사실 @emph{integer}(정수형)과 @emph{double} precision (배정밀도)라는 두가지의 다른 모드가 합쳐진 것입니다}, @emph{complex}, @emph{logical}, @emph{character}, 그리고 @emph{raw} 중 하나의 타입 혹은  @emph{mode}(모드)로만 되어있기 때문입니다. 
 
 @c Vectors must have their values @emph{all of the same mode}.  Thus any
 @c given vector must be unambiguously either @emph{logical},
@@ -1695,12 +1694,11 @@ for @code{sub} and @code{substring}.}
 @c mode.  For example the empty character string vector is listed as
 @c @code{character(0)} and the empty numeric vector as @code{numeric(0)}.
 
-벡터는 반드시 @emph{각 구성요소가 가질 수 있는 값에 대한 모드가 모든 구성요소에 있어서 같아야 합니다}.
-그러므로 어떠한 벡터라도 반드시 @emph{logical}(논리형), @emph{numeric}(수치형), @emph{complex}(복소수형), @emph{character}(문자형) or @emph{raw} 모드 중 하나입니다.
-(이 규칙에 대한 예외가 있다면 그것은 @code{NA}로 표기되는 값입니다. 
-그러나, 사실은 여러가지 종류의 @code{NA}가 있습니다).
-벡터는 empty(아무런 구성요소가 없이 비어있는 상태)일 수 있음에도 불구하고 모드를 가질 수 있습니다. 
-예를들어, 비어있는 문자열은 @code{character(0)}이며, 비어있는 수치형 벡터는 @code{numeric(0)}입니다. 
+벡터는 반드시 @emph{같은 모드에서 나온} 값들로만 이루어져야 합니다.
+따라서 어떠한 벡터라도 반드시 @emph{logical}(논리형), @emph{numeric}(수치형), @emph{complex}(복소수형), @emph{character}(문자형) 또는 @emph{raw} 중의 하나의 모드이어야 합니다.
+(이 규칙에 대한 유일하고 명백한 예외가 있다면 그것은 @code{NA}로 표기되는 결측값일 것 입니다.하지만, 사실 여러 이유로 @code{NA} 값이 생성 됩니다).
+벡터는 empty(아무런 구성요소 없이 비어 있는) 상태라고 하더라도 모드를 가질 수 있습니다. 
+예를들어, 비어있는 문자열 벡터 @code{character(0)}나, 비어있는 수치형 벡터 @code{numeric(0)} 등이 있습니다. 
 
 @c @R{} also operates on objects called @emph{lists}, which are of mode
 @c @emph{list}.  These are ordered sequences of objects which individually
@@ -1708,10 +1706,8 @@ for @code{sub} and @code{substring}.}
 @c atomic structures since their components can themselves be lists in
 @c their own right.
 
-@R{}은 또한 @emph{list}(리스트)라는 모드를 가지고 있는 @emph{lists}(리스트)라고 불리는 객체를 특정한 방식으로 조작하고 있습니다. 
-이것은 모든 구성요소가 동일한 모드를 가지지 않는 일련의 순서에 의해서 정리된 시퀀스입니다.
-@emph{lists}(리스트)는 또한 atomic structure (가장 근본적인 기본구조)이기 보다는 ``recursive''(재귀적) 구조를 가집니다.
-그 이유는 이 객체의 구성요소 자체가 리스트가 될 수 있기 때문입니다. 
+@R{}은 또한 @emph{list}(리스트)라는 모드를 가진 @emph{lists}(리스트) 객체들을 대상으로 연산을 수행할 수 있습니다. 리스트에는 동일하지 않은 모드를 가진 여러 객체들을 일정한 순서대로 나열할 수 있습니다. 
+@emph{lists}(리스트)는 또한 atomic structure (가장 단순한 기본구조)이기 보다는 ``recursive''(재귀)구조를 가지는데, 그 이유는 리스트의 구성요소 그 자체가 리스트 안에 포함될 수 있기 때문입니다. 
 
 @c The other recursive structures are those of mode @emph{function} and
 @c @emph{expression}.  Functions are the objects that form part of the @R{}
@@ -1720,9 +1716,9 @@ for @code{sub} and @code{substring}.}
 @c advanced part of @R{} which will not be discussed in this guide, except
 @c indirectly when we discuss @emph{formulae} used with modeling in @R{}.
 
-또 다른 재귀적 구조는 모드가 @emph{function}(함수) 또는 @emph{expression}(표현식)으로부터 찾을 수 있습니다.
-함수의 경우는 나중에 설명하게 될 사용자 정의 함수와 함께 @R{}시스템의 부분을 구성하는 객체이기 때문이며,
-표현식의 경우는 @R{}에서 모델링을 할때 사용하는 @emph{formulae}(모델식)을 언급하면서 간접적으로 얘기할 때를 제외하고는 이 문서에서는 설명하지 않지만 이 또한 @R{}시스템의 고급적 부분을 형성하는 객체이기 때문입니다.
+또 다른 재귀구조는 모드가 @emph{function}(함수) 또는 @emph{expression}(표현식)인 경우 입니다.
+함수는 나중에 설명하게 될 사용자 정의 함수와 함께 @R{} 시스템의 일부를 구성하는 객체입니다.
+표현식은 @R{}에서 모델링에 사용되는 @emph{formulae}(공식)을 언급할 때 간접적으로 등장하는 것을 제외하고는 이 문서에서는 다루지 않을 것이지만, 이 역시 @R{}시스템의 고급 활용을 위해 필요한 객체 입니다.
 
 @c By the @emph{mode} of an object we mean the basic type of its
 @c fundamental constituents.  This is a special case of a ``property''
@@ -1732,18 +1728,18 @@ for @code{sub} and @code{substring}.}
 @c @footnote{Note however that @code{length(@var{object})} does not always
 @c contain intrinsic useful information, e.g., when @code{@var{object}} is a
 @c function.}.
-객체의 @emph{mode}(모드)는 우리가 다루는 객체를 구성하는 요소들에 대한 기본형(basic type)을 알 수 있습니다.
-모든 객체에 있는 또 다른 속성은 @emph{length}(길이)입니다. 
-@code{mode(@var{object})}와 @code{mode(@var{object})}라는 명령어를 통하여 객체에 정의된 구조의 모드와 길이를 알 수 있습니다. 
-@footnote{그러나, @code{length(@var{object})}가 항상 본질적인 정보를 포함하는 것은 아닙니다.  @code{@var{object}}의 경우가 이에 해당합니다.}.
+한 객체의 @emph{mode}(모드)를 확인하여, 우리는 이 객체를 구성하는 요소들의 기본형(basic type)을 알 수 있습니다. 모드는 한 객체의 속성 (property) 중 특별한 하나의 예 입니다. 모든 객체가 갖는 또 다른 속성에 @emph{length}(길이)가 있습니다.
+명령문 @code{mode(@var{object})}와 @code{mode(@var{object})}를 사용하여 객체의 모드와 길이를 알 수 있습니다. 
+@footnote{그러나, @code{length(@var{object})}가 항상 본질적이고 유용한 정보를 제공하는 것은 아닙니다.  @code{@var{object}}가 함수인 경우가 여기에 해당합니다.}
 
 
 @c Further properties of an object are usually provided by
 @c @code{attributes(@var{object})}, see @ref{Getting and setting attributes}.
 @c Because of this, @emph{mode} and @emph{length} are also called ``intrinsic
 @c attributes'' of an object.
-객체에 대한 더 많은 속성들은 @code{attributes(@var{object})}를 통해서 알 있으며, @ref{Getting and setting attributes}를 참고하시길 바랍니다.
-이러한 이유로 @emph{mode}(모드)와 @emph{length}(길이)는 객체의 ``intrinsic attributes''(본질적 속성들)이라고도 합니다.
+객체에 대한 더 많은 속성들은 @code{attributes(@var{object})}를 사용해서 볼 수 있으며, 궁금한 점은 @ref{Getting and setting attributes}를 참고하시길 바랍니다.
+이러한 이유로, @emph{mode}(모드)와 @emph{length}(길이)는 객체의 ``intrinsic attributes''(본질적 속성)이라고 합니다.
+
 @findex mode
 @findex length
 
@@ -1751,11 +1747,11 @@ for @code{sub} and @code{substring}.}
 @c expression @code{mode(z)} is the character string @code{"complex"} and
 @c @code{length(z)} is @code{100}.
 
-예를들어, 만약 @code{z}가 길이가 100인 복소수형 벡터라고 한다면, @code{mode(z)}는 문자열 @code{"complex"}(복소수)이고 @code{length(z)}은 @code{100}입니다.
+예를 들어, 만약 @code{z}가 길이 100인 복소수형 벡터라고 한다면, 표현식 @code{mode(z)}는 문자열 @code{"complex"}(복소수)을 출력하고, @code{length(z)}은 @code{100}을 출력 합니다.
 @c @R{} caters for changes of mode almost anywhere it could be considered
 @c sensible to do so, (and a few where it might not be).  For example with
-@R{}은 어디에서든지 모드를 변경할 수 있도록 해줍니다. 
-아래의 예제를 보도록 합니다.
+@R{}에서는 어디든 필요한 곳에서 모드를 변경할 수 있습니다. 
+예제를 통해 살펴보면,
 
 @example
 > z <- 0:9
@@ -1763,7 +1759,7 @@ for @code{sub} and @code{substring}.}
 
 @noindent
 @c we could put
-위에서 생성한 0 부터 9까지의 숫자로 된 수열 @code{z}는 아래와 같이 @code{c("0", "1", "2", @dots{}, "9")}와 문자로 된 벡터로 변환할 수 있습니다.
+위에서 생성한 0 부터 9까지의 숫자로 이루어진 수열 @code{z}는 @code{c("0", "1", "2", @dots{}, "9")}의 값을 갖는 문자형 벡터 digits으로 전환될 수 있습니다.
  
 @example
 > digits <- as.character(z)
@@ -1773,8 +1769,7 @@ for @code{sub} and @code{substring}.}
 @c after which @code{digits} is the character vector @code{c("0", "1", "2",
 @c @dots{}, "9")}.  A further @emph{coercion}, or change of mode,
 @c reconstructs the numerical vector again:
-수치형 벡터로의 @emph{coercion}(강제형변환) 또는 모드의 변환은 아래에서 보이는 것과 같이 다시 한 번 이루어질 수 있습니다. 
-
+이 문자형 벡터는 다음과 같은 방법으로 수치형 벡터로 @emph{coercion}(강제형변환) 또는 모드 변환할 수 있습니다:
 @example
 > d <- as.integer(digits)
 @end example
@@ -1788,12 +1783,10 @@ for @code{sub} and @code{substring}.}
 @c with some other attribute it may not already possess.  The reader should
 @c consult the different help files to become familiar with them.
 
-이제 @code{d}와 @code{z}는 동일한 벡터임을 확인하실 수 있을 것입니다.
-@footnote{일반적으로 숫자에서 문자로의 강제형변환 한 뒤 다시 숫자로 변경할때에는 본래의 숫자와 완전히 똑같지 않습니다. 
-그 이유는 문자로서 표현될때의 roundoff errors(반올림 오차)때문입니다.}  
-이와 같이 형의 변환을 도와주는 강제형변환 기능은 @code{as.@var{something}} 형태의 함수로서 이루어지며, 
-객체가 어떤 속성을 가지고 있는가 혹은 없는가에 확인하기 위한 방대한 양의 함수들이 제공되고 있습니다.
-이러한 함수들의 사용에 익숙해지기 위해서는 도움말 파일을 참고하시길 부탁드립니다.
+이제 @code{d}와 @code{z}는 동일한 벡터 입니다.
+@footnote{일반적으로, 숫자에서 문자로 강제형변환 한 뒤 다시 숫자로 변경할때에는, 문자형을 표현할 때의 round off errors(반올림 오차) 때문에, 원래의 숫자와 완전히 같은 값이 되지는 않습니다.}  
+이와 같이 객체의 모드를 변경하거나, 한 객체가 현재 지정된 모드 이외의 다른 속성을 가질 수 있는지 확인하기 위해 @code{as.@var{something}} 형태의 다양한 함수 모음을 이용할 수 있습니다.
+이러한 함수들을 능숙하게 사용하기 위해서는 다양한 도움말이 필요할 것 입니다.
 
 @c </FIXME>
 
@@ -1811,11 +1804,9 @@ for @code{sub} and @code{substring}.}
 @c object of any size has been created, new components may be added to it
 @c simply by giving it an index value outside its previous range.  Thus
 
-위의 명령문은 @code{e}라는 수치형 모드를 가지며 아무런 구성요소도 가지지 않은 (즉, 비어있는) 벡터를 생성합니다.
-유사한 방식으로 @code{character()}은 아무런 구성요소를 가지고 있는 문자형 벡터를 생성하는데 쓰입니다.
-이렇게 하는 것은 임의의 크기를 가지는 객체를 생성하는데 쓰이며, 
-새로운 구성요소는 아래와 같이 벡터가 원래 가지고 있던 인덱스의 범위 밖의 값을 넣어줌으로서 추가할 수 있습니다. 
-
+위의 명령문은 수치형 모드를 갖는 비어있는 벡터 @code{e}를 생성합니다.
+마찬가지로, @code{character()}은 비어있는 문자형 벡터를 생성합니다.
+일단 임의의 크기를 갖는 객체가 생성하고 나면,이전 범위 밖에 인덱스 값을 지정하는 것으로  새 구성요소를 간단히 추가할 수 있습니다.
 @example
 > e[3] <- 17
 @end example
@@ -1826,23 +1817,21 @@ for @code{sub} and @code{substring}.}
 @c at all, provided the mode of the additional component(s) agrees with the
 @c mode of the object in the first place.
 
-이제 길이가 3인 @code{e}라는 벡터가 만들어진 것입니다 (처음 두개의 구성요소들은 @code{NA}가 될 것입니다). 
-이러한 방식으로 구성요소를 추가하는 것은 새로 추가되는 구성요소의 모드가 존재하는 객체를 구성하는 객체의 모드와 일치만 한다면 어떠한 구조를 가진 객체에 모두 적용이 가능합니다. 
+위의 명령문으로 길이가 3인 벡터 @code{e}가 생성 됩니다. (별도 지정이 없었으므로, 처음 두 개의 구성요소들은 @code{NA}가 될 것입니다.) 이런 방식으로 구성요소를 추가하는 것은 새로 추가되는 구성요소가 이미 존재하는 구성요소들과 모드만 일치한다면, 어떤 구조의 객체라도 모두 적용 가능합니다. 
 
 @c This automatic adjustment of lengths of an object is used often, for
 @c example in the @code{scan()} function for input.  (@pxref{The scan()
 @c function}.)
 
-종종 자동적으로 객체의 길이가 조정될 때가 있습니다. 
-예를들면, 입력을 받기 위한 @code{scan()}가 사용될 때입니다. 
+때로는, 데이터를 입력할 때 사용하는 @code{scan()} 함수처럼, 자동적으로 객체의 길이가 조정될 때가 있습니다. 
 (@pxref{The scan() function}.)
 
 @c Conversely to truncate the size of an object requires only an assignment
 @c to do so.  Hence if @code{alpha} is an object of length 10, then
-이와는 반대로 객체의 크기를 줄이고자 한다면 단순히 대입문을 사용하면 됩니다.
-예를들어, @code{alpha}가 길이가 10인 객체라고 가정합니다.
-아래의 대입문은 @code{alpha}의 인덱스 벡터의 길이가 5인데, 이 벡터에 2를 곱하였으므로, @code{alpha}의 인덱스 벡터가 짝수에 해당하는 @code{alpha}의 구성요소들만 선택된 새로운 @code{alpha}를 생성하는 것입니다. 
- 
+반대로, 객체의 크기를 직접 조정하고 싶다면, 그렇게 하기 위한 할당문을 사용하면 됩니다.
+예를들어, 길이가 10인 @code{alpha}라는 객체가 있다면,
+아래의 할당문은 길이가 5이고, 이전 @code{alpha}의 구성성분 중 짝수번 째에 해당하는 요소들만을 선택하여 새로운 객체인   @code{alpha}를 생성합니다. (이전 인덱스는 더 이상 남아있지 않습니다.) 
+
 @example
 > alpha <- alpha[2 * 1:5]
 @end example
@@ -1851,8 +1840,8 @@ for @code{sub} and @code{substring}.}
 @c makes it an object of length 5 consisting of just the former components
 @c with even index.  (The old indices are not retained, of course.)  We can
 @c then retain just the first three values by
-(물론 이전에 사용한 인덱스는 더 이상 유효하지 않습니다). 
-벡터의 길이를 변경하여 처음 세가의 구성요소만을 가지는 @code{alpha}를 생성하고자 한다면 아래와 같은 방법을 사용할 수도 있습니다. 
+
+이 중 처음 세 개의 구성요소만을 포함하는 @code{alpha}를 생성하고자하면, 다음 문장과 같이 하면 됩니다. 
 
 @example
 > length(alpha) <- 3
@@ -1860,6 +1849,7 @@ for @code{sub} and @code{substring}.}
 
 @noindent
 @c and vectors can be extended (by missing values) in the same way.
+비슷한 방법으로 벡터의 길이를 늘리는 것도 가능합니다. (늘어난 길이만큼 결측값으로 채워지겠지만요.) 
 
 @node Getting and setting attributes, The class of an object, Changing the length of an object, Objects
 @c @section Getting and setting attributes
