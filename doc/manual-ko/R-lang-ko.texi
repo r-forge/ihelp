@@ -354,7 +354,7 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 @c @R{} has six basic (`atomic') vector types: logical, integer, real,
 @c complex, string (or character) and raw.  The modes and storage modes for
 @c the different vector types are listed in the following table.
-@R{}은 여섯 가지의 기본 (`atomic') 벡터를 가지고 있습니다.
+@R{}은 여섯 가지의 기본 (`atomic', 아토믹) 벡터를 가지고 있습니다.
 이들은 논리형(logical), 정수형(integer), 실수형(real), 복소수형(complex), 문자열 (string) 또는 문자 (character), 그리고 원형(raw)입니다.
 다음의 표는 유형이 다른 벡터들의 모드와 저장모드들을 정리하였습니다.
 
@@ -387,58 +387,66 @@ R의 밑바탕을 이루고 있는 C 코드에서 모든 객체들은 @code{SEXP
 @c @subsection Lists
 @subsection 리스트 
 
-Lists (``generic vectors'') are another kind of data storage.  Lists
-have elements, each of which can contain any type of @R{} object, i.e.@:
-the elements of a list do not have to be of the same type.  List
-elements are accessed through three different
+@c Lists (``generic vectors'') are another kind of data storage.  Lists
+@c have elements, each of which can contain any type of @R{} object, i.e.@:
+@c the elements of a list do not have to be of the same type.  List
+@c elements are accessed through three different
 @cindex index
-indexing operations.
-These are explained in detail in @ref{Indexing}.
+@c indexing operations.
+@c These are explained in detail in @ref{Indexing}.
 @c @ref{Data structures}.
+리스트 (``generic vectors'')는 데이터 저장(data storage)의 또 다른 종류입니다.
+리스트들의 구성요소는 어떠한 유형의 @R{} 객체들이 될 수 있습니다.
+즉, 리스트의 구성요소들은 같은 유형일 필요가 없습니다.
+리스트의 구성요소들은 세가지 다른 인덱싱 조작(indexing operation)에 의하여 접근되어 집니다.
+자세한 사항은 @ref{Indexing}에 설명되어 있습니다. 
 
-List들 (“일반 벡터들”)은 데이터 저장소의 다른 종류입니다. List들은 R object의 어떤 종류라도 포함할 수 있는 요소를 가지고 있습니다, 즉, list의 요소들은 같은 종류일 필요가 없습니다. List 요소들은 세 가지의 다른 indexing operation들을 통해 액세스됩니다. 더 자세한 사항은 Indexing에 설명되어 있습니다. 
-List들은 벡터들이며, 기본 벡터 종류들은 list를 배제하야만하는 atomic vectors와 관계가 있습니다.
-
-
-Lists are vectors, and the basic vector types are referred to as
-@emph{atomic vectors} where it is necessary to exclude lists.
+@c Lists are vectors, and the basic vector types are referred to as
+@c @emph{atomic vectors} where it is necessary to exclude lists.
+리스트도 벡터의 종류이긴 하지만, 리스트 유형을 제외한 기본 벡터의 종류들을 @emph{atomic vectors}(벡터를 구성하는데 있어 더 이상 하위단계로 분류할 수 최소의 기본구성단위 요소만으로 된 벡터 -- 아토믹 벡터)라고 합니다. 
 
 @node Language objects, Expression objects, List objects, Basic types
-@subsection Language objects
+@c @subsection Language objects
+@subsection 랭귀지 객체
 
-R 언어를 구성하는 세가지 종류의 object들이 있습니다. 그들은 calls, expressions, 그리고 names입니다. R이 “expression”이라는 종류의 object들을 가지고 있기 때문에 다른 문맥들에서는 expression이라는 단어의 사용을 피하도록 노력할 것입니다. 특히 종합적으로 맞는 expression들은 statements처럼 여겨질 것입니다. 이 object들은 순서대로 “call”, “expression”, 그리고 “name”이라는 모드들을 가질 것입니다.
-이들은 quote 메커니즘을 사용하여 expression들에서 바로 창출될 수도 있고 as.list와 as.call fuction들에 의해 list들로와 list로 부터로 전환될 수도 있습니다. Parse tree의 구성요소들은 기본적인 indexing operation들을 사용하여 얻어질 수 있습니다. 
-
-
-There are three types of objects that constitute the @R{} language.
-They are @emph{calls}, @emph{expressions}, and @emph{names}.
+@c There are three types of objects that constitute the @R{} language.
+@c They are @emph{calls}, @emph{expressions}, and @emph{names}.
 @cindex call
 @cindex expression
 @cindex name
+@R{} 언어는 세가지의 객체들로 구성되어 있습니다.
+이들은 @emph{calls}, @emph{expressions}, 그리고 @emph{names}입니다.
 @c FIXME:
 @c Better consistently refer to objects of type "expression" as
 @c ``expression objects'' ...
-Since @R{} has objects of type @code{"expression"} we will try to avoid
-the use of the word expression in other contexts.  In particular
-syntactically correct expressions will be referred to as
-@emph{statements}.
+
+@c Since @R{} has objects of type @code{"expression"} we will try to avoid
+@c the use of the word expression in other contexts.  In particular
+@c syntactically correct expressions will be referred to as
+@c @emph{statements}.
 @c </FIXME>
 @cindex statement
+@R{}은 @code{"expression"}이라는 유형의 객체들을 가지고 있기 때문에 우리는 expression이라는 단어를 다른 의미로 사용하지 않으려고 노력할 것입니다. 
+특히 구문상으로 올바른 expression을 @emph{statements}라고 지칭할 것입니다.
 
-These objects have modes @code{"call"}, @code{"expression"}, and
-@code{"name"}, respectively.
+@c These objects have modes @code{"call"}, @code{"expression"}, and
+@c @code{"name"}, respectively.
 @c FIXME: Shouldn't we explain their types?
+이러한 객체들은 @code{"call"}, @code{"expression"}, 그리고 @code{"code"}라는 모드를 가지고 있습니다.
 
-They can be created directly from expressions using the @code{quote}
-mechanism and converted to and from lists by the @code{as.list} and
-@code{as.call} functions.
+@c They can be created directly from expressions using the @code{quote}
+@c mechanism and converted to and from lists by the @code{as.list} and
+@c @code{as.call} functions.
 @findex quote
 @findex as.list
 @findex as.call
-Components of the
+@c Components of the
 @cindex parsing
-parse tree can be extracted using the standard
-indexing operations.
+@c parse tree can be extracted using the standard
+@c indexing operations.
+이들은 @code{quote} 매커니즘 (즉, 따옴표와 함께 사용하여)을 이용하여 expressions 로부터 바로 생성되고, @code{as.list}와 @code{as.call} 함수들에 의하여 리스트에서 리스트로 서로 전환될 수 있습니다.
+구문트리(parse tree)의 구성요소(component)들은 표준 인덱싱 조작(standard indexing operations)을 이용하여 얻어질 수 있습니다. 
+
 
 @menu
 * Symbol objects::              

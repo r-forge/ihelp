@@ -81,7 +81,7 @@ p {
 <ul>
 <li><a href="#Vector-objects">2.1.1 벡터</a>
 <li><a href="#List-objects">2.1.2 리스트</a>
-<li><a href="#Language-objects">2.1.3 Language objects</a>
+<li><a href="#Language-objects">2.1.3 랭귀지 객체</a>
 <ul>
 <li><a href="#Symbol-objects">2.1.3.1 Symbol objects</a>
 </li></ul>
@@ -566,7 +566,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
    <p><a name="index-type-16"></a><a name="index-mode-17"></a><a name="index-atomic-18"></a><!-- @R{} has six basic (`atomic') vector types: logical, integer, real, -->
 <!-- complex, string (or character) and raw.  The modes and storage modes for -->
 <!-- the different vector types are listed in the following table. -->
-R은 여섯 가지의 기본 (`atomic') 벡터를 가지고 있습니다. 
+R은 여섯 가지의 기본 (`atomic', 아토믹) 벡터를 가지고 있습니다. 
 이들은 논리형(logical), 정수형(integer), 실수형(real), 복소수형(complex), 문자열 (string) 또는 문자 (character), 그리고 원형(raw)입니다. 
 다음의 표는 유형이 다른 벡터들의 모드와 저장모드들을 정리하였습니다.
 
@@ -606,19 +606,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 <!-- @subsection Lists -->
 <h4 class="subsection">2.1.2 리스트</h4>
 
-<p>Lists (&ldquo;generic vectors&rdquo;) are another kind of data storage.  Lists
-have elements, each of which can contain any type of R object, i.e. 
-the elements of a list do not have to be of the same type.  List
-elements are accessed through three different
-<a name="index-index-19"></a>indexing operations. 
-These are explained in detail in <a href="#Indexing">Indexing</a>. 
+<!-- Lists (``generic vectors'') are another kind of data storage.  Lists -->
+<!-- have elements, each of which can contain any type of @R{} object, i.e.@: -->
+<!-- the elements of a list do not have to be of the same type.  List -->
+<!-- elements are accessed through three different -->
+<p><a name="index-index-19"></a><!-- indexing operations. -->
+<!-- These are explained in detail in @ref{Indexing}. -->
 <!-- @ref{Data structures}. -->
+리스트 (&ldquo;generic vectors&rdquo;)는 데이터 저장(data storage)의 또 다른 종류입니다. 
+리스트들의 구성요소는 어떠한 유형의 R 객체들이 될 수 있습니다. 
+즉, 리스트의 구성요소들은 같은 유형일 필요가 없습니다. 
+리스트의 구성요소들은 세가지 다른 인덱싱 조작(indexing operation)에 의하여 접근되어 집니다. 
+자세한 사항은 <a href="#Indexing">Indexing</a>에 설명되어 있습니다.
 
-   <p>List들 (“일반 벡터들”)은 데이터 저장소의 다른 종류입니다. List들은 R object의 어떤 종류라도 포함할 수 있는 요소를 가지고 있습니다, 즉, list의 요소들은 같은 종류일 필요가 없습니다. List 요소들은 세 가지의 다른 indexing operation들을 통해 액세스됩니다. 더 자세한 사항은 Indexing에 설명되어 있습니다. 
-List들은 벡터들이며, 기본 벡터 종류들은 list를 배제하야만하는 atomic vectors와 관계가 있습니다.
-
-   <p>Lists are vectors, and the basic vector types are referred to as
-<em>atomic vectors</em> where it is necessary to exclude lists.
+<!-- Lists are vectors, and the basic vector types are referred to as -->
+<!-- @emph{atomic vectors} where it is necessary to exclude lists. -->
+   <p>리스트도 벡터의 종류이긴 하지만, 리스트 유형을 제외한 기본 벡터의 종류들을 <em>atomic vectors</em>(벡터를 구성하는데 있어 더 이상 하위단계로 분류할 수 최소의 기본구성단위 요소만으로 된 벡터 &ndash; 아토믹 벡터)라고 합니다.
 
 <div class="node">
 <a name="Language-objects"></a>
@@ -629,32 +632,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 
 </div>
 
-<h4 class="subsection">2.1.3 Language objects</h4>
+<!-- @subsection Language objects -->
+<h4 class="subsection">2.1.3 랭귀지 객체</h4>
 
-<p>R 언어를 구성하는 세가지 종류의 object들이 있습니다. 그들은 calls, expressions, 그리고 names입니다. R이 “expression”이라는 종류의 object들을 가지고 있기 때문에 다른 문맥들에서는 expression이라는 단어의 사용을 피하도록 노력할 것입니다. 특히 종합적으로 맞는 expression들은 statements처럼 여겨질 것입니다. 이 object들은 순서대로 “call”, “expression”, 그리고 “name”이라는 모드들을 가질 것입니다. 
-이들은 quote 메커니즘을 사용하여 expression들에서 바로 창출될 수도 있고 as.list와 as.call fuction들에 의해 list들로와 list로 부터로 전환될 수도 있습니다. Parse tree의 구성요소들은 기본적인 indexing operation들을 사용하여 얻어질 수 있습니다.
-
-   <p>There are three types of objects that constitute the R language. 
-They are <em>calls</em>, <em>expressions</em>, and <em>names</em>. 
-<a name="index-call-20"></a><a name="index-expression-21"></a><a name="index-name-22"></a><!-- FIXME: -->
+<!-- There are three types of objects that constitute the @R{} language. -->
+<!-- They are @emph{calls}, @emph{expressions}, and @emph{names}. -->
+<p><a name="index-call-20"></a><a name="index-expression-21"></a><a name="index-name-22"></a>R 언어는 세가지의 객체들로 구성되어 있습니다. 
+이들은 <em>calls</em>, <em>expressions</em>, 그리고 <em>names</em>입니다. 
+<!-- FIXME: -->
 <!-- Better consistently refer to objects of type "expression" as -->
 <!-- ``expression objects'' ... -->
-Since R has objects of type <code>"expression"</code> we will try to avoid
-the use of the word expression in other contexts.  In particular
-syntactically correct expressions will be referred to as
-<em>statements</em>. 
-<!-- </FIXME> -->
-<a name="index-statement-23"></a>
-These objects have modes <code>"call"</code>, <code>"expression"</code>, and
-<code>"name"</code>, respectively. 
-<!-- FIXME: Shouldn't we explain their types? -->
 
-   <p>They can be created directly from expressions using the <code>quote</code>
-mechanism and converted to and from lists by the <code>as.list</code> and
-<code>as.call</code> functions. 
-<a name="index-quote-24"></a><a name="index-as_002elist-25"></a><a name="index-as_002ecall-26"></a>Components of the
-<a name="index-parsing-27"></a>parse tree can be extracted using the standard
-indexing operations.
+<!-- Since @R{} has objects of type @code{"expression"} we will try to avoid -->
+<!-- the use of the word expression in other contexts.  In particular -->
+<!-- syntactically correct expressions will be referred to as -->
+<!-- @emph{statements}. -->
+<!-- </FIXME> -->
+   <p><a name="index-statement-23"></a>R은 <code>"expression"</code>이라는 유형의 객체들을 가지고 있기 때문에 우리는 expression이라는 단어를 다른 의미로 사용하지 않으려고 노력할 것입니다. 
+특히 구문상으로 올바른 expression을 <em>statements</em>라고 지칭할 것입니다.
+
+<!-- These objects have modes @code{"call"}, @code{"expression"}, and -->
+<!-- @code{"name"}, respectively. -->
+<!-- FIXME: Shouldn't we explain their types? -->
+   <p>이러한 객체들은 <code>"call"</code>, <code>"expression"</code>, 그리고 <code>"code"</code>라는 모드를 가지고 있습니다.
+
+<!-- They can be created directly from expressions using the @code{quote} -->
+<!-- mechanism and converted to and from lists by the @code{as.list} and -->
+<!-- @code{as.call} functions. -->
+   <p><a name="index-quote-24"></a><a name="index-as_002elist-25"></a><a name="index-as_002ecall-26"></a><!-- Components of the -->
+<a name="index-parsing-27"></a><!-- parse tree can be extracted using the standard -->
+<!-- indexing operations. -->
+이들은 <code>quote</code> 매커니즘 (즉, 따옴표와 함께 사용하여)을 이용하여 expressions 로부터 바로 생성되고, <code>as.list</code>와 <code>as.call</code> 함수들에 의하여 리스트에서 리스트로 서로 전환될 수 있습니다. 
+구문트리(parse tree)의 구성요소(component)들은 표준 인덱싱 조작(standard indexing operations)을 이용하여 얻어질 수 있습니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Symbol-objects">Symbol objects</a>
