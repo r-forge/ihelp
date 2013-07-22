@@ -83,7 +83,7 @@ p {
 <li><a href="#List-objects">2.1.2 리스트</a>
 <li><a href="#Language-objects">2.1.3 랭귀지 객체</a>
 <ul>
-<li><a href="#Symbol-objects">2.1.3.1 Symbol objects</a>
+<li><a href="#Symbol-objects">2.1.3.1 심볼릭 객체</a>
 </li></ul>
 <li><a href="#Expression-objects">2.1.4 Expression objects</a>
 <li><a href="#Function-objects">2.1.5 Function objects</a>
@@ -654,7 +654,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 <!-- These objects have modes @code{"call"}, @code{"expression"}, and -->
 <!-- @code{"name"}, respectively. -->
 <!-- FIXME: Shouldn't we explain their types? -->
-   <p>이러한 객체들은 <code>"call"</code>, <code>"expression"</code>, 그리고 <code>"code"</code>라는 모드를 가지고 있습니다.
+   <p>이러한 객체들은 <code>"call"</code>, <code>"expression"</code>, 그리고 <code>"name"</code>라는 모드를 가지고 있습니다.
 
 <!-- They can be created directly from expressions using the @code{quote} -->
 <!-- mechanism and converted to and from lists by the @code{as.list} and -->
@@ -677,23 +677,28 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Language-objects">Language objects</a>
 
 </div>
 
-<h5 class="subsubsection">2.1.3.1 Symbol objects</h5>
+<!-- @subsubsection Symbol objects -->
+<h5 class="subsubsection">2.1.3.1 심볼릭 객체</h5>
 
-<p>부호들은 R object들을 의미합니다. 모든 R object의 이름은 보통 부호입니다. 부호들은 as.name과 quote fuction들을 통해 창출될 수 있습니다. 
-Symbol들은 모드“name”, 저장 모드 “symbol”, 그리고 종류 “symbol”을 가지고 있습니다. 이들은 as.character과 as.name을 사용하여 문자 string들로와 문자 string으로부터 강제될 수 있습니다. 이들은 분석된 표현들의 원자처럼 자연스럽게 나타납니다, 예제인 as.list(quote(x + y))를 시도해 보십시오.
+<p><a name="index-symbol-28"></a><!-- Symbols refer to @R{} -->
+<a name="index-object-29"></a><!-- objects.  The -->
+<a name="index-name-30"></a><!-- name of any @R{} object is usually a -->
+<!-- symbol.  Symbols can be created through the functions @code{as.name} and -->
+<!-- @code{quote}. -->
+심볼 (symbols)들은 R 객체들을 지칭합니다. 
+모든 R 객체의 이름은 일반적으로 심볼입니다. 
+심볼들은 함수 <code>as.name</code>과 <code>quote</code>을 통하여 생성되어질 수 있습니다.
 
-   <p><a name="index-symbol-28"></a>Symbols refer to R
-<a name="index-object-29"></a>objects.  The
-<a name="index-name-30"></a>name of any R object is usually a
-symbol.  Symbols can be created through the functions <code>as.name</code> and
-<code>quote</code>.
-
-   <p><a name="index-symbol-31"></a><a name="index-mode-32"></a>Symbols have mode <code>"name"</code>, storage mode <code>"symbol"</code>, and type
-<code>"symbol"</code>.  They can be
-<a name="index-coercion-33"></a>coerced to and from character strings
-using <code>as.character</code> and <code>as.name</code>. 
-<a name="index-as_002echaracter-34"></a><a name="index-as_002ename-35"></a><a name="index-parsing-36"></a>They naturally appear as atoms of parsed expressions, try e.g. 
-<code>as.list(quote(x + y))</code>.
+   <p><a name="index-symbol-31"></a><a name="index-mode-32"></a><!-- Symbols have mode @code{"name"}, storage mode @code{"symbol"}, and type -->
+<!-- @code{"symbol"}.  They can be -->
+<a name="index-coercion-33"></a><!-- coerced to and from character strings -->
+<!-- using @code{as.character} and @code{as.name}. -->
+<a name="index-as_002echaracter-34"></a><a name="index-as_002ename-35"></a><a name="index-parsing-36"></a><!-- They naturally appear as atoms of parsed expressions, try e.g.@: -->
+<!-- @code{as.list(quote(x + y))}. -->
+심볼들은 <code>"name"</code>이라는 모드, <code>"symbol"</code>이라는 저장모드, 그리고 <code>"symbol"</code>이라는 유형을 가지게 됩니다. 
+이들은 <code>as.character</code>와 <code>as.name</code>을 이용하여 문자열로 강제변환될 수 있습니다. 
+이들은 구문분석된 표현의 기본단위(atoms of parsed expressions)으로 나타나게 됩니다. 
+예를들어 보기 위하여, <code>as.list(quote(x+y))</code>를 입력해 보시길 바랍니다.
 
 <div class="node">
 <a name="Expression-objects"></a>
