@@ -110,39 +110,37 @@ Korean translation copyright @copyright{} 2008--2013 Korean R Translation Team a
 
 @c The current version of this document is @value{VERSION}.
 
-이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 수행하는 언어이며 개발환경이기도 한 @R{}에 대한 기본 안내서입니다. 
-@R{}은 벨랩에서 John Chambers 외 다수에 의해서 개발된 이래로 여러 차례 상을 수상한 @Sl{} 라는 시스템과 유사하기 때문에 ``GNU S''라고도 불리우며,
-선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계분석 방법들과 그래픽 기능들을 제공합니다. 
-이러한 기능들을 @R{}을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형, 프로그래밍의 기본 요소들, 그리고 통계 모델링과 그래픽 구현에 대한 기본적인 정보가 이 문서에서 다루어질 것입니다. 
+이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 위한 언어(language)이자 환경(environment)이기도 한 R (``GNU S'')이라는 소프트웨어에 대한 일반적인 소개를 담고 있습니다.
+R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 여러명의 참여자에) 의해서 개발된 이래로 수상을 받은 전력이 있는 S 시스템과 유사합니다.
+이는 선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계적 방법들과 그래픽 기능(statistical and graphical techniques)들을 제공합니다. 
 
-본 한글문서에 대한 영어원문의 버전은 @value{VERSION}.
+이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형 (data type), 프로그래밍의 기본 요소들 (programming elements), 그리고 통계 모델링 (statistical modelling)과 그래픽 (graphics)에 대한 정보들이 이 문서에서 다루어 질 것입니다.
+
+본 한글문서에 대한 영어 원문의 버전은 @value{VERSION}입니다.
 
 @value{ISBN-intro}
 
 
 
-본 한국어 문서는 @strong{R Development Translation Teams} (@url{http://developer.r-project.org/TranslationTeams.html}) @strong{Korean} 섹션에서 진행하는 프로젝트의 일환으로 제공되어집니다.  
-본 문서의 역자는 아래와 같습니다.
+문서의 한국어 번역작업은 @strong{R Development Translation Teams} (@url{http://developer.r-project.org/TranslationTeams.html})의 @strong{Korean} 섹션에서 진행하는 프로젝트의 일환이며, 문서의 수정과 재배포를 허락해 주신 @strong{R Development Core Team}에 감사를 드립니다. 
+
+아래의 주요 역자들이 없었다면 이 문서에 대한 작업은 불가능 했을 것입니다 (본 문서의 최초직역은 2009년 07월 @R{}-2.9.1 문서를 토대로 이루어졌으나, R의 버전업에 맞추어 많은 내용의 추가 및 교정이 이루어져 왔습니다).
+또한, 보다 읽기 쉽고 올바른 내용의 전달을 위하여 꾸준한 교정작업이 진행중에 있습니다.
 @itemize @bullet
 @item Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, @email{gnustats@@gmail.com}, 2009 -- 2013 
 @item Lijin Joo (주이진), New York University, New York, New York, U.S.A., @email{lijin.joo@@nyu.edu}, 2009--2013 
 @item Eugene Jung (정우준), Hongik University, Seoul, Korea, @email{muoe78@@gmail.com}, 2009-2013.
 @end itemize 
 
-문서의 수정과 재배포를 허락해 주신 @strong{R Development Core Team}에게 감사를 드립니다.
 @c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
 
-본 문서에 대한 최초의 직역은 2009년 07월에 @R{}-2.9.1를 기초로 이루어졌으나, 많은 수정과 내용의 갱신이 R의 버전이 업드레이드 될 때마다 이루어지고 있습니다. 
-이러한 계속 된 문서의 업데이트는 아래에 기재되신 분들의 문서 각 부분의 번역 및 교정, 그리고 다양한 관점에서의 검토를 통하여 가능할 수 있었습니다. (의도적인 것은 아니지만 문서의 관리상의 실수로 인하여 이 문서에 기여하셨던 분들의 성함이 혹시 빠져 있을 수도 있습니다. 부디 문서의 책임자 @email{gnustats@@korea.gnu.org}에게 직접 연락주시면 감사하겠습니다).
-
+아래와 같은 분들께서 주요 역자들에게 조언과 제안사항을 보내주셨습니다 (의도적인 것은 아니지만 관리상의 실수로 인하여 이 문서에 기여하셨던 분의 성함이 빠져 있을 수도 있습니다.  이 경우 @email{gnustats@@korea.gnu.org}로 꼭 알려주시길 부탁드립니다).
 @itemize @bullet
 @item Heather Kim, University of Manitoba, Winnipeg, Manitoba, Canada, 2010-2011
 @item 정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
-@item 이세연, 이화여자대학교, 2009
+@c @item 이세연, 이화여자대학교, 2009
 @end itemize
-
-본 문서는 언급된 전문용어들에 대한 추가적인 해석, 오역교정, 그리고 이해를 돕기 위한 내용을 추가함으로서, 새로운 R의 배포에 맞추어 지속적으로 관리되어 질 것입니다.
-본 문서에 대한 참여 및 제안은 @email{ihelp-translators@@ihelp.r-forge.r-project.org}으로 보내주신다면 감사하겠습니다. 
+본 한국어 문서에 대한 제안사항 및 조언은 @email{ihelp-translators@@ihelp.r-forge.r-project.org}으로 보내주신다면 감사드리겠습니다. 
 
 @RIcopyright{}
 
