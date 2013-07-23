@@ -85,7 +85,7 @@ p {
 <ul>
 <li><a href="#Symbol-objects">2.1.3.1 심볼릭 객체</a>
 </li></ul>
-<li><a href="#Expression-objects">2.1.4 Expression objects</a>
+<li><a href="#Expression-objects">2.1.4 expression 객체</a>
 <li><a href="#Function-objects">2.1.5 Function objects</a>
 <li><a href="#NULL-object">2.1.6 NULL</a>
 <li><a href="#Builtin-objects-and-special-forms">2.1.7 Builtin objects and  special forms</a>
@@ -709,26 +709,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 
 </div>
 
-<h4 class="subsection">2.1.4 Expression objects</h4>
+<!-- @subsection Expression objects -->
+<h4 class="subsection">2.1.4 expression 객체</h4>
 
-<p>R에서 “expression” 종류의 object를 가질 수 있습니다. Expression은 한 개 이상의 statement들을 포함합니다. Statement는token들의종합적으로 정확한 컬렉션입니다. Expression object들은 부분적인, 하지만 평가되지않은 R statement들을 포함한 특별한 언어 object들 입니다. 가장 큰 다른점은 expression object가 여러개의 그런 expression들을 포함할 수 있다는 것입니다. 다른 더 미묘한 다른점은 다른 언어 object들은 몇몇의 예상되지 못한 경우에서도 평가되는 반면, “expression” 종류의 object들이 오로지 eval로 분명하게 전해질 때만 평가된다는 것입니다. 
-Expression object는 list와 매우 비슷하게 행동하고 이의 구성요소들은 list의 구성요소들과 같은 방법으로 접근되어야만 합니다.
+<!-- In @R{} one can have objects of type @code{"expression"}.  An -->
+<!-- @emph{expression} contains one or more statements.  A statement is a -->
+<!-- syntactically correct collection of -->
+<p><a name="index-token-37"></a><!-- tokens. -->
+<a name="index-expression-object-38"></a><!-- Expression objects are special language objects which contain parsed but -->
+<!-- unevaluated @R{} statements.  The main difference is that an expression -->
+<!-- object can contain several such expressions.  Another more subtle -->
+<!-- difference is that objects of type @code{"expression"} are only -->
+<a name="index-evaluation_002c-expression-39"></a><!-- evaluated when -->
+<!-- explicitly passed to @code{eval}, whereas other language objects may get -->
+<!-- evaluated in some unexpected cases. -->
+R에서는 <code>"expression"</code>이라는 객체의 유형을 가질 수 있습니다. 
+<em>expression</em>은 한 개 또는 그 이상의 statement를 포함합니다. 
+statement는 구문상 올바른 토큰(token)들의 모음(collection)입니다. 
+expression 객체들은 구문이 분석은 되었지만 평가되지는 않은 특별한 랭귀지 객체들입니다. 
+다른 점은 expression 객체들은 여러개의 그런 expression들을 포함할 수 있다는 것입니다. 
+또 다른 미묘한 차이점은 <code>"expression"</code> 유형의 객체들은 오로지 <code>eval</code>에 명시적으로 넘겨졌을 때에만 평가되어지는 반면, 다른 랭귀지 객체들은 일부 예상하지 못한 경우에도 평가될 수도 있습니다.
 
-   <p>In R one can have objects of type <code>"expression"</code>.  An
-<em>expression</em> contains one or more statements.  A statement is a
-syntactically correct collection of
-<a name="index-token-37"></a>tokens. 
-<a name="index-expression-object-38"></a>Expression objects are special language objects which contain parsed but
-unevaluated R statements.  The main difference is that an expression
-object can contain several such expressions.  Another more subtle
-difference is that objects of type <code>"expression"</code> are only
-<a name="index-evaluation_002c-expression-39"></a>evaluated when
-explicitly passed to <code>eval</code>, whereas other language objects may get
-evaluated in some unexpected cases.
-
-   <p>An
-<a name="index-expression-object-40"></a>expression object behaves much like a list and its components should
-be accessed in the same way as the components of a list.
+<!-- An -->
+   <p><a name="index-expression-object-40"></a><!-- expression object behaves much like a list and its components should -->
+<!-- be accessed in the same way as the components of a list. -->
+expression 객체는 리스트(list)와 매우 흡사하게 작동하며, 이들의 구성요소들은 리스의 구성요소에 접근하는 방법으로 접근되어집니다.
 
 <div class="node">
 <a name="Function-objects"></a>
