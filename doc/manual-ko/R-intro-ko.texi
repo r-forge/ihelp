@@ -1,6 +1,6 @@
 @c 
-@c 2013-JUL-23 (Monday)
-@c 1.Begining ~ 5.1 by LIJIN)
+@c 2013-JUL-23 (Tuesday)
+@c 1.Begining ~ 5.5 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -2265,7 +2265,7 @@ act    nsw  nt    qld     sa tas   vic     wa
 @c same way as vectors (including when printing), but the exceptions can
 @c cause confusion.
 
-배열은 1차원일 수 있는데, 이러한 배열의 경우 (출력을 포함하여) 거의 벡터와 같은 방식으로 처리됩니다만, 몇 가지 예외가 있어서 사용에 주의가 필요합니다.
+1차원일 배열의 경우 (출력을 포함하여) 거의 벡터와 같은 방식으로 처리됩니다만, 몇 가지 예외가 있어서 사용에 주의가 필요합니다.
 
 @node Array indexing, Index matrices, Arrays, Arrays and matrices
 @c @section Array indexing.  Subsections of an array
@@ -2285,20 +2285,16 @@ act    nsw  nt    qld     sa tas   vic     wa
 @c 2} array with dimension vector @code{c(4,2)} and data vector containing
 @c the values
 
-배열의 각 구성요소들은 배열의 이름 바로 뒤에 오는 열린 대괄호([)와 닫힌 대괄호(])사이에 위치하여 컴마로 구분된 첨자(subscript)를 이용하여 지정할 수 있습니다. 
-컴마로 구분되어진 각 첨자의 위치에 주로 하나의 숫자들을 이용하여 그 구성요소를 표현하게 되는데, 각 첨자의 위치에 @emph{index vectors}(인덱스 벡터)를 이용하여 배열의 특정한 구성요소들을 선택적으로 지정할 수도 있습니다. 
+배열의 각 구성요소들은 배열 이름 바로 뒤에 대괄호([])사이에 컴마로 구분된 첨자(subscript)를 사용하여 선택할 수 있습니다. 이러한 선택을 좀 더 일반화하면, 한 배열의 첨자를 사용할 위치에 @emph{index vectors}(인덱스 벡터)의 시퀀스를 사용하면 해당 배열의 어떤 부분이라도 선택할 수 있습니다; 하지만 인덱스 벡터의 구성요소가 아무것도 선택되지 않으면 (즉, empty 상태), 해당 첨자가 가질 수 있는 모든 값이 범위로 선택 됩니다.
 
-먼저, 배열의 첨자에 인덱스 벡터의 구성요소가 특별히 지정되지 않은 상태 (즉, 비어있는 상태)를 생각해 봅니다.
-첨자에 아무것도 지정되지 않았다면 배열의 해당첨자에 해당하는 차원이 가질 수 있는 모든 값(즉, 해당 첨자가 위치하는 차원의 크기 또는 차원을 구성하는 요소의 개수)을 의미하게 됩니다.
-이해를 돕기 위해 위에서 사용한 @code{a}라는 벡터를 다시 살펴봅니다.
-만약, @code{a[2,,]}라는 배열의 첨자들은 @code{[2,,]}로서 세 개의 숫자의 조합으로 되어 있으나, 첫번째 첨자를 제외하고 두번째와 세번째 첨자가 비어 있습니다.
-이것은 @code{a}라는 배열의 차원은 @c{c(3,4,2)}였으므로, 첫번째 첨자가 @math{2}에 해당하고 아래와 같이 차원벡터 @code{c(4,2)}에 해당하는 데이터 엔트리로만 이루어진 벡터를 의미하게 됩니다. 
-그러나, 출력시에는 차원벡터의 길이에 맞추어 @math{4}행 @math{2}열을 가진 행렬의 형식으로 보여지게 됩니다.
+이해를 돕기 위해 앞의 예제의 @code{a}라는 벡터를 다시 사용하면, @code{a[2,,]}는 @code{c(4,2)}의 차원벡터를 갖는 @eqn{4 \times 2, 4 * 2} 배열이며, 순서대로 다음의 값들을 포함하는 데이터 벡터이기도 합니다.
 
 @example
 c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
   a[2,1,2], a[2,2,2], a[2,3,2], a[2,4,2])
 @end example
+
+이것은 원래 배열 @code{a}의 차원이 @c{c(3,4,2)}였으므로, 첫번째 첨자만 @math{2}가 고정되면, 나머지 차원에서는 모든 범위가 선택되기 때문입니다. 따라서 차원벡터의 길이에 맞추어 @math{4}행 @math{2}열을 가진 행렬처럼 출력된 것 입니다.
 
 @noindent
 @c in that order.  @code{a[,,]} stands for the entire array, which is the
@@ -2307,9 +2303,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c For any array, say @code{Z}, the dimension vector may be referenced
 @c explicitly as @code{dim(Z)} (on either side of an assignment).
 
-만약, @code{a[,,]}와 같이 모든 첨자를 지정하지 않는다면 @code{a}라는 배열 자체를 의미하게 됩니다. 
-이러한 벡터의 차원은 @code{dim()}이라는 함수를 이용하여 알 수 있습니다. 
-예를들어, @code{Z}라는 배열이 있다면 이 배열의 차원은 @code{dim(Z)}를 통하여 확인이 가능합니다. 
+@code{a[,,]}는 배열 @code{a} 그 자체를 의미하는데, 이것은 첨자를 전혀 사용하지 않고 그냥 @code{a}만 사용한 것과 같습니다. 어떤 배열이 주어지면, 예를 들어 @code{Z}라는 배열이 있다면, 이 배열의 차원벡터는 함수 @code{dim(Z)}를 사용하여 확인 가능합니다. 
+ 
 
 @c Also, if an array name is given with just @emph{one subscript or index
 @c vector}, then the corresponding values of the data vector only are used;
@@ -2317,9 +2312,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c however, if the single index is not a vector but itself an array, as we
 @c next discuss.
 
-또한, 만약 배열의 이름 뒤에 @math{a[3]} 또는 @math{a[3:10]}과 같이 @emph{오로지 한개의 첨자 또는 인덱스 벡터}가 함께 주어지게 된다면 이 인덱스에 해당하는 데이터 엔트리로만 구성된 벡터가 사용되게 됩니다.
-즉, 이러한 경우에는 차원벡터가 무시되는 것입니다.
-만약, 인덱스가 배열의 형태로서 주어질 경우도 있으며, 이에 대해서는 다음 섹션에서 다룰 것입니다. 
+또, 만약 배열의 이름 뒤에 @math{a[3]} 또는 @math{a[3:10]}과 같이 @emph{오직 한개의 첨자 또는 인덱스 벡터}가 사용되면, 이 첨자와 인덱스에 해당하는 데이터 엔트리로만 구성된 벡터가 선택 됩니다: 따라서, 이 경우에는 차원벡터가 무시됩니다. 하지만, 인덱스가 벡터가 아니라 배열로 지정될 수도 있으며, 여기에 대해서는 다음 부분에서 다루겠습니다. 
 
 @menu
 * Index matrices::
@@ -2342,23 +2335,24 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c example we have a @math{4} by @math{5} array @code{X} and we wish to do
 @c the following:
 
-배열의 첨자에는 인덱스 벡터외에도 불특정 위치에 있는 배열의 구성요소들에 접근하여 새로운 값을 대입하거나, 이들의 값을 뽑아내고자 할때 @emph{index matrix}(인덱스 행렬)을 사용할 수 있습니다. 
-아래의 예제와 같이 배열의 크기가 @math{4}행 @math{5}열로 구성된 행렬 형식의 배열 @code{X}가 있다고 가정하고, @code{X}에 대해서 다음의 것을 수행하고자 합니다.
+배열의 첨자가 오는 위치에 인덱스 벡터 뿐 아니라, 행렬 형태인 @emph{index matrix}(인덱스 행렬)을 사용할 수 있으며, 배열 내 (같은 행이나 열이 아니라)여러 위치에 흩어져 있는 여러 개의 구성 요소들에 하나의 벡터 안에 든 여러 개의 새로운 값들을 동시에 입력하거나, 배열 내 여러 위치의 구성요소들을 하나의 벡터로 읽어내기 위해 사용합니다.
+
+다음의 행렬을 사용한 예제를 통해 좀 더 자세히 설명하겠습니다. 이중(doubly) 인덱스를 사용하는 배열의 경우, 이 배열의 인덱스 행렬을 2개의 열과 필요한 만큼(데이터의 길이)의 행으로 구성됩니다. 이 인덱스 행렬의 엔트리들은 이중 인덱스 된 배열의 행과 열의 인덱스에 해당합니다. 예를 들어, 크기가 @math{4}행 @math{5}열인 배열 @code{X}가 있다고 가정하고, @code{X}에 대해서 다음의 연산을 수행한다고 합시다:
 
 @itemize @bullet
 @item
 @c Extract elements @code{X[1,3]}, @code{X[2,2]} and @code{X[3,1]} as a
 @c vector structure, and
-@code{X[1,3]}, @code{X[2,2]} 그리고 @code{X[3,1]}의 위치에 해당하는 구성요소들만 뽑아내어 벡터의 형태로 구성하려 합니다.
+
+@code{X[1,3]}, @code{X[2,2]} 그리고 @code{X[3,1]}의 위치에 해당하는 구성요소들로만 구성된 벡터를 만듭니다.
 
 @item
 @c Replace these entries in the array @code{X} by zeroes.
-그리고, 배열 @code{X}의 뽑아낸 위치에 있는 데이터를 0의 값으로 대체하고자 합니다. 
+그리고, 이렇게 따로 추출한 @code{X}의 엔트리를 모두 @math{0}으로 대체 합니다. 
 @end itemize
 @c In this case we need a @math{3} by @math{2} subscript array, as in the
 @c following example.
-이를 수행하기 위해서는 첨자의 위치에 놓일 @math{2}행 @math{2}열로 구성된 배열이 필요합니다. 
-이제 아래의 명령을 따라 읽어보시면 이해가 쉬울 것입니다.
+위의 작업을 수행하기 위해서는 아래 예제와 같이 첨자의 위치에 사용될 @math{3} 행 @math{2} 열의 첨자 배열이 필요합니다. 
  
 @example
 > x <- array(1:20, dim=c(4,5))   @r{# 4행 5열로 구성된 2차원 배열을 생성합니다.}                                  @c @r{Generate a 4 by 5 array.}
@@ -2369,14 +2363,14 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 [3,]    3    7   11   15   19
 [4,]    4    8   12   16   20
 > i <- array(c(1:3,3:1), dim=c(3,2))
-> i                             @r{# i 이라는 3행 2열의 인덱스행렬을 생성합니다.}                                  @c @r{@code{i} is a 3 by 2 index array.}
+> i                             @r{# i 라는 3행 2열의 인덱스 행렬을 생성합니다.}                                  @c @r{@code{i} is a 3 by 2 index array.}
      [,1] [,2]
 [1,]    1    3
 [2,]    2    2
 [3,]    3    1
-> x[i]                          @r{# 인덱스행렬 i를 이용하여 원하는 값만 뽑아냅니다}                                 @c @r{Extract those elements}
+> x[i]                          @r{# 인덱스 행렬 i를 이용하여 원하는 값만 선택 합니다.}                                 @c @r{Extract those elements}
 [1] 9 6 3
-> x[i] <- 0                     @r{# 인덱스행렬 i에 해당하는 값들을 0으로 교체합니다.}                                 @c @r{Replace those elements by zeros.}
+> x[i] <- 0                     @r{# 인덱스 행렬 i에 해당하는 값들을 0으로 교체합니다.}                                 @c @r{Replace those elements by zeros.}
 > x
      [,1] [,2] [,3] [,4] [,5]
 [1,]    1    5    0   13   17
@@ -2391,9 +2385,9 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c ignored, and rows containing an @code{NA} produce an @code{NA} in the
 @c result.
 
-인덱스행렬의 구성요소는 음의 값을 가질 수 없으나, @code{NA}와 0의 값은 사용할 수 있습니다.
-만약, 인덱스행렬이 0의 값을 가지고 있는 행이 발견된다면, 해당 행은 무시되어 질 것입니다.
-이와 유사하게, @code{NA}를 포함하는 행이 발견된다면, 해당 행은 모두 @code{NA}를 출력하게 됩니다.
+인덱스 행렬의 구성요소는 음의 값을 가질 수 없으나, @code{NA}와 @math{0}은 사용할 수 있습니다.
+만약, 인덱스 행렬에 @math{0}을 포함한 행이 있다면, 해당 행은 무시될 것입니다.
+이와 유사하게, @code{NA}를 포함하는 행이 있다면, 해당 행은 모두 @code{NA}로 출력될 것 입니다.
 
 @c As a less trivial example, suppose we wish to generate an (unreduced)
 @c design matrix for a block design defined by factors @code{blocks}
@@ -2401,9 +2395,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c suppose there are @code{n} plots in the experiment.  We could proceed as
 @c follows:
 
-다소 쉬운 예제는 아니지만, @code{b}개의 수준을 가지고 있는 @code{blocks}이라는 요인과 @code{v}개의 수준을 가지고 있는 @code{varieties}라는 요인에 의하여 정의되는 블락디자인 (block design)에 사용될 디자인 매트릭스(design matrix)를 생성하고자 합니다. 
-더 나아가, 실험에는 @code{n}개의 플랏이 있다고 가정합니다. 
-아래와 같이 이를 수행할 수 있을 것입니다.
+중요한 예제는 아니지만, @code{b} 개의 수준을 가진 @code{blocks}이라는 요인과 @code{v} 개의 수준을 가지고 있는 @code{varieties} 변수로 정의되는 블록 디자인(block design)에 사용될 (비환원) 디자인 매트릭스(design matrix)를 생성한다고 가정합시다. 더 나아가, 이 실험은 @code{n}개의 구획(plot)을 포함한고 가정합시다. 
+이 실험의 디자인 매트릭스는 아래와 같이 생성합니다:
 
 @example
 > Xb <- matrix(0, n, b)
@@ -2417,7 +2410,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c To construct the incidence matrix, @code{N} say, we could use
 
-만약 @code{N}이라는 인시던스 행렬(incidence matrix)를 생성하고자 한다면 아래와 같이 할 수 있습니다.
+만약 @code{N}이라는 인시던스 행렬(incidence matrix)를 생성하고자 한다면, 아래와 같이 할 수 있습니다.
 
 @example
 > N <- crossprod(Xb, Xv)
@@ -2426,7 +2419,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c However a simpler direct way of producing this matrix is to use
 
-그러나, @code{table()}함수를 이용하면 보다 쉬운 방법으로 위에서 얻은 동일한 인시던스 행렬을 얻을 수 있습니다.
+그러나, 다음과 같이 @code{table()}함수를 이용하면 좀 더 쉽게 위에서 얻은 것과 동일한 행렬을 얻을 수 있습니다.
 
 @findex table
 
@@ -2438,8 +2431,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c logical or character matrix) supplied as a matrix is treated as an
 @c indexing vector.
 
-인덱스행렬은 반드시 수치형으로 구성되어야 합니다.
-만약, 논리형 또는 문자형 행렬의 형식으로 제공된 인덱스행렬이라면 단순히 인덱스 벡터로서 간주되게 됩니다.
+인덱스 행렬은 반드시 수치형으로 구성되어야 합니다: 만약, 논리형이나 문자형 같이 다른 형식으로 된 행렬이 입력되면 인덱스 벡터로 간주 됩니다.
 
 @node The array() function, The outer product of two arrays, Index matrices, Arrays and matrices
 @c @section The @code{array()} function
@@ -2450,7 +2442,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c be constructed from vectors by the @code{array} function, which has the
 @c form
 
-배열은 벡터에 @code{dim}이라는 속성을 부여하여 생성하는 방법외에도, 아래와 같이 @code{array} 함수를 이용하여 생성이 가능합니다.
+배열은 벡터에 @code{dim}이라는 속성을 부여하여 생성하는 방법 외에도, 아래와 같이 @code{array} 함수를 이용하여 생성할 수도 있습니다.
 
 @example
 > Z <- array(@var{data_vector}, @var{dim_vector})
@@ -2459,19 +2451,18 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c For example, if the vector @code{h} contains 24 or fewer, numbers then
 @c the command
 
-예를 들어 @code{h}가 24개 또는 그 보다 적은 개수의 숫자로 구성된 벡터라고 가정한다면, 
-아래의 표현식은 @math{3}행 @math{4}열로 구성된 @math{2}개의 행렬을 3차원 공간에 배열 한 결과를 @code{Z}에 대입하였음을 알 수 있습니다.
+예를 들어, 벡터 @code{h}가 24개 또는 그 보다 적은 수의 숫자로 구성되어 있다면, 
+아래 명령문은 @math{3} 행 @math{4} 열로 구성된 @math{2}개의 3차원 배열을 @code{Z}로 지정합니다. 
 
 @example
 > Z <- array(h, dim=c(3,4,2))
 @end example
 
-위에서는 배열 @code{Z}를 @code{array}함수를 이용하여 생성하였으나, 아래의 표현식은 벡터 @code{h}의 속성 @code{dim}을 변경하여 배열 @code{Z}와 동일한 벡터를 생성함을 보여줍니다.
-
 @noindent
 @c would use @code{h} to set up @math{3} by @math{4} by @math{2} array in
 @c @code{Z}.  If the size of @code{h} is exactly 24 the result is the same as
 
+특히  @code{h}가 정확히 24개의 구성요소를 가지고 있다면, 위 명령문의 실행 결과는 아래 명령문의 실행 결과와 같습니다.
 @example
 > Z <- h ; dim(Z) <- c(3,4,2)
 @end example
@@ -2481,17 +2472,18 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c but @code{dim(h) <- c(3,4,2)} would signal an error about mismatching
 @c length.
 
-그런데, 만약 벡터 @code{h}가 24보다 적은 수의 구성원소를 가진다면, @code{array}함수 사용시 24개라고 지정된 배열의 크기를 맞추기 위해서 벡터 @code{h}의 첫번째 원소부터 재사용하게 됩니다.
-이 재활용 규칙(recycling rule)에 대해서는 @pxref{The recycling rule}를 살펴보시길 바랍니다.
-그러나, @code{dim(h) <- c(3,4,2)}와 같이 @code{dim} 속성을 변경하여 배열을 생성하고자 할 때는 에러를 보여줄 것 입니다.
+하지만, 벡터 @code{h}가 24 개 보다 적은 수의 구성요소를 가지면, @code{array} 함수 사용시 24로 지정된 배열의 크기를 맞추기위해 벡터 @code{h}의 첫번째 원소부터 재사용하게 됩니다.
+이런 재활용 규칙(recycling rule)에 대해서는 @pxref{The recycling rule}를 살펴보시길 바랍니다.
+그러나, @code{dim(h) <- c(3,4,2)}와 같이 @code{dim} 속성을 변경하고자 할 때는 지정된 길이가 다르기 때문에 에러 메세지가 나타날 것 입니다.
 
 @c As an extreme but common example
-아래의 표현식은 다소 극단적인 경우이지만, 흔히 사용되는 예제이기도 합니다.
-이는 배열 @code{Z}의 모든 구성요소가 0 값을 가지는 특수한 경우입니다.
+아래는 다소 극단적이긴 하지만, 흔히 볼 수 있는 예제 입니다.
 
 @example
 > Z <- array(0, c(3,4,2))
 @end example
+
+위의 할당으로 배열 @code{Z}의 모든 구성요소는 0이 됩니다.
 
 @noindent
 @c makes @code{Z} an array of all zeros.
@@ -2501,17 +2493,19 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c in @code{h}, and @code{Z[]} with an empty subscript or @code{Z} with no
 @c subscript stands for the entire array as an array.
 
-여기에서의 @code{dim(Z)}는 차원벡터를 의미하게 되며, @code{Z[1:24]}는 벡터 @code{h}와 동일한 데이터벡터를 의미합니다. 
-@code{Z[]}와 같이 아무런 첨자를 가지지 않는 경우는 단순히 @code{Z}라고 배열이름을 사용하는 것은 @code{Z}의 모든 구성요소로 이루어진 배열 그 자체를 의미하게 됩니다.
+여기에서 @code{dim(Z)}은 차원벡터 @code{c(3,4,2)}를 의미하며, @code{Z[1:24]}는 벡터 @code{h}와 동일한 데이터 벡터를 의미 합니다. 또, @code{Z[]}와 같이 아무런 첨자를 갖지 않는 경우나 단순히 @code{Z}라고 배열 이름만 사용하는 것은 @code{Z}의 모든 구성요소로 이루어진 배열 그 자체를 의미 합니다.
 
 @c Arrays may be used in arithmetic expressions and the result is an array
 @c formed by element-by-element operations on the data vector.  The
 @c @code{dim} attributes of operands generally need to be the same, and
 @c this becomes the dimension vector of the result.  
 
-배열에서의 산술연산은 기본적으로 배열을 구성하는 원소단위에서 이루어지게 됩니다.
-이때 각각의 배열이 가지는 @code{dim}이라는 차원벡터의 속성이 일치해야지만, 동일한 차원을 가진 결과값을 얻을 수 있습니다.
-따라서 아래의 예제는 @code{A}, @code{B}, @code{C}가 모든 같은 @code{dim}속성을 가지고 있다면, 이를 원소단위에서 연산을 수행한 뒤에 배열 @code{D}에 대입함을 의미하는 표현식입니다. 
+배열에 산술연산을 적용하면 기본적으로 배열을 구성하는 데이터 벡터안에 든 원소 단위별로 연산이 이루어집니다.
+이때 연산에 사용되는 각 배열(피연산자, operand)의 @code{dim} 속성이 모두 일치해야만, 원래와 동일한 차원벡터를 가진 결과물을 얻을 수 있습니다.
+
+따라서 만약 @code{A}, @code{B}, @code{C}가 모든 같은 @code{dim} 속성을 가진 배열이면, 
+아래와 같이 데이터 벡터의 원소 단위별로 연산을 수행한 결과가 같은 차원벡터를 가진 배열 @code{D}로  저장 됩니다. 
+
 @c So if @code{A},
 @c @code{B} and @code{C} are all similar arrays, then
 
@@ -2524,7 +2518,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c the given element-by-element operations.  However the precise rule
 @c concerning mixed array and vector calculations has to be considered a
 @c little more carefully.
-배열과 벡터를 혼용하여 연산을 수행하는 경우에는 많은 주의가 요구됩니다.
+하지만 배열과 벡터를 함께 사용하는 연산을 정확히 사용하기 위해서는 좀 더 주의해야할 부분이 많습니다.
 
 
 @menu
@@ -2541,28 +2535,30 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c references.  From experience we have found the following to be a reliable
 @c guide.
 
-산술연산시 벡터와 배열의 혼용이 있는 경우에 많은 주의가 요구됩니다.
-이것이 어떻게 수행되는가를 설명하기는 다소 복잡하지만, 우리의 경험을 바탕으로 아래와 같은 내용을 알려드립니다.
+벡터와 배열을 동시에 사용해서 원소 단위별로 연산을 수행할 때 적용되는 정확한 규칙을 설명하는 것은 꽤 까다롭고 어려운 편 입니다. 
+하지만 지금까지의 경험을 바탕으로 한 다음의 내용은 꽤 쓸만한 길잡이가 될 것 입니다.
 
 @itemize @bullet
 @item
 @c The expression is scanned from left to right.
-표현식에 있는 수식을 평가하는 것은 좌에서 우로 이루어집니다.
+표현식에 사용된 수식은 왼쪽부터 오른쪽으로 입력 됩니다.
 
 @item
 @c Any short vector operands are extended by recycling their values until
 @c they match the size of any other operands.
-연산에 이용되는 벡터의 길이가 서로 다른 경우에는 길이가 짧은 벡터의 원소를 재활용하여 길이가 긴 벡터의 길이를 맞추게 됩니다.
+연산에 사용되는 벡터들의 길이가 서로 다른 경우, 길이가 짧은 벡터의 원소를 재활용하여 길이가 긴 벡터의 길이를 맞추게 됩니다.
 
 @item
 @c As long as short vectors and arrays @emph{only} are encountered, the
 @c arrays must all have the same @code{dim} attribute or an error results.
-동일한 @code{dim}속성을 가지지 않는 배열끼리 연산이 될 경우에는 에러가 발생합니다.
+비교적 길이가 짧은 벡터와 배열들만 연산에 사용될 경우에는, 모든 배열이 같은 @code{dim} 속성을 갖지 않으면 에러가 발생합니다.
 
 @item
 @c Any vector operand longer than a matrix or array operand generates an error.
-벡터의 길이가 행렬 또는 배열의 길이보다 긴 경우에도 에러가 발생합니다. 
+피연산자 벡터의 길이가 다른 피연산자 행렬이나 배열의 길이 보다 긴 경우에도 에러가 발생합니다. 
 
+연산 중 배열의 구조가 그대로 유지되고, 에러나 벡터로의 강제 전환 같은 일이 일어나지 않는다면, 연산의 결과물은 피연산자 배열들이 공통으로 갖는 @code{dim} 속성을 그대로 유지하는 배열이 될 것 입니다.
+ 
 @c @item
 @c If array structures are present and no error or coercion to vector has
 @c been precipitated, the result is an array structure with the common
@@ -2571,7 +2567,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @node The outer product of two arrays, Generalized transpose of an array, The array() function, Arrays and matrices
 @c @section The outer product of two arrays
-@section 두 배열의 외적
+@section 두 배열의 외적 (outer product)
 @cindex Outer products of arrays
 
 @c An important operation on arrays is the @emph{outer product}.  If
@@ -2582,10 +2578,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c with those of @code{b}.  The outer product is formed by the special
 @c operator @code{%o%}:
 
-배열의 연산에서 가장 중요한 것은 아래와 같이 @code{%o%}라고 정의된 연산자를 이용하여 연산이 이루어지는 @emph{외적(outer product)}이라는 것입니다. 
-예를 들어 @code{a}와 @code{b}이라는 두개의 수치형 배열이 있다고 가정합니다.
-이 두 배열의 외적(outer product)의 결과로 얻어지는 배열에 대한 차원은 @code{c(dim(a), dim(b))}이어야 하고,
-데이터 벡터는 배열 @code{a}의 모든 구성요소와 @code{b}의 구성요소로 얻어진 모든 조합의 곱이 됩니다.
+배열에 적용되는 연산 중 중요한 것 중 하나는 @code{%o%}로 정의된 연산자를 사용하는 @emph{외적 (outer product)}일 것 입니다. 예를 들어, @code{a}와 @code{b}이라는 두개의 수치형 배열이 존재할 경우, 이 두 배열에 외적(outer product)은 이 두 배열의 차원을 모두 포함한 @code{c(dim(a), dim(b))}를 차원 벡터로 갖고, 배열 @code{a}의 구성요소와 배열 @code{b}의 구성요소의 모든 가능한 조합을 곱한 값을 데이터 벡터로 갖는 배열 입니다.
 
 @findex %o%
 
@@ -2595,7 +2588,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c An alternative is
 
-외적에 대하여 위에서 수행한 것과 동일한 결과를 아래와 같이 @code{outer}라는 함수를 이용하여 얻을 수 있습니다.
+외적을 구하기 위해 위에서 수행한 것과 같은 결과를 아래와 같이 @code{outer}라는 함수를 사용해서도 얻을 수 있습니다.
 
 @example
 > ab <- outer(a, b, "*")
@@ -2609,8 +2602,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c defined by the @R{} vectors @code{x} and @code{y} respectively, we could
 @c proceed as follows:
 
-이 외적(outer product)이라는 연산은 두 개의 변수와 어떤 임의의 함수가 있을 때 유용하게 사용될 수 있습니다.
-예를 들어, @code{x}- 와 @code{y}-좌표평면상에 있는 모든 좌표에 대하여 @eqn{f(x;y)=cos(y)/(1+x^2)}이라는 함수가 가질 수 있는 모든 값을 아래와 같은 방법으로 쉽게 구할 수 있습니다. 
+이 외적(outer product)에서의 곱하기 연산은 두 개의 변수를 대상으로 수행하는 다른 어떤 함수로도 대체 가능합니다.
+예를 들어, @R{}에서  두 개의 벡터 @code{x}- 와 @code{y}- 를 각각의 축으로 정의한 좌표 평면상 존재하는  모든 점들에 대해 @eqn{f(x;y)=cos(y)/(1+x^2)}과 같은 함수를 적용하는 방법은 다음과 같습니다. 
 
 @example
 > f <- function(x, y) cos(y)/(1 + x^2)
@@ -2623,28 +2616,28 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c own @R{} functions will be considered further in @ref{Writing your own
 @c functions}.
 
-외적에 대해서 알아두어야 것은 당연히 함수의 입력값들에 대한 교환법칙이 성립하지 않는다(non-commutative)는 것입니다.
-이에 대해서는 @ref{Writing your own functions}에서 살펴볼 사용자 정의함수를 만들어 이용하는 법에 대해서 더 다루어지게 될 것입니다.
+두 개의 벡터를 사용해서 외적을 할 때 주의할 점은, 결과물이 이중 첨자(doubly subscriped) 배열이라는 점입니다. (이것은 행렬이기도 합니다.) 외적 연산에 대해서는 교환법칙이 성립하지 않는다(non-commutative)는 점을 주의하시기 바랍니다. 사용자 정의 @R{} 함수를 만드는 법에 대해서는 @ref{Writing your own functions}에서 더 다루게 될 것입니다.
 
 @c @subsubheading An example: Determinants of 2 by 2 single-digit matrices
-@subsubheading 예제: 2행 2열인 행렬의 행렬계수 (determinant) 계산하기
+@subsubheading 예제: 2행 2열인 행렬의 행렬식 (determinant) 계산하기
 
 @c As an artificial but cute example, consider the determinants of @math{2}
 @c by @math{2} matrices @math{[a, b; c, d]} where each entry is a
-@c non-negative integer in the range @math{0, 1, @dots{}, 9}, that is a
+@c nonnegative integer in the range @math{0, 1, @dots{}, 9}, that is a
 @c digit.
 
-다소 인위적이지만, 이해하기 쉬운 예를 하나 들어봅니다.
-먼저, @math{[a, b; c,d]}의 형태를 가지는 @math{2}행 @math{2}열의 행렬이 있으며, 이 행렬의 각 구성요소는 음수 아닌 정수값을 @math{0, 1, @dots{}, 9}의 범위내에서 가질 수 있다고 가정합니다.
-또한, 각각의 요소들이 가질 수 있는 값은 균등한 확률(uniformly at random)으로 독립적(independently)으로 얻어진다고 가정합니다.
-이렇게 주어진 가정하에서 위에서 설명한 형식을 가지는 행렬이 가질 수 있는 모든 행렬계수의 값에 대한 확률분포를 찾은 뒤 이를 플랏해보고자 한다면, 아래에서 보이는 것과 같이 @code{outer()} 함수를 두번 사용함으로서 해결할 수 있습니다.
-행렬계수 (determinant)는 @math{ad-bc}이라는 공식으로 계산할 수 있습니다.
+다소 작위적이긴 하지만, 이해하기 쉬운 예를 하나 들어봅시다.
+먼저, @math{[a, b; c, d]}의 형태를 갖는 @math{2} 행 @math{2} 열의 행렬을 가정하고, 이 행렬의 각 구성요소는 음수가 아닌 (nonegative) @math{0, 1, @dots{}, 9} 범위의 한자리의 정수값이라고 합시다.
 
 @c The problem is to find the determinants, @math{ad - bc}, of all possible
 @c matrices of this form and represent the frequency with which each value
 @c occurs as a @emph{high density} plot.  This amounts to finding the
 @c probability distribution of the determinant if each digit is chosen
 @c independently and uniformly at random.
+
+여기서 우리의 과제는 모든 존재 가능한 행렬들에 대해 @math{ad - bc}으로 계산되는 행렬식(determinant)을 계산해서, 행렬식이 갖는 모든 값의 빈도를  @emph{하이 확률 빈도 (high density)} 플롯으로 그리는 것입니다. 여기서 만약 각 정수들(행렬의 구성요소)의 선택은 균등한 확률(uniformly at random)로 독립적(independently)으로 이루어졌다고 가정하면, 이 작업은 행렬식(determinant)의 확률 분포를 찾는 것이 됩니다. 
+ 
+이 복잡한 과제를 간단히 수행하는 방법 중 하나는 아래와 같이 @code{outer()} 함수를 두번 사용하는 것 입니다:
 
 @c A neat way of doing this uses the @code{outer()} function twice:
 
@@ -2661,18 +2654,17 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c discussed in @ref{Loops and conditional execution}, is so inefficient as
 @c to be impractical.
 
-여기에서 행렬계수가 가질 수 있는 모든 값에 대한 도수분포표를 가리키고 있는 @code{fr}를 주의깊게 살펴보아야 합니다.
-@code{fr}이 가지는 @code{name} 속성은 행렬계수가 가지는 모든 값의 범위를 나타냅니다.
-이 속성을 @code{plot}에서 사용하고자 할 때에는 이 속성이 가지는 값들은 모두 문자형으로 저장되어 있기 때문에 수치형으로 강제형변환을 해야합니다.
-본래 이 문제를 가장 분명한 방식으로 해결하는 것은 @code{for}라는 반복문을 이용하는 것인데, 이것은 비효율적이므로 실용적이지 못합니다. 
-그러나, 반복문에 대해서는 @ref{Loops and conditional execution}에서 다루도록 할 것입니다.
+여기서 행렬식이 갖는 모든 값의 도수분포표인 @code{fr}의 @code{names} 속성이 행렬식이 갖는 값들의 범위를 나타내기 위해 수치형으로 강제형변환 되었다는 점을 주의깊게 살펴보시기 바랍니다. 
+이러한 수치로의 전환하는 가장 "쉬운" 방법은 아마도 @ref{Loops and conditional execution} 편에서 다루게 될@code{for}라는 반복문을 이용하는 것인데, 이 방법은 매우 비효율적이라 실용적이지 못합니다. 아마도 전환하게 될 행렬이 20개 중의 하나 꼴로 특이(singular)행렬이라는 점 역시 놀라울 것 같네요. 
 
 @c It is also perhaps surprising that about 1 in 20 such matrices is
 @c singular.
 
+
+
 @node Generalized transpose of an array, Matrix facilities, The outer product of two arrays, Arrays and matrices
 @c @section Generalized transpose of an array
-@section 배열의 전치를 일반적인 방법으로 수행하는 법
+@section 배열 일반화된 전치(generalized transpose)
 @cindex Generalized transpose of an array
 
 @c The function @code{aperm(a, perm)}
@@ -2686,10 +2678,11 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c transposition for matrices.  Indeed if @code{A} is a matrix, (that is, a
 @c doubly subscripted array) then @code{B} given by
 
-@code{aperm(a, perm)}이라는 함수는 @code{a}라는 배열의 차원을 재배치하는 역할을 합니다.
+@code{aperm(a, perm)}는 배열 @code{a}를 순열배치 (permutation)하는 함수 입니다.
 @findex aperm
-@code{perm}이라는 인자는 반드시 @math{@{1, @dots{}, k@}}범위 안에 있는 정수들의 조합이어야 합니다.
-여기에서 @math{k}는 배열 @code{a}이 가지는 첨자의 개수입니다.
+
+@code{perm} 입력 인자(argument,함수의 parameter와 거의 비슷한 의미)는 반드시 @math{@{1, @dots{}, k@}} 범위 내의 정수들의 조합이어야 합니다. 여기서 @math{k}는 배열 @code{a}이 갖는 첨자들의 개수입니다.
+
 이 인자는 첨자의 위치를 변경하여 배열이 가지는 구성요소들을 재배열하는 정보를 제공해주는 것입니다.
 따라서, 이 함수의 사용결과는 @code{a}와 동일한 크기를 가지는 배열을 돌려주지만, 본래의 배열 @code{a}가 가지는 차원 @code{perm[j]}의 위치에 해당하는 데이터들이 새로이 주어진 @code{j}번째 차원의 위치에 해당하는 구성요소들로 재배치 되었음을 아셔야 합니다.
 

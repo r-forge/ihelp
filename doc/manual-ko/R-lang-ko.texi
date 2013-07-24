@@ -519,14 +519,6 @@ expression 객체는 리스트(list)와 매우 흡사하게 작동하며, 이들
 
 @node Function objects, NULL object, Expression objects, Basic types
 @subsection Function objects
-R function들에서의 object들은 다른 object들과 같은 방법으로 다뤄질 수 있습니다. Function들 (혹은 더 자세하게 이야기 하자면, function closure들)은 세 개의 기본 구성요소들을 가지고 있습니다: formal argument list, body와 환경. Argument list는 comma로 분리된 argument들의 목록입니다. Argument는 부호일 수도 있고, 혹은 ‘symbol = default’ 구성, 혹은 특별한 argument ‘...’일 수도 있습니다. 두 번째 argument의 형태는 argument의 기본 값을 지정하기위하여 사용됩니다 이 값은 argument에 대한 어떠한 값도 지정되지 않고 function이 불러졌을 떄 사용될 것입니다. ‘...’ argument는 특별하며 argument들의 갯수라도 포함할 수 있습니다. 이는 보통 argument의 갯수를 모르거나 argument들이 다른 function으로 넘어갈 것인 경우에 쓰여집니다.
-Body는 부분적인 R statement입니다. 이는 보통 brace들 안의 statement들의 집합체이지만, 이는 단일 statement, 부호, 혹은 심지어 constant일 수도 있습니다. 
-Function의 환경은 function이 생성되었을 때 활성적이엇던 환경입니다. 환경안에 묶여있는 모든 부호들은 captured되어있고 function에 사용가능합니다. 이 환경안의 이와 같은 function의 코드의 조합과 binding들은 functional programming theory에서의 용어인 ‘function closure’이라고 불립니다. 이 문서에서는 일반적으로 ‘function’이라는 용어를 사용하지만, attached (첨부/소속) 환경의 중요성을 강조하기위해서는 ‘closure’을 사용합니다.
-formals, body, 그리고environment  구성을 사용하여 closure object의 세개의 파트들을 extract하고 조작하는 것이 가능합니다 (세 가지 모두가 assignment의 왼쪽에서도 사용가능합니다). 이들의 마지막 것은 원하지 않는 환경 capture를 없애기위해 사용될 수 있습니다.  
-Function이 불러졌을때, enclosure( Environment objects를 참고)이 function closure에서의 환경인 (evaluation environment라고 불리는) 새로운 환경이 창출됩니다. 이 새로운 환경은 function으로의 평가되지않은 argument들로 처음에는 이루어져 있습니다; evaluation이 진행됩어따라, local 값들이 그 안에서 생성됩니다. 
-as.list와 as.function을 사용하는 list structure들로와 list structure들로 부터 function들을 전환하는 기능도 있습니다. 이들은 S와의 호환을 제공하고 그들의 사용을 막기위해 포함되었습니다. 
-
-
 
 @cindex function
 In @R{} functions are objects and can be manipulated in much the same
@@ -545,10 +537,13 @@ value specified for that argument.  The @samp{...}  argument is special
 and can contain any number of arguments.  It is generally used if the
 number of arguments is unknown or in cases where the arguments will be
 passed on to another function.
+R function들에서의 object들은 다른 object들과 같은 방법으로 다뤄질 수 있습니다. Function들 (혹은 더 자세하게 이야기 하자면, function closure들)은 세 개의 기본 구성요소들을 가지고 있습니다: formal argument list, body와 환경. Argument list는 comma로 분리된 argument들의 목록입니다. Argument는 부호일 수도 있고, 혹은 ‘symbol = default’ 구성, 혹은 특별한 argument ‘...’일 수도 있습니다. 두 번째 argument의 형태는 argument의 기본 값을 지정하기위하여 사용됩니다 이 값은 argument에 대한 어떠한 값도 지정되지 않고 function이 불러졌을 떄 사용될 것입니다. ‘...’ argument는 특별하며 argument들의 갯수라도 포함할 수 있습니다. 이는 보통 argument의 갯수를 모르거나 argument들이 다른 function으로 넘어갈 것인 경우에 쓰여집니다.
+
 
 The body is a parsed @R{} statement.  It is usually a collection of
 statements in braces but it can be a single statement, a symbol or even
 a constant.
+Body는 부분적인 R statement입니다. 이는 보통 brace들 안의 statement들의 집합체이지만, 이는 단일 statement, 부호, 혹은 심지어 constant일 수도 있습니다. 
 
 A function's
 @cindex function
@@ -560,6 +555,7 @@ the code of the function and the bindings in its environment is called a
 `function closure', a term from functional programming theory. In this
 document we generally use the term `function', but use `closure' to
 emphasize the importance of the attached environment.
+Function의 환경은 function이 생성되었을 때 활성적이엇던 환경입니다. 환경안에 묶여있는 모든 부호들은 captured되어있고 function에 사용가능합니다. 이 환경안의 이와 같은 function의 코드의 조합과 binding들은 functional programming theory에서의 용어인 ‘function closure’이라고 불립니다. 이 문서에서는 일반적으로 ‘function’이라는 용어를 사용하지만, attached (첨부/소속) 환경의 중요성을 강조하기위해서는 ‘closure’을 사용합니다.
 
 It is possible to extract and manipulate the three parts of a closure
 object using @code{formals}, @code{body}, and @code{environment}
@@ -570,6 +566,7 @@ assignments).
 @findex body
 @findex environment
 The last of these can be used to remove unwanted environment capture.
+formals, body, 그리고environment  구성을 사용하여 closure object의 세개의 파트들을 extract하고 조작하는 것이 가능합니다 (세 가지 모두가 assignment의 왼쪽에서도 사용가능합니다). 이들의 마지막 것은 원하지 않는 환경 capture를 없애기위해 사용될 수 있습니다.  
 
 When a function is called, a new environment (called the
 @emph{evaluation environment}) is created, whose enclosure (see
@@ -577,6 +574,7 @@ When a function is called, a new environment (called the
 This new environment is initially populated with the unevaluated
 arguments to the function; as evaluation proceeds, local variables are
 created within it.
+Function이 불러졌을때, enclosure( Environment objects를 참고)이 function closure에서의 환경인 (evaluation environment라고 불리는) 새로운 환경이 창출됩니다. 이 새로운 환경은 function으로의 평가되지않은 argument들로 처음에는 이루어져 있습니다; evaluation이 진행됩어따라, local 값들이 그 안에서 생성됩니다. 
 
 @cindex function
 There is also a facility for converting functions to and from list
@@ -584,6 +582,9 @@ structures using @code{as.list} and @code{as.function}.
 @findex as.function
 These have been included to provide compatibility with @Sl{} and their
 use is discouraged.
+as.list와 as.function을 사용하는 list structure들로와 list structure들로 부터 function들을 전환하는 기능도 있습니다. 이들은 S와의 호환을 제공하고 그들의 사용을 막기위해 포함되었습니다. 
+
+
 
 @node NULL object, Builtin objects and special forms, Function objects, Basic types
 @subsection NULL

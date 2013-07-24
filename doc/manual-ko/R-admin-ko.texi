@@ -108,7 +108,9 @@ notice identical to this one except for the removal of this paragraph
 @c The simplest way is to download the most recent
 @c @file{R-@var{x}.@var{y}.@var{z}.tar.gz} file, and unpack it with
 
-가장 단순한 방법은 가장 최신 버전의 @file{R-@var{x}.@var{y}.@var{z}.tar.gz} 파일을 다운로드 받고  다음과 같이 압축을 해제하는 것입니다.
+가장 단순한 방법은 가장 최신 버전의 @file{R-@var{x}.@var{y}.@var{z}.tar.gz} 파일을 다운로드 받고  다음과 같이 적합한 @footnote{예를 들어, @: @acronym{GNU}
+@command{tar} 버전 1.15 이상 또는 @samp{libarchive}
+(OS 10.[67]에 사용된 것처럼)  또는 `Heirloom Toolchest' 배포} 로부터 @command{tar}가 설치된 시스템에 압축을 해제하는 것입니다.
 
 @example
 tar -xf R-@var{x}.@var{y}.@var{z}.tar.gz
@@ -121,6 +123,8 @@ on systems that have a suitable@footnote{e.g.@: @acronym{GNU}
 @command{tar} installed.  On other systems you need to have the
 @command{gzip} program installed, when you can use
 
+다른 시스템에서 여러분이 다음과 같은 명령어를 사용할 수 있을 때에는 @command{gzip} 프로그램을 설치해야 할 필요가 있습니다.
+
 @example
 gzip -dc R-@var{x}.@var{y}.@var{z}.tar.gz | tar -xf -
 @end example
@@ -129,15 +133,22 @@ The pathname of the directory into which the sources are unpacked should
 not contain spaces, as most @command{make} programs (and specifically
 @acronym{GNU} @command{make}) do not expect spaces.
 
+대부분의 @command{make} 프로그램 (특히 
+@acronym{GNU} @command{make}) 이 공백(space)를 기대하지 않는 것과 같이 압축해제된 소스에 삽인될 디렉토리 경로는 공백(space)이 없어야 합니다.
+
 If you want the build to be usable by a group of users, set @code{umask}
 before unpacking so that the files will be readable by the target group
 (e.g.,@: @code{umask 022} to be usable by all users).  Keep this
 setting of @code{umask} whilst building and installing.
 
+여러분이 사용자 그룹에 의해 사용가능 하도록 빌드하기 원한다면, 압출을 풀기 전에 @code{umask}를 설정하십시오. 그러면 그 파일이 목적하는 그룹에 의해 읽을 수 있게 될 것입니다(예를 들어, @: @code{umask 022}는 모든 사용자가 읽을 구 있도록 합니다). 빌드와 설치 중에 @code{umask} 성정을 유지하도록 하십시오.
+
 If you use a recent GNU version of @command{tar} and do this as a root
 account (which on Windows includes accounts with administrator
 privileges) you may see many warnings about changing ownership.  In
 which case you can use
+
+
 
 @example
 tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
