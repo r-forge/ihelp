@@ -746,36 +746,49 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 
 <h4 class="subsection">2.1.5 Function objects</h4>
 
-<p><a name="index-function-41"></a>In R functions are objects and can be manipulated in much the same
-way as any other object.  Functions (or more precisely, function
-closures) have three basic components:  a formal argument list, a body
-and an
-<a name="index-environment-42"></a>environment.  The argument list is a comma-separated list of
-arguments.  An
-<a name="index-argument-43"></a>argument can be a symbol, or a &lsquo;<samp><var>symbol</var><span class="samp"> =
-</span><var>default</var></samp>&rsquo; construct, or the special argument &lsquo;<samp><span class="samp">...</span></samp>&rsquo;.  The
-second form of argument is used to specify a default value for an
-argument.  This value will be used if the function is called without any
-value specified for that argument.  The &lsquo;<samp><span class="samp">...</span></samp>&rsquo;  argument is special
-and can contain any number of arguments.  It is generally used if the
-number of arguments is unknown or in cases where the arguments will be
-passed on to another function. 
-R function들에서의 object들은 다른 object들과 같은 방법으로 다뤄질 수 있습니다. Function들 (혹은 더 자세하게 이야기 하자면, function closure들)은 세 개의 기본 구성요소들을 가지고 있습니다: formal argument list, body와 환경. Argument list는 comma로 분리된 argument들의 목록입니다. Argument는 부호일 수도 있고, 혹은 ‘symbol = default’ 구성, 혹은 특별한 argument ‘...’일 수도 있습니다. 두 번째 argument의 형태는 argument의 기본 값을 지정하기위하여 사용됩니다 이 값은 argument에 대한 어떠한 값도 지정되지 않고 function이 불러졌을 떄 사용될 것입니다. ‘...’ argument는 특별하며 argument들의 갯수라도 포함할 수 있습니다. 이는 보통 argument의 갯수를 모르거나 argument들이 다른 function으로 넘어갈 것인 경우에 쓰여집니다.
+<p><a name="index-function-41"></a><!-- In @R{} functions are objects and can be manipulated in much the same -->
+<!-- way as any other object.  Functions (or more precisely, function -->
+<!-- closures) have three basic components:  a formal argument list, a body -->
+<!-- and an -->
+<a name="index-environment-42"></a><!-- environment.  The argument list is a comma-separated list of -->
+<!-- arguments.  An -->
+<a name="index-argument-43"></a><!-- argument can be a symbol, or a @samp{@var{symbol} = -->
+<!-- @var{default}} construct, or the special argument @samp{...}.  The -->
+<!-- second form of argument is used to specify a default value for an -->
+<!-- argument.  This value will be used if the function is called without any -->
+<!-- value specified for that argument.  The @samp{...}  argument is special -->
+<!-- and can contain any number of arguments.  It is generally used if the -->
+<!-- number of arguments is unknown or in cases where the arguments will be -->
+<!-- passed on to another function. -->
+R에서 함수(function)은 객체(object)이며, 다른 종류의 객체들과 꽤 많이 비슷한 방법으로 다루어질 수 있습니다. 
+함수 (또는 보다 정교하게 말하면 펀션 클로우져 &ndash; function closure)는 세가지 구성요소를 가지고 있습니다. 
+이들은 형식인자 목록(formal argument list), 본체(body), 그리고 인바이런먼트 (enviroment)입니다. 
+인자 목록은 컴마로 분리된 입력인자들의 목록입니다. 
+인자는 심볼(symbol) 또는 &lsquo;<samp><var>symbol</var><span class="samp"> = </span><var>default</var></samp>&rsquo;라는 구성체(construct), 또는 &lsquo;<samp><span class="samp">...</span></samp>&rsquo;이라는 특수인자가 될 수 있습니다. 
+여기에서 두번째에 사용된 형식은 인자에 기본값을 부여하는데 사용됩니다. 
+만약 이 값은 인자에 어떠한 값도 지정되지 않은 상태로 함수가 호출되었을때 사용될 것입니다. 
+&lsquo;<samp><span class="samp">...</span></samp>&rsquo; 인자는 특별하며, 입력받는 인자의 개수에 제한을 받지 않습니다. 
+이는 주로 인자의 개수를 정확히 모를 때 사용하거나, 다른 함수에 전달될 함수의 인자들이 존재할 경우에 사용됩니다.
 
-   <p>The body is a parsed R statement.  It is usually a collection of
-statements in braces but it can be a single statement, a symbol or even
-a constant. 
-Body는 부분적인 R statement입니다. 이는 보통 brace들 안의 statement들의 집합체이지만, 이는 단일 statement, 부호, 혹은 심지어 constant일 수도 있습니다.
+<!-- The body is a parsed @R{} statement.  It is usually a collection of -->
+<!-- statements in braces but it can be a single statement, a symbol or even -->
+<!-- a constant. -->
+   <p>함수의 본체(body)는 구문이 분석된 R 문장 (parsed R statement)입니다. 
+이는 일반적으로 중괄호(brace)안에 놓인 문장들의 집합체이지만, 한개의 문장, 한개의 심볼 또는 심지어 한 개의 상수(constant) 일 수도 있습니다.
 
-   <p>A function's
-<a name="index-function-44"></a><a name="index-environment-45"></a>environment is the environment that was active at the time
-that the function was created.  Any symbols bound in that environment
-are <em>captured</em> and available to the function. This combination of
-the code of the function and the bindings in its environment is called a
-`function closure', a term from functional programming theory. In this
-document we generally use the term `function', but use `closure' to
-emphasize the importance of the attached environment. 
-Function의 환경은 function이 생성되었을 때 활성적이엇던 환경입니다. 환경안에 묶여있는 모든 부호들은 captured되어있고 function에 사용가능합니다. 이 환경안의 이와 같은 function의 코드의 조합과 binding들은 functional programming theory에서의 용어인 ‘function closure’이라고 불립니다. 이 문서에서는 일반적으로 ‘function’이라는 용어를 사용하지만, attached (첨부/소속) 환경의 중요성을 강조하기위해서는 ‘closure’을 사용합니다.
+<!-- A function's -->
+   <p><a name="index-function-44"></a><a name="index-environment-45"></a><!-- environment is the environment that was active at the time -->
+<!-- that the function was created.  Any symbols bound in that environment -->
+<!-- are @emph{captured} and available to the function. This combination of -->
+<!-- the code of the function and the bindings in its environment is called a -->
+<!-- `function closure', a term from functional programming theory. In this -->
+<!-- document we generally use the term `function', but use `closure' to -->
+<!-- emphasize the importance of the attached environment. -->
+함수의 인바이런먼트(environment)는 함수가 생성되었을 당시 그 시점에 활성화 되어 있는 장소(environment)를 의미합니다. 
+해당 인바이런트와 함께 묶여 있는 모든 심볼들을 파일화 (<em>captured</em>)하게 되어 함수에서 사용할 수 있습니다. 
+함수의 코드와 인바이런먼트 내의 바인딩의 이러한 조합을 펀션 클로우져(`function closure')라고 합니다. 
+이 용어는 `functional programming theory'로 부터 나온것입니다. 
+이 문서내에서 우리는 일반적으로 `함수'(function)라고 사용할 것이지만, 함께 부착된 인바이런먼트 (attached environment)의 중요성을 강조하고자 할 때에는 `클로져'(closure)를 사용할 것입니다.
 
    <p>It is possible to extract and manipulate the three parts of a closure
 object using <code>formals</code>, <code>body</code>, and <code>environment</code>

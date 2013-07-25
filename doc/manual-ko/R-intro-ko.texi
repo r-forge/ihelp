@@ -232,7 +232,7 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 
 @node The R environment, Related software and documentation, Introduction and preliminaries, Introduction and preliminaries
 @c @section The R environment
-@section R environment (개발환경) 
+@section R environment
 
 @c @R{} is an integrated suite of software facilities for data
 @c manipulation, calculation and graphical display.  Among other things it
@@ -283,7 +283,7 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 @c @R{} are essentially ephemeral, written for a single piece of data
 @c analysis.
 
-``environment''(개발환경)라는 용어는 특정 기능만을 수행하기 위해 개발된 도구들을 계속 더해서 기능을 확상하는 대부분의 통계 분석 소트웨어와는 다르게 R은 하나의 시스템으로 미리 계획적이고 일관성 있게 개발 되었음을 드러내기 위해 사용되었습니다.
+인바이런먼트(``environment'', 환경)라는 용어는 특정 기능만을 수행하기 위해 개발된 도구들을 계속 더해서 기능을 확상하는 대부분의 통계 분석 소트웨어와는 다르게 R은 하나의 시스템으로 미리 계획적이고 일관성 있게 개발 되었음을 드러내기 위해 사용되었습니다.
 
 @R{}은 시스템과 분석자가 서로 대화하는 과정을 통해 데이터를 분석하고, 또 이러한 분석에 필요한 새로운 방법들을 개발하는데 사용하는 수단이라고 볼 수 있습니다. @R{}은 그동안 빠르게 발전해왔고, 수 많은 @emph{package}(패키지)들의 모음으로 그 기능을 확장시켜 왔습니다. 하지만, @R{}로 작성된 대부분의 프로그램들은 사용자에게 주어진 하나의 구체적인 데이터를 분석하기 위해서 작성되는 것이므로 대부분의 경우 다시 사용할 수 없습니다.
 
@@ -356,7 +356,7 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 @R{} 에 대한 본 안내서는 @emph{statistics}(통계학) 자체를 설명하기 위해 작성된 것은 아니지만, 이미 많은 독자 여러분이 @R{} 은 통계 시스템이라는 것을 잘 알고 계시리라 믿습니다.
 여기에 더해, 저희는 여러분이 @R{} 이라는 시스템이 과거로부터 현재에 이르기까지 개발되어 온 수많은 통계적 방법들을 사용할 수 있도록 해주는 하나의 환경으로 생각해주셨으면 합니다.
 이러한 많은 방법들 중 일부는 @R{}의 기본 환경 안에 이미 포함되어 있으나, 대부분은 @emph{packages}(패키지)를 통해  사용 가능 합니다.
-기본적으로 @R{} 은 ``standard''(표준) 혹은 ``recommended''(권장)패키지라고 불리는 총 25개의 패키지들이 포함된 채로 설치 됩니다.
+기본적으로 @R{} 은 ``standard''(표준) 혹은 ``recommended''(권장 또는 추천)패키지라고 불리는 총 25개의 패키지들이 포함된 채로 설치 됩니다.
 그 외의 패키지들은 @acronym{CRAN}이라는 인터넷 저장소를 통해서 찾을 수 있으며, 이 저장소의 주소는 @uref{http://CRAN.R-project.org})입니다.
 패키지에 대한 더 자세한 내용은 (@pxref{Packages})에서 설명 하겠습니다.
 
@@ -407,7 +407,7 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 @c different @R{} prompt if you wish.  We will assume that the UNIX shell
 @c prompt is @samp{@code{$}}.
 
-@R{} 은 대화형 프로그램이라, 프로그램을 실행시키면 사용자의 입력을 기다리는 표시 @samp{@code{>}}ㅊ(프롬프트)가 시작 됩니다.
+@R{} 은 대화형 프로그램이라, 프로그램을 실행시키면 사용자의 입력을 기다리는 표시 @samp{@code{>}}(프롬프트)가 시작 됩니다.
 이 표시는 UNIX에서의 쉘 프롬프트와도 동일하다고 볼 수 있는데, 사용자가 원하면 @R{}의 프롬프트를 다른 모양으로 변경하는 것도 가능합니다.
 본 문서에서는 내용의 명확성을 위해서 UNIX의 쉘 프롬프트는 @samp{@code{$}} (스트링)이라는 기호를 이용하여 따로 표시 하겠습니다.
 
