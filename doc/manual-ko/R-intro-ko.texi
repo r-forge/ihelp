@@ -1,6 +1,6 @@
 @c 
-@c 2013-JUL-23 (Tuesday)
-@c 1.Begining ~ 5.5 by LIJIN)
+@c 2013-JUL-24 (Wednesday)
+@c 1.Begining ~ 5.6 by LIJIN)
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -2678,17 +2678,14 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c transposition for matrices.  Indeed if @code{A} is a matrix, (that is, a
 @c doubly subscripted array) then @code{B} given by
 
-@code{aperm(a, perm)}는 배열 @code{a}를 순열배치 (permutation)하는 함수 입니다.
+@code{aperm(a, perm)}는 배열 @code{a}를 차원 별로 순서를 재배치하는(permutating)하는 함수 입니다.
 @findex aperm
 
 @code{perm} 입력 인자(argument,함수의 parameter와 거의 비슷한 의미)는 반드시 @math{@{1, @dots{}, k@}} 범위 내의 정수들의 조합이어야 합니다. 여기서 @math{k}는 배열 @code{a}이 갖는 첨자들의 개수입니다.
+따라서, 이 함수를 실행한 결과는 배열 @code{a}와 같은 크기를 갖지만, 원래의 배열 @code{a}의 차원을 사용해서 지정한 @code{perm[j]}의 순서대로 @code{j}의 차원을 갖는 새로운 재배치된 배열입니다.
 
-이 인자는 첨자의 위치를 변경하여 배열이 가지는 구성요소들을 재배열하는 정보를 제공해주는 것입니다.
-따라서, 이 함수의 사용결과는 @code{a}와 동일한 크기를 가지는 배열을 돌려주지만, 본래의 배열 @code{a}가 가지는 차원 @code{perm[j]}의 위치에 해당하는 데이터들이 새로이 주어진 @code{j}번째 차원의 위치에 해당하는 구성요소들로 재배치 되었음을 아셔야 합니다.
+이 함수가 수행하는 연산이 어떤 것인지를 좀 더 쉽게 이해하기 위해 행렬의 전치(transpose)가 좀 더 일반화된 것이라고 생각하시면 도움이 될 것입니다. 즉, @code{A}라는 행렬(행렬은 결국 이중 첨자로 된 (doubly subscripted) 배열이도 합니다.)이 주어지면, 아래의 연산을 수행한 결과인 @code{B}는 @code{A}를 전치한 행렬입니다. 이 경우의 연산은 좀 더 간단한 함수인 @code{t()}를 사용한 것과 같습니다. 따라서, @code{B <- t(A)}를 사용하면 동일한 결과를 얻을 수 있습니다. 
 
-이 함수가 어떻게 작동하는지 직관적 이해를 주는 예제는 행렬의 전치(transpose)입니다. 
-만약 @math{2}행 @math{2}열인 @code{A}라는 행렬이 있다면 이의 차원벡터 @code{dim(A)}는 @code{c(1,2)}입니다.
-아래에서 보여지는 것과 같이 @code{aperm()}을 이용하여 차원벡터의 순서를 @code{c(2,1)}로 바꾸는 것은 행렬 @code{A}를 전치하는 것과 동일합니다.
 
 @example
 > B <- aperm(A, c(2,1))
@@ -2698,13 +2695,12 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c is just the transpose of @code{A}.  For this special case a simpler
 @c function @code{t()}
 
-이러한 행렬의 전치는 @code{t()}라는 함수를 통해 더욱 편리하게 얻을 수 있으며, 위와 동일한 결과는 @code{B <- t(A)}를 통해 얻을 수 있습니다. 
 @findex t
 @c is available, so we could have used @code{B <- t(A)}.
 
 @node Matrix facilities, Forming partitioned matrices, Generalized transpose of an array, Arrays and matrices
 @c @section Matrix facilities
-@section 행렬의 기능들
+@section 행렬에 적용가능한 연산들
 
 @macro xTx{}
  @eqn{@strong{x}^T @strong{x}, x'x}
@@ -2720,9 +2716,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c noted above.  The functions @code{nrow(A)} and @code{ncol(A)} give the
 @c number of rows and columns in the matrix @code{A} respectively.
 
-위에서 언급했던것과 같이, 행렬은 2개의 첨자를 활용하는 배열의 특수한 경우입니다.
-그러나, 배열의 섹션으로부터 분리하여 행렬에 대해서만 따로 설명하는 이유는 @R{}은 행렬에 특화된 다양한 연산기능을 제공하기 때문입니다.
-예를들면, @code{t(X)}는 전치를 하는데 사용되는 함수이며, @code{nrow(A)}와 @code{ncol(A)}은 행렬 @code{A}의 행의 개수와 열의 개수를 알려주는데 사용되는 함수들입니다.
+위에서 살짝 언급했듯이, 행렬은 이중 첨자를 사용하는 배열입니다. 하지만, 행렬이라는 것은 배열 섹션과 분리해서 따로 설명해야할만큼 중요한 개념입니다. @R{}은 행렬에 특화된 다양한 연산기능과 함수들을 제공합니다.
+몇가지 예를들면, 위에서 설명했던 @code{t(X)}는 행렬을 전치하는데 사용되는 함수이며, @code{nrow(A)}와 @code{ncol(A)}은 각각 행렬 @code{A}의 행과 열의 개수를 알려주는 함수입니다.
 @findex nrow
 @findex ncol
 
@@ -2739,8 +2734,14 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @subsection 행렬의 곱셈연산
 
 @cindex Matrix multiplication
+
+@code{%*%}는 행렬의 곱셈을 수행하는 연산자입니다.
+
 @c The operator @code{%*%} is used for matrix multiplication.
 @findex %*%
+
+
+보통은 @math{n}행  @math{1}열의 행렬이나 @math{1}행 @math{n}열의 행렬은 상황에 따라 적절히 @math{n}-벡터로 사용될 수 있습니다. 하지만, 행렬의 곱셈식에서 사용되는 벡터는 곱셈을 수행하기 적합한 조건을 갖추기위해 (행렬의 곱셈을 수행하기 위해서는 앞 행렬의 행의 길이가 뒷행령의 열의 길이가 같아야 합니다.) 행벡터나 열백터로 자동적으로 변환됩니다. (그러나, 나중에 보게 되겠지만, 이러한 행이나 열 벡터로의 변환이 항상 가능한 것은 아닙니다.)
 
 @c An @math{n} by @math{1} or @math{1} by @math{n} matrix may of course be
 @c used as an @math{n}-vector if in the context such is appropriate.
@@ -2749,15 +2750,12 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c multiplicatively coherent, if possible, (although this is not always
 @c unambiguously possible, as we see later).
 
+
+만약, @code{A}와 @code{B} 모두 정방(square)행렬이라면, 다음의 식을 사용해서 원소단위별 곱셈을 수행할 수 있습니다.
+
 @c If, for example, @code{A} and @code{B} are square matrices of the same
 @c size, then
 
-@code{%*%}기호는 행렬의 곱셈을 수행하는 연산자입니다.
-본래 @math{n}개의 구성요소로 이루어진 @math{1}개의 행 또는 @math{1}개의 열로 된 행렬은 @math{n}개의 구성요소를 가진 벡터로 상황에 따라 적절히 변경됩니다.
-행렬의 수식에서 사용되는 행 또는 열 벡터들은 수학적으로 올바른 표현이기만 하다면 자동으로 곱셈연산을 수행합니다 (그러나, 항상 이렇게 올바르게 분명한 방식으로 작동하는게 아니므로, 주의해야 합니다.  
-이러한 예제에 대해서는 조금 뒤에 살펴보게 될 것입니다).
-
-만약, @code{A}와 @code{B} 모두 정방행렬이라면, 다음과 같이 원소단위의 곱셈을 수행할 수 있습니다.
 
 @example
 > A * B
@@ -2767,7 +2765,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c is the matrix of element by element products and
 
-그러나, 다음의 표현은 원소의 곱셈이 아닌 행렬의 곱셈이라는 것을 분명히 구분하셔야 합니다.
+하지만, 아래의 표현은 원소단위별 곱셈이 아닌 행렬의 곱셈이라는 것을 구분하셔야 합니다.
 
 @example
 > A %*% B
@@ -2777,21 +2775,20 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 
 @c is the matrix product.  If @code{x} is a vector, then
 
-만약, @code{x}가 벡터라면 아래와 같은 표현은 쿼드래딕 형식(quadratic form)을 나타냅니다.
-@footnote{여기에서 @code{x %*% x}는 올바른 사용이라고 보기 어렵습니다.
-그 이유는 사용자가 수행하고자 하는 연산이 @xTx{} 또는 @xxT{}일 수도 있기 때문입니다.
-여기에서 사용된 @eqn{@strong{x},x}는 열벡터임을 기억하시길 바랍니다.
-만약, 이런 표현식이 입력된다면 스칼라 값(즉, 한개의 숫자)을 결과로 가지는 @xTx{}를 수행하게 됩니다.
-@xxT{}와 같은 행렬연산을 수행하고 싶다면 @code{cbind(x)%*% x} 또는 @code{x %*% rbind(x)}라고 해야합니다.
-그 이유는 @code{rbind()} 또는 @code{cbind()}의 사용의 결과는 항상 행렬의 형식을 유지하기 때문입니다.
-그러나, @xTx{} 또는 @xxT{}을 연산하기 위한 가장 좋은 방법은 함수 @code{crossprod(x)} 또는 @code{x %o% x}를 사용하는 것입니다.}
-
 @example
 > x %*% A %*% x
 @end example
 
 @noindent
 @c is a quadratic form.
+
+만약, @code{x}가 벡터라면 아래의 표현은 이차식(quadratic form)을 나타냅니다.
+
+@footnote{@code{x %*% x}는 올바른 식이라고 보기 어려운데, 이는 사용자가 수행하고자 하는 연산이 @xTx{} 인지 @xxT{}인지 분명하지 않기 때문입니다. 여기에서 @eqn{@strong{x},x}는 열벡터 입니다.
+이 경우, 더 작은 크기의 행렬을 선호하는 특성 때문에 스칼라 값(즉, 한개의 숫자)인  @xTx{}을 결과로 출력합니다.
+@xxT{}의 행렬연산을 수행하고 싶다면 @code{cbind(x)%*% x} 또는 @code{x %*% rbind(x)}을 사용해야 하는데, @code{rbind()} 이나 @code{cbind()}을 사용한 결과가 항상 행렬이기 때문입니다.
+하지만, 아무래도 @xTx{}이나 @xxT{}을 계산하는 가장 좋은 방법은 각각의 경우 함수 @code{crossprod(x)}와 @code{x %o% x}를 사용하는 것입니다.}
+
 @c @footnote{Note that @code{x %*% x} is ambiguous, as
 @c it could mean either @xTx{} or @xxT{}, where @eqn{@strong{x},x} is the
 @c column form.  In such cases the smaller matrix seems implicitly to be
@@ -2808,9 +2805,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c operation is more efficient.  If the second argument to
 @c @code{crossprod()} is omitted it is taken to be the same as the first.
 
-함수 @code{crossprod()}는 ``크로스 프라닥트 (crossproduct)''라고도 불리는 @code{t(X) %*% y} 연산을 수행하게 되며, 이의 사용법은 @code{corssprod(X, y)} 입니다.
-다른 점은 단순히 좀 더 효율적이라는 점입니다.
-만약, 함수 @code{crossprod()}에 사용되는 두번째가 인자가 생략되어 있다면, 첫번째 인자를 이용하여 연산을 수행하게 됩니다.
+함수 @code{crossprod()}는 ``외적, 크로스프로덕트 (crossproduct)''라고하며, 연산을 위해 @code{corssprod(X, y)}의 형태로 입력하면, 좀 더 효율적인 방법으로 @code{t(X) %*% y}와 같은 연산을 수행합니다.
+만약 함수 @code{crossprod()}에 두번째가 인자가 생략되어 있다면, 첫번째 인자를 두 번 사용하여 연산을 수행하게 됩니다.
 
 @findex diag
 @c The meaning of @code{diag()} depends on its argument.  @code{diag(v)},
@@ -2822,23 +2818,24 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c numeric value then @code{diag(k)} is the @code{k} by @code{k} identity
 @c matrix!
 
-함수 @code{diag()}는 입력받는 인자에 따라 다른 결과를 줍니다.
-만약, @code{diag(v)}와 같이 @code{v}라는 벡터 인자가 입력되면 행렬의 대각원소를 @code{v}를 가지는 대각행렬을 생성합니다.
-그러나, @code{diag(M)}과 같이 @code{M}라는 행렬 인자가 입력되면 행렬 @code{M}이 가지는 대각원소들을 벡터의 형식으로 출력하게 됩니다.
-이것은 @sc{Matlab}에서 사용되는 함수 @code{diag()}의 기능과 동일합니다.
-다소 혼돈스러울 수도 있으나, @code{diag(k)}와 같이 @code{k}라는 스칼라 인자가 입력되면, @code{k}행 @code{k}열을 가지는 단위행렬 (identity matrix) 를 생성해주니다.
+함수 @code{diag()}는 입력받는 인자에 따라 다른 결과를 출력합니다.
+만약 @code{diag(v)}와 같이 @code{v}라는 벡터 인자가 입력되면, 벡터 @code{v}의 각 구성요소를 대각원소로 갖는 대각행렬을 생성합니다.
+반면에 @code{diag(M)}과 같이 @code{M}라는 행렬 인자가 입력되면, 행렬 @code{M}이 가지는 대각원소들을 벡터의 형식으로 출력하게 됩니다.
+이것은 @sc{Matlab}에서 사용하는 함수 @code{diag()}과 비슷하게 작동한다고 보시면 됩니다.
+다소 혼란스러울 수도 있겠지만, @code{diag(k)}와 같이 @code{k}라는 스칼라 인자가 입력되면, @code{k}행 @code{k}열을 가지는 단위행렬(identity matrix)이 생성된다는 점도 기억하시기 바랍니다.
 
 
 @node Linear equations and inversion, Eigenvalues and eigenvectors, Multiplication, Matrix facilities
 @c @subsection Linear equations and inversion
-@subsection 선형방정식의 해와 역행렬 
+@subsection 선형방정식과 역행렬 
 
 @cindex Linear equations
 @findex solve
 @c Solving linear equations is the inverse of matrix multiplication.
 @c When after
 
-행렬 @code{A}의 구성요소들의 값을 알고, 벡터 @code{b} 구성요소들의 값을 미리 알고 있다고 가정하고, 아래와 같은 선형방정식의 해를 찾는 것은 @code{x}의 값을 구하는 것과 동일합니다.
+선형방정식을 푼다는 것의 의미는 역행렬을 곱하는 것과 같습니다. 
+아래의 표현식이 주어지고, 행렬 @code{A}와 벡터 @code{b}만 알고 있는 경우, 벡터 @code{x}가 선형방정식의 해가 됩니다.
 
 @example
 > b <- A %*% x
@@ -2848,7 +2845,7 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c only @code{A} and @code{b} are given, the vector @code{x} is the
 @c solution of that linear equation system.  In @R{},
 
-@R{}에서는 아래와 같은 방법으로 선형방정식의 해 @code{x}를 구할 수 있습니다.
+@R{}에서는 아래와 같은 방법으로 선형방정식을 풀어서, @code{x}를 해로 구합니다. (약간의 정확도의 차이가 발생하는 경우도 있습니다.)
 
 @example
 > solve(A,b)
@@ -2862,8 +2859,8 @@ c(a[2,1,1], a[2,2,1], a[2,3,1], a[2,4,1],
 @c @eqn{@strong{A}^{-1}, @code{A^@{-1@}}} denotes the @emph{inverse} of
 @c @eqn{@strong{A},@code{A}}, which can be computed by
 
-즉, @eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}}입니다. 
-여기에서 @eqn{@strong{A}^{-1}, @code{A^@{-1@}}} 은 @eqn{@strong{A},@code{A}}의 역행렬이며, 이는 아래와 같은 방법으로 얻을 수 있습니다.
+선형방정식을 좀 더 수학적으로 표현하면 @eqn{@strong{x} = @strong{A}^{-1} @strong{b}, @code{x = A^@{-1@} %*% b}} 입니다. 
+여기에서 @eqn{@strong{A}^{-1}, @code{A^@{-1@}}}은 행렬 @eqn{@strong{A},@code{A}}의 역행렬이며, 아래의 함수로 계산할 수 있습니다.
 
 @example
 solve(A)
@@ -2874,19 +2871,19 @@ solve(A)
 @c potentially unstable to compute @code{x <- solve(A) %*% b} instead of
 @c @code{solve(A,b)}.
 
-하지만, 위와 같이 역행렬을 이용하여 @code{x <- solve(A) %*% b} 연산을 하는 것은 함수 @code{solve(A,b)}를 이용하는 것보다 비효율적입니다.
+하지만, 위와 같이 역행렬을 이용하여 @code{x <- solve(A) %*% b}를 계산하는 것은 함수 @code{solve(A,b)}를 사용하는 것보다 비효율적인데다 에러 발성이 가능성도 많아 실제로 많이 사용하지는 않습니다.
 
 @c The quadratic form @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*%
 @c x} @ } which is used in multivariate computations, should be computed by
-@c something like@footnote{Even better would be to form a matrix square
+@c something like @footnote{Even better would be to form a matrix square
 @c root @eqn{B, B} with @eqn{A = BB^T, A = BB'} and find the squared length of the
 @c solution of @eqn{By = x, By = x}, perhaps using the Cholesky or
-@c eigendecomposition of @eqn{A, A}.} @code{x %*% solve(A,x)}, rather than
+@c eigen decomposition of @eqn{A, A}.} @code{x %*% solve(A,x)}, rather than
 @c computing the inverse of @code{A}.
 
-다변량 연산에 이용되는 쿼드래딕 형식 (quadratic form) @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*% x} @ }은 @code{A}의 역행렬을 찾는 것 보다 @code{x %*% solve(A,x)}으로 계산해야 합니다.
-@footnote{좀 더 좋은 방법은 matrix square root @eqn{B, B}를 찾는 것입니다. 
-여기에서 @eqn{A = BB^T, A = BB'}이며, @eqn{A, A}의 콜레스키 분해 (Cholesky) 또는 eigendecomposition를 이용하여 @eqn{By = x, By = x}의 해들에 대한 the squared length 를 찾는것입니다.} 
+다변량의 연산에 사용되는 이차행렬식(quadratic form) @eqn{@strong{x^T  A^{-1} x},@ @code{x %*% A^@{-1@} %*% x} @ }은 @code{A}의 역행렬을 이용하는 것 보단 @code{x %*% solve(A,x)}으로 계산하는 편이 낫습니다.
+@footnote{좀 더 좋은 방법은 행렬의 제곱근(matrix square root)인 @eqn{B, B}를 찾는 것입니다. 
+여기서 행렬의 제곱근 B는 @eqn{A = BB^T, A = BB'}으로 정의되며, @eqn{A, A}의 콜레스키 분해(Cholesky decomposition)나 아이겐 분해(eigen decomposition)를 이용하면 @eqn{By = x, By = x}의 해의 제곱길이 (squared length)를 찾는 과정을 통해 이차 행렬식을 풀게 됩니다.} 
 
 
 @node Eigenvalues and eigenvectors, Singular value decomposition and determinants, Linear equations and inversion, Matrix facilities
