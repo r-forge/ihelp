@@ -790,26 +790,31 @@ R에서 함수(function)은 객체(object)이며, 다른 종류의 객체들과 
 이 용어는 `functional programming theory'로 부터 나온것입니다. 
 이 문서내에서 우리는 일반적으로 `함수'(function)라고 사용할 것이지만, 함께 부착된 인바이런먼트 (attached environment)의 중요성을 강조하고자 할 때에는 `클로져'(closure)를 사용할 것입니다.
 
-   <p>It is possible to extract and manipulate the three parts of a closure
-object using <code>formals</code>, <code>body</code>, and <code>environment</code>
-constructs (all three can also be used on the left hand side of
-<a name="index-assignment-46"></a>assignments). 
-<a name="index-formals-47"></a><a name="index-body-48"></a><a name="index-environment-49"></a>The last of these can be used to remove unwanted environment capture. 
-formals, body, 그리고environment  구성을 사용하여 closure object의 세개의 파트들을 extract하고 조작하는 것이 가능합니다 (세 가지 모두가 assignment의 왼쪽에서도 사용가능합니다). 이들의 마지막 것은 원하지 않는 환경 capture를 없애기위해 사용될 수 있습니다.
+<!-- It is possible to extract and manipulate the three parts of a closure -->
+<!-- object using @code{formals}, @code{body}, and @code{environment} -->
+<!-- constructs (all three can also be used on the left hand side of -->
+   <p><a name="index-assignment-46"></a><!-- assignments). -->
+<a name="index-formals-47"></a><a name="index-body-48"></a><a name="index-environment-49"></a><!-- The last of these can be used to remove unwanted environment capture. -->
+<code>formals</code>(형식인자들), <code>body</code>(본체), <code>environment</code>(인바이런먼트)라는 구성체(construct)들을 이용하여 클로져 객체(closure object)의 세부분을 추출하고 조작을 할 수 있습니다 (세가지 모든 것은 할당문의 좌변에 사용될 수 있습니다). 
+이것들중의 마지막 구성체는 원하지 않았던 인바이런먼트가 파일하였던 것을 제거하는데 사용할 수 있습니다.
 
-   <p>When a function is called, a new environment (called the
-<em>evaluation environment</em>) is created, whose enclosure (see
-<a href="#Environment-objects">Environment objects</a>) is the environment from the function closure. 
-This new environment is initially populated with the unevaluated
-arguments to the function; as evaluation proceeds, local variables are
-created within it. 
-Function이 불러졌을때, enclosure( Environment objects를 참고)이 function closure에서의 환경인 (evaluation environment라고 불리는) 새로운 환경이 창출됩니다. 이 새로운 환경은 function으로의 평가되지않은 argument들로 처음에는 이루어져 있습니다; evaluation이 진행됩어따라, local 값들이 그 안에서 생성됩니다.
+<!-- When a function is called, a new environment (called the -->
+<!-- @emph{evaluation environment}) is created, whose enclosure (see -->
+<!-- @ref{Environment objects}) is the environment from the function closure. -->
+<!-- This new environment is initially populated with the unevaluated -->
+<!-- arguments to the function; as evaluation proceeds, local variables are -->
+<!-- created within it. -->
+   <p>함수가 호출되었을대, <em>evaluation environment</em>(이밸류에이션 인바이런먼트)라고 불리는 새로운 인바이런먼트가 생성됩니다. 
+이 인바이런먼트의 인클로져(enclosure)는 함수의 클로져(function closure)로부터 나온 인바이런먼트입니다 (<a href="#Environment-objects">Environment objects</a>를 살펴보시길 바랍니다). 
+처음에 이 새로운 인바이런먼트는 평가가 아직 되지 않은 함수의 인자들로 이루어져 있습니다. 
+그러나, 평가(evaluation)이 진행됨에 따라서, 지역변수(local variables)들이 이 인바이런먼트내에서 생성되게 됩니다.
 
-   <p><a name="index-function-50"></a>There is also a facility for converting functions to and from list
-structures using <code>as.list</code> and <code>as.function</code>. 
-<a name="index-as_002efunction-51"></a>These have been included to provide compatibility with S and their
-use is discouraged. 
-as.list와 as.function을 사용하는 list structure들로와 list structure들로 부터 function들을 전환하는 기능도 있습니다. 이들은 S와의 호환을 제공하고 그들의 사용을 막기위해 포함되었습니다.
+   <p><a name="index-function-50"></a><!-- There is also a facility for converting functions to and from list -->
+<!-- structures using @code{as.list} and @code{as.function}. -->
+<a name="index-as_002efunction-51"></a><!-- These have been included to provide compatibility with @Sl{} and their -->
+<!-- use is discouraged. -->
+<code>as.list</code>와  <code>as.function</code>을 이용하여 함수와 리스트 구조체가 서로 전환할 수 있는 기능이 있습니다. 
+이러한 것들은 S와의 호환성을 제공하나, 이들의 사용은 추천되지 않습니다.
 
 <div class="node">
 <a name="NULL-object"></a>
