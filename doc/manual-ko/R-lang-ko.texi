@@ -518,7 +518,8 @@ expression 객체는 리스트(list)와 매우 흡사하게 작동하며, 이들
 
 
 @node Function objects, NULL object, Expression objects, Basic types
-@subsection Function objects
+@c @subsection Function objects
+@subsection 함수 객체 
 
 @cindex function
 @c In @R{} functions are objects and can be manipulated in much the same
@@ -604,27 +605,27 @@ expression 객체는 리스트(list)와 매우 흡사하게 작동하며, 이들
 
 @node NULL object, Builtin objects and special forms, Function objects, Basic types
 @subsection NULL
-NULL이라고 불리우는 특별한 object가 있습니다. 이는 object의 부재를 나타내거나 지정하는 것이 필요할 때 사용됩니다. 이는 길이가 0인 벡터나 list와 혼동되면 안됩니다. NULL object는 종류도 없고 수정할 수 있는 틍성을 가지고 있지도 않습니다. R에는 모든 경우에 나타내는 오직 하나의 NULL object가 있습니다. NULL을 테스트하기위해서는 is.null을 사용하십시오. NULL에 attribute들을 설정할 수 없습니다. 
 
-
-There is a special object called @code{NULL}.  It is used whenever there
-is a need to indicate or specify that an object is absent.  It should not be
-confused with a vector or list of zero length.
+@c There is a special object called @code{NULL}.  It is used whenever there
+@c is a need to indicate or specify that an object is absent.  It should not be
+@c confused with a vector or list of zero length.
 @findex NULL
+NULL이라고 불리우는 특별한 객체가 있습니다.
+이것은 객체의 부재를 나타내거나 명시해야할 필요가 있을 때 사용되게 됩니다. 
+그러나, 이것은 길이가 0인 벡터 또는 리스트와 혼돈해서는 안됩니다. 
 
-The @code{NULL} object has no type and no modifiable properties.  There
-is only one @code{NULL} object in @R{}, to which all instances refer. To
-test for @code{NULL} use @code{is.null}.  You cannot set attributes on
-@code{NULL}.
-
+@c The @code{NULL} object has no type and no modifiable properties.  There
+@c is only one @code{NULL} object in @R{}, to which all instances refer. To
+@c test for @code{NULL} use @code{is.null}.  You cannot set attributes on
+@c @code{NULL}.
+@code{NULL} 객체는 이를 나타내는 유형(type)이 없으면 수정할 수 있는 속성들을 가지고 있지 않습니다. 
+@R{}에서는 이러한 객체들을 나타내는데 있어 오로지 하나의 @code{NULL} 객체가 있을 뿐입니다.
+객체가 @code{NULL}인지 확인하기 위해서는 @code{is.null}을 이용하세요.
+@code{NULL} 객체에 속성(attributes)를 부여할 수 없습니다.
 
 @node Builtin objects and special forms, Promise objects, NULL object, Basic types
-@subsection Builtin objects and  special forms
-
-이 object의 두 종류는 R의 builtin function들을 포함합니다, 즉, 코드 목록들에 .Primitive처럼 디스플레이 된 것들입니다 (.Internal function을 통해 접근된 것들 또한 그리하여 object들 처럼 사용자가 볼 수 없는). Argument handling에서 두 개의 lies의 다른점. Builtin function들은 특별한 function들이 internal function으로 평가되지 않은 argument들을 넘기는 반면, call-by-value에 부합되게, 그들의 모든 argument들이 평가되게하고 internal function으로 넘깁니다. 
-R 언어에서, 이 object들은 function의 다른 종류일 뿐입니다. is.primitive function은 그들을 interpreted function들에서부터 구분지을 수 있습니다. 
-
-
+@c @subsection Builtin objects and  special forms
+@subsection 내장된 객체들과 특수한 형식들
 
 These two kinds of object contain the builtin
 @cindex function
@@ -637,14 +638,17 @@ the two lies in the argument handling.  Builtin functions have all
 their arguments evaluated and passed to the internal function, in
 accordance with @emph{call-by-value}, whereas special functions pass the
 unevaluated arguments to the internal function.
+이 object의 두 종류는 R의 builtin function들을 포함합니다, 즉, 코드 목록들에 .Primitive처럼 디스플레이 된 것들입니다 (.Internal function을 통해 접근된 것들 또한 그리하여 object들 처럼 사용자가 볼 수 없는). Argument handling에서 두 개의 lies의 다른점. Builtin function들은 특별한 function들이 internal function으로 평가되지 않은 argument들을 넘기는 반면, call-by-value에 부합되게, 그들의 모든 argument들이 평가되게하고 internal function으로 넘깁니다. 
 
 From the @R{} language, these objects are just another kind of function.
 The @code{is.primitive} function can distinguish them from interpreted
 @cindex function
 functions.
+R 언어에서, 이 object들은 function의 다른 종류일 뿐입니다. is.primitive function은 그들을 interpreted function들에서부터 구분지을 수 있습니다. 
 
 @node Promise objects, Dot-dot-dot, Builtin objects and special forms, Basic types
-@subsection Promise objects
+@c @subsection Promise objects
+@subsection 프라미스 객체들 
 
 Promise object들은 R의 게으른 진화 mechanism의 부분입니다. 이들은 세 개의 자리를 포함합니다: 값, expression, 그리고 환경. Function이 불러졌을때, argument들은 짝지어지고 그리고 나서 각각의 formal argument들은 promise로 bound됩니다. Formal argument와 function이 불려졌던 환경으로이 pointer을 위해 주어졌던 expression은 promise에 저장됩니다. 
 Argument가 액세스될 때 까지 promise와 관련된 값은 없습니다. Argument가 액세스 되었을 때, 저장되었던 expression은 저장되었던 환경에서 평가되고, 그 결과를 돌려줍니다. 그 결과 또한 promise에 의해 저장됩니다. Substitute function은 express slot의 내용을extract 할 것입니다. 이는 프로그래머가 promise에 관련된 값 혹은 expression에 엑세스하도록 허용합니다.

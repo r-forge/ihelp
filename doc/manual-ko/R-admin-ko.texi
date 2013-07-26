@@ -148,7 +148,7 @@ account (which on Windows includes accounts with administrator
 privileges) you may see many warnings about changing ownership.  In
 which case you can use
 
-
+만약 여러분이 최신의 @command{tar} GNU 버전을 사용하고 이것을 (윈도우즈에서 관리자 권한의 계정을 포함하는) 루트 계정으로 사용한다면 소유권 변화에 따른 많은 경고들을 보게 될 것입니다. 그러한 경우 여러분은 다음과 같은 방법을 사용할 수 있습니다.
 
 @example
 tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
@@ -161,7 +161,9 @@ and perhaps also include the option @option{--no-same-permissions}.
 variable: if more than one option is included they should be separated
 by spaces.)
 
-
+그리고 아마 @option{--no-same-permissions} 또한 포함할 수 있습니다. 
+@enindex TAR_OPTIONS
+(이런 옵션은 @env{TAR_OPTIONS} 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)로 구분되어야 합니다.)
 
 @node Getting patched and development versions,  , Getting and unpacking the sources, Obtaining R
 @section Getting patched and development versions
