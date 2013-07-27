@@ -88,7 +88,7 @@ p {
 <li><a href="#Expression-objects">2.1.4 expression 객체</a>
 <li><a href="#Function-objects">2.1.5 함수 객체</a>
 <li><a href="#NULL-object">2.1.6 NULL</a>
-<li><a href="#Builtin-objects-and-special-forms">2.1.7 내장된 객체들과 특수한 형식들</a>
+<li><a href="#Builtin-objects-and-special-forms">2.1.7 내장객체들과 특수한 형식들</a>
 <li><a href="#Promise-objects">2.1.8 프라미스 객체들</a>
 <li><a href="#Dot_002ddot_002ddot">2.1.9 Dot-dot-dot</a>
 <li><a href="#Environment-objects">2.1.10 Environments</a>
@@ -854,22 +854,27 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 </div>
 
 <!-- @subsection Builtin objects and  special forms -->
-<h4 class="subsection">2.1.7 내장된 객체들과 특수한 형식들</h4>
+<h4 class="subsection">2.1.7 내장객체들과 특수한 형식들</h4>
 
-<p>These two kinds of object contain the builtin
-<a name="index-function-53"></a><a name="index-g_t_002ePrimitive-54"></a><a name="index-g_t_002eInternal-55"></a>functions of R, i.e., those that are displayed as <code>.Primitive</code>
-in code listings (as well as those accessed via the <code>.Internal</code>
-function and hence not user-visible as objects).  The difference between
-the two lies in the argument handling.  Builtin functions have all
-their arguments evaluated and passed to the internal function, in
-accordance with <em>call-by-value</em>, whereas special functions pass the
-unevaluated arguments to the internal function. 
-이 object의 두 종류는 R의 builtin function들을 포함합니다, 즉, 코드 목록들에 .Primitive처럼 디스플레이 된 것들입니다 (.Internal function을 통해 접근된 것들 또한 그리하여 object들 처럼 사용자가 볼 수 없는). Argument handling에서 두 개의 lies의 다른점. Builtin function들은 특별한 function들이 internal function으로 평가되지 않은 argument들을 넘기는 반면, call-by-value에 부합되게, 그들의 모든 argument들이 평가되게하고 internal function으로 넘깁니다.
+<!-- These two kinds of object contain the builtin -->
+<p><a name="index-function-53"></a><a name="index-g_t_002ePrimitive-54"></a><a name="index-g_t_002eInternal-55"></a><!-- functions of @R{}, i.e., those that are displayed as @code{.Primitive} -->
+<!-- in code listings (as well as those accessed via the @code{.Internal} -->
+<!-- function and hence not user-visible as objects).  The difference between -->
+<!-- the two lies in the argument handling.  Builtin functions have all -->
+<!-- their arguments evaluated and passed to the internal function, in -->
+<!-- accordance with @emph{call-by-value}, whereas special functions pass the -->
+<!-- unevaluated arguments to the internal function. -->
+이러한 두 종류의 객체는 R의 내장함수(builtin function)를 가지고 있습니다. 
+즉, 코드가 보여질 때 (code listings) <code>.Primitive</code>와 같이 보여지는 것들을 말합니다. 
+(또한 <code>.Internal</code> 함수를 통하여 접근되어지는 것들을 말하는데, 이 객체들은 사용자가 볼 수 없습니다). 
+이 두가지 종류의 객체 사이에는 인자처리(argumnet handling)방법이 다릅니다. 
+내장함수들은 <em>call-by-value</em>에 따라서 인자들이 평가되어 내부 함수(internal function)로 전달되는 반면에 특수함수(special function)들은 평가되지 않은 인자들을 내부함수로 전달합니다.
 
-   <p>From the R language, these objects are just another kind of function. 
-The <code>is.primitive</code> function can distinguish them from interpreted
-<a name="index-function-56"></a>functions. 
-R 언어에서, 이 object들은 function의 다른 종류일 뿐입니다. is.primitive function은 그들을 interpreted function들에서부터 구분지을 수 있습니다.
+<!-- From the @R{} language, these objects are just another kind of function. -->
+<!-- The @code{is.primitive} function can distinguish them from interpreted -->
+   <p><a name="index-function-56"></a><!-- functions. -->
+R 언어에서는 이러한 객체들은 단지 또다른 종류의 함수일뿐입니다. 
+<code>is.primitive</code> 함수는 인터프리티드된 함수들로부터 이들을 구별해 낼 수 있습니다.
 
 <div class="node">
 <a name="Promise-objects"></a>
@@ -883,17 +888,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 <!-- @subsection Promise objects -->
 <h4 class="subsection">2.1.8 프라미스 객체들</h4>
 
-<p>Promise object들은 R의 게으른 진화 mechanism의 부분입니다. 이들은 세 개의 자리를 포함합니다: 값, expression, 그리고 환경. Function이 불러졌을때, argument들은 짝지어지고 그리고 나서 각각의 formal argument들은 promise로 bound됩니다. Formal argument와 function이 불려졌던 환경으로이 pointer을 위해 주어졌던 expression은 promise에 저장됩니다. 
-Argument가 액세스될 때 까지 promise와 관련된 값은 없습니다. Argument가 액세스 되었을 때, 저장되었던 expression은 저장되었던 환경에서 평가되고, 그 결과를 돌려줍니다. 그 결과 또한 promise에 의해 저장됩니다. Substitute function은 express slot의 내용을extract 할 것입니다. 이는 프로그래머가 promise에 관련된 값 혹은 expression에 엑세스하도록 허용합니다. 
-R 언어안에서, promise object들은 거의 함축적으로만 보여집니다: 실질적인 function argument들은 이 종류입니다. 또한 promise가 expression을 잃도록 만드는 delayedAssign function도 있습니다. 보통 object가promise인지 아닌지를 확인하는 방법이 R코드에서는 없고, promise의 환경을 확인하기위해 R 코드를 사용하는 방법 또한 없습니다.
-
-   <p><a name="index-promise-57"></a>Promise objects are part of R's lazy evaluation mechanism.  They
-contain three slots: a value, an expression, and an
-<a name="index-environment-58"></a>environment.  When a
-<a name="index-function-59"></a><a name="index-function-argument-60"></a>function is called the arguments are matched and then each of the formal
-arguments is bound to a promise.  The expression that was given for that
-formal argument and a pointer to the environment the function was called
-from are stored in the promise.
+<p><a name="index-promise-57"></a><!-- Promise objects are part of @R{}'s lazy evaluation mechanism.  They -->
+<!-- contain three slots: a value, an expression, and an -->
+<a name="index-environment-58"></a><!-- environment.  When a -->
+<a name="index-function-59"></a><a name="index-function-argument-60"></a><!-- function is called the arguments are matched and then each of the formal -->
+<!-- arguments is bound to a promise.  The expression that was given for that -->
+<!-- formal argument and a pointer to the environment the function was called -->
+<!-- from are stored in the promise. -->
+프라미스 객체들(promise objects)는 R의 지연연산방법(lazy evaluation mechanism)의 부분입니다. 
+이들은 세 부분으로 되어 있습니다: 값(value), 표현식(expression), 그리고 환경 (environment)입니다. 
+함수가 호출될때 인자들은 짝지어진 후, 각각의 형식인자들은 프라미스(promise)와 결합하게 됩니다. 
+형식인자들을 위해 주어진 표현식과 함수를 호출되어진 환경(environment)에 대한 포인터들은 프라미스에 저장됩니다.
 
    <p>Until that argument is accessed there is no <em>value</em> associated with
 the promise.  When the argument is accessed, the stored expression is
@@ -901,14 +906,16 @@ the promise.  When the argument is accessed, the stored expression is
 result is also saved by
 the promise.  The <code>substitute</code> function will extract the content
 of the expression slot.  This allows the programmer to
-access either the value or the expression associated with the promise.
+access either the value or the expression associated with the promise. 
+Argument가 액세스될 때 까지 promise와 관련된 값은 없습니다. Argument가 액세스 되었을 때, 저장되었던 expression은 저장되었던 환경에서 평가되고, 그 결과를 돌려줍니다. 그 결과 또한 promise에 의해 저장됩니다. Substitute function은 express slot의 내용을extract 할 것입니다. 이는 프로그래머가 promise에 관련된 값 혹은 expression에 엑세스하도록 허용합니다.
 
    <p>Within the R language, promise objects are almost only seen
 implicitly: actual function arguments are of this type.  There is also a
 <code>delayedAssign</code> function that will make a promise out of an
 expression.  There is generally no way in R code to check whether an
 object is a promise or not, nor is there a way to use R code to
-determine the environment of a promise.
+determine the environment of a promise. 
+R 언어안에서, promise object들은 거의 함축적으로만 보여집니다: 실질적인 function argument들은 이 종류입니다. 또한 promise가 expression을 잃도록 만드는 delayedAssign function도 있습니다. 보통 object가promise인지 아닌지를 확인하는 방법이 R코드에서는 없고, promise의 환경을 확인하기위해 R 코드를 사용하는 방법 또한 없습니다.
 
 <div class="node">
 <a name="Dot-dot-dot"></a>

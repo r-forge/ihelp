@@ -129,17 +129,17 @@ p {
 <li><a href="#Multiplication">5.7.1 행렬의 곱셈연산</a>
 <li><a href="#Linear-equations-and-inversion">5.7.2 선형방정식과 역행렬</a>
 <li><a href="#Eigenvalues-and-eigenvectors">5.7.3 고유값과 고유벡터</a>
-<li><a href="#Singular-value-decomposition-and-determinants">5.7.4 특이해 분해법과 행렬계수</a>
-<li><a href="#Least-squares-fitting-and-the-QR-decomposition">5.7.5 최소제곱적합과 QR 분해</a>
+<li><a href="#Singular-value-decomposition-and-determinants">5.7.4 특이값 분해와 행렬식</a>
+<li><a href="#Least-squares-fitting-and-the-QR-decomposition">5.7.5 최소제곱법 적합과 QR 분해</a>
 </li></ul>
 <li><a href="#Forming-partitioned-matrices">5.8 <code>cbind()</code>과 <code>rbind()</code></a>
-<li><a href="#The-concatenation-function-c_0028_0029-with-arrays">5.9 배열과 함께 사용할 수 있는 결합함수 <code>c()</code></a>
-<li><a href="#Frequency-tables-from-factors">5.10 요인을 이용한 도수분포표</a>
+<li><a href="#The-concatenation-function-c_0028_0029-with-arrays">5.9 배열에 사용하는 결합함수 <code>c()</code></a>
+<li><a href="#Frequency-tables-from-factors">5.10 요인을 활용한 도수분포표의 생성</a>
 </li></ul>
 <li><a name="toc_Lists-and-data-frames" href="#Lists-and-data-frames">6 리스트와 데이터프레임</a>
 <ul>
 <li><a href="#Lists">6.1 리스트</a>
-<li><a href="#Constructing-and-modifying-lists">6.2 리스트를 생성하고 수정하기</a>
+<li><a href="#Constructing-and-modifying-lists">6.2 리스트의 생성과 수정</a>
 <ul>
 <li><a href="#Concatenating-lists">6.2.1 리스트 결합하기</a>
 </li></ul>
@@ -2950,7 +2950,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- function is a list of two components named @code{values} and -->
 <!-- @code{vectors}.  The assignment -->
 
-   <p>함수 <code>eigen(Sm)</code>는 대칭행렬 (symmetric matrix) <code>Sm</code> 의 고유값 (eigenvalues)과 고유벡터 (eigenvectors)를 계산해주며 아래에서 보이는 것처럼 사용합니다.
+   <p>함수 <code>eigen(Sm)</code>는 대칭행렬 (symmetric matrix) <code>Sm</code> 의 고유값(eigenvalues)과 고유벡터 (eigenvectors)를 계산해주며 아래처럼 사용합니다.
 
 <pre class="example">     &gt; ev &lt;- eigen(Sm)
 </pre>
@@ -2958,24 +2958,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- eigenvalues of @code{Sm} and @code{ev$vec} is the matrix of -->
 <!-- corresponding eigenvectors.  Had we only needed the eigenvalues we could -->
 <!-- have used the assignment: -->
-이 함수를 적용한 결과는 <code>values</code>라는 고유값 벡터와 <code>vectors</code>라는 고유벡터들의 행렬을 구성요소로 가지는 리스트입니다. 
-따라서, 고유값 벡터는 <code>ev$val</code>라고 함으로서 얻을 수 있고, 고유벡터들의 행렬들은 <code>ev$eigen</code>을 통해 얻을 수 있습니다. 
-만약 사용자가 단순히 고유값만을 얻어 <code>evals</code>에 저장하고 싶다면 아래와 같이 할 수 있습니다. 
-이때 <code>evals</code>는 고유벡터에 대한 결과는 가지지 않습니다.
+위 식을 실행한 결과로 <code>ev$val</code>라는 <code>Sm</code>의 고유값 벡터와 여기에 대응되는 <code>ev$vec</code>라는 고유벡터의 행렬을 구성요소로 갖는 리스트를 객체 ev에 저장합니다. 
+만약 단순히 고유값만 필요하다면 아래와 같이 하시면 됩니다:
 
 <pre class="example">     &gt; evals &lt;- eigen(Sm)$values
 </pre>
    <p class="noindent"><!-- @code{evals} now holds the vector of eigenvalues and the second -->
 <!-- component is discarded.  If the expression -->
 
-   <p>만약, 아래와 같이 <code>eigen</code> 함수를 사용한다면 고유값 벡터와 고유벡터들의 행렬 모두 출력됩니다.
+   <p><code>evals</code>이라는 객체는 고유값의 벡터만 포함하고 있을 뿐, 고유벡터는 저장되지 않았습니다.
+
+   <p>만약, 아래와 같이 <code>eigen</code> 함수를 명령어로 실행하면 고유값 벡터와 고유벡터들의 행렬이 이들의 이름과 함께 모두 출력됩니다.
 <pre class="example">     &gt; eigen(Sm)
 </pre>
    <p class="noindent"><!-- is used by itself as a command the two components are printed, with -->
 <!-- their names.  For large matrices it is better to avoid computing the -->
 <!-- eigenvectors if they are not needed by using the expression -->
 
-   <p>행렬의 크기가 크고, 고유벡터들에 대한 정보보다는 고유값 벡터에 대한 정보만이 필요한 경우 아래와 같이 할 수 있습니다.
+   <p>행렬의 크기가 큰 경우에는, 다음과 같이 식을 사용함으로써 고유벡터의 계산을 생략하는 편이 나을 수 있습니다.
 
 <pre class="example">     &gt; evals &lt;- eigen(Sm, only.values = TRUE)$values
 </pre>
@@ -2989,7 +2989,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 </div>
 
 <!-- @subsection Singular value decomposition and determinants -->
-<h4 class="subsection">5.7.4 특이해 분해법과 행렬계수</h4>
+<h4 class="subsection">5.7.4 특이값 분해와 행렬식</h4>
 
 <p><a name="index-Singular-value-decomposition-113"></a>
 <a name="index-svd-114"></a><!-- The function @code{svd(M)} takes an arbitrary matrix argument, @code{M}, -->
@@ -3003,14 +3003,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- components named @code{d}, @code{u} and @code{v}, with evident meanings. -->
 
 <!-- If @code{M} is in fact square, then, it is not hard to see that -->
-   <p>함수 <code>svd(M)</code>는 <code>M</code>이라는 임의의 행렬을 인자로 가지며 특이해분해 (the singular value decomposition)을 수행합니다. 
-이 함수로부터는 세가지 결과가 얻어집니다. 
-첫번째는 <code>M</code>행렬의 열을 기초로 하는 직교행렬 (orthonormal matrix) <code>U</code>이고,
-두번째는 <code>M</code>행렬의 행을 기초로 한 직교행렬 <code>V</code>이며,
-세번째는 <code>M = U %*% D %*% t(V)</code>이라는 조건을 만족하는 대각행렬 <code>D</code>입니다. 
-<code>svd(M)</code>의 실제 계산결과는 위의 세가지를 구성요소로 가지는 리스트이며, 각 구성요소들은 <code>d</code>, <code>u</code>, <code>v</code>라는 이름을 가집니다.
+   <p>함수 <code>svd(M)</code>는 <code>M</code>이라는 임의의 행렬을 인자로 가지며 이 행렬에 대한 특이값 분해(the singular value decomposition)를 수행합니다. 
+이 연산의 결과는 세가지 부분으로 구성됩니다; 첫째는 <code>M</code>행렬의 열공간(column space)과 동일한 공간을 생성(span)하는 정규직교(orthonormal)열 벡터들로 구성된 행렬 <code>U</code>이고; 둘째는 이 행렬의 열공간(column space)이 <code>M</code> 행렬의 행공간(row space)과 동일한 공간을 생성(span)하는 정규직교(orthonormal)열 벡터들로 구성된 행렬 <code>V</code>; 셋째는 <code>M = U %*% D %*% t(V)</code>라는 조건을 만족하는 양의 숫자들로 구성된 대각행렬 <code>D</code>입니다. 
+<code>svd(M)</code>의 실행결과는 위의 세가지를 구성요소로 갖는 하나의 리스트이며, 각 구성요소들은 정의된대로 <code>d</code>, <code>u</code>, <code>v</code>라는 이름을 가집니다.
 
-   <p>만약, 행렬 <code>M</code>의 행렬계수 (determinant)의 절대값을 구하고자 한다면, 아래와 같은 방법으로 특이해분해를 이용할 수 있습니다.
+   <p>만약 행렬 <code>M</code>이 정방(square)행렬이라면, 아래처럼 표현식을 사용하여 행렬 <code>M</code>의 행렬식(determinant)의 절대값을 계산할 수 있습니다.
 
 <pre class="example">     &gt; absdetM &lt;- prod(svd(M)$d)
 </pre>
@@ -3018,7 +3015,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- calculation were needed often with a variety of matrices it could be -->
 <!-- defined as an @R{} function -->
 
-   <p>또한, 아래와 같이 사용자 정의함수 <code>abdet()</code>를 작성하여 사용할수도 있습니다.
+   <p>또한, 여러 행렬에 같은 계산을 반복적으로 사용하고 싶다면 아래와 같이 사용자 정의함수 <code>abdet()</code>를 작성하는 것도 가능할 것입니다. 이렇게  <code>absdet()</code> 함수를 정의해두면, 다른 R 함수처럼 필요할 때마다 사용할 수 있습니다.
 
 <pre class="example">     &gt; absdet &lt;- function(M) prod(svd(M)$d)
 </pre>
@@ -3028,14 +3025,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- a square matrix.  [Hint: You will not need to use an explicit loop. -->
 <!-- Look again at the @code{diag()} function.] -->
 
-   <p>또 다른 예로는 정방행렬의 트레이스(trace)를 계산해주는 <code>tr()</code>이라는 함수를 작성할 수도 있습니다.
+   <p>약간은 단순하지만 유용하게 사용할 수 있는 또 다른 예로, 정방(square) 행렬의 트레이스(trace)를 계산해주는 <code>tr()</code> 함수를 작성하는 것도 생각해 볼 수 있습니다.[힌트:이 함수를 작성할 때 loop 문장을 사용할 필요가 없습니다. <code>diag()</code> 함수를 다시 찾아 보세요.]
 
    <p><a name="index-det-116"></a><a name="index-determinant-117"></a><!-- @R{} has a builtin function @code{det} to calculate a determinant, -->
 <!-- including the sign, and another, @code{determinant}, to give the sign -->
 <!-- and modulus (optionally on log scale), -->
 
-   <p>R은 행렬계수 (determinant)를 구하는데 사용되는 함수 <code>det</code>를 제공합니다. 
-또한 함수 <code>determinant</code>는 이의 부호와 모듈러스의 결과도 함께 알려줍니다.
+   <p>R은 행렬식(determinant)과 그 부호(sign)을 구하는데 사용하는 <code>det</code>를 빌트인(builtin)함수로 제공합니다. 또다른 함수 <code>determinant</code>는 행렬식의 부호 뿐 아니라 모듈러스(modulus)(그리고 옵션으로 선택시 log 스케일에서의 모듈러스까지)의 결과도 함께 출력합니다. 이러한 함수들에 대해서는 나중에 좀 더 자세히 다루겠습니다.
 
 <!-- Functions will be discussed formally later in these notes. -->
 <div class="node">
@@ -3047,14 +3043,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 </div>
 
 <!-- @subsection Least squares fitting and the QR decomposition -->
-<h4 class="subsection">5.7.5 최소제곱적합과 QR 분해</h4>
+<h4 class="subsection">5.7.5 최소제곱법 적합과 QR 분해</h4>
 
 <p><a name="index-Least-squares-fitting-118"></a><a name="index-QR-decomposition-119"></a>
 <!-- The function @code{lsfit()} returns a list giving results of a least -->
 <!-- squares fitting procedure.  An assignment such as -->
 
-   <p>함수 <code>lsfit()</code>은 최소제곱적합 (least squares fitting)을 수행하여 얻은 결과를 리스트의 형식으로 돌려줍니다. 
-만약, <code>y</code>는 관측값 벡터이고, <code>X</code>는 디자인 행렬이라고 할때, 아래와 같이 사용된 함수 <code>lsfit()</code>는 최소제곱법 (least square)을 이용하여 적합된 값을 <code>ans</code>에 할당하는 것입니다.
+   <p>함수 <code>lsfit()</code>은 최소제곱법 적합(least squares fitting)을 수행하여 얻은 결과들을 리스트 형태로 돌려줍니다. 만약, <code>y</code>가 관측값 벡터이고, <code>X</code>는 디자인 행렬이라고 할때, 아래와 같이 사용된 함수 <code>lsfit()</code>는 최소 제곱법 (least square)을 이용하여 적합한 값을 <code>ans</code>에 할당합니다.더 자세한 사항은 도움말을 참조하시길 바랍니다. 특히, 최소제곱법을 이용한 회귀분석에 대한 모형진단이 필요하시면 함수 <code>ls.diag()</code>를 찾아보시길 바랍니다. 특히, 이 함수를 사용해서 회귀모형을 적합하면, 원래 <code>X</code>의 열에 포함되지 않는 전체 평균이 하나의 항으로 포함된다는 점을 주의하시기 바랍니다.
 
 <pre class="example">     &gt; ans &lt;- lsfit(X, y)
 </pre>
@@ -3068,22 +3063,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 <!-- using @code{lm(.)} (@pxref{Linear models}) to @code{lsfit()} for -->
 <!-- regression modelling. -->
 
-   <p>더 자세한 사항은 도움말을 참조하시길 바랍니다. 
-만약, 최소제곱법을 이용한 회귀분석을 통한 모델진단에 대해서 알고 싶으시다면 함수 <code>ls.diag()</code>를 살펴보시길 바랍니다. 
-그러나, 회귀분석을 수행하고자 한다면 <code>lsfit()</code>을 이용하기 보다는 <code>lm(.)</code>를 사용하는 것이 더욱 편리하며, 이에 대해서는 <a href="#Linear-models">Linear models</a>를 살펴보시길 바랍니다.
+   <p>더욱이 회귀분석을 수행할 때는 거의 대부분의 경우 <code>lsfit()</code> 보다는 <code>lm(.)</code>를 사용하는 것이 더욱 편리하다는 점도 알아두시면 좋을 것입니다.
 
    <p><a name="index-qr-121"></a><!-- Another closely related function is @code{qr()} and its allies. -->
 <!-- Consider the following assignments -->
 
-   <p>다음의 코드는 <code>qr()</code> 함수를 활용하여 회귀분석을 수행하는 것입니다. 
-여기에서 <code>b</code>는 회귀계수를, <code>fit</code>은 벡터 <code>y</code>가 <code>X</code>에 직사영(orthogonal projection)된 값(즉, fitted 된 값)을, 그리고 <code>res</code>는 잔차 (the projection onto the orthogonal complement)입니다. 
-특히, <code>b</code>의 결과는 <span class="sc">Matlab</span>에서 `백슬래쉬' 연산자를 이용하여 얻은 것과 동일합니다.
+   <p>최소제곱법과 연관되어 있는 함수로는 <code>qr()</code>과 그에 연관된 함수족이 있습니다. 아래의 예제를 살펴보세요.
 <pre class="example">     &gt; Xplus &lt;- qr(X)
      &gt; b &lt;- qr.coef(Xplus, y)
      &gt; fit &lt;- qr.fitted(Xplus, y)
      &gt; res &lt;- qr.resid(Xplus, y)
 </pre>
-   <p class="noindent"><!-- These compute the orthogonal projection of @code{y} onto the range of -->
+   <p>위 문장들은 벡터 <code>y</code>를 <code>X</code> 공간 위에 직사영(orthogonal projection)시킨 값(즉, fitted 된 값)을  <code>fit</code>에, 그리고 그 직교여공간에 사영(the projection onto the orthogonal complement)시킨 값 (즉, 잔차)를 <code>res</code>에, 그리고 사영을 통해 얻은 회귀계수(coefficient)의 벡터는  <code>b</code>에 저장합니다. 
+특히, <code>b</code>의 값은 <span class="sc">Matlab</span>에서 `백슬래쉬' 연산자를 이용해서 얻은 것과 동일합니다.
+
+<p class="noindent"><!-- These compute the orthogonal projection of @code{y} onto the range of -->
 <!-- @code{X} in @code{fit}, the projection onto the orthogonal complement in -->
 <!-- @code{res} and the coefficient vector for the projection in @code{b}, -->
 <!-- that is, @code{b} is essentially the result of the @sc{Matlab} -->
@@ -3091,8 +3085,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
 
 <!-- It is not assumed that @code{X} has full column rank.  Redundancies will -->
 <!-- be discovered and removed as they are found. -->
-   <p>디자인 행렬 <code>X</code>가 이 full column rank이라는 조건을 만족해야 하는 것은 아닙니다. 
-만약, 이 조건이 만족하지 않으면 선형독립이 아닌 열들을 찾아내고 이들을 제거할 것입니다.
+   <p>위의 연산을 위한 <code>X</code>가 이 full column rank라는 조건을 만족해야 하는 것은 아닙니다. 
+이 조건이 만족되지 않는 경우, 선형독립이 아닌 열들을 찾아서 이들을 제거하면 됩니다. 
+이런식으로 회귀계수를 계산하는 것은 앞에서 소개된 함수들을 이용하는 것 보다 훨씬 오래되고, 덜 자동화된 (low-level) 방법으로 최소제곱 적합법을 이용하는 방법입니다. 이런 식의 계산이 필요한 경우가 아직 가끔 있긴하지만, 거의 대부분의 경우 앞으로 <a href="#Statistical-models-in-R">Statistical models in R</a>에서 좀 더 설명하게 될 통계 모형 함수들을 사용하는 것으로 대체되고 있습니다.
 
 <!-- This alternative is the older, low-level way to perform least squares -->
 <!-- calculations.  Although still useful in some contexts, it would now -->
@@ -3117,11 +3112,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- horizontally, or column-wise, and @code{rbind()} vertically, or -->
 <!-- row-wise. -->
 
-   <p>위에서도 잠깐 언급했었지만, <code>cbind()</code>와 <code>rbind()</code>라는 함수는 벡터와 행렬을 열방향 혹은 행방향으로 묶어 새로운 행렬을 생성할 때 이용됩니다.
+   <p>위에서도 잠깐 언급했었지만, <code>cbind()</code>와 <code>rbind()</code>라는 함수는 벡터와 행렬을 묶어 새로운 행렬을 생성할 때 사용됩니다. 간단히 말해, <code>cbind()</code> 함수는 여러 행렬들을 세로로, 혹은 열방향으로 묶어서, 그리고 <code>rbind()</code> 함수는 가로로, 혹은 행방향으로 묶어서 새로운 행렬을 생성합니다.
 
 <!-- In the assignment -->
-   <p>아래에서 사용된 함수 <code>cbind()</code>에 사용되는 입력인자는 임의의 길이를 가진 벡터 또는 행렬입니다. 
-단, 인자로서 사용되는 행렬들은 각각의 행렬이 같은 수의 행을 가지고 있어야 합니다.
+   <p>아래 함수 <code>cbind()</code>에 사용될 입력인자는 임의의 길이를 가진 벡터이거나 같은 길이의 열,또는 같은 수의 행을 가진 행렬이어만 합니다. 이 함수를 적용하면 입력된 <var>arg_1</var>, <var>arg_2</var>, <small class="dots">...</small>이 각각의 열로 하는 하나의 행렬이 생성됩니다.
 
 <pre class="example">     &gt; X &lt;- cbind(<var>arg_1</var>, <var>arg_2</var>, <var>arg_3</var>, ...)
 </pre>
@@ -3130,6 +3124,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- The result is a matrix with the concatenated arguments @var{arg_1}, -->
 <!-- @var{arg_2}, @dots{} forming the columns. -->
 
+   <p><code>cbind()</code>의 입력인자가 함께 입력된 다른 행렬의 열 길이 보다 짧은 길이를 가진 벡터인 경우가 있을 수 있습니다. 
+이 경우, 길이가 더 짧은 벡터들은 행렬의 열의 길이(만약 행렬이 입력되지 않은 경우에는 가장 길이가 긴 벡터)에 맞추기 위해 그 구성요소를 반복 사용합니다.
+
 <!-- If some of the arguments to @code{cbind()} are vectors they may be -->
 <!-- shorter than the column size of any matrices present, in which case they -->
 <!-- are cyclically extended to match the matrix column size (or the length -->
@@ -3137,13 +3134,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- The function @code{rbind()} does the corresponding operation for rows. -->
 <!-- In this case any vector argument, possibly cyclically extended, are of -->
 <!-- course taken as row vectors. -->
-   <p>함수 <code>rbind()</code>는 함수 <code>cbind()</code>와 유사한 기능을 가지고 있으나, 입력받는 모든 인자들 각각이 가지는 열의 개수가 동일해야만 합니다.
+   <p>함수 <code>rbind()</code>는 함수 <code>cbind()</code>와 유사한 기능을 행에 대해 수행힙니다. 이 함수의 경우, 입력된 벡터가 무엇이든 간에, 길이가 다를 경우 위와 같이 반복 사용되서 길이를 맞추는 것은 물론이고, 모든 인자를 행벡터로서 처리합니다.
 
 <!-- Suppose @code{X1} and @code{X2} have the same number of rows.  To -->
 <!-- combine these by columns into a matrix @code{X}, together with an -->
 <!-- initial column of @code{1}s we can use -->
-   <p>예를 들어, <code>X1</code>과 <code>X2</code>라는 두 행렬이 같은 개수의 행을 가지고 있다고 가정합니다. 
-아래에서 보여지는 것과 같이 <code>X</code>는 <code>1</code>, <code>X1</code>, <code>X2</code>라는 인자를 가지는데, 여기에서 <code>1</code>이라는 인자는 <code>X1</code>이 가진 행의 길이만큼 <code>1</code>을 리사이클링 시켜 <code>1</code>이라는 열벡터를 생성한뒤, <code>1</code>, <code>X1</code>, <code>X2</code>를 열방향으로 한데 묶어 <code>X</code>라는 새로운 행렬을 생성시켜 줍니다.
+   <p><code>X1</code>과 <code>X2</code>라는 두 행렬이 같은 개수의 행을 가지고 있다고 가정합니다. 
+<code>1</code>로 구성된 열과 함께 위 둘을 열 방향으로 결합하여 새 행렬 <code>X</code>를 생성하기 위해, 아래와 같은 명령문을 사용할 수 있습니다.
 
 <pre class="example">     &gt; X &lt;- cbind(1, X1, X2)
 </pre>
@@ -3151,8 +3148,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- Hence @code{cbind(x)} and @code{rbind(x)} are possibly the simplest ways -->
 <!-- explicitly to allow the vector @code{x} to be treated as a column or row -->
 <!-- matrix respectively. -->
-   <p><code>rbind()</code> 또는 <code>cbind()</code>의 사용으로 얻어진 결과는 항상 행렬입니다. 
-따라서, <code>cbind(x)</code>와 <code>rbind(x)</code>는 벡터 <code>x</code>를 행벡터 혹은 열벡터로 표현할 수 있는 유용한 함수들입니다.
+   <p><code>rbind()</code>이나 <code>cbind()</code>를 사용하면 얻어지는 결과는 항상 행렬입니다. 
+따라서, <code>cbind(x)</code>와 <code>rbind(x)</code>는 벡터 <code>x</code>를 각각 하나의 열 혹은 하나의 행으로 구성된 행렬로 바꾸는 가장 단순한 방법일 것입니다.
 
 <div class="node">
 <a name="The-concatenation-function-c()-with-arrays"></a>
@@ -3165,20 +3162,18 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 </div>
 
 <!-- @section The concatenation function, @code{c()}, with arrays -->
-<h3 class="section">5.9 배열과 함께 사용할 수 있는 결합함수 <code>c()</code></h3>
+<h3 class="section">5.9 배열에 사용하는 결합함수 <code>c()</code></h3>
 
 <!-- It should be noted that whereas @code{cbind()} and @code{rbind()} are -->
 <!-- concatenation functions that respect @code{dim} attributes, the basic -->
 <!-- @code{c()} function does not, but rather clears numeric objects of all -->
 <!-- @code{dim} and @code{dimnames} attributes.  This is occasionally useful -->
 <!-- in its own right. -->
-<p>만약, <code>cbind()</code>와 <code>rbind()</code> 함수들이 행렬의 <code>dim</code> 속성을 기초로 여러개의 행렬을 한데 묶어준다고 한다면,
-함수 <code>c()</code>는 <code>dim</code>과 <code>dimnames</code> 속성 모두를 무시한 채 결합을 수행한다고 할 수 있습니다. 
-따라서, <code>c()</code>를 이용하는 것이 때때로 더 유용한 경우가 있습니다.
+<p><code>cbind()</code>와 <code>rbind()</code> 함수의 경우 행렬이 가진 <code>dim</code> 속성에 기반해서 여러개의 행렬을 하나로 연결하는 반면, 함수 <code>c()</code>는 <code>dim</code>과 <code>dimnames</code> 속성 모두를 무시한 채 결합시킨다고 할 수 있습니다. 따라서, 경우에 따라서는 <code>c()</code>를 이용해야만 할 수 있습니다.
 
 <!-- The official way to coerce an array back to a simple vector object is to -->
 <!-- use @code{as.vector()} -->
-   <p>본래 이렇게 주어진 속성들을 무시하고, 배열을 단순 벡터로 강제형변환하는 방법은 아래와 같이 <code>as.vector()</code>이라는 함수를 이용하는 것입니다.
+   <p>이런식으로 배열의 속성을 무시하고 단순 벡터로 강제형변환하는 공식적으로 알려진 방법은 다음과 같이 <code>as.vector()</code>  함수를 이용하는 것입니다.
 
 <pre class="example">     &gt; vec &lt;- as.vector(X)
 </pre>
@@ -3186,7 +3181,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- However a similar result can be achieved by using @code{c()} with just -->
 <!-- one argument, simply for this side-effect: -->
 
-   <p>이와 같은 결과를 아래와 같이 함수 <code>c()</code>를 이용하여 얻을 수도 있습니다.
+   <p>하지만, 이와 비슷한 결과를 함수 <code>c()</code>의 이러한 부가적 성질을 활용함으로써 얻을 수도 있습니다.
 
 <pre class="example">     &gt; vec &lt;- c(X)
 </pre>
@@ -3195,7 +3190,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- between them is largely a matter of style (with the former being -->
 <!-- preferable). -->
 
-   <p>실제로는 다소 다른 점이 존재하기는 하지만, 어떤 함수를 이용하여 이를 수행할 것인가는 단순히 프로그래밍 스타일의 차이일뿐입니다.
+   <p>실제로는 다소 차이점이 있기는 하지만, 둘 중 어떤 함수를 이용하여 이 작업을 수행할 것인가는 단순히 프로그래밍 스타일의 차이일 뿐입니다.
 
 <div class="node">
 <a name="Frequency-tables-from-factors"></a>
@@ -3206,7 +3201,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 </div>
 
 <!-- @section Frequency tables from factors -->
-<h3 class="section">5.10 요인을 이용한 도수분포표</h3>
+<h3 class="section">5.10 요인을 활용한 도수분포표의 생성</h3>
 
 <p><a name="index-Tabulation-126"></a>
 <!-- Recall that a factor defines a partition into groups.  Similarly a pair -->
@@ -3215,37 +3210,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
 <!-- from equal length factors.  If there are @math{k} factor arguments, -->
 <!-- the result is a @math{k}-way array of frequencies. -->
 
-   <p>위에서 데이터를 그룹화하는데 요인 (factor)이 사용됨을 보았습니다. 
-만약 2개의 요인이 존재한다면 2차원 분류 (two way cross classification)가 가능할 것이고, 더 나아가 k 개의 요인이 있다면 k-차원의 분류가 가능할 것입니다. 
-함수 <code>table()</code>은 이러한 분류가 가능하도록 도와줍니다. 
-만약, 여러 개의 수준을 가진 지역코드란 요인에 대한 정보가 <code>statef</code>에 저장되어 있다면, 지역코드별 도수분포를 아래와 같이 구할 수 있습니다. 
-이때 각 도수는 수준 (level)이 가진 이름순으로 정렬됩니다.
+   <p>우리는 앞부분에서 데이터를 그룹화하는데 요인 (factor)을 사용할 수 있음을 배웠습니다. 
+마찬가지로 만약 2개의 요인을 사용하면 2차원 분류(two way cross classification)를 정의할 수 있을 것이고, 더 나아가 k 개의 요인으로 k-차원의 분류가 가능할 것입니다. 
+함수 <code>table()</code>은 같은 길이를 가진 요인들을 분류해서 빈도분포표를 생성합니다. 
+즉, k개의 요인이 입력될 경우, 이 함수를 사용한 결과로 k 차원의 빈도의 배열이 생성됩니다.
+
+   <p>예를 들어, 입력된 각 데이터가 지역(state)코드인 데이터 벡터인 <code>statef</code>라는 하나의 요인이 존재한다고 가정합시다. 
+아래의 명령문은 <code>statefr</code>라는 이름으로 샘플의 각 주별 빈도를 요약하는 표를 저장합니다.
 
 <!-- Suppose, for example, that @code{statef} is a factor giving the state -->
 <!-- code for each entry in a data vector.  The assignment -->
 <pre class="example">     &gt; statefr &lt;- table(statef)
 </pre>
-   <p class="noindent"><!-- gives in @code{statefr} a table of frequencies of each state in the -->
+   <p>이 표에 각 주 별 도수는 수준 (level)의 알파벳 이름순으로 정렬됩니다. 이와 같은 작업을 수행하는 좀 더 간단한 방법은 다음과 같습니다.
+
+<p class="noindent"><!-- gives in @code{statefr} a table of frequencies of each state in the -->
 <!-- sample.  The frequencies are ordered and labelled by the @code{levels} -->
 <!-- attribute of the factor.  This simple case is equivalent to, but more -->
 <!-- convenient than, -->
-
-   <p>이와 동일한 역할을 수행하는 또 다른 방법은 다음과 같습니다.
 
 <pre class="example">     &gt; statefr &lt;- tapply(statef, statef, length)
 </pre>
    <!-- Further suppose that @code{incomef} is a factor giving a suitably -->
 <!-- defined ``income class'' for each entry in the data vector, for example -->
 <!-- with the @code{cut()} function: -->
-   <p>지역별 코드의 경우에는 데이터값이 이산형이지만, 소득수준의 경우는 연속형의 데이터를 가집니다. 
-이런 경우, 소득수준 (&ldquo;income class&rdquo;)에 대한 구간을 나누는 편리한 방법은 아래와 같이 <code>cut()</code>이라는 함수를 사용하는 것입니다.
+   <p>이번에는 입련된 각 데이터가  소득수준 (&ldquo;income class&rdquo;)을 의미하는 <code>incomef</code>라는 요인을 가정 합시다. 
+이 소득수준의 경우, 함수 <code>cut()</code>를 사용해서 다음과 같이 생성할 수 있습니다.
 
 <pre class="example">     &gt; factor(cut(incomes, breaks = 35+10*(0:7))) -&gt; incomef
 </pre>
    <p><a name="index-cut-128"></a>
 <!-- Then to calculate a two-way table of frequencies: -->
 
-   <p>이렇게 함수 <code>cut()</code>을 이용하여 구간화된 <code>incomef</code>라는 요인을 이용하여 지역코드별 소득수준에 대한 도수분포를 아래와 같이 보여줄 수 있습니다.
+   <p>위에서 정의한 두 개의 요인에 대해 2차원 빈도표를 생성하면 다음과 같습니다:
 
 <pre class="example">     &gt; table(incomef,statef)
               statef
@@ -3256,6 +3253,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Arrays-and-matrices">Arrays and matric
        (65,75]   0   1  0   0  0   0   1  0
 </pre>
    <!-- Extension to higher-way frequency tables is immediate. -->
+   <p>좀 더 많은 차원을 대상으로 빈도표를 작성하는 것도 이것과 크게 다르지 않습니다.
+
 <div class="node">
 <a name="Lists-and-data-frames"></a>
 <p><hr>
@@ -3294,12 +3293,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 <!-- type, and, for example, a list could consist of a numeric vector, a -->
 <!-- logical value, a matrix, a complex vector, a character array, a -->
 <!-- function, and so on.  Here is a simple example of how to make a list: -->
-   <p>R에서 <em>리스트(list)</em>라는 것은 <em>컴포넌트 (components)</em>라고 불리는 객체들의 집합입니다. 
-독자는 벡터, 행렬, 혹은 배열과 같이 R에서 제공되는 또 다른 데이터 구조라고 생각해 두시길 바랍니다. 
-그러나, 리스트가 벡터, 행렬, 혹은 배열과 같은 데이터형과 구분되는 점은 리스트의 구성요소 (즉, 컴포넌트)들의 모드가 같지 않아도 된다는 점입니다. 
-예를들면, 수치형 벡터의 모든 구성원소는 수치형 모드를 가져야만 했습니다. 
-그러나, 리스트의 구성요소는 모두 동일한 모드를 가질 필요가 없이, 수치형 벡터, 논리형 벡터, 행렬, 복소수형 벡터, 문자형 배열, 그리고 함수 등의 객체들이 복합적으로 사용될 수 있습니다. 
-다음은 리스트를 생성하는 간단한 예를 보여줍니다.
+   <p>R에서 <em>리스트(list)</em>라는 것은 <em>컴포넌트 (components)</em>라고 불리는 일정한 순서로 정렬된 여러 객체들의 집합입니다. 
+각각의 컴포넌트는 반드시 같은 모드(mode)나 형태(type)일 필요는 없습니다. 예를 들어, 하나의 리스트는 수치형 벡터, 논리형 벡터, 행렬, 복소수 벡터, 문자형 벡터, 함수 이외의 어떤 형태라도 컴포넌트로 포함할 수 있습니다. 
+리스트를 생성하는 아래의 간단한 예를 살펴보시기 바랍니다:
 
 <pre class="example">     &gt; Lst &lt;- list(name="Fred", wife="Mary", no.children=3,
                    child.ages=c(4,7,9))
@@ -3312,26 +3308,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 <!-- @code{Lst[[4]]} is a vector subscripted array then @code{Lst[[4]][1]} is -->
 <!-- its first entry. -->
 
-   <p>리스트의 구성객체인 컴포넌트들은 항상 <em>숫자로 구분(numbered)</em>되어 있어, 각각의 컴포넌트들을 이에 상응하는 숫자 (즉, 컴포넌트 인덱스)를 이용하여 접근이 가능합니다. 
-독자는 벡터에서 구성요소를 인덱스를 활용하여 인덱스에 상응하는 구성요소의 값에 접근했었음을 기억하실 것입니다. 
-이와 동일한 원리로 생각하시면 됩니다. 
-예를 들어, 위와 같이 4개의 컴포넌트들로 구성된 리스트 <code>Lst</code>가 있다면, 각각의 컴포넌트는 <code>Lst[[1]]</code>,<code>Lst[[2]]</code>, <code>Lst[[3]]</code> 그리고, <code>Lst[[4]]</code>라고 사용함으로서 접근할 수 있습니다. 
-더 나아가, 마지막 네번째 컴포넌트 <code>Lst[[4]]</code>의 첫번째 구성요소의 값을 알고자 한다면, <code>Lst[[4]][1]</code>이라고 하면 됩니다.
+   <p>리스트에 포함된 컴포넌트들은 항상 <em>숫자로 구분(numbered)</em>되어 있으며, 따라서 각각의 컴포넌트를 이에 해당하는 숫자 (즉, 컴포넌트 인덱스)로 불러내는 것이 가능합니다. 따라서, <code>Lst</code>가 4개의 컴포넌트를 갖는 리스트라면, 각각의 컴포넌트는 각각 <code>Lst[[1]]</code>,<code>Lst[[2]]</code>, <code>Lst[[3]]</code> 그리고 <code>Lst[[4]]</code>로 불러낼 수 있습니다. 특히, <code>Lst[[4]]</code>가 첨자로 표현되는 구성요소를 가진 벡터인 경우, <code>Lst[[4]][1]</code>는 이 컴포넌트의 첫번째 구성요소를 의미합니다.
 
 <!-- If @code{Lst} is a list, then the function @code{length(Lst)} gives the -->
 <!-- number of (top level) components it has. -->
-   <p>만약 리스트가 몇개의 컴포넌트로 구성된지 모를 경우 <code>length()</code> 함수를 이용하면 됩니다. 
-예를들어 위에서 사용한 <code>Lst</code>라는 리스트를 예를 들면, <code>length(Lst)</code>은 4라는 값을 알려줄 것입니다.
+   <p>또 <code>Lst</code>가 리스트인 경우, <code>length()</code> 함수를 사용하면 (top level) 컴포넌트의 개수를 알 수 있습니다. 위의 예제를 계속 사용하면, <code>length(Lst)</code>는 4라는 값을 출력할 것입니다.
 
 <!-- Components of lists may also be @emph{named}, and in this case the -->
 <!-- component may be referred to either by giving the component name as a -->
 <!-- character string in place of the number in double square brackets, or, -->
 <!-- more conveniently, by giving an expression of the form -->
-   <p>컴포넌트 인덱스를 이용하는 방법외에도 리스트의 컴포넌트들을 접근하는 방법은 아래와 같이 <em>컴포넌트에 주어진 이름</em>을 활용하는 것입니다.
+   <p>리스트에 포함된 컴포넌트는 <em>이름(named)</em>으로 불러낼 수도 있는데, 이 경우 해당 컴포넌트의 이름에 해당하는 문자열을 위에서 숫자를 사용할 때 처럼 한 쌍의 이중대괄호 안에 넣어 사용하며, 좀 더 쉽게는 아래와 같은 표현식을 사용하는 것도 가능합니다.
 
 <pre class="example">     &gt; <var>name</var>$<var>component_name</var>
 </pre>
    <p class="noindent"><!-- for the same thing. -->
+<var>name</var>는 리스트의 이름이고, 달러 표시($) 뒤의 <var>component_name</var>는 컴포넌트의 이름입니다. 
+이렇게 이름으로 직접 불러내는 방법은 사용자가 해당 컴포넌트의 번호(인덱스)를 기억할 필요없이, 쉽고 정확하게 컴포넌트를 불러낼 수 있는 방법입니다.
 
 <!-- This is a very useful convention as it makes it easier to get the right -->
 <!-- component if you forget the number. -->
@@ -3342,18 +3335,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 <!-- @code{"Mary"}, -->
 <!-- @code{Lst$child.ages[1]} is the same as @code{Lst[[4]][1]} and is the -->
 <!-- number @code{4}. -->
-   <p><var>name</var>는 리스트의 이름이고, 스트링($) 뒤의 <var>component_name</var>는 컴포넌트의 이름입니다. 
-이렇게 이름을 사용하는 방법은 사용자가 컴포넌트 인덱스를 일일이 기억하지 않도록 도와줍니다. 
-위에서 사용된 예제를 다시 보면, <code>Lst$name</code>이라는 것은 <code>Lst[[1]]</code>와 동일하고, <code>"Fred"</code>라는 값을 가집니다. 
-<code>Lst$wife</code>는 <code>Lst[[2]]</code>와 동일하고 <code>"Mary"</code>라는 값을 가집니다. 
-<code>Lst$child.ages[1]</code> 역시 <code>Lst[[4]][1]</code>동일하며, <code>4</code>라는 값을 가집니다.
+   <p>위의 예제로 다시 돌아가면,
+<code>Lst$name</code>이라는 것은 <code>Lst[[1]]</code>와 동일하고, <code>"Fred"</code>라는 값을 가집니다. 
+또 <code>Lst$wife</code>는 <code>Lst[[2]]</code>와 동일하고 <code>"Mary"</code>라는 값을 가집니다. 
+<code>Lst$child.ages[1]</code>의 경우, <code>Lst[[4]][1]</code>와 동일하며, <code>4</code>라는 값을 가집니다.
 
 <!-- Additionally, one can also use the names of the list components in -->
 <!-- double square brackets, i.e., @code{Lst[["name"]]} is the same as -->
 <!-- @code{Lst$name}.  This is especially useful, when the name of the -->
 <!-- component to be extracted is stored in another variable as in -->
-   <p>또한, <code>Lst[["name"]]</code>와 <code>Lst$name</code>은 동일한 표현입니다. 
-이것은 아래와 같이 리스트의 이름을 다른 변수에 따로 저장하여 활용 할 수 있도록 하는 아주 유용한 기능입니다.
+   <p>또한, 리스트의 컴포넌트 이름을 이중대괄호 안에 사용하는 것고 가능하며, 따라서 <code>Lst[["name"]]</code>와 <code>Lst$name</code>은 동일합니다. 
+이러한 사용법은 아래와 같이 리스트 컴포넌트의 이름이 다른 변수로 저장되어 있는 경우에 유용하게 사용될 수 있습니다.
 
 <pre class="example">     &gt; x &lt;- "name"; Lst[[x]]
 </pre>
@@ -3365,23 +3357,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 <!-- The latter is a @emph{sublist of the list @code{Lst} consisting of the -->
 <!-- first entry only.  If it is a named list, the names are transferred to -->
 <!-- the sublist.} -->
-   <p>리스트를 사용함에 있어서 <code>Lst[[1]]</code>와 <code>Lst[1]</code>를 구분하는 것은 매우 중요합니다. 
-&lsquo;<samp><code>[[</code><var><small class="dots">...</small></var><code>]]</code></samp>&rsquo;은 한 개의 구성객체 (컴포넌트)에 접근하기 위해 사용되는 연산자인 반면,
-&lsquo;<samp><code>[</code><var><small class="dots">...</small></var><code>]</code></samp>&rsquo;은 일반적인 첨자로 사용되는 서브리스트(sublist)로서 사용되는 연산자 입니다. 
-따라서, 전자는 <em>리스트 </em><code>Lst</code><em>의 첫번째 구성객체</em>를 나타내므로 만약 컴포넌트에 이름이 있어도 이름이 없이 해당 구성객체만을 접근하게 됩니다. 
-후자는 리스트 <code>Lst</code>의 첫번째 항목만을 가지는 서브리스트 (sublit)이므로 구성객체에 이름이 있다면 이름과 함께 리스트의 첫번째 객체를 하위 리스트형식으로 접근하게 됩니다.
+   <p>리스트를 사용하는데 있어 <code>Lst[[1]]</code>와 <code>Lst[1]</code>를 구분하는 것은 매우 중요합니다. 
+&lsquo;<samp><code>[[</code><var><small class="dots">...</small></var><code>]]</code></samp>&rsquo;은 리스트 안의 한 개의 컴포넌트를 선택하기위해 사용하는 연산자인 반면,
+&lsquo;<samp><code>[</code><var><small class="dots">...</small></var><code>]</code></samp>&rsquo;은 일반적인 첨자로 사용되는 연산자입니다. 
+따라서, 전자는 <em>리스트 </em><code>Lst</code><em>의 첫번째 컴포넌트</em>를 나타내므로, 만약 그 컴포넌트에 이름이 있어도 이름과 상관없이 해당 컴포넌트만을 불러냅니다. 하지만 후자는 리스트 <code>Lst</code>의 첫번째 구성요소만을 갖는 서브리스트(sublit)이므로, 이 구성요소에 이름이 있다면, 이름이 해당 서브리스트와 함께 불러집니다.
 
 <!-- The names of components may be abbreviated down to the minimum number of -->
 <!-- letters needed to identify them uniquely.  Thus @code{Lst$coefficients} -->
 <!-- may be minimally specified as @code{Lst$coe} and @code{Lst$covariance} -->
 <!-- as @code{Lst$cov}. -->
-   <p>만약 리스트를 구성하는 컴포넌트들의 이름이 길다면, R은 동일한 이름이 없는 한 컴포넌트들을 구분할 수 있는 약어기능을 제공합니다. 
-예를들면, 리스트 <code>Lst</code>가 <code>coefficients</code>와 <code>covariance</code>라는 이름의 두 개의 컴포넌트들을 가지고 있다면,
-이들을 접근하기 위해서  <code>Lst$coefficients</code> 또는 <code>Lst$covariance</code>라고 할 필요가 없이 <code>Lst$coe</code>또는 <code>Lst$cov</code>와 같이 사용할 수 있습니다.
+   <p>컴포넌트들의 이름은 각각의 이름이 구분할 수 있는 최소한의 글자수로 된 약어로 나타내질 수 있습니다. 
+예를들면, 리스트 <code>Lst</code>가 <code>coefficients</code>와 <code>covariance</code>라는 이름의 두 개의 컴포넌트로 구성된 경우, <code>Lst$coe</code>와 <code>Lst$cov</code>으로 간소화하여 불러낼 수 있습니다.
 
+   <p>사실 컴포넌트들의 이름으로 구성된 벡터는 단순히 리스트의 속성 중 하나라고 볼 수 있으며, 다른 속성들처럼 다룰 수 있습니다. 물론 리스트를 제외한 다른 객체들 역시 <em>names</em>을 속성의 하나로 포함할 수 있습니다. 
 <!-- The vector of names is in fact simply an attribute of the list like any -->
 <!-- other and may be handled as such.  Other structures besides lists may, -->
 <!-- of course, similarly be given a @emph{names} attribute also. -->
+
 <div class="node">
 <a name="Constructing-and-modifying-lists"></a>
 <p><hr>
@@ -3392,14 +3384,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 </div>
 
 <!-- @section Constructing and modifying lists -->
-<h3 class="section">6.2 리스트를 생성하고 수정하기</h3>
+<h3 class="section">6.2 리스트의 생성과 수정</h3>
 
 <!-- New lists may be formed from existing objects by the function -->
 <!-- @code{list()}.  An assignment of the form -->
-<p>만약 이미 작업하고 있던 여러개의 객체가 존재한다면,
-<code>list()</code> 함수를 이용하여 새로운 리스트를 생성할 수 도 있습니다. 
-아래에서 보이는 바와 같이 <code>object_1</code>이라는 객체를 첫번째 컴포넌트로 <code>name_1</code>이라는 이름과 함께 사용할 것이며,
-이와 같은 방법으로 <code>m</code>개의 객체를 가지는 새로운 리스트를 정의하겠다는 의미입니다.
+<p>이미 만들어놓은 여러개의 객체를 <code>list()</code> 함수를 사용하여 새로운 리스트로 생성할 수 있습니다. 
+아래와 같은 할당문을 사용하면, (사용자가 자유롭게 선택한) <var>object_1</var>, <var><small class="dots">...</small></var>, <var>object_m</var>와 같은 이름을 갖는 m 개의 컴포넌트로 구성된 리스트 <code>Lst</code>를 생성합니다. 만약 이렇게 이름을 할당하는 과정이 생략되면, 컴포넌트들은 숫자로만 구분됩니다.  새로운 리스트가 생성될 때 기존의 객체들은 단순히 컴포넌트로서 <em>복사된 것</em>이기 때문에 새로운 리스트의 생성이 기존의 객체에 아무런 영향을 주지 않습니다.
 
 <pre class="example">     &gt; Lst &lt;- list(<var>name_1</var>=<var>object_1</var>, <var><small class="dots">...</small></var>, <var>name_m</var>=<var>object_m</var>)
 </pre>
@@ -3410,13 +3400,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Lists-and-data-frames">Lists and data 
 <!-- used to form the list are @emph{copied} when forming the new list and -->
 <!-- the originals are not affected. -->
 
-   <p>만약, 컴포넌트에 사용할 이름이 정해지지 않았다면, R은 자동으로 몇 번째 컴포넌트인지 숫자를 이름으로 사용하게 됩니다. 
-새로운 리스트가 생성될 때 기존의 객체들은 단순히 컴포넌트로서 복사 되는 것이기 때문에 새로운 리스트가 정의되어도 기존의 객체들은 아무런 영향을 받지 않습니다.
+   <p>리스트에 새로운 컴포넌트를 추가하고 싶을 경우, 아래와 같이 첨자를 이용하는 것도 가능합니다.
 
 <!-- Lists, like any subscripted object, can be extended by specifying -->
 <!-- additional components.  For example -->
-   <p>만약, 리스트에 새로운 컴포넌트를 추가하고 싶을 경우에는 아래와 같이 첨자를 이용할 수 있습니다.
-
 <pre class="example">     &gt; Lst[5] &lt;- list(matrix=Mat)
 </pre>
    <ul class="menu">
@@ -3439,11 +3426,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Constructing-and-modifying-lists">Cons
 <!-- result is an object of mode list also, whose components are those of the -->
 <!-- argument lists joined together in sequence. -->
 
-   <p>만약 여러개의 리스트를 한데 묶고 싶다면 아래와 같이 함수 <code>c()</code>를 이용하면 사용된 순서대로 한데 묶인 새로운 리스트를 생성해 줍니다.
+   <p>여러개의 리스트를 하나로 묶고 싶은 경우, 아래와 같이 함수 <code>c()</code>를 이용하면 입력된 순서대로 하나로 묶인 리스트가 생성됩니다.
 
 <pre class="example">     &gt; list.ABC &lt;- c(list.A, list.B, list.C)
 </pre>
-   <!-- Recall that with vector objects as arguments the concatenation function -->
+   <p>앞 부분에서 연결함수를 사용해서 입력인자인 벡터들을 모두 연결해서 하나의 벡터로 생성했던 것과 비슷한 사용입니다. 다만, 리스트를 연결할 경우, <code>dim</code> 속성을 포함한 모든 리스트 속성이 무시된 채 작업된다는 점 정도의 차이가 있을 뿐 입니다.
+
+<!-- Recall that with vector objects as arguments the concatenation function -->
 <!-- similarly joined together all arguments into a single vector structure. -->
 <!-- In this case all other attributes, such as @code{dim} attributes, are -->
 <!-- discarded. -->
