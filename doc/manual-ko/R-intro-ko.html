@@ -8567,28 +8567,28 @@ Michelson 데이터를 데이터프레임의 형식으로 읽어들인 뒤, 이�
    </dl>
 
 <!-- We now look at some more graphical features: contour and image plots. -->
-   <p>이제 contour(컨투어 또는 등고선)와 image(이미지) 플랏이라는 그래픽 기능에 대해서 알아보도록 합니다.
+   <p>이제 컨투어(contour)와 이미지(image) 플랏이라는 그래픽 기능에 대해서 알아보도록 합니다.
 
      <dl>
 <dt><code>x &lt;- seq(-pi, pi, len=50)</code><dt><code>y &lt;- x</code><dd><!-- @math{x} is a vector of 50 equally spaced values in -->
 x는
-
-     <!-- the interval [-pi\, pi]. -->
-     <p>[-pi\, pi] 구간을 50등분한 값을 가지고 있는 벡터입니다.
+<!-- the interval [-pi\, pi]. -->
+구간 [-pi\, pi]을 50등분한 값들을 가진 벡터입니다.
 
      <!-- @math{y} is the same. -->
-     <p>y는 x와 동일한 벡터입니다.
+     <p>벡터 y는 벡터 x와 동일합니다.
 
      <br><dt><code>f &lt;- outer(x, y, function(x, y) cos(y)/(1 + x^2))</code><dd><!-- @math{f} is a square matrix, with rows and columns indexed by @math{x} -->
 <!-- and @math{y} respectively, of values of the function -->
 <!-- @eqn{\cos(y)/(1 + x^2),cos(y)/(1 + x^2)}. -->
-f는 x와 y를 각각 행과 열로 가지는 정방행렬이며, 이 행렬의 원소는 x의 원소와 y의 원소의 쌍을 이용하여 함수 cos(y)/(1 + x^2)를 통해 얻어집니다.
+f는 x가 행이고, y가 열인 정방행렬입니다. 
+이 행렬의 구성요소는 x의 구성요소와 y의 구성요소를 하나의 짝을 이루도록 하여 함수 cos(y)/(1 + x^2)를 적용하여 얻은 값으로 얻어지게 됩니다.
 
      <br><dt><code>oldpar &lt;- par(no.readonly = TRUE)</code><dt><code>par(pty="s")</code><dd><!-- Save the plotting parameters and set the plotting region to ``square''. -->
-현재의 플랏팅 파라미터들을 저장하고 플랏팅지역 (plotting region)을 &ldquo;square&rdquo;로 정합니다.
+현재 저장되어 있는 플랏팅 모수 (parameters)들을 보관한 뒤, 플랏팅 영역 (plotting region)을 &ldquo;square&rdquo;로 설정합니다.
 
      <br><dt><code>contour(x, y, f)</code><dt><code>contour(x, y, f, nlevels=15, add=TRUE)</code><dd><!-- Make a contour map of @math{f}; add in more lines for more detail. -->
-f의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨을 보여지도록 합니다.
+f의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨(등고선)을 보여지도록 합니다.
 
      <br><dt><code>fa &lt;- (f-t(f))/2</code><dd><!-- @code{fa} is the ``asymmetric part'' of @math{f}.  (@code{t()} is -->
 <!-- transpose). -->
@@ -8598,48 +8598,45 @@ f의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨을 �
 컨투어 플랏을 생성합니다.
 
      <br><dt><code>par(oldpar)</code><dd><!-- @dots{} and restore the old graphics parameters. -->
-이전의 그래픽 파라미터들을 원상태로 되돌립니다.
+이전에 보관한 그래픽 모수들을 원래대로 복구시킵니다.
 
      <br><dt><code>image(x, y, f)</code><dt><code>image(x, y, fa)</code><dd><!-- Make some high density image plots, (of which you can get -->
 <!-- hardcopies if you wish), @dots{} -->
-
-     <p>이미지 플랏을 생성합니다.
+이미지 플랏을 생성합니다.
 
      <br><dt><code>objects(); rm(x, y, f, fa)</code><dd><!-- @dots{} and clean up before moving on. -->
-어떤 객체들이 워크스페이스에 있는지 확인한 뒤, 다음 분석을 수행하기 전에 불필요한 객체들을 제거합니다.
-
-   </dl>
+어떤 객체들이 워크스페이스에 있는지 확인한 뒤, 다음 분석을 수행하기 전에 불필요한 객체들을 제거합니다. 
+</dl>
 
 <!-- @R{} can do complex arithmetic, also. -->
-   <p>R은 또한 복소수 연산을 수행할 수 있습니다.
+   <p>R에서는 복소수 연산(complex arithmetic) 또한 가능합니다.
 
      <dl>
 <dt><code>th &lt;- seq(-pi, pi, len=100)</code><dt><code>z &lt;- exp(1i*th)</code><dd><!-- @code{1i} is used for the complex number @math{i}. -->
-<code>1i</code>는 복소수 i를 나타내는데 사용됩니다.
+<code>1i</code>는 복소수(complex number) i를 나타냅니다.
 
      <br><dt><code>par(pty="s")</code><dt><code>plot(z, type="l")</code><dd><!-- Plotting complex arguments means plot imaginary versus real parts.  This -->
 <!-- should be a circle. -->
-
-     <p>허수와 실수부분을 플랏하도록 합니다. 
-이것은 반드시 원의 모양이 나와야 합니다.
+허수(imaginary part)와 실수(real part)부분을 플랏합니다. 
+반드시 원의 모양이어야 합니다.
 
      <br><dt><code>w &lt;- rnorm(100) + rnorm(100)*1i</code><dd><!-- Suppose we want to sample points within the unit circle.  One method -->
 <!-- would be to take complex numbers with standard normal real and imaginary -->
 <!-- parts @dots{} -->
-단위 원(unit circle)내에서 어떤 포인트들을 샘플링해야 한다고 가정해 봅니다. 
-이를 위한 한 가지 방법은 아마도 실수와 허수부분에 각각 표준정규분포로부터 난수를 생성하는 것입니다.
+반지름이 1인 단위 원(unit circle) 안 쪽 부분으로부터 우리는 샘플링을 한다고 가정합니다. 
+한 가지 방법은 표준정규분포가 실수와 허수부분에 적용된 복소수를 취하는 것입니다.
 
      <br><dt><code>w &lt;- ifelse(Mod(w) &gt; 1, 1/w, w)</code><dd><!-- @dots{} and to map any outside the circle onto their reciprocal. -->
-원 밖에 놓인 값들만을 골라 그들의 역수에 맵핑시키도록 합니다.
+단위 원 밖에 놓여 있는 값들은 역수를 취하도록 합니다.
 
      <br><dt><code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch="+",xlab="x", ylab="y")</code><dt><code>lines(z)</code><dt><dd><!-- All points are inside the unit circle, but the distribution is not -->
 <!-- uniform. -->
-단위원(unit circle)내에 모든 점들이 있지만, 균일분포(uniform distribution)가 아님을 알 수 있습니다.
+단위 원(unit circle)내에 모든 점들이 있음을 알 수 있지만, 이들이 균일하게 분포(uniform distribution)된 것이 아님을 알 수 있습니다.
 
      <br><dt><code>w &lt;- sqrt(runif(100))*exp(2*pi*runif(100)*1i)</code><dt><code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch="+", xlab="x", ylab="y")</code><dt><code>lines(z)</code><dt><dd><!-- The second method uses the uniform distribution.  The points should now -->
 <!-- look more evenly spaced over the disc. -->
-두번째 방법으로는 균일분포를 이용하는 것입니다. 
-이 점들은 반드시 디스크에 균등하게 퍼져 있어 보여야 합니다.
+두 번째 방법으로는 균일분포(uniform distribution)를 이용하는 것입니다. 
+이것은 디스크에 점들이 균등하게 퍼져있는 것처럼 보여야 합니다.
 
      <br><dt><code>rm(th, w, z)</code><dd><!-- Clean up again. -->
 다시 불필요한 객체들을 제거 하도록 합니다.
@@ -8648,8 +8645,8 @@ f의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨을 �
 <!-- workspace, and for an exploratory session like this, you probably do not -->
 <!-- want to save it. -->
 R 프로그램을 종료합니다. 
-이때,  R 작업공간 (또는 워크스페이스)를 저장하고 싶은지에 대해서 물어보게 될 것입니다. 
-그리고, 기초사용에 대한 설명을 목적으로 하는 세션이므로 꼭 저장하실 필요는 없습니다. 
+이때,  R 작업공간(workspace)를 저장하고 싶은지에 대해서 물어보게 될 것입니다. 
+기초사용법에 대한 설명을 목적으로 한 세션이므로 꼭 저장하고 싶지는 않을 것입니다. 
 </dl>
 
 <div class="node">
