@@ -201,7 +201,7 @@ p {
 <li><a href="#Contrasts">11.1.1 대조 (Contrasts)</a>
 </li></ul>
 <li><a href="#Linear-models">11.2 선형모델</a>
-<li><a href="#Generic-functions-for-extracting-model-information">11.3 모델의 정보를 추출하는 제네릭 함수들</a>
+<li><a href="#Generic-functions-for-extracting-model-information">11.3 모형 정보 확인을 위한 일반함수(generic functions)의 사용</a>
 <li><a href="#Analysis-of-variance-and-model-comparison">11.4 분산분석과 모델비교</a>
 <ul>
 <li><a href="#ANOVA-tables">11.4.1 ANOVA 테이블</a>
@@ -5650,7 +5650,7 @@ log(y),
 
      <p>위 식들은 y를 x의 이차항에 회귀시킨 다차항 회귀(polynomial regression)모형 입니다. 
 x의 이차항이라는 것은 x^2를 의미하는 것으로,
-첫번째 식은 직교 다차항(orthogonal polynomials)을,
+첫번째 식은 직교다차항(orthogonal polynomials)을,
 두번째 식은 x의 0차, 1차, 2차항인 x^0, x^1, x^2를 베이시스(basis)로 사용하는 모형임을 표현하는 것 입니다.
 
      <br><dt><code>y ~ X + poly(x,2)</code><dd><!-- Multiple regression @math{y} with model matrix consisting of the matrix -->
@@ -5731,45 +5731,42 @@ factor C.
 <!-- intercept column and is by default included in the model matrix unless -->
 <!-- explicitly removed. -->
    <p>모형이 이런식으로 표현될 경우, 식에 포함되는 각 항은 모형행렬(model matrix)을 구성하는 각 열이 모형에서 추가될질지 혹은 제거될지를 나타내기위해 사용됩니다. 
-위에서 1이라는 항의 구성요소는 식에서 절편을 나타내며, 따로 이 항을 생략하는 표현을 사용하지 않으면, 디폴트(default)로 모형행렬에 항상 포함됩니다.
+위에서 1이라는 항은 회귀식에서 절편을 나타내기 위해 사용되었으며, 따로 이 항을 생략하기 위한 표현식을 사용하지 않는 한, 항상 디폴트(default)로 모형행렬에 포함됩니다.
 
-   <p>###################################
-<em>식 연산자(formula operators)</em>라는 것은  Wilkinson과 Rogers의 노테이션
 <!-- The @emph{formula operators} are similar in effect to the Wilkinson and -->
 <!-- Rogers notation used by such programs as Glim and Genstat.  One -->
 <!-- inevitable change is that the operator @samp{@code{.}} becomes -->
 <!-- @samp{@code{:}} since the period is a valid name character in @R{}. -->
-<em>모델식 연산자(formula operator)</em>는 Glim 혹은 Genstat 이라는 프로그램에서 사용되는 Wilkinson과 Rogers 기호들과 유사한 기능입니다. 
-다른 점이 있다면, GLIM이나 Genstat에서는 &lsquo;<samp><code>.</code></samp>&rsquo;라는 연산자를 사용하지만 이것은 R에서는 &lsquo;<samp><code>:</code></samp>&rsquo;라는 기호를 사용합니다. 
-그 이유는 &lsquo;<samp><code>.</code></samp>&rsquo;라는 기호는 R에서 변수이름을 사용하는 하나의 문자로 사용되기 때문입니다.
+   <p><em>식 연산자(formula operator)</em>는 Glim 이나 Genstat 같은 프로그램에서 사용되는 Wilkinson과 Rogers의 표기법(notation) 과 거의 비슷하게 정의 되었습니다. 
+한 가지 눈에 띄는 차이가 있다면, GLIM이나 Genstat에서는 &lsquo;<samp><code>.</code></samp>&rsquo;에 해당하는 연산자를 R에서는 &lsquo;<samp><code>:</code></samp>&rsquo; 연산자로 사용하고 있다는 점 일 것입니다. 
+이렇게 된 이유는 &lsquo;<samp><code>.</code></samp>&rsquo; 기호가 R에서는 변수이름으로 사용할 수 있는 문자 중 하나이기 때문입니다.
 
 <!-- The notation is summarized below (based on Chambers & Hastie, 1992, -->
 <!-- p.29): -->
-   <p>다음은 Chambers &amp; Hastie (1991, p.29)의 내용을 기초로 모델식(model formula)내에서 사용되는 모델 연산자(formula operators)들에 대해서 정리한 것입니다.
+   <p>이 표기법(notation)에 대해서는 Chambers &amp; Hastie (1991, p.29)를 바탕으로 다음과 같이 요약해 볼 수 있습니다:
 
      <dl>
 <dt><var>Y</var><code> ~ </code><var>M</var><dd><!-- @var{Y} is modeled as @var{M}. -->
 
-     <p><code>~</code>(틸다)는 <var>Y</var>를 <var>M</var> 부분에서 정의된 식을 관계시킨다는 의미입니다. 
-여기에서 <var>M</var>이라는 것을 정의하고자 하는 모델식(model formula)을 나타내는 기호라고 생각하시는 것이 좋습니다.
+     <p>앞서 설명드린 것 처럼 <code>~</code>(틸다) 연산자는 <var>Y</var>를 모형식(model formula)을 의미하는 <var>M</var> 부분과 연결시켜 줍니다.
 
      <br><dt><var>M_1</var><code> + </code><var>M_2</var><dd><!-- Include @var{M_1} and @var{M_2}. -->
 
-     <p><var>M_1</var>와 <var>M_2</var> 모두 포함합니다.
+     <p><var>M_1</var>와 <var>M_2</var>과 모두 모형에 포함합니다.
 
      <br><dt><var>M_1</var><code> - </code><var>M_2</var><dd><!-- Include @var{M_1} leaving out terms of @var{M_2}. -->
 
-     <p><var>M_1</var>은 포함하되 <var>M_2</var>는 포함시키지 않습니다.
+     <p><var>M_1</var>은 모형에 포함되지만 <var>M_2</var> 부분은 모형에서 제외합니다.
 
      <br><dt><var>M_1</var><code> : </code><var>M_2</var><dd><!-- The tensor product of @var{M_1} and @var{M_2}.  If both terms are -->
 <!-- factors, then the ``subclasses'' factor. -->
 
-     <p><var>M_1</var>과 <var>M_2</var>의 텐서 프라닥트(tensor product)을 이용합니다. 
-만약, 두 개의 항 모두 요인이라면 tensor product의 결과는 M_1과 M_2가 가지는 모든 레벨들의 조합으로 만들어진 모든 서브클래스들(&ldquo;subclasses&rdquo;)입니다.
+     <p><var>M_1</var>과 <var>M_2</var>를 텐서곱(tensor product) 합니다. 
+만약, 두 개의 항 모두 요인이라면 tensor product의 결과는 <var>M_1</var>과 <var>M_2</var>가 갖는 모든 수준(level)들의 조합으로 생성된 모든 서브클래스(&ldquo;subclasses&rdquo;)가 됩니다.
 
      <br><dt><var>M_1</var><code> %in% </code><var>M_2</var><dd><!-- Similar to @code{@var{M_1}:@var{M_2}}, but with a different coding. -->
 
-     <p><var>M_1</var><code>:</code><var>M_2</var>와 유사하지만 다른 표현 코딩법입니다.
+     <p><var>M_1</var><code>:</code><var>M_2</var>와 비슷한 작업을 수행하는 다른 코딩 방법입니다.
 
      <br><dt><var>M_1</var><code> * </code><var>M_2</var><dd><var>M_1</var><code> + </code><var>M_2</var><code> + </code><var>M_1</var><code>:</code><var>M_2</var>.
 
@@ -5777,13 +5774,15 @@ factor C.
 
      <br><dt><var>M</var><code>^</code><var>n</var><dd><!-- All terms in @var{M} together with ``interactions'' up to order @var{n} -->
 
-     <p><var>M</var>의 모든 항들이 <var>n</var>차의 상호작용항(&ldquo;interactions&rdquo;)들과 함께 사용되었다는 의미입니다.
+     <p><var>n</var>차항까지의 <var>M</var>에 포함된 모든 항들과 이들간의 모든 상호작용(&ldquo;interactions&rdquo;)을 의미합니다.
 
      <br><dt><code>I(</code><var>M</var><code>)</code><dd><!-- Insulate @var{M}.  Inside @var{M} all operators have their normal -->
 <!-- arithmetic meaning, and that term appears in the model matrix. -->
-<code>I()</code> 라는 연산자는 insulate (즉, 따로 보관함)의 약자로서 모델식(model formula)정의시, 괄호안에 작성되는 표현식의 결과를 하나의 변수로서 사용한다는 의미입니다. 일반적으로 R은 괄호안에서 사용되는 표현식에 포함된 연산자들이 그 수학적 의미를 그대로 가질 수 있도록 하였습니다. 
-따라서, 모델식 정의시 사용되는 <code>+</code> 혹은 <code>-</code>라는 기호는 모형연산자(model operators)로서 설명변수를 모델식(model formula)에서 포함할 것인지 말 것인지를 결정하는데 사용되지만, 모델식를 구성하는 한개의 항에 사용된 <code>I(M_1+M_2)</code>이라는 것은 <code>M_1</code>과 <code>M_2</code>을 활용하여 그 수학적 결과를 하나의 변수로서 모델식에 이용하겠다는 의미입니다. 
+
+     <p><code>I()</code> 연산자는 insulate((식을) 보호함, 최근 버전에서는 Inhibit/(연산을)억제함으로 표현하기도 함)의 약자로서 모형식(model formula)에서, <var>M</var>에 작성된 표현식을 그 산술적(arithmetic) 의미대로 실행하여 그 결과가 모형행렬(model matrix)에서 하나의 항으로 포함될 수 있도록 해줍니다. 
 </dl>
+
+   <p>일반적으로 R에서는 <var>M</var>의 표현식에 포함된 모든 연산자들이 원래의 산술적 의미 그대로 사용됩니다. 하지만 모형연산자(model operators)로 사용되는 <code>+</code> 혹은 <code>-</code> 연산자는 해당 변수를 모델식(model formula)에 포함할 것인지 제외할 것인지를 의미합니다. 하지만, 함수 <code>I()</code>는 일종의 아이덴티티(identity) 함수로 이 함수가 쓰인 해당 항이 모형식(model formulae) 내에서 산술 연산자를 포함할 수 있도록 해줍니다. 따라서, 모형식 안에서<code>I(M_1+M_2)</code>를 사용하면, <code>M_1</code>과 <code>M_2</code>을 더해진 결과가 하나의 항으로 식에 포함됩니다.
 
 <!-- Note that inside the parentheses that usually enclose function arguments -->
 <!-- all operators have their normal arithmetic meaning.  The function -->
@@ -5793,9 +5792,8 @@ factor C.
 <!-- of the model matrix}, the specification of the parameters being -->
 <!-- implicit.  This is not the case in other contexts, for example in -->
 <!-- specifying nonlinear models. -->
-   <p>모델식(model formula)은 디자인 매트릭의 열을 지정하는 것과 동일하며, 각각의 열에 부응하는 모형의 모수들이 존재한다고 가정해야 합니다. 
-그리고 우리는 이 모형의 모수들을 구하는데 R을 사용하는 것입니다. 
-그러나 비선형 모델에서는 이러한 규칙들이 동일하게 적용되지 않으므로 주의해야 합니다.
+   <p>모형식(model formula)을 정의하는 데 있어, <em>모형행렬(model matrix)의 열</em>을 선택하는 것은 내재적으로 모형의 모수(parameters)를 선택하는 과정이기도 합니다. 
+하지만, 이런 내재적 의미는, 비선형(nonlinear)모형을 적합하는 것과 같은 다른 상황(context)에서는 성립하지 않는다는 점을 알아두시기 바랍니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Contrasts">Contrasts</a>
@@ -5818,10 +5816,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Formulae-for-statistical-models">Formu
 <!-- provides one column of the model matrix (and the intercept will provide -->
 <!-- a column of ones if included in the model). -->
 
-   <p>우리는 model formula가 포함하는 항들이 디자인 매트릭스가 가지고 있는 열과 어떠한 관계를 가지고 있는지에 대한 최소한의 지식을 가지고 있어야만 합니다. 
-만약, 연속형 데이터를 가지는 변수들만 있을 경우 이 관계에 대해서 생각하는것은 단순히 개개의 항들이 각각의 열들에 상응하기 때문에 어렵지 않습니다.
+   <p>이 부분에서는 최소한 모형식(model formula)을 지정하는 것이 모형 행렬(model matrix)의 열을 선택하는 것과 어떤 관련이 있는지 정도는 알고 있다고 가정하고 내용을 진행하겠습니다. 
+연속형 변수들이 각각의 열을 구성하는 모형 행렬(model matrix)을 생각해보면 (사용할 모형이 절편(intercept)를 포함할 경우, 이 행렬은 1로만 이루어진 열을 하나 더 포함할 것입니다.), 이 관계를 이해하는 것이 전혀 어렵지 않을 것 입니다.
 
-   <p><a name="index-Factors-203"></a><a name="index-Ordered-factors-204"></a><!-- What about a @math{k}-level factor @code{A}?  The answer differs for -->
+   <p><a name="index-Factors-203"></a><a name="index-Ordered-factors-204"></a><!-- What about a @math{k}-level factor @code{A}? The answer differs for -->
 <!-- unordered and ordered factors.  For @emph{unordered} factors @math{k - -->
 <!-- 1} columns are generated for the indicators of the second, @dots{}, -->
 <!-- @math{k}th levels of the factor. (Thus the implicit parameterization is -->
@@ -5829,12 +5827,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Formulae-for-statistical-models">Formu
 <!-- @emph{ordered} factors the @math{k - 1} columns are the orthogonal -->
 <!-- polynomials on @math{1, @dots{}, k}, omitting the constant term. -->
 
-   <p>그러나, k-개의 수준을 가지고 있는 요인 <code>A</code>의 경우에는 이 관계가 순서형인지 비순서형인지에 따라 달라지게 됩니다. 
-만약 <em>비순서형 (unordered factor)</em>인 경우, 디자인 행렬의 각 열은 요인의 수준에 해당하게 됩니다. 
-따라서 두번째 열부터 마지막 k번째 열까지는 요인의 수준을 나타내는 지시자(indicator)로서 모델을 표현하게 됩니다. 
-만약, 이 표현이 익숙하지 않다면 더비변수를 생성하는 것으로 생각해보세요. 
-(따라서, 이러한 관계로부터 통계결과분석시에는 각 수준에 해당하는 통계치가 첫번째 수준에 해당하는 통계치와 비교를 하게 되는 상대적 해석을 하게 합니다). 
-이와 다르게, <em>순서형 요인(ordered factor)</em>인 경우에는 k-1개의 열들은 상수항을 제외한 1, <small class="dots">...</small>, k에 해당하는 직교다항식(orthogonal polynomials)을 의미하게 됩니다.
+   <p>그러나, k-개의 수준(level)을 가진 요인 <code>A</code>이 모형에 포함된다고 가정하면, 이 요인이 순서형(ordered)인지 비순서형(unordered)인지에 따라 이 관계가 조금 달라지게 됩니다. 
+우선 <em>비순서형 요인(unordered factor)</em>의 경우, 두번째 수준부터 마지막 k번째 수준에 각각 대응되는 인디케이터(indicator/더미(dummy)변수)를 나타내기 위해 k -1 개의 열이 생성됩니다. 
+(따라서, 이러한 모형화(parametrization)는 암묵적으로 각 수준이 첫번째 수준과 대조(contrast)시킵니다). 
+이와는 다르게, <em>순서형 요인(ordered factor)</em>의 경우, k-1개의 열들은 상수항을 제외한 1, <small class="dots">...</small>, k에 해당하는 직교다차항(orthogonal polynomials)을 나타냅니다.
 
 <!-- Although the answer is already complicated, it is not the whole story. -->
 <!-- First, if the intercept is omitted in a model that contains a factor -->
@@ -5842,11 +5838,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Formulae-for-statistical-models">Formu
 <!-- indicators for all the levels.  Second, the whole behavior can be -->
 <!-- changed by the @code{options} setting for @code{contrasts}.  The default -->
 <!-- setting in @R{} is -->
-   <p>그러나 우리는 모델식과 모델행렬의 관계에 대해서 모두 다룬 것은 아닙니다. 
-첫번째로 요인을 포함하고 있지만 인터셉트가 없는 모델을 생각해 볼 수가 있습니다. 
-이 경우 첫번째 항은 k개의 열들이 요인의 레벨을 나타낼수 있도록 변형되어져야 합니다. 
-두번째는 <code>options</code>에 의해서 대조(<code>contrasts</code>)의 방식을 변경할 수 있습니다. 
-R에서는 이용하는 기본방법은 아래와 같습니다.
+   <p>이미 복잡한 내용이 되버리기는 했지만, 이것이 모형식과 모형행렬의 관계의 전부가 아닙니다.
+
+   <p>우선, 요인은 포함하지만 절편(intercept)은 포함하지 않는 모형을 생각해 볼 수 있습니다. 
+이 경우 포함된 요인의 모든 수준(level)을 표현할 수 있도록  k개의 열로 코딩 되어야합니다. 
+두번째로 고려할 점은, <code>options</code>을 사용하여 대조(<code>contrasts</code>)를 사용하는 방식을 변경할 경우, 모형에서 요인을 표현하는 방법이 완전히 달라지게 된다는 점입니다 . 
+R에서는 디폴트(default)로 아래와 같이 지정되어 있습니다.
 
 <pre class="example">     options(contrasts = c("contr.treatment", "contr.poly"))
 </pre>
@@ -5855,15 +5852,19 @@ R에서는 이용하는 기본방법은 아래와 같습니다.
 <!-- contrasts.  So if you need to compare your results to those of a textbook -->
 <!-- or paper which used @SPLUS{}, you will need to set -->
 
-   <p>또 다른 경우는 비순서형 요소를 사용할 경우, R과 S의 기본동작이 서로 다르다는 것입니다. 
-S의 경우는 <code>Helmert</code>이라는 대조방식을 이용합니다. 
-만약, 독자가 <span class="sc">S-Plus</span>를 기초로 하여 쓰여진 책이나 논문을 토대로 R에서 확인해 보고자 한다면 <code>contrast</code>에 대한 옵션을 아래와 같이 설정해주어야 합니다. 
-R에서 <code>treatment</code> 대조법을 사용하는 이유는 이를 처음다루는 독자들이 해석하기 보다고 생각하기 때문입니다.
+   <p>이 부분을 따로 언급하는 이유는, R과 S에서 비순서형 요인(unordered factor)에 대해 다른 디폴트(default) 코딩을 사용하고 있기 때문입니다; S의 경우는 <code>Helmert</code> 방식을 사용합니다. 
+또 다른 경우는 비순서형 요소를 사용할 경우, R과 S의 기본동작이 서로 다르다는 것입니다. 
+S의 경우는 <code>Helmert</code>라는 방식을 이용합니다. 
+따라서, 만약 <span class="sc">S-Plus</span>를 사용한 결과를 바탕으로 쓰여진 책이나 논문의 내용을 R로 분석한 결과물과 비교해 보고 싶다면, 다음과 같은 설정이 필요 합니다.
 
 <pre class="example">     options(contrasts = c("contr.helmert", "contr.poly"))
 </pre>
    <p class="noindent"><!-- This is a deliberate difference, as treatment contrasts (@R{}'s default) -->
 <!-- are thought easier for newcomers to interpret. -->
+
+   <p>R에서 디폴트(default)로 <code>treatment</code> 대조를 채택한 이유는, 이 방법을 처음 다루는 초보자들에게는  <code>treatment</code> 대조로 생성된 결과를 해석하는 것이 쉬울것이라 믿었기 때문입니다.
+
+   <p>이번에는 함수 <code>contrasts</code>과 <code>C</code>를 사용하여 각각의 항을 모형에 포함시키기 위한 대조(contrast)의 사용법(scheme)을 좀 더 자세히 다뤄보도록 하겠습니다.
 
 <!-- We have still not finished, as the contrast scheme to be used can be set -->
 <!-- for each term in the model using the functions @code{contrasts} and -->
@@ -5877,10 +5878,11 @@ R에서 <code>treatment</code> 대조법을 사용하는 이유는 이를 처음
 <!-- provided that marginality is preserved.  Fitting, for example, a model -->
 <!-- with an interaction but not the corresponding main effects will in -->
 <!-- general lead to surprising results, and is for experts only. -->
-   <p>또한, 디자인 행렬의 선형변환을 수행하는 <code>contrasts</code>라는 함수와 <code>C</code>라는 함수를 다루지 않았으며, 각 구성항들에 의해 사용되는 열들의 곱으로 표현되는 교차항 (interaction terms)에 대해서도 다루지 않았습니다. 
-이러한 세부사항들은 너무 복잡하기 때문에 본 문서에서 다루기는 적합하지 않습니다. 
-그러나, R에서 제공하는 모델식은 일반적으로 통계전문가들이 기대하는 다양한 모델을 지정할 수 있또록 많은 기능적 요소를 제공합니다. 
-예를들면, 교호작용(interaction)은 존재하나 이에 상응하는 주요인이 없는 모델에 대한 적합은 일반적으로 놀라운 결과를 주는데 이는 전문가들에게만 흥미롭습니다.
+   <p>우리는 어떤 식으로 교차항(interaction terms)을 모형에 포함할지에 대해서도 아직 다루지 않았습니다. 
+교차항은 상호작용을 구성하는 변수들의 해당 열을 서로 곱(product)하여 생성합니다.
+
+   <p>교차항을 다루기 위한 세부사항들은 너무 복잡하기 때문에, 여기서 다루지는 않겠습니다. 
+하지만, R에서 모형을 사용하는 방법은 보통의 통계 전문가라면 예측할만한 방식을 크게 벗어나지 않습니다. 하지만 몇몇 예외가 있을 수 있는데, 교호작용(interaction)은 포함하지만 이에 대응하는 주효과(main effects)는 포함하지 않는 모형을 사용하는 것이 하나의 예가 될 수 있을 것입니다. 이 경우 일반적으로 기대하는 것과는 많이 다른 결과가 얻어질 수 있는데, 이는 아마도 이 분야 전문가들이나 관심을 가질만한 주제일 것 입니다.
 
 <div class="node">
 <a name="Linear-models"></a>
@@ -5898,21 +5900,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- The basic function for fitting ordinary multiple models is @code{lm()}, -->
 <!-- and a streamlined version of the call is as follows: -->
 
-   <p>여러개의 설명변수를 가지는 일반적인 다중모델을 적합하기 위한 간편한 방법은 아래와 같이 <code>lm()</code>이라는 함수를 이용하는 것입니다.
+   <p>일반(ordinary) 다중(multiple,여러 개 항을 포함하는)모형을 적합하는 가장 간단한 방법은 아래와 같이 함수 <code>lm()</code>를 이용하는 것입니다:
 
    <p><a name="index-lm-208"></a>
 <pre class="example">     &gt; <var>fitted.model</var> &lt;- lm(<var>formula</var>, data = <var>data.frame</var>)
 </pre>
    <!-- For example -->
-   <p>예를 들면, 아래의 코드는 종속변수 y를 설명변수 x1과 x2로 설명하고자 하는 다중회귀모형(multiple regression model)입니다. 
-이때 상수항(intercept term)이 포함되어 있다는 점에 대해서 명심하세요. 
-또한 <code>lm()</code> 함수에 사용되는 인자들 중 <code>data=production</code>이라는 인자는 데이터셋을 의미하며, 이 <code>production</code>이라는 데이터셋은 선형모형을 모델하는데 필요한 모든 변수들을 포함하고 반드시 <em>data frame</em>(데이터 프레임)이어야 합니다. 
-이 지정은 데이터프레임 <code>production</code>이 탐색경로(search path)에 연결이 되어 있는가와는 관계없이 <code>lm()</code> 함수 이용시에 반드시 입력해주어야 합니다.
+   <p>예를 들면, 아래의 코드는 종속변수 y를 설명변수 x1과 x2에 회귀시킨 다중회귀모형(multiple regression model)을 적합시킵니다.(따로 표시된 것은 아니지만, 상수항(intercept term)이 항상 포함된다는 점을 잊지 마시기 바랍니다.)
 
 <pre class="example">     &gt; fm2 &lt;- lm(y ~ x1 + x2, data = production)
 </pre>
    <p class="noindent"><!-- would fit a multiple regression model of @math{y} on @math{x1} and -->
 <!-- @math{x2} (with implicit intercept term). -->
+
+   <p>위 식에 사용된 것 중 중요한 (하지만 이 함수의 실행을 위해서는 반드시 필요한 것은 아닌) 모수(parameter)로는 <code>data = production</code>가 있습니다. 이 모수는 선형모형을 적합시키게 될 데이터를 지정하는 것으로, 여기서 지정된  <em>데이터 프레임(data frame)</em> <code>production</code>는 반드시 모형에 포함될 모든 변수들을 포함하고 있어야 합니다. <em>이러한 데이터 프레임의 지정은 해당 데이터 프레임,이 예제에서는 </em><code>production</code><em>이, 검색 경로(search path)상에 연결되었건(attached) 그렇지 않든 상관없이 동일하게 이루어져야 합니다.</em>
 
 <!-- The important (but technically optional) parameter @code{data = -->
 <!-- production} specifies that any variables needed to construct the model -->
@@ -5929,17 +5930,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 </div>
 
 <!-- @section Generic functions for extracting model information -->
-<h3 class="section">11.3 모델의 정보를 추출하는 제네릭 함수들</h3>
+<h3 class="section">11.3 모형 정보 확인을 위한 일반함수(generic functions)의 사용</h3>
 
 <!-- The value of @code{lm()} is a fitted model object; technically a list of -->
 <!-- results of class @code{"lm"}.  Information about the fitted model can -->
 <!-- then be displayed, extracted, plotted and so on by using generic -->
 <!-- functions that orient themselves to objects of class @code{"lm"}.  These -->
 <!-- include -->
-<p><code>lm()</code>을 사용하여 얻는 것은 적합된 선형모형 객체인데, 이는 클래스 <code>"lm"</code>라는 결과물들이 한데 묶인 리스트의 형식을 가집니다. 
-일반적으로 클래스명은 사용된 함수명을 따릅니다. 
-이렇게 <code>lm()</code>함수에 의해서 적합된 모델은 클래스 <code>"lm"</code>의 객체들을 다루는 제네릭 함수들을 통하여 결과물을 보여주거나, 일부의 정보만을 추출하거나, 또는 시각화에 이용하는 등 다양한 방법으로 사용이 될 수 있습니다. 
-적합된 객체는 아래와 같은 정보를 포함하고 있습니다.
+<p><code>lm()</code>을 사용하면 적합된 선형모형을 하나의 객체로 얻게됩니다; 이 객체는 클래스(class)가 <code>"lm"</code>인 여러 개의 결과물로 구성된 하나의 리스트 입니다. 
+이렇게 <code>lm()</code>함수를 사용해 적합된 모형에 관련된 정보는 일반함수(generic functions)를 사용하여 생성된 결과물을 출력하거나, 일부 정보만을 따로 추출하거나, 또는 플롯을 그리는 등 다양하게 활용할 수 있습니다.
+
+   <p>이런식으로 모형 정보를 다룰 수 있는 일반함수에는 다음과 같은 종류가 있습니다.
 
 <pre class="example">     add1    deviance   formula      predict  step
      alias   drop1      kappa        print    summary
@@ -5947,29 +5948,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
      coef    family     plot         residuals
 </pre>
    <!-- A brief description of the most commonly used ones is given below. -->
-   <p>이 중에서 가장 많이 사용되는 것들에 대해서 아래와 같이 정리해 보았습니다.
+   <p>이 중에서 가장 빈번하게 사용되는 함수들에 대해서 아래와 같이 정리해 보았습니다.
 
      
 <a name="index-anova-209"></a>
 <dl><dt><code>anova(</code><var>object_1</var><code>, </code><var>object_2</var><code>)</code><dd><!-- Compare a submodel with an outer model and produce an analysis of -->
 <!-- variance table. -->
 
-     <p>이것은 두개의 적합된 모델을 비교하는데 사용되며, 분산분석표를 제공합니다. 
-<!-- 조금 더 자세히 설명하면, model formula 1을 이용하여 lm()을 수행하여 얻은 객체를 object_1 이라고 하고, model formula 2를 이용하여 얻은 객체 object_2라고 합시다. -->
-<!-- 이때 model formula 1 과 2는 반드시 동일한 데이터에 적용되어야 합니다. -->
-<!-- anova(object_1)이라고 하면 model formula 1을 이용하여 적합된 선형모형의 분산분석표를 보여줍니다. -->
-<!-- 그리고 anova(object_1, object_2)라고 하면 두 모델의 비교에 대한 분석분석표를 제공합니다. -->
+     <p>이 함수는 두개의 적합된 모형을 비교하는 것으로, 분산분석표를 제공 합니다. (여기서 사용된 두 개의 모형은 임의로 선택된다기 보다는 하나의 새 모형(outer model)과 이 모형의 일부를 포함하는 다른 모형(submodel)이어야 합니다.)
 
      <p><a name="index-coefficients-210"></a><a name="index-coef-211"></a><br><dt><code>coef(</code><var>object</var><code>)</code><dd><!-- Extract the regression coefficient (matrix). -->
 <!-- Long form: @code{coefficients(@var{object})}. -->
 
-     <p>선형계수를 행렬의 형식으로 추출합니다. 
-여기에서 <code>coef()</code>는 <code>coefficients()</code>라는 함수의 약어로 표현된 함수명입니다. 
-따라서 <code>coefficients(object)</code>라고 써도 무방합니다.
+     <p>적합된 선형계수를 (행렬의 형태로) 추출해줍니다. 
+여기에서 <code>coef()</code>는 <code>coefficients()</code>라는 원래 함수의 약어 표현입니다.
 
      <p><a name="index-deviance-212"></a><br><dt><code>deviance(</code><var>object</var><code>)</code><dd><!-- Residual sum of squares, weighted if appropriate. -->
 
-     <p>잔차(residual)를 제곱하여 이를 모두 더한 값을 의미합니다.
+     <p>잔차(residual)를 제곱하여 이를 모두 더한 값을 출력하며, 경우에 따라서는 weighted 된 값을 사용하기도 합니다.
 
      <p><a name="index-formula-213"></a><br><dt><code>formula(</code><var>object</var><code>)</code><dd><!-- Extract the model formula. -->
 
