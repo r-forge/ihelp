@@ -1,6 +1,6 @@
 @c 
 @c 2013-JUL-27 (Saturday)
-@c 1. Begining ~ 6.3 by LIJIN
+@c 1. Begining ~ 6 and working on 11.1 by LIJIN
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -3580,7 +3580,7 @@ incomef   act nsw nt qld sa tas vic wa
 좀 더 정확하게 설명하면, 이 함수는 @w{position 2} 상에 위치한 현재 작업 중인 개체(데이터 프레임)을 이 경로에서 분리시키는 역할을 합니다. (즉, 경로가 @w{position 1}로 재변경 됩니다.) 따라서, 데이터 프레임을 분리하고 난 후의 현재 작업상황(context)에서는, 따로 @code{lentils$u}와 같이 지정하지 않는한, 변수 @code{u}, @code{v} and @code{w}을 사용하는 것이 더이상 가능하지 않습니다. 개체(데이터 프레임)들이 탐색 경로 상 2 보다 큰 숫자의 @w{position}에 위치할 경우, 이들을 해당 경로에서 분리(detach)하기위해  @code{detach} 함수에 경로 번호를 지정하는 것이 가능합니다. 하지만, 언제나@code{detach(lentils)} 또는 @code{detach("lentils")}과 같이 데이터 프레임의 이름을 직접 입력하는 편이 실수를 줄일 수 있는 보다 안전한 방법입니다.
 
 @quotation 주의사항
-@R{}에서 리스트나 데이터 프레임은 반드시 position 2 또는 그 이상의 위치에만 불러들일(attach) 수 있습니다. 또 불러들인다(attach)는 것은 존재하는 객체를 @emph{복사(copy)}해서 가져온다는 의미입니다. 이렇게 불러들인(attach) 개체들은@code{할당(assign)을 통하여} 변경하는 것이 가능합니다. 하지만, 이 경우 원래의 리스트나 데이터 프레임은 변경된 값에 영향을 받지 않습니다.
+@R{}에서 리스트나 데이터 프레임은 반드시 position 2 또는 그 이상의 위치에만 연결할(attach) 수 있습니다. 또, 연결한다(attach)는 것은 존재하는 객체를 @emph{복사(copy)}해서 가져온다는 의미입니다. 이렇게 연결된(attach) 개체들은@code{할당(assign)을 통하여} 변경하는 것이 가능합니다. 하지만, 이 경우 원래의 리스트나 데이터 프레임은 변경된 값에 영향을 받지 않습니다.
 @end quotation
 
 @c @quotation Note
@@ -3596,48 +3596,46 @@ incomef   act nsw nt qld sa tas vic wa
 
 @c A useful convention that allows you to work with many different problems
 @c comfortably together in the same working directory is
-만약 여러분들이 여러 가지 분석작업을 동일한 작업 디렉토리에서 수행하고 있다면, 
-아래에 나열한 몇 가지 방법들이 오류를 최소화하는데 도움이 될 것입니다.
+하나의 작업 디렉토리에서 여러 개의 작업을 동시에 수행하는데 도움이 될만한 팁을 하나 드리자면,
 
 @itemize @bullet
 @item
 @c gather together all variables for any well defined and separate problem
 @c in a data frame under a suitably informative name;
-문제를 세분화하여, 문제별로 의미가 분명한 데이터 프레임의 이름을 부여하고, 데이터 프레임내에 정의된 변수들도 그 의미를 쉽게 알수있는 변수명을 사용하도록 합니다. 
-
+데이터 프레임 내의 변수들은 잘 정의된 (well defined) 그리고 분명히 구분되는(separate) 개념을 담고있어야 하며, 이름만으로도 충분히 그 의미를 짐작할 수 있는 변수명을 사용해야 한다는 것 입니다.  
+ 
+@w{position 2} 상에서 적절한 데이터 프레임을 불러들여서(attach) 작업 중이라면, 연산의 결과물과 작업 중인 임시(temporary)변수들은 작업 디렉토리가 위치한 @w{level 1}에서 사용하도록 합니다;   
 @item
 @c when working with a problem attach the appropriate data frame at
 @c @w{position 2}, and use the working directory at @w{level 1} for
 @c operational quantities and temporary variables;
-특정 데이터 프레임을 @w{position 2}로 이동시켜 작업을 하되, 임시변수의 생성 및 연산은 @w{position 1}에서 수행하도록 합니다. 
 
 @item
 @c before leaving a problem, add any variables you wish to keep for future
 @c reference to the data frame using the @code{$} form of assignment, and
 @c then @code{detach()};
-@w{position 2}에서의 특정 데이터 프레임과 연관된 연산이 끝났다면 @code{$}를 이용하여 그 연산결과를 저장한뒤 @code{detach()}를 이용하여 @w{position 1}으로 돌아옵니다.
+해당 작업을 끝내기 전, 작업 중인 변수들 중 나중에 다시 사용하기 위해 데이터 프레임 내에 저장하고 싶은 것이 있다면 @code{$}를 이용한 할당문으로 해당 변수를 저장한 다음, @code{detach()} 함수를 사용합니다;
 @item
 @c finally remove all unwanted variables from the working directory and
 @c keep it as clean of left-over temporary variables as possible.
-마지막으로 워킹 디렉토리에 있는 임시적으로 사용했던 변수들은 모두 삭제하도록 합니다.
+마지막으로 아직 작업 디렉토리에 남아있는 임시로 사용했지만 더 이상 필요없는 변수들은 모두 삭제해서 작업 디렉토리를 깨끗하게 유지합니다.
 @end itemize
 
 @c In this way it is quite simple to work with many problems in the same
 @c directory, all of which have variables named @code{x}, @code{y} and
 @c @code{z}, for example.
-많은 경우에 @code{x}, @code{y}, @code{z}와 같은 변수명들을 이용하여 같은 디렉토리내에서 많은 문제를 작업하는 것이 비일비재하기 때문입니다.
+이렇식으로 작업 공간을 유지하면, 같은 디렉토리 내에서 @code{x}, @code{y}, @code{z}와 같은 (매우 흔한 이름의) 변수들을 이용해서 여러 작업을 동시에 수행해야 하는 겅우라도 비교적 쉽게 변수들을 다룰 수 있습니다.
 
 @node Attaching arbitrary lists, Managing the search path, Working with data frames, Data frames
 @c @subsection Attaching arbitrary lists
-@subsection 임의의 리스트를 연결하기
+@subsection 임의의 리스트를 연결하기(attaching)
 
 @c @code{attach()} is a generic function that allows not only directories
 @c and data frames to be attached to the search path, but other classes of
 @c object as well.  In particular any object of mode @code{"list"} may be
 @c attached in the same way:
 
-실제로 @code{attach()}는 제네릭 함수 (generic function)이므로 데이터 프레임 외에도 다른 클래스의 객체를 탐색경로(search path)와 연결하는 작업을 수행할 수 있습니다.
-만약, 객체의 모드가 @code{"list"}이라면 데이터프레임과 동일한 방법으로 사용이 가능합니다.
+일반함수(generic function)의 하나인 @code{attach()}함수는 디렉토리나 데이터 프레임 뿐만 아니라 다른 클래스의 객체를 대상으로도 탐색경로(search path)를 연결(attach)하는 작업을 수행합니다. 특히, 객체의 모드가 @code{"list"}인 경우는 데이터프레임과 동일한 방법으로 사용 가능합니다:
 
 @example
 > attach(any.old.list)
@@ -3646,11 +3644,11 @@ incomef   act nsw nt qld sa tas vic wa
 @c Anything that has been attached can be detached by @code{detach}, by
 @c position number or, preferably, by name.
 
-@code{attach()}에 의해서 연결된 리스트형의 객체는 @code{detach} 함수에 의해서 그 연결이 종료됩니다.
+@code{attach()}에 의해서 연결된 객체는 @code{detach} 함수에 의해서 분리되며, 이때 해당 위치의 번호나, 좀 더 바람직하게는 해당 객체의 이름을 사용하여 분리될 대상을 구체적으로 지정할 수 있습니다.
 
 @node Managing the search path,  , Attaching arbitrary lists, Data frames
 @c @subsection Managing the search path
-@subsection 탐색경로 관리하기
+@subsection 탐색경로의 관리
 @findex search
 @cindex Search path
 
@@ -3658,9 +3656,9 @@ incomef   act nsw nt qld sa tas vic wa
 @c a very useful way to keep track of which data frames and lists (and
 @c packages) have been attached and detached.  Initially it gives
 
-@code{search} 함수는 현재의 탐색경로를 보여줌으로서 사용자가 현재 연결하여 작업하고 있는 데이터 프레임 및 리스트 (그리고 패키지들)를 확인할 수 있도록 해줍니다. 
-기본적으로 @code{search}를 수행하면 아래와 같은 결과를 보여줍니다. 
-
+@code{search} 함수는 현재 탐색경로를 보여줌으로서 사용자가 현재 연결하여 작업하고 있는 데이터 프레임 및 리스트 (그리고 패키지들)를 확인할 수 있도록 해줍니다. 
+처음으로 @code{search}를 수행하면 아래와 같은 결과가 출력됩니다. 
+여기서  @code{.GlobalEnv}라는 것은 현재 작업 중인 작업공간(workspace)을 의미합니다.
 @example
 > search()
 [1] ".GlobalEnv"   "Autoloads"    "package:base"
@@ -3668,12 +3666,12 @@ incomef   act nsw nt qld sa tas vic wa
 @noindent
 @c where @code{.GlobalEnv} is the workspace.@footnote{See the on-line help
 @c for @code{autoload} for the meaning of the second term.}
-여기에서 @code{.GlobalEnv}이라는 것은 현재 작업하고 있는 작업공간을 의미합니다.
-@footnote{@code{autoload}에 대해서는 온라인 도움말을 살펴보시길 바랍니다}.
+
+@footnote{두번째로 출력된 @code{autoload}에 대해서는 온라인 도움말을 살펴보시길 바랍니다}.
 
 @c After @code{lentils} is attached we have
 
-만약 데이터프레임 @code{lentils}이 연결(attached)되었다면, @code{search()}는 아래와 같은 결과를 보여줍니다.
+데이터프레임 @code{lentils}을 연결(attached)하고나면, @code{search()}는 아래와 같은 결과를 보여줍니다.
 
 @example
 > search()
@@ -3686,13 +3684,14 @@ incomef   act nsw nt qld sa tas vic wa
 @c and as we see @code{ls} (or @code{objects}) can be used to examine the
 @c contents of any position on the search path.
 
-@code{ls} 혹은 @code{objects} 함수를 이용하여 데이터 프레임 @code{lentils}내에 어떤 객체가 있는지 확인해 볼 수 있습니다. 
-여기에서 함수 @code{ls()}안에 사용된 숫자 @math{2}라는 것은 @w{position 2}에 놓인 탐색경로(serach path)를 의미하는 것입니다.
+@code{ls} 혹은 @code{objects} 함수를 이용하여 탐색경로(serach path) 내의 어떤 위치(position 1,2,..)에서나 어떤 객체가 사용 중인지 확인할 수 있습니다. 
+
+위에서 함수 @code{ls()}안에 사용된 숫자 @math{2}는 @w{position 2}를 대상으로 한다는 의미입니다.
 
 @c Finally, we detach the data frame and confirm it has been removed from
 @c the search path.
 
-마지막으로 사용하고 있던 데이터프레임 @code{lentils}을 연결종료 (detach)한다면 아래와 같은 결과를 확인할 수 있습니다.
+마지막으로, 사용중인 데이터프레임을 분리(detach)하고나서  탐색경로(search path)에서 정말로 사라졌는지 확인합니다.
 
 @example
 > detach("lentils")
@@ -5589,7 +5588,7 @@ function (object, ...)
 
 @node Statistical models in R, Graphics, Writing your own functions, Top
 @c @chapter Statistical models in R
-@chapter @R{}에서 사용되는 통계모델들
+@chapter @R{}에서 사용되는 통계모형들
 @cindex Statistical models
 
 @c This section presumes the reader has some familiarity with statistical
@@ -5607,11 +5606,11 @@ function (object, ...)
 @c basic output is minimal, and one needs to ask for the details by calling
 @c extractor functions.
 
-이번 세션에서 다루어지는 내용은 독자가 이미 회귀분석(regression analysis) 또는 분산분석(analysis of variance)에 대해서 어느 정도 알고 있다고 가정한 상태에서 작성한 것입니다.
-그리고, 본 섹션의 후반부에서 다루어지게 될 일반 선형화 모델(generalised linear model)과 비선형 모델(nonlinear model)에 대해서도 개략적인 내용을 이미 알고 계신다고 가정하였습니다.
+이번 섹션에서 다루게 될 내용은 여러분이 이미 회귀분석(regression analysis)이나 분산분석(analysis of variance)등에 대해서 어느 정도 알고 있다고 가정한 상태에서 작성한 것입니다.
+그리고, 후반부에서는 조금 더 욕심을 내서 일반화 선형 모형(generalised linear model)과 비선형 모형(nonlinear model)과 같은 내용에 대해서도 어느 정도 알고 계실거라고 가정하겠습니다.
 
-@R{}은 통계모델을 적합하는데 필요한 사항들을 잘 정리하여 다양한 문제에 적용할 수 있도록 보다 일반화된 도구로서 제작해 두었고, 통계모델의 모델들의 적합을 매우 단순하게 처리할 수 있도록 도와주는 기능들을 잘 연결하여 놓은 하나의 묶음을 제공합니다.
-본 문서의 서두에서 언급한 것과 같이, @R{}은 분석을 수행시 최소한의 결과물만을 보여주기 때문에 중간절차에 대한 상세한 내용을 알아보고자 한다면 이를 확인해 볼 수 있는 기능을 가진 추출계열의 함수(extractor functions)들을 이용하셔야 합니다. 
+@R{}은 다양한 통계모형을 매우 간단하게 적합시킬 수 있도록 해주는 여러 도구들을 완벽하게 조합해놓은 종합 도구 상자같은 것입니다.
+본 문서의 서두에서 언급했던 것 처럼, @R{}은 분석 수행시 최소한의 결과물만을 출력하기 때문에 중간절차에 대한 상세한 내용을 확인하기 위해서는 추출계열의 함수(extractor functions)들을 사용하셔야 합니다. 
 
 @menu
 * Formulae for statistical models::  
@@ -5626,29 +5625,22 @@ function (object, ...)
 
 @node Formulae for statistical models, Linear models, Statistical models in R, Statistical models in R
 @c @section Defining statistical models; formulae
-@section 통계적 모델 정의하기; 통계식
+@section 식(formulae)을 통한 통계모형의 정의 
 @cindex Formulae
 
 @c The template for a statistical model is a linear regression model with
 @c independent, homoscedastic errors
 
-선형 회귀 모델(linear regression model)은 다음과 같은 일반적인 형식을 가집니다.
-@code{y}는 종속변수이고, @code{x}는 설명변수입니다. 
-@code{p}개의 설명변수가 있고, 이들은 @code{j}라는 첨자를 통해 구분됩니다.
-따라서, @code{x_j}란 @code{j}번째 설명변수를 의미합니다. 
-또한, @code{n}개의 관측대상이 존재하며, 각 관측대상은 첨자 @code{i}를 통해 구분됩니다.
-따라서, @code{y_i}란 @code{i}번째 관측대상으로부터 얻은 종속변수의 값을 의미합니다.
-마지막으로 @code{e_i}란 @code{i}번째 관측대상의 에러항을 의미합니다. 
+일반적인 통계모형의 템플릿(template)이라고 하면 독립(independent)이고 등분산(homoscedastic)인 오차(errors)를 가정하는 선형 회귀 모형을 떠올릴 것 입니다.  
+
+선형 회귀모형(linear regression model)은 보통 다음과 같이 표현됩니다.
 
 @ifnottex
 @display
 y_i = sum_@{j=0@}^p beta_j x_@{ij@} + e_i, @ @ @ @ i = 1, @dots{}, n,
 @end display
 @noindent
-여기에서 e_i은 NID(0, sigma^2)을 따릅니다.  
-이 말의 의미는 오차항(error term)의 평균이 @math{0}이고, 분산이 @code{sigma^2}인 정규분포를 따르는데 각 관측치는 독립(independent)이며 동질적(homoscedastic)이라는 것입니다.
-독립이란 말의 의미는 @code{i}번째 관측치와 @code{i}번째 관측치가 아닌 다른 관측치들과 관계없이 값이 얻어졌으며,
-동질적이라는 말의 의미는 모든 관측치들에 가정되는 분포가 동일하다는 것을 말합니다.
+
 @end ifnottex
 @tex
 $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
@@ -5657,13 +5649,19 @@ $$ y_i = \sum_{j=0}^p \beta_j x_{ij} + e_i,
 $$
 @end tex
 
+하나의 모형에는 @code{p}개의 설명변수가 있고, 이들은 @code{j}라는 첨자를 사용해서 구분합니다.
+따라서, @code{x_j}는 @code{j}번째 설명변수를 의미합니다. 
+또한, @code{n}개의 관측으로 데이터를 구성하며, 각 관측은 첨자 @code{i}로 구분합니다.
+따라서, @code{y_i}란 @code{i}번째 관측으로부터 얻은 종속변수의 값을 의미합니다.
+마지막으로 @code{e_i}를 사용해서 @code{i}번째 관측의 오차항을 표현합니다.
+
+이 식에서 오차항은 @code{e_i}은 IID(Independently, Identically Distributed/독립이며 같은 분포를 따르는)인 평균이 @math{0}이고 분산이  @code{sigma^2}인 정규(Normal)분포를 따릅니다.  
+
+여기서 독립이란 @code{i}번째 관측치와 @code{i}번째가 아닌 다른 관측치 사이에 아무런 관련이 없으며, 개별 관측이 따로 얻어졌다는 것을 의미합니다.
+
 @c In matrix terms this would be written
 
-위에서 표현된 회귀분석의 일반식이 개별 관측치를 기준으로 쓰여졌다면, 아래와 같이 행렬의 형식으로 표현할 수도 있습니다.
-@math{y}는 모든 관측치를 열벡터의 형식을 가진 하나의 종속변수(response variable 혹은 outcome variable) 이라고 하고, 
-@math{X}는 @emph{모델 행렬(model matrix)} 혹은 @emph{디자인 행렬 (design matrix)}이라고 합니다.
-이 디자인 행렬은 크기가 @math{n}행 @math{p}열로 정의되고, 각 열은 설명변수 (explanatory variable)의 값을 가진 열벡터로서 @math{x_0, x_1, ..., x_p} 와 같이 묶여있는 형태입니다.
-일반적으로 @math{x_0}은 @emph{절편항 (intercept term)}으로서 열 벡터의 모든 구성요소의 값이 1로 되어 있는 것을 의미합니다.
+위의 식은 행렬 형태로 아래와 같이 표현되며,
 
 @ifnottex
 @display
@@ -5682,6 +5680,9 @@ $$ y = X \beta + e $$
 @c will be a column of ones defining an @emph{intercept} term.
 
 
+@math{y}는 종속변수 벡터, 설명변수들로 구성된 @math{X}는 @emph{모형 행렬(model matrix)} 또는 @emph{디자인 행렬(design matrix)}이라고 불리며, 설명변수(또는 열)들을 @math{x_0, x_1, @dots{}, x_p}의 형태로 포함합니다. 종종 @math{x_0}라는 @math{1}로만 구성된 열 하나가 여기에 더 추가되는데, 이는  @emph{절편(intercept)}을 정의하기 위해서 사용된 것입니다. 
+
+
 @c @subsubheading Examples
 @subsubheading 예제들
 
@@ -5693,10 +5694,11 @@ $$ y = X \beta + e $$
 @c @code{C}, @dots{} are factors.  The following formulae on the left
 @c side below specify statistical models as described on the right.
 
-몇 가지 예를 들어봄으로서 이해를 돕도록 하겠습니다.
-먼저 @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{}가 모두 수치형 벡터라고 가정합니다.
-@code{X}는 행렬이고 @code{A}, @code{B}, @code{C}, @dots{}는 요인들을 나타낸다고 가정합니다.
-그럼, 이제부터 통계모델을 @R{}에서 어떻게 지정하는지 알아보도록 하겠습니다.
+본격적으로 회귀모형의 사용을 다루기 전, 몇 가지 예제를 통해 이해를 돕도록 하겠습니다.
+
+먼저 @code{y}, @code{x}, @code{x0}, @code{x1}, @code{x2}, @dots{}는 모두 수치형 벡터, 
+@code{X}는 행렬, 그리고 @code{A}, @code{B}, @code{C}, @dots{}는 요인들을 나타낸다고 가정합니다.
+아래에서 우리가 살펴보고자 하는 통계 모형들은 왼편에 식으로 표기되어 있고, 그 아래는 해당 모형에 대한 설명이 제시되어 있습니다.
 
 @table @code
 @item y ~ x
@@ -5705,10 +5707,10 @@ $$ y = X \beta + e $$
 @c @math{x}.  The first has an implicit intercept term, and the second an
 @c explicit one.
 
-이 두가지 표현 모두 주어진 설명변수 @code{x}를 이용한 @code{y}의 단순선형회귀모델 (simple linear regression model)을 의미합니다.
-여기에서 단순이라는 말의 의미는 설명변수의 개수가 1개임을 의미합니다.
-첫번째 식은 절편항을 명시하지 않았으나, 두번째 식은 절편항을 명시하였습니다.
-절편항에 대한 특별한 명시가 없다면 @R{}은 기본적으로 디자인행렬에 절편항을 포함시킵니다.
+이 두가지 식은 모두 같은 모형을 나타내고 있으며, @code{y}를 @code{x}에 회귀시킨 단순 선형 회귀모형 (simple linear regression model)을 의미합니다.
+여기에서 "단순(simple)"이라는 말은 모형에 포함된 설명변수가 1개임을 의미합니다.
+첫번째 식은 절편을 따로 표시하지 않았지만, 두번째 식은 절편을 따로 표시한 것 입니다.
+(절편항에 대해 따로 명시하지 않으면, @R{}에서는 디폴트(default)로 디자인 행렬에 절편항을 포함시킵니다.)
 
 @item y ~ 0 + x
 @itemx y ~ -1 + x
@@ -5716,20 +5718,19 @@ $$ y = X \beta + e $$
 @c Simple linear regression of @math{y} on @math{x} through the origin
 @c (that is, without an intercept term).
 
-위와 동일한 @code{x}를 이용한 @code{y}의 단순선형회귀모델이지만, 이는 절편항을 포함하지 않는 경우를 표현하는 세가지 방법입니다.
+위 세 식은 원점(origin)을 지나는 @code{y}를 @code{x}에 회귀시킨 단순 선형 회귀모형을 의미합니다. (즉, 이는 절편을 포함하지 않는 회귀모형 입니다.)
 
 @item log(y) ~ x1 + x2
 @c Multiple regression of the transformed variable,
 
-이는 두개의 설명변수 @code{x1}과 @code{x2}를 이용하여
-@code{y}가 
+위 식은 
 @ifnottex
 log(y),
 @end ifnottex
 @tex
 $\log(y)$,
 @end tex
-로 변환된 종속변수에 대한 다중회귀모델 (multiple regression)입니다.
+로 변환된 @code{y}를 두 개의 설명변수인 @code{x1}와 @code{x2}에 회귀시킨 다중회귀모델 (multiple regression)입니다. (표시되지 않았지만 절편을 포함하는 모형입니다.)
 @c on @math{x1} and @math{x2} (with an implicit intercept term).
 
 @item y ~ poly(x,2)
@@ -5738,53 +5739,61 @@ $\log(y)$,
 @c form uses orthogonal polynomials, and the second uses explicit powers,
 @c as basis.
 
-이 모델식은 @math{x}의 2차 다항식을 이용한 다항회귀 (polynomial regression)을 수행하는 것입니다.
-@math{x}의 이차항이라는 것은 @math{x^2}를 의미합니다.
-첫번째 식은 직교다항모형(orthogonal polynomials)이며, 
-두번째 식은 @math{x}의 0차, 1차, 2차인 @math{x^0, x^1, x^2}가 기저 (basis)를 형성하는 다항모형을 의미합니다.
+위 식들은 @math{y}를 @math{x}의 이차항에 회귀시킨 다차항 회귀(polynomial regression)모형 입니다. 
+@math{x}의 이차항이라는 것은 @math{x^2}를 의미하는 것으로,
+첫번째 식은 직교 다차항(orthogonal polynomials)을,
+두번째 식은 @math{x}의 0차, 1차, 2차항인 @math{x^0, x^1, x^2}를 베이시스(basis)로 사용하는 모형임을 표현하는 것 입니다.
 
 @item y ~ X + poly(x,2)
 @c Multiple regression @math{y} with model matrix consisting of the matrix
 @c @math{X} as well as polynomial terms in @math{x} to degree 2.
 
-이 모델식은 @math{X} 행렬과 @math{x}의 2차항으로 구성된 다중회귀분석을 수행함을 의미합니다.
+위 식은 행렬인 @math{X}와 @math{x}의 2차항으로 구성된 다중 회귀모형을 의미합니다.
 
 @item y ~ A
 @c Single classification analysis of variance model of @math{y}, with
 @c classes determined by @math{A}.
 
-이 모델식은 여러개의 수준을 가지고 있는 요인 @math{A}를 이용하여 @math{y}에 대한 single classification analysis of variance model을 의미합니다. 
+위 식은 요인 @math{A}의 여러 수준에 대한 @math{y}의 단순(single) 분산분석(classification analysis of variance/ANOVA)을 의미합니다. @footnote{일반적으로 ANOVA를 표기할 때 classification을 따로 명시하지는 않지만, 이 방법의 사용시 분산을 요인 별로 분해하므로 이렇게 부르는 것 같습니다.} 
 
 @item y ~ A + x
 @c Single classification analysis of covariance model of @math{y}, with
 @c classes determined by @math{A}, and with covariate @math{x}.
 
-이 모델식은 여러개의 수준을 가지고 있는 요인 @math{A}와 설명변수 @math{x}를 이용하여 @math{y}에 대한 single classification analysis of covariance를 수행함을 의미합니다.
+위 식은 @math{y}에 대한 요인 @math{A}와 공변량(covariate) @math{x}의 단순(single) 공분산분석(classification analysis of covariance/ANCOVA)를 의미합니다. 여기서 @math{A}의 수준이 @math{y}를 분석하기 위한 클래스(class)를 결정합니다. 
+@footnote{마찬가지로, ANCOVA를 표기할 때도 classification을 따로 명시하지는 않지만, 이 방법의 역시 보통 연속형 변수인 공변량(covariate)이 포함된다는 것 외에는 ANOVA와 유사한 분석을 수행하므로 이렇게 표현한 것 같습니다.}
 
 @item y ~ A*B
 @itemx y ~ A + B + A:B
 @itemx y ~ B %in% A
 @itemx y ~ A/B
-Two factor non-additive model of @math{y} on @math{A} and @math{B}.  The
-first two specify the same crossed classification and the second two
-specify the same nested classification.  In abstract terms all four
-specify the same model subspace.
+
+위 식은 모두 @math{y}를 두 개의 요인 @math{A}와 @math{B}로 설명하는 이원배치(Two factor) 비가산(non-additive) 모형을 표현하고 있습니다. 처음 두 식은 모두 (상호작용(interaction)항을 포함하는) 이원배치 혼합모형(crossed classification)을 나타내며, 다음의 두 식은 모두 중첩모형 (nested classification)을 나타냅니다. 하지만, 현대 대수학(abstract algebra)식으로  말하면, 네 가지 모형은 모두 같은 모형 서브스페이스(subspace)를 표현합니다. 
+@c Two factor non-additive model of @math{y} on @math{A} and @math{B}.  The
+@c first two specify the same crossed classification and the second two
+@c specify the same nested classification.  In abstract terms all four
+@c specify the same model subspace.
 
 
 @item y ~ (A + B + C)^2
 @itemx y ~ A*B*C - A:B:C
-Three factor experiment but with a model containing main effects and two
-factor interactions only.  Both formulae specify the same model.
+위의 식은 모두 삼원배치(three factor) 실험을 표현하고 있지만,주효과(main effect/일차원 효과)와 두개 요인간의 상호작용(interaction)들만 포함하는 모형입니다. 두 식은 모두 같은 모형을 표현합니다.
+ 
+@c Three factor experiment but with a model containing main effects and two
+@c factor interactions only.  Both formulae specify the same model.
 
 @item y ~ A * x
 @itemx y ~ A/x
 @itemx y ~ A/(1 + x) - 1
-Separate simple linear regression models of @math{y} on @math{x} within
-the levels of @math{A}, with different codings.  The last form produces
-explicit estimates of as many different intercepts and slopes as there
-are levels in @math{A}.
+
+위의 세 식은 요인 @math{A}의 각 수준 별로 @math{y}를 @math{x}에 회귀시켜 여러개의 단순 선형 회귀모형(simple linear regression)을 동시에 적합시키는 방법을 다른 코딩 방식으로 표현한 것입니다. 특히, 마지막 식을 사용할 경우,@math{A}의 수준의 개수만큼 서로 다른 절편(intercept)과 기울기(slope)의 추정치(estimate)가 계산됩니다.  
+@c Separate simple linear regression models of @math{y} on @math{x} within
+@c the levels of @math{A}, with different codings.  The last form produces
+@c explicit estimates of as many different intercepts and slopes as there
+@c are levels in @math{A}.
 
 @item y ~ A*B + Error(C)
+위 식은 두 개의 처리 요인 @math{A}와 @math{B}를 갖는 실험을 나타내며, 이 모형의 오차는 요인 @math{C}의 수준 별로 계층화(strata)되어 있습니다. (역주-이 경우, 좀 더 전문적인 용어로 표현하면 오차가 요인 @math{C}에 의해 블록(block)화 된것이라 볼 수 있으며, 일종의 랜덤효과(random effects)로 가정된 것 입니다. 이렇게 처리 요인과 블록화된 요인을 모두 포함하는 실험은 혼합모형(mixed model)을 사용하여 분석할 수 있습니다.)
 An experiment with two treatment factors, @math{A} and @math{B}, and
 error strata determined by factor @math{C}.  For example a split plot
 experiment, with whole plots (and hence also subplots), determined by
@@ -5795,53 +5804,53 @@ factor @math{C}.
 @c The operator @code{~} is used to define a @emph{model formula} in @R{}.
 @c The form, for an ordinary linear model, is
 
-그전에 모델식(model formula)에 이용되는 @code{~}(틸다)라는 연산자는 통계학적 의미로 연관시킨다는 의미를 가집니다.  
-그 이유는 수학과 같이 우변의 식이 좌변의 값과 @code{=}(같음)이라는 등식이 성립되는 수학과 같은 정확한 함수관계는 아니기 때문입니다.
-따라서, @R{}에서 모델식을 작성할때는 @code{~}를 이용하여 아래와 같은 형식으로 작성해주시면 됩니다.
+@R{}에서 모델식(model formula)을 정의할 때는 @code{~}(틸다) 연산자를 사용한 것을 확인하실 수 있을 것 입니다. 
+(이 연산자는 식의 왼쪽과 오른쪽을 연결시키는 역할을 하며, 이러한 사용은 수학에서 식의 오른쪽과 왼쪽이 완전하게 동일하다는 의미를 나타내는 등호 (@code{=})를 사용하는 것과는 다릅니다. 예를 들면, 간단한 일반(ordinary) 선형모형은 다음과 같이 정의할 수 있습니다. 
 
-@example
-@var{response} ~ @var{op_1} @var{term_1} @var{op_2} @var{term_2} @var{op_3} @var{term_3} @var{@dots{}}
-@end example
+@display
+@code{response} ~ @code{op_1} @code{term_1} @code{op_2} @code{term_2} @code{op_3} @var{term_3} @var{@dots{}}
+@end display
 
 @noindent
 @c where
-이 모델식에서 
+이 모델식에 사용된 성분들에 대해 설명하면, 
 @table @var
 @item response (종속변수)
 @c is a vector or matrix, (or expression evaluating to a vector or matrix)
 @c defining the response variable(s).
-는 벡터 또는 행렬이 될 수 있습니다.
-(또는 벡터 또는 행렬의 형식을 산출해내는 표현식일 수도 있습니다).
+는 하나의 벡터 또는 행렬(경우에 따라서는 벡터나 행렬로 결과를 출력할 표현식)이 될 수 있습니다.
 
 @item op_i (i 번째 연산자)
 @c is an operator, either @code{+} or @code{-}, implying the inclusion or
 @c exclusion of a term in the model, (the first is optional).
-는 @code{+} 또는 @code{-} 부호를 가지는 연산자인데, 이 부호의 의미는 모델식에서 i 번째 항을 추가하거나 빼라는 의미입니다. 
-산술연산과 혼돈하지 말아야 합니다.
-
-@item term_i (i 번째 항목)
+는 @code{+} 또는 @code{-} 부호를 갖는 연산자로, 각각 모형식에서 i 번째 변수를 추가하거나 제거하기 위해 사용합니다. 
+(식의 가장 처음에 오는 (첫번째 항을 받는) 연산자는 굳이 사용하지 않아도 됩니다.)
+@item term_i (i 번째 항)
 @c is either
-은 다음의 것들중에 한가지가 될 수 있습니다. 
-@itemize @bullet
+으로는 다음의 중 한가지가 가능합니다:
+@itemize
 @item
 @c a vector or matrix expression, or @code{1},
-벡터 혹은 행렬, 또는 @code{1}
+벡터, 행렬, 또는 숫자 @math{1}
 @item
 @c a factor, or
-요인 (factor), 또는 
+요인 (factor)
 @item
 @c a @emph{formula expression} consisting of factors, vectors or matrices
 @c connected by @emph{formula operators}.
-요인, 벡터, 또는 행렬 등을 @emph{모델식 연산자(formula operator)}에 의하여 연결되어 이루어진 @emph{모델 표현식(formula expression)}입니다.
+@emph{식 연산자(formula operator)}를 사용하여 요인, 벡터 또는 행렬 여러 개를 연결한 @emph{모형식의 표현(formula expression)}입니다.
 @end itemize
+@end table
+
 @c In all cases each term defines a collection of columns either to be
 @c added to or removed from the model matrix.  A @code{1} stands for an
 @c intercept column and is by default included in the model matrix unless
 @c explicitly removed.
-이렇게 작성되는 모델식을 통하여 각 항이 모델행렬(model matrix)에서 추가되어질지 혹은 빠질지를 결정하게 됩니다.
-@code{1}이라는 열벡터는 절편을 의미하는데 특별히 지정하지 않아도 항상 모델행렬에 포함되어 있다는 것을 기억하시길 바랍니다.
-@end table
+모형이 이런식으로 표현될 경우, 식에 포함되는 각 항은 모형행렬(model matrix)을 구성하는 각 열이 모형에서 추가될질지 혹은 제거될지를 나타내기위해 사용됩니다.
+위에서 @math{1}이라는 항의 구성요소는 식에서 절편을 나타내며, 따로 이 항을 생략하는 표현을 사용하지 않으면, 디폴트(default)로 모형행렬에 항상 포함됩니다.
 
+###################################
+@emph{식 연산자(formula operators)}라는 것은  Wilkinson과 Rogers의 노테이션
 @c The @emph{formula operators} are similar in effect to the Wilkinson and
 @c Rogers notation used by such programs as Glim and Genstat.  One
 @c inevitable change is that the operator @samp{@code{.}} becomes
