@@ -207,9 +207,9 @@ p {
 <li><a href="#ANOVA-tables">11.4.1 ANOVA 테이블</a>
 </li></ul>
 <li><a href="#Updating-fitted-models">11.5 적합된 모형의 업데이트</a>
-<li><a href="#Generalized-linear-models">11.6 일반선형모델</a>
+<li><a href="#Generalized-linear-models">11.6 일반화 선형 모형</a>
 <ul>
-<li><a href="#Families">11.6.1 페밀리</a>
+<li><a href="#Families">11.6.1 분포족 (Families)</a>
 <li><a href="#The-glm_0028_0029-function">11.6.2 함수 <code>glm()</code></a>
 </li></ul>
 <li><a href="#Nonlinear-least-squares-and-maximum-likelihood-models">11.7 비선형 최소제곱 및 최우추정 모델들</a>
@@ -3068,7 +3068,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Matrix-facilities">Matrix facilities</
    <p><a name="index-qr-121"></a><!-- Another closely related function is @code{qr()} and its allies. -->
 <!-- Consider the following assignments -->
 
-   <p>최소제곱법과 연관되어 있는 함수로는 <code>qr()</code>과 그에 연관된 함수족이 있습니다. 아래의 예제를 살펴보세요.
+   <p>최소제곱법과 연관되어 있는 함수로는 <code>qr()</code>과 그에 연관된 함수족(allies)이 있습니다. 아래의 예제를 살펴보세요.
 <pre class="example">     &gt; Xplus &lt;- qr(X)
      &gt; b &lt;- qr.coef(Xplus, y)
      &gt; fit &lt;- qr.fitted(Xplus, y)
@@ -6130,43 +6130,42 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- usually by just a few additional or removed terms.  Its form is -->
 <!-- @findex update -->
 
-   <p>아래에 예제에서 사용된 <code>update()</code>이라는 함수는 이전에 적합된 모델에 몇 개의 항의 추가 혹은 제거를 통하여 새로운 모형으로서 적합시키고자 할 때 매우 유용한 함수입니다.
+   <p><code>update()</code> 함수는 이미 적합된 모형에 몇 개의 항만을 추가하거나 혹은 제거해서 새로운 모형으로서 적합시키고자 할 때 매우 유용하게 사용할 수 있으며, 다음과 같이 사용합니다.
 
 <pre class="example">     &gt; <var>new.model</var> &lt;- update(<var>old.model</var>, <var>new.formula</var>)
 </pre>
-   <!-- In the @var{new.formula} the special name consisting of a period, -->
+   <p>위 식의 <var>new.formula</var> 부분에서 마침표(period) &lsquo;<samp><code>.</code></samp>&rsquo; 하나가 사용될 경우, 이것은 "이전 모형으로부터 온 부분들"이라는 의미로 사용된 것 입니다. 좀 더 확실한 이해를 위해 아래의 예제를 살펴봅시다.
+
+<!-- In the @var{new.formula} the special name consisting of a period, -->
 <!-- @samp{@code{.}}, -->
 <!-- @findex . -->
 <!-- only, can be used to stand for ``the corresponding part of the old model -->
 <!-- formula''.  For example, -->
-   <p>R은 변수명에 &lsquo;<samp><code>.</code></samp>&rsquo;을 사용하는 것을 허용하므로 위의 예제와 같이 new.model이라는 변수명을 사용함에 아무런 문제가 없습니다. 
-그러나, 함수 <code>update()</code>를 사용함에 있어서 &lsquo;<samp><code>.</code></samp>&rsquo;은 이전 적합에서 사용한 모델의 동일한 부분을 다시 사용함을 R 시스템에게 인식하도록 하는 역할을 합니다. 
-좀 더 확실한 이해를 이해서 아래의 예제를 살펴봅니다. 
-먼저 <code>production</code>라는 데이터 내의 <code>x1, x2, x3, x4, x5</code>이라는 5개의 설명변수를 이용하여  종속변수 <code>y</code>를 설명하고자 적합한 모델의 객체를 <code>fm05</code>에 저장합니다. 
-이렇게 이미 적합에 사용된 모형에 새로운 6번째 설명변수를 추가하여 모형을 재적합하고 싶을 때, &lsquo;<samp><code>.</code></samp>&rsquo;를 사용합니다. 
-그리고, <code>update()</code> 함수가 이미 <code>production</code> 데이터를 재적합을 위해서 홀딩하고 있기 때문에 <code>data=production</code>를 다시 입력할 필요는 없습니다. 
-위의 코드의 맨 마지막라인은 square root를 통해 변환된 종속변수 <code>y</code>를 6개의 설명변수로 설명하고자 하는 모델을 재적합한다는 의미입니다.
-
 <pre class="example">     &gt; fm05 &lt;- lm(y ~ x1 + x2 + x3 + x4 + x5, data = production)
      &gt; fm6  &lt;- update(fm05, . ~ . + x6)
      &gt; smf6 &lt;- update(fm6, sqrt(.) ~ .)
 </pre>
-   <!-- @noindent -->
+   <p>제일 먼저 데이터 프레임 <code>production</code>으로부터 온 5개의 변수를 포함하는 중회귀(multiple regression) 모형(fm05)을 적합하고, 이를 바탕으로 6번째 변수를 추가하여 모형을 다시 적합한 후(fm6), 다시 이 모형에서 제곱근(square root) 변환시킨 종속변수를 사용하여 모형을 적합한 것입니다 (smf6).
+
+<!-- @noindent -->
 <!-- would fit a five variate multiple regression with variables (presumably) -->
 <!-- from the data frame @code{production}, fit an additional model including -->
 <!-- a sixth regressor variable, and fit a variant on the model where the -->
 <!-- response had a square root transform applied. -->
+   <p>특히, 제일 처음으로 사용한 모형 적합 함수에서 <code>data=</code> 인자(argument)가 지정된 경우에는, 이 정보가 모형 적합에 사용되는 과정을 통헤  <code>update()</code> 함수와 그 함수족(allies)을 사용할 경우 그대로 전달되어 사용된다는 점을 기억하시기 바랍니다.
+
 <!-- Note especially that if the @code{data=} argument is specified on the -->
 <!-- original call to the model fitting function, this information is passed on -->
 <!-- through the fitted model object to @code{update()} and its allies. -->
 <!-- The name @samp{.} can also be used in other contexts, but with slightly -->
 <!-- different meaning.  For example -->
-   <p>그러나, &lsquo;<samp><code>.</code></samp>&rsquo;는 아래의 코드에서 보여지는 것과 같이 다른 용도로도 사용될 수 있기 때문에 &lsquo;<samp><code>.</code></samp>&rsquo;를 사용함에 있어서 주의가 요구됩니다. 
-여기에서의 &lsquo;<samp><code>.</code></samp>&rsquo;은 종속변수 <code>y</code>를 설명함에 있어서 <code>production</code> 데이터안에 있는 <em>모든 변수를 다 이용</em>하여 모형을 적합하겠다는 의미입니다.
+   <p>또, &lsquo;<samp><code>.</code></samp>&rsquo;는 다른 상황(contexts)에서 사용될 때는 위에서 설명한 것과 약간 다른 의미로 사용된다는 점도 주의해야 합니다. 아래의 예에서는,
 
 <pre class="example">     &gt; fmfull &lt;- lm(y ~ . , data = production)
 </pre>
-   <p class="noindent"><!-- would fit a model with response @code{y} and regressor variables -->
+   <p>종속(response)변수 <code>y</code>와 함께 데이터 프레임 <code>production</code>에 포함된 <em>모든 변수들</em>을 회귀변수로 사용하는 모형을 적합하겠다는 의미입니다.
+
+<p class="noindent"><!-- would fit a model with response @code{y} and regressor variables -->
 <!-- @emph{all other variables in the data frame @code{production}}. -->
 
 <!-- Other functions for exploring incremental sequences of models are -->
@@ -6176,8 +6175,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- @findex step -->
 <!-- The names of these give a good clue to their purpose, but for full -->
 <!-- details see the on-line help. -->
-   <p>순차적으로 증가하는 형식의 여러가지 모델을 비교하기 위해서 <code>add1()</code>, <code>drop1()</code> 그리고 <code>step()</code>와 같은 함수들을 살펴보시는 것은 많은 도움이 될 것입니다. 
-이 함수들은 이름 그대로의 목적을 가지고 있는데, 자세한 사항은 각 함수의 도움말을 살펴보시길 바랍니다.
+   <p>순서대로 항을 늘려가며 모형을 비교하기 위해서는 <code>add1()</code>, <code>drop1()</code> 그리고 <code>step()</code>와 같은 함수들을 사용할 수 있습니다. 이 함수들은 이름 그대로의 의미로 사용할 수 있으며,더 자세한 사항은 각 함수의 도움말을 살펴보시길 바랍니다.
 
 <div class="node">
 <a name="Generalized-linear-models"></a>
@@ -6189,7 +6187,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 </div>
 
 <!-- @section Generalized linear models -->
-<h3 class="section">11.6 일반선형모델</h3>
+<h3 class="section">11.6 일반화 선형 모형</h3>
 
 <p><a name="index-Generalized-linear-models-225"></a>
 <!-- Generalized linear modeling is a development of linear models to -->
@@ -6198,30 +6196,30 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- model may be described in terms of the following sequence of -->
 <!-- assumptions: -->
 
-   <p>일반선형모델(generalized linear model)이란 정규분포를 따르지 않는 종속변수(non-normal response distributions)의 변수변환(transformation)이라는 과정을 통하여 모형의 선형성 (linearity)를 찾는 방법으로 선형모델(linear model)의 일반화라고 생각하시면 됩니다. 
-일반선형모델은 아래와 같은 내용들을 가정하고 있습니다.
+   <p>일반화 선형 모델(generalized linear model)이란 정규분포가 아닌 분포를 갖는 종속변수(non-normal response)와 변수변환(transformation)을 통한 선형성(linearity)의 만족이라는 두 과제를 깔끔하게 해결하기 위해 선형모형(linear model)을 좀 더 발전시킨 것이라고 생각하시면 됩니다. 
+일반화 선형 모형은 다음과 같은 가정(assumptions)들을 사용하여 정의할 수도 있습니다:
 
      <ul>
 <li><!-- There is a response, @math{y}, of interest and stimulus variables -->
-종속변수 y가 있고, 이 반응변수의 분포 (distribution of response variable)에 영향을 미치는 여러개의 설명변수 (또는 자극변수, stimulus variables)
+이 모형에는 하나의 종속(response)변수 y가 있고, 이 반응변수의 분포에 영향을 미치는 여러 개의 설명변수(stimulus variables)
 x_1, x_2, <small class="dots">...</small>,
 <!-- whose values influence the distribution of the response. -->
-가 있습니다.
+가 포함되어 있습니다.
 
      <li><!-- The stimulus variables influence the distribution of @math{y} through -->
 <!-- @emph{a single linear function, only}.  This linear function is called -->
 <!-- the @emph{linear predictor}, and is usually written -->
 
-     <p>설명변수들이 종속변수 y의 분포에 영향을 미칠때, 이 영향은 반드시 아래와 같이 정의된 설명변수들의 선형관계로부터 얻어진 linear predictor를 통하여 영향을 줍니다.
+     <p>이 모형헤어 설명변수들이 y의 분포에 미치는 영향은 emph오직 단순 선형 함수의 형태로 나타낼 수 있어야 합니다. 이 선형 함수는 <em>linear predictor</em>라고 부를 수 있으며, 다음과 같이 사용될 수 있습니다.
 
      <pre class="display">          eta = beta_1 x_1 + beta_2 x_2 + <small class="dots">...</small> + beta_p x_p,
 </pre>
      <!-- hence x_i has no influence on the distribution of @math{y} if and only if -->
      <!-- beta_i is zero. -->
-     <p>따라서, i번째의 설명변수 x_i의 선형계수 beta_i가 0이라면 y의 분포에 어떠한 영향을 미치지 않는다는 점을 알 수 있습니다.
+     <p>따라서, i번째 설명변수 x_i의 선형계수인 beta_i가 0 인 경우에는 이 변수가 y의 분포에 아무런 영향을 미치지 않습니다.
 
      <li><!-- The distribution of @math{y} is of the form -->
-종속변수 y의 분포는 아래와 같은 형식을 가지고 있습니다.
+y의 분포는 아래와 같은 형식으로 표현할 수 있습니다.
      <pre class="display">          f_Y(y; mu, phi)
             = exp((A/phi) * (y lambda(mu) - gamma(lambda(mu))) + tau(y, phi))
 </pre>
@@ -6229,20 +6227,19 @@ x_1, x_2, <small class="dots">...</small>,
      <!-- for all observations, @math{A} represents a prior weight, assumed known -->
      <!-- but possibly varying with the observations, and $\mu$ is the mean of -->
      <!-- @math{y}. -->
-     <p>여기에서 phi는 <em>스케일 파라미터 (scale parameter)</em>이며, 이 값은 아마도 사전에 알고 있거나 미리 주어짐으로서 상수로서 역할을 하게 됩니다. 
-A는 사전가중치(prior weight)인데, 이는 관측치마다 모두 다른 값을 가질 수도 있습니다. 
-$\mu$라는 것은 y의 평균값입니다.
+     <p>위 예시에서 <code>phi</code>는 <em>스케일 모수(scale parameter)</em>로 (주로 주어지는 값이며), 모든 관측치에 대해 같은 상수값을 갖습니다. 또, A는 사전가중치(prior weight)를 의미하며, 이 역시 주어진 값이긴 하지만 관측치에 따라 다른 값을 가질 수도 있습니다. 마지막으로 $\mu$는 y의 평균을 의미합니다.
 
      <!-- So it is assumed that the distribution of @math{y} is determined by its -->
      <!-- mean and possibly a scale parameter as well. -->
-     <p>따라서, y의 분포는 평균과 스케일 파라미터들로 결정되어집니다.
+     <p>따라서, 이 식에서 y의 분포는 평균과 스케일 모수(parameter)에 의해 결정 됩니다.
 
      <li><!-- The mean, mu, is a smooth invertible function of the linear predictor: -->
-아래에서 보이는 바와 같이 y의 평균 mu와 linear predictor가 역함수 관계로서 표현됩니다.
+
+     <p>y의 평균 <code>mu</code>는 linear predictor의 스무드한 가역함수(smooth invertible function)로 표현됩니다:
      <pre class="display">          mu = m(eta),    eta = m^{-1}(mu) = ell(mu)
 </pre>
      <!-- and this inverse function, ell(), is called the @emph{link function}. -->
-     <p>이 역함수를 ell()로 표기하고 <em>링크함수(link function)</em>이라고 합니다. 
+     <p>여기서 역함수인 ell()을 <em>링크함수(link function)</em>이라고 합니다. 
 </ul>
 
 <!-- These assumptions are loose enough to encompass a wide class of models -->
@@ -6251,10 +6248,8 @@ $\mu$라는 것은 y의 평균값입니다.
 <!-- least approximately.  The reader is referred to any of the current -->
 <!-- reference works on the subject for full details, such as McCullagh & -->
 <!-- Nelder (1989) or Dobson (1990). -->
-   <p>위에서 언급된 가정들은 매우 많아 보이지만, 실제로 이것들은 통계실무에서 사용되는 광범위한 범위의 모델을 모두 포괄할 수 있는 최소한의 가정입니다. 
-일반선형모델은 이러한 최소한의 가정들을 가지고 추정(estimation)과 추론(inference)을 위한 하나의 통일된 방법을 개발할 수 있도록 도와줍니다. 
-만약, 일반선형모델에 관심이 있는 독자라면 McCullagh &amp; Nelder (1989)에 의해서 쓰여진 책과 Dobson (1990)이 저술한 책을 참고하시길 바랍니다. 
-이 두 권의 책은 일반선형모델에 대한 거의 모든 내용을 다루고 있습니다.
+   <p>위의 가정들은 통계실무에서 사용하는 꽤 광범위한 클래스의 모형들을 포함할 수 있는 최소한의 가정이지만, 추정(estimation)과 추론(inference)을 하기 위한 하나의 통일된 방법론(methodology)이나 그 비슷한 것을 개발할 수 있을 만큼 충분히 구체적이기도 합니다. 
+일반화 선형 모형의 최신 레퍼런스나 좀 더 자세한 정보에 관심이 있는 분들께는 McCullagh &amp; Nelder (1989)와 Dobson (1990)을 찾아보실 것을 권하고 싶습니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Families">Families</a>
@@ -6271,9 +6266,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Generalized-linear-models">Generalized
 </div>
 
 <!-- @subsection Families -->
-<h4 class="subsection">11.6.1 페밀리</h4>
+<h4 class="subsection">11.6.1 분포족 (Families)</h4>
 
 <p><a name="index-Families-226"></a>
+############################
 <!-- The class of generalized linear models handled by facilities supplied in -->
 <!-- @R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson}, -->
 <!-- @emph{inverse gaussian} and @emph{gamma} response distributions and also -->
