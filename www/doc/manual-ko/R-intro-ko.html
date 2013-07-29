@@ -202,11 +202,11 @@ p {
 </li></ul>
 <li><a href="#Linear-models">11.2 선형모델</a>
 <li><a href="#Generic-functions-for-extracting-model-information">11.3 모형 정보 확인을 위한 일반함수(generic functions)의 사용</a>
-<li><a href="#Analysis-of-variance-and-model-comparison">11.4 분산분석과 모델비교</a>
+<li><a href="#Analysis-of-variance-and-model-comparison">11.4 분산분석과 모형비교</a>
 <ul>
 <li><a href="#ANOVA-tables">11.4.1 ANOVA 테이블</a>
 </li></ul>
-<li><a href="#Updating-fitted-models">11.5 적합된 모델들을 업데이트하기</a>
+<li><a href="#Updating-fitted-models">11.5 적합된 모형의 업데이트</a>
 <li><a href="#Generalized-linear-models">11.6 일반선형모델</a>
 <ul>
 <li><a href="#Families">11.6.1 페밀리</a>
@@ -5938,9 +5938,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- functions that orient themselves to objects of class @code{"lm"}.  These -->
 <!-- include -->
 <p><code>lm()</code>을 사용하면 적합된 선형모형을 하나의 객체로 얻게됩니다; 이 객체는 클래스(class)가 <code>"lm"</code>인 여러 개의 결과물로 구성된 하나의 리스트 입니다. 
-이렇게 <code>lm()</code>함수를 사용해 적합된 모형에 관련된 정보는 일반함수(generic functions)를 사용하여 생성된 결과물을 출력하거나, 일부 정보만을 따로 추출하거나, 또는 플롯을 그리는 등 다양하게 활용할 수 있습니다.
+이렇게 <code>lm()</code> 함수를 사용해 적합된 모형에 관련된 정보는 일반함수(generic functions)를 사용하여 생성된 결과물을 출력하거나, 일부 정보만을 따로 추출하거나, 또는 플롯을 그리는 등 다양하게 활용할 수 있습니다.
 
-   <p>이런식으로 모형 정보를 다룰 수 있는 일반함수에는 다음과 같은 종류가 있습니다.
+   <p>이렇게 모형 정보를 다룰 수 있는 일반함수에는 다음과 같은 종류가 있습니다.
 
 <pre class="example">     add1    deviance   formula      predict  step
      alias   drop1      kappa        print    summary
@@ -5948,7 +5948,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
      coef    family     plot         residuals
 </pre>
    <!-- A brief description of the most commonly used ones is given below. -->
-   <p>이 중에서 가장 빈번하게 사용되는 함수들에 대해서 아래와 같이 정리해 보았습니다.
+   <p>이 중에서 가장 빈번하게 사용되는 일반함수들에 대해서 아래와 같이 정리해 보았습니다.
 
      
 <a name="index-anova-209"></a>
@@ -5965,24 +5965,24 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 
      <p><a name="index-deviance-212"></a><br><dt><code>deviance(</code><var>object</var><code>)</code><dd><!-- Residual sum of squares, weighted if appropriate. -->
 
-     <p>잔차(residual)를 제곱하여 이를 모두 더한 값을 출력하며, 경우에 따라서는 weighted 된 값을 사용하기도 합니다.
+     <p>잔차(residual)를 제곱하여 이를 모두 더한 값을 출력하며, 경우에 따라서는 weighted 된 잔차를 사용할 수도 있습니다.
 
      <p><a name="index-formula-213"></a><br><dt><code>formula(</code><var>object</var><code>)</code><dd><!-- Extract the model formula. -->
 
-     <p>모형적합에 사용된 모델식을 추출합니다.
+     <p><var>object</var>를 적합하는데 사용한 모형식(model formula)을 보여줍니다.
 
      <p><a name="index-plot-214"></a><br><dt><code>plot(</code><var>object</var><code>)</code><dd><!-- Produce four plots, showing residuals, fitted values and some -->
 <!-- diagnostics. -->
 
-     <p>잔차와 적합된 값, 그리고 모델진단을 위한 4가지 종류의 플랏을 제공합니다.
+     <p><var>object</var>의 잔차(residuals)와 적합된 값(fitted values)을 보여주는 4가지 플롯과 함께 몇가지 모형진단(diagnostics)통계량을 제공합니다.
 
      <p><a name="index-predict-215"></a><br><dt><code>predict(</code><var>object</var><code>, newdata=</code><var>data.frame</var><code>)</code><dd><!-- The data frame supplied must have variables specified with the same -->
 <!-- labels as the original.  The value is a vector or matrix of predicted -->
 <!-- values corresponding to the determining variable values in -->
 <!-- @var{data.frame}. -->
 
-     <p>적합한 모델을 새로운 데이터에 적용하여 그 예측값을 구합니다. 
-이때 적용되는 새로운 데이터는 모델 적합에 사용된 데이터와 같은 변수명들을 가지고 있어야 합니다.
+     <p>적합된 모형을 사용하여 예측값(predicted values)를 구해줍니다. 
+이때 예측에 사용될 데이터 프레임은 반드시 원래의 모형적합에 사용된 데이터와 같은 변수명을 가져야 합니다. 이 함수를 사용한 결과로 <var>data.frame</var>으로 입력된 변수값을 이용하여 계산된 예측값이 벡터 또는 행렬로 출력됩니다.
 
      <!-- @item @code{predict.gam(@var{object},} -->
      <!-- @item @w{@ @ @ @code{newdata=@var{data.frame})}} -->
@@ -5993,20 +5993,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
      <!-- implies different basis functions to the original. -->
      <p><a name="index-print-216"></a><br><dt><code>print(</code><var>object</var><code>)</code><dd><!-- Print a concise version of the object.  Most often used implicitly. -->
 
-     <p>객체를 보기 좋은 형식으로 출력합니다.
+     <p>객체를 간결한 형태로 출력합니다. 많은 경우, 별도의 입력 없이도 결과가 출력됩니다.
 
      <p><a name="index-residuals-217"></a><a name="index-resid-218"></a><br><dt><code>residuals(</code><var>object</var><code>)</code><dd><!-- Extract the (matrix of) residuals, weighted as appropriate. -->
 
      <!-- Short form: @code{resid(@var{object})}. -->
-     <p>적합된 모형에 대한 잔차를 추출합니다. 
-<code>residuals()</code> 함수의 짧은 형식인 <code>resid(</code><var>object</var><code>)</code>라고 하셔도 동일한 값을 얻을 수 있습니다.
+     <p>적합된 모형에 대한 잔차 또는  weighted 잔차를 (행렬의 형태로) 추출합니다. 
+(원래의 <code>residuals()</code> 함수를 약어인 <code>resid(</code><var>object</var><code>)</code>로 사용하실 수도 있습니다.)
 
      <p><a name="index-step-219"></a><br><dt><code>step(</code><var>object</var><code>)</code><dd><!-- Select a suitable model by adding or dropping terms and preserving -->
 <!-- hierarchies.  The model with the smallest value of AIC (Akaike's An -->
 <!-- Information Criterion) discovered in the stepwise search is returned. -->
 
-     <!-- 이것은 단계적조사(stepwise search)라는 방법으로서 -->
-     <p>항을 추가하거나 제거함으로서 다양하게 구성된 모델식들로부터 가장 작은 AIC(Akaike's Information Criterion)값을 근거로 데이터에 가장 적절한 모델을 찾는 것입니다.
+     <p>스텝와이즈 (stepwise) 검색으로 최적모형을 찾아줍니다. 
+변수의 중요도(hierarchies)에 따라 한번 하나씩 항을 추가하거나 제거함으로서 적당한 모형을 선택하는 방법입니다. 
+스텝와이즈 검색을 사용할 경우, 가장 작은 AIC(Akaike's Information Criterion)값을 갖는 모형을 선택하게 됩니다.
 
      <p><a name="index-summary-220"></a><br><dt><code>summary(</code><var>object</var><code>)</code><dd><!-- Print a comprehensive summary of the results of the regression analysis. -->
 
@@ -6014,7 +6015,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 
      <p><a name="index-vcov-221"></a><br><dt><code>vcov(</code><var>object</var><code>)</code><dd><!-- Returns the variance-covariance matrix of the main parameters of a -->
 <!-- fitted model object. -->
-적합된 회귀계수에 대한 분산-공분산 (variance-covariance) 행렬을 출력해 줍니다. 
+적합된 회귀계수들에 대한 분산-공분산 (variance-covariance) 행렬을 출력합니다. 
 </dl>
 
 <div class="node">
@@ -6027,25 +6028,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 </div>
 
 <!-- @section Analysis of variance and model comparison -->
-<h3 class="section">11.4 분산분석과 모델비교</h3>
+<h3 class="section">11.4 분산분석과 모형비교</h3>
 
 <p><a name="index-Analysis-of-variance-222"></a>
+분산분석(analysis of variance)을 수행하기 위해 <code>aov(formula, data=</code><var>data.frame</var><code>)</code> 함수를 사용할 수 있습니다. 이 함수는 <code>lm()</code> 함수와 대체로 비슷한 연산을 수행한다고 볼 수 있으며, 따라서 위의 <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a>편에서 열거한 일반함수(generic functions)들을 거의 그대로 사용할 수 있습니다.
+
 <!-- The model fitting function @code{aov(@code{formula}, -->
 <!-- data=@var{data.frame})} -->
 <!-- @findex aov -->
 <!-- operates at the simplest level in a very similar way to the function -->
 <!-- @code{lm()}, and most of the generic functions listed in the table in -->
 <!-- @ref{Generic functions for extracting model information} apply. -->
+   <p>하지만, <code>aov()</code>함수는 오차의 다중계층(multiple error strata)구조를 가정한 모형을 다룰 수 있어, 분할법 실험(split plot experiment)이나 블럭간(inter-block)정보를 사용한 균형 불완전블럭설계(balanced incomplete block design)와 같은 모형을 분석하기 위해 사용할 수 있다는 큰 장점을 가지고 있습니다. 모형식은 다음과 같이 사용할 수 있습니다.
 
 <!-- It should be noted that in addition @code{aov()} allows an analysis of -->
 <!-- models with multiple error strata such as split plot experiments, or -->
 <!-- balanced incomplete block designs with recovery of inter-block -->
 <!-- information.  The model formula -->
-   <p><code>lm()</code>이라는 함수의 사용방법과 그 작동원리가 비슷하나, 분산분석 (analysis of variance)을 수행하는 <code>aov(formula, data=</code><var>data.frame</var><code>)</code>이라는 함수가 있습니다. 
-이 함수로부터 반환되는 리스트형식의 결과는 <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a>에서 설명한 것과 같이 제네릭 함수(generic functions)들을 그대로 적용하여 추출할 수 있습니다. 
-그러나, <code>aov()</code>라는 함수에 대해서 반드시 강조해야할 장점이 있습니다. 
-그것은 split plot experiment 또는 블럭간(inter-block)의 정보를 활용해야 하는 balanced incomplete block design와 같이 에러항이 다중구조(multiple error strata)를 가지는 모델을 사용할 수 있다는 것입니다.
-
 <pre class="example">     <var>response</var> ~ <var>mean.formula</var> + Error(<var>strata.formula</var>)
 </pre>
    <p><a name="index-Error-223"></a>
@@ -6054,18 +6053,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- simply a factor, when it defines a two strata experiment, namely between -->
 <!-- and within the levels of the factor. -->
 
-   <p>위의 모델식은 <var>strata.formula</var>에 의해서 정의된 error strata 와 함께 사용되는 multi-stratum experiement를 정의합니다. 
-가장 간단한 예로, 요인의 수준간(between)와 수준내(within)분석을 하는 two strata experiment를 정의할 때 <var>strata.formula</var>는 단순히 요인을 사용하면 됩니다.
+   <p>위 식은 <var>strata.formula</var>에 정의된 대로 오차의 계층(error strata)구조를 가정한 다계층실험 (multi-stratum experiement)을 표현한 것입니다. 
+가장 간단한 경우로, 요인의 수준(levels)간(between) 차이와 수준내(within) 차이만 고려하는 2계층-실험(two strata experiment)이 있고, 이 경우  <var>strata.formula</var>는 단순히 하나의 요인이 됩니다.
 
 <!-- For example, with all determining variables factors, a model formula such -->
 <!-- as that in: -->
-   <p>예를들어, 아래와 같은 모형은 <code>v + n*p*k</code>이라는 mean model과 &ldquo;between farms&rdquo;, &ldquo;within farms&rdquo;, 그리고 &ldquo;within block&rdquo;이라는 세가지 error strata를 묘사할 때 사용됩니다.
-
+   <p>구체적인 예를 들면, 모형을 구성하는 모든 변수와 요인을 사용하여 아래와 같은 모형식(model formula)을 작성할 수 있습니다:
 <pre class="example">     &gt; fm &lt;- aov(yield ~ v + n*p*k + Error(farms/blocks), data=farm.data)
 </pre>
    <p class="noindent"><!-- would typically be used to describe an experiment with mean model -->
 <!-- @code{v + n*p*k} and three error strata, namely ``between farms'', -->
 <!-- ``within farms, between blocks'' and ``within blocks''. -->
+
+   <p>이 식은 보통 <code>v + n*p*k</code>로 표현되는 평균 모형(mean model)으로 실험을 기술할 때 사용되며, 이 경우  &ldquo;between farms&rdquo;, &ldquo;within farms&rdquo;, 그리고 &ldquo;within blocks&rdquo;라는 세 개의 오차계층(error strata)을 포함합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#ANOVA-tables">ANOVA tables</a>
@@ -6082,34 +6082,32 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Analysis-of-variance-and-model-compari
 <!-- @subsection ANOVA tables -->
 <h4 class="subsection">11.4.1 ANOVA 테이블</h4>
 
+<p>분산분석(the analysis of variance,ANOVA)(또는 분산분석표)은 사실 여러 개의 모형을 적합한 결과를 나타내고 있다는 점을 이해할 필요가 있습니다. 보통 잔차합 (sums of squares,SS)은 주어진 시퀀스의 <em>해당 위치(that place)</em>에 있는<em>해당 변수(that term)</em>를 모형에 하나씩 포함시킬때 마다 점점 감소합니다. 즉, 오직 직교실험(orthogonal experiment)의 경우에만 항을 추가해나가는 순서가 중요하지 않습니다.
+
 <!-- Note also that the analysis of variance table (or tables) are for a -->
 <!-- sequence of fitted models.  The sums of squares shown are the decrease -->
 <!-- in the residual sums of squares resulting from an inclusion of -->
 <!-- @emph{that term} in the model at @emph{that place} in the sequence. -->
 <!-- Hence only for orthogonal experiments will the order of inclusion be -->
 <!-- inconsequential. -->
+   <p>다계층실험(multistratum experiments)의 경우, 우선 종속(response)변수를 오차계층(error strata)에 시퀀스 순서대로 정사영(project)시켜 나가면서, 각 정사영마다 평균모형( mean model)을 적합하는 과정을 통해 분산분석을 수행하게 됩니다. 여기에 대한 자세한 설명은 Chambers &amp; Hastie (1992)의 책을 참고하시길 바랍니다.
+
 <!-- For multistratum experiments the procedure is first to project the -->
 <!-- response onto the error strata, again in sequence, and to fit the mean -->
 <!-- model to each projection.  For further details, see Chambers & Hastie -->
 <!-- (1992). -->
+   <p>이렇게 디폴트(default) ANOVA 테이블로 각 모형을 따로 적합한 결과들을 비교하는 것 보다는 좀 더 쉽게, 두개 이상의 모형들을 한번에 비교하고 싶다면, <code>anova()</code> 함수를 사용하면 됩니다.
+
 <!-- A more flexible alternative to the default full ANOVA table is to -->
 <!-- compare two or more models directly using the @code{anova()} function. -->
 <!-- @findex anova -->
-<p><code>aov()</code>란 함수는 적합된 일련의 모델에 대한 분산분석표 (analysis of variance table)를 제공해 줍니다. 
-일반적으로 Sum of Squares (SS)은 주어진 일련의 모델들에서 적합에 사용된 항들이 모델에 유지된다고 할때 새로운 항이 하나씩 추가될 때마다 감소됩니다.
-
-   <p>특히, orthogonal experiment의 경우에는 항을 추가하는 순서가 중요하지 않습니다. 
-Multistratum experiments 경우 역시 종속변수의 값을 오차항이 가지는 계층에 순차적으로 mean model 을 영사시켜 나감으로서 분산분석이 가능해집니다. 
-이에 대한 자세한 사항은 Chambers &amp; Hastie (1992)의 책을 참고하시길 바랍니다.
-
-   <p>이렇게 두 개이상의 모델들을 비교해야 할 경우 하나의 모델에 대한 적합결과를 완전한 분산분석표를 따로따로 비교하는 것보다는 종합적으로 한 번에 볼 수 있다면 매우 편리할 것입니다. 
-이러한 방법으로 <code>anova()</code>함수를 이용하면 적합된 모델간의 차이를 보여주는 표를 생성해줍니다. 
-이때 적합의 방법은 hierarchical sequence를 가집니다. 
-그러나 이러한 방법은 단순히 모형에 대한 이해를 구조화함으로서 적합한 모델을 손쉽게 찾기 위한 방법일뿐 다른 목적은 없습니다.
-
 <pre class="example">     &gt; anova(<var>fitted.model.1</var>, <var>fitted.model.2</var>, ...)
 </pre>
-   <!-- The display is then an ANOVA table showing the differences between the -->
+   <p><code>anova()</code> 함수를 사용하면, 입력한 순서대로 적합된 모형 간의 차이를 보여주는 테이블을 생성합니다. 
+이때, 비교하게 될 모형들은,물론 일종의 계층적 순서(hierarchical sequence)를 가져야만 합니다. 
+<code>anova()</code> 함수를 사용하는 것이 디폴트(default) 함수를 사용했을 때와 다른 정보를 더 제공하는 것은 아니지만, 좀 더 이해하기 쉽고 손쉽게 모형을 비교하기 위해 사용한다고 보시면 됩니다.
+
+<!-- The display is then an ANOVA table showing the differences between the -->
 <!-- fitted models when fitted in sequence.  The fitted models being compared -->
 <!-- would usually be an hierarchical sequence, of course.  This does not -->
 <!-- give different information to the default, but rather makes it easier to -->
@@ -6124,7 +6122,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 </div>
 
 <!-- @section Updating fitted models -->
-<h3 class="section">11.5 적합된 모델들을 업데이트하기</h3>
+<h3 class="section">11.5 적합된 모형의 업데이트</h3>
 
 <p><a name="index-Updating-fitted-models-224"></a>
 <!-- The @code{update()} function is largely a convenience function that -->
