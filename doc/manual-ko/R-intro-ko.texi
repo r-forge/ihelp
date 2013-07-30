@@ -1,6 +1,6 @@
 @c 
-@c 2013-JUL-28 (Sunday)
-@c 1. Begining ~ 6 and working on 11.1 by LIJIN
+@c 2013-JUL-29 (Monday)
+@c 1. Begining ~ 6 and 11.6까지 다 했지롱 by LIJIN
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -6191,7 +6191,7 @@ coef    family     plot         residuals
 @c @code{lm()}, and most of the generic functions listed in the table in
 @c @ref{Generic functions for extracting model information} apply.
 
-하지만, @code{aov()}함수는 오차의 다중계층(multiple error strata)구조를 가정한 모형을 다룰 수 있어, 분할법 실험(split plot experiment)이나 블럭간(inter-block)정보를 사용한 균형 불완전블럭설계(balanced incomplete block design)와 같은 모형을 분석하기 위해 사용할 수 있다는 큰 장점을 가지고 있습니다. 모형식은 다음과 같이 사용할 수 있습니다.
+하지만, @code{aov()}함수는 오차의 다중계층(multiple error strata)구조를 가정한 모형을 다룰 수 있어, 분할법 실험(split plot experiment)이나 블럭간(inter-block)정보를 사용한 균형 불완비블럭설계(balanced incomplete block design)와 같은 모형을 분석하기 위해 사용할 수 있다는 큰 장점을 가지고 있습니다. 모형식은 다음과 같이 사용할 수 있습니다.
 
 @c It should be noted that in addition @code{aov()} allows an analysis of
 @c models with multiple error strata such as split plot experiments, or
@@ -6463,7 +6463,7 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @subsection 분포족 (Families)
 @cindex Families
 
-############################
+
 @c The class of generalized linear models handled by facilities supplied in
 @c @R{} includes @emph{gaussian}, @emph{binomial}, @emph{poisson},
 @c @emph{inverse gaussian} and @emph{gamma} response distributions and also
@@ -6472,20 +6472,18 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c must be specified as a function of the mean, but in other cases this
 @c function is implied by the response distribution.
 
-@R{}은 일반선형모델에서 사용되는 종속변수 y의 분포가 @emph{가우시안(gaussian = 정규분포)}, @emph{이항 (binomial)}, @emph{포아송 (poisson)}, @emph{역가우시안 (inverse gaussian)}, 그리고 @emph{감마 (gamma)}인 경우를 모두 다룰 수 있는 기능을 제공하고 있습니다.
-또한, 종속변수의 분포를 함수식으로 정확히 쓸 수 없는 경우에 적용되는 @emph{쿼시-라이클리후드 (quasi-likelihood)} 모델 역시 지원합니다.
-일반적으로 일반선형모델을 적합하기 위해서는 @emph{variance function}을 알고 있어야 합니다. 
-쿼시-라이클리후드 모델이 아닌 경우에는 종속변수의 분포로부터 variance function를 알 수 있으나, 쿼시-라이클리후드 모델의 경우에는 variance function가 반드시 종속변수의 평균에 관한 함수로서 표현되어져야만 합니다.
+@R{}에서는 일반화 선형모형에서 종속변수의 분포가 @emph{가우시안(gaussian = 정규분포)}, @emph{이항 (binomial)}, @emph{포아송 (poisson)}, @emph{역가우시안 (inverse gaussian)}, 그리고 @emph{감마 (gamma)}인 경우를 모두 다룰 수 있으며, 또 종속변수의 분포가 분포 함수에 의해 정확히 묘사될 수 없는 경우에 사용하는 @emph{쿼시-라이클리후드 (quasi-likelihood)} 모형 역시 지원합니다.
+특히 쿼시-라이클리후드 모형의 경우,  @emph{분산함수(variance function)}를 반드시 평균(mean)의 함수식 형태로 나타낼 수 있어야 하지만, 이 외의 다른 경우에는 종속변수의 분포가  분산함수(variance function)의 형태를 내포합니다.  
 
 @c Each response distribution admits a variety of link functions to connect
 @c the mean with the linear predictor.  Those automatically available are
 @c shown in the following table:
 
-종속변수에 대한 각각의 분포들은 아래의 표에서 보이는 것과 같이 다양한 링크함수를 통하여 linear predictor와 함수적 관계를 표현하게 됩니다.
+종속변수의 각 분포들은 아래와 같이 다양한 연결함수(link functions)를 사용하여 이 분포의 평균과 linear predictor를 연결합니다. 사용가능한  분포와 연결함수는 다음과 같습니다: 
 
 @quotation
 @multitable @columnfractions 0.25 0.55
-@headitem 분포명 @tab 연결 함수들
+@headitem 분포명 @tab 연결함수(link functions)
 @item @code{binomial} @tab @code{logit}, @code{probit}, @code{log}, @code{cloglog}
 @item @code{gaussian} @tab @code{identity}, @code{log}, @code{inverse}
 @item @code{Gamma} @tab @code{identity}, @code{inverse}, @code{log}
@@ -6500,11 +6498,11 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c other pieces of information that are needed to carry out the modeling
 @c exercise is called the @emph{family} of the generalized linear model.
 
-위에서 보여지는 표의 내용과 같이 종속변수의 분포, 링크함수, 그리고 모델에 필요한 다른 정보들과 조합은 일반선형모델의 @emph{페밀리(family)}를 결정하게 됩니다. 
+종속변수의 분포와 연결함수, 그리고 모형을 실행하기 필요한 다른 모든 정보들의 조합을 일반화 선형모형에서의 @emph{분포족(family)}이라고 합니다. 
 
 @node The glm() function,  , Families, Generalized linear models
 @c @subsection The @code{glm()} function
-@subsection 함수 @code{glm()}
+@subsection @code{glm()} 함수
 @findex glm
 
 @c Since the distribution of the response depends on the stimulus variables
@@ -6515,9 +6513,9 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c The @R{} function to fit a generalized linear model is @code{glm()}
 @c which uses the form
 
-일반선형모델은 종속변수의 분포를 오로지 설명변수에 대한 선형관계로 설명하므로, 선형회귀분석에서 모델을 적합하는데 사용된 방식이 일반선형모델에서도 선형관계를 설명하는데 이용될 수 있습니다.
-그러나, 특정한 방법으로 페밀리를 지정해 주어야 합니다. 
-일반선형모델을 적합하는데 사용되는 @R{}함수는 @code{glm()}이라고 하고, 아래와 같은 사용법을 가집니다.
+일반화 선형모형에서도 종속변수의 분포가 오직 단순 선형함수의 형태로만 설명변수들과 연관되기 때문에, 선형모형 적합에 사용된 방법이 일반화 모형의 선형 부분에도 그대로 적용될 수 있습니다. 다만, 분포족(family)을 지정해야한다는 차이가 있습니다.
+ 
+일반화 선형모형을 적합하는데 사용하는 @R{} 함수는 @code{glm()}이며, 아래와 같이 사용합니다.
 
 @example
 > @var{fitted.model} <- glm(@var{formula}, family=@var{family.generator}, data=@var{data.frame})
@@ -6530,34 +6528,29 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c this may seem a little complicated at first sight, its use is quite
 @c simple.
 
+
+(@code{lm()}함수와 비교했을 때) 유일하게 하나 첨가된 기능은 @var{함수족.생성자(family.generator)}이며, 어떤 함수족을 모형에 사용할 것인지를 지정해주는 도구 같은 것입니다. 이 함수는 해당 모형과 그 추정(estimation)을 정의하고 실행하기위해 필요한 함수들과 표현식들의 리스트를 생성해 줍니다. 언뜻 매우 복잡할 것처럼 보일 수도 있지만, 사실 사용하기 매우 간단한 함수 입니다.
+
+
 @c The names of the standard, supplied family generators are given under
 @c ``Family Name'' in the table in @ref{Families}.  Where there is a choice
 @c of links, the name of the link may also be supplied with the family
 @c name, in parentheses as a parameter.  In the case of the @code{quasi}
 @c family, the variance function may also be specified in this way.
 
-함수의 이용방법은 @code{family}를 지정하는 것을 제외하고는 @code{lm()}함수의 사용과 동일합니다.
-단지 새로운 부분은 어떤 페밀리가 사용되는지 알려주는 @code{family.generator}이라는 부분인데, 이는 함수들의 목록을 생성해주고 일반선형모형을 정의하고 추정하는데 필요한 프로세스를 표현하는 함수의 이름입니다.
-매우 복잡한 것같이 생각되지만, 실제로는 매우 쉽습니다.
-
-@code{family.generator}가 가질 수 있는 이름은 @ref{Families}라는 섹션에서 페리밀에 대해 정리한 표를 살펴보시면 됩니다.
-이 표에서 페밀리명(family name) 열에 있는 이름을 사용하게 됩니다.
-또한 페밀리에서 사용이 가능한 함수들의 이름을 나열하고 있는데, 이는 @code{glm()}함수를 사용시 @code{family.generator}의 이름 바로 뒤에 괄호와 함께 사용하시면 됩니다. 
-@code{쿼시페밀리(quasi family)}의 사용경우 역시 이와 같은 방식으로 variance function가 지정될 수 있습니다.
+@code{함수족 생성자(family generator)}에 사용될 수 있는 분포들의 표준 표기명은 @ref{Families} 섹션에 있는 표에서 "함수족 이름 (Family Name)" 부분에서 찾으실 수 있습니다. 또 연결함수를 따로 선택하고 싶은 경우, 모수(paramter)를 지정할 때 처럼, 분포족(family)이름 옆 괄호(parentheses) 안에 연결함수의 이름을 입력하시면 됩니다.  또 @code{쿼시(quasi)}족의 경우, 분산함수(variance function)를 이와 비슷한 방식으로 입력할 수 있습니다. 
 
 @c Some examples make the process clear.
 
-아래의 예제는 여러분이 glm()함수를 이용하여 GLM 을 수행하는 방법을 보다 쉽게 이해할 수 있도록 도와줄 것입니다.
+아래의 예들을 살펴보시면 사용법이 좀 더 분명하게 이해될 것입니다.
 
 @c @subsubheading The @code{gaussian} family
-@subsubheading 가우시안 (@code{gaussian}) 페밀리
+@subsubheading 가우시안(@code{gaussian})족
 
 @c A call such as
 
-아래에서 보이는 것과 같이 @code{glm()} 함수를 이용하여 가우시안 (gaussian, 정규분포) 페밀리에 해당하는 문제를 해결하는 것은 @code{lm()}를 이용하여 문제를 해결하는 것과 수치적으로는 아무런 차이가 없으나 비효율적입니다.
-그 이유는 @code{family.generator}에 어떤 특정한 링크함수를 사용할 것인가를 알려주지 않았기 때문입니다. 
-만약, 가우시안 페밀리에서 비표준 (nonstandard) 링크함수를 이용하여 문제를 풀고자 할 경우, 이는 쿼시패밀리를 통하여 해결해야 합니다. 
-이 방법은 쿼시페밀리를 소개할때 설명하도록 하겠습니다.
+아래와 같이 @code{glm()} 함수를 사용하면 @code{lm()}을 사용할 때와 같은 결과를 얻긴하지만 훨씬 비효율적입니다. 
+가우시안족(gaussian family)은 연결함수의 선택이 그다지 필요하지 않기 때문에, 굳이 모수(parameter)를 지정할 필요가 없다는 점을 생각해보시기 바랍니다. 만약 가우시안족(gaussian family)에 표준이 아닌 (nonstandard) 연결함수를 사용하고 싶다면, 뒤에서 다루게 될, @code{쿼시족(quasi family)}을 사용하는 것이 보통입니다. 
 
 @example
 > fm <- glm(y ~ x1 + x2, family = gaussian, data = sales)
@@ -6578,20 +6571,18 @@ and this inverse function, $\ell()$, is called the @emph{link function}.
 @c we shall see later.
 
 @c @subsubheading The @code{binomial} family
-@subsubheading 이항 (@code{binomial})분포 페밀리
+@subsubheading 이항(@code{binomial})분포족
 
 @c Consider a small, artificial example, from Silvey (1970).
 
-Silvey (1970)에서 사용되어진 간단한 예를 보도록 하겠습니다.
+Silvey (1970)에서 사용된 간단한 예제를 살펴봅시다.
 
 @c On the Aegean island of Kalythos the male inhabitants suffer from a
 @c congenital eye disease, the effects of which become more marked with
 @c increasing age.  Samples of islander males of various ages were tested
 @c for blindness and the results recorded.  The data is shown below:
 
-Kalythos라는 에게해에 있는 한 섬에는 남성들이 선천성 안질환을 가지고 있습니다. 
-이 안질환은 주로 나이가 들어감에 따라서 진행되어집니다. 
-아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다.
+에게해의 한 섬인 Kalythos에는 남성들이 선천성 안질환을 앓고 있는데, 이 안질환은 주로 나이가 들어감에 따라 더욱 진행됩니다. 아래의 데이터는 이 섬에 거주하는 다양한 연령대의 남성들의 실명여부를 검사한 결과를 기록한 것입니다:
 
 @iftex
 @quotation
@@ -6614,28 +6605,29 @@ Kalythos라는 에게해에 있는 한 섬에는 남성들이 선천성 안질�
 @c this data, and to estimate for each model the LD50, that is the age at
 @c which the chance of blindness for a male inhabitant is 50%.
 
-우리는 이 데이터에 로지스틱(logistic)과 프로빗(probit)이라는 두가지 모델을 적합시키고 각각의 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이(LD50)를 추정하고자 합니다.
+이 데이터에 로지스틱(logistic)과 프로빗(probit) 두가지 모형을 모두 적합시키고, 각 모형으로부터 남성거주자의 실명확률이 50%가 되는 나이인 LD50를 추정하고자 합니다.
 
 @c If @math{y} is the number of blind at age @math{x} and @math{n} the
 @c number tested, both models have the form
-만약 @math{y}가 연령 @math{x}에서 테스트로부터 확인된 실명한 사람들의 수이고, @math{n}은 테스트를 받은 사람들이라면,
+만약 @math{y}가 연령 @math{x} 때의 테스트에서 확인된 실명한 사람들의 수이고, @math{n}은 테스트를 받은 사람의 수라면, 두 모형은 아래와 같이 표현됩니다.
+
 @ifnottex
 y ~ B(n, F(beta_0 + beta_1 x))
 @end ifnottex
 @tex
 $$ y \sim {\rm B}(n, F(\beta_0 + \beta_1 x)) $$
 @end tex
-이라고 할 수 있습니다.
+
 @c where for the probit case,
-프로빗의 경우에는 
+프로빗 모형의 경우, 
 @eqn{F(z) = \Phi(z), F(z) = Phi(z)}
 @c is the standard normal distribution function, and in the logit case
-이 정규분포 함수이며, 로짓의 경우에는 
+표준 정규 분포(standard normal distribution function)를, 로짓 모형의 경우, 
 @c (the default),
 @eqn{F(z) = e^z/(1+e^z),F(z) = e^z/(1+e^z)}
 입니다.
 @c In both cases the LD50 is
-두 경우 모두 LD50은 
+두 경우 모두 LD50는
 @ifnottex
 LD50 = - beta_0/beta_1
 @end ifnottex
@@ -6644,11 +6636,11 @@ $$ \hbox{LD50} = -\beta_0/\beta_1 $$
 @end tex
 @c that is, the point at which the argument of the distribution function is
 @c zero.
-이 되며, 이것은 분포함수 @code{F(z)}의 값을 @math{0}으로 만들어 주는 @code{z}에 해당하게 됩니다.
+으로 계산할 수 있으며, 이 값은 분포함수 @code{F(z)}의 값이 @math{0}일 때의 @code{z}에 해당합니다.
 
 
 @c The first step is to set the data up as a data frame
-이 문제를 접근하는 가장 첫번째 단계는 모형에서 다룰 데이터를 아래와 같이 데이터프레임의 형식을 갖도록 하는 것입니다.
+위 문제를 풀기위한 첫번째 단계로 우선 모형에서 다루게 될 데이터를 데이터 프레임의 형식으로 준비합니다.
 
 @example
 > kalythos <- data.frame(x = c(20,35,45,55,70), n = rep(50,5),
@@ -6658,30 +6650,31 @@ $$ \hbox{LD50} = -\beta_0/\beta_1 $$
 @c To fit a binomial model using @code{glm()} there are three possibilities
 @c for the response:
 
-@code{glm()}함수를 이용하여 이항모델(binomial model)을 적합하고자 한다면 아래의 세가지 경우 중 한 가지에 해당될 것입니다.
+@code{glm()} 함수를 이용하여 이항모형(binomial model)을 적합할 경우에는, 아래의 세가지 종속변수(response) 종류 중 한 가지를 선택하실 수 있습니다:
 
 @itemize @bullet
 @item
 @c If the response is a @emph{vector} it is assumed to hold @emph{binary}
 @c data, and so must be a @math{0/1} vector.
-종속변수가 @math{0}과 @math{1}만을 데이터값으로 가지는 @emph{열벡터}인 경우입니다. 
+
+종속변수가 @emph{벡터(vector)}인 경우, @emph{이진법(binary)} 데이터를 담고 있으므로, 반드시 @math{0}과 @math{1}로만 구성된 벡터여야 합니다.  
 
 @item
 @c If the response is a @emph{two-column matrix} it is assumed that the
 @c first column holds the number of successes for the trial and the second
 @c holds the number of failures.
-종속변수가 @emph{두개의 열을 가지는 행렬}인데, 첫번째 열은 모든 시행에 대한 성공회수 그리고 두번째 열은 실패회수의 정보를 가진 경우입니다.
+종속변수가 @emph{2열의 행렬}이라면, 첫번째 열은 해당 시행(trial)에 대한 성공횟수 그리고 두번째 열은 실패횟수를 저장합니다.
 
 @item
 @c If the response is a @emph{factor}, its first level is taken as failure
 @c (0) and all other levels as `success' (1).
-종속변수는 @emph{요인}일 수 있는데, 첫번째 수준이 실패를 의미하는 @math{0}의 값을 가지고, 두번째 레벨은 성공을 의미하는 @math{1}의 값을 가지는 경우입니다.
+만약 종속변수가 @emph{요인(factor)}인 경우, 첫번째 수준을 실패(@math{0})로, 그 외의 모든 다른 수준들은 성공 (@math{1})이라고 간주합니다.
 @end itemize
 
 @c Here we need the second of these conventions, so we add a matrix to our
 @c data frame:
 
-여기에서는 두번째의 경우를 다룰 것이므로, 아래와 같은 작업을 통하여 데이터프레임에 실패의 정보를 포함하고 있는 열을 추가합니다.
+이 예제에서는 이 중 두번째 방법을 사용할 것입니다, 따라서 아래와 같이 행렬 하나를 준비된 데이터 프레임 안에 추가하겠습니다.
 
 @example
 > kalythos$Ymat <- cbind(kalythos$y, kalythos$n - kalythos$y)
@@ -6689,7 +6682,7 @@ $$ \hbox{LD50} = -\beta_0/\beta_1 $$
 
 @c To fit the models we use
 
-모형을 적합하는 방법은 아래와 같습니다.
+모형의 적합은 아래와 같습니다.
 
 @example
 > fmp <- glm(Ymat ~ x, family = binomial(link=probit), data = kalythos)
@@ -6699,8 +6692,7 @@ $$ \hbox{LD50} = -\beta_0/\beta_1 $$
 @c Since the logit link is the default the parameter may be omitted on the
 @c second call.  To see the results of each fit we could use
 
-만약 아무런 링크함수를 지정하지 않는다면 @R{}은 기본적으로 @code{logit}링크함수를 이용합니다.
-적합된 모형의 결과를 보기 위해서 아래와 같이 실행합니다.
+@code{logit} 연결함수가 디폴트이므로, 두번째 식에서는 해당 모수(parameter)의 입력은 생략될 수 있습니다. 각 모형의 적합된 결과를 확인하기 위해,
 
 @example
 > summary(fmp)
@@ -6710,8 +6702,8 @@ $$ \hbox{LD50} = -\beta_0/\beta_1 $$
 @c Both models fit (all too) well.  To find the LD50 estimate we can use a
 @c simple function:
 
-두 모형 모두 적합결과가 좋습니다. 
-LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 작성합니다.
+두 모형 모두 적합결과가 아주 좋습니다. 
+LD50을 추정하기 위해, 다음과 같은 간단한 함수를 작성할 수 있습니다:
 
 @example
 > ld50 <- function(b) -b[1]/b[2]
@@ -6721,10 +6713,10 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @c The actual estimates from this data are 43.663 years and 43.601 years
 @c respectively.
 
-이 데이터로부터의 추정치는 각각 43.663 과 43.601 입니다.
+이 데이터로부터 얻어진 실제 추정치는 각각 43.663세 와 43.601세 입니다.
 
 @c @subsubheading Poisson models
-@subsubheading 포아송 (Poisson) 모델들
+@subsubheading 포아송 (Poisson) 모형
 
 @c With the Poisson family the default link is the @code{log}, and in
 @c practice the major use of this family is to fit surrogate Poisson
@@ -6733,9 +6725,7 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @c further here.  It even forms a major part of the use of non-gaussian
 @c generalized models overall.
 
-포아송 페밀리 (Poisson family)의 경우 @code{log}를 기본링크함수로 사용하며, 주로 포아송 로그선형모델 (Poisson log-linear model)을 이용하여 빈도데이터 (frequency data)를 적합하는데 사용됩니다. 
-이런 종류의 데이터는 종종 멀티노미얼 분포(multinomial distribution)을 따르는데, 이것은 매우 중요하고도 방대한 주제이므로 본 문서에서는 다루지 않을 것입니다. 
-포이송 페밀리를 이용하는 것은 가우시안페밀리에 해당하지 않는 거의 모든 경우의 일반선형모형에 해당하므로 매우 중요합니다.
+포아송족 (Poisson family)의 경우, 디폴트로 @code{log}가 연결함수로 지정되어 있으며, 보통 실무에서 포아송족(Poisson family)을 주로 사용하게 되는 경우는 빈도데이터 (frequency data)를 대체형(surrogate) (포아송) 로그선형모형(Poisson log-linear model)에 적합할 때 입니다. 로그선형모형을 대체형(surrogate)이라고 한 이유는, 빈도데이터의 경우, 실제 분포는 대체로 (포아송이 아니라) 다항분포(multinomial distribution)이기 때문입니다. 이 모형의 사용은 매우 중요하지만 너무 방대한 주제라 여기서는 다루지 않겠습니다. 사실 빈도데이터에 포아송 분포를 가정하는 모형은 비정규형(non-gaussian) 일반화 모형 전체에서 가장 대표적인 방법이라고 할 수 있겠습니다.  
 
 @c Occasionally genuinely Poisson data arises in practice and in the past
 @c it was often analyzed as gaussian data after either a log or a
@@ -6743,7 +6733,7 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @c Poisson generalized linear model may be fitted as in the following
 @c example:
 
-과거에는 실무에서 가끔 포이송데이터를 로그 혹은 스퀘어루트를 이용하여 변환된 데이터를 가우시안 분포를 따르는 데이터와 같이 분석을 수행하기도 했었지만, 현재는 아래와 같이 포이송 페밀리를 이용한 일반선형모형을 수행합니다.
+물론 때때로 데이터가 정말 포아송 분포에서 얻어지는 경우도 있겠지만, 이 경우 과거에는, (실무에서는 아직도) 데이터를 로그나 제곱근으로 변환하여 가우시안(gaussian) 데이터로 바꾼 다음 분석을 수행했습니다. 하지만 이제는 아래와 같이 포이송 일반화 선형모형을 적합하는 것이  가능합니다.
 
 @example
 > fmod <- glm(y ~ A + B + x, family = poisson(link=sqrt),
@@ -6751,7 +6741,7 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @end example
 
 @c @subsubheading Quasi-likelihood models
-@subsubheading 쿼시-라이클리후드 모델들
+@subsubheading 쿼시-라이클리후드(Quasi-likelihood) 모형 
 
 @c For all families the variance of the response will depend on the mean
 @c and will have the scale parameter as a multiplier.  The form of
@@ -6759,9 +6749,8 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @c response distribution; for example for the poisson distribution
 @c @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}.
 
-일반선형모델의 모든 페밀리들이 종속변수의 분산은 평균에 대한 함수이며, 스케일파라미터는 계수(multiplier)라는 공통점이 있습니다.
-분산과 평균과의 상관관계는 종속변수분포의 특징이기도 합니다. 
-예를 들어, 포아송 분포는 평균과 분산이 일치합니다. (즉, @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}).
+일반화 선형모형의 모든 함수족(families)에서, 종속변수의 분산은 평균에 대한 함수이며, 스케일 모수(parameter)는 계수(multiplier)입니다. 분산이 평균과 어떤 식으로 연관되는지 나타내는 식은 종속변수분포의 중요한 특성이라 볼 수 있습니다; 
+예를 들면, 포아송 분포의 경우 @eqn{\hbox{Var}[y] = \mu,Var(y) = mu}.
 
 
 @c For quasi-likelihood estimation and inference the precise response
@@ -6772,11 +6761,11 @@ LD50을 추정하기 위해서 우리는 다음과 같은 간단한 함수를 �
 @c gaussian models with non-standard link functions or variance functions,
 @c incidentally.
 
-쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정과 추론은 정확한 종속변수의 분포가 지정되지 않았으나 링크함수와 variance function이 평균과 어떤 관계를 가지고 있는지와 관련이 있습니다. 
-쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정은 가우시안 분포를 사용하는 경우와 동일한 방법을 사용하므로, 비표준링크함수 혹은 분산함수(variance funtion)를 이용하여 가우시안 모형의 적합을 가능하게 해줍니다.
+쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정(estimation)과 추론(inference)을 위해, 정확한 종속변수의 분포를 지정할 필요는 없지만, 연결함수(link function)와 평균(mean)의 함수 형태로 분산함수(variance function)는 지정되어야 합니다. 
+쿼시-라이클리후드(Quasi-likelihood)를 이용한 추정에는 가우시안 분포의 경우와 완전히 동일한 방법을 사용하므로, 표준혀이 아닌 (non-standard) 연결함수 또는 분산함수(variance funtion)를 가정하는 가우시안 모형을 적합하는 데도 사용할 수 있습니다.
 
 @c For example, consider fitting the non-linear regression
-예를들어, 아래와 같은 비선형회귀모델을 적합한다고 가정합니다.
+예를들어, 아래와 같이 비선형회귀모형을 적합할 경우
 @ifnottex
 y = theta_1 z_1 / (z_2 - theta_2) + e
 @end ifnottex
@@ -6784,7 +6773,7 @@ y = theta_1 z_1 / (z_2 - theta_2) + e
 $$ y = {\theta_1z_1 \over z_2 - \theta_2} + e $$
 @end tex
 @c which may be written alternatively as
-이 모형은 다시 아래와 같이 쓸 수 있습니다.
+이 모형은 아래와 같은 방법으로 사용할 수도 있습니다.
 @ifnottex
 y = 1 / (beta_1 x_1 + beta_2 x_2) + e
 @end ifnottex
@@ -6798,7 +6787,7 @@ x_1 = z_2/z_1, x_2 = -1/z_1, beta_1 = 1/theta_1, and beta_2 =
 theta_2/theta_1.
 @end ifnottex
 @tex
-$x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ and
+$x_1 = z_2/z_1$, $x_2=-1/z_1$, $\beta_1=1/\theta_1$ 그리고
 $\beta_2=\theta_2/\theta_1$.
 @end tex
 입니다.
@@ -6806,7 +6795,7 @@ $\beta_2=\theta_2/\theta_1$.
 @c Supposing a suitable data frame to be set up we could fit this
 @c non-linear regression as
 
-만약, 사용자가 이 모델에 대응하는 데이터 프레임을 가지고 있다면, 위에서 정의한 비선형회귀 모형은 아래와 같이 적합될 수 있습니다.
+적당한 데이터 프레임이 존재한다고 가정하면, 위의 비선형회귀모형은 다음과 같이 적합할 수도 있습니다.
 
 @example
 > nlfit <- glm(y ~ x1 + x2 - 1,
@@ -6817,11 +6806,11 @@ $\beta_2=\theta_2/\theta_1$.
 @c The reader is referred to the manual and the help document for further
 @c information, as needed.
 
-만약, 더 자세한 설명이 필요하다면 매뉴얼과 도움말을 이용하시길 바랍니다.
+더 자세한 설명이 필요하면 해당 매뉴얼과 도움말을 이용하시길 바랍니다.
 
 @node Nonlinear least squares and maximum likelihood models, Some non-standard models, Generalized linear models, Statistical models in R
 @c @section Nonlinear least squares and maximum likelihood models
-@section 비선형 최소제곱 및 최우추정 모델들
+@section 비선형 최소제곱법(Nonlinear least squares)과 최우추정(maximum likelihood)
 @cindex Nonlinear least squares
 
 @c Certain forms of nonlinear model can be fitted by Generalized Linear
@@ -6841,8 +6830,9 @@ $\beta_2=\theta_2/\theta_1$.
 @c try, and convergence may depend critically upon the quality of the
 @c starting values.
 
-특정한 형식을 가지고 있는 비선형모델은 일반선형모델의 @code{glm()}에 의하여 적합될 수 있습니다. 
-그러나, 대부분의 비선형 모델의 경우 적합이란 문제는 수치해석측면의 최적화 문제로서 접근해야만 합니다. 
+특정한 형식을 갖춘 비선형모형은 일반화 선형모형(@code{glm()})을 사용하여 적합할 수 있습니다. 
+하지만 대부분의 경우, 비선형모형은 비선형 최적화(nonlinear optimization) 방법 중 하나를 사용하여 비선형 곡선(curve)에 적합시키는 방식으로 풀어야만 합니다. 
+############
 @R{}은 이런 비선형 최적화 문제를 위해서 @code{optim()}, @code{nlm()}, @code{nlminb()}의 기능을 제공하고 있습니다. 
 특히, @code{nlminb()}는 @R{} 2.2.0 부터는  @SPLUS{}에서 사용할 수 있었던 @code{ms()}와 @code{nlminb()}과 같거나 더 많은 기능을 제공합니다.
 이러한 함수들의 기본 동작원리는 여러가지 모수의 값을 반복적으로 적용하여 적합결여지표 (the index of lack-of-fit)의 값을 최소화하는 모수의 값을 추정하는 것입니다. 
@@ -9141,25 +9131,23 @@ UNIX 또는 Windows 환경에서 명령어를 이용하여 작업을 할때, 명
 @c or, via the @code{R CMD} interface, as a wrapper to various @R{} tools
 @c (e.g., for processing files in @R{} documentation format or manipulating
 @c add-on packages) which are not intended to be called ``directly''.
-또한, @R{} 문서형식 또는 애드온(add-on)패키지들을 다루는데 필요한 다양한 @R{}도구들을 사용하도록 해주는 @code{R CMD}를 이용하여 직접적으로 호출되지 않고도 사용할 수 있습니다. 
+또한, @code{R CMD}라는 인터페이스를 통하여 다양한 @R{} 도구들 (즉, @R{}의 문서형식으로 되어 있는 파일들을 프로세싱하거나 애드온 패키지들을 조작하는데 사용하기 위한 것들)을 직접 호출하지 않고도 사용할 수 있습니다.
 
 @c At the Windows command-line, @command{Rterm.exe} is preferred to
 @c @command{R}.
-Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @command{R}을 이용하는 것보다 선호됩니다.
+Windows 커맨드 라인에서는 @command{R}보다는 @command{Rterm.exe}를 이용하는 것을 선호합니다.
 
 @c You need to ensure that either the environment variable @env{TMPDIR} is
 @c unset or it points to a valid place to create temporary files and
 @c directories.
-
-환경 변수 @env{TMPDIR}이 지정되지 않았거나, 임시 파일과 디렉토리 생성을 하는데 사용되는 공간을 올바르게 지정을 했는지에 대해서 확인을 해야합니다.
+환경 변수(environment variable) @env{TMPDIR}이 지정되지 않았거나, 임시 파일과 디렉토리 생성을 하는데 이용되는 공간을 올바르게 지정했는가에 대해서 확인하는 것이 필요합니다.
 
 @c Most options control what happens at the beginning and at the end of an
 @c @R{} session.  The startup mechanism is as follows (see also the on-line
 @c help for topic @samp{Startup} for more information, and the section below
 @c for some Windows-specific details).
-
-대부분의 옵션들은 @R{} 세션의 시작과 끝에서 무엇이 일어나는가를 제어하는데 사용됩니다. 
-이러한 스타트업 메카니즘 (startup mechanism)은 다음과 같습니다 (이에 대해서 더 많은 정보를 @samp{Startup}이라는 주제에 대한 온라인 도움말을 참고하시길 바랍니다.  또한, 일부 Windows와 관련된 내용들은 아래에 설명이 되어있습니다).
+대부분의 옵션들은 @R{} 세션의 시작과 끝에서 어떤 것들을 해야하는가를 조절하게 됩니다.
+스타트업 메카니즘 (startup mechanism)은 다음과 같습니다 (더 많은 정보를 @samp{Startup}이라는 주제와 관련한 온라인 도움말에서 찾아볼 수 있으며, 일부 Windows와 관련된 내용들은 아래의 섹션에서 찾아볼 수 있습니다).
 
 @itemize @bullet
 @item
@@ -9176,7 +9164,6 @@ Windows 상에서는 명령어 @command{Rterm.exe}를 이용하는 것이 @comma
 @c @env{R_PAPERSIZE} (the default paper size), @env{R_PRINTCMD} (the
 @c default print command) and @env{R_LIBS} (specifies the list of @R{}
 @c library trees searched for add-on packages).
-
 @option{--no-environ}이라는 옵션이 주어지지 않는다면, @R{}은 환경변수들을 설정하기 위한 작업을 진행하기 위해서 사용자와 사이트 파일들(user and site files)을 찾습니다.
 사이트 파일의 이름은 환경변수 @env{R_ENVIRON}에 의해 지정됩니다. 
 만약, 이것이 설정되어 있지 않다면, @file{@var{R_HOME}/etc/Renviron.site}이 이용됩니다 (만약 존재할 경우에 한합니다).
