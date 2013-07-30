@@ -6,6 +6,60 @@
 # txt 파일일 경우 확장자를 붙이지 않기를 권장합니다.
 # 문서의 생성날짜/변경날짜/목적을 꼭 써주세요.
 
+CRAN Repository Policy
+Version $Revision: 2856 $
+CRAN Repository Maintainers
+
+머릿말
+
+This document describes the policies in place for the R package repository hosted by the Comprehensive R 
+Archive Network. In what follows, this CRAN package repository will be referred to as “CRAN”.
+CRAN is maintained by the efforts of volunteers (the “CRAN team”) and the resources of the R Foundation 
+and the employers of those volunteers (WU Wien, TU Dortmund, U Oxford, AT&T Research). Having a package 
+distributed by CRAN is subject to a set of policies, and submitting a package (including an update) to 
+CRAN indicates agreement to these policies.
+Distributing code or documentation is subject to legal requirements, and CRAN operates in many 
+jurisdictions. One of the aims of these policies is to ensure that the distributors meet their legal 
+obligations of diligence without excessive work.
+The time of the volunteers is CRAN's most precious resource, and they reserve the right to remove or 
+modify packages on CRAN without notice or explanation (although notification will usually be given).
+
+이 문서는 Comprehensive R Archive Network에 의해 호스팅되는 R 패키지 저장소(repository)에 대한 정책을 기술하고 있습니다(이하 CRAN package repository는 "CRAN"이라 칭함). CRAN은 "CRAN team"이라고 하는 자원자들과 R Foundation의 자원 그리고 그 자원자들(WU Wien, TU Dortmund, U Oxford, AT&T Research)의 피고용자들의 노력에 의해 유지되고 있습니다. CRAN에 의해 어떤 패키지를 배포하는 것은 일단의 정책과 관련된 주제이고 CRAN에 패키지를 제출하거나 업데이트 하는 것은 이러한 정책에동의하는 것을 나타냅니다. 코드나 문서를 배포하는 것은 법적 요구의 문제이고 CRAN은 많은 법적 권한(jurisdiction)을 관리합니다. 이러한 정책의 목표는 배포자가 초과작업 없이 법적인 주의를 달성할 수 있도록 하기 위함입니다. 자원자들의 시간은 CRAN의 가장 소중한 자원이고, 패키지를 CRAN에서 공지나 설명없이 제거하거나 수정할 권리를 남겨놓고 있습니다.
+
+Source packages
+
+The ownership of copyright and intellectual property rights of all components of the package must be
+clear and unambiguous (including from the authors specification in the DESCRIPTION file). Where code 
+is copied (or derived) from the work of others (including from R itself), care must be taken that any
+ copyright/license statements are preserved and authorship is not misrepresented.
+Where copyrights are held by an entity other than the authors, the Authors@R field can be used, or a 
+Copyright field (if necessary referring to an inst/COPYRIGHTS file).
+Trademarks must be respected.
+
+* 패키지의 모든 요소에 대한 저작원과 지적재산권은 DESCRIPTION 파일 내 저자를 기술하는 것부터 포함하여 반드시 명확하고 투명해야 합니다. 다른 사람(R 자체에서부터를 포함하여)의 작업에서 복사하거나 유도된 코드가 있는 곳에는 저작권/라이센스 문구가 보호되고 원작자가 잘못표기되지 않도록 하는 세심한 주의가 반드시 필요합니다. 저작권이 저자가 아니라 다른 실체에 의해 만들어진 곳에는 (필요하다면 inst/COPYRIGHTS 파일을 참고하면서) Authors@R 필드나 Copyright 필드가 사용될 수 있습니다.
+
+The package's DESCRIPTION file must show both the name and email address of a single designated maintainer (not a mailing list). That contact address must be kept up to date, and be usable for information mailed by the CRAN team without any form of filtering, confirmation ...
+The maintainer warrants that (s)he is acting on behalf of all credited authors and has their agreement to use their material in the way it is included in the package (or if this is not possible, warrants that it is used in accordance with the license granted by the original author).
+Additional DESCRIPTION fields could be used for providing email addresses for contacting the package authors/developers (e.g., ‘Contact’), or a URL for submitting bug reports (e.g., ‘BugReports’).
+
+* 패키지의 DESCRIPTION 파일은 하나의 등록된 유지보수자의 메일링 리스트가 아닌 이름과 이메일 주소 모두를 반드시 보여주어야 합니다. 이 연락처는 반드시 최신 상태로 유지되어야 하며 어떤 필터링이나 확인 등의 형태 없이 CRAN 팀에 의해 받은 정보를 사용할 수 있어야 합니다. 
+유지보수자는 모든 모든 공인된 저자들을 대행하는 것이며 그들의 자료들(material)이 패키지 내에 포함되는 방식으로 사용되기 위한 그들의 동의를 가지는 것을 보장합니다. 또는 이러한 방법이 가능하지 않다면, 원저자에 의해 승인된 라이센스와 일치되게 사용된다는 것을 보장합니다.
+
+Source packages may not contain any form of binary executable code.
+Source packages under an Open Source license must provide source or something which can easily be converted back to source (e.g., .rda files) for all components of the package (including for example PDF documentation and configure files produced by autoconf).
+Such packages are not permitted to require (e.g., by specifying in ‘Depends’, ‘Imports’ or ‘LinkingTo’ fields) directly or indirectly a package or external software which restricts users or usage.
+
+소스 패키지는 어떤 형대의 바이너리 실행 코드를 포함하지 않고 있을 수도 있습니다.
+오픈소스라이센스 하의 소스 패키지는 반드시 (예를 들어 PDF 문서와 autoconf에 의해 생성된 configure 파일을 포함한) 패키지의 모든 요소들에  대하여 소스 또는 쉽게 소스로 변환될 수 있는 어떤 것을 제공해야 합니다(에를 들어, .rda 파일).  
+그러한 패키지는 (에를 들어, 'Depends', 'Imports', 또는 'LinkingTo' 필드 등에서 특정하는 것으로써) 직간접적으로 어떤 패키지나 사용자와 사용에 있어 제한을 두는 외부 프로그램을 요구하는 것이 허용되지 않습니다.
+
+The package's license must give the right for CRAN to distribute the package in perpetuity. Any change to a package's license must be highlighted when an update is submitted (for there have been instances of an undocumented license change removing even the right of CRAN to distribute the package).
+
+패키지의 라이센스는 반드시 CRAN이 영구적으로 그 패키지를 배포할 수 있도록 권리를 부여해야 합니다. 어떤 업데이트가 이루어졌을 때 패키지 라이센스의 변화가 반드시 강조되어야 합니다(왜냐하면 언급되지 않은 라이센스의 변화가 CRAN이 그 패키지를 배포할 권리를 가졌다 하더라도 삭제된 경우가 있었기 때문입니다).
+
+Package authors should make all reasonable efforts to provide cross-platform portable code. Packages will not normally be accepted that do not run on at least two of the major R platforms. Cases for Windows-only packages will be considered, but CRAN may not be the most appropriate place to host them.
+
+패키지 저자들은 모든 플랫폼에서 사용가능한 코드를 제공하기 위해 합리적 노력을 기울여야 합니다. 패키지는 최소한 두 개의 주요한 R 플랫폼에서 운용되지 않으면 일반적으로 받아들여지지 않습니다. 윈도우에서만 작동되는 패키지의 경우를 고려할 수 있으나 CRAN은 그들을 호스트하기 위한 최적의 장소가 아닐 것입니다
 
 Packages will not normally be removed from CRAN: however, they may be archived, including at the maintainer's request.
 Packages for which R CMD check gives an ¡®ERROR¡¯ when a new R x.y.0 version is released will be archived (or in exceptional circumstances updated by the CRAN team) unless the maintainer has set a firm deadline for an upcoming update (and keeps to it).
@@ -35,14 +89,17 @@ If running a package uses multiple threads/cores it must never use more than two
 
 CRAN 체크 농장(farm ?)은 매우 제한된 자원이며 수천가지의 패키지가 있기 때문에 패키지 검토는 가능한한 CPU 시간을 거의 소비하지 않도록 되어야 합니다. 긴 시간을 요구하는 테스트와 비네트(vignette) 코드는 체크하는데 옵션으로 만들어 질 수 있으나 패키지의 모든 성능을 실행하도록 남겨진 그 검토를 보장해야 합니다.
 
-
 Examples should run for no more than a few seconds each: they are intended to exemplify to the would-be user how to use the functions in the package.
+
+사례는 각각이 몇 초 이내에 실행이 되어야 합니다. 그것들은 잠재적 사용자에게 패키지 내의 함수를 어떻게 사용하는지에 대한 사례를 보여주기 위한 것이기 때문입니다.
 
 The code and examples provided in a package should never do anything which might be regarded as malicious or anti-social. The following are illustrative examples from past experience.
 Compiled code should never terminate the R process within which it is running. Thus C/C++ calls to assert/abort/exit, Fortran calls to STOP and so on must be avoided. Nor may R code call q().
 A package must not tamper with the code already loaded into R: any attempt to change code in the standard and recommended packages which ship with R is prohibited. Altering the namespace of another package should only be done with the agreement of the maintainer of that package.
 Packages should not write in the users' home filespace, nor anywhere else on the file system apart from the R session's temporary directory (or during installation in the location pointed to by TMPDIR: and such usage should be cleaned up). Installing into the system's R installation (e.g., scripts to its bin directory) is not allowed.
 Limited exceptions may be allowed in interactive sessions if the package obtains confirmation from the user.
+
+
 
 Packages should not modify the global environment (user's workspace).
 Packages should not start external software (such as PDF viewers or browsers) during examples or tests unless that specific instance of the software is explicitly closed afterwards.
