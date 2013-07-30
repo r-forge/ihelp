@@ -219,9 +219,9 @@ p {
 </li></ul>
 <li><a href="#Some-non_002dstandard-models">11.8 비표준모형(non-standard models)의 예들</a>
 </li></ul>
-<li><a name="toc_Graphics" href="#Graphics">12 그래픽 프로시져</a>
+<li><a name="toc_Graphics" href="#Graphics">12 그래픽 프로시져(Graphical procedures)</a>
 <ul>
-<li><a href="#High_002dlevel-plotting-commands">12.1 하이레벨 플랏팅 명령어들</a>
+<li><a href="#High_002dlevel-plotting-commands">12.1 하이-레벨 플롯팅 명령어 (High-level plotting commands)</a>
 <ul>
 <li><a href="#The-plot_0028_0029-function">12.1.1 <code>plot()</code> 함수</a>
 <li><a href="#Displaying-multivariate-data">12.1.2 다변량 데이터의 시각화</a>
@@ -5670,13 +5670,13 @@ x의 이차항이라는 것은 x^2를 의미하는 것으로,
 <a rel="footnote" href="#fn-24" name="fnd-24"><sup>24</sup></a>
 
      <br><dt><code>y ~ A*B</code><dt><code>y ~ A + B + A:B</code><dt><code>y ~ B %in% A</code><dt><code>y ~ A/B</code><dd>
-위 식은 모두 y를 두 개의 요인 A와 B로 설명하는 이원배치(Two factor) 비가산(non-additive) 모형을 표현하고 있습니다. 처음 두 식은 모두 (상호작용(interaction)항을 포함하는) 이원배치 혼합모형(crossed classification)을 나타내며, 다음의 두 식은 모두 중첩모형 (nested classification)을 나타냅니다. 하지만, 현대 대수학(abstract algebra)식으로  말하면, 네 가지 모형은 모두 같은 모형 서브스페이스(subspace)를 표현합니다. 
+위 식은 모두 y를 두 개의 요인 A와 B로 설명하는 이원배치(Two factor) 비가산(non-additive) 모형을 표현하고 있습니다. 처음 두 식은 모두 (교호작용(interaction)항을 포함하는) 이원배치 혼합모형(crossed classification)을 나타내며, 다음의 두 식은 모두 중첩모형 (nested classification)을 나타냅니다. 하지만, 현대 대수학(abstract algebra)식으로  말하면, 네 가지 모형은 모두 같은 모형 서브스페이스(subspace)를 표현합니다. 
 <!-- Two factor non-additive model of @math{y} on @math{A} and @math{B}.  The -->
 <!-- first two specify the same crossed classification and the second two -->
 <!-- specify the same nested classification.  In abstract terms all four -->
 <!-- specify the same model subspace. -->
 
-     <br><dt><code>y ~ (A + B + C)^2</code><dt><code>y ~ A*B*C - A:B:C</code><dd>위의 식은 모두 삼원배치(three factor) 실험을 표현하고 있지만,주효과(main effect/일차원 효과)와 두개 요인간의 상호작용(interaction)들만 포함하는 모형입니다. 두 식은 모두 같은 모형을 표현합니다.
+     <br><dt><code>y ~ (A + B + C)^2</code><dt><code>y ~ A*B*C - A:B:C</code><dd>위의 식은 모두 삼원배치(three factor) 실험을 표현하고 있지만,주효과(main effect/일차원 효과)와 두개 요인간의 교호작용(interaction)들만 포함하는 모형입니다. 두 식은 모두 같은 모형을 표현합니다.
 
      <!-- Three factor experiment but with a model containing main effects and two -->
      <!-- factor interactions only.  Both formulae specify the same model. -->
@@ -5774,7 +5774,7 @@ factor C.
 
      <br><dt><var>M</var><code>^</code><var>n</var><dd><!-- All terms in @var{M} together with ``interactions'' up to order @var{n} -->
 
-     <p><var>n</var>차항까지의 <var>M</var>에 포함된 모든 항들과 이들간의 모든 상호작용(&ldquo;interactions&rdquo;)을 의미합니다.
+     <p><var>n</var>차항까지의 <var>M</var>에 포함된 모든 항들과 이들간의 모든 교호작용(&ldquo;interactions&rdquo;)을 의미합니다.
 
      <br><dt><code>I(</code><var>M</var><code>)</code><dd><!-- Insulate @var{M}.  Inside @var{M} all operators have their normal -->
 <!-- arithmetic meaning, and that term appears in the model matrix. -->
@@ -5879,7 +5879,7 @@ S의 경우는 <code>Helmert</code>라는 방식을 이용합니다.
 <!-- with an interaction but not the corresponding main effects will in -->
 <!-- general lead to surprising results, and is for experts only. -->
    <p>우리는 어떤 식으로 교차항(interaction terms)을 모형에 포함할지에 대해서도 아직 다루지 않았습니다. 
-교차항은 상호작용을 구성하는 변수들의 해당 열을 서로 곱(product)하여 생성합니다.
+교차항은 교호작용을 구성하는 변수들의 해당 열을 서로 곱(product)하여 생성합니다.
 
    <p>교차항을 다루기 위한 세부사항들은 너무 복잡하기 때문에, 여기서 다루지는 않겠습니다. 
 하지만, R에서 모형을 사용하는 방법은 보통의 통계 전문가라면 예측할만한 방식을 크게 벗어나지 않습니다. 하지만 몇몇 예외가 있을 수 있는데, 교호작용(interaction)은 포함하지만 이에 대응하는 주효과(main effects)는 포함하지 않는 모형을 사용하는 것이 하나의 예가 될 수 있을 것입니다. 이 경우 일반적으로 기대하는 것과는 많이 다른 결과가 얻어질 수 있는데, 이는 아마도 이 분야 전문가들이나 관심을 가질만한 주제일 것 입니다.
@@ -6750,7 +6750,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- non-linear regressions in which some of the coefficients correspond to -->
 <!-- random effects.  These functions make heavy use of formulae to specify -->
 <!-- the models. -->
-<strong>혼합모형 (Mixed models)</strong>이란 선형 및 비선형 회귀모형의 일부 회귀계수가 랜덤효과(random effect)인 모형을 의미하는 것으로, 이러한 혼합모형을 적합하기 위해서 <a href="http://CRAN.R-project.org/package=nlme"><strong>nlme</strong></a> 패키지에서 제공하는 <code>lme()</code>와 <code>nlme()</code>를 사용할 수 있습니다.
+<strong>혼합모형 (Mixed models)</strong>이란 선형 및 비선형 회귀모형의 회귀계수 중 일부가 랜덤효과(random effect)인 모형을 의미하는 것으로, 이러한 혼합모형에 적합하기 위해서는 권장 패키지인 <a href="http://CRAN.R-project.org/package=nlme"><strong>nlme</strong></a>에서 제공하는 <code>lme()</code>와 <code>nlme()</code>를 사용할 수 있으며, 이런 함수들의 등장으로 혼합모형이  좀 더 많이 사용될 수 있게 되었습니다.
 
      <li><a name="index-Local-approximating-regressions-235"></a><!-- @strong{Local approximating regressions.}  The @code{loess()} -->
 <a name="index-loess-236"></a><!-- function fits a nonparametric regression by using a locally weighted -->
@@ -6763,40 +6763,49 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
      <p><a name="index-loess-237"></a>
 <strong>로컬 근사 회귀(Local approximating regressions)</strong>
 
-     <p><code>loess()</code> 함수는 로컬 가중치를 사용한 회귀 모형(locally weighted regression)을 사용하는 일종의 비모수회귀(nonparametric regression) 적합에 해당합니다. 
-이러한 회귀분석은 패턴이 지저분한(messy) 데이터의 추세를 찾아내거나, 데이터 크기 줄이기(data reduction)를 위해 사용할 수도 있습니다. 
-<code>loess()</code> 함수는 projection pursuit regression을 위한 함수 <code>ppr()</code>과 함께 표준패키지인 <strong>stats</strong>에 포함되어 있습니다. 
-########
-<li><a name="index-Robust-regression-238"></a><!-- @strong{Robust regression.} There are several functions available for -->
+     <p><code>loess()</code> 함수는 로컬 가중치를 가정한 회귀(locally weighted regression)를 사용한 일종의 비모수회귀(nonparametric regression)모형을 적합합니다. 
+이러한 회귀모형은 패턴이 깔끔하지 않은(messy) 데이터에서 추세를 찾아내거나, 데이터 크기 줄이기(data reduction)에 사용할 수도 있습니다. 
+<code>loess()</code> 함수는 projection pursuit regression을 위한 함수인 <code>ppr()</code>과 함께 표준패키지인 <strong>stats</strong>에서 제공됩니다.
+
+     <li><a name="index-Robust-regression-238"></a><!-- @strong{Robust regression.} There are several functions available for -->
 <!-- fitting regression models in a way resistant to the influence of extreme -->
 <!-- outliers in the data.  Function @code{lqs} -->
-<a name="index-lqs-239"></a><!-- in the recommended package @CRANpkg{MASS} provides state-of-art algorithms -->
+<!-- findex lqs -->
+<!-- in the recommended package @CRANpkg{MASS} provides state-of-art algorithms -->
 <!-- for highly-resistant fits.  Less resistant but statistically more -->
 <!-- efficient methods are available in packages, for example function -->
-<!-- @code{rlm} -->
-<a name="index-rlm-240"></a><!-- in package @CRANpkg{MASS}. -->
 
-     <p><strong>로버스트 회귀(Robust regression)</strong>
-데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 안정적인 회귀모형을 적합한 것이데, 이를 수행하기 위해 몇가지 함수를 제공하고 있습니다. 
-현재로서는 추천패키지 <strong>MASS</strong>에 포함되어 있는 <code>lqs</code>라는 함수가 다른 함수들에 비하여 이상치들의 영향을 상대적으로 적게 받는 다소 안정적으로 모델을 적합해주는 것으로 알려져 있습니다. 
-또한 이 <strong>MASS</strong>에는 이상치에 대한 모형적합의 안정성이 <code>lqs</code>보다 다소 불안정하나, 통계적으로 좀 더 효율적인 결과를 제공하는 <code>rlm</code>이라는 함수도 있습니다.
+     <p><a name="index-rlm-239"></a><!-- in package @CRANpkg{MASS}. -->
+
+     <p><strong>로버스트 회귀(Robust regression)</strong>는 데이터에 포함된 이상치(extreme outliers)들의 영향력을 줄여 회귀모형을 적합하는 방법들 중 하나 입니다. 권장패키지인 <strong>MASS</strong>에 포함되어 있는 <code>lqs</code>
+ findex lqs
+함수의 경우, 상당히 안정적인 적합치(fits)를 얻을 수 있는 최신의(state-of-art) 알고리즘들을 사용합니다. 
+또 이상치의 영향력에 대해서는 다소 덜 안정적이라도, 통계적으로 좀 더 효율적인 방법들이 여러 패키지에서 제공되는데, <strong>MASS</strong> 패키지의 <code>rlm</code>
+<a name="index-lm-240"></a>와 같은 함수가 그 중 하나의 예입니다.
 
      <li><a name="index-Additive-models-241"></a><!-- @strong{Additive models.} This technique aims to construct a regression -->
 <!-- function from smooth additive functions of the determining variables, -->
 <!-- usually one for each determining variable.  Functions @code{avas} and -->
 <!-- @code{ace} -->
-<a name="index-avas-242"></a><a name="index-ace-243"></a><!-- in package @CRANpkg{acepack} and functions @code{bruto} and @code{mars} -->
-<a name="index-bruto-244"></a><a name="index-mars-245"></a><!-- in package @CRANpkg{mda} provide some examples of these techniques in -->
-<!-- user-contributed packages to @R{}.  An extension is @strong{Generalized -->
+<!-- findex avas -->
+<!-- findex ace -->
+<!-- in package @CRANpkg{acepack} and functions @code{bruto} and @code{mars} -->
+<!-- findex bruto -->
+<!-- findex mars -->
+<!-- in package @CRANpkg{mda} provide some examples of these techniques in -->
+<!-- user-contributed packages to @R{}. An extension is @strong{Generalized -->
 <!-- Additive Models}, implemented in user-contributed packages @CRANpkg{gam} and -->
 <!-- @CRANpkg{mgcv}. -->
 
-     <p><strong>Additive models</strong>는 aims to construct a regression function from smooth additive functions of the determining variables, usually one for each determining variable. 
-사용자개발패키지인 <a href="http://CRAN.R-project.org/package=acepack"><strong>acepack</strong></a>내의 <code>avas</code>와 <code>ace</code>, 그리고 <a href="http://CRAN.R-project.org/package=mda"><strong>mda</strong></a> 패키지내의 <code>bruto</code>와 <code>mars</code> 함수들로부터 이 회귀모형에 대한 예제를 찾아 볼 수 있습니다. 
-<strong>Generalized Additive Models</strong>에 대해서 보다 더 일반적인 사용자개발패키지는 <a href="http://CRAN.R-project.org/package=gam"><strong>gam</strong></a>과 <a href="http://CRAN.R-project.org/package=mgcv"><strong>mgcv</strong></a>이 있습니다.
+     <p><strong>가법 모형(Additive models)</strong>은 설명변수(determining variable)들에 대한 스무드한 가법(즉, 교호작용을 포함하지 않는) 함수(smooth additive functions)를 사용하여 회귀모형식을 세우는 것으로, 보통 하나의 설명변수에 대해 하나의 함수를 사용합니다. 
+<a href="http://CRAN.R-project.org/package=acepack"><strong>acepack</strong></a>에서 제공하는 <code>avas</code> 함수
+<a name="index-avas-242"></a>와 <code>ace</code> 함수
+<a name="index-ace-243"></a>그리고 <a href="http://CRAN.R-project.org/package=mda"><strong>mda</strong></a> 패키지에서 온 <code>bruto</code>와
+<a name="index-bruto-244"></a><code>mars</code>
+<a name="index-mars-245"></a>함수 등은 R에서 사용자-기여 패키지(user-contributed packages)를 통해 이 모형을 적합할 수 있다는 것을 보여주는 몇 가지 예 입니다 .
 
-     <!-- function from smooth additive functions of the determining variables, -->
-     <!-- usually one for each determining variable. -->
+     <p>이 모형을 조금 더 확장한 것으로 <strong>일반화 가법 모형 (Generalized Additive Models)</strong>이 있으며, 마찬가지로 사용자-기여 패키지인 <a href="http://CRAN.R-project.org/package=gam"><strong>gam</strong></a>과 <a href="http://CRAN.R-project.org/package=mgcv"><strong>mgcv</strong></a>를 통해 구현가능합니다.
+
      <li><a name="index-Tree_002dbased-models-246"></a><!-- @strong{Tree-based models.} Rather than seek an explicit global linear -->
 <!-- model for prediction or interpretation, tree-based models seek to -->
 <!-- bifurcate the data, recursively, at critical points of the determining -->
@@ -6805,23 +6814,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Statistical-models-in-R">Statistical m
 <!-- between.  The results often lead to insights that other data analysis -->
 <!-- methods tend not to yield. -->
 
+     <p><strong>트리 기반 모형 (Tree-based models)</strong>은 (모형을 통한) 예측이나 (모형에 대한) 해석을 위해 하나의 글로벌 선형 모형을 찾는다기 보다는, 데이터를 분할(partition) 합니다. 즉, 설명변수의 임계점 (critical points)에서 데이터를 두 그룹으로 나누는 과정을 반복해서, 궁극적으로는 데이터를 그룹 내(within)에서는 가능한 동질하고(homogeneous), 그룹 간(between)은 가능한 이질적인(heterogeneous) 그룹들로 나누게 됩니다. 
+그런데, 이러한 데이터 분할의 결과로 종종 다른 데이터 분석법으로부터는 찾을 수 없었던 것들을 발견하게 되기도 합니다.
+
      <!-- Models are again specified in the ordinary linear model form.  The model -->
      <!-- fitting function is @code{tree()}, -->
-     <p><a name="index-tree-247"></a><!-- but many other generic functions such as @code{plot()} and @code{text()} -->
-<!-- are well adapted to displaying the results of a tree-based model fit in -->
-<!-- a graphical way. -->
-
+     <!-- but many other generic functions such as @code{plot()} and @code{text()} -->
+     <!-- are well adapted to displaying the results of a tree-based model fit in -->
+     <!-- a graphical way. -->
      <!-- Tree models are available in @R{} @emph{via} the user-contributed -->
      <!-- packages @CRANpkg{rpart} and @CRANpkg{tree}. -->
-     <p><strong>Tree-based models</strong>은 데이터 파티션에 주 목적이 있습니다. 
-이는 일반적인 선형모델방법이 전체적인 데이터의 특징을 설명하고 예측할 수 있는 선형모델을 찾는것과는 다릅니다. 
-데이터파티셔닝의 기본원리는 주어진 데이터를 여러개의 동질적인 그룹들로 나누어 주되, 각 그룹간의 이질성은 최대화 시켜주는 방법을 말합니다. 
-이것은 그룹간의 차이를 가장 잘 구분할 수 있는 모형을 찾아 그 모형대로 데이터를 반복적으로 이분화함으로 이루어집니다. 
-그런데, 이러한 데이터 파티셔닝은 종종 다른 데이터 분석법으로부터는 찾을 수 없었던 데이터가 가지고 있는 특징을 발견해 내기도 합니다. 
-이러한 <strong>Tree-based models</strong>에 의한 데이터 파티셔닝은 <code>tree()</code>라는 함수를 통하여 이루어집니다. 
-또한 이 분석법에 의한 결과는 효율적인 시각화를 위하여 <code>plot()</code>와 <code>text()</code>와 같은 제네릭함수와도 잘 호환되도록 설계되었습니다.
+     <p>이 모형 역시 보통의 선형모형(ordinary linear model)의 형태로 표현할 수 있습니다. 모형을 적합을 위해 사용할 수 있는 함수로
+<code>tree()</code>
+<a name="index-tree-247"></a>가 있습니다. 또 결과물을 효과적인 시각화를 위해 <code>plot()</code>와 <code>text()</code>와 같은 일반함수(generic function)와 연동시켜 사용하는 것도 가능합니다.
 
-     <p>이러한 트리모델(tree models)는 <a href="http://CRAN.R-project.org/package=rpart"><strong>rpart</strong></a>과 <a href="http://CRAN.R-project.org/package=tree"><strong>tree</strong></a>과 같은 사용자기여패키지(user contributed package)를 통해 이용가능합니다. 
+     <p>R에서는  사용자-기여 패키지(user contributed package)인 <a href="http://CRAN.R-project.org/package=rpart"><strong>rpart</strong></a>과 <a href="http://CRAN.R-project.org/package=tree"><strong>tree</strong></a> 등을 사용해서 이러한 트리 모형을 사용하는 것이 가능합니다. 
 </ul>
 
 <div class="node">
@@ -6834,14 +6841,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Graphical procedures -->
-<h2 class="chapter">12 그래픽 프로시져</h2>
+<h2 class="chapter">12 그래픽 프로시져(Graphical procedures)</h2>
 
 <!-- Graphical facilities are an important and extremely versatile component -->
 <!-- of the @R{} environment.  It is possible to use the facilities to -->
 <!-- display a wide variety of statistical graphs and also to build entirely -->
 <!-- new types of graph. -->
-<p>R(개발)환경의 중요하고도 매우 다양한 역할을 수행하는 요소는 바로 그래픽 기능입니다. 
-이를 통해 다양한 종류의 통계 그래프를 보여줄 수 있으며, 완전히 새로운 종류의 그래프를 만들어 낼 수도 있습니다.
+<p>R 환경(environment)에서 가장 중요고도 유용하게 활용되는 부분이 바로 그래픽 기능일 것입니다. 
+R의 그래픽 기능을 사용해서, 다양한 통계 관련 그래프들을 생성할 수 있으며, 또 완전히 새로운 종류의 그래프를 만들어 내는 것도 가능합니다.
 
 <!-- The graphics facilities can be used in both interactive and batch modes, but in -->
 <!-- most cases, interactive use is more productive.  Interactive use is also -->
@@ -6850,46 +6857,49 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- interactive graphics.  Although this is done automatically, it is useful -->
 <!-- to know that the command used is @code{X11()} under UNIX, -->
 <!-- @code{windows()} under Windows and @code{quartz()} under Mac OS X. -->
-   <p>그래픽 기능들은 대화식(interactive)처리방식과 배치(batch)처리방식이 있습니다. 
-대부분의 경우에는 대화식 처리방식을 이용하는 것이 더욱 효과적이며 사용하기 쉽습니다. 
-그 이유는 R이 시작할때 대화식 그래픽처리를 위한 특수한 <em>graphics window</em>(그래픽 윈도우)를 열어주는 <em>device driver</em>(장치드라이버)를 자동으로 초기화 시켜주기 때문입니다. 
-물론 그래픽 장치드라이버가 자동 초기화되기는 하지만, 이러한 기능을 수행하는 명령어를 알아두면 더욱 편리한 사용을 할 수 있습니다. 
-UNIX에서는 <code>X11()</code>, 윈도우즈에서는 <code>windows()</code>, 그리고 Mac OS X에서는 <code>quartz()</code>입니다.
+   <p>그래픽 기능들은 대화형(interactive)이나 일괄식(batch)으로 사용하는 것 모두 가능하지만,
+대부분의 경우에는 대화형으로 작업하는 것이 좀 더 쉽고 효과적입니다. 
+대화형 사용이 좀 더 쉬운 이유는, R이 시작될 때 대화형 그래픽을 출력하는 특별한 <em>그래픽 윈도우(graphics window)</em>를 여는 <em>device driver</em>(장치 드라이버)가 자동으로 초기화되기 때문입니다. 
+물론 이러한 과정은 자동적으로 실행되지만, UNIX에서는 <code>X11()</code>, 윈도우즈에서는 <code>windows()</code>, 그리고 Mac OS X에서는 <code>quartz()</code> 함수를 사용해서 그래픽 장치(graphic device)를 시작할 수 있다는 것을 알아두시면 유용할 것 입니다.
 
 <!-- Once the device driver is running, @R{} plotting commands can be used to -->
 <!-- produce a variety of graphical displays and to create entirely new kinds -->
 <!-- of display. -->
-   <p>장치드라이버가 실행이 되면, R 플랏팅 명령어들은 다양한 종류의 그래픽처리 및 새로운 종류의 그래프를 생성하기 위해서 사용될 수 있습니다.
+   <p>일단 장치 드라이버가 실행되면, R의 플롯팅(plotting) 명령어들은 다양한 종류의 그래픽 처리 및 새로운 종류의 그래픽 생성을 위해 사용할 수 있습니다.
 
 <!-- Plotting commands are divided into three basic groups: -->
-   <p>플랏팅 명령어들은 다음과 같이 크게 세 영역으로 나뉘어 집니다:
+   <p>플롯팅 명령어들은 다음과 같이 크게 세 그룹으로 나눌 수 있습니다:
 
      <ul>
 <li><!-- @strong{High-level} plotting functions create a new plot on the graphics -->
 <!-- device, possibly with axes, labels, titles and so on. -->
-<strong>High-level</strong>(하이레벨) 플랏팅 함수들은 그래픽 장치에 축, 라벨, 제목등과 함께 새로운 플랏을 생성합니다. 
+
+     <p><strong>하이-레벨 (High-level)</strong> 플롯팅 함수들은 그래픽 디바이스 상에 축(axes), 레이블(labels), 제목(titles) 등으로 여러 요소로 구성된 새로운 플롯을 그려줍니다. 
 <li><!-- @strong{Low-level} plotting functions add more information to an -->
 <!-- existing plot, such as extra points, lines and labels. -->
-<strong>Low-level</strong>(로우레벨) 플랏팅 함수들은 이미 존재하는 플랏에 점, 선, 라벨들을 추가하여 좀 더 많은 정보들을 표현할 수 있도록 합니다. 
-<li><!-- @strong{Interactive} graphics functions allow you interactively add -->
+
+     <p>반면, <strong>로우-레벨 (Low-level)</strong> 플롯팅 함수들은 이미 존재하는 플롯에 점, 선, 레이블들을 추가하여 좀 더 많은 정보들을 표현할 수 있도록 하는데  사용 됩니다. 
+<li>
+<!-- @strong{Interactive} graphics functions allow you interactively add -->
 <!-- information to, or extract information from, an existing plot, using a -->
 <!-- pointing device such as a mouse. -->
-<strong>Interactive</strong>(대화형) 그래픽 함수들은 마우스와 같은 포인팅 장치(pointing device)를 이용하여 이미 생성된 플랏에 정보를 추가하거나 또는 추출해 냅니다. 
-</ul>
+
+     <p><strong>대화형 (Interactive)</strong> 그래픽 함수들은 마우스와 같은 포인팅 장치(pointing device)를 이용하여 이미 생성된 플롯에 정보를 추가하거나 또는 지우는 작업을 지원합니다.
+
+   </ul>
 
 <!-- In addition, @R{} maintains a list of @emph{graphical parameters} which -->
 <!-- can be manipulated to customize your plots. -->
-   <p>또한, R은 사용자가 원하는대로 플랏을 수정 및 변경할 수 있도록 <em>graphical parameters</em>(그래픽 파라미터)들의 목록을 제공해주고 있습니다.
+   <p>또한, R은 사용자가 원하는대로 플롯을 수정 및 변경하는 데 사용할 수 있도록 여러 종류의 <em>그래픽 파라미터 (graphical parameters)</em>들을 제공합니다.
 
 <!-- This manual only describes what are known as `base' graphics.  A -->
 <!-- separate graphics sub-system in package @pkg{grid} coexists with base - -->
 <!-- it is more powerful but harder to use.  There is a recommended package -->
 <!-- @CRANpkg{lattice} which builds on @pkg{grid} and provides ways to produce -->
 <!-- multi-panel plots akin to those in the @emph{Trellis} system in @Sl{}. -->
-   <p>이 안내서에서는 `base' 그래픽이라고 알려진 것들에 대해서만 다룹니다. 
-base 그래픽와는 별개로 <strong>grid</strong> 패키지 내에 있는 별도의 그래픽 서브-시스템이 존재합니다. 
-이 시스템은 좀 더 강력한 그래픽 기능들을 제공하지만, 사용에 다소 어려움이 있습니다. 
-또한, <strong>grid</strong>를 기반으로 하는 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a>라는 추천패키지도 있는데, 이는 S에서 <em>Trellis</em>(트렐리스)라는 시스템이 제공하는 다중패널 플랏과 같은 고급 그래픽처리가 가능한 함수들을 포함하고 있습니다.
+   <p>이 매뉴얼에서는 일단 `기본(base)' 그래픽이라고 알려진 것들에 대해서만 다루겠습니다. 
+이러한 기본 그래픽과는 별도로 <strong>grid</strong> 패키지를 통해 사용할 수 있는 별도의 그래픽 서브-시스템이 존재하는데, 좀 더 강력한 그래픽 기능들을 제공하지만, 사용하기가 쉽지는 않습니다. 
+또, <strong>grid</strong>를 기반해서 제작된 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a>라는 권장패키지도 있는데, 이는 S에서 <em>Trellis</em>(트렐리스)라는 시스템이 제공하는 다중패널 플롯(multi-panel plots)과 거의 비슷한 기능들을 사용할 수 있도록 지원합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#High_002dlevel-plotting-commands">High-level plotting commands</a>
@@ -6912,14 +6922,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 </div>
 
 <!-- @section High-level plotting commands -->
-<h3 class="section">12.1 하이레벨 플랏팅 명령어들</h3>
+<h3 class="section">12.1 하이-레벨 플롯팅 명령어 (High-level plotting commands)</h3>
 
 <!-- High-level plotting functions are designed to generate a complete plot -->
 <!-- of the data passed as arguments to the function.  Where appropriate, -->
 <!-- axes, labels and titles are automatically generated (unless you request -->
 <!-- otherwise.) High-level plotting commands always start a new plot, -->
 <!-- erasing the current plot if necessary. -->
-<p>하이레벨 플랏 함수들은 함수에 전달된 인자만을 가지고도 특별한 설정없이도 적절한 위치에 축, 레이블, 그리고 제목들이 놓이며 데이터에 대한 완전한 시각화 처리를 할 수 있도록 작성되었습니다. 
+<p>########
+하이-레벨 플롯팅 함수들은 함수에 전달된 인자만을 가지고도 특별한 설정없이도 적절한 위치에 축, 레이블, 그리고 제목들이 놓이며 데이터에 대한 완전한 시각화 처리를 할 수 있도록 작성되었습니다. 
 하이레벨 플랏 명령어들은 항상 현재 존재하는 그래픽 디바이스에 출력되어 있는 플랏을 지우고, 항상 새로운 플랏을 생성합니다.
 
 <ul class="menu">
@@ -9635,12 +9646,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-levels-83"><code>levels</code></a>: <a href="#Factors">Factors</a></li>
 <li><a href="#index-lines-261"><code>lines</code></a>: <a href="#Low_002dlevel-plotting-commands">Low-level plotting commands</a></li>
 <li><a href="#index-list-130"><code>list</code></a>: <a href="#Lists">Lists</a></li>
+<li><a href="#index-lm-240"><code>lm</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-lm-208"><code>lm</code></a>: <a href="#Linear-models">Linear models</a></li>
 <li><a href="#index-lme-233"><code>lme</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-locator-268"><code>locator</code></a>: <a href="#Interacting-with-graphics">Interacting with graphics</a></li>
 <li><a href="#index-loess-236"><code>loess</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-log-26"><code>log</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
-<li><a href="#index-lqs-239"><code>lqs</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-lsfit-120"><code>lsfit</code></a>: <a href="#Least-squares-fitting-and-the-QR-decomposition">Least squares fitting and the QR decomposition</a></li>
 <li><a href="#index-mars-245"><code>mars</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-max-32"><code>max</code></a>: <a href="#Vector-arithmetic">Vector arithmetic</a></li>
@@ -9690,7 +9701,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-repeat-179"><code>repeat</code></a>: <a href="#Repetitive-execution">Repetitive execution</a></li>
 <li><a href="#index-resid-218"><code>resid</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
 <li><a href="#index-residuals-217"><code>residuals</code></a>: <a href="#Generic-functions-for-extracting-model-information">Generic functions for extracting model information</a></li>
-<li><a href="#index-rlm-240"><code>rlm</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
+<li><a href="#index-rlm-239"><code>rlm</code></a>: <a href="#Some-non_002dstandard-models">Some non-standard models</a></li>
 <li><a href="#index-rm-13"><code>rm</code></a>: <a href="#Data-permanency-and-removing-objects">Data permanency and removing objects</a></li>
 <li><a href="#index-sad-85"><code>sad</code></a>: <a href="#The-function-tapply_0028_0029-and-ragged-arrays">The function tapply() and ragged arrays</a></li>
 <li><a href="#index-scan-140"><code>scan</code></a>: <a href="#The-scan_0028_0029-function">The scan() function</a></li>
