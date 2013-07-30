@@ -371,7 +371,7 @@ variable: if more than one option is included they should be separated
 by spaces.)
 
    <p>그리고 아마 <samp><span class="option">--no-same-permissions</span></samp> 또한 포함할 수 있습니다. 
-<a name="index-TAR_005fOPTIONS-4"></a>(이런 옵션은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)로 구분되어야 합니다.)
+<a name="index-TAR_005fOPTIONS-4"></a>(이런 옵션은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)으로 구분되어야 합니다.)
 
 <div class="node">
 <a name="Getting-patched-and-development-versions"></a>
@@ -391,11 +391,15 @@ tarballs may refer to beta/release candidates of the upcoming release,
 the patched version of the current release being available via
 Subversion.)
 
+   <p>현재 공개된 버전의 패치 버전인 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;와 현재 개발 중인 버전인 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo; tarballs는 곧 공개될 버전의 베타/공개후보로 불리고 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
+
    <p>The tarballs are available from
 <a href="ftp://ftp.stat.math.ethz.ch/pub/Software/R/">ftp://ftp.stat.math.ethz.ch/pub/Software/R/</a>.  Download
 <samp><span class="file">R-patched.tar.gz</span></samp> or <samp><span class="file">R-devel.tar.gz</span></samp> (or the <samp><span class="file">.tar.bz2</span></samp>
 versions) and unpack as described in the previous section.  They are
 built in exactly the same way as distributions of R releases.
+
+   <p>tarballs는 <a href="ftp://ftp.stat.math.ethz.ch/pub/Software/R/">ftp://ftp.stat.math.ethz.ch/pub/Software/R/</a> 얻을 수 있습니다. <samp><span class="file">R-patched.tar.gz</span></samp> 이나 <samp><span class="file">R-devel.tar.gz</span></samp> (또는  <samp><span class="file">.tar.bz2</span></samp> versions)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 설치됩니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Using-Subversion-and-rsync">Using Subversion and rsync</a>
@@ -422,6 +426,8 @@ current &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo; from
 (where <var>x</var> and <var>y</var> are the major and minor number of the current
 released version of R).  E.g., use
 
+   <p>원천들(sources)은 R Subversion repository인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(<a href="http://subversion.apache.org/">http://subversion.apache.org/</a>를 참고하십시오), 여러분은 <a href="http://svn.r-project.org/R/trunk/">http://svn.r-project.org/R/trunk/</a>로부터 현재의 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;과 (<var>x</var> 와 <var>y</var> 가 현재의 R 공개 버전의 주부분과 부수된 부분인) &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;로부터 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+
 <pre class="example">     svn checkout https://svn.r-project.org/R/trunk/ <var>path</var>
 </pre>
    <p class="noindent">to check out &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo; into directory <var>path</var> (which will be
@@ -429,6 +435,8 @@ created if necessary).  The alpha, beta and RC versions of an upcoming
 <var>x.y.0</var> release are available from
 &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo; in
 the four-week period prior to the release.
+
+   <p>이것은 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;을 (필요에 따라 새롭게 생성될 수도 있는) 디렉토리 <var>path</var> 를 확인(check out)하기 위한 것입니다. 곧이은 <var>x.y.0</var> 공개의 알파, 베타 그리고 RC 버전은 공개전 4주전 &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;에서 얻을 수 있습니다.
 
    <p>Note that &lsquo;<samp><span class="samp">https:</span></samp>&rsquo; is required<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>,
 and that the SSL certificate for the Subversion server of the R project

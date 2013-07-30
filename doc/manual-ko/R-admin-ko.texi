@@ -163,7 +163,7 @@ by spaces.)
 
 그리고 아마 @option{--no-same-permissions} 또한 포함할 수 있습니다. 
 @enindex TAR_OPTIONS
-(이런 옵션은 @env{TAR_OPTIONS} 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)로 구분되어야 합니다.)
+(이런 옵션은 @env{TAR_OPTIONS} 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)으로 구분되어야 합니다.)
 
 @node Getting patched and development versions,  , Getting and unpacking the sources, Obtaining R
 @section Getting patched and development versions
@@ -176,11 +176,15 @@ tarballs may refer to beta/release candidates of the upcoming release,
 the patched version of the current release being available via
 Subversion.)
 
+현재 공개된 버전의 패치 버전인 @samp{r-patched}와 현재 개발 중인 버전인 @samp{r-devel}은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안 @samp{r-patched} tarballs는 곧 공개될 버전의 베타/공개후보로 불리고 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
+
 The tarballs are available from
 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/}.  Download
 @file{R-patched.tar.gz} or @file{R-devel.tar.gz} (or the @file{.tar.bz2}
 versions) and unpack as described in the previous section.  They are
 built in exactly the same way as distributions of R releases.
+
+tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 있습니다. @file{R-patched.tar.gz} 이나 @file{R-devel.tar.gz} (또는  @file{.tar.bz2} versions)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 설치됩니다.
 
 @menu
 * Using Subversion and rsync::  
@@ -200,6 +204,8 @@ current @samp{r-devel} from
 (where @var{x} and @var{y} are the major and minor number of the current
 released version of R).  E.g., use
 
+원천들(sources)은 R Subversion repository인 @uref{https://svn.R-project.org/R/}에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(@uref{http://subversion.apache.org/}를 참고하십시오), 여러분은 @uref{http://svn.r-project.org/@/R/@/trunk/}로부터 현재의 @samp{r-devel}과 (@var{x} 와 @var{y} 가 현재의 R 공개 버전의 주부분과 부수된 부분인) @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}로부터 @samp{r-patched}를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+
 @example
 svn checkout https://svn.r-project.org/R/trunk/ @var{path}
 @end example
@@ -211,10 +217,14 @@ created if necessary).  The alpha, beta and RC versions of an upcoming
 @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/} in
 the four-week period prior to the release.
 
+이것은 @samp{r-devel}을 (필요에 따라 새롭게 생성될 수도 있는) 디렉토리 @var{path} 를 확인(check out)하기 위한 것입니다. 곧이은 @var{x.y.0} 공개의 알파, 베타 그리고 RC 버전은 공개전 4주전 @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/}에서 얻을 수 있습니다.
+
 Note that @samp{https:} is required@footnote{for some Subversion clients
 @samp{http:} may appear to work, but requires continual redirection.},
 and that the SSL certificate for the Subversion server of the R project
 should be recognized as from a trusted source.
+
+
 
 Note that retrieving the sources by e.g.@: @command{wget -r} or
 @command{svn export} from that URL will not work: the Subversion

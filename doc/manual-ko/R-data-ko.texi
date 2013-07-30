@@ -709,26 +709,32 @@ This does not work with the default separator.
 
 @item @strong{White space in character fields}
 
-If a separator is specified, leading and trailing white space in
-character fields is regarded as part of the field.  To strip the space,
-use argument @code{strip.white = TRUE}.
+@c If a separator is specified, leading and trailing white space in
+@c character fields is regarded as part of the field.  To strip the space,
+@c use argument @code{strip.white = TRUE}.
+
+구분자가 지정되어 있는 경우에는, 문자열들 앞에 연속된 여백이 그 열의 일부로 인식됩니다. 그 여백을 제거하기 위해서는, @code{strip.white = TRUE} 옵션을 사용합니다.
 
 @item @strong{Blank lines}
 
-By default, @code{read.table} ignores empty lines.  This can be changed
-by setting @code{blank.lines.skip = FALSE}, which will only be useful in
-conjunction with @code{fill = TRUE}, perhaps to use blank rows to
-indicate missing cases in a regular layout.
+@c By default, @code{read.table} ignores empty lines.  This can be changed
+@c by setting @code{blank.lines.skip = FALSE}, which will only be useful in
+@c conjunction with @code{fill = TRUE}, perhaps to use blank rows to
+@c indicate missing cases in a regular layout.
+
+기본적으로 @code{read.table}는 빈 행들을 무시합니다. 이것은 @code{blank.lines.skip = FALSE} 세팅으로  바꿀 수 있는데, 이 옵션은 @code{fill = TRUE}와 함께 사용될 때만 작동합니다. 이것은 일반적으로 비어 있는 행들이 결측된 개체들을 나타내는데 사용되기 때문입니다.
 
 @item @strong{Classes for the variables}
 
-Unless you take any special action, @code{read.table} reads all the
-columns as character vectors and then tries to select a suitable class
-for each variable in the data frame.  It tries in turn @code{logical},
-@code{integer}, @code{numeric} and @code{complex}, moving on if any
-entry is not missing and cannot be converted.@footnote{This is normally
-fast as looking at the first entry rules out most of the possibilities.}
-If all of these fail, the variable is converted to a factor.
+@c Unless you take any special action, @code{read.table} reads all the
+@c columns as character vectors and then tries to select a suitable class
+@c for each variable in the data frame.  It tries in turn @code{logical},
+@c @code{integer}, @code{numeric} and @code{complex}, moving on if any
+@c entry is not missing and cannot be converted.@footnote{This is normally
+@c fast as looking at the first entry rules out most of the possibilities.}
+@c If all of these fail, the variable is converted to a factor.
+
+특별한 조치를 따로 하지 않는다면, @code{read.table}은 모든 열을 문자 벡터로 읽은 후 데이터 프레임 내에 포함된 각각의 변수들에 적당한 클래스(class)를 선택하려 합니다. 어떤 입력 값이 결측치가 아니고 특별히 해당 class로 전환 될 수 없다면, 이 문장은 차례로 logical, integer, numeric 그리고 complex로 움직여가며 class 할당을 시도합니다.1 만약 이러한 시도가 모두 실패하면, 그 변수는 factor 변수로 변환됩니다.
 
 Arguments @code{colClasses} and @code{as.is} provide greater control.
 Specifying @code{as.is = TRUE} suppresses conversion of character
@@ -736,9 +742,13 @@ vectors to factors (only).  Using @code{colClasses} allows the desired
 class to be set for each column in the input: it will be faster and use
 less memory.
 
+인자(argument) @code{colClasses}와 @code{as.is}는 더 많은 것을 통제할 수 있게 합니다. @code{as.is = TRUE}로 설정하는 것은 문자열들이 factor로 전환되는 일이 없도록 합니다(주로 이 용도로만 쓰입니다). @code{colClasses}를 사용하는 것은 원하는 클래스(class)가 입력할 때 각각의 열에 할당하도록 합니다. 그리고 이러한 방법은 보다 빠르고 메모리를 적게 차지합니다.
+
 Note that @code{colClasses} and @code{as.is} are specified @emph{per} 
 column, not @emph{per} variable, and so include the column of row names
 (if any).
+
+중요한 것은 @code{colClasses}와 @code{as.is}이 @emph{각각의} 변수가 아니라, @emph{각각의} 열에 대해 기술한다는 것입니다. 그래서 이들은 행 이름들이 포함된 열도 (만약 그런 열이 있다면) 포함합니다.
 
 @item @strong{Comments}
 
