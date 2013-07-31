@@ -966,42 +966,53 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 
 <h4 class="subsection">2.1.10 Environments</h4>
 
-<p>환경들은 두가지로 이루어져 있다고 생각할 수 있습니다. 부호값 pair의 세트로 이루어져있는 frame과 enclosing 환경로의 포인터인 enclosure입니다. R이 프레임이 검사한 부호의 값을 찾고 만약 matching 부호가 그 값을 찾았을 때, 그 값이 return될 것입니다. 만약 그렇지 않다면, enclosing 환경이 접근을 하고 프로세스가 반복될 것입니다. 환경은 enclosure이 parents의 역할을 하는 tree structure를 형성합니다. 환경의 tree는 parent가 없는emptyenv()를 통해 사용가능한 빈 환경에 뿌리를 내립니다. 이는 기본 패키지(baseenv() function을 통해 사용가능한)의 환경의 직접적인 parent입니다. Baseenv()는 전에 특별한 값 NULL을 가지고 있었지만, 2.4.0 버전부터 환경으로써의 NULL의 사용은 존재하지 않습니다. 
-환경들은Function objects와 Lexical environment에서 설명된 것과 같이, function call에의해서 내포되어 생성됩니다. 이 경우에 환경은 (argument를 포함한) local에서 부터 function까지의 값들을 포함하고있고, 그의 enclosure은 현재 불려진 function의 환경입니다. 환경들은 또한 new.env에 의해 직접적으로 생성될 지도 모릅니다. 환경의 frame content는 ls, get과 assign 그리고 eval과 evalq의 사용에의해 접근되고 조작될 수 있습니다. 
-parent.env function은 환경의 enclosure에 접근하기위해 사용될 수도 있습니다. 
-대부분의 R object들과는 달리, 환경들은 function들로 전달되거나 assignment들에 사용될 때 복사되지 않습니다. 그러므로, 만약 같은 환경을 여러개의 부호들에 지정하고 하나를 바꾼다면, 다른 것들 또한 바뀔 것 입니다. 특히 attribute들을 환경에 지정하는 것은 놀라움을 자아낼 수도 있습니다.
+<p><a name="index-environment-64"></a><!-- Environments can be thought of as consisting of two things.  A -->
+<!-- @emph{frame}, consisting of a set of symbol-value pairs, and an -->
+<!-- @emph{enclosure}, a pointer to an enclosing environment. When @R{} -->
+<!-- looks up the value for a symbol the frame is examined and if a -->
+<!-- matching symbol is found its value will be returned.  If not, the -->
+<!-- enclosing environment is then accessed and the process repeated. -->
+<!-- Environments form a tree structure in which the enclosures play the -->
+<!-- role of parents.  The tree of environments is rooted in an empty -->
+<a name="index-emptyenv-65"></a><!-- environment, available through @code{emptyenv()}, which has no parent. -->
+<!-- It is the direct parent of the environment of the base package -->
+<a name="index-baseenv-66"></a><!-- (available through the @code{baseenv()} function). Formerly -->
+<!-- @code{baseenv()} had the special value @code{NULL}, but as from -->
+<!-- version 2.4.0, the use of @code{NULL} as an environment is defunct. -->
+인바이런먼트(environment)는 두 가지로 구성되어 있다고 생각할 수 있습니다. 
+심볼(symbol)과 값(value)들이 짝으로 이루어져 있는 프레임(<em>frame</em>)과 인클로징 인바이런먼트(enclosing environment)에 대한 포인터(pointer)인 인클로저(<em>enclosure</em>)입니다. 
+R이 심볼에 대한 값을 찾고자 할때 프레임이 검사되며 만약 일치하는 심볼을 찾게 된다면 이것의 값을 반환하게 됩니다. 
+만약 그렇지 않다면 인클로징 인바이런먼트에 접근된 후에 이 과정을 반복하게 됩니다. 
+인바이런먼트는 인클로져들의 부모 역할을 하는 트리 구조(tree structure)로 되어 있습니다. 
+인바이런먼트들로 되어 있는 트리는 부모(parent)가 없는 비어있는 인바이런먼트(empty environment)로부터 시작되며 <code>emptyenv()</code>를 통하여 사용가능합니다. 
+이는 base 패키지의 환경에 대한 직접적인 부모이며 (<code>baseenv()</code>함수를 통하여 이용할 수 있습니다). 
+2.4.0 이전에는 <code>baseenv()</code>는 <code>NULL</code>이라는 특별한 값을 가지고 있었으나, 이후부터는 환경에 <code>NULL</code>은 더 이상 사용되지 않습니다.
 
-   <p><a name="index-environment-64"></a>Environments can be thought of as consisting of two things.  A
-<em>frame</em>, consisting of a set of symbol-value pairs, and an
-<em>enclosure</em>, a pointer to an enclosing environment. When R
-looks up the value for a symbol the frame is examined and if a
-matching symbol is found its value will be returned.  If not, the
-enclosing environment is then accessed and the process repeated. 
-Environments form a tree structure in which the enclosures play the
-role of parents.  The tree of environments is rooted in an empty
-<a name="index-emptyenv-65"></a>environment, available through <code>emptyenv()</code>, which has no parent. 
-It is the direct parent of the environment of the base package
-<a name="index-baseenv-66"></a>(available through the <code>baseenv()</code> function). Formerly
-<code>baseenv()</code> had the special value <code>NULL</code>, but as from
-version 2.4.0, the use of <code>NULL</code> as an environment is defunct.
+<!-- Environments are created implicitly by function calls, as described in -->
+<!-- @ref{Function objects} and @ref{Lexical environment}.  In this case the -->
+<!-- environment contains the variables local to the function (including the -->
+<!-- arguments), and its enclosure is the environment of the currently called -->
+<!-- function.  Environments may also be created directly by @code{new.env}. -->
+   <p><a name="index-new_002eenv-67"></a><!-- The frame content of an environment can be accessed and manipulated by -->
+<!-- use of @code{ls}, @code{get} and @code{assign} as well as @code{eval} and -->
+<!-- @code{evalq}. -->
+환경(environment)이라는 것은 <a href="#Function-objects">Function objects</a>와 <a href="#Lexical-environment">Lexical environment</a>에 설명된 것과 같이 함수호출에 의하여 직접적으로 생성되지 않을 수도 있습니다. 
+이 경우 환경은 인자들을 포함하여 함수에 국한적인 변수들을 포함하게 되며, 이것의 인클로져(enclosure)는 현재 호출된 함수의 환경입니다. 
+환경들은 아마도 <code>new.env</code>를 이용하여 직접적으로 생성될 수도 있습니다. 
+함수의 프레임내에 있는 내용들은 <code>ls</code>, <code>get</code>, <code>assign</code>, <code>eval</code>, 그리고 <code>evalq</code>에 의하여 접근되고 조작되어질 수 있습니다.
 
-   <p>Environments are created implicitly by function calls, as described in
-<a href="#Function-objects">Function objects</a> and <a href="#Lexical-environment">Lexical environment</a>.  In this case the
-environment contains the variables local to the function (including the
-arguments), and its enclosure is the environment of the currently called
-function.  Environments may also be created directly by <code>new.env</code>. 
-<a name="index-new_002eenv-67"></a>The frame content of an environment can be accessed and manipulated by
-use of <code>ls</code>, <code>get</code> and <code>assign</code> as well as <code>eval</code> and
-<code>evalq</code>.
+<!-- The @code{parent.env} function may be used to access the enclosure of -->
+<!-- an environment. -->
+   <p><code>parent.env</code> 함수는 환경의 인클로져에 접근하기 위해서 사용될 수 있습니다.
 
-   <p>The <code>parent.env</code> function may be used to access the enclosure of
-an environment.
-
-   <p>Unlike most other R objects, environments are not copied when passed
-to functions or used in assignments.  Thus, if you assign the same
-environment to several symbols and change one, the others will change
-too.  In particular, assigning attributes to an environment can lead to
-surprises.
+<!-- Unlike most other @R{} objects, environments are not copied when passed -->
+<!-- to functions or used in assignments.  Thus, if you assign the same -->
+<!-- environment to several symbols and change one, the others will change -->
+<!-- too.  In particular, assigning attributes to an environment can lead to -->
+<!-- surprises. -->
+   <p>대부분의 R 객체들과는 다르게 환경들은 함수에 전달되어지거나 할당에 사용이 될 때 복사되어지지 않습니다. 
+따라서, 만약 같은 환경을 여러개의 심볼에 할당하거나 이를 변경한다면 다른 것들이 함께 변경되게 됩니다. 
+특히, 환경에 속성을 부여하는 것은 예상치 못한 결과를 가져오기도 합니다.
 
 <div class="node">
 <a name="Pairlist-objects"></a>
