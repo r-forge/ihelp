@@ -900,22 +900,28 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 함수가 호출될때 인자들은 짝지어진 후, 각각의 형식인자들은 프라미스(promise)와 결합하게 됩니다. 
 형식인자들을 위해 주어진 표현식과 함수를 호출되어진 환경(environment)에 대한 포인터들은 프라미스에 저장됩니다.
 
-   <p>Until that argument is accessed there is no <em>value</em> associated with
-the promise.  When the argument is accessed, the stored expression is
-<a name="index-evaluation_002c-expression-61"></a>evaluated in the stored environment, and the result is returned.  The
-result is also saved by
-the promise.  The <code>substitute</code> function will extract the content
-of the expression slot.  This allows the programmer to
-access either the value or the expression associated with the promise. 
-Argument가 액세스될 때 까지 promise와 관련된 값은 없습니다. Argument가 액세스 되었을 때, 저장되었던 expression은 저장되었던 환경에서 평가되고, 그 결과를 돌려줍니다. 그 결과 또한 promise에 의해 저장됩니다. Substitute function은 express slot의 내용을extract 할 것입니다. 이는 프로그래머가 promise에 관련된 값 혹은 expression에 엑세스하도록 허용합니다.
+<!-- Until that argument is accessed there is no @emph{value} associated with -->
+<!-- the promise.  When the argument is accessed, the stored expression is -->
+   <p><a name="index-evaluation_002c-expression-61"></a><!-- evaluated in the stored environment, and the result is returned.  The -->
+<!-- result is also saved by -->
+<!-- the promise.  The @code{substitute} function will extract the content -->
+<!-- of the expression slot.  This allows the programmer to -->
+<!-- access either the value or the expression associated with the promise. -->
+해당 인자에 접근되어질 ㄸ까지, 프라미스(promise)와 연관된 값은 존재하지 않습니다. 
+인자가 접근되어질 때, 저장된 표현(expression)이 저장된 환경(environment)내에서 평가되어지고, 그 결과가 반환됩니다. 
+이 결과는 또한 프라미스에 의하여 저장되어집니다. 
+<code>substitute</code> 함수는 익스프레이션 슬롯 (expression slot)의 내용을 뽑아낼 것입니다. 
+이것은 프로그래머가 프라미스와 연관된 표현 또는 값에 접근하도록 해주는 것입니다.
 
-   <p>Within the R language, promise objects are almost only seen
-implicitly: actual function arguments are of this type.  There is also a
-<code>delayedAssign</code> function that will make a promise out of an
-expression.  There is generally no way in R code to check whether an
-object is a promise or not, nor is there a way to use R code to
-determine the environment of a promise. 
-R 언어안에서, promise object들은 거의 함축적으로만 보여집니다: 실질적인 function argument들은 이 종류입니다. 또한 promise가 expression을 잃도록 만드는 delayedAssign function도 있습니다. 보통 object가promise인지 아닌지를 확인하는 방법이 R코드에서는 없고, promise의 환경을 확인하기위해 R 코드를 사용하는 방법 또한 없습니다.
+<!-- Within the @R{} language, promise objects are almost only seen -->
+<!-- implicitly: actual function arguments are of this type.  There is also a -->
+<!-- @code{delayedAssign} function that will make a promise out of an -->
+<!-- expression.  There is generally no way in @R{} code to check whether an -->
+<!-- object is a promise or not, nor is there a way to use @R{} code to -->
+<!-- determine the environment of a promise. -->
+   <p>R 언어에서는 프라미스 객체들은 거의 직접적으로 보여지지 않지만 실제적인 함수의 인자들은 이러한 종류에 해당합니다. 
+또한, 프라미스를 익스프레이션(expression) 밖으로 꺼내주는 <code>delayedAssign</code> 함수가 있습니다. 
+R 코드내에서 객체가 프라미스인지 아닌지를 확인하는 방법이 없으며, 또한 프라미스의 환경을 정하기 위하여 R 코드를 사용하는 방법 또한 없습니다.
 
 <div class="node">
 <a name="Dot-dot-dot"></a>
@@ -929,24 +935,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-types">Basic types</a>
 
 <h4 class="subsection">2.1.9 Dot-dot-dot</h4>
 
-<p>‘...’ object 종류는 pairlist의 종류처럼 저장됩니다. ‘...’의 구성요소는 C 코드의 보통 pairlist처럼 접근될 수도 있지만, 번역된 코드의 object처럼 쉽게 접근되지는 않습니다. 이 object는 list처럼 capture될 수 있고, 그래서 table이 예제에서 다음을 보게됩니다.
-
-   <p>만약 function이‘...’를 formal argument처럼 가지고 있다면, formal argument와 매치하지 않는 어떠한 진짜 argument들도 ‘...’와 매치하지 않습니다.
-
-   <p>The &lsquo;<samp><span class="samp">...</span></samp>&rsquo; object type is stored as a type of pairlist.  The
-components of &lsquo;<samp><span class="samp">...</span></samp>&rsquo; can be accessed in the usual pairlist manner
-from C code, but is not easily accessed as an object in interpreted
-code.  The object can be captured as a list, so for example in
-<code>table</code> one sees
+<!-- The @samp{...} object type is stored as a type of pairlist.  The -->
+<!-- components of @samp{...} can be accessed in the usual pairlist manner -->
+<!-- from C code, but is not easily accessed as an object in interpreted -->
+<!-- code.  The object can be captured as a list, so for example in -->
+<!-- @code{table} one sees -->
+<p>&lsquo;<samp><span class="samp">...</span></samp>&rsquo; 객체유형은 패어리스트(pairlist)라는 유형으로 저장됩니다. 
+&lsquo;<samp><span class="samp">...</span></samp>&rsquo;의 구성요소들은 C 코드에서의 일반적인 패어리스트 방법으로 접근할 수 있습니다. 
+그러나, 인터프리티드된 코드내에 있는 객체처럼 쉽게 접근되지는 않습니다. 
+아래의 예제에서 보이는 것과 같이 객체는 리스트로서로 캡쳐할 수 있습니다.
 
 <pre class="example">         args &lt;- list(...)
      ## ....
          for (a in args) {
      ## ....
 </pre>
-   <p><a name="index-function-62"></a><a name="index-function-argument-63"></a>If a function has &lsquo;<samp><span class="samp">...</span></samp>&rsquo; as a formal argument then any actual
-arguments that do not match a formal argument are matched with
-&lsquo;<samp><span class="samp">...</span></samp>&rsquo;.
+   <p><a name="index-function-62"></a><a name="index-function-argument-63"></a><!-- If a function has @samp{...} as a formal argument then any actual -->
+<!-- arguments that do not match a formal argument are matched with -->
+<!-- @samp{...}. -->
+만약 함수가 <code>...</code>를 형식인자로 가지게 된다면, &lsquo;<samp><span class="samp">...</span></samp>&rsquo;는 형식인자와 일치하지 않은 어떠한 실제적인 인자들과도 일치하지 않습니다.
 
 <div class="node">
 <a name="Environment-objects"></a>
