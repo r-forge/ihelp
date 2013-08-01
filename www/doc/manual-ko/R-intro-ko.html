@@ -7227,42 +7227,39 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- @section Low-level plotting commands -->
 <h3 class="section">12.2 로우-레벨 플롯팅 명령어(Low-level plotting commands)</h3>
 
-<p>####
-
 <!-- Sometimes the high-level plotting functions don't produce exactly the -->
 <!-- kind of plot you desire.  In this case, low-level plotting commands can -->
 <!-- be used to add extra information (such as points, lines or text) to the -->
 <!-- current plot. -->
-   <p>하이레벨(high-level) 그래픽 함수를 이용하여 정확히 원하는 형태의 플랏을 그리는 것이 불가능한 경우들이 있습니다. 
-이러한 경우에 로우레벨 (low-level) 함수들을 이용하여 포인트, 선 또는 문자와 같은 추가적인 정보를 표현하는 것이 가능합니다. 
-즉, 하이레벨 그래픽을 커스터마이징 할 수 있습니다.
+<p>하이레벨(high-level)플롯팅 함수를 사용하면, 때때로 내가 원하는 것을 정확히 반영한 플롯을 그릴 수 없는 경우가 생깁니다. 
+이럴 때, 로우-레벨(low-level) 플롯팅 함수들을 이용하면 현재 플롯에 포인트, 선 또는 텍스트 같은 부가적인 정보를 더할 수 있습니다.
 
 <!-- Some of the more useful low-level plotting functions are: -->
-   <p>유용하게 사용될 수 있는 로우레벨 플랏팅 함수들은 아래와 같습니다.
+   <p>유용하게 사용할 수 있는 로우-레벨 플롯팅 함수들에는 다음과 같은 것들 같습니다.
 
      <dl>
-<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-260"></a><a name="index-lines-261"></a><!-- Adds points or connected lines to the current plot.  @code{plot()}'s -->
+<dt><code>points(x, y)</code><dt><code>lines(x, y)</code><dd><a name="index-points-260"></a><a name="index-lines-261"></a>
+<!-- Adds points or connected lines to the current plot.  @code{plot()}'s -->
 <!-- @code{type=} argument can also be passed to these functions (and -->
 <!-- defaults to @code{"p"} for @code{points()} and @code{"l"} for -->
 <!-- @code{lines()}.) -->
 
-     <p>현재 그려진 플랏에 포인트 또는 이들을 서로 연결한 선을 추가합니다. 
-이러한 기능들은 <code>plot()</code>함수에 정의된 <code>type=</code>이라는 입력인자를 이용하여 수행할 수도 있습니다. 
-(이 입력인자에 대한 기본값은 <code>"p"</code>는 <code>points()</code>을 의미하고,
-<code>"l"</code>은 <code>lines()</code>를 의미합니다.)
+     <p>현재의 플롯에 포인트나 선을 추가합니다. 
+위 함수들은 <code>plot()</code>함수에서 <code>type=</code> 인자를 지정하는 것과 같은 작업을 수행합니다. 
+(이 인자의 디폴트값인 <code>"p"</code>는 <code>points()</code>함수와, 이 인자의 <code>"l"</code> 값은 <code>lines()</code>와 동일합니다.)
 
      <br><dt><code>text(x, y, labels, ...)</code><dd><a name="index-text-262"></a><!-- Add text to a plot at points given by @code{x, y}.  Normally -->
 <!-- @code{labels} is an integer or character vector in which case -->
 <!-- @code{labels[i]} is plotted at point @code{(x[i], y[i])}.  The default -->
 <!-- is @code{1:length(x)}. -->
 
-     <p><code>x,y</code>의 위치에 놓인 점들에 텍스트를 추가합니다. 
-일반적으로 <code>labels</code> (레이블)은 정수 또는 문자형 벡터로서 주어지면,
-<code>labels[i]</code>는 <code>(x[i], y[i])</code>의 위치에 놓이게 됩니다. 
-기본적으로 레이블은 <code>1:length(x)</code>으로 정해져 있습니다.
+     <p><code>x,y</code>에 해당하는 점의 위치에 텍스트를 추가합니다. 
+보통 <code>레이블(labels)</code>은 하나의 정수나 문자형 벡터이며,
+<code>i 번째 데이터의 레이블/labels[i]</code>은 <code>(x[i], y[i])</code>의 위치에 표시됩니다. 
+(별도의 레이블이 지정되지 않더라도) 디폴트로 <code>1:length(x)</code> 겂이 사용됩니다.
 
      <!-- @strong{Note}: This function is often used in the sequence -->
-     <p><strong>주의</strong>: 이 함수는 다음과 같은 순서로 사용되는 경우가 많습니다.
+     <p><strong>주의</strong>: 이 함수는 다음과 같은 순서로 사용되어야 합니다.
 
      <pre class="example">          &gt; plot(x, y, type="n"); text(x, y, names)
 </pre>
@@ -7270,8 +7267,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- the axes, and the @code{text()} function supplies special characters, as -->
 <!-- specified by the character vector @code{names} for the points. -->
 
-     <p>그래픽 파라미터인 <code>type="n"</code>은 포인트를 보여지지 않게 하지만, 이는 좌표축 (axes)들을 설정하고,
-<code>text()</code>함수는 문자형 벡터 <code>names</code>를 이용하여 포인트의 위치에 특수한 문자들을 표현합니다.
+     <p>그래픽 모수(parameter)인 <code>type="n"</code>은 포인트를 보이지 않게 하지만 좌표축(axes)은 이미 설정되어 있으며,
+<code>text()</code>함수는 <code>names</code>에 문자형 벡터를 입력된 경우, 원래 포인트의 위치에 (입력된 벡터에 저장되어 있는) 문자값을 출력합니다.
 
      <br><dt><code>abline(a, b)</code><dt><code>abline(h=</code><var>y</var><code>)</code><dt><code>abline(v=</code><var>x</var><code>)</code><dt><code>abline(</code><var>lm.obj</var><code>)</code><dd><a name="index-abline-263"></a><!-- Adds a line of slope @code{b} and intercept @code{a} to the current -->
 <!-- plot.  @code{h=@var{y}} may be used to specify @math{y}-coordinates for -->
@@ -7281,7 +7278,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- component of length 2 (such as the result of model-fitting functions,) -->
 <!-- which are taken as an intercept and slope, in that order. -->
 
-     <p>기울기 b 이고 y 절편 a인 선을 현재의 플롯에 첨가합니다. h=y 는 y좌표값을 높이로 하는 가로선이 이 그래프를 가로질러 그리며, 마찬가지로 v=x 은 x 좌표값을 시작점으로 하는 세로선을 그립니다. 또, lm.obj 는 (모형적함 함수의 결과로 얻어진) 길이 2의 coefficient 성분들을 표시하는데, 이 경우에는 순서대로 y절편과 기울기 값에 해당합니다.
+     <p>기울기  <code>b</code>이고 절편이 <code>a</code>인 직선을 현재의 플롯에 첨가합니다. 
+#########
+<code>h=</code><var>y</var>는 y 값을 높이로 하는 가로선이 이 그래프를 가로질러 그리며, 마찬가지로 v=x 은 x 좌표값을 시작점으로 하는 세로선을 그립니다. 또, lm.obj 는 (모형적함 함수의 결과로 얻어진) 길이 2의 coefficient 성분들을 표시하는데, 이 경우에는 순서대로 y절편과 기울기 값에 해당합니다.
 
      <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-264"></a><!-- Draws a polygon defined by the ordered vertices in (@code{x}, @code{y}) -->
 <!-- and (optionally) shade it in with hatch lines, or fill it if the -->

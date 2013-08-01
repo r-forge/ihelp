@@ -635,7 +635,7 @@ read.table("file.dat", header = TRUE, row.names = 1)
 @c If you have a tab-delimited file containing empty fields be sure to use
 @c @code{sep = "\t"}.
 
-만약 당신이 여백을 포함하고 있는 탭을 구분자로 지정한(tab-delimited) 파일을 가지고 있다면, @code{sep = "＼t"}을 사용해야만 합니다.
+만약 여러분이 여백을 포함하고 있는 탭을 구분자로 지정한(tab-delimited) 파일을 가지고 있다면, @code{sep = "＼t"}을 사용해야만 합니다.
 
 @item @strong{Quoting}
 @cindex Quoting strings
@@ -676,7 +676,7 @@ read.table("testfile", sep = ",")
 read.table("testfile", sep = ",")을 사용해야 합니다. 
 
 @noindent
-This does not work with the default separator.
+@c This does not work with the default separator.
 
 이렇게 하면 디폴트 구분자에 대해 작동하지 않습니다
 
@@ -736,74 +736,95 @@ This does not work with the default separator.
 
 특별한 조치를 따로 하지 않는다면, @code{read.table}은 모든 열을 문자 벡터로 읽은 후 데이터 프레임 내에 포함된 각각의 변수들에 적당한 클래스(class)를 선택하려 합니다. 어떤 입력 값이 결측치가 아니고 특별히 해당 class로 전환 될 수 없다면, 이 문장은 차례로 logical, integer, numeric 그리고 complex로 움직여가며 class 할당을 시도합니다.1 만약 이러한 시도가 모두 실패하면, 그 변수는 factor 변수로 변환됩니다.
 
-Arguments @code{colClasses} and @code{as.is} provide greater control.
-Specifying @code{as.is = TRUE} suppresses conversion of character
-vectors to factors (only).  Using @code{colClasses} allows the desired
-class to be set for each column in the input: it will be faster and use
-less memory.
+@c Arguments @code{colClasses} and @code{as.is} provide greater control.
+@c Specifying @code{as.is = TRUE} suppresses conversion of character
+@c vectors to factors (only).  Using @code{colClasses} allows the desired
+@c class to be set for each column in the input: it will be faster and use
+@c less memory.
 
 인자(argument) @code{colClasses}와 @code{as.is}는 더 많은 것을 통제할 수 있게 합니다. @code{as.is = TRUE}로 설정하는 것은 문자열들이 factor로 전환되는 일이 없도록 합니다(주로 이 용도로만 쓰입니다). @code{colClasses}를 사용하는 것은 원하는 클래스(class)가 입력할 때 각각의 열에 할당하도록 합니다. 그리고 이러한 방법은 보다 빠르고 메모리를 적게 차지합니다.
 
-Note that @code{colClasses} and @code{as.is} are specified @emph{per} 
-column, not @emph{per} variable, and so include the column of row names
-(if any).
+@c Note that @code{colClasses} and @code{as.is} are specified @emph{per} 
+@c column, not @emph{per} variable, and so include the column of row names
+@c (if any).
 
 중요한 것은 @code{colClasses}와 @code{as.is}이 @emph{각각의} 변수가 아니라, @emph{각각의} 열에 대해 기술한다는 것입니다. 그래서 이들은 행 이름들이 포함된 열도 (만약 그런 열이 있다면) 포함합니다.
 
 @item @strong{Comments}
 
-By default, @code{read.table} uses @samp{#} as a comment character,
-and if this is encountered (except in quoted strings) the rest of the
-line is ignored. Lines containing only white space and a comment are
-treated as blank lines.
+@c By default, @code{read.table} uses @samp{#} as a comment character,
+@c and if this is encountered (except in quoted strings) the rest of the
+@c line is ignored. Lines containing only white space and a comment are
+@c treated as blank lines.
 
-If it is known that there will be no comments in the data file, it is
-safer (and may be faster) to use @code{comment.char = ""}.
+@code{read.table}은 기본값으로 @samp{#}을 주석 문자로 사용하고 있습니다. 만약, 이 문자가 나타난다면 (인용되고 있는 부분에서 나타난 것이 아니라면) 그 줄의 나머지 부분은 무시됩니다. 즉, 오직 여백(white space)과 주석을 포함한 줄들 만이 공백(blank line)으로 처리됩니다. 
+
+@c If it is known that there will be no comments in the data file, it is
+@c safer (and may be faster) to use @code{comment.char = ""}.
+
+만약 데이터 파일 안에 주석이 없는 것이 확실하다면, @code{comment.char = ""}을 사용하는 편이 더 안전할 것입니다(어쩌면 처리도 더 빠를 것입니다.)
 
 @item @strong{Escapes}
 
-Many OSes have conventions for using backslash as an escape character in
-text files, but Windows does not (and uses backslash in path names).
-It is optional in @R{} whether such conventions are applied to data files.
+@c Many OSes have conventions for using backslash as an escape character in
+@c text files, but Windows does not (and uses backslash in path names).
+@c It is optional in @R{} whether such conventions are applied to data files.
 
-Both @code{read.table} and @code{scan} have a logical argument
-@code{allowEscapes}.  This is false by default, and backslashes are then
-only interpreted as (under circumstances described above) escaping
-quotes.  If this set to be true, C-style escapes are interpreted, namely
-the control characters @code{\a, \b, \f, \n, \r, \t, \v} and octal and
-hexadecimal representations like @code{\040} and @code{\0x2A}.  Any
-other escaped character is treated as itself, including backslash.  Note
-that Unicode escapes such as @code{\u@var{xxxx}} are never interpreted.
+많은 OS들은 관습적으로 text 파일에서 역슬래쉬(＼)를 마침(또는 종료: escape) 문자로 사용하고 있지만, Windows에서는 그렇지 않습니다(역슬래쉬(＼)를 경로 이름을 표시하는 데 사용하고 있습니다). @R{}에서 이 문제는 데이터 파일에 적용하는데 있어 관습을 따를 것인지 아닌지의 선택의 문제입니다.
+
+@c Both @code{read.table} and @code{scan} have a logical argument
+@c @code{allowEscapes}.  This is false by default, and backslashes are then
+@c only interpreted as (under circumstances described above) escaping
+@c quotes.  If this set to be true, C-style escapes are interpreted, namely
+@c the control characters @code{\a, \b, \f, \n, \r, \t, \v} and octal and
+@c hexadecimal representations like @code{\040} and @code{\0x2A}.  Any
+@c other escaped character is treated as itself, including backslash.  Note
+@c that Unicode escapes such as @code{\u@var{xxxx}} are never interpreted.
+
+@code{read.table}과 @code{scan} 모두 @code{allowEscapes}라는 "논리 인자(logical argument)"를 사용합니다. false가 기본값으로 설정되어 있으며, 그래서 (앞서 설명한 환경에서는) 역슬래쉬(＼)들은 오직 "마침(또는 종료: escaping)"으로 해석됩니다. 만약 이것이 true로 설정되어 있다면, C-스타일 @code{＼a, ＼b, ＼f, ＼n, ＼r, ＼t, ＼v}와 @code{\040} 및 @code{\0x2A}와 같이 표현된 8진수나 16진수 통제 문자가 종료로 인식됩니다. 역슬래쉬(＼)를 포함한 어떤 다른 종료 문자도 그것과 같이 다루어 집니다. @code{\u@var{xxx}}와 같은 유니코드 종료문자(Unicode escapes)는 인식되지 않는 점에 유의하십시오.
 
 @item @strong{Encoding}
 
 This can be specified by the @code{fileEncoding} argument, for example
 
+이것은 다음의 예와 같이 @code{fileEncoding} 인자로 설정할 수 있습니다.
+
+@c @example
+@c fileEncoding = "UCS-2LE"    # Windows 'Unicode' files
+@c fileEncoding = "UTF-8"
+@c @end example
+
 @example
-fileEncoding = "UCS-2LE"    # Windows 'Unicode' files
+fileEncoding = "UCS-2LE"    # 윈도우즈 유니코드 파일
 fileEncoding = "UTF-8"
 @end example
 
 @noindent
-If you know (correctly) the file's encoding this will almost always
-work.  However, we know of one exception, UTF-8 files with a BOM.  Some
-people claim that UTF-8 files should never have a BOM, but some software
-(apparently including Excel:mac) uses them, and many Unix-alike OSes do
-not accept them.  So faced with a file which @command{file} reports as
+@c If you know (correctly) the file's encoding this will almost always
+@c work.  However, we know of one exception, UTF-8 files with a BOM.  Some
+@c people claim that UTF-8 files should never have a BOM, but some software
+@c (apparently including Excel:mac) uses them, and many Unix-alike OSes do
+@c not accept them.  So faced with a file which @command{file} reports as
+
+여러분이 (올바로) 파일의 인코딩을 알고 있다면 이것은 거의 항상 작동합니다. 그러나 우리는 한 가지 예외를 알고 있는데 그것은 BOM 있는 UTF-8 파일입니다. 어떤 사람들은 UTF-8 파일이 BOM을 가지면 안된다고 주장하지만 (명백하게 엑셀:mac은 포함하는) 어떤 소프트웨어는 그것을 사용하고 많은 유닉스 계열의 OS들은 그것을 허용하지 않습니다. 그래서 다음과 같은 @command{file} 보고를 하는 파일을 보게 됩니다.
 
 @example
 intro.dat: UTF-8 Unicode (with BOM) text
 @end example
 
 @noindent
-it can be read on Windows by
+@c it can be read on Windows by
+
+이것은 윈도우즈에서 다음과 같이 읽힐 수 있습니다.
 
 @example
 read.table("intro.dat", fileEncoding = "UTF-8")
 @end example
 
 @noindent
-but in a UTF-8 locale on a Unix-alike is likely to need
+@c but in a UTF-8 locale on a Unix-alike is likely to need
+
+그러나 유닉스 계열의 UTF-8 locale은 다음이 필요할 것입니다.
 
 @example
 con <- file("intro.dat", "r")
@@ -811,6 +832,8 @@ seek(con, 3)  # step over the 3 initial bytes, the BOM
 foo <- read.table(con)
 close(con)
 @end example
+
+
 
 @noindent
 Another problem with this (real-life) example is that whereas
