@@ -224,17 +224,21 @@ Note that @samp{https:} is required@footnote{for some Subversion clients
 and that the SSL certificate for the Subversion server of the R project
 should be recognized as from a trusted source.
 
-
+@samp{https:}와 @footnote{어떤 Subversion 클라이언트 @samp{http:}가 작업을 위해 나타날 수 있으나 연속적인 전송(redirection)이 필요합니다.} 신뢰받은 소스(source)로 R 프로젝트의 서브버전 서버에 대한 SSL 인증이 인식될 것이 필요합니다. 
 
 Note that retrieving the sources by e.g.@: @command{wget -r} or
 @command{svn export} from that URL will not work: the Subversion
 information is needed to build @R{}.
+
+예를 들어, 그 URL로부터 @cmmand{wget -r} 또는 @command{svn export} 에 의해 소스를 받아오는 것이 작동하지 않을 수 있는 점에 유의하십시오. 즉 @R{}을 빌드하기 위해 서브버전 정보가 필요합니다.
 
 The Subversion repository does not contain the current sources for the
 recommended packages, which can be obtained by @command{rsync} or
 downloaded from @acronym{CRAN}.  To use @code{rsync} to install the
 appropriate sources for the recommended packages, run
 @code{./tools/rsync-recommended} from the top-level of the @R{} sources.
+
+서브버전 레포지토리는 추천 패키지의 현재 소스를 담고 있지 않아서 그것은 @command{rsync} 명령이나 @acronym{CRAN}에서 다운로드 받아 얻을 수 있습니다. 추천 패키지에 대한 올바른 소스를 설치하려고 @code{rsync}를 사용하기 위해 최상위  @R{} 소스에서 @code{./tools/rsync-recommended}를 실행합니다.
 
 If downloading manually from @acronym{CRAN}, do ensure that you have the
 correct versions of the recommended packages: if the number in the file
