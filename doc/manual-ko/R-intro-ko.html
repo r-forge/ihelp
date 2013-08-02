@@ -300,15 +300,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <!-- It provides a wide variety of statistical and graphical techniques -->
 <!-- (linear and nonlinear modelling, statistical tests, time series -->
 <!-- analysis, classification, clustering, ...). -->
-<!-- This manual provides information on data types, programming elements, -->
-<!-- statistical modelling and graphics. -->
-<!-- The current version of this document is @value{VERSION}. -->
 <p>이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 위한 언어(language)이자 환경(environment)이기도 한 R (&ldquo;GNU S&rdquo;)이라는 소프트웨어에 대한 일반적인 소개를 담고 있습니다. 
 R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 여러명의 참여자에) 의해서 개발된 이래로 수상을 받은 전력이 있는 S 시스템과 유사합니다. 
-이는 선형 및 비선형 모델링(linear and non-linear modelling), 통계 테스트들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계적 방법들과 그래픽 기능(statistical and graphical techniques)들을 제공합니다.
+이는 선형 및 비선형 모델링(linear and non-linear modelling), 통계적 검정들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계적 기법들과 그래픽 기능(statistical and graphical techniques)들을 제공합니다.
 
+<!-- This manual provides information on data types, programming elements, -->
+<!-- statistical modelling and graphics. -->
    <p>이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형 (data type), 프로그래밍의 기본 요소들 (programming elements), 그리고 통계 모델링 (statistical modelling)과 그래픽 (graphics)에 대한 정보들이 이 문서에서 다루어 질 것입니다.
 
+<!-- The current version of this document is @value{VERSION}. -->
    <p>본 한글문서에 대한 영어 원문의 버전은 3.0.0 Under development (2013-02-11)입니다.
 
    <p>ISBN 3-900051-12-7
@@ -317,6 +317,7 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 
    <p>아래의 주요 역자들이 없었다면 이 문서에 대한 작업은 불가능 했을 것입니다 (본 문서의 최초직역은 2009년 07월 R-2.9.1 문서를 토대로 이루어졌으나, R의 버전업에 맞추어 많은 내용의 추가 및 교정이 이루어져 왔습니다). 
 또한, 보다 읽기 쉽고 올바른 내용의 전달을 위하여 꾸준한 교정작업이 진행중에 있습니다.
+
      <ul>
 <li>Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, <a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>, 2009 &ndash; 2013
 <li>Lijin Joo (주이진), New York University, New York, New York, U.S.A., <a href="mailto:lijin.joo@nyu.edu">lijin.joo@nyu.edu</a>, 2009&ndash;2013
@@ -330,7 +331,8 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 <li>정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
 <li>이세연, Ewha Womans University, Seoul, Korea, 2009
 </ul>
-   본 한국어 문서에 대한 제안사항 및 조언은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>으로 보내주신다면 감사드리겠습니다.
+
+   <p>본 한국어 문서에 대한 제안사항 및 조언은 <a href="mailto:ihelp-translators@ihelp.r-forge.r-project.org">ihelp-translators@ihelp.r-forge.r-project.org</a>으로 보내주신다면 감사드리겠습니다.
 
    <p>Copyright &copy; 1990 W. N. Venables<br>
 Copyright &copy; 1992 W. N. Venables &amp; D. M. Smith<br>
@@ -399,8 +401,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- in this way, and for being a supporter of @R{} from way back. -->
 <!-- Comments and corrections are always welcome.  Please address email -->
 <!-- correspondence to @email{R-core@@R-project.org}. -->
-<p>원래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 
-그러나,이 문서에서는 R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
+<p>원래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 그러나,이 문서에서는 R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
 이렇게 원래의 노트에 대한 수정과 재배포를 허락하고, R을 지지해주신 Bill Venables (그리고 David Smith)에게깊은 감사의 뜻을 전합니다.
 
 <!-- @subheading Suggestions to the reader -->
@@ -3743,20 +3744,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- Awk can be used.} to fit in with the requirements of @R{}.  Generally -->
 <!-- this is very simple. -->
 
+   <p>용량이 큰 데이터 객체는 현재 작업하고 있는 R 세션에서 키보드로 입력하는 것보다는 외부에 저장되어 있는 데이터파일을 불러들이는 것이 편리하고 빠른 방법입니다. R의 입력 도구는 단순하여 요구조건이 다소 엄격하고 유연하지 않습니다. R 설계자들에 의해 R에서 데이터를 읽어들일 수 있는 요구사항을 충족시키기 위해 파일에디터(file editor) 혹은 Perl<a rel="footnote" href="#fn-18" name="fnd-18"><sup>18</sup></a>과 같은 다른 도구를 이용하여 여러분의 입력 파일을 수정할 수 있는 명백한 추측이 있습니다. 일반적으로 이것은 매우 단순합니다.
+
 <!-- If variables are to be held mainly in data frames, as we strongly -->
 <!-- suggest they should be, an entire data frame can be read directly with -->
 <!-- the @code{read.table()} function.  There is also a more primitive input -->
 <!-- function, @code{scan()}, that can be called directly. -->
+   <p>만약 변수들이 데이터 프레임에서 다루어질 것이라면 (우리가 그렇게 될 것이라고 강하게 가정하는 것과 같이), 전체 데이터 프레임은 <code>read.table()</code> 함수에 의해 직접적으로 읽을 수 있습니다. 직접적으로 호출할 수 있는 보다 근본적인 입력 함수인 <code>scan()</code>도 있습니다.
+
 <!-- For more details on importing data into @R{} and also exporting data, -->
 <!-- see the @emph{R Data Import/Export} manual. -->
-   <p>용량이 큰 데이터는 키보드로 입력하는 것보다는 외부에 저장되어 있는 데이터파일을 현재 작업하고 있는 R 세션으로 불러들이는 것이 편리하고 빠른 방법입니다. 
-R의 입력기능은 사용하기 간단하지만, 다소 불편한 점이 없는 것은 아닙니다. 
-독자는 파일에디터(file editor) 혹은 Perl<a rel="footnote" href="#fn-18" name="fnd-18"><sup>18</sup></a>과 같은 다른 프로그래밍 언어를 이용하여 먼저 R에서 데이터를 읽어들일 수 있는 조건과 형식으로 변경할 수 있다는 가정하에 R의 입력기능이 개발되었다는 점을 알고 계셨으면 합니다.
-
-   <p>이렇게 데이터 전처리를 실시할때 가급적이면 데이터를 쉽게 불러올 수 있도록 사용자가 데이터 파일을 데이터프레임과 같은 형식을 가지도록 편집하는 것을 권장합니다. 
-만약, 데이터가 데이터 프레임과 같이 정리가 되어 있다면 <code>read.table()</code> 함수를 이용하여 데이터 파일안에 있는 모든 데이터를 R 세션내로 불러들일 수 있습니다. 
-<code>read.table()</code> 외에도 <code>scan()</code>과 같은 함수를 이용할 수 있습니다.
-
    <p>데이터의 입출력에 관한 더 자세한 사항에 대해서는 <em>R Data Import/Export</em> 문서를 참조하시길 바랍니다.
 
 <ul class="menu">
@@ -7278,15 +7275,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- component of length 2 (such as the result of model-fitting functions,) -->
 <!-- which are taken as an intercept and slope, in that order. -->
 
-     <p>기울기  <code>b</code>이고 절편이 <code>a</code>인 직선을 현재의 플롯에 첨가합니다. 
-#########
-<code>h=</code><var>y</var>는 y 값을 높이로 하는 가로선이 이 그래프를 가로질러 그리며, 마찬가지로 v=x 은 x 좌표값을 시작점으로 하는 세로선을 그립니다. 또, lm.obj 는 (모형적함 함수의 결과로 얻어진) 길이 2의 coefficient 성분들을 표시하는데, 이 경우에는 순서대로 y절편과 기울기 값에 해당합니다.
+     <p>기울기  <code>b</code>이고 절편이 <code>a</code>인 직선을 현재의 플롯에 첨가합니다.
+
+     <p><code>h=</code><var>y</var>는 높이가 y인 플롯 전체를 가로지르는 수평선(horizontal line)을 그리기 위해,
+마찬가지로 <code>v=</code><var>x</var>은 (x축에서) x 좌표값을 갖는 수직선(vertical line)을 그립니다. 
+또, <var>lm.obj</var> 는 (모형적함으로 얻어진) 길이 2인 <code>회귀계수(coefficients)</code>들을 성분으로 갖는 리스트이며, 이 경우에는 이 두 숫자는 순서대로 (플롯에 첨가될 선의) 절편과 기울기로 사용될 것입니다.
 
      <br><dt><code>polygon(x, y, ...)</code><dd><a name="index-polygon-264"></a><!-- Draws a polygon defined by the ordered vertices in (@code{x}, @code{y}) -->
 <!-- and (optionally) shade it in with hatch lines, or fill it if the -->
 <!-- graphics device allows the filling of figures. -->
 
-     <p>(x,y)에 의해 정의된 꼭지점들을 순서대로 연결해서 만든 다각형을 그린다. 해당 그래픽 장치가 기능을 지원하면, (옵션을 사용해서) 그려진 다각형의 내부에 음영을 주거나 색을 채우는 것이 가능합니다.
+     <p>(<code>x</code>, <code>y</code>)의 형태로 입력된 꼭짓점(vertices)들을 순서대로 연결해서 다각형(polygon)을 그립니다. 
+(옵션으로) 그려진 다각형의 내부에 해치 라인(hatch line)을 사용해서 음영을 주거나,
+사용중인 그래픽 장치가 지원가능할 경우, 색으로 내부를 채우는 것도 가능합니다.
 
      <br><dt><code>legend(x, y, legend, ...)</code><dd><a name="index-legend-265"></a><!-- Adds a legend to the current plot at the specified position.  Plotting -->
 <!-- characters, line styles, colors etc., are identified with the labels in -->
@@ -7294,12 +7295,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- (a vector the same length as @code{legend}) with the corresponding -->
 <!-- values of the plotting unit must also be given, as follows: -->
 
-     <p>특정한 위치에 현재 플롯의 범례를 첨가합니다. 플롯에 사용된 문자나 선의 종류 혹은 색 등이 범례에 포함된 문자 레이블을 통해 구분 가능해집니다. 다음과 같이 플롯 구성 단위가 가질 수 있는 값들 중 최소한 한 개 이상의 v (범례와 같은 길이를 가진 벡터를 사용하여) 선언이 필요합니다:
+     <p>지정된 위치에 현재 플롯의 범례(legend)를 첨가합니다. <code>범례(legend)</code>에는 문자형 벡터로된 (해당 플롯의) 레이블과 함께 플롯에 사용됐던 문자, 선의 종류, 색 등을 함께 사용하는 것이 가능합니다. 이렇게 레이블 이외의 다른 요소들을 사용하기 위해서는, <var>v</var> 이외의 최소한 한개 이상의 인자가 입력되어야 하며, (이 인자는 <var>v</var>와 같은 길이를 가진) 이미 플롯에 사용된 것과 같은 값들을 가지고 있어야 합니다. 다음과 같이 말이지요:
 
           <dl>
 <dt><code>legend( , fill=</code><var>v</var><code>)</code><dd><!-- Colors for filled boxes -->
 
-          <p>상자에 칠해진 색상들
+          <p>(다각형의) 영역을 채울게 될 색상들
 
           <br><dt><code>legend( , col=</code><var>v</var><code>)</code><dd><!-- Colors in which points or lines will be drawn -->
 
@@ -7315,7 +7316,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
           <br><dt><code>legend( , pch=</code><var>v</var><code>)</code><dd><!-- Plotting characters (character vector) -->
 
-          <p>문자표시를 포함할 것 (문자 벡터 형태)
+          <p>(문자형 벡터에) 입력된 문자들을 출력
 
      </dl>
 
@@ -7331,21 +7332,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- @code{plot()} with the @code{axes=FALSE} argument. -->
 </dl>
 
-   <p>현재 플롯에 첫번째 인수(1부터 4까지의 숫자로 나타나며, 바닥에서부터 시계 방향으로 해당 사면을 의미함)에 의해 주어진 면에 새로운 축을 첨가합니다. 다른 인수들로 플롯 안에 포함되거나 플롯 옆에 나타나는 축을 조절할 수도 있고, 위치나 레이블에 대한 v 선언을 하기도 합니다. 사용자 정의로 축을 사용하기 위해서는 plot() 함수 안에 axes=FALSE 인수를 지정하는 편이 좋을 것입이다.
+   <p>현재 플롯에 첫번째 인수에 (<code>side</code>) 지정된 방향에 축(axis)을 첨가합니다. (이 <code>side</code>는 1부터 4까지의 숫자로 나타나며, 바닥(bottom)에서 시작해 반시계 방향으로 해당 사면을 의미합니다.) 
+이 함수에 다른 인수들을 지정하여 축의 위치를 플롯의 내부나 옆으로 바꾸거나, 틱마크와 레이블의 위치를 조정할 수도 있습니다. 또 사용자 정의대로 축을 생성하기위해, <code>plot()</code> 함수에서 <code>axes=FALSE</code>로 입력하고 이 함수로 새축을 생성할 수도 있을 것입니다.
 
 <!-- Low-level plotting functions usually require some positioning -->
 <!-- information (e.g., @math{x} and @math{y} coordinates) to determine where -->
 <!-- to place the new plot elements.  Coordinates are given in terms of -->
 <!-- @emph{user coordinates} which are defined by the previous high-level -->
 <!-- graphics command and are chosen based on the supplied data. -->
-   <p>Low-level 그래픽 함수들은 대체로 새로운 플롯 구성 요소를 어디에 배치할지 결정하기 위해 위치에 관한 (x, y좌표 같은) 정보를 요구합니다. 이런 좌표들은 이전의 high-level 그래픽 함수 명령문에 의해 정의된 사용자 좌표에 의해 표현되며, 이것은 주어진 데이터에 따라 결정됩니다.
+   <p>로우-레벨(Low-level) 플롯팅 함수들은 대체로 새로운 플롯의 구성요소를 어디에 배치할지 위치를 (x와 y 좌표로) 지정해주어야 합니다. 이러한 위치는 이미 사용된 하이-레벨 그래픽 명령어에의해 생성된 <em>사용자 좌표 (user coordinates)</em>에 의해 표현되어야하며, 이러한 좌표 시스템은 주어진 데이터에 의해 결정되는 것입니다.
 
 <!-- Where @code{x} and @code{y} arguments are required, it is also -->
 <!-- sufficient to supply a single argument being a list with elements named -->
 <!-- @code{x} and @code{y}.  Similarly a matrix with two columns is also -->
 <!-- valid input.  In this way functions such as @code{locator()} (see below) -->
 <!-- may be used to specify positions on a plot interactively. -->
-   <p>X와 y인수값이 필요한 경우, x 와 y로 명명된 성분들을 연결해서 표현한 하나의 인수로 표현하는 것 역시 가능합니다. 마찬가지로 두개의 열을 가진 행렬을 사용하는 것도 역시 유효한 방법입니다. 이 방법을 사용할 때는 locator() (아래 참조) 같은 함수를 사용해서 플롯을 표현하기 위한 여러 위치들을 interactive하게 조정하는 것이 가능합니다.
+   <p><code>x</code>와 <code>y</code> 인자가 필요한 경우, <code>x</code>와 <code>y</code>라는 이름을 가진 두 요소를 묶은 하나의 리스트를 하나의 인자로 입력하는 것 역시 가능합니다. 마찬가지로 2열의 행렬을 사용하는는 것도 가능합니다. 이렇게 입력할 위치를 지정하기 위해서, <code>locator()</code>(아래 참조) 등의 함수를 사용하여 대화형으로(interactively) 찾은 플롯 내의 위치정보를 사용할수도 있을 것입니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Mathematical-annotation">Mathematical annotation</a>
@@ -7361,7 +7363,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Low_002dlevel-plotting-commands">Low-l
 
 </div>
 
-<!-- @subsection Mathematical annotation -->
+<!-- @subsection 수학적 주석 (Mathematical annotation) -->
 <h4 class="subsection">12.2.1 </h4>
 
 <!-- In some cases, it is useful to add mathematical symbols and formulae to a -->
@@ -7369,13 +7371,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Low_002dlevel-plotting-commands">Low-l
 <!-- than a character string in any one of @code{text}, @code{mtext}, @code{axis}, -->
 <!-- or @code{title}.   For example, the following code draws the formula for -->
 <!-- the Binomial probability function: -->
-<p>어떤 경우에는, 수학적 기호나 공식을 플롯에 첨가하는 것이 유용합니다. R에서는 이런 작업을 text, mtext, axis 또는 title 같은 함수를 사용해서 하나의 문자열을 입력하는 것 보다는 하나의 표현(expression)을 사용해서 해결합니다. 예를 들면, 다음의 코드는 이항분포 함수(binomial probability function)의 공식을 표현되도록 합니다:
+<p>경우에 따라, 수학적 기호(symbols)나 공식(formulae)을 플롯에 첨가하는 것이 필요할 것입니다. R에서는 이러한 표현을 위해, 개별 문자열에 <code>text</code>, <code>mtext</code>, <code>axis</code>, 또는 <code>title</code> 등의 개별 함수를 사용하기 보다는 하나의 <em>expression</em>을 사용합니다. 예를 들면, 다음의 코드는 이항분포함수(binomial probability function)의 공식을 표현한 것입니다:
 
 <pre class="example">     &gt; text(x, y, expression(paste(bgroup("(", atop(n, x), ")"), p^x, q^{n-x})))
 </pre>
    <!-- More information, including a full listing of the features available can -->
 <!-- obtained from within @R{} using the commands: -->
-   <p>이 함수에서 사용할 수 있는 모든 기능들을 포함해서 좀 더 많은 정보를 얻을 수 있는 R 명령문들은 다음과 같습니다:
+   <p>사용가능한 모든 기능에 대한 전체 리스트를 포함해, 더 많은 정보는 다음과 같은 R 명령문을 통해 확인할 수 있습니다:
 
 <pre class="example">     &gt; help(plotmath)
      &gt; example(plotmath)
@@ -7389,36 +7391,36 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Low_002dlevel-plotting-commands">Low-l
 
 </div>
 
-<!-- @subsection Hershey vector fonts -->
+<!-- @subsection 허쉬벡터폰트 (Hershey vector fonts) -->
 <h4 class="subsection">12.2.2 Hershey</h4>
 
 <!-- It is possible to specify Hershey vector fonts for rendering text when using -->
 <!-- the @code{text} and @code{contour} functions.  There are three reasons for -->
 <!-- using the Hershey fonts: -->
-<p>Text 와 contour 함수를 사용할 때, text 를 조절하기 위해 Hershey폰트를 사용하는 것이 가능합니다. Hershey폰트를 사용하는 것은 다음의 세가지 이유에서 때문입니다:
+<p><code>text</code>와 <code>contour</code> 함수를 사용할 때, 텍스트를 편집하기위해 허쉬벡터폰트(Hershey vector fonts)를 사용할 수 있습니다. 허쉬폰트를 사용하는 데는 다음과 같은 세가지 정도의 이유가 있습니다:
 
      <ul>
 <li><!-- Hershey fonts can produce better -->
 <!-- output, especially on a computer screen, for rotated and/or small text. -->
 
-     <p>Hershey폰트는 컴퓨터 스크린에서 text 를 회전시키거나 작은 text 를 사용할 때 특히 효과적입니다.
+     <p>허쉬폰트는, 특히 컴퓨터 스크린 상에서, 텍스트를 회전시키거나 작은 텍스트를 사용할 때 더 나은 결과물을 보여줍니다.
 
      <li><!-- Hershey fonts -->
 <!-- provide certain symbols that may not be available -->
 <!-- in the standard fonts.  In particular, there are zodiac signs, cartographic -->
 <!-- symbols and astronomical symbols. -->
 
-     <p>Hershey 폰트는 일판 폰트에서는 제공하지 않는 몇몇 심볼들을 제공합니다. 특히, 조디악 기호 (zodiac sign)나 지도 제작용 (cartographic) 심볼 그리고 천문학(astronomical) 심볼 등을 제공합니다.
+     <p>또한 허쉬폰트는 기본폰트에서 제공하지 않는 특수한 몇몇 기호들(symbols)을 제공합니다. 조디악 기호(zodiac sign), 지도용(cartographic)심볼, 그리고 천문학용(astronomical)심볼 등이 그러한 예 입니다.
 
      <li><!-- Hershey fonts provide cyrillic and japanese (Kana and Kanji) characters. -->
 
-     <p>Hershey 폰트는 키릴(Cyrillic)과 일본어(Kana 와 Kanji 포함) 문자들을 제공합니다.
+     <p>허쉬폰트는 키릴(Cyrillic)과 일본어(가나(Kana)와 간지(Kanji)문자 포함) 문자들을 제공합니다.
 
    </ul>
 
 <!-- More information, including tables of Hershey characters can be obtained from -->
 <!-- within @R{} using the commands: -->
-   <p>Hershey 문자표를 포함한 좀 더 많은 정보를 찾기 위해 R에서 사용할 수 있는 명령문은 다음과 같습니다:
+   <p>허쉬문자표들의 리스트를 포함한, 좀 더 많은 정보는 R에서 다음과 같은 명령문을 사용해서 확인할 수 있습니다:
 
 <pre class="example">     &gt; help(Hershey)
      &gt; demo(Hershey)
@@ -7440,8 +7442,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- @R{} also provides functions which allow users to extract or add -->
 <!-- information to a plot using a mouse.  The simplest of these is the -->
 <!-- @code{locator()} function: -->
-<p>R에서는 마우스를 사용하여 플롯에 관련된 정보를 빼거나 더하는 작업을 하는 것도 가
-능합니다. 이런 방식으로 작동하는 함수 중 중 가장 간단한 것은 <code>locator()</code> 함수 입니다:
+<p>R에서는 마우스를 사용하여 플롯에 새로운 정보를 추가하거나 제거하는 작업을 할 수 있습니다. 
+이런 함수들 중 가장 간단한 것으로 <code>locator()</code> 함수가 있습니다:
 
      <dl>
 <dt><code>locator(n, type)</code><dd><a name="index-locator-268"></a><!-- Waits for the user to select locations on the current plot using the -->
@@ -7449,18 +7451,21 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- have been selected, or another mouse button is pressed.  The -->
 <!-- @code{type} argument allows for plotting at the selected points and has -->
 <!-- the same effect as for high-level graphics commands; the default is no -->
-<!-- plotting.  @code{locator()} returns the locations of the points selected -->
+<!-- plotting. @code{locator()} returns the locations of the points selected -->
 <!-- as a list with two components @code{x} and @code{y}. -->
 </dl>
 
-   <p>마우스 왼쪽 버튼을 사용하여 현재 플롯에 관련된 위치에 관련된 값들을 선택할 수 있도록 기다리는 함수. 이 함수는 n (디폴트는 512)개의 점들이 모두 선택될 까지 또는 다음 번 마우스 버튼을 누를 때까지 계속 작동합니다. Type 인수는 선택된 포인들을 어떤 플롯으로 그릴지 결정하며 high-level 그래픽 함수에서와 같은 기능으로 사용됩니다; 디폴트로는 플롯을 표시하지 않는 것이 지정되어 있습니다. locator()는 선택된 포인트드의 위치들이 두 개의 x 와 y의 성분으로 이루어진 하나의 리스트 값을 출력합니다.
+   <p>현재 플롯에서 사용자가 마우스 왼쪽 버튼을 사용하여 위치를 선택할 때까지 기다립니다. 이러한 대기 상태는, 함수는 입력된 <code>n</code>개(디폴트는 512)개의 점들을 모두 선택하고, 다음 번 마우스 버튼을 누를 때까지 계속 됩니다. <code>type</code> 인자는 선택된 포인들을 현재 플롯상에 어떻게 나타날지 결정해주는 것으로, 하이-레벨 (high-level)그래픽 함수처럼 사용됩니다; 디폴트로는 아무것도 표시되지 않도록 지정되어 있습니다. <code>locator()</code>는 선택된 포인트들의 위치는 <code>x</code>와 <code>y</code> 두 개의 요소로 구성된 하나의 리스트로 출력합니다.
 
 <!-- @code{locator()} is usually called with no arguments.  It is -->
 <!-- particularly useful for interactively selecting positions for graphic -->
 <!-- elements such as legends or labels when it is difficult to calculate in -->
 <!-- advance where the graphic should be placed.  For example, to place some -->
 <!-- informative text near an outlying point, the command -->
-   <p>하지만 locator()함수는 인수들을 입력하지 않은 채 그대로 사용되는 경우가 더 많습니다. 이 함수는 범례나 레이블 같은 그래픽 요소들의 위치를 정할 때 interactive하게 사용되는데, 특히 이러한 요소들을 사전에 해당 그래픽의 어느 곳에 배치해야할지 결정하기 어려운 경우에 유용하게 사용될 수 있습니다. 예를 들면, Outlier와 같은 포인트에 해당 포인트에 대한 정보를 입력하기 위해 다음 명령문을 사용할 수 있습니다.
+   <p>하지만 <code>locator()</code> 함수는 인수의 입력없이 사용되는 경우가 더 많습니다. 
+######
+
+   <p>이 함수는 범례나 레이블 같은 그래픽 요소들의 위치를 정할 때 interactive하게 사용되는데, 특히 이러한 요소들을 사전에 해당 그래픽의 어느 곳에 배치해야할지 결정하기 어려운 경우에 유용하게 사용될 수 있습니다. 예를 들면, Outlier와 같은 포인트에 해당 포인트에 대한 정보를 입력하기 위해 다음 명령문을 사용할 수 있습니다.
 
 <pre class="example">     &gt; text(locator(1), "Outlier", adj=0)
 </pre>
@@ -9924,7 +9929,7 @@ x x'의 행렬연산을 수행하고 싶다면 <code>cbind(x)%*% x</code> 또는
 
    <p class="footnote"><small>[<a name="fn-17" href="#fnd-17">17</a>]</small> 두번째로 출력된 <code>autoload</code>에 대해서는 온라인 도움말을 살펴보시길 바랍니다</p>
 
-   <p class="footnote"><small>[<a name="fn-18" href="#fnd-18">18</a>]</small> 유닉스 운영체제에서 Sed 또는 Awk와 같은 유틸리티들이 함께 사용될 수 있습니다.</p>
+   <p class="footnote"><small>[<a name="fn-18" href="#fnd-18">18</a>]</small> 유닉스 운영체제에서 Sed 또는 Awk와 같은 유틸리티들</p>
 
    <p class="footnote"><small>[<a name="fn-19" href="#fnd-19">19</a>]</small> 또는 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a>에 있는 <code>xyplot</code>함수를 이용할 수 있습니다.</p>
 
