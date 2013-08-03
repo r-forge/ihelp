@@ -234,9 +234,9 @@ p {
 <li><a href="#Hershey-vector-fonts">12.2.2 Hershey</a>
 </li></ul>
 <li><a href="#Interacting-with-graphics">12.3 </a>
-<li><a href="#Using-graphics-parameters">12.4 그래픽 파라미터들을 사용하기</a>
+<li><a href="#Using-graphics-parameters">12.4 그래픽 모수(parameters)의 사용</a>
 <ul>
-<li><a href="#The-par_0028_0029-function">12.4.1 <code>par()</code> 함수를 이용한 그래픽 파라미터들의 영구적 변환</a>
+<li><a href="#The-par_0028_0029-function">12.4.1 영구적(permanent) 변환을 원할 때: <code>par()</code> 함수</a>
 <li><a href="#Arguments-to-graphics-functions">12.4.2 그래픽 함수에 인자로 전달하는 방식의 임시적 변환</a>
 </li></ul>
 <li><a href="#Graphics-parameters">12.5 그래픽 파라미터들의 목록</a>
@@ -7463,16 +7463,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- advance where the graphic should be placed.  For example, to place some -->
 <!-- informative text near an outlying point, the command -->
    <p>하지만 <code>locator()</code> 함수는 인수의 입력없이 사용되는 경우가 더 많습니다. 
-######
-
-   <p>이 함수는 범례나 레이블 같은 그래픽 요소들의 위치를 정할 때 interactive하게 사용되는데, 특히 이러한 요소들을 사전에 해당 그래픽의 어느 곳에 배치해야할지 결정하기 어려운 경우에 유용하게 사용될 수 있습니다. 예를 들면, Outlier와 같은 포인트에 해당 포인트에 대한 정보를 입력하기 위해 다음 명령문을 사용할 수 있습니다.
+이 함수는 범례(legends)나 레이블(labels) 같은 그래픽 요소들을 배치할 때, 이러한 요소들이 해당 그래픽 내에서 정확하게 어디에 위치하는 것이 좋을지 결정하기 어려운 경우, 대화형(interactively)으로 위치를 찾을 수 있도록 해주므로 매우 유용합니다. 
+예를 들면, 이상점(outlier)과 같이 특별한 데이터 포인트에 대한 정보를 표기하기위해 다음과 같은 명령문을 사용할 수 있습니다:
 
 <pre class="example">     &gt; text(locator(1), "Outlier", adj=0)
 </pre>
    <p class="noindent"><!-- may be useful.  (@code{locator()} will be ignored if the current device, -->
 <!-- such as @code{postscript} does not support interactive pointing.) -->
 
-   <p>(<code>locator()</code> 함수는 현재 디바이스가 postscript 와 같이 interactive pointing 기능을 제공하지 않는 경우에는 그냥 무시되어 버립니다.)
+   <p>(<code>locator()</code> 함수는 현재 디바이스가 postscript와 같이 대화형 선택(interactive pointing) 기능을 제공하지 않는 경우에는 실행되지 않습니다.)
 
      <dl>
 <dt><code>identify(x, y, labels)</code><dd><a name="index-identify-269"></a><!-- Allow the user to highlight any of the points defined by @code{x} and -->
@@ -7481,7 +7480,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- @code{labels} is absent).  Returns the indices of the selected points -->
 <!-- when another button is pressed. -->
 
-     <p>x 와 y 에 의해 정의된 어떤 포인트라도 (마우스의 왼쪽 버튼을 사용해서) 그 근처에 해당 포인트에 대응되는 레이블을 표기함으로써 그 포인트를 확인할 수 있도록 하는 함수.(레이블 정보가 없는 경우, 해당 포인트의 인덱스 번호를 사용) 버튼을 한 번 더 누르면 선택된 포인트들의 인덱스들을 출력합니다.
+     <p>#####
+<code>x</code>와 <code>y</code> 정보가 입력된 포인트들을 대상으로, 이 중 특정 포인트들 (마우스의 왼쪽 버튼 클릭으로 선택) 근처에 해당 포인트에 대응하는 <code>레이블(labels)</code> 값을 표기하여 선택된 포인트들을 구분합니다.(<code>labels</code>인자가 따로 입력되지 않은 경우는, 해당 포인트의 인덱스를 출력합니다). (포인트의 선택 후) 버튼을 한 번 더 누르면 선택된 포인트들의 인덱스가 출력됩니다.
 
    </dl>
 
@@ -7491,7 +7491,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- that observation in some way.  Given a number of @math{(x, y)} -->
 <!-- coordinates in two numeric vectors @code{x} and @code{y}, we could use -->
 <!-- the @code{identify()} function as follows: -->
-   <p>때때로 우리는 플롯에서 특별한 몇 개의 포인트들의 위치를 보기 보다는 해당 포인트에 대한 정보를 확인하고 싶어집니다. 예를 들면, 그래픽으로 표현된 데이터 중 관심 있는 몇 개의 관측치만 선택해서 그 관측치들만 따로 처리하고 싶은 경우가 있습니다. 포인트들을 두 개의 숫자 벡터인 x 와 y 에 의해 표현된 (x, y) 좌표 쌍들로 표현하면, identify()를 다음과 같이 사용할 수 있습니다:
+   <p>때때로 우리는 포인트 위치를 미리 지정하는 대신, 해당 플롯 상에서 포인트를 직접 선택하고 싶은 경우가 있습니다. 
+예를 들면, 그래픽 디스플레이 상에서 관심있는 몇 개의 관측치만 선택해서, 선택된 관측치들만 따로 처리하고 싶은 경우가 있습니다. 이 경우, 두 개의 숫치형 벡터인 <code>x</code>와 <code>y</code>로 표현된 (x, y) 좌표쌍이 입력된 상태에서, identify() 함수는 다음과 같이 사용할 수 있습니다:
 
 <pre class="example">     &gt; plot(x, y)
      &gt; identify(x, y)
@@ -7507,7 +7508,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- terminated (see above), @code{identify()} returns the indices of the -->
 <!-- selected points; you can use these indices to extract the selected -->
 <!-- points from the original vectors @code{x} and @code{y}. -->
-   <p>identify() 함수는 그 자체로 플롯을 그리지는 않지만, 사용자들이 마우스 포인터를 움직이다 어떤 포인트에서는 마우스 왼쪽 버튼을 클릭할 수 있는 기능을 제공합니다. 어떤 포인트 근처에 마우스 포인터가 있는 경우, 해당 포인트는 인덱스 번호로 표시될 것 입니다. (이것은, 그 포인트의 위치가 x/y vector로 되어 있음을 의미하는 것입니다.) 또한, identify()함수 내에 labels 인수를 사용하여 포인트들이 좀 더 informative하게(해당 케이스의 이름 등) 표현되도록 할 수도 있으며, plot = FALSE인수를 사용하면 포인트를 선택해도 아무런 표시가 남지 않도록 할 수도 있습니다. 해당 프로세스가 끝나고 나면(위 참조), identify()는 선택되었던 포인트들의 인덱스를 출력합니다; 이러한 인덱스 정보를 바탕으로 원래 x, y의 벡터 형태로 되어 있는 선택된 포인트들의 정보를 따로 추출해내는 것도 가능할 것입니다.
+   <p><code>identify()</code> 함수는 그 자체로 플롯을 그리지는 않지만, 사용자들이 마우스 포인터로 자유롭게 움직이다 왼쪽 버튼 클릭으로 원하는 포인트(또는 그 포인트의 근처)를 선택할 수 있도록 해줍니다. 마우스 포인터 근처에 데이터 포인터가 위치한 경우, 해당 포인트의 근처에 인덱스가 표시될 것 입니다. (이 인덱스는, 해당 포인트의 <code>x</code> 또는 <code>y</code> 벡터에서의 위치를 의미합니다). 선택된 포인트를 표기하는 또 다른 방법으로는, <code>identify()</code> 함수에 <code>labels</code> 인자를 사용해서, (해당 케이스의 이름과 같은) 좀 더 유용한(informative) 표현을 사용할 수 있도록하거나,  <code>plot = FALSE</code> 인자를 사용하면 아무것도 표기하지않도록 지정할 수도 있습니다. (포인트를 선택하는) 프로세스가 끝나고 나면(위 참조), <code>identify()</code>는 선택된 포인트들의 인덱스를 출력합니다; 이 선택된 포인트들의 인덱스를 사용하면, 원래의 <code>x</code> 와 <code>y</code> 벡터 형태로 위치를 확인하는 것도 가능합니다.
 
 <div class="node">
 <a name="Using-graphics-parameters"></a>
@@ -7519,7 +7520,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 </div>
 
 <!-- @section Using graphics parameters -->
-<h3 class="section">12.4 그래픽 파라미터들을 사용하기</h3>
+<h3 class="section">12.4 그래픽 모수(parameters)의 사용</h3>
 
 <!-- When creating graphics, particularly for presentation or publication -->
 <!-- purposes, @R{}'s defaults do not always produce exactly that which is -->
@@ -7529,14 +7530,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- style, colors, figure arrangement and text justification among many -->
 <!-- others.  Every graphics parameter has a name (such as `@code{col}', -->
 <!-- which controls colors,) and a value (a color number, for example.) -->
-<p>그래픽을 만들어 낼 때, 특히 그것이 프리젠테이션이나 다른 공공 목적을 위한 것이라면, R 의 디폴트만으로는 항상 원하는 형태를 얻을 수 없을 것입니다. 그렇지만, 그래픽 모수(graphics parameters)를 이용하여 거의 모든 표현 방식을 사용자 임의대로 정의할 수 있습니다. R에는 선의 형태, 색, 그림 배열 그리고 문자 정의 등에 이르기까지 굉장히 다양한 그래픽 모수들이 포함되어 있습니다. 모든 그래픽 모수는 이름(e.g.색을 결정하는 ‘col’)과 값(특정색을 의미하는 숫자)으로 구성 됩니다.
+<p>그래픽을 생성할 때, 특히 프리젠테이션이나 출판을 위한 목적이라면, R 제공하는 디폴트만으로는 항상 원하는 형태의 플롯을 얻을 수 없을지도 모릅니다. 하지만, 그래픽 모수(graphics parameters)를 이용하면 거의 모든 그래프의 구성요소를 사용자가 원하는대로 바꿀 수 있습니다. R은 선의 형태, 색, 그림의 배치, 그리고 텍스트 정의 등에 이르기까지 굉장히 다양한 작업을 수행할 수 있는 그래픽 모수들을 제공합니다. 
+또 , 모든 그래픽 모수는 이름(e.g. `<code>col</code>'의 경우, 사용할 색을 결정하는 모수입니다)과 값(value, `<code>col</code>'의 경우, 숫자로 사용할 색을 지정합니다)의 두가지 요소로 구성됩니다.
 
 <!-- A separate list of graphics parameters is maintained for each active -->
 <!-- device, and each device has a default set of parameters when -->
 <!-- initialized.  Graphics parameters can be set in two ways: either -->
 <!-- permanently, affecting all graphics functions which access the current -->
 <!-- device; or temporarily, affecting only a single graphics function call. -->
-   <p>각각의 디바이스를 위해 그래픽 모수의 리스트들을 따로 정의하는 것이 가능하고, 각 디바스들은 모수들의 디폴트 값을 가진 채 초기화 됩니다. 그래픽 모수들은 크게 두 가지 방법으로 사용될 수 있습니다: 하나는 현재 디바이스를 사용할 때마다 모든 그래픽 함수들에 영향을 주는 “영구적” 방법이고 다른 방법은 오직 하나의 그래픽 함수를 사용할 때에만 영향을 주는 “임시적” 방법입니다.
+   <p>현재 사용중인(active) 디바이스마다 사용할 그래픽 모수(parameters)의 리스트를 따로 정의하는 것이 가능하며, 각 디바스 별로 서로 다른 디폴트모수들이 초기화됩니다. 그래픽 모수를 사용하는 방법은 크게 두 가지로 나눌 수 있습니다: 하나는, 보다 "영구적(permanently)"인 방법으로 현재 디바이스에서 사용할게 될 모든 그래픽 함수들에 영향을 미치게 되며, 좀 더 "일시적(temporarily)"인 방법은 사용하게 될 오직 하나의 그래픽 함수에만 영향을 줍니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#The-par_0028_0029-function">The par() function</a>
@@ -7553,10 +7555,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Using-graphics-parameters">Using graph
 
 </div>
 
-<h4 class="subsection">12.4.1 <code>par()</code> 함수를 이용한 그래픽 파라미터들의 영구적 변환</h4>
+<h4 class="subsection">12.4.1 영구적(permanent) 변환을 원할 때: <code>par()</code> 함수</h4>
 
 <!-- @subsection Permanent changes: The @code{par()} function -->
 <p><a name="index-par-270"></a><a name="index-Graphics-parameters-271"></a>
+######
 <!-- The @code{par()} function is used to access and modify the list of -->
 <!-- graphics parameters for the current graphics device. -->
 
@@ -7577,7 +7580,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Using-graphics-parameters">Using graph
 <!-- the named graphics parameters, and returns the original values of the -->
 <!-- parameters as a list. -->
 
-     <p>그래픽 모수와 해당 모수의 값들을 따로 인수(하나의 인수도 가능)로 지정하면, 지정된 값이 리스트로 출려됩니다.
+     <p>그래픽 모수와 해당 모수의 값들을 따로 인수(하나의 인수도 가능)로 지정하면, 지정된 값이 리스트로 출력됩니다.
 
    </dl>
 

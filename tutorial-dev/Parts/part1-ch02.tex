@@ -46,7 +46,7 @@ R은 분석가가 어떠한 분석활동을 진행하는데 도움을 주는 도
 
 \begin{Schunk}
 \begin{Soutput}
-gnustats@CHL072:~$ R
+gnustats@CHL072:~ R
 
 R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
 Copyright (C) 2012 The R Foundation for Statistical Computing
@@ -70,7 +70,7 @@ Type 'q()' to quit R.
 > 
 \end{Soutput}
 \end{Schunk}
-%$ 
+
 
 R이 입력된 명령어를 처리하여 사용자에게 명령어의 수행 결과를 보여주는 것을 아래와 같음을 확인하기 위해서 숫자 1 을 넣어보고 2 도 넣어봅니다. 
 아래와 같이 R은 $[1]$ 이라는 기호 뒤에 사용자가 입력한 숫자를 보여줍니다.
@@ -140,10 +140,10 @@ R의 가장 큰 특징은 아마도 객체들을 다룸에 있어 벡터를 기�
 이를 R로 수행하기 위해서는 다음과 같이 입력합니다. 
 
 \begin{Schunk}
-	\begin{Soutput}
+\begin{Soutput}
 > 1 + 2 - 3 + 4*5 - 6/3
 [1] 18
-	\end{Soutput}
+\end{Soutput}
 \end{Schunk}
 
 연산자라는 것은 어떤 특정 역할을 수행하는 기호이며, 산술연산에 대한  연산자 우선순위는 수학적 연산순서와 동일합니다. 
@@ -151,7 +151,7 @@ R의 가장 큰 특징은 아마도 객체들을 다룸에 있어 벡터를 기�
 다음과 같은 다양한 수학적인 연산이 가능합니다. 
 
 \begin{Schunk}
-	\begin{Soutput}
+\begin{Soutput}
 # 제곱 
 > 3^2
 [1] 9
@@ -503,7 +503,7 @@ $dim
 [1] 3 2
 \end{Soutput}
 \end{Schunk}
-% $
+
 
 행과 열이라는 속성은 행렬을 생성시 인자명을 통해서 생성된 것이므로, attributes()로 확인했을 때 이들의 정보가 dim 에 저장되어 있음을 알 수 있습니다. 
 그런데, 행과 열의 속성은 행렬의 크기를 나타내기도 하기 때문에 이들의 값을 따로 빼내어 사용하고 싶다면 dim() 이라는 함수를 이용하면 됩니다. 
@@ -534,7 +534,6 @@ $dim
 [1] 3 5
 \end{Soutput}
 \end{Schunk}
-% $
 
 이제 행렬을 생성하였으니, 간단한 행렬의 연산에 대해서 살펴보도록 하겠습니다. 
 
@@ -1196,8 +1195,6 @@ R은 숫자와 문자라는 것을 사용자가 직접 알려주기 전까지는
 이렇게 R은 정수형과 부동소수형에 대한 형식을 수치형이라는 클래스 내에 가지고 있습니다. 
 이러한 구분은 수치연산과 관련된 부분이므로 설명하지 않습니다. 
 
-%R에서 인식하는 데이터형에 대한 설명은 어디에 넣지?
-
 
 \paragraph{TODO:}
 \begin{itemize}
@@ -1239,6 +1236,7 @@ R은 숫자와 문자라는 것을 사용자가 직접 알려주기 전까지는
 [1] FALSE FALSE  TRUE FALSE
 \end{Soutput}
 \end{Schunk}
+
 
 문자형의 경우에도 동일합니다. 
 

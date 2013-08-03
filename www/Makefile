@@ -1,7 +1,7 @@
 # This file is intended for updating the webiste pages.
 
 sub2ihelp:
-	cp /home/gnustats/Documents/R-ko/korean/src/www/*.html /home/gnustats/Documents/R-ko/ihelp/www/
+	cp -r /home/gnustats/Documents/R-ko/korean/src/www/* /home/gnustats/Documents/R-ko/ihelp/www/
 	cp /home/gnustats/Documents/R-ko/korean/src/doc/manual-ko/*.texi /home/gnustats/Documents/R-ko/ihelp/doc/manual-ko/
 
 conv2html:
