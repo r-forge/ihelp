@@ -1,6 +1,6 @@
 @c 
-@c 2013-Aug-1 (Thursday)
-@c 1. Begining ~ 6 and 12.2까지 다 했지롱 by LIJIN
+@c 2013-Aug-2 (Friday)
+@c 1. Begining ~ 6 and 12.4까지 다 했지롱 by LIJIN
 @c 
 @c 작업을 하고 난 뒤에 그 다음날 아래의 주소를 통해서 주이진님께서 변경한 내용을 확인해보세요.
 @c http://korea.gnu.org/gnustats/docs/manual-ko/R-intro-ko.html 
@@ -8,7 +8,7 @@
 @c 그리고 위의 링크는 자동적으로 2~3 시간 이내에 아래의 주소로 싱크로 되요. 
 @c http://ihelp.r-forge.r-project.org/docs/manual-ko/R-intro-ko.html 
 @c 
-@c 일단 저(정우준)는 7장에서 10장... 이죠?
+@c 일단 저(정우준)는 7장에서 10장... 이죠? 넵~
 @c
 
 \input texinfo
@@ -7600,7 +7600,7 @@ K 0.7651
 @c specified by the character vector @code{names} for the points.
 
 
-그래픽 모수(parameter)인 @code{type="n"}은 포인트를 보이지 않게 하지만 좌표축(axes)은 이미 설정되어 있으며, 
+그래픽 파라미터(parameter)인 @code{type="n"}은 포인트를 보이지 않게 하지만 좌표축(axes)은 이미 설정되어 있으며, 
 @code{text()}함수는 @code{names}에 문자형 벡터를 입력된 경우, 원래 포인트의 위치에 (입력된 벡터에 저장되어 있는) 문자값을 출력합니다. 
 
 @item abline(a, b)
@@ -7783,7 +7783,7 @@ K 0.7651
 @end example
 
 @node Interacting with graphics, Using graphics parameters, Low-level plotting commands, Graphics
-@c @section Interacting with graphics
+@c @section 대화형 그래픽의 사용 (Interacting with graphics)
 @section
 
 @c @R{} also provides functions which allow users to extract or add
@@ -7837,7 +7837,7 @@ K 0.7651
 @c @code{labels} is absent).  Returns the indices of the selected points
 @c when another button is pressed.
 
-#####
+
 @code{x}와 @code{y} 정보가 입력된 포인트들을 대상으로, 이 중 특정 포인트들 (마우스의 왼쪽 버튼 클릭으로 선택) 근처에 해당 포인트에 대응하는 @code{레이블(labels)} 값을 표기하여 선택된 포인트들을 구분합니다.(@code{labels}인자가 따로 입력되지 않은 경우는, 해당 포인트의 인덱스를 출력합니다). (포인트의 선택 후) 버튼을 한 번 더 누르면 선택된 포인트들의 인덱스가 출력됩니다.
 
 @end table
@@ -7874,7 +7874,7 @@ K 0.7651
 
 @node Using graphics parameters, Graphics parameters, Interacting with graphics, Graphics
 @c @section Using graphics parameters
-@section 그래픽 모수(parameters)의 사용
+@section 그래픽 파라미터(parameters)의 사용
 
 @c When creating graphics, particularly for presentation or publication
 @c purposes, @R{}'s defaults do not always produce exactly that which is
@@ -7885,8 +7885,8 @@ K 0.7651
 @c others.  Every graphics parameter has a name (such as `@code{col}',
 @c which controls colors,) and a value (a color number, for example.)
 
-그래픽을 생성할 때, 특히 프리젠테이션이나 출판을 위한 목적이라면, @R{} 제공하는 디폴트만으로는 항상 원하는 형태의 플롯을 얻을 수 없을지도 모릅니다. 하지만, 그래픽 모수(graphics parameters)를 이용하면 거의 모든 그래프의 구성요소를 사용자가 원하는대로 바꿀 수 있습니다. @R{}은 선의 형태, 색, 그림의 배치, 그리고 텍스트 정의 등에 이르기까지 굉장히 다양한 작업을 수행할 수 있는 그래픽 모수들을 제공합니다. 
-또 , 모든 그래픽 모수는 이름(e.g. `@code{col}'의 경우, 사용할 색을 결정하는 모수입니다)과 값(value, `@code{col}'의 경우, 숫자로 사용할 색을 지정합니다)의 두가지 요소로 구성됩니다.
+그래픽을 생성할 때, 특히 프리젠테이션이나 출판을 위한 목적이라면, @R{} 제공하는 디폴트만으로는 항상 원하는 형태의 플롯을 얻을 수 없을지도 모릅니다. 하지만, 그래픽 파라미터(graphics parameters)를 이용하면 거의 모든 그래프의 구성요소를 사용자가 원하는대로 바꿀 수 있습니다. @R{}은 선의 형태, 색, 그림의 배치, 그리고 텍스트 정의 등에 이르기까지 굉장히 다양한 작업을 수행할 수 있는 그래픽 파라미터들을 제공합니다. 
+또 , 모든 그래픽 파라미터는 이름(e.g. `@code{col}'의 경우, 사용할 색을 결정하는 파라미터입니다)과 값(value, `@code{col}'의 경우, 숫자로 사용할 색을 지정합니다)의 두가지 요소로 구성됩니다.
 
 @c A separate list of graphics parameters is maintained for each active
 @c device, and each device has a default set of parameters when
@@ -7894,7 +7894,7 @@ K 0.7651
 @c permanently, affecting all graphics functions which access the current
 @c device; or temporarily, affecting only a single graphics function call.
 
-현재 사용중인(active) 디바이스마다 사용할 그래픽 모수(parameters)의 리스트를 따로 정의하는 것이 가능하며, 각 디바스 별로 서로 다른 디폴트모수들이 초기화됩니다. 그래픽 모수를 사용하는 방법은 크게 두 가지로 나눌 수 있습니다: 하나는, 보다 "영구적(permanently)"인 방법으로 현재 디바이스에서 사용할게 될 모든 그래픽 함수들에 영향을 미치게 되며, 좀 더 "일시적(temporarily)"인 방법은 사용하게 될 오직 하나의 그래픽 함수에만 영향을 줍니다.
+현재 사용중인(active) 디바이스마다 사용할 그래픽 파라미터(parameters)의 리스트를 따로 정의하는 것이 가능하며, 각 디바스 별로 서로 다른 디폴트 파라미터들이 초기화됩니다. 그래픽 파라미터를 사용하는 방법은 크게 두 가지로 나눌 수 있습니다: 하나는, 보다 "영구적(permanently)"인 방법으로 현재 디바이스에서 사용할게 될 모든 그래픽 함수들에 영향을 미치게 되며, 좀 더 "일시적(temporarily)"인 방법은 사용하게 될 오직 하나의 그래픽 함수에만 영향을 줍니다.
 
 @menu
 * The par() function::          
@@ -7907,31 +7907,32 @@ K 0.7651
 @findex par
 @cindex Graphics parameters
 
-######
+
 @c The @code{par()} function is used to access and modify the list of
 @c graphics parameters for the current graphics device.
 
-par()함수는 현재의 그래픽 디바이스의 그래픽 모수 리스트를 조정하기 위해 사용됩니다.
+par()함수는 현재의 그래픽 디바이스에서 사용할 그래픽 파라미터들을 지정하고 그 값을 바꾸는데 사용합니다.
 
 @table @code
 @item par()
 @c Without arguments, returns a list of all graphics parameters and their
 @c values for the current device.
 
-아무런 인수가 없는 경우, 현재 디바스에 저장되어 있는 모든 그래픽 모수와 그 모수들 해당 값의 리스트를 출력합니다.
+아무런 인수를 입력하지 않고 사용하면, 현재 디바이스에서 사용되고 있는 모든 그래픽 파라미터의 이름과 해당 파라미터들이 가진 값(values)들이 출력됩니다.
 
 @item par(c("col", "lty"))
 @c With a character vector argument, returns only the named graphics
 @c parameters (again, as a list.)
 
-문자 벡터 인수를 사용하면, 오직 따로 지정된 그래픽 모수들에 대해서만 (이 경우도 리스트의 형태로) 출력합니다.
+(인수의 이름들을 포함한) 문자 벡터가 인수로 사용되면, 오직 지정된 그래픽 파라미터들에 대해서만 사용 중인 값(values)이 (리스트의 형태로) 출력됩니다.
 
 @item par(col=4, lty=2)
 @c With named arguments (or a single list argument), sets the values of
 @c the named graphics parameters, and returns the original values of the
 @c parameters as a list.
 
-그래픽 모수와 해당 모수의 값들을 따로 인수(하나의 인수도 가능)로 지정하면, 지정된 값이 리스트로 출력됩니다.
+
+그래픽 파라미터와 해당 파라미터의 값들을 따로 인수(하나의 인수도 가능)로 지정하면, 지정된 값이 리스트로 출력됩니다.
 
 @end table
 
@@ -7942,7 +7943,7 @@ par()함수는 현재의 그래픽 디바이스의 그래픽 모수 리스트를
 @c as setting ``default'' values for the parameters, which will be used by
 @c all graphics functions unless an alternative value is given.
 
-par()함수를 사용해서 그래픽 모수를 지정하면 해당 모수와 그 값은 “영구적”으로 바뀝니다. 즉 미래에 해당 그래픽 함수를 (현재 디바이스에서) 사용하면 새로 지정된 값이 반영되어 출력되는 것 입니다. 따라서 이 방법을 사용해서 그래픽 모수를 지정하는 것은 일종의 “디폴트” 값을 지정하는 것과 같다고 생각할 수 있을 겁니다. 즉, 다른 값이 다시 지정되지 않는 한, 모든 그래픽 함수가 이 지정값에 영향을 받게 되는 것입니다.
+par()함수를 사용해서 그래픽 파라미터를 지정하면 해당 파라미터와 그 값은 “영구적”으로 바뀝니다. 즉 미래에 해당 그래픽 함수를 (현재 디바이스에서) 사용하면 새로 지정된 값이 반영되어 출력되는 것 입니다. 따라서 이 방법을 사용해서 그래픽 파라미터를 지정하는 것은 일종의 “디폴트” 값을 지정하는 것과 같다고 생각할 수 있을 겁니다. 즉, 다른 값이 다시 지정되지 않는 한, 모든 그래픽 함수가 이 지정값에 영향을 받게 되는 것입니다.
 
 @c Note that calls to @code{par()} @emph{always} affect the global values
 @c of graphics parameters, even when @code{par()} is called from within a
@@ -7953,7 +7954,7 @@ par()함수를 사용해서 그래픽 모수를 지정하면 해당 모수와 �
 @c making changes, and restoring the initial values when plotting is
 @c complete.
 
-par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용된 경우라도 전체적으로 모든 그래픽 모수들의 값이 영향을 받게 된다는 점을 주의하시기 바랍니다. 이것은 많은 경우 그다지 바람직하지 않다고 볼 수 있습니다 . 우리가 몇 개의 그래픽 모수를 따로 지정하는 것은 대체로 몇 개의 플롯을 그린 후, 현재의 R 세션이 이 값에 영향 받기 전 상태인 원래의 모수값으로 돌아가고 싶기 때문입니다. 특별히 모수를 바꾸는 작업이 필요할 때 par()의 결과를 따로 저장하고 플롯 작업이 끝난 후에는 초기 값을 다시 사용함으로써 초기값을 계속 유지하는 것이 가능합니다.
+par()를 사용하면, @emph{언제나}, 심지어 @code{par()}가 다른 함수 안에서 사용된 경우라도, (현재 디바이스 내) 모든 그래픽 파라미터들의 값이 (the global values of graphics parameters) 영향을 받게 된다는 점을 주의하시기 바랍니다. 이러한 결과는, 대부분의 경우 그다지 바람직하고 할 수 없을 겁니다 - 보통 우리가 바라는 것은 몇 개의 그래픽 파라미터만을 따로 지정하고, 이 상태에서 몇 개의 플롯을 작업한 후, 다시 처음의 설정으로 돌아갈 수 있도록 현재의 @R{} 세션 전체에는 영향을 주지 않는 것입니다. 따라서, 몇 개의 그래픽 파라미터를 바꿔서 작업하고 싶은 경우, 초기값들을 @code{par()}의 결과로 저장해두면, 변경된 파라미터로 플롯 작업을 끝낸 다음에, 이 저장된 값을 실행하면 다시 초기값으로 복원됩니다.
 
 @example
 > oldpar <- par(col=4, lty=2)
@@ -7966,7 +7967,9 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 @c parameters such as the size of the current device are for information
 @c only.} graphical parameters use
 
-조정 가능한 모든 그래픽 모수값을 저장해서 다시 사용하기 위해서는
+설정가능한 @emph{모든} 그래픽 파라미터의 값을 저장했다 다시 사용하기 위해서는,
+@footnote{물론 이 중 일부 그래픽 파라미터들은 현재 디바이스의 크기 처럼, 오직 정보 확인의 목적만을 가진 것들도 있습니다.}
+그래픽 파라미터를 다음과 같이 지정하면 됩니다.
 
 @example
 > oldpar <- par(no.readonly=TRUE)
@@ -7974,16 +7977,18 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 > par(oldpar)
 @end example
 
+
 @node Arguments to graphics functions,  , The par() function, Using graphics parameters
 @c @subsection Temporary changes: Arguments to graphics functions
-@subsection 그래픽 함수에 인자로 전달하는 방식의 임시적 변환
+@subsection 인자를 사용한 일시적 변환(Temporary changes: Arguments to graphics functions)
 
 @c Graphics parameters may also be passed to (almost) any graphics function
 @c as named arguments.  This has the same effect as passing the arguments
 @c to the @code{par()} function, except that the changes only last for the
 @c duration of the function call.  For example:
 
-그래픽 모수들은 (거의 모든) 그래픽 함수에서 인수처럼 사용될 수도 있습니다. 이러한 방법은 인수로 사용되었을 때의 변화가 오직 해당 함수가 사용되는 동안만 지속된다는 점을 제외하고는, par()함수에 인수들을 사용하는 것과 같은 효과를 줍니다. 예를 들면:
+그래픽 파라미터들은 (거의 모든) 그래픽 함수에서 적당한 인수로 사용될 수 있습니다. 
+인수로 사용했을 때는 오직 해당 함수가 사용되는 동안만 새로 지정한 값이 적용된다는 점을 제외하고는, par()함수 내에서 사용했을 때와 거의 같은 효과를 갖습니다. 예를 들면:
 
 @example
 > plot(x, y, pch="+")
@@ -7993,13 +7998,13 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 @c produces a scatterplot using a plus sign as the plotting character,
 @c without changing the default plotting character for future plots.
 
-이 경우, 더하기 표시를 플롯 문자로 사용한 산점도를 그리게 되는데, 이 때 사용된 플롯 문자는 앞으로 사용하게 될 플롯의 디폴트에는 영향을 주지 않습니다.
+위 명령문의 결과로 더하기 기호(@code{+})를 플롯 문자(plotting character)로 사용한 산점도를 그리게 되는데, 이 경우 앞으로 그리게 될 플롯의 디폴트 플롯문자를 바꾸지는 않습니다.
 
 @c Unfortunately, this is not implemented entirely consistently and it is
 @c sometimes necessary to set and reset graphics parameters using
 @c @code{par()}.
 
-안타깝지만, 항상 이와 같은 형태로만 실행되는 것이 아니므로 경우에 따라 par()를 사용해서 그래픽 모수들을 지정하고 다시 되돌리는 작업이 필요하기도 합니다.
+안타깝게도, 항상 이런 방식이 항상 일관성있게 적용되는 것은 아니므로, 경우에 따라서는 @code{par()}를 사용해서 그래픽 파라미터들을 원하는대로 지정하고 다시 되돌리는 작업을 해야할 수도 있습니다.
 
 
 @node Graphics parameters, Device drivers, Using graphics parameters, Graphics
@@ -8012,7 +8017,9 @@ par()를 사용하면, 항상, 심지어 par()가 다른 함수 안에서 사용
 @c provides a more concise summary; this is provided as a somewhat more
 @c detailed alternative.
 
-다음의 섹션들에서는 일반적으로 사용되는 그래픽 파라미터들에 대해 자세히 설명합니다. @code{par()} 함수에 대한 @R{} 도움말 문서는 보다 간결한 요약을 제공합니다; 이것은 다소 보다 세밀한 대안으로 제공됩니다.
+앞으로 몇 개의 섹션을 통해서는 일반적으로 많이 사용되는 그래픽 파라미터들에 대해 자세히 설명하겠습니다. 
+###
+@code{par()} 함수에 대한 @R{} 도움말 문서는 보다 간결한 요약을 제공합니다; 이것은 다소 보다 세밀한 대안으로 제공됩니다.
 
 @c Graphics parameters will be presented in the following form:
 
@@ -8185,7 +8192,7 @@ cex 역시 비슷한 기능을 하는 아래와 같은 옵션들이 있습니다
 @c units.) These components can be customized with the following graphics
 @c parameters.
 
-R의 하이 레벨에 플롯 (high-level plots)에는 많은 경우 축이 이미 포함되어 있지만, 로 레벨 (low-level) 그래픽 함수인 axis() 등을 사용하여 원하는 대로 축을 지정하는 것 역시 가능합니다. 축은 세 가지 요소에 의해 결정 됩니다: 축선 (선의 종류는 lty 그래픽 모수에 의해 지정 가능), 틱 마크 (축선을 따라 단위 별로 선을 분할 표기) 그리고 틱의 레이블 (틱 마크의 단위 표기)이 그것 입니다. 이러한 요소들은 다음과 같은 그래픽 모수들에 의해 조정 가능합니다.    
+R의 하이 레벨에 플롯 (high-level plots)에는 많은 경우 축이 이미 포함되어 있지만, 로 레벨 (low-level) 그래픽 함수인 axis() 등을 사용하여 원하는 대로 축을 지정하는 것 역시 가능합니다. 축은 세 가지 요소에 의해 결정 됩니다: 축선 (선의 종류는 lty 그래픽 파라미터에 의해 지정 가능), 틱 마크 (축선을 따라 단위 별로 선을 분할 표기) 그리고 틱의 레이블 (틱 마크의 단위 표기)이 그것 입니다. 이러한 요소들은 다음과 같은 그래픽 파라미터들에 의해 조정 가능합니다.    
 
 
 @table @code
@@ -8256,7 +8263,7 @@ A typical figure is
 @end iftex
 
 @c Graphics parameters controlling figure layout include:
-이러한 그림의 레이아웃 (구성 요소의 배열)은 다음과 같은 그래픽 모수들에 의해 결정 됩니다:
+이러한 그림의 레이아웃 (구성 요소의 배열)은 다음과 같은 그래픽 파라미터들에 의해 결정 됩니다:
 
 @table @code
 @item mai=c(1, 0.5, 0.5, 0)
@@ -8299,7 +8306,7 @@ R에서 n 개의 행과 m 개의 열로 배열된 그래프들을 한 페이지�
 @end iftex
 
 @c The graphical parameters relating to multiple figures are as follows:
-그래프의 중첩과 관련된 그래픽 모수에는 다음과 같은 것들이 있습니다:
+그래프의 중첩과 관련된 그래픽 파라미터에는 다음과 같은 것들이 있습니다:
 
 @table @code
 @item mfcol=c(3, 2)
@@ -8334,7 +8341,7 @@ R에서 n 개의 행과 m 개의 열로 배열된 그래프들을 한 페이지�
 @c different values for the last two numbers than the @emph{true} values
 @c for unequally-sized figures on the same page.
 
-그래프 중첩 시의 현재 그림의 위치를 조정 합니다. 처음 두 개의 숫자는 해당 그림의 행과 열의 위치를 표시하며, 나중의 두 숫자는 여러 그림의 배열에서의 행과 열의 위치를 표시합다. 이미 배열이 된 그림들 사이의 간격을 띄우기 위해 이 문장을 사용할 수도 있습니다. 또한 한 페이지 상에 출력된 크기가 다른 두 그림을 조정하기 위해 이 그래픽 모수의 마지막 두 숫자를 실제 위치와는 다른 값으로 지정하는 것도 가능합니다.
+그래프 중첩 시의 현재 그림의 위치를 조정 합니다. 처음 두 개의 숫자는 해당 그림의 행과 열의 위치를 표시하며, 나중의 두 숫자는 여러 그림의 배열에서의 행과 열의 위치를 표시합다. 이미 배열이 된 그림들 사이의 간격을 띄우기 위해 이 문장을 사용할 수도 있습니다. 또한 한 페이지 상에 출력된 크기가 다른 두 그림을 조정하기 위해 이 그래픽 파라미터의 마지막 두 숫자를 실제 위치와는 다른 값으로 지정하는 것도 가능합니다.
 
 @item fig=c(4, 9, 1, 4)/10
 @c Position of the current figure on the page.  Values are the positions of
@@ -8357,7 +8364,7 @@ R에서 n 개의 행과 m 개의 열로 배열된 그래프들을 한 페이지�
 @c measures in text lines and the second in inches, starting with the
 @c bottom margin and working clockwise.
 
-외부 여백의 크기를 조정하는 그래픽 모수들. mai 와 mar의 경우처럼, oma는 텍스트 줄 간격으로 여백의 크기를 지정하고, omi는 인치를 단위로 하며, 여백의 크기를 나타내는 네 숫자는 아래 여백부터 시작해서 시계 방향 순으로 표기됩니다.
+외부 여백의 크기를 조정하는 그래픽 파라미터들. mai 와 mar의 경우처럼, oma는 텍스트 줄 간격으로 여백의 크기를 지정하고, omi는 인치를 단위로 하며, 여백의 크기를 나타내는 네 숫자는 아래 여백부터 시작해서 시계 방향 순으로 표기됩니다.
 @end table
 
 @c Outer margins are particularly useful for page-wise titles, etc.  Text
@@ -9059,7 +9066,7 @@ Michelson 데이터를 데이터프레임의 형식으로 읽어들인 뒤, 이�
 
 @item par(oldpar)
 @c @dots{} and restore the old graphics parameters.
-이전에 보관한 그래픽 모수들을 원래대로 복구시킵니다.
+이전에 보관한 그래픽 파라미터들을 원래대로 복구시킵니다.
 
 @item image(x, y, f)
 @itemx image(x, y, fa)
