@@ -828,35 +828,45 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 OS 10.5 (Leopard) did not.
         </ol>
 
-   <p><a name="index-read_002ecsv-23"></a><a name="index-read_002ecsv2-24"></a><a name="index-read_002edelim-25"></a><a name="index-read_002edelim2-26"></a><a name="index-CSV-files-27"></a><a name="index-Sys_002elocaleconv-28"></a><a name="index-locales-29"></a>Convenience functions <code>read.csv</code> and <code>read.delim</code> provide
-arguments to <code>read.table</code> appropriate for CSV and tab-delimited
-files exported from spreadsheets in English-speaking locales.  The
-variations <code>read.csv2</code> and <code>read.delim2</code> are appropriate for
-use in those locales where the comma is used for the decimal point and
-(for <code>read.csv2</code>) for spreadsheets which use semicolons to separate
-fields.
+   <p>이러한 (실제의) 사례에 따른 또 다른 문제는 <samp><span class="command">file-5.03</span></samp>은 BOM을 보고하는 반면에 MAC OS 10.5(레오파드) 에서 <samp><span class="command">file-4.17</span></samp>는 그렇지 않다는 점입니다.
 
-   <p>If the options to <code>read.table</code> are specified incorrectly, the error
-message will usually be of the form
+   <p><a name="index-read_002ecsv-23"></a><a name="index-read_002ecsv2-24"></a><a name="index-read_002edelim-25"></a><a name="index-read_002edelim2-26"></a><a name="index-CSV-files-27"></a><a name="index-Sys_002elocaleconv-28"></a><a name="index-locales-29"></a><!-- Convenience functions @code{read.csv} and @code{read.delim} provide -->
+<!-- arguments to @code{read.table} appropriate for CSV and tab-delimited -->
+<!-- files exported from spreadsheets in English-speaking locales.  The -->
+<!-- variations @code{read.csv2} and @code{read.delim2} are appropriate for -->
+<!-- use in those locales where the comma is used for the decimal point and -->
+<!-- (for @code{read.csv2}) for spreadsheets which use semicolons to separate -->
+<!-- fields. -->
+
+   <p>편리한 함수인 <code>read.csv</code>와 <code>read.table</code>은 영어권에서 스프레드시트로부터 추출된 CSV와 탭으로 구분된 파일들에 적절한 <code>read.table</code>의 인자(arguments)를 제공합니다. <code>read.csv2</code> 와 <code>read.delim2</code>와 같은 변형은 구분자로 콤마(,)를 사용하거나 (<code>read.csv2</code>의 경우) 세미콜론이 스프레트시트의 필드구분자로 사용되는 지역에 적절합니다.
+
+<!-- If the options to @code{read.table} are specified incorrectly, the error -->
+<!-- message will usually be of the form -->
+   <p>read.table에 옵션을 부적절하게 지정하면, 보통 다음과 같은 형태의 에러 메시지가 나타납니다.
 
 <pre class="example">     Error in scan(file = file, what = what, sep = sep, :
              line 1 did not have 5 elements
 </pre>
-   <p class="noindent">or
+   <p class="noindent"><!-- or -->
+
+   <p>또는
 
 <pre class="example">     Error in read.table("files.dat", header = TRUE) :
              more columns than column names
 </pre>
    <p><a name="index-count_002efields-30"></a>
-This may give enough information to find the problem, but the auxiliary
-function <code>count.fields</code> can be useful to investigate further.
+<!-- This may give enough information to find the problem, but the auxiliary -->
+<!-- function @code{count.fields} can be useful to investigate further. -->
 
-   <p>Efficiency can be important when reading large data grids.  It will help
-to specify <code>comment.char = ""</code>, <code>colClasses</code> as one of the
-atomic vector types (logical, integer, numeric, complex, character or
-perhaps raw) for each column, and to give <code>nrows</code>, the number of
-rows to be read (and a mild over-estimate is better than not specifying
-this at all).  See the examples in later sections.
+   <p>이 메세지가 무엇이 문제인지 충분한 정보를 제공하지 못한다면 보조적으로 <code>count.fields</code>가 문제를 보다 더 자세하게 찾아내는데 유용하게 사용될 수 있습니다.
+
+<!-- Efficiency can be important when reading large data grids.  It will help -->
+<!-- to specify @code{comment.char = ""}, @code{colClasses} as one of the -->
+<!-- atomic vector types (logical, integer, numeric, complex, character or -->
+<!-- perhaps raw) for each column, and to give @code{nrows}, the number of -->
+<!-- rows to be read (and a mild over-estimate is better than not specifying -->
+<!-- this at all).  See the examples in later sections. -->
+   <p>효율성은 큰 데이터 그리드(grid)를 읽는데 중요합니다. 각 열에 대하여 (논리, 정수, 분수, 복소수, 문자 또는 미가공 된) atomic 벡터 유형들 중 하나인 <code>colClasses</code>인 <code>comment.char = ""</code>를 특정하고 읽어야 할 행의 수인 <code>nrows</code>를 (다소 과대 추정하는 것이 특정하지 않는 것보다 더 좋습니다) 부여하는 것이 도움이 될 것입니다. 아래의 예제들을 참조하십시오.
 
 <div class="node">
 <a name="Fixed-width-format-files"></a>
@@ -871,21 +881,26 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Spreadsheet_002dlike-data">Spreadsheet
 <h3 class="section">2.2 Fixed-width-format files</h3>
 
 <p><a name="index-Fixed_002dwidth_002dformat-files-31"></a>
-Sometimes data files have no field delimiters but have fields in
-pre-specified columns.  This was very common in the days of punched
-cards, and is still sometimes used to save file space.
+<!-- Sometimes data files have no field delimiters but have fields in -->
+<!-- pre-specified columns.  This was very common in the days of punched -->
+<!-- cards, and is still sometimes used to save file space. -->
 
-   <p><a name="index-read_002efwf-32"></a>Function <code>read.fwf</code> provides a simple way to read such files,
-specifying a vector of field widths.  The function reads the file into
-memory as whole lines, splits the resulting character strings, writes
-out a temporary tab-separated file and then calls <code>read.table</code>. 
-This is adequate for small files, but for anything more complicated we
-recommend using the facilities of a language like <code>perl</code> to
-pre-process the file. 
+   <p>종종 데이터 파일은 필드 구분자가 없이 사전에 정해진 열에 필드를 가집니다. 이것은 천공카드가 사용되던 때에 매우 일반적이었고 파일 공간을 절약하는데 여전히 종종 쓰입니다.
+
+   <p><a name="index-read_002efwf-32"></a><!-- Function @code{read.fwf} provides a simple way to read such files, -->
+<!-- specifying a vector of field widths.  The function reads the file into -->
+<!-- memory as whole lines, splits the resulting character strings, writes -->
+<!-- out a temporary tab-separated file and then calls @code{read.table}. -->
+<!-- This is adequate for small files, but for anything more complicated we -->
+<!-- recommend using the facilities of a language like @code{perl} to -->
+<!-- pre-process the file. -->
 <a name="index-perl-33"></a>
+함수 <code>read.fwf</code>는 필드 넓이의 벡터를 특정지음으로써, 그러한 파일들을 읽는데 단순한 방법을 제공합니다. <code>read.fwf</code> 함수는 파일의 전체 줄을 메모리로 읽고, 결과 문자열을 분할하고, 탭으로 분리된 임시 파일을 작성하여 <code>read.table</code>을 호출(call)합니다. 이것은 작은 파일에 적당하지만 어떤 더 복잡한 것에 대해서는 파일 전처리를 위해 <code>perl</code>과 같은 언어의 도구를 사용하는 것을 권장합니다.
 
-   <p><a name="index-read_002efortran-34"></a>Function <code>read.fortran</code> is a similar function for fixed-format files,
-using Fortran-style column specifications.
+   <p><a name="index-read_002efortran-34"></a><!-- Function @code{read.fortran} is a similar function for fixed-format files, -->
+<!-- using Fortran-style column specifications. -->
+
+   <p>함수 <code>read.fortran</code>은 포트란(Fortran) 유형의 열을 지정함으로써 고정된 포맷 파일에 대해 유사한 함수입니다.
 
 <div class="node">
 <a name="Data-Interchange-Format-(DIF)"></a>

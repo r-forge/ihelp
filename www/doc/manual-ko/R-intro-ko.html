@@ -241,8 +241,8 @@ p {
 </li></ul>
 <li><a href="#Graphics-parameters">12.5 그래픽 파라미터들의 목록</a>
 <ul>
-<li><a href="#Graphical-elements">12.5.1 그래픽 구성요소들의 활용</a>
-<li><a href="#Axes-and-tick-marks">12.5.2 축과 틱마크 (단위표시자) 이용하기</a>
+<li><a href="#Graphical-elements">12.5.1 그래픽 요소들의 활용(Graphical elements)</a>
+<li><a href="#Axes-and-tick-marks">12.5.2 축과 틱마크(tick marks,단위표시자)의 지정</a>
 <li><a href="#Figure-margins">12.5.3 그림(figure)의 여백 조절하기</a>
 <li><a href="#Multiple-figure-environment">12.5.4 Multiple figure environment</a>
 </li></ul>
@@ -7316,7 +7316,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
           <br><dt><code>legend( , pch=</code><var>v</var><code>)</code><dd><!-- Plotting characters (character vector) -->
 
-          <p>(문자형 벡터에) 입력된 문자들을 출력
+          <p>(문자형 벡터로) 입력된 문자들을 출력
 
      </dl>
 
@@ -7662,12 +7662,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- parameters.  The @R{} help documentation for the @code{par()} function -->
 <!-- provides a more concise summary; this is provided as a somewhat more -->
 <!-- detailed alternative. -->
-<p>앞으로 몇 개의 섹션을 통해서는 일반적으로 많이 사용되는 그래픽 파라미터들에 대해 자세히 설명하겠습니다. 
-###
-<code>par()</code> 함수에 대한 R 도움말 문서는 보다 간결한 요약을 제공합니다; 이것은 다소 보다 세밀한 대안으로 제공됩니다.
+<p>앞으로 몇 개의 섹션에서는 일반적으로 많이 사용되는 그래픽 파라미터들에 대해 자세히 설명하겠습니다. 
+<code>par()</code> 함수의 R 도움말 문서에 간단히 요약되어있지만, 이 문서에서는 좀 더 자세히 설명하겠습니다.
 
 <!-- Graphics parameters will be presented in the following form: -->
-   <p>그래픽 파라미터들은 다음의 형태로 제공될 것입니다:
+   <p>그래픽 파라미터들은 다음의 형식으로 사용됩니다:
 
      <dl>
 <dt><var>name</var><code>=</code><var>value</var><dd><!-- A description of the parameter's effect.  @var{name} is the name of the -->
@@ -7675,15 +7674,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 <!-- a graphics function.  @var{value} is a typical value you might use when -->
 <!-- setting the parameter. -->
 
-     <p>파라미터의 효과 설명
-
-     <p><var>name</var>은 파라미터의 이름을 말합니다. 즉 <code>par()</code> 또는 그래픽 함수를 호출함에 있어서 사용할 인수명이 됩니다. <var>value</var>는 파라미터를 세팅할 때 여러분이 사용하게 될 전형적인 값입니다.
+     <p>파라미터의 효과에 대한 설명. <var>name</var>은 파라미터의 이름(the name of the parameter), 즉 <code>par()</code> 또는 그래픽 함수에서 사용할 인수의 이름을 의미합니다. <var>value</var>는 파라미터를 원하는대로 지정하기위해(setting) 사용하는 일반적인 값(values) 중 하나를 의미합니다.
 
    </dl>
 
 <!-- Note that @code{axes} is @strong{not} a graphics parameter but an -->
 <!-- argument to a few @code{plot} methods: see @code{xaxt} and @code{yaxt}. -->
-   <p><code>axes</code>는 그래픽 파라미터가 아니라 소수의 <code>plot</code> 방법에 대한 인수 중의 하나입니다. 이에 관해서는 <code>xaxt</code>와 <code>yaxt</code>를 참고하십시오.
+   <p>단, <code>축(axes)</code>은 <strong>그래픽 파라미터가 아니라</strong>, <code>plot</code> 함수에만 적용가능한 몇 안되는 인자들 중의 하나라는 점을 기억하시기 바랍니다: 여기에 대해서는 <code>xaxt</code>와 <code>yaxt</code>를 참고하시기 바랍니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Graphical-elements">Graphical elements</a>
@@ -7702,36 +7699,34 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 </div>
 
 <!-- @subsection Graphical elements -->
-<h4 class="subsection">12.5.1 그래픽 구성요소들의 활용</h4>
+<h4 class="subsection">12.5.1 그래픽 요소들의 활용(Graphical elements)</h4>
 
 <!-- @R{} plots are made up of points, lines, text and polygons (filled -->
 <!-- regions.) Graphical parameters exist which control how these -->
 <!-- @emph{graphical elements} are drawn, as follows: -->
-<p>R의 플롯은 점, 선, 텍스트 그리고 (영역이 채워진) 다각형으로 구성되어 있습니다. 
-<em>그래픽 요소</em>들이 그려지는 방법을 제어하는 그래픽 파라미터들은 다음과 같습니다.
+<p>R의 플롯은 점, 선, 텍스트 그리고 (영역이 채워진) 다각형이라는 구성 요소들로 이루어져 있습니다. 
+이러한 <em>그래픽 요소(graphical elements)</em>들이 그려지는 방식을 제어하는 그래픽 파라미터에는 다음과 같은 것들이 있습니다:
 
      <dl>
 <dt><code>pch="+"</code><dd><!-- Character to be used for plotting points.  The default varies with -->
 <!-- graphics drivers, but it is usually -->
+<!-- a circle. -->
 
-     <p>플롯팅할 점들을 어떤 모양(symbol)으로 출력할지 문자로 지정하는 옵션. 
-기본값은 그래픽 장치(device)에따라 차이가 있지만 일반적으로는 (속이 빈) 원의 형태입니다.
+     <p>점을 플롯팅에 사용할 문자(character)를 지정합니다. 
+디폴트는 그래픽 드라이버(driver)의 종류에 따라 차이가 있긴하지만, 일반적으로는 (속이 빈) 원의 형태입니다.
 
-     <!-- a circle. -->
-     <p>원
-<!-- Plotted points tend to appear slightly above or below the appropriate -->
-<!-- position unless you use @code{"."} as the plotting character, which -->
-<!-- produces centered points. -->
-
-     <p>선택한 점의 모양에 따라 자동적으로 점의 위치가 위아래로 적절하게 조정되며,
-예를 들면, <code>"."</code>의 경우 점이 가운데로 정렬니다.
+     <!-- Plotted points tend to appear slightly above or below the appropriate -->
+     <!-- position unless you use @code{"."} as the plotting character, which -->
+     <!-- produces centered points. -->
+     <p>선택한 포인팅 문자의 종류에 따라 자동적으로 점의 위아래의 위치가 적절하게 조정되며,
+예를 들면, <code>"."</code>의 경우 점이 가운데로 정렬됩니다.
 
      <br><dt><code>pch=4</code><dd><!-- When @code{pch} is given as an integer between 0 and 25 inclusive, a -->
 <!-- specialized plotting symbol is produced.  To see what the symbols are, -->
 <!-- use the command -->
 
-     <p><code>pch</code>가 0과 25사이의 정수로 주어진 경우 각 번호 별로 다른 모양의 점을 출력 합니다. 
-각 번호에 해당하는 모양이 무엇인지 확인하기 위해 다음과 명령어를 사용하면 도움이 될 것입니다.
+     <p><code>pch</code>에 0에서 25사이의 정수가 입력될 경우, 각 번호에 해당하는 기호(symbol)를 사용한 플롯을 그립니다. 
+각 번호에 해당하는 기호(symbol)가 무엇인지 확인하려면, 다음과 같은 명령어를 사용할 수 있습니다.
 
      <pre class="example">          &gt; legend(locator(1), as.character(0:25), pch = 0:25)
 </pre>
@@ -7739,46 +7734,47 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 <!-- coloured in different ways: see the help on @code{points} and its -->
 <!-- examples. -->
 
-     <p>특히 21에서 25까지의 숫자를 선택할 경우, 0에서 20 사이에 이미 사용되었던 모양이 다른 크기와 색으로 나타날 수 있습니다 (<code>points</code> 에 관한 도움말과 예제 참조).
+     <p>또, 21에서 25사이의 숫자가 선택될 경우, 0에서 20 사이에 이미 사용되었던 기호(symbol)가 다른 방식으로 색이 칠해져(coloured/속이 빈 원의 경우, 까만 원으로 그려질 수 있습니다) 그려질 수 있습니다: <code>points</code> 에 관한 도움말과 예제를 참조하시기 바랍니다.
 
      <!-- In addition, @code{pch} can be a character or a number in the range -->
      <!-- @code{32:255} representing a character in the current font. -->
-     <p>또한 <code>pch</code>는  32:255에 해당하는 숫자를 선택할 경우, 현재 폰트에서의 문자 캐릭터에 해당하는 문자 또는 숫자를 출력하는 것도 가능합니다.
+     <p>또한, <code>pch</code>는 <code>32:255</code>의 범위에 해당하는 숫자로, 현재 폰트에서 문자(character)로 사용되는, 문자나 숫자로 점을 플롯할 수 있습니다.
 
      <br><dt><code>lty=2</code><dd><!-- Line types.  Alternative line styles are not supported on all graphics -->
 <!-- devices (and vary on those that do) but line type 1 is always a solid -->
 <!-- line, line type 0 is always invisible, and line types 2 and onwards are -->
 <!-- dotted or dashed lines, or some combination of both. -->
 
-     <p>선의 형태를 지정하는 옵션. 이 옵션에서 지정한 값이 모든 그래픽 디바이스에서 다 출력 가능한 것은 아니며 또한 디바이스의 종류에 따라 출력된 선의 모양이 다를 수도 있습니다. 그러나 lty =1은 항상 실선을, 0 은 항상 선을 보이지 않게, 2 와 그 이상의 번호는 점선과 파선, 그리고 다양한 형태의 점선과 파선의 조합을 출력합니다.
+     <p>선의 종류(types)를 지정하는 옵션. 이 옵션으로 지정한 선의 종류를 모든 그래픽 디바이스가 항상 출력가능한 것은 아니며, 또 디바이스의 종류에 따라 선을 출력하는 방식이 다를 수도 있습니다. 그러나 <code>lty=1</code>은 항상 실선(solid line)을, <code>lty=0</code>은 항상 선을 보이지 않게, <code>lty=2</code>와 그 이상의 번호는 점선(dotted)이나 파선(dashed), 혹은 이 둘을 다양하게 조합한 선으로 출력합니다.
 
      <br><dt><code>lwd=2</code><dd><!-- Line widths.  Desired width of lines, in multiples of the ``standard'' -->
 <!-- line width.  Affects axis lines as well as lines drawn with -->
 <!-- @code{lines()}, etc.  Not all devices support this, and some have -->
 <!-- restrictions on the widths that can be used. -->
 
-     <p>선의 굵기를 지정하는 옵션. 선의 굵기를 원하는 대로 조정할 수 있으며, 다양한 “표준 (standard)” 두께를 지정해 여러 번에 걸처 적용하는 것도 가능합니다. lines() 문으로 그려진 선은 물론이고 플롯의 축의 굵기를 조정하는 것도 가능합니다. 모든 그래픽 디바이스가 이 옵션을 지원하는 것이 아니며 몇몇 장치의 경우 출력 가능한 선의 굵기에 제약이 있을 수 있습니다.
+     <p>선의 굵기(width)를 지정하는 옵션. “표준(standard)” 두께의 몇 배인지를 숫자로 지정하여, 원하는대로 선의 두께를 지정합니다. <code>lines()</code>함수로 그린 선은 물론이고, 플롯의 축(axis)선 및 다른 선들의 굵기를 조정하는 것도 가능합니다. 모든  디바이스가 이 파라미터를 지원하는 것은 아니며, 디바이스의 종류에 따라 사용가능한 선의 굵기에 제약이 있을 수 있습니다.
 
      <br><dt><code>col=2</code><dd><!-- Colors to be used for points, lines, text, filled regions and images. -->
 <!-- A number from the current palette (see @code{?palette}) or a named colour. -->
 
-     <p>색을 지정하는 옵션. 점, 선, 덱스트, 그리고 색으로 채워진 영역과 이미지 모두에 적용 가능한 모수입니다. 현재 사용 중인 파레트 (palette, 자세한 사용은 <code>?palette</code> 부분 참조)에서 색을 선택하거나 색 이름을 직접 입력하는 것도 가능 합니다. 비슷한 기능을 하는 아래와 같은 옵션들도 있습니다. 위에서부터 순서대로 축의 주석 (annotation)[1], x와 y 축 레이블 (label), 주 (main) 타이틀과 서브 (sub) 타이틀에 각각 사용 가능 합니다.
+     <p>점, 선, 덱스트, 그리고 색으로 채워진 영역과 이미지 모두에 색을 지정하기 위해 사용 가능합니다. 현재 사용 중인 파레트 (palette, 자세한 사용은 <code>?palette</code> 부분 참조)로부터 번호를 선택하거나, 또는 색 이름을 직접 입력해서 선택하는 것도 가능 합니다.
 
-     <br><dt><code>col.axis</code><dt><code>col.lab</code><dt><code>col.main</code><dt><code>col.sub</code><dd><!-- The color to be used for axis annotation, @math{x} and @math{y} labels, -->
-<!-- main and sub-titles, respectively. -->
+     <br><dt><code>col.axis</code><dt><code>col.lab</code><dt><code>col.main</code><dt><code>col.sub</code><dd>
+비슷한 색(color)지정 파라미터들로 위와 같은 것들이 있으며, 위에서부터 순서대로 축의 주석(axis annotation), x와 y의 레이블(label), 주(main)타이틀과 서브(sub)-타이틀에 각각 사용 가능합니다.
 
-     <p>축 주석, x와 y 축 이름, 주된 타이틀과 부수적 타이틀 각각에 사용하기 위한 색
-
+     <!-- The color to be used for axis annotation, @math{x} and @math{y} labels, -->
+     <!-- main and sub-titles, respectively. -->
      <br><dt><code>font=2</code><dd><!-- An integer which specifies which font to use for text.  If possible, -->
 <!-- device drivers arrange so that @code{1} corresponds to plain text, -->
 <!-- @code{2} to bold face, @code{3} to italic, @code{4} to bold italic -->
 <!-- and @code{5} to a symbol font (which include Greek letters). -->
 
-     <p>폰트/글자체 (font) 지정하는 옵션. 각 정수 값에 해당하는 폰트로 텍스트(text)를 출력합니다. 만약 장치 드라이버가 이 옵션을 실행시키는 것이 가능하다면, 1은 기본형 텍스트 (plain text), 2는 볼드체 (굸은 글씨, bold face), 3은 이탤릭체 (italic), 4는 볼드 이탤릭 그리고 5는 그리스 문자 등을 포함하는 심벌 (symbol) 폰트로 출력한다. 폰트 역시 비슷한 기능을 하는 아래와 같은 옵션들이 있습니다. 
-<br><dt><code>font.axis</code><dt><code>font.lab</code><dt><code>font.main</code><dt><code>font.sub</code><dd><!-- The font to be used for axis annotation, @math{x} and @math{y} labels, -->
+     <p>정수 값을 사용하여 텍스트(text)를 출력에 사용할 폰트(font)의 종류를 지정합니다. 장치 드라이버가 지원가능한 경우,  <code>1</code>은 기본형 텍스트(plain text), <code>2</code>는 볼드체(굸은 글씨, bold face), 3은 이탤릭체(italic), <code>3</code>는 볼드 이탤릭, 그리고 <code>5</code>는 (그리스 문자 등을 포함하는) 기호(symbol) 폰트로 출력합니다.
+
+     <br><dt><code>font.axis</code><dt><code>font.lab</code><dt><code>font.main</code><dt><code>font.sub</code><dd><!-- The font to be used for axis annotation, @math{x} and @math{y} labels, -->
 <!-- main and sub-titles, respectively. -->
 
-     <p>위에서부터 순서대로 축의 주석 (annotation), x와 y 축 레이블 (label), 주 (main) 타이틀과 서브 (sub) 타이틀의 폰트에 각각 적용 가능합니다.
+     <p>폰트 역시 적용하게 될 대상에 따라, 위에서부터 순서대로 축의 주석 (axis annotation), x와 y의 레이블(label), 주(main)타이틀과 서브(sub)-타이틀에 각각 사용 가능합니다.
 
      <br><dt><code>adj=-0.1</code><dd><!-- Justification of text relative to the plotting position.  @code{0} means -->
 <!-- left justify, @code{1} means right justify and @code{0.5} means to -->
@@ -7787,16 +7783,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 <!-- position, so a value of @code{-0.1} leaves a gap of 10% of the text width -->
 <!-- between the text and the plotting position. -->
 
-     <p>플롯의 위치에 따라 텍스트의 상대적 위치를 지정하는 옵션. 0은 문자의 좌측 정렬, 1은 우측 정렬, 그리고 0.5는 플롯이 그려진 위치에서 부터 수평 가운데로 문자를 정렬 시킵니다. 즉, 지정된 숫자는 실제 플롯의 왼쪽 끝을 기준으로 텍스트가 나타나게 될 위치의 상대적 비율을 의미하게 됩니다. 즉, 위와 같이 -0.1로 지정할 경우, 플롯과 텍스트 사이에 문자 너비의 10% 만큼의 간격을 두고 출력하게 됩니다.
+     <p>플롯의 위치를 기준으로 텍스트를 상대적으로 정렬(justification)합니다. <code>0</code>은 좌측정렬(left justify), <code>1</code>은 우측정렬(right justify), 그리고 <code>0.5</code>는 플롯의 위치를 기준으로 가운데에 수평으로(center horizontally)로 정렬하는 것을 의미합니다. 즉, 지정된 숫자는 텍스트의 비율을 의미하는 것으로, 플롯의 위치에서 왼쪽을 기준으로 얼마만큼 간격을 두는지 결정합니다. 따라서, <code>-0.1</code>를 지정할 경우, 플롯의 위치와 텍스트 사이에 텍스트 너비(width)의 10% 만큼의 간격을 두게 됩니다.
 
      <br><dt><code>cex=1.5</code><dd><!-- Character expansion.  The value is the desired size of text characters -->
 <!-- (including plotting characters) relative to the default text size. -->
 
-     <p>문자 (character)의 확대 비율을 지정하는 옵션. 이 옵션의 숫자 값은 텍스트 문자 (플로팅 캐릭터 포함, pch 참고)의 크기를 텍스트 크기의 초기값(default)을 기준으로 한 상대적 크기를 출력합니다.
+     <p>문자 (character)의 확대 비율을 지정합니다. 이 옵션의 값은 텍스트 문자(플로팅 문자(plotting characters) 포함)의 크기를 텍스트의 디폴트(default) 크기를 기준으로 했을 때의 상대적 크기로 출력합니다.
 
      <br><dt><code>cex.axis</code><dt><code>cex.lab</code><dt><code>cex.main</code><dt><code>cex.sub</code><dd><!-- The character expansion to be used for axis annotation, @math{x} and -->
 <!-- @math{y} labels, main and sub-titles, respectively. -->
-cex 역시 비슷한 기능을 하는 아래와 같은 옵션들이 있습니다. 위에서부터 순서대로 축의 주석 (annotation), x와 y 축 레이 (label), 주 (main) 타이틀과 서브 (sub) 타이틀에 각각 사용 가능합니. 
+
+     <p>역시 대상에 따라, 위에서부터 순서대로 축의 주석 (axis annotation), x와 y의 레이블(label), 주(main)타이틀과 서브(sub)-타이틀에 각각 적용됩니다. 
 </dl>
 
 <div class="node">
@@ -7809,7 +7806,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 </div>
 
 <!-- @subsection Axes and tick marks -->
-<h4 class="subsection">12.5.2 축과 틱마크 (단위표시자) 이용하기</h4>
+<h4 class="subsection">12.5.2 축과 틱마크(tick marks,단위표시자)의 지정</h4>
 
 <!-- Many of @R{}'s high-level plots have axes, and you can construct axes -->
 <!-- yourself with the low-level @code{axis()} graphics function.  Axes have -->
@@ -7818,7 +7815,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 <!-- divisions along the axis line) and the @emph{tick labels} (which mark the -->
 <!-- units.) These components can be customized with the following graphics -->
 <!-- parameters. -->
-<p>R의 하이 레벨에 플롯 (high-level plots)에는 많은 경우 축이 이미 포함되어 있지만, 로 레벨 (low-level) 그래픽 함수인 axis() 등을 사용하여 원하는 대로 축을 지정하는 것 역시 가능합니다. 축은 세 가지 요소에 의해 결정 됩니다: 축선 (선의 종류는 lty 그래픽 파라미터에 의해 지정 가능), 틱 마크 (축선을 따라 단위 별로 선을 분할 표기) 그리고 틱의 레이블 (틱 마크의 단위 표기)이 그것 입니다. 이러한 요소들은 다음과 같은 그래픽 파라미터들에 의해 조정 가능합니다.
+<p>####
+R의 하이 레벨에 플롯 (high-level plots)에는 많은 경우 축이 이미 포함되어 있지만, 로 레벨 (low-level) 그래픽 함수인 axis() 등을 사용하여 원하는 대로 축을 지정하는 것 역시 가능합니다. 축은 세 가지 요소에 의해 결정 됩니다: 축선 (선의 종류는 lty 그래픽 파라미터에 의해 지정 가능), 틱 마크 (축선을 따라 단위 별로 선을 분할 표기) 그리고 틱의 레이블 (틱 마크의 단위 표기)이 그것 입니다. 이러한 요소들은 다음과 같은 그래픽 파라미터들에 의해 조정 가능합니다.
 
      <dl>
 <dt><code>lab=c(5, 7, 12)</code><dd><!-- The first two numbers are the desired number of tick intervals on the -->

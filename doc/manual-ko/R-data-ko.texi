@@ -833,13 +833,13 @@ foo <- read.table(con)
 close(con)
 @end example
 
-
-
 @noindent
 Another problem with this (real-life) example is that whereas
 @command{file-5.03} reported the BOM, @command{file-4.17} found on Mac
 OS 10.5 (Leopard) did not.
 @end enumerate
+
+이러한 (실제의) 사례에 따른 또 다른 문제는 @command{file-5.03}은 BOM을 보고하는 반면에 MAC OS 10.5(레오파드) 에서 @command{file-4.17}는 그렇지 않다는 점입니다. 
 
 @findex read.csv
 @findex read.csv2
@@ -848,16 +848,20 @@ OS 10.5 (Leopard) did not.
 @cindex CSV files
 @findex Sys.localeconv
 @cindex locales
-Convenience functions @code{read.csv} and @code{read.delim} provide
-arguments to @code{read.table} appropriate for CSV and tab-delimited
-files exported from spreadsheets in English-speaking locales.  The
-variations @code{read.csv2} and @code{read.delim2} are appropriate for
-use in those locales where the comma is used for the decimal point and
-(for @code{read.csv2}) for spreadsheets which use semicolons to separate
-fields.
+@c Convenience functions @code{read.csv} and @code{read.delim} provide
+@c arguments to @code{read.table} appropriate for CSV and tab-delimited
+@c files exported from spreadsheets in English-speaking locales.  The
+@c variations @code{read.csv2} and @code{read.delim2} are appropriate for
+@c use in those locales where the comma is used for the decimal point and
+@c (for @code{read.csv2}) for spreadsheets which use semicolons to separate
+@c fields.
 
-If the options to @code{read.table} are specified incorrectly, the error
-message will usually be of the form
+편리한 함수인 @code{read.csv}와 @code{read.table}은 영어권에서 스프레드시트로부터 추출된 CSV와 탭으로 구분된 파일들에 적절한 @code{read.table}의 인자(arguments)를 제공합니다. @code{read.csv2} 와 @code{read.delim2}와 같은 변형은 구분자로 콤마(,)를 사용하거나 (@code{read.csv2}의 경우) 세미콜론이 스프레트시트의 필드구분자로 사용되는 지역에 적절합니다.
+
+@c If the options to @code{read.table} are specified incorrectly, the error
+@c message will usually be of the form
+
+read.table에 옵션을 부적절하게 지정하면, 보통 다음과 같은 형태의 에러 메시지가 나타납니다.
 
 @example
 Error in scan(file = file, what = what, sep = sep, : 
@@ -865,7 +869,9 @@ Error in scan(file = file, what = what, sep = sep, :
 @end example
 
 @noindent
-or
+@c or
+
+또는
 
 @example
 Error in read.table("files.dat", header = TRUE) : 
@@ -875,39 +881,47 @@ Error in read.table("files.dat", header = TRUE) :
 @findex count.fields
 
 @noindent
-This may give enough information to find the problem, but the auxiliary
-function @code{count.fields} can be useful to investigate further.
+@c This may give enough information to find the problem, but the auxiliary
+@c function @code{count.fields} can be useful to investigate further.
 
-Efficiency can be important when reading large data grids.  It will help
-to specify @code{comment.char = ""}, @code{colClasses} as one of the
-atomic vector types (logical, integer, numeric, complex, character or
-perhaps raw) for each column, and to give @code{nrows}, the number of
-rows to be read (and a mild over-estimate is better than not specifying
-this at all).  See the examples in later sections.
+이 메세지가 무엇이 문제인지 충분한 정보를 제공하지 못한다면 보조적으로 @code{count.fields}가 문제를 보다 더 자세하게 찾아내는데 유용하게 사용될 수 있습니다.
 
+@c Efficiency can be important when reading large data grids.  It will help
+@c to specify @code{comment.char = ""}, @code{colClasses} as one of the
+@c atomic vector types (logical, integer, numeric, complex, character or
+@c perhaps raw) for each column, and to give @code{nrows}, the number of
+@c rows to be read (and a mild over-estimate is better than not specifying
+@c this at all).  See the examples in later sections.
+
+효율성은 큰 데이터 그리드(grid)를 읽는데 중요합니다. 각 열에 대하여 (논리, 정수, 분수, 복소수, 문자 또는 미가공 된) atomic 벡터 유형들 중 하나인 @code{colClasses}인 @code{comment.char = ""}를 특정하고 읽어야 할 행의 수인 @code{nrows}를 (다소 과대 추정하는 것이 특정하지 않는 것보다 더 좋습니다) 부여하는 것이 도움이 될 것입니다. 아래의 예제들을 참조하십시오.
 
 @node Fixed-width-format files, Data Interchange Format (DIF), Variations on read.table, Spreadsheet-like data
 @section Fixed-width-format files
 @cindex Fixed-width-format files
 
-Sometimes data files have no field delimiters but have fields in
-pre-specified columns.  This was very common in the days of punched
-cards, and is still sometimes used to save file space.
+@c Sometimes data files have no field delimiters but have fields in
+@c pre-specified columns.  This was very common in the days of punched
+@c cards, and is still sometimes used to save file space.
+
+종종 데이터 파일은 필드 구분자가 없이 사전에 정해진 열에 필드를 가집니다. 이것은 천공카드가 사용되던 때에 매우 일반적이었고 파일 공간을 절약하는데 여전히 종종 쓰입니다.
 
 @findex read.fwf
-Function @code{read.fwf} provides a simple way to read such files,
-specifying a vector of field widths.  The function reads the file into
-memory as whole lines, splits the resulting character strings, writes
-out a temporary tab-separated file and then calls @code{read.table}.
-This is adequate for small files, but for anything more complicated we
-recommend using the facilities of a language like @code{perl} to
-pre-process the file.
+@c Function @code{read.fwf} provides a simple way to read such files,
+@c specifying a vector of field widths.  The function reads the file into
+@c memory as whole lines, splits the resulting character strings, writes
+@c out a temporary tab-separated file and then calls @code{read.table}.
+@c This is adequate for small files, but for anything more complicated we
+@c recommend using the facilities of a language like @code{perl} to
+@c pre-process the file.
 @cindex perl
 
+함수 @code{read.fwf}는 필드 넓이의 벡터를 특정지음으로써, 그러한 파일들을 읽는데 단순한 방법을 제공합니다. @code{read.fwf} 함수는 파일의 전체 줄을 메모리로 읽고, 결과 문자열을 분할하고, 탭으로 분리된 임시 파일을 작성하여 @code{read.table}을 호출(call)합니다. 이것은 작은 파일에 적당하지만 어떤 더 복잡한 것에 대해서는 파일 전처리를 위해 @code{perl}과 같은 언어의 도구를 사용하는 것을 권장합니다.
 
 @findex read.fortran
-Function @code{read.fortran} is a similar function for fixed-format files,
-using Fortran-style column specifications.
+@c Function @code{read.fortran} is a similar function for fixed-format files,
+@c using Fortran-style column specifications.
+
+함수 @code{read.fortran}은 포트란(Fortran) 유형의 열을 지정함으로써 고정된 포맷 파일에 대해 유사한 함수입니다.
 
 @node Data Interchange Format (DIF), Using scan directly, Fixed-width-format files, Spreadsheet-like data
 @section Data Interchange Format (DIF)
@@ -915,6 +929,8 @@ using Fortran-style column specifications.
 
 An old format sometimes used for spreadsheet-like data is DIF, or Data Interchange 
 format.  
+
+
 
 @findex read.DIF
 Function @code{read.DIF} provides a simple way to read such files.  It takes 
