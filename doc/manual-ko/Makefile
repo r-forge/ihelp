@@ -9,6 +9,7 @@ conv2html:
 	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --output=R-FAQ-ko.html R-FAQ-ko.texi
 	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-lang-ko.html R-lang-ko.texi 
 	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-admin-ko.html R-admin-ko.texi
+	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-ext-ko.html R-ext-ko.texi
 	makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
 	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
 

@@ -10,6 +10,7 @@ conv2html:
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --output=R-FAQ-ko.html R-FAQ-ko.texi
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-lang-ko.html R-lang-ko.texi 
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-admin-ko.html R-admin-ko.texi
+	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-exts-ko.html R-exts-ko.texi
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
 	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
 
