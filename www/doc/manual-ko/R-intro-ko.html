@@ -256,11 +256,11 @@ p {
 </li></ul>
 <li><a href="#Dynamic-graphics">12.8 다이나믹 그래픽의 생성(Dynamic graphics)</a>
 </li></ul>
-<li><a name="toc_Packages" href="#Packages">13 패키지들 #######</a>
+<li><a name="toc_Packages" href="#Packages">13 패키지들 (Packages)</a>
 <ul>
-<li><a href="#Standard-packages">13.1 표준 패키지들</a>
-<li><a href="#Contributed-packages-and-CRAN">13.2 사용자개발 패키지들과 <acronym>CRAN</acronym></a>
-<li><a href="#Namespaces">13.3 네임스페이스</a>
+<li><a href="#Standard-packages">13.1 표준 패키지들 (Standard packages)</a>
+<li><a href="#Contributed-packages-and-CRAN">13.2 사용자-기여 패키지(Contributed packages)와 <acronym>CRAN</acronym></a>
+<li><a href="#Namespaces">13.3 네임스페이스 (Namespaces)</a>
 </li></ul>
 <li><a name="toc_A-sample-session" href="#A-sample-session">Appendix A 샘플 세션</a>
 <li><a name="toc_Invoking-R" href="#Invoking-R">Appendix B R 실행하기</a>
@@ -7993,7 +7993,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics-parameters">Graphics paramete
 <!-- More complicated arrangements of multiple figures can be produced by the -->
 <!-- @code{split.screen()} and @code{layout()} functions, as well as by the -->
 <!-- @pkg{grid} and @CRANpkg{lattice} packages. -->
-   <p>좀 더 복잡하게 배열된 그래픽 중첩을 사용하고 싶다면, <code>split.screen()</code>과 <code>layout()</code> 같은 함수들을 사용할 수 있으며, <strong>grid</strong>나 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a> 등의 팩키지를 사용하는 것도 가능합니다.
+   <p>좀 더 복잡하게 배열된 그래픽 중첩을 사용하고 싶다면, <code>split.screen()</code>과 <code>layout()</code> 같은 함수들을 사용할 수 있으며, <strong>grid</strong>나 <a href="http://CRAN.R-project.org/package=lattice"><strong>lattice</strong></a> 등의 패키지를 사용하는 것도 가능합니다.
 
 <div class="node">
 <a name="Device-drivers"></a>
@@ -8204,13 +8204,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Graphics">Graphics</a>
 
 <p class="noindent"><!-- and these can be accessed from @R{} via the package @CRANpkg{rggobi}, described at -->
 
-   <p>또 R에서는, 아래의 <a href="http://CRAN.R-project.org/package=rggobi"><strong>rggobi</strong></a> 팩키지를 설치하여 이러한 그래픽 기능들을 사용할 수 있습니다.
+   <p>또 R에서는, 아래의 <a href="http://CRAN.R-project.org/package=rggobi"><strong>rggobi</strong></a> 패키지를 설치하여 이러한 그래픽 기능들을 사용할 수 있습니다.
 
    <p><a href="http://www.ggobi.org/rggobi">http://www.ggobi.org/rggobi</a>).
 
 <!-- Also, package @CRANpkg{rgl} provides ways to interact with 3D plots, for example -->
 <!-- of surfaces. -->
-   <p>또한, <a href="http://CRAN.R-project.org/package=rgl"><strong>rgl</strong></a> 팩키지는 3D plots에서, 좀 더 구체적으로 plot 의 표면(surfaces)에서, 대화형(interactive) 작업을 지원합니다.
+   <p>또한, <a href="http://CRAN.R-project.org/package=rgl"><strong>rgl</strong></a> 패키지는 3D plots에서, 좀 더 구체적으로 plot 의 표면(surfaces)에서, 대화형(interactive) 작업을 지원합니다.
 
 <div class="node">
 <a name="Packages"></a>
@@ -8222,7 +8222,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 </div>
 
 <!-- @chapter Packages -->
-<h2 class="chapter">13 패키지들 #######</h2>
+<h2 class="chapter">13 패키지들 (Packages)</h2>
 
 <p><a name="index-Packages-286"></a>
 <!-- All @R{} functions and datasets are stored in @emph{packages}.  Only -->
@@ -8234,15 +8234,15 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- packages, R-exts, Writing R Extensions}.  Here, we will describe them -->
 <!-- from a user's point of view. -->
 
-   <p>모든 R 함수들과 데이터셋들은 <em>packages</em>(패키지)안에 저장되어 있습니다. 
-따라서, 패키지가 로드되었을때만 패키지 안의 내용들을 사용할 수 있습니다. 
-이러한 패키지 시스템은 전체리스트를 사용하지 않으므로 메모리의 사용량이 적고 필요시 검색에도 훨씬 적은 시간이 걸리므로 메모리사용에서 효율적이라고 할 수 있습니다. 
-또한, 이러한 시스템은 다른 코드들과 이름이 충돌이 나는 것을 자연스레 방지해 줌으로서 패키지 개발자의 편의를 고려했다고 볼 수 있습니다. 
+   <p>R의 모든 함수들과 데이터셋들은 <em>패키지 (packages)</em>안에 저장되어 있습니다. 
+따라서, 어떤 패키지가 로드(loaded)되었을 때만 패키지 안의 내용물들을 사용할 수 있습니다. 
+이러한 패키지 시스템은 효율성(efficiency)과 개발자의 편의 (to aid package developers)라는 장점을 가집니다:
+전체 리스트를 사용할 때 보다 메모리의 사용량이 적고, 필요한 내요을 검색하는 데도 훨씬 적은 시간이 걸린다는 점에서 효율적이며, 다른 코드와 같은 이름을 사용하게 되는 것(name clashes with other code)을 자연스럽게 방지하는 역할도 있으므로 패키지 개발자의 편의를 고려했다고 볼 수 있습니다. 
 패키지를 개발하는 과정에 대해서는 <a href="R-exts.html#Creating-R-packages">Creating R packages</a>를 살펴보시길 바랍니다. 
-여기에서 우리는 사용자 측면에 대해서만 이야기 할 것입니다.
+여기에서 우리는 사용자 측면에 대해서만 이야기할 것입니다.
 
 <!-- To see which packages are installed at your site, issue the command -->
-   <p>어떤 패키지들이 사용자의 사이트(site)에 설치되어 있는지 알고 싶다면 다음의 명령어를 아무런 인자없이 입력해보세요.
+   <p>어떤 패키지들이 여러분이 사용중인 R 프로그램(사이트, site)에 설치되어 있는지 알고싶다면, 인자의 입력 없이 다음의 함수를 사용하시면 됩니다.
 
 <pre class="example">     &gt; library()
 </pre>
@@ -8250,7 +8250,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- package containing functions from Davison & Hinkley (1997)), use a -->
 <!-- command like -->
 
-   <p>Davison &amp; Hinkley (1997)가 작성한 함수들을 포함하고 있는 <a href="http://CRAN.R-project.org/package=boot"><strong>boot</strong></a>와 같은 어떤 특정한 패키지를 설치하고자 한다면, 아래와 같이 명령어를 입력하면 됩니다.
+   <p>특정한 하나의 패키지를 로드(load)하기 위해서는
+(예를 들면, Davison &amp; Hinkley (1997)에 사용된 함수들이 포함되어 있는 <a href="http://CRAN.R-project.org/package=boot"><strong>boot</strong></a>를 사용하고 싶다고 가정합시다), 아래와 같은 명령어를 입력하면 됩니다.
 <pre class="example">     &gt; library(boot)
 </pre>
    <!-- Users connected to the Internet can use the @code{install.packages()} -->
@@ -8258,12 +8259,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- @code{Packages} menu in the Windows and RAqua GUIs, @pxref{Installing -->
 <!-- packages, , , R-admin, R Installation and Administration}) to install and -->
 <!-- update packages. -->
-   <p>인터넷에 연결되어 있는 사용자라면 <code>install.packages()</code>와 <code>update.packages()</code> 함수들을 이용하여 패키지를 설치하거나 업데이트 할 수 있습니다. 
-윈도우즈와 RAqua GUI에서는 <code>Packages</code> 메뉴를 통하여 위의 기능들을 이용할 수 있습니다. 
-see <a href="R-admin.html#Installing-packages">Installing packages</a>)를 참고하시길 바랍니다.
+   <p>인터넷을 사용할 수 있다면, <code>install.packages()</code>와 <code>update.packages()</code> 함수들을 이용하여 패키지를 설치하거나 업데이트 할 수 있습니다. 
+(윈도우즈와 RAqua GUI에서는 <code>Packages</code> 메뉴를 통해 이러한 작업을 실행할 수도 있습니다. 
+see <a href="R-admin.html#Installing-packages">Installing packages</a>)를 참고하시길 바랍니다.)
 
 <!-- To see which packages are currently loaded, use -->
-   <p>현재 로드되어 있는 패키지들을 확인하고 싶다면 아래의 명령어를 이용해보세요.
+   <p>현재 로드되어 있는 패키지들을 확인하고 싶다면 아래의 함수를 입력하여
 
 <pre class="example">     &gt; search()
 </pre>
@@ -8271,23 +8272,23 @@ see <a href="R-admin.html#Installing-packages">Installing packages</a>)를 참�
 <!-- available on the search list (@pxref{Namespaces}): these will be -->
 <!-- included in the list given by -->
 
-   <p>이것은 검색리스트(search list)를 보여줄 것입니다. 
-일부 패키지들은 아마도 로드되었지만 검색리스트에서 보여지지 않을 수 도 있습니다. 
-이에 대해서는 see <a href="#Namespaces">Namespaces</a>를 참고하시길 바랍니다. 
-이들은 다음의 명령어를 통해서 확인이 가능합니다.
+   <p>검색 리스트(search list)를 확인할 수 있습니다. 
+일부 패키지들은 로드되어있다고 하더라도 검색 리스트에서 보이지 않을 수도 있습니다. 
+(여기에 대해서는 see <a href="#Namespaces">Namespaces</a>를 찾아보시길 바랍니다):
+이러한 패키지들은 다음의 명령어를 사용하면 확인이 가능합니다.
 
 <pre class="example">     &gt; loadedNamespaces()
 </pre>
    <!-- To see a list of all available help topics in an installed package, -->
 <!-- use -->
-   <p>설치된 패키지에 있는 이용이 가능한 모든 도움말 주제들의 목록을 확인해 보고 싶다면 아래의 명령어를 이용하세요.
+   <p>설치된 패키지에서 사용가능한 모든 도움말(help) 주제의 목록을 확인해보고 싶다면 아래의 명령어를 사용하시기 바랍니다.
 
 <pre class="example">     &gt; help.start()
 </pre>
    <p class="noindent"><!-- to start the @HTML{} help system, and then navigate to the package -->
 <!-- listing in the @code{Reference} section. -->
 
-   <p>이 명령어는 <acronym>HTML</acronym> 도움말 시스템을 시작할 것이고, <code>Reference</code>섹션에서 패키지 목록들을 탐색하시면 됩니다.
+   <p>이 명령어로 <acronym>HTML</acronym> 도움말 시스템(help system)이 시작되며, <code>Reference</code> 섹션에서 패키지 목록을 찾으시면 됩니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Standard-packages">Standard packages</a>
@@ -8305,7 +8306,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 </div>
 
 <!-- @section Standard packages -->
-<h3 class="section">13.1 표준 패키지들</h3>
+<h3 class="section">13.1 표준 패키지들 (Standard packages)</h3>
 
 <!-- The standard (or @emph{base}) packages are considered part of the @R{} -->
 <!-- source code.  They contain the basic functions that allow @R{} to work, -->
@@ -8313,10 +8314,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 <!-- are described in this manual.  They should be automatically available in -->
 <!-- any @R{} installation.  @xref{Which add-on packages exist for R?, , R -->
 <!-- packages, R-FAQ, R FAQ}, for a complete list. -->
-<p>표준 (또는 <em>base</em>) 패키지들은 R 소스코드의 중요한 부분입니다. 
-이들은 R이 작업을 할 수 있도록 해주는 기본 함수들과 데이터셋, 그리고 표준 통계분석 및 이 문서에서 설명된 그래픽 함수들이 포함되어 있습니다. 
-이러한 표준 패키지들은 R 설치시에 자동으로 사용이 가능합니다. 
-모든 표준패키지 목록을 알고 싶으시다면 다음을 참조하세요 See <a href="R-FAQ.html#Which-add_002don-packages-exist-for-R_003f">R packages</a>.
+<p>표준(또는 <em>기본 (base)</em>) 패키지들은 R 소스코드(source code)에서 매우 중요한 부분을 차지합니다. 
+이 표준 패키지들은 R이 작동할 수 있도록하는 기본 함수들(basic functions)은 물론이고, 데이터셋, 표준 통계분석 및 (앞부분에서 설명된) 그래픽 함수들로 구성되어 있습니다. 이러한 표준 패키지들은 R 설치시에 자동으로 따라 옵니다. 
+모든 표준패키지 목록을 보고싶으시면 다음을 참조하세요. See <a href="R-FAQ.html#Which-add_002don-packages-exist-for-R_003f">R packages</a>.
 
 <div class="node">
 <a name="Contributed-packages-and-CRAN"></a>
@@ -8328,7 +8328,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 </div>
 
 <!-- @section Contributed packages and @acronym{CRAN} -->
-<h3 class="section">13.2 사용자개발 패키지들과 <acronym>CRAN</acronym></h3>
+<h3 class="section">13.2 사용자-기여 패키지(Contributed packages)와 <acronym>CRAN</acronym></h3>
 
 <p><a name="index-CRAN-287"></a>
 <!-- There are thousands of contributed packages for @R{}, written by many -->
@@ -8343,11 +8343,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 <!-- contains a list of CRAN packages current at the time of release, but the -->
 <!-- collection of available packages changes very frequently. -->
 
-   <p>R은 무수히 많은 개발자들에 의해 작성된 매우 방대한 양의 기여된 패키지(contributed package)들이 있습니다. 
-이들 중 일부는 특수한 통계방법들을 구현하였고, 또다른 일부는 데이터 또는 하드웨어에 대한 접근과 관련이 있으며, 그 외의 다른 패키지들은 어떤 참고서 혹은 교과서의 부록이기도 합니다. 
-일부 <em>recommended</em> (권장)패키지들은 R의 바이너리 배포판과 함께 배포됩니다. 
-대부분은 <acronym>CRAN</acronym>(<a href="http://CRAN.R-project.org/">http://CRAN.R-project.org/</a>과 미러)와 Bioconductor (<a href="http://www.bioconductor.org/">http://www.bioconductor.org/</a>) 그리고 Omegahat (<a href="http://www.omegahat.org/">http://www.omegahat.org/</a>)과 같은 저장소들을 통해서 얻을 수 있습니다. 
-<em>R FAQ</em>는 가장 최근에 릴리즈된 CRAN 패키지들의 목록을 포함하고 있지만, 이용가능한 패키지들의 목록이 매우 자주 변경됩니다.
+   <p>R에는 수없이 많은 개발자들에 의해 작성된, 매우 방대한 양의 기여된 패키지(contributed packages)들이 있습니다. 이 중 일부는 특수한 통계방법들을 구현하였고, 또다른 것들은 데이터 또는 하드웨어에 대한 접근을 다루고있으며, 그 외에도 교과서의 부록으로(to complement textbooks) 제작된 것들도 있습니다. 
+일부 <em>권장 (recommended)</em> 패키지들은 R의 바이너리 배포 때 함께 배포됩니다. 
+하지만 대부분의 패키지는 <acronym>CRAN</acronym>(<a href="http://CRAN.R-project.org/">http://CRAN.R-project.org/</a>과 이 사이트의 미러 사이트들) 그리고 Bioconductor (<a href="http://www.bioconductor.org/">http://www.bioconductor.org/</a>)나 Omegahat (<a href="http://www.omegahat.org/">http://www.omegahat.org/</a>)과 같은 저장소들(repositories)을 통해서 다운로드 할 수 있습니다. 
+<em>R FAQ</em>에는 이 문서의 출시(release)를 기준으로 최근의 CRAN 패키지들의 목록을 포함하고는 있지만, 이용가능한 패키지들의 목록은 매우 자주 변경됩니다.
 
 <div class="node">
 <a name="Namespaces"></a>
@@ -8358,7 +8357,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 </div>
 
 <!-- @section Namespaces -->
-<h3 class="section">13.3 네임스페이스</h3>
+<h3 class="section">13.3 네임스페이스 (Namespaces)</h3>
 
 <p><a name="index-Namespace-288"></a><a name="index-g_t_003a_003a-289"></a><a name="index-g_t_003a_003a_003a-290"></a>
 <!-- Packages can have @emph{namespaces}, and currently all of the base and -->
@@ -8369,19 +8368,19 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 <!-- with one in the package, and they provide a way to refer to an object -->
 <!-- within a particular package. -->
 
-   <p>패키지들은 <em>namespaces</em>(네임스페이스)를 가질 수 있으며, 현재 <code>datasets</code> 패키지를 제외한 base와 권장 패키지들 모두가 네임스페이스를 가지고 있습니다. 
-네임스페이스는 주로 다음의 세가지 역할을 수행합니다. 
-첫째는 패키지 작성자가 내부적 사용만을 목적으로 개발하고자 하는 함수들과 데이터들을 숨길 수 있도록 합니다. 
-둘째는 사용자 혹은 다른 패키지 작성자가 R의 함수명과 동일한 이름을 가지는 함수명을 사용하고자 할때 동일한 함수명으로 인한 충돌로 인하여 사용자가 사용하고자 하는 함수의 작동이 중단되는 것을 방지할 수 있도록 해줍니다. 
-마지막으로 특정패키지 내의 객체를 지칭하는데 사용될 수 있습니다.
+   <p>패키지들은 <em>네임스페이스(namespaces)</em>라는 것을 가질 수 있으며, 현재 <code>datasets</code> 패키지를 제외한 모든 기본 (base)과 권장(recommended ) 패키지들은 이 네임스페이스를 가지고 있습니다. 
+네임스페이스는 크게 다음의 세가지 역할을 수행합니다:
+첫째, 패키지 작성자가 내부적 사용만을 목적으로 개발한 함수들과 데이터들을 숨길 수 있도록 합니다. 
+둘째, 사용자나 (혹은 다른 패키지 작성자)가 해당 패키지에서 사용중인 함수명과 같은 이름의 함수를 사용하고자 할때, 같은 이름의 두 함수가 충돌하여 작동이 중단(breaking)되는 것을 방지합니다. 
+마지막으로 특정 패키지 내의 하나의 객체(object)를 지칭하는 또다른 방법을 제시합니다.
 
 <!-- For example, @code{t()} is the transpose function in @R{}, but users -->
 <!-- might define their own function named @code{t}.  Namespaces prevent -->
 <!-- the user's definition from taking precedence, and breaking every -->
 <!-- function that tries to transpose a matrix. -->
-   <p>예를 들면, <code>t()</code>라는 함수는 R에서 행렬을 전치하는데 사용되어 집니다. 
-그러나, 사용자는 아마도 <code>t</code>라는 동일한 이름을 가진 자신만의 고유한 함수를 만들었을수도 있습니다. 
-네임스페이스는 사용자가 작성한 함수가 우선권을 가지는 것을 막아주고, 행렬을 전치하고자 하는 모든 함수를 중단하게 합니다.
+   <p>예를 들면, <code>t()</code>는 R에서 행렬을 전치(transpose)하는 함수 입니다. 
+그러나, 사용자들 중에는 <code>t</code>라는 같은 이름을 갖는 자신만의 고유한 함수를 정의하고 싶은 사람도 있을 것입니다. 
+이때 네임스페이스(namespaces)는 사용자 정의 함수가 우선권을 갖게 되어 행렬을 전치하기 위해 <code>t()</code>함수를 사용할 수 없게 되는  일이 없도록 방지합니다.
 
 <!-- There are two operators that work with namespaces.  The double-colon -->
 <!-- operator @code{::} selects definitions from a particular namespace. -->
@@ -8389,28 +8388,27 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Packages">Packages</a>
 <!-- as @code{base::t}, because it is defined in the @code{base} package. -->
 <!-- Only functions that are exported from the package can be retrieved in -->
 <!-- this way. -->
-   <p>네임스페이스와 함께 사용되는 두개의 연산자들이 있습니다. 
-하나는 더블콜론(double-colon) 연산자 <code>::</code>이며, 이는 특정한 네임스페이스로부터 정의되어 있는 함수를 불러옵니다. 
-위의 예제를 다시 살펴보면, 전치함수는 <code>base</code>패키지 안에 정의되어 있기 때문에 항상 <code>base::t</code>를 이용하여 사용이 가능합니다. 
-용할 수 있습니다. 
-패키지에서 내보내어진 함수들만이 이러한 방법으로 검색되어 질 수 있습니다.
+   <p>네임스페이스와 함께 사용되는 두개의 연산자들(operators)이 있습니다. 
+하나는 더블콜론(double-colon) 연산자 <code>::</code>로, 특정 네임스페이스에 정의된 함수(definitions)들을 선택합니다. 
+위의 예제를 다시 이용하면, 전치함수는 <code>base</code> 패키지 안에 정의되어 있기 때문에, 언제라도 <code>base::t</code>로  불러내는 것이 가능합니다. 
+용할 수 있습니다. 하지만, 오직 패키지에서 내보내진(exported) 함수들만이 이런 식으로 사용될 수 있습니다.
 
 <!-- The triple-colon operator @code{:::} may be seen in a few places in R -->
 <!-- code: it acts like the double-colon operator but also allows access to -->
 <!-- hidden objects.  Users are more likely to use the @code{getAnywhere()} -->
 <!-- function, which searches multiple packages. -->
    <p>트리플-콜론(triple-colon) 연산자 <code>:::</code>가 R
-이것은 더블-콜론 연산자와 비슷하게 기능을 수행하며 또한 숨겨진 객체에 대한 접근을 허락합니다. 
-그퍼나, 여러개의 패키지들을 검색할 수 있는 특징때문에 사용자는 <code>getAnywhere()</code> 함수를 더 자주 이용할 것입니다.
+이 연산자는 더블-콜론 연산자와 비슷한 기능을 수행하지만, 숨겨진 객체(hidden objects)에 대해서도 접근할 수 있다는 점에서 차이가 있습니다.
+
+   <p>그러나, 여러개의 패키지들을 대상으로 검색할 수 있는, <code>getAnywhere()</code> 함수가 더 선호되는 경향이 있습니다.
 
 <!-- Packages are often inter-dependent, and loading one may cause others to -->
 <!-- be automatically loaded.  The colon operators described above will also -->
 <!-- cause automatic loading of the associated package.  When packages with -->
 <!-- namespaces are loaded automatically they are not added to the search -->
 <!-- list. -->
-   <p>패키지들은 서로 상호의존적(inter-dependent)이며, 하나를 로딩할 때 자동으로 다른 것들을 함께 로딩될 수 있습니다. 
-위에서 설명한 콜론연산자들은 또한 연관된 자동패키지들을 로딩하기도 합니다. 
-네임스페이스가 있는 패키지들이 자동으로 로드될때 이들은 검색목록에 추가되지 않습니다.
+   <p>패키지들은 서로 상호의존적(inter-dependent)이라, 하나를 로딩할 때 자동으로 다른 패키지들을 함께 로딩할 수 있습니다. 위에서 설명한 콜론 연산자들은 사용할 때도 관련있는 패키지들이 자동 로딩 됩니다. 
+네임스페이스를 가진 패키지들이 자동 로드로 실행되면, 이들은 검색목록(search list)에 추가되지는 않습니다.
 
 <!-- ##### APPENDIX START ##### -->
 <div class="node">
