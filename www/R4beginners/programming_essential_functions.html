@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>프로그램의 가독성</title>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>프로그램의 가독성</h2>
+
+<p>많은 초보 프로그래머들은 R 프로그램을 작성할 때 반드시 따라야 할 코딩
+스타일을 따르고자 합니다. 코딩스타일을 이야기 하는 것은 프로그램의
+가독성 때문입니다. 가독성이란 내가 작성한 프로그램을 다른 사람이 쉽게
+이해할 수 있으며, 다른 사람이 작성한 프로그램을 내가 얼마나 이해할 수
+있는가를 의미합니다. 이러한 가독성 때문에 프로그램을 작성할 때 어떤 작성
+표준에 맞추어 짜야 한다는 것입니다. 그리고, 이러한 가독성은 결국
+공동작업을 통한 협업을 할 때 그 힘을 발휘하게 됩니다.</p>
+
+<p>사실상 그러한 코딩스타일에 대한 표준은 사실상 존재하지 않지만, 가독성과
+공동작업을 위하여 일종의 코딩컨벤션 (coding convention)을 사용합니다.</p>
+
+<ul>
+<li><p>GNU C 프로그래밍 코딩 스탠다드
+(<a href="http://www.gnu.org/prep/standards/standards.html">http://www.gnu.org/prep/standards/standards.html</a>)이 도움이 될
+것입니다.</p></li>
+<li><p>구글에 포스팅되어 있는 구글의 R 스타일 가이드
+(<a href="http://google-styleguide.googlecode.com/svn/trunk/google-r-style.html">http://google-styleguide.googlecode.com/svn/trunk/google-r-style.html</a>)이
+도움이 될 것입니다.</p></li>
+<li><p>그리고 Github에 게시된 Hadley의 스타일 가이드
+(<a href="https://github.com/hadley/devtools/wiki/Style">https://github.com/hadley/devtools/wiki/Style</a>) 등이 여러분들의 R
+프로그래밍 스타일을 갖추는데 도움이 될 것입니다.</p></li>
+</ul>
+
+<p>프로그램의 가독성을 높이는 또 하나의 방법은 주석문을 많이 활용하는
+것입니다. 예를들어, 위에서 우리가 작업한 plus() 함수는 만약 다른 사람이
+보면 잘 이해하지 못할 것입니다. 따라서 아래와 같이 저장해 두는 것이
+좋습니다.</p>
+
+<pre><code>#
+# Authors: (프로그램 작성자 이름)
+# Created on (작성날짜)
+# Modified on (최종수정일) 
+# 
+# Description: (간단한 설명) 
+# 이 프로그램은 나의 첫번째 R 프로그램인 plus() 함수를 작성한
+것입니다. 
+#
+# 두개의 입력인자를 가진는 plus()함수의 정의
+
+where your program should be
+
+</code></pre>
+
+<h5>프로그래밍을 도와주는 여러가지 유틸리티들:</h5>
+
+<p>본 섹션에서는 간단한 예제를 통하여 R에서 제공하는 프로그래밍 요소인
+조건문, 반복문, 그리고 함수에 대해서 알아보았습니다. 문서의 처음에
+언급했던바와 같이 분석은 일련의 프로세스를 수행하는 것이고, 이러한
+수행을 자동화 시켜주는 것에 있어서 프로그래밍은 매우 효과적인
+도구입니다. 따라서, 어떤 일을 수행하도록 하는 명령어들이 복잡해지고 그
+양이 많아진다면 외부파일에 스크립트를 작성후 배치처리를 하는 것이
+좋습니다. 또한, 자신의 시스템 사용환경에 익숙하다면 프로그램을
+작성하는데 더욱 도움이 됩니다. 이러한 내용은 이 문서의 “환경설정과
+유틸리티” 라는 챕터에 기록해 두었습니다.</p>
+
+<p>본 챕터는 사용에 익숙해지기 위한 아주 기초적인 내용만을 다루기 때문에
+아래와 같은 내용은 “패키지 작성” 이라는 챕터에서 다루도록 하겠습니다.</p>
+
+<ul>
+<li><p>렉시컬 스코핑</p></li>
+<li><p>environemnt</p></li>
+<li><p>제네릭 함수</p></li>
+<li><p>메소드와 클래스</p></li>
+<li><p>S3와 S4 프로그래밍 그리고 R5</p></li>
+<li><p>에러 핸들링 - try(), tryCatch()</p></li>
+<li><p>운영체제와의 소통 - 파일과 디렉토리 관리에 필요한 유틸리티들</p></li>
+</ul>
+
+<h5>TODO:</h5>
+
+<ul>
+<li><p>수치해석 부분에서 연산의 정확도와 라운딩에러에 대해서 설명해 주는게
+좋을 것 같음 .</p></li>
+<li><p>지금 현재 이 섹션에서 ifelse() 사용이 완전히 빠져 있음</p></li>
+<li><p>all, any, identical 과 같은 함수를 알려주어야 함.</p></li>
+</ul>
+
+</body>
+
+</html>

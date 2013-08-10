@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>입출력</title>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>입출력</h1>
+
+<p>데이터 실무에서 사용된 스프레드형식의 데이터 파일을 read.table()이
+실제로는 어떻게 파일로부터 읽어들여 행렬의 형식을 가지는지 살펴봅니다.</p>
+
+<p>입출력은 컴퓨터와 의사소통을 하는 실제적인 방법입니다. 하나는 키보드와
+모니터를 통하여 하는 방법이 있고, 다른 하나는 파일로 읽고 쓰는 방법이
+있습니다.</p>
+
+<h2>키보드와 모니터</h2>
+
+<p>먼저 아래와 같은 파일들을 만들어 봅니다.</p>
+
+<p>file1.txt 라는 파일은 아래와 같이 내용을 입력합니다.</p>
+
+<p>1 2 3 45 6</p>
+
+<p>file2.txt 라는 파일은 아래와 같이 내용을 입력합니다.</p>
+
+<p>1 2 3.1 45 6</p>
+
+<p>이제 이렇게 저장되어 있는 내용을 scan()이라는 함수를 이용하여
+읽어봅니다. scan()함수를 이전챕터에서는 키보드의 입력을 받기 위해
+사용했었습니다 (어디였더라&hellip;).</p>
+
+<p>scan(&ldquo;file1.txt&rdquo;)</p>
+
+<p>file3.txt 라는 파일은 아래와 같이 내용을 입력합니다.</p>
+
+<p>file4.txt 라는 파일은 아래와 같이 내용을 입력합니다.</p>
+
+<h2>데이터 파일 입출력</h2>
+
+<p>데이터 입력과 출력은 통계분석의 처음과 마지막이라고 할 수 있습니다.
+데이터가 입력된 형식은 매우 다양하지만, 일반적으로 R을 이용하여 데이터의
+입출력을 하는데 있어 안전한 방법은 <code>.csv</code>이라는 파일확장자를 가진 파일을
+이용하는 것입니다. 따라서, 가급적이면 다른종류의 파일확장자를 .csv로
+먼저 변경한 뒤에 사용하는 것이 좋습니다.</p>
+
+<p>mydata &lt;- read.table(file=&ldquo;./filename.csv&rdquo;, header=TRUE, sep=&ldquo;,&rdquo;)</p>
+
+<p>여기에서 filename.csv 은 파일명입니다.</p>
+
+<h5>입력과 관련된 문제해결법</h5>
+
+<p><code>read.table()</code> 함수를 이용하여 데이터를 불러오는데 있어서 많이 발생되는
+오류는 “데이터 파일을 작업디렉토리로부터 찾을 수 없다” 또는 “데이터
+파일이 존재한 파일경로가 올바르지 않다” 라는 것입니다.</p>
+
+<p>파일을 입력받을 때 R은 일반적으로 첫번째 인자에 주어진 파일명과 현재
+작업디렉토리의 파일경로를 함께 묶어 절대경로를 생성한 뒤, 이 절대경로를
+이용하여 파일명을 찾습니다. 이러한 원리때문에 운영체제가 영어가 아닌
+컴퓨터의 경우, 이 절대경로를 올바르게 생성하지 못할 경우가 있습니다.
+또한, 파일경로명에 띄어쓰기가 있는 경우 및 특수문자가 포함된 경우에
+이러한 문제가 발생할 경우가 있습니다. 따라서, 사용자는 간혹 문법에서
+틀린 점도 없고, 불러오고자 하는 데이터 파일도 올바른 파일경로에 위치하고
+있음에도 불구하고, 데이터를 찾을 수 없다는 에러 메시지를 보게 되는
+경우가 있습니다. 이러한 경우에 보다 안전한 방법으로 <code>read.table()</code>
+사용하고자 한다면 아래와 같이 <code>file.choose()</code> 함수 또는 <code>file.path()</code>
+함수를 이용하시길 바랍니다.</p>
+
+<p>mydata &lt;- read.table(file.choose(), header=TRUE, sep=&ldquo;,&rdquo;)</p>
+
+<p><code>file.choose()</code>는 탐색기를 띄워 사용자가 원하고자 하는 파일을 찾을 수
+있도록 도와줍니다.</p>
+
+<p>mydata &lt;- read.table(file.path(), header=TRUE, sep=&ldquo;,&rdquo;) mydata1 &lt;-
+read.table(file=url(site~a~ddress), header=TRUE, sep=&ldquo;,&rdquo;)</p>
+
+<p><code>file.path()</code>는 절대경로를 보다 안전하게 R이 이해할 수 있도록
+도와줍니다.</p>
+
+<p>age &lt;- scan() 32 33 39 28 20 20</p>
+
+<h3>출력</h3>
+
+<h5>저장하기</h5>
+
+<h6>.RData</h6>
+
+<h6>.CSV</h6>
+
+<h6>.HTML</h6>
+
+<p>write(t(mydata), file=&ldquo;./where/should/be/saved&rdquo;, ncolumns)</p>
+
+<h5>데이터셋 또는 변수에 주석첨가하기</h5>
+
+</body>
+
+</html>
