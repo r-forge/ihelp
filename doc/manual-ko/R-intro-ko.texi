@@ -4185,12 +4185,7 @@ data(Puromycin, package="datasets")
 @c automated methods of bandwidth choice are available, and in this example
 @c @code{bw = "SJ"} gives a good result.)
 
-위의 예제에서 사용된 것과 같이 히스토그램보다 좀 더 정교한 밀도그림(density plot)은 @code{density} 함수에 의해서 얻을 수 있고
-
-@c 2013.08.13 까지
-
-@code{density}함수의 @code{bw}(bandwidth) 인자의 값은 trial-and-error를 통해 얻어집니다.
-(Bandwidth의 선택에 있어서 자동화된 방법이 있는데, @code{bw='SJ'}를 이용해보시길 바랍니다).
+위의 예제에서 사용된 것과 같이 히스토그램보다 좀 더 정교한 밀도그림(density plot)은 @code{density} 함수에 의해서 얻을 수 있고 우리는 이 예제에서 @code{density}에 의해 만들어진 선을 추가하였습니다. @code{density}함수의 @code{bw}(bandwidth) 인자의 값은 trial-and-error를 통해 얻어집니다. (Bandwidth의 선택에 있어서 자동화된 방법이 있는데, @code{bw='SJ'}를 이용해보시길 바랍니다).
 
 @iftex
 @image{images/hist,9cm} 
@@ -4201,7 +4196,7 @@ data(Puromycin, package="datasets")
 @findex ecdf
 @cindex Empirical CDFs
 
-@code{ecdf} 함수를 이용하여 empirical cumulative distribution function을 플랏해 볼 수 있습니다.
+@code{ecdf} 함수를 이용하여 경험적 누적 분포 함수(empirical cumulative distribution function)를 그려 볼 수 있습니다.
 
 @example
 > plot(ecdf(eruptions), do.points=FALSE, verticals=TRUE)
@@ -4211,9 +4206,8 @@ data(Puromycin, package="datasets")
 @c How about the right-hand mode, say eruptions of longer than 3 minutes?
 @c Let us fit a normal distribution and overlay the fitted CDF.
 
-이 분포는 표준정규분포로부터 많은 차이가 있음을 명백히 알 수 있습니다.
-하지만, 화산폭발이 3분이상 지속될 경우에 대한 분포는 어떨까요? 
-3분이상의 데이터으로부터의 생성된 누적분포를 만들어 본뒤 그 위에 정규분포와 겹쳐봄으로서 비교해봅니다.
+이 분포는 표준정규분포와는 많은 차이가 있음을 명백히 알 수 있습니다. 하지만, 화산폭발이 3분이상 지속될 경우에 대한 분포는 어떨까요? 3분이상의 데이터으로부터의 생성된 누적분포를 만들어 본뒤 그 위에 정규분포와 겹쳐봄으로서 비교해봅니다.
+@c the right-hand mode가 뭐지?
 
 @example
 > long <- eruptions[eruptions > 3]
@@ -4244,7 +4238,7 @@ qqnorm(long); qqline(long)
 @c simulated data from a @math{t} distribution
 
 Q-Q 플랏으로부터 오른쪽 꼬리 부분이 생각보다 짧은 것을 제외하고는 정규분포를 대체적으로 따르는 것 같습니다.
-그럼 @code{t}-분포함수로부터 생성된 난수의 분포와는 어떤 관계를 가질지 생각해봅니다.
+그럼 @code{t}-분포함수로부터 생성된 난수의 분포와는 어떤 관계를 가질지 비교해 보십시오.
 
 @iftex
 @image{images/QQ,7cm}
@@ -4260,7 +4254,7 @@ qqnorm(x); qqline(x)
 @c expected for a normal.  We can make a Q-Q plot against the generating
 @c distribution by
 
-@code{t}-분포로부터 얻어진 난수의 분포가 정규분포의 꼬리보다 길다는 것을 알 수 있습니다.
+@code{t}-분포로부터 얻어진 난수의 분포가 정규분포의 꼬리보다 길다는 것을 알 수 있습니다. 우리는 다음과 같은 방법으로 생성된 분포에 대한 Q-Q plot을 만들어 볼 수 있습니다.
 
 @example
 qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
@@ -4272,8 +4266,7 @@ qqline(x)
 @cindex Shapiro-Wilk test
 @findex shapiro.test
 
-마지막으로 정규성과 얼마나 따르는지를 확인하는 테스트를 수행하고자 할 것입니다.
-@R{}은 아래와 같은 Shpiro-Wilk 테스트를 제공합니다.
+마지막으로 정규성과 얼마나 따르는지를 확인하는 테스트를 수행하고자 할 것입니다. @R{}은 아래와 같은 Shpiro-Wilk 테스트를 제공합니다.
 
 @example
 > shapiro.test(long)
@@ -4306,9 +4299,11 @@ alternative hypothesis: two.sided
 @c have estimated the parameters of the normal distribution from the same
 @c sample.)
 
+(여기에서는 우리가 같은 표본으로부터 정규분포의 모수를 추정해왔던 것과 같은 분포 이론은 적용되지 않음에 유의하십시오.)
+
 @node One- and two-sample tests,  , Examining the distribution of a set of data, Probability distributions
 @c @section One- and two-sample tests
-@section 단일 샘플과 두개의 샘플에 이용되는 테스트들 
+@section 단일 표본과 두 개의 표본에 이용되는 테스트들 
 @cindex One- and two-sample tests
 
 @c So far we have compared a single sample to a normal distribution.  A
@@ -4316,15 +4311,12 @@ alternative hypothesis: two.sided
 @c that in @R{}, all ``classical'' tests including the ones used below are
 @c in package @pkg{stats} which is normally loaded.
 
-지금까지 하나의 샘플을 정규분포와 비교해 보았습니다. 
-두개의 샘플을 비교하고자 한다면 더 많은 작업이 요구될 것입니다.
-@R{}에서는 다음 예제에 사용되는 통계적 테스트를 포함하여 모든 전형적인 테스트들을 @pkg{stats} 패키지에 넣어두었습니다.
+지금까지 하나의 표본을 정규분포와 비교해 보았습니다. 두 개의 샘플을 비교하고자 한다면 더 많은 작업이 요구될 것입니다. @R{}에서는 다음 예제에 사용되는 통계적 테스트를 포함하여 모든 전형적인 테스트들을 @pkg{stats} 패키지에 넣어두었습니다.
 
 @c Consider the following sets of data on the latent heat of the fusion of
 @c ice (@emph{cal/gm}) from Rice (1995, p.490)
 
-1995년에 Rice가 the latent heat of the fusion of ice (@emph{cal/gm})에 대해서 연구한 논문의 490 쪽에 게재된 내용입니다. 
-다음 두 개의 데이터셋이 이용되었습니다.
+1995년에 Rice가 the latent heat of the fusion of ice (@emph{cal/gm})에 대해서 연구한 논문의 490 쪽에 게재된 내용을 고려해 보시기 바랍니다. 다음 두 개의 데이터셋이 이용되었습니다.
 
 @example
 Method A: 79.98 80.04 80.02 80.04 80.03 80.03 80.04 79.97
@@ -4335,7 +4327,7 @@ Method B: 80.02 79.94 79.98 79.97 79.97 80.03 79.95 79.97
 @noindent
 @c Boxplots provide a simple graphical comparison of the two samples.
 
-박스플랏(boxplot)은 두개의 샘플에 대하여 시각적인 비교를 제공합니다.
+박스플랏(boxplot)은 두 개의 샘플에 대하여 간단한 시각적 비교를 제공합니다.
 
 @c NOTE scan() from stdin is not parse()able, hence not source()able
 @c Hence ./R-intro.R uses c(..)
@@ -4391,11 +4383,7 @@ mean of x mean of y
 @c function).  We can use the F test to test for equality in the variances,
 @c provided that the two samples are from normal populations.
 
-테스트의 결과는 평균의 차이가 정규분포를 따른다고 가정할때 통계적으로 의미가 있음을 나타내고 있습니다. 
-여기에서 한가지 알아야 할 점은 @R{}은 기본적으로 두 데이터의 분산이 같다고 가정하지 않는다는 것입니다. 
-이것은 @SPLUS{}에서 제공하는 @code{t.test}와 동일합니다. 
-따라서 두 데이터의 분산이 같은지에 대해서 F-테스트를 시행해 보아야 할 것입니다.
-이때, 두 데이터는 정규분포로부터 얻어진 샘플이라고 가정합니다.
+테스트의 결과는 평균의 차이가 정규분포를 따른다고 가정할때 통계적으로 의미가 있음을 나타내고 있습니다. 여기에서 한가지 알아야 할 점은 @R{}은 기본적으로 두 데이터의 분산이 같다고 가정하지 않는다는 것입니다. 이것은 @SPLUS{}에서 제공하는 @code{t.test}와 동일합니다. 따라서 두 데이터의 분산이 같은지에 대해서 F-테스트를 시행해 보아야 할 것입니다. 이 때, 두 데이터는 정규분포로부터 얻어진 샘플이라고 가정합니다.
 
 @example
 > var.test(A, B)
@@ -4417,8 +4405,7 @@ ratio of variances
 @c which shows no evidence of a significant difference, and so we can use
 @c the classical @math{t}-test that assumes equality of the variances.
 
-테스트의 결과는 두 데이터의 분산은 통계학적으로 차이가 없음을 의미하므로, 
-두 데이터의 분산이 같다고 가정하는 전형적인 t-테스트를 사용해도 무방합니다.
+테스트의 결과는 두 데이터의 분산은 통계적으로 차이가 없음을 의미하므로, 두 데이터의 분산이 같다고 가정하는 전형적인 t-테스트를 사용해도 무방합니다.
 
 @example
 > t.test(A, B, var.equal=TRUE)
@@ -4461,16 +4448,12 @@ Cannot compute exact p-value with ties in: wilcox.test(A, B)
 @c strongly that these data are from a discrete distribution (probably due
 @c to rounding).
 
-테스트를 수행한 결과에 경고가 있음을 알 수 있습니다. 
-이것은 아마도 각각의 샘플안에 동일한 값을 가지는 데이터들이 존재하기 때문일것입니다. 
-따라서 연속형 분포를 가정하기 보다는 데이터가 이산형분포로부터 나왔다고 생각하는게 올바를 것입니다
-(혹은 이것은 rounding 으로부터 나온 결과일 수 도 있습니다).
+테스트를 수행한 결과에 경고가 있음을 알 수 있습니다. 이것은 아마도 각각의 샘플안에 동일한 값을 가지는 데이터들이 존재하기 때문일것입니다. 따라서 연속형 분포를 가정하기 보다는 데이터가 이산형분포로부터 나왔다고 생각하는게 올바를 것입니다(혹은 이것은 rounding 으로부터 나온 결과일 수 도 있습니다).
 
 @c There are several ways to compare graphically the two samples.  We have
 @c already seen a pair of boxplots.  The following
 
-두개의 샘플을 시각적으로 비교해 보는데 여러가지 방법이 있을 수 있습니다. 
-그 중에서 두개의 박스플랏을 동시에 비교해보는 것은 이미 해 보았습니다.
+두 개의 샘플을 시각적으로 비교해 보는데 여러가지 방법이 있을 수 있습니다. 그 중에서 두 개의 박스플랏을 동시에 비교해보는 것은 이미 해 보았습니다.
 
 @example
 > plot(ecdf(A), do.points=FALSE, verticals=TRUE, xlim=range(A, B))
@@ -4483,9 +4466,7 @@ Cannot compute exact p-value with ties in: wilcox.test(A, B)
 @c vertical distance between the two ecdf's, assuming a common continuous
 @c distribution:
 
-위에서 사용된 코드는 두개의 emprical CDFs (누적확률분포)를 비교할 것입니다. 
-또한 @code{qqplot}함수를 이용하여 두 개의 샘플에 대한 Q-Q 플랏을 생성할 수도 있습니다. 
-아래의 코드는 두개의 @code{ecdf}의 차이에 대하여 Kolmogorov-Smirnov 테스트를 수행합니다.
+위에서 사용된 코드는 두개의 emprical CDFs (누적확률분포)를 비교할 것입니다. 또한 @code{qqplot} 함수를 이용하여 두 개의 샘플에 대한 Q-Q 플랏을 생성할 수도 있습니다. 아래의 코드는 일반 연속 분포를 가정하여 두 개의 @code{ecdf}의 최대수직거리차이(the maximal vertical distance)에 대하여 Kolmogorov-Smirnov 테스트를 수행합니다.
 
 @example
 > ks.test(A, B)
@@ -4522,18 +4503,18 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @c wherever any expression may be used; in particular multiple assignments
 @c are possible.
 
+@R{}은 명령어 형식으로 결과값을 반환하는 함수 또는 표현을 사용하는 점에서 표현언어(expression language)입니다.
+결과값를 재사용할 수 있도록 표현식에 할당하며, 이 표현식을 어느 곳에서든지 재사용할수도 있고 다중할당도 가능합니다.
+
 @c Commands may be grouped together in braces, @code{@{@var{expr_1};
 @c @var{@dots{}}; @var{expr_m}@}}, in which case the value of the group
 @c is the result of the last expression in the group evaluated.  Since such
 @c a group is also an expression it may, for example, be itself included in
 @c parentheses and used a part of an even larger expression, and so on.
 
-@R{}은 명령어 형식으로 결과값을 반환하는 함수 또는 표현을 사용하는 점에서 표현언어(expression language)입니다.
-결과값를 재사용할 수 있도록 표현식에 할당하며, 이 표현식을 어느 곳에서든지 재사용할수도 있고 다중할당도 가능합니다.
+또한, @code{@{@var{expr_1}; @var{@dots{}}; @var{expr_m}@}}와 같이 여러개의 명령들을 중괄호로 한데 묶어 이것을 또한 표현식으로도 사용할 수 있습니다. 이렇게 중괄호로 묶은 것을 그룹화된 표현식이라고 하고, 이것의 결과는 그룹내의 맨 마지막 명령문이 실행되었을때 얻어지게 됩니다. 이렇게 그룹화된 표현식 역시 더 큰 표현식의 일부분으로도 사용될 수 있습니다.
 
-또한, @code{@{@var{expr_1}; @var{@dots{}}; @var{expr_m}@}}와 같이 여러개의 명령들을 중괄호로 한데 묶어 이것을 또한 표현식으로도 사용할 수 있습니다 
-이렇게 중괄호로 묶은 것을 그룹화된 표현식이라고 하고, 이것의 결과는 그룹내의 맨 마지막 명령문이 실행되었을때 얻어지게 됩니다. 
-이렇게 그룹화된 표현식 역시 더 큰 표현식의 일부분으로도 사용될 수 있습니다.
+@c 2013.08.16 까지
 
 @node Control statements,  , Grouped expressions, Loops and conditional execution
 @c @section Control statements

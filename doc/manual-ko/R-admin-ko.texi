@@ -250,6 +250,8 @@ make the requisite links in @file{src/library/Recommended}.  A suitable
 incantation from the top level of the R sources using @command{wget}
 might be (for the correct value of @file{@var{dir}})
 
+@acronym{CRAN}에서 수동으로(manually) 내려받는 경우, 여러분이 추천 패키지의 정확한 버전을 
+
 @example
 wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
   http://CRAN.R-project.org/src/contrib/@var{dir}
@@ -968,11 +970,13 @@ LANGUAGE=en LC_TIME=C
 @chapter Installing R under Windows
 @cindex Installing under Windows
 
-The @file{bin/windows} directory of a @acronym{CRAN} site contains
-binaries for a base distribution and a large number of add-on packages
-from @acronym{CRAN} to run on Windows XP or later on ix86
-@acronym{CPU}s (including AMD64/Intel64@footnote{formerly known as
-EM64T.} chips and Windows x64).
+@c The @file{bin/windows} directory of a @acronym{CRAN} site contains
+@c binaries for a base distribution and a large number of add-on packages
+@c from @acronym{CRAN} to run on Windows XP or later on ix86
+@c @acronym{CPU}s (including AMD64/Intel64@footnote{formerly known as
+@c EM64T.} chips and Windows x64).
+
+@acronym{CRAN} 사이트의 @file{bin/windows} 디렉토리에는 윈도우즈 XP나 그후에 나온 ix86 @acronym{CPU}s (AMD64/Intel64@footnote{이전 명칭으로 EM64T.} 칩스와 윈도우즈 x64 포함)에서 사용할수있는 기본 배포(base distribution)용 바이너리와 많은 양의 @acronym{CRAN}용 add-on 팩키지들이 포함되어있습니다. 
 
 Your file system must allow long file names (as is likely except
 perhaps for some network-mounted systems).

@@ -466,6 +466,8 @@ make the requisite links in <samp><span class="file">src/library/Recommended</sp
 incantation from the top level of the R sources using <samp><span class="command">wget</span></samp>
 might be (for the correct value of <samp><var>dir</var></samp>)
 
+   <p><acronym>CRAN</acronym>에서 수동으로(manually) 내려받는 경우, 여러분이 추천 패키지의 정확한 버전을
+
 <pre class="example">     wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
        http://CRAN.R-project.org/src/contrib/<var>dir</var>
      ./tools/link-recommended
@@ -1148,10 +1150,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="chapter">3 Installing R under Windows</h2>
 
 <p><a name="index-Installing-under-Windows-24"></a>
-The <samp><span class="file">bin/windows</span></samp> directory of a <acronym>CRAN</acronym> site contains
-binaries for a base distribution and a large number of add-on packages
-from <acronym>CRAN</acronym> to run on Windows XP or later on ix86
-<acronym>CPU</acronym>s (including AMD64/Intel64<a rel="footnote" href="#fn-8" name="fnd-8"><sup>8</sup></a> chips and Windows x64).
+<!-- The @file{bin/windows} directory of a @acronym{CRAN} site contains -->
+<!-- binaries for a base distribution and a large number of add-on packages -->
+<!-- from @acronym{CRAN} to run on Windows XP or later on ix86 -->
+<!-- @acronym{CPU}s (including AMD64/Intel64@footnote{formerly known as -->
+<!-- EM64T.} chips and Windows x64). -->
+
+   <p><acronym>CRAN</acronym> 사이트의 <samp><span class="file">bin/windows</span></samp> 디렉토리에는 윈도우즈 XP나 그후에 나온 ix86 <acronym>CPU</acronym>s (AMD64/Intel64<a rel="footnote" href="#fn-8" name="fnd-8"><sup>8</sup></a> 칩스와 윈도우즈 x64 포함)에서 사용할수있는 기본 배포(base distribution)용 바이너리와 많은 양의 <acronym>CRAN</acronym>용 add-on 팩키지들이 포함되어있습니다.
 
    <p>Your file system must allow long file names (as is likely except
 perhaps for some network-mounted systems).
@@ -5796,8 +5801,7 @@ update to TeXLive 2012, from the sources or see
    <p class="footnote"><small>[<a name="fn-7" href="#fnd-7">7</a>]</small> mainly on RedHat and Fedora, whose layout is described
 here.</p>
 
-   <p class="footnote"><small>[<a name="fn-8" href="#fnd-8">8</a>]</small> formerly known as
-EM64T.</p>
+   <p class="footnote"><small>[<a name="fn-8" href="#fnd-8">8</a>]</small> 이전 명칭으로 EM64T.</p>
 
    <p class="footnote"><small>[<a name="fn-9" href="#fnd-9">9</a>]</small> unless they were excluded in the build.</p>
 
