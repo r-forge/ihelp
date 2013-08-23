@@ -51,11 +51,9 @@ notice identical to this one except for the removal of this paragraph
 @top R Installation and Administration
 
 @c This is a guide to installation and administration for R.
-
-이 문서는 R의 설치와 관리에 대한 안내입니다.
+이 문서는 R의 설치와 관리에 대한 안내서입니다.
 
 @c The current version of this document is @value{VERSION}.
-
 이 문서의 현재 버전은 @value{VERSION}입니다.
 
 @value{ISBN-admin}
@@ -93,8 +91,7 @@ notice identical to this one except for the removal of this paragraph
 @c Sources, binaries and documentation for @R{} can be obtained via
 @c @acronym{CRAN}, the ``Comprehensive R Archive Network'' whose current
 @c members are listed at @uref{http://CRAN.R-project.org/@/mirrors.html}.
-
-@R{}에 대한 소스, 바이너리 그리고 문서는 @acronym{CRAN} "Comprehensive R Archive Network" 을 통해 얻을 수 있습니다. CRAN의 현재 멤버는 @uref{http://CRAN.R-project.org/@/mirrors.html}에서 확인할 수 있습니다.
+@R{}의 소스, 바이너리 그리고 문서는 @acronym{CRAN} ``Comprehensive R Archive Network''을 통해 얻을 수 있으며, CRAN 미러들의 목록을 @uref{http://CRAN.R-project.org/@/mirrors.html}에서 확인할 수 있습니다.
 
 @menu
 * Getting and unpacking the sources::  
@@ -102,13 +99,14 @@ notice identical to this one except for the removal of this paragraph
 @end menu
 
 @node Getting and unpacking the sources, Getting patched and development versions, Obtaining R, Obtaining R
-@section Getting and unpacking the sources
+@c @section Getting and unpacking the sources
+@section 소스를 얻고 압축풀기
 @cindex Sources for R
 
 @c The simplest way is to download the most recent
 @c @file{R-@var{x}.@var{y}.@var{z}.tar.gz} file, and unpack it with
-
-가장 단순한 방법은 가장 최신 버전의 @file{R-@var{x}.@var{y}.@var{z}.tar.gz} 파일을 다운로드 받고 다음과 같이 적합한@footnote{예를 들어, @: @acronym{GNU} @command{tar} 버전 1.15 이상 또는 @samp{libarchive}(OS 10.[67]에 사용된 것처럼) 또는 `Heirloom Toolchest' 배포} @command{tar}가 설치된 시스템에 압축을 해제하는 것입니다.
+가장 간단한 방법은 가장 최신 버전의 @file{R-@var{x}.@var{y}.@var{z}.tar.gz} 파일을 다운로드 받은 뒤 아래의 명령어를 이용하여 압축을 푸는 것입니다. 
+이를 위해서는 적정한 버전@footnote{예를 들어, @: @acronym{GNU} @command{tar} 버전 1.15 이상 또는 @samp{libarchive}(OS 10.[67]에 사용된 것처럼) 또는 `Heirloom Toolchest' 배포}의 @command{tar}가 설치되어 있어야 합니다. 
 
 @example
 tar -xf R-@var{x}.@var{y}.@var{z}.tar.gz
@@ -120,7 +118,6 @@ tar -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c (as used on OS 10.[67]) or `Heirloom Toolchest' distributions.}
 @c @command{tar} installed.  On other systems you need to have the
 @c @command{gzip} program installed, when you can use
-
 다른 시스템에서 여러분이 다음과 같은 명령어를 사용할 수 있을 때에는 @command{gzip} 프로그램을 설치해야 할 필요가 있습니다.
 
 @example
@@ -261,32 +258,52 @@ wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
 
 
 @node Installing R under Unix-alikes, Installing R under Windows, Obtaining R, Top
-@chapter Installing R under Unix-alikes
+@c @chapter Installing R under Unix-alikes
+@chapter 유닉스와 같은 환경에 R 설치하기
 @cindex Installing under Unix-alikes
 
-@R{} will configure and build under most common Unix and Unix-alike
-platforms including @samp{@var{cpu}-*-linux-gnu} for the
+@c @R{} will configure and build under most common Unix and Unix-alike
+@c platforms including @samp{@var{cpu}-*-linux-gnu} for the
+@c @cputype{alpha}, @cputype{arm}, @cputype{hppa}, @cputype{ix86},
+@c @cputype{ia64}, @cputype{m68k}, @cputype{mips}, @cputype{mipsel},
+@c @cputype{powerpc}, @cputype{s390}, @cputype{sparc}, and @cputype{x86_64}
+@c @acronym{CPU}s,
+@c @c (see e.g.@:  @uref{http://buildd.debian.org/build.php?&pkg=r-base}),
+@c @c Actually, see http://packages.debian.org/unstable/math/r-base-core as
+@c @c the build daemon is not used for all platforms; note also that Debian
+@c @c has x86_64 <=> amd, ix86 <=> i386.
+@c @samp{i386-@/apple-@/darwin}, @samp{x86_64-@/apple-@/darwin},
+@c @samp{i386-@/sun-@/solaris}, @samp{sparc-@/sun-@/solaris},
+@c @samp{x86_64-@/*-@/freebsd}, and @samp{powerpc-@/ibm-@/aix6*} as well as
+@c perhaps (it is tested less frequently on these platforms)
+@c @samp{i386-@/*-@/freebsd}, @samp{i386-@/*-@/netbsd} and
+@c @samp{i386-@/*-@/openbsd}.
+
+@R{}은 @samp{@var{cpu}-*-linux-gnu}를 포함하여 
 @cputype{alpha}, @cputype{arm}, @cputype{hppa}, @cputype{ix86},
 @cputype{ia64}, @cputype{m68k}, @cputype{mips}, @cputype{mipsel},
-@cputype{powerpc}, @cputype{s390}, @cputype{sparc}, and @cputype{x86_64}
-@acronym{CPU}s,
+@cputype{powerpc}, @cputype{s390}, @cputype{sparc}, 그리고 @cputype{x86_64}
+@acronym{CPU},
 @c (see e.g.@:  @uref{http://buildd.debian.org/build.php?&pkg=r-base}),
 @c Actually, see http://packages.debian.org/unstable/math/r-base-core as
 @c the build daemon is not used for all platforms; note also that Debian
 @c has x86_64 <=> amd, ix86 <=> i386.
 @samp{i386-@/apple-@/darwin}, @samp{x86_64-@/apple-@/darwin},
 @samp{i386-@/sun-@/solaris}, @samp{sparc-@/sun-@/solaris},
-@samp{x86_64-@/*-@/freebsd}, and @samp{powerpc-@/ibm-@/aix6*} as well as
-perhaps (it is tested less frequently on these platforms)
-@samp{i386-@/*-@/freebsd}, @samp{i386-@/*-@/netbsd} and
-@samp{i386-@/*-@/openbsd}.
+@samp{x86_64-@/*-@/freebsd}, 그리고 @samp{powerpc-@/ibm-@/aix6*}와 같은 유닉스 또는 유닉스와 비슷한 플랫폼 위에 구성될 수 있습니다.
+아마도 @samp{i386-@/*-@/freebsd}, @samp{i386-@/*-@/netbsd} 그리고
+@samp{i386-@/*-@/openbsd} 에서도 가능할 것입니다 (이 플랫폼들 위에서는 많은 테스트를 거치지 않았습니다).
 
 @cindex Linux
 @cindex OS X
-In addition, binary distributions are available for some common Linux
-distributions and for OS X (formerly Mac OS).  See the @acronym{FAQ} for
-current details.  These are installed in platform-specific ways, so for
-the rest of this chapter we consider only building from the sources.
+@c In addition, binary distributions are available for some common Linux
+@c distributions and for OS X (formerly Mac OS).  See the @acronym{FAQ} for
+@c current details.  These are installed in platform-specific ways, so for
+@c the rest of this chapter we consider only building from the sources.
+또한, 일부 많이 쓰이는 리눅스 배포들과 OS X (이전의 Mac OS)를 위한 바이너리 배포들이 있습니다.
+더 자세한 사항은 @acronym{FAQ}를 살펴보세요.
+이들은 플랫폼에 맞춘 특정한 방식으로 설치됩니다.
+이 챕터의 나머지 부분에서는 소스로부터 직접 구축하는 것에 대해서만 알아볼 것입니다.
 
 @menu
 * Simple compilation::          
@@ -300,25 +317,35 @@ the rest of this chapter we consider only building from the sources.
 @end menu
 
 @node Simple compilation, Help options, Installing R under Unix-alikes, Installing R under Unix-alikes
-@section Simple compilation
+@c @section Simple compilation
+@section 간단한 컴파일하기
 
-First review the essential and useful tools and libraries in
-@ref{Essential and useful other programs under a Unix-alike}, and install
-those you
+@c First review the essential and useful tools and libraries in
+@c @ref{Essential and useful other programs under a Unix-alike}, and install
+@c those you
 @enindex TMPDIR
-want or need.  Ensure that the environment variable @env{TMPDIR} is
-either unset (and @file{/tmp} exists and can be written in and scripts
-can be executed from) or points to a valid temporary directory (one from
-which execution of scripts is allowed).
+@c want or need.  Ensure that the environment variable @env{TMPDIR} is
+@c either unset (and @file{/tmp} exists and can be written in and scripts
+@c can be executed from) or points to a valid temporary directory (one from
+@c which execution of scripts is allowed).
+먼저 @ref{Essential and useful other programs under a Unix-alike}에 나열한 필수적이고 유용한 도구들과 라이브러리들에 대해서 알아보고, 당신이 원하거나 필요한 것들을 설치하도록 합니다. 
+@enindex TMPDIR
+먼저 환경변수 @env{TMPDIR}가 지정되어 있지 않는지 (그리고 @file{/tmp}가 존재하며 쓰기 권한이 주어져 있고 스크립트가 이곳으로부터 실행이 가능한지를 확인하고) 또는 (스크립트의 실행이 가능한) 유효한 임시디렉토리를 지정하고 있는지 확인합니다.
 
 @findex R_HOME
-Choose a place to install the @R{} tree (@R{} is not just a binary, but
-has additional data sets, help files, font metrics etc).  Let us call
-this place @var{R_HOME}.  Untar the source code.  This should create
-directories @file{src}, @file{doc}, and several more under a top-level
-directory: change to that top-level directory (At this point North
-American readers should consult @ref{Setting paper size}.)  Issue the
-following commands:
+@c Choose a place to install the @R{} tree (@R{} is not just a binary, but
+@c has additional data sets, help files, font metrics etc).  Let us call
+@c this place @var{R_HOME}.  Untar the source code.  This should create
+@c directories @file{src}, @file{doc}, and several more under a top-level
+@c directory: change to that top-level directory (At this point North
+@c American readers should consult @ref{Setting paper size}.)  Issue the
+@c following commands:
+@R{} 트리가 설치될 장소를 선택하세요 (@R{}은 단순한 바이너리가 아닌 추가적인 데이터셋, 도움말 파일, 그리고 글꼴 모양에 대한 정보를 가집니다). 
+이 장소를 @var{R_HOME}이라고 부르도록 합니다.
+소스코드의 압축으르 풉니다.
+이 과정은 @file{src}, @file{doc}, 그리고 최상위 레벨 디렉토리 아래에 몇 가지 디렉토리를 더 생성할 것입니다. 
+(여기에서 북미지역의 독자들은 반드시 @ref{Setting paper size}를 살펴보길 바랍니다.)
+다음의 명령을 실행합니다:
 
 @findex configure
 
@@ -328,47 +355,61 @@ make
 @end example
 
 @noindent
-(See @ref{Using make} if your make is not called @samp{make}.)  Users of
-Debian-based 64-bit systems@footnote{which use @file{lib} rather than
-@file{lib64} for their primary 64-bit library directories.} may need
+@c (See @ref{Using make} if your make is not called @samp{make}.)  Users of
+@c Debian-based 64-bit systems@footnote{which use @file{lib} rather than
+@c @file{lib64} for their primary 64-bit library directories.} may need
+(만약 당신이 사용하는 make가 @samp{make}가 아니라면 @ref{Using make}를 살펴보시길 바랍니다.)
+64 비트 기반의 데비안 사용자은 아마도 아래와 같이 명령을 실행해야 할 수도 있습니다.
+@footnote{which use @file{lib} rather than @file{lib64} for their primary 64-bit library directories.}
+
 
 @example
 ./configure LIBnn=lib
 make
 @end example
 
-
-Then check the built system works correctly by
+@c Then check the built system works correctly by
+그리고 난 뒤 다음의 명령어를 이용하여 구축한 시스템이 올바르게 작동하는지를 확인합니다. 
 
 @example
 make check
 @end example
 
 @noindent
-Failures are not necessarily problems as they might be caused by missing
-functionality,@footnote{for example, if you configured @R{} with
-@option{--without-recommended}.} but you should look carefully at any
-reported discrepancies.  (Some non-fatal errors are expected in locales
+@c Failures are not necessarily problems as they might be caused by missing
+@c functionality,@footnote{for example, if you configured @R{} with
+@c @option{--without-recommended}.} but you should look carefully at any
+@c reported discrepancies.  (Some non-fatal errors are expected in locales
+@c that do not support Latin-1, in particular in true @code{C} locales and
+@c non-UTF-8 non-Western-European locales.)  A failure in
+@c @file{tests/ok-errors.R} may indicate inadequate resource limits
+@c (@pxref{Running R}).
+설치의 실패는 관련 기능이 설치되어 있지 않아 발생하는 경우가 많습니다 
+@footnote{for example, if you configured @R{} with @option{--without-recommended}.}
+그러나, 어떤 것들이 보고되는지를 주의깊게 읽어볼 필요가 있습니다.
+ (Some non-fatal errors are expected in locales
 that do not support Latin-1, in particular in true @code{C} locales and
-non-UTF-8 non-Western-European locales.)  A failure in
-@file{tests/ok-errors.R} may indicate inadequate resource limits
-(@pxref{Running R}).
+non-UTF-8 non-Western-European locales.)
+파일 @file{tests/ok-errors.R} 내에서의 실패는 아마도 부족한 자원의 한계를 의미할 것입니다 (@pxref{Running R}).
 
-More comprehensive testing can be done by
+@c More comprehensive testing can be done by
+좀 더 심도있는 테스트를 위하여 다음의 명령어를 이용해 볼 수 있습니다.
 
 @example
 make check-devel
 @end example
 
 @noindent
-or
+@c or
+또는 
 
 @example
 make check-all
 @end example
 
 @noindent
-see file @file{tests/README}.
+@c see file @file{tests/README}.
+파일 @file{tests/README}을 읽어보시길 바랍니다.
 
 If the command @command{configure} and @command{make} commands execute
 successfully, a shell-script front-end called @file{R} will be created
@@ -420,6 +461,10 @@ has the version for the latest release of @R{}).
 
 @node Help options, Making the manuals, Simple compilation, Installing R under Unix-alikes
 @section Help options
+
+기본값으로 HTML 도움말 페이지는 설치될 때에 구축되는 것이 아니라 필요할 때 생성됩니다. 
+만약 서버를 비활성화 해야하고 HTML 도움말을 원한다면, 패키지들이 설치될 때 (R과 함께 설치되는 것들도 포함) HTML페이지들을 구축하도록 하는 옵션이 있습니다. 이는 configure의--enable-prebuilt-html옵션에 의해 활성화 됩니다. R CMD INSTALL (즉, install.packages)가 HTML 페이지들을 미리 구축하는지는 R 설치를 보면 알 수 있고R CMD INSTALL –help에 의해 리포트됩니다: 이는INSTALL의 옵션인 --html 이나 --no-html 중 하나를 지정함으로써 무시될 수 있습니다. 
+서버는 R이 시작되기 전 혹은(help.start를 포함한) HTML 도움말이 사용되기 전의 R 세션에서 환경 값을R_DISABLE_HTTPD에서 비어있지 않은 값으로 설정함으로써 비활성화 됩니다. 시스템 보안 조치는 서버가 시작되는 것을 막을 것 입니다, 예로 만약 loopback 인터페이스가 비활성화 되어있는 것과 같이, 시스템 보안 조치는 서버가 시작되는 것을 막을 수도 있습니다. 더 자세한 사항은 ?tools::startDynamicHelp를 참조하세요.
 
 By default @HTML{} help pages are created when needed rather than being
 built at install time.
@@ -967,7 +1012,8 @@ LANGUAGE=en LC_TIME=C
 
 
 @node Installing R under Windows, Installing R under (Mac) OS X, Installing R under Unix-alikes, Top
-@chapter Installing R under Windows
+@c @chapter Installing R under Windows
+@chapter 윈도우즈에서 R설치하기
 @cindex Installing under Windows
 
 @c The @file{bin/windows} directory of a @acronym{CRAN} site contains
@@ -978,62 +1024,88 @@ LANGUAGE=en LC_TIME=C
 
 @acronym{CRAN} 사이트의 @file{bin/windows} 디렉토리에는 윈도우즈 XP나 그후에 나온 ix86 @acronym{CPU}s (AMD64/Intel64@footnote{이전 명칭으로 EM64T.} 칩스와 윈도우즈 x64 포함)에서 사용할수있는 기본 배포(base distribution)용 바이너리와 많은 양의 @acronym{CRAN}용 add-on 팩키지들이 포함되어있습니다. 
 
-Your file system must allow long file names (as is likely except
-perhaps for some network-mounted systems).
+@c Your file system must allow long file names (as is likely except
+@c perhaps for some network-mounted systems).
 
-Installation is @emph{via} the installer
-@file{@value{RWVERSION}-win.exe}.  Just double-click on the icon and
-follow the instructions.  When installing on a 64-bit version of Windows
-the options will include 32- or 64-bit versions of R (and the default is
-to install both).  You can uninstall @R{} from the Control Panel.
+사용자의 파일 시스템(file system)은 긴 파일명도 수용할수있어야 합니다 (혹시 있을수있는 네트워크에 연결된 몇몇의 시스템을 제외하고 보통 다 가능함).
 
-Note that you will be asked to choose a language for installation, and
-that choice applies to both installation and un-installation but not to
-running @R{} itself.
+@c Installation is @emph{via} the installer
+@c @file{@value{RWVERSION}-win.exe}.  Just double-click on the icon and
+@c follow the instructions.  When installing on a 64-bit version of Windows
+@c the options will include 32- or 64-bit versions of R (and the default is
+@c to install both).  You can uninstall @R{} from the Control Panel.
 
-See the @uref{http://CRAN.R-project.org/@/bin/@/windows/@/base/@/rw-FAQ.html, R
-Windows @acronym{FAQ}} for more details on the binary installer.
+@file{@value{RWVERSION}-win.exe} 라는 설치 프로그램을 @emph{통해서} 설치하십시요. 아이콘을 더블 클릭하신후 나오는 설명서를 참조하시면 됩니다. 64-bit 윈도우즈에 설치하실때는 32-와 64-bit 두가지 버젼의 R이 옵션에 있습니다 (기본은 두가지 버젼을 모두 설치하는 것입니다). 컨트럴 패널 (Control Panel) 안에서 @R{}을 제거할수도 있습니다, 
+
+@c Note that you will be asked to choose a language for installation, and
+@c that choice applies to both installation and un-installation but not to
+@c running @R{} itself.
+
+참고하실것은 설치 실행시 언어를 선택하게 되어있습니다, 그리고 선택하신 언어는 설치와 제거 실행시 모두 적용되지만 @R{} 자체를 실행할때는 적용이 않됩니다.
+
+@c See the @uref{http://CRAN.R-project.org/@/bin/@/windows/@/base/@/rw-FAQ.html, R
+@c Windows @acronym{FAQ}} for more details on the binary installer.
+
+바이너리 설치 프로그램에 관한 더욱 자세한 내용은 @uref{http://CRAN.R-project.org/@/bin/@/windows/@/base/@/rw-FAQ.html, R Windows @acronym{FAQ}} 을 참고하십시요.
 
 @menu
-* Building from source::        
+* Building from source::   
 * Testing a Windows Installation::  
 @end menu
+@c Note from Chel Hee Lee on 2013-AUG-23
+@c @menu 와 @end menu 사이는 번역하지 말아주세요. 
+@c * 근본 출처를 이용해서 만들기::
+@c * 윈도우즈용 설치 상태 시험하기::
 
 @node Building from source, Testing a Windows Installation, Installing R under Windows, Installing R under Windows
-@section Building from source
+@c @section Building from source
+@section 근본 출처를 이용해서 만들기
 
-@R{} can be built as either a 32-bit or 64-bit application on Windows:
-to build the 64-bit application you need a 64-bit edition of Windows:
-such an OS can also be used to build 32-bit @R{}.
+@c @R{} can be built as either a 32-bit or 64-bit application on Windows:
+@c to build the 64-bit application you need a 64-bit edition of Windows:
+@c such an OS can also be used to build 32-bit @R{}.
+윈도우즈상에서 @R{}은 32- 또는 64-bit 어플리케이션으로 만들어질수있다: 64-bit 어플리케이션을 만들려면 윈도우즈역시 64-bit 발행판이어야 한다: 그러한 운영체제 (OS) 안에서 32-bit @R{}을 만드는것도 가능하다.. 
 
-The standard installer combines 32-bit and 64-bit builds into a single
-executable which can then be installed into the same location and share
-all the files except the @file{.exe} and @file{.dll} files and some
-configuration files in the @file{etc} directory.
+@c The standard installer combines 32-bit and 64-bit builds into a single
+@c executable which can then be installed into the same location and share
+@c all the files except the @file{.exe} and @file{.dll} files and some
+@c configuration files in the @file{etc} directory.
+기본 설치 프로그램은 32-bit과 64-bit을 합쳐서 한장소에 설치되며 @file{.exe}과 @file{.dll} 그리고 @file{etc} 디렉토리에 있는 몇몇의 형상파일들을 제외한 모든 파일들을 공유할수있도록 하나의 실행파일로 만들어졌다.  
 
 @menu
-* Getting the tools::           
-* Getting the source files::    
-* Building the core files::     
-* Building the bitmap files::   
+* Getting the tools:: 
+* Getting the source files::   
+* Building the core files::   
+* Building the bitmap files::  
 * Building the cairo devices files::  
 * Checking the build::          
 * Building the manuals::        
 * Building the Inno Setup installer::  
 * Building the MSI installer::  
-* Cross-building on Linux::     
-* 64-bit Windows builds::       
+* Cross-building on Linux::   
+* 64-bit Windows builds::   
 @end menu
+
+@c * 도구 얻기::
+@c * 출처파일 (source files) 얻기::
+@c * 주체파일(core files) 만들기::
+@c * 비트맵파일 (bitmap files) 만들기:: 
+@c * 카이로 디바이스 파일(cairo devices files) 만들기::
+@c * 만든것 확인하기::
+@c * 메뉴얼 만들기::
+@c * Inno Setup 설치기 만들기::
+@c * MSI 설치기 만들기::
+@c * 리눅스(Linux)에 걸쳐만들기(cross-building).
+@c * 64-bit 윈도우즈에서 만들기::
 
 @node Getting the tools, Getting the source files, Building from source, Building from source
 @subsection Getting the tools
 
 If you want to build @R{} from the sources, you will first need to
-collect, install and test an extensive set of tools.  See @ref{The
-Windows toolset} (and perhaps updates in
+collect, install and test an extensive set of tools.  See @ref{The Windows toolset} (and perhaps updates in
 @uref{http://CRAN.R-project.org/bin/@/windows/@/Rtools/}) for details.
 
-The @file{Rtools*.exe} executable installer described in @ref{The
+The @file{Rtools*.exe} executable installer described in @ref{The 
 Windows toolset} also includes some source files in addition to the @R{}
 source as noted below.  You should run it first, to obtain a working
 @code{tar} and other necessities.  Choose a ``Full installation'', and
