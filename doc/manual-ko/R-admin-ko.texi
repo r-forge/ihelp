@@ -1236,7 +1236,7 @@ LANGUAGE=en LC_TIME=C
 
 @node Building from source, Testing a Windows Installation, Installing R under Windows, Installing R under Windows
 @c @section Building from source
-@section 근본 출처를 이용해서 만들기
+@section 소스로부터 빌드하기
 
 @c @R{} can be built as either a 32-bit or 64-bit application on Windows:
 @c to build the 64-bit application you need a 64-bit edition of Windows:
@@ -1739,7 +1739,8 @@ account used to install @R{}.
 
 
 @node Installing R under (Mac) OS X, Running R, Installing R under Windows, Top
-@chapter Installing R under (Mac) OS X
+@c @chapter Installing R under (Mac) OS X
+@chapter (Mac) OS X 에서 R 설치하기 
 @cindex OS X
 
 @macro Rapp{}
@@ -1749,110 +1750,146 @@ account used to install @R{}.
 @strong{NB:}  Information on OS X is likely to change before release of
 @R{} 3.0.0.
 
-The @file{bin/macosx} directory of a @acronym{CRAN} site contains
-binaries for OS X for a base distribution and a large number of add-on
-packages from @acronym{CRAN} to run on OS X 10.6 and later (Snow
-Leopard, Lion, Mountain Lion, @dots{}).  This is a @cputype{x86_64}
-build, and should run on all Macs from mid-2008 on.
+@c The @file{bin/macosx} directory of a @acronym{CRAN} site contains
+@c binaries for OS X for a base distribution and a large number of add-on
+@c packages from @acronym{CRAN} to run on OS X 10.6 and later (Snow
+@c Leopard, Lion, Mountain Lion, @dots{}).  This is a @cputype{x86_64}
+@c build, and should run on all Macs from mid-2008 on.
+@acronym{CRAN} 사이트의 @file{bin/macosx} 디렉토리는 OS X에 설치할 수 있는 베이스 배포와 @acronym{CRAN}으로부터 받아 OS X 10.6 또는 이후 버전 (Snow Leopard, Lion, Mountain Lion, @dots{})에서 사용이 가능한 방대한 양의 애드온 패키지들의 바이너리들을 포함하고 있습니다. 
 
-The simplest way is to use @file{R-@value{VERSIONno}.pkg}: just
-double-click on the icon.  Note that (X11-based) Tcl/Tk needs to be
-installed separately if needed, from
-@uref{http://cran.r-project.org/bin/macosx/tools/}, and for Mountain
-Lion XQuartz will also need to be installed to use Tk.
+@c The simplest way is to use @file{R-@value{VERSIONno}.pkg}: just
+@c double-click on the icon.  Note that (X11-based) Tcl/Tk needs to be
+@c installed separately if needed, from
+@c @uref{http://cran.r-project.org/bin/macosx/tools/}, and for Mountain
+@c Lion XQuartz will also need to be installed to use Tk.
+가장 간단한 방법은 @file{R-@value{VERSIONno}.pkg}를 사용하는 것입니다. 
+이는 단순히 아이콘을 더블클릭하면 됩니다.
+(X11을 이용하는) Tcl/Tk는 필요하다면 따로 설치되어야 하며 이는 @uref{http://cran.r-project.org/bin/macosx/tools/}에서 얻을 수 있습니다.
+Mountain Lion XQuartz 또한 Tk를 이용하여 설치되어야 합니다. 
 
-On Mountain Lion with `GateKeeper' active you may need to
-right/control-click on some of the packages (e.g.@: that for Tcl/Tk) and
-select @samp{Open}.
+@c On Mountain Lion with `GateKeeper' active you may need to
+@c right/control-click on some of the packages (e.g.@: that for Tcl/Tk) and
+@c select @samp{Open}.
+`GateKeeper'가 활성화 되어 있는 Mountain Lion에서 일부 패키지들 (즉, @: Tcl/Tk)에 대해서 오른쪽/컨트롤을 이용하여 @samp{Open}을 선택해야 할 것입니다.
 
-The binary version of @R{} is provided as an Apple Installer package. If
-you encounter any problem during the installation, please check the
-Installer log by clicking on the ``Window'' menu and item ``Installer
-Log''. The full output (select ``Show All Log'') is useful for tracking
-down problems.
+@c The binary version of @R{} is provided as an Apple Installer package. If
+@c you encounter any problem during the installation, please check the
+@c Installer log by clicking on the ``Window'' menu and item ``Installer
+@c Log''. The full output (select ``Show All Log'') is useful for tracking
+@c down problems.
+@R{}의 바이너리 버전이 Apple 인스톨러 패키지로서 제공됩니다.
+만약 설치동안에 어떠한 문제를 만나게 된다면 ``Window'' 메뉴에 있는 항목 ``Installer Log''를 클릭함으로서 Installer log를 확인해야 보셔야 합니다. 
+문제를 해결함에 있어서 전체출력 (``Show All Log''를 눌러확인)을 살펴보는것은 매우 유용합니다. 
 
-
-For building @R{} from source, see @ref{Mac OS X}.
+@c For building @R{} from source, see @ref{Mac OS X}.
+소스로부터 @R{}을 빌딩하기 위해서는 @ref{Mac OS X}를 살펴보시길 바랍니다.
 
 @menu
 * Uninstalling under OS X::     
 @end menu
 
 @node Uninstalling under OS X,  , Installing R under (Mac) OS X, Installing R under (Mac) OS X
-@section Uninstalling under OS X
+@c @section Uninstalling under OS X
+@section OS X에서 삭제하기 
 
-@R{} for Mac OS X consists of two parts: the GUI (@Rapp{}) and the R
-framework. The un-installation is as simple as removing those folders
-(e.g.@: by dragging them into the Trash). The typical installation will
-install the GUI into the @file{/Applications} folder and the R framework
-in the @file{/Library/Frameworks} folder.
+@c @R{} for Mac OS X consists of two parts: the GUI (@Rapp{}) and the R
+@c framework. The un-installation is as simple as removing those folders
+@c (e.g.@: by dragging them into the Trash). The typical installation will
+@c install the GUI into the @file{/Applications} folder and the R framework
+@c in the @file{/Library/Frameworks} folder.
+Mac OS X에서 @R{}은 두 부분으로 구성되어 있습니다:  GUI (@Rapp{})와 R 프레임워크입니다.
+삭제는 간단히 두 폴더를 제거하면 됩니다 (즉, @: 휴지통으로 이동시킵니다).
+전형적인 설치는 GUI 를 @file{/Application} 폴더에 설치하고 R 프레임웤는 @file{/Library/Frameworks} 폴더에 설치됩니다.
 
-If you want to get rid of R using a Terminal, simply run (prepend
-@code{sudo} if needed):
+@c If you want to get rid of R using a Terminal, simply run (prepend
+@c @code{sudo} if needed):
+만약 터미널을 이용하여 R을 삭제하고자 한다면 단순히 아래와 같은 명령을 실행하면 됩니다 (만약 필요하다면 @code{sudo}를 하십시요).
 
 @example
 rm -rf /Library/Frameworks/R.framework /Applications/R.app /Applications/R64.app 
 @end example
 
-Note that this does leave some symbolic links in @file{/usr/bin}, some
-or all of @file{R}, @file{Rscript}, @file{R32} and @file{R64}.
+@c Note that this does leave some symbolic links in @file{/usr/bin}, some
+@c or all of @file{R}, @file{Rscript}, @file{R32} and @file{R64}.
+그런데 이는 @file{/usr/bin}내에 있는 일부 심볼릭 링크, @file{R}, @file{Rscript}, @file{R32}, 그리고 @file{R64} 내에 있는 일부 또는 전체를 남겨둘 수 있습니다.
 
-An alternative is to use Apple's @code{pkgutil} tools to uninstall R. R
-consists of three packages: @code{org.r-project.R.Leopard.fw.pkg},
-@code{org.r-project.R.Leopard.GUI.pkg} and
-@code{org.r-project.R.Leopard.GUI64.pkg}. You can use @code{pkgutil
---unlink} for each of them to remove their files and/or @code{pkgutil
---forget} if you want the Apple Installer to forget about the package
-without deleting its files (useful when installing multiple R versions
-in parallel).
-
+@c An alternative is to use Apple's @code{pkgutil} tools to uninstall R. R
+@c consists of three packages: @code{org.r-project.R.Leopard.fw.pkg},
+@c @code{org.r-project.R.Leopard.GUI.pkg} and
+@c @code{org.r-project.R.Leopard.GUI64.pkg}. You can use @code{pkgutil
+@c --unlink} for each of them to remove their files and/or @code{pkgutil
+@c --forget} if you want the Apple Installer to forget about the package
+@c without deleting its files (useful when installing multiple R versions
+@c in parallel).
+또 다른 방법으로는 Apple의 @code{pkgutil} 도구를 이용하여 R을 삭제하는 것입니다.
+R은 @code{org.r-project.R.Leopard.fw.pkg}, @code{org.r-project.R.Leopard.GUI.pkg}, 그리고, @code{org.r-project.R.Leopard.GUI64.pkg} 패키지로 구성되어 있습니다. 
+이들 각각에 대해서 파일들을 제거하기 위해서 @code{pkgutil --unlink}를 사용할 수 있고, 만약 Apple Installer가 패키지에 대해서 파일의 삭제없이 이들을 기억하지 않도록 하기 위해서 @code{pkgutil --forget}을 이용할 수 있습니다 (이렇게 하는 것은 여러개의 R 버전들을 함께 사용할 때 유용합니다).
 
 @node Running R, Add-on packages, Installing R under (Mac) OS X, Top
-@chapter Running R
+@c @chapter Running R
+@chapter R 실행하기 
 
-How to start @R{} and what command-line options are available is discussed
-in @ref{Invoking R, , Invoking R, R-intro, An Introduction to R}.
+@c How to start @R{} and what command-line options are available is discussed
+@c in @ref{Invoking R, , Invoking R, R-intro, An Introduction to R}.
+어떻게 @R{}을 시작하고 어떤 명령어 라인 옵션들이 사용가능한지는 @ref{Invoking R, , Invoking R, R-intro, An Introduction to R} 에 설명되어 있습니다.
 
-You should ensure that the shell has set adequate resource limits: @R{}
-expects a stack size of at least 8MB and to be able to open at least 256
-file descriptors.  (Any modern OS will have default limits at least as
-large as these, but apparently NetBSD does not.  Use the shell command
-@command{ulimit} (@command{sh}/@command{bash}) or @command{limit}
-(@command{csh}/@command{tcsh}) to check.)
+@c You should ensure that the shell has set adequate resource limits: @R{}
+@c expects a stack size of at least 8MB and to be able to open at least 256
+@c file descriptors.  (Any modern OS will have default limits at least as
+@c large as these, but apparently NetBSD does not.  Use the shell command
+@c @command{ulimit} (@command{sh}/@command{bash}) or @command{limit}
+@c (@command{csh}/@command{tcsh}) to check.)
+사용자가 해야할 일은 쉘이 올바르게 자원의 한계를 지정했는지를  확인하는 것입니다.
+@R{}은 스택의 크기가 최소 8MB이어야 하며, 최소 256 파일 디스크립터들을 열수 있어야 합니다.
+(최근 운영체제들은 이것들에 대하여 가능한 크고 많이 할 수 있도록 기본값을 설정하지만, NetBSD는 그러하지 않은 것 같습니다.
+쉘 명령어 @command{ulimit} (@command{sh}/@command{bash}) 또는 @command{limit} (@command{csh}/@command{tcsh})를 이용해보세요).
 
-@R{} makes use of a number of environment variables, the default values
-of many of which are set in file @file{@var{R_HOME}/etc/Renviron} (there
-are none set by default on Windows and hence no such file).  These are
-set at @command{configure} time, and you would not normally want to
+@c @R{} makes use of a number of environment variables, the default values
+@c of many of which are set in file @file{@var{R_HOME}/etc/Renviron} (there
+@c are none set by default on Windows and hence no such file).  These are
+@c set at @command{configure} time, and you would not normally want to
 @enindex R_PAPERSIZE
-change them -- a possible exception is @env{R_PAPERSIZE} (@pxref{Setting
-paper size}).  The paper size will be deduced from the @samp{LC_PAPER}
-locale category if it exists and @env{R_PAPERSIZE} is unset, and this
-will normally produce the right choice from @samp{a4} and @samp{letter}
-on modern Unix-alikes (but can always be overridden by setting
-@env{R_PAPERSIZE}).
+@c change them -- a possible exception is @env{R_PAPERSIZE} (@pxref{Setting
+@c paper size}).  The paper size will be deduced from the @samp{LC_PAPER}
+@c locale category if it exists and @env{R_PAPERSIZE} is unset, and this
+@c will normally produce the right choice from @samp{a4} and @samp{letter}
+@c on modern Unix-alikes (but can always be overridden by setting
+@c @env{R_PAPERSIZE}).
+@R{}은 여러가지 환경변수들을 사용하는데, 이들의 대다수의 기본값들이 @file{@var{R_HOME}/etc/Renviron} 파일내에 설정되어 있습니다 (Windows에서는 기본적으로 아무것도 설정되지 않으므로 그러한 파일은 없습니다).
+이것들은 @command{configure}를 할때 설정되며, 일반적으로 @env{R_PAPERSIZE}는 제외하고는 이들의 값을 변경할 수는 없습니다.
+(@pxref{Setting paper size}).
+페이퍼 사이즈는 만약 @samp{LC_PAPER} 로케일 카테고리에 지정된 값이 있고 @env{R_PAPERSIZE}가 지정되어 있지 않다면 그 값을 불러옵니다.
+이것은 일반적으로 현대 유닉스와 같은 환경에서 @samp{a4}와 @samp{letter}으로부터 올바른 선택을 하도록 해줍니다.
+(그러나 @env{R_PAPERSIZE}를 설정함으로서 항상 변경이 가능합니다).
 
-Various environment variables can be set to determine where @R{} creates
-its per-session temporary directory.  The environment variables
+@c Various environment variables can be set to determine where @R{} creates
+@c its per-session temporary directory.  The environment variables
 @enindex TMPDIR
 @enindex TMP
 @enindex TEMP
-@env{TMPDIR}, @env{TMP} and @env{TEMP} are searched in turn and the
-first one which is set and points to a writable area is used.  If none
-do, the final default is @file{/tmp} on Unix-alikes and the value of
+@c @env{TMPDIR}, @env{TMP} and @env{TEMP} are searched in turn and the
+@c first one which is set and points to a writable area is used.  If none
+@c do, the final default is @file{/tmp} on Unix-alikes and the value of
 @enindex R_USER
-@env{R_USER} on Windows.
+@c @env{R_USER} on Windows.
+다양한 환경변수들은 @R{}이 세션마다 사용하는 임시 디렉토리를 어디에 생성하는지 결정하도록 설정할 수 있습니다. 
+환경변수 @env{TMPDIR}, @env{TMP}, @env{TEMP}가 찾아지고 가장 먼저 설정되고 쓰기권한이 부여된 곳에서 사용이 됩니다. 
+만약 그렇지 않다면 가장 마지막 선택은 유닉스와 같은 환경에서는 @file{/tmp}가 이용되며 윈도우즈에서는 @env{R_USER}의 값이 됩니다. 
 
-Some Unix-alike systems are set up to remove files and directories
-periodically from @file{/tmp}, for example by a @command{cron} job
+@c Some Unix-alike systems are set up to remove files and directories
+@c periodically from @file{/tmp}, for example by a @command{cron} job
 @enindex TMPDIR
-running @command{tmpwatch}.  Set @env{TMPDIR} to another directory
-before running long-running jobs on such a system.
+@c running @command{tmpwatch}.  Set @env{TMPDIR} to another directory
+@c before running long-running jobs on such a system.
+일부 유닉스와 같은 시스템에서는 @command{cron}에 의해서 실행되는 @command{tmpwatch}와 같이 @file{/tmp}로부터 정기적으로 파일들과 디렉토리들을 삭제하도록 설정되어 있습니다. 
+그러한 시스템에서 오랜 작업이 걸리는 것을 실행하기 전에 @env{TMPDIR}를 이용하여 다른 디렉토리를 설정하도록 하세요.
 
-Note that @env{TMPDIR} will be used to execute @command{configure}
-scripts when installing packages, so if @file{/tmp} has been mounted as
-@samp{noexec}, @env{TMPDIR} needs to be set to a directory from which
-execution is allowed.
+@c Note that @env{TMPDIR} will be used to execute @command{configure}
+@c scripts when installing packages, so if @file{/tmp} has been mounted as
+@c @samp{noexec}, @env{TMPDIR} needs to be set to a directory from which
+@c execution is allowed.
+@env{TMPDIR}은 패키지 설치시에 @command{configure} 스크립트를 실행하는데 이용됩니다.
+만약 @file{/tmp}가 마운트되었다면 @env{TMPDIR}은 실행권한이 주어져 있는 디렉토리를 지정하는 것이 필요합니다. 
 
 @node Add-on packages, Internationalization, Running R, Top
 @chapter Add-on packages
@@ -2420,19 +2457,21 @@ R CMD INSTALL --merge-multiarch -l @var{libdir} @var{tarball}
 and @option{--build} can be added to zip up the installation.
 
 @node Internationalization, Choosing between 32- and 64-bit builds, Add-on packages, Top
-@chapter Internationalization and Localization
+@c @chapter Internationalization and Localization
+@chapter 국제화와 지역화
 @cindex Internationalization
 @cindex Localization
 
-@emph{Internationalization} refers to the process of enabling support
-for many human languages, and @emph{localization} to adapting to a
-specific country and language.
+@c @emph{Internationalization} refers to the process of enabling support
+@c for many human languages, and @emph{localization} to adapting to a
+@c specific country and language.
+@emph{Internationalization}(국제화)는 인간이 사용하는 많은 언어를 지원할 수 있도록 하는 프로세싱을 의미하며, @emph{localization}(지역화)란 특정국가와 언어에 적용하는 것을 의미합니다. 
 
-@c Prior to 2005 @R{} worked in the ISO Latin-1 8-bit character set and so
-@c covered English and most Western European languages (if not necessarily
-@c their currency symbols).  Since @R{} 2.1.0 it has supported Eastern
-@c European 8-bit character sets, and multi-byte character sets such as
-@c UTF-8 and others used for Chinese, Japanese and Korean.
+@c @c Prior to 2005 @R{} worked in the ISO Latin-1 8-bit character set and so
+@c @c covered English and most Western European languages (if not necessarily
+@c @c their currency symbols).  Since @R{} 2.1.0 it has supported Eastern
+@c @c European 8-bit character sets, and multi-byte character sets such as
+@c @c UTF-8 and others used for Chinese, Japanese and Korean.
 
 Current builds of @R{} support all the character sets that the
 underlying OS can handle.  These are interpreted according to the
@@ -2453,7 +2492,8 @@ translation of messages.  This is enabled in almost all builds of @R{}.
 @end menu
 
 @node Locales, Localization of messages, Internationalization, Internationalization
-@section Locales
+@c @section Locales
+@section 로케일
 @cindex Locale
 
 A @emph{locale} is a description of the local environment of the user,
@@ -2504,7 +2544,8 @@ one charset each for most languages.
 @end menu
 
 @node Locales under Linux, Locales under Windows, Locales, Locales
-@subsection Locales under Linux
+@c @subsection Locales under Linux
+@subsection 리눅스에서의 로케일 
 
 Modern Linux uses the XPG@footnote{`X/Open Portability Guide', which has
 had several versions.} locale specifications which have the form
@@ -2515,7 +2556,8 @@ details.)  Similar schemes are used by most Unix-alikes: some (including
 some distributions of Linux) use @samp{.utf8} rather than @samp{.UTF-8}.
 
 @node Locales under Windows, Locales under OS X, Locales under Linux, Locales
-@subsection Locales under Windows
+@c @subsection Locales under Windows
+@subsection 윈도우즈에서의 로케일 
 
 Windows also uses locales, but specified in a rather less concise way.
 Most users will encounter locales only via drop-down menus, but more
@@ -2531,7 +2573,8 @@ Some care is needed with Windows' locale names.  For example,
 in most of the Chinese-speaking world.
 
 @node Locales under OS X,  , Locales under Windows, Locales
-@subsection Locales under OS X
+@c @subsection Locales under OS X
+@subsection OS X에서의 로케일 
 
 OS X supports locales in its own particular way, but the R GUI tries to
 make this easier for users. See
@@ -2554,7 +2597,8 @@ specified it is assumed to be @code{UTF-8}.
 
 
 @node Localization of messages,  , Locales, Internationalization
-@section Localization of messages
+@c @section Localization of messages
+@section 메시지의 지역화 
 
 The preferred language for messages is by default taken from the locale.
 This can be overridden first by the setting of the environment variable
@@ -2642,6 +2686,8 @@ Americanisms.} is used.
 
 See @uref{http://developer.r-project.org/@/Translations.html} for how to
 prepare and install translation catalogues.
+
+@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 @node Choosing between 32- and 64-bit builds, The standalone Rmath library, Internationalization, Top
 @chapter Choosing between 32- and 64-bit builds
