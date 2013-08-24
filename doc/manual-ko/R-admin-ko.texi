@@ -118,7 +118,7 @@ tar -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c (as used on OS 10.[67]) or `Heirloom Toolchest' distributions.}
 @c @command{tar} installed.  On other systems you need to have the
 @c @command{gzip} program installed, when you can use
-다른 시스템에서 여러분이 다음과 같은 명령어를 사용할 수 있을 때에는 @command{gzip} 프로그램을 설치해야 할 필요가 있습니다.
+다른 시스템에서 다음과 같은 명령어를 사용하기 위해서는 @command{gzip}이라는 프로그램이 설치되어야 합니다.
 
 @example
 gzip -dc R-@var{x}.@var{y}.@var{z}.tar.gz | tar -xf -
@@ -127,22 +127,22 @@ gzip -dc R-@var{x}.@var{y}.@var{z}.tar.gz | tar -xf -
 @c The pathname of the directory into which the sources are unpacked should
 @c not contain spaces, as most @command{make} programs (and specifically
 @c @acronym{GNU} @command{make}) do not expect spaces.
-
-대부분의 @command{make} 프로그램 (특히 @acronym{GNU} @command{make}) 이 공백(space)를 기대하지 않는 것과 같이 압축해제된 소스에 삽인될 디렉토리 경로는 공백(space)이 없어야 합니다.
+대부분의 @command{make} 프로그램 (특히 @acronym{GNU} @command{make})들이 공백을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
 
 @c If you want the build to be usable by a group of users, set @code{umask}
 @c before unpacking so that the files will be readable by the target group
 @c (e.g.,@: @code{umask 022} to be usable by all users).  Keep this
 @c setting of @code{umask} whilst building and installing.
-
-여러분이 사용자 그룹에 의해 사용가능 하도록 빌드하기 원한다면, 압출을 풀기 전에 @code{umask}를 설정하십시오. 그러면 그 파일이 목적하는 그룹에 의해 읽을 수 있게 될 것입니다(예를 들어, @: @code{umask 022}는 모든 사용자가 읽을 구 있도록 합니다). 빌드와 설치 중에 @code{umask} 성정을 유지하도록 하십시오.
+만약 여러명의 사용자들이 사용할 수 있도록 빌드하기 원한다면, 압축을 풀기 전에 @code{umask}를 설정하는 것은 파일들이 다른 대상 그룹(target group)에 의하여 읽혀질 수 있게 해줍니다. 
+(예를들어, @: @code{umask 022}라고 하는 것은 모든 사용자가 사용할 수 있게 합니다).
+빌드와 설치 중에 @code{umask} 설정을 유지하도록 하십시오.
 
 @c If you use a recent GNU version of @command{tar} and do this as a root
 @c account (which on Windows includes accounts with administrator
 @c privileges) you may see many warnings about changing ownership.  In
 @c which case you can use
-
-만약 여러분이 최신의 @command{tar} GNU 버전을 사용하고 이것을 (윈도우즈에서 관리자 권한의 계정을 포함하는) 루트 계정으로 사용한다면 소유권 변화에 따른 많은 경고들을 보게 될 것입니다. 그러한 경우 여러분은 다음과 같은 방법을 사용할 수 있습니다.
+만약 GNU 버전의 최신 @command{tar}를 사용하며, 이러한 작업을 루트계정 (Windows에서는 관리자 권한을 가지고 있는 계정)을 통하여 하게 된다면, 소유권의 변경에 대해서 많은 경고를 보게 될 것입니다. 
+이런 경우에는 다음과 같이 해 볼 수 있습니다.
 
 @example
 tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
@@ -150,17 +150,16 @@ tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 
 @noindent
 @c and perhaps also include the option @option{--no-same-permissions}.
-@c @enindex TAR_OPTIONS
+@enindex TAR_OPTIONS
 @c (These options can also be set in the @env{TAR_OPTIONS} environment
 @c variable: if more than one option is included they should be separated
 @c by spaces.)
-
-그리고 아마 @option{--no-same-permissions} 또한 포함할 수 있습니다. 
-@enindex TAR_OPTIONS
-(이런 옵션은 @env{TAR_OPTIONS} 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)으로 구분되어야 합니다.)
+그리고 또한 옵션 @option{--no-same-permissions}을 사용할 수도 있습니다. 
+(이런 옵션들은 @env{TAR_OPTIONS} 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백(space)으로 구분되어야 합니다.)
 
 @node Getting patched and development versions,  , Getting and unpacking the sources, Obtaining R
-@section Getting patched and development versions
+@c @section Getting patched and development versions
+@section 패치된 버전과 개발 버전을 얻기
 
 @c A patched version of the current release, @samp{r-patched}, and the
 @c current development version, @samp{r-devel}, are available as daily
@@ -169,7 +168,6 @@ tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c tarballs may refer to beta/release candidates of the upcoming release,
 @c the patched version of the current release being available via
 @c Subversion.)
-
 현재 공개된 버전의 패치 버전인 @samp{r-patched}와 현재 개발 중인 버전인 @samp{r-devel}은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안 @samp{r-patched} tarballs는 곧 공개될 버전의 베타/공개후보로 불리고 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
 
 @c The tarballs are available from
@@ -177,7 +175,6 @@ tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c @file{R-patched.tar.gz} or @file{R-devel.tar.gz} (or the @file{.tar.bz2}
 @c versions) and unpack as described in the previous section.  They are
 @c built in exactly the same way as distributions of R releases.
-
 tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 있습니다. @file{R-patched.tar.gz} 이나 @file{R-devel.tar.gz} (또는  @file{.tar.bz2} versions)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 설치됩니다.
 
 @menu
@@ -197,8 +194,7 @@ tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 �
 @c @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}
 @c (where @var{x} and @var{y} are the major and minor number of the current
 @c released version of R).  E.g., use
-
-원천들(sources)은 R Subversion repository인 @uref{https://svn.R-project.org/R/}에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(@uref{http://subversion.apache.org/}를 참고하십시오), 여러분은 @uref{http://svn.r-project.org/@/R/@/trunk/}로부터 현재의 @samp{r-devel}과 (@var{x} 와 @var{y} 가 현재의 R 공개 버전의 주부분과 부수된 부분인) @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}로부터 @samp{r-patched}를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+소스들은 R 서브버전 저장소인 @uref{https://svn.R-project.org/R/}에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(@uref{http://subversion.apache.org/}를 참고하십시오), 여러분은 @uref{http://svn.r-project.org/@/R/@/trunk/}로부터 현재의 @samp{r-devel}과 (@var{x} 와 @var{y} 가 현재의 R 공개 버전의 주부분과 부수된 부분인) @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}로부터 @samp{r-patched}를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
 
 @example
 svn checkout https://svn.r-project.org/R/trunk/ @var{path}

@@ -77,7 +77,7 @@ p {
 <li><a name="toc_Obtaining-R" href="#Obtaining-R">1 Obtaining R</a>
 <ul>
 <li><a href="#Getting-and-unpacking-the-sources">1.1 소스를 얻고 압축풀기</a>
-<li><a href="#Getting-patched-and-development-versions">1.2 Getting patched and development versions</a>
+<li><a href="#Getting-patched-and-development-versions">1.2 패치된 버전과 개발 버전을 얻기</a>
 <ul>
 <li><a href="#Using-Subversion-and-rsync">1.2.1 Using Subversion and rsync</a>
 </li></ul>
@@ -339,37 +339,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Obtaining-R">Obtaining R</a>
 <!-- (as used on OS 10.[67]) or `Heirloom Toolchest' distributions.} -->
 <!-- @command{tar} installed.  On other systems you need to have the -->
 <!-- @command{gzip} program installed, when you can use -->
-다른 시스템에서 여러분이 다음과 같은 명령어를 사용할 수 있을 때에는 <samp><span class="command">gzip</span></samp> 프로그램을 설치해야 할 필요가 있습니다.
+다른 시스템에서 다음과 같은 명령어를 사용하기 위해서는 <samp><span class="command">gzip</span></samp>이라는 프로그램이 설치되어야 합니다.
 
 <pre class="example">     gzip -dc R-<var>x</var>.<var>y</var>.<var>z</var>.tar.gz | tar -xf -
 </pre>
    <!-- The pathname of the directory into which the sources are unpacked should -->
 <!-- not contain spaces, as most @command{make} programs (and specifically -->
 <!-- @acronym{GNU} @command{make}) do not expect spaces. -->
-   <p>대부분의 <samp><span class="command">make</span></samp> 프로그램 (특히 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>) 이 공백(space)를 기대하지 않는 것과 같이 압축해제된 소스에 삽인될 디렉토리 경로는 공백(space)이 없어야 합니다.
+   <p>대부분의 <samp><span class="command">make</span></samp> 프로그램 (특히 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>)들이 공백을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
 
 <!-- If you want the build to be usable by a group of users, set @code{umask} -->
 <!-- before unpacking so that the files will be readable by the target group -->
 <!-- (e.g.,@: @code{umask 022} to be usable by all users).  Keep this -->
 <!-- setting of @code{umask} whilst building and installing. -->
-   <p>여러분이 사용자 그룹에 의해 사용가능 하도록 빌드하기 원한다면, 압출을 풀기 전에 <code>umask</code>를 설정하십시오. 그러면 그 파일이 목적하는 그룹에 의해 읽을 수 있게 될 것입니다(예를 들어,  <code>umask 022</code>는 모든 사용자가 읽을 구 있도록 합니다). 빌드와 설치 중에 <code>umask</code> 성정을 유지하도록 하십시오.
+   <p>만약 여러명의 사용자들이 사용할 수 있도록 빌드하기 원한다면, 압축을 풀기 전에 <code>umask</code>를 설정하는 것은 파일들이 다른 대상 그룹(target group)에 의하여 읽혀질 수 있게 해줍니다. 
+(예를들어,  <code>umask 022</code>라고 하는 것은 모든 사용자가 사용할 수 있게 합니다). 
+빌드와 설치 중에 <code>umask</code> 설정을 유지하도록 하십시오.
 
 <!-- If you use a recent GNU version of @command{tar} and do this as a root -->
 <!-- account (which on Windows includes accounts with administrator -->
 <!-- privileges) you may see many warnings about changing ownership.  In -->
 <!-- which case you can use -->
-   <p>만약 여러분이 최신의 <samp><span class="command">tar</span></samp> GNU 버전을 사용하고 이것을 (윈도우즈에서 관리자 권한의 계정을 포함하는) 루트 계정으로 사용한다면 소유권 변화에 따른 많은 경고들을 보게 될 것입니다. 그러한 경우 여러분은 다음과 같은 방법을 사용할 수 있습니다.
+   <p>만약 GNU 버전의 최신 <samp><span class="command">tar</span></samp>를 사용하며, 이러한 작업을 루트계정 (Windows에서는 관리자 권한을 가지고 있는 계정)을 통하여 하게 된다면, 소유권의 변경에 대해서 많은 경고를 보게 될 것입니다. 
+이런 경우에는 다음과 같이 해 볼 수 있습니다.
 
 <pre class="example">     tar --no-same-owner -xf R-<var>x</var>.<var>y</var>.<var>z</var>.tar.gz
 </pre>
    <p class="noindent"><!-- and perhaps also include the option @option{-no-same-permissions}. -->
-<!-- @enindex TAR_OPTIONS -->
-<!-- (These options can also be set in the @env{TAR_OPTIONS} environment -->
+<a name="index-TAR_005fOPTIONS-3"></a><!-- (These options can also be set in the @env{TAR_OPTIONS} environment -->
 <!-- variable: if more than one option is included they should be separated -->
 <!-- by spaces.) -->
-
-   <p>그리고 아마 <samp><span class="option">--no-same-permissions</span></samp> 또한 포함할 수 있습니다. 
-<a name="index-TAR_005fOPTIONS-3"></a>(이런 옵션은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수에 세팅될 수 있습니다. 만약 하나 이상의 옵션이 포함되면 그것들은 여백(space)으로 구분되어야 합니다.)
+그리고 또한 옵션 <samp><span class="option">--no-same-permissions</span></samp>을 사용할 수도 있습니다. 
+(이런 옵션들은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백(space)으로 구분되어야 합니다.)
 
 <div class="node">
 <a name="Getting-patched-and-development-versions"></a>
@@ -379,7 +380,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Obtaining-R">Obtaining R</a>
 
 </div>
 
-<h3 class="section">1.2 Getting patched and development versions</h3>
+<!-- @section Getting patched and development versions -->
+<h3 class="section">1.2 패치된 버전과 개발 버전을 얻기</h3>
 
 <!-- A patched version of the current release, @samp{r-patched}, and the -->
 <!-- current development version, @samp{r-devel}, are available as daily -->
@@ -421,8 +423,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-patched-and-development-versio
 <!-- @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/} -->
 <!-- (where @var{x} and @var{y} are the major and minor number of the current -->
 <!-- released version of R).  E.g., use -->
-
-   <p>원천들(sources)은 R Subversion repository인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(<a href="http://subversion.apache.org/">http://subversion.apache.org/</a>를 참고하십시오), 여러분은 <a href="http://svn.r-project.org/R/trunk/">http://svn.r-project.org/R/trunk/</a>로부터 현재의 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;과 (<var>x</var> 와 <var>y</var> 가 현재의 R 공개 버전의 주부분과 부수된 부분인) &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;로부터 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+소스들은 R 서브버전 저장소인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(<a href="http://subversion.apache.org/">http://subversion.apache.org/</a>를 참고하십시오), 여러분은 <a href="http://svn.r-project.org/R/trunk/">http://svn.r-project.org/R/trunk/</a>로부터 현재의 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;과 (<var>x</var> 와 <var>y</var> 가 현재의 R 공개 버전의 주부분과 부수된 부분인) &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;로부터 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
 
 <pre class="example">     svn checkout https://svn.r-project.org/R/trunk/ <var>path</var>
 </pre>
