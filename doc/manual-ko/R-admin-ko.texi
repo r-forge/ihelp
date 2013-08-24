@@ -384,12 +384,11 @@ make check
 @c non-UTF-8 non-Western-European locales.)  A failure in
 @c @file{tests/ok-errors.R} may indicate inadequate resource limits
 @c (@pxref{Running R}).
-설치의 실패는 관련 기능이 설치되어 있지 않아 발생하는 경우가 많습니다 
-@footnote{for example, if you configured @R{} with @option{--without-recommended}.}
-그러나, 어떤 것들이 보고되는지를 주의깊게 읽어볼 필요가 있습니다.
- (Some non-fatal errors are expected in locales
-that do not support Latin-1, in particular in true @code{C} locales and
-non-UTF-8 non-Western-European locales.)
+설치의 실패는 관련 기능이 설치되어 있지 않아 발생하는 경우가 많지만, 
+@footnote{예를들어, 만약에 @option{--without-recommended}이라는 옵션과 함께 @R{}의 환경을 확인해보지 않았다면}
+어떤 부분이 이를 야기시키는지에 대해서 보고된 내용을 주의깊게 읽어보시길 바랍니다.
+(일부 치명적이지 않은 에러가 Latin-1을 지원하지 않는 로케일에서 발생할 것입니다.
+더 정확하게 말하면 @code{C} 로케일 그리고 UTF-8이 아니거나 Western-European 로케일이 않닌 로케일입니다).
 파일 @file{tests/ok-errors.R} 내에서의 실패는 아마도 부족한 자원의 한계를 의미할 것입니다 (@pxref{Running R}).
 
 @c More comprehensive testing can be done by
@@ -411,19 +410,29 @@ make check-all
 @c see file @file{tests/README}.
 파일 @file{tests/README}을 읽어보시길 바랍니다.
 
-If the command @command{configure} and @command{make} commands execute
-successfully, a shell-script front-end called @file{R} will be created
-and copied to @file{@var{R_HOME}/bin}.  You can copy this script to a
-place where users can invoke it, for example to @file{/usr/local/bin/R}.
-You could also copy the man page @file{R.1} to a place where your
-@command{man} reader finds it, such as @file{/usr/local/man/man1}.  If
-you want to install the complete @R{} tree to, e.g.,
-@file{/usr/local/lib/R}, see @ref{Installation}.  Note: you do not
-@emph{need} to install @R{}: you can run it from where it was built.
+@c If the command @command{configure} and @command{make} commands execute
+@c successfully, a shell-script front-end called @file{R} will be created
+@c and copied to @file{@var{R_HOME}/bin}.  You can copy this script to a
+@c place where users can invoke it, for example to @file{/usr/local/bin/R}.
+@c You could also copy the man page @file{R.1} to a place where your
+@c @command{man} reader finds it, such as @file{/usr/local/man/man1}.  If
+@c you want to install the complete @R{} tree to, e.g.,
+@c @file{/usr/local/lib/R}, see @ref{Installation}.  Note: you do not
+@c @emph{need} to install @R{}: you can run it from where it was built.
+만약 @command{configure}과 @command{make}이라는 명령어들이 성공적으로 사용되었다면, 쉘스크립트로 작성된 @file{R}이라는 파일이 생길 것이고 이는 @file{@var{R_HOME}/bin}에 복사될 것입니다. 
+이 스크립트를 복사하여 사용자가 이를 실행시키고자 하는 곳에 붙여넣을 수 있습니다.
+예를들어, @file{/usr/local/bin/R}에 복사할 수 있습니다.
+또한 @file{R.1}이라는 도움말 페이지를 복사하여 사용자의 @command{man} 리더(reader)가 이를 찾을 수 있는 곳으로 복사할 수 있습니다.
+예를들면, @file{/usr/local/man/man1}이라는 곳입니다.
+만약, 완전한 @R{} 트리를 @file{/usr/local/lib/R}에 설치하고 싶다면 @ref{Installation}를 살펴보세요.
+노트: 실제로는 @R{}을 꼭 설치할 필요는 없습니다.
+그 이유는 이것이 구축된 곳으로부터 실행할 수 있기 때문입니다.
 
-You do not necessarily have to build @R{} in the top-level source
-directory (say, @file{@var{TOP_SRCDIR}}).  To build in
-@file{@var{BUILDDIR}}, run
+@c You do not necessarily have to build @R{} in the top-level source
+@c directory (say, @file{@var{TOP_SRCDIR}}).  To build in
+@c @file{@var{BUILDDIR}}, run
+@R{}을 꼭 최상위 소스 디렉토리 (이를 편의상 @file{@var{TOP_SRCDIR}}이라고 해봅니다) 내에서 빌드할 필요는 없습니다.
+@file{@var{BUILDDIR}} 내에서 빌드해보고자 한다면 아래와 같이 할 수 있습니다.
 
 @findex configure
 
@@ -434,139 +443,176 @@ make
 @end example
 
 @noindent
-and so on, as described further below.  This has the advantage of always
-keeping your source tree clean and is particularly recommended when you
-work with a version of @R{} from Subversion.  (You may need
-@acronym{GNU} @command{make} to allow this, and you will need no spaces
-in the path to the build directory.)
+@c and so on, as described further below.  This has the advantage of always
+@c keeping your source tree clean and is particularly recommended when you
+@c work with a version of @R{} from Subversion.  (You may need
+@c @acronym{GNU} @command{make} to allow this, and you will need no spaces
+@c in the path to the build directory.)
+이렇게 하는 것은 소스트리를 깔끔하게 유지할 수 있다는 장점이 있으며 만약 당신 서브버전으로부터 얻은 @R{}의 버전과 함께 작업을 할 때 권장되어집니다 (이를 위해서는 @acronym{GNU} @command{make}가 필요할 것입니다).
 
-@c For those obtaining @R{} @emph{via} Subversion, one additional step is
-@c necessary:
-@c @cindex Vignettes
-@c @cindex Subversion
+@c @c For those obtaining @R{} @emph{via} Subversion, one additional step is
+@c @c necessary:
+@c @c @cindex Vignettes
+@c @c @cindex Subversion
 
-@c @example
-@c make vignettes
-@c @end example
+@c @c @example
+@c @c make vignettes
+@c @c @end example
 
-@c @noindent
-@c which makes the @pkg{grid} vignettes (which are contained in the
-@c tarballs): it make take several minutes.
+@c @c @noindent
+@c @c which makes the @pkg{grid} vignettes (which are contained in the
+@c @c tarballs): it make take several minutes.
 
-Now @code{rehash} if necessary, type @kbd{R}, and read the @R{} manuals
-and the @R{} @acronym{FAQ} (files @file{FAQ} or
-@file{doc/manual/R-FAQ.html}, or
-@uref{http://CRAN.R-project.org/@/doc/@/FAQ/@/R-FAQ.html} which always
-has the version for the latest release of @R{}).
+@c Now @code{rehash} if necessary, type @kbd{R}, and read the @R{} manuals
+@c and the @R{} @acronym{FAQ} (files @file{FAQ} or
+@c @file{doc/manual/R-FAQ.html}, or
+@c @uref{http://CRAN.R-project.org/@/doc/@/FAQ/@/R-FAQ.html} which always
+@c has the version for the latest release of @R{}).
+만약 필요하다면, @code{rehash}를 수행한 뒤에 @kbd{R}이라고 입력하고 @R{} 매뉴얼들과 @R{} @acronym{FAQ} (가장 최근에 릴리즈된 @R{}과 함께 제공되는 @file{FAQ} 또는 @file{doc/manual/R-FAQ.html}, 또는 @uref{http://CRAN.R-project.org/@/doc/@/FAQ/@/R-FAQ.html}의 파일들)을 읽어보세요.
+
 
 @node Help options, Making the manuals, Simple compilation, Installing R under Unix-alikes
-@section Help options
+@c @section Help options
+@section 도움말 옵션
 
-기본값으로 HTML 도움말 페이지는 설치될 때에 구축되는 것이 아니라 필요할 때 생성됩니다. 
-만약 서버를 비활성화 해야하고 HTML 도움말을 원한다면, 패키지들이 설치될 때 (R과 함께 설치되는 것들도 포함) HTML페이지들을 구축하도록 하는 옵션이 있습니다. 이는 configure의--enable-prebuilt-html옵션에 의해 활성화 됩니다. R CMD INSTALL (즉, install.packages)가 HTML 페이지들을 미리 구축하는지는 R 설치를 보면 알 수 있고R CMD INSTALL –help에 의해 리포트됩니다: 이는INSTALL의 옵션인 --html 이나 --no-html 중 하나를 지정함으로써 무시될 수 있습니다. 
-서버는 R이 시작되기 전 혹은(help.start를 포함한) HTML 도움말이 사용되기 전의 R 세션에서 환경 값을R_DISABLE_HTTPD에서 비어있지 않은 값으로 설정함으로써 비활성화 됩니다. 시스템 보안 조치는 서버가 시작되는 것을 막을 것 입니다, 예로 만약 loopback 인터페이스가 비활성화 되어있는 것과 같이, 시스템 보안 조치는 서버가 시작되는 것을 막을 수도 있습니다. 더 자세한 사항은 ?tools::startDynamicHelp를 참조하세요.
+@c By default @HTML{} help pages are created when needed rather than being
+@c built at install time.
+기본적으로 @HTML{} 도움말 페이지는 설치될 때에 구축되는 것이 아니라 필요할 때 생성됩니다. 
 
-By default @HTML{} help pages are created when needed rather than being
-built at install time.
+@c If you need to disable the server and want HTML help, there is the
+@c option to build @HTML{} pages when packages are installed
+@c (including those installed with @R{}).  This is enabled by the
+@c @command{configure} option @option{--enable-prebuilt-html}.  Whether
+@c @command{R CMD INSTALL} (and hence @code{install.packages}) pre-builds
+@c @HTML{} pages is determined by looking at the @R{} installation and is
+@c reported by @command{R CMD INSTALL --help}: it can be overridden by
+@c specifying one of the @command{INSTALL} options @option{--html} or
+@c @option{--no-html}.
+만약 서버가 비활성화 된 상태에서 HTML 도움말을 사용하기를 원한다면, 패키지들이 설치될 때 (R과 함께 설치되는 것들도 포함) HTML페이지들을 빌드하도록 하는 옵션이 제공됩니다.
+이는 @command{configure} 사용시 @option{--enable-prebuilt-html} 이라는 옵션을 통해서 이루어지게 됩니다.
+@command{R CMD INSTALL} (즉, @code{install.packages})이라는 명령이 @HTML{} 페이지들의 설치준비를 하는 것은 @R{} 설치를 살펴봄으로서 알수 있고 @command{R INSTALL --help}에 의하여 보고 되어집니다.
+이것은 @command{INSTALL}과 함께 쓰이는 @option{--html} 또는 @option{--no-html}이라는 옵션을 통하여 조절될 수 있습니다.
 
-If you need to disable the server and want HTML help, there is the
-option to build @HTML{} pages when packages are installed
-(including those installed with @R{}).  This is enabled by the
-@command{configure} option @option{--enable-prebuilt-html}.  Whether
-@command{R CMD INSTALL} (and hence @code{install.packages}) pre-builds
-@HTML{} pages is determined by looking at the @R{} installation and is
-reported by @command{R CMD INSTALL --help}: it can be overridden by
-specifying one of the @command{INSTALL} options @option{--html} or
-@option{--no-html}.
-
-The server is disabled by setting the environment variable
+@c The server is disabled by setting the environment variable
 @enindex R_DISABLE_HTTPD
-@env{R_DISABLE_HTTPD} to a non-empty value, either before @R{} is
-started or within the @R{} session before @HTML{} help (including
-@code{help.start}) is used.  It is also possible that system security
-measures will prevent the server from being started, for example if the
-loopback interface has been disabled.  See
-@code{?tools::startDynamicHelp} for more details.
+@c @env{R_DISABLE_HTTPD} to a non-empty value, either before @R{} is
+@c started or within the @R{} session before @HTML{} help (including
+@c @code{help.start}) is used.  It is also possible that system security
+@c measures will prevent the server from being started, for example if the
+@c loopback interface has been disabled.  See
+@c @code{?tools::startDynamicHelp} for more details.
+서버는 @R{}이 시작되기 전 또는 HTML 도움말 (@code{help.start}의 사용을 포함함)이 사용되기 전의 @R{} 세션 내에서 환경 변수 @env{R_DISABLE_HTTPD}에 비어있지 않은 값으로 설정함으로서 비활성화 될 수 있습니다. 
+또한, 만약 loopback 인터페이스가 비활성화된 경우와 같이 시스템 보안과 관련된 사항들은 서버의 시작을 방해할 수도 있습니다. 
+더 자세한 내용은 @code{?tool::startDynamicHelp}를 살펴보시길 바랍니다.
 
 @node Making the manuals, Installation, Help options, Installing R under Unix-alikes
-@section Making the manuals
+@c @section Making the manuals
+@section 매뉴얼 생성하기
 @cindex Manuals
 
-There is a set of manuals that can be built from the sources,
+@c There is a set of manuals that can be built from the sources,
+소스로부터 빌드될 수 있는 매뉴얼들이 있습니다. 
 
 @table @samp
 @item fullrefman
-Printed versions of all the help pages for base and recommended packages
-(over 3300 pages).
+@c Printed versions of all the help pages for base and recommended packages
+@c (over 3300 pages).
+베이스(base)와 추천(recommended) 패키지들에 대한 모든 도움말 페이지들이 프린트된 버전입니다 (대략 3300 페이지 분량입니다).
 @item refman
-Printed versions of the help pages for selected base packages (over 1900 pages)
+@c Printed versions of the help pages for selected base packages (over 1900 pages)
+선택되어진 일부 base 패키지들에 대한 도움말 페이지들이 프린트된 버전입니다 (1900 페이지가 넘습니다). 
 @item R-FAQ
 R @acronym{FAQ}
 @item R-intro
-``An Introduction to R''.
+``An Introduction to R'' (입문서).
 @item R-data
-``R Data Import/Export''.
+``R Data Import/Export'' (데이터 입출력).
 @item R-admin
-``R Installation and Administration'', this manual.
+``R Installation and Administration'' (설치 및 관리문서).
 @item R-exts
-``Writing R Extensions''.
+``Writing R Extensions'' (익스텐션 작성하기).
 @item R-lang
-``The R Language Definition''.
+``The R Language Definition'' (랭귀지 정의서).
 @end table
 
 @noindent
-To make these (with @samp{fullrefman} rather than @samp{refman}), use
+@c To make these (with @samp{fullrefman} rather than @samp{refman}), use
+@samp{refman} 보다 @samp{fullrefman}와 함께 이 문서들을 생성하기 위해서는 다음의 명령어를 이용하면 됩니다. 
+
+@c @example
+@c make pdf      @r{to create PDF versions}
+@c make info     @r{to create info files (not @samp{refman} nor @samp{fullrefman}).}
+@c @end example
 
 @example
-make pdf      @r{to create PDF versions}
-make info     @r{to create info files (not @samp{refman} nor @samp{fullrefman}).}
+make pdf      @r{PDF 버전 생성}
+make info     @r{ @samp{refman}도 아니고 @samp{fullrefman}도 아닌 info 파일 생성.}
 @end example
 
-You will not be able to build any of these unless you have
-@command{makeinfo} version 4.7 or later installed, and for PDF you must
-have @command{texi2dvi} and @file{texinfo.tex} installed (which are part
-of the @acronym{GNU} @pkg{texinfo} distribution but are, especially
-@file{texinfo.tex}, often made part of the @TeX{} package in
-re-distributions).
+@c You will not be able to build any of these unless you have
+@c @command{makeinfo} version 4.7 or later installed, and for PDF you must
+@c have @command{texi2dvi} and @file{texinfo.tex} installed (which are part
+@c of the @acronym{GNU} @pkg{texinfo} distribution but are, especially
+@c @file{texinfo.tex}, often made part of the @TeX{} package in
+@c re-distributions).
+만약 @command{makeinfo} 버전 4.7 또는 그 이후버전이 설치되어 있지 않다면 이러한 문서들을 생성할 수 없으며, PDF 문서를 생성하기 위해서는 반드시 @command{texi2dvi}와 @acronym{GNU} @pkg{texinfo} 배포의 일부분인 @file{texinfo.tex}가 설치되어 있어야 합니다.
 
-The PDF versions can be viewed using any recent PDF viewer: they have
-hyperlinks that can be followed.  The info files are suitable for
-reading online with Emacs or the standalone @acronym{GNU} @command{info}
-program.  The PDF versions will be created using the paper size selected
-at configuration (default ISO a4): this can be overridden by setting
-@env{R_PAPERSIZE}
+@c The PDF versions can be viewed using any recent PDF viewer: they have
+@c hyperlinks that can be followed.  The info files are suitable for
+@c reading online with Emacs or the standalone @acronym{GNU} @command{info}
+@c program.  The PDF versions will be created using the paper size selected
+@c at configuration (default ISO a4): this can be overridden by setting
+@c @env{R_PAPERSIZE}
 @enindex R_PAPERSIZE
-on the @command{make} command line, or setting @env{R_PAPERSIZE} in the
-environment and using @command{make -e}.  (If re-making the manuals for
-a different paper size, you should first delete the file
-@file{doc/manual/version.texi}.  The usual value for North America would
-be @samp{letter}.)
+@c on the @command{make} command line, or setting @env{R_PAPERSIZE} in the
+@c environment and using @command{make -e}.  (If re-making the manuals for
+@c a different paper size, you should first delete the file
+@c @file{doc/manual/version.texi}.  The usual value for North America would
+@c be @samp{letter}.)
+PDF 버전의 문서는 최근에 나온 어떠한 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다.
+info 파일들은 이맥스 (Emacs) 또는 독립적인 @acronym{GNU} @command{info} 프로그램에서 사용되는데 적합합니다.
+PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만, 이는 @command{make} 명령어 라인에서 @env{R_PAPERSIZE}를 조절하거나 @command{make -e}를 이용하여 변경할 수 있습니다.
+(만약 용지의 크기를 다르게 하여 매뉴얼을 재생성하고 싶다면 @file{doc/manual/version.texi}를 먼저 삭제해야 합니다. 
+북미에서는 기본값이 @samp{letter} 사이즈로 되어 있습니다).
 
-There are some issues with making the PDF reference manual,
-@file{refman.pdf} or @file{fullrefman.pdf}.  The help files contain both
-ISO Latin1 characters (e.g.@: in @file{text.Rd}) and upright quotes,
-neither of which are contained in the standard @LaTeX{} Computer Modern
-fonts.  We have provided four alternatives:
+@c There are some issues with making the PDF reference manual,
+@c @file{refman.pdf} or @file{fullrefman.pdf}.  The help files contain both
+@c ISO Latin1 characters (e.g.@: in @file{text.Rd}) and upright quotes,
+@c neither of which are contained in the standard @LaTeX{} Computer Modern
+@c fonts.  We have provided four alternatives:
+PDF 형식의 레퍼런스 매뉴얼, @file{refman.pdf} 또는 @file{fullrefman.pdf}을 생성하는데는 몇가지 이슈들이 있습니다.
+도움말 파일들은 표준 @LaTeX{} Computer Modern 글꼴에는 포함되어 있지 않은 ISO Latin1 문자들 (즉, @: @file{text.Rd})와 오른쪽 큰 따옴표를 포함하고 있습니다. 
+우리는 다음과 같은 네가지 대안을 제공하고 있습니다. 
 
 @table @code
 @item times
-(The default.) Using standard PostScript fonts, Times Roman, Helvetica
-and Courier.  This works well both for on-screen viewing and for
-printing.  One disadvantage is that the Usage and Examples sections may
-come out rather wide: this can be overcome by using @emph{in addition}
-either of the options @code{beramono} or @code{inconsolata} (which is
-part of the current default), which replace the Courier monospaced font
-by Bera Sans mono or Inconsolata respectively.  (You will need the
-appropriate @LaTeX{} package @pkg{bera} or @pkg{inconsolata}
-installed.@footnote{Debian/Ubuntu use a rather old version of TeXLive
-and so need Debian package @samp{texlive-fonts-extra} installed.  Fedora
-prior to 18 used an even older version of TeXLive: the best option is to
-update to TeXLive 2012, from the sources or see
-@uref{http://fedoraproject.org/wiki/Features/TeXLive}.})
+@c (The default.) Using standard PostScript fonts, Times Roman, Helvetica
+@c and Courier.  This works well both for on-screen viewing and for
+@c printing.  One disadvantage is that the Usage and Examples sections may
+@c come out rather wide: this can be overcome by using @emph{in addition}
+@c either of the options @code{beramono} or @code{inconsolata} (which is
+@c part of the current default), which replace the Courier monospaced font
+@c by Bera Sans mono or Inconsolata respectively.  (You will need the
+@c appropriate @LaTeX{} package @pkg{bera} or @pkg{inconsolata}
+@c installed.@footnote{Debian/Ubuntu use a rather old version of TeXLive
+@c and so need Debian package @samp{texlive-fonts-extra} installed.  Fedora
+@c prior to 18 used an even older version of TeXLive: the best option is to
+@c update to TeXLive 2012, from the sources or see
+@c @uref{http://fedoraproject.org/wiki/Features/TeXLive}.})
+기본적으로 제공되는 방법은 표준 포스트스크립트(postscript) 글꼴, Times Roman, Helvertica와 Courier 글꼴을 이용합니다.
+이것은 화면상으로 보거나 출력하는데 있어서 모두 잘 작동합니다.
+한가지 단점은 Usage(사용법)과 Examples(예제들) 섹션들이 다소 본래의 크기보다 넓게 출력될 수 있습니다. 
+이것은 @code{beramono} 또는 @code{inconsolata} 옵션들 중 하나를 이용하여 해결할 수 있습니다. 
+이 옵션은 Courier monospaced 글꼴을 Bera Sans mono 또는 Iconsolata 로 각각 대체합니다.
+(@pkg{bera} 또는 @pkg{inconsolata}라는 적절한 @LaTeX{} 패키지들이 설치되어 있어야 할 것입니다).
+@footnote{Debian/Ubuntu은 다소 오래된 버전의 TeXLive를 이용하므로 @samp{texlive-fonts-extra}이라는 Debian 패키지가 설치되어야 합니다.
+Fedora 18이전의 버전들은 더 오래된 버전의 TeXLive를 사용하는데, 가장 좋은 방법은 소스로부터 TeXLive 2012로 업데이트 하거나 
+@uref{http://fedoraproject.org/wiki/Features/TeXLive}를 살펴보시길 바랍니다.})
 
-Note that in most @LaTeX{} installations this will not actually use the
-standard fonts for PDF, but rather embed the URW clones NimbusRom,
-NimbusSans and (for Courier, if used) NimbusMon.
+@c Note that in most @LaTeX{} installations this will not actually use the
+@c standard fonts for PDF, but rather embed the URW clones NimbusRom,
+@c NimbusSans and (for Courier, if used) NimbusMon.
+대부분의  @LaTeX{} 설치에 있어서 이것은 실제로 PDF를 위한 표준 글꼴을 사용하는 것이 아니며, URW clones NimbusRom, NimbusSans, 그리고 MimbusMon을 끼워넣는 것입니다. 
 
 @item lm
 Using the @emph{Latin Modern} fonts.  These are not often installed as
