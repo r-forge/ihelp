@@ -79,7 +79,7 @@ p {
 <li><a href="#Getting-and-unpacking-the-sources">1.1 소스를 얻고 압축풀기</a>
 <li><a href="#Getting-patched-and-development-versions">1.2 패치된 버전과 개발 버전을 얻기</a>
 <ul>
-<li><a href="#Using-Subversion-and-rsync">1.2.1 Using Subversion and rsync</a>
+<li><a href="#Using-Subversion-and-rsync">1.2.1 서브버전과 rsync 이용하기</a>
 </li></ul>
 </li></ul>
 <li><a name="toc_Installing-R-under-Unix_002dalikes" href="#Installing-R-under-Unix_002dalikes">2 유닉스와 같은 환경에 R 설치하기</a>
@@ -411,7 +411,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-patched-and-development-versio
 
 </div>
 
-<h4 class="subsection">1.2.1 Using Subversion and rsync</h4>
+<!-- @subsection Using Subversion and rsync -->
+<h4 class="subsection">1.2.1 서브버전과 rsync 이용하기</h4>
 
 <p><a name="index-Subversion-4"></a>
 <!-- Sources are also available via @uref{https://svn.R-project.org/R/}, the -->
@@ -423,7 +424,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-patched-and-development-versio
 <!-- @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/} -->
 <!-- (where @var{x} and @var{y} are the major and minor number of the current -->
 <!-- released version of R).  E.g., use -->
-소스들은 R 서브버전 저장소인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(<a href="http://subversion.apache.org/">http://subversion.apache.org/</a>를 참고하십시오), 여러분은 <a href="http://svn.r-project.org/R/trunk/">http://svn.r-project.org/R/trunk/</a>로부터 현재의 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;과 (<var>x</var> 와 <var>y</var> 가 현재의 R 공개 버전의 주부분과 부수된 부분인) &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;로부터 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+소스들은 R 서브버전 저장소인 <a href="https://svn.R-project.org/R/">https://svn.R-project.org/R/</a>에서 얻을 수 있습니다. 
+만약 서브버전 클라이언트를 가지고 있다면(<a href="http://subversion.apache.org/">http://subversion.apache.org/</a>를 참고하십시오), <a href="http://svn.r-project.org/R/trunk/">http://svn.r-project.org/R/trunk/</a>로부터 현재의 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;과 (<var>x</var>와 <var>y</var>는 현재 릴리즈되어 있는 R의 메이저와 마이너 버전의 숫자입니다) &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;로부터 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;를 체크아웃하고 업데이트를 할 수 있습니다. 
+예를들면, 아래와 같이 사용하는 것은 (만약 필요하다면 새로이 생성될 수 있는) 디렉토리 <var>path</var>에 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;를 체크아웃하는 것입니다.
 
 <pre class="example">     svn checkout https://svn.r-project.org/R/trunk/ <var>path</var>
 </pre>
@@ -432,41 +435,46 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-patched-and-development-versio
 <!-- @var{x.y.0} release are available from -->
 <!-- @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/} in -->
 <!-- the four-week period prior to the release. -->
-
-   <p>이것은 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;을 (필요에 따라 새롭게 생성될 수도 있는) 디렉토리 <var>path</var> 를 확인(check out)하기 위한 것입니다. 곧이은 <var>x.y.0</var> 공개의 알파, 베타 그리고 RC 버전은 공개전 4주전 &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;에서 얻을 수 있습니다.
+다음배포를 위한 개발단계 <var>x.y.0</var> 릴리즈의 알파, 베타 그리고 RC 버전은 릴리즈 4주전에 &lsquo;<samp><span class="samp">https://svn.r-project.org/R/branches/R-</span><var>x</var><span class="samp">-</span><var>y</var><span class="samp">-branch/</span></samp>&rsquo;으로부터 얻을 수 있습니다.
 
 <!-- Note that @samp{https:} is required@footnote{for some Subversion clients -->
 <!-- @samp{http:} may appear to work, but requires continual redirection.}, -->
 <!-- and that the SSL certificate for the Subversion server of the R project -->
 <!-- should be recognized as from a trusted source. -->
-   <p>&lsquo;<samp><span class="samp">https:</span></samp>&rsquo;와 <a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a> 신뢰받은 소스(source)로 R 프로젝트의 서브버전 서버에 대한 SSL 인증이 인식될 것이 필요합니다.
+   <p>&lsquo;<samp><span class="samp">https:</span></samp>&rsquo;이 요구되어 지며<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>, R project의 서브버전 서버에 대한 SSL 증명이 신뢰된 소스로서 인식되어야 합니다.
 
 <!-- Note that retrieving the sources by e.g.@: @command{wget -r} or -->
 <!-- @command{svn export} from that URL will not work: the Subversion -->
 <!-- information is needed to build @R{}. -->
-   <p>예를 들어, 그 URL로부터 <samp><span class="command">wget -r</span></samp> 또는 <samp><span class="command">svn export</span></samp> 에 의해 소스를 받아오는 것이 작동하지 않을 수 있는 점에 유의하십시오. 즉 R을 빌드하기 위해 서브버전 정보가 필요합니다.
+   <p>해당 URL로부터 <samp><span class="command">wget -r</span></samp> 또는 <samp><span class="command">svn export</span></samp>을 이용하여 소스를 가져오지 못할 수 있습니다. 
+R을 빌드하기 위해서 서브버전 정보가 필요하기 때문입니다.
 
 <!-- The Subversion repository does not contain the current sources for the -->
 <!-- recommended packages, which can be obtained by @command{rsync} or -->
 <!-- downloaded from @acronym{CRAN}.  To use @code{rsync} to install the -->
 <!-- appropriate sources for the recommended packages, run -->
 <!-- @code{./tools/rsync-recommended} from the top-level of the @R{} sources. -->
-   <p>서브버전 레포지토리는 추천 패키지의 현재 소스를 담고 있지 않아서 그것은 <samp><span class="command">rsync</span></samp> 명령이나 <acronym>CRAN</acronym>에서 다운로드 받아 얻을 수 있습니다. 추천 패키지에 대한 올바른 소스를 설치하려고 <code>rsync</code>를 사용하기 위해 최상위  R 소스에서 <code>./tools/rsync-recommended</code>를 실행합니다.
+   <p>서브버전 저장소는 추천 패키지들에 대한 현재 소스를 담고 있지 않으며, 이것들은 <samp><span class="command">rsync</span></samp>을 이용하여 얻거나 <acronym>CRAN</acronym>에서 다운로드 받아야 합니다. 
+추천 패키지의 올바른 소스를 설치하기 위해 <code>rsync</code>를 이용하는 것은  R 소스의 최상위 레벨에서 <code>./tools/rsync-recommended</code>를 실행하는 것입니다.
 
-   <p>If downloading manually from <acronym>CRAN</acronym>, do ensure that you have the
-correct versions of the recommended packages: if the number in the file
-<samp><span class="file">VERSION</span></samp> is &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var></samp>&rsquo; you need to download
-the contents of &lsquo;<samp><span class="samp">http://CRAN.R-project.org/src/contrib/</span><var>dir</var></samp>&rsquo;,
-where <var>dir</var> is &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var><span class="samp">/Recommended</span></samp>&rsquo; for
-r-devel or <samp><var>x</var><span class="file">.</span><var>y</var><span class="file">-patched/Recommended</span></samp> for r-patched,
-respectively, to directory <samp><span class="file">src/library/Recommended</span></samp> in the sources
-you have unpacked.  After downloading manually you need to execute
-<samp><span class="command">tools/link-recommended</span></samp> from the top level of the sources to
-make the requisite links in <samp><span class="file">src/library/Recommended</span></samp>.  A suitable
-incantation from the top level of the R sources using <samp><span class="command">wget</span></samp>
-might be (for the correct value of <samp><var>dir</var></samp>)
-
-   <p><acronym>CRAN</acronym>에서 수동으로(manually) 내려받는 경우, 여러분이 추천 패키지의 정확한 버전을
+<!-- If downloading manually from @acronym{CRAN}, do ensure that you have the -->
+<!-- correct versions of the recommended packages: if the number in the file -->
+<!-- @file{VERSION} is @samp{@var{x}.@var{y}.@var{z}} you need to download -->
+<!-- the contents of @samp{http://CRAN.R-project.org/src/contrib/@var{dir}}, -->
+<!-- where @var{dir} is @samp{@var{x}.@var{y}.@var{z}/Recommended} for -->
+<!-- r-devel or @file{@var{x}.@var{y}-patched/Recommended} for r-patched, -->
+<!-- respectively, to directory @file{src/library/Recommended} in the sources -->
+<!-- you have unpacked.  After downloading manually you need to execute -->
+<!-- @command{tools/link-recommended} from the top level of the sources to -->
+<!-- make the requisite links in @file{src/library/Recommended}.  A suitable -->
+<!-- incantation from the top level of the R sources using @command{wget} -->
+<!-- might be (for the correct value of @file{@var{dir}}) -->
+   <p><acronym>CRAN</acronym>에서 수동으로(manually) 내려받는 경우, 추천 패키지의 정확한 버전을 확인해야 합니다. 
+만약 <samp><span class="file">VERSION</span></samp> 파일 내에 있는 숫자가 &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var></samp>&rsquo;이라면, &lsquo;<samp><span class="samp">http://CRAN.R-project.org/src/contrib/</span><var>dir</var></samp>&rsquo; 내에 있느느 내용을 다운받아야 합니다. 
+여기에서 <var>dir</var>은 r-devel인 경우 &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var><span class="samp">/Recommended</span></samp>&rsquo;를, r-patched 인 경우에는 <samp><var>x</var><span class="file">.</span><var>y</var><span class="file">-patched/Recommended</span></samp>를 다운 받아 <samp><span class="file">src/library/Recommended</span></samp>에 압축을 풀어야 합니다. 
+수동으로 다운로드를 한 뒤에는 <samp><span class="file">src/library/Recommended</span></samp> 내에 필요한 링크들을 만들기 위하여 소스의 최상위 레벨에서 <samp><span class="command">tools/link-recommended</span></samp> 명령어를 실행해야 합니다. 
+<samp><span class="command">wget</span></samp>을 이용하여 R 소스의 최상위레벨로부터 필요한 명령은 아래와 같을 것입니다. 
+여기에서  <samp><var>dir</var></samp> 파일의 정확한 값입니다.
 
 <pre class="example">     wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
        http://CRAN.R-project.org/src/contrib/<var>dir</var>
@@ -5900,7 +5908,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <hr>
 <a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> 예를 들어,  <acronym>GNU</acronym> <samp><span class="command">tar</span></samp> 버전 1.15 이상 또는 &lsquo;<samp><span class="samp">libarchive</span></samp>&rsquo;(OS 10.[67]에 사용된 것처럼) 또는 `Heirloom Toolchest' 배포</p>
 
-   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> 어떤 Subversion 클라이언트 &lsquo;<samp><span class="samp">http:</span></samp>&rsquo;가 작업을 위해 나타날 수 있으나 연속적인 전송(redirection)이 필요합니다.</p>
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> 어떤 서브버전 클라이언트들에 대해서는 &lsquo;<samp><span class="samp">http:</span></samp>&rsquo;로 나타날 수 있으나, 지속적인 리디렉션이 요구됩니다.</p>
 
    <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> which use <samp><span class="file">lib</span></samp> rather than <samp><span class="file">lib64</span></samp> for their primary 64-bit library directories.</p>
 

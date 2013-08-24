@@ -182,7 +182,8 @@ tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 �
 @end menu
 
 @node Using Subversion and rsync,  , Getting patched and development versions, Getting patched and development versions
-@subsection Using Subversion and rsync
+@c @subsection Using Subversion and rsync
+@subsection 서브버전과 rsync 이용하기
 @cindex Subversion
 
 @c Sources are also available via @uref{https://svn.R-project.org/R/}, the
@@ -194,7 +195,9 @@ tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 �
 @c @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}
 @c (where @var{x} and @var{y} are the major and minor number of the current
 @c released version of R).  E.g., use
-소스들은 R 서브버전 저장소인 @uref{https://svn.R-project.org/R/}에서 얻을 수 있습니다. 만약 여러분이 Subversion 클라이언트를 가지고 있다면(@uref{http://subversion.apache.org/}를 참고하십시오), 여러분은 @uref{http://svn.r-project.org/@/R/@/trunk/}로부터 현재의 @samp{r-devel}과 (@var{x} 와 @var{y} 가 현재의 R 공개 버전의 주부분과 부수된 부분인) @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}로부터 @samp{r-patched}를 확인(check out)하고 업데이트 할 수 있습니다. 예를 들어, 다음과 같은 것을 고려할 수 있습니다.
+소스들은 R 서브버전 저장소인 @uref{https://svn.R-project.org/R/}에서 얻을 수 있습니다. 
+만약 서브버전 클라이언트를 가지고 있다면(@uref{http://subversion.apache.org/}를 참고하십시오), @uref{http://svn.r-project.org/@/R/@/trunk/}로부터 현재의 @samp{r-devel}과 (@var{x}와 @var{y}는 현재 릴리즈되어 있는 R의 메이저와 마이너 버전의 숫자입니다) @samp{https://svn.r-project.org/@/R/@/branches/@/R-@var{x}-@var{y}-branch/}로부터 @samp{r-patched}를 체크아웃하고 업데이트를 할 수 있습니다. 
+예를들면, 아래와 같이 사용하는 것은 (만약 필요하다면 새로이 생성될 수 있는) 디렉토리 @var{path}에 @samp{r-devel}를 체크아웃하는 것입니다.
 
 @example
 svn checkout https://svn.r-project.org/R/trunk/ @var{path}
@@ -206,44 +209,47 @@ svn checkout https://svn.r-project.org/R/trunk/ @var{path}
 @c @var{x.y.0} release are available from
 @c @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/} in
 @c the four-week period prior to the release.
-
-이것은 @samp{r-devel}을 (필요에 따라 새롭게 생성될 수도 있는) 디렉토리 @var{path} 를 확인(check out)하기 위한 것입니다. 곧이은 @var{x.y.0} 공개의 알파, 베타 그리고 RC 버전은 공개전 4주전 @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/}에서 얻을 수 있습니다.
+다음배포를 위한 개발단계 @var{x.y.0} 릴리즈의 알파, 베타 그리고 RC 버전은 릴리즈 4주전에 @samp{https://svn.r-project.org/R/branches/R-@var{x}-@var{y}-branch/}으로부터 얻을 수 있습니다.
 
 @c Note that @samp{https:} is required@footnote{for some Subversion clients
 @c @samp{http:} may appear to work, but requires continual redirection.},
 @c and that the SSL certificate for the Subversion server of the R project
 @c should be recognized as from a trusted source.
-
-@samp{https:}와 @footnote{어떤 Subversion 클라이언트 @samp{http:}가 작업을 위해 나타날 수 있으나 연속적인 전송(redirection)이 필요합니다.} 신뢰받은 소스(source)로 R 프로젝트의 서브버전 서버에 대한 SSL 인증이 인식될 것이 필요합니다. 
+@samp{https:}이 요구되어 지며@footnote{어떤 서브버전 클라이언트들에 대해서는 @samp{http:}로 나타날 수 있으나, 지속적인 리디렉션이 요구됩니다.}, R project의 서브버전 서버에 대한 SSL 증명이 신뢰된 소스로서 인식되어야 합니다.
 
 @c Note that retrieving the sources by e.g.@: @command{wget -r} or
 @c @command{svn export} from that URL will not work: the Subversion
 @c information is needed to build @R{}.
-
-예를 들어, 그 URL로부터 @command{wget -r} 또는 @command{svn export} 에 의해 소스를 받아오는 것이 작동하지 않을 수 있는 점에 유의하십시오. 즉 @R{}을 빌드하기 위해 서브버전 정보가 필요합니다.
+해당 URL로부터 @command{wget -r} 또는 @command{svn export}을 이용하여 소스를 가져오지 못할 수 있습니다.
+@R{}을 빌드하기 위해서 서브버전 정보가 필요하기 때문입니다.
 
 @c The Subversion repository does not contain the current sources for the
 @c recommended packages, which can be obtained by @command{rsync} or
 @c downloaded from @acronym{CRAN}.  To use @code{rsync} to install the
 @c appropriate sources for the recommended packages, run
 @c @code{./tools/rsync-recommended} from the top-level of the @R{} sources.
+서브버전 저장소는 추천 패키지들에 대한 현재 소스를 담고 있지 않으며, 이것들은 @command{rsync}을 이용하여 얻거나 @acronym{CRAN}에서 다운로드 받아야 합니다.
+추천 패키지의 올바른 소스를 설치하기 위해 @code{rsync}를 이용하는 것은  @R{} 소스의 최상위 레벨에서 @code{./tools/rsync-recommended}를 실행하는 것입니다.
 
-서브버전 레포지토리는 추천 패키지의 현재 소스를 담고 있지 않아서 그것은 @command{rsync} 명령이나 @acronym{CRAN}에서 다운로드 받아 얻을 수 있습니다. 추천 패키지에 대한 올바른 소스를 설치하려고 @code{rsync}를 사용하기 위해 최상위  @R{} 소스에서 @code{./tools/rsync-recommended}를 실행합니다.
+@c If downloading manually from @acronym{CRAN}, do ensure that you have the
+@c correct versions of the recommended packages: if the number in the file
+@c @file{VERSION} is @samp{@var{x}.@var{y}.@var{z}} you need to download
+@c the contents of @samp{http://CRAN.R-project.org/src/contrib/@var{dir}},
+@c where @var{dir} is @samp{@var{x}.@var{y}.@var{z}/Recommended} for
+@c r-devel or @file{@var{x}.@var{y}-patched/Recommended} for r-patched,
+@c respectively, to directory @file{src/library/Recommended} in the sources
+@c you have unpacked.  After downloading manually you need to execute
+@c @command{tools/link-recommended} from the top level of the sources to
+@c make the requisite links in @file{src/library/Recommended}.  A suitable
+@c incantation from the top level of the R sources using @command{wget}
+@c might be (for the correct value of @file{@var{dir}})
 
-If downloading manually from @acronym{CRAN}, do ensure that you have the
-correct versions of the recommended packages: if the number in the file
-@file{VERSION} is @samp{@var{x}.@var{y}.@var{z}} you need to download
-the contents of @samp{http://CRAN.R-project.org/src/contrib/@var{dir}},
-where @var{dir} is @samp{@var{x}.@var{y}.@var{z}/Recommended} for
-r-devel or @file{@var{x}.@var{y}-patched/Recommended} for r-patched,
-respectively, to directory @file{src/library/Recommended} in the sources
-you have unpacked.  After downloading manually you need to execute
-@command{tools/link-recommended} from the top level of the sources to
-make the requisite links in @file{src/library/Recommended}.  A suitable
-incantation from the top level of the R sources using @command{wget}
-might be (for the correct value of @file{@var{dir}})
-
-@acronym{CRAN}에서 수동으로(manually) 내려받는 경우, 여러분이 추천 패키지의 정확한 버전을 
+@acronym{CRAN}에서 수동으로(manually) 내려받는 경우, 추천 패키지의 정확한 버전을 확인해야 합니다.
+만약 @file{VERSION} 파일 내에 있는 숫자가 @samp{@var{x}.@var{y}.@var{z}}이라면, @samp{http://CRAN.R-project.org/src/contrib/@var{dir}} 내에 있느느 내용을 다운받아야 합니다. 
+여기에서 @var{dir}은 r-devel인 경우 @samp{@var{x}.@var{y}.@var{z}/Recommended}를, r-patched 인 경우에는 @file{@var{x}.@var{y}-patched/Recommended}를 다운 받아 @file{src/library/Recommended}에 압축을 풀어야 합니다. 
+수동으로 다운로드를 한 뒤에는 @file{src/library/Recommended} 내에 필요한 링크들을 만들기 위하여 소스의 최상위 레벨에서 @command{tools/link-recommended} 명령어를 실행해야 합니다. 
+@command{wget}을 이용하여 R 소스의 최상위레벨로부터 필요한 명령은 아래와 같을 것입니다.
+여기에서  @file{@var{dir}} 파일의 정확한 값입니다.
 
 @example
 wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
