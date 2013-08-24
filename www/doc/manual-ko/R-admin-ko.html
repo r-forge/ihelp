@@ -1,8 +1,8 @@
 <html lang="ko">
 <head>
-<title>R Installation and Administration (한국어 - 2013.07.09, ver.0.00 초기셋팅완료)</title>
+<title>R Installation and Administration (in Korean_0.2.1_2013.08.23)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="R Installation and Administration (한국어 - 2013.07.09, ver.0.00 초기셋팅완료)">
+<meta name="description" content="R Installation and Administration (in Korean_0.2.1_2013.08.23)">
 <meta name="generator" content="makeinfo 4.13">
 <link title="Top" rel="top" href="#Top">
 <link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
@@ -69,7 +69,7 @@ p {
 --></style>
 </head>
 <body>
-<h1 class="settitle">R Installation and Administration (한국어 - 2013.07.09, ver.0.00 초기셋팅완료)</h1>
+<h1 class="settitle">R Installation and Administration (in Korean_0.2.1_2013.08.23)</h1>
    <div class="contents">
 <h2>Table of Contents</h2>
 <ul>
@@ -93,8 +93,8 @@ p {
 <ul>
 <li><a href="#Multilib">2.6.1 Multilib</a>
 </li></ul>
-<li><a href="#Other-Options">2.7 Other Options</a>
-<li><a href="#Testing-a-Unix_002dalike-Installation">2.8 Testing an Installation</a>
+<li><a href="#Other-Options">2.7 다른 옵션들</a>
+<li><a href="#Testing-a-Unix_002dalike-Installation">2.8 설치 확인하기</a>
 </li></ul>
 <li><a name="toc_Installing-R-under-Windows" href="#Installing-R-under-Windows">3 윈도우즈에서 R설치하기</a>
 <ul>
@@ -1107,8 +1107,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 <!-- builds), 64- and 32- bit builds on @cputype{x86_64} Linux and different -->
 <!-- @acronym{CPU}s (e.g.@: @cputype{i386} and @cputype{x86_64}) under (Mac) -->
 <!-- OS X. -->
-<p>일부 플랫폼들은 실행가능한 파일들과 동적 객체들을 제외한 나머지들을 공유할 수 있는 R의 빌드를 지원합니다. 
-예를들면 솔라리스에서 서로 다른 칩들 (특히, 32와 64비트 빌드), &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서의 64와 32비트 빌드, 그리고 (Mac) OS X에서 서로 다른 <acronym>CPU</acronym>들(즉,  &lsquo;<samp><span class="samp">i386</span></samp>&rsquo;과  &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo;)에 빌드와 같은 것입니다.
+<p>R은 일부 플랫폼들은 실행가능한 파일들과 동적 객체들을 제외한 나머지들을 공유할 수 있는 연동형 빌드를 지원합니다. 
+예를들면 솔라리스에서 서로 다른 칩들에 대한 빌드 (특히, 32와 64비트 빌드), &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서의 64와 32비트 빌드, 그리고 (Mac) OS X에서 서로 다른 <acronym>CPU</acronym>들(즉,  &lsquo;<samp><span class="samp">i386</span></samp>&rsquo;과  &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo;)에 빌드와 같은 것입니다.
 
 <!-- @R{} supports the idea of architecture-specific builds, specified by -->
 <!-- adding @samp{r_arch=@var{name}} to the @command{configure} line.  Here -->
@@ -1117,61 +1117,78 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 <!-- subdirectories.  Example names from other systems are the use of -->
 <!-- @file{sparcv9} on Sparc Solaris and @file{32} by @command{gcc} on -->
 <!-- @cputype{x86_64} Linux. -->
-   <p>R은 아키텍쳐에 맞춘 빌드에 대한 아이디어를 지원하며, 이는 &lsquo;<samp><span class="samp">r_arch=</span><var>name</var></samp>&rsquo;을 <samp><span class="command">configure</span></samp> 라인에 추가함으로서 이루어집니다. 
-여기에서  <var>name</var>은 비어있지 않은 그 어떠한 것도 될 것도 될 수 있으며, <samp><span class="file">lib</span></samp>, <samp><span class="file">etc</span></samp>, <samp><span class="file">include</span></samp>들의 서브디렉토리와 패키지 <samp><span class="file">libs</span></samp> 서브디렉토리들의 이름을 짓는데 이용됩니다. 
-다른 시스템으로부터 예시로 사용되는 이름들은 Sparc Solaris 상의 <samp><span class="file">sparcv9</span></samp>의 사용이 있을 수 있고, &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서 <samp><span class="command">GCC</span></samp>에 의한 <samp><span class="file">32</span></samp>입니다.
+   <p>R은 아키텍쳐에 맞춘 빌드가 가능하게 지원하며, 이는 &lsquo;<samp><span class="samp">r_arch=</span><var>name</var></samp>&rsquo;을 <samp><span class="command">configure</span></samp> 라인에 추가함으로서 이루어집니다. 
+여기에서  <var>name</var>은 비어있지 않게 그 어떠한 것도 될 것도 될 수 있으며, <samp><span class="file">lib</span></samp>, <samp><span class="file">etc</span></samp>, <samp><span class="file">include</span></samp>들의 서브디렉토리들과 패키지 <samp><span class="file">libs</span></samp> 서브디렉토리들을 명명하는데 이용됩니다. 
+Sparc Solaris에서 <samp><span class="file">sparcv9</span></samp>이라는 이름의 사용과 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서 <samp><span class="command">GCC</span></samp>에 의한 <samp><span class="file">32</span></samp>의 사용이 대표적인 예입니다.
 
-   <p>If you have two or more such builds you can install them over each other
-(and for 32/64-bit builds on one architecture, one build can be done
-without &lsquo;<samp><span class="samp">r_arch</span></samp>&rsquo;).  The space savings can be considerable: on
-&lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Linux a basic install (without debugging symbols) took
-63Mb, and adding a 32-bit build added 6Mb.  If you have installed
-multiple builds you can select which build to run by
-
+<!-- If you have two or more such builds you can install them over each other -->
+<!-- (and for 32/64-bit builds on one architecture, one build can be done -->
+<!-- without @samp{r_arch}).  The space savings can be considerable: on -->
+<!-- @cputype{x86_64} Linux a basic install (without debugging symbols) took -->
+<!-- 63Mb, and adding a 32-bit build added 6Mb.  If you have installed -->
+<!-- multiple builds you can select which build to run by -->
+   <p>만약 그러한 빌드들을 두 개 이상 가지고 있다면 이들간에 서로 사용이 가능하도록 설치할 수 있습니다 (그리고 하나의 아키텍쳐에 32/64 비트 빌드의 경우에는 &lsquo;<samp><span class="samp">r_arch</span></samp>&rsquo;없이 가능합니다). 
+공간활용이 상당하게 됩니다. 
+&lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서는 (디버깅 심볼이 없는) 기본설치는 63Mb를 차지하고 32비트 빌드는 6Mb를 더하게 됩니다. 
+만약 다중 빌드를 설치했다면 , 당신은 어떤 빌드를 선택할 것인지 아래와 같이 실행할 수 있습니다.
 <pre class="example">     R --arch=<var>name</var>
 </pre>
-   <p class="noindent">and just running &lsquo;<samp><span class="samp">R</span></samp>&rsquo; will run the last build that was installed.
+   <p class="noindent"><!-- and just running @samp{R} will run the last build that was installed. -->
+&lsquo;<samp><span class="samp">R</span></samp>&rsquo;이라고만 실행하는 것은 마지막에 설치한 빌드를 실행하는 것입니다.
 
-   <p><code>R CMD INSTALL</code> will detect if more than one build is installed and
-try to install packages with the appropriate library objects for each. 
-This will not be done if the package has an executable <code>configure</code>
-script or a <samp><span class="file">src/Makefile</span></samp> file.  In such cases you can install for
-extra builds by
+<!-- @code{R CMD INSTALL} will detect if more than one build is installed and -->
+<!-- try to install packages with the appropriate library objects for each. -->
+<!-- This will not be done if the package has an executable @code{configure} -->
+<!-- script or a @file{src/Makefile} file.  In such cases you can install for -->
+<!-- extra builds by -->
+   <p><code>R CMD INSTALL</code>은 하나 이상의 빌드가 설치되어 있는지와 각각에 대해서 적합한 라이브러리 객체들과 함께 패키지를 설치하고자 하는 것인지를 파악하게 됩니다. 
+이것은 패키지가 실행가능한 <code>configure</code> 스크립트 또는 <samp><span class="file">src/Makefile</span></samp> 파일을 가지고 있지 않다면 이루어지지 않습니다. 
+이러한 경우에는 추가적인 빌드는 아래와 같이 수행될 수 있습니다.
 
 <pre class="example">     R --arch=<var>name</var> CMD INSTALL --libs-only <var>pkg1</var> <var>pkg2</var> ...
 </pre>
-   <p>If you want to mix sub-architectures compiled on different platforms
-(for example &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Linux and &lsquo;<samp><span class="samp">i686</span></samp>&rsquo; Linux), it is
-wise to use explicit names for each, and you may also need to set
-<samp><span class="option">libdir</span></samp> to ensure that they install into the same place.
+   <!-- If you want to mix sub-architectures compiled on different platforms -->
+<!-- (for example @cputype{x86_64} Linux and @cputype{i686} Linux), it is -->
+<!-- wise to use explicit names for each, and you may also need to set -->
+<!-- @option{libdir} to ensure that they install into the same place. -->
+   <p>만약 다른 플랫폼들 (예를들어 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스와 &lsquo;<samp><span class="samp">i686</span></samp>&rsquo; 리눅스)에서 컴파일된 서브-아키텍쳐들을 혼용하고자 한다면, 각각의 이름들을 분명히 기재하여 사용하는것이 좋은 방법입니다. 
+그리고 또한 그들이 같은 위에서 설치가 되는지 확인하는 <samp><span class="option">libdir</span></samp>를 지정하는 것이 필요할 수 있습니다.
 
-   <p>When sub-architectures are used the version of <samp><span class="command">Rscript</span></samp> in
-e.g. <samp><span class="file">/usr/bin</span></samp> will be the last installed, but
-architecture-specific versions will be available in e.g. 
-<samp><span class="file">/usr/lib64/R/bin/exec${</span><var>R_ARCH</var><span class="file">}</span></samp>.  Normally all installed
-architectures will run on the platform so the architecture of
-<samp><span class="command">Rscript</span></samp> itself does not matter.  The executable
-<samp><span class="command">Rscript</span></samp> will run the <samp><span class="command">R</span></samp> script, and at that time the
-<a name="index-R_005fARCH-22"></a>setting of the <samp><span class="env">R_ARCH</span></samp> environment variable determines the
-architecture which is run.
+<!-- When sub-architectures are used the version of @command{Rscript} in -->
+<!-- e.g.@: @file{/usr/bin} will be the last installed, but -->
+<!-- architecture-specific versions will be available in e.g.@: -->
+<!-- @file{/usr/lib64/R/bin/exec$@{@var{R_ARCH}@}}.  Normally all installed -->
+<!-- architectures will run on the platform so the architecture of -->
+<!-- @command{Rscript} itself does not matter.  The executable -->
+<!-- @command{Rscript} will run the @command{R} script, and at that time the -->
+   <p><a name="index-R_005fARCH-22"></a><!-- setting of the @env{R_ARCH} environment variable determines the -->
+<!-- architecture which is run. -->
+서브-아키텍쳐들이 사용될때에는 <samp><span class="file">/usr/bin/</span></samp>내에 있는 파일 <samp><span class="command">Rscript</span></samp>의 버전이 마지막에 설치된 것이지만, 아키텍쳐에 맞춘 버전들은 <samp><span class="file">srlib64/R/bin/exec${</span><var>R_ARCH</var><span class="file">}</span></samp>에서 찾아볼 수 있습니다. 
+일반적으로 설치된 모든 아키텍쳐들은 플랫폼에서 실행되며, <samp><span class="command">Rscript</span></samp> 자체의 아키텍쳐는 문제가 되지 않습니다. 
+실행이 가능한 <samp><span class="command">Rscript</span></samp>는 <samp><span class="command">R</span></samp> 스크립트를 실행시킬때 <samp><span class="env">R_ARCH</span></samp>이라는 환경변수에 어떤 아키텍쳐인지를 결정하게 됩니다.
 
-   <p>When running post-install tests with sub-architectures, use
+<!-- When running post-install tests with sub-architectures, use -->
+   <p>서브-아키텍쳐들과 함께 설치후 테스트는 아래와 같이 수행될 수 있습니다.
 
 <pre class="example">     R --arch=<var>name</var> CMD make check[-devel|all]
 </pre>
-   <p class="noindent">to select a sub-architecture to check.
+   <p class="noindent"><!-- to select a sub-architecture to check. -->
 
-   <p>Sub-architectures are also used on Windows, but by selecting executables
-within the appropriate <samp><span class="file">bin</span></samp> directory,
-<samp><var>R_HOME</var><span class="file">/bin/i386</span></samp> or <samp><var>R_HOME</var><span class="file">/bin/x64</span></samp>.  For
-backwards compatibility with R &lt; 2.12.0, there are executables
-<samp><var>R_HOME</var><span class="file">/bin/R.exe</span></samp> or <samp><var>R_HOME</var><span class="file">/bin/Rscript.exe</span></samp>:
-these will run an executable from one of the subdirectories, which one
-being taken first from the
-<a name="index-R_005fARCH-23"></a><samp><span class="env">R_ARCH</span></samp> environment variable, then from the
-<samp><span class="option">--arch</span></samp> command-line option<a rel="footnote" href="#fn-6" name="fnd-6"><sup>6</sup></a> and finally from the
-installation default (which is 32-bit for a combined 32/64 bit R
-installation).
+<!-- Sub-architectures are also used on Windows, but by selecting executables -->
+<!-- within the appropriate @file{bin} directory, -->
+<!-- @file{@var{R_HOME}/bin/i386} or @file{@var{R_HOME}/bin/x64}.  For -->
+<!-- backwards compatibility with @R{} < 2.12.0, there are executables -->
+<!-- @file{@var{R_HOME}/bin/R.exe} or @file{@var{R_HOME}/bin/Rscript.exe}: -->
+<!-- these will run an executable from one of the subdirectories, which one -->
+<!-- being taken first from the -->
+   <p><a name="index-R_005fARCH-23"></a><!-- @env{R_ARCH} environment variable, then from the -->
+<!-- @option{-arch} command-line option@footnote{with possible values -->
+<!-- @samp{i386}, @samp{x64}, @samp{32} and @samp{64}.} and finally from the -->
+<!-- installation default (which is 32-bit for a combined 32/64 bit @R{} -->
+<!-- installation). -->
+서브-아키텍쳐는 윈도우즈에서 또한 사용되어지지만 적합한 <samp><span class="file">bin</span></samp> 디렉토리, <samp><var>R_HOME</var><span class="file">/bin/i386</span></samp> 또는 <samp><var>R_HOME</var><span class="file">/bin/x64</span></samp> 내에서 실행가능한 파일들을 선택하게 됩니다. 
+2.12.0 이하의 R이 가지는 하위호환성(backwards compatibility)에 대해서는 <samp><var>R_HOME</var><span class="file">/bin/R.exe</span></samp> 또는 <samp><var>R_HOME</var><span class="file">/bin/Rscript.exe</span></samp>내에 실행파일들이 있습니다. 
+이들은 <samp><span class="env">R_ARCH</span></samp> 환경변수에서 처음으로 취해진 서브디렉토리들중 하나로부터 실행 한뒤 <samp><span class="option">--arch</span></samp> 커맨드라인 옵션<a rel="footnote" href="#fn-6" name="fnd-6"><sup>6</sup></a>으로부터 수행한 뒤 설치 기본설정으로부터 수행하게 됩니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Multilib">Multilib</a>
@@ -1185,44 +1202,60 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Sub_002darchitectures">Sub-architectur
 
 </div>
 
+<!-- @subsection Multilib -->
 <h4 class="subsection">2.6.1 Multilib</h4>
 
-<p>On Linux<a rel="footnote" href="#fn-7" name="fnd-7"><sup>7</sup></a>, there is an alternative mechanism for mixing 32-bit and 64-bit
-libraries known as <em>multilib</em>. If a Linux distribution supports
-multilib, then parallel builds of R may be installed in the
-sub-directories <samp><span class="file">lib</span></samp> (32-bit) and <samp><span class="file">lib64</span></samp> (64-bit).  The
-build to be run may then be chosen using the <samp><span class="command">setarch</span></samp>
-command. For example, a 32-bit build may be chosen by
+<!-- On Linux@footnote{mainly on RedHat and Fedora, whose layout is described -->
+<!-- here.}, there is an alternative mechanism for mixing 32-bit and 64-bit -->
+<!-- libraries known as @emph{multilib}. If a Linux distribution supports -->
+<!-- multilib, then parallel builds of @R{} may be installed in the -->
+<!-- sub-directories @file{lib} (32-bit) and @file{lib64} (64-bit).  The -->
+<!-- build to be run may then be chosen using the @command{setarch} -->
+<!-- command. For example, a 32-bit build may be chosen by -->
+<p>리눅스<a rel="footnote" href="#fn-7" name="fnd-7"><sup>7</sup></a> 상에서는 32비트와 64비트 라이브러리들을 혼용하기 위하여 <em>multilib</em>이라고 알려진 라이브러리라는 대체 메카니즘이 있습니다. 
+만약 리눅스 배포가 multilib를 지원한다면 R의 병렬빌드는 아마도 <samp><span class="file">lib</span></samp>(32비트)와 <samp><span class="file">lib64</span></samp>(64비트) 서브디렉토리내에 설치되어질 것입니다. 
+그러면, 실행될 빌드는 아마도 <samp><span class="command">setarch</span></samp> 명령어를 이용하여 선택되어질 수 있습니다. 
+예를들면, 32비트 빌드는 아래와 같이 선택되어 질 수 있습니다.
 
 <pre class="example">     setarch i686 R
 </pre>
-   <p>The <samp><span class="command">setarch</span></samp> command is only operational if both 32-bit and
-64-bit builds are installed. If there is only one installation of R,
-then this will always be run regardless of the architecture specified
-by the <samp><span class="command">setarch</span></samp> command.
+   <!-- The @command{setarch} command is only operational if both 32-bit and -->
+<!-- 64-bit builds are installed. If there is only one installation of @R{}, -->
+<!-- then this will always be run regardless of the architecture specified -->
+<!-- by the @command{setarch} command. -->
+   <p>만약 32비트와 64비트 빌드가 모두 설치되어 있다면, <samp><span class="command">setarch</span></samp> 명령어는 오로지 선택적 사항입니다. 
+만약 이들 중 하나만 설치되었다면, <samp><span class="command">setarch</span></samp> 명령어에 의하여 지정된 아키텍쳐와 관계없이 항상 이것이 수행될 것입니다.
 
-   <p>There can be problems with installing packages on the non-native
-architecture.  It is a good idea to run e.g. <code>setarch i686 R</code> for
-sessions in which packages are to be installed, even if that is the only
-version of R installed (since this tells the package installation
-code the architecture needed).
+<!-- There can be problems with installing packages on the non-native -->
+<!-- architecture.  It is a good idea to run e.g.@: @code{setarch i686 R} for -->
+<!-- sessions in which packages are to be installed, even if that is the only -->
+<!-- version of @R{} installed (since this tells the package installation -->
+<!-- code the architecture needed). -->
+   <p>non-native 아키텍쳐위에 패키지들을 설치하는데 문제가 있을 수 있습니다. 
+만약 설치된 R 버전에 대한 선택사항이 없다면, 어떤 패키지가 설치될 세션에서 <code>setarch i686 R</code>을 수행하는 것은 좋은 생각입니다. 
+그 이유는 이것이 패키지 설치 코드에 필요한 아키텍쳐가 무엇인지 말해주기 때문입니다)
 
-   <p>At present there is a potential problem with packages using Java, as
-the post-install for a &lsquo;<samp><span class="samp">i386</span></samp>&rsquo; RPM on &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Linux
-reconfigures Java and will find the &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Java.  If you know
-where a 32-bit Java is installed you may be able to run (as root)
+<!-- At present there is a potential problem with packages using Java, as -->
+<!-- the post-install for a @cputype{i386} RPM on @cputype{x86_64} Linux -->
+<!-- reconfigures Java and will find the @cputype{x86_64} Java.  If you know -->
+<!-- where a 32-bit Java is installed you may be able to run (as root) -->
+   <p>현재 Java를 이용한 패키지들에는 잠재적인 문제가 있습니다. 
+그 이유는 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서 &lsquo;<samp><span class="samp">i386</span></samp>&rsquo; RPM에 대한 설치후에 자바의 환경설정을 변경하고 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Java를 찾을 것이기 때문입니다. 
+만약 32비트 Jave가 설치된 곳을 알고 있다면 (루트 권한으로서) 올바른 환경설정을 위해서는 아래와 같은 명령어를 수행해야 할 것입니다.
 
 <pre class="example">     export JAVA_HOME=&lt;path to jre directory of 32-bit Java&gt;
      setarch i686 R CMD javareconf
 </pre>
-   <p class="noindent">to get a suitable setting.
+   <p class="noindent"><!-- to get a suitable setting. -->
 
-   <p>When this mechanism is used, the version of <samp><span class="command">Rscript</span></samp> in
-e.g. <samp><span class="file">/usr/bin</span></samp> will be the last installed, but an
-architecture-specific version will be available in
-e.g. <samp><span class="file">/usr/lib64/R/bin</span></samp>.  Normally all installed architectures
-will run on the platform so the architecture of <samp><span class="command">Rscript</span></samp> does
-not matter.
+<!-- When this mechanism is used, the version of @command{Rscript} in -->
+<!-- e.g.@: @file{/usr/bin} will be the last installed, but an -->
+<!-- architecture-specific version will be available in -->
+<!-- e.g.@: @file{/usr/lib64/R/bin}.  Normally all installed architectures -->
+<!-- will run on the platform so the architecture of @command{Rscript} does -->
+<!-- not matter. -->
+   <p>이러한 메카니즘이 사용될 때 <samp><span class="file">/usr/bin</span></samp>내에 있는 <samp><span class="command">Rscript</span></samp>의 버전은 설치된 마지막것이 될 것입니다. 그러나 아키텍처에 맞춘 버전은  <samp><span class="file">/usr/lib64/R/bin</span></samp>에서 확인할 수 있습니다. 
+일반적으로 설치된 모든 아키텍쳐들은 플랫폼에서 실행될 것이기 때문에 <samp><span class="command">Rscript</span></samp>의 아키텍쳐는 문제가 되지 않습니다.
 
 <div class="node">
 <a name="Other-Options"></a>
@@ -1233,19 +1266,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 
 </div>
 
-<h3 class="section">2.7 Other Options</h3>
+<!-- @section Other Options -->
+<h3 class="section">2.7 다른 옵션들</h3>
 
-<p>There are many other installation options, most of which are listed by
-<samp><span class="command">configure --help</span></samp>.  Almost all of those not listed elsewhere in
-this manual are either standard <samp><span class="command">autoconf</span></samp> options not relevant
-to R or intended for specialist uses by the R developers.
+<!-- There are many other installation options, most of which are listed by -->
+<!-- @command{configure -help}.  Almost all of those not listed elsewhere in -->
+<!-- this manual are either standard @command{autoconf} options not relevant -->
+<!-- to @R{} or intended for specialist uses by the @R{} developers. -->
+<p>다양한 종류의 설치 옵션들이 있습니다. 이들중 대부분은 <samp><span class="command">configure --help</span></samp>에 의하여 나열됩니다. 
+이 문서의 다른곳에 나열되지 않은 옵션들의 대부분은 표준 <samp><span class="command">autoconf</span></samp> 옵션들이거나 R과는 관계가 특별히 없거나 R 개발자들에 의하여 특수한 목적으로 사용되기 때문일 수 있습니다.
 
-   <p>One that may be useful when working on R itself is the option
-<samp><span class="option">--disable-byte-compiled-packages</span></samp>, which ensures that the base
-and recommended packages are lazyloaded but not byte-compiled. 
-(Alternatively the (make or environment) variable
-<samp><span class="env">R_NO_BASE_COMPILE</span></samp> can be set to a non-empty value for the duration
-of the build.)
+<!-- One that may be useful when working on @R{} itself is the option -->
+<!-- @option{-disable-byte-compiled-packages}, which ensures that the base -->
+<!-- and recommended packages are lazyloaded but not byte-compiled. -->
+<!-- (Alternatively the (make or environment) variable -->
+<!-- @env{R_NO_BASE_COMPILE} can be set to a non-empty value for the duration -->
+<!-- of the build.) -->
+   <p>R에서 작업을 할 때 유용할 수 있는 것은 <samp><span class="option">--disable-by-compiled-packages</span></samp> 옵션입니다. 
+이는 베이스와 추천 패키지들이 바이트컴파일 되지 앟고 레이지로드가 되었을음 확인하는 것입니다. 
+(다른 방법으로는 make 또는 환경변수 <samp><span class="env">R_NO_BASE_COMPILE</span></samp>은 빌드하는 도중에 비어있지 않은 값으로 설정될 수 있습니다).
 
 <div class="node">
 <a name="Testing-a-Unix-alike-Installation"></a>
@@ -1256,17 +1295,22 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 
 </div>
 
-<h3 class="section">2.8 Testing an Installation</h3>
+<!-- @section Testing an Installation -->
+<h3 class="section">2.8 설치 확인하기</h3>
 
-<p>Full testing is possible only if the test files have been installed with
+<!-- Full testing is possible only if the test files have been installed with -->
+<p>만약 아래의 명령어를 이용해서 테스트 파일들을이 설치되었더라면, 풀테스팅이 가능합니다.
 
 <pre class="example">     make install-tests
 </pre>
-   <p class="noindent">which populates a <samp><span class="file">tests</span></samp> directory in the installation.
+   <p class="noindent"><!-- which populates a @file{tests} directory in the installation. -->
+이 명령어의 사용은 설치시 <samp><span class="file">tests</span></samp> 디렉토리가 추가적으로 생성됩니다.
 
-   <p>If this has been done, two testing routes are available. 
-The first is to move to the home directory of the R installation
-(as given by <code>R.home()</code>) and run
+<!-- If this has been done, two testing routes are available. -->
+<!-- The first is to move to the home directory of the @R{} installation -->
+<!-- (as given by @code{R.home()}) and run -->
+   <p>만약 이것이 사용되었었다면, 두가지 테스팅 방법이 가능합니다. 
+하나는 R 설치 (<code>R.home()</code>에서 보이는 것과 같이) 홈 디렉토리 로 옮겨가서 아래의 명령어들을 수행합니다.
 
 <pre class="example">     cd tests
      ## followed by one of
@@ -1274,44 +1318,58 @@ The first is to move to the home directory of the R installation
      ../bin/R CMD make check-devel
      ../bin/R CMD make check-all
 </pre>
-   <p class="noindent">and other useful targets are <code>test-BasePackages</code> and
-<code>test-Recommended</code> to the run tests of the standard and
-recommended packages (if installed) respectively.
+   <p class="noindent"><!-- and other useful targets are @code{test-BasePackages} and -->
+<!-- @code{test-Recommended} to the run tests of the standard and -->
+<!-- recommended packages (if installed) respectively. -->
+그리고 표준과 (만약 설치가 되어 있다면) 추천 패키지들의 테스트를 수행하기 위한 <code>test-BasePackages</code>와 <code>test-Recommended</code>는 유용합니다.
 
-   <p>This re-runs all the tests relevant to the installed R (including for
-example code in the package vignettes), but not for example the ones
-checking the example code in the manuals nor making the standalone Rmath
-library.  This can occasionally be useful when the operating environment
-has been changed, for example by OS updates or by substituting the
-<acronym>BLAS</acronym> (see <a href="#Shared-BLAS">Shared BLAS</a>).
+<!-- This re-runs all the tests relevant to the installed @R{} (including for -->
+<!-- example code in the package vignettes), but not for example the ones -->
+<!-- checking the example code in the manuals nor making the standalone Rmath -->
+<!-- library.  This can occasionally be useful when the operating environment -->
+<!-- has been changed, for example by OS updates or by substituting the -->
+<!-- @acronym{BLAS} (@pxref{Shared BLAS}). -->
+   <p>이것은 (패키지 비그네트에 있는 예제들을 포함하여) 설치된 R과 관계된 모든 테스트들을 재수행합니다. 
+그러나, 독립적인 Rmath 라이브러리를 만드는 것과 매뉴얼안에 있는 예제 코드를 확인하지 않습니다. 
+이것은 운영체제가 업데이트 되었거나 <acronym>BALS</acronym>가 대체된 경우와 같이 운영환경이 변경되었을때 매우 유용합니다.
 
-   <p>Alternatively, the installed R can be run, preferably with
-<samp><span class="option">--vanilla</span></samp>.  Then
+<!-- Alternatively, the installed @R{} can be run, preferably with -->
+<!-- @option{-vanilla}.  Then -->
+   <p>또 다른 방법으로는 설치된 R을 <samp><span class="option">--vanilla</span></samp>과 같이 수행한뒤 다음의 명령어를 이용하는 것입니다.
 
 <pre class="example">     library("tools")
      testInstalledBasic("both")
      testInstalledPackages(scope = "base")
      testInstalledPackages(scope = "recommended")
 </pre>
-   <p class="noindent">runs the basic tests and then all the tests on the standard and
-recommended packages.  These tests can be run from anywhere: the basic
-tests write their results in the <samp><span class="file">tests</span></samp> folder of the R home
-directory and run slightly fewer tests than the first approach: in
-particular they do not test Internet access.
+   <p class="noindent"><!-- runs the basic tests and then all the tests on the standard and -->
+<!-- recommended packages.  These tests can be run from anywhere: the basic -->
+<!-- tests write their results in the @file{tests} folder of the @R{} home -->
+<!-- directory and run slightly fewer tests than the first approach: in -->
+<!-- particular they do not test Internet access. -->
+위의 명령어는 기본 테스트를 수행하고 표준과 추천 패키지들안에 있는 모든 테스트를 수행합니다. 
+이러한 테스트들은 어느곳에서든지 수행될 수 있습니다. 
+기본 테스트는 R 홈디렉토리에 <samp><span class="file">tests</span></samp>라는 폴더에 그 결과를 기록하고 첫번째 테스팅 방법보다 다소 적은 양의 테스트를 수행합니다. 
+특히 인터넷 엑세스와 같은 테스트를 하지 않습니다.
 
-   <p>These tests work best if <samp><span class="command">diff</span></samp> (in <samp><span class="file">Rtools*.exe</span></samp> for
-Windows users) is in the path, and on some systems need the collation
-locale set manually (the R code tries to do so but it may not be
-possible to reset it): so if needed try setting the environment variable
-<samp><span class="env">LC_COLLATE</span></samp> to &lsquo;<samp><span class="samp">C</span></samp>&rsquo; before starting R. 
-<a name="index-LC_005fCOLLATE-24"></a>
-It is possible to test the installed packages (but not the
-package-specific tests) by <code>testInstalledPackages</code> even if
-<samp><span class="command">make install-tests</span></samp> was not run.
+<!-- These tests work best if @command{diff} (in @file{Rtools*.exe} for -->
+<!-- Windows users) is in the path, and on some systems need the collation -->
+<!-- locale set manually (the @R{} code tries to do so but it may not be -->
+<!-- possible to reset it): so if needed try setting the environment variable -->
+<!-- @env{LC_COLLATE} to @samp{C} before starting @R{}. -->
+   <p><a name="index-LC_005fCOLLATE-24"></a>이러한 테스트들은 <samp><span class="command">diff</span></samp> (Windows 사용자에게는 <samp><span class="file">Rtools*.exe</span></samp>내에 있습니다)이 경로상에 위치하고 있을때 가장 잘 수행되며, 일부 시스템에서는 collation 로케일 셋을 직접 조정해야 할 필요가 있습니다 (R 코드가 이를 시도하지만 아마도 리셋하는것은 불가능할 것입니다). 
+만약 이러한 경우가 필요하다면 R을 시작하기 전에 환경변수 <samp><span class="env">LC_COLLATE</span></samp>의 값을 &lsquo;<samp><span class="samp">C</span></samp>&rsquo;로 조정해보시길 바랍니다.
 
-   <p>Note that the results may depend on the language set for times and
-messages: for maximal similarity to reference results you may want to
-try setting
+<!-- It is possible to test the installed packages (but not the -->
+<!-- package-specific tests) by @code{testInstalledPackages} even if -->
+<!-- @command{make install-tests} was not run. -->
+   <p><samp><span class="command">make install-tests</span></samp>가 수행되지 않았을지라도 설치된 패키지들을 테스트 하는 것도 <code>testInstalledPackages</code>에 의하여 가능합니다.
+
+<!-- Note that the results may depend on the language set for times and -->
+<!-- messages: for maximal similarity to reference results you may want to -->
+<!-- try setting -->
+   <p>시간과 메시지들과 연관된 결과들은 언어설정에 따라 달라집니다. 
+가장 비슷하게 결과를 비교할 수 있는 설정은 다음과 같습니다.
 
 <pre class="example">     LANGUAGE=en LC_TIME=C
 </pre>
@@ -5992,11 +6050,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 Fedora 18이전의 버전들은 더 오래된 버전의 TeXLive를 사용하는데, 가장 좋은 방법은 소스로부터 TeXLive 2012로 업데이트 하거나
 <a href="http://fedoraproject.org/wiki/Features/TeXLive">http://fedoraproject.org/wiki/Features/TeXLive</a>를 살펴보시길 바랍니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-6" href="#fnd-6">6</a>]</small> with possible values
-&lsquo;<samp><span class="samp">i386</span></samp>&rsquo;, &lsquo;<samp><span class="samp">x64</span></samp>&rsquo;, &lsquo;<samp><span class="samp">32</span></samp>&rsquo; and &lsquo;<samp><span class="samp">64</span></samp>&rsquo;.</p>
+   <p class="footnote"><small>[<a name="fn-6" href="#fnd-6">6</a>]</small> 아마도 가능한 값들은 &lsquo;<samp><span class="samp">i386</span></samp>&rsquo;, &lsquo;<samp><span class="samp">x64</span></samp>&rsquo;, &lsquo;<samp><span class="samp">32</span></samp>&rsquo;, 그리고 &lsquo;<samp><span class="samp">64</span></samp>&rsquo;일 것입니다</p>
 
-   <p class="footnote"><small>[<a name="fn-7" href="#fnd-7">7</a>]</small> mainly on RedHat and Fedora, whose layout is described
-here.</p>
+   <p class="footnote"><small>[<a name="fn-7" href="#fnd-7">7</a>]</small> 여기에서는 주로 RedHat과 Fedora를 위주로 설명합니다</p>
 
    <p class="footnote"><small>[<a name="fn-8" href="#fnd-8">8</a>]</small> 이전 명칭으로 EM64T.</p>
 
