@@ -833,7 +833,8 @@ make install-strip
 
 @cindex Manuals, installing
 
-To install info and PDF versions of the manuals, use one or more of
+@c To install info and PDF versions of the manuals, use one or more of
+info와 PDF 버전의 매뉴얼들을 설치하기 위해서는 아래의 명령들 중 하나를 이용합니다. 
 
 @example
 make install-info
@@ -841,73 +842,94 @@ make install-pdf
 @end example
 
 @noindent
-Once again, it is optional to specify @code{prefix}, @code{libdir} or
-@code{rhome} (the PDF manuals are installed under the @R{} home
-directory).  (@command{make install-info} needs Perl installed if there
-is no command @command{install-info} on the system.)
+@c Once again, it is optional to specify @code{prefix}, @code{libdir} or
+@c @code{rhome} (the PDF manuals are installed under the @R{} home
+@c directory).  (@command{make install-info} needs Perl installed if there
+@c is no command @command{install-info} on the system.)
+다시 언급하건데, @code{prefix}, @code{libdir} 또는 @code{rhome}을 지정하는 것은 선택사항입니다 (PDF 매뉴얼들은 @R{} 홈디렉토리에 설치됩니다). 
+(@command{make install-info}는 만약 @command{install-info} 명령이 시스템에 없다면 Perl 이 설치되어 있어야 합니다)
 
-More precise control is possible.  For info, the setting used is that of
-@code{infodir} (default @file{@var{prefix}/info}, set by configure
-option @option{--infodir}).  The PDF files are installed into the @R{}
-@file{doc} tree, set by the @command{make} variable @code{rdocdir}.
+@c More precise control is possible.  For info, the setting used is that of
+@c @code{infodir} (default @file{@var{prefix}/info}, set by configure
+@c option @option{--infodir}).  The PDF files are installed into the @R{}
+@c @file{doc} tree, set by the @command{make} variable @code{rdocdir}.
+좀 더 정교한 조절이 가능합니다.
+info의 경우에 사용된 설정은 @code{infodir}의 값입니다 (기본값은 환경설정 옵션 @option{--infodir}에 의하여 조정되는 @file{@var{prefix}/info}입니다).
+PDF 파일들은 @R{} @file{doc} 트리에 설치되며, @command{make} 변수 @code{rdocdir}에 의해서 조정됩니다. 
 
-A staged installation is possible, that it is installing @R{} into a
-temporary directory in order to move the installed tree to its final
-destination.  In this case @code{prefix} (and so on) should reflect the
+@c A staged installation is possible, that it is installing @R{} into a
+@c temporary directory in order to move the installed tree to its final
+@c destination.  In this case @code{prefix} (and so on) should reflect the
 @enindex DESTDIR
-final destination, and @env{DESTDIR} should be used: see
-@uref{http://www.gnu.org/@/prep/@/standards/@/html_node/@/DESTDIR.html}.
+@c final destination, and @env{DESTDIR} should be used: see
+@c @uref{http://www.gnu.org/@/prep/@/standards/@/html_node/@/DESTDIR.html}.
+스테이지된 설치 또한 가능합니다. 
+즉, 최종목적에 설치된 트리를 옮기기 위해서 @R{}을 임시디렉토리에 설치하는 것입니다. 
+이 경우에는 @code{prefix}는 최종목적지를 반드시 지정해야 하며, @env{DESTDIR}이 사용되어야 합니다. 
+이에 대해서는 @uref{http://www.gnu.org/@/prep/@/standards/@/html_node/@/DESTDIR.html}를 살펴보세요.
 
-You can optionally install the run-time tests that are part of
-@command{make check-all} by
+@c You can optionally install the run-time tests that are part of
+@c @command{make check-all} by
+@command{make check-all}의 일부분인 런타임 테스트를 선택적으로 설치를 아래의 명령어로 수행할 수 있습니다.
+이는 @file{tests} 디렉토리를 설치시 추가적으로 생성합니다.
 
 @example
 make install-tests
 @end example
 
 @noindent
-which populates a @file{tests} directory in the installation.
+@c which populates a @file{tests} directory in the installation.
 
 
 @node Uninstallation, Sub-architectures, Installation, Installing R under Unix-alikes
-@section Uninstallation
+@c @section Uninstallation
+@section 제거
 
-You can uninstall @R{} by
+@c You can uninstall @R{} by
+다음과 같은 방법으로 @R{}을 제거할 수있습니다. 
 
 @example
 make uninstall
 @end example
 
 @noindent
-optionally specifying @code{prefix} etc in the same way as specified for
-installation.
+@c optionally specifying @code{prefix} etc in the same way as specified for
+@c installation.
+설치에서 지정했던 것과 같은 방법으로  @code{prefix}와 그 밖의 것들을 선택적으로 지정할 수 있습니다. 
 
-This will also uninstall any installed manuals.  There are specific
-targets to uninstall info and PDF manuals in file
-@file{doc/manual/Makefile}.
+@c This will also uninstall any installed manuals.  There are specific
+@c targets to uninstall info and PDF manuals in file
+@c @file{doc/manual/Makefile}.
+이것은 또한 설치된 어떠한 매뉴얼들도 함께 삭제합니다.
+@file{doc/manual/Makefile} 파일내에 info와 PDF 매뉴얼들을 삭제해야할 정확한 대상들이 있습니다.
 
-Target @code{uninstall-tests} will uninstall any installed tests, as
-well as removing the directory @file{tests} containing the test results.
-
-
+@c Target @code{uninstall-tests} will uninstall any installed tests, as
+@c well as removing the directory @file{tests} containing the test results.
+@code{uninstall-tests} 대상들은 마치 테스트 결과들을 가지고 있는 @file{tests} 디렉토리를 제거하는 것과 같이 설치된 테스트들을 삭제할 것입니다.
 
 @node Sub-architectures, Other Options, Uninstallation, Installing R under Unix-alikes
-@section Sub-architectures
+@c @section Sub-architectures
+@section 서브-아키텍쳐
 
-Some platforms can support closely related builds of @R{} which can
-share all but the executables and dynamic objects.  Examples include
-builds under Solaris for different chips (in particular, 32- and 64-bit
-builds), 64- and 32- bit builds on @cputype{x86_64} Linux and different
-@acronym{CPU}s (e.g.@: @cputype{i386} and @cputype{x86_64}) under (Mac)
-OS X.
+@c Some platforms can support closely related builds of @R{} which can
+@c share all but the executables and dynamic objects.  Examples include
+@c builds under Solaris for different chips (in particular, 32- and 64-bit
+@c builds), 64- and 32- bit builds on @cputype{x86_64} Linux and different
+@c @acronym{CPU}s (e.g.@: @cputype{i386} and @cputype{x86_64}) under (Mac)
+@c OS X.
+일부 플랫폼들은 실행가능한 파일들과 동적 객체들을 제외한 나머지들을 공유할 수 있는 @R{}의 빌드를 지원합니다.
+예를들면 솔라리스에서 서로 다른 칩들 (특히, 32와 64비트 빌드), @cputype{x86_64} 리눅스에서의 64와 32비트 빌드, 그리고 (Mac) OS X에서 서로 다른 @acronym{CPU}들(즉, @: @cputype{i386}과  @cputype{x86_64})에 빌드와 같은 것입니다.
 
-@R{} supports the idea of architecture-specific builds, specified by
-adding @samp{r_arch=@var{name}} to the @command{configure} line.  Here
-@var{name} can be anything non-empty, and is used to name subdirectories
-of @file{lib}, @file{etc}, @file{include} and the package @file{libs}
-subdirectories.  Example names from other systems are the use of
-@file{sparcv9} on Sparc Solaris and @file{32} by @command{gcc} on
-@cputype{x86_64} Linux.
+@c @R{} supports the idea of architecture-specific builds, specified by
+@c adding @samp{r_arch=@var{name}} to the @command{configure} line.  Here
+@c @var{name} can be anything non-empty, and is used to name subdirectories
+@c of @file{lib}, @file{etc}, @file{include} and the package @file{libs}
+@c subdirectories.  Example names from other systems are the use of
+@c @file{sparcv9} on Sparc Solaris and @file{32} by @command{gcc} on
+@c @cputype{x86_64} Linux.
+@R{}은 아키텍쳐에 맞춘 빌드에 대한 아이디어를 지원하며, 이는 @samp{r_arch=@var{name}}을 @command{configure} 라인에 추가함으로서 이루어집니다.
+여기에서  @var{name}은 비어있지 않은 그 어떠한 것도 될 것도 될 수 있으며, @file{lib}, @file{etc}, @file{include}들의 서브디렉토리와 패키지 @file{libs} 서브디렉토리들의 이름을 짓는데 이용됩니다. 
+다른 시스템으로부터 예시로 사용되는 이름들은 Sparc Solaris 상의 @file{sparcv9}의 사용이 있을 수 있고, @cputype{x86_64} 리눅스에서 @command{GCC}에 의한 @file{32}입니다.
 
 If you have two or more such builds you can install them over each other
 (and for 32/64-bit builds on one architecture, one build can be done
@@ -971,6 +993,7 @@ being taken first from the
 @samp{i386}, @samp{x64}, @samp{32} and @samp{64}.} and finally from the
 installation default (which is 32-bit for a combined 32/64 bit @R{}
 installation).
+
 
 @menu
 * Multilib::                    
