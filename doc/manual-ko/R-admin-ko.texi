@@ -617,48 +617,68 @@ Fedora 18이전의 버전들은 더 오래된 버전의 TeXLive를 사용하는�
 대부분의  @LaTeX{} 설치에 있어서 이것은 실제로 PDF를 위한 표준 글꼴을 사용하는 것이 아니며, URW clones NimbusRom, NimbusSans, 그리고 MimbusMon을 끼워넣는 것입니다. 
 
 @item lm
-Using the @emph{Latin Modern} fonts.  These are not often installed as
-part of a @TeX{} distribution, but can obtained from
-@uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/lm/} and
-mirrors.  This uses fonts rather similar to Computer Modern, but is not
-so good on-screen as @code{times}.
+@c Using the @emph{Latin Modern} fonts.  These are not often installed as
+@c part of a @TeX{} distribution, but can obtained from
+@c @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/lm/} and
+@c mirrors.  This uses fonts rather similar to Computer Modern, but is not
+@c so good on-screen as @code{times}.
+@emph{Latin Modern} 글꼴들을 이용하는 것입니다. 
+이것들은 @TeX{} 배포의 일부분이기 때문에 종종 설치되지 않지만, @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/lm/}과 이것의 미러들로부터 얻을 수 있습니다.
+이것은 Computer Modern과 다소 유사한 글꼴들을 사용하지만 @code{times}와 같이 스크린상에서 보기 좋은 글꼴은 아닙니다.
 
 @item cm-super
-Using type-1 versions of the Computer Modern fonts by Vladimir Volovich.
-This is a large installation, obtainable from
-@uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super/}
-and its mirrors.  These type-1 fonts have poor hinting and so are
-nowhere near so readable on-screen as the other three options.
+@c Using type-1 versions of the Computer Modern fonts by Vladimir Volovich.
+@c This is a large installation, obtainable from
+@c @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super/}
+@c and its mirrors.  These type-1 fonts have poor hinting and so are
+@c nowhere near so readable on-screen as the other three options.
+Vladimir Volovich에 의해서 만들어진 Computer Modern 글꼴의 type-1 버전들을 이용하는 것입니다. 
+이것은 @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super/}과 이것의 미러들로부터 얻을 수 있는데, 매우 방대한 설치입니다.
+이러한 type-1 글꼴은 좋지 않은 질을 가지고 있어  다른 세가지 옵션처럼 스크린상에서만 읽을 수 있을 것입니다.
 
 @item ae
-A package to use composites of Computer Modern fonts.  This works well
-most of the time, and its PDF is more readable on-screen than the
-previous two options.  There are three fonts for which it will need to
-use bitmapped fonts, @file{tctt0900.600pk}, @file{tctt1000.600pk} and
-@file{tcrm1000.600pk}.  Unfortunately, if those files are not available,
-Acrobat Reader will substitute completely incorrect glyphs so you need
-to examine the logs carefully.
+@c A package to use composites of Computer Modern fonts.  This works well
+@c most of the time, and its PDF is more readable on-screen than the
+@c previous two options.  There are three fonts for which it will need to
+@c use bitmapped fonts, @file{tctt0900.600pk}, @file{tctt1000.600pk} and
+@c @file{tcrm1000.600pk}.  Unfortunately, if those files are not available,
+@c Acrobat Reader will substitute completely incorrect glyphs so you need
+@c to examine the logs carefully.
+Computer Modern 글꼴의 복합체를 이용하는 패키지입니다. 
+이것은 대부분의 경우에 잘 작동하며 이것의 PDF 버전은 이전의 두가지 옵션들보다 더욱 읽기에 좋은 질을 가집니다. 
+비트맵된 글꼴, @file{tctt0900.600pk}, @file{tctt1000.600pk} 그리고, @file{tcrm1000.600pk} 을 이용해야하는 세가지 글꼴들이 있습니다.
+아쉽게도 이러한 파일들을 이용할 수 없다면, 아크로뱃 리더는 잘못된 상형문자로 대체하게 될 것입니다.
+따라서, 로그를 주의깊게 살펴보아야 합니다.  
 @end table
 
-The default can be overridden by setting the environment variable
+@c The default can be overridden by setting the environment variable
 @enindex R_RD4PDF
-@env{R_RD4PDF}.  (On Unix-alikes, this will be picked up at install time
-and stored in @file{etc/Renviron}, but can still be overridden when the
-manuals are built.)  The default value for @env{R_RD4PDF} is
-@samp{times,inconsolata,hyper}: omit @samp{hyper} if you do not want
-hyperlinks (e.g.@: for printing the manual) or do not have @LaTeX{}
-package @pkg{hyperref}, and omit @samp{inconsolata} if you do not have
-@LaTeX{} package @pkg{inconsolata} installed.
+@c @env{R_RD4PDF}.  (On Unix-alikes, this will be picked up at install time
+@c and stored in @file{etc/Renviron}, but can still be overridden when the
+@c manuals are built.)  The default value for @env{R_RD4PDF} is
+@c @samp{times,inconsolata,hyper}: omit @samp{hyper} if you do not want
+@c hyperlinks (e.g.@: for printing the manual) or do not have @LaTeX{}
+@c package @pkg{hyperref}, and omit @samp{inconsolata} if you do not have
+@c @LaTeX{} package @pkg{inconsolata} installed.
+기본값들은 @env{R_RD4PDF}이라는 환경변수를 조절함으로서 변경될 수 있습니다.
+(유닉스와 같은 환경에서는 이것은 설치하는 도중 조정되고 이는 @file{etc/Renviron} 파일에 저장될 것입니다).
+@env{R_RD4PDF}에 대한 기본값은 @samp{times,inconsolata,hyper}입니다.
+만약 하이퍼링크를 원하지 않거나 @LaTeX{} 패키지 @pkg{hyperref}를 가지고 있지 않다면 @samp{hyper}를 지워버리세요 (즉, @: 매뉴얼을 프린트할 경우입니다). 
+또한 만약에 @LaTeX{} 패키지 @pkg{inconsolata}가 설치되어 있지 않다면 @samp{inconsolata}를 삭제하세요.
+
 
 @node Installation, Uninstallation, Making the manuals, Installing R under Unix-alikes
-@section Installation
+@c @section Installation
+@section 설치
 @cindex Installation
 
-To ensure that the installed tree is usable by the right group of users,
-set @code{umask} appropriately (perhaps to @samp{022}) before unpacking
-the sources and throughout the build process.
+@c To ensure that the installed tree is usable by the right group of users,
+@c set @code{umask} appropriately (perhaps to @samp{022}) before unpacking
+@c the sources and throughout the build process.
+설치된 트리가 올바른 그룹내의 사용자들에 의해서 사용될 수 있게 하기 위해서는 소스의 압축을 풀기 전에 @code{umask}가 올바르게 설정되어야 하고, 빌드과정 동안 유지되어야 합니다.
 
-After
+@c After
+설치를 위해서는 다음과 같은 명령어를 입력합니다.
 
 @findex configure
 @example
@@ -668,35 +688,45 @@ make check
 @end example
 
 @noindent
-(or, when building outside the source,
-@code{@var{TOP_SRCDIR}/configure}, etc) have been completed
-successfully, you can install the complete @R{} tree to your system by
-typing
+@c (or, when building outside the source,
+@c @code{@var{TOP_SRCDIR}/configure}, etc) have been completed
+@c successfully, you can install the complete @R{} tree to your system by
+@c typing
+(소스 밖에서 빌드할때에는 @code{@var{TOP_SRCDIR}/configure}라고 합니다).
+위의 명령어가 성공적으로 수행되었다면, 완전한 @R{} 트리를 시스템에 다음의 명령어를 이용하여 설치할 수 있습니다.
 
 @example
 make install
 @end example
 
 @noindent
-A parallel make can be used (but run @command{make all} first).
+@c A parallel make can be used (but run @command{make all} first).
+make를 병렬식으로 사용할 수도 있습니다 (그러나 @command{make all}을 먼저 수행하세요).
 
-This will install to the following directories:
+@c This will install to the following directories:
+위의 명령어는 다음과 같은 디렉토리에 설치를 진행할 것입니다. 
 
 @table @asis
 @item @file{@var{prefix}/bin} or @file{@var{bindir}}
-the front-end shell script and other scripts and executables
+@c the front-end shell script and other scripts and executables
+사용자가 사용할 수 있는 쉘 스크립트와 다른 스크립트들, 그리고 실행가능한 것들
 @item @file{@var{prefix}/man/man1} or @file{@var{mandir}/man1}
-the man page
+@c the man page
+도움말 페이지 
 @item @file{@var{prefix}/@var{LIBnn}/R} or @file{@var{libdir}/R}
-all the rest (libraries, on-line help system, @dots{}).  Here
-@var{LIBnn} is usually @samp{lib}, but may be @samp{lib64} on some
-64-bit Linux systems.  This is known as the @R{} home directory.
+@c all the rest (libraries, on-line help system, @dots{}).  Here
+@c @var{LIBnn} is usually @samp{lib}, but may be @samp{lib64} on some
+@c 64-bit Linux systems.  This is known as the @R{} home directory.
+위의 것을 제외한 모든 것 (즉, 라이브러리들, 온라인 도움말 시스템, @dots{}).
+여기에서 @var{LIBnn}은 일반적으로 @samp{lib}이지만, 일부 64-비트 리눅스 시스템에서는 @samp{lib64}입니다.
+이곳은 @R{} 홈 디렉토리라고 알려져 있습니다. 
 @end table
 
 @noindent
-where @var{prefix} is determined during configuration (typically
-@file{/usr/local}) and can be set by running @command{configure} with
-the option @option{--prefix}, as in
+@c where @var{prefix} is determined during configuration (typically
+@c @file{/usr/local}) and can be set by running @command{configure} with
+@c the option @option{--prefix}, as in
+여기에서 @var{prefix}는 설정을 하는동안 결정되게 되며 (일반적으로는 @file{/usr/local}입니다) @command{configure} 명령어를 @option{--prefix} 옵션을 아래와 같이 사용함으로서 설정될 수 있습니다. 
 
 @findex configure
 @example
@@ -704,80 +734,102 @@ the option @option{--prefix}, as in
 @end example
 
 @noindent
-This causes @command{make install} to install the @R{} script to
-@file{/where/you/want/R/to/go/bin}, and so on.  The prefix of the
-installation directories can be seen in the status message that is
-displayed at the end of @command{configure}.  You can install into
-another directory tree by using
+@c This causes @command{make install} to install the @R{} script to
+@c @file{/where/you/want/R/to/go/bin}, and so on.  The prefix of the
+@c installation directories can be seen in the status message that is
+@c displayed at the end of @command{configure}.  You can install into
+@c another directory tree by using
+이것은  @command{make install}를 실행시 @R{} 스크립트가 @file{/where/you/want/R/to/go/bin}이라는 곳에 설치하도록 해줍니다.
+설치디렉토리에 대한 prefix 는  @command{configure} 명령어를 사용한 맨 마지막에 보여지는 상태관련 메시지에서 확인이 가능합니다. 
+만약 다른 디렉토리 트리에 설치하고 싶다면 최소한  @acronym{GNU} @command{make}가 설치된 상태에서 다음의 명령어를 이용하면 됩니다 (그리고 현재 솔라리스와 FreeBSD @command{make}도 괜찮지만, 일부 오래된 버전의 유닉스 makes는 아닙니다). 
 
 @example
 make prefix=/path/to/here install
 @end example
 
 @noindent
-at least with @acronym{GNU} @command{make} (and current Solaris and
-FreeBSD @command{make}, but not some older Unix makes).
+@c at least with @acronym{GNU} @command{make} (and current Solaris and
+@c FreeBSD @command{make}, but not some older Unix makes).
 
-More precise control is available at configure time via options: see
-@command{configure --help} for details.  (However, most of the `Fine
-tuning of the installation directories' options are not used by @R{}.)
 
-Configure options @option{--bindir} and @option{--mandir} are supported
-and govern where a copy of the @command{R} script and the @command{man}
-page are installed.
+@c More precise control is available at configure time via options: see
+@c @command{configure --help} for details.  (However, most of the `Fine
+@c tuning of the installation directories' options are not used by @R{}.)
+좀 더 정교한 조정은 환경설정시에 옵션들을 통하여 이루어질 수 있습니다.
+더 자세한 내용은 @command{configure --help}를 살펴보세요.
+(그러나, 대부분의 'Fine tuning of the installation directories' 옵션들은 @R{}에 의하여 사용되는 것이 아닙니다).
 
-The configure option @option{--libdir} controls where the main @R{}
-files are installed: the default is @samp{@var{eprefix}/@var{LIBnn}},
-where @var{eprefix} is the prefix used for installing
-architecture-dependent files, defaults to @var{prefix}, and can be set
-via the configure option @option{--exec-prefix}.
+@c Configure options @option{--bindir} and @option{--mandir} are supported
+@c and govern where a copy of the @command{R} script and the @command{man}
+@c page are installed.
+@command{R} 스크립트의 복사를 만들고 @command{man} 페이지의 설치를 조정할 수 있는 환경설정 옵션들 @option{--bindir}과 @option{--mandir}이 지원됩니다.
 
-Each of @code{bindir}, @code{mandir} and @code{libdir} can also be
-specified on the @command{make install} command line (at least for
-@acronym{GNU} @command{make}).
+@c The configure option @option{--libdir} controls where the main @R{}
+@c files are installed: the default is @samp{@var{eprefix}/@var{LIBnn}},
+@c where @var{eprefix} is the prefix used for installing
+@c architecture-dependent files, defaults to @var{prefix}, and can be set
+@c via the configure option @option{--exec-prefix}.
+@option{--libdir} 옵션은 주 @R{} 파일들이 어디에 설치되어야 하는지를 조정합니다.
+기본값은 @samp{@var{eprefix}/@var{LIBn}}인데, @var{eprefix}는 아키텍쳐-의존 파일들을 설치하는데 사용되는 prefix 이며, @var{prefix}에 대한 기본값입니다. 
+그리고 환경설정 옵션 @option{--exec-prefix}를 통하여 설정될 수 있습니다. 
 
-The @command{configure} or @command{make} variables @code{rdocdir} and
-@code{rsharedir} can be used to install the system-independent
-@file{doc} and @file{share} directories to somewhere other than
-@code{libdir}.  The C header files can be installed to the value of
-@code{rincludedir}: note that as the headers are not installed into a
-subdirectory you probably want something like
-@code{rincludedir=/usr/local/include/R-@value{VERSIONno}}.
+@c Each of @code{bindir}, @code{mandir} and @code{libdir} can also be
+@c specified on the @command{make install} command line (at least for
+@c @acronym{GNU} @command{make}).
+@code{bindir}, @code{mandir} 그리고 @code{libdir}은 또한 @command{make install} 명령어 라인에서 설정될 수 있습니다. 
 
-If you want the @R{} home to be something other than
-@file{@var{libdir}/R}, use @option{rhome}: for example
+@c The @command{configure} or @command{make} variables @code{rdocdir} and
+@c @code{rsharedir} can be used to install the system-independent
+@c @file{doc} and @file{share} directories to somewhere other than
+@c @code{libdir}.  The C header files can be installed to the value of
+@c @code{rincludedir}: note that as the headers are not installed into a
+@c subdirectory you probably want something like
+@c @code{rincludedir=/usr/local/include/R-@value{VERSIONno}}.
+@command{configure} 또는 @command{make} 변수 @code{rdocdir}과 @code{rsharedir}는 시스템-독립적으로 @file{doc}과 @file{share} 디렉토리들을 @code{libdir}이 아닌 다른곳에 설치하게 할 수 있습니다. 
+C 헤더파일들은  @code{rincludedir}의 값에 설치되어질 수 있습니다.
+헤더들은 하위디렉토리에 설치되지 않기 때문에 아마도  @code{rincludedir=/usr/local/include/R-@value{VERSIONno}} 와 같은 것을 원할 수 있습니다. 
+
+@c If you want the @R{} home to be something other than
+@c @file{@var{libdir}/R}, use @option{rhome}: for example
+만약 @R{} 홈이 @file{@var{libdir}/R}이 아닌 다른 곳으로 설정하기 원하다면 @option{rhome} 옵션을 이용하세요.
+예를들면, 다음과 같습니다. 
 
 @example
 make install rhome=/usr/local/lib64/R-2.15.0
 @end example
 
 @noindent
-will use a version-specific @R{} home on a Linux 64-bit system.
+@c will use a version-specific @R{} home on a Linux 64-bit system.
+위의 명령어는 리눅스 64 비트 시스템에서 버전별 @R{} 홈디렉토리를 이용하는 것입니다. 
 
-If you have made @R{} as a shared/dynamic library you can install it in
-your system's library directory by
+@c If you have made @R{} as a shared/dynamic library you can install it in
+@c your system's library directory by
+만약  @R{}을 shared/dynamic 라이브러리로서 만들고 싶다면 시스템의 라이브러리 디렉토리내에 이것들을 아래와 같은 방법으로 설치할 수 있습니다.
 
 @example
 make prefix=/path/to/here install-libR
 @end example
 
 @noindent
-where @code{prefix} is optional, and @code{libdir} will give more
-precise control.
+@c where @code{prefix} is optional, and @code{libdir} will give more
+@c precise control.
+여기에서 @code{prefix}는 선택사항이며, @code{libdir}은 좀 더 정교한 조절을 하게 됩니다.
 
 @example
 make install-strip
 @end example
 
 @noindent
-will install stripped executables, and on platforms where this is
-supported, stripped libraries in directories @file{lib} and
-@file{modules} and in the standard packages.
+@c will install stripped executables, and on platforms where this is
+@c supported, stripped libraries in directories @file{lib} and
+@c @file{modules} and in the standard packages.
+위의 명령어 사용은 stripped executables을 설치할 것이고 이것이 지원이되는 플랫폼들에서 @file{lib} 디렉토리내의 라이브러리들과 표준 패키지들의 @file{modules}들을  stripped 합니다.
 
-Note that installing @R{} into a directory whose path contains spaces is
-not supported, and at least some aspects (such as installing source
-packages) will not work.
-@c The main problem is the Makefile include in etc/Makeconf
+@c Note that installing @R{} into a directory whose path contains spaces is
+@c not supported, and at least some aspects (such as installing source
+@c packages) will not work.
+@c @c The main problem is the Makefile include in etc/Makeconf
+@R{}은 공백이 존재하는 경로명에는 설치되지 않으며, 최소한 (소스 패키지들을 설치하는 것과 같은) 일부 기능들은 작동하지 않을 것입니다.
 
 @cindex Manuals, installing
 

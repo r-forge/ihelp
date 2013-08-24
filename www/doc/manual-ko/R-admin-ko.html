@@ -87,7 +87,7 @@ p {
 <li><a href="#Simple-compilation">2.1 간단한 컴파일하기</a>
 <li><a href="#Help-options">2.2 도움말 옵션</a>
 <li><a href="#Making-the-manuals">2.3 매뉴얼 생성하기</a>
-<li><a href="#Installation">2.4 Installation</a>
+<li><a href="#Installation">2.4 설치</a>
 <li><a href="#Uninstallation">2.5 Uninstallation</a>
 <li><a href="#Sub_002darchitectures">2.6 Sub-architectures</a>
 <ul>
@@ -824,35 +824,51 @@ PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만,
      <!-- NimbusSans and (for Courier, if used) NimbusMon. -->
      <p>대부분의  LaTeX 설치에 있어서 이것은 실제로 PDF를 위한 표준 글꼴을 사용하는 것이 아니며, URW clones NimbusRom, NimbusSans, 그리고 MimbusMon을 끼워넣는 것입니다.
 
-     <br><dt><code>lm</code><dd>Using the <em>Latin Modern</em> fonts.  These are not often installed as
-part of a TeX distribution, but can obtained from
-<a href="http://www.ctan.org/tex-archive/fonts/ps-type1/lm/">http://www.ctan.org/tex-archive/fonts/ps-type1/lm/</a> and
-mirrors.  This uses fonts rather similar to Computer Modern, but is not
-so good on-screen as <code>times</code>.
+     <br><dt><code>lm</code><dd><!-- Using the @emph{Latin Modern} fonts.  These are not often installed as -->
+<!-- part of a @TeX{} distribution, but can obtained from -->
+<!-- @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/lm/} and -->
+<!-- mirrors.  This uses fonts rather similar to Computer Modern, but is not -->
+<!-- so good on-screen as @code{times}. -->
+<em>Latin Modern</em> 글꼴들을 이용하는 것입니다. 
+이것들은 TeX 배포의 일부분이기 때문에 종종 설치되지 않지만, <a href="http://www.ctan.org/tex-archive/fonts/ps-type1/lm/">http://www.ctan.org/tex-archive/fonts/ps-type1/lm/</a>과 이것의 미러들로부터 얻을 수 있습니다. 
+이것은 Computer Modern과 다소 유사한 글꼴들을 사용하지만 <code>times</code>와 같이 스크린상에서 보기 좋은 글꼴은 아닙니다.
 
-     <br><dt><code>cm-super</code><dd>Using type-1 versions of the Computer Modern fonts by Vladimir Volovich. 
-This is a large installation, obtainable from
-<a href="http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super/">http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super/</a>
-and its mirrors.  These type-1 fonts have poor hinting and so are
-nowhere near so readable on-screen as the other three options.
+     <br><dt><code>cm-super</code><dd><!-- Using type-1 versions of the Computer Modern fonts by Vladimir Volovich. -->
+<!-- This is a large installation, obtainable from -->
+<!-- @uref{http://www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super/} -->
+<!-- and its mirrors.  These type-1 fonts have poor hinting and so are -->
+<!-- nowhere near so readable on-screen as the other three options. -->
+Vladimir Volovich에 의해서 만들어진 Computer Modern 글꼴의 type-1 버전들을 이용하는 것입니다. 
+이것은 <a href="http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super/">http://www.ctan.org/tex-archive/fonts/ps-type1/cm-super/</a>과 이것의 미러들로부터 얻을 수 있는데, 매우 방대한 설치입니다. 
+이러한 type-1 글꼴은 좋지 않은 질을 가지고 있어  다른 세가지 옵션처럼 스크린상에서만 읽을 수 있을 것입니다.
 
-     <br><dt><code>ae</code><dd>A package to use composites of Computer Modern fonts.  This works well
-most of the time, and its PDF is more readable on-screen than the
-previous two options.  There are three fonts for which it will need to
-use bitmapped fonts, <samp><span class="file">tctt0900.600pk</span></samp>, <samp><span class="file">tctt1000.600pk</span></samp> and
-<samp><span class="file">tcrm1000.600pk</span></samp>.  Unfortunately, if those files are not available,
-Acrobat Reader will substitute completely incorrect glyphs so you need
-to examine the logs carefully. 
+     <br><dt><code>ae</code><dd><!-- A package to use composites of Computer Modern fonts.  This works well -->
+<!-- most of the time, and its PDF is more readable on-screen than the -->
+<!-- previous two options.  There are three fonts for which it will need to -->
+<!-- use bitmapped fonts, @file{tctt0900.600pk}, @file{tctt1000.600pk} and -->
+<!-- @file{tcrm1000.600pk}.  Unfortunately, if those files are not available, -->
+<!-- Acrobat Reader will substitute completely incorrect glyphs so you need -->
+<!-- to examine the logs carefully. -->
+Computer Modern 글꼴의 복합체를 이용하는 패키지입니다. 
+이것은 대부분의 경우에 잘 작동하며 이것의 PDF 버전은 이전의 두가지 옵션들보다 더욱 읽기에 좋은 질을 가집니다. 
+비트맵된 글꼴, <samp><span class="file">tctt0900.600pk</span></samp>, <samp><span class="file">tctt1000.600pk</span></samp> 그리고, <samp><span class="file">tcrm1000.600pk</span></samp> 을 이용해야하는 세가지 글꼴들이 있습니다. 
+아쉽게도 이러한 파일들을 이용할 수 없다면, 아크로뱃 리더는 잘못된 상형문자로 대체하게 될 것입니다. 
+따라서, 로그를 주의깊게 살펴보아야 합니다. 
 </dl>
 
-   <p>The default can be overridden by setting the environment variable
-<a name="index-R_005fRD4PDF-16"></a><samp><span class="env">R_RD4PDF</span></samp>.  (On Unix-alikes, this will be picked up at install time
-and stored in <samp><span class="file">etc/Renviron</span></samp>, but can still be overridden when the
-manuals are built.)  The default value for <samp><span class="env">R_RD4PDF</span></samp> is
-&lsquo;<samp><span class="samp">times,inconsolata,hyper</span></samp>&rsquo;: omit &lsquo;<samp><span class="samp">hyper</span></samp>&rsquo; if you do not want
-hyperlinks (e.g. for printing the manual) or do not have LaTeX
-package <strong>hyperref</strong>, and omit &lsquo;<samp><span class="samp">inconsolata</span></samp>&rsquo; if you do not have
-LaTeX package <strong>inconsolata</strong> installed.
+<!-- The default can be overridden by setting the environment variable -->
+   <p><a name="index-R_005fRD4PDF-16"></a><!-- @env{R_RD4PDF}.  (On Unix-alikes, this will be picked up at install time -->
+<!-- and stored in @file{etc/Renviron}, but can still be overridden when the -->
+<!-- manuals are built.)  The default value for @env{R_RD4PDF} is -->
+<!-- @samp{times,inconsolata,hyper}: omit @samp{hyper} if you do not want -->
+<!-- hyperlinks (e.g.@: for printing the manual) or do not have @LaTeX{} -->
+<!-- package @pkg{hyperref}, and omit @samp{inconsolata} if you do not have -->
+<!-- @LaTeX{} package @pkg{inconsolata} installed. -->
+기본값들은 <samp><span class="env">R_RD4PDF</span></samp>이라는 환경변수를 조절함으로서 변경될 수 있습니다. 
+(유닉스와 같은 환경에서는 이것은 설치하는 도중 조정되고 이는 <samp><span class="file">etc/Renviron</span></samp> 파일에 저장될 것입니다). 
+<samp><span class="env">R_RD4PDF</span></samp>에 대한 기본값은 &lsquo;<samp><span class="samp">times,inconsolata,hyper</span></samp>&rsquo;입니다. 
+만약 하이퍼링크를 원하지 않거나 LaTeX 패키지 <strong>hyperref</strong>를 가지고 있지 않다면 &lsquo;<samp><span class="samp">hyper</span></samp>&rsquo;를 지워버리세요 (즉,  매뉴얼을 프린트할 경우입니다). 
+또한 만약에 LaTeX 패키지 <strong>inconsolata</strong>가 설치되어 있지 않다면 &lsquo;<samp><span class="samp">inconsolata</span></samp>&rsquo;를 삭제하세요.
 
 <div class="node">
 <a name="Installation"></a>
@@ -863,108 +879,142 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 
 </div>
 
-<h3 class="section">2.4 Installation</h3>
+<!-- @section Installation -->
+<h3 class="section">2.4 설치</h3>
 
 <p><a name="index-Installation-17"></a>
-To ensure that the installed tree is usable by the right group of users,
-set <code>umask</code> appropriately (perhaps to &lsquo;<samp><span class="samp">022</span></samp>&rsquo;) before unpacking
-the sources and throughout the build process.
+<!-- To ensure that the installed tree is usable by the right group of users, -->
+<!-- set @code{umask} appropriately (perhaps to @samp{022}) before unpacking -->
+<!-- the sources and throughout the build process. -->
+설치된 트리가 올바른 그룹내의 사용자들에 의해서 사용될 수 있게 하기 위해서는 소스의 압축을 풀기 전에 <code>umask</code>가 올바르게 설정되어야 하고, 빌드과정 동안 유지되어야 합니다.
 
-   <p>After
+<!-- After -->
+   <p>설치를 위해서는 다음과 같은 명령어를 입력합니다.
 
    <p><a name="index-configure-18"></a>
 <pre class="example">     ./configure
      make
      make check
 </pre>
-   <p class="noindent">(or, when building outside the source,
-<var>TOP_SRCDIR</var><code>/configure</code>, etc) have been completed
-successfully, you can install the complete R tree to your system by
-typing
+   <p class="noindent"><!-- (or, when building outside the source, -->
+<!-- @code{@var{TOP_SRCDIR}/configure}, etc) have been completed -->
+<!-- successfully, you can install the complete @R{} tree to your system by -->
+<!-- typing -->
+(소스 밖에서 빌드할때에는 <var>TOP_SRCDIR</var><code>/configure</code>라고 합니다). 
+위의 명령어가 성공적으로 수행되었다면, 완전한 R 트리를 시스템에 다음의 명령어를 이용하여 설치할 수 있습니다.
 
 <pre class="example">     make install
 </pre>
-   <p class="noindent">A parallel make can be used (but run <samp><span class="command">make all</span></samp> first).
+   <p class="noindent"><!-- A parallel make can be used (but run @command{make all} first). -->
+make를 병렬식으로 사용할 수도 있습니다 (그러나 <samp><span class="command">make all</span></samp>을 먼저 수행하세요).
 
-   <p>This will install to the following directories:
+<!-- This will install to the following directories: -->
+   <p>위의 명령어는 다음과 같은 디렉토리에 설치를 진행할 것입니다.
 
      <dl>
-<dt><samp><var>prefix</var><span class="file">/bin</span></samp> or <samp><var>bindir</var></samp><dd>the front-end shell script and other scripts and executables
-<br><dt><samp><var>prefix</var><span class="file">/man/man1</span></samp> or <samp><var>mandir</var><span class="file">/man1</span></samp><dd>the man page
-<br><dt><samp><var>prefix</var><span class="file">/</span><var>LIBnn</var><span class="file">/R</span></samp> or <samp><var>libdir</var><span class="file">/R</span></samp><dd>all the rest (libraries, on-line help system, <small class="dots">...</small>).  Here
-<var>LIBnn</var> is usually &lsquo;<samp><span class="samp">lib</span></samp>&rsquo;, but may be &lsquo;<samp><span class="samp">lib64</span></samp>&rsquo; on some
-64-bit Linux systems.  This is known as the R home directory. 
+<dt><samp><var>prefix</var><span class="file">/bin</span></samp> or <samp><var>bindir</var></samp><dd><!-- the front-end shell script and other scripts and executables -->
+사용자가 사용할 수 있는 쉘 스크립트와 다른 스크립트들, 그리고 실행가능한 것들
+<br><dt><samp><var>prefix</var><span class="file">/man/man1</span></samp> or <samp><var>mandir</var><span class="file">/man1</span></samp><dd><!-- the man page -->
+도움말 페이지
+<br><dt><samp><var>prefix</var><span class="file">/</span><var>LIBnn</var><span class="file">/R</span></samp> or <samp><var>libdir</var><span class="file">/R</span></samp><dd><!-- all the rest (libraries, on-line help system, @dots{}).  Here -->
+<!-- @var{LIBnn} is usually @samp{lib}, but may be @samp{lib64} on some -->
+<!-- 64-bit Linux systems.  This is known as the @R{} home directory. -->
+위의 것을 제외한 모든 것 (즉, 라이브러리들, 온라인 도움말 시스템, <small class="dots">...</small>). 
+여기에서 <var>LIBnn</var>은 일반적으로 &lsquo;<samp><span class="samp">lib</span></samp>&rsquo;이지만, 일부 64-비트 리눅스 시스템에서는 &lsquo;<samp><span class="samp">lib64</span></samp>&rsquo;입니다. 
+이곳은 R 홈 디렉토리라고 알려져 있습니다. 
 </dl>
 
-<p class="noindent">where <var>prefix</var> is determined during configuration (typically
-<samp><span class="file">/usr/local</span></samp>) and can be set by running <samp><span class="command">configure</span></samp> with
-the option <samp><span class="option">--prefix</span></samp>, as in
+<p class="noindent"><!-- where @var{prefix} is determined during configuration (typically -->
+<!-- @file{/usr/local}) and can be set by running @command{configure} with -->
+<!-- the option @option{-prefix}, as in -->
+여기에서 <var>prefix</var>는 설정을 하는동안 결정되게 되며 (일반적으로는 <samp><span class="file">/usr/local</span></samp>입니다) <samp><span class="command">configure</span></samp> 명령어를 <samp><span class="option">--prefix</span></samp> 옵션을 아래와 같이 사용함으로서 설정될 수 있습니다.
 
    <p><a name="index-configure-19"></a>
 <pre class="example">     ./configure --prefix=/where/you/want/R/to/go
 </pre>
-   <p class="noindent">This causes <samp><span class="command">make install</span></samp> to install the R script to
-<samp><span class="file">/where/you/want/R/to/go/bin</span></samp>, and so on.  The prefix of the
-installation directories can be seen in the status message that is
-displayed at the end of <samp><span class="command">configure</span></samp>.  You can install into
-another directory tree by using
+   <p class="noindent"><!-- This causes @command{make install} to install the @R{} script to -->
+<!-- @file{/where/you/want/R/to/go/bin}, and so on.  The prefix of the -->
+<!-- installation directories can be seen in the status message that is -->
+<!-- displayed at the end of @command{configure}.  You can install into -->
+<!-- another directory tree by using -->
+이것은  <samp><span class="command">make install</span></samp>를 실행시 R 스크립트가 <samp><span class="file">/where/you/want/R/to/go/bin</span></samp>이라는 곳에 설치하도록 해줍니다. 
+설치디렉토리에 대한 prefix 는  <samp><span class="command">configure</span></samp> 명령어를 사용한 맨 마지막에 보여지는 상태관련 메시지에서 확인이 가능합니다. 
+만약 다른 디렉토리 트리에 설치하고 싶다면 최소한  <acronym>GNU</acronym> <samp><span class="command">make</span></samp>가 설치된 상태에서 다음의 명령어를 이용하면 됩니다 (그리고 현재 솔라리스와 FreeBSD <samp><span class="command">make</span></samp>도 괜찮지만, 일부 오래된 버전의 유닉스 makes는 아닙니다).
 
 <pre class="example">     make prefix=/path/to/here install
 </pre>
-   <p class="noindent">at least with <acronym>GNU</acronym> <samp><span class="command">make</span></samp> (and current Solaris and
-FreeBSD <samp><span class="command">make</span></samp>, but not some older Unix makes).
+   <p class="noindent"><!-- at least with @acronym{GNU} @command{make} (and current Solaris and -->
+<!-- FreeBSD @command{make}, but not some older Unix makes). -->
 
-   <p>More precise control is available at configure time via options: see
-<samp><span class="command">configure --help</span></samp> for details.  (However, most of the `Fine
-tuning of the installation directories' options are not used by R.)
+<!-- More precise control is available at configure time via options: see -->
+<!-- @command{configure -help} for details.  (However, most of the `Fine -->
+<!-- tuning of the installation directories' options are not used by @R{}.) -->
+   <p>좀 더 정교한 조정은 환경설정시에 옵션들을 통하여 이루어질 수 있습니다. 
+더 자세한 내용은 <samp><span class="command">configure --help</span></samp>를 살펴보세요. 
+(그러나, 대부분의 'Fine tuning of the installation directories' 옵션들은 R에 의하여 사용되는 것이 아닙니다).
 
-   <p>Configure options <samp><span class="option">--bindir</span></samp> and <samp><span class="option">--mandir</span></samp> are supported
-and govern where a copy of the <samp><span class="command">R</span></samp> script and the <samp><span class="command">man</span></samp>
-page are installed.
+<!-- Configure options @option{-bindir} and @option{-mandir} are supported -->
+<!-- and govern where a copy of the @command{R} script and the @command{man} -->
+<!-- page are installed. -->
+   <p><samp><span class="command">R</span></samp> 스크립트의 복사를 만들고 <samp><span class="command">man</span></samp> 페이지의 설치를 조정할 수 있는 환경설정 옵션들 <samp><span class="option">--bindir</span></samp>과 <samp><span class="option">--mandir</span></samp>이 지원됩니다.
 
-   <p>The configure option <samp><span class="option">--libdir</span></samp> controls where the main R
-files are installed: the default is &lsquo;<samp><var>eprefix</var><span class="samp">/</span><var>LIBnn</var></samp>&rsquo;,
-where <var>eprefix</var> is the prefix used for installing
-architecture-dependent files, defaults to <var>prefix</var>, and can be set
-via the configure option <samp><span class="option">--exec-prefix</span></samp>.
+<!-- The configure option @option{-libdir} controls where the main @R{} -->
+<!-- files are installed: the default is @samp{@var{eprefix}/@var{LIBnn}}, -->
+<!-- where @var{eprefix} is the prefix used for installing -->
+<!-- architecture-dependent files, defaults to @var{prefix}, and can be set -->
+<!-- via the configure option @option{-exec-prefix}. -->
+   <p><samp><span class="option">--libdir</span></samp> 옵션은 주 R 파일들이 어디에 설치되어야 하는지를 조정합니다. 
+기본값은 &lsquo;<samp><var>eprefix</var><span class="samp">/</span><var>LIBn</var></samp>&rsquo;인데, <var>eprefix</var>는 아키텍쳐-의존 파일들을 설치하는데 사용되는 prefix 이며, <var>prefix</var>에 대한 기본값입니다. 
+그리고 환경설정 옵션 <samp><span class="option">--exec-prefix</span></samp>를 통하여 설정될 수 있습니다.
 
-   <p>Each of <code>bindir</code>, <code>mandir</code> and <code>libdir</code> can also be
-specified on the <samp><span class="command">make install</span></samp> command line (at least for
-<acronym>GNU</acronym> <samp><span class="command">make</span></samp>).
+<!-- Each of @code{bindir}, @code{mandir} and @code{libdir} can also be -->
+<!-- specified on the @command{make install} command line (at least for -->
+<!-- @acronym{GNU} @command{make}). -->
+   <p><code>bindir</code>, <code>mandir</code> 그리고 <code>libdir</code>은 또한 <samp><span class="command">make install</span></samp> 명령어 라인에서 설정될 수 있습니다.
 
-   <p>The <samp><span class="command">configure</span></samp> or <samp><span class="command">make</span></samp> variables <code>rdocdir</code> and
-<code>rsharedir</code> can be used to install the system-independent
-<samp><span class="file">doc</span></samp> and <samp><span class="file">share</span></samp> directories to somewhere other than
-<code>libdir</code>.  The C header files can be installed to the value of
-<code>rincludedir</code>: note that as the headers are not installed into a
-subdirectory you probably want something like
-<code>rincludedir=/usr/local/include/R-3.0.0</code>.
+<!-- The @command{configure} or @command{make} variables @code{rdocdir} and -->
+<!-- @code{rsharedir} can be used to install the system-independent -->
+<!-- @file{doc} and @file{share} directories to somewhere other than -->
+<!-- @code{libdir}.  The C header files can be installed to the value of -->
+<!-- @code{rincludedir}: note that as the headers are not installed into a -->
+<!-- subdirectory you probably want something like -->
+<!-- @code{rincludedir=/usr/local/include/R-@value{VERSIONno}}. -->
+   <p><samp><span class="command">configure</span></samp> 또는 <samp><span class="command">make</span></samp> 변수 <code>rdocdir</code>과 <code>rsharedir</code>는 시스템-독립적으로 <samp><span class="file">doc</span></samp>과 <samp><span class="file">share</span></samp> 디렉토리들을 <code>libdir</code>이 아닌 다른곳에 설치하게 할 수 있습니다. 
+C 헤더파일들은  <code>rincludedir</code>의 값에 설치되어질 수 있습니다. 
+헤더들은 하위디렉토리에 설치되지 않기 때문에 아마도  <code>rincludedir=/usr/local/include/R-3.0.0</code> 와 같은 것을 원할 수 있습니다.
 
-   <p>If you want the R home to be something other than
-<samp><var>libdir</var><span class="file">/R</span></samp>, use <samp><span class="option">rhome</span></samp>: for example
+<!-- If you want the @R{} home to be something other than -->
+<!-- @file{@var{libdir}/R}, use @option{rhome}: for example -->
+   <p>만약 R 홈이 <samp><var>libdir</var><span class="file">/R</span></samp>이 아닌 다른 곳으로 설정하기 원하다면 <samp><span class="option">rhome</span></samp> 옵션을 이용하세요. 
+예를들면, 다음과 같습니다.
 
 <pre class="example">     make install rhome=/usr/local/lib64/R-2.15.0
 </pre>
-   <p class="noindent">will use a version-specific R home on a Linux 64-bit system.
+   <p class="noindent"><!-- will use a version-specific @R{} home on a Linux 64-bit system. -->
+위의 명령어는 리눅스 64 비트 시스템에서 버전별 R 홈디렉토리를 이용하는 것입니다.
 
-   <p>If you have made R as a shared/dynamic library you can install it in
-your system's library directory by
+<!-- If you have made @R{} as a shared/dynamic library you can install it in -->
+<!-- your system's library directory by -->
+   <p>만약  R을 shared/dynamic 라이브러리로서 만들고 싶다면 시스템의 라이브러리 디렉토리내에 이것들을 아래와 같은 방법으로 설치할 수 있습니다.
 
 <pre class="example">     make prefix=/path/to/here install-libR
 </pre>
-   <p class="noindent">where <code>prefix</code> is optional, and <code>libdir</code> will give more
-precise control.
+   <p class="noindent"><!-- where @code{prefix} is optional, and @code{libdir} will give more -->
+<!-- precise control. -->
+여기에서 <code>prefix</code>는 선택사항이며, <code>libdir</code>은 좀 더 정교한 조절을 하게 됩니다.
 
 <pre class="example">     make install-strip
 </pre>
-   <p class="noindent">will install stripped executables, and on platforms where this is
-supported, stripped libraries in directories <samp><span class="file">lib</span></samp> and
-<samp><span class="file">modules</span></samp> and in the standard packages.
+   <p class="noindent"><!-- will install stripped executables, and on platforms where this is -->
+<!-- supported, stripped libraries in directories @file{lib} and -->
+<!-- @file{modules} and in the standard packages. -->
+위의 명령어 사용은 stripped executables을 설치할 것이고 이것이 지원이되는 플랫폼들에서 <samp><span class="file">lib</span></samp> 디렉토리내의 라이브러리들과 표준 패키지들의 <samp><span class="file">modules</span></samp>들을  stripped 합니다.
 
-   <p>Note that installing R into a directory whose path contains spaces is
-not supported, and at least some aspects (such as installing source
-packages) will not work. 
-<!-- The main problem is the Makefile include in etc/Makeconf -->
+<!-- Note that installing @R{} into a directory whose path contains spaces is -->
+<!-- not supported, and at least some aspects (such as installing source -->
+<!-- packages) will not work. -->
+<!-- @c The main problem is the Makefile include in etc/Makeconf -->
+   <p>R은 공백이 존재하는 경로명에는 설치되지 않으며, 최소한 (소스 패키지들을 설치하는 것과 같은) 일부 기능들은 작동하지 않을 것입니다.
 
    <p><a name="index-Manuals_002c-installing-20"></a>
 To install info and PDF versions of the manuals, use one or more of
