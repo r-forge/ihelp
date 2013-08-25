@@ -2473,18 +2473,24 @@ and @option{--build} can be added to zip up the installation.
 @c @c European 8-bit character sets, and multi-byte character sets such as
 @c @c UTF-8 and others used for Chinese, Japanese and Korean.
 
-Current builds of @R{} support all the character sets that the
-underlying OS can handle.  These are interpreted according to the
+@c Current builds of @R{} support all the character sets that the
+@c underlying OS can handle.  These are interpreted according to the
 @cindex Locale
-current @code{locale}, a sufficiently complicated topic to merit a
-separate section.  Note though that @R{} has no built-in support for
-right-to-left languages and bidirectional output, relying on the OS
-services.  For example, how character vectors in UTF-8 containing both
-English digits and Hebrew characters are printed is OS-dependent (and
-perhaps locale-dependent).
+@c current @code{locale}, a sufficiently complicated topic to merit a
+@c separate section.  Note though that @R{} has no built-in support for
+@c right-to-left languages and bidirectional output, relying on the OS
+@c services.  For example, how character vectors in UTF-8 containing both
+@c English digits and Hebrew characters are printed is OS-dependent (and
+@c perhaps locale-dependent).
+현재 제공되는 @R{} 빌드들은 운영체제들이 다룰 수 있는 모든 문자형 셋들을 지원하고 있습니다.
+이것은 @code{locale}(로케일)을 통하여 해석되어 보여지게 되는데, 이는 충분히 복잡하여 하나의 독립적인 섹션으로 다루어 질 정도의 주제입니다.
+또한, @R{}은 오른쪽에서 왼쪽으로 쓰는 언어와 양방향 출력을 지원하는 기능을 내장하고 있지 않지만, 이러한 것들은 운영체제가 제공하는 서비스에 의존합니다.
+예를들면, 영어와 히브루 문자들이 함께 존재하는 UTF-8형식의 문자형 벡터들이 어떻게 출력되는가는 운영체제 별로 달라지게 됩니다 (그리고 로케일별로 달라질 수 있습니다).
 
-The other aspect of the internationalization is support for the
-translation of messages.  This is enabled in almost all builds of @R{}.
+@c The other aspect of the internationalization is support for the
+@c translation of messages.  This is enabled in almost all builds of @R{}.
+국제화의 또 다른 측면은 메시지들의 번역을 지원하는 것입니다.
+이것은 대부분의 모든 @R{} 빌드에서 이용할 수 있게 되어 있습니다.
 
 @menu
 * Locales::                     
@@ -2496,46 +2502,64 @@ translation of messages.  This is enabled in almost all builds of @R{}.
 @section 로케일
 @cindex Locale
 
-A @emph{locale} is a description of the local environment of the user,
-including the preferred language, the encoding of characters, the
-currency used and its conventions, and so on.  Aspects of the locale are
-accessed by the @R{} functions @code{Sys.getlocale} and
-@code{Sys.localeconv}.
+@c A @emph{locale} is a description of the local environment of the user,
+@c including the preferred language, the encoding of characters, the
+@c currency used and its conventions, and so on.  Aspects of the locale are
+@c accessed by the @R{} functions @code{Sys.getlocale} and
+@c @code{Sys.localeconv}.
+@emph{locale}(로케일)은 사용자의 지역적인 환경에 대한 설명인데, 이는 선호하는 언어, 문자들의 인코딩, 사용되는 화폐단위와 표기 등이 포함됩니다.
+로케일과 관련된 부분들은 @R{}함수 @code{Sys.getlocale}과 @code{Sys.localeconv}에 의하여 접근되어집니다.
 
-The system of naming locales is OS-specific.  There is quite wide
-agreement on schemes, but not on the details of their implementation.  A
-locale needs to specify
+@c The system of naming locales is OS-specific.  There is quite wide
+@c agreement on schemes, but not on the details of their implementation.  A
+@c locale needs to specify
+로케일을 명명하는 방식은 운영체제별로 다릅니다.
+이에 대한 일반적인 작동방식은 동일하지만 실제적인 구현에 대한 내용은 그렇지 않습니다.
+로케일은 다음과 같은 것들을 지정할 필요가 있습니다.
 @itemize
 @item
-A human language.  These are generally specified by a lower-case
-two-character abbreviation following ISO 639 (see e.g.@:
-@uref{http://en.wikipedia.org/@/wiki/@/ISO_639-1}).
+@c A human language.  These are generally specified by a lower-case
+@c two-character abbreviation following ISO 639 (see e.g.@:
+@c @uref{http://en.wikipedia.org/@/wiki/@/ISO_639-1}).
+사용언어.  이것은 일반적으로 ISO 639를 따르는 두개의 소문자로 된 약어에 의해서 지정됩니다. (@:@uref{http://en.wikipedia.org/@/wiki/@/ISO_639-1}를 살펴보세요).
 
 @item
-A `territory', used mainly to specify the currency. These are generally
-specified by an upper-case two-character abbreviation following ISO 3166
-(see e.g.@: @uref{http://@/en.wikipedia.org/@/wiki/@/ISO_3166}).
+@c A `territory', used mainly to specify the currency. These are generally
+@c specified by an upper-case two-character abbreviation following ISO 3166
+@c (see e.g.@: @uref{http://@/en.wikipedia.org/@/wiki/@/ISO_3166}).
+지역. 주로 화폐단위를 지정하는데 이용됩니다.
+이것들은 일반적으로 ISO 3166을 따르는 두개의 대문자로 지정됩니다.
+(@: @uref{http://@/en.wikipedia.org/@/wiki/@/ISO_3166}를 살펴보세요).
 
 @item
-A charset encoding, which determines both how a byte stream should be
-divided into characters, and which characters the subsequences of bytes
-represent.  Sometimes the combination of language and territory is used
-to specify the encoding, for example to distinguish between traditional
-and simplified Chinese.
+@c A charset encoding, which determines both how a byte stream should be
+@c divided into characters, and which characters the subsequences of bytes
+@c represent.  Sometimes the combination of language and territory is used
+@c to specify the encoding, for example to distinguish between traditional
+@c and simplified Chinese.
+문자 인코딩.  이것은 어떻게 바이트 스트림이 문자들로 나누어지고 어떤 문자들이 바이트의 부분적인 시퀀스로 표현할 수 있는가를 결정합니다. 
+때때로 언어와 지역의 조합이 인코딩을 지정하는데 사용되기도 합니다. 
+예를들면, 중국어 간체와 번체를 구분하는 것이 해당됩니다.
 
 @item
-Optionally, a modifier, for example to indicate that Austria is to be
-considered pre- or post-Euro.  The modifier is also used to indicate the
-script (@code{@@latin}, @code{@@cyrillic} for Serbian, @code{@@iqtelif})
-or language dialect (e.g.@: @code{@@saaho}, a dialect of Afar, and
-@code{@@bokmal} and @code{@@nynorsk}, dialects of Norwegian regarded by
-some OSes as separate languages, @code{no} and @code{nn}).
+@c Optionally, a modifier, for example to indicate that Austria is to be
+@c considered pre- or post-Euro.  The modifier is also used to indicate the
+@c script (@code{@@latin}, @code{@@cyrillic} for Serbian, @code{@@iqtelif})
+@c or language dialect (e.g.@: @code{@@saaho}, a dialect of Afar, and
+@c @code{@@bokmal} and @code{@@nynorsk}, dialects of Norwegian regarded by
+@c some OSes as separate languages, @code{no} and @code{nn}).
+선택적인 사항으로 교정자가 있는데, 예를들면 오스트리아는 유로 전후로 구분되어 집니다.
+교정자는 문자 (@code{@@latin}, 세르비안 문자를 위한 @code{@@cyrillic}, @code{@@iqtelif}) 또는 방언 (즉, @: 아주 멀리 떨어진 지역어 @code{@@saaho}와 @code{@@bokmal} 그리고 @code{@@nynorsk}, 어떤 운영체제에서는 서로 다른 언어로서 @code{no}와 @code{nn}로 구분되기도 하는 노르웨이어)을 지정하기도 합니다.
 @end itemize
 
-@R{} is principally concerned with the first (for translations) and
-third.  Note that the charset may be deducible from the language, as
-some OSes offer only one charset per language, and most OSes have only
-one charset each for most languages.
+@c @R{} is principally concerned with the first (for translations) and
+@c third.  Note that the charset may be deducible from the language, as
+@c some OSes offer only one charset per language, and most OSes have only
+@c one charset each for most languages.
+@R{}은 기본적으로 번역자를 위하여 첫번째 사항과 세번째 사항에 중점을 두고 있습니다.
+문자셋은 언어로부터 추론할 수도 있습니다.
+이는 어떤 운영체제들이 언어별로 오로지 하나의 문자셋을 제공하고 있기 때문입니다.
+그리고 대부분의 운영체들은 대부분의 언어들에 대해서 오로지 하나의 문자집합을 가지고 있습니다.
 
 @menu
 * Locales under Linux::         
@@ -2600,23 +2624,30 @@ specified it is assumed to be @code{UTF-8}.
 @c @section Localization of messages
 @section 메시지의 지역화 
 
-The preferred language for messages is by default taken from the locale.
-This can be overridden first by the setting of the environment variable
+@c The preferred language for messages is by default taken from the locale.
+@c This can be overridden first by the setting of the environment variable
 @enindex LANGUAGE
 @enindex LC_ALL
 @enindex LC_MESSAGES
 @enindex LANG
-@env{LANGUAGE} and then@footnote{On some systems setting
-@env{LC_ALL} or @env{LC_MESSAGES} to @samp{C} disables @env{LANGUAGE}.}
-by the environment variables @env{LC_ALL}, @env{LC_MESSAGES} and
-@env{LANG}. (The last three are normally used to set the locale and so
-should not be needed, but the first is only used to select the language
-for messages.)  The code tries hard to map locales to languages, but on
-some systems (notably Windows) the locale names needed for the
-environment variable @env{LC_ALL} do not all correspond to XPG language
-names and so @env{LANGUAGE} may need to be set.  (One example is
-@samp{LC_ALL=es} on Windows which sets the locale to Estonian and the
-language to Spanish.)
+@c @env{LANGUAGE} and then@footnote{On some systems setting
+@c @env{LC_ALL} or @env{LC_MESSAGES} to @samp{C} disables @env{LANGUAGE}.}
+@c by the environment variables @env{LC_ALL}, @env{LC_MESSAGES} and
+@c @env{LANG}. (The last three are normally used to set the locale and so
+@c should not be needed, but the first is only used to select the language
+@c for messages.)  The code tries hard to map locales to languages, but on
+@c some systems (notably Windows) the locale names needed for the
+@c environment variable @env{LC_ALL} do not all correspond to XPG language
+@c names and so @env{LANGUAGE} may need to be set.  (One example is
+@c @samp{LC_ALL=es} on Windows which sets the locale to Estonian and the
+@c language to Spanish.)
+메시지에 대하여 우선적으로 선택되는 언어는 기본적으로 로케일로부터 정해지게 됩니다.
+이것은 먼저 환경변수 @env{LANGUAGE}에 의해서 변경될 수 있으며@footnote{일부 시스템에서는 @env{LC_ALL} 또는 @env{LC_MESSAGES}를 @samp{C}로 지정하는 것은 @env{LANGUAGE}를 사용하지 못하게 하기도 합니다}, 이후에 @env{LC_ALL}, @env{LC_MESSAGES}, @env{LANG}이라는 환경변수에 의하여서도 변경될 수 있습니다. (마지막 세가지가 일반적으로 로케일을 설정하는데 사용되지만, 꼭 필요한 것은 아닙니다. 
+첫번째 것은 오로지 메시지의 언어를 선택하는데 사용됩니다). 
+코드는 열심히 로케일을 언어에 매칭하려고 하지만 일부 시스템 (특히 윈도우즈)는 환경변수  @env{LC_ALL}에 필요한 로케일이름들이 XPG 랭귀지명과 완전히 일치하지 않습니다.  따라서, @env{LANGUAGE}는 지정되어야 할 필요가 있습니다.
+(하나의 예로 윈도우즈에서 @samp{LC_ALL=es}는 로케일을 에스토냐로 하고 언어는 스패니쉬로 설정합니다).
+   
+
 
 It is usually possible to change the language once @R{} is running
 @emph{via} (not Windows) @code{Sys.setlocale("LC_MESSAGES",
@@ -2680,12 +2711,14 @@ languages in decreasing order of preference.  One special value is
 error messages with pairs of single quotes translated to Unicode directional
 quotes.
 
-If no suitable translation catalogue is found or a particular message is
-not translated in any suitable catalogue, `English'@footnote{with
-Americanisms.} is used.
+@c If no suitable translation catalogue is found or a particular message is
+@c not translated in any suitable catalogue, `English'@footnote{with
+@c Americanisms.} is used.
+만약 적합한 번역 카탈로그를 찾을 수 없거나 특정 메시지가 어떤 적합한 카탈로그에서 번역되어 있지 않다면 이는 영어@footnote{미국식}가 사용되게 됩니다.
 
-See @uref{http://developer.r-project.org/@/Translations.html} for how to
-prepare and install translation catalogues.
+@c See @uref{http://developer.r-project.org/@/Translations.html} for how to
+@c prepare and install translation catalogues.
+어떻게 번역 카탈로그를 준비하고 설치하는지 확인하기 위해서는 @uref{http://developer.r-project.org/@/Translations.html}를 살펴보시길 바랍니다.
 
 @c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
