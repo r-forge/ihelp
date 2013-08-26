@@ -103,10 +103,10 @@ p {
 <li><a href="#Getting-the-tools">3.1.1 필요한 도구얻기</a>
 <li><a href="#Getting-the-source-files">3.1.2 소스파일로부터 얻기</a>
 <li><a href="#Building-the-core-files">3.1.3 코어파일 빌드하기</a>
-<li><a href="#Building-the-bitmap-files">3.1.4 Building the bitmap files</a>
-<li><a href="#Building-the-cairo-devices-files">3.1.5 Building the cairo devices</a>
-<li><a href="#Checking-the-build">3.1.6 Checking the build</a>
-<li><a href="#Building-the-manuals">3.1.7 Building the manuals</a>
+<li><a href="#Building-the-bitmap-files">3.1.4 비트맵 파일을 빌드하기</a>
+<li><a href="#Building-the-cairo-devices-files">3.1.5 cairo 장치를 빌드하기</a>
+<li><a href="#Checking-the-build">3.1.6 빌드 확인하기</a>
+<li><a href="#Building-the-manuals">3.1.7 매뉴얼 구축하기</a>
 <li><a href="#Building-the-Inno-Setup-installer">3.1.8 Building the Inno Setup installer</a>
 <li><a href="#Building-the-MSI-installer">3.1.9 Building the MSI installer</a>
 <li><a href="#Cross_002dbuilding-on-Linux">3.1.10 Cross-building on Linux</a>
@@ -1627,8 +1627,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 <p><a name="index-TMPDIR-27"></a><!-- Set the environment variable @env{TMPDIR} to point to a writable -->
 <!-- directory, with a path specified with forward slashes and no spaces. -->
 <!-- (The default is @file{/tmp}, which may not be useful on Windows.) -->
-
-   <p>환경 변수인 <samp><span class="env">TMPDIR</span></samp>을 포워드 슬래시 (forward slash)와 띄어쓰기없이 지정한 path를 사용하여  쓰기 가능한 디렉토리로 가리키도록 설정하십시요. (기본 설정은 <samp><span class="file">/tmp</span></samp>인데, 윈도우즈에서는 유용하지 않을수도 있습니다.)
+환경 변수인 <samp><span class="env">TMPDIR</span></samp>을 포워드 슬래시 (forward slash)와 띄어쓰기없이 지정한 path를 사용하여  쓰기 가능한 디렉토리로 가리키도록 설정하십시요. (기본 설정은 <samp><span class="file">/tmp</span></samp>인데, 윈도우즈에서는 유용하지 않을수도 있습니다.)
 
 <!-- You may need to compile under a case-honouring file system: we found -->
 <!-- that a @command{samba}-mounted file system (which maps all file names to -->
@@ -1639,13 +1638,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 <!-- @file{MkRules.dist} and if settings need to be altered, copy it to -->
 <!-- @file{MkRules.local} and edit the settings there.  In particular, this -->
 <!-- is where a 64-bit build is selected.  Then run -->
-   <p>command 위도우를 <samp><var>R_HOME</var><span class="file">/src/gnuwin32</span></samp>에서 여십시요. <samp><span class="file">MkRules.dist</span></samp>를 확인하시고 만약 설정을 바꾸어야 한다면, <samp><span class="file">MkRules.local</span></samp>로 복사하시고 설정을 그곳에서 편집하십시요. 특히 여기가 64비트 빌드가 선택된곳 입니다. 그후에 아래를 실행하십시요.
+   <p><samp><var>R_HOME</var><span class="file">/src/gnuwin32</span></samp> 명령어창을 열어주세요. 
+<samp><span class="file">MkRules.dist</span></samp>를 확인하시고 만약 설정을 바꾸어야 한다면, <samp><span class="file">MkRules.local</span></samp>로 복사하시고 설정을 그곳에서 편집하십시요. 
+특히 여기가 64비트 빌드가 선택된곳 입니다. 그후에 아래를 실행하십시요.
 
 <pre class="example">     make all recommended
 </pre>
    <p class="noindent"><!-- and sit back and wait while the basic compile takes place. -->
-
-   <p>그리고 기본 compile이 실행될동안 편안히 기다리시면 됩니다.
+그리고 기본 compile이 실행될동안 편안히 기다리시면 됩니다.
 
 <!-- Notes: -->
    <p>주목할점:
@@ -1655,8 +1655,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 <!-- up the machine, but not for several years.  However, aggressive -->
 <!-- anti-virus checking such as the on-access scanning of Sophos can slow -->
 <!-- the build down several-fold. -->
-
-     <p>우리는 예전 버젼의 anti-virus 스프트웨어가 컴퓨터를 잠가버린다는 보고를 받은적이 있습니다, 그러나 최근 몇년동안은 그런보고가 없었습니다. 하지만 Sophos의 on-access 스캐닝같이 과도한 anti-virus 검사는 빌드를 몇배나 느리게 만들수있습니다.
+예전 버전의 안티바이러스 소프트웨어가 컴퓨터를 잠가버린다는 보고를 받은적이 있습니다, 그러나 최근 몇년동안은 그런보고가 없었습니다. 
+하지만 Sophos의 on-access 스캐닝같이 과도한 안티바이러스 검사는 빌드를 몇배나 느리게 만들수있습니다.
 
      <li><!-- By default Doug Lea's @code{malloc} in the file -->
 <!-- @file{@var{R_HOME}/src/gnuwin32/malloc.c} is used for R's internal -->
@@ -1697,17 +1697,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.4 Building the bitmap files</h4>
+<!-- @subsection Building the bitmap files -->
+<h4 class="subsection">3.1.4 비트맵 파일을 빌드하기</h4>
 
 <p><a name="index-Rbitmap_002edll-28"></a>
-The file
-<samp><var>R_HOME</var><span class="file">/library/grDevices/libs/{i386,x64}Rbitmap.dll</span></samp> is
-not built automatically.
+<!-- The file -->
+<!-- @file{@var{R_HOME}/library/grDevices/libs/@{i386,x64@}Rbitmap.dll} is -->
+<!-- not built automatically. -->
+<samp><var>R_HOME</var><span class="file">/library/grDevices/libs/{i386,x64}Rbitmap.dll</span></samp> 파일은 자동적으로 빌드되지 않습니다.
 
-   <p>Running <code>make</code> in <samp><var>R_HOME</var><span class="file">/src/gnuwin32/bitmap</span></samp> or
-<code>make bitmapdll</code> in <samp><var>R_HOME</var><span class="file">/src/gnuwin32</span></samp> should build
-<samp><span class="file">Rbitmap.dll</span></samp> and install it under
-<samp><var>R_HOME</var><span class="file">/library/grDevices/libs</span></samp>.
+<!-- Running @code{make} in @file{@var{R_HOME}/src/gnuwin32/bitmap} or -->
+<!-- @code{make bitmapdll} in @file{@var{R_HOME}/@/src/gnuwin32} should build -->
+<!-- @file{Rbitmap.dll} and install it under -->
+<!-- @file{@var{R_HOME}/library/grDevices/libs}. -->
+   <p><samp><var>R_HOME</var><span class="file">/src/gnuwin32/bitmap</span></samp> 내에서 <code>make</code> 또는 <samp><var>R_HOME</var><span class="file">/src/gnuwin32</span></samp> 내에서 <code>make bitmapdll</code> 하는 것은 <samp><span class="file">Rbitmap.dll</span></samp>을 설치하고 이를 <samp><var>R_HOME</var><span class="file">/library/grDevices/libs</span></samp>에서 설치해야 합니다.
 
 <div class="node">
 <a name="Building-the-cairo-devices-files"></a>
@@ -1718,22 +1721,29 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.5 Building the cairo devices</h4>
+<!-- @subsection Building the cairo devices -->
+<h4 class="subsection">3.1.5 cairo 장치를 빌드하기</h4>
 
 <p><a name="index-winCairo_002edll-29"></a>
-The devices based on cairographics (<code>svg</code>, <code>cairo_pdf</code>,
-<code>cairo_ps</code> and the <code>type = "cairo"</code> versions of <code>png</code>,
-<code>jpeg</code>, <code>tiff</code> and <code>bmp</code>) are implemented in a separate
-DLL <samp><span class="file">winCairo.dll</span></samp> which is loaded when one of these devices is
-first used.  It is not built by default, and needs to be built after
-<samp><span class="file">Rbitmap.dll</span></samp>, by <samp><span class="command">make cairodevices</span></samp>.
+<!-- The devices based on cairographics (@code{svg}, @code{cairo_pdf}, -->
+<!-- @code{cairo_ps} and the @code{type = "cairo"} versions of @code{png}, -->
+<!-- @code{jpeg}, @code{tiff} and @code{bmp}) are implemented in a separate -->
+<!-- DLL @file{winCairo.dll} which is loaded when one of these devices is -->
+<!-- first used.  It is not built by default, and needs to be built after -->
+<!-- @file{Rbitmap.dll}, by @command{make cairodevices}. -->
+Cairographics에 기초한 장치들 (<code>svg</code>, <code>cairo_pdf</code>, <code>cairo_ps</code> 그리고 <code>type = "cairo"</code>버전의 <code>png</code>, <code>jpeg</code>, <code>tiff</code> 그리고 <code>bmp</code>)은 이들 장치들 중 하나가 처음으로 사용될 때 로드된 서로 다른 DLL winCairo.dll에서 시행됩니다. 
+이는 기본적으로 빌드되지 않고, <samp><span class="command">make cairodevices</span></samp>에 의해 <samp><span class="file">Rbitmap.dll</span></samp> 뒤에 빌드되어져야만 합니다.
 
-   <p>To enable the building of these devices you need to install the static
-cairographics libraries built by Simon Urbanek at
-<a href="http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz">http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz</a>.  Set
-the macro &lsquo;<samp><span class="samp">CAIRO_HOME</span></samp>&rsquo; in <samp><span class="file">MkRules.local</span></samp>.  (Note that this
-tarball unpacks with a top-level directory <samp><span class="file">src/</span></samp>:
-&lsquo;<samp><span class="samp">CAIRO_HOME</span></samp>&rsquo; needs to include that directory in its path.)
+<!-- To enable the building of these devices you need to install the static -->
+<!-- cairographics libraries built by Simon Urbanek at -->
+<!-- @uref{http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz}.  Set -->
+<!-- the macro @samp{CAIRO_HOME} in @file{MkRules.local}.  (Note that this -->
+<!-- tarball unpacks with a top-level directory @file{src/}: -->
+<!-- @samp{CAIRO_HOME} needs to include that directory in its path.) -->
+   <p>이러한 장치들이 빌드되게 하기 위해서는 Simon Urbanek에 의해 빌드 되어진 static cairographics 라이브러리들을 <a href="http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz">http://www.rforge.net/Cairo/files/cairo-current-win.tar.gz</a>으로부터 받아 설치해야만 합니다. 
+<samp><span class="file">MkRules.local</span></samp>에 있는 &lsquo;<samp><span class="samp">CAIRO_HOME</span></samp>&rsquo; 매크로를 설정해주세요. 
+(이 타르볼은 최상위 디렉토리 <samp><span class="file">scr/</span></samp>에서 압축해제가 되어야 합니다. 
+&lsquo;<samp><span class="samp">CAIRO_HOME</span></samp>&rsquo;은 그 경로를 포함해야 할 필요가 있습니다).
 
 <div class="node">
 <a name="Checking-the-build"></a>
@@ -1744,29 +1754,35 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.6 Checking the build</h4>
+<!-- @subsection Checking the build -->
+<h4 class="subsection">3.1.6 빌드 확인하기</h4>
 
-<p>You can test a build by running
-
+<!-- You can test a build by running -->
+<p>다음을 실행함으로서 빌드를 테스트 할 수 있습니다.
 <pre class="example">     make check
 </pre>
-   <p class="noindent">The recommended packages can be checked by
+   <p class="noindent"><!-- The recommended packages can be checked by -->
+추천 패키지들은 다음을 통해 확인해 볼 수 있습니다.
 
 <pre class="example">     make check-recommended
 </pre>
-   <p class="noindent">Other levels of checking are
+   <p class="noindent"><!-- Other levels of checking are -->
+다음을 이용하여 더 철저한 R의 기능들을 검사할 수 있습니다.
 
 <pre class="example">     make check-devel
 </pre>
-   <p class="noindent">for a more thorough check of the R functionality, and
+   <p class="noindent"><!-- for a more thorough check of the @R{} functionality, and -->
+
+   <p>다음은 <code>check-devel</code>과 <code>check-recommended</code>를 모두 수행합니다.
 
 <pre class="example">     make check-all
 </pre>
-   <p class="noindent">for <code>check-devel</code> and <code>check-recommended</code>.
+   <p class="noindent"><!-- for @code{check-devel} and @code{check-recommended}. -->
 
-   <p>If a test fails, there will almost always be a <samp><span class="file">/Rout.fail</span></samp> file in
-the directory being checked (often <samp><span class="file">tests/Examples</span></samp> or
-<samp><span class="file">tests</span></samp>): examine the file to help pinpoint the problem.
+<!-- If a test fails, there will almost always be a @file{/Rout.fail} file in -->
+<!-- the directory being checked (often @file{tests/Examples} or -->
+<!-- @file{tests}): examine the file to help pinpoint the problem. -->
+   <p>만약 테스트가 실패한다면, 체크된 디렉토리 안에 <samp><span class="file">/Rout.fail</span></samp> 파일이 거의 항상 있을 것 입니다 (종종 <samp><span class="file">tests/Examples</span></samp> 혹은 <samp><span class="file">tests</span></samp>): 문제점을 정확하게 보기위하여 파일을 검토하십시오.
 
 <div class="node">
 <a name="Building-the-manuals"></a>
@@ -1777,23 +1793,27 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.7 Building the manuals</h4>
+<!-- @subsection Building the manuals -->
+<h4 class="subsection">3.1.7 매뉴얼 구축하기</h4>
 
-<p>The PDF manuals can be made by
-
+<!-- The PDF manuals can be made by -->
+<p>PDF 매뉴얼들은 아래에 의해서 만들어 질 수 있습니다.
 <pre class="example">     make manuals
 </pre>
-   <p class="noindent">If you want to make the info versions (not including the Reference
-Manual), use
+   <p class="noindent"><!-- If you want to make the info versions (not including the Reference -->
+<!-- Manual), use -->
+만약에 info 버전을 (레퍼런스 매뉴얼을 제외한 나머지) 생성하고자 한다면, 다음을 이용하세요.
 
 <pre class="example">     cd ../../doc/manual
      make -f Makefile.win info
 </pre>
-   <p class="noindent">(all assuming you have <samp><span class="command">pdftex</span></samp>/<samp><span class="command">pdflatex</span></samp> installed and
-in your path).
+   <p class="noindent"><!-- (all assuming you have @command{pdftex}/@command{pdflatex} installed and -->
+<!-- in your path). -->
+(이러한 모든 것은 <samp><span class="command">pdftex</span></samp>/<samp><span class="command">pdflatex</span></samp>가 경로상에 설치되어있음을 가정합니다).
 
-   <p>See the <a href="#Making-the-manuals">Making the manuals</a> section in the Unix-alike section for setting
-options such as the paper size and the fonts used.
+<!-- See the @ref{Making the manuals} section in the Unix-alike section for setting -->
+<!-- options such as the paper size and the fonts used. -->
+   <p>페이퍼 사이즈 및 글꼴과 관계된 옵션들을 조정하는 것은 유닉스와 같은 환경에서 <a href="#Making-the-manuals">Making the manuals</a>을 참고하세요.
 
 <div class="node">
 <a name="Building-the-Inno-Setup-installer"></a>
