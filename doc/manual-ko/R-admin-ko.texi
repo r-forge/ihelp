@@ -1241,7 +1241,7 @@ LANGUAGE=en LC_TIME=C
 @c @R{} can be built as either a 32-bit or 64-bit application on Windows:
 @c to build the 64-bit application you need a 64-bit edition of Windows:
 @c such an OS can also be used to build 32-bit @R{}.
-윈도우즈상에서 @R{}은 32- 또는 64-bit 어플리케이션으로 만들어질수있다: 64-bit 어플리케이션을 만들려면 윈도우즈역시 64-bit 발행판이어야 한다: 그러한 운영체제 (OS) 안에서 32-bit @R{}을 만드는것도 가능하다.. 
+윈도우즈상에서 @R{}은 32- 또는 64-bit 어플리케이션으로 만들어질수있습니다: 64-bit 어플리케이션을 만들려면 윈도우즈역시 64-bit 발행판이어야 합니다: 그러한 운영체제 (OS) 안에서 32-bit @R{}을 만드는것도 가능합니다. 
 
 @c The standard installer combines 32-bit and 64-bit builds into a single
 @c executable which can then be installed into the same location and share
@@ -1421,48 +1421,66 @@ make rsync-recommended
 @end itemize
 
 @node Building the core files, Building the bitmap files, Getting the source files, Building from source
-@subsection Building the core files
+@c @subsection Building the core files
+@subsection 코어파일 빌드하기
 
 @enindex TMPDIR
-Set the environment variable @env{TMPDIR} to point to a writable
-directory, with a path specified with forward slashes and no spaces.
-(The default is @file{/tmp}, which may not be useful on Windows.)
+@c Set the environment variable @env{TMPDIR} to point to a writable
+@c directory, with a path specified with forward slashes and no spaces.
+@c (The default is @file{/tmp}, which may not be useful on Windows.)
 
-You may need to compile under a case-honouring file system: we found
-that a @command{samba}-mounted file system (which maps all file names to
-lower case) did not work.
+환경 변수인 @env{TMPDIR}을 포워드 슬래시 (forward slash)와 띄어쓰기없이 지정한 path를 사용하여  쓰기 가능한 디렉토리로 가리키도록 설정하십시요. (기본 설정은 @file{/tmp}인데, 윈도우즈에서는 유용하지 않을수도 있습니다.)
 
-Open a command window at @file{@var{R_HOME}/src/gnuwin32}.  Look at
-@file{MkRules.dist} and if settings need to be altered, copy it to
-@file{MkRules.local} and edit the settings there.  In particular, this
-is where a 64-bit build is selected.  Then run
+@c You may need to compile under a case-honouring file system: we found
+@c that a @command{samba}-mounted file system (which maps all file names to
+@c lower case) did not work.
+
+어쩌면 대소문자를 기리는 파일 시스템안에서 compile하는게 필요할수도 있습니다: 우리가 알아낸 바로는 @command{samba}가 장착된 파일 시스템 (모든 파일명을 소문자로 바꾸는 시스템) 에서는 작동되지 않습니다.
+
+@c Open a command window at @file{@var{R_HOME}/src/gnuwin32}.  Look at
+@c @file{MkRules.dist} and if settings need to be altered, copy it to
+@c @file{MkRules.local} and edit the settings there.  In particular, this
+@c is where a 64-bit build is selected.  Then run
+
+command 위도우를 @file{@var{R_HOME}/src/gnuwin32}에서 여십시요. @file{MkRules.dist}를 확인하시고 만약 설정을 바꾸어야 한다면, @file{MkRules.local}로 복사하시고 설정을 그곳에서 편집하십시요. 특히 여기가 64비트 빌드가 선택된곳 입니다. 그후에 아래를 실행하십시요.
 
 @example
 make all recommended
 @end example
 
 @noindent
-and sit back and wait while the basic compile takes place.
+@c and sit back and wait while the basic compile takes place.
 
-Notes:
+그리고 기본 compile이 실행될동안 편안히 기다리시면 됩니다.
+
+@c Notes:
+
+주목할점:
+
 @itemize
 
 @item
-We have had reports that earlier versions of anti-virus software locking
-up the machine, but not for several years.  However, aggressive
-anti-virus checking such as the on-access scanning of Sophos can slow
-the build down several-fold.
+@c We have had reports that earlier versions of anti-virus software locking
+@c up the machine, but not for several years.  However, aggressive
+@c anti-virus checking such as the on-access scanning of Sophos can slow
+@c the build down several-fold.
+
+우리는 예전 버젼의 anti-virus 스프트웨어가 컴퓨터를 잠가버린다는 보고를 받은적이 있습니다, 그러나 최근 몇년동안은 그런보고가 없었습니다. 하지만 Sophos의 on-access 스캐닝같이 과도한 anti-virus 검사는 빌드를 몇배나 느리게 만들수있습니다. 
 
 @item
-By default Doug Lea's @code{malloc} in the file
-@file{@var{R_HOME}/src/gnuwin32/malloc.c} is used for R's internal
-memory allocations.  You can opt out of this by setting
-@code{LEA_MALLOC=NO} in @file{MkRules.dist}, in which case the @code{malloc}
-in @file{msvcrt.dll} is used.  This does impose a considerable
-performance penalty and has not been tested recently.
+@c By default Doug Lea's @code{malloc} in the file
+@c @file{@var{R_HOME}/src/gnuwin32/malloc.c} is used for R's internal
+@c memory allocations.  You can opt out of this by setting
+@c @code{LEA_MALLOC=NO} in @file{MkRules.dist}, in which case the @code{malloc}
+@c in @file{msvcrt.dll} is used.  This does impose a considerable
+@c performance penalty and has not been tested recently.
+
+기본으로 @file{@var{R_HOME}/src/gnuwin32/malloc.c}파일 안에 있는 Doug Lea의 @code{malloc}는 R의 내장 메모리를 배정할때 쓰여집니다. @file{MkRules.dist}안에서 @code{LEA_MALLOC=NO}로 설정하면 기본 설정을 기피할수있습니다. 그럴경우 @file{msvcrt.dll}안에있는 @code{malloc}이 사용됩니다. 이 방법은 성능에 상당한 불이익이 부과되며 최근에는 시험된적이 없습니다.
 
 @item
-You can run a parallel make by e.g.
+@c You can run a parallel make by e.g.
+
+parallel make를 아래의 예처럼 실행할수있습니다
 
 @example
 make -j4 all
@@ -1470,14 +1488,18 @@ make -j4 recommended
 @end example
 
 @noindent
-but this is only likely to be worthwhile on a multi-core machine with
-ample memory, and is not 100% reliable.
+@c but this is only likely to be worthwhile on a multi-core machine with
+@c ample memory, and is not 100% reliable.
+
+하지만 이방법은 메모리가 충분한 multi-core 기계에서나 사용할 가치가있으며 100% 신뢰할수는 없습니다. 
 
 @item 
-It is possible (mainly for those working on @R{} itself) to set the
-(make or environment) variable @env{R_NO_BASE_COMPILE} to a non-empty
-value, which inhibits the byte-compilation of the base and recommended
-packages.
+@c It is possible (mainly for those working on @R{} itself) to set the
+@c (make or environment) variable @env{R_NO_BASE_COMPILE} to a non-empty
+@c value, which inhibits the byte-compilation of the base and recommended
+@c packages.
+
+(make나 environment)변수인 @env{R_NO_BASE_COMPILE}을 비공의 값으로 설정하는것도 가능하다 (대부분 @R{} 자체에서 작업을 하는경우). 이럴경우 베이스나 추천된 팩키지들의 byte-compilation이 억제된다.
 
 @end itemize
 
