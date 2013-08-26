@@ -1300,26 +1300,33 @@ LANGUAGE=en LC_TIME=C
 
 
 @node Getting the source files, Building the core files, Getting the tools, Building from source
-@subsection Getting the source files
+@c @subsection Getting the source files
+@subsection 소스파일로부터 얻기
 
-You need to collect the following sets of files:
+@c You need to collect the following sets of files:
+다음과 같은 파일들을 얻어야 할 필요가 있습니다:
+
 @itemize
 
 @item
-Get the @R{} source code tarball @file{R-@value{VERSIONno}.tar.gz} from
-@acronym{CRAN}.  Open a command window (or another shell) at directory
-@var{R_HOME}, and run
+@c Get the @R{} source code tarball @file{R-@value{VERSIONno}.tar.gz} from
+@c @acronym{CRAN}.  Open a command window (or another shell) at directory
+@c @var{R_HOME}, and run
+@acronym{CRAN}으로부터 먼저 타르볼 형식으로 된 @R{} 소스코드 파일 @file{R-@value{VERSIONno}.tar.gz}을 얻어야 합니다.
+@var{R_HOME} 디렉토리에서 명령어 윈도우 (또는 다른 쉘)을 열고 다음과 같이 실행합니다. 
 
 @example
 tar -xf R-@value{VERSIONno}.tar.gz
 @end example
 
 @noindent
-to create the source tree in @var{R_HOME}.  @strong{Beware}: do use
-@command{tar} to extract the sources rather than tools such as WinZip
-that do not understand symbolic links.  If you are using an account with
-administrative privileges you may get a lot of messages which can be
-suppressed by
+@c to create the source tree in @var{R_HOME}.  @strong{Beware}: do use
+@c @command{tar} to extract the sources rather than tools such as WinZip
+@c that do not understand symbolic links.  If you are using an account with
+@c administrative privileges you may get a lot of messages which can be
+@c suppressed by
+@strong{주의:} 소스들을 압축으로부터 풀어내기 위하여 WinZip과 같이 심볼릭 링크를 이해하지 못하는 도구보다는 @command{tar}를 이용하길 바랍니다.
+만약 관리자 권한을 가지고 있다면, 많은 메시지들을 받아 볼 수 있는데 이는 다음을 통해서 보이지 않게 할 수 있습니다.
 
 @example
 tar --no-same-owner -xf R-@value{VERSIONno}.tar.gz
@@ -1327,19 +1334,24 @@ tar --no-same-owner -xf R-@value{VERSIONno}.tar.gz
 
 @noindent
 @enindex TAR_OPTIONS
-or perhaps better, set the environment variable @env{TAR_OPTIONS} to the
-value @samp{--no-same-owner --no-same-permissions}.
+@c or perhaps better, set the environment variable @env{TAR_OPTIONS} to the
+@c value @samp{--no-same-owner --no-same-permissions}.
+또한, 환경변수 @env{TAR_OPTIONS}의 값을 @samp{--no-same-owner --no-same-permissions}으로 지정하는 것이 더 편리할 수도 있습니다.
 
-It is also possible to obtain the source code using Subversion; see 
-@ref{Obtaining R} for details.
-
+@c It is also possible to obtain the source code using Subversion; see 
+@c @ref{Obtaining R} for details.
+또한 서브버전을 이용하여 소스코드를 얻을 수도 있습니다.
+더 자세한 사항은 @ref{Obtaining R}을 살펴보세요.
 
 @item
-If you are not using a tarball you need to obtain copies of the
-recommended packages from @acronym{CRAN}.  Put the @file{.tar.gz} files
-in @file{@var{R_HOME}/src/library/Recommended} and run @code{make
-link-recommended}.  If you have an Internet connection, you can do this
+@c If you are not using a tarball you need to obtain copies of the
+@c recommended packages from @acronym{CRAN}.  Put the @file{.tar.gz} files
+@c in @file{@var{R_HOME}/src/library/Recommended} and run @code{make
+@c link-recommended}.  If you have an Internet connection, you can do this
 automatically by running in @file{@var{R_HOME}/src/gnuwin32}
+만약 타르볼을 사용하지 않는다면, @acronym{CRAN}에서 추천 패키지들의 복사본을 얻어야 합니다.
+@file{@var{R_HOME}/src/library/Recommended} 에 @file{.tar.gz} 파일들을 넣고 @code{make link-recommended}를 실행하십시오. 
+만약 인터넷이 연결되어 있다면, 다음과 같이 이를 자동으로 할 수 있습니다.
 
 @example
 make rsync-recommended
@@ -1347,40 +1359,52 @@ make rsync-recommended
 
 @end itemize
 
-The following additional items are normally installed by
-@file{Rtools30.exe}.  If instead you choose to do a completely manual
-build you will also need
-
+@c The following additional items are normally installed by
+@c @file{Rtools30.exe}.  If instead you choose to do a completely manual
+@c build you will also need
+다음의 추가적인 아이템들은 @file{Rtools30.exe}에 의해 보통 설치됩니다. 
+만약에 완전 수동으로 설치를 원한다면 다음이 요구됩니다.
 @itemize
 
 @item
-The Tcl/Tk support files are contained in @file{Rtools30.exe} and
-available as @file{.zip}s from
-@uref{http://www.stats.ox.ac.uk/pub/Rtools}.  Please make sure you
-install the right version: there is a 32-bit version and a 64-bit
-version.
+@c The Tcl/Tk support files are contained in @file{Rtools30.exe} and
+@c available as @file{.zip}s from
+@c @uref{http://www.stats.ox.ac.uk/pub/Rtools}.  Please make sure you
+@c install the right version: there is a 32-bit version and a 64-bit
+@c version.
+@file{Rtools30.exe}내에 포함되어 있는 Tcl/Tk 지원 파일들이 필요하며 이들은  @uref{http://www.stats.ox.ac.uk/pub/Rtools}에서 @file{.zip}의 형식으로 얻을 수 있습니다. 
+올바른 버전을 설치하고 있는지에 대해서 반드시 확인하시길 바랍니다: 32 비트 버전과 64 비트 버전이 있습니다. 
 
 @item
-You need @code{libpng}, @code{jpeg} and @code{libtiff} sources
-(available, e.g., from @uref{http://www.libpng.org/},
-@uref{http://www.ijg.org} and
-@uref{http://download.osgeo.org/@/libtiff/}.  The earliest versions that
-have been tested are @file{libpng-1.5.4.tar.gz},
-@file{jpegsrc.v8c.tar.gz} and @file{tiff-3.9.1.tar.gz}, but current
-versions are recommended.  It is also possible to use
-@samp{libjpeg-turbo} from
-@uref{http://sourceforge.net/@/projects/@/libjpeg-turbo/@/files/}.
+@c You need @code{libpng}, @code{jpeg} and @code{libtiff} sources
+@c (available, e.g., from @uref{http://www.libpng.org/},
+@c @uref{http://www.ijg.org} and
+@c @uref{http://download.osgeo.org/@/libtiff/}.  The earliest versions that
+@c have been tested are @file{libpng-1.5.4.tar.gz},
+@c @file{jpegsrc.v8c.tar.gz} and @file{tiff-3.9.1.tar.gz}, but current
+@c versions are recommended.  It is also possible to use
+@c @samp{libjpeg-turbo} from
+@c @uref{http://sourceforge.net/@/projects/@/libjpeg-turbo/@/files/}.
+@code{libpng}, @code{jpeg} 그리고 @code{libtiff} 소스들 (@uref{http://www.libpng.org/}, @uref{http://www.ijg.org} 그리고 @uref{http://download.osgeo.org/@/libtiff/}에서 얻을 수 있습니다)이 필요할 것입니다.
+이미 테스트가 된 이전 버전들은 @file{libpng-1.5.4.tar.gz}, @file{jpegsrc.v8c.tar.gz} 그리고 @file{tiff-3.9.1.tar.gz}이지만 가장 최근의 버전들을 이용하시길 바랍니다. 
+@uref{http://sourceforge.net/@/projects/@/libjpeg-turbo/@/files/}으로부터 얻을 수 있는 @samp{libjpeg-turbo}를 이용하는 것도 가능합니다.
 
-Working in the directory @file{@var{R_HOME}/src/gnuwin32/bitmap},
-install the @code{libpng} and @code{jpeg} sources in sub-directories.
-The @code{jpeg} sub-directory for version 9 is named @file{jpeg-9}; if
-you use a different version (e.g.@: @file{jpeg-8d} or
-@file{libjpeg-turbo}), copy file @file{src/gnuwin32/MkRules.dist} to
-@file{src/gnuwin32/MkRules.local} and edit the definition of
-@code{JPEGDIR}: the names of the @file{libpng} and @file{libtiff}
-directories can also be set there.
+@c Working in the directory @file{@var{R_HOME}/src/gnuwin32/bitmap},
+@c install the @code{libpng} and @code{jpeg} sources in sub-directories.
+@c The @code{jpeg} sub-directory for version 9 is named @file{jpeg-9}; if
+@c you use a different version (e.g.@: @file{jpeg-8d} or
+@c @file{libjpeg-turbo}), copy file @file{src/gnuwin32/MkRules.dist} to
+@c @file{src/gnuwin32/MkRules.local} and edit the definition of
+@c @code{JPEGDIR}: the names of the @file{libpng} and @file{libtiff}
+@c directories can also be set there.
 
-Example:
+디렉토리 @file{@var{R_HOME}/src/gnuwin32/bitmap}에서 작업하기 위해서는 서브디렉토리에 @code{libpng}와 @code{jpeg} 소스들으르 설치해야 합니다.
+버전 9를 위한 @code{jpeg} 서브디렉토리는 @file{jpeg-9}으로 이름을 짓습니다.
+만약 다른 버전을 이용하고자 한다면 (예를들면, @: @file{jpeg-8d} 또는 @file{libjpeg-turbo}), 파일 @file{src/gnuwin32/MkRules.dist}을 @file{src/gnuwin32/MkRules.local}에 복사하고 @code{JPEGDIR}의 정의를 편집해야 합니다.
+@file{libpng}과 @file{libtiff} 디렉토리들의 이름 또한 그곳에서 지정될 수 있습니다.
+
+@c Example:
+예시:
 
 @example
 > tar -zxf libpng-1.5.12.tar.gz
@@ -1392,8 +1416,8 @@ Example:
 @end example
 
 @noindent
-(and see the comment above about @option{--no-same-owner}).
-
+@c (and see the comment above about @option{--no-same-owner}).
+@option{--no-same-owner}에 대한 옵션도 살펴보시길 바랍니다.
 @end itemize
 
 @node Building the core files, Building the bitmap files, Getting the source files, Building from source
