@@ -1276,19 +1276,28 @@ LANGUAGE=en LC_TIME=C
 @c * 64-bit 윈도우즈에서 만들기::
 
 @node Getting the tools, Getting the source files, Building from source, Building from source
-@subsection Getting the tools
+@c @subsection Getting the tools
+@subsection 필요한 도구얻기
 
-If you want to build @R{} from the sources, you will first need to
-collect, install and test an extensive set of tools.  See @ref{The Windows toolset} (and perhaps updates in
-@uref{http://CRAN.R-project.org/bin/@/windows/@/Rtools/}) for details.
+@c If you want to build @R{} from the sources, you will first need to
+@c collect, install and test an extensive set of tools.  See @ref{The Windows toolset} (and perhaps updates in
+@c @uref{http://CRAN.R-project.org/bin/@/windows/@/Rtools/}) for details.
+소스로부터 @R{}을 빌드하기 원한다면 제일 먼저 필요한 도구들을 수집, 설치, 그리고 테스트를 해 보아야 합니다. 
+자세한 사항은 @ref{The Windows toolset}을 살펴보세요 (그리고 아마도 다음 페이지 @uref{http://CRAN.R-project.org/bin/@/windows/@/Rtools/}에 있는 업데이트되는 내용을 살펴보셔야 합니다).
 
-The @file{Rtools*.exe} executable installer described in @ref{The 
-Windows toolset} also includes some source files in addition to the @R{}
-source as noted below.  You should run it first, to obtain a working
-@code{tar} and other necessities.  Choose a ``Full installation'', and
-install the extra files into your intended @R{} source directory, e.g.@:
-@file{C:/R}. The directory name @emph{should not contain spaces}. We
-will call this directory @file{@var{R_HOME}} below.
+@c The @file{Rtools*.exe} executable installer described in @ref{The 
+@c Windows toolset} also includes some source files in addition to the @R{}
+@c source as noted below.  You should run it first, to obtain a working
+@c @code{tar} and other necessities.  Choose a ``Full installation'', and
+@c install the extra files into your intended @R{} source directory, e.g.@:
+@c @file{C:/R}. The directory name @emph{should not contain spaces}. We
+@c will call this directory @file{@var{R_HOME}} below.
+@ref{The Windows toolset}에 설며되어 있는 @file{Rtools*.exe}이라는 실행가능한 인스톨러는 또한 아래 설명된 것과 같이 @R{} 소스외에도 추가적인 몇가지 소스파일들이 포함되어 있습니다.
+올바른 @code{tar} 파일과 그외에 필요한 것들을 얻기 위하여 이를 제일 먼저 실행해야 합니다. 
+그리고 ``Full installation''을 선택하고 나머지 파일들을 @file{C:/R}과 같이 설치하고자 하는 위치에 추가적인 파일들을 설치하세요. 
+디렉토리 이름에는 띄어쓰기를 포함하면 안됩니다.
+우리는 이 디렉토리를 @file{@var{R_HOME}} 이라고 부를 것입니다.
+
 
 @node Getting the source files, Building the core files, Getting the tools, Building from source
 @subsection Getting the source files
