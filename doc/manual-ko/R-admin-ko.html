@@ -108,7 +108,7 @@ p {
 <li><a href="#Checking-the-build">3.1.6 빌드 확인하기</a>
 <li><a href="#Building-the-manuals">3.1.7 매뉴얼 구축하기</a>
 <li><a href="#Building-the-Inno-Setup-installer">3.1.8 Building the Inno Setup installer</a>
-<li><a href="#Building-the-MSI-installer">3.1.9 Building the MSI installer</a>
+<li><a href="#Building-the-MSI-installer">3.1.9 MSI 인스톨러 구축하기</a>
 <li><a href="#Cross_002dbuilding-on-Linux">3.1.10 Cross-building on Linux</a>
 <li><a href="#64_002dbit-Windows-builds">3.1.11 64-bit Windows builds</a>
 </li></ul>
@@ -1826,18 +1826,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 <h4 class="subsection">3.1.8 Building the Inno Setup installer</h4>
 
-<p>You need to have the files for a complete R build, including bitmap and
-Tcl/Tk support and the manuals, as well as the recommended packages and
-Inno Setup (see <a href="#The-Inno-Setup-installer">The Inno Setup installer</a>).
-
-   <p>Once everything is set up
+<!-- You need to have the files for a complete R build, including bitmap and -->
+<!-- Tcl/Tk support and the manuals, as well as the recommended packages and -->
+<!-- Inno Setup (@pxref{The Inno Setup installer}). -->
+<p>완전한 R을 구축하기 위해서는 bitmap과 Tcl/Tk의 지원, 매뉴얼을 포함하여 추천된 패키지들과 Inno Setup (see <a href="#The-Inno-Setup-installer">The Inno Setup installer</a>)들이 필요합니다. 
+<!-- Once everything is set up -->
+모든 것들이 준비되었을때, 다음을 실행하는 것은 모든 조작들과 인스톨러를 생성할 것이고, 이들은 <samp><span class="file">gnuwin32/cran</span></samp> 서브디렉토리에 놓이게 된 후 빌드를 확인할 것입니다.
 
 <pre class="example">     make distribution
      make check-all
 </pre>
-   <p class="noindent">will make all the pieces and the installers and put them in the
-<samp><span class="file">gnuwin32/cran</span></samp> subdirectory, then check the build.  This works by
-building all the parts in the sequence:
+   <p class="noindent"><!-- will make all the pieces and the installers and put them in the -->
+<!-- @file{gnuwin32/cran} subdirectory, then check the build.  This works by -->
+<!-- building all the parts in the sequence: -->
+이는 모든 파트들을 다음과 같은 순서대로 빌드함에 의해 작동합니다:
 
 <pre class="example">     rbuild <span class="roman">(the executables, the <acronym>FAQ</acronym> docs etc.)</span>
      rpackages <span class="roman">(the base packages)</span>
@@ -1851,58 +1853,73 @@ building all the parts in the sequence:
      rinstaller <span class="roman">(the install program)</span>
      crandir <span class="roman">(the <acronym>CRAN</acronym> distribution directory, only for 64-bit builds)</span>
 </pre>
-   <p>The parts can be made individually if a full build is not needed, but
-earlier parts must be built before later ones.  (The <samp><span class="file">Makefile</span></samp>
-doesn't enforce this dependency&mdash;some build targets force a lot of
-computation even if all files are up to date.)  The first four targets
-are the default build if just <samp><span class="command">make</span></samp> (or <samp><span class="command">make all</span></samp>) is
-run.
+   <!-- The parts can be made individually if a full build is not needed, but -->
+<!-- earlier parts must be built before later ones.  (The @file{Makefile} -->
+<!-- doesn't enforce this dependency-some build targets force a lot of -->
+<!-- computation even if all files are up to date.)  The first four targets -->
+<!-- are the default build if just @command{make} (or @command{make all}) is -->
+<!-- run. -->
+   <p>전체 빌드가 필요하지 않을 경우에는 개별적으로 파트들이 만들어 질 수도 있지만, 초기 파드들은 나중 것들보다 먼저 빌드되어져야만 합니다. 
+(<samp><span class="file">Makefile</span></samp>은 이러한 의존성을 요구하지 않으나 몇몇의 빌드 타겟들은 모든 파일들이 최신임에도 불구하고 많은 연산을 필요로합니다). 
+처음 네가지 타겟들은 만약 <samp><span class="command">make</span></samp>만이 (혹은 <samp><span class="command">make all</span></samp>) 실행되었다면 기본 빌드입니다.
 
-   <p>If you want to customize the installation by adding extra packages,
-replace <code>make rinstaller</code> by something like
+<!-- If you want to customize the installation by adding extra packages, -->
+<!-- replace @code{make rinstaller} by something like -->
+   <p>만약 여러분이 여분의 패키지들을 추가함으로 사용자 설치를 하고 싶다면, <code>make rinstaller</code>를 다음과 같은 것으로 대체하십시오.
 
 <pre class="example">     make rinstaller EXTRA_PKGS='pkg1 pkg2 pkg3'
 </pre>
-   <p>An alternative way to customize the installer starting with a binary
-distribution is to first make an installation of R from the standard
-installer, then add packages and make other customizations to that
-installation.  Then (after having customized file <samp><span class="file">MkRules</span></samp>,
-possibly <em>via</em> <samp><span class="file">MkRules.local</span></samp>, and having made R in the
-source tree) in <samp><span class="file">src/gnuwin32/installer</span></samp> run
+   <!-- An alternative way to customize the installer starting with a binary -->
+<!-- distribution is to first make an installation of R from the standard -->
+<!-- installer, then add packages and make other customizations to that -->
+<!-- installation.  Then (after having customized file @file{MkRules}, -->
+<!-- possibly @emph{via} @file{MkRules.local}, and having made R in the -->
+<!-- source tree) in @file{src/gnuwin32/installer} run -->
+   <p>바이너리 배포와 함께 시작하는 인스톨러를 조정하기 위한 다른 방법은 표준 인스톨러로부터 R의 설치를 제일 먼저 만든 후에 패키지들을 추가하고 설치에 다른 커스터마이제이션을 만드는 것입니다. 
+그러고 난 후 (어쩌면  <samp><span class="file">MkRules.local</span></samp>를 통해 커스터마이즈된 <samp><span class="file">MkRules</span></samp>를 이용하여 소스트리에 R을 만들고 난 뒤) <samp><span class="file">src/gnuwin32/installer</span></samp>에서 다음을 실행하십시오.
 
 <pre class="example">     make myR IMAGEDIR=rootdir
 </pre>
-   <p class="noindent">where <samp><span class="file">rootdir</span></samp> is the path to the root of the customized
-installation (in double quotes if it contains spaces or backslashes).
+   <p class="noindent"><!-- where @file{rootdir} is the path to the root of the customized -->
+<!-- installation (in double quotes if it contains spaces or backslashes). -->
+이는 <samp><span class="file">rootdir</span></samp>이 사용자 설치의 루트로의 경로입니다 (띄어쓰기나 백슬래쉬등이 있다면 큰 따옴표 내에 써야 합니다).
 
-   <p>Both methods create an executable with a standard name such as
-<samp><span class="file">R-devel-win.exe</span></samp>, so please rename it to indicate that
-it is customized.  If you intend to <em>distribute</em> a customized
-installer please do check that license requirements are met &ndash; note that
-the installer will state that the contents are distributed under GPL-2
-and this has a requirement for <em>you</em> to supply the complete sources
-(including the R sources even if you started with a binary distribution
-of R, and also the sources of any extra packages (including their
-external software) which are included).
+<!-- Both methods create an executable with a standard name such as -->
+<!-- @file{@value{RWVERSION}-win.exe}, so please rename it to indicate that -->
+<!-- it is customized.  If you intend to @emph{distribute} a customized -->
+<!-- installer please do check that license requirements are met - note that -->
+<!-- the installer will state that the contents are distributed under GPL-2 -->
+<!-- and this has a requirement for @emph{you} to supply the complete sources -->
+<!-- (including the R sources even if you started with a binary distribution -->
+<!-- of R, and also the sources of any extra packages (including their -->
+<!-- external software) which are included). -->
+   <p>위의 두 가지 방법들 모두 <samp><span class="file">R-devel-win.exe</span></samp>와 같은 표준이름과 함께 실행가능한 파일을 생성하기 때문에 커스터마이즈 되었다는 것을 나타내는 이름으로 변경하세요. 
+만약 커스터마이즈된 인스톨러를 배포하고 싶다면 라이센스 요구사항이 충족되는지 확인하시길 바랍니다. 
+인스톨러는 GPL-2에 의거하여 배포되고 완전한 소스들(R의 바이너리배포를 시작하더라도 소스를 포함해야하며, (외부 소프트웨어를 포함된) 포함된 어떠한 추가적인 패키지들의 소스들도 포함)을 제공하는 것이 요구된다고 명시할 것입니다.
 
-   <p>The defaults for the startup parameters may also be customized.  For example
+<!-- The defaults for the startup parameters may also be customized.  For example -->
+   <p>스타트업 파라미터들을 위한 기본값들 또한 조정될 수 있습니다.
 
 <pre class="example">     make myR IMAGEDIR=rootdir MDISDI=1
 </pre>
-   <p class="noindent">will create an installer that defaults to installing R to run in SDI
-mode.  See <samp><span class="file">src/gnuwin32/installer/Makefile</span></samp> for the names and
-values that can be set.
+   <p class="noindent"><!-- will create an installer that defaults to installing @R{} to run in SDI -->
+<!-- mode.  See @file{src/@/gnuwin32/installer/Makefile} for the names and -->
+<!-- values that can be set. -->
+이는 기본값을 SDI 모드에서 R 설치가 실행되도록 하는 인스톨러를 생성할 것입니다. 
+지정될 수 있는 이름들과 값에 대해서는 <samp><span class="file">src/gnuwin32/installer/Makefile</span></samp>를 참조하십시오
 
-   <p>The standard CRAN distribution of a 32/64-bit installer is made by first
-building 32-bit R (just
-
+<!-- The standard CRAN distribution of a 32/64-bit installer is made by first -->
+<!-- building 32-bit R (just -->
+   <p>32/64 비트 인스톨러의 표준 CRAN 배포는 첫 번째로 32 비트 R을 빌드 함으로 만들어 집니다 (다음만이 필요합니다)
 <pre class="example">     make 32-bit
 </pre>
-   <p class="noindent">is needed), and then building 64-bit R with the macro <code>HOME32</code> set
-in file <samp><span class="file">MkRules.local</span></samp> to the top-level directory of the 32-bit
-build.  Then the <samp><span class="command">make rinstaller</span></samp> step copies the files that
-differ between architectures from the 32-bit build as it builds the
-installer image.
+   <p class="noindent"><!-- is needed), and then building 64-bit R with the macro @code{HOME32} set -->
+<!-- in file @file{MkRules.local} to the top-level directory of the 32-bit -->
+<!-- build.  Then the @command{make rinstaller} step copies the files that -->
+<!-- differ between architectures from the 32-bit build as it builds the -->
+<!-- installer image. -->
+그리고 나서 32 비트 빌드의 최상위 디렉토리에 <samp><span class="file">MkRules.local</span></samp> 파일에 매크로 <code>HOME32</code>를 가진 64 비트 R을 빌드합니다. 
+그 후에 <samp><span class="command">make rinstaller</span></samp> 단계는 아키텍쳐별로 다르게 이미지를 빌드하는 것 처럼 32 비트 빌드에서부터 파일들을 복사합니다
 
 <div class="node">
 <a name="Building-the-MSI-installer"></a>
@@ -1913,46 +1930,59 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.9 Building the MSI installer</h4>
+<!-- @subsection Building the MSI installer -->
+<h4 class="subsection">3.1.9 MSI 인스톨러 구축하기</h4>
 
-<p>It is also possible to build an installer for use with Microsoft
-Installer.  This is intended for use by sysadmins doing automated
-installs, and is not recommended for casual use.
+<!-- It is also possible to build an installer for use with Microsoft -->
+<!-- Installer.  This is intended for use by sysadmins doing automated -->
+<!-- installs, and is not recommended for casual use. -->
+<p>Microsoft Installer와 함께 사용하기위한 인스톨러를 빌드하는 것 또한 가능합니다. 
+이는 자동 설치를 필요로 하는 시스템 관리자를 위해 만들어졌으므로, 일반적 사용으로는 추천되지 않습니다.
 
-   <p>It makes use of the Windows Installer XML (WiX) toolkit <em>version
-3.0 or 3.5</em> available from <a href="http://wix.sourceforge.net/">http://wix.sourceforge.net/</a>.  Once WiX
-is installed, set the path to its home directory in
-<samp><span class="file">MkRules.local</span></samp>.
+<!-- It makes use of the Windows Installer XML (WiX) toolkit @emph{version -->
+<!-- 3.0 or 3.5} available from @uref{http://wix.sourceforge.net/}.  Once WiX -->
+<!-- is installed, set the path to its home directory in -->
+<!-- @file{MkRules.local}. -->
+   <p>이는 <a href="http://wix.sourceforge.net/">http://wix.sourceforge.net/</a>에서 사용가능한 Windows Installer XML (WiX) toolkit version 3.0 or 3.5을 사용합니다. 
+WiX가 설치되면, <samp><span class="file">MkRules.local</span></samp>에 홈 디렉토리로 경로를 지정하십시오.
 
-   <p>You need to have the files for a complete R build, including bitmap and
-Tcl/Tk support and the manuals, as well as the recommended packages. 
-There is no option in the installer to customize startup options, so
-edit <samp><span class="file">etc/Rconsole</span></samp> and <samp><span class="file">etc/Rprofile.site</span></samp> to set these as
-required.  Then
+<!-- You need to have the files for a complete R build, including bitmap and -->
+<!-- Tcl/Tk support and the manuals, as well as the recommended packages. -->
+<!-- There is no option in the installer to customize startup options, so -->
+<!-- edit @file{etc/Rconsole} and @file{etc/Rprofile.site} to set these as -->
+<!-- required.  Then -->
+   <p>비트맵과 Tcl/Tk 지원과 매뉴얼, 그리고 추천 패키지들을 포함한 완전한 R 빌드를 위한 파일들을 가지고 있어야 합니다. 
+사용자 지정 스타트업 옵션을 지정하는 옵션이 인스톨러에는 없기때문에, 설정이 필요한 경우에 <samp><span class="file">etc/Rconsole</span></samp>와 <samp><span class="file">etc/Rprofile.site</span></samp>를 수정해야 합니다. 
+그러고 나서 아래를 사용하십시오.
 
 <pre class="example">     cd installer
      make msi
 </pre>
-   <p class="noindent">which will result in a file with a name like
-<samp><span class="file">R-devel-win32.msi</span></samp>.  This can be double-clicked to be
-installed, but those who need it will know what to do with it (usually
-by running <samp><span class="command">msiexec /i</span></samp> with additional options).  Properties
-that users might want to set from the <samp><span class="command">msiexec</span></samp> command line
-include &lsquo;<samp><span class="samp">ALLUSERS</span></samp>&rsquo;, &lsquo;<samp><span class="samp">INSTALLDIR</span></samp>&rsquo; (something like
-<samp><span class="file">c:\Program Files\R\R-devel</span></samp>) and &lsquo;<samp><span class="samp">RMENU</span></samp>&rsquo; (the path
-to the &lsquo;<samp><span class="samp">R</span></samp>&rsquo; folder on the start menu) and &lsquo;<samp><span class="samp">STARTDIR</span></samp>&rsquo; (the
-starting directory for R shortcuts, defaulting to something like
-<samp><span class="file">c:\Users\name\Documents\R</span></samp>).
+   <p class="noindent"><!-- which will result in a file with a name like -->
+<!-- @file{@value{RWVERSION}-win32.msi}.  This can be double-clicked to be -->
+<!-- installed, but those who need it will know what to do with it (usually -->
+<!-- by running @command{msiexec /i} with additional options).  Properties -->
+<!-- that users might want to set from the @command{msiexec} command line -->
+<!-- include @samp{ALLUSERS}, @samp{INSTALLDIR} (something like -->
+<!-- @file{c:\Program Files\R\@value{RWVERSION}}) and @samp{RMENU} (the path -->
+<!-- to the @samp{R} folder on the start menu) and @samp{STARTDIR} (the -->
+<!-- starting directory for @R{} shortcuts, defaulting to something like -->
+<!-- @file{c:\Users\name\Documents\R}). -->
+이는 <samp><span class="file">R-devel-win32.msi</span></samp> 와 같은 이름을 가진 파일을 생성할 것입니다. 
+더블-클릭이 가능하지만, 이를 필요로 하는 사람들은 무엇을 해야 할 지 알것입니다 (일반적으로 추가적인 옵션들과 함께 <samp><span class="command">msiexec /i</span></samp>를 실행함). 
+사용자가 <samp><span class="command">msiexec</span></samp> 명령줄에서 부터 지정하고자 하는 속성들은 &lsquo;<samp><span class="samp">ALLUSERS</span></samp>&rsquo;, (<samp><span class="file">c:\Program Files\R\R-devel</span></samp>와 같은)  &lsquo;<samp><span class="samp">INSTALLDIR</span></samp>&rsquo; 그리고 (시작 메뉴에 있는 R 폴더로의 경로인) &lsquo;<samp><span class="samp">RMENU</span></samp>&rsquo;, 그리고 (<samp><span class="file">c:\Users\name\Documents\R</span></samp> 와 같은 것이 기본값인, R shortcut을 위한 시작 디렉토리) &lsquo;<samp><span class="samp">STARTDIR</span></samp>&rsquo;를 포함합니다.
 
-   <p>The MSI installer can be built both from a 32-bit build of R
-(<samp><span class="file">R-devel-win32.msi</span></samp>) and from a 64-bit build of R
-(<samp><span class="file">R-devel-win64.msi</span></samp>, optionally including 32-bit files
-by setting the macro <code>HOME32</code>, when the name is
-<samp><span class="file">R-devel-win.msi</span></samp>).  Unlike the main installer, a 64-bit
-MSI installer can only be run on 64-bit Windows.
+<!-- The MSI installer can be built both from a 32-bit build of @R{} -->
+<!-- (@file{@value{RWVERSION}-win32.msi}) and from a 64-bit build of @R{} -->
+<!-- (@file{@value{RWVERSION}-win64.msi}, optionally including 32-bit files -->
+<!-- by setting the macro @code{HOME32}, when the name is -->
+<!-- @file{@value{RWVERSION}-win.msi}).  Unlike the main installer, a 64-bit -->
+<!-- MSI installer can only be run on 64-bit Windows. -->
+   <p>MSI installer는 R 의 32 비트 빌드 (<samp><span class="file">R-devel-win32.msi</span></samp>)와 R의 64 비트 빌드 (<samp><span class="file">R-devel-win64.msi</span></samp>, 선택적으로 이름이 <samp><span class="file">R-devel-win.msi</span></samp>일 때, macro <code>HOME32</code>를 지정함으로써 32 비트 파일들을 포함합니다), 두 가지 모두에서 빌드될 수 있습니다. 주요 installer와 다르게, 64 비트 MSI installer는 64 비트 윈도우에서만 실행할 수 있습니다.
 
-   <p>Thanks to David del Campo (Dept of Statistics, University of Oxford)
-for suggesting WiX and building a prototype installer.
+<!-- Thanks to David del Campo (Dept of Statistics, University of Oxford) -->
+<!-- for suggesting WiX and building a prototype installer. -->
+   <p>WiX 을 제안해 주시고 prototype installer를 빌드해주신 David del Campo (Dept of Statistics, University of Oxford)에 감사의 말씀을 전합니다.
 
 <div class="node">
 <a name="Cross-building-on-Linux"></a>
