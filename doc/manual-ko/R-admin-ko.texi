@@ -1789,40 +1789,54 @@ MSI installer는 R 의 32 비트 빌드 (@file{@value{RWVERSION}-win32.msi})와 
 WiX 을 제안해 주시고 prototype installer를 빌드해주신 David del Campo (Dept of Statistics, University of Oxford)에 감사의 말씀을 전합니다. 
 
 @node Cross-building on Linux, 64-bit Windows builds, Building the MSI installer, Building from source
-@subsection Cross-building on Linux
+@c @subsection Cross-building on Linux
+@subsection 리눅스에서 크로스빌딩하기
 
-Support for cross-building was withdrawn at @R{} 2.9.0.
+@c Support for cross-building was withdrawn at @R{} 2.9.0.
+크로스 빌딩에 대한 지원은 @R{} 2.9.0 에서 빠지게 되었습니다.
 
 @node 64-bit Windows builds,  , Cross-building on Linux, Building from source
-@subsection 64-bit Windows builds
+@c @subsection 64-bit Windows builds
+@subsection 64-bit Windows 빌드
 
-To build a 64-bit version of R you need a 64-bit toolchain: the only one
-discussed here is based on the work of the MinGW-w64 project
-(@uref{http://sourceforge.net/@/projects/@/mingw-w64/}, but commercial
-compilers such as those from Intel and PGI could be used (and have been
-by @R{} redistributors).
+@c To build a 64-bit version of R you need a 64-bit toolchain: the only one
+@c discussed here is based on the work of the MinGW-w64 project
+@c (@uref{http://sourceforge.net/@/projects/@/mingw-w64/}, but commercial
+@c compilers such as those from Intel and PGI could be used (and have been
+@c by @R{} redistributors).
+R의 64 비트 버전을 구축하기 위해서는 64 비트 toolchain이 필요합니다: 
+여기에서는 MinGW-w64 (@uref{http://sourceforge.net/projects/mingw-w64/}) 프로젝트에 기초한 것들만 의논되었으나, Intel과 PGI와 같은 상업용 컴파일러들 역시 사용될 수 있습니다 (그리고 이들은 @R{}의 재배포자들에 의해서 사용되고 있습니다).
 
-Support for MinGW-w64 was developed in the R sources over the period
-2008--10 and was first released as part of @R{} 2.11.0.  The assistance
-of Yu Gong at a crucial step in porting R to MinGW-w64 is gratefully
-acknowledged, as well as help from Kai Tietz, the lead developer of the
-MinGW-w64 project.
+@c Support for MinGW-w64 was developed in the R sources over the period
+@c 2008--10 and was first released as part of @R{} 2.11.0.  The assistance
+@c of Yu Gong at a crucial step in porting R to MinGW-w64 is gratefully
+@c acknowledged, as well as help from Kai Tietz, the lead developer of the
+@c MinGW-w64 project.
+MinGW-w64 에 대한 지원은 2008-10 기간 동안 R 소스에서 개발되었고 처음으로 @R{} 2.11.0의 일부분으로 릴리즈 되었습니다.
+R 을 MinGW-w64 로 이식하는 결정적인 단계에서 Yu Gong의 도움과 MinGW-w64의 주 개발자인 Kai Tietz의 도움이 매우컸으며, 이에 대하여 매우 감사드립니다.
 
-Windows 64-bit is now completely integrated into the @R{} and package
-build systems.
+@c Windows 64-bit is now completely integrated into the @R{} and package
+@c build systems.
+윈도우즈 64 비트는 현재 @R{}과 패키지 구축 시스템들에 완전히 융화되었습니다. 
+
 
 @node Testing a Windows Installation,  , Building from source, Installing R under Windows
-@section Testing an Installation
+@c @section Testing an Installation
+@section  설치확인하기 
 
-The Windows installer contains a set of test files used when building
-@R{}.
+@c The Windows installer contains a set of test files used when building
+@c @R{}.
+윈도우즈 인스톨러는 @R{}이 구축될 때 사용된 테스트 파일들의 세트를 포함하고 있습니다. 
 
-The @code{Rtools} are not needed to run these tests. but more
-comprehensive analysis of errors will be given if @command{diff} is in
-the path (and @code{errorsAreFatal = FALSE} is then not needed below).
+@c The @code{Rtools} are not needed to run these tests. but more
+@c comprehensive analysis of errors will be given if @command{diff} is in
+@c the path (and @code{errorsAreFatal = FALSE} is then not needed below).
+@code{Rtools}는 이런 테스트들을 실행하기위해 필요하지는 않지만, 만약 @command{diff}가 경로에 있다면 에러에 대하여 더욱 심도있는 분석이 주어지게 될 것입니다.
+(@code{errorsAreFatal = FALSE} 이면 아래가 필요하지 않습니다).  
 
-Launch either @code{Rgui} or @code{Rterm}, preferably with
-@option{--vanilla}.  Then run
+@c Launch either @code{Rgui} or @code{Rterm}, preferably with
+@c @option{--vanilla}.  Then run
+가급적이면 @option{--vanilla}와 함께 @code{Rgui}나 @code{Rterm}을 실행한 뒤, 다음을 수행하세요.
 
 @example
 library("tools")
@@ -1832,11 +1846,13 @@ testInstalledPackages("recommended", errorsAreFatal = FALSE)
 @end example
 
 @noindent
-runs the basic tests and then all the tests on the standard and
-recommended packages.  These tests can be run from anywhere: they write
-their results in the @file{tests} folder of the @R{} home directory (as
-given by @code{R.home()}), and hence may need to be run under the
-account used to install @R{}.
+@c runs the basic tests and then all the tests on the standard and
+@c recommended packages.  These tests can be run from anywhere: they write
+@c their results in the @file{tests} folder of the @R{} home directory (as
+@c given by @code{R.home()}), and hence may need to be run under the
+@c account used to install @R{}.
+이들은 기본 테스트들을 실행하고 나서 기본 패키지와 추천 패키지들에 모든 테스트들을 실행합니다. 
+이 테스트들은 어디서든지 실행 될 수 있습니다: (@code{R.home()}에 의해 주어진) @R{} home 디렉토리의 @file{test} 폴더에 그들의 결과를 쓰기 때문에, @R{}을 설치할 때 사용한 계정에서 실행해야 할 수도 있습니다. 
 
 
 @node Installing R under (Mac) OS X, Running R, Installing R under Windows, Top

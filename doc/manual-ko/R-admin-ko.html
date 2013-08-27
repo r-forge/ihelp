@@ -109,10 +109,10 @@ p {
 <li><a href="#Building-the-manuals">3.1.7 매뉴얼 구축하기</a>
 <li><a href="#Building-the-Inno-Setup-installer">3.1.8 Building the Inno Setup installer</a>
 <li><a href="#Building-the-MSI-installer">3.1.9 MSI 인스톨러 구축하기</a>
-<li><a href="#Cross_002dbuilding-on-Linux">3.1.10 Cross-building on Linux</a>
-<li><a href="#64_002dbit-Windows-builds">3.1.11 64-bit Windows builds</a>
+<li><a href="#Cross_002dbuilding-on-Linux">3.1.10 리눅스에서 크로스빌딩하기</a>
+<li><a href="#64_002dbit-Windows-builds">3.1.11 64-bit Windows 빌드</a>
 </li></ul>
-<li><a href="#Testing-a-Windows-Installation">3.2 Testing an Installation</a>
+<li><a href="#Testing-a-Windows-Installation">3.2 설치확인하기</a>
 </li></ul>
 <li><a name="toc_Installing-R-under-_0028Mac_0029-OS-X" href="#Installing-R-under-_0028Mac_0029-OS-X">4 (Mac) OS X 에서 R 설치하기</a>
 <ul>
@@ -1994,9 +1994,11 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.10 Cross-building on Linux</h4>
+<!-- @subsection Cross-building on Linux -->
+<h4 class="subsection">3.1.10 리눅스에서 크로스빌딩하기</h4>
 
-<p>Support for cross-building was withdrawn at R 2.9.0.
+<!-- Support for cross-building was withdrawn at @R{} 2.9.0. -->
+<p>크로스 빌딩에 대한 지원은 R 2.9.0 에서 빠지게 되었습니다.
 
 <div class="node">
 <a name="64-bit-Windows-builds"></a>
@@ -2007,22 +2009,28 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 
 </div>
 
-<h4 class="subsection">3.1.11 64-bit Windows builds</h4>
+<!-- @subsection 64-bit Windows builds -->
+<h4 class="subsection">3.1.11 64-bit Windows 빌드</h4>
 
-<p>To build a 64-bit version of R you need a 64-bit toolchain: the only one
-discussed here is based on the work of the MinGW-w64 project
-(<a href="http://sourceforge.net/projects/mingw-w64/">http://sourceforge.net/projects/mingw-w64/</a>, but commercial
-compilers such as those from Intel and PGI could be used (and have been
-by R redistributors).
+<!-- To build a 64-bit version of R you need a 64-bit toolchain: the only one -->
+<!-- discussed here is based on the work of the MinGW-w64 project -->
+<!-- (@uref{http://sourceforge.net/@/projects/@/mingw-w64/}, but commercial -->
+<!-- compilers such as those from Intel and PGI could be used (and have been -->
+<!-- by @R{} redistributors). -->
+<p>R의 64 비트 버전을 구축하기 위해서는 64 비트 toolchain이 필요합니다:
+여기에서는 MinGW-w64 (<a href="http://sourceforge.net/projects/mingw-w64/">http://sourceforge.net/projects/mingw-w64/</a>) 프로젝트에 기초한 것들만 의논되었으나, Intel과 PGI와 같은 상업용 컴파일러들 역시 사용될 수 있습니다 (그리고 이들은 R의 재배포자들에 의해서 사용되고 있습니다).
 
-   <p>Support for MinGW-w64 was developed in the R sources over the period
-2008&ndash;10 and was first released as part of R 2.11.0.  The assistance
-of Yu Gong at a crucial step in porting R to MinGW-w64 is gratefully
-acknowledged, as well as help from Kai Tietz, the lead developer of the
-MinGW-w64 project.
+<!-- Support for MinGW-w64 was developed in the R sources over the period -->
+<!-- 2008-10 and was first released as part of @R{} 2.11.0.  The assistance -->
+<!-- of Yu Gong at a crucial step in porting R to MinGW-w64 is gratefully -->
+<!-- acknowledged, as well as help from Kai Tietz, the lead developer of the -->
+<!-- MinGW-w64 project. -->
+   <p>MinGW-w64 에 대한 지원은 2008-10 기간 동안 R 소스에서 개발되었고 처음으로 R 2.11.0의 일부분으로 릴리즈 되었습니다. 
+R 을 MinGW-w64 로 이식하는 결정적인 단계에서 Yu Gong의 도움과 MinGW-w64의 주 개발자인 Kai Tietz의 도움이 매우컸으며, 이에 대하여 매우 감사드립니다.
 
-   <p>Windows 64-bit is now completely integrated into the R and package
-build systems.
+<!-- Windows 64-bit is now completely integrated into the @R{} and package -->
+<!-- build systems. -->
+   <p>윈도우즈 64 비트는 현재 R과 패키지 구축 시스템들에 완전히 융화되었습니다.
 
 <div class="node">
 <a name="Testing-a-Windows-Installation"></a>
@@ -2032,28 +2040,35 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Windows">Installing
 
 </div>
 
-<h3 class="section">3.2 Testing an Installation</h3>
+<!-- @section Testing an Installation -->
+<h3 class="section">3.2 설치확인하기</h3>
 
-<p>The Windows installer contains a set of test files used when building
-R.
+<!-- The Windows installer contains a set of test files used when building -->
+<!-- @R{}. -->
+<p>윈도우즈 인스톨러는 R이 구축될 때 사용된 테스트 파일들의 세트를 포함하고 있습니다.
 
-   <p>The <code>Rtools</code> are not needed to run these tests. but more
-comprehensive analysis of errors will be given if <samp><span class="command">diff</span></samp> is in
-the path (and <code>errorsAreFatal = FALSE</code> is then not needed below).
+<!-- The @code{Rtools} are not needed to run these tests. but more -->
+<!-- comprehensive analysis of errors will be given if @command{diff} is in -->
+<!-- the path (and @code{errorsAreFatal = FALSE} is then not needed below). -->
+   <p><code>Rtools</code>는 이런 테스트들을 실행하기위해 필요하지는 않지만, 만약 <samp><span class="command">diff</span></samp>가 경로에 있다면 에러에 대하여 더욱 심도있는 분석이 주어지게 될 것입니다. 
+(<code>errorsAreFatal = FALSE</code> 이면 아래가 필요하지 않습니다).
 
-   <p>Launch either <code>Rgui</code> or <code>Rterm</code>, preferably with
-<samp><span class="option">--vanilla</span></samp>.  Then run
+<!-- Launch either @code{Rgui} or @code{Rterm}, preferably with -->
+<!-- @option{-vanilla}.  Then run -->
+   <p>가급적이면 <samp><span class="option">--vanilla</span></samp>와 함께 <code>Rgui</code>나 <code>Rterm</code>을 실행한 뒤, 다음을 수행하세요.
 
 <pre class="example">     library("tools")
      testInstalledBasic("both")
      testInstalledPackages("base", errorsAreFatal = FALSE)
      testInstalledPackages("recommended", errorsAreFatal = FALSE)
 </pre>
-   <p class="noindent">runs the basic tests and then all the tests on the standard and
-recommended packages.  These tests can be run from anywhere: they write
-their results in the <samp><span class="file">tests</span></samp> folder of the R home directory (as
-given by <code>R.home()</code>), and hence may need to be run under the
-account used to install R.
+   <p class="noindent"><!-- runs the basic tests and then all the tests on the standard and -->
+<!-- recommended packages.  These tests can be run from anywhere: they write -->
+<!-- their results in the @file{tests} folder of the @R{} home directory (as -->
+<!-- given by @code{R.home()}), and hence may need to be run under the -->
+<!-- account used to install @R{}. -->
+이들은 기본 테스트들을 실행하고 나서 기본 패키지와 추천 패키지들에 모든 테스트들을 실행합니다. 
+이 테스트들은 어디서든지 실행 될 수 있습니다: (<code>R.home()</code>에 의해 주어진) R home 디렉토리의 <samp><span class="file">test</span></samp> 폴더에 그들의 결과를 쓰기 때문에, R을 설치할 때 사용한 계정에서 실행해야 할 수도 있습니다.
 
 <div class="node">
 <a name="Installing-R-under-(Mac)-OS-X"></a>
