@@ -2968,12 +2968,16 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Locales">Locales</a>
 <!-- @subsection Locales under Linux -->
 <h4 class="subsection">7.1.1 리눅스에서의 로케일</h4>
 
-<p>Modern Linux uses the XPG<a rel="footnote" href="#fn-14" name="fnd-14"><sup>14</sup></a> locale specifications which have the form
-&lsquo;<samp><span class="samp">en_GB</span></samp>&rsquo;, &lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo;, &lsquo;<samp><span class="samp">aa_ER.UTF-8@saaho</span></samp>&rsquo;,
-&lsquo;<samp><span class="samp">de_AT.iso885915@euro</span></samp>&rsquo;, the components being in the order listed
-above.  (See <samp><span class="command">man locale</span></samp> and <samp><span class="command">locale -a</span></samp> for more
-details.)  Similar schemes are used by most Unix-alikes: some (including
-some distributions of Linux) use &lsquo;<samp><span class="samp">.utf8</span></samp>&rsquo; rather than &lsquo;<samp><span class="samp">.UTF-8</span></samp>&rsquo;.
+<!-- Modern Linux uses the XPG@footnote{`X/Open Portability Guide', which has -->
+<!-- had several versions.} locale specifications which have the form -->
+<!-- @samp{en_GB}, @samp{en_GB.UTF-8}, @samp{aa_ER.UTF-8@@saaho}, -->
+<!-- @samp{de_AT.iso885915@@euro}, the components being in the order listed -->
+<!-- above.  (See @command{man locale} and @command{locale -a} for more -->
+<!-- details.)  Similar schemes are used by most Unix-alikes: some (including -->
+<!-- some distributions of Linux) use @samp{.utf8} rather than @samp{.UTF-8}. -->
+<p>현대의 리눅스는 &lsquo;<samp><span class="samp">en_GB</span></samp>&rsquo;, &lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo;, &lsquo;<samp><span class="samp">aa_ER.UTF-8@saaho</span></samp>&rsquo;, &lsquo;<samp><span class="samp">de_AT.iso885915@euro</span></samp>&rsquo;와 같은 형식을 가지고 있는  XPG<a rel="footnote" href="#fn-14" name="fnd-14"><sup>14</sup></a> 로케일 지정을 사용합니다. 
+(더 자세한 내용은 <samp><span class="command">man loacle</span></samp>과 <samp><span class="command">locale -a</span></samp>을 살펴보세요). 
+대부분의 유닉스와 유사한 환경에서 비슷한 스킴이 사용됩니다: 일부 (리눅스를 포함)는 &lsquo;<samp><span class="samp">.UTF-8</span></samp>&rsquo; 보다 &lsquo;<samp><span class="samp">.utf-8</span></samp>&rsquo;을 사용하기도 합니다.
 
 <div class="node">
 <a name="Locales-under-Windows"></a>
@@ -2987,18 +2991,23 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Locales">Locales</a>
 <!-- @subsection Locales under Windows -->
 <h4 class="subsection">7.1.2 윈도우즈에서의 로케일</h4>
 
-<p>Windows also uses locales, but specified in a rather less concise way. 
-Most users will encounter locales only via drop-down menus, but more
-information and lists can be found at
-<a href="http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)">http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)</a>
-(or if Microsoft moves it yet again, search for &lsquo;<samp><span class="samp">Windows language
-country strings</span></samp>&rsquo;).
+<!-- Windows also uses locales, but specified in a rather less concise way. -->
+<!-- Most users will encounter locales only via drop-down menus, but more -->
+<!-- information and lists can be found at -->
+<!-- @uref{http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)} -->
+<!-- (or if Microsoft moves it yet again, search for @samp{Windows language -->
+<!-- country strings}). -->
+<p>윈도우즈 또한 로케일을 사용하지만 덜 간결한 방법으로 지정됩니다. 
+대부분의 사용자들은 오로지 드랍-다운 메뉴를 통해서만 로케일을 조절할 수 있으나, 더 많은 정보를 <a href="http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)">http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)</a> 에서 찾을 수 있습니다 (또는 Microsoft가 이를 아직 다시 옮기지 않았다면, &lsquo;<samp><span class="samp">Windows language country strings</span></samp>&rsquo;로 검색해보시길 바랍니다).
 
-   <p>It offers only one encoding per language.
+<!-- It offers only one encoding per language. -->
+   <p>언어별로 오로지 하나의 인코딩만을 제공합니다.
 
-   <p>Some care is needed with Windows' locale names.  For example,
-<code>chinese</code> is Traditional Chinese and not Simplified Chinese as used
-in most of the Chinese-speaking world.
+<!-- Some care is needed with Windows' locale names.  For example, -->
+<!-- @code{chinese} is Traditional Chinese and not Simplified Chinese as used -->
+<!-- in most of the Chinese-speaking world. -->
+   <p>윈도우즈의 로케일명을 사용할때는 다소 주의가 필요합니다. 
+예를들면 <code>chinese</code>는 중국어 번체를 의미하지 많은 중국인들이 사용하는 간체를 의미하지 않습니다.
 
 <div class="node">
 <a name="Locales-under-OS-X"></a>
@@ -3011,24 +3020,31 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Locales">Locales</a>
 <!-- @subsection Locales under OS X -->
 <h4 class="subsection">7.1.3 OS X에서의 로케일</h4>
 
-<p>OS X supports locales in its own particular way, but the R GUI tries to
-make this easier for users. See
-<a href="http://developer.apple.com/documentation/MacOSX/Conceptual/BPInternational/">http://developer.apple.com/documentation/MacOSX/Conceptual/BPInternational/</a>
-for how users can set their locales.  As with Windows, end users will
-generally only see lists of languages/territories.  Users of R in a
-terminal may need to set the locale to something like &lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo;
-if it defaults to &lsquo;<samp><span class="samp">C</span></samp>&rsquo; (as it sometimes does when logging it
-remotely and in batch jobs: note whether <samp><span class="command">Terminal</span></samp> sets the
-<samp><span class="env">LANG</span></samp> environment variable is an (advanced) option, but the
-default).
+<!-- OS X supports locales in its own particular way, but the R GUI tries to -->
+<!-- make this easier for users. See -->
+<!-- @uref{http://developer.apple.com/@/documentation/@/MacOSX/@/Conceptual/@/BPInternational/} -->
+<!-- for how users can set their locales.  As with Windows, end users will -->
+<!-- generally only see lists of languages/territories.  Users of @R{} in a -->
+<!-- terminal may need to set the locale to something like @samp{en_GB.UTF-8} -->
+<!-- if it defaults to @samp{C} (as it sometimes does when logging it -->
+<!-- remotely and in batch jobs: note whether @command{Terminal} sets the -->
+<!-- @env{LANG} environment variable is an (advanced) option, but the -->
+<!-- default). -->
+<p>OS X는 그들의 특별한 방법으로 로케일을 지원하지만, R GUI는 사용자에게 보다 쉽게 만들고자 하였습니다. 
+어떻게 사용자가 그들의 로케일을 지정할 수 있는지에 대해서는 <a href="http://developer.apple.com/documentation/MacOSX/Conceptual/BPInternational/">http://developer.apple.com/documentation/MacOSX/Conceptual/BPInternational/</a>를 살펴보시길 발바니다. 
+윈도우즈에서와 같이 사용자는 일반적으로 언어/지역의 목록만을 볼 수 있습니다. 
+만약 로케일의 기본이 &lsquo;<samp><span class="samp">C</span></samp>&rsquo; 터미널 내에서 R의 사용자들은 &lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo;과 같이 로케일을 지정할 필요가 있습니다 (마치 때때로 이를 원격으로 로그인하고 배치작업을 수행할때입니다: <samp><span class="command">Terminal</span></samp>이 <samp><span class="env">LANG</span></samp> 환경변수를 조절할 수 있는지 여부는 (advanced) 옵션입니다).
 
-   <p>Internally OS X uses a form similar to Linux.  It is based on ICU
-locales IDs (<a href="http://userguide.icu-project.org/locale">http://userguide.icu-project.org/locale</a>) and not
-XPG ones, but utilities such as <code>Sys.setlocale()</code> do normally
-accept XPG forms.  So there are locales like <code>de_AT.ISO8859-15</code>
-(German in Austria in Latin-9, which covers the Euro): the main
-difference from other Unix-alikes is that where a character set is not
-specified it is assumed to be <code>UTF-8</code>.
+<!-- Internally OS X uses a form similar to Linux.  It is based on ICU -->
+<!-- locales IDs (@uref{http://userguide.icu-project.org/@/locale}) and not -->
+<!-- XPG ones, but utilities such as @code{Sys.setlocale()} do normally -->
+<!-- accept XPG forms.  So there are locales like @code{de_AT.ISO8859-15} -->
+<!-- (German in Austria in Latin-9, which covers the Euro): the main -->
+<!-- difference from other Unix-alikes is that where a character set is not -->
+<!-- specified it is assumed to be @code{UTF-8}. -->
+   <p>내부적으로 OS X는 리눅스와 유사한 형식을 이용합니다. 
+이는 XPG가 아닌 ICU 로케일 ID (<a href="http://userguide.icu-project.org/locale">http://userguide.icu-project.org/locale</a>)에 기반을 두는데, <code>Sys.setlocale()</code>과 같은 유틸리티가 일반적으로 XPG 형식을 수용합니다. 
+그래서 <code>de_AT.ISG8859-155</code>와 같은 로케일을 보여주게 됩니다: 다른 유닉스와 비슷한 환경과 다른 점은 <code>UTF-8</code>이 가정되는 문자셋이 지정되지 않다는 것입니다.
 
 <div class="node">
 <a name="Localization-of-messages"></a>
@@ -3060,58 +3076,80 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Internationalization">Internationaliza
 코드는 열심히 로케일을 언어에 매칭하려고 하지만 일부 시스템 (특히 윈도우즈)는 환경변수  <samp><span class="env">LC_ALL</span></samp>에 필요한 로케일이름들이 XPG 랭귀지명과 완전히 일치하지 않습니다.  따라서, <samp><span class="env">LANGUAGE</span></samp>는 지정되어야 할 필요가 있습니다. 
 (하나의 예로 윈도우즈에서 &lsquo;<samp><span class="samp">LC_ALL=es</span></samp>&rsquo;는 로케일을 에스토냐로 하고 언어는 스패니쉬로 설정합니다).
 
-   <p>It is usually possible to change the language once R is running
-<em>via</em> (not Windows) <code>Sys.setlocale("LC_MESSAGES",
-"new_locale")</code>, or by setting an environment variable such as
-<samp><span class="env">LANGUAGE</span></samp>, <em>provided</em><a rel="footnote" href="#fn-16" name="fnd-16"><sup>16</sup></a> the language you are changing to can be output in
-the current character set.  But this is OS-specific, and has been known
-to stop working on an OS upgrade.
+<!-- It is usually possible to change the language once @R{} is running -->
+<!-- @emph{via} (not Windows) @code{Sys.setlocale("LC_MESSAGES", -->
+<!-- "new_locale")}, or by setting an environment variable such as -->
+<!-- @env{LANGUAGE}, @emph{provided}@footnote{If you try changing from French -->
+<!-- to Russian except in a UTF-8 locale, you will most likely find messages -->
+<!-- change to English.} the language you are changing to can be output in -->
+<!-- the current character set.  But this is OS-specific, and has been known -->
+<!-- to stop working on an OS upgrade. -->
+   <p>보통은 R이 실행중일때 <code>Sys.setlocale("LC_MESSAGES", "new_locale")</code>을 이용하거나, 만약 변경하고자 하는 언어가 현재의 문자셋이 제공된다면 <samp><span class="env">LANGUAGE</span></samp>와 같은 환경변수를 이용하여 변경할 수 있습니다 <a rel="footnote" href="#fn-16" name="fnd-16"><sup>16</sup></a>. 
+그러나, 이는 운영체제별로 다르며, 업그레이드시 중단되기도 한다고 알려져 있습니다.
 
-   <p>Messages are divided into <em>domains</em>, and translations may be
-available for some or all messages in a domain.  R makes use of the
-following domains.
+<!-- Messages are divided into @emph{domains}, and translations may be -->
+<!-- available for some or all messages in a domain.  @R{} makes use of the -->
+<!-- following domains. -->
+   <p>메시지는 도메인들로 나뉘어지며, 각 도메인들에서 일부 또는 모든 메시지들에 대한 번역이 가능합니다. 
+R은 당므과 같은 도메인을 이용합니다.
 
      <ul>
-<li>Domain <code>R</code> for the C-level error and warning messages from the R
-interpreter.
+<li><!-- Domain @code{R} for the C-level error and warning messages from the @R{} -->
+<!-- interpreter. -->
+R인터프리터로부터 발생하는 C언어 수준의 에러와 경고 메시지들에 해당하는 도메인 <code>R</code>이 있습니다.
 
-     <li>Domain <code>R-</code><var>pkg</var> for the R <code>stop</code>, <code>warning</code> and
-<code>message</code> messages in each package, including <code>R-base</code> for the
-<strong>base</strong> package.
+     <li><!-- Domain @code{R-@var{pkg}} for the R @code{stop}, @code{warning} and -->
+<!-- @code{message} messages in each package, including @code{R-base} for the -->
+<!-- @pkg{base} package. -->
+<strong>base</strong> 패키지를 위한 <code>R-base</code>를 포함하여 각 패키지안의 R <code>stop</code>, <code>warning</code>, 그리고 <code>message</code> 메시지들을 위한 도메인 <code>R-</code><var>pkg</var>가 있습니다.
 
-     <li>Domain <var>pkg</var> for the C-level messages in each package.
+     <li><!-- Domain @code{@var{pkg}} for the C-level messages in each package. -->
+각 패키지마다 C언어수준의 메시지를 위한 도메인 <var>pkg</var>가 있습니다.
 
-     <li>Domain <code>RGui</code> for the menus etc of the R for Windows GUI front-end.
+     <li><!-- Domain @code{RGui} for the menus etc of the R for Windows GUI front-end. -->
+Windows GUI 사용을 위한 메뉴들을 위한  <code>RGui</code> 도메인이 있습니다. 
+</ul>
 
-   </ul>
+<!-- Dividing up the messages in this way allows @R{} to be extensible: as -->
+<!-- packages are loaded, their message translation catalogues can be loaded -->
+<!-- too. -->
+   <p>이렇게 도메인을 나누는 것은 R을 확장가능하도록 해줍니다:  패키지가 로드될때, 메시지 번역 카탈로그들도 함께 로드됩니다.
 
-   <p>Dividing up the messages in this way allows R to be extensible: as
-packages are loaded, their message translation catalogues can be loaded
-too.
+<!-- @R{} can be built without support for translations, but it is enabled by -->
+<!-- default. -->
+   <p>R은 번역의 지원없이 빌드될 수 있으나, 기본적으로는 지원하도록 되어 있습니다.
 
-   <p>R can be built without support for translations, but it is enabled by
-default.
+<!-- Translations are looked for by domain according to the currently -->
+<!-- specified language, as specifically as possible, so for example an -->
+<!-- Austrian (@samp{de_AT}) translation catalogue will be used in preference -->
+<!-- to a generic German one (@samp{de}) for an Austrian user.  However, if a -->
+<!-- specific translation catalogue exists but does not contain a -->
+<!-- translation, the less specific catalogues are consulted.  For example, -->
+<!-- @R{} has catalogues for @samp{en_GB} that translate the Americanisms -->
+<!-- (e.g., @samp{gray}) in the standard messages into English.@footnote{the -->
+<!-- language written in England: some people living in the USA appropriate -->
+<!-- this name for their language.}  Two other examples: there are catalogues -->
+<!-- for @samp{es}, which is Spanish as written in Spain and these will by -->
+<!-- default also be used in Spanish-speaking Latin American countries, and -->
+<!-- also for @samp{pt_BR}, which are used for Brazilian locales but not for -->
+<!-- locales specifying Portugal. -->
+   <p>번역은 현재 가능한 정확하게 지정된 언어에 따라서 도메인에 의하여 찾아지게 됩니다. 
+예를들면, 오스트리안 (&lsquo;<samp><span class="samp">de_AT</span></samp>&rsquo;) 번역 카탈로그는 오스트리안 사용자들을 위하여 일반 독일어 (&lsquo;<samp><span class="samp">de</span></samp>&rsquo;)의 사용보다 우선합니다. 
+그런데, 만약 특정한 번역 카탈로그가 존재하지만 번역을 포함하고 있지 않다면 덜 정교한 번역이 보여집니다. 
+예를들면, R은 Americanisms를 English<a rel="footnote" href="#fn-17" name="fnd-17"><sup>17</sup></a>로 보여주는 카탈로그 &lsquo;<samp><span class="samp">en_GB</span></samp>&rsquo;를 가지고 있습니다. 
+두가지 추가적인 예가 있습니다. 
+스페인에서 사용되는 스패니쉬인 &lsquo;<samp><span class="samp">es</span></samp>&rsquo;이라는 카탈로그가 있는데, 이들은 기본적으로 Spanish-speaking Latin American 국가에서 사용됩니다. 그리고 브라질 로케일에서 사요되는 &lsquo;<samp><span class="samp">pt_BR</span></samp>&rsquo;은 포르투칼어를 지정하는 로케일과는 다릅니다.
 
-   <p>Translations are looked for by domain according to the currently
-specified language, as specifically as possible, so for example an
-Austrian (&lsquo;<samp><span class="samp">de_AT</span></samp>&rsquo;) translation catalogue will be used in preference
-to a generic German one (&lsquo;<samp><span class="samp">de</span></samp>&rsquo;) for an Austrian user.  However, if a
-specific translation catalogue exists but does not contain a
-translation, the less specific catalogues are consulted.  For example,
-R has catalogues for &lsquo;<samp><span class="samp">en_GB</span></samp>&rsquo; that translate the Americanisms
-(e.g., &lsquo;<samp><span class="samp">gray</span></samp>&rsquo;) in the standard messages into English.<a rel="footnote" href="#fn-17" name="fnd-17"><sup>17</sup></a>  Two other examples: there are catalogues
-for &lsquo;<samp><span class="samp">es</span></samp>&rsquo;, which is Spanish as written in Spain and these will by
-default also be used in Spanish-speaking Latin American countries, and
-also for &lsquo;<samp><span class="samp">pt_BR</span></samp>&rsquo;, which are used for Brazilian locales but not for
-locales specifying Portugal.
-
-   <p>Translations in the right language but the wrong charset are made use of
-<a name="index-LANGUAGE-66"></a>by on-the-fly re-encoding.  The <samp><span class="env">LANGUAGE</span></samp> variable (only) can be a
-colon-separated list, for example &lsquo;<samp><span class="samp">se:de</span></samp>&rsquo;, giving a set of
-languages in decreasing order of preference.  One special value is
-&lsquo;<samp><span class="samp">en@quot</span></samp>&rsquo;, which can be used in a UTF-8 locale to have American
-error messages with pairs of single quotes translated to Unicode directional
-quotes.
+<!-- Translations in the right language but the wrong charset are made use of -->
+   <p><a name="index-LANGUAGE-66"></a><!-- by on-the-fly re-encoding.  The @env{LANGUAGE} variable (only) can be a -->
+<!-- colon-separated list, for example @samp{se:de}, giving a set of -->
+<!-- languages in decreasing order of preference.  One special value is -->
+<!-- @samp{en@@quot}, which can be used in a UTF-8 locale to have American -->
+<!-- error messages with pairs of single quotes translated to Unicode directional -->
+<!-- quotes. -->
+번역의 언어가 올바르지만 잘못된 문자셋은 때에 따라서 재인코딩과정을 거칩니다. 
+<samp><span class="env">LANGUAGE</span></samp> 변수만이 콜론으로 된 구분될 수 있는 리스트일 수 있습니다. 예를들면, &lsquo;<samp><span class="samp">se:de</span></samp>&rsquo;이와 같이 언어선호도를 표시하는 것입니다. 
+특별한 것은 &lsquo;<samp><span class="samp">en@quot</span></samp>&rsquo;인데, 이는 UTF-8 로케일에서 미국식 에러 메시지에서 이용되는 작은 따옴표 두개의 사용이 한 쪽 방향의 유니코드식 큰 따옴표로 표시되게 해주는 것입니다.
 
 <!-- If no suitable translation catalogue is found or a particular message is -->
 <!-- not translated in any suitable catalogue, `English'@footnote{with -->
@@ -3122,7 +3160,6 @@ quotes.
 <!-- prepare and install translation catalogues. -->
    <p>어떻게 번역 카탈로그를 준비하고 설치하는지 확인하기 위해서는 <a href="http://developer.r-project.org/Translations.html">http://developer.r-project.org/Translations.html</a>를 살펴보시길 바랍니다.
 
-<!-- ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc -->
 <div class="node">
 <a name="Choosing-between-32--and-64-bit-builds"></a>
 <a name="Choosing-between-32_002d-and-64_002dbit-builds"></a>
@@ -6272,18 +6309,13 @@ depending on the version of OS X, and including the `Command Line Tools'
 which in recent versions of <samp><span class="command">Xcode</span></samp> can be downloaded for inside
 Xcode, under the Preferences.</p>
 
-   <p class="footnote"><small>[<a name="fn-14" href="#fnd-14">14</a>]</small> `X/Open Portability Guide', which has
-had several versions.</p>
+   <p class="footnote"><small>[<a name="fn-14" href="#fnd-14">14</a>]</small> 여러개의 버전들을 가지고 있는 `X/Open Portability Guide'</p>
 
    <p class="footnote"><small>[<a name="fn-15" href="#fnd-15">15</a>]</small> 일부 시스템에서는 <samp><span class="env">LC_ALL</span></samp> 또는 <samp><span class="env">LC_MESSAGES</span></samp>를 &lsquo;<samp><span class="samp">C</span></samp>&rsquo;로 지정하는 것은 <samp><span class="env">LANGUAGE</span></samp>를 사용하지 못하게 하기도 합니다</p>
 
-   <p class="footnote"><small>[<a name="fn-16" href="#fnd-16">16</a>]</small> If you try changing from French
-to Russian except in a UTF-8 locale, you will most likely find messages
-change to English.</p>
+   <p class="footnote"><small>[<a name="fn-16" href="#fnd-16">16</a>]</small> 만약 불어에서 러시안으로 변경을 시도하는데 UTF-8 로케일이 빠져있다면, 영어로 된 메시지를 보게 될 가능성이 있습니다</p>
 
-   <p class="footnote"><small>[<a name="fn-17" href="#fnd-17">17</a>]</small> the
-language written in England: some people living in the USA appropriate
-this name for their language.</p>
+   <p class="footnote"><small>[<a name="fn-17" href="#fnd-17">17</a>]</small> 영국권에서 사용되는 영어: </p>
 
    <p class="footnote"><small>[<a name="fn-18" href="#fnd-18">18</a>]</small> 미국식</p>
 

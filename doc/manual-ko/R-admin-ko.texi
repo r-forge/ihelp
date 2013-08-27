@@ -2688,53 +2688,70 @@ and @option{--build} can be added to zip up the installation.
 @c @subsection Locales under Linux
 @subsection 리눅스에서의 로케일 
 
-Modern Linux uses the XPG@footnote{`X/Open Portability Guide', which has
-had several versions.} locale specifications which have the form
-@samp{en_GB}, @samp{en_GB.UTF-8}, @samp{aa_ER.UTF-8@@saaho},
-@samp{de_AT.iso885915@@euro}, the components being in the order listed
-above.  (See @command{man locale} and @command{locale -a} for more
-details.)  Similar schemes are used by most Unix-alikes: some (including
-some distributions of Linux) use @samp{.utf8} rather than @samp{.UTF-8}.
+@c Modern Linux uses the XPG@footnote{`X/Open Portability Guide', which has
+@c had several versions.} locale specifications which have the form
+@c @samp{en_GB}, @samp{en_GB.UTF-8}, @samp{aa_ER.UTF-8@@saaho},
+@c @samp{de_AT.iso885915@@euro}, the components being in the order listed
+@c above.  (See @command{man locale} and @command{locale -a} for more
+@c details.)  Similar schemes are used by most Unix-alikes: some (including
+@c some distributions of Linux) use @samp{.utf8} rather than @samp{.UTF-8}.
+현대의 리눅스는 @samp{en_GB}, @samp{en_GB.UTF-8}, @samp{aa_ER.UTF-8@@saaho}, @samp{de_AT.iso885915@@euro}와 같은 형식을 가지고 있는  XPG@footnote{여러개의 버전들을 가지고 있는 `X/Open Portability Guide'} 로케일 지정을 사용합니다.
+(더 자세한 내용은 @command{man loacle}과 @command{locale -a}을 살펴보세요). 
+대부분의 유닉스와 유사한 환경에서 비슷한 스킴이 사용됩니다: 일부 (리눅스를 포함)는 @samp{.UTF-8} 보다 @samp{.utf-8}을 사용하기도 합니다.
 
 @node Locales under Windows, Locales under OS X, Locales under Linux, Locales
 @c @subsection Locales under Windows
 @subsection 윈도우즈에서의 로케일 
 
-Windows also uses locales, but specified in a rather less concise way.
-Most users will encounter locales only via drop-down menus, but more
-information and lists can be found at
-@uref{http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)}
-(or if Microsoft moves it yet again, search for @samp{Windows language
-country strings}).
+@c Windows also uses locales, but specified in a rather less concise way.
+@c Most users will encounter locales only via drop-down menus, but more
+@c information and lists can be found at
+@c @uref{http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)}
+@c (or if Microsoft moves it yet again, search for @samp{Windows language
+@c country strings}).
+윈도우즈 또한 로케일을 사용하지만 덜 간결한 방법으로 지정됩니다.
+대부분의 사용자들은 오로지 드랍-다운 메뉴를 통해서만 로케일을 조절할 수 있으나, 더 많은 정보를 @uref{http://msdn.microsoft.com/en-us/library/hzz3tw78(v=vs.80)} 에서 찾을 수 있습니다 (또는 Microsoft가 이를 아직 다시 옮기지 않았다면, @samp{Windows language country strings}로 검색해보시길 바랍니다). 
 
-It offers only one encoding per language.
+@c It offers only one encoding per language.
+언어별로 오로지 하나의 인코딩만을 제공합니다.
 
-Some care is needed with Windows' locale names.  For example,
-@code{chinese} is Traditional Chinese and not Simplified Chinese as used
-in most of the Chinese-speaking world.
+@c Some care is needed with Windows' locale names.  For example,
+@c @code{chinese} is Traditional Chinese and not Simplified Chinese as used
+@c in most of the Chinese-speaking world.
+윈도우즈의 로케일명을 사용할때는 다소 주의가 필요합니다.
+예를들면 @code{chinese}는 중국어 번체를 의미하지 많은 중국인들이 사용하는 간체를 의미하지 않습니다.
 
 @node Locales under OS X,  , Locales under Windows, Locales
 @c @subsection Locales under OS X
 @subsection OS X에서의 로케일 
 
-OS X supports locales in its own particular way, but the R GUI tries to
-make this easier for users. See
-@uref{http://developer.apple.com/@/documentation/@/MacOSX/@/Conceptual/@/BPInternational/}
-for how users can set their locales.  As with Windows, end users will
-generally only see lists of languages/territories.  Users of @R{} in a
-terminal may need to set the locale to something like @samp{en_GB.UTF-8}
-if it defaults to @samp{C} (as it sometimes does when logging it
-remotely and in batch jobs: note whether @command{Terminal} sets the
-@env{LANG} environment variable is an (advanced) option, but the
-default).
+@c OS X supports locales in its own particular way, but the R GUI tries to
+@c make this easier for users. See
+@c @uref{http://developer.apple.com/@/documentation/@/MacOSX/@/Conceptual/@/BPInternational/}
+@c for how users can set their locales.  As with Windows, end users will
+@c generally only see lists of languages/territories.  Users of @R{} in a
+@c terminal may need to set the locale to something like @samp{en_GB.UTF-8}
+@c if it defaults to @samp{C} (as it sometimes does when logging it
+@c remotely and in batch jobs: note whether @command{Terminal} sets the
+@c @env{LANG} environment variable is an (advanced) option, but the
+@c default).
 
-Internally OS X uses a form similar to Linux.  It is based on ICU
-locales IDs (@uref{http://userguide.icu-project.org/@/locale}) and not
-XPG ones, but utilities such as @code{Sys.setlocale()} do normally
-accept XPG forms.  So there are locales like @code{de_AT.ISO8859-15}
-(German in Austria in Latin-9, which covers the Euro): the main
-difference from other Unix-alikes is that where a character set is not
-specified it is assumed to be @code{UTF-8}.
+OS X는 그들의 특별한 방법으로 로케일을 지원하지만, R GUI는 사용자에게 보다 쉽게 만들고자 하였습니다.
+어떻게 사용자가 그들의 로케일을 지정할 수 있는지에 대해서는 @uref{http://developer.apple.com/@/documentation/@/MacOSX/@/Conceptual/@/BPInternational/}를 살펴보시길 발바니다.
+윈도우즈에서와 같이 사용자는 일반적으로 언어/지역의 목록만을 볼 수 있습니다. 
+만약 로케일의 기본이 @samp{C} 터미널 내에서 @R{}의 사용자들은 @samp{en_GB.UTF-8}과 같이 로케일을 지정할 필요가 있습니다 (마치 때때로 이를 원격으로 로그인하고 배치작업을 수행할때입니다: @command{Terminal}이 @env{LANG} 환경변수를 조절할 수 있는지 여부는 (advanced) 옵션입니다).
+
+
+@c Internally OS X uses a form similar to Linux.  It is based on ICU
+@c locales IDs (@uref{http://userguide.icu-project.org/@/locale}) and not
+@c XPG ones, but utilities such as @code{Sys.setlocale()} do normally
+@c accept XPG forms.  So there are locales like @code{de_AT.ISO8859-15}
+@c (German in Austria in Latin-9, which covers the Euro): the main
+@c difference from other Unix-alikes is that where a character set is not
+@c specified it is assumed to be @code{UTF-8}.
+내부적으로 OS X는 리눅스와 유사한 형식을 이용합니다.
+이는 XPG가 아닌 ICU 로케일 ID (@uref{http://userguide.icu-project.org/@/locale})에 기반을 두는데, @code{Sys.setlocale()}과 같은 유틸리티가 일반적으로 XPG 형식을 수용합니다.
+그래서 @code{de_AT.ISG8859-155}와 같은 로케일을 보여주게 됩니다: 다른 유닉스와 비슷한 환경과 다른 점은 @code{UTF-8}이 가정되는 문자셋이 지정되지 않다는 것입니다. 
 
 
 @node Localization of messages,  , Locales, Internationalization
@@ -2764,69 +2781,87 @@ specified it is assumed to be @code{UTF-8}.
 코드는 열심히 로케일을 언어에 매칭하려고 하지만 일부 시스템 (특히 윈도우즈)는 환경변수  @env{LC_ALL}에 필요한 로케일이름들이 XPG 랭귀지명과 완전히 일치하지 않습니다.  따라서, @env{LANGUAGE}는 지정되어야 할 필요가 있습니다.
 (하나의 예로 윈도우즈에서 @samp{LC_ALL=es}는 로케일을 에스토냐로 하고 언어는 스패니쉬로 설정합니다).
    
+@c It is usually possible to change the language once @R{} is running
+@c @emph{via} (not Windows) @code{Sys.setlocale("LC_MESSAGES",
+@c "new_locale")}, or by setting an environment variable such as
+@c @env{LANGUAGE}, @emph{provided}@footnote{If you try changing from French
+@c to Russian except in a UTF-8 locale, you will most likely find messages
+@c change to English.} the language you are changing to can be output in
+@c the current character set.  But this is OS-specific, and has been known
+@c to stop working on an OS upgrade.
+보통은 @R{}이 실행중일때 @code{Sys.setlocale("LC_MESSAGES", "new_locale")}을 이용하거나, 만약 변경하고자 하는 언어가 현재의 문자셋이 제공된다면 @env{LANGUAGE}와 같은 환경변수를 이용하여 변경할 수 있습니다 @footnote{만약 불어에서 러시안으로 변경을 시도하는데 UTF-8 로케일이 빠져있다면, 영어로 된 메시지를 보게 될 가능성이 있습니다}. 
+그러나, 이는 운영체제별로 다르며, 업그레이드시 중단되기도 한다고 알려져 있습니다.
 
 
-It is usually possible to change the language once @R{} is running
-@emph{via} (not Windows) @code{Sys.setlocale("LC_MESSAGES",
-"new_locale")}, or by setting an environment variable such as
-@env{LANGUAGE}, @emph{provided}@footnote{If you try changing from French
-to Russian except in a UTF-8 locale, you will most likely find messages
-change to English.} the language you are changing to can be output in
-the current character set.  But this is OS-specific, and has been known
-to stop working on an OS upgrade.
-
-Messages are divided into @emph{domains}, and translations may be
-available for some or all messages in a domain.  @R{} makes use of the
-following domains.
+@c Messages are divided into @emph{domains}, and translations may be
+@c available for some or all messages in a domain.  @R{} makes use of the
+@c following domains.
+메시지는 도메인들로 나뉘어지며, 각 도메인들에서 일부 또는 모든 메시지들에 대한 번역이 가능합니다.
+@R{}은 당므과 같은 도메인을 이용합니다.
 
 @itemize
 @item
-Domain @code{R} for the C-level error and warning messages from the @R{}
-interpreter.
+@c Domain @code{R} for the C-level error and warning messages from the @R{}
+@c interpreter.
+@R{}인터프리터로부터 발생하는 C언어 수준의 에러와 경고 메시지들에 해당하는 도메인 @code{R}이 있습니다.
 
 @item
-Domain @code{R-@var{pkg}} for the R @code{stop}, @code{warning} and
-@code{message} messages in each package, including @code{R-base} for the
-@pkg{base} package.
+@c Domain @code{R-@var{pkg}} for the R @code{stop}, @code{warning} and
+@c @code{message} messages in each package, including @code{R-base} for the
+@c @pkg{base} package.
+@pkg{base} 패키지를 위한 @code{R-base}를 포함하여 각 패키지안의 R @code{stop}, @code{warning}, 그리고 @code{message} 메시지들을 위한 도메인 @code{R-@var{pkg}}가 있습니다.
 
 @item
-Domain @code{@var{pkg}} for the C-level messages in each package.
+@c Domain @code{@var{pkg}} for the C-level messages in each package.
+각 패키지마다 C언어수준의 메시지를 위한 도메인 @code{@var{pkg}}가 있습니다.
 
 @item
-Domain @code{RGui} for the menus etc of the R for Windows GUI front-end.
-
+@c Domain @code{RGui} for the menus etc of the R for Windows GUI front-end.
+Windows GUI 사용을 위한 메뉴들을 위한  @code{RGui} 도메인이 있습니다.
 @end itemize
 
-Dividing up the messages in this way allows @R{} to be extensible: as
-packages are loaded, their message translation catalogues can be loaded
-too.
+@c Dividing up the messages in this way allows @R{} to be extensible: as
+@c packages are loaded, their message translation catalogues can be loaded
+@c too.
+이렇게 도메인을 나누는 것은 @R{}을 확장가능하도록 해줍니다:  패키지가 로드될때, 메시지 번역 카탈로그들도 함께 로드됩니다.
 
-@R{} can be built without support for translations, but it is enabled by
-default.
+@c @R{} can be built without support for translations, but it is enabled by
+@c default.
+@R{}은 번역의 지원없이 빌드될 수 있으나, 기본적으로는 지원하도록 되어 있습니다.
 
-Translations are looked for by domain according to the currently
-specified language, as specifically as possible, so for example an
-Austrian (@samp{de_AT}) translation catalogue will be used in preference
-to a generic German one (@samp{de}) for an Austrian user.  However, if a
-specific translation catalogue exists but does not contain a
-translation, the less specific catalogues are consulted.  For example,
-@R{} has catalogues for @samp{en_GB} that translate the Americanisms
-(e.g., @samp{gray}) in the standard messages into English.@footnote{the
-language written in England: some people living in the USA appropriate
-this name for their language.}  Two other examples: there are catalogues
-for @samp{es}, which is Spanish as written in Spain and these will by
-default also be used in Spanish-speaking Latin American countries, and
-also for @samp{pt_BR}, which are used for Brazilian locales but not for
-locales specifying Portugal.
+@c Translations are looked for by domain according to the currently
+@c specified language, as specifically as possible, so for example an
+@c Austrian (@samp{de_AT}) translation catalogue will be used in preference
+@c to a generic German one (@samp{de}) for an Austrian user.  However, if a
+@c specific translation catalogue exists but does not contain a
+@c translation, the less specific catalogues are consulted.  For example,
+@c @R{} has catalogues for @samp{en_GB} that translate the Americanisms
+@c (e.g., @samp{gray}) in the standard messages into English.@footnote{the
+@c language written in England: some people living in the USA appropriate
+@c this name for their language.}  Two other examples: there are catalogues
+@c for @samp{es}, which is Spanish as written in Spain and these will by
+@c default also be used in Spanish-speaking Latin American countries, and
+@c also for @samp{pt_BR}, which are used for Brazilian locales but not for
+@c locales specifying Portugal.
+번역은 현재 가능한 정확하게 지정된 언어에 따라서 도메인에 의하여 찾아지게 됩니다.
+예를들면, 오스트리안 (@samp{de_AT}) 번역 카탈로그는 오스트리안 사용자들을 위하여 일반 독일어 (@samp{de})의 사용보다 우선합니다.
+그런데, 만약 특정한 번역 카탈로그가 존재하지만 번역을 포함하고 있지 않다면 덜 정교한 번역이 보여집니다.
+예를들면, @R{}은 Americanisms를 English@footnote{영국권에서 사용되는 영어: }로 보여주는 카탈로그 @samp{en_GB}를 가지고 있습니다.
+두가지 추가적인 예가 있습니다.
+스페인에서 사용되는 스패니쉬인 @samp{es}이라는 카탈로그가 있는데, 이들은 기본적으로 Spanish-speaking Latin American 국가에서 사용됩니다. 그리고 브라질 로케일에서 사요되는 @samp{pt_BR}은 포르투칼어를 지정하는 로케일과는 다릅니다.
+   
 
-Translations in the right language but the wrong charset are made use of
+@c Translations in the right language but the wrong charset are made use of
 @enindex LANGUAGE
-by on-the-fly re-encoding.  The @env{LANGUAGE} variable (only) can be a
-colon-separated list, for example @samp{se:de}, giving a set of
-languages in decreasing order of preference.  One special value is
-@samp{en@@quot}, which can be used in a UTF-8 locale to have American
-error messages with pairs of single quotes translated to Unicode directional
-quotes.
+@c by on-the-fly re-encoding.  The @env{LANGUAGE} variable (only) can be a
+@c colon-separated list, for example @samp{se:de}, giving a set of
+@c languages in decreasing order of preference.  One special value is
+@c @samp{en@@quot}, which can be used in a UTF-8 locale to have American
+@c error messages with pairs of single quotes translated to Unicode directional
+@c quotes.
+번역의 언어가 올바르지만 잘못된 문자셋은 때에 따라서 재인코딩과정을 거칩니다.
+@env{LANGUAGE} 변수만이 콜론으로 된 구분될 수 있는 리스트일 수 있습니다. 예를들면, @samp{se:de}이와 같이 언어선호도를 표시하는 것입니다.
+특별한 것은 @samp{en@@quot}인데, 이는 UTF-8 로케일에서 미국식 에러 메시지에서 이용되는 작은 따옴표 두개의 사용이 한 쪽 방향의 유니코드식 큰 따옴표로 표시되게 해주는 것입니다.
 
 @c If no suitable translation catalogue is found or a particular message is
 @c not translated in any suitable catalogue, `English'@footnote{with
@@ -2836,8 +2871,6 @@ quotes.
 @c See @uref{http://developer.r-project.org/@/Translations.html} for how to
 @c prepare and install translation catalogues.
 어떻게 번역 카탈로그를 준비하고 설치하는지 확인하기 위해서는 @uref{http://developer.r-project.org/@/Translations.html}를 살펴보시길 바랍니다.
-
-@c ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 @node Choosing between 32- and 64-bit builds, The standalone Rmath library, Internationalization, Top
 @chapter Choosing between 32- and 64-bit builds
