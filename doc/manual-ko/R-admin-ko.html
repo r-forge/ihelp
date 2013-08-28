@@ -119,9 +119,9 @@ p {
 <li><a href="#Uninstalling-under-OS-X">4.1 OS X에서 삭제하기</a>
 </li></ul>
 <li><a name="toc_Running-R" href="#Running-R">5 R 실행하기</a>
-<li><a name="toc_Add_002don-packages" href="#Add_002don-packages">6 Add-on packages</a>
+<li><a name="toc_Add_002don-packages" href="#Add_002don-packages">6 추가 기능 팩키지들</a>
 <ul>
-<li><a href="#Default-packages">6.1 Default packages</a>
+<li><a href="#Default-packages">6.1 기본 팩키지</a>
 <li><a href="#Managing-libraries">6.2 Managing libraries</a>
 <li><a href="#Installing-packages">6.3 Installing packages</a>
 <ul>
@@ -1644,7 +1644,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 <p><a name="index-TMPDIR-27"></a><!-- Set the environment variable @env{TMPDIR} to point to a writable -->
 <!-- directory, with a path specified with forward slashes and no spaces. -->
 <!-- (The default is @file{/tmp}, which may not be useful on Windows.) -->
-환경 변수인 <samp><span class="env">TMPDIR</span></samp>을 포워드 슬래시 (forward slash)와 띄어쓰기없이 지정한 path를 사용하여  쓰기 가능한 디렉토리로 가리키도록 설정하십시요. (기본 설정은 <samp><span class="file">/tmp</span></samp>인데, 윈도우즈에서는 유용하지 않을수도 있습니다.)
+환경 변수인 <samp><span class="env">TMPDIR</span></samp>을 띄어쓰기없이 포워드 슬래시 (forward slash)를 사용하여 지정한 path를 사용하여  쓰기 가능한 디렉토리로 가리키도록 설정하십시요. (기본 설정은 <samp><span class="file">/tmp</span></samp>인데, 윈도우즈에서는 유용하지 않을수도 있습니다.)
 
 <!-- You may need to compile under a case-honouring file system: we found -->
 <!-- that a @command{samba}-mounted file system (which maps all file names to -->
@@ -1701,7 +1701,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Building-from-source">Building from so
 <!-- value, which inhibits the byte-compilation of the base and recommended -->
 <!-- packages. -->
 
-     <p>(make나 environment)변수인 <samp><span class="env">R_NO_BASE_COMPILE</span></samp>을 비공의 값으로 설정하는것도 가능하다 (대부분 R 자체에서 작업을 하는경우). 이럴경우 베이스나 추천된 팩키지들의 byte-compilation이 억제된다.
+     <p>(make나 environment)변수인 <samp><span class="env">R_NO_BASE_COMPILE</span></samp>을 비공의 값으로 설정하는것도 가능합니다 (대부분 R 자체에서 작업을 하는경우). 이럴경우 베이스나 추천된 팩키지들의 byte-compilation이 억제됩니다.
 
    </ul>
 
@@ -2263,7 +2263,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 </div>
 
-<h2 class="chapter">6 Add-on packages</h2>
+<!-- @chapter Add-on packages -->
+<h2 class="chapter">6 추가 기능 팩키지들</h2>
 
 <p><a name="index-Packages-37"></a><a name="index-Libraries-38"></a>
 
@@ -2277,12 +2278,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a accesskey="7" href="#Checking-installed-source-packages">Checking installed source packages</a>
 </ul>
 
-   <p>It is helpful to use the correct terminology.  A <em>package</em> is
-loaded from a <em>library</em> by the function <code>library()</code>.  Thus a
-library is a directory containing installed packages; the main library
-is <samp><var>R_HOME</var><span class="file">/library</span></samp>, but others can be used, for example by
-<a name="index-R_005fLIBS-39"></a>setting the environment variable <samp><span class="env">R_LIBS</span></samp> or using the R function
-<code>.libPaths()</code>.
+<!-- It is helpful to use the correct terminology.  A @emph{package} is -->
+<!-- loaded from a @emph{library} by the function @code{library()}.  Thus a -->
+<!-- library is a directory containing installed packages; the main library -->
+<!-- is @file{@var{R_HOME}/library}, but others can be used, for example by -->
+<!-- @enindex R_LIBS -->
+<!-- setting the environment variable @env{R_LIBS} or using the @R{} function -->
+<!-- @code{.libPaths()}. -->
+   <p><a name="index-R_005fLIBS-39"></a>정확한 용어를 사용하는것이 도움이 됩니다. <em>팩키지</em>가<code>library()</code>라는 함수를 사용하여 <em>library</em>에서 로드됩니다. 따라서 library란 설치된 팩키지들이 저장되어있는 디렉토리 입니다; 주된 library는 <samp><var>R_HOME</var><span class="file">/library</span></samp> 입니다, 그러나 다른 곳도 사용할수 있습니다, 예를들어 환경변수를 <samp><span class="env">R_LIBS</span></samp>으로 설정하던지 R함수인 <code>.libPaths()</code>를 사용하면 됩니다.
 
 <div class="node">
 <a name="Default-packages"></a>
@@ -2293,25 +2296,32 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Add_002don-packages">Add-on packages</
 
 </div>
 
-<h3 class="section">6.1 Default packages</h3>
+<!-- @section Default packages -->
+<h3 class="section">6.1 기본 팩키지</h3>
 
 <p><a name="index-Packages_002c-default-40"></a>
-The set of packages loaded on startup is by default
+<!-- The set of packages loaded on startup is by default -->
+
+   <p>시작할때 로드되는 팩키지 세트는 기본설정으로 정해져 있습니다.
 
 <pre class="example">     &gt; getOption("defaultPackages")
      [1] "datasets"  "utils"     "grDevices" "graphics"  "stats"     "methods"
 </pre>
-   <p class="noindent">(plus, of course, <strong>base</strong>) and this can be changed by setting the
-option in startup code (e.g. in <samp><span class="file">~/.Rprofile</span></samp>).  It is initially
-<a name="index-R_005fDEFAULT_005fPACKAGES-41"></a>set to the value of the environment variable <samp><span class="env">R_DEFAULT_PACKAGES</span></samp> if
-set (as a comma-separated list).  Setting <samp><span class="env">R_DEFAULT_PACKAGES=NULL</span></samp>
-ensures that only package <strong>base</strong> is loaded.
+   <p class="noindent"><!-- (plus, of course, @pkg{base}) and this can be changed by setting the -->
+<!-- option in startup code (e.g.@: in @file{~/.Rprofile}).  It is initially -->
+<!-- @enindex R_DEFAULT_PACKAGES -->
+<!-- set to the value of the environment variable @env{R_DEFAULT_PACKAGES} if -->
+<!-- set (as a comma-separated list).  Setting @env{R_DEFAULT_PACKAGES=NULL} -->
+<!-- ensures that only package @pkg{base} is loaded. -->
 
-   <p>Changing the set of default packages is normally used to reduce the set
-for speed when scripting: in particular not using <strong>methods</strong> will
-reduce the start-up time by a factor of up to two (and this is done by
-<samp><span class="command">Rscript</span></samp>).  But it can also be used to customize R, e.g. 
-for class use.
+   <p><a name="index-R_005fDEFAULT_005fPACKAGES-41"></a>(물론 <strong>base</strong>도 포함합니다) 그리고 이것은 startup 코드에있는 옵션을 설정해서 바꿀수도있습니다 (예 <samp><span class="file">~/.Rprofile</span></samp> 안에서). 원래 설정은 환경변수인 <samp><span class="env">R_DEFAULT_PACKAGES</span></samp>의 값에 맞춰져있습니다 만약 설정이 되어있다면 (comma-separated 리스트로). <samp><span class="env">R_DEFAULT_PACKAGES=NULL</span></samp>으로 설정하는것은 <strong>base</strong> 팩키지만 로드할수있게 확보합니다.
+
+<!-- Changing the set of default packages is normally used to reduce the set -->
+<!-- for speed when scripting: in particular not using @pkg{methods} will -->
+<!-- reduce the start-up time by a factor of up to two (and this is done by -->
+<!-- @command{Rscript}).  But it can also be used to customize @R{}, e.g.@: -->
+<!-- for class use. -->
+   <p>기본 팩키지 세트를 바꾸는것은 보통 스크립팅을 할때 빠르게 할수있도록 세트의 수를 줄이기위해 사용됩니다: 특히 <strong>methods</strong>를 사용하지않으면 시작할때 시간을 두배까지 줄여줍니다 (그리고 이것은 <samp><span class="command">Rscript</span></samp>를 사용하여 하게됩니다). 하지만 이것은 R을 맞춤형으로 바꿀때도 쓰입니다, 예 수업용으로 쓸때.
 
 <div class="node">
 <a name="Managing-libraries"></a>
