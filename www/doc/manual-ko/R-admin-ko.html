@@ -129,12 +129,12 @@ p {
 <li><a href="#OS-X-packages">6.3.2 OS X</a>
 <li><a href="#Customizing-package-compilation">6.3.3 패키지 컴파일을 커스터마이즈하기</a>
 <li><a href="#Multiple-sub_002darchitectures">6.3.4 Multiple sub-architectures</a>
-<li><a href="#Byte_002dcompilation">6.3.5 Byte-compilation</a>
+<li><a href="#Byte_002dcompilation">6.3.5 바이트 편집하기</a>
 </li></ul>
-<li><a href="#Updating-packages">6.4 Updating packages</a>
-<li><a href="#Removing-packages">6.5 Removing packages</a>
-<li><a href="#Setting-up-a-package-repository">6.6 Setting up a package repository</a>
-<li><a href="#Checking-installed-source-packages">6.7 Checking installed source packages</a>
+<li><a href="#Updating-packages">6.4 패키지 업데이트 하기</a>
+<li><a href="#Removing-packages">6.5 패키지 없애기</a>
+<li><a href="#Setting-up-a-package-repository">6.6 패키지 저장소 설정하기</a>
+<li><a href="#Checking-installed-source-packages">6.7 설피된 source 패키지들 확인하기</a>
 </li></ul>
 <li><a name="toc_Internationalization" href="#Internationalization">7 국제화와 지역화</a>
 <ul>
@@ -2825,23 +2825,33 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-packages">Installing packag
 
 </div>
 
-<h4 class="subsection">6.3.5 Byte-compilation</h4>
+<!-- @subsection Byte-compilation -->
+<h4 class="subsection">6.3.5 바이트 편집하기</h4>
 
-<p>The base and recommended packages are byte-compiled by default.  Other
-packages can be byte-compiled on installation by using the option
-<samp><span class="option">--byte-compile</span></samp> with <samp><span class="command">R CMD INSTALL</span></samp> or with
-<code>install.packages(type = "source")</code>.
+<!-- The base and recommended packages are byte-compiled by default.  Other -->
+<!-- packages can be byte-compiled on installation by using the option -->
+<!-- @option{-byte-compile} with @command{R CMD INSTALL} or with -->
+<!-- @code{install.packages(type = "source")}. -->
+<p>기본 패키지와 추천 패키지들은 기본적으로 byte-compiled입니다. 다른 패
+키지들은 <samp><span class="command">R CMD INSTALL</span></samp>이나 <code>install.packages(type = "source")</code>을 가진
+<samp><span class="option">--byte-compile</span></samp> 옵션을 사용함으로써 설치에서 byte-compiled가 될 수도 있습니다.
 
-   <p>Not all contributed packages work correctly when byte-compiled (for
-example because they interfere with the sealing of namespaces).  For
-most packages (especially those which make extensive use of compiled
-code) the speed-up is small.  Unless a package is used frequently the
-time spent in byte-compilation can outweigh the time saved in execution:
-also byte-compilation can add substantially to the installed size of the
-package.
+<!-- Not all contributed packages work correctly when byte-compiled (for -->
+<!-- example because they interfere with the sealing of namespaces).  For -->
+<!-- most packages (especially those which make extensive use of compiled -->
+<!-- code) the speed-up is small.  Unless a package is used frequently the -->
+<!-- time spent in byte-compilation can outweigh the time saved in execution: -->
+<!-- also byte-compilation can add substantially to the installed size of the -->
+<!-- package. -->
+   <p>모든 기여 패키지들이 바이트 컴파일드 일 때 정확하게 작동하는 것은 아닙니
+다 (예를 들어 이는 namespace들의 sealing을 방해합니다). 대부분의 패키
+지들에서 (특히 compile된 코드의 사용을 대규모로 사용하는) 천천히 빨라집니다.. 패키지가 자주 사용되지 않는 이상, 바이트 편집에서의 시
+간을 보내는 것은 실행하면서 단축한 시간을 초과할 수도 있습니다: 또
+한 바이트 편집은 패키지가 설치된 사이즈에 상당한 무리를 줄 수 있습니다.
 
-   <p>Byte-compilation can be controlled on a per-package basis by the
-&lsquo;<samp><span class="samp">ByteCompile</span></samp>&rsquo; field in the <samp><span class="file">DESCRIPTION</span></samp> file.
+<!-- Byte-compilation can be controlled on a per-package basis by the -->
+<!-- @samp{ByteCompile} field in the @file{DESCRIPTION} file. -->
+   <p>바이트 편집은 각각의 패키지를 '<samp><span class="file">DESCRIPTION</span></samp>' 파일 안의 &lsquo;<samp><span class="samp">ByteCompile</span></samp>&rsquo; 필드를 이용하여, 조정할 수 있습니다.
 
 <div class="node">
 <a name="Updating-packages"></a>
@@ -2852,27 +2862,41 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Add_002don-packages">Add-on packages</
 
 </div>
 
-<h3 class="section">6.4 Updating packages</h3>
+<!-- @section Updating packages -->
+<h3 class="section">6.4 패키지 업데이트 하기</h3>
 
 <p><a name="index-update_002epackages-52"></a><a name="index-Packages_002c-updating-53"></a>
-The command <code>update.packages()</code> is the simplest way to ensure that
-all the packages on your system are up to date.  Set the <code>repos</code>
-argument as in the previous section.  The <code>update.packages()</code>
-downloads the list of available packages and their current versions,
-compares it with those installed and offers to fetch and install any
-that have later versions on the repositories.
+<!-- The command @code{update.packages()} is the simplest way to ensure that -->
+<!-- all the packages on your system are up to date.  Set the @code{repos} -->
+<!-- argument as in the previous section.  The @code{update.packages()} -->
+<!-- downloads the list of available packages and their current versions, -->
+<!-- compares it with those installed and offers to fetch and install any -->
+<!-- that have later versions on the repositories. -->
 
-   <p>An alternative interface to keeping packages up-to-date is provided by
-the command <code>packageStatus()</code>, which returns an object with
-information on all installed packages and packages available at multiple
-repositories.  The <code>print</code> and <code>summary</code> methods give an
-overview of installed and available packages, the <code>upgrade</code> method
-offers to fetch and install the latest versions of outdated packages.
+   <p>명령어 <code>update.packages()</code>는 여러분의 시스템이 최신식인지를 확실하게 하기
+위한 가장 간단한 방법입니다. 인자 <code>repos</code>를 전의 섹션에서 처럼 설정하십
+시오. <code>update.packages()</code>는 사용가능한 패키지와 그들의 현재 버전들의 목
+록을 다운로드하고, 이를 설치된 것들과 비교하고 fetch를 제안하며 저장소
+들에 가장 최근 버전들을 가진 것들을 모두 설치합니다.
 
-   <p>One sometimes-useful additional piece of information that
-<code>packageStatus()</code> returns is the status of a package, as
-<code>"ok"</code>, <code>"upgrade"</code> or <code>"unavailable"</code> (in the currently
-selected repositories).  For example
+<!-- An alternative interface to keeping packages up-to-date is provided by -->
+<!-- the command @code{packageStatus()}, which returns an object with -->
+<!-- information on all installed packages and packages available at multiple -->
+<!-- repositories.  The @code{print} and @code{summary} methods give an -->
+<!-- overview of installed and available packages, the @code{upgrade} method -->
+<!-- offers to fetch and install the latest versions of outdated packages. -->
+   <p>패키지를 최신식으로 보존하기위한 다른 인터페이스는 설치된 패키지들와
+여러개의 저장소에서 이용가능한 패키지들의 정보를 가지고 있는 object를
+return하는 <code>packageStatus()</code>에 의해 제공됩니다. <code>Print</code>와 <code>summery</code> 방식들은
+설치되고 사용가능한 패키지들을 개괄적으로 보여주고, <code>upgrade</code> 방식은
+fetch와 오래된 패키지들의 최신 버전들의 설치를 제공합니다.
+
+<!-- One sometimes-useful additional piece of information that -->
+<!-- @code{packageStatus()} returns is the status of a package, as -->
+<!-- @code{"ok"}, @code{"upgrade"} or @code{"unavailable"} (in the currently -->
+<!-- selected repositories).  For example -->
+   <p>하나의 가끔 유용한 추가의 정보 조각은,  <code>packageStatus()</code>가 반환하는
+것은 <code>"ok"</code>, <code>"upgrade"</code> 혹은 <code>"unavailable"</code>와 같은 패키지의 상태라는 것입니다 (현재 선택된 저장소 안에서). 예를들어
 
 <pre class="example">     &gt; inst &lt;- packageStatus()$inst
      &gt; inst[inst$Status != "ok", c("Package", "Version", "Status")])
@@ -2891,21 +2915,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Add_002don-packages">Add-on packages</
 
 </div>
 
-<h3 class="section">6.5 Removing packages</h3>
+<!-- @section Removing packages -->
+<h3 class="section">6.5 패키지 없애기</h3>
 
 <p><a name="index-remove_002epackages-54"></a><a name="index-Packages_002c-removing-55"></a>
-Packages can be removed in a number of ways.  From a command prompt they
-can be removed by
+<!-- Packages can be removed in a number of ways.  From a command prompt they -->
+<!-- can be removed by -->
+패키지 삭제에는 여러가지 방법이 있습니다.. 명령 프롬프트 에서 다음의 명령어를 이용해 지울 수 있습니다.
 
 <pre class="example">     R CMD REMOVE -l /path/to/library <var>pkg1</var> <var>pkg2</var> ...
 </pre>
-   <p>From a running R process they can be removed by
+   <!-- From a running @R{} process they can be removed by -->
+   <p>현재 진행중인 R 프로세스의 패키지는 다음 명령어로 삭제 할 수 있습니다.
 
 <pre class="example">     &gt; remove.packages(c("pkg1", "pkg2"),
                        lib = file.path("path", "to", "library"))
 </pre>
-   <p>Finally, in most installations one can just remove the package directory
-from the library.
+   <!-- Finally, in most installations one can just remove the package directory -->
+<!-- from the library. -->
+   <p>마지막으로, 설치된 대부분의 패키지는 라이브러리안의 패키지 디렉토리에서 지울 수 있습니다.
 
 <div class="node">
 <a name="Setting-up-a-package-repository"></a>
@@ -2916,59 +2944,94 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Add_002don-packages">Add-on packages</
 
 </div>
 
-<h3 class="section">6.6 Setting up a package repository</h3>
+<!-- @section Setting up a package repository -->
+<h3 class="section">6.6 패키지 저장소 설정하기</h3>
 
 <p><a name="index-Repositories-56"></a>
-Utilities such as <code>install.packages</code> can be pointed at any
-<acronym>CRAN</acronym>-style repository, and R users may want to set up their
-own.  The `base' of a repository is a URL such as
-<a href="http://www.omegahat.org/R/">http://www.omegahat.org/R/</a>: this must be an URL scheme that
-<code>download.packages</code> supports (which also includes &lsquo;<samp><span class="samp">ftp://</span></samp>&rsquo; and
-&lsquo;<samp><span class="samp">file://</span></samp>&rsquo;, but not on most systems &lsquo;<samp><span class="samp">https://</span></samp>&rsquo;).  Under that
-base URL there should be directory trees for one or more of the
-following types of package distributions:
+<!-- Utilities such as @code{install.packages} can be pointed at any -->
+<!-- @acronym{CRAN}-style repository, and @R{} users may want to set up their -->
+<!-- own.  The `base' of a repository is a URL such as -->
+<!-- @uref{http://www.omegahat.org/R/}: this must be an URL scheme that -->
+<!-- @code{download.packages} supports (which also includes @samp{ftp://} and -->
+<!-- @samp{file://}, but not on most systems @samp{https://}).  Under that -->
+<!-- base URL there should be directory trees for one or more of the -->
+<!-- following types of package distributions: -->
+
+   <p><code>install.packages</code>와 같은 유틸리티들은 모든 <acronym>CRAN</acronym> 스타일의 저장소로 가리
+켜지도록 할 수 있고, R 사용자들은 자신들에게 맞게 설정하고 싶어할 지도
+모릅니다. 저장소의 ‘베이스’는 <a href="http://www.omegahat.org/R/">http://www.omegahat.org/R/</a>과 같은 URL입
+니다: 이는 <code>download.packages</code> 가 지원하는 URL scheme일 것입니다
+(&lsquo;<samp><span class="samp">ftp://</span></samp>&rsquo;와 &lsquo;<samp><span class="samp">file://</span></samp>&rsquo;도 포함하지만, 대부분의 시스템들에서 &lsquo;<samp><span class="samp">https://</span></samp>&rsquo;는
+포함하지 않습니다). 베이스 URL에서, 하나 이상의 다음의 패키지 배포의
+종류들의 디렉토리 트리들이 있어야만 합니다.
 
      <ul>
-<li><code>"source"</code>: located at <samp><span class="file">src/contrib</span></samp> and containing
-<samp><span class="file">.tar.gz</span></samp> files.  Other forms of compression can be used, e.g. 
-<samp><span class="file">.tar.bz2</span></samp> or <samp><span class="file">.tar.xz</span></samp> files.  Complete repositories contain
-the sources corresponding to any binary packages, and in any case it is
-wise to have a <samp><span class="file">src/contrib</span></samp> area with a possibly empty
-<samp><span class="file">PACKAGES</span></samp> file.
+<li><!-- @code{"source"}: located at @file{src/contrib} and containing -->
+<!-- @file{.tar.gz} files.  Other forms of compression can be used, e.g.@: -->
+<!-- @file{.tar.bz2} or @file{.tar.xz} files.  Complete repositories contain -->
+<!-- the sources corresponding to any binary packages, and in any case it is -->
+<!-- wise to have a @file{src/contrib} area with a possibly empty -->
+<!-- @file{PACKAGES} file. -->
+<code>source</code>:  '<samp><span class="file">src/contrib</span></samp>'에 위치하고 '<samp><span class="file">.tar.gz</span></samp>파일들을 포함하고 있습니다. 
+예를들어 .'<samp><span class="file">tar.bz2</span></samp>' 나 '<samp><span class="file">.tar.xz</span></samp>'와 같은 요약의 다른 형태가 사용될
+수도 있습니다. 완료된 저장소들은 모든 binary 패키지들에 상응하는 source
+들 안에 포함되어 있고, 좌우간 가능하면 비어있는 '<samp><span class="file">PACKAGES</span></samp> 파일과 함께
+'<samp><span class="file">src/contrib. are</span></samp>'를 가지는 것이 현명할 것입니다.
 
-     <li><code>"win.binary"</code>: located at <samp><span class="file">bin/windows/contrib/</span><var>x.y</var></samp> for
-R versions <var>x.y.z</var> and containing <samp><span class="file">.zip</span></samp> files for Windows.
+     <li><!-- @code{"win.binary"}: located at @file{bin/windows/contrib/@var{x.y}} for -->
+<!-- @R{} versions @var{x.y.z} and containing @file{.zip} files for Windows. -->
+<code>"win.binary"</code>: R 버전들 <var>x.y.z</var>을 위해 <samp><span class="file">bin/windows/contrib/</span><var>x.y</var></samp> 에 위치
+하고 윈도우즈를 위한 '<samp><span class="file">.zip</span></samp>파일들을 포함하고 있습니다.
 
-     <li><code>"mac.binary.leopard"</code>: located at
-<samp><span class="file">bin/macosx/leopard/contrib/</span><var>x.y</var></samp> for R versions <var>x.y.z</var>
-and containing <samp><span class="file">.tgz</span></samp> files. 
+     <!-- @code{"mac.binary.leopard"}: located at -->
+     <!-- @file{bin/macosx/leopard/contrib/@var{x.y}} for @R{} versions @var{x.y.z} -->
+     <!-- and containing @file{.tgz} files. -->
+     <li><code>"mac.binary.leopard"</code>: R 버전들 <var>x.y.z</var>을 위해
+'<samp><span class="file">bin/macosx/leopard/contrib/x.y</span></samp>' 에 위치하고 '<samp><span class="file">.tgz</span></samp>' 파일들을 포함하고 있습니다. 
 </ul>
 
-   <p>Each terminal directory must also contain a <samp><span class="file">PACKAGES</span></samp> file.  This
-can be a concatenation of the <samp><span class="file">DESCRIPTION</span></samp> files of the packages
-separated by blank lines, but only a few of the fields are needed.  The
-simplest way to set up such a file is to use function
-<code>write_PACKAGES</code> in the <strong>tools</strong> package, and its help explains
-which fields are needed.  Optionally there can also be a
-<samp><span class="file">PACKAGES.gz</span></samp> file, a <samp><span class="command">gzip</span></samp>-compressed version of
-<samp><span class="file">PACKAGES</span></samp>&mdash;as this will be downloaded in preference to
-<samp><span class="file">PACKAGES</span></samp> it should be included for large repositories.  (If you
-have a mis-configured server that does not report correctly non-existent
-files you will need <samp><span class="file">PACKAGES.gz</span></samp>.)
+<!-- Each terminal directory must also contain a @file{PACKAGES} file.  This -->
+<!-- can be a concatenation of the @file{DESCRIPTION} files of the packages -->
+<!-- separated by blank lines, but only a few of the fields are needed.  The -->
+<!-- simplest way to set up such a file is to use function -->
+<!-- @code{write_PACKAGES} in the @pkg{tools} package, and its help explains -->
+<!-- which fields are needed.  Optionally there can also be a -->
+<!-- @file{PACKAGES.gz} file, a @command{gzip}-compressed version of -->
+<!-- @file{PACKAGES}-as this will be downloaded in preference to -->
+<!-- @file{PACKAGES} it should be included for large repositories.  (If you -->
+<!-- have a mis-configured server that does not report correctly non-existent -->
+<!-- files you will need @file{PACKAGES.gz}.) -->
+   <p>각각의 터미널 디렉토리는 '<samp><span class="file">PACKAGES</span></samp>' 파일도 포함해야만 합니다. 이는 빈 줄
+들에 의해 나누어진 패키지들의 '<samp><span class="file">DESCRIPTION</span></samp>' 파일들의 연속일 수 있지만,
+아주 약간의 필드만이 필요합니다. 그런 파일을 설정하는 가장 간단한
+방법은 <strong>tools</strong> 패키지에서 <code>write_PACKAGES</code> 함수를 쓰는 것이고, 이에대한 도
+움말은 어떤 필드들이 필요한지 설명합니다. 추가적으로 '<samp><span class="file">PACKAGES</span></samp>'의
+<samp><span class="command">gzip</span></samp>-압축된 버전인 '<samp><span class="file">PACKAGES.gz</span></samp>' 파일도 있을 수 있습니다. 왜냐하면, '<samp><span class="file">PACKAGES</span></samp>'
+보다 우선적으로 다운로드 될 것이고, 이는 큰 저장소들에 포함되어야만 합
+니다. (만약 여러분이 존재하지 않는 파일들을 바르게 보고하지 않는 잘못
+구성된 서버를 가지고 있다면 <samp><span class="file">PACKAGES.gz</span></samp>가 필요할 것입니다.)
 
-   <p>To add your repository to the list offered by <code>setRepositories()</code>,
-see the help file for that function.
+<!-- To add your repository to the list offered by @code{setRepositories()}, -->
+<!-- see the help file for that function. -->
+   <p><code>setRepositories()</code>에 의해 제공되는 리스트로 당신의 저장소를 추가하기 위
+해서는, 그 함수에 대한 도움말 파일을 참조하십시오.
 
-   <p>Incomplete repositories are better specified <em>via</em> a
-<code>contriburl</code> argument than <em>via</em> being set as a repository.
+<!-- Incomplete repositories are better specified @emph{via} a -->
+<!-- @code{contriburl} argument than @emph{via} being set as a repository. -->
+   <p>불완전한 저장소들은 저장소처럼 설정되는 것을 통하는 것보다 <code>contriburl</code>
+인자를 통해 지정되는 것이 더 낫습니다.
 
-   <p>A repository can contain subdirectories, when the descriptions in the
-<samp><span class="file">PACKAGES</span></samp> file of packages in subdirectories must include a line
-of the form
+<!-- A repository can contain subdirectories, when the descriptions in the -->
+<!-- @file{PACKAGES} file of packages in subdirectories must include a line -->
+<!-- of the form -->
+   <p>하나의 저장소는 서브디렉토리들 안의 패키지들이 '<samp><span class="file">PACKAGES </span></samp>'파일들에 있는
+설명들이 다음과 같은 형태의 줄을 포함해야만 할 때, 서브디렉토리들을 포
+함할 수 있습니다.
 
 <pre class="example">     Path: <var>path/to/subdirectory</var>
 </pre>
-   <p class="noindent">&mdash;once again <code>write_PACKAGES</code> is the simplest way to set this up.
+   <p class="noindent"><!-- once again @code{write_PACKAGES} is the simplest way to set this up. -->
+다시 한 번 말하지만 <code>write_PACKAGES</code> 가 이를 설정하는 가장 간단한 방법입니다.
 
 <div class="node">
 <a name="Checking-installed-source-packages"></a>
@@ -2978,49 +3041,73 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Add_002don-packages">Add-on packages</
 
 </div>
 
-<h3 class="section">6.7 Checking installed source packages</h3>
+<!-- @section Checking installed source packages -->
+<h3 class="section">6.7 설피된 source 패키지들 확인하기</h3>
 
-<p>It can be convenient to run <samp><span class="command">R CMD check</span></samp> on an installed
-package, particularly on a platform which uses sub-architectures.  The
-outline of how to do this is, with the source package in directory
-<samp><var>pkgname</var></samp> (or a tarball filename):
+<!-- It can be convenient to run @command{R CMD check} on an installed -->
+<!-- package, particularly on a platform which uses sub-architectures.  The -->
+<!-- outline of how to do this is, with the source package in directory -->
+<!-- @file{@var{pkgname}} (or a tarball filename): -->
+<p>서브아키텍처들을 사용하는 플랫폼에는 특히 , 설치된 패키지에 <samp><span class="command">R CMD check</span></samp> 실행하는 것이 편할 수도 있습니다. 
+디렉토리 '<samp><var>pkgname</var></samp>'(혹은 타르볼
+파일 이름)에서의 소스 패키지와 함께, 이를 어떻게 하는지의 outline은
+다음과 같습니다.
 
 <pre class="example">     R CMD INSTALL -l <var>libdir</var> <var>pkgname</var> &gt; <var>pkgname</var>.log 2&gt;&amp;1
      R CMD check -l <var>libdir</var> --install=check:<var>pkgname</var>.log <var>pkgname</var>
 </pre>
-   <p class="noindent">Where sub-architectures are in use the <samp><span class="command">R CMD check</span></samp> line can be
-repeated with additional architectures by
+   <p class="noindent"><!-- Where sub-architectures are in use the @command{R CMD check} line can be -->
+<!-- repeated with additional architectures by -->
+서브아키텍처들이 사용되고있는 곳에서, <samp><span class="command">R CMD check</span></samp> 줄은 아래에 의해
+서 추가적인 아키텍처들과 함께 반복될 수 있습니다.
 
 <pre class="example">     R --arch <var>arch</var> CMD check -l <var>libdir</var> --extra-arch --install=check:<var>pkgname</var>.log <var>pkgname</var>
 </pre>
-   <p class="noindent">where <samp><span class="option">--extra-arch</span></samp> selects only those checks which depend on
-the installed code and not those which analyse the sources.  (If
-multiple sub-architectures fail only because they need different
-settings, e.g. environment variables, <samp><span class="option">--no-multiarch</span></samp> may need
-to be added to the <code>INSTALL</code> lines.)  On (Mac) OS X and other
-Unix-alikes the architecture to run is selected by <samp><span class="option">--arch</span></samp>: this
-can also be used on Windows with <samp><var>R_HOME</var><span class="file">/bin/R.exe</span></samp>, but it
-is more usual to select the path to the <samp><span class="command">Rcmd.exe</span></samp> of the
-desired architecture.
+   <p class="noindent"><!-- where @option{-extra-arch} selects only those checks which depend on -->
+<!-- the installed code and not those which analyse the sources.  (If -->
+<!-- multiple sub-architectures fail only because they need different -->
+<!-- settings, e.g.@: environment variables, @option{-no-multiarch} may need -->
+<!-- to be added to the @code{INSTALL} lines.)  On (Mac) OS X and other -->
+<!-- Unix-alikes the architecture to run is selected by @option{-arch}: this -->
+<!-- can also be used on Windows with @file{@var{R_HOME}/bin/R.exe}, but it -->
+<!-- is more usual to select the path to the @command{Rcmd.exe} of the -->
+<!-- desired architecture. -->
+여기에서 <samp><span class="option">--extra-arch</span></samp>는 설치된 코드에 의존하는 체크들과 source들을 분석
+하지 않는 체크들만을 선택합니다. (만약 여러개의 서브아키텍처들이
+오직 다른 설정들이 필요하기 때문에 실패하는 것이라면, <samp><span class="option">--no-multiarch</span></samp>
+가 <code>INSTALL</code> 줄에 추가되어야 할지도 모릅니다.) (Mac) OS X와 다른 유닉스
+계열들에서 실행하기위한 아키텍처는 <samp><span class="option">–arch</span></samp>에 의해 선택됩니다: 이는
+'<samp><var>R_HOME</var><span class="file">/bin/R.exe</span></samp>'로 윈도우즈에서도 사용될 수 있지만, 원하는
+아키텍처의 <samp><span class="command">Rcmd.exe</span></samp>로의 경로를 선택하는 것이 더 흔합니다.
 
-   <p>So on Windows to install, check and package for distribution a source
-package from a tarball which has been tested on another platform one
-might use
+<!-- So on Windows to install, check and package for distribution a source -->
+<!-- package from a tarball which has been tested on another platform one -->
+<!-- might use -->
+   <p>그래서 윈도우즈에서 설치를 하려면, 다른 플랫폼에서 테스트 된 타르볼에
+서의 배포를 위한 패키지 와 소스 패키지를 검사하십시오. 여러분은 다음을
+사용할 수 있습니다.
 
 <pre class="example">     .../bin/i386/Rcmd INSTALL -l <var>libdir</var> <var>tarball</var> --build &gt; <var>pkgname</var>.log 2&gt;&amp;1
      .../bin/i386/Rcmd check -l <var>libdir</var> --extra-arch --install=check:<var>pkgname</var>.log <var>pkgname</var>
      .../bin/x64/Rcmd check -l <var>libdir</var> --extra-arch --install=check:<var>pkgname</var>.log <var>pkgname</var>
 </pre>
-   <p class="noindent">where one might want to run the second and third lines in a different
-shell with different settings for environment variables and the path (to
-find external software, notably for Gtk+).
+   <p class="noindent"><!-- where one might want to run the second and third lines in a different -->
+<!-- shell with different settings for environment variables and the path (to -->
+<!-- find external software, notably for Gtk+). -->
 
-   <p><samp><span class="command">R CMD INSTALL</span></samp> can do a <code>i386</code> install and then add the
-<code>x64</code> DLL from a single command by
+   <p>여러분은 환경변수와 경로를 위한 다른 설정으로된 다른 쉘에서 두 번째
+와 세 번째 줄을 실행하고 싶어할 지도 모릅니다 (외부의 소프트웨어를 찾
+기위해서, 특히 Gtk+을 위한).
+
+<!-- @command{R CMD INSTALL} can do a @code{i386} install and then add the -->
+<!-- @code{x64} DLL from a single command by -->
+   <p><samp><span class="command">R CMD INSTALL</span></samp> 은 <code>i386</code> 설치를 할 수 있고 다음에 의한 하나의 명령으로
+<code>x64</code> DLL를 추가할 수 있습니다.
 
 <pre class="example">     R CMD INSTALL --merge-multiarch -l <var>libdir</var> <var>tarball</var>
 </pre>
-   <p class="noindent">and <samp><span class="option">--build</span></samp> can be added to zip up the installation.
+   <p class="noindent"><!-- and @option{-build} can be added to zip up the installation. -->
+그리고 <samp><span class="option">–build</span></samp>가 설치를 압축 하기위해서 추가될 수 있습니다.
 
 <div class="node">
 <a name="Internationalization"></a>

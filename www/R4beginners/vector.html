@@ -252,10 +252,21 @@ pi
 </code></pre>
 
 <pre><code class="r"># 삼각함수 사인, 코사인, 탄젠트
-sin(0)
+> sin(0)
+[1] 0
+> sin(1)
+[1] 0.841471
+> cos(0)
+[1] 1
+> cos(1)
+[1] 0.5403023
+> tan(0)
+[1] 0
+> tan(1)
+[1] 1.557408
 </code></pre>
 
-<pre><code>## [1] 0
+<!-- <pre><code>## [1] 0
 </code></pre>
 
 <pre><code class="r">cos(0)
@@ -269,27 +280,42 @@ sin(0)
 
 <pre><code>## [1] 1.62
 </code></pre>
-
+-->
 <pre><code class="r"># 나누기
-15/4
+> 15/4
+[1] 3.75
+> 13/5
+[1] 2.6
+> 100/2
+[1] 50
 </code></pre>
-
+<!--
 <pre><code>## [1] 3.75
 </code></pre>
-
+-->
 <pre><code class="r"># 몫
-15%/%2
-</code></pre>
+> 15/4
+[1] 3.75
+> 13/5
+[1] 2.6
+> 100/2
+[1] 50
 
+</code></pre>
+<!--
 <pre><code>## [1] 7
-</code></pre>
-
+</code></pre> -->
 <pre><code class="r"># 나머지
-15%%2
+> 15%/%2
+[1] 7
+> 30%/%2
+[1] 15
+> 50%/%2
+[1] 25
 </code></pre>
-
+<!--
 <pre><code>## [1] 1
-</code></pre>
+</code></pre>-->
 
 <p>이제 R의 벡터단위의 연산이라 것을 알아보도록 합니다.</p>
 
@@ -329,6 +355,43 @@ x = c(1, 2, 3, 4)
 
 <p>이는 단순히 사용자의 편의를 위한 것뿐이니 마음에 들어하는 방식을 골라서
 사용하시면 됩니다.</p>
+
+<p>R에서 사용하는 모든 벡터는 총 4가지, 숫자형, 문자형, 논리형, 복소수형으로  저장됩니다.
+<pre><code class="r"> 숫자형
+> number <- c(1,2,3,4,5)
+> number
+[1] 1 2 3 4 5
+</code></pre>
+<pre><code class="r">문자형
+> character <- c("Korea","Canada","Japan","China")
+> character
+[1] "Korea"  "Canada" "Japan"  "China" 
+</code></pre>
+<pre><code class="r">논리형
+> character <- c("Korea","Canada","Japan","China")
+> character
+[1] "Korea"  "Canada" "Japan"  "China" 
+</code></pre>
+<pre><code class="r">복소수형
+> complex <- 2+3i
+> complex
+[1] 2+3i
+</code></pre>
+
+<p>하나의 이름을 가지는 변수(위의 
+number,character,logical, complex)의 벡터 정보는 오직 한가지 
+형태만을 가질 수 있습니다. 다시말해, 위의 숫자형 
+변수는 오직 숫자 벡터드로만 구성될 수 있습니다. 
+만약 하나의 변수 명에 두가지 이상의 벡터 형을 가졌을 때 사용자가 의도하지 않았던 일이 벌어 질 수 있습니다.</p>
+<pre><code class="r">하나의 변수명에 두개 이상의 벡터 형태를 입력 했을 때
+unexpected <- c(2,"pm")
+> unexpected
+[1] "2"  "pm"
+</code></pre>
+
+<p> 예와 같이, unexpected 라는 변수에 숫자형 벡터 '2'와 
+문자형 벡터 "pm"를 함께 지정했을 때, R은 숫자형 벡터 '2'를 문자형 벡터형으로 인식합니다.  </p>
+
 
 <p>이제 R이 정말로 x라는 것을 벡터로 인식하는지 <code>is.vector()</code>라는 함수를
 사용하여 알아보도록 합니다.</p>

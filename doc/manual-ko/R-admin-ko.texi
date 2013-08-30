@@ -2578,47 +2578,77 @@ OS X에서, 여러개의 sub-architecture들은 R 3.0.0: @cputype{x86_64} (현�
 
 
 @node Byte-compilation,  , Multiple sub-architectures, Installing packages
-@subsection Byte-compilation
+@c @subsection Byte-compilation
+@subsection 바이트 편집하기
 
-The base and recommended packages are byte-compiled by default.  Other
-packages can be byte-compiled on installation by using the option
-@option{--byte-compile} with @command{R CMD INSTALL} or with
-@code{install.packages(type = "source")}.
+@c The base and recommended packages are byte-compiled by default.  Other
+@c packages can be byte-compiled on installation by using the option
+@c @option{--byte-compile} with @command{R CMD INSTALL} or with
+@c @code{install.packages(type = "source")}.
+기본 패키지와 추천 패키지들은 기본적으로 byte-compiled입니다. 다른 패
+키지들은 @command{R CMD INSTALL}이나 @code{install.packages(type = "source")}을 가진
+@option{--byte-compile} 옵션을 사용함으로써 설치에서 byte-compiled가 될 수도 있습니다.
 
-Not all contributed packages work correctly when byte-compiled (for
-example because they interfere with the sealing of namespaces).  For
-most packages (especially those which make extensive use of compiled
-code) the speed-up is small.  Unless a package is used frequently the
-time spent in byte-compilation can outweigh the time saved in execution:
-also byte-compilation can add substantially to the installed size of the
-package.
 
-Byte-compilation can be controlled on a per-package basis by the
-@samp{ByteCompile} field in the @file{DESCRIPTION} file.
+@c  Not all contributed packages work correctly when byte-compiled (for
+@c example because they interfere with the sealing of namespaces).  For
+@c most packages (especially those which make extensive use of compiled
+@c code) the speed-up is small.  Unless a package is used frequently the
+@c time spent in byte-compilation can outweigh the time saved in execution:
+@c also byte-compilation can add substantially to the installed size of the
+@c package.
+
+모든 기여 패키지들이 바이트 컴파일드 일 때 정확하게 작동하는 것은 아닙니
+다 (예를 들어 이는 namespace들의 sealing을 방해합니다). 대부분의 패키
+지들에서 (특히 compile된 코드의 사용을 대규모로 사용하는) 천천히 빨라집니다.. 패키지가 자주 사용되지 않는 이상, 바이트 편집에서의 시
+간을 보내는 것은 실행하면서 단축한 시간을 초과할 수도 있습니다: 또
+한 바이트 편집은 패키지가 설치된 사이즈에 상당한 무리를 줄 수 있습니다.
+
+@c Byte-compilation can be controlled on a per-package basis by the
+@c @samp{ByteCompile} field in the @file{DESCRIPTION} file.
+바이트 편집은 각각의 패키지를 '@file{DESCRIPTION}' 파일 안의 @samp{ByteCompile} 필드를 이용하여, 조정할 수 있습니다.
 
 @node Updating packages, Removing packages, Installing packages, Add-on packages
-@section Updating packages
+@c @section Updating packages
+@section 패키지 업데이트 하기
 @findex update.packages
 @cindex Packages, updating
 
-The command @code{update.packages()} is the simplest way to ensure that
-all the packages on your system are up to date.  Set the @code{repos}
-argument as in the previous section.  The @code{update.packages()}
-downloads the list of available packages and their current versions,
-compares it with those installed and offers to fetch and install any
-that have later versions on the repositories.
+@c The command @code{update.packages()} is the simplest way to ensure that
+@c all the packages on your system are up to date.  Set the @code{repos}
+@c argument as in the previous section.  The @code{update.packages()}
+@c downloads the list of available packages and their current versions,
+@c compares it with those installed and offers to fetch and install any
+@c that have later versions on the repositories.
+ 
+명령어 @code{update.packages()}는 여러분의 시스템이 최신식인지를 확실하게 하기
+위한 가장 간단한 방법입니다. 인자 @code{repos}를 전의 섹션에서 처럼 설정하십
+시오. @code{update.packages()}는 사용가능한 패키지와 그들의 현재 버전들의 목
+록을 다운로드하고, 이를 설치된 것들과 비교하고 fetch를 제안하며 저장소
+들에 가장 최근 버전들을 가진 것들을 모두 설치합니다.
 
-An alternative interface to keeping packages up-to-date is provided by
-the command @code{packageStatus()}, which returns an object with
-information on all installed packages and packages available at multiple
-repositories.  The @code{print} and @code{summary} methods give an
-overview of installed and available packages, the @code{upgrade} method
-offers to fetch and install the latest versions of outdated packages.
 
-One sometimes-useful additional piece of information that
-@code{packageStatus()} returns is the status of a package, as
-@code{"ok"}, @code{"upgrade"} or @code{"unavailable"} (in the currently
-selected repositories).  For example
+
+@c An alternative interface to keeping packages up-to-date is provided by
+@c the command @code{packageStatus()}, which returns an object with
+@c information on all installed packages and packages available at multiple
+@c repositories.  The @code{print} and @code{summary} methods give an
+@c overview of installed and available packages, the @code{upgrade} method
+@c offers to fetch and install the latest versions of outdated packages.
+패키지를 최신식으로 보존하기위한 다른 인터페이스는 설치된 패키지들와
+여러개의 저장소에서 이용가능한 패키지들의 정보를 가지고 있는 object를
+return하는 @code{packageStatus()}에 의해 제공됩니다. @code{Print}와 @code{summery} 방식들은
+설치되고 사용가능한 패키지들을 개괄적으로 보여주고, @code{upgrade} 방식은
+fetch와 오래된 패키지들의 최신 버전들의 설치를 제공합니다.
+
+
+@c One sometimes-useful additional piece of information that
+@c @code{packageStatus()} returns is the status of a package, as
+@c @code{"ok"}, @code{"upgrade"} or @code{"unavailable"} (in the currently
+@c selected repositories).  For example
+하나의 가끔 유용한 추가의 정보 조각은,  @code{packageStatus()}가 반환하는
+것은 @code{"ok"}, @code{"upgrade"} 혹은 @code{"unavailable"}와 같은 패키지의 상태라는 것입니다 (현재 선택된 저장소 안에서). 예를들어
+
 
 @example
 > inst <- packageStatus()$inst
@@ -2632,96 +2662,149 @@ rgdal               rgdal  0.6-27     upgrade
 
 
 @node Removing packages, Setting up a package repository, Updating packages, Add-on packages
-@section Removing packages
+@c @section Removing packages
+@section 패키지 없애기
 @findex remove.packages
 @cindex Packages, removing
 
-Packages can be removed in a number of ways.  From a command prompt they
-can be removed by
+@c Packages can be removed in a number of ways.  From a command prompt they
+@c can be removed by
+패키지 삭제에는 여러가지 방법이 있습니다.. 명령 프롬프트 에서 다음의 명령어를 이용해 지울 수 있습니다.
 
 @example
 R CMD REMOVE -l /path/to/library @var{pkg1} @var{pkg2} @dots{}
 @end example
 
-From a running @R{} process they can be removed by
+@c From a running @R{} process they can be removed by
+현재 진행중인 @R{} 프로세스의 패키지는 다음 명령어로 삭제 할 수 있습니다.
 
 @example
 > remove.packages(c("pkg1", "pkg2"),
                   lib = file.path("path", "to", "library"))
 @end example
 
-Finally, in most installations one can just remove the package directory
-from the library.
-
+@c Finally, in most installations one can just remove the package directory
+@c from the library.
+마지막으로, 설치된 대부분의 패키지는 라이브러리안의 패키지 디렉토리에서 지울 수 있습니다.
 
 @node Setting up a package repository, Checking installed source packages, Removing packages, Add-on packages
-@section Setting up a package repository
+@c @section Setting up a package repository
+@section 패키지 저장소 설정하기 
 @cindex Repositories
 
-Utilities such as @code{install.packages} can be pointed at any
-@acronym{CRAN}-style repository, and @R{} users may want to set up their
-own.  The `base' of a repository is a URL such as
-@uref{http://www.omegahat.org/R/}: this must be an URL scheme that
-@code{download.packages} supports (which also includes @samp{ftp://} and
-@samp{file://}, but not on most systems @samp{https://}).  Under that
-base URL there should be directory trees for one or more of the
-following types of package distributions:
+@c Utilities such as @code{install.packages} can be pointed at any
+@c @acronym{CRAN}-style repository, and @R{} users may want to set up their
+@c own.  The `base' of a repository is a URL such as
+@c @uref{http://www.omegahat.org/R/}: this must be an URL scheme that
+@c @code{download.packages} supports (which also includes @samp{ftp://} and
+@c @samp{file://}, but not on most systems @samp{https://}).  Under that
+@c base URL there should be directory trees for one or more of the
+@c following types of package distributions:
+
+@code{install.packages}와 같은 유틸리티들은 모든 @acronym{CRAN} 스타일의 저장소로 가리
+켜지도록 할 수 있고, @R{} 사용자들은 자신들에게 맞게 설정하고 싶어할 지도
+모릅니다. 저장소의 ‘베이스’는 @uref{http://www.omegahat.org/R/}과 같은 URL입
+니다: 이는 @code{download.packages} 가 지원하는 URL scheme일 것입니다
+(@samp{ftp://}와 @samp{file://}도 포함하지만, 대부분의 시스템들에서 @samp{https://}는
+포함하지 않습니다). 베이스 URL에서, 하나 이상의 다음의 패키지 배포의
+종류들의 디렉토리 트리들이 있어야만 합니다.
+
 
 @itemize
 @item 
-@code{"source"}: located at @file{src/contrib} and containing
-@file{.tar.gz} files.  Other forms of compression can be used, e.g.@:
-@file{.tar.bz2} or @file{.tar.xz} files.  Complete repositories contain
-the sources corresponding to any binary packages, and in any case it is
-wise to have a @file{src/contrib} area with a possibly empty
-@file{PACKAGES} file.
+@c @code{"source"}: located at @file{src/contrib} and containing
+@c @file{.tar.gz} files.  Other forms of compression can be used, e.g.@:
+@c @file{.tar.bz2} or @file{.tar.xz} files.  Complete repositories contain
+@c the sources corresponding to any binary packages, and in any case it is
+@c wise to have a @file{src/contrib} area with a possibly empty
+@c @file{PACKAGES} file.
+@code{source}:  '@file{src/contrib}'에 위치하고 '@file{.tar.gz}파일들을 포함하고 있습니다.
+예를들어 .'@file{tar.bz2}' 나 '@file{.tar.xz}'와 같은 요약의 다른 형태가 사용될
+수도 있습니다. 완료된 저장소들은 모든 binary 패키지들에 상응하는 source
+들 안에 포함되어 있고, 좌우간 가능하면 비어있는 '@file{PACKAGES} 파일과 함께
+'@file{src/contrib. are}'를 가지는 것이 현명할 것입니다.
+
 
 @item 
-@code{"win.binary"}: located at @file{bin/windows/contrib/@var{x.y}} for
-@R{} versions @var{x.y.z} and containing @file{.zip} files for Windows.
+@c @code{"win.binary"}: located at @file{bin/windows/contrib/@var{x.y}} for
+@c @R{} versions @var{x.y.z} and containing @file{.zip} files for Windows.
+@code{"win.binary"}: @R{} 버전들 @var{x.y.z}을 위해 @file{bin/windows/contrib/@var{x.y}} 에 위치
+하고 윈도우즈를 위한 '@file{.zip}파일들을 포함하고 있습니다.
+
+@c @code{"mac.binary.leopard"}: located at
+@c @file{bin/macosx/leopard/contrib/@var{x.y}} for @R{} versions @var{x.y.z}
+@c and containing @file{.tgz} files.
 
 @item 
-@code{"mac.binary.leopard"}: located at
-@file{bin/macosx/leopard/contrib/@var{x.y}} for @R{} versions @var{x.y.z}
-and containing @file{.tgz} files.
+@code{"mac.binary.leopard"}: @R{} 버전들 @var{x.y.z}을 위해
+'@file{bin/macosx/leopard/contrib/x.y}' 에 위치하고 '@file{.tgz}' 파일들을 포함하고 있습니다.
 @end itemize
 
-Each terminal directory must also contain a @file{PACKAGES} file.  This
-can be a concatenation of the @file{DESCRIPTION} files of the packages
-separated by blank lines, but only a few of the fields are needed.  The
-simplest way to set up such a file is to use function
-@code{write_PACKAGES} in the @pkg{tools} package, and its help explains
-which fields are needed.  Optionally there can also be a
-@file{PACKAGES.gz} file, a @command{gzip}-compressed version of
-@file{PACKAGES}---as this will be downloaded in preference to
-@file{PACKAGES} it should be included for large repositories.  (If you
-have a mis-configured server that does not report correctly non-existent
-files you will need @file{PACKAGES.gz}.)
+@c Each terminal directory must also contain a @file{PACKAGES} file.  This
+@c can be a concatenation of the @file{DESCRIPTION} files of the packages
+@c separated by blank lines, but only a few of the fields are needed.  The
+@c simplest way to set up such a file is to use function
+@c @code{write_PACKAGES} in the @pkg{tools} package, and its help explains
+@c which fields are needed.  Optionally there can also be a
+@c @file{PACKAGES.gz} file, a @command{gzip}-compressed version of
+@c @file{PACKAGES}---as this will be downloaded in preference to
+@c @file{PACKAGES} it should be included for large repositories.  (If you
+@c have a mis-configured server that does not report correctly non-existent
+@c files you will need @file{PACKAGES.gz}.)
+각각의 터미널 디렉토리는 '@file{PACKAGES}' 파일도 포함해야만 합니다. 이는 빈 줄
+들에 의해 나누어진 패키지들의 '@file{DESCRIPTION}' 파일들의 연속일 수 있지만,
+아주 약간의 필드만이 필요합니다. 그런 파일을 설정하는 가장 간단한
+방법은 @pkg{tools} 패키지에서 @code{write_PACKAGES} 함수를 쓰는 것이고, 이에대한 도
+움말은 어떤 필드들이 필요한지 설명합니다. 추가적으로 '@file{PACKAGES}'의
+@command{gzip}-압축된 버전인 '@file{PACKAGES.gz}' 파일도 있을 수 있습니다. 왜냐하면, '@file{PACKAGES}'
+보다 우선적으로 다운로드 될 것이고, 이는 큰 저장소들에 포함되어야만 합
+니다. (만약 여러분이 존재하지 않는 파일들을 바르게 보고하지 않는 잘못
+구성된 서버를 가지고 있다면 @file{PACKAGES.gz}가 필요할 것입니다.)
 
-To add your repository to the list offered by @code{setRepositories()},
-see the help file for that function.
 
-Incomplete repositories are better specified @emph{via} a
-@code{contriburl} argument than @emph{via} being set as a repository.
+@c To add your repository to the list offered by @code{setRepositories()},
+@c see the help file for that function.
+@code{setRepositories()}에 의해 제공되는 리스트로 당신의 저장소를 추가하기 위
+해서는, 그 함수에 대한 도움말 파일을 참조하십시오.
 
-A repository can contain subdirectories, when the descriptions in the
-@file{PACKAGES} file of packages in subdirectories must include a line
-of the form
+
+@c Incomplete repositories are better specified @emph{via} a
+@c @code{contriburl} argument than @emph{via} being set as a repository.
+불완전한 저장소들은 저장소처럼 설정되는 것을 통하는 것보다 @code{contriburl}
+인자를 통해 지정되는 것이 더 낫습니다.
+
+
+@c A repository can contain subdirectories, when the descriptions in the
+@c @file{PACKAGES} file of packages in subdirectories must include a line
+@c of the form
+하나의 저장소는 서브디렉토리들 안의 패키지들이 '@file{PACKAGES }'파일들에 있는
+설명들이 다음과 같은 형태의 줄을 포함해야만 할 때, 서브디렉토리들을 포
+함할 수 있습니다.
 
 @example
 Path: @var{path/to/subdirectory}
 @end example
 
 @noindent
----once again @code{write_PACKAGES} is the simplest way to set this up.
+@c ---once again @code{write_PACKAGES} is the simplest way to set this up.
+다시 한 번 말하지만 @code{write_PACKAGES} 가 이를 설정하는 가장 간단한 방법입니다.
+
 
 @node Checking installed source packages,  , Setting up a package repository, Add-on packages
-@section Checking installed source packages
 
-It can be convenient to run @command{R CMD check} on an installed
-package, particularly on a platform which uses sub-architectures.  The
-outline of how to do this is, with the source package in directory
-@file{@var{pkgname}} (or a tarball filename):
+@c @section Checking installed source packages
+@section 설피된 source 패키지들 확인하기
+
+@c It can be convenient to run @command{R CMD check} on an installed
+@c package, particularly on a platform which uses sub-architectures.  The
+@c outline of how to do this is, with the source package in directory
+@c @file{@var{pkgname}} (or a tarball filename):
+
+서브아키텍처들을 사용하는 플랫폼에는 특히 , 설치된 패키지에 @command{R CMD check} 실행하는 것이 편할 수도 있습니다. 
+디렉토리 '@file{@var{pkgname}}'(혹은 타르볼
+파일 이름)에서의 소스 패키지와 함께, 이를 어떻게 하는지의 outline은
+다음과 같습니다.
+
 
 @example
 R CMD INSTALL -l @var{libdir} @var{pkgname} > @var{pkgname}.log 2>&1
@@ -2729,27 +2812,40 @@ R CMD check -l @var{libdir} --install=check:@var{pkgname}.log @var{pkgname}
 @end example
 
 @noindent
-Where sub-architectures are in use the @command{R CMD check} line can be
-repeated with additional architectures by
+@c Where sub-architectures are in use the @command{R CMD check} line can be
+@c repeated with additional architectures by
+서브아키텍처들이 사용되고있는 곳에서, @command{R CMD check} 줄은 아래에 의해
+서 추가적인 아키텍처들과 함께 반복될 수 있습니다.
+
 
 @example
 R --arch @var{arch} CMD check -l @var{libdir} --extra-arch --install=check:@var{pkgname}.log @var{pkgname}
 @end example
 
 @noindent
-where @option{--extra-arch} selects only those checks which depend on
-the installed code and not those which analyse the sources.  (If
-multiple sub-architectures fail only because they need different
-settings, e.g.@: environment variables, @option{--no-multiarch} may need
-to be added to the @code{INSTALL} lines.)  On (Mac) OS X and other
-Unix-alikes the architecture to run is selected by @option{--arch}: this
-can also be used on Windows with @file{@var{R_HOME}/bin/R.exe}, but it
-is more usual to select the path to the @command{Rcmd.exe} of the
-desired architecture.
+@c where @option{--extra-arch} selects only those checks which depend on
+@c the installed code and not those which analyse the sources.  (If
+@c multiple sub-architectures fail only because they need different
+@c settings, e.g.@: environment variables, @option{--no-multiarch} may need
+@c to be added to the @code{INSTALL} lines.)  On (Mac) OS X and other
+@c Unix-alikes the architecture to run is selected by @option{--arch}: this
+@c can also be used on Windows with @file{@var{R_HOME}/bin/R.exe}, but it
+@c is more usual to select the path to the @command{Rcmd.exe} of the
+@c desired architecture.
+여기에서 @option{--extra-arch}는 설치된 코드에 의존하는 체크들과 source들을 분석
+하지 않는 체크들만을 선택합니다. (만약 여러개의 서브아키텍처들이
+오직 다른 설정들이 필요하기 때문에 실패하는 것이라면, @option{--no-multiarch}
+가 @code{INSTALL} 줄에 추가되어야 할지도 모릅니다.) (Mac) OS X와 다른 유닉스
+계열들에서 실행하기위한 아키텍처는 @option{–arch}에 의해 선택됩니다: 이는
+'@file{@var{R_HOME}/bin/R.exe}'로 윈도우즈에서도 사용될 수 있지만, 원하는
+아키텍처의 @command{Rcmd.exe}로의 경로를 선택하는 것이 더 흔합니다.
 
-So on Windows to install, check and package for distribution a source
-package from a tarball which has been tested on another platform one
-might use
+@c So on Windows to install, check and package for distribution a source
+@c package from a tarball which has been tested on another platform one
+@c might use
+그래서 윈도우즈에서 설치를 하려면, 다른 플랫폼에서 테스트 된 타르볼에
+서의 배포를 위한 패키지 와 소스 패키지를 검사하십시오. 여러분은 다음을
+사용할 수 있습니다.
 
 @example
 .../bin/i386/Rcmd INSTALL -l @var{libdir} @var{tarball} --build > @var{pkgname}.log 2>&1
@@ -2758,19 +2854,26 @@ might use
 @end example
 
 @noindent
-where one might want to run the second and third lines in a different
-shell with different settings for environment variables and the path (to
-find external software, notably for Gtk+).
+@c where one might want to run the second and third lines in a different
+@c shell with different settings for environment variables and the path (to
+@c find external software, notably for Gtk+).
 
-@command{R CMD INSTALL} can do a @code{i386} install and then add the
-@code{x64} DLL from a single command by
+여러분은 환경변수와 경로를 위한 다른 설정으로된 다른 쉘에서 두 번째
+와 세 번째 줄을 실행하고 싶어할 지도 모릅니다 (외부의 소프트웨어를 찾
+기위해서, 특히 Gtk+을 위한).
+
+@c @command{R CMD INSTALL} can do a @code{i386} install and then add the
+@c @code{x64} DLL from a single command by
+@command{R CMD INSTALL} 은 @code{i386} 설치를 할 수 있고 다음에 의한 하나의 명령으로
+@code{x64} DLL를 추가할 수 있습니다.
 
 @example
 R CMD INSTALL --merge-multiarch -l @var{libdir} @var{tarball}
 @end example
 
 @noindent
-and @option{--build} can be added to zip up the installation.
+@c and @option{--build} can be added to zip up the installation.
+그리고 @option{–build}가 설치를 압축 하기위해서 추가될 수 있습니다.
 
 @node Internationalization, Choosing between 32- and 64-bit builds, Add-on packages, Top
 @c @chapter Internationalization and Localization
