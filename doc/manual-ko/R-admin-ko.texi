@@ -2031,7 +2031,7 @@ R은 @code{org.r-project.R.Leopard.fw.pkg}, @code{org.r-project.R.Leopard.GUI.pk
 @node Add-on packages, Internationalization, Running R, Top
 @c @chapter Add-on packages
 
-@chapter 추가 기능 팩키지들
+@chapter 애드온 패키지들
 
 @cindex Packages
 @cindex Libraries
@@ -2050,23 +2050,25 @@ R은 @code{org.r-project.R.Leopard.fw.pkg}, @code{org.r-project.R.Leopard.GUI.pk
 @c loaded from a @emph{library} by the function @code{library()}.  Thus a
 @c library is a directory containing installed packages; the main library
 @c is @file{@var{R_HOME}/library}, but others can be used, for example by
-@c @enindex R_LIBS
+@enindex R_LIBS
 @c setting the environment variable @env{R_LIBS} or using the @R{} function
 @c @code{.libPaths()}.
 
-@enindex R_LIBS
-정확한 용어를 사용하는것이 도움이 됩니다. @emph{팩키지}가@code{library()}라는 함수를 사용하여 @emph{library}에서 로드됩니다. 따라서 library란 설치된 팩키지들이 저장되어있는 디렉토리 입니다; 주된 library는 @file{@var{R_HOME}/library} 입니다, 그러나 다른 곳도 사용할수 있습니다, 예를들어 환경변수를 @env{R_LIBS}으로 설정하던지 @R{}함수인 @code{.libPaths()}를 사용하면 됩니다.  
+정확한 용어를 사용하는것이 도움이 됩니다. 
+@emph{팩키지}가 @code{library()}라는 함수를 사용하여 @emph{library}에서 로드됩니다. 
+따라서 library란 설치된 팩키지들이 저장되어있는 디렉토리 입니다; 
+주된 library는 @file{@var{R_HOME}/library} 입니다, 그러나 다른 곳도 사용할수 있습니다.
+예를들어 환경변수를 @env{R_LIBS}으로 설정하던지 @R{}함수인 @code{.libPaths()}를 사용하면 됩니다.  
 
 @node Default packages, Managing libraries, Add-on packages, Add-on packages
 @c @section Default packages
 
-@section 기본 팩키지
+@section 기본 패키지
 
 @cindex Packages, default
 
 @c The set of packages loaded on startup is by default
-
-시작할때 로드되는 팩키지 세트는 기본설정으로 정해져 있습니다.
+아래의 패키지들은 스타트업시에 자동으로 불러와집니다.
 
 @example
 > getOption("defaultPackages")
@@ -2076,62 +2078,77 @@ R은 @code{org.r-project.R.Leopard.fw.pkg}, @code{org.r-project.R.Leopard.GUI.pk
 @noindent
 @c (plus, of course, @pkg{base}) and this can be changed by setting the
 @c option in startup code (e.g.@: in @file{~/.Rprofile}).  It is initially
-@c @enindex R_DEFAULT_PACKAGES
+@enindex R_DEFAULT_PACKAGES
 @c set to the value of the environment variable @env{R_DEFAULT_PACKAGES} if
 @c set (as a comma-separated list).  Setting @env{R_DEFAULT_PACKAGES=NULL}
 @c ensures that only package @pkg{base} is loaded.
 
-@enindex R_DEFAULT_PACKAGES
-(물론 @pkg{base}도 포함합니다) 그리고 이것은 startup 코드에있는 옵션을 설정해서 바꿀수도있습니다 (예@: @file{~/.Rprofile} 안에서). 원래 설정은 환경변수인 @env{R_DEFAULT_PACKAGES}의 값에 맞춰져있습니다 만약 설정이 되어있다면 (comma-separated 리스트로). @env{R_DEFAULT_PACKAGES=NULL}으로 설정하는것은 @pkg{base} 팩키지만 로드할수있게 확보합니다.
+(물론 @pkg{base}도 포함합니다) 그리고 이것은 startup 코드에있는 옵션을 설정해서 바꿀수도있습니다 (예@: @file{~/.Rprofile} 안에서). 
+원래 설정은 환경변수인 @env{R_DEFAULT_PACKAGES}의 값에 맞춰져있습니다.
+이는 (컴마로 구분된 리스트인데) 환경변수 @env{R_DEFAULT_PACKAGES=NULL}으로 설정하는것은 @pkg{base} 패키지만 로드될 수 있게 합니다.
 
 @c Changing the set of default packages is normally used to reduce the set
 @c for speed when scripting: in particular not using @pkg{methods} will
 @c reduce the start-up time by a factor of up to two (and this is done by
 @c @command{Rscript}).  But it can also be used to customize @R{}, e.g.@:
 @c for class use.
-
-기본 팩키지 세트를 바꾸는것은 보통 스크립팅을 할때 빠르게 할수있도록 세트의 수를 줄이기위해 사용됩니다: 특히 @pkg{methods}를 사용하지않으면 시작할때 시간을 두배까지 줄여줍니다 (그리고 이것은 @command{Rscript}를 사용하여 하게됩니다). 하지만 이것은 @R{}을 맞춤형으로 바꿀때도 쓰입니다, 예@: 수업용으로 쓸때. 
+기본패키지들의 설정을 바꾸는 것은 보통 스크립팅을 할때 빠르게 할수있도록 세트의 수를 줄이기위해 사용됩니다: 특히 @pkg{methods}를 사용하지않으면 시작할때 시간을 두배까지 줄여 줄 것입니다 (그리고 이것은 @command{Rscript}을 통하여 이루어집니다).
+그러나, 이것은 @R{}을 커스터마이즈 하는데 사용됩니다. 예@: 수업용으로 쓸때. 
 
 @node Managing libraries, Installing packages, Default packages, Add-on packages
-@section Managing libraries
+@c @section Managing libraries
+@section 라이브러리 관리하기
 @cindex Libraries, managing
 
-@R{} packages are installed into @emph{libraries}, which are
-directories in the file system containing a subdirectory for each
-package installed there.
+@c @R{} packages are installed into @emph{libraries}, which are
+@c directories in the file system containing a subdirectory for each
+@c package installed there.
+@R{} 패키지들은 라이브러리 안에 설치되는데, 이것은 각 패키들을 위한 서브 디렉토리를 포함한 파일시스탬내의 디렉토리입니다.
 
-@R{} comes with a single library, @file{@var{R_HOME}/library} which is
-the value of the @R{} object @samp{.Library} containing the standard and
-recommended@footnote{unless they were excluded in the build.}  packages.
-Both sites and users can create others and make use of them (or not) in
-an @R{} session.  At the lowest level @samp{.libPaths()} can be used to
-add paths to the collection of libraries or to report the current
-collection.
+@c @R{} comes with a single library, @file{@var{R_HOME}/library} which is
+@c the value of the @R{} object @samp{.Library} containing the standard and
+@c recommended@footnote{unless they were excluded in the build.}  packages.
+@c Both sites and users can create others and make use of them (or not) in
+@c an @R{} session.  At the lowest level @samp{.libPaths()} can be used to
+@c add paths to the collection of libraries or to report the current
+@c collection.
+@R{}은 @file{@var{R_HOME}/library}이라는 하나의 라이브러리가 따라오는데, 이는 기본 패키지와 추천 패키지들을 포함한 @samp{.Library} 이라는 R 객체의 값입니다 @footnote{만약 그렇지 않다면 그들은 빌드시에 제외될 것입니다}. 
+사이트들과 사용자들 모두는 @R{} 세션에서 다른 것들을 생성하거나 그들을 활용할 (혹은 활용하지 않거나) 수 있습니다. 
+가장 낮은 레벨인 @samp{.libPaths()}는 라이브러리의 컬렉션으로나 현재 컬렉션을 리포트 하기위한 경로를 더하도록 사용될 수도 있습니다. 
 
 @cindex Libraries, site
 @cindex Site libraries
-@R{} will automatically make use of a site-specific library
-@file{@var{R_HOME}/site-library} if this exists (it does not in a
-vanilla @R{} installation).  This location can be overridden by
-setting@footnote{its binding is locked once that files has been read, so
-users cannot easily change it.} @samp{.Library.site} in
-@file{@var{R_HOME}/etc/Rprofile.site}, or (not recommended) by setting
-the
+@c @R{} will automatically make use of a site-specific library
+@c @file{@var{R_HOME}/site-library} if this exists (it does not in a
+@c vanilla @R{} installation).  This location can be overridden by
+@c setting@footnote{its binding is locked once that files has been read, so
+@c users cannot easily change it.} @samp{.Library.site} in
+@c @file{@var{R_HOME}/etc/Rprofile.site}, or (not recommended) by setting
+@c the
 @enindex R_LIBS_SITE
-environment variable @env{R_LIBS_SITE}.  Like @samp{.Library}, the
-site libraries are always included by @samp{.libPaths()}.
+@c environment variable @env{R_LIBS_SITE}.  Like @samp{.Library}, the
+@c site libraries are always included by @samp{.libPaths()}.
+R은 자동으로 site-specific 라이브러리인 @file{@var{R_HOME}/site-library}가 존재한다면 이를 활용할 것입니다 (이것은 a vanilla @R{} 설치내에 존재하는 것이 아닙니다). 
+이 위치는 @file{@var{R_HOME}/etc/Rprofile.site}에 @samp{.Library.site}를 설정함으로써 무시할 수 있고, 아니면 (추천하지는 않습니다) 환경값 @env{R_LIBS_SITE}을 설정함으로써도 무시할 수 있습니다. 
+@samp{.Library}와 같이, 사이트 라이브러리들은 항상 @samp{.libPaths()}에 의해 포함되어집니다. 
+
 
 @cindex Libraries, user
 @cindex User libraries
 @enindex R_LIBS_USER
-Users can have one or more libraries, normally specified by the
-environment variable @env{R_LIBS_USER}.  This has a default value (use
-@samp{Sys.getenv("R_LIBS_USER")} within an @R{} session to see what it
-is), but only is used if the corresponding directory actually exists
-(which by default it will not).
+@c Users can have one or more libraries, normally specified by the
+@c environment variable @env{R_LIBS_USER}.  This has a default value (use
+@c @samp{Sys.getenv("R_LIBS_USER")} within an @R{} session to see what it
+@c is), but only is used if the corresponding directory actually exists
+@c (which by default it will not).
+사용자들은 하나 이상의 라이브러리들을 가질 수 있고, 보통 환경값  @env{R_LIBS_USER}에 의해 지정됩니다. 
+(무엇인지 보기 위해서는 @R{} 세션의 @samp{Sys.getenv("R_LIBS_USER")} 를 사용하십시오).
+ 이는 기본 값이 있지만, 상응하는 디렉토리가 실제로 존재할 때만 사용됩니다(기본적으로는 존재하지 않습니다). 
 
-Both @env{R_LIBS_USER} and @env{R_LIBS_SITE} can specify multiple
-library paths, separated by colons (semicolons on Windows).
+
+@c Both @env{R_LIBS_USER} and @env{R_LIBS_SITE} can specify multiple
+@c library paths, separated by colons (semicolons on Windows).
+@env{R_LIBS_USER} 과 @env{R_LIBS_SITE} 두 가지 모두 colon들로 분리되어진 (윈도우즈에서는 semicolon들) 여러개의 라이브러리 경로들을 지정할 수 있습니다. 
 
 
 @node Installing packages, Updating packages, Managing libraries, Add-on packages
@@ -2147,27 +2164,44 @@ library paths, separated by colons (semicolons on Windows).
 @end menu
 
 
-Packages may be distributed in source form or compiled binary form.
-Installing source packages which contain C/C++/Fortran code requires
-that compilers and related tools be installed.  Binary packages are
-platform-specific and generally need no special tools to install, but
-see the documentation for your platform for details.
+@c Packages may be distributed in source form or compiled binary form.
+@c Installing source packages which contain C/C++/Fortran code requires
+@c that compilers and related tools be installed.  Binary packages are
+@c platform-specific and generally need no special tools to install, but
+@c see the documentation for your platform for details.
 
-Note that you may need to specify implicitly or explicitly the library to
-which the package is to be installed.  This is only an issue if you have
-more than one library, of course.
+패키지들은 소스형태 또는 컴파일드된 바이너리 형태로 배포 될 수도 있습니다. 
+C/C++/Fortran 코드를 포함하는 소스 패키지들을 설치하는 것은 컴파일러 또는 연관된 도구들이 설치가 되어 있어야 합니다. 
+Binary 패키지들은 플랫폼 종속이고 일반적으로 특별한 도구들의 설치가 필요하지 않지만, 자세한 사
+항은 여러분의 플랫폼에 관한 문서를 참고하십시오.
 
-If installing packages on a Unix-alike to be used by other users, ensure
-that the system @code{umask} is set to give sufficient permissions (see
-also @code{Sys.umask} in @R{}).  (To a large extent this is unnecessary
-in recent versions of @R{}, which install packages as if @code{umask = 022}.)
+@c Note that you may need to specify implicitly or explicitly the library to
+@c which the package is to be installed.  This is only an issue if you have
+@c more than one library, of course.
+만약 하나 이상의 라이브러리가 존재할 때, 그 라이브러리에 어떤 패키지에 설치되는지를 함축적으로나 명시적으로 지정해
+야할 수도 있습니다. 
 
-For most users it suffices to call
-@samp{install.packages(@var{pkgname})} or its GUI equivalent if the
-intention is to install a @acronym{CRAN} package and internet access is
-available.@footnote{If a proxy needs to be set, see
-@command{?download.file}.}  On most systems @samp{install.packages()}
-will allow packages to be selected from a list box.
+
+@c If installing packages on a Unix-alike to be used by other users, ensure
+@c that the system @code{umask} is set to give sufficient permissions (see
+@c also @code{Sys.umask} in @R{}).  (To a large extent this is unnecessary
+@c in recent versions of @R{}, which install packages as if @code{umask = 022}.)
+만약 유닉스 계열의 설치 패키지가 다른 사용자에 의하여 사용되어지려고 할 때, 
+시스템 @code{umask}이 충분한 허가를 주도록 설정되었는지를 확인하십시오
+(@R{}의@code{Sys.umask}도 참조하십시오). (이는 일반적으로 @code{umask = 022}처럼 패키지
+를 설치하는 최신 버전의 R에는 필요하지 않습니다.)
+
+
+@c For most users it suffices to call
+@c @samp{install.packages(@var{pkgname})} or its GUI equivalent if the
+@c intention is to install a @acronym{CRAN} package and internet access is
+@c available.@footnote{If a proxy needs to be set, see
+@c @command{?download.file}.}  On most systems @samp{install.packages()}
+@c will allow packages to be selected from a list box.
+대부분의 사용자들에게는 만약 인터넷 사용이 가능하고 @acronym{CRAN} 패키지를 설치
+하고자 하는 의도라면 @samp{install.packages(pkgname)}나 그의 GUI에 상응하는
+것을 부르는 것으로 충분합니다. 대부분의 시스템들에서
+@samp{install.packages()}는 패키지들이 list box에서 선택되도록 허용할 것입니다.
 
 To install packages from source in a Unix-alike use
 
@@ -2176,165 +2210,255 @@ R CMD INSTALL -l /path/to/library @var{pkg1} @var{pkg2} @dots{}
 @end example
 
 @noindent
-The part @samp{-l /path/to/library} can be omitted, in which case the
-first library of a normal @R{} session is used (that shown by
-@code{.libPaths()[1]}).
+@c The part @samp{-l /path/to/library} can be omitted, in which case the
+@c first library of a normal @R{} session is used (that shown by
+@c @code{.libPaths()[1]}).
+일반 @R{} 세션의 첫 번째 라이브러리가 사용되었을 경우에는
+(@code{.libPaths()[1]}에 의해 보여집니다) @samp{-l /path/to/library} 부분이 생략될
+수 있습니다.
 
 @enindex TMPDIR
-Ensure that the environment variable @env{TMPDIR} is either unset (and
-@file{/tmp} exists and can be written in and executed from) or points to
-a valid temporary directory.
-
-There are a number of options available: use @code{R CMD INSTALL --help}
-to see the current list.
+@c Ensure that the environment variable @env{TMPDIR} is either unset (and
+@c @file{/tmp} exists and can be written in and executed from) or points to
+@c a valid temporary directory.
+@c There are a number of options available: use @code{R CMD INSTALL --help}
+@c to see the current list.
+반드시 환경값 @env{TMPDIR}이 unset (그리고 '@file{/tmp}'이 존재하여 그 곳에 쓰여지고 실
+행될 수 있도록)이거나 유효한 임시 디렉토리로 향하도록 하십시오.
+여러가지의 옵션들이 사용가능합니다: 현재 목록을 보기위해서는@code{R CMD INSTALL -–help}를 사용하십시오.
 
 @findex install.packages
-Alternatively, packages can be downloaded and installed from within
-@R{}.  First set the option @code{CRAN} to your nearest @acronym{CRAN}
-mirror using @command{chooseCRANmirror()}.  Then download
-and install packages @pkg{pkg1} and @pkg{pkg2} by
-
+@c Alternatively, packages can be downloaded and installed from within
+@c @R{}.  First set the option @code{CRAN} to your nearest @acronym{CRAN}
+@c mirror using @command{chooseCRANmirror()}.  Then download
+@c and install packages @pkg{pkg1} and @pkg{pkg2} by
+그렇지 않으면, 패키지들은 @R{}내에서 다운로드되고  설치될 수 있습니다. 첫
+번째로, 옵션 @code{CRAN}을 @command{chooseCRANmirror()}을 사용하여 가장 가까운 @acronym{CRAN}
+mirror로 설정하십시오. 그리고 나서 다음을 사용하여 @pkg{pkg1}과 @pkg{pkg2} 패키지
+들을 다운로드하고 설치하십시오.
 @example
 > install.packages(c("pkg1", "pkg2"))
 @end example
 
 @noindent
-The essential dependencies of the specified packages will also be fetched.
-Unless the library is specified (argument @code{lib}) the first library
-in the library search path is used: if this is not writable, @R{} will
-ask the user (in an interactive session) if the default user library
-should be created, and if allowed to will install the packages there.
-
-
-If you want to fetch a package and all those it depends on (in any way)
-that are not already installed, use e.g.
-
+@c The essential dependencies of the specified packages will also be fetched.
+@c Unless the library is specified (argument @code{lib}) the first library
+@c in the library search path is used: if this is not writable, @R{} will
+@c ask the user (in an interactive session) if the default user library
+@c should be created, and if allowed to will install the packages there.
+@c If you want to fetch a package and all those it depends on (in any way)
+@c that are not already installed, use e.g.
+위의 패키지들의 필수 dependency들 또한 fetch될 것입니다. (인자 @code{lib}로)
+라이브러리가 지정되있지 않은 이상 라이브러리 검색 경로이 첫 번째 라이
+브러리가 사용됩니다: 만약 쓸 수 없다면, @R{}은 사용자에게 (interactive 세
+션에서) 기본 사용자 라이브러리를 생성할 지와, 그 곳에 패키지들을 설치
+하는 것이 허용되는지를 물을 것 입니다.
+만약 여러분이 (어떤 식으로든) 미리 설치되지 않은 패키지와 그에 종속하
+는 모든것들을 fetch하기를 원한다면 다음의 예제를 사용하십시오.
 @example
 > install.packages("Rcmdr", dependencies = TRUE)
 @end example
 
-@code{install.packages} can install a source package from a local
-@file{.tar.gz} file by setting argument @code{repos} to @code{NULL}:
-this will be selected automatically if the name given is a single
-@file{.tar.gz} file.
+@c @code{install.packages} can install a source package from a local
+@c @file{.tar.gz} file by setting argument @code{repos} to @code{NULL}:
+@c this will be selected automatically if the name given is a single
+@c @file{.tar.gz} file.
+@code{install.packages}는 인자 @code{repos}를 @code{NULL}로 설정함으로써 로컬 '@file{.tar.gz}로 부터
+source 패키지를 설치할 수 있습니다: 이는 주어진 이름이 하나의 '@file{.tar.gz} 파일일 경우에 자동으로 선택될 것입니다.
 
-@code{install.packages} can look in several repositories, specified as a
-character vector by the argument @code{repos}: these can include a
-@acronym{CRAN} mirror, Bioconductor, Omegahat, R-forge, local archives,
-local files, @dots{}).  Function @code{setRepositories()} can select
-amongst those repositories that the @R{} installation is aware of.
+@c @code{install.packages} can look in several repositories, specified as a
+@c character vector by the argument @code{repos}: these can include a
+@c @acronym{CRAN} mirror, Bioconductor, Omegahat, R-forge, local archives,
+@c local files, @dots{}).  Function @code{setRepositories()} can select
+@c amongst those repositories that the @R{} installation is aware of.
+@code{install.packages}를 사용하여, 인자 @code{repos}로 character vector 처럼 지정
+된, 몇몇의 저장소들을 볼 수 있습니다: 이들은 @acronym{CRAN} mirror,
+Bioconductor, Omegahat, R-forge, 로컬 archive들, 로컬 파일들 등을 포함
+합니다. @code{setRepositories()} 함수는 @R{} 설치가 감지하는 저장소들 중에 선택
+을 할 수 있습니다.
 
-Naive users sometimes forget that as well as installing a package, they
-have to use @code{library} to make its functionality available.
+@c Naive users sometimes forget that as well as installing a package, they
+@c have to use @code{library} to make its functionality available.
+어리숙한 사용자들은 패키지의 설치와 함께 그의 기능을 사용하기위해서 @code{library}
+를 사용해야 한다는 사실을 가끔 잊습니다.
 
 @node Windows packages, OS X packages, Installing packages, Installing packages
 @subsection Windows
 
-What @code{install.packages} does by default is different on Unix-alikes
-(except OS X) and Windows.  On Unix-alikes it consults the list of
-available @emph{source} packages on @acronym{CRAN} (or other
-repository/ies), downloads the latest version of the package sources,
-and installs them (via @code{R CMD INSTALL}).  On Windows it looks (by
-default) at the list of @emph{binary} versions of packages available for
-your version of @R{} and downloads the latest versions (if any),
-although optionally it will also download and install a source package
-by setting the @code{type} argument.
+@c What @code{install.packages} does by default is different on Unix-alikes
+@c (except OS X) and Windows.  On Unix-alikes it consults the list of
+@c available @emph{source} packages on @acronym{CRAN} (or other
+@c repository/ies), downloads the latest version of the package sources,
+@c and installs them (via @code{R CMD INSTALL}).  On Windows it looks (by
+@c default) at the list of @emph{binary} versions of packages available for
+@c your version of @R{} and downloads the latest versions (if any),
+@c although optionally it will also download and install a source package
+@c by setting the @code{type} argument.
+기본으로 @code{install.packages}가 유닉스 계열 (OS X를 제외한)에서와 윈도우즈
+에서 하는 것이 다릅니다. 유닉스 계열에서, 이는 @acronym{CRAN} (혹은 다른 저장소(
+들))에서 사용가능한 @emph{source} 패키지들의 리스트를 참고하고, 패키지 source
+들의 최신 버전을 다운로드하며, 그들을 (@code{R CMD INSTALL}을 통하여) 설치합
+니다. 윈도우즈에서는, (기본적으로) 여러분의 R 버전에서 사용가능한 패키
+지의 @emph{binary} 버전들의 리스트를 보고 (만약 있다면) 가장 최신 보전들을 다
+운로드 합니다. 선택적으로 이가 또한 @code{type} 인자를 설정함으로써 source 패
+키지를 다운로드하고 설치할 수도 있기는 합니다.
 
-On Windows @code{install.packages} can also install a binary package
-from a local @file{zip} file by setting argument @code{repos} to
-@code{NULL}.   @code{Rgui.exe} has a menu @code{Packages} with a GUI
-interface to @code{install.packages}, @code{update.packages} and
-@code{library}.
+@c On Windows @code{install.packages} can also install a binary package
+@c from a local @file{zip} file by setting argument @code{repos} to
+@c @code{NULL}.   @code{Rgui.exe} has a menu @code{Packages} with a GUI
+@c interface to @code{install.packages}, @code{update.packages} and
+@c @code{library}.
+윈도우즈에서 @code{install.packages}는 인자 @code{repos}를 @code{NULL}. @code{Rgui.exe}로 설정함으로
+써 로컬 '@file{zip}'파일에서부터 @code{binary} 패키지도 설치할 수 있습니다. 이는
+@code{install.packages},@code{update.packages} 그리고 @code{library}로의  GUI 인터페이스를
+가진 메뉴 @code{Packages}를 가지고 있습니다.
 
-Windows binary packages for @R{} are nowadays distributed as a single
-binary containing either or both architectures.
+@c Windows binary packages for @R{} are nowadays distributed as a single
+@c binary containing either or both architectures.
+@R{}의 윈도우즈 binary 패키지들은 둘 중 하나 혹은 두 개 모두의
+architecture들을 포함하고 있는 하나의 binary로 요즘 배포되고 있습니다.
 
-A few of the binary packages need other software to be installed on your
-system: see for example
-@uref{http://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/3.0/@/@@ReadMe}.
-For 64-bit builds, packages using Gtk+ (@CRANpkg{Cairo}, @CRANpkg{RGtk2},
-@CRANpkg{cairoDevice} and those that depend on them) need the @file{bin}
-directory of a bundled distribution from
-@uref{http://www.gtk.org/@/download-windows-64bit.html} in the path: it
-should work to have both Gtk+ @file{bin} directories in the path on a
-64-bit version of @R{}.
+@c A few of the binary packages need other software to be installed on your
+@c system: see for example
+몇 몇의 binary 패키지들은 여러분의 시스템에 다른 소프트웨어들이 설치되는
+것을 필요로 합니다: 예를 들면
 
-@command{R CMD INSTALL} works in Windows to install source packages if
-you have set up the tools needed (see @ref{The Windows toolset}).  No
-additional tools are needed if the package does not contain compiled
-code, and @code{install.packages(type="source")} will work for such
-packages (and for those with compiled code if the tools are in the path).
+@c @uref{http://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/3.0/@/@@ReadMe}.
+@c For 64-bit builds, packages using Gtk+ (@CRANpkg{Cairo}, @CRANpkg{RGtk2},
+@c @CRANpkg{cairoDevice} and those that depend on them) need the @file{bin}
+@c directory of a bundled distribution from @uref{http://www.gtk.org/@/download-windows-64bit.html} in the @c path: it should work to have both Gtk+ @file{bin} directories in the path on a
+@c 64-bit version of @R{}.
+@uref{http://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/3.0/@/@@ReadMe}를 참조하세
+요. 64 비트 구축을 위해서, Gtk+ (@CRANpkg{Cairo}, @CRANpkg{RGtk2}, @CRANpkg{cairoDevice} 그리고 그들
+에 종속된 것들)를 사용하는 패키지들은 경로에서 @uref{http://www.gtk.org/@/download-windows-64bit.html} 에서의 bundled
+distribution의 bin 디렉토리를 필요로 합니다: R의 64빝 버전의 경로에서 Gtk+ 와 '@file{bin}' 두 가지 모두를 가지는 것도 괜찮을 것입니다.
 
-We have seen occasional permission problems after unpacking source
-packages on some Vista/Windows 7/Server 2008 systems: these have been
-circumvented by setting the environment variable @env{R_INSTALL_TAR} to
-@samp{tar.exe}.
-@enindex R_INSTALL_TAR
 
-If you have only a source package that is known to work with current
-@R{} and just want a binary Windows build of it, you could make use of
-the building service offered at
+@c @command{R CMD INSTALL} works in Windows to install source packages if
+@c you have set up the tools needed (see @ref{The Windows toolset}).  No
+@c additional tools are needed if the package does not contain compiled
+@c code, and @code{install.packages(type="source")} will work for such
+@c packages (and for those with compiled code if the tools are in the path).
+@command{R CMD INSTALL}은 여러분이 필요한 도구들을 설정해 놓았다면, source 패키
+지들을 설치하기위한 용도로 윈도우즈에서 사용됩니다 (@ref{The Windows
+toolset}을 참조하세요). 패키지가 compile된 코드를 포함하고 있지 않다면
+추가적인 도구들은 필요하지 않고, @code{install.packages(type="source")}는 그
+런 패키지들을 위해 (그리고 만약 도구들이 경로에 있다면 compile된 코드
+들을 가진 것들) 실행될 것입니다.
+
+
+@c We have seen occasional permission problems after unpacking source
+@c packages on some Vista/Windows 7/Server 2008 systems: these have been
+@c circumvented by setting the environment variable @env{R_INSTALL_TAR} to
+@c @samp{tar.exe}.
+@c @enindex R_INSTALL_TAR
+@c If you have only a source package that is known to work with current
+@c @R{} and just want a binary Windows build of it, you could make use of
+@c the building service offered at
 @uref{http://win-builder.r-project.org/}.
+우리는 비스타/윈도우즈 7/ Server 2008 시스템들에서 source 패키지들을
+unpack한 후에 일어나는 허가 문제를 가끔 보았습니다: 이는 환경값
+@env{R_INSTALL_TAR}을 @samp{tar.exe}로 설정함으로써 이를 피해왔습니다. 만약 현재
+의 R과 작업을 하는 것으로 알려져 있고 그것으로부터 binary 윈도우즈를
+만들기를 원하는 source 패키지 밖에 가지고 있지 않다면,
+@uref{http://win-builder.r-project.org/}에서 제공되는 building 서비스를 활용
+할 수도 있습니다.
 
-For almost all packages @command{R CMD INSTALL} will attempt to install
-both 32- and 64-bit builds of a package if run from a 32/64-bit install
-of @R{} on a 64-bit version of Windows.  It will report success if the
-installation of the architecture of the running @command{R} succeeded,
-whether or not the other architecture was successfully installed.
+@c For almost all packages @command{R CMD INSTALL} will attempt to install
+@c both 32- and 64-bit builds of a package if run from a 32/64-bit install
+@c of @R{} on a 64-bit version of Windows.  It will report success if the
+@c installation of the architecture of the running @command{R} succeeded,
+@c whether or not the other architecture was successfully installed.
+거의 대부분의 패키지들에서, 윈도우즈의 64비트 버전에서 R의 32/64 비트
+설치를 실행한다면, @command{R CMD INSTALL}는 패키지의 32 비트와 64비트 빌드 두
+가지 모두를 시도할 것입니다. 다른 architecture가 성공적으로 설치가 되
+었건 되지 않았건, @command{R}을 돌리는 architecture의 설치가 성공한다면, 이는 성
+공이라고 리포트를 할 것입니다.
 
-The exceptions are packages with a non-empty @file{configure.win} script
-or which make use of @file{src/Makefile.win}.  If @file{configure.win}
-does something appropriate to both architectures use@footnote{for a
-small number of @acronym{CRAN} packages where this is known to be safe
-and is needed by the autobuilder this is the default.  Look at the
-source of @file{tools:::.install_packages} for the list.} option
-@option{--force-biarch}: otherwise @command{R CMD INSTALL
---merge-multiarch} can be applied to a source tarball to merge separate
-32- and 64-bit installs.  (This can only be applied to a tarball, and
-will only succeed if both installs succeed.)
 
-If you have a package without compiled code and no Windows-specific
-help, you can zip up an installation on another OS and install from the
-that zip file on Windows.  However, such a package can be installed from
-the sources on Windows without any additional tools.
+@c The exceptions are packages with a non-empty @file{configure.win} script
+@c or which make use of @file{src/Makefile.win}.  If @file{configure.win}
+@c does something appropriate to both architectures use@footnote{for a
+@c small number of @acronym{CRAN} packages where this is known to be safe
+@c and is needed by the autobuilder this is the default.  Look at the
+@c source of @file{tools:::.install_packages} for the list. option
+@c @option{--force-biarch}: otherwise @command{R CMD INSTALL
+@c --merge-multiarch} can be applied to a source tarball to merge separate
+@c 32- and 64-bit installs.  (This can only be applied to a tarball, and
+@c will only succeed if both installs succeed.)
+예외 사항은, 비어있지 않은 '@file{configure.win}' 스크립트를 가진 패키지 혹은
+'@file{src/Makefile.win}'를 활용하는 패키지들입니다. 만약 '@file{configure.win}'이 두 가
+지 모두의 architecture들에 알맞은 무언가를 한다면 @option{--force-biarch} 옵션을
+사용하십시오: 그렇지 않으면 각각의 32-비트와 64-비트 설치를 통합하기위
+하여 source 타르볼에 @command{R CMD INSTALL --merge-multiarch}가 적용될 수 있습
+니다. (이는 타르볼에만 적용될 수 있고, 두 가지 모두의 설치가 성공할 경
+우에만 성공할 것입니다.)
+
+
+@c If you have a package without compiled code and no Windows-specific
+@c help, you can zip up an installation on another OS and install from the
+@c that zip file on Windows.  However, such a package can be installed from
+@c the sources on Windows without any additional tools.
+만약 compile된 코드가 없는 패키지를 가지고 있고 윈도우에 알맞은 도움말
+이 없다면, 다른 OS에서의 설치를 중단하고 윈도우즈에서 zip 파일을 설치
+하십시오. 하지만, 이런 패키지는 추가의 도구 없이 윈도우즈의 source들에
+서 설치될 수 있습니다.
 
 @node OS X packages, Customizing package compilation, Windows packages, Installing packages
 @subsection OS X
 
-@strong{NB:}  Information on OS X is likely to change before release of
-@R{} 3.0.0.
+@c @strong{NB:}  Information on OS X is likely to change before release of
+@c @R{} 3.0.0.
+@c On OS X @code{install.packages} works as it does on other Unix-alike
+@c systems, but there are additional types @code{mac.binary*} (the default
+@c in the @acronym{CRAN} distribution) that can be passed to
+@c @code{install.packages} in order to download and install binary packages
+@c from a suitable repository, and type @code{mac.binary.leopard} is the
+@c default for @acronym{CRAN} builds of R.  These OS X binary package files
+@c have the extension @samp{tgz}.  The @Rapp{}[ GUI provides for
+@c installation of either binary or source packages, from @acronym{CRAN} or
+@c local files.
+@strong{NB:} OS X에 대한 정보는 R 3.0.0.의 출시되기 전에 바뀔 것이라고 예상됩니다.
+OS X에서 @code{install.packages}는 다른 유닉스 계열 시스템들에서처럼 작동하지만,
+알맞은 저장소로부터 binary 패키지들을 다운로드하고 설치할 수 있도
+록 @code{install.packages} 로 패스되어질 수 있는 @code{mac.binary*} (@acronym{CRAN}
+distribution에서 기본값인)와  @R{}의 @acronym{CRAN} 구축을 위한 기본값인
+@code{mac.binary.leopard}의 추가적인 타입들이 있습니다. 이런 OS X binary 패키
+지 파일들은 확장자 @samp{tgz}을 가지고 있습니다. @Rapp{}[ GUI는 @acronym{CRAN}이나 로컬
+파일들로부터 binary나 source 패키지들 중 하나의 설치를 제공합니다.
 
-On OS X @code{install.packages} works as it does on other Unix-alike
-systems, but there are additional types @code{mac.binary*} (the default
-in the @acronym{CRAN} distribution) that can be passed to
-@code{install.packages} in order to download and install binary packages
-from a suitable repository, and type @code{mac.binary.leopard} is the
-default for @acronym{CRAN} builds of R.  These OS X binary package files
-have the extension @samp{tgz}.  The @Rapp{}[ GUI provides for
-installation of either binary or source packages, from @acronym{CRAN} or
-local files.
 
-Note that many binary packages including compiled code are tied to a
-particular series (@R{} 2.15.x or 3.0.x) of @R{}: in any case @R{} 3.0.x
-cannot use any binary packages built for @R{} 2.15.x.
+@c Note that many binary packages including compiled code are tied to a
+@c particular series (@R{} 2.15.x or 3.0.x) of @R{}: in any case @R{} 3.0.x
+@c cannot use any binary packages built for @R{} 2.15.x.
+Compile된 코드를 포함한 많은 binary 패키지들이 @R{}의 특정한 시리즈들 (@R{}
+2.15.x 혹은 3.0.x)에 묶여있다는 것을 유의하십시오: 어떠한 경우에도 @R{}
+3.0.x는R 2.15.x를 위해 구축된 어떠한 binary 패키지도 사용할 수 없습니다.
 
-Installing source packages which do not contain compiled code should
-work with no additional tools. For others you will need
-@command{Xcode}@footnote{from the App Store or Apple's developer site
-depending on the version of OS X, and including the `Command Line Tools'
-which in recent versions of @command{Xcode} can be downloaded for inside
-Xcode, under the Preferences.} and compilers which match the ones used
-to compile @R{}.  These are currently called @command{gcc},
-@command{g++} and @command{gfortran}, and need to accept the Apple
-extension of the @option{-arch} flag.  Suitable compilers can be
-downloaded from @uref{http://r.research.att.com/tools/}.
 
-Package @CRANpkg{rJava} and those which depend on it need a Java runtime
-installed: for Mountain Lion see @ref{Mountain Lion}.
+@c Installing source packages which do not contain compiled code should
+@c work with no additional tools. For others you will need
+@c @command{Xcode}@footnote{from the App Store or Apple's developer site
+@c depending on the version of OS X, and including the `Command Line Tools'
+@c which in recent versions of @command{Xcode} can be downloaded for inside
+@c Xcode, under the Preferences.} and compilers which match the ones used
+@c to compile @R{}.  These are currently called @command{gcc},
+@c @command{g++} and @command{gfortran}, and need to accept the Apple
+@c extension of the @option{-arch} flag.  Suitable compilers can be
+@c downloaded from @uref{http://r.research.att.com/tools/}.
+Compile된 코드를 포함하지 않은 source 패키지를 설치하는 것은 추가적인 도구 없이도 작동해야만 합니다. 다른 것들은, @command{Xcode}와 @R{}을 compile하기위하 여 사용된 것과 맞는 컴파일러들이 필요합니다. 이들은 현재 @command{gcc}, @command{g++}, 그리고 @command{gfortran}이라고 불리우고 @option{-arch} 플래그의 Apple 확장의 허용을 필요로 합니다. 알맞은 컴파일러들은 @uref{http://r.research.att.com/tools/}에서 다운로
+드될 수 있습니다.
+
+
+@c Package @CRANpkg{rJava} and those which depend on it need a Java runtime
+@c installed: for Mountain Lion see @ref{Mountain Lion}.
+@CRANpkg{rJava} 패키지와 이에 종속된 것들은 Java runtime의 설치가 필요합니다:
+Mountian Lion은 @ref{Mountain Lion}을 참조하세요.
 
 
 @node Customizing package compilation, Multiple sub-architectures, OS X packages, Installing packages
 @subsection Customizing package compilation
+6.3.3 패키지 편집의 사용자화
 
 The R system and package-specific compilation flags can be overridden or
 added to by setting the appropriate Make variables in the personal file
@@ -2345,13 +2469,24 @@ where @samp{R_PLATFORM} is the platform for which R was built, as
 available in the @code{platform} component of the R variable
 @code{R.version}.
 
-Package developers are encouraged to use this mechanism to enable a
-reasonable amount of diagnostic messaging (``warnings'') when compiling,
-such as e.g.@: @option{-Wall -pedantic} for tools from GCC, the Gnu
-Compiler Collection.
+R 시스템과 패키지 특정 편집 flag들은 개인 파일인
+'@file{@var{HOME}/.R/Makevars-@var{R_PLATFORM}}' (하지만 윈도우즈에서는
+'@file{@var{HOME}/.R/Makevars.win}' 혹은 '@file{@var{HOME}/.R/Makevars.win64)}'에서 알맞은 Make 값들
+을 설정함으로써 무시되거나 더해질 수 있습니다. 혹은 이가 존재하지 않는
+다면 @samp{R_PLATFORM}이 R이 구축된 곳의 플랫폼인 경우 HOME/.R/Makevars이 R
+variable @code{R.version}의  @code{platform} 구성에서 사용가능합니다.
 
-Note that this mechanism can also be used when it necessary to change
-the optimization level for a particular package.  For example
+@c Package developers are encouraged to use this mechanism to enable a
+@c reasonable amount of diagnostic messaging (``warnings'') when compiling,
+@c such as e.g.@: @option{-Wall -pedantic} for tools from GCC, the Gnu
+@c Compiler Collection.
+@c Note that this mechanism can also be used when it necessary to change
+@c the optimization level for a particular package.  For example
+예를 들어, Gnu compiler 컬렉센인 GCC의 도구들을 위한 @option{-Wall –pedantic}와
+같은 패키지 개발자들에게 compile을 할 때 합리적인 양의 진단 메세지 (“
+경고”)를 받을 수 있도록 하기위하여 이 방법을 사용하도록 권해집니다.
+이 방법은 다음의 예와 같이 특정한 패키지의 optimization 레벨을 바꾸는
+것이 필요할 때도 사용된다는 것을 유의하십히오.
 
 @example
 ## @r{for C code}
@@ -2364,54 +2499,82 @@ FFLAGS=-g -O
 FCFLAGS=-g -O
 @end example
 
-There is also provision for a site-wide @file{Makevars.site} file under
-@file{@var{R_HOME}/etc} (in a sub-architecture-specific directory if
-appropriate).  This is read immediately after @file{Makeconf}.
+@c There is also provision for a site-wide @file{Makevars.site} file under
+@c @file{@var{R_HOME}/etc} (in a sub-architecture-specific directory if
+@c appropriate).  This is read immediately after @file{Makeconf}.
+
+(적절하다면 sub-architecture-specific 디렉토리의) '@file{@var{R_HOME}/etc}'에 있는
+'@file{Makevars.site}' 파일의 사이트 전체에 대한 항목도 있습니다. 이는 '@file{Makeconf}'
+바로 다음에 읽혀집니다.
 
 @node Multiple sub-architectures, Byte-compilation, Customizing package compilation, Installing packages
 @subsection Multiple sub-architectures
 
-When installing packages from their sources, there are some extra
-considerations on installations which use sub-architectures.  These are
-commonly used on Windows and were used on OS X, but can in principle be
-used on other platforms.
+@c When installing packages from their sources, there are some extra
+@c considerations on installations which use sub-architectures.  These are
+@c commonly used on Windows and were used on OS X, but can in principle be
+@c used on other platforms.
+패키지의 source들에서부터 패키지를 설치할 때, sub-architecture들을 사
+용하는 설치에 대해 추가로 고려해 볼 것들이 몇 가지 있습니다. 이들은 윈
+도우즈에서 보통 사용되고 OS X에서도 사용되었었지만, 이론상으로는 다른
+플랫폼에서도 사용할 수 있습니다.
 
-When a source package is installed by a build of @R{} which supports
-multiple sub-architectures, the normal installation process installs the
-packages for all sub-architectures, but only tests it can be loaded
-under the current sub-architecture.  The exceptions are
+@c When a source package is installed by a build of @R{} which supports
+@c multiple sub-architectures, the normal installation process installs the
+@c packages for all sub-architectures, but only tests it can be loaded
+@c under the current sub-architecture.  The exceptions are
+Source 패키지가 여러개의 sub-architecture들을 제공하는 R의 빌드에 의하
+여 설치 되었을 때, 일반적인 설피 과정은 모든 sub-architecture들에 패키
+지를 설치하지만, 현재 sub-architecture에서 로드될 수 있는 것들만 테스
+트합니다. 예외 사항들은 다음과 같습니다.
+
 
 @table @emph
-@item Unix-alikes
+@c @item Unix-alikes
+@item  유닉스 계열
+@c where there is an @file{configure} script, or a file @file{src/Makefile}.
+'@file{Configure}' 스크립트가 있거나 '@file{src/Makefile}' 파일이 있는 곳.
 
-where there is an @file{configure} script, or a file @file{src/Makefile}.
 
-@item Windows
+@c @item Windows
+@item 윈도우즈
+@c where there is a non-empty @file{configure.win} script, or a file
+@c @file{src/Makefile.win} (with some exceptions where the package is known
+@c to have an architecture-independent @file{configure.win}, or if
+@c @option{--force-biarch} is used to assert so).
 
-where there is a non-empty @file{configure.win} script, or a file
-@file{src/Makefile.win} (with some exceptions where the package is known
-to have an architecture-independent @file{configure.win}, or if
-@option{--force-biarch} is used to assert so).
+비어있지 않은 '@file{configure.win}' script나 '@file{src/Makefile.win}'이 있는 곳 (패키지
+가 architecture-independent '@file{configure.win}'을 가지고 있거나
+@option{--force-biarch}가 그를 주장하기위해 사용되었다고 알려져 있는 곳의 몇몇
+의 예외사항이 있습니다).
 
 @end table
 
 @noindent
-In those cases only the current architecture is installed.  Further
-sub-architectures can be installed by
+@c In those cases only the current architecture is installed.  Further
+@c sub-architectures can be installed by
+위의 경우들에는 현재의 architecture만이 설치됩니다. 추가의
+sub-architecture들은 다음에 의해서 설치될 수 있습니다.
 
 @example
 R CMD INSTALL --libs-only @var{pkg}
 @end example
 
 @noindent
-using the path to @command{R} or @command{R --arch} to select the
-additional sub-architecture.  On Windows there is also @command{R CMD
-INSTALL --merge-multiarch} to build and merge the two architectures,
-starting with a source tarball.
+@c using the path to @command{R} or @command{R --arch} to select the
+@c additional sub-architecture.  On Windows there is also @command{R CMD
+@c INSTALL --merge-multiarch} to build and merge the two architectures,
+@c starting with a source tarball.
+@c On OS X multiple sub-architectures were commonly used prior to @R{}
+@c 3.0.0: @cputype{x86_64} (the current default), @cputype{i386} and for
+@c Lion and Tiger @cputype{ppc} and @cputype{ppc64}.
+추가의 sub-architecture을 선택하기위해 @command{R}로의 경로나 @command{R --arch}을 사용합
+니다. 윈도우즈에서, source 타르볼로 시작하는, 두 개의 architecture들을
+구축하고 통합하기위한 @command{R CMD INSTALL --merge-multiarch}도 있습니다.
+OS X에서, 여러개의 sub-architecture들은 R 3.0.0: @cputype{x86_64} (현재 기본),
+@cputype{i386} 그리고 Lion과Tiger @cputype{ppc}와  @cputype{ppc64}에 앞서 일반적으로 사용되었습
+니다.
 
-On OS X multiple sub-architectures were commonly used prior to @R{}
-3.0.0: @cputype{x86_64} (the current default), @cputype{i386} and for
-Lion and Tiger @cputype{ppc} and @cputype{ppc64}.
 
 @node Byte-compilation,  , Multiple sub-architectures, Installing packages
 @subsection Byte-compilation
