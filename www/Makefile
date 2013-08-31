@@ -13,6 +13,7 @@ conv2html:
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-exts-ko.html R-exts-ko.texi
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rfaq.css --force --output=rw-FAQ-ko.html rw-FAQ-ko.texi
 	# texi2html rw-FAQ-ko.texi --html --no-split --css-include=Rman.css
+	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-ints-ko.html R-ints-ko.texi
 
 mv2www:
 	cp /home/gnustats/Documents/R-ko/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/R-ko/ihelp/www/doc/manual-ko/
