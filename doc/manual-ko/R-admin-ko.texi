@@ -3099,7 +3099,7 @@ OS X는 그들의 특별한 방법으로 로케일을 지원하지만, R GUI는 
 @c available for some or all messages in a domain.  @R{} makes use of the
 @c following domains.
 메시지는 도메인들로 나뉘어지며, 각 도메인들에서 일부 또는 모든 메시지들에 대한 번역이 가능합니다.
-@R{}은 당므과 같은 도메인을 이용합니다.
+@R{}은 다음과 같은 도메인을 이용합니다.
 
 @itemize
 @item
@@ -3177,130 +3177,212 @@ Windows GUI 사용을 위한 메뉴들을 위한  @code{RGui} 도메인이 있�
 @node Choosing between 32- and 64-bit builds, The standalone Rmath library, Internationalization, Top
 @chapter Choosing between 32- and 64-bit builds
 
-Many current @acronym{CPU}s have both 32- and 64-bit sets of
-instructions: this has long been true for UltraSparc and more recently
-for MIPS, PPC and @cputype{x86_64} (sometimes known as @cputype{amd64}
-and @cputype{Intel64} and earlier as @cputype{EM64T}: practically all
-current @cputype{ix86} CPUs support this set of instructions).  Most
-OSes running on such @acronym{CPU}s offer the choice of building a
-32-bit or a 64-bit version of R (and details are given below under
-specific OSes).  For most a 32-bit version is the default, but for some
-(e.g., @cputype{x86_64} Linux and (Mac) OS X >= 10.6) 64-bit is.
+@c Many current @acronym{CPU}s have both 32- and 64-bit sets of
+@c instructions: this has long been true for UltraSparc and more recently
+@c for MIPS, PPC and @cputype{x86_64} (sometimes known as @cputype{amd64}
+@c and @cputype{Intel64} and earlier as @cputype{EM64T}: practically all
+@c current @cputype{ix86} CPUs support this set of instructions).  Most
+@c OSes running on such @acronym{CPU}s offer the choice of building a
+@c 32-bit or a 64-bit version of R (and details are given below under
+@c specific OSes).  For most a 32-bit version is the default, but for some
+@c (e.g., @cputype{x86_64} Linux and (Mac) OS X >= 10.6) 64-bit is.
 
-All current versions of @R{} use 32-bit integers and
-@acronym{ISO}/@acronym{IEC}@tie{}60559@footnote{also known as
-@acronym{IEEE}@tie{}754} double-precision reals, and so compute to
-the same precision@footnote{at least when storing quantities: the on-FPU
-precision is allowed to vary} and with the same limits on the sizes of
-numerical quantities.  The principal difference is in the size of the
-pointers.
+현재 많은 @acronym{CPU}들은 32비트 와 64비트 두 가지 모두의 명령들을 가지고 있
+습니다: 이는 UltraSparc과 더불어 최근의 MIPS, PPC 와 @cputype{x86_64} 
+(가끔 @cputype{amd64}와 @cputype{Intel64}로 알려져 있었고, 그 전에는 @cputype{EM64T}로 알려져 있었
+습니다:  사실상 모든 현재 @cputype{ix86} CPU들은 이 설명 세트를 지원합니다)에
+오래전 부터 사실화 되어있습니다. 이런 @acronym{CPU}에서 실행되는 대부분의 OS들은
+32-비트나 64-비트 버전의 R의 구축에 대한 선택을 제공합니다 ( 그리고 더
+자세한 설명은 지정된 OS들에 설명되어져 있습니다). 대부분 32-비트 버전
+이 기본이지만, 몇몇(@cputype{x86_64} 리눅스 와 (맥) OS X >= 10.6 등등)에서는 64-비트가 기본입니다.
 
-64-bit builds have both advantages and disadvantages:
+@c All current versions of @R{} use 32-bit integers and
+@c @acronym{ISO}/@acronym{IEC}@tie{}60559@footnote{also known as
+@c @acronym{IEEE}@tie{}754} double-precision reals, and so compute to
+@c the same precision@footnote{at least when storing quantities: the on-FPU
+@c precision is allowed to vary} and with the same limits on the sizes of
+@c numerical quantities.  The principal difference is in the size of the
+@c pointers.
+모든 현재 R 버전들은 32 비트 integer들과 ISO/IEC, 60559(IEEE), doule-precision reals을 사용하고, 그러므로 인해 동일한 정확성과 제한된 숫자의 양을 산출합니다.
+double-precision real들을 numerical quantities의 크기에 같은 제한이 있
+그 밖에 크게 다른점은 포인터들의 크기입니다.
+
+@c 64-bit builds have both advantages and disadvantages:
+64 비트 구축은 장점과 단점 두 가지 모두를 가지고 있습니다:
 @itemize
 @item
-The total virtual memory space made available to a 32-bit process is
-limited by the pointer size to 4GB, and on most OSes to 3GB (or even
-2GB).  The limits for 64-bit processes are much larger (e.g.@:
-8--128TB).
+@c The total virtual memory space made available to a 32-bit process is
+@c limited by the pointer size to 4GB, and on most OSes to 3GB (or even
+@c 2GB).  The limits for 64-bit processes are much larger (e.g.@:
+@c 8--128TB).
+32-비트 프로세스에서 사용 가능한 전체의 가상 기억 공간은 4GB까지 가
+능한 포인터와 3GB까지 가능한 (아니면 2GB) 대부분의 OS들에의해 제한됩니
+다. 64-비트 프로세스들의 제한은 더 큽니다 (e.g.@:8--128TB).
 
-@R{} allocates memory for large objects as needed, and removes any
-unused ones at garbage collection.  When the sizes of objects become an
-appreciable fraction of the address limit, fragmentation of the address
-space becomes an issue and there may be no hole available that is the
-size requested.  This can cause more frequent garbage collection or the
-inability to allocate large objects.  As a guide, this will become an
-issue with objects more than 10% of the size of the address space
-(around 300Mb) or when the total size of objects in use is around one
-third (around 1Gb).
 
-@item
-Most 32-bit OSes by default limit file sizes to 2GB (and this may also
-apply to 32-bit builds on 64-bit OSes).  This can often be worked
-around: and @command{configure} selects suitable defines if this is
-possible.  (We have also largely worked around that limit on 32-bit
-Windows.)  64-bit builds have much larger limits.
+@c @R{} allocates memory for large objects as needed, and removes any
+@c unused ones at garbage collection.  When the sizes of objects become an
+@c appreciable fraction of the address limit, fragmentation of the address
+@c space becomes an issue and there may be no hole available that is the
+@c size requested.  This can cause more frequent garbage collection or the
+@c inability to allocate large objects.  As a guide, this will become an
+@c issue with objects more than 10% of the size of the address space
+@c (around 300Mb) or when the total size of objects in use is around one
+@c third (around 1Gb).
+R은 필요에 의해 보다 큰 object에 memory를 할당하고, 쓰레기 모음에서
+사용하지 않는 것들을 제거합니다. address limit가 오브젝트의 크기를 너무 크다고 판단했을 때,
+address space를 단편화 하는 것이 문제가 되고, 요구하는 크기의 공간에 대해 모자랄수도 있습니다. 이는 더 빈번한
+폐영역의 회수의 초래 혹은 큰 object들의 할당 불능을 초래할 수도 있습니
+다. 참고로, 이는 address space 크기의 10%가 넘는 (300Mb 정도) 크기를
+가진 object들 혹은 사용되고있는 object들의 전체 크기가 삼분의 일 (1Gb
+정도)일 때 문제가 될 것입니다.
 
-@item
-Because the pointers are larger, @R{}'s basic structures are larger.
-This means that @R{} objects take more space and (usually) more time to
-manipulate.  So 64-bit builds of @R{} will, all other things being
-equal, run slower than 32-bit builds.  (On Sparc Solaris the difference
-was 15-20%.)
 
 @item
-However, `other things' may not be equal.  In the specific case of
-@cputype{x86_64} @emph{vs} @cputype{ix86}, the 64-bit CPU has features
-(such as SSE2 instructions) which are guaranteed to be present but are
-optional on the 32-bit CPU, and also has more general-purpose registers.
-This means that on chips like a desktop Intel Core 2 Duo the vanilla
-64-bit version of @R{} is around 10% faster on both Linux and OS X.
-(Laptop CPUs are relatively slower in 64-bit mode.)
+@c Most 32-bit OSes by default limit file sizes to 2GB (and this may also
+@c apply to 32-bit builds on 64-bit OSes).  This can often be worked
+@c around: and @command{configure} selects suitable defines if this is
+@c possible.  (We have also largely worked around that limit on 32-bit
+@c Windows.)  64-bit builds have much larger limits.
+대부분이 32-비트 OS들은,  기본적으로 파일 크기를 2GB로 제한합니다 
+(그리고 이는 64-비트 OS들에서의 32 비트 구축에도 적용될 수도 있습니다).
+이는 종종 해결될 수 있습니다:  만약 이가 가능하다면, @command{configure}
+은 알맞은 define들을 선택합니다. (32-비트 윈도우즈에서의 제한을 주로
+해결하기도 했습니다). 64-비트 구축들은 훨씬 더 큰 제한들이 있습니다.
+
+@item
+@c Because the pointers are larger, @R{}'s basic structures are larger.
+@c This means that @R{} objects take more space and (usually) more time to
+@c manipulate.  So 64-bit builds of @R{} will, all other things being
+@c equal, run slower than 32-bit builds.  (On Sparc Solaris the difference
+@c was 15-20%.)
+포인터들의 크키가 큰 이유 때문에, R의 기본 구조들이 도 큽니다. 이는 R
+object들이 더 많은 공간을 차지하고, (보통) 조작하기위한 더 많이 시간이
+든다는 뜻입니다. 그러므로 R의 64-비트 구축들은, 다른 것들이 모두 같을
+때, 32-비트구축들보다 더 느리게 작동합니다. (Sparc Solaris에서의 차이
+는 15 – 20%였습니다.)
+
+
+@item
+@c However, `other things' may not be equal.  In the specific case of
+@c @cputype{x86_64} @emph{vs} @cputype{ix86}, the 64-bit CPU has features
+@c (such as SSE2 instructions) which are guaranteed to be present but are
+@c optional on the 32-bit CPU, and also has more general-purpose registers.
+@c This means that on chips like a desktop Intel Core 2 Duo the vanilla
+@c 64-bit version of @R{} is around 10% faster on both Linux and OS X.
+@c (Laptop CPUs are relatively slower in 64-bit mode.)
+그렇지만, ‘다른 것들’이 같이 않을 수도 있습니다. @cputype{x86_64} 와 @cputype{ix86}를 비교하는 
+특정한 경우에서, 64-비트 CPU는 보여지도록 보장하는(SSE2와 같은) 특
+성들이 있지만, 32 비트 CPU에서는  선택사항이고, 또한 더 일반적인 목적의
+register들을 가지고 있습니다. 데스크탑 Intel Core 2
+Duo과 같은 칩 은 R의 바닐라 64-비트 버전이 리눅스와 OS X 보다 10% 정도 더 빠르다는 뜻입니다. 
+(노트북 CPU들은 64-비트 모드에서 비교적 더 느립니다.)
+
+
 @end itemize
 
-So, for speed you may want to use a 32-bit build, but to handle large
-datasets (and perhaps large files) a 64-bit build.  You can often build
-both and install them in the same place: @xref{Sub-architectures}.
-(This is done in the OS X and Windows binary distributions.)
+@c So, for speed you may want to use a 32-bit build, but to handle large
+@c datasets (and perhaps large files) a 64-bit build.  You can often build2
+@c both and install them in the same place: @xref{Sub-architectures}.
+@c (This is done in the OS X and Windows binary distributions.)
+그래서, 속도를 위해서라면 32-비트 구축을 쓸 수도 있지만, 큰 데이터 셋
+들 (아마도 큰 파일들도) 다루기 위해서는 64-비트 구축을 쓰기를 원할 것
+입니다. 종종 같은 장소에 두 가지 모두를 구축하고 설치할 수도 있습니다: @ref{Sub-architectures} 를 참조하세요. (이는 OS X와 윈도우지의 이항분포들에서
+행해졌습니다.)
 
-Even on 64-bit builds of @R{} there are limits on the size of @R{}
-objects (see @code{help("Memory-limits")}, some of which stem from the
-use of 32-bit integers (especially in FORTRAN code).  For example, the
-dimensions of an array are limited to @math{2^{31} - 1}.
+
+@c Even on 64-bit builds of @R{} there are limits on the size of @R{}
+@c objects (see @code{help("Memory-limits")}, some of which stem from the
+@c use of 32-bit integers (especially in FORTRAN code).  For example, the
+@c dimensions of an array are limited to @math{2^{31} - 1}.
+@R{}의 64-비트 구축에서도 (특히 FORTRAN 코드의) stem이 32-비트 정수들의
+사용에서부터 나온 R object들의 크기에대한 제한이 있습니다
+(@code{help("Memory-limits")}를 참조하세요). 예를 들어, 하나의 array의 크기는
+@math{2^{31} – 1}로 제한됩니다.
+
 
 @node The standalone Rmath library, Essential and useful other programs under a Unix-alike, Choosing between 32- and 64-bit builds, Top
-@chapter The standalone Rmath library
+@c @chapter The standalone Rmath library
+@chapter 독립 Rmath 라이브러리
 
-The routines supporting the distribution and
-special@footnote{e.g.@: Bessel, beta and gamma functions} functions in @R{}
-and a few others are declared in C header file @file{Rmath.h}.  These
-can be compiled into a standalone library for linking to other
-applications.  (Note that they are not a separate library when @R{} is
-built, and the standalone version differs in several ways.)
+@c The routines supporting the distribution and
+@c special@footnote{e.g.@: Bessel, beta and gamma functions} functions in @R{}
+@c and a few others are declared in C header file @file{Rmath.h}.  These
+@c  can be compiled into a standalone library for linking to other
+@c applications.  (Note that they are not a separate library when @R{} is
+@c built, and the standalone version differs in several ways.)
 
-The makefiles and other sources needed are in directory
-@file{src/nmath/standalone}, so the following instructions assume that
-is the current working directory (in the build directory tree on a
-Unix-alike if that is separate from the sources).
+배포를 지원하는 routine들과 @R{}의 특정한 함수 @footnote{e.g.@: Bessel, beta and gamma functions}들 그리고 몇몇의 다른것들은
+C header 파일 '@file{Rmath.h}' 안에서 표명됩니다. 이것 들은  다른 어플리케이션과
+의 연결을 위해서 독립 라이브러리로 컴파일될 수 
+있습니다. (R이 구축될 때의, 이것들은  따로 떨어져 있는 라이브러리가 아니고, 독립 버전
+가지의 방법으로 차이가 있다는 것을 유의하십시오.)
 
-@file{Rmath.h} contains @samp{R_VERSION_STRING}, which is a character
-string containing the current @R{} version, for example @code{"2.15.0"}.
 
-There is full access to @R{}'s handling of @code{NaN}, @code{Inf} and
-@code{-Inf} via special versions of the macros and functions
+@c The makefiles and other sources needed are in directory
+@c @file{src/nmath/standalone}, so the following instructions assume that
+@c is the current working directory (in the build directory tree on a
+@c Unix-alike if that is separate from the sources).
+makefiles와 필요한 다른 소스들은 디렉토리 '@file{src/nmath/standalone}'에 있습니
+다. 그러므로 다음의 설명들은 (소스들로부터 떨여져 있다면 유닉스 계열의
+구축 디렉토리 tree안에 있는) 현재의 working 디렉토리를 가정합니다.
+
+
+@c @file{Rmath.h} contains @samp{R_VERSION_STRING}, which is a character
+@c string containing the current @R{} version, for example @code{"2.15.0"}.
+'@file{Rmath.h}'  는 예를 들어 @code{"2.15.0"}와 같은 현재 @R{} 버전에 포함되어있는 문자
+열인  @samp{R_VERSION_STRING}를 포함합니다.
+
+
+@c There is full access to @R{}'s handling of @code{NaN}, @code{Inf} and
+@c @code{-Inf} via special versions of the macros and functions
+다음의 함수와 macro의 특별 버전들을 통해 @code{NaN}, @code{}Inf와 @code{–Inf}의 @R{}의 처리에
+대한 전체 access권한이 있습니다.
 
 @example
     ISNAN, R_FINITE, R_log, R_pow and R_pow_di
 @end example
 
 @noindent
-and (extern) constants @code{R_PosInf}, @code{R_NegInf} and @code{NA_REAL}.
+@c and (extern) constants @code{R_PosInf}, @code{R_NegInf} and @code{NA_REAL}.
+@c There is no support for @R{}'s notion of missing values, in particular
+@c not for @code{NA_INTEGER} nor the distinction between @code{NA} and
+@c @code{NaN} for doubles.
+그리고 (외적) 상수들로드 @code{R_PosInf}, @code{R_NegInf}와 @code{NA_REAL} 가 있습니다.
+특히 @code{NA_INTEGER} 혹은 double들에 대한 @code{NA}와 
+@code{NaN}의 구별과 같은 @R{}의 missing 값들에 대한 개념에 대한 지원이 없습니다.
 
-There is no support for @R{}'s notion of missing values, in particular
-not for @code{NA_INTEGER} nor the distinction between @code{NA} and
-@code{NaN} for doubles.
 
-A little care is needed to use the random-number routines. You will
-need to supply the uniform random number generator 
+@c A little care is needed to use the random-number routines. You will
+@c need to supply the uniform random number generator 
+난수 routine들을 사용을 하기 위해 약간 신경 쓸  필요가 있습니다. 여러분은 일
+정한 난수 생성기를 공급할 필요가 있을 것 입니다.
 
 @example
     double unif_rand(void)
 @end example
 
 @noindent
-or use the one supplied (and with a shared library or DLL you will
-have to use the one supplied, which is the Marsaglia-multicarry with
-an entry point
+@c or use the one supplied (and with a shared library or DLL you will
+@c have to use the one supplied, which is the Marsaglia-multicarry with
+@c an entry point
+뿐만 아니라 공급된 것을 사용할 수 도 있습니다. (공유된 라이브러리나 DLL과 함께 
+entry point를 가진 Marsaglia-multicarry를 사용 해야만 합니다.)
 
 @example
     set_seed(unsigned int, unsigned int)
 @end example
 
 @noindent
-to set its seeds).
+@c to set its seeds).
+seed들도  설정해야 합니다.
 
-The facilities to change the normal random number generator are
-available through the constant N01_kind. This takes values
-from the enumeration type
+@c The facilities to change the normal random number generator are
+@c available through the constant N01_kind. This takes values
+@c from the enumeration type
+일반적인 난수 생성기를 바꾸기위한 기능들이 상수 N01_kind를 통하여 이용
+가능 합니다. 이는 다음의 열거 종류들에서부터 값을 얻습니다.
+
 
 @example
 typedef enum @{
@@ -3314,8 +3396,8 @@ typedef enum @{
 @end example
 
 @noindent
-(and @samp{USER_NORM} is not available).
-
+@c (and @samp{USER_NORM} is not available)
+(그리고 @samp{USER_NORM} 은 사용 가능하지 않습니다).
 
 @menu
 * Unix-alike standalone::       
@@ -3323,30 +3405,39 @@ typedef enum @{
 @end menu
 
 @node Unix-alike standalone, Windows standalone, The standalone Rmath library, The standalone Rmath library
-@section Unix-alikes
+@c @section Unix-alikes
+@section 유닉스 계열
 
-If @R{} has not already be made in the directory tree,
-@command{configure} must be run as described in the main build
-instructions.
-
-Then (in @file{src/nmath/standalone})
+@c If @R{} has not already be made in the directory tree,
+@c @command{configure} must be run as described in the main build
+@c instructions.
+@c Then (in @file{src/nmath/standalone})
+만약 R이 디렉토리  tree안에 미리 만들어지지 않았다면, 메인 빌드 설명서에서 설명된 것 처럼 configure이 실행되어야만 합니다.
+그리고 나서 (에서)
 
 @example
 make
 @end example
 
 @noindent
-will make standalone libraries @file{libRmath.a} and @file{libRmath.so}
-(@file{libRmath.dylib} on Mac OS X): @samp{make static} and @samp{make
-shared} will create just one of them.
-
-@strong{NB:} certain compilers are unable to do compile-time IEC 60559
-arithmetic and so cannot compile @file{mlutils.c} and several other
-files.  The known example is old versions of Sun's @code{cc} (e.g.@:
-Forte 6 and 7).
+@c will make standalone libraries @file{libRmath.a} and @file{libRmath.so}
+@c (@file{libRmath.dylib} on Mac OS X): @samp{make static} and @samp{make
+@c shared} will create just one of them.
+는 src/nmath/standalone 경로 안에서 독립 라이브러리 '@file{libRmath.a} 와 '@file{libRmath.so} (Mac OS X에서는
+'@file{libRmath.dylib} )를 만들 것 입니다: @samp{make static}과 @samp{make shared}는 그
+들 중 하나만을 생성할 것입니다.
 
 
-To use the routines in your own C or C++ programs, include
+@c @strong{NB:} certain compilers are unable to do compile-time IEC 60559
+@c arithmetic and so cannot compile @file{mlutils.c} and several other
+@c files.  The known example is old versions of Sun's @code{cc} (e.g.@:
+@c Forte 6 and 7).To use the routines in your own C or C++ programs, include
+@c NB: 일부 커파일러들은 컴파일-타임 IEC 60559 계산 할 수 없고, 그래서
+'@file{mlutils.c}'을 포함한 몇몇의 다른 파일들도 컴파일 하지 못합니다.
+알려진 예로는, 옛날 버전의 Sun코드  @code{cc} 입니다 (예. Forte 6와 7).
+여러분의 C나 C++ 프로그램들에서 routine들을 쓰기위해서는 다음을 포함하
+십시오.
+
 
 @example
 #define MATHLIB_STANDALONE
@@ -3354,12 +3445,17 @@ To use the routines in your own C or C++ programs, include
 @end example
 
 @noindent
-and link against @samp{-lRmath} (and @samp{-lm} if needed on your OS).
-The example file @file{test.c} does nothing useful, but is provided to
-test the process (via @command{make test}).  Note that you will probably
-not be able to run it unless you add the directory containing
-@enindex LD_LIBRARY_PATH
-@file{libRmath.so} to the @env{LD_LIBRARY_PATH} environment variable.
+@c and link against @samp{-lRmath} (and @samp{-lm} if needed on your OS).
+@c The example file @file{test.c} does nothing useful, but is provided to
+@c test the process (via @command{make test}).  Note that you will probably
+@c not be able to run it unless you add the directory containing
+@c @enindex LD_LIBRARY_PATH
+@c @file{libRmath.so} to the @env{LD_LIBRARY_PATH} environment variable.
+그리고  @samp{-lRmath} (당신의OS에서 필요하다면  @samp{-lm}도)에 맞대어 연결하십
+시오. 예제 파일 '@file{test.c}'은 유용한 것을 하지는 않지만, (@command{make test}를 통해)
+프로세스를 검사하도록 제공됩니다. '@file{libRmath.so}'를 포함한 디렉토리를
+@env{LD_LIBRARY_PATH}  환경값으로 더하지 않는 이상, 아마도 이를 실행하지 못
+할 것이라는 것을 유의하십시오.
 
 The targets
 
@@ -3369,31 +3465,46 @@ make uninstall
 @end example
 
 @noindent
-will (un)install the header @file{Rmath.h} and shared and static
-@enindex DESTDIR
-libraries (if built).  Both @code{prefix=} and @env{DESTDIR} are
-supported, together with more precise control as described for the main
-build.
+@c will (un)install the header @file{Rmath.h} and shared and static
+@c @enindex DESTDIR
+@c libraries (if built).  Both @code{prefix=} and @env{DESTDIR} are
+@c supported, together with more precise control as described for the main
+@c build.
+위의 타겟들은 '@file{header Rmath.h}'와 공유된 것들 그리고 (만약 빌드되었다면)
+static 라이브러리들을 설치(혹은 삭제)할 것입니다.
+메인 빌드에서 설명된 것 처럼, 더불어 더 정확한 컨드롤이 가능한 @code{prefix=}
+와 @env{DESTDIR} 두 가지 모두가 지원됩니다.
 
-@samp{make install} installs a file for @command{pkg-config} to use by
+
+@c @samp{make install} installs a file for @command{pkg-config} to use by
 e.g.
+@samp{make install}은 다음의 예에 의해 사용되어지는 @command{pkg-config}를 위한 파일
+을 설치합니다.
+
+
 
 @example
 $(CC) `pkg-config --cflags libRmath` -c test.c
 $(CC) `pkg-config --libs libRmath` test.o -o test
 @end example
 
-On some systems @samp{make install-strip} will install a stripped shared
-library.
-
+@c On some systems @samp{make install-strip} will install a stripped shared
+@c library.
+몇몇의 시스템들에서, @samp{make install-strip}는 분해된 공유 라이브러리를
+설치 할 수도 있습니다.
 
 
 @node Windows standalone,  , Unix-alike standalone, The standalone Rmath library
-@section Windows
+@c @section Windows
+@section 윈도우즈
 
-You need to set up@footnote{including copying @file{MkRules.dist} to
-@file{MkRule.local} and selecting the architecture.} almost all the
-tools to make @R{} and then run (in a Unix-like shell)
+@c You need to set up@footnote{including copying @file{MkRules.dist} to
+@c @file{MkRule.local} and selecting the architecture.} almost all the
+@c tools to make @R{} and then run (in a Unix-like shell) 
+(유닉스 계열의 쉘에서) @R{}을 만들기 위해서는 거의 
+모든 도구들을 설정up@footnote{including copying @file{MkRules.dist} to @file{MkRule.local}and selecting the architecture.}
+하고 그리고 나서 실행해야 합니다.
+
 
 @example
 (cd ../../gnuwin32; make MkRules)
@@ -3402,7 +3513,9 @@ make -f Makefile.win
 @end example
 
 @noindent
-For @file{cmd.exe} use
+@c For @file{cmd.exe} use
+'@file{cmd.exe}'를 위해서는 다음을 사용하십시오.
+
 
 @example
 cd ../../include
@@ -3412,15 +3525,21 @@ make -f Makefile.win
 @end example
 
 
-This creates a static library @file{libRmath.a} and a DLL
-@file{Rmath.dll}.  If you want an import library @file{libRmath.dll.a}
-(you don't need one), use
+@c This creates a static library @file{libRmath.a} and a DLL
+@c @file{Rmath.dll}.  If you want an import library @file{libRmath.dll.a}
+@c (you don't need one), use
+이는 static 라이브러리 '@file{libRmath.a}' 와 DLL '@file{Rmath.dll}'를 생성합니다. 만약
+import 라이브러리 '@file{libRmath.dll.a}' (꼭 해야하는 것은 아닙니다)를 원한다면, 다음
+을 사용하세요.
 
 @example
 make -f Makefile.win shared implib
 @end example
 
-To use the routines in your own C or C++ programs using MinGW, include
+@c To use the routines in your own C or C++ programs using MinGW, include
+MinGW을 사용하는 당신의 C나 C++에 있는 routine들을 사용하고자 한다면,
+다음을 포함하십시오.
+
 
 @example
 #define MATHLIB_STANDALONE
@@ -3428,10 +3547,17 @@ To use the routines in your own C or C++ programs using MinGW, include
 @end example
 
 @noindent
-and link against @samp{-lRmath}.  This will use the first found of
-@file{libRmath.dll.a}, @file{libRmath.a} and @file{Rmath.dll} in that
-order, so the result depends on which files are present.  You should be
-able to force static or dynamic linking  @emph{via}
+@c and link against @samp{-lRmath}.  This will use the first found of
+@c @file{libRmath.dll.a}, @file{libRmath.a} and @file{Rmath.dll} in that
+@c order, so the result depends on which files are present.  
+그리고 @samp{-lRmath}에 대응하게 연결하십히오. 이는 '@file{libRmath.dll.a}',
+'@file{libRmath.a}'  그리고  '@file{Rmath.dll}의 순서대로 처음 찾아진 것을 사용할 것입
+니다. 그래서 그 결과는 어떤 파일들이 나타나느냐에 달려있습니다.
+
+@c You should be
+@c able to force static or dynamic linking  @emph{via}
+다음을 통해
+static 혹은 dynamic을 강요할 수 있어야만 합니다.
 
 @example
 -Wl,-Bstatic -lRmath -Wl,dynamic
@@ -3439,16 +3565,24 @@ able to force static or dynamic linking  @emph{via}
 @end example
 
 @noindent
-or by linking to explicit files (as in the @samp{test} target in
-@file{Makefile.win}: this makes two executables, @file{test.exe} which
-is dynamically linked, and @file{test-static.exe}, which is statically
-linked).
+@c or by linking to explicit files (as in the @samp{test} target in
+@c @file{Makefile.win}: this makes two executables, @file{test.exe} which
+@c is dynamically linked, and @file{test-static.exe}, which is statically
+@c linked).
+혹은 explicit 파일들을 연결하거나  ('@file{Makefile.win}'에서의 @samp{test} 타켓에서 처
+럼: 이는 dynamic하게 연결된 ;@file{test.exe}'와 statical하게 연결된
+'@file{test-static.exe}'의 두 개의 실행가능 한 것들을 만듭니다. ) 
 
 It is possible to link to @file{Rmath.dll} using other compilers, either
 directly or via an import library: if you make a MinGW import library as
 above, you will create a file @file{Rmath.def} which can be used
 (possibly after editing) to create an import library for other systems
 such as Visual C++.
+직접적으로나 import 라이브러리를 통하여 다른 컴파일러들을 사용하여
+'@file{Rmath.dll}'를 연결하는 것도 가능합니다: 만약 위에서 처럼  MinGW import
+라이브러리를 만든다면,  Visual C++와 같은 다른 시스템들에서 (수정이후에 가능) import 라이브러리를 생성하기위해 사용될 수 있는
+'@file{Rmath.def}' 파일을 생성할 것입니다.
+
 
 If you make use of dynamic linking you should use
 
@@ -3459,24 +3593,36 @@ If you make use of dynamic linking you should use
 @end example
 
 @noindent
-to ensure that the constants like @code{NA_REAL} are linked correctly.
-(Auto-import will probably work with MinGW, but it is better to be
-sure. This is likely to also work with VC++, Borland and similar
-compilers.)
-
+@c to ensure that the constants like @code{NA_REAL} are linked correctly.
+@c (Auto-import will probably work with MinGW, but it is better to be
+@c sure. This is likely to also work with VC++, Borland and similar
+@c compilers.)
+만약 dynamic 연결을 이용하려면, @code{NA_REAL}과 같은 상수들이 정확하게 연결
+되었는지를 확실히 하기위하여 다음을 사용해야만 합니다.
+(자동-import는 아마도 MinGW와 같이 실행할 것이지만, 확실하게 하는 것이
+더 좋습니다. VC++, Borland와 비슷한 컴파일러에서도 실행할 것입니다.)
 
 @node Essential and useful other programs under a Unix-alike, Configuration on a Unix-alike, The standalone Rmath library, Top
 @appendix Essential and useful other programs under a Unix-alike
 
-This appendix gives details of programs you will need to build @R{} on
-Unix-like platforms, or which will be used by @R{} if found by
-@command{configure}.
+@c This appendix gives details of programs you will need to build @R{} on
+@c Unix-like platforms, or which will be used by @R{} if found by
+@c @command{configure}.
+@c Appendix A Essential and useful other programs under a Unix-alike
+이 appendix는 유닉스 계열의 플랫폼들에서 R을 구축하기 위해서 필요할 설명들과,
+R 안에서 @command{configure}를 통해 검색할 수 있는 프로그램들의 자세한 설
+명을 줄 것입니다.
 
-Remember that some package management systems (such as @acronym{RPM} and
-deb) make a distinction between the user version of a package and the
-development version.  The latter usually has the same name but with the
-extension @samp{-devel} or @samp{-dev}: you need both versions
-installed.
+
+@c Remember that some package management systems (such as @acronym{RPM} and
+@c deb) make a distinction between the user version of a package and the
+@c  development version.  The latter usually has the same name but with the
+@c extension @samp{-devel} or @samp{-dev}: you need both versions
+@c installed.
+@acronym{RPM}과 deb와 같은 몇몇의 패키지 관리 시스템들은 기억하시고  패키지의 사용자 버전
+과 개발자 버전을 구분하십시오. 개발자 버전은 보통
+같은 이름을 가지고 있지만, extension @samp{-devel} 혹은 @samp{-dev} 가집니다:
+여러분은 두 가지 모두의 버전들을 설치해야 합니다.
 
 @menu
 * Essential programs and libraries::  
@@ -3505,6 +3651,18 @@ detected as @command{gcc}, @option{-std=gnu99} will be appended to
 that options essential to run the compiler even for linking, such as
 those to set the architecture, should be specified as part of @code{CC}
 rather than in @code{CFLAGS}.)
+ 여러분은 C와 ROTRAN 90를 compiling하는 수단이 필요합니다 (Using
+> FORTRAN을 참조하세요). 몇몇의 add-on 패키지들 또한 C++ compiler를 필요
+> 로합니다. 당신의 C compiler는 ISO/IEC 60059, POSIX 1003.1, 그리고
+> C99-compliant여야만 합니다. R은 인지하고있는 C compiler들을 위한 알맞
+> 은 flag들을 선택하려고 하지만, CC 혹은 CFLAGS를 알맞게 설정해야 할 수
+> 도 있습니다. Glibc를 가진 gcc의 최근 버전들에서, 이는 std=gnu99를 포함
+> 하는 것을 뜻합니다. 만약 compiler이 gcc, -std=gnu99 처럼 발견 된다면,
+> CFLAGS의 설정과 충돌하지 않는 이상 CC로 추가될 것입니다. (architecture
+> 를 설정하는 것들 처럼, linking을 하는 것에서도 compiler를 실행하기위한
+> 필수 옵션들은 CFLAGS 보다는 CC의 부분인것 처럼 지정되어야만 한다는 것
+> 을 유의하십시오.)
+
 
 Unless you do not want to view graphs on-screen (or use a Mac) you need
 @samp{X11} installed, including its headers and client libraries. For
@@ -3513,11 +3671,24 @@ recent Fedora distributions it means (at least) RPMs @samp{libX11},
 recommend the meta-package @samp{xorg-dev}.  If you really do not want
 these you will need to explicitly configure @R{} without X11, using
 @option{--with-x=no}.
+> 스크린에서 그래프들을 보는 것을 원하지 않지 않는 이상 (아니면 Mac을 사
+> 용), header들과 client 라이브러리들을 포함하는 ‘X11’을 설치할 필요가
+> 있습니다. 최근의 Fedora 배포에서, 이는 (적어도)  ‘libX11’,
+> ‘libX11-devel’, ‘libXt’ and ‘libXt-devel’ RPM들을 의미합니다. Debian에
+> 서는 meta-패키지인 ‘xorg-dev’를 추천합니다. 만약 이들을 정말 원하지 않
+> 는다면,  --with-x=no를 사용하여, X11없이 R을 명확하게 configure해야할
+> 것입니다.
+
 
 The command-line editing (and command completion) depends on the
 @acronym{GNU} @code{readline} library: version 4.2 or later is needed
 for all the features to be enabled.  Otherwise you will need to
 configure with @option{--with-readline=no} (or equivalent).
+명령줄 editing (그리고 command completion)은 GNU readline 라이브러리에
+> 의존합니다: 버전 4.2 혹은 그 후의 버전들은 모든 feature들이 활성화 되
+> 는 것을 필요로 합니다. 그렇지 않으면 --with-readline=no (혹은 비슷한
+> 것)로 구성해야 할 것입니다.
+
 
 A suitably comprehensive @code{iconv} function is essential.  The @R{}
 usage requires @code{iconv} to be able to translate between
@@ -3527,6 +3698,14 @@ Unicode wide-character formats @code{"UCS-[24][BL]E"} --- this is true
 for @code{glibc} but not of most commercial Unixes.  However, you can
 make use of @acronym{GNU} @code{libiconv} (possibly as a plug-in
 replacement: see @uref{http://www.gnu.org/@/software/@/libiconv/}).
+> 적당히 포괄적인 iconv 함수는 필수입니다. R 사용은 iconv가 "" (현재
+> encoding 처럼) 와 "ASCII"를 인식하기위해 그리고 Unicode wide-character
+> formats "UCS-[24][BL]E"으로와 으로부터의 변역을 하기위한  "latin1" 과
+> "UTF-8"에서 번역을 할 수 있는 것을 요합니다 – 이는 glibc에서는 참이지
+> 만, 대부분의 상업용 유닉스들에서는 아닙니다. 그렇지만 GNU libiconv 를
+> 사용할 수 있습니다 (아마 plug-in 대체용처럼:
+> http://www.gnu.org/software/libiconv/를 참조하세요)
+
 
 An implementation of @acronym{XDR} is required.  This is part of
 @acronym{RPC} and historically has been part of @file{libc} on a
@@ -3541,6 +3720,17 @@ include path).  The @R{} sources contain a simple implementation of
 @acronym{XDR} which in recent versions can be used on platforms with
 32-bit or 64-bit @code{long} (and earlier ones will fail to compile
 unless @code{long} is 32-bit).
+> XDR의 이행을 요합니다. 이는 RPC의 일환이고 역사적으로 유닉스 계열에서
+> libc의 일부이기도 했습니다: 하지만 몇몇의 glibc 2.14의 구축들을 이를
+> 숨깁니다. 그 의도는 libtirpc (그리고 그의 개발 버전)을 설치가 필요하
+> 고, 그의 header들이 경로를 포함한 C에 있어야 할 경우에 TI-RPC 라이브러
+> 리가 대신 사용되었기 때문인 것 처럼 보입니다 (그리고 만약 header들이
+> 경로를 포함한 standard에서 찾아지지 않는다면 configure
+> 은 /usr/include/tirpc 를 시도합니다). R 소스들은 최근 버전에서 32-비트
+> 혹은 64-비트 long을 가진 플랫폼들에서 사용할 수 있는 간단한 XDR의 이행
+> 을 포함합니다 (그 전의 버전들은 long이 32-비트가 아닌 이상은 compile을
+> 실패할 것입니다).
+
 
 The OS needs to have enough support@footnote{specifically, the C99
 functionality of headers @file{wchar.h} and @file{wctype.h}, types
@@ -3548,7 +3738,8 @@ functionality of headers @file{wchar.h} and @file{wctype.h}, types
 @code{mbstowcs}, @code{wcrtomb}, @code{wcscoll}, @code{wcstombs},
 @code{wctrans}, @code{wctype}, and @code{iswctype}.} for wide-character
 types: this is checked at configuration.
-
+> OS는 wide-character types에 대해 충분한 지원을 가지는 것이 필요합니다:
+> 이는 configuration에서 체크됩니다.
 A @command{tar} program is needed to unpack the sources and packages
 (including the recommended packages).  A version@footnote{Such as
 @acronym{GNU} @command{tar} 1.15 or later, @command{bsdtar} (from
@@ -3561,11 +3752,24 @@ automagically detect compressed archives is preferred for use with
 @enindex TAR
 @command{tar}: use environment variable @env{TAR} to override this.
 
+> 타르 프로그램은 소스들과 (추천된 패키지들을 포함한) 패키지들을 unpack
+> 하기위해 필요합니다. 압축된 archive들을 자동으로 감지할 수 있는 버전은
+> untar()과 함께 사용하는 것이 선호됩니다: configure script는 tar 전에
+> gtar과 gnutar을 찾습니다: 이를 무시하기 위해서는 환경값 TAR를 사용하세
+> 요.
+
+
+
 There need to be suitable versions of the tools @command{grep} and
 @command{sed}: the problems are usually with old AT&T and BSD variants.
 @command{configure} will try to find suitable versions (including
 looking in @file{/usr/xpg4/bin} which is used on some commercial
 Unixes).
+도구들 grep과 sed의 알맞은 버전들이 필요합니다: 문제는 보통 오래된
+> AT&T와 BSD variants들ㄹ에 있습니다. configure는 알맞은 버전들을 찾으려
+> 고 노력할 것입니다 (몇몇의 상업용 유닉스들에서 사용되는 /usr/xpg4/bin
+> 의 안을 찾아보는 것을 포함).
+
 
 You will not be able to build most of the manuals unless you have
 @command{makeinfo} version 4.7 or later installed, and if not some of
@@ -3580,6 +3784,15 @@ Solaris.}  Further, the versions of @command{texi2dvi} and
 @file{texinfo.tex} need to be compatible: we have seen problems with
 older @TeX{} distributions (TeXLive 2007 and MiKTeX 2.8) used with
 @pkg{texinfo} 4.13.
+> 버전 4.7 이상의 makeinfo 가 설치되어있지 않은 이상 매뉴얼들의 대부분을
+> 구축하는 것은 불가능 할 것이고, 만약 그렇지 않다면 몇몇의 HTML 매뉴얼
+> 들은 CRAN으로 연결될 것입니다. 매뉴얼들의 PDF 버전들을 만들기위해서는
+> texinfo.tex 파일의 설치와 (GNU textinfo 배포의 일부이지만 재배포에서는
+> 종종 TeX 패키지의 일부로 되어있습니다)texi2dvi 또한 필요할 것입니다.
+> 더 나아가, texi2dvi와 texinfo.tex 는 호환가능해야합니다: 이전의 TeX 배
+> 포들 (TeXLive 2007과 MiKTeX 2.8)이 texinfo 4.13과 함께 사용되었을 때의
+> 문제들을 보았습니다.
+
 
 @cindex Vignettes
 The PDF documentation (including @file{doc/NEWS.pdf}) and building
@@ -3592,15 +3805,28 @@ kept up-to-date.  A number of @LaTeX{} packages are required (including
 @pkg{url.sty}, and @pkg{listings.sty}) and others such as @pkg{hyperref}
 and @pkg{inconsolata} are desirable (and without them you will need to
 change @R{}'s defaults: @pxref{Making the manuals}).
+PDF 문서 (doc/NEWS.pdf를 포함)와 vignette들의 구축은 pdftex와 pdflatex
+> 를 필요로 합니다. (UTF-8 지원을 위한) LaTeX 버전 2005/12/01 혹은 그 후
+> 의 버전들을 요합니다. (R reference 매뉴얼을 포함한) PDF 패키지 매뉴얼
+> 을 구축하는 것과 vignette들은 LaTex 패키지 hyperref의 버전들에 예민하
+> 여서, 사용되는 TeX 배포가 최신 버전으로 보존되기를 추천합니다.
+> (url.sty와 listings.sty를 포함한) 많은 LaTeX 패키지들이 필요하고
+> hyperref와 inconsolata와 같은 다른 것들이 바람직합니다 (그것들이 없이
+> 는, R의 기본값을 바꾸어야만 할 것입니다: Making the manuals를 참조하세
+> 요).
 
 
 If you want to build from the R Subversion repository you need both
 @command{makeinfo} and @command{pdflatex}.
 @cindex Subversion
-
 @enindex PATH
 The essential programs should be in your @env{PATH} at the time
 @command{configure} is run: this will capture the full paths.
+만약 R Subversion 저장소로부터 구축하기를 원한다면, makeinfo와
+> pdflatex 두 가지 모두가 필요합니다. 필수 프로그램은 configure이 실행되
+> 고 있을 때 PATH안에 있어야만 합니다: 이는 전체 경로를 capture할 것입니
+> 다.
+
 
 @node Useful libraries and programs, Linear algebra, Essential programs and libraries, Essential and useful other programs under a Unix-alike
 @section Useful libraries and programs
