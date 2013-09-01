@@ -364,7 +364,7 @@ wget -r -l1 --no-parent -A\*.gz -nd -P src/library/Recommended \
 @c following commands:
 @R{} 트리가 설치될 장소를 선택하세요 (@R{}은 단순한 바이너리가 아닌 추가적인 데이터셋, 도움말 파일, 그리고 글꼴 모양에 대한 정보를 가집니다). 
 이 장소를 @var{R_HOME}이라고 부르도록 합니다.
-소스코드의 압축으르 풉니다.
+소스코드의 압축을 풉니다.
 이 과정은 @file{src}, @file{doc}, 그리고 최상위 레벨 디렉토리 아래에 몇 가지 디렉토리를 더 생성할 것입니다. 
 (여기에서 북미지역의 독자들은 반드시 @ref{Setting paper size}를 살펴보길 바랍니다.)
 다음의 명령을 실행합니다:
@@ -382,7 +382,7 @@ make
 @c @file{lib64} for their primary 64-bit library directories.} may need
 (만약 당신이 사용하는 make가 @samp{make}가 아니라면 @ref{Using make}를 살펴보시길 바랍니다.)
 64 비트 기반의 데비안 사용자은 아마도 아래와 같이 명령을 실행해야 할 수도 있습니다.
-@footnote{which use @file{lib} rather than @file{lib64} for their primary 64-bit library directories.}
+@footnote{여기서는 @file{lib64}보다 @file{lib}을 기본 64-비트 라이브러리 디렉토리로 사용합니다.}
 
 
 @example
@@ -447,7 +447,7 @@ make check-all
 또한 @file{R.1}이라는 도움말 페이지를 복사하여 사용자의 @command{man} 리더(reader)가 이를 찾을 수 있는 곳으로 복사할 수 있습니다.
 예를들면, @file{/usr/local/man/man1}이라는 곳입니다.
 만약, 완전한 @R{} 트리를 @file{/usr/local/lib/R}에 설치하고 싶다면 @ref{Installation}를 살펴보세요.
-노트: 실제로는 @R{}을 꼭 설치할 필요는 없습니다.
+주목할점: 실제로는 @R{}을 꼭 설치할 필요는 없습니다.
 그 이유는 이것이 구축된 곳으로부터 실행할 수 있기 때문입니다.
 
 @c You do not necessarily have to build @R{} in the top-level source
@@ -539,10 +539,10 @@ make
 @item fullrefman
 @c Printed versions of all the help pages for base and recommended packages
 @c (over 3300 pages).
-베이스(base)와 추천(recommended) 패키지들에 대한 모든 도움말 페이지들이 프린트된 버전입니다 (대략 3300 페이지 분량입니다).
+베이스와 추천 패키지들에 대한 모든 도움말 페이지들이 인쇄된 버전입니다 (대략 3300 페이지 분량입니다).
 @item refman
 @c Printed versions of the help pages for selected base packages (over 1900 pages)
-선택되어진 일부 base 패키지들에 대한 도움말 페이지들이 프린트된 버전입니다 (1900 페이지가 넘습니다). 
+선택되어진 일부 베이스 패키지들에 대한 도움말 페이지들이 인쇄된 버전입니다 (1900 페이지가 넘습니다). 
 @item R-FAQ
 R @acronym{FAQ}
 @item R-intro
@@ -591,7 +591,7 @@ make info     @r{ @samp{refman}도 아니고 @samp{fullrefman}도 아닌 info �
 @c a different paper size, you should first delete the file
 @c @file{doc/manual/version.texi}.  The usual value for North America would
 @c be @samp{letter}.)
-PDF 버전의 문서는 최근에 나온 어떠한 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다.
+PDF 버전의 문서는 최근에 나온 아무 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다.
 info 파일들은 이맥스 (Emacs) 또는 독립적인 @acronym{GNU} @command{info} 프로그램에서 사용되는데 적합합니다.
 PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만, 이는 @command{make} 명령어 라인에서 @env{R_PAPERSIZE}를 조절하거나 @command{make -e}를 이용하여 변경할 수 있습니다.
 (만약 용지의 크기를 다르게 하여 매뉴얼을 재생성하고 싶다면 @file{doc/manual/version.texi}를 먼저 삭제해야 합니다. 
@@ -602,7 +602,7 @@ PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만,
 @c ISO Latin1 characters (e.g.@: in @file{text.Rd}) and upright quotes,
 @c neither of which are contained in the standard @LaTeX{} Computer Modern
 @c fonts.  We have provided four alternatives:
-PDF 형식의 레퍼런스 매뉴얼, @file{refman.pdf} 또는 @file{fullrefman.pdf}을 생성하는데는 몇가지 이슈들이 있습니다.
+PDF 형식의 참조 매뉴얼, @file{refman.pdf} 또는 @file{fullrefman.pdf}을 생성하는데는 몇가지 이슈들이 있습니다.
 도움말 파일들은 표준 @LaTeX{} Computer Modern 글꼴에는 포함되어 있지 않은 ISO Latin1 문자들 (즉, @: @file{text.Rd})와 오른쪽 큰 따옴표를 포함하고 있습니다. 
 우리는 다음과 같은 네가지 대안을 제공하고 있습니다. 
 
@@ -623,7 +623,7 @@ PDF 형식의 레퍼런스 매뉴얼, @file{refman.pdf} 또는 @file{fullrefman.
 @c @uref{http://fedoraproject.org/wiki/Features/TeXLive}.})
 기본적으로 제공되는 방법은 표준 포스트스크립트(postscript) 글꼴, Times Roman, Helvertica와 Courier 글꼴을 이용합니다.
 이것은 화면상으로 보거나 출력하는데 있어서 모두 잘 작동합니다.
-한가지 단점은 Usage(사용법)과 Examples(예제들) 섹션들이 다소 본래의 크기보다 넓게 출력될 수 있습니다. 
+한가지 단점은 사용법(Usage)과 예제들(Examples) 섹션들이 다소 본래의 크기보다 넓게 출력될 수 있습니다. 
 이것은 @code{beramono} 또는 @code{inconsolata} 옵션들 중 하나를 이용하여 해결할 수 있습니다. 
 이 옵션은 Courier monospaced 글꼴을 Bera Sans mono 또는 Iconsolata 로 각각 대체합니다.
 (@pkg{bera} 또는 @pkg{inconsolata}라는 적절한 @LaTeX{} 패키지들이 설치되어 있어야 할 것입니다).
@@ -746,7 +746,7 @@ make를 병렬식으로 사용할 수도 있습니다 (그러나 @command{make a
 @c where @var{prefix} is determined during configuration (typically
 @c @file{/usr/local}) and can be set by running @command{configure} with
 @c the option @option{--prefix}, as in
-여기에서 @var{prefix}는 설정을 하는동안 결정되게 되며 (일반적으로는 @file{/usr/local}입니다) @command{configure} 명령어를 @option{--prefix} 옵션을 아래와 같이 사용함으로서 설정될 수 있습니다. 
+여기에서 @var{prefix}는 설정을 하는동안 결정되며 (일반적으로는 @file{/usr/local}입니다) @command{configure} 명령어를 @option{--prefix} 옵션과 함께 아래와 같이 사용함으로서 설정될 수 있습니다. 
 
 @findex configure
 @example
@@ -789,7 +789,7 @@ make prefix=/path/to/here install
 @c where @var{eprefix} is the prefix used for installing
 @c architecture-dependent files, defaults to @var{prefix}, and can be set
 @c via the configure option @option{--exec-prefix}.
-@option{--libdir} 옵션은 주 @R{} 파일들이 어디에 설치되어야 하는지를 조정합니다.
+@option{--libdir} 옵션은 주된 @R{} 파일들이 어디에 설치되어야 하는지를 조정합니다.
 기본값은 @samp{@var{eprefix}/@var{LIBn}}인데, @var{eprefix}는 아키텍쳐-의존 파일들을 설치하는데 사용되는 prefix 이며, @var{prefix}에 대한 기본값입니다. 
 그리고 환경설정 옵션 @option{--exec-prefix}를 통하여 설정될 수 있습니다. 
 
@@ -805,7 +805,7 @@ make prefix=/path/to/here install
 @c @code{rincludedir}: note that as the headers are not installed into a
 @c subdirectory you probably want something like
 @c @code{rincludedir=/usr/local/include/R-@value{VERSIONno}}.
-@command{configure} 또는 @command{make} 변수 @code{rdocdir}과 @code{rsharedir}는 시스템-독립적으로 @file{doc}과 @file{share} 디렉토리들을 @code{libdir}이 아닌 다른곳에 설치하게 할 수 있습니다. 
+@command{configure} 또는 @command{make} 변수 @code{rdocdir}과 @code{rsharedir}는 시스템-독립적인 @file{doc}과 @file{share} 디렉토리들을 @code{libdir}이 아닌 다른곳에 설치하게 할 수 있습니다. 
 C 헤더파일들은  @code{rincludedir}의 값에 설치되어질 수 있습니다.
 헤더들은 하위디렉토리에 설치되지 않기 때문에 아마도  @code{rincludedir=/usr/local/include/R-@value{VERSIONno}} 와 같은 것을 원할 수 있습니다. 
 
@@ -843,7 +843,7 @@ make install-strip
 @c will install stripped executables, and on platforms where this is
 @c supported, stripped libraries in directories @file{lib} and
 @c @file{modules} and in the standard packages.
-위의 명령어 사용은 stripped executables을 설치할 것이고 이것이 지원이되는 플랫폼들에서 @file{lib} 디렉토리내의 라이브러리들과 표준 패키지들의 @file{modules}들을  stripped 합니다.
+위의 명령어 사용은 stripped executables을 설치할 것이고, 이것이 지원이되는 플랫폼들에서 @file{lib}과 @file{modules} 디렉토리들하고 표준 패키지들 안에 stripped libraries를 설치 할것입니다.
 
 @c Note that installing @R{} into a directory whose path contains spaces is
 @c not supported, and at least some aspects (such as installing source
@@ -890,8 +890,8 @@ PDF 파일들은 @R{} @file{doc} 트리에 설치되며, @command{make} 변수 @
 
 @c You can optionally install the run-time tests that are part of
 @c @command{make check-all} by
-@command{make check-all}의 일부분인 런타임 테스트를 선택적으로 설치를 아래의 명령어로 수행할 수 있습니다.
-이는 @file{tests} 디렉토리를 설치시 추가적으로 생성합니다.
+@command{make check-all}의 일부분인 런타임 테스트를 아래의 명령어를 사용하여 선택적으로 설치할수 있습니다.
+이는 설치시 @file{tests} 디렉토리를 채웁니다.
 
 @example
 make install-tests
@@ -925,7 +925,7 @@ make uninstall
 
 @c Target @code{uninstall-tests} will uninstall any installed tests, as
 @c well as removing the directory @file{tests} containing the test results.
-@code{uninstall-tests} 대상들은 마치 테스트 결과들을 가지고 있는 @file{tests} 디렉토리를 제거하는 것과 같이 설치된 테스트들을 삭제할 것입니다.
+대상을 정해주었을때 @code{uninstall-tests}는 설치된 아무 테스트들을 삭제하며 테스트 결과들을 가지고 있는 @file{tests} 디렉토리 또한 제거 할 것입니다.
 
 @node Sub-architectures, Other Options, Uninstallation, Installing R under Unix-alikes
 @c @section Sub-architectures

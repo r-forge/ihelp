@@ -363,7 +363,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Obtaining-R">Obtaining R</a>
    <!-- The pathname of the directory into which the sources are unpacked should -->
 <!-- not contain spaces, as most @command{make} programs (and specifically -->
 <!-- @acronym{GNU} @command{make}) do not expect spaces. -->
-   <p>대부분의 <samp><span class="command">make</span></samp> 프로그램 (특히 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>)들이 공백을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
+   <p>대부분의 <samp><span class="command">make</span></samp> 프로그램 (특히 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>)들이 공백(space)을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
 
 <!-- If you want the build to be usable by a group of users, set @code{umask} -->
 <!-- before unpacking so that the files will be readable by the target group -->
@@ -387,7 +387,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Obtaining-R">Obtaining R</a>
 <!-- variable: if more than one option is included they should be separated -->
 <!-- by spaces.) -->
 그리고 또한 옵션 <samp><span class="option">--no-same-permissions</span></samp>을 사용할 수도 있습니다. 
-(이런 옵션들은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백(space)으로 구분되어야 합니다.)
+(이런 옵션들은 <samp><span class="env">TAR_OPTIONS</span></samp> 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백으로 구분되어야 합니다.)
 
 <div class="node">
 <a name="Getting-patched-and-development-versions"></a>
@@ -407,14 +407,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Obtaining-R">Obtaining R</a>
 <!-- tarballs may refer to beta/release candidates of the upcoming release, -->
 <!-- the patched version of the current release being available via -->
 <!-- Subversion.) -->
-<p>현재 공개된 버전의 패치 버전인 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;와 현재 개발 중인 버전인 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo; tarballs는 곧 공개될 버전의 베타/공개후보로 불리고 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
+<p>현재 공개된 버전의 패치 버전인 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo;와 현재 개발 중인 버전인 &lsquo;<samp><span class="samp">r-devel</span></samp>&rsquo;은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안에는 &lsquo;<samp><span class="samp">r-patched</span></samp>&rsquo; tarballs는 곧 공개될 버전의 베타/공개후보를 가리킬수 있으며, 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
 
 <!-- The tarballs are available from -->
 <!-- @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/}.  Download -->
 <!-- @file{R-patched.tar.gz} or @file{R-devel.tar.gz} (or the @file{.tar.bz2} -->
 <!-- versions) and unpack as described in the previous section.  They are -->
 <!-- built in exactly the same way as distributions of R releases. -->
-   <p>tarballs는 <a href="ftp://ftp.stat.math.ethz.ch/pub/Software/R/">ftp://ftp.stat.math.ethz.ch/pub/Software/R/</a> 얻을 수 있습니다. <samp><span class="file">R-patched.tar.gz</span></samp> 이나 <samp><span class="file">R-devel.tar.gz</span></samp> (또는  <samp><span class="file">.tar.bz2</span></samp> versions)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 설치됩니다.
+   <p>tarballs는 <a href="ftp://ftp.stat.math.ethz.ch/pub/Software/R/">ftp://ftp.stat.math.ethz.ch/pub/Software/R/</a>에서 얻을 수 있습니다. <samp><span class="file">R-patched.tar.gz</span></samp> 이나 <samp><span class="file">R-devel.tar.gz</span></samp> (또는  <samp><span class="file">.tar.bz2</span></samp> 버전들)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 빌드되어 있습니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Using-Subversion-and-rsync">Using Subversion and rsync</a>
@@ -487,7 +487,7 @@ R을 빌드하기 위해서 서브버전 정보가 필요하기 때문입니다.
 <!-- incantation from the top level of the R sources using @command{wget} -->
 <!-- might be (for the correct value of @file{@var{dir}}) -->
    <p><acronym>CRAN</acronym>에서 수동으로(manually) 내려받는 경우, 추천 패키지의 정확한 버전을 확인해야 합니다. 
-만약 <samp><span class="file">VERSION</span></samp> 파일 내에 있는 숫자가 &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var></samp>&rsquo;이라면, &lsquo;<samp><span class="samp">http://CRAN.R-project.org/src/contrib/</span><var>dir</var></samp>&rsquo; 내에 있느느 내용을 다운받아야 합니다. 
+만약 <samp><span class="file">VERSION</span></samp> 파일 내에 있는 숫자가 &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var></samp>&rsquo;이라면, &lsquo;<samp><span class="samp">http://CRAN.R-project.org/src/contrib/</span><var>dir</var></samp>&rsquo; 내에 있는 내용을 다운받아야 합니다. 
 여기에서 <var>dir</var>은 r-devel인 경우 &lsquo;<samp><var>x</var><span class="samp">.</span><var>y</var><span class="samp">.</span><var>z</var><span class="samp">/Recommended</span></samp>&rsquo;를, r-patched 인 경우에는 <samp><var>x</var><span class="file">.</span><var>y</var><span class="file">-patched/Recommended</span></samp>를 다운 받아 <samp><span class="file">src/library/Recommended</span></samp>에 압축을 풀어야 합니다. 
 수동으로 다운로드를 한 뒤에는 <samp><span class="file">src/library/Recommended</span></samp> 내에 필요한 링크들을 만들기 위하여 소스의 최상위 레벨에서 <samp><span class="command">tools/link-recommended</span></samp> 명령어를 실행해야 합니다. 
 <samp><span class="command">wget</span></samp>을 이용하여 R 소스의 최상위레벨로부터 필요한 명령은 아래와 같을 것입니다. 
@@ -594,7 +594,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 <!-- following commands: -->
 R 트리가 설치될 장소를 선택하세요 (R은 단순한 바이너리가 아닌 추가적인 데이터셋, 도움말 파일, 그리고 글꼴 모양에 대한 정보를 가집니다). 
 이 장소를 <var>R_HOME</var>이라고 부르도록 합니다. 
-소스코드의 압축으르 풉니다. 
+소스코드의 압축을 풉니다. 
 이 과정은 <samp><span class="file">src</span></samp>, <samp><span class="file">doc</span></samp>, 그리고 최상위 레벨 디렉토리 아래에 몇 가지 디렉토리를 더 생성할 것입니다. 
 (여기에서 북미지역의 독자들은 반드시 <a href="#Setting-paper-size">Setting paper size</a>를 살펴보길 바랍니다.) 
 다음의 명령을 실행합니다:
@@ -661,7 +661,7 @@ R 트리가 설치될 장소를 선택하세요 (R은 단순한 바이너리가 
 또한 <samp><span class="file">R.1</span></samp>이라는 도움말 페이지를 복사하여 사용자의 <samp><span class="command">man</span></samp> 리더(reader)가 이를 찾을 수 있는 곳으로 복사할 수 있습니다. 
 예를들면, <samp><span class="file">/usr/local/man/man1</span></samp>이라는 곳입니다. 
 만약, 완전한 R 트리를 <samp><span class="file">/usr/local/lib/R</span></samp>에 설치하고 싶다면 <a href="#Installation">Installation</a>를 살펴보세요. 
-노트: 실제로는 R을 꼭 설치할 필요는 없습니다. 
+주목할점: 실제로는 R을 꼭 설치할 필요는 없습니다. 
 그 이유는 이것이 구축된 곳으로부터 실행할 수 있기 때문입니다.
 
 <!-- You do not necessarily have to build @R{} in the top-level source -->
@@ -759,9 +759,9 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
      <dl>
 <dt>&lsquo;<samp><span class="samp">fullrefman</span></samp>&rsquo;<dd><!-- Printed versions of all the help pages for base and recommended packages -->
 <!-- (over 3300 pages). -->
-베이스(base)와 추천(recommended) 패키지들에 대한 모든 도움말 페이지들이 프린트된 버전입니다 (대략 3300 페이지 분량입니다). 
+베이스와 추천 패키지들에 대한 모든 도움말 페이지들이 인쇄된 버전입니다 (대략 3300 페이지 분량입니다). 
 <br><dt>&lsquo;<samp><span class="samp">refman</span></samp>&rsquo;<dd><!-- Printed versions of the help pages for selected base packages (over 1900 pages) -->
-선택되어진 일부 base 패키지들에 대한 도움말 페이지들이 프린트된 버전입니다 (1900 페이지가 넘습니다). 
+선택되어진 일부 베이스 패키지들에 대한 도움말 페이지들이 인쇄된 버전입니다 (1900 페이지가 넘습니다). 
 <br><dt>&lsquo;<samp><span class="samp">R-FAQ</span></samp>&rsquo;<dd>R <acronym>FAQ</acronym>
 <br><dt>&lsquo;<samp><span class="samp">R-intro</span></samp>&rsquo;<dd>&ldquo;An Introduction to R&rdquo; (입문서). 
 <br><dt>&lsquo;<samp><span class="samp">R-data</span></samp>&rsquo;<dd>&ldquo;R Data Import/Export&rdquo; (데이터 입출력). 
@@ -799,7 +799,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 <!-- a different paper size, you should first delete the file -->
 <!-- @file{doc/manual/version.texi}.  The usual value for North America would -->
 <!-- be @samp{letter}.) -->
-PDF 버전의 문서는 최근에 나온 어떠한 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다. 
+PDF 버전의 문서는 최근에 나온 아무 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다. 
 info 파일들은 이맥스 (Emacs) 또는 독립적인 <acronym>GNU</acronym> <samp><span class="command">info</span></samp> 프로그램에서 사용되는데 적합합니다. 
 PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만, 이는 <samp><span class="command">make</span></samp> 명령어 라인에서 <samp><span class="env">R_PAPERSIZE</span></samp>를 조절하거나 <samp><span class="command">make -e</span></samp>를 이용하여 변경할 수 있습니다. 
 (만약 용지의 크기를 다르게 하여 매뉴얼을 재생성하고 싶다면 <samp><span class="file">doc/manual/version.texi</span></samp>를 먼저 삭제해야 합니다. 
@@ -810,7 +810,7 @@ PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만,
 <!-- ISO Latin1 characters (e.g.@: in @file{text.Rd}) and upright quotes, -->
 <!-- neither of which are contained in the standard @LaTeX{} Computer Modern -->
 <!-- fonts.  We have provided four alternatives: -->
-   <p>PDF 형식의 레퍼런스 매뉴얼, <samp><span class="file">refman.pdf</span></samp> 또는 <samp><span class="file">fullrefman.pdf</span></samp>을 생성하는데는 몇가지 이슈들이 있습니다. 
+   <p>PDF 형식의 참조 매뉴얼, <samp><span class="file">refman.pdf</span></samp> 또는 <samp><span class="file">fullrefman.pdf</span></samp>을 생성하는데는 몇가지 이슈들이 있습니다. 
 도움말 파일들은 표준 LaTeX Computer Modern 글꼴에는 포함되어 있지 않은 ISO Latin1 문자들 (즉,  <samp><span class="file">text.Rd</span></samp>)와 오른쪽 큰 따옴표를 포함하고 있습니다. 
 우리는 다음과 같은 네가지 대안을 제공하고 있습니다.
 
@@ -830,7 +830,7 @@ PDF 버전들은 ISO 표준인 a4 용지의 크기에 맞추어 생성되지만,
 <!-- @uref{http://fedoraproject.org/wiki/Features/TeXLive}.}) -->
 기본적으로 제공되는 방법은 표준 포스트스크립트(postscript) 글꼴, Times Roman, Helvertica와 Courier 글꼴을 이용합니다. 
 이것은 화면상으로 보거나 출력하는데 있어서 모두 잘 작동합니다. 
-한가지 단점은 Usage(사용법)과 Examples(예제들) 섹션들이 다소 본래의 크기보다 넓게 출력될 수 있습니다. 
+한가지 단점은 사용법(Usage)과 예제들(Examples) 섹션들이 다소 본래의 크기보다 넓게 출력될 수 있습니다. 
 이것은 <code>beramono</code> 또는 <code>inconsolata</code> 옵션들 중 하나를 이용하여 해결할 수 있습니다. 
 이 옵션은 Courier monospaced 글꼴을 Bera Sans mono 또는 Iconsolata 로 각각 대체합니다. 
 (<strong>bera</strong> 또는 <strong>inconsolata</strong>라는 적절한 LaTeX 패키지들이 설치되어 있어야 할 것입니다). 
@@ -944,7 +944,7 @@ make를 병렬식으로 사용할 수도 있습니다 (그러나 <samp><span cla
 <p class="noindent"><!-- where @var{prefix} is determined during configuration (typically -->
 <!-- @file{/usr/local}) and can be set by running @command{configure} with -->
 <!-- the option @option{-prefix}, as in -->
-여기에서 <var>prefix</var>는 설정을 하는동안 결정되게 되며 (일반적으로는 <samp><span class="file">/usr/local</span></samp>입니다) <samp><span class="command">configure</span></samp> 명령어를 <samp><span class="option">--prefix</span></samp> 옵션을 아래와 같이 사용함으로서 설정될 수 있습니다.
+여기에서 <var>prefix</var>는 설정을 하는동안 결정되며 (일반적으로는 <samp><span class="file">/usr/local</span></samp>입니다) <samp><span class="command">configure</span></samp> 명령어를 <samp><span class="option">--prefix</span></samp> 옵션과 함께 아래와 같이 사용함으로서 설정될 수 있습니다.
 
    <p><a name="index-configure-19"></a>
 <pre class="example">     ./configure --prefix=/where/you/want/R/to/go
@@ -980,7 +980,7 @@ make를 병렬식으로 사용할 수도 있습니다 (그러나 <samp><span cla
 <!-- where @var{eprefix} is the prefix used for installing -->
 <!-- architecture-dependent files, defaults to @var{prefix}, and can be set -->
 <!-- via the configure option @option{-exec-prefix}. -->
-   <p><samp><span class="option">--libdir</span></samp> 옵션은 주 R 파일들이 어디에 설치되어야 하는지를 조정합니다. 
+   <p><samp><span class="option">--libdir</span></samp> 옵션은 주된 R 파일들이 어디에 설치되어야 하는지를 조정합니다. 
 기본값은 &lsquo;<samp><var>eprefix</var><span class="samp">/</span><var>LIBn</var></samp>&rsquo;인데, <var>eprefix</var>는 아키텍쳐-의존 파일들을 설치하는데 사용되는 prefix 이며, <var>prefix</var>에 대한 기본값입니다. 
 그리고 환경설정 옵션 <samp><span class="option">--exec-prefix</span></samp>를 통하여 설정될 수 있습니다.
 
@@ -996,7 +996,7 @@ make를 병렬식으로 사용할 수도 있습니다 (그러나 <samp><span cla
 <!-- @code{rincludedir}: note that as the headers are not installed into a -->
 <!-- subdirectory you probably want something like -->
 <!-- @code{rincludedir=/usr/local/include/R-@value{VERSIONno}}. -->
-   <p><samp><span class="command">configure</span></samp> 또는 <samp><span class="command">make</span></samp> 변수 <code>rdocdir</code>과 <code>rsharedir</code>는 시스템-독립적으로 <samp><span class="file">doc</span></samp>과 <samp><span class="file">share</span></samp> 디렉토리들을 <code>libdir</code>이 아닌 다른곳에 설치하게 할 수 있습니다. 
+   <p><samp><span class="command">configure</span></samp> 또는 <samp><span class="command">make</span></samp> 변수 <code>rdocdir</code>과 <code>rsharedir</code>는 시스템-독립적인 <samp><span class="file">doc</span></samp>과 <samp><span class="file">share</span></samp> 디렉토리들을 <code>libdir</code>이 아닌 다른곳에 설치하게 할 수 있습니다. 
 C 헤더파일들은  <code>rincludedir</code>의 값에 설치되어질 수 있습니다. 
 헤더들은 하위디렉토리에 설치되지 않기 때문에 아마도  <code>rincludedir=/usr/local/include/R-3.0.0</code> 와 같은 것을 원할 수 있습니다.
 
@@ -1025,7 +1025,7 @@ C 헤더파일들은  <code>rincludedir</code>의 값에 설치되어질 수 있
    <p class="noindent"><!-- will install stripped executables, and on platforms where this is -->
 <!-- supported, stripped libraries in directories @file{lib} and -->
 <!-- @file{modules} and in the standard packages. -->
-위의 명령어 사용은 stripped executables을 설치할 것이고 이것이 지원이되는 플랫폼들에서 <samp><span class="file">lib</span></samp> 디렉토리내의 라이브러리들과 표준 패키지들의 <samp><span class="file">modules</span></samp>들을  stripped 합니다.
+위의 명령어 사용은 stripped executables을 설치할 것이고, 이것이 지원이되는 플랫폼들에서 <samp><span class="file">lib</span></samp>과 <samp><span class="file">modules</span></samp> 디렉토리들하고 표준 패키지들 안에 stripped libraries를 설치 할것입니다.
 
 <!-- Note that installing @R{} into a directory whose path contains spaces is -->
 <!-- not supported, and at least some aspects (such as installing source -->
@@ -1067,8 +1067,8 @@ PDF 파일들은 R <samp><span class="file">doc</span></samp> 트리에 설치�
 
 <!-- You can optionally install the run-time tests that are part of -->
 <!-- @command{make check-all} by -->
-   <p><samp><span class="command">make check-all</span></samp>의 일부분인 런타임 테스트를 선택적으로 설치를 아래의 명령어로 수행할 수 있습니다. 
-이는 <samp><span class="file">tests</span></samp> 디렉토리를 설치시 추가적으로 생성합니다.
+   <p><samp><span class="command">make check-all</span></samp>의 일부분인 런타임 테스트를 아래의 명령어를 사용하여 선택적으로 설치할수 있습니다. 
+이는 설치시 <samp><span class="file">tests</span></samp> 디렉토리를 채웁니다.
 
 <pre class="example">     make install-tests
 </pre>
@@ -1103,7 +1103,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-R-under-Unix_002dalikes">In
 
 <!-- Target @code{uninstall-tests} will uninstall any installed tests, as -->
 <!-- well as removing the directory @file{tests} containing the test results. -->
-   <p><code>uninstall-tests</code> 대상들은 마치 테스트 결과들을 가지고 있는 <samp><span class="file">tests</span></samp> 디렉토리를 제거하는 것과 같이 설치된 테스트들을 삭제할 것입니다.
+   <p>대상을 정해주었을때 <code>uninstall-tests</code>는 설치된 아무 테스트들을 삭제하며 테스트 결과들을 가지고 있는 <samp><span class="file">tests</span></samp> 디렉토리 또한 제거 할 것입니다.
 
 <div class="node">
 <a name="Sub-architectures"></a>
@@ -6749,7 +6749,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
    <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> 어떤 서브버전 클라이언트들에 대해서는 &lsquo;<samp><span class="samp">http:</span></samp>&rsquo;로 나타날 수 있으나, 지속적인 리디렉션이 요구됩니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> which use <samp><span class="file">lib</span></samp> rather than <samp><span class="file">lib64</span></samp> for their primary 64-bit library directories.</p>
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> 여기서는 <samp><span class="file">lib64</span></samp>보다 <samp><span class="file">lib</span></samp>을 기본 64-비트 라이브러리 디렉토리로 사용합니다.</p>
 
    <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> 예를들어, 만약에 <samp><span class="option">--without-recommended</span></samp>이라는 옵션과 함께 R의 환경을 확인해보지 않았다면</p>
 
