@@ -147,7 +147,7 @@ gzip -dc R-@var{x}.@var{y}.@var{z}.tar.gz | tar -xf -
 @c The pathname of the directory into which the sources are unpacked should
 @c not contain spaces, as most @command{make} programs (and specifically
 @c @acronym{GNU} @command{make}) do not expect spaces.
-대부분의 @command{make} 프로그램 (특히 @acronym{GNU} @command{make})들이 공백을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
+대부분의 @command{make} 프로그램 (특히 @acronym{GNU} @command{make})들이 공백(space)을 허용하지 않는 것과 같이 소스의 압축이 어디에 풀리게 될지를 지정하는 디렉토리의 경로명은 공백이 있으면 안됩니다.
 
 @c If you want the build to be usable by a group of users, set @code{umask}
 @c before unpacking so that the files will be readable by the target group
@@ -175,7 +175,7 @@ tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c variable: if more than one option is included they should be separated
 @c by spaces.)
 그리고 또한 옵션 @option{--no-same-permissions}을 사용할 수도 있습니다. 
-(이런 옵션들은 @env{TAR_OPTIONS} 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백(space)으로 구분되어야 합니다.)
+(이런 옵션들은 @env{TAR_OPTIONS} 환경변수 내에서 설정될 수 있습니다: 만약 하나 이상의 옵션이 포함되면 그것들은 하나의 공백으로 구분되어야 합니다.)
 
 @node Getting patched and development versions,  , Getting and unpacking the sources, Obtaining R
 @c @section Getting patched and development versions
@@ -188,14 +188,14 @@ tar --no-same-owner -xf R-@var{x}.@var{y}.@var{z}.tar.gz
 @c tarballs may refer to beta/release candidates of the upcoming release,
 @c the patched version of the current release being available via
 @c Subversion.)
-현재 공개된 버전의 패치 버전인 @samp{r-patched}와 현재 개발 중인 버전인 @samp{r-devel}은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안 @samp{r-patched} tarballs는 곧 공개될 버전의 베타/공개후보로 불리고 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
+현재 공개된 버전의 패치 버전인 @samp{r-patched}와 현재 개발 중인 버전인 @samp{r-devel}은 일간 tarballs이나 R Subversion repository 에 접속함으로써 사용 가능합니다(2.x.0 같은 낮은 버전의 공개 2주전 동안에는 @samp{r-patched} tarballs는 곧 공개될 버전의 베타/공개후보를 가리킬수 있으며, 현재 공개된 패치 버전은 Subversion을 통해 얻을 수 있었습니다).
 
 @c The tarballs are available from
 @c @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/}.  Download
 @c @file{R-patched.tar.gz} or @file{R-devel.tar.gz} (or the @file{.tar.bz2}
 @c versions) and unpack as described in the previous section.  They are
 @c built in exactly the same way as distributions of R releases.
-tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/} 얻을 수 있습니다. @file{R-patched.tar.gz} 이나 @file{R-devel.tar.gz} (또는  @file{.tar.bz2} versions)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 설치됩니다.
+tarballs는 @uref{ftp://ftp.stat.math.ethz.ch/@/pub/@/Software/R/}에서 얻을 수 있습니다. @file{R-patched.tar.gz} 이나 @file{R-devel.tar.gz} (또는  @file{.tar.bz2} 버전들)를 다운로드 하고 앞에서 설명한 바와 같이 압축을 해제합니다. 그것들은 R 이 공개되어 배포되는 것과 정확히 같은 방법으로 빌드되어 있습니다.
 
 @menu
 * Using Subversion and rsync::  
@@ -265,7 +265,7 @@ svn checkout https://svn.r-project.org/R/trunk/ @var{path}
 @c might be (for the correct value of @file{@var{dir}})
 
 @acronym{CRAN}에서 수동으로(manually) 내려받는 경우, 추천 패키지의 정확한 버전을 확인해야 합니다.
-만약 @file{VERSION} 파일 내에 있는 숫자가 @samp{@var{x}.@var{y}.@var{z}}이라면, @samp{http://CRAN.R-project.org/src/contrib/@var{dir}} 내에 있느느 내용을 다운받아야 합니다. 
+만약 @file{VERSION} 파일 내에 있는 숫자가 @samp{@var{x}.@var{y}.@var{z}}이라면, @samp{http://CRAN.R-project.org/src/contrib/@var{dir}} 내에 있는 내용을 다운받아야 합니다. 
 여기에서 @var{dir}은 r-devel인 경우 @samp{@var{x}.@var{y}.@var{z}/Recommended}를, r-patched 인 경우에는 @file{@var{x}.@var{y}-patched/Recommended}를 다운 받아 @file{src/library/Recommended}에 압축을 풀어야 합니다. 
 수동으로 다운로드를 한 뒤에는 @file{src/library/Recommended} 내에 필요한 링크들을 만들기 위하여 소스의 최상위 레벨에서 @command{tools/link-recommended} 명령어를 실행해야 합니다. 
 @command{wget}을 이용하여 R 소스의 최상위레벨로부터 필요한 명령은 아래와 같을 것입니다.
