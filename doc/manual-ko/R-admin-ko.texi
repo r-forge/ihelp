@@ -3610,7 +3610,7 @@ If you make use of dynamic linking you should use
 @c @command{configure}.
 @c Appendix A Essential and useful other programs under a Unix-alike
 이 appendix는 유닉스 계열의 플랫폼들에서 R을 구축하기 위해서 필요할 설명들과,
-R 안에서 @command{configure}를 통해 검색할 수 있는 프로그램들의 자세한 설
+@R{} 안에서 @command{configure}를 통해 검색할 수 있는 프로그램들의 자세한 설
 명을 줄 것입니다.
 
 
@@ -3633,201 +3633,213 @@ R 안에서 @command{configure}를 통해 검색할 수 있는 프로그램들�
 @node Essential programs and libraries, Useful libraries and programs, Essential and useful other programs under a Unix-alike, Essential and useful other programs under a Unix-alike
 @section Essential programs and libraries
 
-You need a means of compiling C and FORTRAN 90 (see @ref{Using
-FORTRAN}).  Some add-on packages also need a C++ compiler.  Your C
-compiler should be @acronym{ISO}/@acronym{IEC}@tie{}60059@footnote{also
-known as @acronym{IEEE}@tie{}754}, POSIX 1003.1 and
-C99-compliant.@footnote{Note that C11 compilers (when they appear) need
-not be C99-compliant: @R{} requires support for @code{double complex}
-which is optional in C11 but is mandatory in C99.}  @R{} tries to choose
-suitable flags for the C compilers it knows about, but you may have to
-set @code{CC} or @code{CFLAGS} suitably.  For recent versions of
-@command{gcc} with @code{glibc} this means including
-@option{-std=gnu99}@footnote{@option{-std=c99} excludes POSIX
-functionality, but @file{config.h} will turn on all @acronym{GNU}
-extensions to include the POSIX functionality.}.  If the compiler is
-detected as @command{gcc}, @option{-std=gnu99} will be appended to
-@code{CC} unless it conflicts with a setting of @code{CFLAGS}.  (Note
-that options essential to run the compiler even for linking, such as
-those to set the architecture, should be specified as part of @code{CC}
-rather than in @code{CFLAGS}.)
+@c You need a means of compiling C and FORTRAN 90 (see @ref{Using
+@c FORTRAN}).  Some add-on packages also need a C++ compiler.  Your C
+@c compiler should be @acronym{ISO}/@acronym{IEC}@tie{}60059@footnote{also
+@c known as @acronym{IEEE}@tie{}754}, POSIX 1003.1 and
+@c C99-compliant.@footnote{Note that C11 compilers (when they appear) need
+@c not be C99-compliant: @R{} requires support for @code{double complex}
+@c which is optional in C11 but is mandatory in C99.}  @R{} tries to choose
+@c suitable flags for the C compilers it knows about, but you may have to
+@c set @code{CC} or @code{CFLAGS} suitably.  For recent versions of
+@c @command{gcc} with @code{glibc} this means including
+@c @option{-std=gnu99}@footnote{@option{-std=c99} excludes POSIX
+@c functionality, but @file{config.h} will turn on all @acronym{GNU}
+@c extensions to include the POSIX functionality.}.  If the compiler is
+@c detected as @command{gcc}, @option{-std=gnu99} will be appended to
+@c @code{CC} unless it conflicts with a setting of @code{CFLAGS}.  (Note
+@c that options essential to run the compiler even for linking, such as
+@c those to set the architecture, should be specified as part of @code{CC}
+@c rather than in @code{CFLAGS}.)
  
-여러분은 C와 포트란 90를 컴파일링 는 수단이 필요합니다 (@ref{Using
+여러분은 C와 포트란 90를 컴파일링 하는 수단이 필요합니다 (@ref{Using
 FORTRAN}을 참조하세요). 몇몇의 add-on 패키지들 또한 C++ 컴파일러를 필요
 로합니다. 당신의 C 컴파일러는 @acronym{ISO}/@acronym{IEC} @tie{}@footnote{also
 known as @acronym{IEEE}@tie{}754}, POSIX 1003.1, 그리고
 C99-compliant여야만 합니다. @R{}은 인지하고있는 C 컴파일러들을 위한 알맞
 은 flag들을 선택하려고 하지만, @code{CC} 혹은 @code{CFLAGS}를 알맞게 설정해야 할 수
 도 있습니다. @code{Glibc}를 가진 @code{gcc}의 최근 버전들에서, 이는 @option{std=gnu99}를 포함
-하는 것을 뜻합니다. 만약 컴팡일러가 @command{gcc}, @option{-std=gnu99} 처럼 발견 된다면,
-CFLAGS의 설정과 충돌하지 않는 이상 CC로 추가될 것입니다. (architecture
-를 설정하는 것들 처럼, linking을 하는 것에서도 compiler를 실행하기위한
-필수 옵션들은 CFLAGS 보다는 CC의 부분인것 처럼 지정되어야만 한다는 것
+하는 것을 뜻합니다. 만약 컴파일러가 @command{gcc}, @option{-std=gnu99} 처럼 발견 된다면,
+@code{CFLAGS}의 설정과 충돌하지 않는 이상 @code{CC}로 추가될 것입니다. (architecture
+를 설정하는 것들 처럼, 연결 하는 것에서도 컴파일러를 실행하기위한
+필수 옵션들은 @code{CFLAGS} 보다는 @code{CC}의 부분인것 처럼 지정되어야만 한다는 것
 을 유의하십시오.)
 
 
-Unless you do not want to view graphs on-screen (or use a Mac) you need
-@samp{X11} installed, including its headers and client libraries. For
-recent Fedora distributions it means (at least) RPMs @samp{libX11},
-@samp{libX11-devel}, @samp{libXt} and @samp{libXt-devel}.  On Debian we
-recommend the meta-package @samp{xorg-dev}.  If you really do not want
-these you will need to explicitly configure @R{} without X11, using
-@option{--with-x=no}.
-> 스크린에서 그래프들을 보는 것을 원하지 않지 않는 이상 (아니면 Mac을 사
-> 용), header들과 client 라이브러리들을 포함하는 ‘X11’을 설치할 필요가
-> 있습니다. 최근의 Fedora 배포에서, 이는 (적어도)  ‘libX11’,
-> ‘libX11-devel’, ‘libXt’ and ‘libXt-devel’ RPM들을 의미합니다. Debian에
-> 서는 meta-패키지인 ‘xorg-dev’를 추천합니다. 만약 이들을 정말 원하지 않
-> 는다면,  --with-x=no를 사용하여, X11없이 R을 명확하게 configure해야할
-> 것입니다.
+@c Unless you do not want to view graphs on-screen (or use a Mac) you need
+@c @samp{X11} installed, including its headers and client libraries. For
+@c recent Fedora distributions it means (at least) RPMs @samp{libX11},
+@c @samp{libX11-devel}, @samp{libXt} and @samp{libXt-devel}.  On Debian we
+@c recommend the meta-package @samp{xorg-dev}.  If you really do not want
+@c these you will need to explicitly configure @R{} without X11, using
+@c @option{--with-x=no}.
+스크린에서 그래프들을 보는 것을 원하지 않지 않는 이상 (아니면 Mac을 사
+용), 헤더들과 클라이언트 라이브러리들을 포함하는 @samp{X11}을 설치할 필요가
+있습니다. 최근의 Fedora 배포에서, 이는 (적어도)  @samp{libX11},
+@samp{libX11-devel}, @samp{libXt} and @samp{libXt-devel} RPM들을 의미합니다. Debian에
+서는 메타 패키지인 @samp{xorg-dev}를 추천합니다. 만약 이들을 정말 원하지 않
+는다면,  @option{--with-x=no}를 사용하여, X11없이 @R{}을 명확하게 설정 해야할
+것입니다.
 
 
-The command-line editing (and command completion) depends on the
-@acronym{GNU} @code{readline} library: version 4.2 or later is needed
-for all the features to be enabled.  Otherwise you will need to
-configure with @option{--with-readline=no} (or equivalent).
-명령줄 editing (그리고 command completion)은 GNU readline 라이브러리에
-> 의존합니다: 버전 4.2 혹은 그 후의 버전들은 모든 feature들이 활성화 되
-> 는 것을 필요로 합니다. 그렇지 않으면 --with-readline=no (혹은 비슷한
-> 것)로 구성해야 할 것입니다.
+@c The command-line editing (and command completion) depends on the
+@c @acronym{GNU} @code{readline} library: version 4.2 or later is needed
+@c for all the features to be enabled.  Otherwise you will need to
+@c configure with @option{--with-readline=no} (or equivalent).
+
+명령줄 변경(그리고 command completion)은 @acronym{GNU} @code{readline} 라이브러리에
+의존합니다: 버전 4.2 혹은 그 후의 버전들은 모든 feature들이 활성화 되
+는 것을 필요로 합니다. 그렇지 않으면 @option{--with-readline=no} (혹은 비슷한
+것)로 구성해야 할 것입니다.
 
 
-A suitably comprehensive @code{iconv} function is essential.  The @R{}
-usage requires @code{iconv} to be able to translate between
-@code{"latin1"} and @code{"UTF-8"}, to recognize @code{""} (as the
-current encoding) and @code{"ASCII"}, and to translate to and from the
-Unicode wide-character formats @code{"UCS-[24][BL]E"} --- this is true
-for @code{glibc} but not of most commercial Unixes.  However, you can
-make use of @acronym{GNU} @code{libiconv} (possibly as a plug-in
-replacement: see @uref{http://www.gnu.org/@/software/@/libiconv/}).
-> 적당히 포괄적인 iconv 함수는 필수입니다. R 사용은 iconv가 "" (현재
-> encoding 처럼) 와 "ASCII"를 인식하기위해 그리고 Unicode wide-character
-> formats "UCS-[24][BL]E"으로와 으로부터의 변역을 하기위한  "latin1" 과
-> "UTF-8"에서 번역을 할 수 있는 것을 요합니다 – 이는 glibc에서는 참이지
-> 만, 대부분의 상업용 유닉스들에서는 아닙니다. 그렇지만 GNU libiconv 를
-> 사용할 수 있습니다 (아마 plug-in 대체용처럼:
-> http://www.gnu.org/software/libiconv/를 참조하세요)
+@c A suitably comprehensive @code{iconv} function is essential.  The @R{}
+@c usage requires @code{iconv} to be able to translate between
+@c @code{"latin1"} and @code{"UTF-8"}, to recognize @code{""} (as the
+@c current encoding) and @code{"ASCII"}, and to translate to and from the
+@c Unicode wide-character formats @code{"UCS-[24][BL]E"} --- this is true
+@c for @code{glibc} but not of most commercial Unixes.  However, you can
+@c make use of @acronym{GNU} @code{libiconv} (possibly as a plug-in
+@c replacement: see @uref{http://www.gnu.org/@/software/@/libiconv/}).
+
+적당히 포괄적인 @code{iconv} 함수는 필수입니다. @R{} 사용은 @code{iconv}가 @code{""} (현재
+인코딩 처럼) 와 @code{"ASCII"}를 인식하기위해 그리고 Unicode wide-character
+formats @code{"UCS-[24][BL]E"}으로와 으로부터의 변역을 하기위한  @code{"latin1"} 과
+@code{"UTF-8"}에서 번역을 할 수 있는 것을 요합니다 – 이는 @code{glibc}에서는 참이지
+만, 대부분의 상업용 유닉스들에서는 아닙니다. 그렇지만 @acronym{GNU} @code{libiconv} 를
+사용할 수 있습니다 (아마 plug-in 대체용처럼:
+@uref{http://www.gnu.org/@/software/@/libiconv/}를 참조하세요)
 
 
-An implementation of @acronym{XDR} is required.  This is part of
-@acronym{RPC} and historically has been part of @file{libc} on a
-Unix-alike: however some builds@footnote{apparently when built by
-default, but not for example as built for Fedora 15.} of @code{glibc
-2.14} hide it.  The intention seems to be that the @acronym{TI-RPC}
-library be used instead, in which case @code{libtirpc} (and its
-development version) needs to be installed, and its headers need to be
-on the C include path (and @command{configure} tries
-@file{/usr/include/tirpc} if the headers are not found on the standard
-include path).  The @R{} sources contain a simple implementation of
-@acronym{XDR} which in recent versions can be used on platforms with
-32-bit or 64-bit @code{long} (and earlier ones will fail to compile
-unless @code{long} is 32-bit).
-> XDR의 이행을 요합니다. 이는 RPC의 일환이고 역사적으로 유닉스 계열에서
-> libc의 일부이기도 했습니다: 하지만 몇몇의 glibc 2.14의 구축들을 이를
-> 숨깁니다. 그 의도는 libtirpc (그리고 그의 개발 버전)을 설치가 필요하
-> 고, 그의 header들이 경로를 포함한 C에 있어야 할 경우에 TI-RPC 라이브러
-> 리가 대신 사용되었기 때문인 것 처럼 보입니다 (그리고 만약 header들이
-> 경로를 포함한 standard에서 찾아지지 않는다면 configure
-> 은 /usr/include/tirpc 를 시도합니다). R 소스들은 최근 버전에서 32-비트
-> 혹은 64-비트 long을 가진 플랫폼들에서 사용할 수 있는 간단한 XDR의 이행
-> 을 포함합니다 (그 전의 버전들은 long이 32-비트가 아닌 이상은 compile을
-> 실패할 것입니다).
+@c An implementation of @acronym{XDR} is required.  This is part of
+@c @acronym{RPC} and historically has been part of @file{libc} on a
+@c  Unix-alike: however some builds@footnote{apparently when built by
+@c default, but not for example as built for Fedora 15.} of @code{glibc
+@c 2.14} hide it.  The intention seems to be that the @acronym{TI-RPC}
+@c library be used instead, in which case @code{libtirpc} (and its
+@c development version) needs to be installed, and its headers need to be
+@c on the C include path (and @command{configure} tries
+@c @file{/usr/include/tirpc} if the headers are not found on the standard
+@c include path).  The @R{} sources contain a simple implementation of
+@c @acronym{XDR} which in recent versions can be used on platforms with
+@c 32-bit or 64-bit @code{long} (and earlier ones will fail to compile
+@c unless @code{long} is 32-bit).
+@acronym{XDR}의 이행을 요합니다. 이는 @acronym{RPC}의 일환이고 역사적으로 유닉스 계열에서
+'@file{libc}'의 일부이기도 했습니다: 하지만 몇몇의 @code{glibc 2.14}의 구축들을 이를
+숨깁니다. 그 의도는 @code{libtirpc} (그리고 그의 개발 버전)을 설치가 필요하
+고, 그의 헤더들이 경로를 포함한 C에 있어야 할 경우에 @acronym{TI-RPC} 라이브러
+리가 대신 사용되었기 때문인 것 처럼 보입니다 (그리고 만약 header들이
+경로를 포함한 standard에서 찾아지지 않는다면 @command{configure}
+은 '@file{/usr/include/tirpc}' 를 시도합니다). @R{} 소스들은 최근 버전에서 32-비트
+혹은 64-비트 @code{long}을 가진 플랫폼들에서 사용할 수 있는 간단한 @acronym{XDR}의 이행
+을 포함합니다 (그 전의 버전들은 @code{long}이 32-비트가 아닌 이상은 컴파일을
+실패할 것입니다).
 
 
-The OS needs to have enough support@footnote{specifically, the C99
-functionality of headers @file{wchar.h} and @file{wctype.h}, types
+@c The OS needs to have enough support@footnote{specifically, the C99
+@c functionality of headers @file{wchar.h} and @file{wctype.h}, types
+@c @code{wctans_t} and @code{mbstate_t} and functions @code{mbrtowc},
+@c @code{mbstowcs}, @code{wcrtomb}, @code{wcscoll}, @code{wcstombs},
+@c @code{wctrans}, @code{wctype}, and @code{iswctype}.} for wide-character
+@c types: this is checked at configuration.
+OS는 wide-character types에 대해 충분한 지원@footnote{특별히 헤더의 C99 기능 @file{wchar.h} and @file{wctype.h}, types
 @code{wctans_t} and @code{mbstate_t} and functions @code{mbrtowc},
 @code{mbstowcs}, @code{wcrtomb}, @code{wcscoll}, @code{wcstombs},
-@code{wctrans}, @code{wctype}, and @code{iswctype}.} for wide-character
-types: this is checked at configuration.
-> OS는 wide-character types에 대해 충분한 지원을 가지는 것이 필요합니다:
-> 이는 configuration에서 체크됩니다.
-A @command{tar} program is needed to unpack the sources and packages
-(including the recommended packages).  A version@footnote{Such as
-@acronym{GNU} @command{tar} 1.15 or later, @command{bsdtar} (from
-@uref{http://code.google.com/@/p/libarchive/}, as used by FreeBSD and OS
-10.[67]) or @command{tar} from the Heirloom Toolchest
-(@uref{http://heirloom.sourceforge.net/@/tools.html}).} that can
-automagically detect compressed archives is preferred for use with
-@code{untar()}: the configure script looks for @command{gtar} and
-@command{gnutar} before
-@enindex TAR
-@command{tar}: use environment variable @env{TAR} to override this.
-
-> 타르 프로그램은 소스들과 (추천된 패키지들을 포함한) 패키지들을 unpack
-> 하기위해 필요합니다. 압축된 archive들을 자동으로 감지할 수 있는 버전은
-> untar()과 함께 사용하는 것이 선호됩니다: configure script는 tar 전에
-> gtar과 gnutar을 찾습니다: 이를 무시하기 위해서는 환경값 TAR를 사용하세
-> 요.
+@code{wctrans}, @code{wctype}, and @code{iswctype}} 을 가지는 것이 필요합니다:
+이는 configuration에서 체크됩니다.
 
 
+@c A @command{tar} program is needed to unpack the sources and packages
+@c (including the recommended packages).  A version@footnote{Such as
+@c @acronym{GNU} @command{tar} 1.15 or later, @command{bsdtar} (from
+@c @uref{http://code.google.com/@/p/libarchive/}, as used by FreeBSD and OS
+@c 10.[67]) or @command{tar} from the Heirloom Toolchest
+@c (@uref{http://heirloom.sourceforge.net/@/tools.html}).} that can
+@c automagically detect compressed archives is preferred for use with
+@c @code{untar()}: the configure script looks for @command{gtar} and
+@c @command{gnutar} before
+@c @enindex TAR
+@c @command{tar}: use environment variable @env{TAR} to @c override this.
 
-There need to be suitable versions of the tools @command{grep} and
-@command{sed}: the problems are usually with old AT&T and BSD variants.
-@command{configure} will try to find suitable versions (including
-looking in @file{/usr/xpg4/bin} which is used on some commercial
-Unixes).
-도구들 grep과 sed의 알맞은 버전들이 필요합니다: 문제는 보통 오래된
-> AT&T와 BSD variants들ㄹ에 있습니다. configure는 알맞은 버전들을 찾으려
-> 고 노력할 것입니다 (몇몇의 상업용 유닉스들에서 사용되는 /usr/xpg4/bin
-> 의 안을 찾아보는 것을 포함).
+@command{tar} 프로그램은 소스들과 (추천된 패키지들을 
+포함한) 패키지들을 풀기 위해 필요합니다. 압축된 아카이브 들을 자동으로 감지할 수 있는 버전 @footnote{Such as
+@acronym{GNU} @command{tar} 1.15 or later, @command{bsdtar}} (from
+@uref{http://code.google.com/@/p/libarchive/}은
+@code{untar()}과 함께 사용하는 것이 선호됩니다: 는 @command{tar} 전에
+@command{gtar}과 @command{gnutar}을 찾습니다: 이를 무시하기 위해서는 환경값 @env{TAR}를 사용하세
+요.
 
 
-You will not be able to build most of the manuals unless you have
-@command{makeinfo} version 4.7 or later installed, and if not some of
-the @HTML{} manuals will be linked to @acronym{CRAN}. To make PDF
-versions of the manuals you will also need file @file{texinfo.tex}
-installed (which is part of the @acronym{GNU} @pkg{texinfo} distribution
-but is often made part of the @TeX{} package in re-distributions) as
-well as @command{texi2dvi}.@footnote{@command{texi2dvi} is normally a
-shell script.  Some versions, e.g.@: that from @pkg{texinfo} 4.13a, need
-to be run under @command{bash} rather than a Bourne shell as on, say,
-Solaris.}  Further, the versions of @command{texi2dvi} and
-@file{texinfo.tex} need to be compatible: we have seen problems with
-older @TeX{} distributions (TeXLive 2007 and MiKTeX 2.8) used with
-@pkg{texinfo} 4.13.
-> 버전 4.7 이상의 makeinfo 가 설치되어있지 않은 이상 매뉴얼들의 대부분을
-> 구축하는 것은 불가능 할 것이고, 만약 그렇지 않다면 몇몇의 HTML 매뉴얼
-> 들은 CRAN으로 연결될 것입니다. 매뉴얼들의 PDF 버전들을 만들기위해서는
-> texinfo.tex 파일의 설치와 (GNU textinfo 배포의 일부이지만 재배포에서는
-> 종종 TeX 패키지의 일부로 되어있습니다)texi2dvi 또한 필요할 것입니다.
-> 더 나아가, texi2dvi와 texinfo.tex 는 호환가능해야합니다: 이전의 TeX 배
-> 포들 (TeXLive 2007과 MiKTeX 2.8)이 texinfo 4.13과 함께 사용되었을 때의
-> 문제들을 보았습니다.
+
+@c There need to be suitable versions of the tools @command{grep} and
+@c @command{sed}: the problems are usually with old AT&T and BSD variants.
+@c @command{configure} will try to find suitable versions (including
+@c looking in @file{/usr/xpg4/bin} which is used on some commercial
+@c Unixes).
+도구들 @command{grep}과 @command{sed}의 알맞은 버전들이 필요합니다: 문제는 보통 오래된
+AT&T와 BSD variants들에 있습니다. @command{configure}는 알맞은 버전들을 찾으려
+고 노력할 것입니다 (몇몇의 상업용 유닉스들에서 사용되는 @file{/usr/xpg4/bin}
+의 안을 찾아보는 것을 포함).
+
+
+@c You will not be able to build most of the manuals unless you have
+@c @command{makeinfo} version 4.7 or later installed, and if not some of
+@c the @HTML{} manuals will be linked to @acronym{CRAN}. To make PDF
+@c versions of the manuals you will also need file @file{texinfo.tex}
+@c installed (which is part of the @acronym{GNU} @pkg{texinfo} distribution
+@c but is often made part of the @TeX{} package in re-distributions) as
+@c well as @command{texi2dvi}.@footnote{@command{texi2dvi} is normally a
+@c shell script.  Some versions, e.g.@: that from @pkg{texinfo} 4.13a, need
+@c to be run under @command{bash} rather than a Bourne shell as on, say,
+@c Solaris.}  Further, the versions of @command{texi2dvi} and
+@c @file{texinfo.tex} need to be compatible: we have seen problems with
+@c older @TeX{} distributions (TeXLive 2007 and MiKTeX 2.8) used with
+@c @pkg{texinfo} 4.13.
+
+버전 4.7 이상의 @command{makeinfo} 가 설치되어있지 않은 이상 매뉴얼들의 대부분을
+구축하는 것은 불가능 할 것이고, 만약 그렇지 않다면 몇몇의 @HTML{} 매뉴얼
+들은 @acronym{CRAN}으로 연결될 것입니다. 매뉴얼들의 PDF 버전들을 만들기위해서는
+@file{texinfo.tex}' 파일의 설치와 (@acronym{GNU} @pkg{textinfo} 배포의 일부이지만 재배포에서는
+종종 @TeX{} 패키지의 일부로 되어있습니다)@command{texi2dvi} 또한 필요할 것입니다.
+더 나아가, @footnote{@command{texi2dvi}와 '@file{texinfo.tex}'} 
+는 호환가능해야합니다: 이전의 @TeX{} 배포들 (TeXLive 2007과 MiKTeX 2.8)이 @pkg{texinfo} 4.13과 함께 사용되었을 때의 문제들을 보았습니다.
 
 
 @cindex Vignettes
-The PDF documentation (including @file{doc/NEWS.pdf}) and building
-vignettes needs @command{pdftex} and @command{pdflatex}.  We require
-@LaTeX{} version @code{2005/12/01} or later (for UTF-8 support).
-Building PDF package manuals (including the @R{} reference manual) and
-vignettes is sensitive to the version of the @LaTeX{} package
-@pkg{hyperref} and we recommend that the @TeX{} distribution used is
-kept up-to-date.  A number of @LaTeX{} packages are required (including
-@pkg{url.sty}, and @pkg{listings.sty}) and others such as @pkg{hyperref}
-and @pkg{inconsolata} are desirable (and without them you will need to
-change @R{}'s defaults: @pxref{Making the manuals}).
-PDF 문서 (doc/NEWS.pdf를 포함)와 vignette들의 구축은 pdftex와 pdflatex
-> 를 필요로 합니다. (UTF-8 지원을 위한) LaTeX 버전 2005/12/01 혹은 그 후
-> 의 버전들을 요합니다. (R reference 매뉴얼을 포함한) PDF 패키지 매뉴얼
-> 을 구축하는 것과 vignette들은 LaTex 패키지 hyperref의 버전들에 예민하
-> 여서, 사용되는 TeX 배포가 최신 버전으로 보존되기를 추천합니다.
-> (url.sty와 listings.sty를 포함한) 많은 LaTeX 패키지들이 필요하고
-> hyperref와 inconsolata와 같은 다른 것들이 바람직합니다 (그것들이 없이
-> 는, R의 기본값을 바꾸어야만 할 것입니다: Making the manuals를 참조하세
-> 요).
+
+@c The PDF documentation (including @file{doc/NEWS.pdf}) and building
+@c vignettes needs @command{pdftex} and @command{pdflatex}.  We require
+@c @LaTeX{} version @code{2005/12/01} or later (for UTF-8 support).
+@c Building PDF package manuals (including the @R{} reference manual) and
+@c vignettes is sensitive to the version of the @LaTeX{} package
+@c @pkg{hyperref} and we recommend that the @TeX{} distribution used is
+@c kept up-to-date.  A number of @LaTeX{} packages are required (including
+@c @pkg{url.sty}, and @pkg{listings.sty}) and others such as @pkg{hyperref}
+@c and @pkg{inconsolata} are desirable (and without them you will need to
+@c change @R{}'s defaults: @pxref{Making the manuals}).
+
+PDF 문서 ('@file{doc/NEWS.pdf}'를 포함)와 vignette들의 
+구축은 @command{pdftex}와 @command{pdflatex}
+를 필요로 합니다. (UTF-8 지원을 위한) @LaTeX{} 버전 @code{2005/12/01} 혹은 그 후의 버전들을 요합니다. 
+(@R{} reference 매뉴얼을 포함한) PDF 패키지 매뉴얼을 구축하는 것과 vignette들은 @LaTeX{} 패키지 @pkg{hyperref}의 버전들에 예민하
+여서, 사용되는 @TeX{} 배포가 최신 버전으로 보존되기를 추천합니다.
+(@pkg{url.sty}와 @pkg{listings.sty}를 포함한) 많은 @LaTeX{} 패키지들이 필요하고
+@pkg{hyperref}와 @pkg{inconsolata}와 같은 다른 것들이 바람직합니다 (그것들이 없이
+는, @R{}의 기본값을 바꾸어야만 할 것입니다: @pxref{Making the manuals}.를 참조하세
+요).
 
 
-If you want to build from the R Subversion repository you need both
-@command{makeinfo} and @command{pdflatex}.
-@cindex Subversion
-@enindex PATH
-The essential programs should be in your @env{PATH} at the time
-@command{configure} is run: this will capture the full paths.
-만약 R Subversion 저장소로부터 구축하기를 원한다면, makeinfo와
-> pdflatex 두 가지 모두가 필요합니다. 필수 프로그램은 configure이 실행되
-> 고 있을 때 PATH안에 있어야만 합니다: 이는 전체 경로를 capture할 것입니
-> 다.
+@c If you want to build from the R Subversion repository you need both
+@c @command{makeinfo} and @command{pdflatex}.
+@c @cindex Subversion
+@c @enindex PATH
+@c The essential programs should be in your @env{PATH} at the time
+@c @command{configure} is run: this will capture the full paths.
+
+만약 R Subversion 저장소로부터 구축하기를 원한다면, @command{makeinfo}와
+@command{pdflatex} 두 가지 모두가 필요합니다. 필수 프로그램은 @command{configure}이 실행되
+고 있을 때 @env{PATH}안에 있어야만 합니다: 이는 전체 경로를 capture할 것입니
+다.
 
 
 @node Useful libraries and programs, Linear algebra, Essential programs and libraries, Essential and useful other programs under a Unix-alike
