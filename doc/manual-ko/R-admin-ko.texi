@@ -4972,51 +4972,77 @@ in the greeting on starting R.
 
 
 @node Configuration variables, Setting the shell, Internationalization support, Configuration on a Unix-alike
-@section Configuration variables
-
+@c @section Configuration variables
+@section 설정변수
 @findex configure
-If you need or want to set certain configure variables to something
-other than their default, you can do that by either editing the file
-@file{config.site} (which documents many of the variables you might want
-to set: others can be seen in file @file{etc/Renviron.in}) or on the
-command line as
+@c If you need or want to set certain configure variables to something
+@c other than their default, you can do that by either editing the file
+@c @file{config.site} (which documents many of the variables you might want
+@c to set: others can be seen in file @file{etc/Renviron.in}) or on the
+@c command line as
 
+만약 여러분이 특정한 configure값들을 기본값이 아닌 다른 어떤 것으로 설
+정하는 것이 필요하거나 이를 원한다면, (설정하고 싶어하는값들의 많은 것
+들을 기록하는: 다른 것들은 파일 @file{etc/Renviron.in}에서 볼 수 있습니다)파
+일 @file{config.site}이나 다음 줄의 명령줄을 바꿈으로 이를 할 수 있습니다.
 @example
 ./configure @var{VAR}=@var{value}
 @end example
 
 @noindent
-If you are building in a directory different from the sources, there can
-be copies of @file{config.site} in the source and the build directories,
-and both will be read (in that order).  In addition, if there is a file
-@file{~/.R/config} (or failing that) @code{~/.Rconfig}), it is read
-between the @file{config.site} files in the source and the build
-directories.
+@c If you are building in a directory different from the sources, there can
+@c be copies of @file{config.site} in the source and the build directories,
+@c and both will be read (in that order).  In addition, if there is a file
+@c @file{~/.R/config} (or failing that) @code{~/.Rconfig}), it is read
+@c between the @file{config.site} files in the source and the build
+@c directories.
+만약 소스들이 아닌 디렉토레에서 구축을 한다면, 소스에 @file{config.site}의 카
+피들과 빌드 디렉토리들이 있을 수 있고, 둘 다 (순서대로) 읽혀 질 것입니
+다. 추가로, 만약 파일 @file{~/.R/config} (혹은 이의 실패인 @code{~/.Rconfig})이 있다
+면, 이는 소스의 @file{config.site} 파일들과 빌드 디렉토리들 중간에서 읽혀질
+것입니다.
 
-There is also a general @command{autoconf} mechanism for
-@file{config.site} files, which are read before any of those mentioned
-in the previous paragraph.  This looks first at a file specified by the
-@enindex CONFIG_SITE
-environment variable @env{CONFIG_SITE}, and if not is set at files such
-as @file{/usr/local/share/config.site} and
-@file{/usr/local/etc/config.site} in the area (exemplified by
-@file{/usr/local}) where @R{} would be installed.
 
-These variables are @emph{precious}, implying that they do not have to
-be exported to the environment, are kept in the cache even if not
-specified on the command line, checked for consistency between two
-configure runs (provided that caching is used), and are kept during
-automatic reconfiguration as if having been passed as command line
-arguments, even if no cache is used.
+@c There is also a general @command{autoconf} mechanism for
+@c @file{config.site} files, which are read before any of those mentioned
+@c in the previous paragraph.  This looks first at a file specified by the
+@c @enindex CONFIG_SITE
+@c environment variable @env{CONFIG_SITE}, and if not is set at files such
+@c as @file{/usr/local/share/config.site} and
+@c @file{/usr/local/etc/config.site} in the area (exemplified by
+@c @file{/usr/local}) where @R{} would be installed.
+이전 단락에서 언급된 모든 것들 이전에 읽혀지는 @file{config.site} 파일들을 위
+한 일반적인 @command{autoconf} 메케니즘이 있습니다. 이는 환경값 @env{CONFIG_SITE}에의
+해 지정된 파일을 첫 번째로 보고, 만약 그렇지 않다면 R이 설정될 장소
+에 @file{/usr/local/share/config.site}와 @file{/usr/local/etc/config.site}와 같은 파
+일들에 설정됩니다 (@file{/usr/local}에 의한 예시).
 
-See the variable output section of @code{configure --help} for a list of
-all these variables.
+@c These variables are @emph{precious}, implying that they do not have to
+@c be exported to the environment, are kept in the cache even if not
+@c specified on the command line, checked for consistency between two
+@c configure runs (provided that caching is used), and are kept during
+@c automatic reconfiguration as if having been passed as command line
+@c arguments, even if no cache is used.
+이 값들은 매우 @emph{소중}합니다. 이는 그들이 환경으로 출력되지 않아도 되
+고, 명령줄에서 지정되지 않았더라도 캐치 에서 보관되며, 두 개의
+configure run들의 일관성을 체크하고, 캐치가 사용되지 않았더라도 명령
+줄 인자들처럼 통과 된 것 처럼 자동 재구성 동안 보관되는 것을 의미합니다.
 
-If you find you need to alter configure variables, it is worth noting
-that some settings may be cached in the file @file{config.cache}, and it
-is a good idea to remove that file (if it exists) before re-configuring.
-Note that caching is turned @emph{off} by default: use the command line
-option @option{--config-cache} (or @option{-C}) to enable caching.
+@c See the variable output section of @code{configure --help} for a list of
+@c all these variables.
+이 모든 값들의 리스트에 대해서는 @code{configure --help}의 variable output 섹션을 참조하세요.
+
+@c If you find you need to alter configure variables, it is worth noting
+@c that some settings may be cached in the file @file{config.cache}, and it
+@c is a good idea to remove that file (if it exists) before re-configuring.
+@c Note that caching is turned @emph{off} by default: use the command line
+@c option @option{--config-cache} (or @option{-C}) to enable caching.
+만약 configure값들을 고쳐야 한다는 것을 찾아내면, 어떤 설정들은 파일
+@file{config.cache} 안에 캐치되었을 지도 모른다는 것을 주목할 만한 가치가 있
+고, 재구성 전에 파일을 (만약 존재한다면) 없애는 것이 좋습니다. 기본값
+으로 캐칭이 꺼져있다는 것을 유의하세요: 캐칭을 허용하려면 명령줄
+옵션 @option{--config-cache} (혹은 @option{-C})를 사용하십시오.
+
 
 @menu
 * Setting paper size::          
