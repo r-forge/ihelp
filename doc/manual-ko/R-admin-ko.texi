@@ -1,7 +1,7 @@
 \input texinfo
 @c %**start of header
 @setfilename R-admin.info
-@settitle R Installation and Administration in Korean (한국어판, ver.0.5.1_20130827)
+@settitle R Installation and Administration in Korean (한국어판, ver.0.7.1_20130903)
 @setchapternewpage on
 @defcodeindex en
 @c %**end of header
@@ -68,7 +68,8 @@ notice identical to this one except for the removal of this paragraph
 본 문서의 역자는 아래와 같습니다.
 @itemize @bullet
 @item Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, @email{gnustats@@gmail.com}, 2009 -- 2013, 
-@item Eugene Jung, (정우준), Hongik University, Seoul, Korea, @email{muoe78@@gmail.com}, 2010--2013.
+@item Edward Kang, (강원식), Austrailia, @email{ewkang@@hotmail.com}, 2013
+@item Eugene Jung, (정우준), Hongik University, Seoul, Korea, @email{muoe78@@gmail.com}, 2013.
 @end itemize 
 
 @c 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다.  
@@ -76,7 +77,6 @@ notice identical to this one except for the removal of this paragraph
 아래와 같은 분들께서 주요 역자들에게 조언과 제안사항을 보내주셨습니다 (의도적인 것은 아니지만 관리상의 실수로 인하여 이 문서에 기여하셨던 분의 성함이 빠져 있을 수도 있습니다.  이 경우 @email{gnustats@@korea.gnu.org}로 꼭 알려주시길 부탁드립니다).
 @itemize @bullet
 @item Heather Kim, University of Manitoba, Winnipeg, Manitoba, Canada, 2010-2011
-@item Edward Kang, Austrailia, 2013
 @end itemize
 
 본 문서는 언급된 전문용어들에 대한 추가적인 해석, 오역교정, 그리고 이해를 돕기 위한 내용을 추가함으로서, 새로운 R의 배포에 맞추어 지속적으로 관리되어 질 것입니다.
@@ -4395,84 +4395,126 @@ ATLAS는 윈도우즈에서도 사용될 수 있습니다: 소스로 부터 구�
 @subsubsection ACML
 
 @c : there used to be Solaris 10, but it seems no more.
-For @cputype{x86_64} and @cputype{i686} processors under Linux there is
-the AMD Core Math Library (ACML) @uref{http://www.amd.com/@/acml}.  For
-the @command{gcc} version we could use
+@c For @cputype{x86_64} and @cputype{i686} processors under Linux there is
+@c the AMD Core Math Library (ACML) @uref{http://www.amd.com/@/acml}.  For
+@c th e @command{gcc} version we could use
+
+리눅스에서 @cputype{x86_64}와 @cputype{i686}에 대해서는AMD Core Math Library (ACML)
+@uref{http://www.amd.com/acml}가 존재합니다. @command{gcc}버전에 대해서는, 만약
+@env{LD_LIBRARY_PATH}에 (@file{/opt/acml5.1.0/gfortran64/lib}와 같은) 알맞은 라이브
+러리 디렉토리가 있다면, 다음을 사용할 수 있습니다.
 
 @example
 --with-blas="-lacml"
 @end example
 
 @noindent
-if the appropriate library directory (such as
-@enindex LD_LIBRARY_PATH
-@file{/opt/acml5.1.0/gfortran64/lib}) is in the @env{LD_LIBRARY_PATH}.
-For other compilers, see the ACML documentation.  There is a
-multithreaded Linux version of ACML available for recent versions of
-@command{gfortran}.  To make use of this you will need something like
+@c if the appropriate library directory (such as
+@c @enindex LD_LIBRARY_PATH
+@c @file{/opt/acml5.1.0/gfortran64/lib}) is in the @env{LD_LIBRARY_PATH}.
+
+@c For other compilers, see the ACML documentation.  There is a
+@c multithreaded Linux version of ACML available for recent versions of
+@c @command{gfortran}.  To make use of this you will need something like
+다른 컴파일러들에 대해서는 ACML 문서를 참조하세요. ACML의 multithread
+된 Linux 버전이 @command{gfortran}의 최근 버전에서 사용가능합니다. 이를 사용하기
+위해서는 다음과 같은것이 필요할 것입니다 (그리고 디렉토리가 ld.so
+cache에 있도록 정리해야할 수도 있습니다).
 
 @example
 --with-blas="-L/opt/acml5.1.0/gfortran64_mp/lib -lacml_mp"
 @end example
 
 @noindent
-(and you may need to arrange for the directory to be in @command{ld.so}
-cache).
-
-See @pxref{Shared BLAS} for an alternative (and in many ways preferable)
-way to use ACML.
-
-The version last tested (5.1.0) failed the @file{reg-BLAS.R} test in its
-handling of @code{NA}s.
+@c (and you may need to arrange for the directory to be in @command{ld.so}
+@c cache).
+@c See @pxref{Shared BLAS} for an alternative (and in many ways preferable)
+@c way to use ACML.
+@c The version last tested (5.1.0) failed the @file{reg-BLAS.R} test in its
+@c handling of @code{NA}s.
+(그리고 디렉토리가 @command{ld.so} cache에 있도록 정리해야할 수도 있습니다).
+ACML을 사용하기위한 다른 방법 (그리고 더 나은 방법들)을 위해서는 @pxref{Shared
+BLAS}를 참조하세요. 가장 근래에 테스트된 버전은 (5.1.0)  @code{NA}s의 처리에서 '@file{reg-BLAS.R}' 테스트를
+실패하였습니다.
 
 @node Goto BLAS, MKL, ACML, BLAS
 @subsubsection Goto BLAS
 
-Dr Kazushige Goto wrote another tuned @acronym{BLAS} which is
-available for several processors and OSes.  The current version is known
-as GotoBLAS2, and has (in November 2010) been re-released under a much
-less restrictive licence.  Source code can be obtained from
-@uref{http://www.tacc.utexas.edu/@/tacc-projects/@/gotoblas2/}
+@c Dr Kazushige Goto wrote another tuned @acronym{BLAS} which is
+@c available for several processors and OSes.  The current version is known
+@c as GotoBLAS2, and has (in November 2010) been re-released under a much
+@c less restrictive licence.  Source code can be obtained from
+@c @uref{http://www.tacc.utexas.edu/@/tacc-projects/@/gotoblas2/}
+@c Once it is built and installed, it can be used by configuring @R{} with
 
-Once it is built and installed, it can be used by configuring @R{} with
-
+Kazushige Goto 박사는 여러 프로세서들과 OS들에서 사용가능한 또 다른 조
+율된 @acronym{BLAS}를 썻습니다. 현재 버전은  GotoBLAS2로 알려져 있고 (2010년 11
+월에) 훨씬 적은 제한적인 라이센스 하에 재배포 되었습니다. 소스 코드는
+@uref{http://www.tacc.utexas.edu/tacc-projects/gotoblas2/}에서 얻어질 수 있습니다.
+이게 구축되고 설치되면, 다음을 이용해 R을 configure함으로써 사용될 수 있습니다.
 @example
 --with-blas="-lgoto2"
 @end example
+@c See @pxref{Shared BLAS} for an alternative (and in many ways preferable)
+@c way to use it.
+를 사용하기위한 다른 방법 (그리고 더 나은 방법들)을 위해서는  @pxref{Shared BLAS}를 참조하세요.
 
-See @pxref{Shared BLAS} for an alternative (and in many ways preferable)
-way to use it.
 
-Our understanding is that this project is now frozen and so will not be
-updated for CPUs released since mid-2010.  However, OpenBLAS
-(@uref{http://xianyi.github.com/OpenBLAS/}) is a descendant project.
+@c Our understanding is that this project is now frozen and so will not be
+@c updated for CPUs released since mid-2010.  However, OpenBLAS
+@c (@uref{http://xianyi.github.com/OpenBLAS/}) is a descendant project.
+이 프로젝트는 현재로써는 중단되었고, 그렇기 때문에 2010 중반부터 출시
+된 CPU들에 대한 업데이트는 없을 것이라는 것이 저희의 생각입니다. 하지
+만,  OpenBLAS (@uref{http://xianyi.github.com/OpenBLAS/})가 하위 프로젝트 입니다.
+
 
 @node MKL, Shared BLAS, Goto BLAS, BLAS
 @subsubsection Intel MKL
-For Intel processors@footnote{and perhaps others} under Linux, there is
-Intel's Math Kernel Library
-(@uref{http://www.intel.com/@/software/@/products/@/mkl/}).  You are
-strongly encouraged to read the MKL User's Guide, which is installed
-with the library, before attempting to link to MKL.  There are also
-versions of MKL for Mac OS X and Windows, but they did not work with the
-standard compilers used for @R{} on those platforms.
+@c For Intel processors@footnote{and perhaps others} under Linux, there is
+@c Intel's Math Kernel Library
+@c (@uref{http://www.intel.com/@/software/@/products/@/mkl/}).  You are
+@c strongly encouraged to read the MKL User's Guide, which is installed
+@c with the library, before attempting to link to MKL.  There are also
+@c versions of MKL for Mac OS X and Windows, but they did not work with the
+@c standard compilers used for @R{} on those platforms.
 
-The MKL interface has changed several times, and may change again: the
-following notes apply exactly only to version 10.3.
+리눅스에서의 인텔 프로세서들@footnote{and perhaps others}에대해서는, 인텔의 Math Kernel 라이브러
+리(@uref{http://www.intel.com/software/products/mkl/})가 존재합니다. MKL로의
+연결을 시도하기 전, 라이브러리와 함께 설치된 MKL 사용자 설명서를 읽어
+보기를 강력하게 추천합니다. Mac OS X와 윈도우즈를 위한MKL 버전도 있지
+만, 이 플랫폼들에서 R을 위해 사용된 기본 컴파일러들과는 작동하지 않았습니다.
 
-Version 10 of MKL supports two linking models: the default model, which
-is backward compatible with version 9 (see below), and the pure layered
-model.  The layered model gives the user fine-grained control over four
-different library layers: interface, threading, computation, and
-run-time library support. Some examples of linking to MKL using this
-layered model are given below. (These examples are for GCC compilers on
-@cputype{x86_64}.)  The choice of interface layer is important on
-@cputype{x86_64} since the Intel Fortran compiler returns complex values
-in different registers from the @acronym{GNU} Fortran compiler. You must
-therefore use the interface layer that matches your compiler
-(@code{mkl_intel*} or @code{mkl_gf*}).
+@c The MKL interface has changed several times, and may change again: the
+@c following notes apply exactly only to version 10.3.
+MKL 인터페이스는 여러 번 바뀌었었고, 또 바뀔지도 모릅니다: 다음의 유의
+사항들은 엄밀히 버전 10.3에 대한 것 입니다.
 
-R can be linked to a sequential version of MKL by something like
+
+@c Version 10 of MKL supports two linking models: the default model, which
+@c is backward compatible with version 9 (see below), and the pure layered
+@c model.  The layered model gives the user fine-grained control over four
+@c different library layers: interface, threading, computation, and
+@c run-time library support. Some examples of linking to MKL using this
+@c layered model are given below. (These examples are for GCC compilers on
+@c @cputype{x86_64}.)  The choice of interface layer is important on
+@c @cputype{x86_64} since the Intel Fortran compiler returns complex values
+@c in different registers from the @acronym{GNU} Fortran compiler. You must
+@c therefore use the interface layer that matches your compiler
+@c (@code{mkl_intel*} or @code{mkl_gf*}).
+@c R can be linked to a sequential version of MKL by something like
+
+MKL의 버전 10은 두 개의 linking 모델들을 지원합니다: (아래를 참조하세
+요) 버전 9과 backward 호환이 가능한 기본 모델과 순수하게 layer된 모델
+입니다. Layer된 모델은 사용자에서 네 개의 다른 라이브러리 레이어에서의
+세밀한 컨트롤을 줍니다: 인터페이스, threading, 계산, run-time 라이브러
+리 서포트. 이런 레이어된 모델들을 이용한 MKL로의 연결들에 대한 몇몇의
+예제들이 아래에 주어져 있습니다. (이 예제들은 @cputype{x86_64}에서의 GCC
+컴파일러들에 대한 예제들 입니다.) 인텔 Fortran 컴파일러가 @acronym{GNU} Fortran
+컴파일러 에서부터 다른 register들에 복잡한 값을 돌려주기 때문에 인터페
+이스 레이어의 선택이 @cputype{x86_64}에서 중요합니다. 그러므로 여러분은 여러분
+의 컴파일러(@code{mkl_intel*}  혹은 @code{mkl_gf*})에 맞는 인터페이스 레이어를 사용해
+야만 합니다.
+@R{}은 다음과 같은 것에 의해 MKL의 연속 버전으로 연결된 수도 있습니다.
 
 @example
 MKL_LIB_PATH=/opt/intel/mkl/10.311.339/lib/intel64/
@@ -4482,14 +4524,20 @@ MKL="-L$@{MKL_LIB_PATH@} -lmkl_gf_lp64 -lmkl_sequential -lmkl_core"
 @end example
 
 @noindent
-where some versions may need @code{-lmkl_lapack} before
-@code{-lmkl_core}.  The order of the libraries is important.  The option
-@option{--with-lapack} is used since MKL contains a tuned copy of LAPACK
-as well as @acronym{BLAS} (@pxref{LAPACK}), although this can be
-omitted.
+@c where some versions may need @code{-lmkl_lapack} before
+@c @code{-lmkl_core}.  The order of the libraries is important.  The option
+@c @option{--with-lapack} is used since MKL contains a tuned copy of LAPACK
+@c as well as @acronym{BLAS} (@pxref{LAPACK}), although this can be omitted.
+어떤 버전들은 @code{–lmkl_core}앞에 @code{–lmkl_lapack}이 필요할 수도 있습니다. 라이
+브러리들의 순서는 중요합니다. 생략될 수도 있지만, MKL이 LAPACK의 조율
+된 카피와 @acronym{BLAS} (@pxref{LAPACK}을 참조하세요)를 포함하기 때문에, @option{--with-lapack}
+옵션이 사용됩니다.
 
-Threaded MKL may be used (according to Zhang Zhang of Intel) by
-replacing the line defining the variable @code{MKL} with (Intel OMP)
+
+@c Threaded MKL may be used (according to Zhang Zhang of Intel) by
+@c replacing the line defining the variable @code{MKL} with (Intel OMP)
+다음을 사용하여 값 @code{MKL}을 정의하는 줄을 바꿈으로써 (인텔의 Zhang Zhang
+에 의하면) Thread된 MKL이 사용될 수도 있습니다 (Intel OMP).
 
 @example
 MKL="-L$@{MKL_LIB_PATH@} -lmkl_gf_lp64 -lmkl_intel_thread \
@@ -4497,7 +4545,8 @@ MKL="-L$@{MKL_LIB_PATH@} -lmkl_gf_lp64 -lmkl_intel_thread \
 @end example
 
 @noindent
-or (GNU OMP)
+@c or (GNU OMP)
+ 혹은 (GNU OMP)
 
 @example
 MKL="-L$@{MKL_LIB_PATH@} -lmkl_gf_lp64 -lmkl_gnu_thread \
@@ -4505,12 +4554,16 @@ MKL="-L$@{MKL_LIB_PATH@} -lmkl_gf_lp64 -lmkl_gnu_thread \
 @end example
 
 @noindent
-The default number of threads will be chosen by the OpenMP software,
-but can be controlled by setting @code{OMP_NUM_THREADS} or
-@code{MKL_NUM_THREADS}, and in recent versions seems to produce a
-sensible value for sole use of the machine.
+@c The default number of threads will be chosen by the OpenMP software,
+@c but can be controlled by setting @code{OMP_NUM_THREADS} or
+@c @code{MKL_NUM_THREADS}, and in recent versions seems to produce a
+@c sensible value for sole use of the machine.
+thread들의 기본 숫자는 OpenMP 소프트웨어에 의해 선택될 것이지만,
+@code{OMP_NUM_THREADS}나 @code{MKL_NUUM_THREADS}를 설정함으로써 조정될 수 있고, 최근
+버전들에서는 기계만의 사용으로써도 합리적인 값을 생산할 수 있다는 것으로 보여집니다.
 
-Static threaded MKL may be used (GNU OpenMP) with something like
+@c Static threaded MKL may be used (GNU OpenMP) with something like
+다음과 같은 것을 사용하여 Static thread된 MKL이 사용될 수도 있습니다
 
 @example
 MKL="   -L$@{MKL_LIB_PATH@}                               \
@@ -4523,165 +4576,265 @@ MKL="   -L$@{MKL_LIB_PATH@}                               \
 @end example
 
 @noindent
-(Thanks to Ei-ji Nakama).
+@c (Thanks to Ei-ji Nakama).
 
-The MKL documentation includes a `link line advisor' which will suggest
-appropriate incantations: an on-line version was available at
-@uref{http://software.intel.com/@/en-us/@/articles/@/intel-mkl-link-line-advisor/}
+@c The MKL documentation includes a `link line advisor' which will suggest
+@c appropriate incantations: an on-line version was available at
+@c @uref{http://software.intel.com/@/en-us/@/articles/@/intel-mkl-link-line-advisor/}
+(Ei-ji Nakamad에게 감사를 드립니다).
+MKL 문서는 알맞은 주문들을 제안해 줄 ‘link line advisor’를 포함합니다:
+@uref{http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor/}
+에서 온라인 버전이 사용가능했습니다.
 
-The default linking model, which was also used by version 9 of MKL, can
-be used by
+@c The default linking model, which was also used by version 9 of MKL, can be used by
+버전 9에 의해서도 사용되었던, 기본 linking 모델은 다음에 의해 사용될 수 있습니다.
 
 @example
 --with-blas="-lmkl -lguide -lpthread"
 @end example
 
 @noindent
-but this may not match your compiler on a 64-bit platform.  This is
-multi-threaded, but in version 9 the number of threads defaults to 1.
-It can be increased by setting @code{OMP_NUM_THREADS}.  (Thanks to Andy
-Liaw for the information.)
+@c but this may not match your compiler on a 64-bit platform.  This is
+@c multi-threaded, but in version 9 the number of threads defaults to 1.
+@c It can be increased by setting @code{OMP_NUM_THREADS}.  (Thanks to Andy
+@c Liaw for the information.)
+하지만 이는 64-비트 플랫폼에서의 당신의 컴파일러과 매치하지 않을 수도
+있습니다. 이는 multi-threaded이지만, 버전 9에서의 thread의 갯수는 1이
+기본입니다. 이는  @code{OMP_NUM_THREADS}를 설정함으로써 증가될 수도 있습니다.
+(이 정보를 주신 Andy Liaw께 감사를 드립니다.)
+
 
 @node Shared BLAS,  , MKL, BLAS
 @subsubsection Shared BLAS
 
-The @acronym{BLAS} library will be used for many of the add-on packages
-as well as for @R{} itself.  This means that it is better to use a
-shared/dynamic @acronym{BLAS} library, as most of a static library will
-be compiled into the @R{} executable and each @acronym{BLAS}-using
-package.
+@c The @acronym{BLAS} library will be used for many of the add-on packages
+@c as well as for @R{} itself.  This means that it is better to use a
+@c shared/dynamic @acronym{BLAS} library, as most of a static library will
+@c be compiled into the @R{} executable and each @acronym{BLAS}-using
+@c package.
 
-@R{} offers the option of compiling the @acronym{BLAS} into a dynamic
-library @code{libRblas} stored in @file{@var{R_HOME}/lib} and linking
-both @R{} itself and all the add-on packages against that library.
+@acronym{BLAS} 라이브러리는 많은 애드온 패키지들과 @R{}자체에서도 사용될 것입니다.
+이는 대부분의 static 라이브러리가 R executable과 각 각의 @acronym{BLAS}를 사용하는
+패키지들로 컴파일 될 것 이므로, 공유된/dynamic @acronym{BLAS} 라이브러리를 쓰는
+것이 더 낫다는 것을 의미합니다.
 
-This is the default on all platforms except AIX unless an external
-@acronym{BLAS} is specified and found: for the latter it can be used by
-specifying the option @option{--enable-BLAS-shlib}, and it can always be
-disabled via @option{--disable-BLAS-shlib}.
+@c @R{} offers the option of compiling the @acronym{BLAS} into a dynamic
+@c library @code{libRblas} stored in @file{@var{R_HOME}/lib} and linking
+@c both @R{} itself and all the add-on packages against that library.
+@R{}은  @file{@var{R_HOME}/lib}에 저장된 dynamic 라이브러리인 @code{libRblas}로 @acronym{BLAS}를
+컴파일 하는 옵션과 @R{} 자체와 모든 애드온 패키지들을 라이브러리에 대응해
+서 연결하는 것을 제공합니다.
 
-This has both advantages and disadvantages.
+
+@c This is the default on all platforms except AIX unless an external
+@c @acronym{BLAS} is specified and found: for the latter it can be used by
+@c specifying the option @option{--enable-BLAS-shlib}, and it can always be
+@c disabled via @option{--disable-BLAS-shlib}.
+@c This has both advantages and disadvantages.
+이는 외부 @acronym{BLAS}가 지정되고 찾아지지 않은 이상, AIX를 제외한 모든 플랫폼
+에서 기본값입니다: 전자에서, 이는 옵션 @option{--enable-BLAS-shlib}를 지정함으
+로써 사용될 수 있고, 이는 @option{--disable-BLAS-shlib}를 통해서 언제든지
+disable될 수 있습니다.
+이는 장점과 단점 두 가지 모두를 가지고 있습니다.
 
 @itemize
 @item
-It saves space by having only a single copy of the @acronym{BLAS}
-routines, which is helpful if there is an external static @acronym{BLAS}
-such as used to be standard for ATLAS.
+@c It saves space by having only a single copy of the @acronym{BLAS}
+@c routines, which is helpful if there is an external static @acronym{BLAS}
+@c such as used to be standard for ATLAS.
+이는 오직 하나의 @acronym{BLAS}  routine들의 카피를 가짐으로써 공간을 저장
+합니다. 이는 만약 ATLAS에서 기본으로 쓰였던 것과 같은 외부 static @acronym{BLAS}
+가 있을 경우 유용합니다.
 
 @item
-There may be performance disadvantages in using a shared @acronym{BLAS}.
-Probably the most likely is when @R{}'s internal @acronym{BLAS} is used
-and @R{} is @emph{not} built as a shared library, when it is possible to
-build the @acronym{BLAS} into @file{R.bin} (and @file{libR.a}) without
-using position-independent code.  However, experiments showed that in
-many cases using a shared @acronym{BLAS} was as fast, provided high
-levels of compiler optimization are used.
+@c There may be performance disadvantages in using a shared @acronym{BLAS}.
+@c Probably the most likely is when @R{}'s internal @acronym{BLAS} is used
+@c and @R{} is @emph{not} built as a shared library, when it is possible to
+@c build the @acronym{BLAS} into @file{R.bin} (and @file{libR.a}) without
+@c using position-independent code.  However, experiments showed that in
+@c many cases using a shared @acronym{BLAS} was as fast, provided high
+@c levels of compiler optimization are used.
+유된 @acronym{BLAS}의 사용에 성능적 약점이 있을 수 있습니다. 아마도 필시
+@R{}의 내부 @acronym{BLAS}가 사용되고 @R{}이 공유된 라이브러리처럼 구축되지 않았을 떄,
+position-independent 코드를 사용하지 않고 @file{R.bin}에 (그리고 @file{libR.a}에)
+@acronym{BLAS}를 구축하는 것이 가능할 때 일 것입니다. 하지만, 실험들은 공유된
+@acronym{BLAS}를 이용한 많은 경우가 높은 수준의 컴파일러 옵티마이제이션이 사용되었
+다는 가정하에, 왠만큼 빨랐습니다.
+
 
 @item
-It is easy to change the @acronym{BLAS} without needing to re-install
-@R{} and all the add-on packages, since all references to the
-@acronym{BLAS} go through @code{libRblas}, and that can be replaced.
-Note though that any dynamic libraries the replacement links to will
-need to be found by the linker: this may need the library path to be
-changed in @file{@var{R_HOME}/etc/ldpaths}.
+@c It is easy to change the @acronym{BLAS} without needing to re-install
+@c @R{} and all the add-on packages, since all references to the
+@c @acronym{BLAS} go through @code{libRblas}, and that can be replaced.
+@c Note though that any dynamic libraries the replacement links to will
+@c need to be found by the linker: this may need the library path to be
+@c changed in @file{@var{R_HOME}/etc/ldpaths}.
 @end itemize
 
-Another option to change the @acronym{BLAS} in use is to symlink a
-dynamic @acronym{BLAS} library (such as ACML or Goto's) to
-@file{@var{R_HOME}/lib/libRblas.so}.  For example, just
+@acronym{BLAS}로의 모든 reference들이 @code{libRblas}를 통하기 때문에 @R{}과 모든 애
+드온 패키지들을 재설치할 필요 없이, @acronym{BLAS}를 바꾸는 것은 쉽고, 이들은 치
+환될 수 있습니다. Replacement가 연결되는 모든 dynamic 라이브러리들은
+linker에 의해 찾아지는 것이 필요할 것이라는 것을 유의하십시오. 이는
+@file{@var{R_HOME}/etc/ldpaths}들에 있는 라이브러리 경로들을 바꾸는 것을 필요로 할
+수도 있습니다.
+
+
+@c Another option to change the @acronym{BLAS} in use is to symlink a
+@c dynamic @acronym{BLAS} library (such as ACML or Goto's) to
+@c @file{@var{R_HOME}/lib/libRblas.so}.  For example, just
+사용되고있는 @acronym{BLAS}를 바꾸는 다른 옵션은 @file{@var{R_HOME}/lib/libRblas.so}로 (ACML
+혹은 Goto's와 같은) dynamic @acronym{BLAS} 라이브러리를 심볼릭 링크하는 것 입니다.
+다음의 예를 보십시오.
 
 @example
 mv @var{R_HOME}/lib/libRblas.so @var{R_HOME}/lib/libRblas.so.keep
 ln -s /opt/acml5.1.0/gfortran64_mp/lib/libacml_mp.so @var{R_HOME}/lib/libRblas.so
 @end example
-will change the @acronym{BLAS} in use to multithreaded ACML.  A similar
-link works for recent versions of the Goto @acronym{BLAS} and perhaps
-for MKL (provided the appropriate @file{lib} directory is in the
-run-time library path or @command{ld.so} cache).
 
+@c will change the @acronym{BLAS} in use to multithreaded ACML.  A similar
+@c link works for recent versions of the Goto @acronym{BLAS} and perhaps
+@c for MKL (provided the appropriate @file{lib} directory is in the
+@c run-time library path or @command{ld.so} cache).
+
+이는 사용되고있는 @acronym{BLAS}를 multithread된 ACML로 바꿀 것 입니다. 비슷한
+링크는 (적합한 '@file{lib}' 디렉토리가 run-time 라이브러리 경로나 @command{ld.so} cache에
+있다는 가정 하에) Goto @acronym{BLAS}의 최근 버전과 아마도 MKL의 최근 버전들에서
+돌아갈 것입니다.
 
 @node LAPACK, Caveats, BLAS, Linear algebra
 @subsection LAPACK
 
 @cindex LAPACK library
-Provision is made for using an external LAPACK library, principally to
-cope with @acronym{BLAS} libraries which contain a copy of LAPACK (such
-as @code{sunperf} on Solaris, @code{Accelerate} on OS X and ACML and MKL
-on @cputype{ix86}/@cputype{x86_64} Linux).  At least LAPACK version 3.2
-is required.
 
-However, the likely performance gains are thought to be small (and may
-be negative), and the default is not to search for a suitable LAPACK
-library, and this is definitely @strong{not} recommended.  You can
-specify a specific LAPACK library or a search for a generic library by
-the configuration option @option{--with-lapack}.  The default for
-@option{--with-lapack} is to check the @acronym{BLAS} library and then
-look for an external library @samp{-llapack}.  Sites searching for the
-fastest possible linear algebra may want to build a LAPACK library using
-the ATLAS-optimized subset of LAPACK.  To do so specify something like
+@c Provision is made for using an external LAPACK library, principally to
+@c cope with @acronym{BLAS} libraries which contain a copy of LAPACK (such
+@c as @code{sunperf} on Solaris, @code{Accelerate} on OS X and ACML and MKL
+@c on @cputype{ix86}/@cputype{x86_64} Linux).  At least LAPACK version 3.2
+@c is required.
+
+Provision이, 원래 LAPACK(Solaris에서의 @code{sunperf}, OS X에서의 @code{Accelerate},
+@cputype{ix86}/@cputype{x86_64} 리눅스에서의 ACML과 MKL과 같은)의 카피를 포함한 @acronym{BLAS}에
+대응하기위한, 외부 LAPACK 라이브러리의 사용을 위해 만들어 졌습니다. 적
+어도 LAPACK 버전 3.2가 필요합니다.
+
+@c However, the likely performance gains are thought to be small (and may
+@c be negative), and the default is not to search for a suitable LAPACK
+@c library, and this is definitely @strong{not} recommended.  You can
+@c specify a specific LAPACK library or a search for a generic library by
+@c the configuration option @option{--with-lapack}.  The default for
+@c @option{--with-lapack} is to check the @acronym{BLAS} library and then
+@c look for an external library @samp{-llapack}.  Sites searching for the
+@c fastest possible linear algebra may want to build a LAPACK library using
+@c the ATLAS-optimized subset of LAPACK.  To do so specify something like
+하지만, 그럴싸한 성능 향상은 작다고 (혹은 네거티브)라고 생각되고, 기본
+값은 알맞은 LAPACK 라이브러리의 검색을 하지 않는 것이고, 이는 확실히
+추천되지 않습니다. 여러분은 특정한 LAPACK 라이브러리를 지정하거나
+설정 옵션 @option{--with-lapack}에 의한 포괄적인 라이브러리를 찾을 수
+있습니다. 최대한으로 빠른 선형 대수학을 검색하는 사이트는 LAPACK의
+ATLAS-optimized subset을 사용하여 LAPACK 라이브러리를 구축하기를 원할
+수도 있습니다 이를 하기 위해서는 LAPACK의 ATLAS subset이 @code{libcblas}에 의
+존하지 때문에 다음을 지정하세요.
 
 @example
 --with-lapack="-L/path/to/ATLAS/libs -llapack -lcblas"
 @end example
 
 @noindent
-since the ATLAS subset of LAPACK depends on @code{libcblas}.  A value
-for @option{--with-lapack} can be set @emph{via} the environment
-variable
+@c since the ATLAS subset of LAPACK depends on @code{libcblas}.  A value
+@c for @option{--with-lapack} can be set @emph{via} the environment
+@c variable
 @enindex LAPACK_LIBS
-@env{LAPACK_LIBS}, but this will only be used if @option{--with-lapack}
-is specified (as the default value is @code{no}) and the @acronym{BLAS} library
-does not contain LAPACK.
+@c @env{LAPACK_LIBS}, but this will only be used if @option{--with-lapack}
+@c is specified (as the default value is @code{no}) and the @acronym{BLAS} library
+@c does not contain LAPACK.
+@option{--with-lapack}에 대한 값은 환경값 @env{LAPACK_LIBS}를 통해 설정될 수 있지만,
+이는(기본값이 @code{no}인것과 같이) @option{--with-lapack}이 지정되고 @acronym{BLAS} 라이브러리
+가 LAPACK을 포함하지 않았을 떄만 사용될 것입니다.
 
-Since ACML contains a full LAPACK, if selected as the @acronym{BLAS} it
-can be used as the LAPACK @emph{via} @option{--with-lapack}.
+@c Since ACML contains a full LAPACK, if selected as the @acronym{BLAS} it
+@c can be used as the LAPACK @emph{via} @option{--with-lapack}.
+ACML이 전체 LAPACK을 포함하고 있기 때문에, 만약 @acronym{BLAS}처럼 선택되었다면,
+이는 @option{-- with-lapack}을 통해 LAPACK처럼 사용될 수 있습니다.
 
-If you do use @option{--with-lapack}, be aware of potential problems
-with bugs in the LAPACK sources (or in the posted corrections to those
-sources).  In particular, bugs in @code{DGEEV} and @code{DGESDD} have
-resulted in error messages such as
+
+@c If you do use @option{--with-lapack}, be aware of potential problems
+@c with bugs in the LAPACK sources (or in the posted corrections to those
+@c sources).  In particular, bugs in @code{DGEEV} and @code{DGESDD} have
+@c resulted in error messages such as
+만약 @option{--with-lapack}을 사용한다면, LAPACK 소스들(혹은 소스들에 대해 공고
+된 오류수정들)에 있는 잠재적인 버그 문제들을 유의하십시오. 특히, @code{DGEEV}
+와 @code{DGESDD}에 있는 버그들은 다음과 같은 오류 메시지를 초래합니다.
 
 @example
 DGEBRD gave error code -10
 @end example
 
 @noindent
-.  Other potential problems are incomplete versions of the libraries,
-seen several times in Linux distributions over the years.
+@c Other potential problems are incomplete versions of the libraries,
+@c seen several times in Linux distributions over the years.
+다른 잠재적은 문제들은 몇년동안 리눅스 배포에서 몇번이나 목격된, 라이
+브러리의 불완전한 버전들입니다.
 
-Please @strong{do} bear in mind that using @option{--with-lapack} is
-`definitely @strong{not} recommended': it is provided @strong{only}
-because it is necessary on some platforms and because some users want to
-experiment with claimed performance improvements.  Reporting problems
-where it is used unnecessarily will simply irritate the @R{} helpers.
 
-Note too the comments about @acronym{ISO}/@acronym{IEC}@tie{}60559
-compliance in the section of external @acronym{BLAS}: these apply
-equally to an external LAPACK, and for example the Intel MKL
-documentation says
+@c Please @strong{do} bear in mind that using @option{--with-lapack} is
+@c `definitely @strong{not} recommended': it is provided @strong{only}
+@c because it is necessary on some platforms and because some users want to
+@c experiment with claimed performance improvements.  Reporting problems
+@c where it is used unnecessarily will simply irritate the @R{} helpers.
+@option{--with-lapack}의 사용이 ‘확실하게 권장되지 않는다는 것’을 제발 명심하십
+시오: 이는 몇 개의 플랫폼들에서 필요하고 몇몇의 사용자들이 보고된 성능
+향상을 실험하기 위해서만 제공되었습니다. 필요하지 않게 사용된 곳에서의
+보고된 문제들은 @R{} 헬퍼들을 자극할 뿐입니다.
+
+
+@c Note too the comments about @acronym{ISO}/@acronym{IEC}@tie{}60559
+@c compliance in the section of external @acronym{BLAS}: these apply
+@c equally to an external LAPACK, and for example the Intel MKL
+@c documentation says
+
+외부 @acronym{BLAS} 섹션의 @acronym{ISO}/@acronym{IEC}@tie{}60559 compliance 에 대한 커멘트도 유의하세요:
+이들은 외부 LAPACK에도 동등하게 적용되며, 예로 인텔 MKL 문서가 다음과
+같이 이릅니다.
+
 @quotation
-LAPACK routines assume that input matrices do not contain IEEE 754
-special values such as INF or NaN values. Using these special values may
-cause LAPACK to return unexpected results or become unstable.
+@c LAPACK routines assume that input matrices do not contain IEEE 754
+@c special values such as INF or NaN values. Using these special values may
+@c cause LAPACK to return unexpected results or become unstable.
+LAPACK 루틴들은 input matrice들이 INF 혹은 NaN 값들과 같은 IEEE 754 특
+별 값들을 포함하지 않는다고  가정합니다. 이러한 특별 값들의 사용은
+LAPACK이 예상하지 않은 결과를 돌려주거나 불안정하게되는 것의 원인이 될
+수도 있습니다.
 @end quotation
 
-As from @R{} 3.0.0 we rely on limited support in LAPACK for matrices
-with @math{2^{31}} or more elements: it is quite possible that an
-external LAPACK will not have that support.
+@c As from @R{} 3.0.0 we rely on limited support in LAPACK for matrices
+@c with @math{2^{31}} or more elements: it is quite possible that an
+@c external LAPACK will not have that support.
+@R{} 3.0.0에서부터, 우리는 @math{2^31} 혹은 더 많은 요소들을 가진 matrice들에 대
+한 LAPACK에서의 제한적인 지원에 의존합니다:지원하는 외부 LAPACK없 을
+것이라는 것이 꽤나 가능합니다.
+
 
 @node Caveats,  , LAPACK, Linear algebra
 @subsection Caveats
 
-As with all libraries, you need to ensure that they and @R{} were
-compiled with compatible compilers and flags.  For example, this has
-meant that on Sun Sparc using the native compilers the flag
-@option{-dalign} is needed so @code{sunperf} can be used.
+@c As with all libraries, you need to ensure that they and @R{} were
+@c compiled with compatible compilers and flags.  For example, this has
+@c meant that on Sun Sparc using the native compilers the flag
+@c @option{-dalign} is needed so @code{sunperf} can be used.
 
-On some systems it is necessary that an external @acronym{BLAS}/LAPACK
-was built with the same FORTRAN compiler used to build @R{}: known
-problems are with @R{} built with @command{gfortran}, @pxref{Using
-gfortran}.
+모든 라이브러리들과 같이, 여러분은 라이브러리들과 @R{}이 상응하는
+컴파일러들과 flag들과 컴파일 되었는지를 확실하게 할 필요가 있습니다.
+예를들어, 이는 native 컴파일러들을 사용하는 Sun Sparc에서 @code{sunperf}가 사
+용되기 위해서 flag @code{–dalign}가 필요하다는 뜻입니다.
 
+@c On some systems it is necessary that an external @acronym{BLAS}/LAPACK
+@c was built with the same FORTRAN compiler used to build @R{}: known
+@c problems are with @R{} built with @command{gfortran}, @pxref{Using
+@c gfortran}.
+
+어떤 시스템들에서는, 외부 @acronym{BLAS}/LAPACK이 R을 구축할 떄 쓰여졌던 같은
+FORTRAN compiler와 함께 구축되는 것을 필요로 합니다: 알려진 문제는
+@command{gfortran}으로 구축도니 @R{}입니다, @pxref{Using gfortran}을 참조하세요.
 
 
 @node Configuration on a Unix-alike, Platform notes, Essential and useful other programs under a Unix-alike, Top
@@ -4698,71 +4851,117 @@ gfortran}.
 @end menu
 
 @node Configuration options, Internationalization support, Configuration on a Unix-alike, Configuration on a Unix-alike
-@section Configuration options
+@c @section Configuration options
+@section 설정 옵션
 
-@command{configure} has many options: running
+@c @command{configure} has many options: running
+
+@command{configure} 은 많은 옵션들을 가지고 있습니다. 다음의 실행은 리스트를 줄
+것입니다.
 
 @example
 ./configure --help
 @end example
 
 @noindent
-will give a list.  Probably the most important ones not covered
-elsewhere are (defaults in brackets)
+@c will give a list.  Probably the most important ones not covered
+@c elsewhere are (defaults in brackets)
+
+아마도 다른 곳에서는 커버되지 않는 가장 중요한 것은 다음일 것입니다 (
+ 기본값들은 괄호안에 있습니다).
 
 @table @option
 @item --with-x
-use the X Window System [yes]
+@c use the X Window System [yes]
+X Window System을 사용합니다 [yes]
+
 @item --x-includes=@var{DIR}
-X include files are in @var{DIR}
+@c X include files are in @var{DIR}
+X 를 포함한 파일들은 @var{DIR}에 있습니다
+
 @item --x-libraries=@var{DIR}
-X library files are in @var{DIR}
+@c X library files are in @var{DIR}
+X  라이브러리 파일들은 @var{DIR}에 있습니다
+
 @item --with-readline
-use readline library (if available) [yes]
+@c use readline library (if available) [yes]
+(만약 가능하다면) readline 라이브러리를 사용합니다 [yes]
+
 @item --enable-R-profiling
-attempt to compile support for @code{Rprof()} [yes]
+@c attempt to compile support for @code{Rprof()} [yes]
+@code{Rprof()} 에 대한 지원을 위한 컴파일을 시도합니다 [yes]
+
 @item --enable-memory-profiling
-attempt to compile support for @code{Rprofmem()} and @code{tracemem()} [no]
+@c attempt to compile support for @code{Rprofmem()} and @code{tracemem()} [no]
+@code{Rprofmem()} 와 @code{tracemem()}에 대한 지원을 위한 컴파일을 시도합니다 [no]
+
 @item --enable-R-shlib
-build @R{} as a shared/dynamic library [no]
+@c build @R{} as a shared/dynamic library [no]
+공유된/dynamic 라이브러리처럼 @R{}을 구축합니다 [no]
+
 @item --enable-BLAS-shlib
-build the @acronym{BLAS} as a shared/dynamic library [yes, except on AIX]
+@c build the @acronym{BLAS} as a shared/dynamic library [yes, except on AIX]
+공유된/dynamic 라이브러리처럼 @acronym{BLAS}를 구축합니다  [yes, AIX에서는 제외]
+
 @end table
 
 @noindent
-You can use @option{--without-foo} or @option{--disable-foo} for the
-negatives.
+@c You can use @option{--without-foo} or @option{--disable-foo} for the
+@c negatives.
+네거티브들에 대해서는 @option{--without-foo} 혹은 @option{--disable—foo}를 사용할 수 있
+습니다.
 
-You will want to use @option{--disable-R-profiling} if you are building
-a profiled executable of @R{} (e.g.@: with @samp{-pg)}.
+@c You will want to use @option{--disable-R-profiling} if you are building
+@c a profiled executable of @R{} (e.g.@: with @samp{-pg)}.
+만약 프로파일 된 실행가능한 R을 구축한다면 @option{--disable-R-profiling}을 사
+용하고 싶어 할수도 있습니다 ((e.g.@: with @samp{-pg)}.
 
-Flag @option{--enable-R-shlib} causes the make process to build @R{} as
-a dynamic (shared) library, typically called @file{libR.so}, and link
-the main @R{} executable @file{R.bin} against that library.  This can
-only be done if all the code (including system libraries) can be
-compiled into a dynamic library, and there may be a
-performance@footnote{We have measured 15--20% on @cputype{i686} Linux
-and around 10% on @cputype{x86_64} Linux.} penalty.  So you probably
-only want this if you will be using an application which embeds @R{}.
-Note that C code in packages installed on an @R{} system linked with
-@option{--enable-R-shlib} is linked against the dynamic library and so
-such packages cannot be used from an @R{} system built in the default
-way.  Also, because packages are linked against @R{} they are on some
-OSes also linked against the dynamic libraries @R{} itself is linked
-against, and this can lead to symbol conflicts.
+@c Flag @option{--enable-R-shlib} causes the make process to build @R{} as
+@c a dynamic (shared) library, typically called @file{libR.so}, and link
+@c the main @R{} executable @file{R.bin} against that library.  This can
+@c only be done if all the code (including system libraries) can be
+@c compiled into a dynamic library, and there may be a
+@c performance@footnote{We have measured 15--20% on @cputype{i686} Linux
+@c and around 10% on @cputype{x86_64} Linux.} penalty.  So you probably
+@c only want this if you will be using an application which embeds @R{}.
+@c Note that C code in packages installed on an @R{} system linked with
+@c @option{--enable-R-shlib} is linked against the dynamic library and so
+@c such packages cannot be used from an @R{} system built in the default
+@c way.  Also, because packages are linked against @R{} they are on some
+@c OSes also linked against the dynamic libraries @R{} itself is linked
+@c against, and this can lead to symbol conflicts.
+@c Flag @option{--enable-R-shlib} 는 make 프로세스가 보통 '@file{libR.so}'라고 불리우는
+dynamic (공유된) 라이브러리처럼 @R{}을 구축하는 것을 초래하고, 실행 가능
+한 메인 @R{}인 '@file{R.bin}'을 라이브러리에 대응하여 연결합니다. 이는 만약 (시스
+템 라이브러리들을 포함한) 모든 코드가 dynamic 라이브러리로 컴파일 될 수
+있을 때만 되고, 성능 저하가 있을 수 있습니다. 그러므로 여러분은 아마도
+R을 내장하는 어플리케이션을 사용할 경우에만 사용하기를 원할것 입니다.
+@option{--enable-R-shlib}와 연결된 @R{} 시스템 상에 설치된 패키지들의 C 코드는
+dynamic 라이브러리에 맞대어 연결되어 있고, 그래서 그런 패키지들은 기본
+적인 방법으로 구축된 @R{} 시스템들에서부터는 사용될 수 없다는 것을 유의하
+십시오. 또한, 패키지들이 R에 대응하여 연결되어있으므로, 어떤 OS들 상에
+서도 dynamic 라이브러리들에 대응하여 연결되어 있고 @R{} 자체도 대응하여
+연결되어 있으므로, 이는 심볼이 혼란해지도록 이끌어질 수 있습니다.
 
-If you need to re-configure @R{} with different options you may need to run
-@code{make clean} or even @code{make distclean} before doing so.
-
+@c If you need to re-configure @R{} with different options you may need to run
+@c @code{make clean} or even @code{make distclean} before doing so.
+만약 @R{}을 다른 옵션들로 re-configure해야한다면, 그 전에 @code{make clean} 혹은
+@code{make distclean}을 실행해야 할 수도 있습니다.
 
 @node Internationalization support, Configuration variables, Configuration options, Configuration on a Unix-alike
 @section Internationalization support
 
-Translation of messages is supported via @acronym{GNU} @code{gettext}
-unless disabled by the configure option @option{--disable-nls}.
-The @code{configure} report will show @code{NLS} as one of the
-`Additional capabilities' if support has been compiled in, and running
-in an English locale (but not the @code{C} locale) will include
+@c Translation of messages is supported via @acronym{GNU} @code{gettext}
+@c unless disabled by the configure option @option{--disable-nls}.
+@c The @code{configure} report will show @code{NLS} as one of the
+@c `Additional capabilities' if support has been compiled in, and running
+@c in an English locale (but not the @code{C} locale) will include
+
+메세지의 번역은 @code{configure}옵션 @option{--disable-nls}에 의하여 disable되지 않는
+이상 @acronym{GNU} @code{gettext}를 통하여 지원됩니다. @code{Configure} 리포트는 만약 서포트가
+컴파일 되었고, 실행되는 ‘추가의 능력들’ 중 하나처럼 @code{NLS}를 보여줄 것입
+니다. (@code{c} locale을 제외한) English local 은 다음을 @R{}의 시작의 greeting
+에서 포함 할 것입니다.
 
 @example
   Natural language support but running in an English locale
