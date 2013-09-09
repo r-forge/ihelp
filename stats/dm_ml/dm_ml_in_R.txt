@@ -79,7 +79,6 @@ read.delim에 대한 도움말은
 
 으로 찾을 수 있습니다.
 
-
 획득한 데이터를 읽어들이는데에는 다음의 링크를 참고하시기 바랍니다.
 http://127.0.0.1:19602/library/utils/html/read.table.html
 
@@ -92,7 +91,8 @@ http://127.0.0.1:19602/library/utils/html/read.table.html
 
 날짜의 경우 다른 프로그램과 마찬가지로 특별한 유형으로 저장해 놓는 것이 좋습니다.
 
-> ufo$DateOccurred <-as.Date(ufo$DateOccurred, format="%Y%m%d")
+> ufo$DateOccurred <- as.Date(ufo$DateOccurred, format="%Y%m%d")
+> ufo$DateReported <- as.Date(ufo$DateReported, format="%Y%m%d")
 
 위와 같은 명령어는 일반적으로 사용되고 있으나 이 경우에는 다음과 같은 에러가 나타날 것입니다.
 
@@ -106,71 +106,36 @@ DateOccurred와 DateReported에서 문자열이 몇 자리인지 그리고 이들이 어디에 위치하
 [1] 454
 > ufo <- ufo[good.rows,]
 
-## ifelse()
+## ifelse(): http://127.0.0.1:25210/library/base/html/ifelse.html
 Usage: ifelse(test, yes, no)
 기본적 설명: ifelse 함수의 test 인자는 논리벡터나 논리벡터로 강제 변환될 수 있는 표현식을 사용하고 yes 인자와 no 인자는 벡터나 연산의 결과가 벡터인 표현식을 사용합니다. ifelse 함수는 test 인자의 결과가 같은 길이의 벡터를 반환합니다. 반환하는 값은 논리벡터에서 원소의 값이 TRUE이면 yes 벡터에서 같은 인덱스(위치)를 갖는 값을, FALSE이면 no 벡터에서 같은 인테스를 갖는 값을 반환합니다.
-Exanples:
-x <- c(6:-4)
-sqrt(x)  #- gives warning
-sqrt(ifelse(x >= 0, x, NA))  # no warning
 
-## Note: the following also gives the warning !
-ifelse(x >= 0, sqrt(x), NA)
-
-## example of different return modes:
-yes <- 1:3
-no <- pi^(0:3)
-typeof(ifelse(NA, yes, no))    # logical
-typeof(ifelse(TRUE, yes, no))  # integer
-typeof(ifelse(FALSE, yes, no)) # double
-
-함수 ifelse()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
-http://127.0.0.1:25210/library/base/html/ifelse.html
-
-## nchar()
-Usage:
-nchar(x, type = "chars", allowNA = FALSE)
-nzchar(x)
+## nchar(): http://127.0.0.1:25210/library/base/html/nchar.html
 기본적 설명: 문자벡터의 각 원소가 몇 개의 문자열로 구성되어 있는지 알 수 있습니다. 이것은 다른 의미로 문자벡터의 원소가 non-empty strings인지를 발견해 내는데 가장 빠른 방법을 제공하는 것입니다.
-Examples:
-x <- c("asfef", "qwerty", "yuiop[", "b", "stuff.blah.yech")
-nchar(x)
-# 5  6  6  1 15
-nchar(deparse(mean))
-# 18 17
 
-함수 nchar()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
-http://127.0.0.1:25210/library/base/html/nchar.html
-
-## which()
-Usage: 
-which(x, arr.ind = FALSE, useNames = TRUE)
-arrayInd(ind, .dim, .dimnames = NULL, useNames = FALSE)
+## which(): http://127.0.0.1:25210/library/base/html/which.html
 기본적 설명: 특정 조건을 만족하는 원소의 index를 구할 수 있습니다.
-Examples:
-which(LETTERS == "R")
-which(ll <- c(TRUE, FALSE, TRUE, NA, FALSE, FALSE, TRUE)) #> 1 3 7
-names(ll) <- letters[seq(ll)]
-which(ll)
-which((1:12)%%2 == 0) # which are even?
-which(1:10 > 3, arr.ind = TRUE)
 
-( m <- matrix(1:12, 3, 4) )
-which(m %% 3 == 0)
-which(m %% 3 == 0, arr.ind = TRUE)
-rownames(m) <- paste("Case", 1:3, sep = "_")
-which(m %% 5 == 0, arr.ind = TRUE)
+== location 데이터 다루기 ==
 
-dim(m) <- c(2, 2, 3); m
-which(m %% 3 == 0, arr.ind = FALSE)
-which(m %% 3 == 0, arr.ind = TRUE)
+location 데이터를 다루기 위해 다음과 같이 get.location() 함수를 스스로 만들어 봅니다.
 
-vm <- c(m)
-dim(vm) <- length(vm) #-- funny thing with  length(dim(...)) == 1
-which(vm %% 3 == 0, arr.ind = TRUE)
+get.location<-function(l) {
+	split.location<-tryCatch(strsplit(l,",")[[1]], error= function(e) return(c(NA, NA)))
+	clean.location<-gsub("^ ","",split.location)
+	if (length(clean.location)>2) {
+		return(c(NA,NA))
+	}
+	else {
+		return(clean.location)
+	}
+}
 
-함수 which()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
-http://127.0.0.1:25210/library/base/html/which.html
+## strsplit(): http://127.0.0.1:25210/library/base/html/strsplit.html
+기본적 설명: 문자 벡터의 요소를 특정 조건에 맞추어 분할합니다.
 
+
+## tryCatch(): http://127.0.0.1:25210/library/base/html/conditions.html
+기본적 설명: 예외처리 구문으로서 예기치 않은 오류가 발생하였을 때, 프로그램이 강제 종료되지 않고 안정하게 종료시킬 수 있습니다.
 
 
