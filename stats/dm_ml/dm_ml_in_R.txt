@@ -99,7 +99,12 @@ http://127.0.0.1:19602/library/utils/html/read.table.html
 "다음에 오류가 있습니다strptime(x, format, tz = "GMT") : 입력문자열이 너무 깁니다."
 
 head() 이용하여 파악한 결과 DateOccurred는 8자리 YYYYMMDD의 형태를 가지고 있습니다.
+DateOccurred와 DateReported에서 문자열이 몇 자리인지 그리고 이들이 어디에 위치하는지를 알고 싶을 것입니다. 왜냐하면 8자리가 아니어서 "입력문자열이 너무 깁니다."라는 에러 메세지가 나타났기 때문입니다. 
 
+> good.rows <- ifelse(nchar(ufo$DateOccurred)>=8 & nchar(ufo$DateOccurred)!= 8 | nchar(ufo$DateReported)!=8,FALSE,TRUE)
+> length(which(!good.rows))
+[1] 454
+> ufo <- ufo[good.rows,]
 
 ## ifelse()
 Usage: ifelse(test, yes, no)
@@ -119,12 +124,23 @@ typeof(ifelse(NA, yes, no))    # logical
 typeof(ifelse(TRUE, yes, no))  # integer
 typeof(ifelse(FALSE, yes, no)) # double
 
-함수 ifelse에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
+함수 ifelse()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
 http://127.0.0.1:25210/library/base/html/ifelse.html
 
-> good.rows <- ifelse(nchar(ufo$DateOccurred)>=8 & nchar(ufo$DateOccurred)!= 8 | nchar(ufo$DateReported)!=8,FALSE,TRUE)
-> length(which(!good.rows))
-[1] 454
+## nchar()
+Usage:
+nchar(x, type = "chars", allowNA = FALSE)
+nzchar(x)
+기본적 설명: 문자벡터의 각 원소가 몇 개의 문자열로 구성되어 있는지 알 수 있습니다. 이것은 다른 의미로 문자벡터의 원소가 non-empty strings인지를 발견해 내는데 가장 빠른 방법을 제공하는 것입니다.
+Examples:
+x <- c("asfef", "qwerty", "yuiop[", "b", "stuff.blah.yech")
+nchar(x)
+# 5  6  6  1 15
+nchar(deparse(mean))
+# 18 17
+
+함수 nchar()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
+http://127.0.0.1:25210/library/base/html/nchar.html
 
 ## which()
 Usage: 
@@ -153,6 +169,8 @@ vm <- c(m)
 dim(vm) <- length(vm) #-- funny thing with  length(dim(...)) == 1
 which(vm %% 3 == 0, arr.ind = TRUE)
 
-함수 which에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
+함수 which()에 대한 보다 자세한 도움말은 다음을 참고하시기 바랍니다.
 http://127.0.0.1:25210/library/base/html/which.html
+
+
 
