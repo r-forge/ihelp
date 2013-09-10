@@ -303,13 +303,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
 <!-- It provides a wide variety of statistical and graphical techniques -->
 <!-- (linear and nonlinear modelling, statistical tests, time series -->
 <!-- analysis, classification, clustering, ...). -->
-<p>이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 위한 언어(language)이자 환경(environment)이기도 한 R (&ldquo;GNU S&rdquo;)이라는 소프트웨어에 대한 일반적인 소개를 담고 있습니다. 
-R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 여러명의 참여자에) 의해서 개발된 이래로 수상을 받은 전력이 있는 S 시스템과 유사합니다. 
-이는 선형 및 비선형 모델링(linear and non-linear modelling), 통계적 검정들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션 (classification), 그리고 클러스터링 (clustering)등과 같은 다양한 종류의 통계적 기법들과 그래픽 기능(statistical and graphical techniques)들을 제공합니다.
+<p>이 문서는 통계계산(statistical computing)과 그래픽(graphics) 작업을 위한 언어(language)이자 환경(environment)이기도 한 R(&ldquo;GNU S&rdquo;)이라는 소프트웨어에 대한 일반적인 소개를 담고 있습니다. 
+R은 벨연구소(Bell laboratory)에서 John Chambers et al.(존 챔버스외 여러명의 참여자)에 의해서 개발된 이래로 수상을 받은 전력이 있는 S 시스템과 유사합니다. 
+이는 선형 및 비선형 모델링(linear and non-linear modelling), 통계적 검정들(statistical tests), 시계열분석 (time-series analysis), 클래시피케이션(classification), 그리고 클러스터링(clustering) 등과 같은 다양한 종류의 통계적 기법들과 그래픽 기능(statistical and graphical techniques)들을 제공합니다.
 
 <!-- This manual provides information on data types, programming elements, -->
 <!-- statistical modelling and graphics. -->
-   <p>이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형 (data type), 프로그래밍의 기본 요소들 (programming elements), 그리고 통계 모델링 (statistical modelling)과 그래픽 (graphics)에 대한 정보들이 이 문서에서 다루어 질 것입니다.
+   <p>이러한 기능들을 R을 처음 사용하시는 분들에게 도움이 될 수 있도록 사용에 반드시 필요한 기본 데이터형(data type), 프로그래밍의 기본 요소들(programming elements), 그리고 통계 모델링(statistical modelling)과 그래픽(graphics)에 대한 정보들이 이 문서에서 다루어 질 것입니다.
 
 <!-- The current version of this document is @value{VERSION}. -->
    <p>본 한글문서에 대한 영어 원문의 버전은 3.0.0 Under development (2013-02-11)입니다.
@@ -322,13 +322,13 @@ R은 벨연구소(Bell laboratory)에서 John Chambers et al. (존 챔버스외 
 또한, 보다 읽기 쉽고 올바른 내용의 전달을 위하여 꾸준한 교정작업이 진행중에 있습니다.
 
      <ul>
-<li>Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, <a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>, 2009 &ndash; 2013
-<li>Lijin Joo (주이진), New York University, New York, New York, U.S.A., <a href="mailto:lijin.joo@nyu.edu">lijin.joo@nyu.edu</a>, 2009&ndash;2013
-<li>Eugene Jung (정우준), Hongik University, Seoul, Korea, <a href="mailto:muoe78@gmail.com">muoe78@gmail.com</a>, 2009-2013. 
+<li>Chel Hee Lee (이철희), University of Saskatchewan, Saskatoon, Saskatchewan, Canada, <a href="mailto:gnustats@gmail.com">gnustats@gmail.com</a>, 2009 - 2013
+<li>Lijin Joo (주이진), New York University, New York, New York, U.S.A., <a href="mailto:lijin.joo@nyu.edu">lijin.joo@nyu.edu</a>, 2009-2013
+<li>Eugene Jung (정유진), R-ihelp, Seoul, Korea, <a href="mailto:muoe78@gmail.com">muoe78@gmail.com</a>, 2009-2013. 
 </ul>
 
-<!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch (Austria), Prof. Duncan Murdoch (Canada), Prof. Mikelis Bickis (Canada)에 깊은 감사의 뜻을 표현합니다. -->
-   <p>아래와 같은 분들께서 주요 역자들에게 조언과 제안사항을 보내주셨습니다 (의도적인 것은 아니지만 관리상의 실수로 인하여 이 문서에 기여하셨던 분의 성함이 빠져 있을 수도 있습니다.  이 경우 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>로 꼭 알려주시길 부탁드립니다).
+<!-- 또한, 우리의 이러한 활동에 많은 관심과 아낌없는 지원을 해주는 Prof. Friedrich Leisch(Austria), Prof. Duncan Murdoch(Canada), Prof. Mikelis Bickis(Canada)에 깊은 감사의 뜻을 표현합니다. -->
+   <p>아래와 같은 분들께서 주요 역자들에게 조언과 제안사항을 보내주셨습니다 (의도적인 것은 아니지만 관리상의 실수로 인하여 이 문서에 기여하셨던 분의 성함이 빠져 있을 수도 있습니다.  이 경우 <a href="mailto:gnustats@korea.gnu.org">gnustats@korea.gnu.org</a>으로 꼭 알려주시길 부탁드립니다).
      <ul>
 <li>Heather Kim, University of Manitoba, Winnipeg, Manitoba, Canada, 2010-2011
 <li>정영하, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2009-2010
@@ -343,7 +343,7 @@ Copyright &copy; 1997 R. Gentleman &amp; R. Ihaka<br>
 Copyright &copy; 1997, 1998 M. Maechler<br>
 Copyright &copy; 1997&ndash; R Core Team<br>
 Copyright &copy; 1999&ndash;2012 R Core Team<br>
-Korean translation copyright &copy; 2008&ndash;2013 Korean R Translation Team and Chel Hee Lee.
+Korean translation copyright &copy; 2008&ndash;2013 Korean R Translation Team and Chel Hee Lee, Lijin Joo, Eugene Jung
 
    <p>Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -404,8 +404,8 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <!-- in this way, and for being a supporter of @R{} from way back. -->
 <!-- Comments and corrections are always welcome.  Please address email -->
 <!-- correspondence to @email{R-core@@R-project.org}. -->
-<p>원래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables과 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 그러나,이 문서에서는 R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
-이렇게 원래의 노트에 대한 수정과 재배포를 허락하고, R을 지지해주신 Bill Venables (그리고 David Smith)에게깊은 감사의 뜻을 전합니다.
+<p>원래 R에 대한 이 안내서는 1990년부터 1992년 사이에 Bill Venables와 David M. Smith가 Adelaide 대학에서 S와 <span class="sc">S-Plus</span>에 대하여 작성한 노트를 토대로 하고 있습니다. 그러나, 이 문서에서는 R과 S 사이의 다른 점들을 반영하기 위하여 원래 노트의 내용에 적절한 수정을 가하고 일부 내용들을 더욱 보강하였습니다. 
+이렇게 원래의 노트에 대한 수정과 재배포를 허락하고, R을 지지해주신 Bill Venables(그리고 David Smith)에게 깊은 감사의 뜻을 전합니다.
 
 <!-- @subheading Suggestions to the reader -->
 <h4 class="subheading">처음 R을 사용하시는 분들께</h4>
