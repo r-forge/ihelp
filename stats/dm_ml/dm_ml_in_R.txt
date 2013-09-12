@@ -120,10 +120,10 @@ Usage: ifelse(test, yes, no)
 
 location 데이터를 다루기 위해 다음과 같이 get.location() 함수를 스스로 만들어 봅니다.
 
-get.location<-function(l) {
-	split.location<-tryCatch(strsplit(l,",")[[1]], error= function(e) return(c(NA, NA)))
-	clean.location<-gsub("^ ","",split.location)
-	if (length(clean.location)>2) {
+get.location <- function(l) {
+	split.location <- tryCatch(strsplit(l,",")[[1]], error=function(e) return(c(NA, NA)))
+	clean.location <- gsub("^ ","",split.location)
+	if (length(clean.location) > 2) {
 		return(c(NA,NA))
 	}
 	else {
@@ -131,11 +131,39 @@ get.location<-function(l) {
 	}
 }
 
+## function(): http://127.0.0.1:25210/library/base/html/function.html
+기본적 설명: 사용자 정의 함수
+Usage:
+function( arglist ) expr
+return(value)
+Examples:
+norm <- function(x) sqrt(x%*%x)
+norm(1:4)
+
+# 정규표현식(regular expression): http://127.0.0.1:25210/library/base/html/regex.html
+기본적 설명: R의 확장 정규표현식은 POSIX 1003.2 표준을 기반으로 이식되었습니다. grep(), regexpr(), gregexpr(), sub(), gsub(), strsplit() 등의 함수의 기본 모드에서 허용하는 정규표현식은 확장 정규표현식을 따릅니다. 정규표현식은 작은 단위의 표현식을 결합하는 다양한 연산자를 사용하는 산술 연산과 비슥하고 이 표현식은 0개 또는 하나 이상의 문자와 매치됩니다.
+
+## gsub():  [grep()] http://127.0.0.1:25210/library/base/html/grep.html 
+기본적 설명: 패턴 매치된 모든 문자를 치환합니다.
+
 ## strsplit(): http://127.0.0.1:25210/library/base/html/strsplit.html
 기본적 설명: 문자 벡터의 요소를 특정 조건에 맞추어 분할합니다.
 
 
 ## tryCatch(): http://127.0.0.1:25210/library/base/html/conditions.html
-기본적 설명: 예외처리 구문으로서 예기치 않은 오류가 발생하였을 때, 프로그램이 강제 종료되지 않고 안정하게 종료시킬 수 있습니다.
+기본적 설명: 예외처리 구문으로서 예기치 않은 오류가 발생하였을 때, 프로그램이 강제 종료되지 않고 안전하게 종료시킬 수 있습니다. 일반적으로 stop() 함수나 warning() 함수는 사용자가 에러나 논리적 오류가 발생하는 사례를 알고 작성하지만 tryCatch() 함수는 이것이 불명확할 경우에 사용하는 것입니다. 또한 이 함수는 다른 사람이 만들어 놓은 함수를 사용자 정의함수로 사용할 때 사용됩니다.
+
+## apply(): http://127.0.0.1:25210/library/base/html/apply.html
+
+## eapply(): http://127.0.0.1:25210/library/base/html/eapply.html
+
+## lapplu(): http://127.0.0.1:25210/library/base/html/lapply.html
+
+## mapply(): http://127.0.0.1:25210/library/base/html/mapply.html
+
+## rapply(): http://127.0.0.1:25210/library/base/html/rapply.html
+
+## tapply(): http://127.0.0.1:25210/library/base/html/tapply.html
+
 
 
