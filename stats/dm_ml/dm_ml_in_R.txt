@@ -116,6 +116,9 @@ Usage: ifelse(test, yes, no)
 ## which(): http://127.0.0.1:25210/library/base/html/which.html
 기본적 설명: 특정 조건을 만족하는 원소의 index를 구할 수 있습니다.
 
+> ufo$DateOccurred <- as.Date(ufo$DateOccurred, format="%Y%m%d")
+> ufo$DateReported <- as.Date(ufo$DateReported, format="%Y%m%d")
+
 == location 데이터 다루기 ==
 
 location 데이터를 다루기 위해 다음과 같이 get.location() 함수를 스스로 만들어 봅니다.
@@ -131,14 +134,16 @@ get.location <- function(l) {
 	}
 }
 
-## function(): http://127.0.0.1:25210/library/base/html/function.html
-기본적 설명: 사용자 정의 함수
+## function(): http://127.0.0.1:30991/library/base/html/function.html
+기본적 설명: 사용자 함수를 정의합니다.
 Usage:
 function( arglist ) expr
 return(value)
-Examples:
-norm <- function(x) sqrt(x%*%x)
-norm(1:4)
+Arguments:
+arglist - Empty or one or more name or name=expression terms.
+expr - An expression.
+value - An expression.
+
 
 # 정규표현식(regular expression): http://127.0.0.1:25210/library/base/html/regex.html
 기본적 설명: R의 확장 정규표현식은 POSIX 1003.2 표준을 기반으로 이식되었습니다. grep(), regexpr(), gregexpr(), sub(), gsub(), strsplit() 등의 함수의 기본 모드에서 허용하는 정규표현식은 확장 정규표현식을 따릅니다. 정규표현식은 작은 단위의 표현식을 결합하는 다양한 연산자를 사용하는 산술 연산과 비슥하고 이 표현식은 0개 또는 하나 이상의 문자와 매치됩니다.
@@ -146,8 +151,16 @@ norm(1:4)
 ## gsub():  [grep()] http://127.0.0.1:25210/library/base/html/grep.html 
 기본적 설명: 패턴 매치된 모든 문자를 치환합니다.
 
-## strsplit(): http://127.0.0.1:25210/library/base/html/strsplit.html
-기본적 설명: 문자 벡터의 요소를 특정 조건에 맞추어 분할합니다.
+## strsplit(): http://127.0.0.1:30991/library/base/html/strsplit.html
+기본적 설명: 문자열의 요소를 문자열 내의 하위 문자열로 분할합니다.
+Usage:
+strsplit(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE)
+Arguments:
+x - character vector, each element of which is to be split. Other inputs, including a factor, will give an error. 
+split - character vector (or object which can be coerced to such) containing regular expression(s) (unless fixed = TRUE) to use for splitting. If empty matches occur, in particular if split has length 0, x is split into single characters. If split has length greater than 1, it is re-cycled along x. 
+fixed - logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl. 
+perl - logical. Should perl-compatible regexps be used?
+useBytes - logical. If TRUE the matching is done byte-by-byte rather than character-by-character, and inputs with marked encodings are not converted. This is forced (with a warning) if any input is found which is marked as "bytes".
 
 
 ## tryCatch(): http://127.0.0.1:25210/library/base/html/conditions.html
@@ -166,4 +179,6 @@ norm(1:4)
 ## tapply(): http://127.0.0.1:25210/library/base/html/tapply.html
 
 
+> city.state<-lapply(ufo$Location, get.location)
+> head(city.state)
 
