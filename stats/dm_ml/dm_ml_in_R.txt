@@ -111,7 +111,7 @@ Usage: ifelse(test, yes, no)
 기본적 설명: ifelse 함수의 test 인자는 논리벡터나 논리벡터로 강제 변환될 수 있는 표현식을 사용하고 yes 인자와 no 인자는 벡터나 연산의 결과가 벡터인 표현식을 사용합니다. ifelse 함수는 test 인자의 결과가 같은 길이의 벡터를 반환합니다. 반환하는 값은 논리벡터에서 원소의 값이 TRUE이면 yes 벡터에서 같은 인덱스(위치)를 갖는 값을, FALSE이면 no 벡터에서 같은 인테스를 갖는 값을 반환합니다.
 
 ## nchar(): http://127.0.0.1:25210/library/base/html/nchar.html
-기본적 설명: 문자벡터의 각 원소가 몇 개의 문자열로 구성되어 있는지 알 수 있습니다. 이것은 다른 의미로 문자벡터의 원소가 non-empty strings인지를 발견해 내는데 가장 빠른 방법을 제공하는 것입니다.
+기본적 설명: 문자벡터의 각 원소가 몇 개의 문자열로 구성되어 있는지 알 수 있습니다. 이것은 다른 의미로 문자벡터의 원소가 non-empty strings인지를 발견해 내는데 가장 빠른 방법을 제공합니다.
 
 ## which(): http://127.0.0.1:25210/library/base/html/which.html
 기본적 설명: 특정 조건을 만족하는 원소의 index를 구할 수 있습니다.
@@ -119,7 +119,9 @@ Usage: ifelse(test, yes, no)
 > ufo$DateOccurred <- as.Date(ufo$DateOccurred, format="%Y%m%d")
 > ufo$DateReported <- as.Date(ufo$DateReported, format="%Y%m%d")
 
-== location 데이터 다루기 ==
+############################
+## location 데이터 다루기 ##
+############################
 
 location 데이터를 다루기 위해 다음과 같이 get.location() 함수를 스스로 만들어 봅니다.
 
@@ -151,12 +153,18 @@ value - An expression.
 ## gsub():  [grep()] http://127.0.0.1:25210/library/base/html/grep.html 
 기본적 설명: 패턴 매치된 모든 문자를 치환합니다.
 
+## grep(): http://127.0.0.1:30991/library/base/html/grep.html
+
+## agrep(): http://127.0.0.1:30991/library/base/html/agrep.html
+
+## grepRaw(): http://127.0.0.1:30991/library/base/html/grepRaw.html
+
 ## strsplit(): http://127.0.0.1:30991/library/base/html/strsplit.html
 기본적 설명: 문자열의 요소를 문자열 내의 하위 문자열로 분할합니다.
 Usage:
 strsplit(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE)
 Arguments:
-x - character vector, each element of which is to be split. Other inputs, including a factor, will give an error. 
+x - 분할될 문자 벡터, 다른 형태의 입력은 에러가 발생합니다.
 split - character vector (or object which can be coerced to such) containing regular expression(s) (unless fixed = TRUE) to use for splitting. If empty matches occur, in particular if split has length 0, x is split into single characters. If split has length greater than 1, it is re-cycled along x. 
 fixed - logical. If TRUE match split exactly, otherwise use regular expressions. Has priority over perl. 
 perl - logical. Should perl-compatible regexps be used?
@@ -166,17 +174,38 @@ useBytes - logical. If TRUE the matching is done byte-by-byte rather than charac
 ## tryCatch(): http://127.0.0.1:25210/library/base/html/conditions.html
 기본적 설명: 예외처리 구문으로서 예기치 않은 오류가 발생하였을 때, 프로그램이 강제 종료되지 않고 안전하게 종료시킬 수 있습니다. 일반적으로 stop() 함수나 warning() 함수는 사용자가 에러나 논리적 오류가 발생하는 사례를 알고 작성하지만 tryCatch() 함수는 이것이 불명확할 경우에 사용하는 것입니다. 또한 이 함수는 다른 사람이 만들어 놓은 함수를 사용자 정의함수로 사용할 때 사용됩니다.
 
-## apply(): http://127.0.0.1:25210/library/base/html/apply.html
 
-## eapply(): http://127.0.0.1:25210/library/base/html/eapply.html
+# apply() 함수군: 데이터 객체의 각 차원에 대해서 함수를 적용한 후 이의 결과를 집계하여 반환하는 기능을 가집니다.
+apply(): http://127.0.0.1:25210/library/base/html/apply.html
+기본적 설명: 행렬이나 배열의 주변값에 특정 함수를 적용하여 그 적용결과를 반환하는 함수입니다.
+Usage:
+apply(X, MARGIN, FUN, ...)
+Arguments:
+X - an array, including a matrix.
+MARGIN - a vector giving the subscripts which the function will be applied over. E.g., for a matrix 1 indicates rows, 2 indicates columns, c(1, 2) indicates rows and columns. Where X has named dimnames, it can be a character vector selecting dimension names.
+FUN - the function to be applied: see ‘Details’. In the case of functions like +, %*%, etc., the function name must be backquoted or quoted.
+... - optional arguments to FUN.
+# Example:
+mat <- matrix(1:15, nrow=5)
+mat_na <- mat
+mat_na[5, 3] <- NA
+apply(mat_na, 1, sum)
+apply(mat_na, 1, sum, na.rm=TRUE)
+# sum() 대신 sort() 그리고 sort()의 인자(arguements)를 활용하여 사용해 보시기 바랍니다. FUN 인자에 함수가 아닌 연산자를 사용하는 경우 연산자를 " "(따옴표: quotation) 안에 넣어 기술해야 합니다. 단항연산자(예를 들어, "!")와는 달리 다항연산자("/": 나누기)를 사용하는 경우에는 두 번째 피연산자를 FUN 인자값 뒤에 기술해야 합니다.
 
-## lapplu(): http://127.0.0.1:25210/library/base/html/lapply.html
 
-## mapply(): http://127.0.0.1:25210/library/base/html/mapply.html
 
-## rapply(): http://127.0.0.1:25210/library/base/html/rapply.html
+eapply(): http://127.0.0.1:25210/library/base/html/eapply.html
 
-## tapply(): http://127.0.0.1:25210/library/base/html/tapply.html
+lapplu(): http://127.0.0.1:25210/library/base/html/lapply.html
+
+mapply(): http://127.0.0.1:25210/library/base/html/mapply.html
+
+rapply(): http://127.0.0.1:25210/library/base/html/rapply.html
+
+tapply(): http://127.0.0.1:25210/library/base/html/tapply.html
+  
+
 
 
 > city.state<-lapply(ufo$Location, get.location)
