@@ -180,18 +180,20 @@ p {
 <li><a href="#Internationalization-support">B.2 Internationalization support</a>
 <li><a href="#Configuration-variables">B.3 설정변수</a>
 <ul>
-<li><a href="#Setting-paper-size">B.3.1 Setting paper size</a>
-<li><a href="#Setting-the-browsers">B.3.2 Setting the browsers</a>
+<li><a href="#Setting-paper-size">B.3.1 종이 크기 설정</a>
+<li><a href="#Setting-the-browsers">B.3.2 설정 브라우저</a>
 <li><a href="#Compilation-flags">B.3.3 Compilation flags</a>
 <li><a href="#Making-manuals">B.3.4 Making manuals</a>
+<li><a href="#Making-manuals">B.3.5 메뉴얼 만들기</a>
 </li></ul>
-<li><a href="#Setting-the-shell">B.4 Setting the shell</a>
-<li><a href="#Using-make">B.5 Using make</a>
+<li><a href="#Setting-the-shell">B.4 쉘 설정하기</a>
+<li><a href="#Using-make">B.5 make 사용하기</a>
 <li><a href="#Using-FORTRAN">B.6 Using FORTRAN</a>
+<li><a href="#Using-FORTRAN">B.7 포트란 사용하기</a>
 <ul>
-<li><a href="#Using-gfortran">B.6.1 Using gfortran</a>
+<li><a href="#Using-gfortran">B.7.1 gfortran 사용하기</a>
 </li></ul>
-<li><a href="#Compile-and-load-flags">B.7 Compile and load flags</a>
+<li><a href="#Compile-and-load-flags">B.8 컴파일과 로드 플래그</a>
 </li></ul>
 <li><a name="toc_Platform-notes" href="#Platform-notes">Appendix C Platform notes</a>
 <ul>
@@ -5255,20 +5257,32 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-variables">Configuration
 
 </div>
 
-<h4 class="subsection">B.3.1 Setting paper size</h4>
+<!-- @subsection Setting paper size -->
+<h4 class="subsection">B.3.1 종이 크기 설정</h4>
 
-<p><a name="index-R_005fPAPERSIZE-72"></a>One common variable to change is <samp><span class="env">R_PAPERSIZE</span></samp>, which defaults to
-&lsquo;<samp><span class="samp">a4</span></samp>&rsquo;, not &lsquo;<samp><span class="samp">letter</span></samp>&rsquo;.  (Valid values are &lsquo;<samp><span class="samp">a4</span></samp>&rsquo;,
-&lsquo;<samp><span class="samp">letter</span></samp>&rsquo;, &lsquo;<samp><span class="samp">legal</span></samp>&rsquo; and &lsquo;<samp><span class="samp">executive</span></samp>&rsquo;.)
+<!-- @enindex R_PAPERSIZE -->
+<!-- One common variable to change is @env{R_PAPERSIZE}, which defaults to -->
+<!-- @samp{a4}, not @samp{letter}.  (Valid values are @samp{a4}, -->
+<!-- @samp{letter}, @samp{legal} and @samp{executive}.) -->
+<p>기본 값이 &lsquo;<samp><span class="samp">letter</span></samp>&rsquo;가 아닌 &lsquo;<samp><span class="samp">A4</span></samp>&rsquo;로 되어있는 페이퍼 사이즈를 바꾸는 일반
+적인 값은 <samp><span class="env">R_PAPERSIZE</span></samp> 입니다. (&lsquo;<samp><span class="samp">A4</span></samp>&rsquo;, &lsquo;<samp><span class="samp">letter</span></samp>&rsquo;, &lsquo;<samp><span class="samp">legal</span></samp>&rsquo; 그리고
+&lsquo;<samp><span class="samp">executive</span></samp>&rsquo; 값들이 유효합니다.)
 
-   <p>This is used both when configuring R to set the default, and when
-running R to override the default.  It is also used to set the
-paper size when making PDF manuals.
+<!-- This is used both when configuring @R{} to set the default, and when -->
+<!-- running @R{} to override the default.  It is also used to set the -->
+<!-- paper size when making PDF manuals. -->
+   <p>이는 기본값을 설정하기 위해 R을 설정할 때와 기본값을 무시하기위해
+R을 실행할 때 모두 사용됩니다. 이는 PDF 매뉴얼을 만들 때 페이퍼 사이즈
+를 설정하기위해서도 사용됩니다.
 
-   <p>The configure default will most often be &lsquo;<samp><span class="samp">a4</span></samp>&rsquo; if <samp><span class="env">R_PAPERSIZE</span></samp>
-is unset.  (If the (Debian Linux) program <samp><span class="command">paperconf</span></samp> is found
-<a name="index-PAPERSIZE-73"></a>or the environment variable <samp><span class="env">PAPERSIZE</span></samp> is set, these are used to
-produce the default.)
+<!-- The configure default will most often be @samp{a4} if @env{R_PAPERSIZE} -->
+<!-- is unset.  (If the (Debian Linux) program @command{paperconf} is found -->
+<!-- @enindex PAPERSIZE -->
+<!-- or the environment variable @env{PAPERSIZE} is set, these are used to -->
+<!-- produce the default.) -->
+   <p>설정 기본값은 만약 <samp><span class="env">R_PAPERSIZE</span></samp>가 unset되어있으면 거의 대부분 &lsquo;<samp><span class="samp">A4</span></samp>&rsquo;
+일 것입니다. (만약 (Debian 리눅스) 프로그램 paperconf가 발견되거나 환
+경값 <samp><span class="env">PAPERSIZE</span></samp>가 설정된다면, 이들은 기본값을 생성하기 위하여 사용됩니다.)
 
 <div class="node">
 <a name="Setting-the-browsers"></a>
@@ -5279,13 +5293,17 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-variables">Configuration
 
 </div>
 
-<h4 class="subsection">B.3.2 Setting the browsers</h4>
+<!-- @subsection Setting the browsers -->
+<h4 class="subsection">B.3.2 설정 브라우저</h4>
 
-<p><a name="index-R_005fBROWSER-74"></a>Another precious variable is <samp><span class="env">R_BROWSER</span></samp>, the default HTML browser, which
-should take a value of an executable in the user's path or specify
-a full path.
+<p><a name="index-R_005fBROWSER-72"></a><!-- Another precious variable is @env{R_BROWSER}, the default HTML browser, which -->
+<!-- should take a value of an executable in the user's path or specify -->
+<!-- a full path. -->
+<a name="index-R_005fPDFVIEWER-73"></a><!-- Its counterpart for PDF files is  @env{R_PDFVIEWER}. -->
 
-   <p><a name="index-R_005fPDFVIEWER-75"></a>Its counterpart for PDF files is  <samp><span class="env">R_PDFVIEWER</span></samp>.
+   <p>또 다른 소중한 값은 기본값이 HTML 브라우저인, 사용자의 경로 혹은 지정
+된 전체 경로 안에 있는 executable의 값을 취행야만 하는 <samp><span class="env">R_BROWSER</span></samp>입니다. 
+PDF 파일들의 이에대한 대응은 R_PDFVIEWER입니다.
 
 <div class="node">
 <a name="Compilation-flags"></a>
@@ -5298,31 +5316,52 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-variables">Configuration
 
 <h4 class="subsection">B.3.3 Compilation flags</h4>
 
-<p>If you have libraries and header files, e.g., for <acronym>GNU</acronym>
-readline, in non-system directories, use the variables <code>LDFLAGS</code>
-(for libraries, using &lsquo;<samp><span class="samp">-L</span></samp>&rsquo; flags to be passed to the linker) and
-<code>CPPFLAGS</code> (for header files, using &lsquo;<samp><span class="samp">-I</span></samp>&rsquo; flags to be passed to
-the C/C++ preprocessors), respectively, to specify these locations. 
-These default to &lsquo;<samp><span class="samp">-L/usr/local/lib</span></samp>&rsquo; (<code>LDFLAGS</code>,
-&lsquo;<samp><span class="samp">-L/usr/local/lib64</span></samp>&rsquo; on most 64-bit Linux OSes) and
-&lsquo;<samp><span class="samp">-I/usr/local/include</span></samp>&rsquo; (<code>CPPFLAGS</code>) to catch the most common
-cases.  If libraries are still not found, then maybe your
-compiler/linker does not support re-ordering of <samp><span class="option">-L</span></samp> and
-<samp><span class="option">-l</span></samp> flags (this has been reported to be a problem on HP-UX with
-the native <samp><span class="command">cc</span></samp>).  In this case, use a different compiler (or a
-front end shell script which does the re-ordering).
+<!-- If you have libraries and header files, e.g., for @acronym{GNU} -->
+<!-- readline, in non-system directories, use the variables @code{LDFLAGS} -->
+<!-- (for libraries, using @samp{-L} flags to be passed to the linker) and -->
+<!-- @code{CPPFLAGS} (for header files, using @samp{-I} flags to be passed to -->
+<!-- the C/C++ preprocessors), respectively, to specify these locations. -->
+<!-- These default to @samp{-L/usr/local/lib} (@code{LDFLAGS}, -->
+<!-- @samp{-L/usr/local/lib64} on most 64-bit Linux OSes) and -->
+<!-- @samp{-I/usr/local/include} (@code{CPPFLAGS}) to catch the most common -->
+<!-- cases.  If libraries are still not found, then maybe your -->
+<!-- compiler/linker does not support re-ordering of @option{-L} and -->
+<!-- @option{-l} flags (this has been reported to be a problem on HP-UX with -->
+<!-- the native @command{cc}).  In this case, use a different compiler (or a -->
+<!-- front end shell script which does the re-ordering). -->
+<p>만약 시스템이 아닌 디렉토리들에 예를들어 <acronym>GNU</acronym> readline을 위한 라이브러
+리들이나 헤더 파일들을 가지고 있다면, 이들의 위치를 명시하기위하여
+순서대로 값 <code>LDFLAG</code> (라이브러리에서는 linker로 전달되기위해여 &lsquo;<samp><span class="samp">-L</span></samp>&rsquo; flag
+들을 사용)와 <code>CPPFLAGS</code> (헤더 파일들을 위해서, C/C++ 프로세서 들로
+전달되기 위하여 &lsquo;<samp><span class="samp">-I</span></samp>&rsquo; flag들을 사용)를 사용하세요. 이들은 대부분의 흔한
+경우들을 잡기 위하여 &lsquo;<samp><span class="samp">-L/usr/local/lib</span></samp>&rsquo; (<code>LDFLAGS</code>, 대부분의 64 비트 리
+눅스 OS들에서 &lsquo;<samp><span class="samp">-L/usr/local/lib64</span></samp>&rsquo;)와
+&lsquo;<samp><span class="samp">-I/usr/local/include</span></samp>&rsquo; (<code>CPPFLAGS</code>)가 디폴트 입니다. 만약 라이브러리들이
+아직 찾아지지 않았다면, 아마도 여러분의 comlier/linker이 <samp><span class="option">–L</span></samp>과 <samp><span class="option">–l</span></samp> flag
+들의 재 배열을 지원하지 않을지도 모릅니다. (이는 native <samp><span class="command">cc</span></samp>를 가진
+HP_UX에서 문제가 된다고 리포트 되었었습니다). 이런 경우에는, 다른
+컴파일러 (혹은 재 배열을 하는 front end shell script)를 사용하세요.
 
-   <p>These flags can also be used to build a faster-running version of R. 
-On most platforms using <samp><span class="command">gcc</span></samp>, having &lsquo;<samp><span class="samp">-O3</span></samp>&rsquo; in
-<code>CFLAGS</code> and <code>FFLAGS</code> produces worthwhile performance gains
-with <samp><span class="command">gcc</span></samp> and <samp><span class="command">gfortran</span></samp>.  On systems using the
-<acronym>GNU</acronym> linker (especially those using R as a shared library),
-it is likely that including &lsquo;<samp><span class="samp">-Wl,-O1</span></samp>&rsquo; in <code>LDFLAGS</code> is
-worthwhile, and &lsquo;<samp><span class="samp">'-Bdirect,--hash-style=both,-Wl,-O1'</span></samp>&rsquo; is
-recommended at <a href="http://lwn.net/Articles/192624/">http://lwn.net/Articles/192624/</a>.  Tuning
-compilation to a specific <acronym>CPU</acronym> family (e.g. 
-&lsquo;<samp><span class="samp">-mtune=native</span></samp>&rsquo; for <samp><span class="command">gcc</span></samp>) can give worthwhile performance
-gains, especially on older architectures such as &lsquo;<samp><span class="samp">ix86</span></samp>&rsquo;.
+<!-- These flags can also be used to build a faster-running version of @R{}. -->
+<!-- On most platforms using @command{gcc}, having @samp{-O3} in -->
+<!-- @code{CFLAGS} and @code{FFLAGS} produces worthwhile performance gains -->
+<!-- with @command{gcc} and @command{gfortran}.  On systems using the -->
+<!-- @acronym{GNU} linker (especially those using @R{} as a shared library), -->
+<!-- it is likely that including @samp{-Wl,-O1} in @code{LDFLAGS} is -->
+<!-- worthwhile, and @samp{'-Bdirect,-hash-style=both,-Wl,-O1'} is -->
+<!-- recommended at @uref{http://lwn.net/@/Articles/@/192624/}.  Tuning -->
+<!-- compilation to a specific @acronym{CPU} family (e.g.@: -->
+<!-- @samp{-mtune=native} for @command{gcc}) can give worthwhile performance -->
+<!-- gains, especially on older architectures such as @cputype{ix86}. -->
+   <p>이 flag들은 R버전의 더 빠르게 돌아가는 빌드를 하기위해서 쓰여질 수도
+있습니다. <samp><span class="command">gcc</span></samp>를 사용하는 대부분의 플랫폼에서, <code>CFLAGS</code>와 <code>FFLAGS</code>에 &lsquo;<samp><span class="samp">-O3</span></samp>&rsquo;
+를 가지고 있는 것은 <samp><span class="command">gcc</span></samp>와 <samp><span class="command">gfortran</span></samp>과 함께가치있는 성능 향상을 생산합니
+다. <acronym>GNU</acronym> linker를 사용하는 시스템들에서 (특히 R을 공유 라이브러리처럼
+사용하는 것들), LDFLAGSdp &lsquo;<samp><span class="samp">-Wl, -O1</span></samp>&rsquo;를 포함하는 것이 가치가 있고,
+<a href="http://lwn.net/Articles/192624/">http://lwn.net/Articles/192624/</a>에서는 &lsquo;<samp><span class="samp">-Bdirect, --hash-style=both,
+-Wl, O1</span></samp>&rsquo;이 추천됩니다. 특정한 CPU 패밀리로 compilation을 조율하는 것은
+(예로, <samp><span class="command">gcc</span></samp>를 위한 &lsquo;<samp><span class="samp">-mtune=native</span></samp>&rsquo;) 특히 &lsquo;<samp><span class="samp">ix86</span></samp>&rsquo;과 같은 더 오래된
+아키텍처 들에서 가치있는 성능 향상을 줍니다.
 
 <div class="node">
 <a name="Making-manuals"></a>
@@ -5334,8 +5373,13 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-variables">Configuration
 
 <h4 class="subsection">B.3.4 Making manuals</h4>
 
-<p><a name="index-R_005fRD4PDF-76"></a><a name="index-R_005fPAPERSIZE-77"></a>The default settings for making the manuals are controlled by
+<h4 class="subsection">B.3.5 메뉴얼 만들기</h4>
+
+<p><a name="index-R_005fRD4PDF-74"></a><a name="index-R_005fPAPERSIZE-75"></a><!-- The default settings for making the manuals are controlled by -->
 <samp><span class="env">R_RD4PDF</span></samp> and <samp><span class="env">R_PAPERSIZE</span></samp>.
+
+   <p>매뉴얼을 만드는 기본 설정들은 <samp><span class="env">R_RD4PDF</span></samp> 와 <samp><span class="env">R_PAPERSIZE</span></samp>에 의해 컨트롤 됩
+니다.
 
 <div class="node">
 <a name="Setting-the-shell"></a>
@@ -5346,14 +5390,20 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-on-a-Unix_002dalike">Con
 
 </div>
 
-<h3 class="section">B.4 Setting the shell</h3>
+<!-- @section Setting the shell -->
+<h3 class="section">B.4 쉘 설정하기</h3>
 
-<p>By default the shell scripts such as <samp><span class="file">R</span></samp> will be &lsquo;<samp><span class="samp">#!/bin/sh</span></samp>&rsquo;
-scripts (or using the <samp><span class="env">SHELL</span></samp> chosen by <samp><span class="file">configure</span></samp>).  This is
-almost always satisfactory, but on a few systems <samp><span class="file">/bin/sh</span></samp> is not a
-Bourne shell or clone, and the shell to be used can be changed by
-setting the configure variable <samp><span class="env">R_SHELL</span></samp> to a suitable value (a full
-path to a shell, e.g. <samp><span class="file">/usr/local/bin/bash</span></samp>).
+<!-- By default the shell scripts such as @file{R} will be @samp{#!/bin/sh} -->
+<!-- scripts (or using the @env{SHELL} chosen by @file{configure}).  This is -->
+<!-- almost always satisfactory, but on a few systems @file{/bin/sh} is not a -->
+<!-- Bourne shell or clone, and the shell to be used can be changed by -->
+<!-- setting the configure variable @env{R_SHELL} to a suitable value (a full -->
+<!-- path to a shell, e.g. @file{/usr/local/bin/bash}). -->
+<p>기본값으로, <samp><span class="file">R</span></samp>과 같은 shell script들은 &lsquo;<samp><span class="samp">#!/bin/sh</span></samp>&rsquo; 스크립트들 (혹은
+<samp><span class="file">congifure</span></samp>에 의해 선택된 <samp><span class="env">SHELL</span></samp>을 사용) 일 것입니다. 이는 거의 항상 만족
+스럽지만, 몇몇의 시스템들 <samp><span class="file">/bin/sh</span></samp>는 Bourne shell이나 clone이 아니고
+configure 값 <samp><span class="env">R_SHELL</span></samp>을 알맞은 값으로 (shell로의 전체 경로,
+예, <samp><span class="file">/usr/local/bin/bash</span></samp>) 설정함으로써 쓰이려는 shell이 바뀔 수도 있습니다.
 
 <div class="node">
 <a name="Using-make"></a>
@@ -5364,26 +5414,37 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-on-a-Unix_002dalike">Con
 
 </div>
 
-<h3 class="section">B.5 Using make</h3>
+<!-- @section Using make -->
+<h3 class="section">B.5 make 사용하기</h3>
 
-<p><a name="index-make-78"></a>
-To compile R, you will most likely find it easiest to use
-<acronym>GNU</acronym> <samp><span class="command">make</span></samp>, although the Sun <samp><span class="command">make</span></samp> works on
-Solaris, as does the native FreeBSD <samp><span class="command">make</span></samp>.  The native
-<samp><span class="command">make</span></samp> has been reported to fail on SGI Irix 6.5 and Alpha/OSF1
-(aka Tru64).
+<p><a name="index-make-76"></a>
+<!-- To compile @R{}, you will most likely find it easiest to use -->
+<!-- @acronym{GNU} @command{make}, although the Sun @command{make} works on -->
+<!-- Solaris, as does the native FreeBSD @command{make}.  The native -->
+<!-- @command{make} has been reported to fail on SGI Irix 6.5 and Alpha/OSF1 -->
+<!-- (aka Tru64). -->
+<!-- To build in a separate directory you need a @command{make} that uses the -->
+<!-- @code{VPATH} variable, for example @acronym{GNU} @command{make}, or Sun -->
+<!-- @command{make} on Solaris 7 or later. -->
 
-   <p>To build in a separate directory you need a <samp><span class="command">make</span></samp> that uses the
-<code>VPATH</code> variable, for example <acronym>GNU</acronym> <samp><span class="command">make</span></samp>, or Sun
-<samp><span class="command">make</span></samp> on Solaris 7 or later.
+   <p>R을 컴파일 하기위해서, Solaris에서 Sun <samp><span class="command">make</span></samp>와 native FreeBSD <samp><span class="command">make</span></samp>가 돌
+아가지만, 여러분은 아마도 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>를 사용하는 것이 가장 쉽다고 느낄 것
+입니다. Native <samp><span class="command">make</span></samp>는 SGI Irix 6.5와 (Tru64로 알려져 있는)Alpha/OSF 1
+에서 실패한다고 리포트 되었었습니다. 
+따로 떨어진 디렉터리를 빌드하기 위해서는, 예를들어 <acronym>GNU</acronym> <samp><span class="command">make</span></samp> 혹은
+Solaris 7 이후의 Sun <samp><span class="command">make</span></samp>와 같은 <code>VPATH</code> 값을 사용하는 <samp><span class="command">make</span></samp>가 필요합니다.
 
    <p><samp><span class="command">dmake</span></samp> has also been used. e.g, on Solaris 10.
 
-   <p>If you want to use a <samp><span class="command">make</span></samp> by another name, for example if your
-<acronym>GNU</acronym> <samp><span class="command">make</span></samp> is called &lsquo;<samp><span class="samp">gmake</span></samp>&rsquo;, you need to set the
-variable <code>MAKE</code> at configure time, for example
+<!-- If you want to use a @command{make} by another name, for example if your -->
+<!-- @acronym{GNU} @command{make} is called @samp{gmake}, you need to set the -->
+<!-- variable @code{MAKE} at configure time, for example -->
+<!-- 예를 들어 Solaris 10과 같은 곳에서, @command{dmake}도 사용되어지고 있습니다. -->
+   <p>만약 <samp><span class="command">make</span></samp>를 다른 이름으로 쓰고싶다면, 예를 들어 여러분의 <acronym>GNU</acronym> <samp><span class="command">make</span></samp>가
+&lsquo;<samp><span class="samp">gmake</span></samp>&rsquo;로 불려진다면, 예를 들어 다음과 같이 configure time에 값 <samp><span class="command">make</span></samp>를
+설정해야 합니다.
 
-   <p><a name="index-configure-79"></a>
+   <p><a name="index-configure-77"></a>
 <pre class="example">     ./configure MAKE=gmake
 </pre>
    <div class="node">
@@ -5397,71 +5458,120 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-on-a-Unix_002dalike">Con
 
 <h3 class="section">B.6 Using FORTRAN</h3>
 
-<p><a name="index-FORTRAN-80"></a>
+<h3 class="section">B.7 포트란 사용하기</h3>
+
+<p><a name="index-FORTRAN-78"></a>
 
 <ul class="menu">
 <li><a accesskey="1" href="#Using-gfortran">Using gfortran</a>
 </ul>
 
-   <p>To compile R, you need a FORTRAN compiler.  The default
-is to search for
+<!-- To compile @R{}, you need a FORTRAN compiler.  The default -->
+<!-- is to search for -->
 <!-- F95_compilers in m4/R.m4: -->
-<samp><span class="command">f95</span></samp>, <samp><span class="command">fort</span></samp>, <samp><span class="command">xlf95</span></samp>,
+<!-- @command{f95}, @command{fort}, @command{xlf95}, -->
+<!-- @command{ifort}, @command{ifc}, @command{efc}, @command{pgf95} -->
+<!-- @command{lf95}, @command{gfortran}, @command{ftn}, @command{g95}, -->
+<!-- F90 compilers in m4/R.m4: -->
+<!-- @command{f90}, @command{xlf90}, @command{pghpf}, @command{pgf90}, -->
+<!-- @command{epcf90}, -->
+<!-- F77 compilers in m4/R.m4: -->
+<!-- @command{g77}, @command{f77}, @command{xlf}, @command{frt}, -->
+<!-- @command{pgf77}, @command{cf77}, @command{fort77}, @command{fl32}, -->
+<!-- @command{af77} (in that order)@footnote{On HP-UX @command{fort77} is the -->
+<!-- @acronym{POSIX} compliant FORTRAN compiler, and comes after -->
+<!-- @command{g77}.}, and use whichever is found first; if none is found, -->
+<!-- @R{} cannot be compiled. -->
+<!-- GCC_Fortran_compiler in m4/R.m4: -->
+<!-- However, if @command{CC} is @command{gcc}, the matching FORTRAN compiler -->
+<!-- (@command{g77} for @command{gcc}@tie{}3 and @code{gfortran} for -->
+<!-- @command{gcc}@tie{}4) is used if available. -->
+   <p>R을 컴파일하기 위해서 여러분은 FORTRAN 컴파일러가  필요합니다. 기본값
+은 (순서대로)<samp><span class="command">f95</span></samp>, <samp><span class="command">fort</span></samp>, <samp><span class="command">xlf95</span></samp>,
 <samp><span class="command">ifort</span></samp>, <samp><span class="command">ifc</span></samp>, <samp><span class="command">efc</span></samp>, <samp><span class="command">pgf95</span></samp>
 <samp><span class="command">lf95</span></samp>, <samp><span class="command">gfortran</span></samp>, <samp><span class="command">ftn</span></samp>, <samp><span class="command">g95</span></samp>,
-<!-- F90 compilers in m4/R.m4: -->
 <samp><span class="command">f90</span></samp>, <samp><span class="command">xlf90</span></samp>, <samp><span class="command">pghpf</span></samp>, <samp><span class="command">pgf90</span></samp>,
-<samp><span class="command">epcf90</span></samp>,
-<!-- F77 compilers in m4/R.m4: -->
-<samp><span class="command">g77</span></samp>, <samp><span class="command">f77</span></samp>, <samp><span class="command">xlf</span></samp>, <samp><span class="command">frt</span></samp>,
+<samp><span class="command">epcf90</span></samp>,<samp><span class="command">g77</span></samp>, <samp><span class="command">f77</span></samp>, <samp><span class="command">xlf</span></samp>, <samp><span class="command">frt</span></samp>,
 <samp><span class="command">pgf77</span></samp>, <samp><span class="command">cf77</span></samp>, <samp><span class="command">fort77</span></samp>, <samp><span class="command">fl32</span></samp>,
-<samp><span class="command">af77</span></samp> (in that order)<a rel="footnote" href="#fn-24" name="fnd-24"><sup>24</sup></a>, and use whichever is found first; if none is found,
-R cannot be compiled. 
-<!-- GCC_Fortran_compiler in m4/R.m4: -->
-However, if <samp><span class="command">CC</span></samp> is <samp><span class="command">gcc</span></samp>, the matching FORTRAN compiler
-(<samp><span class="command">g77</span></samp> for <samp><span class="command">gcc</span></samp>&nbsp;3 and <code>gfortran</code> for
-<samp><span class="command">gcc</span></samp>&nbsp;4) is used if available.
+<samp><span class="command">af77</span></samp>,)<a rel="footnote" href="#fn-24" name="fnd-24"><sup>24</sup></a>, 를 찾고, 찾아진 첫 번째 것을 사용합니다; 만약
+아무것도 찾아지지 않았다면, R은 컴파일 될 수 없습니다. 하지만 만약 CC
+가 <samp><span class="command">gcc</span></samp>라면, 맞는 FORTRAN 컴파일러 (<samp><span class="command">gcc</span></samp>&nbsp;3는 <samp><span class="command">g</span></samp>77 그리고 <samp><span class="command">gcc4</span></samp>는
+<code>gfortran</code>)가 사용이 가능하다면 이가 사용됩니다.
 
-   <p>The search mechanism can be changed using the configure variable
-<code>F77</code> which specifies the command that runs the FORTRAN 77
-compiler.  If your FORTRAN compiler is in a non-standard location, you
-<a name="index-PATH-81"></a>should set the environment variable <samp><span class="env">PATH</span></samp> accordingly before
-running <samp><span class="command">configure</span></samp>, or use the configure variable <code>F77</code> to
-specify its full path.
+<!-- The search mechanism can be changed using the configure variable -->
+<!-- @code{F77} which specifies the command that runs the FORTRAN 77 -->
+<!-- compiler.  If your FORTRAN compiler is in a non-standard location, you -->
+<!-- @enindex PATH -->
+<!-- should set the environment variable @env{PATH} accordingly before -->
+<!-- running @command{configure}, or use the configure variable @code{F77} to -->
+<!-- specify its full path. -->
+   <p>검색 mechanism은 FORTRAN <code>77</code> 컴파일러를 실행하는 명령어를 명시하는
+설정 값 <code>F77</code>을 사용하여 바뀔 수 있습니다. 만약 여러분의 FORTRAN
+컴파일러가 기본 위치가 아닌 곳에 있다면, 설정을 실행하기 전에 환
+경값 <samp><span class="env">PATH</span></samp>에 그에 맞춰 설정되거나 혹은 그의 전체 경로를 명시하기 위한
+<samp><span class="command">configure</span></samp>값 <code>F77</code>을 사용합니다.
 
-   <p>If your FORTRAN libraries are in slightly peculiar places, you should
-<a name="index-LD_005fLIBRARY_005fPATH-82"></a>also look at <samp><span class="env">LD_LIBRARY_PATH</span></samp> or your system's equivalent to make
-sure that all libraries are on this path.
+<!-- If your FORTRAN libraries are in slightly peculiar places, you should -->
+<!-- @enindex LD_LIBRARY_PATH -->
+<!-- also look at @env{LD_LIBRARY_PATH} or your system's equivalent to make -->
+<!-- sure that all libraries are on this path. -->
+   <p>만약 FORTRAN 라이브러리들이 조금 이상한 장소에 있다면, 모든 라이브러리
+들이 이 경로에 있는지를 확실히 하기위하여 <samp><span class="env">LD_LIBRARY_PATH</span></samp>나 여러분의
+시스템의 비슷한 곳을 살펴 보세요.
 
-   <p>Note that only FORTRAN compilers which convert identifiers to lower case
-are supported.
+<!-- Note that only FORTRAN compilers which convert identifiers to lower case -->
+<!-- are supported. -->
+   <p>오로지 identifier들을 소문자로 바꾸는FORTRAN 컴파일러들만 지원된다는
+것을 유의하십니오.
 
-   <p>You must set whatever compilation flags (if any) are needed to ensure
-that FORTRAN <code>integer</code> is equivalent to a C <code>int</code> pointer and
-FORTRAN <code>double precision</code> is equivalent to a C <code>double</code>
-pointer.  This is checked during the configuration process.
+<!-- You must set whatever compilation flags (if any) are needed to ensure -->
+<!-- that FORTRAN @code{integer} is equivalent to a C @code{int} pointer and -->
+<!-- FORTRAN @code{double precision} is equivalent to a C @code{double} -->
+<!-- pointer.  This is checked during the configuration process. -->
+   <p>FORTRAN <code>integer</code>이 C <code>int</code> pointer와 같은지와 Fortran <code>double precision</code>이
+C <code>double</code> pointer와 같은지를 활실히 하기위하여 필요한 모든 compilation
+flag들 (만약 있다면)을 설정해야만 합니다. 이는 configuration 프로세스
+동안 체크됩니다.
 
-   <p>Some of the FORTRAN code makes use of <code>COMPLEX*16</code> variables, which
-is a Fortran 90 extension.  This is checked for at configure
-time<a rel="footnote" href="#fn-25" name="fnd-25"><sup>25</sup></a>, but you may need to avoid
-compiler flags asserting FORTRAN 77 compliance.
+<!-- Some of the FORTRAN code makes use of @code{COMPLEX*16} variables, which -->
+<!-- is a Fortran 90 extension.  This is checked for at configure -->
+<!-- time@footnote{as well as its equivalence to the @code{Rcomplex} -->
+<!-- structure defined in @file{R_ext/Complex.h}.}, but you may need to avoid -->
+<!-- compiler flags asserting FORTRAN 77 compliance. -->
+   <p>몇몇의 FORTRAN 코드는 Fortran 90의 확장인 <code>COMPLEX*16</code> 값들을 활용합니
+다. 이는 configure 시간<a rel="footnote" href="#fn-25" name="fnd-25"><sup>25</sup></a>에 확인되지만, FORTRAN 77 compliance를 주장하는  compiler flag들은 피해야할 수도 있습니다.
 
-   <p>Compiling the version of LAPACK in the R sources also requires some
-Fortran 90 extensions, but these are not needed if an external LAPACK is
-used.
+<!-- Compiling the version of LAPACK in the @R{} sources also requires some -->
+<!-- Fortran 90 extensions, but these are not needed if an external LAPACK is used. -->
+   <p>R 소스들 안의 LAPACK 버전을 컴파일하는 것도 몇몇의 Fortran 90 확장판
+들에서 필요할 수도 있지만, 만약 외부 LAPACK이 사용되었다면 필요하지않
+습니다.
 
-   <p><a name="index-BLAS-library-83"></a>For performance reasons<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a> you may want to choose a FORTRAN 90/95 compiler.
+   <p><a name="index-BLAS-library-79"></a><!-- For performance reasons@footnote{e.g., to use an optimized @acronym{BLAS} on -->
+<!-- Sun/Sparc} you may want to choose a FORTRAN 90/95 compiler. -->
 
-   <p>It may be possible to use <samp><span class="command">f2c</span></samp>, the FORTRAN-to-C converter
-(<a href="http://www.netlib.org/f2c">http://www.netlib.org/f2c</a>), via a script.  (An example script
-is given in <samp><span class="file">scripts/f77_f2c</span></samp>: this can be customized by setting
-<a name="index-F2C-84"></a><a name="index-F2CLIBS-85"></a><a name="index-CC-86"></a>the environment variables <samp><span class="env">F2C</span></samp>, <samp><span class="env">F2CLIBS</span></samp>, <samp><span class="env">CC</span></samp> and
-<a name="index-CPP-87"></a><samp><span class="env">CPP</span></samp>.)  You will need to ensure that the FORTRAN type
-<code>integer</code> is translated to the C type <code>int</code>.  Normally
-<samp><span class="file">f2c.h</span></samp> contains &lsquo;<samp><span class="samp">typedef long int integer;</span></samp>&rsquo;, which will work
-on a 32-bit platform but not on a 64-bit platform.  If your compiler is
-not <samp><span class="command">gcc</span></samp> you
-<a name="index-FPICFLAGS-88"></a>will need to set <samp><span class="env">FPICFLAGS</span></samp> appropriately.
+   <p>성능상의 이유<a rel="footnote" href="#fn-26" name="fnd-26"><sup>26</sup></a> 로, FORTRAN 90/95 컴파일러를 선택하기를 원할 수도 있습니다.
+
+<!-- It may be possible to use @command{f2c}, the FORTRAN-to-C converter -->
+<!-- (@uref{http://www.netlib.org/@/f2c}), via a script.  (An example script -->
+<!-- is given in @file{scripts/f77_f2c}: this can be customized by setting -->
+<!-- @enindex F2C -->
+   <p><a name="index-F2CLIBS-80"></a><a name="index-CC-81"></a><!-- the environment variables @env{F2C}, @env{F2CLIBS}, @env{CC} and -->
+<a name="index-CPP-82"></a><!-- @env{CPP}.)  You will need to ensure that the FORTRAN type -->
+<!-- @code{integer} is translated to the C type @code{int}.  Normally -->
+<!-- @file{f2c.h} contains @samp{typedef long int integer;}, which will work -->
+<!-- on a 32-bit platform but not on a 64-bit platform.  If your compiler is -->
+<!-- not @command{gcc} you -->
+<a name="index-FPICFLAGS-83"></a><!-- will need to set @env{FPICFLAGS} appropriately. -->
+
+   <p>스크립트를 통해 FORTRAN-to-C 컨버터(<a href="http://www.netlib.org/f2c">http://www.netlib.org/f2c</a>)인 <samp><span class="command">f2c</span></samp>를
+사용하는 것이 가능할 수도 있습니다. (예제 스크립트는 <samp><span class="file">scripts/f77_f2c</span></samp>에
+주어져 있습니다: 이는 환경값들 <samp><span class="env">F2C</span></samp>, <samp><span class="env">F2CLIBS</span></samp>, <samp><span class="env">CC</span></samp>, 그리고 <samp><span class="env">CPP</span></samp>를 설정함으
+로써 customize될 수 있습니다.) 여러분은 FORTRAN 타입 integer이 C 타입
+<code>int</code>로 번역되었는지를 확실히해야 할 것입니다. 일반적으로 <samp><span class="file">f2c.h</span></samp>는 32비트
+플랫폼에서는 작동하지만 64 비트 플랫폼에서는 작동하지 않을 &lsquo;<samp><span class="samp">typedef
+long int integer;</span></samp>&rsquo;를 포함합니다. 만약 여러분의 컴파일러가 <samp><span class="command">gcc</span></samp>가 아니라
+면, <samp><span class="env">FPICFLAGS</span></samp>를 알맞게 설정해야 할 것입니다.
 
 <div class="node">
 <a name="Using-gfortran"></a>
@@ -5471,26 +5581,37 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Using-FORTRAN">Using FORTRAN</a>
 
 </div>
 
-<h4 class="subsection">B.6.1 Using gfortran</h4>
+<!-- @subsection Using gfortran -->
+<h4 class="subsection">B.7.1 gfortran 사용하기</h4>
 
-<p><samp><span class="command">gfortran</span></samp> is the F95 compiler that is part of
-<samp><span class="command">gcc</span></samp>&nbsp;4.<var>x</var>.<var>y</var>.
-
-   <p>On Linux &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; systems there is an incompatibility in the
-return conventions for double-complex functions between
-<samp><span class="command">gfortran</span></samp> and <samp><span class="command">g77</span></samp> which results in the final example
-in <code>example(eigen)</code> hanging or segfaulting under external <acronym>BLAS</acronym>s
-built under <samp><span class="command">g77</span></samp>.  This should be detected by a
-<samp><span class="command">configure</span></samp> test.  Although <samp><span class="command">g77</span></samp> is long obsolete this
-is still sometimes seen with C versions of external software using
-<samp><span class="command">g77</span></samp> conventions.
-
-   <p>The default <code>FFLAGS</code> and <code>FCFLAGS</code> chosen (by
-<samp><span class="command">autoconf</span></samp>) for a <acronym>GNU</acronym> FORTRAN compiler is &lsquo;<samp><span class="samp">-g
--O2</span></samp>&rsquo;.  This has caused problems (segfaults and infinite loops) on
-&lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Linux in the past, but seems fine with
-<samp><span class="command">gfortran 4.4.4</span></samp> and later: for <code>gfortran 4.3.x</code> set
-<code>FFLAGS</code> and <code>FCFLAGS</code> to use at most &lsquo;<samp><span class="samp">-O</span></samp>&rsquo;.
+<!-- @command{gfortran} is the F95 compiler that is part of -->
+<!-- @command{gcc}@tie{}4.@var{x}.@var{y}. -->
+<!-- On Linux @cputype{x86_64} systems there is an incompatibility in the -->
+<!-- return conventions for double-complex functions between -->
+<!-- @command{gfortran} and @command{g77} which results in the final example -->
+<!-- in @code{example(eigen)} hanging or segfaulting under external @acronym{BLAS}s -->
+<!-- built under @command{g77}.  This should be detected by a -->
+<!-- @command{configure} test.  Although @command{g77} is long obsolete this -->
+<!-- is still sometimes seen with C versions of external software using -->
+<!-- @command{g77} conventions. -->
+<!-- The default @code{FFLAGS} and @code{FCFLAGS} chosen (by -->
+<!-- @command{autoconf}) for a @acronym{GNU} FORTRAN compiler is @samp{-g -->
+<!-- O2}.  This has caused problems (segfaults and infinite loops) on -->
+<!-- @cputype{x86_64} Linux in the past, but seems fine with -->
+<!-- @command{gfortran 4.4.4} and later: for @code{gfortran 4.3.x} set -->
+<!-- @code{FFLAGS} and @code{FCFLAGS} to use at most @samp{-O}. -->
+<p><samp><span class="command">Gfortran</span></samp>은 <samp><span class="command">gcc</span></samp>&nbsp;4.<var>x</var>.<var>y</var>의 일부분인 F95 컴파일러입니다. 
+리눅스 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 시스템들에서, <code>example(eigen)</code>의 마지막 예제에서 <code>g77</code>에서
+구축된 외부 <acronym>BLAS</acronym>들에서의 hanging이나 segfaulting을 초래하는 <samp><span class="command">fortran</span></samp>과
+<samp><span class="command">g77</span></samp> 사이에서의 double-complex function들에 대한 return convention들의
+불화합성이 있습니다. 이는 <samp><span class="command">configure</span></samp> 테스트에의해 발견되어야만 합니다. 
+<samp><span class="command">g77</span></samp>이 이미 퇴화되었다고는하나, 이는 아직도 가끔 <samp><span class="command">g77</span></samp> convention들을 사
+용하는 외부 소프트웨어의 C 버전들과 함꺼 보이기도 합니다. 
+<acronym>GNU</acronym> FORTRAN 컴파일러에 대해 선택되어진 (autoconf에 의해) 기본 <code>FFLAGS</code>와
+<code>FCFLAGS</code>는  &lsquo;<samp><span class="samp">-g -O2</span></samp>&rsquo;입니다. 이는 과거에 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; 리눅스에서 문제
+들(segfault들과 무한 루프들)을 일으켰지만, <code>gfortran 4.4.4</code>과 이 후 것들
+에서는 괜찮을 듯 합니다: <samp><span class="command">gfortran 4.3.x</span></samp>에서는 최대한 &lsquo;<samp><span class="samp">-O</span></samp>&rsquo;를 사용하기위
+해 <code>FFLAGS</code>와 <code>FCFLAGS</code>를 설정하세요.
 
 <div class="node">
 <a name="Compile-and-load-flags"></a>
@@ -5500,65 +5621,126 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Configuration-on-a-Unix_002dalike">Con
 
 </div>
 
-<h3 class="section">B.7 Compile and load flags</h3>
+<!-- @section Compile and load flags -->
+<h3 class="section">B.8 컴파일과 로드 플래그</h3>
 
-<p>A wide range of flags can be set in the file <samp><span class="file">config.site</span></samp> or as
-configure variables on the command line.  We have already mentioned
+<!-- A wide range of flags can be set in the file @file{config.site} or as -->
+<!-- configure variables on the command line.  We have already mentioned -->
+<p>flag들의 넓은 범위는 파일 <samp><span class="file">config.site</span></samp>에 설정되거나 명령줄에 설정값
+들처럼 설정될 수 있습니다. 우리는 이미 다음을 언급했습니다.
 
      <dl>
-<dt><code>CPPFLAGS</code><dd>header file search directory (<samp><span class="option">-I</span></samp>) and any other miscellaneous
-options for the C and C++ preprocessors and compilers
-<br><dt><code>LDFLAGS</code><dd>path (<samp><span class="option">-L</span></samp>), stripping (<samp><span class="option">-s</span></samp>) and any other miscellaneous
-options for the linker
+<dt><code>CPPFLAGS</code><dd><!-- header file search directory (@option{-I}) and any other miscellaneous -->
+<!-- options for the C and C++ preprocessors and compilers -->
+
+     <p>검색 디렉토리의 헤더 파일 (<samp><span class="option">-I</span></samp>)과 C와 C++ 프로세서들과 컴파일러들을
+위한 다른 모든 기타 옵션들
+
+     <br><dt><code>LDFLAGS</code><dd><!-- path (@option{-L}), stripping (@option{-s}) and any other miscellaneous -->
+<!-- options for the linker -->
 </dl>
+
+   <p>경로(<samp><span class="option">-L</span></samp>), stripping (<samp><span class="option">-s</span></samp>) 그리고 링커를 위한 다른 모든 기타 옵션들
+그리고 다른 것들은 다음을 포함합니다.
 
 <p class="noindent">and others include
 
      <dl>
-<dt><code>CFLAGS</code><dd>debugging and optimization flags, C
-<br><dt><code>MAIN_CFLAGS</code><dd>ditto, for compiling the main program
-<br><dt><code>SHLIB_CFLAGS</code><dd>for shared objects
-<br><dt><code>FFLAGS</code><dd>debugging and optimization flags, FORTRAN
-<br><dt><code>SAFE_FFLAGS</code><dd>ditto for source files which need exact floating point behaviour
-<br><dt><code>MAIN_FFLAGS</code><dd>ditto, for compiling the main program
-<br><dt><code>SHLIB_FFLAGS</code><dd>for shared objects
-<br><dt><code>MAIN_LDFLAGS</code><dd>additional flags for the main link
-<br><dt><code>SHLIB_LDFLAGS</code><dd>additional flags for linking the shared objects
-<br><dt><code>LIBnn</code><dd>the primary library directory, <samp><span class="file">lib</span></samp> or <samp><span class="file">lib64</span></samp>
-<br><dt><code>CPICFLAGS</code><dd>special flags for compiling C code to be turned into a shared object
-<br><dt><code>FPICFLAGS</code><dd>special flags for compiling Fortran code to be turned into a shared object
-<br><dt><code>CXXPICFLAGS</code><dd>special flags for compiling C++ code to be turned into a shared object
-<br><dt><code>FCPICFLAGS</code><dd>special flags for compiling Fortran 95 code to be turned into a shared object
-<br><dt><code>DEFS</code><dd>defines to be used when compiling C code in R itself
+<dt><code>CFLAGS</code><dd><!-- debugging and optimization flags, C -->
+
+     <p>디버깅과 최적화 flag들, C
+
+     <br><dt><code>MAIN_CFLAGS</code><dd><!-- ditto, for compiling the main program -->
+ditto, 주요 프로그램의 구축을 위함
+
+     <br><dt><code>SHLIB_CFLAGS</code><dd><!-- for shared objects -->
+공유된 객체를을 위함
+
+     <br><dt><code>FFLAGS</code><dd><!-- debugging and optimization flags, FORTRAN -->
+디버깅과 최적화 flag들, FORTRAN
+
+     <br><dt><code>SAFE_FFLAGS</code><dd><!-- ditto for source files which need exact floating point behaviour -->
+정확한 floating point behaviour이 필요한 소스 파일들을 위한 ditto
+
+     <br><dt><code>MAIN_FFLAGS</code><dd><!-- ditto, for compiling the main program -->
+ditto, 주요 프로그램의 구축을 위함
+
+     <br><dt><code>SHLIB_FFLAGS</code><dd><!-- for shared objects -->
+공유된 객체들을 위함
+
+     <br><dt><code>MAIN_LDFLAGS</code><dd><!-- additional flags for the main link -->
+주요 링크를 위한 추가적인 flag들
+
+     <br><dt><code>SHLIB_LDFLAGS</code><dd><!-- additional flags for linking the shared objects -->
+공유된 객체들의 연결을 위한 추가적인 flag들
+
+     <br><dt><code>LIBnn</code><dd><!-- the primary library directory, @file{lib} or @file{lib64} -->
+최초의 라이브러리 디렉토리, <samp><span class="file">lib</span></samp> 혹은 <samp><span class="file">lib64</span></samp>
+
+     <br><dt><code>CPICFLAGS</code><dd><!-- special flags for compiling C code to be turned into a shared object -->
+C 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
+     <br><dt><code>FPICFLAGS</code><dd><!-- special flags for compiling Fortran code to be turned into a shared object -->
+Fortran 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
+     <br><dt><code>CXXPICFLAGS</code><dd><!-- special flags for compiling C++ code to be turned into a shared object -->
+C++ 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
+     <br><dt><code>FCPICFLAGS</code><dd><!-- special flags for compiling Fortran 95 code to be turned into a shared object -->
+Fortran95 코드를 공유된 객체로 바뀌도록 컴파일 하는 스페셜 flag들
+
+     <br><dt><code>DEFS</code><dd><!-- defines to be used when compiling C code in R itself -->
+R 자체에 C 코드를 컴파일 할 때 사용되도록 정의함
 </dl>
 
-<p class="noindent">Library paths specified as <samp><span class="option">-L/lib/path</span></samp> in <code>LDFLAGS</code> are
-<a name="index-LD_005fLIBRARY_005fPATH-89"></a>collected together and prepended to <samp><span class="env">LD_LIBRARY_PATH</span></samp> (or your
-system's equivalent), so there should be no need for <samp><span class="option">-R</span></samp> or
-<samp><span class="option">-rpath</span></samp> flags.
+<p class="noindent"><!-- Library paths specified as @option{-L/lib/path} in @code{LDFLAGS} are -->
+<!-- @enindex LD_LIBRARY_PATH -->
+<!-- collected together and prepended to @env{LD_LIBRARY_PATH} (or your -->
+<!-- system's equivalent), so there should be no need for @option{-R} or -->
+<!-- @option{-rpath} flags. -->
 
-   <p>Variables such as <samp><span class="env">CPICFLAGS</span></samp> are determined where possible by
-<samp><span class="command">configure</span></samp>.  Some systems allows two types of PIC flags, for
-example &lsquo;<samp><span class="samp">-fpic</span></samp>&rsquo; and &lsquo;<samp><span class="samp">-fPIC</span></samp>&rsquo;, and if they differ the first
-allows only a limited number of symbols in a shared object.  Since R
-as a shared library has about 6200 symbols, if in doubt use the larger
-version.
+   <p><code>LDFLAGS</code> 안의 <samp><span class="option">–L/lib/path</span></samp>처럼 명시된 라이브러리 경로는 같이 수집되고
+<samp><span class="env">LD_LIBRARY_PATH</span></samp>로 prepend되기때문에 (혹은 여러분의 시스템 상의 동일한
+것), <samp><span class="option">-R</span></samp> 이나 <samp><span class="option">–rpath</span></samp> flag들이 필요가 없어야 합니다.
 
-   <p>To compile a profiling version of R, one might for example want to
-use &lsquo;<samp><span class="samp">MAIN_CFLAGS=-pg</span></samp>&rsquo;, &lsquo;<samp><span class="samp">MAIN_FFLAGS=-pg</span></samp>&rsquo;,
-&lsquo;<samp><span class="samp">MAIN_LDFLAGS=-pg</span></samp>&rsquo; on platforms where &lsquo;<samp><span class="samp">-pg</span></samp>&rsquo; cannot be used
-with position-independent code.
+<!-- Variables such as @env{CPICFLAGS} are determined where possible by -->
+<!-- @command{configure}.  Some systems allows two types of PIC flags, for -->
+<!-- example @samp{-fpic} and @samp{-fPIC}, and if they differ the first -->
+<!-- allows only a limited number of symbols in a shared object.  Since @R{} -->
+<!-- as a shared library has about 6200 symbols, if in doubt use the larger -->
+<!-- version. -->
+   <p><samp><span class="env">CPICFLASG</span></samp>와 같은 값들은 <samp><span class="command">configure</span></samp>에 의해 가능한 곳에 정의됩니다. 몇몇
+의 시스템들은 예를 들어 &lsquo;<samp><span class="samp">-fpic</span></samp>&rsquo;과 &lsquo;<samp><span class="samp">-fPIC</span></samp>&rsquo;과 같은 두 가지 타입의 PIC
+flag들을 허용하고, 만약 이들이 다르다면 공유된 객체안의 제한된 갯수의
+심볼들만을 우선적으로 허용합니다. 공유된 라이브러리처럼 R이 약 6200
+개의 심볼 들을 가지고 있기 때문에, 만약 의심된다면 더 큰 버전을 사용
+하십시오.
 
-   <p><strong>Beware</strong>: it may be necessary to set <code>CFLAGS</code> and
-<code>FFLAGS</code> in ways compatible with the libraries to be used: one
-possible issue is the alignment of doubles, another is the way
-structures are passed.
+<!-- To compile a profiling version of @R{}, one might for example want to -->
+<!-- use @samp{MAIN_CFLAGS=-pg}, @samp{MAIN_FFLAGS=-pg}, -->
+<!-- @samp{MAIN_LDFLAGS=-pg} on platforms where @samp{-pg} cannot be used -->
+<!-- with position-independent code. -->
+<!-- @strong{Beware}: it may be necessary to set @code{CFLAGS} and -->
+<!-- @code{FFLAGS} in ways compatible with the libraries to be used: one -->
+<!-- possible issue is the alignment of doubles, another is the way -->
+<!-- structures are passed. -->
+   <p>R의 Profiling 버전을 컴파일 하기위해서는, 예를들어 &lsquo;<samp><span class="samp">-pg</span></samp>&rsquo;가 위치 독립적
+인 코드와 함께 사용되지 못하는 플랫폼상에서 &lsquo;<samp><span class="samp">MAIN_CFLAGS=-pg</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">MAIN_FFLAGS=-pg</span></samp>&rsquo;, &lsquo;<samp><span class="samp">MAIN_LDFLAGS=-pg</span></samp>&rsquo;를 사용하고 싶어할 수도 있습니다. 
+주의: 사용할 라이브러리와 호환가능한 방법으로 <code>CFLAGS</code>와 <code>FFLAGS</code>를 설정하
+는 것이 필요할 수도 있습니다: 한 가지 가능한 문제는 doubles의 조정이
+고, 또 하나는 구조가 전달되는 방식입니다.
 
-   <p>On some platforms <samp><span class="command">configure</span></samp> will select additional flags for
-<code>CFLAGS</code>, <code>CPPFLAGS</code>, <code>FFLAGS</code>, <code>CXXFLAGS</code> and
-<code>LIBS</code> in <code>R_XTRA_CFLAGS</code> (and so on).  These are for options
-which are always required, for example to force <acronym>IEC</acronym>&nbsp;60559
-compliance.
+<!-- On some platforms @command{configure} will select additional flags for -->
+<!-- @code{CFLAGS}, @code{CPPFLAGS}, @code{FFLAGS}, @code{CXXFLAGS} and -->
+<!-- @code{LIBS} in @code{R_XTRA_CFLAGS} (and so on).  These are for options -->
+<!-- which are always required, for example to force @acronym{IEC}@tie{}60559 -->
+<!-- compliance. -->
+   <p>몇몇의 플랫폼들에서, <samp><span class="command">configure</span></samp>은 R_XTRA_CFLAG (등등)에서의
+<code>CFLAGS</code>, <code>CPPFLAGS</code>, <code>FFLAGS</code>, <code>CXXFLAGS</code>
+그리고 <code>LIBS</code>들을 위한 추가의 flag들을 선택할
+것입니다. 이들은 예를들어 <acronym>IEC</acronym>&nbsp;60559 compliance를 강요하기위한 것 처럼
+항상 요구된 옵션들을 위한 것 입니다.
 
 <div class="node">
 <a name="Platform-notes"></a>
@@ -5707,7 +5889,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.2 Linux</h3>
 
-<p><a name="index-Linux-90"></a>
+<p><a name="index-Linux-84"></a>
 Linux is the main development platform for R, so compilation from the
 sources is normally straightforward with the standard compilers.
 
@@ -5911,7 +6093,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.3 FreeBSD</h3>
 
-<p><a name="index-FreeBSD-91"></a>
+<p><a name="index-FreeBSD-85"></a>
 Rainer Hurling has reported success on &lsquo;<samp><span class="samp">amd64</span></samp>&rsquo; FreeBSD 9.0 (and
 on earlier versions in the past), and Brian Ripley tested
 &lsquo;<samp><span class="samp">amd64</span></samp>&rsquo; FreeBSD 8.2.  Since Darwin (the base OS of (Mac) OS X)
@@ -5961,7 +6143,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.4 (Mac) OS X</h3>
 
-<p><a name="index-OS-X-92"></a>
+<p><a name="index-OS-X-86"></a>
 <strong>NB:</strong>  Information on OS X is likely to change before release of
 R 3.0.0.
 
@@ -6011,7 +6193,7 @@ are available from <a href="http://r.research.att.com/libs/">http://r.research.a
 most likely want at least <code>jpeg</code>, <code>libpng</code> and <code>readline</code>
 (and perhaps <code>tiff</code>).
 
-   <p><a name="index-BLAS-library-93"></a><a name="index-LAPACK-library-94"></a>The <code>Accelerate</code> library can be used <em>via</em> the configuration options
+   <p><a name="index-BLAS-library-87"></a><a name="index-LAPACK-library-88"></a>The <code>Accelerate</code> library can be used <em>via</em> the configuration options
 
 <pre class="example">     --with-blas="-framework Accelerate" --with-lapack
 </pre>
@@ -6264,7 +6446,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.5 Solaris</h3>
 
-<p><a name="index-Solaris-95"></a>
+<p><a name="index-Solaris-89"></a>
 R has been built successfully on Solaris 10 (both Sparc and
 &lsquo;<samp><span class="samp">x86</span></samp>&rsquo;) using the (zero cost) Oracle Solaris Studio compilers:
 there has been some success with
@@ -6407,7 +6589,7 @@ given by adding
 
 <pre class="example">     CXXFLAGS="-features=tmplrefstatic"
 </pre>
-   <p><a name="index-BLAS-library-96"></a><a name="index-LAPACK-library-97"></a>
+   <p><a name="index-BLAS-library-90"></a><a name="index-LAPACK-library-91"></a>
 The performance library <code>sunperf</code> is available for use with the
 Solaris Studio compilers.  If selected as a <acronym>BLAS</acronym>, it must also
 be selected as LAPACK <em>via</em> (for Solaris Studio 12.2)
@@ -6459,7 +6641,7 @@ needed
 </pre>
    <p class="noindent">Note that paths such as <samp><span class="file">/opt/csw/gcc4/lib/sparcv9</span></samp> may need to
 be in the
-<a name="index-LD_005fLIBRARY_005fPATH-98"></a><samp><span class="env">LD_LIBRARY_PATH</span></samp> during configuration.
+<a name="index-LD_005fLIBRARY_005fPATH-92"></a><samp><span class="env">LD_LIBRARY_PATH</span></samp> during configuration.
 
    <p>The compilation can be tuned to a particular cpu: the CRAN check system
 uses <code>-mtune=niagara2</code>.
@@ -6501,7 +6683,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.6 AIX</h3>
 
-<p><a name="index-AIX-99"></a>
+<p><a name="index-AIX-93"></a>
 We no longer support AIX prior to 4.2, and <samp><span class="command">configure</span></samp> will
 throw an error on such systems.
 
@@ -6549,7 +6731,7 @@ be invoked as <samp><span class="command">xlf_r</span></samp>.
      CPPFLAGS="-I$LIBICONV/include -I/usr/lpp/X11/include/X11"
      LDFLAGS="-L$LIBICONV/lib -L/usr/lib -L/usr/X11R6/lib"
 </pre>
-   <p><a name="index-R_005fSHELL-100"></a>On one AIX 6.x system it was necessary to use <samp><span class="env">R_SHELL</span></samp> to set the
+   <p><a name="index-R_005fSHELL-94"></a>On one AIX 6.x system it was necessary to use <samp><span class="env">R_SHELL</span></samp> to set the
 default shell to be Bash rather than Zsh.
 
    <p>Kurt Hornik and Stefan Theussl at WU (Wirtschaftsuniversit&auml;t Wien)
@@ -6570,7 +6752,7 @@ offers more recent versions of the available OSS.  All tools needed and
 libraries downloaded from these repositories (e.g., GCC, Make,
 <code>libreadline</code>, etc.) are typically installed to
 <samp><span class="file">/opt/freeware</span></samp>, hence corresponding executables are found in
-<a name="index-PATH-101"></a><samp><span class="file">/opt/freeware/bin</span></samp> which thus needs to be in <samp><span class="env">PATH</span></samp> for using
+<a name="index-PATH-95"></a><samp><span class="file">/opt/freeware/bin</span></samp> which thus needs to be in <samp><span class="env">PATH</span></samp> for using
 these tools.  As on other Unix systems one needs <acronym>GNU</acronym>
 <code>libiconv</code> as the AIX version of iconv is not sufficiently
 powerful.  Additionally, for proper Unicode compatibility one should
@@ -6614,7 +6796,7 @@ one can use
 </pre>
    <p class="noindent">for the IBM XL compilers.  For the latter, it is important to note that
 the decision for generating 32-bit or 64-bit code is done by setting the
-<a name="index-OBJECT_005fMODE-102"></a><samp><span class="env">OBJECT_MODE</span></samp> environment variable appropriately (recommended) or
+<a name="index-OBJECT_005fMODE-96"></a><samp><span class="env">OBJECT_MODE</span></samp> environment variable appropriately (recommended) or
 using an additional compiler flag (<samp><span class="option">-q32</span></samp> or <samp><span class="option">-q64</span></samp>).  By
 default the IBM XL compilers produce 32 bit code.  Thus, to build R with
 64-bit support one needs to either export <samp><span class="env">OBJECT_MODE=64</span></samp> in the
@@ -6800,7 +6982,7 @@ installer will also need the following:
 <li>(optional) <code>qpdf</code>
 </ul>
 
-   <p><a name="index-PATH-103"></a>It is important to set your <samp><span class="env">PATH</span></samp> properly.  The installer
+   <p><a name="index-PATH-97"></a>It is important to set your <samp><span class="env">PATH</span></samp> properly.  The installer
 <samp><span class="file">Rtools*.exe</span></samp> optionally sets the path to components that it
 installs.
 
@@ -6857,7 +7039,7 @@ installer does <em>not</em> include any version of LaTeX.
    <p>It is also possible to use the TeXLive distribution from
 <a href="http://www.tug.org/texlive/">http://www.tug.org/texlive/</a>.
 
-   <p><a name="index-R_005fRD4PDF-104"></a>Please read <a href="#Making-the-manuals">Making the manuals</a> about how to make <samp><span class="file">fullrefman.pdf</span></samp>
+   <p><a name="index-R_005fRD4PDF-98"></a>Please read <a href="#Making-the-manuals">Making the manuals</a> about how to make <samp><span class="file">fullrefman.pdf</span></samp>
 and set the environment variable <samp><span class="env">R_RD4PDF</span></samp> suitably; ensure you
 have the required fonts installed or that &lsquo;<samp><span class="samp">MiKTeX</span></samp>&rsquo; is set up to
 install LaTeX on first use.
@@ -6940,7 +7122,7 @@ front of your path (including before the Windows system directories).
 If you are using a Windows shell, type <code>PATH</code> at the prompt to find
 out.
 
-   <p><a name="index-CYGWIN-105"></a>You may need to set the environment variable <samp><span class="env">CYGWIN</span></samp> to a value
+   <p><a name="index-CYGWIN-99"></a>You may need to set the environment variable <samp><span class="env">CYGWIN</span></samp> to a value
 including &lsquo;<samp><span class="samp">nodosfilewarning</span></samp>&rsquo; to suppress messages about
 Windows-style paths.
 
@@ -7024,12 +7206,12 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <h2 class="unnumbered">Function and variable index</h2>
 
 <ul class="index-vr" compact>
-<li><a href="#index-configure-79"><code>configure</code></a>: <a href="#Using-make">Using make</a></li>
+<li><a href="#index-configure-77"><code>configure</code></a>: <a href="#Using-make">Using make</a></li>
 <li><a href="#index-configure-71"><code>configure</code></a>: <a href="#Configuration-variables">Configuration variables</a></li>
 <li><a href="#index-configure-18"><code>configure</code></a>: <a href="#Installation">Installation</a></li>
 <li><a href="#index-configure-11"><code>configure</code></a>: <a href="#Simple-compilation">Simple compilation</a></li>
 <li><a href="#index-install_002epackages-51"><code>install.packages</code></a>: <a href="#Installing-packages">Installing packages</a></li>
-<li><a href="#index-make-78"><code>make</code></a>: <a href="#Using-make">Using make</a></li>
+<li><a href="#index-make-76"><code>make</code></a>: <a href="#Using-make">Using make</a></li>
 <li><a href="#index-remove_002epackages-54"><code>remove.packages</code></a>: <a href="#Removing-packages">Removing packages</a></li>
 <li><a href="#index-R_005fHOME-10"><code>R_HOME</code></a>: <a href="#Simple-compilation">Simple compilation</a></li>
 <li><a href="#index-update_002epackages-52"><code>update.packages</code></a>: <a href="#Updating-packages">Updating packages</a></li>
@@ -7047,25 +7229,25 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 
 <ul class="index-cp" compact>
-<li><a href="#index-AIX-99">AIX</a>: <a href="#AIX">AIX</a></li>
-<li><a href="#index-BLAS-library-96">BLAS library</a>: <a href="#Solaris">Solaris</a></li>
-<li><a href="#index-BLAS-library-93">BLAS library</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
-<li><a href="#index-BLAS-library-83">BLAS library</a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-AIX-93">AIX</a>: <a href="#AIX">AIX</a></li>
+<li><a href="#index-BLAS-library-90">BLAS library</a>: <a href="#Solaris">Solaris</a></li>
+<li><a href="#index-BLAS-library-87">BLAS library</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
+<li><a href="#index-BLAS-library-79">BLAS library</a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
 <li><a href="#index-BLAS-library-68">BLAS library</a>: <a href="#Linear-algebra">Linear algebra</a></li>
-<li><a href="#index-FORTRAN-80">FORTRAN</a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-FreeBSD-91">FreeBSD</a>: <a href="#FreeBSD">FreeBSD</a></li>
+<li><a href="#index-FORTRAN-78">FORTRAN</a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-FreeBSD-85">FreeBSD</a>: <a href="#FreeBSD">FreeBSD</a></li>
 <li><a href="#index-Installation-17">Installation</a>: <a href="#Installation">Installation</a></li>
 <li><a href="#index-Installing-under-Unix_002dalikes-5">Installing under Unix-alikes</a>: <a href="#Installing-R-under-Unix_002dalikes">Installing R under Unix-alikes</a></li>
 <li><a href="#index-Installing-under-Windows-25">Installing under Windows</a>: <a href="#Installing-R-under-Windows">Installing R under Windows</a></li>
 <li><a href="#index-Internationalization-57">Internationalization</a>: <a href="#Internationalization">Internationalization</a></li>
-<li><a href="#index-LAPACK-library-97">LAPACK library</a>: <a href="#Solaris">Solaris</a></li>
-<li><a href="#index-LAPACK-library-94">LAPACK library</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
+<li><a href="#index-LAPACK-library-91">LAPACK library</a>: <a href="#Solaris">Solaris</a></li>
+<li><a href="#index-LAPACK-library-88">LAPACK library</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
 <li><a href="#index-LAPACK-library-69">LAPACK library</a>: <a href="#LAPACK">LAPACK</a></li>
 <li><a href="#index-Libraries-38">Libraries</a>: <a href="#Add_002don-packages">Add-on packages</a></li>
 <li><a href="#index-Libraries_002c-managing-42">Libraries, managing</a>: <a href="#Managing-libraries">Managing libraries</a></li>
 <li><a href="#index-Libraries_002c-site-43">Libraries, site</a>: <a href="#Managing-libraries">Managing libraries</a></li>
 <li><a href="#index-Libraries_002c-user-46">Libraries, user</a>: <a href="#Managing-libraries">Managing libraries</a></li>
-<li><a href="#index-Linux-90">Linux</a>: <a href="#Linux">Linux</a></li>
+<li><a href="#index-Linux-84">Linux</a>: <a href="#Linux">Linux</a></li>
 <li><a href="#index-Linux-6">Linux</a>: <a href="#Installing-R-under-Unix_002dalikes">Installing R under Unix-alikes</a></li>
 <li><a href="#index-Locale-60">Locale</a>: <a href="#Locales">Locales</a></li>
 <li><a href="#index-Locale-59">Locale</a>: <a href="#Internationalization">Internationalization</a></li>
@@ -7073,7 +7255,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Manuals-14">Manuals</a>: <a href="#Making-the-manuals">Making the manuals</a></li>
 <li><a href="#index-Manuals_002c-installing-20">Manuals, installing</a>: <a href="#Installation">Installation</a></li>
 <li><a href="#index-Obtaining-R-1">Obtaining R</a>: <a href="#Obtaining-R">Obtaining R</a></li>
-<li><a href="#index-OS-X-92">OS X</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
+<li><a href="#index-OS-X-86">OS X</a>: <a href="#Mac-OS-X">Mac OS X</a></li>
 <li><a href="#index-OS-X-30">OS X</a>: <a href="#Installing-R-under-_0028Mac_0029-OS-X">Installing R under (Mac) OS X</a></li>
 <li><a href="#index-OS-X-7">OS X</a>: <a href="#Installing-R-under-Unix_002dalikes">Installing R under Unix-alikes</a></li>
 <li><a href="#index-Packages-37">Packages</a>: <a href="#Add_002don-packages">Add-on packages</a></li>
@@ -7084,7 +7266,7 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 <li><a href="#index-Rbitmap_002edll-28">Rbitmap.dll</a>: <a href="#Building-the-bitmap-files">Building the bitmap files</a></li>
 <li><a href="#index-Repositories-56">Repositories</a>: <a href="#Setting-up-a-package-repository">Setting up a package repository</a></li>
 <li><a href="#index-Site-libraries-44">Site libraries</a>: <a href="#Managing-libraries">Managing libraries</a></li>
-<li><a href="#index-Solaris-95">Solaris</a>: <a href="#Solaris">Solaris</a></li>
+<li><a href="#index-Solaris-89">Solaris</a>: <a href="#Solaris">Solaris</a></li>
 <li><a href="#index-Sources-for-R-2">Sources for R</a>: <a href="#Getting-and-unpacking-the-sources">Getting and unpacking the sources</a></li>
 <li><a href="#index-Subversion-4">Subversion</a>: <a href="#Using-Subversion-and-rsync">Using Subversion and rsync</a></li>
 <li><a href="#index-User-libraries-47">User libraries</a>: <a href="#Managing-libraries">Managing libraries</a></li>
@@ -7103,44 +7285,38 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 
 <ul class="index-en" compact>
-<li><a href="#index-CC-86"><code>CC</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-CPP-87"><code>CPP</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-CYGWIN-105"><code>CYGWIN</code></a>: <a href="#The-command-line-tools">The command line tools</a></li>
+<li><a href="#index-CC-81"><code>CC</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-CPP-82"><code>CPP</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-CYGWIN-99"><code>CYGWIN</code></a>: <a href="#The-command-line-tools">The command line tools</a></li>
 <li><a href="#index-DESTDIR-21"><code>DESTDIR</code></a>: <a href="#Installation">Installation</a></li>
-<li><a href="#index-F2C-84"><code>F2C</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-F2CLIBS-85"><code>F2CLIBS</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-FPICFLAGS-88"><code>FPICFLAGS</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-F2CLIBS-80"><code>F2CLIBS</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-FPICFLAGS-83"><code>FPICFLAGS</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
 <li><a href="#index-LANG-64"><code>LANG</code></a>: <a href="#Localization-of-messages">Localization of messages</a></li>
 <li><a href="#index-LANGUAGE-61"><code>LANGUAGE</code></a>: <a href="#Localization-of-messages">Localization of messages</a></li>
 <li><a href="#index-LAPACK_005fLIBS-70"><code>LAPACK_LIBS</code></a>: <a href="#LAPACK">LAPACK</a></li>
 <li><a href="#index-LC_005fALL-62"><code>LC_ALL</code></a>: <a href="#Localization-of-messages">Localization of messages</a></li>
 <li><a href="#index-LC_005fCOLLATE-24"><code>LC_COLLATE</code></a>: <a href="#Testing-a-Unix_002dalike-Installation">Testing a Unix-alike Installation</a></li>
 <li><a href="#index-LC_005fMESSAGES-63"><code>LC_MESSAGES</code></a>: <a href="#Localization-of-messages">Localization of messages</a></li>
-<li><a href="#index-LD_005fLIBRARY_005fPATH-98"><code>LD_LIBRARY_PATH</code></a>: <a href="#Using-gcc">Using gcc</a></li>
-<li><a href="#index-LD_005fLIBRARY_005fPATH-89"><code>LD_LIBRARY_PATH</code></a>: <a href="#Compile-and-load-flags">Compile and load flags</a></li>
-<li><a href="#index-LD_005fLIBRARY_005fPATH-82"><code>LD_LIBRARY_PATH</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
-<li><a href="#index-OBJECT_005fMODE-102"><code>OBJECT_MODE</code></a>: <a href="#AIX">AIX</a></li>
-<li><a href="#index-PAPERSIZE-73"><code>PAPERSIZE</code></a>: <a href="#Setting-paper-size">Setting paper size</a></li>
-<li><a href="#index-PATH-103"><code>PATH</code></a>: <a href="#The-Windows-toolset">The Windows toolset</a></li>
-<li><a href="#index-PATH-101"><code>PATH</code></a>: <a href="#AIX">AIX</a></li>
-<li><a href="#index-PATH-81"><code>PATH</code></a>: <a href="#Using-FORTRAN">Using FORTRAN</a></li>
+<li><a href="#index-LD_005fLIBRARY_005fPATH-92"><code>LD_LIBRARY_PATH</code></a>: <a href="#Using-gcc">Using gcc</a></li>
+<li><a href="#index-OBJECT_005fMODE-96"><code>OBJECT_MODE</code></a>: <a href="#AIX">AIX</a></li>
+<li><a href="#index-PATH-97"><code>PATH</code></a>: <a href="#The-Windows-toolset">The Windows toolset</a></li>
+<li><a href="#index-PATH-95"><code>PATH</code></a>: <a href="#AIX">AIX</a></li>
 <li><a href="#index-R_005fARCH-22"><code>R_ARCH</code></a>: <a href="#Sub_002darchitectures">Sub-architectures</a></li>
-<li><a href="#index-R_005fBROWSER-74"><code>R_BROWSER</code></a>: <a href="#Setting-the-browsers">Setting the browsers</a></li>
+<li><a href="#index-R_005fBROWSER-72"><code>R_BROWSER</code></a>: <a href="#Setting-the-browsers">Setting the browsers</a></li>
 <li><a href="#index-R_005fDEFAULT_005fPACKAGES-41"><code>R_DEFAULT_PACKAGES</code></a>: <a href="#Default-packages">Default packages</a></li>
 <li><a href="#index-R_005fDISABLE_005fHTTPD-13"><code>R_DISABLE_HTTPD</code></a>: <a href="#Help-options">Help options</a></li>
 <li><a href="#index-R_005fGSCMD-67"><code>R_GSCMD</code></a>: <a href="#Useful-libraries-and-programs">Useful libraries and programs</a></li>
 <li><a href="#index-R_005fLIBS-39"><code>R_LIBS</code></a>: <a href="#Add_002don-packages">Add-on packages</a></li>
 <li><a href="#index-R_005fLIBS_005fSITE-45"><code>R_LIBS_SITE</code></a>: <a href="#Managing-libraries">Managing libraries</a></li>
 <li><a href="#index-R_005fLIBS_005fUSER-48"><code>R_LIBS_USER</code></a>: <a href="#Managing-libraries">Managing libraries</a></li>
-<li><a href="#index-R_005fPAPERSIZE-77"><code>R_PAPERSIZE</code></a>: <a href="#Making-manuals">Making manuals</a></li>
-<li><a href="#index-R_005fPAPERSIZE-72"><code>R_PAPERSIZE</code></a>: <a href="#Setting-paper-size">Setting paper size</a></li>
+<li><a href="#index-R_005fPAPERSIZE-75"><code>R_PAPERSIZE</code></a>: <a href="#Making-manuals">Making manuals</a></li>
 <li><a href="#index-R_005fPAPERSIZE-31"><code>R_PAPERSIZE</code></a>: <a href="#Running-R">Running R</a></li>
 <li><a href="#index-R_005fPAPERSIZE-15"><code>R_PAPERSIZE</code></a>: <a href="#Making-the-manuals">Making the manuals</a></li>
-<li><a href="#index-R_005fPDFVIEWER-75"><code>R_PDFVIEWER</code></a>: <a href="#Setting-the-browsers">Setting the browsers</a></li>
-<li><a href="#index-R_005fRD4PDF-104"><code>R_RD4PDF</code></a>: <a href="#LaTeX">LaTeX</a></li>
-<li><a href="#index-R_005fRD4PDF-76"><code>R_RD4PDF</code></a>: <a href="#Making-manuals">Making manuals</a></li>
+<li><a href="#index-R_005fPDFVIEWER-73"><code>R_PDFVIEWER</code></a>: <a href="#Setting-the-browsers">Setting the browsers</a></li>
+<li><a href="#index-R_005fRD4PDF-98"><code>R_RD4PDF</code></a>: <a href="#LaTeX">LaTeX</a></li>
+<li><a href="#index-R_005fRD4PDF-74"><code>R_RD4PDF</code></a>: <a href="#Making-manuals">Making manuals</a></li>
 <li><a href="#index-R_005fRD4PDF-16"><code>R_RD4PDF</code></a>: <a href="#Making-the-manuals">Making the manuals</a></li>
-<li><a href="#index-R_005fSHELL-100"><code>R_SHELL</code></a>: <a href="#AIX">AIX</a></li>
+<li><a href="#index-R_005fSHELL-94"><code>R_SHELL</code></a>: <a href="#AIX">AIX</a></li>
 <li><a href="#index-R_005fUSER-35"><code>R_USER</code></a>: <a href="#Running-R">Running R</a></li>
 <li><a href="#index-TAR_005fOPTIONS-26"><code>TAR_OPTIONS</code></a>: <a href="#Getting-the-source-files">Getting the source files</a></li>
 <li><a href="#index-TAR_005fOPTIONS-3"><code>TAR_OPTIONS</code></a>: <a href="#Getting-and-unpacking-the-sources">Getting and unpacking the sources</a></li>
@@ -7206,14 +7382,12 @@ known as <acronym>IEEE</acronym>&nbsp;754.</p>
    <p class="footnote"><small>[<a name="fn-23" href="#fnd-23">23</a>]</small> and perhaps others</p>
 
    <p class="footnote"><small>[<a name="fn-24" href="#fnd-24">24</a>]</small> On HP-UX <samp><span class="command">fort77</span></samp> is the
-<acronym>POSIX</acronym> compliant FORTRAN compiler, and comes after
-<samp><span class="command">g77</span></samp>.</p>
+<acronym>POSIX</acronym> <samp><span class="command">g77</span></samp>.</p>
 
    <p class="footnote"><small>[<a name="fn-25" href="#fnd-25">25</a>]</small> as well as its equivalence to the <code>Rcomplex</code>
 structure defined in <samp><span class="file">R_ext/Complex.h</span></samp>.</p>
 
-   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> e.g., to use an optimized <acronym>BLAS</acronym> on
-Sun/Sparc</p>
+   <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> e.g., to use an optimized <acronym>BLAS</acronym> on Sun/Sparc</p>
 
    <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> for example, <code>X11 font at size 14 could not
 be loaded</code>.</p>

@@ -5052,99 +5052,167 @@ configure run들의 일관성을 체크하고, 캐치가 사용되지 않았더�
 @end menu
 
 @node Setting paper size, Setting the browsers, Configuration variables, Configuration variables
-@subsection Setting paper size
-@enindex R_PAPERSIZE
-One common variable to change is @env{R_PAPERSIZE}, which defaults to
-@samp{a4}, not @samp{letter}.  (Valid values are @samp{a4},
-@samp{letter}, @samp{legal} and @samp{executive}.)
+@c @subsection Setting paper size
+@subsection 종이 크기 설정
+@c @enindex R_PAPERSIZE
+@c One common variable to change is @env{R_PAPERSIZE}, which defaults to
+@c @samp{a4}, not @samp{letter}.  (Valid values are @samp{a4},
+@c @samp{letter}, @samp{legal} and @samp{executive}.)
+기본 값이 @samp{letter}가 아닌 @samp{A4}로 되어있는 페이퍼 사이즈를 바꾸는 일반
+적인 값은 @env{R_PAPERSIZE} 입니다. (@samp{A4}, @samp{letter}, @samp{legal} 그리고
+@samp{executive} 값들이 유효합니다.)
 
-This is used both when configuring @R{} to set the default, and when
-running @R{} to override the default.  It is also used to set the
-paper size when making PDF manuals.
 
-The configure default will most often be @samp{a4} if @env{R_PAPERSIZE}
-is unset.  (If the (Debian Linux) program @command{paperconf} is found
-@enindex PAPERSIZE
-or the environment variable @env{PAPERSIZE} is set, these are used to
-produce the default.)
+@c This is used both when configuring @R{} to set the default, and when
+@c running @R{} to override the default.  It is also used to set the
+@c paper size when making PDF manuals.
+이는 기본값을 설정하기 위해 @R{}을 설정할 때와 기본값을 무시하기위해
+@R{}을 실행할 때 모두 사용됩니다. 이는 PDF 매뉴얼을 만들 때 페이퍼 사이즈
+를 설정하기위해서도 사용됩니다. 
+
+
+
+@c The configure default will most often be @samp{a4} if @env{R_PAPERSIZE}
+@c is unset.  (If the (Debian Linux) program @command{paperconf} is found
+@c @enindex PAPERSIZE
+@c or the environment variable @env{PAPERSIZE} is set, these are used to
+@c produce the default.)
+
+설정 기본값은 만약 @env{R_PAPERSIZE}가 unset되어있으면 거의 대부분 @samp{A4}
+일 것입니다. (만약 (Debian 리눅스) 프로그램 paperconf가 발견되거나 환
+경값 @env{PAPERSIZE}가 설정된다면, 이들은 기본값을 생성하기 위하여 사용됩니다.)
 
 @node Setting the browsers, Compilation flags, Setting paper size, Configuration variables
-@subsection Setting the browsers
+@c @subsection Setting the browsers
+@subsection 설정 브라우저
 
 @enindex R_BROWSER
-Another precious variable is @env{R_BROWSER}, the default HTML browser, which
-should take a value of an executable in the user's path or specify
-a full path.
-
+@c Another precious variable is @env{R_BROWSER}, the default HTML browser, which
+@c should take a value of an executable in the user's path or specify
+@c a full path.
 @enindex R_PDFVIEWER
-Its counterpart for PDF files is  @env{R_PDFVIEWER}.
+@c Its counterpart for PDF files is  @env{R_PDFVIEWER}.
+
+
+또 다른 소중한 값은 기본값이 HTML 브라우저인, 사용자의 경로 혹은 지정
+된 전체 경로 안에 있는 executable의 값을 취행야만 하는 @env{R_BROWSER}입니다.
+PDF 파일들의 이에대한 대응은 R_PDFVIEWER입니다.
+
+
 
 @node Compilation flags, Making manuals, Setting the browsers, Configuration variables
 @subsection Compilation flags
 
-If you have libraries and header files, e.g., for @acronym{GNU}
-readline, in non-system directories, use the variables @code{LDFLAGS}
-(for libraries, using @samp{-L} flags to be passed to the linker) and
-@code{CPPFLAGS} (for header files, using @samp{-I} flags to be passed to
-the C/C++ preprocessors), respectively, to specify these locations.
-These default to @samp{-L/usr/local/lib} (@code{LDFLAGS},
-@samp{-L/usr/local/lib64} on most 64-bit Linux OSes) and
-@samp{-I/usr/local/include} (@code{CPPFLAGS}) to catch the most common
-cases.  If libraries are still not found, then maybe your
-compiler/linker does not support re-ordering of @option{-L} and
-@option{-l} flags (this has been reported to be a problem on HP-UX with
-the native @command{cc}).  In this case, use a different compiler (or a
-front end shell script which does the re-ordering).
+@c If you have libraries and header files, e.g., for @acronym{GNU}
+@c readline, in non-system directories, use the variables @code{LDFLAGS}
+@c (for libraries, using @samp{-L} flags to be passed to the linker) and
+@c @code{CPPFLAGS} (for header files, using @samp{-I} flags to be passed to
+@c the C/C++ preprocessors), respectively, to specify these locations.
+@c These default to @samp{-L/usr/local/lib} (@code{LDFLAGS},
+@c @samp{-L/usr/local/lib64} on most 64-bit Linux OSes) and
+@c @samp{-I/usr/local/include} (@code{CPPFLAGS}) to catch the most common
+@c cases.  If libraries are still not found, then maybe your
+@c compiler/linker does not support re-ordering of @option{-L} and
+@c @option{-l} flags (this has been reported to be a problem on HP-UX with
+@c the native @command{cc}).  In this case, use a different compiler (or a
+@c front end shell script which does the re-ordering).
 
-These flags can also be used to build a faster-running version of @R{}.
-On most platforms using @command{gcc}, having @samp{-O3} in
-@code{CFLAGS} and @code{FFLAGS} produces worthwhile performance gains
-with @command{gcc} and @command{gfortran}.  On systems using the
-@acronym{GNU} linker (especially those using @R{} as a shared library),
-it is likely that including @samp{-Wl,-O1} in @code{LDFLAGS} is
-worthwhile, and @samp{'-Bdirect,--hash-style=both,-Wl,-O1'} is
-recommended at @uref{http://lwn.net/@/Articles/@/192624/}.  Tuning
-compilation to a specific @acronym{CPU} family (e.g.@:
-@samp{-mtune=native} for @command{gcc}) can give worthwhile performance
-gains, especially on older architectures such as @cputype{ix86}.
+만약 시스템이 아닌 디렉토리들에 예를들어 @acronym{GNU} readline을 위한 라이브러
+리들이나 헤더 파일들을 가지고 있다면, 이들의 위치를 명시하기위하여
+순서대로 값 @code{LDFLAG} (라이브러리에서는 linker로 전달되기위해여 @samp{-L} flag
+들을 사용)와 @code{CPPFLAGS} (헤더 파일들을 위해서, C/C++ 프로세서 들로
+전달되기 위하여 @samp{-I} flag들을 사용)를 사용하세요. 이들은 대부분의 흔한
+경우들을 잡기 위하여 @samp{-L/usr/local/lib} (@code{LDFLAGS}, 대부분의 64 비트 리
+눅스 OS들에서 @samp{-L/usr/local/lib64})와
+@samp{-I/usr/local/include} (@code{CPPFLAGS})가 디폴트 입니다. 만약 라이브러리들이
+아직 찾아지지 않았다면, 아마도 여러분의 comlier/linker이 @option{–L}과 @option{–l} flag
+들의 재 배열을 지원하지 않을지도 모릅니다. (이는 native @command{cc}를 가진
+HP_UX에서 문제가 된다고 리포트 되었었습니다). 이런 경우에는, 다른
+컴파일러 (혹은 재 배열을 하는 front end shell script)를 사용하세요.
+
+@c These flags can also be used to build a faster-running version of @R{}.
+@c On most platforms using @command{gcc}, having @samp{-O3} in
+@c @code{CFLAGS} and @code{FFLAGS} produces worthwhile performance gains
+@c with @command{gcc} and @command{gfortran}.  On systems using the
+@c @acronym{GNU} linker (especially those using @R{} as a shared library),
+@c it is likely that including @samp{-Wl,-O1} in @code{LDFLAGS} is
+@c worthwhile, and @samp{'-Bdirect,--hash-style=both,-Wl,-O1'} is
+@c recommended at @uref{http://lwn.net/@/Articles/@/192624/}.  Tuning
+@c compilation to a specific @acronym{CPU} family (e.g.@:
+@c @samp{-mtune=native} for @command{gcc}) can give worthwhile performance
+@c gains, especially on older architectures such as @cputype{ix86}.
+
+이 flag들은 @R{}버전의 더 빠르게 돌아가는 빌드를 하기위해서 쓰여질 수도
+있습니다. @command{gcc}를 사용하는 대부분의 플랫폼에서, @code{CFLAGS}와 @code{FFLAGS}에 @samp{-O3}
+를 가지고 있는 것은 @command{gcc}와 @command{gfortran}과 함께가치있는 성능 향상을 생산합니
+다. @acronym{GNU} linker를 사용하는 시스템들에서 (특히 R을 공유 라이브러리처럼
+사용하는 것들), LDFLAGSdp @samp{-Wl, -O1}를 포함하는 것이 가치가 있고,
+@uref{http://lwn.net/Articles/192624/}에서는 @samp{-Bdirect, --hash-style=both,
+-Wl, O1}이 추천됩니다. 특정한 CPU 패밀리로 compilation을 조율하는 것은
+(예로, @:@command{gcc}를 위한 @samp{-mtune=native}) 특히 @cputype{ix86}과 같은 더 오래된
+아키텍처 들에서 가치있는 성능 향상을 줍니다.
 
 @node Making manuals,  , Compilation flags, Configuration variables
 @subsection Making manuals
-
+@subsection 메뉴얼 만들기
 @enindex R_RD4PDF
 @enindex R_PAPERSIZE
-The default settings for making the manuals are controlled by
+@c The default settings for making the manuals are controlled by
 @env{R_RD4PDF} and @env{R_PAPERSIZE}.
 
-@node Setting the shell, Using make, Configuration variables, Configuration on a Unix-alike
-@section Setting the shell
 
-By default the shell scripts such as @file{R} will be @samp{#!/bin/sh}
-scripts (or using the @env{SHELL} chosen by @file{configure}).  This is
-almost always satisfactory, but on a few systems @file{/bin/sh} is not a
-Bourne shell or clone, and the shell to be used can be changed by
-setting the configure variable @env{R_SHELL} to a suitable value (a full
-path to a shell, e.g. @file{/usr/local/bin/bash}).
+매뉴얼을 만드는 기본 설정들은 @env{R_RD4PDF} 와 @env{R_PAPERSIZE}에 의해 컨트롤 됩
+니다.
+
+@node Setting the shell, Using make, Configuration variables, Configuration on a Unix-alike
+@c @section Setting the shell
+@section 쉘 설정하기
+
+@c By default the shell scripts such as @file{R} will be @samp{#!/bin/sh}
+@c scripts (or using the @env{SHELL} chosen by @file{configure}).  This is
+@c almost always satisfactory, but on a few systems @file{/bin/sh} is not a
+@c Bourne shell or clone, and the shell to be used can be changed by
+@c setting the configure variable @env{R_SHELL} to a suitable value (a full
+@c path to a shell, e.g. @file{/usr/local/bin/bash}).
+
+
+기본값으로, @file{R}과 같은 shell script들은 @samp{#!/bin/sh} 스크립트들 (혹은
+@file{congifure}에 의해 선택된 @env{SHELL}을 사용) 일 것입니다. 이는 거의 항상 만족
+스럽지만, 몇몇의 시스템들 @file{/bin/sh}는 Bourne shell이나 clone이 아니고
+configure 값 @env{R_SHELL}을 알맞은 값으로 (shell로의 전체 경로,
+예, @file{/usr/local/bin/bash}) 설정함으로써 쓰이려는 shell이 바뀔 수도 있습니다.
 
 @node Using make, Using FORTRAN, Setting the shell, Configuration on a Unix-alike
-@section Using make
+@c @section Using make
+@section make 사용하기
 @findex make
 
-To compile @R{}, you will most likely find it easiest to use
-@acronym{GNU} @command{make}, although the Sun @command{make} works on
-Solaris, as does the native FreeBSD @command{make}.  The native
-@command{make} has been reported to fail on SGI Irix 6.5 and Alpha/OSF1
-(aka Tru64).
+@c To compile @R{}, you will most likely find it easiest to use
+@c @acronym{GNU} @command{make}, although the Sun @command{make} works on
+@c Solaris, as does the native FreeBSD @command{make}.  The native
+@c @command{make} has been reported to fail on SGI Irix 6.5 and Alpha/OSF1
+@c (aka Tru64).
+@c To build in a separate directory you need a @command{make} that uses the
+@c @code{VPATH} variable, for example @acronym{GNU} @command{make}, or Sun
+@c @command{make} on Solaris 7 or later.
 
-To build in a separate directory you need a @command{make} that uses the
-@code{VPATH} variable, for example @acronym{GNU} @command{make}, or Sun
-@command{make} on Solaris 7 or later.
+@R{}을 컴파일 하기위해서, Solaris에서 Sun @command{make}와 native FreeBSD @command{make}가 돌
+아가지만, 여러분은 아마도 @acronym{GNU} @command{make}를 사용하는 것이 가장 쉽다고 느낄 것
+입니다. Native @command{make}는 SGI Irix 6.5와 (Tru64로 알려져 있는)Alpha/OSF 1
+에서 실패한다고 리포트 되었었습니다.
+따로 떨어진 디렉터리를 빌드하기 위해서는, 예를들어 @acronym{GNU} @command{make} 혹은
+Solaris 7 이후의 Sun @command{make}와 같은 @code{VPATH} 값을 사용하는 @command{make}가 필요합니다.
+
 
 @command{dmake} has also been used. e.g,@: on Solaris 10.
 
-If you want to use a @command{make} by another name, for example if your
-@acronym{GNU} @command{make} is called @samp{gmake}, you need to set the
-variable @code{MAKE} at configure time, for example
+@c If you want to use a @command{make} by another name, for example if your
+@c @acronym{GNU} @command{make} is called @samp{gmake}, you need to set the
+@c variable @code{MAKE} at configure time, for example
+@c 예를 들어 Solaris 10과 같은 곳에서, @command{dmake}도 사용되어지고 있습니다.
+만약 @command{make}를 다른 이름으로 쓰고싶다면, 예를 들어 여러분의 @acronym{GNU} @command{make}가
+@samp{gmake}로 불려진다면, 예를 들어 다음과 같이 configure time에 값 @command{make}를
+설정해야 합니다.
 
 @findex configure
 @example
@@ -5153,188 +5221,316 @@ variable @code{MAKE} at configure time, for example
 
 @node Using FORTRAN, Compile and load flags, Using make, Configuration on a Unix-alike
 @section Using FORTRAN
+@section 포트란 사용하기
 @cindex FORTRAN
 
 @menu
 * Using gfortran::              
 @end menu
 
-To compile @R{}, you need a FORTRAN compiler.  The default
-is to search for
+@c To compile @R{}, you need a FORTRAN compiler.  The default
+@c is to search for
 @c F95_compilers in m4/R.m4:
-@command{f95}, @command{fort}, @command{xlf95},
+@c @command{f95}, @command{fort}, @command{xlf95},
+@c @command{ifort}, @command{ifc}, @command{efc}, @command{pgf95}
+@c @command{lf95}, @command{gfortran}, @command{ftn}, @command{g95},
+@c F90 compilers in m4/R.m4:
+@c @command{f90}, @command{xlf90}, @command{pghpf}, @command{pgf90},
+@c @command{epcf90},
+@c F77 compilers in m4/R.m4:
+@c @command{g77}, @command{f77}, @command{xlf}, @command{frt},
+@c @command{pgf77}, @command{cf77}, @command{fort77}, @command{fl32},
+@c @command{af77} (in that order)@footnote{On HP-UX @command{fort77} is the
+@c @acronym{POSIX} compliant FORTRAN compiler, and comes after
+@c @command{g77}.}, and use whichever is found first; if none is found,
+@c @R{} cannot be compiled.
+@c GCC_Fortran_compiler in m4/R.m4:
+@c However, if @command{CC} is @command{gcc}, the matching FORTRAN compiler
+@c (@command{g77} for @command{gcc}@tie{}3 and @code{gfortran} for
+@c @command{gcc}@tie{}4) is used if available.
+
+
+@R{}을 컴파일하기 위해서 여러분은 FORTRAN 컴파일러가  필요합니다. 기본값
+은 (순서대로)@command{f95}, @command{fort}, @command{xlf95},
 @command{ifort}, @command{ifc}, @command{efc}, @command{pgf95}
 @command{lf95}, @command{gfortran}, @command{ftn}, @command{g95},
-@c F90 compilers in m4/R.m4:
 @command{f90}, @command{xlf90}, @command{pghpf}, @command{pgf90},
-@command{epcf90},
-@c F77 compilers in m4/R.m4:
-@command{g77}, @command{f77}, @command{xlf}, @command{frt},
+@command{epcf90},@command{g77}, @command{f77}, @command{xlf}, @command{frt},
 @command{pgf77}, @command{cf77}, @command{fort77}, @command{fl32},
-@command{af77} (in that order)@footnote{On HP-UX @command{fort77} is the
-@acronym{POSIX} compliant FORTRAN compiler, and comes after
-@command{g77}.}, and use whichever is found first; if none is found,
-@R{} cannot be compiled.
-@c GCC_Fortran_compiler in m4/R.m4:
-However, if @command{CC} is @command{gcc}, the matching FORTRAN compiler
-(@command{g77} for @command{gcc}@tie{}3 and @code{gfortran} for
-@command{gcc}@tie{}4) is used if available.
+@command{af77},)@footnote{On HP-UX @command{fort77} is the
+@acronym{POSIX} @command{g77}.}, 를 찾고, 찾아진 첫 번째 것을 사용합니다; 만약
+아무것도 찾아지지 않았다면, @R{}은 컴파일 될 수 없습니다. 하지만 만약 CC
+가 @command{gcc}라면, 맞는 FORTRAN 컴파일러 (@command{gcc}@tie{}3는 @command{g}77 그리고 @command{gcc4}는
+@code{gfortran})가 사용이 가능하다면 이가 사용됩니다.
 
-The search mechanism can be changed using the configure variable
-@code{F77} which specifies the command that runs the FORTRAN 77
-compiler.  If your FORTRAN compiler is in a non-standard location, you
-@enindex PATH
-should set the environment variable @env{PATH} accordingly before
-running @command{configure}, or use the configure variable @code{F77} to
-specify its full path.
+@c The search mechanism can be changed using the configure variable
+@c @code{F77} which specifies the command that runs the FORTRAN 77
+@c compiler.  If your FORTRAN compiler is in a non-standard location, you
+@c @enindex PATH
+@c should set the environment variable @env{PATH} accordingly before
+@c running @command{configure}, or use the configure variable @code{F77} to
+@c specify its full path.
 
-If your FORTRAN libraries are in slightly peculiar places, you should
-@enindex LD_LIBRARY_PATH
-also look at @env{LD_LIBRARY_PATH} or your system's equivalent to make
-sure that all libraries are on this path.
+검색 mechanism은 FORTRAN @code{77} 컴파일러를 실행하는 명령어를 명시하는
+설정 값 @code{F77}을 사용하여 바뀔 수 있습니다. 만약 여러분의 FORTRAN
+컴파일러가 기본 위치가 아닌 곳에 있다면, 설정을 실행하기 전에 환
+경값 @env{PATH}에 그에 맞춰 설정되거나 혹은 그의 전체 경로를 명시하기 위한
+@command{configure}값 @code{F77}을 사용합니다.
 
-Note that only FORTRAN compilers which convert identifiers to lower case
-are supported.
+@c If your FORTRAN libraries are in slightly peculiar places, you should
+@c @enindex LD_LIBRARY_PATH
+@c also look at @env{LD_LIBRARY_PATH} or your system's equivalent to make
+@c sure that all libraries are on this path.
 
-You must set whatever compilation flags (if any) are needed to ensure
-that FORTRAN @code{integer} is equivalent to a C @code{int} pointer and
-FORTRAN @code{double precision} is equivalent to a C @code{double}
-pointer.  This is checked during the configuration process.
+만약 FORTRAN 라이브러리들이 조금 이상한 장소에 있다면, 모든 라이브러리
+들이 이 경로에 있는지를 확실히 하기위하여 @env{LD_LIBRARY_PATH}나 여러분의
+시스템의 비슷한 곳을 살펴 보세요.
 
-Some of the FORTRAN code makes use of @code{COMPLEX*16} variables, which
-is a Fortran 90 extension.  This is checked for at configure
-time@footnote{as well as its equivalence to the @code{Rcomplex}
-structure defined in @file{R_ext/Complex.h}.}, but you may need to avoid
-compiler flags asserting FORTRAN 77 compliance.
+@c Note that only FORTRAN compilers which convert identifiers to lower case
+@c are supported.
 
-Compiling the version of LAPACK in the @R{} sources also requires some
-Fortran 90 extensions, but these are not needed if an external LAPACK is
-used.
+오로지 identifier들을 소문자로 바꾸는FORTRAN 컴파일러들만 지원된다는
+것을 유의하십니오.
+
+@c You must set whatever compilation flags (if any) are needed to ensure
+@c that FORTRAN @code{integer} is equivalent to a C @code{int} pointer and
+@c FORTRAN @code{double precision} is equivalent to a C @code{double}
+@c pointer.  This is checked during the configuration process.
+
+FORTRAN @code{integer}이 C @code{int} pointer와 같은지와 Fortran @code{double precision}이
+C @code{double} pointer와 같은지를 활실히 하기위하여 필요한 모든 compilation
+flag들 (만약 있다면)을 설정해야만 합니다. 이는 configuration 프로세스
+동안 체크됩니다.
+
+@c Some of the FORTRAN code makes use of @code{COMPLEX*16} variables, which
+@c is a Fortran 90 extension.  This is checked for at configure
+@c time@footnote{as well as its equivalence to the @code{Rcomplex}
+@c structure defined in @file{R_ext/Complex.h}.}, but you may need to avoid
+@c compiler flags asserting FORTRAN 77 compliance.
+
+몇몇의 FORTRAN 코드는 Fortran 90의 확장인 @code{COMPLEX*16} 값들을 활용합니
+다. 이는 configure 시간@footnote{as well as its equivalence to the @code{Rcomplex}
+structure defined in @file{R_ext/Complex.h}.}에 확인되지만, FORTRAN 77 compliance를 주장하는  compiler flag들은 피해야할 수도 있습니다.
+
+@c Compiling the version of LAPACK in the @R{} sources also requires some
+@c Fortran 90 extensions, but these are not needed if an external LAPACK is used.
+@R{} 소스들 안의 LAPACK 버전을 컴파일하는 것도 몇몇의 Fortran 90 확장판
+들에서 필요할 수도 있지만, 만약 외부 LAPACK이 사용되었다면 필요하지않
+습니다.
+
 
 @cindex BLAS library
-For performance reasons@footnote{e.g., to use an optimized @acronym{BLAS} on
-Sun/Sparc} you may want to choose a FORTRAN 90/95 compiler.
+@c For performance reasons@footnote{e.g., to use an optimized @acronym{BLAS} on
+@c Sun/Sparc} you may want to choose a FORTRAN 90/95 compiler.
 
-It may be possible to use @command{f2c}, the FORTRAN-to-C converter
-(@uref{http://www.netlib.org/@/f2c}), via a script.  (An example script
-is given in @file{scripts/f77_f2c}: this can be customized by setting
-@enindex F2C
+성능상의 이유@footnote{e.g., to use an optimized @acronym{BLAS} on Sun/Sparc} 로, FORTRAN 90/95 컴파일러를 선택하기를 원할 수도 있습니다.
+
+@c It may be possible to use @command{f2c}, the FORTRAN-to-C converter
+@c (@uref{http://www.netlib.org/@/f2c}), via a script.  (An example script
+@c is given in @file{scripts/f77_f2c}: this can be customized by setting
+@c @enindex F2C
 @enindex F2CLIBS
 @enindex CC
-the environment variables @env{F2C}, @env{F2CLIBS}, @env{CC} and
+@c the environment variables @env{F2C}, @env{F2CLIBS}, @env{CC} and
 @enindex CPP
-@env{CPP}.)  You will need to ensure that the FORTRAN type
-@code{integer} is translated to the C type @code{int}.  Normally
-@file{f2c.h} contains @samp{typedef long int integer;}, which will work
-on a 32-bit platform but not on a 64-bit platform.  If your compiler is
-not @command{gcc} you
+@c @env{CPP}.)  You will need to ensure that the FORTRAN type
+@c @code{integer} is translated to the C type @code{int}.  Normally
+@c @file{f2c.h} contains @samp{typedef long int integer;}, which will work
+@c on a 32-bit platform but not on a 64-bit platform.  If your compiler is
+@c not @command{gcc} you
 @enindex FPICFLAGS
-will need to set @env{FPICFLAGS} appropriately.
+@c will need to set @env{FPICFLAGS} appropriately.
+
+스크립트를 통해 FORTRAN-to-C 컨버터(@uref{http://www.netlib.org/f2c})인 @command{f2c}를
+사용하는 것이 가능할 수도 있습니다. (예제 스크립트는 @file{scripts/f77_f2c}에
+주어져 있습니다: 이는 환경값들 @env{F2C}, @env{F2CLIBS}, @env{CC}, 그리고 @env{CPP}를 설정함으
+로써 customize될 수 있습니다.) 여러분은 FORTRAN 타입 integer이 C 타입
+@code{int}로 번역되었는지를 확실히해야 할 것입니다. 일반적으로 @file{f2c.h}는 32비트
+플랫폼에서는 작동하지만 64 비트 플랫폼에서는 작동하지 않을 @samp{typedef
+long int integer;}를 포함합니다. 만약 여러분의 컴파일러가 @command{gcc}가 아니라
+면, @env{FPICFLAGS}를 알맞게 설정해야 할 것입니다.
 
 
 @node Using gfortran,  , Using FORTRAN, Using FORTRAN
-@subsection Using gfortran
+@c @subsection Using gfortran
+@subsection gfortran 사용하기
 
-@command{gfortran} is the F95 compiler that is part of
-@command{gcc}@tie{}4.@var{x}.@var{y}.
+@c @command{gfortran} is the F95 compiler that is part of
+@c @command{gcc}@tie{}4.@var{x}.@var{y}.
+@c On Linux @cputype{x86_64} systems there is an incompatibility in the
+@c return conventions for double-complex functions between
+@c @command{gfortran} and @command{g77} which results in the final example
+@c in @code{example(eigen)} hanging or segfaulting under external @acronym{BLAS}s
+@c built under @command{g77}.  This should be detected by a
+@c @command{configure} test.  Although @command{g77} is long obsolete this
+@c is still sometimes seen with C versions of external software using
+@c @command{g77} conventions.
+@c The default @code{FFLAGS} and @code{FCFLAGS} chosen (by
+@c @command{autoconf}) for a @acronym{GNU} FORTRAN compiler is @samp{-g
+@c -O2}.  This has caused problems (segfaults and infinite loops) on
+@c @cputype{x86_64} Linux in the past, but seems fine with
+@c @command{gfortran 4.4.4} and later: for @code{gfortran 4.3.x} set
+@c @code{FFLAGS} and @code{FCFLAGS} to use at most @samp{-O}.
 
-On Linux @cputype{x86_64} systems there is an incompatibility in the
-return conventions for double-complex functions between
-@command{gfortran} and @command{g77} which results in the final example
-in @code{example(eigen)} hanging or segfaulting under external @acronym{BLAS}s
-built under @command{g77}.  This should be detected by a
-@command{configure} test.  Although @command{g77} is long obsolete this
-is still sometimes seen with C versions of external software using
-@command{g77} conventions.
+@command{Gfortran}은 @command{gcc}@tie{}4.@var{x}.@var{y}의 일부분인 F95 컴파일러입니다.
+리눅스 @samp{x86_64} 시스템들에서, @code{example(eigen)}의 마지막 예제에서 @code{g77}에서
+구축된 외부 @acronym{BLAS}들에서의 hanging이나 segfaulting을 초래하는 @command{fortran}과
+@command{g77} 사이에서의 double-complex function들에 대한 return convention들의
+불화합성이 있습니다. 이는 @command{configure} 테스트에의해 발견되어야만 합니다.
+@command{g77}이 이미 퇴화되었다고는하나, 이는 아직도 가끔 @command{g77} convention들을 사
+용하는 외부 소프트웨어의 C 버전들과 함꺼 보이기도 합니다.
+@acronym{GNU} FORTRAN 컴파일러에 대해 선택되어진 (autoconf에 의해) 기본 @code{FFLAGS}와
+@code{FCFLAGS}는  @samp{-g -O2}입니다. 이는 과거에 @cputype{x86_64} 리눅스에서 문제
+들(segfault들과 무한 루프들)을 일으켰지만, @code{gfortran 4.4.4}과 이 후 것들
+에서는 괜찮을 듯 합니다: @command{gfortran 4.3.x}에서는 최대한 @samp{-O}를 사용하기위
+해 @code{FFLAGS}와 @code{FCFLAGS}를 설정하세요.
 
-The default @code{FFLAGS} and @code{FCFLAGS} chosen (by
-@command{autoconf}) for a @acronym{GNU} FORTRAN compiler is @samp{-g
--O2}.  This has caused problems (segfaults and infinite loops) on
-@cputype{x86_64} Linux in the past, but seems fine with
-@command{gfortran 4.4.4} and later: for @code{gfortran 4.3.x} set
-@code{FFLAGS} and @code{FCFLAGS} to use at most @samp{-O}.
 
 @node Compile and load flags,  , Using FORTRAN, Configuration on a Unix-alike
-@section Compile and load flags
+@c @section Compile and load flags
+@section 컴파일과 로드 플래그
+@c A wide range of flags can be set in the file @file{config.site} or as
+@c configure variables on the command line.  We have already mentioned
 
-A wide range of flags can be set in the file @file{config.site} or as
-configure variables on the command line.  We have already mentioned
+flag들의 넓은 범위는 파일 @file{config.site}에 설정되거나 명령줄에 설정값
+들처럼 설정될 수 있습니다. 우리는 이미 다음을 언급했습니다.
 
 @table @code
 @item CPPFLAGS
-header file search directory (@option{-I}) and any other miscellaneous
-options for the C and C++ preprocessors and compilers
+@c header file search directory (@option{-I}) and any other miscellaneous
+@c options for the C and C++ preprocessors and compilers
+
+검색 디렉토리의 헤더 파일 (@option{-I})과 C와 C++ 프로세서들과 컴파일러들을
+위한 다른 모든 기타 옵션들
+
 @item LDFLAGS
-path (@option{-L}), stripping (@option{-s}) and any other miscellaneous
-options for the linker
+@c path (@option{-L}), stripping (@option{-s}) and any other miscellaneous
+@c options for the linker
 @end table
+
+경로(@option{-L}), stripping (@option{-s}) 그리고 링커를 위한 다른 모든 기타 옵션들
+그리고 다른 것들은 다음을 포함합니다.
+
 
 @noindent
 and others include
 
 @table @code
 @item CFLAGS
-debugging and optimization flags, C
+@c debugging and optimization flags, C
+
+디버깅과 최적화 flag들, C
+
 @item MAIN_CFLAGS
-ditto, for compiling the main program
+@c ditto, for compiling the main program
+ditto, 주요 프로그램의 구축을 위함
+
 @item SHLIB_CFLAGS
-for shared objects
+@c for shared objects
+공유된 객체를을 위함
+
 @item FFLAGS
-debugging and optimization flags, FORTRAN
+@c debugging and optimization flags, FORTRAN
+디버깅과 최적화 flag들, FORTRAN
+
 @item SAFE_FFLAGS
-ditto for source files which need exact floating point behaviour
+@c ditto for source files which need exact floating point behaviour
+정확한 floating point behaviour이 필요한 소스 파일들을 위한 ditto
+
 @item MAIN_FFLAGS
-ditto, for compiling the main program
+@c ditto, for compiling the main program
+ditto, 주요 프로그램의 구축을 위함
+
 @item SHLIB_FFLAGS
-for shared objects
+@c for shared objects
+공유된 객체들을 위함
+
 @item MAIN_LDFLAGS
-additional flags for the main link
+@c additional flags for the main link
+주요 링크를 위한 추가적인 flag들
+
 @item SHLIB_LDFLAGS
-additional flags for linking the shared objects
+@c additional flags for linking the shared objects
+공유된 객체들의 연결을 위한 추가적인 flag들
+
 @item LIBnn
-the primary library directory, @file{lib} or @file{lib64}
+@c the primary library directory, @file{lib} or @file{lib64}
+최초의 라이브러리 디렉토리, @file{lib} 혹은 @file{lib64}
+
 @item CPICFLAGS
-special flags for compiling C code to be turned into a shared object
+@c special flags for compiling C code to be turned into a shared object
+C 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
 @item FPICFLAGS
-special flags for compiling Fortran code to be turned into a shared object
+@c special flags for compiling Fortran code to be turned into a shared object
+Fortran 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
 @item CXXPICFLAGS
-special flags for compiling C++ code to be turned into a shared object
+@c special flags for compiling C++ code to be turned into a shared object
+C++ 코드를 공유된 객체로 바뀌도록 컴파일 하기위한 스페셜 flag들
+
 @item FCPICFLAGS
-special flags for compiling Fortran 95 code to be turned into a shared object
+@c special flags for compiling Fortran 95 code to be turned into a shared object
+Fortran95 코드를 공유된 객체로 바뀌도록 컴파일 하는 스페셜 flag들
+
 @item DEFS
-defines to be used when compiling C code in R itself
+@c defines to be used when compiling C code in R itself
+R 자체에 C 코드를 컴파일 할 때 사용되도록 정의함
 @end table
 
 @noindent
-Library paths specified as @option{-L/lib/path} in @code{LDFLAGS} are
-@enindex LD_LIBRARY_PATH
-collected together and prepended to @env{LD_LIBRARY_PATH} (or your
-system's equivalent), so there should be no need for @option{-R} or
-@option{-rpath} flags.
+@c Library paths specified as @option{-L/lib/path} in @code{LDFLAGS} are
+@c @enindex LD_LIBRARY_PATH
+@c collected together and prepended to @env{LD_LIBRARY_PATH} (or your
+@c system's equivalent), so there should be no need for @option{-R} or
+@c @option{-rpath} flags.
 
-Variables such as @env{CPICFLAGS} are determined where possible by
-@command{configure}.  Some systems allows two types of PIC flags, for
-example @samp{-fpic} and @samp{-fPIC}, and if they differ the first
-allows only a limited number of symbols in a shared object.  Since @R{}
-as a shared library has about 6200 symbols, if in doubt use the larger
-version.
+@code{LDFLAGS} 안의 @option{–L/lib/path}처럼 명시된 라이브러리 경로는 같이 수집되고
+@env{LD_LIBRARY_PATH}로 prepend되기때문에 (혹은 여러분의 시스템 상의 동일한
+것), @option{-R} 이나 @option{–rpath} flag들이 필요가 없어야 합니다.
 
-To compile a profiling version of @R{}, one might for example want to
-use @samp{MAIN_CFLAGS=-pg}, @samp{MAIN_FFLAGS=-pg},
-@samp{MAIN_LDFLAGS=-pg} on platforms where @samp{-pg} cannot be used
-with position-independent code.
 
-@strong{Beware}: it may be necessary to set @code{CFLAGS} and
-@code{FFLAGS} in ways compatible with the libraries to be used: one
-possible issue is the alignment of doubles, another is the way
-structures are passed.
+@c Variables such as @env{CPICFLAGS} are determined where possible by
+@c @command{configure}.  Some systems allows two types of PIC flags, for
+@c example @samp{-fpic} and @samp{-fPIC}, and if they differ the first
+@c allows only a limited number of symbols in a shared object.  Since @R{}
+@c as a shared library has about 6200 symbols, if in doubt use the larger
+@c version.
 
-On some platforms @command{configure} will select additional flags for
-@code{CFLAGS}, @code{CPPFLAGS}, @code{FFLAGS}, @code{CXXFLAGS} and
-@code{LIBS} in @code{R_XTRA_CFLAGS} (and so on).  These are for options
-which are always required, for example to force @acronym{IEC}@tie{}60559
-compliance.
+@env{CPICFLASG}와 같은 값들은 @command{configure}에 의해 가능한 곳에 정의됩니다. 몇몇
+의 시스템들은 예를 들어 @samp{-fpic}과 @samp{-fPIC}과 같은 두 가지 타입의 PIC
+flag들을 허용하고, 만약 이들이 다르다면 공유된 객체안의 제한된 갯수의
+심볼들만을 우선적으로 허용합니다. 공유된 라이브러리처럼 @R{}이 약 6200
+개의 심볼 들을 가지고 있기 때문에, 만약 의심된다면 더 큰 버전을 사용
+하십시오.
 
+@c To compile a profiling version of @R{}, one might for example want to
+@c use @samp{MAIN_CFLAGS=-pg}, @samp{MAIN_FFLAGS=-pg},
+@c @samp{MAIN_LDFLAGS=-pg} on platforms where @samp{-pg} cannot be used
+@c with position-independent code.
+@c @strong{Beware}: it may be necessary to set @code{CFLAGS} and
+@c @code{FFLAGS} in ways compatible with the libraries to be used: one
+@c possible issue is the alignment of doubles, another is the way
+@c structures are passed.
+@R{}의 Profiling 버전을 컴파일 하기위해서는, 예를들어 @samp{-pg}가 위치 독립적
+인 코드와 함께 사용되지 못하는 플랫폼상에서 @samp{MAIN_CFLAGS=-pg},
+@samp{MAIN_FFLAGS=-pg}, @samp{MAIN_LDFLAGS=-pg}를 사용하고 싶어할 수도 있습니다.
+주의: 사용할 라이브러리와 호환가능한 방법으로 @code{CFLAGS}와 @code{FFLAGS}를 설정하
+는 것이 필요할 수도 있습니다: 한 가지 가능한 문제는 doubles의 조정이
+고, 또 하나는 구조가 전달되는 방식입니다.
+
+
+@c On some platforms @command{configure} will select additional flags for
+@c @code{CFLAGS}, @code{CPPFLAGS}, @code{FFLAGS}, @code{CXXFLAGS} and
+@c @code{LIBS} in @code{R_XTRA_CFLAGS} (and so on).  These are for options
+@c which are always required, for example to force @acronym{IEC}@tie{}60559
+@c compliance.
+
+몇몇의 플랫폼들에서, @command{configure}은 R_XTRA_CFLAG (등등)에서의
+@code{CFLAGS}, @code{CPPFLAGS}, @code{FFLAGS}, @code{CXXFLAGS} 
+그리고 @code{LIBS}들을 위한 추가의 flag들을 선택할
+것입니다. 이들은 예를들어 @acronym{IEC}@tie{}60559 compliance를 강요하기위한 것 처럼
+항상 요구된 옵션들을 위한 것 입니다.
 
 @node Platform notes, The Windows toolset, Configuration on a Unix-alike, Top
 @appendix Platform notes
