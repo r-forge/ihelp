@@ -228,6 +228,18 @@ ufo 데이터 객체에는 미국과 캐나다의 지역이 같이 포함되어 있는 것을 알 수 있습니�
 ## match(x, table, nomatch = NA_integer_, incomparables = NULL)
 ## 기본적 설명: match() 함수는 첫 번째 인자의 원소가 두 번째 인자에 있는지를 비교하여 두 번째 인자에서 해당 위치의 index 값을 반환하고 매치되는 것이 없으면 nomatch 인자에서 지정한 값을 반환합니다.
 
+> summary(ufo.us$DateOccurred)
+
+> quick.hist<-ggplot(ufo.us, aes(x=DateOccurred))+geom_histogram()
+## 이거 넣으면 에러남: +scale_x_date(major="50 years")
+> ggsave(plot=quick.hist, filename="quick_hist.png", height=6, width=8)
+> stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+
+## ggolot2::: ggplot()
+
+## geom_histogram()
+
+## scale_date()
 
 
 
