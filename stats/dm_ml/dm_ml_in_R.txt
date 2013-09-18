@@ -230,16 +230,37 @@ ufo 데이터 객체에는 미국과 캐나다의 지역이 같이 포함되어 있는 것을 알 수 있습니�
 
 > summary(ufo.us$DateOccurred)
 
-> quick.hist<-ggplot(ufo.us, aes(x=DateOccurred))+geom_histogram()
-## 이거 넣으면 에러남: +scale_x_date(major="50 years")
+> quick.hist <- ggplot(ufo.us, aes(x=DateOccurred)) + geom_histogram() ## 이거 넣으면 에러남: + scale_x_date(major="50 years")
 > ggsave(plot=quick.hist, filename="quick_hist.png", height=6, width=8)
-> stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 
-## ggolot2::: ggplot()
+## ggolot2:::ggplot()
 
 ## geom_histogram()
 
 ## scale_date()
+
+## scale_x_date()
+
+그림에서 보는 바와 같이 거의 모든 관측치가 1990년 이후에 발생했습니다. 따라서 시간 상 1990년 이전의 데이터는 제거하고 이후의 데이터로만 분석을 하고자 합니다. 따라서 다음과 같은 코드를 생각해 볼 수 있습니다.
+
+> ufo.us <- subset(ufo.us, DateOccurred >= as.Date("1990-01-01"))
+> nrow(ufo.us)
+> ufo.us$YearMonth <- strftime(ufo.us$DateOccurred, format="%Y-%m")
+
+여기에서 transform() 함수가 아니라 strftime() 함수를 사용한 점을 한 번 살펴보시기 바랍니다. 
+
+## strftime():
+## Usage:
+## S3 method for class 'POSIXct'
+## format(x, format = "", tz = "", usetz = FALSE, ...)
+## S3 method for class 'POSIXlt'
+## format(x, format = "", usetz = FALSE, ...)
+## S3 method for class 'POSIXt'
+## as.character(x, ...)
+## strftime(x, format = "", tz = "", usetz = FALSE, ...)
+## strptime(x, format, tz = "")
+
+
 
 
 
