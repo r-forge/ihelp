@@ -6,7 +6,108 @@ statistical computing, data mining, machine learning in R
 > .Platform
 > do.call(rbind, .Platform)
 
+객체의 이름이 .(dot)으로 시작하면 이것은 숨겨진 객체를 말합니다.
+객체를 조회하는 함수는 다음과 같은데 all.names=TRUE를 사용하면 숨겨진 객체도 조회가 가능합니다.
+
+> objects(all.names=TRUE)
+
 두 가지 코드를 실행하고 난 출력 결과를 비교해 보시기 바랍니다.
+
+Environment
+
+
+
+객체 생성
+
+객체를 생성하는 방법은 이후에 할당연산자를 이용하는 방법이 지속적으로 사용될 것이나 여기에서는 다른 방법으로 생성하는 방법을  소개할 것입니다.
+
+assign() 함수: 첫 번째 인자 x는 이름을 지정하고 두 번째 인자 value는 할당할 값을 지정합니다. 
+
+- Usage:
+	> assign(x, value, pos = -1, envir = as.environment(pos),
+       inherits = FALSE, immediate = TRUE)
+
+그런데 assign() 함수는 특정 값을 벡터의 원소에 할당할 수 없습니다.
+
+> assign("a", value=1:5))
+> assign("a[1]", value=6)
+
+ls() 함수로 생성된 객체를 확인해 보면 a[1]이라는 객체가 생성된 것을 확인할 수 있습니다. 즉 a라는 객체의 a[1] 원소에 6을 할당하는 것이 아니라 a[1]이라는 새로운 객체가 생성되는 것입니다. 
+
+다음과 같은 코드를 고려해 보시기 바랍니다.
+
+> repr.env <- new.env(parent = baseenv())
+> assign("repr.obj", "Sweave", envir=repr.env)
+> repr.obj
+> get("repr.obj", repr.env)
+
+객체의 이름이 정해진 것이 아니라 연산과정에서 인자 등으로 전달 받아서 생성할 경우 assign() 함수는 유용하게 사용될 수 있습니다. 아래의 코드를 살펴봐 주시기 바랍니다.
+
+> for(i in 1:5) { #-- Create objects  'r.1', 'r.2', ... 'r.6' --
+  +  name <- paste("r", i, sep = ".")
+  +  assign(name, 1:i)
+	}
+> ls(pattern = "^r..$")
+
+이와는 약간 다르게 global environment인 .GlobalENV에 객체를 생성하는 예제도 가능합니다.
+
+> myf <- function(x) {
+  +  innerf <- function(x) assign("Global.res", x^2, envir = .GlobalEnv)
+  +  innerf(x+1)
+	}
+> myf(3)
+> Global.res
+
+위의 코드에서 envir=.GlobalEnv를 사용하여 Global.res 객체가 base environment에 생성되었습니다. 그렇지 않았다면 Global.res 객체가 함수 내부에 생성되어 마지막 줄의 Global.res에서 에러가 발생하였을 것입니다.
+
+Class와 Methods
+
+S언어는 S3와 S4라는 두 개의 공식적 객체 시스템이 있습니다. 다음의 에ㅖ를 살펴보시기 바랍니다.
+
+> x <- smaple(1:5, 50, replace=T)
+> y <- as.factor(x)
+> class(x); class(y)
+> summary(x); summmary(y)
+
+객체 x와 y의 클래스가 각각 integer와 factor로 서로 다르며 같은 summary() 함수를 사용해도 반환되는 결과의 구조가 다릅니다. 왜 이러한 현상이 나타나는지 확인하기 위하여 summary() 함수의 내용을 살펴보고자 합니다.
+
+> summary
+
+summary() 함수내에 UseMethod() 함수를 이용하여 summary라는 generic 함수를 이용한 것을 알 수 있을 것입니다. 이를 다시 자새히 확인해 보기 위해 summary.dafault() 함수를 내용을 살펴보고자 합니다.
+
+> summary.default
+
+반환되는 결과를 살펴보면 summary() 함수를 실행하는데 있어 대상 객체가 integer인지 factor인지에 따라 계산되는 과정이 다름을 알 수 있을 것입니다. 그렇다면 summary() 함수를 generic 함수를 사용하는 함수의 종류를 검색해 보겠습니다.
+
+> methods(summary)
+
+methods() 함수는 위와 같이 generic 함수명 이외의 아래와 같이 class 이름으로도 method 함수를 검색할 수 있습니다.
+
+> methods(class="aov") 
+
+이러한 generic 함수는 사용자 정의를 이용해서도 만들 수 있습니다.
+
+> my.generic <- function(x) UseMethod("my.generic")
+> my.generic.matrix <- function(x){
++ cat("This is test matrix\n")
++ cat("Number of Rows is: ", nrow(x), "\n")
++ cat("Number of Columns is: ", ncol(x), "\n")
++ x
++ }
+> my.generic.class <- function(x){
++ cat("This is test class\n")
++ x
++ }
+> my.generic.default <- function(x){
++ cat("This is dafault\n")
++ x
++ }
+> test.mat <- matrix(1:10, ncol=2))
+> my.generic(test.mat)
+
+추가적으로, inherits() 함수는 특정 class의 속성을 상속했는지의 여부를 검증하는 함수이고, unclass() 함수는 객체에서 calss 속성을 제거하는 함수입니다. 이에 대한 보다 자세한 도움말은 help() 함수를 이용하여 직접 찾아 보시기 바랍니다. 또한 getS3method() 함수는 S3 시스템의 method 함수의 내용을 조회하는 함수입니다. 이 함수는 패키지에서 숨김 객체로 있는 method 함수의 내용을 조회할 때 유용하게 사용될 수 있습니다. 
+
+
 
 ## do.call(): 
 ## Usage:
