@@ -1,4 +1,26 @@
-statistical computing, data mining, machine learning in R
+### statistical computing, data mining, machine learning in R ###
+
+R은 통계적 분석을 실행하고 그래프를 생성할 수 있는 환경(environment)을 제공합니다.
+
+R은 일반적인 형태의 컴퓨터 언어에 기초하고 있어서 상당한 유연성을 제공합니다.
+
+R 언어를 사용함에 있어 기본적으로 알아두어야 할 개념들과 팁(tip)은 다음과 같습니다.
+
+# 표현과 객체(expressions and objects): 모든 R 표현(expressions)은 어떤 값을 반환(return) 합니다. NULL 객체도 마찬가지 이지만 어떤 경우에는 보여지지(출력되지) 않을 수 있습니다. 또한 표현(expressions)은 객체(objects)에 대해 적용되는 것입니다. 
+
+# 연산(인덱싱 연산)
+# 할당
+# 벡터 연산
+# 다음과 같은 데이터를 만들어 봅니다.
+# > weight <- c(60, 72, 57, 90, 95, 72)
+# > height <- c(1.75, 1.80, 1.65, 1.90, 1.74, 1.91)
+# 이를 이용하여 몸무게의 표준편차(standard deviation)은 다음과 같이 구할 수 있습니다.
+# > sqrt(sum((weight - xbar)^2)/(length(weight) - 1))
+# 이를 연산하는데 소요되는 시간은 다음과 같이 구할 수 있습니다.
+# > system.time(sqrt(sum((weight - xbar)^2)/(length(weight) - 1)))
+# 그런데 다음과 같이 객체를 벡터화하여 벡터연산을 해 보도록 합니다. 그리고 이의 연산시간을 비교해 보도록 하게습니다.
+# > 
+
 
 운영체제가 Unix가 아니라면 특히 윈도우의 경우 먼저 윈도우 환경에 대한 정보를 필요로 합니다. 
 이러한 정보는 최소한 특정 파일의 경로에 접근하는데에도 사용될 것이기 때문입니다.
@@ -13,7 +35,8 @@ statistical computing, data mining, machine learning in R
 
 두 가지 코드를 실행하고 난 출력 결과를 비교해 보시기 바랍니다.
 
-Environment
+### Environment ###
+
 
 
 
@@ -107,7 +130,7 @@ methods() 함수는 위와 같이 generic 함수명 이외의 아래와 같이 class 이름으로도 me
 
 추가적으로, inherits() 함수는 특정 class의 속성을 상속했는지의 여부를 검증하는 함수이고, unclass() 함수는 객체에서 calss 속성을 제거하는 함수입니다. 이에 대한 보다 자세한 도움말은 help() 함수를 이용하여 직접 찾아 보시기 바랍니다. 또한 getS3method() 함수는 S3 시스템의 method 함수의 내용을 조회하는 함수입니다. 이 함수는 패키지에서 숨김 객체로 있는 method 함수의 내용을 조회할 때 유용하게 사용될 수 있습니다. 
 
-S4의 객체와 method는 S3 보다 좀더 형식적이고 엄격하지만 프로그래밍을 위한 보다 많은 도구를 제공합니다. S4 시스템에서 class는 setClass() 함수로 만듭니다. # 참고로, S4에서는 멤버변수를 슬롯(slot)이라 칭합니다.
+S4의 객체와 method는 S3 보다 좀더 형식적이고 엄격하지만 프로그래밍을 위한 보다 많은 도구를 제공합니다. S4 시스템에서 class는 setClass() 함수로 만듭니다. # 참고로, S4에서는 멤버변수를 슬롯(slot)이라 칭합니다. S4 시스템에서 class는 setClass() 함수로 만들고 representation 인자로 slot과 데이터형을 정합니다.
 
 ## do.call(): 
 ## Usage:
