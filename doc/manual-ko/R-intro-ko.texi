@@ -4539,7 +4539,7 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @c if necessary.
 
 @code{&&}와 @code{||}는 종종 @code{if}이라는 조건문과 함께 쓰이는 ``short-circuit'' 연산자입니다.
-@code{&}와 @code{|}가 벡터내 구성요소단위의 연산을 수행하는 반면, @code{&&}와 @code{||}는 길이가 1인 벡터들에만 적용됩니다.
+@code{&}와 @code{|}가 벡터내 구성요소 단위의 연산을 수행하는 반면, @code{&&}와 @code{||}는 길이가 1인 벡터들에만 적용되고 필요한 경우 그것의 두 번째 인자만 평가합니다(evaluate).
 
 @findex ifelse
 @c There is a vectorized version of the @code{if}/@code{else} construct,
@@ -4572,8 +4572,11 @@ cannot compute correct p-values with ties in: ks.test(A, B)
 @c evaluated as @var{name} ranges through the values in the vector result
 @c of @var{expr_1}.
 
-@code{@var{name}}는 벡터 @var{expr_1}의 순서대로서 표현식 @var{expr_2}의 반복을 진행할 수 있도록 지시하는 루프 변수(loop variable) 입니다.
-@var{expr_2}은 종종 그룹화된 표현식으로 오는 경우가 있습니다.
+@c @code{@var{name}}은 벡터 @var{expr_1}의 순서대로서 표현식 @var{expr_2}의 반복을 진행할 수 있도록 지시하는 루프 변수(loop variable) 입니다.
+
+@code{@var{name}}은 루프(loop) 변수입니다. @var{expr_1}은 흔히 @code{1:20}과 같이 사용되는 계열로 벡터표현식이고 @var{expr_2}는 더미(dummy) @emph{name}의 방법으로 씌여진 하위표현식(sub-expressions)과 함께 그룹화된 표현식인 경우가 종종 있습니다. @var{expr_2}는 @var{expr_1}의 벡터결과에서의 값을 통해 @var{name} 처럼 반복적으로 평가됩니다(evaluated).
+
+@c @var{expr_2}은 종종 그룹화된 표현식으로 오는 경우가 있습니다.
 
 @c As an example, suppose @code{ind} is a vector of class indicators and we
 @c wish to produce separate plots of @code{y} versus @code{x} within
