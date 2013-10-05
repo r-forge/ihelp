@@ -1,1 +1,27 @@
 statistical computing with R(R 통계계산)
+
+
+
+
+조건과 함수의 작성
+
+x <- rnrom(1)
+if (x > 0) xlog <- log(x)
+if (x > 0) {xlog <- log(x); xr <- sqrt(x)}
+if (x > 0) y <- x else y <- -x
+
+my.fn1 <- function(x){
+	if (x > 0) y <- x else y <- -x
+	ylog <- log(y)
+	return(ylog)
+}
+
+log(abs(x))
+
+
+trimmed mean
+x <- c(0:10, 90)
+mean(x)
+mean(x, trim=0.1)
+
+###########     stopifnot( apply(x, 2, is.vector))    ################
