@@ -5753,21 +5753,35 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
 
 <h2 class="appendix">Appendix C Platform notes</h2>
 
-<p>This section provides some notes on building R on different Unix-alike
-platforms.  These notes are based on tests run on one or two systems in
-each case with particular sets of compilers and support libraries. 
-Success in building R depends on the proper installation and functioning
-of support software; your results may differ if you have other versions
-of compilers and support libraries.
+<!-- This section provides some notes on building @R{} on different Unix-alike -->
+<!-- platforms.  These notes are based on tests run on one or two systems in -->
+<!-- each case with particular sets of compilers and support libraries. -->
+<!-- Success in building @R{} depends on the proper installation and functioning -->
+<!-- of support software; your results may differ if you have other versions -->
+<!-- of compilers and support libraries. -->
+<p>이 섹션은 다른 유닉스 계열 플랫폼들에서 R의 구축에 대한 몇몇의 주의사
+항을 제공합니다. 이 주의사랑들은 특정한 컴파일러들의 세트나 지원 라이
+브러리들을 가진 각각의 케이스을 한 개 혹은 두 개의 시스템들에서 실행하
+여 테스트하는 것에 기초한 것들입니다. R의 구축의 성공은 알맞은 설치와
+지원 소프트웨어의 성능에 달려있습니다; 여러분의 결과들은 다른 버전의
+컴파일러와 지원 라이브러리들을 가지고 있다면 다를 수도 있습니다.
 
-   <p>Older versions of this manual (for R &lt; 2.10.0) contain notes on
-platforms such as HP-UX, IRIX and Alpha/OSF1 for which we have had no
-recent reports.
+<!-- Older versions of this manual (for @R{} < 2.10.0) contain notes on -->
+<!-- platforms such as HP-UX, IRIX and Alpha/OSF1 for which we have had no -->
+<!-- recent reports. -->
+   <p>이 매뉴얼의 이전 버전들은 (R 2.10.0 이전 버전들) 최근 리포트가 없는
+HP-UX, IRIX, 그리고 Alpha/OSF1과 같은 플랫폼들에서의 주의사항들을 포함
+합니다.
 
-   <p>C macros to select particular platforms can be tricky to track down
-(there is a fair amount of misinformation on the Web).  The Wiki
-(currently) at <a href="http://sourceforge.net/p/predef/wiki/Home/">http://sourceforge.net/p/predef/wiki/Home/</a> can be
-helpful.  The R sources currently use
+<!-- C macros to select particular platforms can be tricky to track down -->
+<!-- (there is a fair amount of misinformation on the Web).  The Wiki -->
+<!-- (currently) at @uref{http://sourceforge.net/p/predef/wiki/Home/} can be -->
+<!-- helpful.  The @R{} sources currently use -->
+   <p>특정한 플랫폼들을 선택하기위한 C 매크로 들은 추적하기 까다로울 수도 있습
+니다 (웹에는 꽤 많은 양의 잘못된 정보들이 있습니다). 
+<a href="http://sourceforge.net/p/predef/wiki/Home/">http://sourceforge.net/p/predef/wiki/Home/</a>에서의 Wiki (현재)가 유용할
+수 있습니다. R 소스들은 현재 다음을 사용합니다.
+
 <pre class="example">     AIX: _AIX
      Cygwin: __CYGWIN__
      FreeBSD: __FreeBSD__
@@ -5802,78 +5816,135 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 
 <h3 class="section">C.1 X11 issues</h3>
 
-<p>The &lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; graphics device is the one started automatically on
-Unix-alikes when plotting.  As its name implies, it displays on a (local
-or remote) X server, and relies on the services provided by the X
-server.
+<!-- The @samp{X11()} graphics device is the one started automatically on -->
+<!-- Unix-alikes when plotting.  As its name implies, it displays on a (local -->
+<!-- or remote) X server, and relies on the services provided by the X -->
+<!-- server. -->
+<p>&lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; 그래픽 장치는 plotting을 할 때, 유닉스 계열에서 자동으로 시작
+되는 것입니다. 이름이 나타내ㄷ듯이, 이는 (로컬 혹은 remote) X 서버에
+디스플레이되고 X 서버에의해 제공된 서비드들에 의존합니다.
 
-   <p>The `modern' version of the &lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; device is based on &lsquo;<samp><span class="samp">cairo</span></samp>&rsquo;
-graphics and (in most implementations) uses &lsquo;<samp><span class="samp">fontconfig</span></samp>&rsquo; to pick and
-render fonts.  This is done on the server, and although there can be
-selection issues, they are more amenable than the issues with
-&lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; discussed in the rest of this section.
+<!-- The `modern' version of the @samp{X11()} device is based on @samp{cairo} -->
+<!-- graphics and (in most implementations) uses @samp{fontconfig} to pick and -->
+<!-- render fonts.  This is done on the server, and although there can be -->
+<!-- selection issues, they are more amenable than the issues with -->
+<!-- @samp{X11()} discussed in the rest of this section. -->
+   <p>&lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; 장치의 ‘현대’ 버전은 &lsquo;<samp><span class="samp">cairo</span></samp>&rsquo; 그래픽에 기초하고 (대부분의
+implementation들에서) 폰트를 선택하고나 만들기 위하여 &lsquo;<samp><span class="samp">fontconfig</span></samp>&rsquo;를
+사용합니다. 이는 서버에서 행해지고, 선택의 문제가 있을 수도 있지만, 이
+섹션의 나머지 부분에서 언급되는 &lsquo;<samp><span class="samp">X11()</span></samp>&rsquo;에 대한 문제들보다는 잘 처리될
+수 있습니다.
 
-   <p>When X11 was designed, most displays were around 75dpi, whereas today
-they are of the order of 100dpi or more.  If you find that X11()
-is reporting<a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a> missing font sizes, especially larger ones, it is likely
-that you are not using scalable fonts and have not installed the 100dpi
-versions of the X11 fonts.  The names and details differ by system, but
-will likely have something like Fedora's
+<!-- When X11 was designed, most displays were around 75dpi, whereas today -->
+<!-- they are of the order of 100dpi or more.  If you find that X11() -->
+<!-- is reporting@footnote{for example, @code{X11 font at size 14 could not -->
+<!-- be loaded}.} missing font sizes, especially larger ones, it is likely -->
+<!-- that you are not using scalable fonts and have not installed the 100dpi -->
+<!-- versions of the X11 fonts.  The names and details differ by system, but -->
+<!-- will likely have something like Fedora's -->
+   <p>X11이 디자인 되었을 때, 요즘에는 대략 100dpi 이상인 것에 비해, 대부분
+의 디스플레이들은 대략 75dpi였습니다. <a rel="footnote" href="#fn-27" name="fnd-27"><sup>27</sup></a> 이름들과 세부사항들은 시스템에따라 다
+르지만, 대부분 Fedora에서의 다음과 같은 것들을 가지고 있을 것 입니다.
+
 <pre class="example">     xorg-x11-fonts-75dpi
      xorg-x11-fonts-100dpi
      xorg-x11-fonts-ISO8859-2-75dpi
      xorg-x11-fonts-Type1
      xorg-x11-fonts-cyrillic
 </pre>
-   <p class="noindent">and you need to ensure that the &lsquo;<samp><span class="samp">-100dpi</span></samp>&rsquo; versions are installed
-and on the X11 font path (check via <samp><span class="command">xset -q</span></samp>).  The
-&lsquo;<samp><span class="samp">X11()</span></samp>&rsquo; device does try to set a pointsize and not a pixel size:
-laptop users may find the default setting of 12 too large (although very
-frequently laptop screens are set to a fictitious dpi to appear like a
-scaled-down desktop screen).
+   <p class="noindent"><!-- and you need to ensure that the @samp{-100dpi} versions are installed -->
+<!-- and on the X11 font path (check via @command{xset -q}).  The -->
+<!-- @samp{X11()} device does try to set a pointsize and not a pixel size: -->
+<!-- laptop users may find the default setting of 12 too large (although very -->
+<!-- frequently laptop screens are set to a fictitious dpi to appear like a -->
+<!-- scaled-down desktop screen). -->
 
-   <p>More complicated problems can occur in non-Western-European locales, so
-if you are using one, the first thing to check is that things work in
-the <code>C</code> locale.  The likely issues are a failure to find any fonts
-or glyphs being rendered incorrectly (often as a pair of ASCII
-characters).  X11 works by being asked for a font specification and
-coming up with its idea of a close match.  For text (as distinct from
-the symbols used by plotmath), the specification is the first element of
-the option <code>"X11fonts"</code> which defaults to
+   <p>그리고 X11 폰트 경로에 &lsquo;<samp><span class="samp">-100dpi</span></samp>&rsquo; 버전들이 설치되어있는지를 확실히 해야
+할 필요가 있습니다 (<samp><span class="command">xset  –q</span></samp>를 통하여 체크하세요). &lsquo;<samp><span class="samp">X11()</span></samp>&rsquo;장치는 pixel
+size가 아닌 pointsize를 설정하려고 노력합니다:  (굉장히 자주 노트북 스
+크린이 축소된 데스크탑 스크린처럼 나타나도록 가상 dpi로 설정됨에도 불
+구하고) 노트북 사용자들은 기본 값인 12가 너무 크다고 느낄 수도 있습니다.
+
+<!-- More complicated problems can occur in non-Western-European locales, so -->
+<!-- if you are using one, the first thing to check is that things work in -->
+<!-- the @code{C} locale.  The likely issues are a failure to find any fonts -->
+<!-- or glyphs being rendered incorrectly (often as a pair of ASCII -->
+<!-- characters).  X11 works by being asked for a font specification and -->
+<!-- coming up with its idea of a close match.  For text (as distinct from -->
+<!-- the symbols used by plotmath), the specification is the first element of -->
+<!-- the option @code{"X11fonts"} which defaults to -->
+   <p>더 복잡한 문제들이 Western-European locale들이 아닌 곳에서 일어날 수도
+있기떄문에, 만약 여러분이 이들을 사용하고 있다면, 가장 먼저 확인해야
+할 것은 <code>C</code> locale에서 실행되고있는 것들입니다. 대부분의 문제는 폰트나 (
+종종 ASCII 문자들의 쌍 처럼) 상형문자들이 알맞지 않게 만들어지는 것을
+찾는 것을 실패하는 것 입니다. X11은 폰트 사양을 물어보는 것에 의해 실
+행되고 그가 생각하기에 근접한 매치를 줍니다. (plotmath에의해 사용되는
+심볼들로부터의 distinct 처럼) 텍스트에서, 사양은 다음에 보여지는 것으
+로 기본값이 되어있는 옵션 <code>"X11fonts”</code>의 첫 번째 객체입니다.
 
 <pre class="example">     "-adobe-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
 </pre>
-   <p>If you are using a single-byte encoding, for example ISO 8859-2 in
-Eastern Europe or KOI8-R in Russian, use <samp><span class="command">xlsfonts</span></samp> to find an
-appropriate family of fonts in your encoding (the last field in the
-listing).  If you find none, it is likely that you need to install
-further font packages, such as &lsquo;<samp><span class="samp">xorg-x11-fonts-ISO8859-2-75dpi</span></samp>&rsquo; and
-&lsquo;<samp><span class="samp">xorg-x11-fonts-cyrillic</span></samp>&rsquo; shown in the listing above.
+   <!-- If you are using a single-byte encoding, for example ISO 8859-2 in -->
+<!-- Eastern Europe or KOI8-R in Russian, use @command{xlsfonts} to find an -->
+<!-- appropriate family of fonts in your encoding (the last field in the -->
+<!-- listing).  If you find none, it is likely that you need to install -->
+<!-- further font packages, such as @samp{xorg-x11-fonts-ISO8859-2-75dpi} and -->
+<!-- @samp{xorg-x11-fonts-cyrillic} shown in the listing above. -->
+   <p>만약 여러분이 예를들어 동부 유럽의 ISO 8859-2나 러시아의 KOI8-R과 같은
+single-byte 인코딩을 사용한다면, 여러분의 인코딩 안의 폰트의 알맞은 패
+밀리를 찾기위해서 <samp><span class="command">xlsfonts</span></samp>를 사용하세요 (리스팅의 마지만 field). 만약
+아무것도 찾지 못한다면, 대부분 위의 리스팅에서 보여진 것 처럼
+&lsquo;<samp><span class="samp">xorg-x11-fonts-ISO8859-2-75dpi</span></samp>&rsquo;와 &lsquo;<samp><span class="samp">xorg-x11-fonts-cyrillic</span></samp>&rsquo;과 같은 추
+가의 폰트 패키지들을 설치해야할 필요가 있는 것 입니다.
 
-   <p>Multi-byte encodings (most commonly UTF-8) are even more complicated. 
-There are few fonts in &lsquo;<samp><span class="samp">iso10646-1</span></samp>&rsquo;, the Unicode encoding, and they
-only contain a subset of the available glyphs (and are often fixed-width
-designed for use in terminals).  In such locales <em>fontsets</em> are
-used, made up of fonts encoded in other encodings.  If the locale you
-are using has an entry in the &lsquo;<samp><span class="samp">XLC_LOCALE</span></samp>&rsquo; directory (typically
-<samp><span class="file">/usr/share/X11/locale</span></samp>, it is likely that all you need to do is to
-pick a suitable font specification that has fonts in the encodings
-specified there.  If not, you may have to get hold of a suitable locale
-entry for X11.  This may mean that, for example, Japanese text can be
-displayed when running in &lsquo;<samp><span class="samp">ja_JP.UTF-8</span></samp>&rsquo; but not when running in
-&lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo; on the same machine (although on some systems many
-UTF-8 X11 locales are aliased to &lsquo;<samp><span class="samp">en_US.UTF-8</span></samp>&rsquo; which covers several
-character sets, e.g. ISO 8859-1 (Western European), JISX0208 (Kanji),
-KSC5601 (Korean), GB2312 (Chinese Han) and JISX0201 (Kana)).
+<!-- Multi-byte encodings (most commonly UTF-8) are even more complicated. -->
+<!-- There are few fonts in @samp{iso10646-1}, the Unicode encoding, and they -->
+<!-- only contain a subset of the available glyphs (and are often fixed-width -->
+<!-- designed for use in terminals).  In such locales @emph{fontsets} are -->
+<!-- used, made up of fonts encoded in other encodings.  If the locale you -->
+<!-- are using has an entry in the @samp{XLC_LOCALE} directory (typically -->
+<!-- @file{/usr/share/X11/locale}, it is likely that all you need to do is to -->
+<!-- pick a suitable font specification that has fonts in the encodings -->
+<!-- specified there.  If not, you may have to get hold of a suitable locale -->
+<!-- entry for X11.  This may mean that, for example, Japanese text can be -->
+<!-- displayed when running in @samp{ja_JP.UTF-8} but not when running in -->
+<!-- @samp{en_GB.UTF-8} on the same machine (although on some systems many -->
+<!-- UTF-8 X11 locales are aliased to @samp{en_US.UTF-8} which covers several -->
+<!-- character sets, e.g.@: ISO 8859-1 (Western European), JISX0208 (Kanji), -->
+<!-- KSC5601 (Korean), GB2312 (Chinese Han) and JISX0201 (Kana)). -->
+   <p>Multi-byte 인코딩들은 더욱 더 복잡합니다 (가장 흔하게 UTF-8). 
+&lsquo;<samp><span class="samp">iso10646-1</span></samp>&rsquo;에 몇가지 폰트들이 있는데, Unicode 인코딩, 이들은 사용 가
+능한 상형문자들의 subset만을 포함합니다 (그리고 종종 터미널들에 사용되
+도록 디자인된 고정된 너비). 이런 locale들에는 다른 인코딩들에서 인코드
+된 폰트들로 이루어진 <em>fontsets</em>가 사용됩니다. 만약 여러분이 사용하고있는
+locale이 (일반적으로 <samp><span class="file">/usr/share/X11/locale</span></samp>) &lsquo;<samp><span class="samp">XLC_LOCALE</span></samp>&rsquo; 디렉토리에
+entry를 두고있다면, 여러분은 아마도 그 곳에 명시되어있는 인코딩에서의
+폰트들을 가지고 있는 알맞은 폰트 사양을 고르기만하면 됩니다. 그렇지 않
+다면, 여러분은 X11에 알맞은 locale entry를 구해야만 할 수도 있습니다. 
+이는 예를들어 같은 기꼐에서 &lsquo;<samp><span class="samp">ja_JP.UTF-8</span></samp>&rsquo;에서 실행 될 때, 일본 글씨가
+디스플레이 되지만 &lsquo;<samp><span class="samp">en_GB.UTF-8</span></samp>&rsquo;을 실행할 때는 디스플레이 되지 않을 수
+도 있다는 뜻입니다 (몇몇의 시스템들에서 많은 UTF-8 X11 locale들이 예를
+들어  ISO 8859-1 (Western European), JISX0208 (Kanji), KSC5601
+(Korean), GB2312 (Chinese Han) and JISX0201 (Kana)와 같은 문자 세트들
+을 커버하는 &lsquo;<samp><span class="samp">en_US.UTF-8</span></samp>&rsquo;으로 불리어짐에도 불구하고).
 
-   <p>On some systems scalable fonts are available covering a wide range of
-glyphs.  One source is TrueType/OpenType fonts, and these can provide
-high coverage.  Another is Type 1 fonts: the URW set of Type 1 fonts
-provides standard typefaces such as Helvetica with a larger coverage of
-Unicode glyphs than the standard X11 bitmaps, including Cyrillic.  These
-are generally not part of the default install, and the X server may need
-to be configured to use them.  They might be under the X11 <samp><span class="file">fonts</span></samp>
-directory or elsewhere, for example,
+<!-- On some systems scalable fonts are available covering a wide range of -->
+<!-- glyphs.  One source is TrueType/OpenType fonts, and these can provide -->
+<!-- high coverage.  Another is Type 1 fonts: the URW set of Type 1 fonts -->
+<!-- provides standard typefaces such as Helvetica with a larger coverage of -->
+<!-- Unicode glyphs than the standard X11 bitmaps, including Cyrillic.  These -->
+<!-- are generally not part of the default install, and the X server may need -->
+<!-- to be configured to use them.  They might be under the X11 @file{fonts} -->
+<!-- directory or elsewhere, for example, -->
+   <p>몇몇의 시스템들에서, 상형 문자의 넓은 범위를 커버하는 scalable 폰트들
+이 사용가능합니다. 이 중 하나의 소스는 TrueType/OpenType 폰트들이고,
+이들은 높은 커버리지를 제공할 수 있습니다. 다른 것은 Type 1 폰트들 입
+니다: Type 1 폰트들의 URW 세트는 Cyrillic을 포함하는 기본 X11 비트맵들
+보다 유니코드 상형문자의 더 넓은 커버리지를 가진 Helvetica와 같은 기본
+typeface들은 제공합니다. 이들은 일반적으로 기본 설치의 일부분이 아니
+고, 이들을 사용하기 위해서 X 서버가 configure되어야 할 수도 있습니다. 
+이들은 예를들어 다음과 같이 X11 <samp><span class="file">fonts</span></samp> 디렉토리나 다른 곳에 있을 수도 있
+습니다.
 
 <pre class="example">     /usr/share/fonts/default/Type1
      /usr/share/fonts/ja/TrueType
@@ -5890,53 +5961,74 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Platform-notes">Platform notes</a>
 <h3 class="section">C.2 Linux</h3>
 
 <p><a name="index-Linux-84"></a>
-Linux is the main development platform for R, so compilation from the
-sources is normally straightforward with the standard compilers.
+<!-- Linux is the main development platform for @R{}, so compilation from the -->
+<!-- sources is normally straightforward with the standard compilers. -->
 
-   <p>Remember that some package management systems (such as <acronym>RPM</acronym> and
-deb) make a distinction between the user version of a package and the
-developer version.  The latter usually has the same name but with the
-extension &lsquo;<samp><span class="samp">-devel</span></samp>&rsquo; or &lsquo;<samp><span class="samp">-dev</span></samp>&rsquo;: you need both versions
-installed.  So please check the <code>configure</code> output to see if the
-expected features are detected: if for example &lsquo;<samp><span class="samp">readline</span></samp>&rsquo; is
-missing add the developer package.  (On most systems you will also need
-&lsquo;<samp><span class="samp">ncurses</span></samp>&rsquo; and its developer package, although these should be
-dependencies of the &lsquo;<samp><span class="samp">readline</span></samp>&rsquo; package(s).)
+   <p>리눅스는 R을 위한 주요 개발 플랫폼이어서, 소스에서부터의 compilation은 보통 기본 컴파일러 들이 있어 간단합니다.
 
-   <p>When R has been installed from a binary distribution there are
-sometimes problems with missing components such as the FORTRAN
-compiler.  Searching the &lsquo;<samp><span class="samp">R-help</span></samp>&rsquo; archives will normally reveal
-what is needed.
+<!-- Remember that some package management systems (such as @acronym{RPM} and -->
+<!-- deb) make a distinction between the user version of a package and the -->
+<!-- developer version.  The latter usually has the same name but with the -->
+<!-- extension @samp{-devel} or @samp{-dev}: you need both versions -->
+<!-- installed.  So please check the @code{configure} output to see if the -->
+<!-- expected features are detected: if for example @samp{readline} is -->
+<!-- missing add the developer package.  (On most systems you will also need -->
+<!-- @samp{ncurses} and its developer package, although these should be -->
+<!-- dependencies of the @samp{readline} package(s).) -->
+   <p><acronym>RPM</acronym>과 deb와 같은) 몇몇의 패키지 관리 시스템들이 패키지의 사용자 버전과 개발자 버전을
+구분짓는다는 것을 기억하십시오. 후자는 보통 같은 이름을 가지지만, extension &lsquo;<samp><span class="samp">-devel</span></samp>&rsquo;
+혹은 &lsquo;<samp><span class="samp">-dev</span></samp>&rsquo;가 있습니다: 두 가지 모두의 버전가 설치되어있어야만
+합니다. 그러므로 예상되는 특성이 발경되는지를 보기위해서는 <code>configure</code> output을 꼭 체크하세요:
+만약 예를 들어 &lsquo;<samp><span class="samp">readline</span></samp>&rsquo;이 없어졌다면, 개발자 패키지를 더하십시오. (대부분의 시스템 상에서, 여러분은 &lsquo;<samp><span class="samp">readline</span></samp>&rsquo; 패키지(들)의
+종속들이어야만하는 &lsquo;<samp><span class="samp">ncurses</span></samp>&rsquo;와 이의 개발자 패키지 또한 필요할 것입니다. )
 
-   <p>It seems that &lsquo;<samp><span class="samp">ix86</span></samp>&rsquo; Linux accepts non-PIC code in shared
-libraries, but this is not necessarily so on other platforms, in
-particular on 64-bit <acronym>CPU</acronym>s such as &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo;.  So care
-can be needed with <acronym>BLAS</acronym> libraries and when building R as a
-shared library to ensure that position-independent code is used in any
-static libraries (such as the Tcl/Tk libraries, <code>libpng</code>,
-<code>libjpeg</code> and <code>zlib</code>) which might be linked against. 
-Fortunately these are normally built as shared libraries with the
-exception of the ATLAS <acronym>BLAS</acronym> libraries.
+<!-- When @R{} has been installed from a binary distribution there are -->
+<!-- sometimes problems with missing components such as the FORTRAN -->
+<!-- compiler.  Searching the @samp{R-help} archives will normally reveal -->
+<!-- what is needed. -->
+   <p>R이 바이너리 distribution에서부터 설치되었을 떼, FORTRAN compiler과 같은 없어진 구성요소들에 대한 문제가 가끔
+있습니다. &lsquo;<samp><span class="samp">R-help</span></samp>&rsquo; archive들을 찾아보는 것이 대개 무엇이 필요한지를 알려줄 것입니다.
 
-   <p>The default optimization settings chosen for <code>CFLAGS</code> etc are
-conservative.  It is likely that using <samp><span class="option">-mtune</span></samp> will result in
-significant performance improvements on recent CPUs (especially for
-&lsquo;<samp><span class="samp">ix86</span></samp>&rsquo;): one possibility is to add <samp><span class="option">-mtune=native</span></samp> for
-the best possible performance on the machine on which R is being
-installed: if the compilation is for a site-wide installation, it may
-still be desirable to use something like
-<samp><span class="option">-mtume=core2</span></samp>.<a rel="footnote" href="#fn-28" name="fnd-28"><sup>28</sup></a> It is also possible to increase the
-optimization levels to <samp><span class="option">-O3</span></samp>: however for many versions of the
-compilers this has caused problems in at least one <acronym>CRAN</acronym>
-package.
+<!-- It seems that @cputype{ix86} Linux accepts non-PIC code in shared -->
+<!-- libraries, but this is not necessarily so on other platforms, in -->
+<!-- particular on 64-bit @acronym{CPU}s such as @cputype{x86_64}.  So care -->
+<!-- can be needed with @acronym{BLAS} libraries and when building @R{} as a -->
+<!-- shared library to ensure that position-independent code is used in any -->
+<!-- static libraries (such as the Tcl/Tk libraries, @code{libpng}, -->
+<!-- @code{libjpeg} and @code{zlib}) which might be linked against. -->
+<!-- Fortunately these are normally built as shared libraries with the -->
+<!-- exception of the ATLAS @acronym{BLAS} libraries. -->
+   <p>&lsquo;<samp><span class="samp">ix86</span></samp>&rsquo; Linux가 공유된 라이브러리에서 PIC 코드가 아닌 것을 받아들이는 것 처럼 보이지만, 이는 다른 플랫폼들, 특히
+&lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo;와 같은 64 비트 <acronym>CPU</acronym> 들에서는 반드시 이렇지는 않습니다. 그러므로 연결되어 있을 수도 있는 위치-독립적 코드가
+(Tcl/Tk 라이브러리들, <code>libpng</code>, <code>libjpeg</code>와 <code>zlib</code>과 같은) 어떤 static라이브러리에서 사용되었는지를
+확실하게하기위하여 <acronym>BLAS</acronym> 라이브러리들과 R을 공유된 라이브러리처럼 빌드할 때 주의가 필요할 수 있습니다. 다행스럽게도 이들은 보통 ATLAS <acronym>BLAS</acronym> 라이브러리들의 예외인 공유된 라이브러리들처럼 빌드됩니다.
 
-   <p>For platforms with both 64- and 32-bit support, it is likely that
+<!-- The default optimization settings chosen for @code{CFLAGS} etc are -->
+<!-- conservative.  It is likely that using @option{-mtune} will result in -->
+<!-- significant performance improvements on recent CPUs (especially for -->
+<!-- @cputype{ix86}): one possibility is to add @option{-mtune=native} for -->
+<!-- the best possible performance on the machine on which @R{} is being -->
+<!-- installed: if the compilation is for a site-wide installation, it may -->
+<!-- still be desirable to use something like -->
+<!-- @option{-mtume=core2}.@footnote{or @code{-mtune=corei7} for Intel Core -->
+<!-- i3/15/17 with @command{gcc >= 4.6.0}.} It is also possible to increase the -->
+<!-- optimization levels to @option{-O3}: however for many versions of the -->
+<!-- compilers this has caused problems in at least one @acronym{CRAN} -->
+<!-- package. -->
+<!-- For platforms with both 64- and 32-bit support, it is likely that -->
+   <p><code>CFLAGS</code> 등을 위해 선택된 기본 최적화 설정들은 보수적입니다. 이는 <samp><span class="option">-mtune</span></samp>의 사용이 최근 CPU들(특히 'ix86') 상에서
+현저한 성능 향상을 초래할 가능성이 있습니다: 한 가지 가능성은 R이 설치되어있는 기계에서의 최상의 성응을 위해서
+<samp><span class="option">-mtune=native</span></samp>를 더하는 것 입니다: 만약 compilation이 사이트 전체의 설치를 위한 것이라면, 이는
+<samp><span class="option">-mtume=core2</span></samp>와 같은 것의 사용이 여전히 바람직 할 수 있습니다. 이는 최적화 레벨을 <samp><span class="option">-O3</span></samp>까지 높이는 것 또한 가능합니다: 하지만 컴파일러 들의 많은 버전들에서 이는 적어도 하나의 <acronym>CRAN</acronym> 패키지에서 문제의 원인이 되었습니다. 
+64-비트와 32-비트 둘 다의 지원을 가진 플랫폼들은,
 
 <pre class="example">     LDFLAGS="-L/usr/local/lib64 -L/usr/local/lib"
 </pre>
-   <p class="noindent">is appropriate since most (but not all) software installs its 64-bit
-libraries in <samp><span class="file">/usr/local/lib64</span></samp>.  To build a 32-bit version of R
-on &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; with Fedora 16 we used
+   <p class="noindent"><!-- is appropriate since most (but not all) software installs its 64-bit -->
+<!-- libraries in @file{/usr/local/lib64}.  To build a 32-bit version of @R{} -->
+<!-- on @cputype{x86_64} with Fedora 16 we used -->
+
+   <p>대부분의 (모두는 아님) 소프트웨어들이 그의 64-비트 라이브러리들을 <samp><span class="file">/usr/loal/lib64</span></samp>에 설치하기 때문에 위의 것이 적당할 것입니다. Fedora 16과 함께 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo;에 R의 32-비트 버전을 빌트하기위해서는 다음을 사용합니다.
 
 <pre class="example">     CC="gcc -m32"
      CXX="g++ -m32"
@@ -5946,20 +6038,30 @@ on &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; with Fedora 16 we
      LDFLAGS="-L/usr/local/lib"
      LIBnn=lib
 </pre>
-   <p class="noindent">Note the use of &lsquo;<samp><span class="samp">LIBnn</span></samp>&rsquo;: &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Fedora installs its
-64-bit software in <samp><span class="file">/usr/lib64</span></samp> and 32-bit software in
-<samp><span class="file">/usr/lib</span></samp>.  Linking will skip over inappropriate binaries, but for
-example the 32-bit Tcl/Tk configure scripts are in <samp><span class="file">/usr/lib</span></samp>.  It
-may also be necessary to set the <samp><span class="command">pkg-config</span></samp> path, e.g. by
+   <p class="noindent"><!-- Note the use of @samp{LIBnn}: @cputype{x86_64} Fedora installs its -->
+<!-- 64-bit software in @file{/usr/lib64} and 32-bit software in -->
+<!-- @file{/usr/lib}.  Linking will skip over inappropriate binaries, but for -->
+<!-- example the 32-bit Tcl/Tk configure scripts are in @file{/usr/lib}.  It -->
+<!-- may also be necessary to set the @command{pkg-config} path, e.g.@: by -->
+
+   <p>&lsquo;<samp><span class="samp">LIBnn</span></samp>&rsquo;의 사용을 유의하십시오: &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; Fedora는 그의 64-비트 소프트웨어를 <samp><span class="file">/usr/lib64</span></samp>에 그리고 32-비트
+소프트웨어를 <samp><span class="file">/usr/lib</span></samp>에 설치합니다. Linking은 적합하지 않은 바이너리를 스킵할 것이지만, 예를들어 32-비트 Tcl/Tk
+configure 스크립들은 <samp><span class="file">/usr/lib</span></samp>안에 있습니다. <samp><span class="command">pkg-config</span></samp> 경로를 설정하는 것이 필요할 수도 있습니다. 예를들어,
 
 <pre class="example">     export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 </pre>
-   <p>64-bit versions of Linux are built with support for files &gt; 2Gb, and
-32-bit versions will be if possible unless <samp><span class="option">--disable-largefile</span></samp>
-is specified.
+   <!-- 64-bit versions of Linux are built with support for files > 2Gb, and -->
+<!-- 32-bit versions will be if possible unless @option{-disable-largefile} -->
+<!-- is specified. -->
+   <p>로 리눅스의 64-비트 버전들은 2Gb 이상의 파일들을위한 지원으로 빌드되고, 32-비트 버전들은 <samp><span class="option">-disable-largefile</span></samp>이
+지정되지 않은 이상 가능할 것입니다.
 
-   <p>To build a 64-bit version of R on &lsquo;<samp><span class="samp">ppc64</span></samp>&rsquo; (also known as
-&lsquo;<samp><span class="samp">powerpc64</span></samp>&rsquo;) with <samp><span class="command">gcc</span></samp>&nbsp;4.1.1, Ei-ji Nakama used
+<!-- To build a 64-bit version of @R{} on @cputype{ppc64} (also known as -->
+<!-- @cputype{powerpc64}) with @command{gcc}@tie{}4.1.1, Ei-ji Nakama used -->
+   <p>로 리눅스의 64-비트 버전들은 2Gb 이상의 파일들을위한 지원으로 빌드되고, 32-비트 버전들은 -disable-largefile이
+지정되지 않은 이상 가능할 것입니다. 
+<samp><span class="command">Gcc</span></samp>&nbsp; 4.1.1을 가진 (&lsquo;<samp><span class="samp">powerpc64</span></samp>&rsquo;라고도 알려져있는) &lsquo;<samp><span class="samp">ppc64</span></samp>&rsquo;에 R의 64-비트 버전을 빌드하기위해 Ei-ji
+Nakama는 다음을 사용합니다.
 
 <pre class="example">     CC="gcc -m64"
      CXX="gxx -m64"
@@ -5968,8 +6070,10 @@ is specified.
      CFLAGS="-mminimal-toc -fno-optimize-sibling-calls -g -O2"
      FFLAGS="-mminimal-toc -fno-optimize-sibling-calls -g -O2"
 </pre>
-   <p class="noindent">the additional flags being needed to resolve problems linking against
-<samp><span class="file">libnmath.a</span></samp> and when linking R as a shared library.
+   <p class="noindent"><!-- the additional flags being needed to resolve problems linking against -->
+<!-- @file{libnmath.a} and when linking @R{} as a shared library. -->
+
+   <p>추가의 flag들은 <samp><span class="file">libmath.a</span></samp>에 반하여 연결된 문재들을 해결하고 R이 공유된 라이브러리처럼 연결할 때 필요합니다.
 
 <ul class="menu">
 <li><a accesskey="1" href="#Clang">Clang</a>
@@ -5988,11 +6092,14 @@ Up:&nbsp;<a rel="up" accesskey="u" href="#Linux">Linux</a>
 
 <h4 class="subsection">C.2.1 Clang</h4>
 
-<p>R has been built with Linux &lsquo;<samp><span class="samp">ix86</span></samp>&rsquo; and &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; C and
-C++ compilers (<a href="http://clang.llvm.org">http://clang.llvm.org</a>, versions 2.9 and 3.0) based
-on the Clang front-ends, invoked by <code>CC=clang CXX=clang++</code>,
-together with <samp><span class="command">gfortran</span></samp>.  These take very similar options to
-the corresponding GCC compilers.
+<!-- @R{} has been built with Linux @cputype{ix86} and @cputype{x86_64} C and -->
+<!-- C++ compilers (@uref{http://clang.llvm.org}, versions 2.9 and 3.0) based -->
+<!-- on the Clang front-ends, invoked by @code{CC=clang CXX=clang++}, -->
+<!-- together with @command{gfortran}.  These take very similar options to -->
+<!-- the corresponding GCC compilers. -->
+<p>R은 <samp><span class="command">gfortran</span></samp>과 함께 <code>CC=clang CXX=clang++</code>에의해 적용된 Clang front-ends에 기초하여, 리눅스
+&lsquo;<samp><span class="samp">ix86</span></samp>&rsquo;과 &lsquo;<samp><span class="samp">x86_64</span></samp>&rsquo; C와 C++ compiler들(<a href="http://clang.llvm.org">http://clang.llvm.org</a>, 버전 2.9와 3.0)과 함께
+빌드되어졌습니다. 이들은 해당하는 GCC compiler들로의 매우 비슷한 옵션들을 가집니다.
 
 <div class="node">
 <a name="Intel-compilers"></a>
@@ -6022,23 +6129,32 @@ Linux.  Brian Ripley used version 9.0 of the compilers for
      LDFLAGS="-L$ICC_LIBS -L$IFC_LIBS -L/usr/local/lib64"
      SHLIB_CXXLD=icpc
 </pre>
-   <p class="noindent"><samp><span class="command">configure</span></samp> will add &lsquo;<samp><span class="samp">-c99</span></samp>&rsquo; to <code>CC</code> for
-C99-compliance.  This causes warnings with <code>icc</code> 10 and later, so
-use <code>CC="icc -std=c99"</code> there.  The flag <samp><span class="option">-wd188</span></samp> suppresses
-a large number of warnings about the enumeration type &lsquo;<samp><span class="samp">Rboolean</span></samp>&rsquo;. 
-Because the Intel C compiler sets &lsquo;<samp><span class="samp">__GNUC__</span></samp>&rsquo; without complete
-emulation of <samp><span class="command">gcc</span></samp>, we suggest adding <code>CPPFLAGS=-no-gcc</code>.
+   <p class="noindent"><!-- @command{configure} will add @samp{-c99} to @code{CC} for -->
+<!-- C99-compliance.  This causes warnings with @code{icc} 10 and later, so -->
+<!-- use @code{CC="icc -std=c99"} there.  The flag @option{-wd188} suppresses -->
+<!-- a large number of warnings about the enumeration type @samp{Rboolean}. -->
+<!-- Because the Intel C compiler sets @samp{__GNUC__} without complete -->
+<!-- emulation of @command{gcc}, we suggest adding @code{CPPFLAGS=-no-gcc}. -->
 
-   <p>To maintain correct <acronym>IEC</acronym>&nbsp;60559 arithmetic you most likely
-need add flags to <code>CFLAGS</code>, <code>FFLAGS</code> and <code>CXXFLAGS</code> such
-as <samp><span class="option">-mp</span></samp> (shown above) or <samp><span class="option">-fp-model precise -fp-model
-source</span></samp>, depending on the compiler version.
+   <p><samp><span class="command">Configure</span></samp>은 C99-compliane를위해 <code>CC</code>로 &lsquo;<samp><span class="samp">-c99</span></samp>&rsquo;을 더할 것 입니다. 이는 <code>icc</code>10 이후 것들의 경고를
+일으키기떄문에, 그 곳에 <code>CC=”icc-std=c99”</code>을 사용하십시오. Flag <samp><span class="option">-wd188</span></samp>은 열거형인 &lsquo;<samp><span class="samp">Rboolean</span></samp>&rsquo;에대한 많은
+경고들을 억제할 것입니다. Intel C compiler가 &lsquo;<samp><span class="samp">__GNUC__</span></samp>&rsquo;을 <samp><span class="command">gcc</span></samp>의 완전한 모방 없이 설정하기때문에,
+<code>CPPFLAGS=-no-gcc</code>를 더하는 것을 제안합니다.
 
-   <p>For some comments on building on an Itanium (&lsquo;<samp><span class="samp">ia64</span></samp>&rsquo;) Linux
-system with <samp><span class="command">gcc</span></samp> or the Intel compilers see
-<a href="http://www.nakama.ne.jp/memo/ia64_linux/">http://www.nakama.ne.jp/memo/ia64_linux/</a>.
+<!-- To maintain correct @acronym{IEC}@tie{}60559 arithmetic you most likely -->
+<!-- need add flags to @code{CFLAGS}, @code{FFLAGS} and @code{CXXFLAGS} such -->
+<!-- as @option{-mp} (shown above) or @option{-fp-model precise -fp-model -->
+<!-- source}, depending on the compiler version. -->
+   <p>알맞은 <acronym>IEC</acronym>&nbsp; 60559 산수를 관리하기위해서, 여러분은 필시 컴파일러 버전에 따라서 <samp><span class="option">–mp</span></samp> (위에서 보여짐)이나
+<samp><span class="option">–fp-model precise –fp-model source</span></samp>들과 같은 <code>CFLAGS</code>, <code>FFLAGS</code>, 그리고 <code>CXXFLAGS</code>들에 flag들을 더할 필요가 있을 것 입니다.
 
-   <p>Others have reported success with versions 10.x and 11.x.
+<!-- For some comments on building on an Itanium (@cputype{ia64}) Linux -->
+<!-- system with @command{gcc} or the Intel compilers see -->
+<!-- @uref{http://www.nakama.ne.jp/@/memo/@/ia64_linux/}. -->
+<!-- Others have reported success with versions 10.x and 11.x. -->
+   <p><samp><span class="command">gcc</span></samp>혹은 Intel 컴파일러 들과 함께 Itanium (&lsquo;<samp><span class="samp">ia64</span></samp>&rsquo;) 리눅스 시스템상에 빌드하는 것에대한 몇몇의
+코멘드들에대해서는 <a href="http://www.nakama.ne.jp/memo/ia64_linux/">http://www.nakama.ne.jp/memo/ia64_linux/</a>를 참고하십시오. 
+다른 것들은 버전들 10.x 와 11.x에서 성공적으로 리포트되었습니다.
 
 <div class="node">
 <a name="Oracle-Solaris-Studio-compilers"></a>
@@ -6118,7 +6234,7 @@ to install a pre-compiled version first, e.g. by
 and <code>gcc-4.6.2</code> which includes <samp><span class="command">gfortran46</span></samp>).  A listing of
 dependencies (not necessarily for current R) can be found at
 <a href="http://www.freebsd.org/ports/lang.html">http://www.freebsd.org/ports/lang.html</a>: you will however also
-need a TeX system<a rel="footnote" href="#fn-29" name="fnd-29"><sup>29</sup></a> to build the
+need a TeX system<a rel="footnote" href="#fn-28" name="fnd-28"><sup>28</sup></a> to build the
 manuals.
 
    <p>Then R itself can be built by something like
@@ -6489,7 +6605,7 @@ by software emulation.  On such systems <samp><span class="command">configure</s
 <samp><span class="option">--disable-long-double</span></samp> can be used for faster but less accurate
 computations.
 
-   <p>When using the Oracle compilers<a rel="footnote" href="#fn-30" name="fnd-30"><sup>30</sup></a> do <em>not</em> specify <samp><span class="option">-fast</span></samp>, as this
+   <p>When using the Oracle compilers<a rel="footnote" href="#fn-29" name="fnd-29"><sup>29</sup></a> do <em>not</em> specify <samp><span class="option">-fast</span></samp>, as this
 disables <acronym>IEEE</acronym> arithmetic and <samp><span class="command">make check</span></samp> will fail.
 
    <p>For the Solaris Studio compilers a little juggling of paths was needed
@@ -6832,7 +6948,7 @@ implementation of <code>cacos</code> gives incorrect results, so we undefine
    <p>Many versions of Cygwin during 2011 were unable to build R: 1.7.9-1
 with <acronym>GCC</acronym> 4.5.3-3 in November 2011 was able to do so.
 
-   <p>Only building as a shared library can possibly work,<a rel="footnote" href="#fn-31" name="fnd-31"><sup>31</sup></a> so use e.g
+   <p>Only building as a shared library can possibly work,<a rel="footnote" href="#fn-30" name="fnd-30"><sup>30</sup></a> so use e.g
 
 <pre class="example">     ./configure --disable-nls --enable-R-shlib FLIBS=-lgfortran
      make
@@ -6948,7 +7064,7 @@ will not need to build add-on packages from source; see <a href="#Add_002don-pac
 
    <p>We have found that the build process for R is quite sensitive to
 the choice of tools: please follow our instructions <strong>exactly</strong>,
-even to the choice of particular versions of the tools.<a rel="footnote" href="#fn-32" name="fnd-32"><sup>32</sup></a>  The build process for add-on packages is somewhat more
+even to the choice of particular versions of the tools.<a rel="footnote" href="#fn-31" name="fnd-31"><sup>31</sup></a>  The build process for add-on packages is somewhat more
 forgiving, but we recommend using the exact toolset at first, and only
 substituting other tools once you are familiar with the process.
 
@@ -6958,7 +7074,7 @@ the R mailing lists unless you have followed all the prescriptions.</em>
 
    <p>We have collected most of the necessary tools (unfortunately not all,
 due to license or size limitations) into an executable installer
-named<a rel="footnote" href="#fn-33" name="fnd-33"><sup>33</sup></a>  <samp><span class="file">Rtools30.exe</span></samp>,
+named<a rel="footnote" href="#fn-32" name="fnd-32"><sup>32</sup></a>  <samp><span class="file">Rtools30.exe</span></samp>,
 available from <a href="http://CRAN.R-project.org/bin/windows/Rtools/">http://CRAN.R-project.org/bin/windows/Rtools/</a>. You
 should download and run it, choosing the default &ldquo;Package authoring
 installation&rdquo; to build add-on packages, or the &ldquo;full installation&rdquo; if
@@ -6999,7 +7115,7 @@ use filepaths containing spaces: you can always use the short forms
 </pre>
    <p>It is essential that the directory containing the command line tools
 comes first or second in the path: there are typically like-named
-tools<a rel="footnote" href="#fn-34" name="fnd-34"><sup>34</sup></a> in other directories, and they will <strong>not</strong>
+tools<a rel="footnote" href="#fn-33" name="fnd-33"><sup>33</sup></a> in other directories, and they will <strong>not</strong>
 work. The ordering of the other directories is less important, but if in
 doubt, use the order above.
 
@@ -7147,7 +7263,7 @@ and version 2.0.1 of the MinGW-w64 project's runtime.
 
    <p>This toolchain uses <em>multilib</em>: that is there is a single front-end
 such as <samp><span class="command">gcc.exe</span></samp> for each of the compilers and 32-bit (the
-default) and 64-bit compilation are selected by the flags<a rel="footnote" href="#fn-35" name="fnd-35"><sup>35</sup></a>  <samp><span class="option">-m32</span></samp> and <samp><span class="option">-m64</span></samp>
+default) and 64-bit compilation are selected by the flags<a rel="footnote" href="#fn-34" name="fnd-34"><sup>34</sup></a>  <samp><span class="option">-m32</span></samp> and <samp><span class="option">-m64</span></samp>
 respectively.  The tools are all 32-bit Windows executables and should
 be able to run on any current version of Windows&mdash;however you do need a
 64-bit version of Windows to build 64-bit R as the build process runs
@@ -7389,31 +7505,30 @@ structure defined in <samp><span class="file">R_ext/Complex.h</span></samp>.</p>
 
    <p class="footnote"><small>[<a name="fn-26" href="#fnd-26">26</a>]</small> e.g., to use an optimized <acronym>BLAS</acronym> on Sun/Sparc</p>
 
-   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> for example, <code>X11 font at size 14 could not
-be loaded</code>.</p>
+   <p class="footnote"><small>[<a name="fn-27" href="#fnd-27">27</a>]</small> 만약 <code>X11()이 특히 큰 폰트 사이즈
+들의 실종을 리포트 하는 것을 알아낸다면</code>, 이는 거의 대부분 여러분이 X11
+폰트들의 100dpi 버정들을 설치하지 않았고 크기를 조절할 수 있는 폰트들
+을 사용하지 않고 있는 것입니다.</p>
 
-   <p class="footnote"><small>[<a name="fn-28" href="#fnd-28">28</a>]</small> or <code>-mtune=corei7</code> for Intel Core
-i3/15/17 with <samp><span class="command">gcc &gt;= 4.6.0</span></samp>.</p>
+   <p class="footnote"><small>[<a name="fn-28" href="#fnd-28">28</a>]</small> TeXLive is recommended.</p>
 
-   <p class="footnote"><small>[<a name="fn-29" href="#fnd-29">29</a>]</small> TeXLive is recommended.</p>
-
-   <p class="footnote"><small>[<a name="fn-30" href="#fnd-30">30</a>]</small> including <samp><span class="command">gcc</span></samp> for
+   <p class="footnote"><small>[<a name="fn-29" href="#fnd-29">29</a>]</small> including <samp><span class="command">gcc</span></samp> for
 Sparc from Oracle.</p>
 
-   <p class="footnote"><small>[<a name="fn-31" href="#fnd-31">31</a>]</small> Windows
+   <p class="footnote"><small>[<a name="fn-30" href="#fnd-30">30</a>]</small> Windows
 DLLs need to have all links resolved at build time and so cannot resolve
 against <samp><span class="file">R.bin</span></samp>.</p>
 
-   <p class="footnote"><small>[<a name="fn-32" href="#fnd-32">32</a>]</small> For
+   <p class="footnote"><small>[<a name="fn-31" href="#fnd-31">31</a>]</small> For
 example, the Cygwin version of <code>make 3.81</code> fails to work
 correctly.</p>
 
-   <p class="footnote"><small>[<a name="fn-33" href="#fnd-33">33</a>]</small> for R 2.14.2 and later.</p>
+   <p class="footnote"><small>[<a name="fn-32" href="#fnd-32">32</a>]</small> for R 2.14.2 and later.</p>
 
-   <p class="footnote"><small>[<a name="fn-34" href="#fnd-34">34</a>]</small> such as <samp><span class="command">sort</span></samp>, <samp><span class="command">find</span></samp> and perhaps
+   <p class="footnote"><small>[<a name="fn-33" href="#fnd-33">33</a>]</small> such as <samp><span class="command">sort</span></samp>, <samp><span class="command">find</span></samp> and perhaps
 <samp><span class="command">make</span></samp>.</p>
 
-   <p class="footnote"><small>[<a name="fn-35" href="#fnd-35">35</a>]</small> these
+   <p class="footnote"><small>[<a name="fn-34" href="#fnd-34">34</a>]</small> these
 flags apply to the compilers: some of the tools use different flags. 
 32-bit builds are the default.</p>
 

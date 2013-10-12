@@ -5535,21 +5535,39 @@ flag들을 허용하고, 만약 이들이 다르다면 공유된 객체안의 �
 @node Platform notes, The Windows toolset, Configuration on a Unix-alike, Top
 @appendix Platform notes
 
-This section provides some notes on building @R{} on different Unix-alike
-platforms.  These notes are based on tests run on one or two systems in
-each case with particular sets of compilers and support libraries.
-Success in building @R{} depends on the proper installation and functioning
-of support software; your results may differ if you have other versions
-of compilers and support libraries.
+@c This section provides some notes on building @R{} on different Unix-alike
+@c platforms.  These notes are based on tests run on one or two systems in
+@c each case with particular sets of compilers and support libraries.
+@c Success in building @R{} depends on the proper installation and functioning
+@c of support software; your results may differ if you have other versions
+@c of compilers and support libraries.
 
-Older versions of this manual (for @R{} < 2.10.0) contain notes on
-platforms such as HP-UX, IRIX and Alpha/OSF1 for which we have had no
-recent reports.
+이 섹션은 다른 유닉스 계열 플랫폼들에서 @R{}의 구축에 대한 몇몇의 주의사
+항을 제공합니다. 이 주의사랑들은 특정한 컴파일러들의 세트나 지원 라이
+브러리들을 가진 각각의 케이스을 한 개 혹은 두 개의 시스템들에서 실행하
+여 테스트하는 것에 기초한 것들입니다. @R{}의 구축의 성공은 알맞은 설치와
+지원 소프트웨어의 성능에 달려있습니다; 여러분의 결과들은 다른 버전의
+컴파일러와 지원 라이브러리들을 가지고 있다면 다를 수도 있습니다.
 
-C macros to select particular platforms can be tricky to track down
-(there is a fair amount of misinformation on the Web).  The Wiki
-(currently) at @uref{http://sourceforge.net/p/predef/wiki/Home/} can be
-helpful.  The @R{} sources currently use
+
+@c Older versions of this manual (for @R{} < 2.10.0) contain notes on
+@c platforms such as HP-UX, IRIX and Alpha/OSF1 for which we have had no
+@c recent reports.
+
+이 매뉴얼의 이전 버전들은 (@R{} 2.10.0 이전 버전들) 최근 리포트가 없는
+HP-UX, IRIX, 그리고 Alpha/OSF1과 같은 플랫폼들에서의 주의사항들을 포함
+합니다.
+
+@c C macros to select particular platforms can be tricky to track down
+@c (there is a fair amount of misinformation on the Web).  The Wiki
+@c (currently) at @uref{http://sourceforge.net/p/predef/wiki/Home/} can be
+@c helpful.  The @R{} sources currently use
+
+특정한 플랫폼들을 선택하기위한 C 매크로 들은 추적하기 까다로울 수도 있습
+니다 (웹에는 꽤 많은 양의 잘못된 정보들이 있습니다).
+@uref{http://sourceforge.net/p/predef/wiki/Home/}에서의 Wiki (현재)가 유용할
+수 있습니다. @R{} 소스들은 현재 다음을 사용합니다.
+
 @example
 AIX: _AIX
 Cygwin: __CYGWIN__
@@ -5578,24 +5596,42 @@ Windows: _WIN32, _WIN64
 @node X11 issues, Linux, Platform notes, Platform notes
 @section X11 issues
 
-The @samp{X11()} graphics device is the one started automatically on
-Unix-alikes when plotting.  As its name implies, it displays on a (local
-or remote) X server, and relies on the services provided by the X
-server.
+@c The @samp{X11()} graphics device is the one started automatically on
+@c Unix-alikes when plotting.  As its name implies, it displays on a (local
+@c or remote) X server, and relies on the services provided by the X
+@c server.
 
-The `modern' version of the @samp{X11()} device is based on @samp{cairo}
-graphics and (in most implementations) uses @samp{fontconfig} to pick and
-render fonts.  This is done on the server, and although there can be
-selection issues, they are more amenable than the issues with
-@samp{X11()} discussed in the rest of this section.
+@samp{X11()} 그래픽 장치는 plotting을 할 때, 유닉스 계열에서 자동으로 시작
+되는 것입니다. 이름이 나타내ㄷ듯이, 이는 (로컬 혹은 remote) X 서버에
+디스플레이되고 X 서버에의해 제공된 서비드들에 의존합니다.
 
-When X11 was designed, most displays were around 75dpi, whereas today
-they are of the order of 100dpi or more.  If you find that X11()
-is reporting@footnote{for example, @code{X11 font at size 14 could not
-be loaded}.} missing font sizes, especially larger ones, it is likely
-that you are not using scalable fonts and have not installed the 100dpi
-versions of the X11 fonts.  The names and details differ by system, but
-will likely have something like Fedora's
+@c The `modern' version of the @samp{X11()} device is based on @samp{cairo}
+@c graphics and (in most implementations) uses @samp{fontconfig} to pick and
+@c render fonts.  This is done on the server, and although there can be
+@c selection issues, they are more amenable than the issues with
+@c @samp{X11()} discussed in the rest of this section.
+
+@samp{X11()} 장치의 ‘현대’ 버전은 @samp{cairo} 그래픽에 기초하고 (대부분의
+implementation들에서) 폰트를 선택하고나 만들기 위하여 @samp{fontconfig}를
+사용합니다. 이는 서버에서 행해지고, 선택의 문제가 있을 수도 있지만, 이
+섹션의 나머지 부분에서 언급되는 @samp{X11()}에 대한 문제들보다는 잘 처리될
+수 있습니다.
+
+@c When X11 was designed, most displays were around 75dpi, whereas today
+@c they are of the order of 100dpi or more.  If you find that X11()
+@c is reporting@footnote{for example, @code{X11 font at size 14 could not
+@c be loaded}.} missing font sizes, especially larger ones, it is likely
+@c that you are not using scalable fonts and have not installed the 100dpi
+@c versions of the X11 fonts.  The names and details differ by system, but
+@c will likely have something like Fedora's
+
+X11이 디자인 되었을 때, 요즘에는 대략 100dpi 이상인 것에 비해, 대부분
+의 디스플레이들은 대략 75dpi였습니다. @footnote{만약 @code{X11()이 특히 큰 폰트 사이즈
+들의 실종을 리포트 하는 것을 알아낸다면}, 이는 거의 대부분 여러분이 X11
+폰트들의 100dpi 버정들을 설치하지 않았고 크기를 조절할 수 있는 폰트들
+을 사용하지 않고 있는 것입니다.} 이름들과 세부사항들은 시스템에따라 다
+르지만, 대부분 Fedora에서의 다음과 같은 것들을 가지고 있을 것 입니다.
+
 @example
 xorg-x11-fonts-75dpi
 xorg-x11-fonts-100dpi
@@ -5605,57 +5641,105 @@ xorg-x11-fonts-cyrillic
 @end example
 
 @noindent
-and you need to ensure that the @samp{-100dpi} versions are installed
-and on the X11 font path (check via @command{xset -q}).  The
-@samp{X11()} device does try to set a pointsize and not a pixel size:
-laptop users may find the default setting of 12 too large (although very
-frequently laptop screens are set to a fictitious dpi to appear like a
-scaled-down desktop screen).
+@c and you need to ensure that the @samp{-100dpi} versions are installed
+@c and on the X11 font path (check via @command{xset -q}).  The
+@c @samp{X11()} device does try to set a pointsize and not a pixel size:
+@c laptop users may find the default setting of 12 too large (although very
+@c frequently laptop screens are set to a fictitious dpi to appear like a
+@c scaled-down desktop screen).
 
-More complicated problems can occur in non-Western-European locales, so
-if you are using one, the first thing to check is that things work in
-the @code{C} locale.  The likely issues are a failure to find any fonts
-or glyphs being rendered incorrectly (often as a pair of ASCII
-characters).  X11 works by being asked for a font specification and
-coming up with its idea of a close match.  For text (as distinct from
-the symbols used by plotmath), the specification is the first element of
-the option @code{"X11fonts"} which defaults to
+그리고 X11 폰트 경로에 @samp{-100dpi} 버전들이 설치되어있는지를 확실히 해야
+할 필요가 있습니다 (@command{xset  –q}를 통하여 체크하세요). @samp{X11()}장치는 pixel
+size가 아닌 pointsize를 설정하려고 노력합니다:  (굉장히 자주 노트북 스
+크린이 축소된 데스크탑 스크린처럼 나타나도록 가상 dpi로 설정됨에도 불
+구하고) 노트북 사용자들은 기본 값인 12가 너무 크다고 느낄 수도 있습니다.
+
+@c More complicated problems can occur in non-Western-European locales, so
+@c if you are using one, the first thing to check is that things work in
+@c the @code{C} locale.  The likely issues are a failure to find any fonts
+@c or glyphs being rendered incorrectly (often as a pair of ASCII
+@c characters).  X11 works by being asked for a font specification and
+@c coming up with its idea of a close match.  For text (as distinct from
+@c the symbols used by plotmath), the specification is the first element of
+@c the option @code{"X11fonts"} which defaults to
+
+더 복잡한 문제들이 Western-European locale들이 아닌 곳에서 일어날 수도
+있기떄문에, 만약 여러분이 이들을 사용하고 있다면, 가장 먼저 확인해야
+할 것은 @code{C} locale에서 실행되고있는 것들입니다. 대부분의 문제는 폰트나 (
+종종 ASCII 문자들의 쌍 처럼) 상형문자들이 알맞지 않게 만들어지는 것을
+찾는 것을 실패하는 것 입니다. X11은 폰트 사양을 물어보는 것에 의해 실
+행되고 그가 생각하기에 근접한 매치를 줍니다. (plotmath에의해 사용되는
+심볼들로부터의 distinct 처럼) 텍스트에서, 사양은 다음에 보여지는 것으
+로 기본값이 되어있는 옵션 @code{"X11fonts”}의 첫 번째 객체입니다.
 
 @example
 "-adobe-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*"
 @end example
 
-If you are using a single-byte encoding, for example ISO 8859-2 in
-Eastern Europe or KOI8-R in Russian, use @command{xlsfonts} to find an
-appropriate family of fonts in your encoding (the last field in the
-listing).  If you find none, it is likely that you need to install
-further font packages, such as @samp{xorg-x11-fonts-ISO8859-2-75dpi} and
-@samp{xorg-x11-fonts-cyrillic} shown in the listing above.
+@c If you are using a single-byte encoding, for example ISO 8859-2 in
+@c Eastern Europe or KOI8-R in Russian, use @command{xlsfonts} to find an
+@c appropriate family of fonts in your encoding (the last field in the
+@c listing).  If you find none, it is likely that you need to install
+@c further font packages, such as @samp{xorg-x11-fonts-ISO8859-2-75dpi} and
+@c @samp{xorg-x11-fonts-cyrillic} shown in the listing above.
 
-Multi-byte encodings (most commonly UTF-8) are even more complicated.
-There are few fonts in @samp{iso10646-1}, the Unicode encoding, and they
-only contain a subset of the available glyphs (and are often fixed-width
-designed for use in terminals).  In such locales @emph{fontsets} are
-used, made up of fonts encoded in other encodings.  If the locale you
-are using has an entry in the @samp{XLC_LOCALE} directory (typically
-@file{/usr/share/X11/locale}, it is likely that all you need to do is to
-pick a suitable font specification that has fonts in the encodings
-specified there.  If not, you may have to get hold of a suitable locale
-entry for X11.  This may mean that, for example, Japanese text can be
-displayed when running in @samp{ja_JP.UTF-8} but not when running in
-@samp{en_GB.UTF-8} on the same machine (although on some systems many
-UTF-8 X11 locales are aliased to @samp{en_US.UTF-8} which covers several
-character sets, e.g.@: ISO 8859-1 (Western European), JISX0208 (Kanji),
-KSC5601 (Korean), GB2312 (Chinese Han) and JISX0201 (Kana)).
+만약 여러분이 예를들어 동부 유럽의 ISO 8859-2나 러시아의 KOI8-R과 같은
+single-byte 인코딩을 사용한다면, 여러분의 인코딩 안의 폰트의 알맞은 패
+밀리를 찾기위해서 @command{xlsfonts}를 사용하세요 (리스팅의 마지만 field). 만약
+아무것도 찾지 못한다면, 대부분 위의 리스팅에서 보여진 것 처럼
+@samp{xorg-x11-fonts-ISO8859-2-75dpi}와 @samp{xorg-x11-fonts-cyrillic}과 같은 추
+가의 폰트 패키지들을 설치해야할 필요가 있는 것 입니다.
 
-On some systems scalable fonts are available covering a wide range of
-glyphs.  One source is TrueType/OpenType fonts, and these can provide
-high coverage.  Another is Type 1 fonts: the URW set of Type 1 fonts
-provides standard typefaces such as Helvetica with a larger coverage of
-Unicode glyphs than the standard X11 bitmaps, including Cyrillic.  These
-are generally not part of the default install, and the X server may need
-to be configured to use them.  They might be under the X11 @file{fonts}
-directory or elsewhere, for example,
+@c Multi-byte encodings (most commonly UTF-8) are even more complicated.
+@c There are few fonts in @samp{iso10646-1}, the Unicode encoding, and they
+@c only contain a subset of the available glyphs (and are often fixed-width
+@c designed for use in terminals).  In such locales @emph{fontsets} are
+@c used, made up of fonts encoded in other encodings.  If the locale you
+@c are using has an entry in the @samp{XLC_LOCALE} directory (typically
+@c @file{/usr/share/X11/locale}, it is likely that all you need to do is to
+@c pick a suitable font specification that has fonts in the encodings
+@c specified there.  If not, you may have to get hold of a suitable locale
+@c entry for X11.  This may mean that, for example, Japanese text can be
+@c displayed when running in @samp{ja_JP.UTF-8} but not when running in
+@c @samp{en_GB.UTF-8} on the same machine (although on some systems many
+@c UTF-8 X11 locales are aliased to @samp{en_US.UTF-8} which covers several
+@c character sets, e.g.@: ISO 8859-1 (Western European), JISX0208 (Kanji),
+@c KSC5601 (Korean), GB2312 (Chinese Han) and JISX0201 (Kana)).
+
+Multi-byte 인코딩들은 더욱 더 복잡합니다 (가장 흔하게 UTF-8).
+@samp{iso10646-1}에 몇가지 폰트들이 있는데, Unicode 인코딩, 이들은 사용 가
+능한 상형문자들의 subset만을 포함합니다 (그리고 종종 터미널들에 사용되
+도록 디자인된 고정된 너비). 이런 locale들에는 다른 인코딩들에서 인코드
+된 폰트들로 이루어진 @emph{fontsets}가 사용됩니다. 만약 여러분이 사용하고있는
+locale이 (일반적으로 @file{/usr/share/X11/locale}) @samp{XLC_LOCALE} 디렉토리에
+entry를 두고있다면, 여러분은 아마도 그 곳에 명시되어있는 인코딩에서의
+폰트들을 가지고 있는 알맞은 폰트 사양을 고르기만하면 됩니다. 그렇지 않
+다면, 여러분은 X11에 알맞은 locale entry를 구해야만 할 수도 있습니다.
+이는 예를들어 같은 기꼐에서 @samp{ja_JP.UTF-8}에서 실행 될 때, 일본 글씨가
+디스플레이 되지만 @samp{en_GB.UTF-8}을 실행할 때는 디스플레이 되지 않을 수
+도 있다는 뜻입니다 (몇몇의 시스템들에서 많은 UTF-8 X11 locale들이 예를
+들어 @: ISO 8859-1 (Western European), JISX0208 (Kanji), KSC5601
+(Korean), GB2312 (Chinese Han) and JISX0201 (Kana)와 같은 문자 세트들
+을 커버하는 @samp{en_US.UTF-8}으로 불리어짐에도 불구하고).
+
+@c On some systems scalable fonts are available covering a wide range of
+@c glyphs.  One source is TrueType/OpenType fonts, and these can provide
+@c high coverage.  Another is Type 1 fonts: the URW set of Type 1 fonts
+@c provides standard typefaces such as Helvetica with a larger coverage of
+@c Unicode glyphs than the standard X11 bitmaps, including Cyrillic.  These
+@c are generally not part of the default install, and the X server may need
+@c to be configured to use them.  They might be under the X11 @file{fonts}
+@c directory or elsewhere, for example,
+
+몇몇의 시스템들에서, 상형 문자의 넓은 범위를 커버하는 scalable 폰트들
+이 사용가능합니다. 이 중 하나의 소스는 TrueType/OpenType 폰트들이고,
+이들은 높은 커버리지를 제공할 수 있습니다. 다른 것은 Type 1 폰트들 입
+니다: Type 1 폰트들의 URW 세트는 Cyrillic을 포함하는 기본 X11 비트맵들
+보다 유니코드 상형문자의 더 넓은 커버리지를 가진 Helvetica와 같은 기본
+typeface들은 제공합니다. 이들은 일반적으로 기본 설치의 일부분이 아니
+고, 이들을 사용하기 위해서 X 서버가 configure되어야 할 수도 있습니다.
+이들은 예를들어 다음과 같이 X11 @file{fonts} 디렉토리나 다른 곳에 있을 수도 있
+습니다.
 
 @example
 /usr/share/fonts/default/Type1
@@ -5667,57 +5751,84 @@ directory or elsewhere, for example,
 @section Linux
 @cindex Linux
 
-Linux is the main development platform for @R{}, so compilation from the
-sources is normally straightforward with the standard compilers.
+@c Linux is the main development platform for @R{}, so compilation from the
+@c sources is normally straightforward with the standard compilers.
 
-Remember that some package management systems (such as @acronym{RPM} and
-deb) make a distinction between the user version of a package and the
-developer version.  The latter usually has the same name but with the
-extension @samp{-devel} or @samp{-dev}: you need both versions
-installed.  So please check the @code{configure} output to see if the
-expected features are detected: if for example @samp{readline} is
-missing add the developer package.  (On most systems you will also need
-@samp{ncurses} and its developer package, although these should be
-dependencies of the @samp{readline} package(s).)
+리눅스는 @R{}을 위한 주요 개발 플랫폼이어서, 소스에서부터의 compilation은 보통 기본 컴파일러 들이 있어 간단합니다.
 
-When @R{} has been installed from a binary distribution there are
-sometimes problems with missing components such as the FORTRAN
-compiler.  Searching the @samp{R-help} archives will normally reveal
-what is needed.
+@c Remember that some package management systems (such as @acronym{RPM} and
+@c deb) make a distinction between the user version of a package and the
+@c developer version.  The latter usually has the same name but with the
+@c extension @samp{-devel} or @samp{-dev}: you need both versions
+@c installed.  So please check the @code{configure} output to see if the
+@c expected features are detected: if for example @samp{readline} is
+@c missing add the developer package.  (On most systems you will also need
+@c @samp{ncurses} and its developer package, although these should be
+@c dependencies of the @samp{readline} package(s).)
 
-It seems that @cputype{ix86} Linux accepts non-PIC code in shared
-libraries, but this is not necessarily so on other platforms, in
-particular on 64-bit @acronym{CPU}s such as @cputype{x86_64}.  So care
-can be needed with @acronym{BLAS} libraries and when building @R{} as a
-shared library to ensure that position-independent code is used in any
-static libraries (such as the Tcl/Tk libraries, @code{libpng},
-@code{libjpeg} and @code{zlib}) which might be linked against.
-Fortunately these are normally built as shared libraries with the
-exception of the ATLAS @acronym{BLAS} libraries.
+@acronym{RPM}과 deb와 같은) 몇몇의 패키지 관리 시스템들이 패키지의 사용자 버전과 개발자 버전을 
+구분짓는다는 것을 기억하십시오. 후자는 보통 같은 이름을 가지지만, extension @samp{-devel} 
+혹은 @samp{-dev}가 있습니다: 두 가지 모두의 버전가 설치되어있어야만
+합니다. 그러므로 예상되는 특성이 발경되는지를 보기위해서는 @code{configure} output을 꼭 체크하세요:
+만약 예를 들어 @samp{readline}이 없어졌다면, 개발자 패키지를 더하십시오. (대부분의 시스템 상에서, 여러분은 @samp{readline} 패키지(들)의
+종속들이어야만하는 @samp{ncurses}와 이의 개발자 패키지 또한 필요할 것입니다. )
 
-The default optimization settings chosen for @code{CFLAGS} etc are
-conservative.  It is likely that using @option{-mtune} will result in
-significant performance improvements on recent CPUs (especially for
-@cputype{ix86}): one possibility is to add @option{-mtune=native} for
-the best possible performance on the machine on which @R{} is being
-installed: if the compilation is for a site-wide installation, it may
-still be desirable to use something like
-@option{-mtume=core2}.@footnote{or @code{-mtune=corei7} for Intel Core
-i3/15/17 with @command{gcc >= 4.6.0}.} It is also possible to increase the
-optimization levels to @option{-O3}: however for many versions of the
-compilers this has caused problems in at least one @acronym{CRAN}
-package.
+@c When @R{} has been installed from a binary distribution there are
+@c sometimes problems with missing components such as the FORTRAN
+@c compiler.  Searching the @samp{R-help} archives will normally reveal
+@c what is needed.
 
-For platforms with both 64- and 32-bit support, it is likely that
+
+@R{}이 바이너리 distribution에서부터 설치되었을 떼, FORTRAN compiler과 같은 없어진 구성요소들에 대한 문제가 가끔
+있습니다. @samp{R-help} archive들을 찾아보는 것이 대개 무엇이 필요한지를 알려줄 것입니다.
+
+
+@c It seems that @cputype{ix86} Linux accepts non-PIC code in shared
+@c libraries, but this is not necessarily so on other platforms, in
+@c particular on 64-bit @acronym{CPU}s such as @cputype{x86_64}.  So care
+@c can be needed with @acronym{BLAS} libraries and when building @R{} as a
+@c shared library to ensure that position-independent code is used in any
+@c static libraries (such as the Tcl/Tk libraries, @code{libpng},
+@c @code{libjpeg} and @code{zlib}) which might be linked against.
+@c Fortunately these are normally built as shared libraries with the
+@c exception of the ATLAS @acronym{BLAS} libraries.
+
+@cputype{ix86} Linux가 공유된 라이브러리에서 PIC 코드가 아닌 것을 받아들이는 것 처럼 보이지만, 이는 다른 플랫폼들, 특히
+@cputype{x86_64}와 같은 64 비트 @acronym{CPU} 들에서는 반드시 이렇지는 않습니다. 그러므로 연결되어 있을 수도 있는 위치-독립적 코드가
+(Tcl/Tk 라이브러리들, @code{libpng}, @code{libjpeg}와 @code{zlib}과 같은) 어떤 static라이브러리에서 사용되었는지를
+확실하게하기위하여 @acronym{BLAS} 라이브러리들과 R을 공유된 라이브러리처럼 빌드할 때 주의가 필요할 수 있습니다. 다행스럽게도 이들은 보통 ATLAS @acronym{BLAS} 라이브러리들의 예외인 공유된 라이브러리들처럼 빌드됩니다.
+
+@c The default optimization settings chosen for @code{CFLAGS} etc are
+@c conservative.  It is likely that using @option{-mtune} will result in
+@c significant performance improvements on recent CPUs (especially for
+@c @cputype{ix86}): one possibility is to add @option{-mtune=native} for
+@c the best possible performance on the machine on which @R{} is being
+@c installed: if the compilation is for a site-wide installation, it may
+@c still be desirable to use something like
+@c @option{-mtume=core2}.@footnote{or @code{-mtune=corei7} for Intel Core
+@c i3/15/17 with @command{gcc >= 4.6.0}.} It is also possible to increase the
+@c optimization levels to @option{-O3}: however for many versions of the
+@c compilers this has caused problems in at least one @acronym{CRAN}
+@c package.
+@c For platforms with both 64- and 32-bit support, it is likely that
+
+@code{CFLAGS} 등을 위해 선택된 기본 최적화 설정들은 보수적입니다. 이는 @option{-mtune}의 사용이 최근 CPU들(특히 'ix86') 상에서
+현저한 성능 향상을 초래할 가능성이 있습니다: 한 가지 가능성은 @R{}이 설치되어있는 기계에서의 최상의 성응을 위해서
+@option{-mtune=native}를 더하는 것 입니다: 만약 compilation이 사이트 전체의 설치를 위한 것이라면, 이는
+@option{-mtume=core2}와 같은 것의 사용이 여전히 바람직 할 수 있습니다. 이는 최적화 레벨을 @option{-O3}까지 높이는 것 또한 가능합니다: 하지만 컴파일러 들의 많은 버전들에서 이는 적어도 하나의 @acronym{CRAN} 패키지에서 문제의 원인이 되었습니다.
+64-비트와 32-비트 둘 다의 지원을 가진 플랫폼들은,
 
 @example
 LDFLAGS="-L/usr/local/lib64 -L/usr/local/lib"
 @end example
 
 @noindent
-is appropriate since most (but not all) software installs its 64-bit
-libraries in @file{/usr/local/lib64}.  To build a 32-bit version of @R{}
-on @cputype{x86_64} with Fedora 16 we used
+
+@c is appropriate since most (but not all) software installs its 64-bit
+@c libraries in @file{/usr/local/lib64}.  To build a 32-bit version of @R{}
+@c on @cputype{x86_64} with Fedora 16 we used
+
+대부분의 (모두는 아님) 소프트웨어들이 그의 64-비트 라이브러리들을 @file{/usr/loal/lib64}에 설치하기 때문에 위의 것이 적당할 것입니다. Fedora 16과 함께 @cputype{x86_64}에 @R{}의 32-비트 버전을 빌트하기위해서는 다음을 사용합니다.
 
 @example
 CC="gcc -m32"
@@ -5730,22 +5841,34 @@ LIBnn=lib
 @end example
 
 @noindent
-Note the use of @samp{LIBnn}: @cputype{x86_64} Fedora installs its
-64-bit software in @file{/usr/lib64} and 32-bit software in
-@file{/usr/lib}.  Linking will skip over inappropriate binaries, but for
-example the 32-bit Tcl/Tk configure scripts are in @file{/usr/lib}.  It
-may also be necessary to set the @command{pkg-config} path, e.g.@: by
+@c Note the use of @samp{LIBnn}: @cputype{x86_64} Fedora installs its
+@c 64-bit software in @file{/usr/lib64} and 32-bit software in
+@c @file{/usr/lib}.  Linking will skip over inappropriate binaries, but for
+@c example the 32-bit Tcl/Tk configure scripts are in @file{/usr/lib}.  It
+@c may also be necessary to set the @command{pkg-config} path, e.g.@: by
+
+@samp{LIBnn}의 사용을 유의하십시오: @cputype{x86_64} Fedora는 그의 64-비트 소프트웨어를 @file{/usr/lib64}에 그리고 32-비트
+소프트웨어를 @file{/usr/lib}에 설치합니다. Linking은 적합하지 않은 바이너리를 스킵할 것이지만, 예를들어 32-비트 Tcl/Tk
+configure 스크립들은 @file{/usr/lib}안에 있습니다. @command{pkg-config} 경로를 설정하는 것이 필요할 수도 있습니다. 예를들어,
 
 @example
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/pkgconfig
 @end example
 
-64-bit versions of Linux are built with support for files > 2Gb, and
-32-bit versions will be if possible unless @option{--disable-largefile}
-is specified.
+@c 64-bit versions of Linux are built with support for files > 2Gb, and
+@c 32-bit versions will be if possible unless @option{--disable-largefile}
+@c is specified.
 
-To build a 64-bit version of @R{} on @cputype{ppc64} (also known as
-@cputype{powerpc64}) with @command{gcc}@tie{}4.1.1, Ei-ji Nakama used
+로 리눅스의 64-비트 버전들은 2Gb 이상의 파일들을위한 지원으로 빌드되고, 32-비트 버전들은 @option{-disable-largefile}이
+지정되지 않은 이상 가능할 것입니다.
+
+@c To build a 64-bit version of @R{} on @cputype{ppc64} (also known as
+@c @cputype{powerpc64}) with @command{gcc}@tie{}4.1.1, Ei-ji Nakama used
+
+로 리눅스의 64-비트 버전들은 2Gb 이상의 파일들을위한 지원으로 빌드되고, 32-비트 버전들은 -disable-largefile이
+지정되지 않은 이상 가능할 것입니다.
+@command{Gcc}@tie{} 4.1.1을 가진 (@cputype{powerpc64}라고도 알려져있는) @cputype{ppc64}에 @R{}의 64-비트 버전을 빌드하기위해 Ei-ji
+Nakama는 다음을 사용합니다.
 
 @example
 CC="gcc -m64"
@@ -5757,8 +5880,10 @@ FFLAGS="-mminimal-toc -fno-optimize-sibling-calls -g -O2"
 @end example
 
 @noindent
-the additional flags being needed to resolve problems linking against
-@file{libnmath.a} and when linking @R{} as a shared library.
+@c the additional flags being needed to resolve problems linking against
+@c @file{libnmath.a} and when linking @R{} as a shared library.
+
+추가의 flag들은 @file{libmath.a}에 반하여 연결된 문재들을 해결하고 @R{}이 공유된 라이브러리처럼 연결할 때 필요합니다.
 
 @menu
 * Clang::                       
@@ -5769,11 +5894,15 @@ the additional flags being needed to resolve problems linking against
 @node Clang, Intel compilers, Linux, Linux
 @subsection Clang
 
-@R{} has been built with Linux @cputype{ix86} and @cputype{x86_64} C and
-C++ compilers (@uref{http://clang.llvm.org}, versions 2.9 and 3.0) based
-on the Clang front-ends, invoked by @code{CC=clang CXX=clang++},
-together with @command{gfortran}.  These take very similar options to
-the corresponding GCC compilers.
+@c @R{} has been built with Linux @cputype{ix86} and @cputype{x86_64} C and
+@c C++ compilers (@uref{http://clang.llvm.org}, versions 2.9 and 3.0) based
+@c on the Clang front-ends, invoked by @code{CC=clang CXX=clang++},
+@c together with @command{gfortran}.  These take very similar options to
+@c the corresponding GCC compilers.
+
+@R{}은 @command{gfortran}과 함께 @code{CC=clang CXX=clang++}에의해 적용된 Clang front-ends에 기초하여, 리눅스
+@cputype{ix86}과 @cputype{x86_64} C와 C++ compiler들(@uref{http://clang.llvm.org}, 버전 2.9와 3.0)과 함께
+빌드되어졌습니다. 이들은 해당하는 GCC compiler들로의 매우 비슷한 옵션들을 가집니다.
 
 @node Intel compilers, Oracle Solaris Studio compilers, Clang, Linux
 @subsection Intel compilers
@@ -5781,6 +5910,7 @@ the corresponding GCC compilers.
 Intel compilers have been used under @cputype{ix86} and @cputype{x86_64}
 Linux.  Brian Ripley used version 9.0 of the compilers for
 @cputype{x86_64} on Fedora Core 5 with
+
 
 @example
 CC=icc
@@ -5798,24 +5928,34 @@ SHLIB_CXXLD=icpc
 @end example
 
 @noindent
-@command{configure} will add @samp{-c99} to @code{CC} for
-C99-compliance.  This causes warnings with @code{icc} 10 and later, so
-use @code{CC="icc -std=c99"} there.  The flag @option{-wd188} suppresses
-a large number of warnings about the enumeration type @samp{Rboolean}.
-Because the Intel C compiler sets @samp{__GNUC__} without complete
-emulation of @command{gcc}, we suggest adding @code{CPPFLAGS=-no-gcc}.
+@c @command{configure} will add @samp{-c99} to @code{CC} for
+@c C99-compliance.  This causes warnings with @code{icc} 10 and later, so
+@c use @code{CC="icc -std=c99"} there.  The flag @option{-wd188} suppresses
+@c a large number of warnings about the enumeration type @samp{Rboolean}.
+@c Because the Intel C compiler sets @samp{__GNUC__} without complete
+@c emulation of @command{gcc}, we suggest adding @code{CPPFLAGS=-no-gcc}.
 
-To maintain correct @acronym{IEC}@tie{}60559 arithmetic you most likely
-need add flags to @code{CFLAGS}, @code{FFLAGS} and @code{CXXFLAGS} such
-as @option{-mp} (shown above) or @option{-fp-model precise -fp-model
-source}, depending on the compiler version.
+@command{Configure}은 C99-compliane를위해 @code{CC}로 @samp{-c99}을 더할 것 입니다. 이는 @code{icc}10 이후 것들의 경고를
+일으키기떄문에, 그 곳에 @code{CC=”icc-std=c99”}을 사용하십시오. Flag @option{-wd188}은 열거형인 @samp{Rboolean}에대한 많은
+경고들을 억제할 것입니다. Intel C compiler가 @samp{__GNUC__}을 @command{gcc}의 완전한 모방 없이 설정하기때문에,
+@code{CPPFLAGS=-no-gcc}를 더하는 것을 제안합니다.
 
-For some comments on building on an Itanium (@cputype{ia64}) Linux
-system with @command{gcc} or the Intel compilers see
-@uref{http://www.nakama.ne.jp/@/memo/@/ia64_linux/}.
+@c To maintain correct @acronym{IEC}@tie{}60559 arithmetic you most likely
+@c need add flags to @code{CFLAGS}, @code{FFLAGS} and @code{CXXFLAGS} such
+@c as @option{-mp} (shown above) or @option{-fp-model precise -fp-model
+@c source}, depending on the compiler version.
 
-Others have reported success with versions 10.x and 11.x.
+알맞은 @acronym{IEC}@tie{} 60559 산수를 관리하기위해서, 여러분은 필시 컴파일러 버전에 따라서 @option{–mp} (위에서 보여짐)이나
+@option{–fp-model precise –fp-model source}들과 같은 @code{CFLAGS}, @code{FFLAGS}, 그리고 @code{CXXFLAGS}들에 flag들을 더할 필요가 있을 것 입니다.
 
+@c For some comments on building on an Itanium (@cputype{ia64}) Linux
+@c system with @command{gcc} or the Intel compilers see
+@c @uref{http://www.nakama.ne.jp/@/memo/@/ia64_linux/}.
+@c Others have reported success with versions 10.x and 11.x.
+
+@command{gcc}혹은 Intel 컴파일러 들과 함께 Itanium (@cputype{ia64}) 리눅스 시스템상에 빌드하는 것에대한 몇몇의
+코멘드들에대해서는 @uref{http://www.nakama.ne.jp/memo/ia64_linux/}를 참고하십시오.
+다른 것들은 버전들 10.x 와 11.x에서 성공적으로 리포트되었습니다.
 
 @node Oracle Solaris Studio compilers,  , Intel compilers, Linux
 @subsection Oracle Solaris Studio compilers
