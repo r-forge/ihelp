@@ -1,8 +1,8 @@
 # This file is intended for updating the webiste pages.
 
 sub2ihelp:
-	cp -r /home/chlee/Documents/my_R_projects/korean/src/www/* /home/chlee/Documents/my_R_projects/ihelp/www/
-	cp /home/chlee/Documents/my_R_projects/korean/src/doc/manual-ko/*.texi /home/chlee/Documents/my_R_projects/ihelp/doc/manual-ko/
+	cp -r /home/gnustats/Documents/Rworks/korean/src/www/* /home/gnustats/Documents/Rworks/ihelp/www/
+	cp /home/gnustats/Documents/Rworks/korean/src/doc/manual-ko/*.texi /home/gnustats/Documents/Rworks/ihelp/doc/manual-ko/
 
 conv2html:
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-intro-ko.html R-intro-ko.texi
@@ -16,8 +16,8 @@ conv2html:
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-ints-ko.html R-ints-ko.texi
 
 mv2www:
-	cp /home/chlee/Documents/my_R_projects/ihelp/doc/manual-ko/*.html /home/chlee/Documents/my_R_projects/ihelp/www/doc/manual-ko/
-	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/chlee/Documents/my_R_projects/ihelp/www/* gnustats@korea.gnu.org:./www/
+	cp /home/chlee/Documents/Rworks/ihelp/doc/manual-ko/*.html /home/chlee/Documents/Rworks/ihelp/www/doc/manual-ko/
+	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/chlee/Documents/Rworks/ihelp/www/* gnustats@korea.gnu.org:./www/
 # file permission set to 644, and folder permission set to 755.
 # http://serverfault.com/questions/233567/how-to-set-file-folder-permissions-using-rsync-from-windows-to-linux
 # M-x replace-string 
