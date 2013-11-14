@@ -16,8 +16,8 @@ conv2html:
 	cd ../doc/manual-ko/ && makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=R-ints-ko.html R-ints-ko.texi
 
 mv2www:
-	cp /home/chlee/Documents/Rworks/ihelp/doc/manual-ko/*.html /home/chlee/Documents/Rworks/ihelp/www/doc/manual-ko/
-	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/chlee/Documents/Rworks/ihelp/www/* gnustats@korea.gnu.org:./www/
+	# cp /home/gnustats/Documents/Rworks/ihelp/doc/manual-ko/*.html /home/gnustats/Documents/Rworks/ihelp/www/doc/manual-ko/
+	rsync -auv --perms --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r /home/gnustats/Documents/Rworks/ihelp/www/* gnustats@korea.gnu.org:./www/
 # file permission set to 644, and folder permission set to 755.
 # http://serverfault.com/questions/233567/how-to-set-file-folder-permissions-using-rsync-from-windows-to-linux
 # M-x replace-string 
