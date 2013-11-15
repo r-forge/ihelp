@@ -21,16 +21,15 @@
 @strong{C}
 @end macro
 
-@ifinfo
-@ignore
-Permission is granted to process this file through TeX and print the
-results, provided the printed document carries a copying permission
-notice identical to this one except for the removal of this paragraph
-(this paragraph not being relevant to the printed manual).
+@copying
+This manual is for R, version @value{VERSION}.
 
-@end ignore
+@Rcopyright{2000}
 
-@end ifinfo
+@quotation
+@permission{}
+@end quotation
+@end copying
 
 @titlepage
 @title R Language Definition
@@ -38,12 +37,12 @@ notice identical to this one except for the removal of this paragraph
 @author R Core Team
 @page
 @vskip 0pt plus 1filll
-@Rcopyright{2000}
-
-@permission{}
-
-@value{ISBN-lang}
+@insertcopying
 @end titlepage
+
+@ifplaintext
+@insertcopying
+@end ifplaintext
 
 @c @ifnothtml
 @contents
@@ -57,13 +56,7 @@ This is an introduction to the @R{} language, explaining evaluation,
 parsing, object oriented programming, computing on the language, and so
 forth.
 
-The current version of this document is @value{VERSION} @b{DRAFT}.
-
-@value{ISBN-lang}
-
-@Rcopyright{2000}
-
-@permission{}
+@insertcopying
 
 @end ifnottex
 
@@ -87,28 +80,22 @@ The current version of this document is @value{VERSION} @b{DRAFT}.
 @comment  node-name,  next,  previous,  up
 @chapter Introduction
 
-@c @R{} is a system for statistical computation and graphics. It
-@c provides, among other things, a programming language, high level
-@c graphics, interfaces to other languages and debugging facilities.  This
-@c manual details and defines the @R{} language.
+@R{} is a system for statistical computation and graphics. It
+provides, among other things, a programming language, high level
+graphics, interfaces to other languages and debugging facilities.  This
+manual details and defines the @R{} language.
 
-@R{}은 통계적 계산과 그래픽을 위한 시스템입니다. R은 그 중에서도 프로그램 언어, 고급 그래픽, 다른 언어와의 호환 그리고 디버깅 도구를 제공합니다. 이 매뉴얼은 @R{} 언어에 대해 자세히 설명하고 정의합니다.
+The @R{} language is a dialect of @Sl{} which was designed in the 1980s
+and has been in widespread use in the statistical community since.
+Its principal designer, John M. Chambers, was awarded the 1998 ACM
+Software Systems Award for @Sl{}.
 
-@c The @R{} language is a dialect of @Sl{} which was designed in the 1980s
-@c and has been in widespread use in the statistical community since.
-@c Its principal designer, John M. Chambers, was awarded the 1998 ACM
-@c Software Systems Award for @Sl{}.
-
-@R{} 언어는 1980년대에 개발되어 이후 통계 커뮤니티에서 널리 사용된 @Sl{}에서 파생된 것입니다. R의 주요 개발자인 John M. Chambers는 1998년 ACM Software System Award for @Sl{}를 수상하기도 하였습니다.
-
-@c The language syntax has a superficial similarity with C, but the
-@c semantics are of the FPL (functional programming language) variety with
-@c stronger affinities with Lisp and @acronym{APL}.  In particular, it
-@c allows ``computing on the language'', which in turn makes it possible to
-@c write functions that take expressions as input, something that is often
-@c useful for statistical modeling and graphics.
-
-R 언어의 문법은 표면상 C 언어와 유사합니다. 그러나 semantics는 Lisp와 @acronym{APL}과 더 강한 유사성이 있는 여러 종류의 FPL(functional programimg language) 중의 하나입니다. 특히 R은 R 언어 자체를 이용한 컴퓨팅이 가능하여 입력(input)과 같은 통계적 모델링과 그래픽 작업 등에 자주 쓰이는 함수를 쓸 수 있습니다.
+The language syntax has a superficial similarity with C, but the
+semantics are of the FPL (functional programming language) variety with
+stronger affinities with Lisp and @acronym{APL}.  In particular, it
+allows ``computing on the language'', which in turn makes it possible to
+write functions that take expressions as input, something that is often
+useful for statistical modeling and graphics.
 
 It is possible to get quite far using @R{} interactively, executing
 @cindex expression
@@ -3805,13 +3792,20 @@ Information from the operating system
 environment can be accessed and manipulated with
 @quotation
 @multitable @columnfractions 0.3 0.7
-@item @code{Sys.getenv} @tab OS environment variables @findex Sys.getenv
-@item @code{Sys.putenv}                               @findex Sys.putenv
-@item @code{Sys.getlocale} @tab System locale         @findex Sys.getlocale
-@item @code{Sys.putlocale}                            @findex Sys.putlocale
-@item @code{Sys.localeconv}                           @findex Sys.localeconv
-@item @code{Sys.time} @tab Current time               @findex Sys.time
-@item @code{Sys.timezone} @tab Time zone              @findex Sys.timezone
+@item @code{Sys.getenv} @tab OS environment variables
+@findex Sys.getenv
+@item @code{Sys.putenv}                               
+@findex Sys.putenv
+@item @code{Sys.getlocale} @tab System locale         
+@findex Sys.getlocale
+@item @code{Sys.putlocale}                            
+@findex Sys.putlocale
+@item @code{Sys.localeconv}                           
+@findex Sys.localeconv
+@item @code{Sys.time} @tab Current time               
+@findex Sys.time
+@item @code{Sys.timezone} @tab Time zone              
+@findex Sys.timezone
 @end multitable
 @end quotation
 
@@ -3819,17 +3813,28 @@ environment can be accessed and manipulated with
 A uniform set of file access functions is provided on all platforms:
 @quotation
 @multitable @columnfractions 0.3 0.7
-@item @code{file.access} @tab Ascertain File Accessibility @findex file.access
-@item @code{file.append} @tab Concatenate files            @findex file.append
-@item @code{file.choose} @tab Prompt user for file name    @findex file.choose
-@item @code{file.copy}  @tab Copy files                    @findex file.copy
-@item @code{file.create} @tab Create or truncate a files   @findex file.create
-@item @code{file.exists} @tab Test for existence           @findex file.exists
-@item @code{file.info} @tab Miscellaneous file information @findex file.info
-@item @code{file.remove} @tab remove files                 @findex file.remove
-@item @code{file.rename} @tab rename files                 @findex file.rename
-@item @code{file.show} @tab Display a text file            @findex file.show
-@item @code{unlink} @tab Remove files or directories.      @findex unlink
+@item @code{file.access} @tab Ascertain File Accessibility 
+@findex file.access
+@item @code{file.append} @tab Concatenate files            
+@findex file.append
+@item @code{file.choose} @tab Prompt user for file name    
+@findex file.choose
+@item @code{file.copy}  @tab Copy files                    
+@findex file.copy
+@item @code{file.create} @tab Create or truncate a files   
+@findex file.create
+@item @code{file.exists} @tab Test for existence           
+@findex file.exists
+@item @code{file.info} @tab Miscellaneous file information 
+@findex file.info
+@item @code{file.remove} @tab remove files                 
+@findex file.remove
+@item @code{file.rename} @tab rename files                 
+@findex file.rename
+@item @code{file.show} @tab Display a text file            
+@findex file.show
+@item @code{unlink} @tab Remove files or directories.      
+@findex unlink
 @end multitable
 @end quotation
 
@@ -3837,10 +3842,14 @@ There are also functions for manipulating file names and paths in a
 platform-independent way.
 @quotation
 @multitable @columnfractions 0.3 0.7
-@item @code{basename} @tab File name without directory     @findex basename
-@item @code{dirname} @tab Directory name                   @findex dirname
-@item @code{file.path} @tab Construct path to file         @findex file.path
-@item @code{path.expand} @tab Expand @code{~} in Unix path @findex path.expand
+@item @code{basename} @tab File name without directory     
+@findex basename
+@item @code{dirname} @tab Directory name                   
+@findex dirname
+@item @code{file.path} @tab Construct path to file         
+@findex file.path
+@item @code{path.expand} @tab Expand @code{~} in Unix path 
+@findex path.expand
 @end multitable
 @end quotation
 
@@ -4309,7 +4318,9 @@ once.
 @end example
 
 Numeric constants can also be hexadecimal, starting with @samp{0x} or
-@samp{0x} followed by zero or more digits, @samp{a-f} or @samp{A-F}.
+@samp{0x} followed by zero or more digits, @samp{a-f} or @samp{A-F}.  
+Hexadecimal floating point constants are supported using C99 syntax, e.g.
+@samp{0x1.1p1}.
 
 There is now a separate class of integer constants.  They are created
 by using the qualifier @code{L} at the end of the number.  For
@@ -4324,12 +4335,13 @@ constants and syntax errors.
 
 @example
 @r{Valid integer constants:}  1L, 0x10L, 1000000L, 1e6L
-@r{Valid numeric constants:}  1.1L, 1e-3L 
-@r{Syntax error:}  12iL
+@r{Valid numeric constants:}  1.1L, 1e-3L, 0x1.1p-2
+@r{Syntax error:}  12iL 0x1.1
 @end example
 
-A warning is emitted for values that contain an unnecessary
-decimal point, e.g. @code{1.L}.
+A warning is emitted for decimal values that contain an unnecessary
+decimal point, e.g. @code{1.L}.  It is an error to have a decimal
+point in a hexadecimal constant without the binary exponent.
 
 Note also that a preceding sign (@code{+} or @code{-}) is treated as a
 unary operator, not as part of the constant.
@@ -4481,7 +4493,8 @@ Newlines have a function which is a combination of token separator and
 expression terminator.  If an expression can terminate at the end of
 the line the parser will assume it does so, otherwise the newline is
 treated as whitespace.  Semicolons (@samp{;}) may be used to separate
-elementary @cindex expression
+elementary 
+@cindex expression
 expressions on the same line.
 
 
