@@ -326,6 +326,104 @@ get.location <- function(l) {
 ## apply(mat_na, 1, sum, na.rm=TRUE)
 ## sum() 대신 sort() 그리고 sort()의 인자(arguements)를 활용하여 사용해 보시기 바랍니다. FUN 인자에 함수가 아닌 연산자를 사용하는 경우 연산자를 " "(따옴표: quotation) 안에 넣어 기술해야 합니다. 단항연산자(예를 들어, "!")와는 달리 다항연산자("/": 나누기)를 사용하는 경우에는 두 번째 피연산자를 FUN 인자값 뒤에 기술해야 합니다.
 
+# apply() 함수군
+
+# 종류: apply(), lapply(), sapply(), mapply(), rapply(), tapply(), eapply(), vapply()
+
+# 기본 개념: 데이터 객체의 개별 차원에 수리적인 계산을 수행하고 그 결과를 집계하는 기능[vs 반복문]
+#	     (예를 들어, 행이나 열별로 평균을 구하기)
+
+# 사용 효과: 프로그램을 효율적으로 구설할 수 있으며 반복문을 사용하는 경우 보다 수행속도가 증가함.
+
+# apply(): 배열(array)이나 행렬(matrix)와 같은 데이터 객체의 margin에 함수를 적용시켜 얻어진 결과를 
+# 벡터, 배열(array), 또는 리스트(list) 구조로 반환함.
+
+# apply(X, MARGIN, FUN, ...)
+# X: 행렬이나 배열
+# MARGIN: 1 - 행, 2 - 열, c(1, 2) - 행과 열
+# FUN: 적용할 함수
+# ...: FUN에 대한 추가적인 인수
+
+## Compute row and column sums for a matrix:
+x <- cbind(x1 = 3, x2 = c(4:1, 2:5))
+dimnames(x)[[1]] <- letters[1:8]
+apply(x, 2, mean)
+col.sums <- apply(x, 2, sum)
+row.sums <- apply(x, 1, sum)
+rbind(cbind(x, Rtot = row.sums), Ctot = c(col.sums, sum(col.sums)))
+
+my.mat <- matrix(1:12, ncol=3)
+my.mat.na <- my.mat
+my.mat.na[3, 2] <- NA
+
+apply(my.mat.na, 1, sum)
+apply(my.mat.na, 1, sum, ra.rm=TRUE)
+apply(my.mat.na, 1, sort, decreasing=TRUE)
+apply(my.mat.na, 1, "!")
+apply(my.mat.na, 1, "/", 2)
+
+# 배열에 대한 연습은 직접 해볼 것
+
+# lapply(): 리스트(list) 객체에 함수를 적용하여 그 결과값을 반환함.
+# lapply(X, FUN, ...)
+# X: 리스트(list)
+# FUN: 적용할 함수
+# ...: FUN에 대한 추가적인 인수
+
+my.lst <- list(x <- c(1:10), y <- c(T, F, F, T, T), z <- c(3, 5, 7, 9, 11, 13))
+lapply(my.lst, mean)
+lapply(my.lst, quantile, probs <- 1:3/4)
+
+# sapply(): lapply() 함수와 같이 리스트 객체에 함수를 적용시켜 그 결과를 반환하나 반환하는 결과가 리스트 객체가 
+# 아니라 벡터나 행렬처럼 단순화된 형태의 객체임.
+# sapply(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE)
+# simplify: TRUE이면 결과를 벡터나 행렬처럼 단순화된 형태의 객체로 반환하며 FALSE이면 리스트 객체로 반환함.
+# USE.NAMES: TRUE이고 X가 문자형일 경우 반환된 결과의 이름으로 X를 사용함.
+
+a <- sapply(my.lst, mean)
+b <- sapply(my.lst, max, simplify=FALSE)
+is.list(a); is.vector(a); is.list(b), is.vector(b)
+
+# vapply(): 리스트 객체에 적용. FUN.VALUE 인자를 사용하여 반환되는 값의 데이터 유형을 지정
+# vapply(X, FUN, FUN.VALUE, ..., USE.NAMES = TRUE)
+# FUN.VALUE: logical, integer, real, complex로 데이터형을 지정할 수 있음.
+
+vapply(my.lst, is.logical, FUN.VALUE=T)
+vapply(my.lst, is.logical, FUN.VALUE=0)
+vapply(my.lst, is.logical, FUN.VALUE=0i)
+
+# FUN 인자가 is.logical로 논리값을 반환하므로 FUN.VALUE에 0, 0i를 지정하여 정수, 복소수로 데이터형을 
+# 지정할 수 있음. 만약 FUN 인자의 결과가 복소수를 반환하는 함수이면 FUN.VALUE에는 복소수형의 데이터형만 지정가능.
+
+vapply(my.lst, quantile, probs=1:3/4, FUN.VALUE=c("1Q"=0, "2Q"=0, "3Q"=0))
+vapply(my.lst, quantile, probs=1:3/4, FUN.VALUE=c("1Q"=0i, "2Q"=0, "3Q"=0))
+
+# tapply(): 벡터의 범주 별로 함수를 적용하여 집계 테이블 등을 반화홤.
+# tapply(X, INDEX, FUN = NULL, ..., simplify = TRUE)
+
+tapply(warpbreaks$breaks, warpbreaks[,-1], sum)
+tapply(warpbreaks$breaks, warpbreaks[, 3, drop = FALSE], sum)
+
+# mapply(): 여러 개의 변수를 갖는 벡터나 리스트에 함수를 적용하여 그 결과값을 리스트, 벡터, 행렬 등의 데이터
+# 객체로 반환.
+#mapply(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+
+mapply(rep, 1:4, 4:1)
+
+mapply(rep, times = 1:4, x = 4:1)
+
+mapply(rep, times = 1:4, MoreArgs = list(x = 42))
+
+mapply(function(x, y) seq_len(x) + y,
+       c(a =  1, b = 2, c = 3),  # names from first
+       c(A = 10, B = 0, C = -10))
+
+word <- function(C, k) paste(rep.int(C, k), collapse = "")
+utils::str(mapply(word, LETTERS[1:6], 6:1, SIMPLIFY = FALSE))
+
+
+
+
 ## eapply():
 
 ## lapplu():
