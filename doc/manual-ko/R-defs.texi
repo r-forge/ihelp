@@ -1,5 +1,8 @@
-@documentlanguage en
-@documentencoding ISO-8859-1
+@c @documentlanguage en
+@c @documentencoding ISO-8859-1
+
+@documentlanguage ko
+@documentencoding utf-8
 
 @macro R{}
 R
@@ -17,18 +20,16 @@ S
 @acronym{HTML}
 @end macro
 
-@iftex
 @macro eqn {t, a}
+@iftex
 @tex
 $\t\$%
 @end tex
-@end macro
 @end iftex
 @ifnottex
-@macro eqn {t, a}
-\a\
-@end macro
+\a\@c
 @end ifnottex
+@end macro
 
 @macro pkg {p}
 @strong{\p\}
@@ -44,7 +45,7 @@ $\t\$%
 
 @c -- edit these here alone -- in order keep consistency
 @macro Rcopyright{year}
-Copyright @copyright{} \year\--2013 R Core Team
+Copyright @copyright{} \year\--2012 R Core Team
 @end macro
 
 @macro permission{}
@@ -63,16 +64,11 @@ except that this permission notice may be stated in a translation
 approved by the R Core Team.
 @end macro
 
-@c This breaks HTML conversion on texinfo 4.x.
-@iftex
-@hyphenation{name-space name-spaces}
-@end iftex
-
-@set ISBN-FAQ 
-@set ISBN-admin 
-@set ISBN-data 
-@set ISBN-exts 
-@set ISBN-intro 
-@set ISBN-lang 
-@set ISBN-ints 
+@set ISBN-FAQ ISBN 3-900051-08-9
+@set ISBN-admin ISBN 3-900051-09-7
+@set ISBN-data ISBN 3-900051-10-0
+@set ISBN-exts ISBN 3-900051-11-9
+@set ISBN-intro ISBN 3-900051-12-7
+@set ISBN-lang ISBN 3-900051-13-5
+@set ISBN-ints ISBN 3-900051-14-3
 
