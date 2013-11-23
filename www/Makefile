@@ -9,22 +9,22 @@ sub2ihelp:
 
 conv2html:
 	dos2unix $(MANUAL_PATH_KO)/R-intro-ko.texi
-	# texi2html $(MANUAL_PATH_KO)/R-intro-ko.texi
-	makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=./doc/manual-ko/R-intro-ko.html $(MANUAL_PATH_KO)/R-intro.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-data-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/R-data-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-FAQ-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/R-FAQ-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-lang-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/R-lang-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-admin-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/R-admin-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-exts-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/R-exts-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/rw-FAQ-ko.texi
-	#texi2html $(MANUAL_PATH_KO)/rw-FAQ-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-ints-ko.texi
-	#dos2unix $(MANUAL_PATH_KO)/R-ints-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-intro-ko.texi
+	# makeinfo --html --no-split --enable-encoding --css-include=Rman.css --output=./doc/manual-ko/R-intro-ko.html $(MANUAL_PATH_KO)/R-intro.texi
+	dos2unix $(MANUAL_PATH_KO)/R-data-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-data-ko.texi --output=R-data-ko.html
+	dos2unix $(MANUAL_PATH_KO)/R-FAQ-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-FAQ-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/R-lang-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-lang-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/R-admin-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-admin-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/R-exts-ko.texi
+	texi2html $(MANUAL_PATH_KO)/R-exts-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/rw-FAQ-ko.texi
+	texi2html $(MANUAL_PATH_KO)/rw-FAQ-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/R-ints-ko.texi
+	dos2unix $(MANUAL_PATH_KO)/R-ints-ko.texi
 
 mv2www:
 	cp $(MANUAL_PATH_KO)/*.html doc/manual-ko/
