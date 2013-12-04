@@ -1113,15 +1113,15 @@ setarch i686 R CMD javareconf
 @c @env{R_NO_BASE_COMPILE} can be set to a non-empty value for the duration
 @c of the build.)
 @R{}에서 작업을 할 때 유용할 수 있는 것은 @option{--disable-by-compiled-packages} 옵션입니다. 
-이는 베이스와 추천 패키지들이 바이트컴파일 되지 앟고 레이지로드가 되었을음 확인하는 것입니다. 
-(다른 방법으로는 make 또는 환경변수 @env{R_NO_BASE_COMPILE}은 빌드하는 도중에 비어있지 않은 값으로 설정될 수 있습니다).
+이는 베이스와 추천 패키지들이 바이트컴파일 되지 앟고 레이지로드가 되도록 확실히 하여줍니다. 
+(다른 방법으로는 make 또는 환경변수 @env{R_NO_BASE_COMPILE}을 빌드하는 도중에 비어있지 않은 값으로 설정할수 있는것입니다).
 
 @node Testing a Unix-alike Installation,  , Other Options, Installing R under Unix-alikes
 @c @section Testing an Installation
 @section  설치 확인하기
 
 @c Full testing is possible only if the test files have been installed with
-만약 아래의 명령어를 이용해서 테스트 파일들을이 설치되었더라면, 풀테스팅이 가능합니다.
+풀테스팅은 아래의 명령어를 이용해서 테스트 파일들을이 설치되었을 경우에만 가능합니다.
 
 @example
 make install-tests
@@ -1149,7 +1149,7 @@ cd tests
 @c and other useful targets are @code{test-BasePackages} and
 @c @code{test-Recommended} to the run tests of the standard and
 @c recommended packages (if installed) respectively.
-그리고 표준과 (만약 설치가 되어 있다면) 추천 패키지들의 테스트를 수행하기 위한 @code{test-BasePackages}와 @code{test-Recommended}는 유용합니다. 
+그리고 표준 팩키지와 (만약 설치가 되어 있다면) 추천 패키지들의 테스트를 수행하기 위한 @code{test-BasePackages}와 @code{test-Recommended}는 유용합니다. 
 
 @c This re-runs all the tests relevant to the installed @R{} (including for
 @c example code in the package vignettes), but not for example the ones
@@ -1178,7 +1178,7 @@ testInstalledPackages(scope = "recommended")
 @c tests write their results in the @file{tests} folder of the @R{} home
 @c directory and run slightly fewer tests than the first approach: in
 @c particular they do not test Internet access.
-위의 명령어는 기본 테스트를 수행하고 표준과 추천 패키지들안에 있는 모든 테스트를 수행합니다. 
+위의 명령어는 기본 테스트를 수행하고 표준및 추천 패키지들안에 있는 모든 테스트를 수행합니다. 
 이러한 테스트들은 어느곳에서든지 수행될 수 있습니다.
 기본 테스트는 @R{} 홈디렉토리에 @file{tests}라는 폴더에 그 결과를 기록하고 첫번째 테스팅 방법보다 다소 적은 양의 테스트를 수행합니다.
 특히 인터넷 엑세스와 같은 테스트를 하지 않습니다. 
@@ -1195,7 +1195,7 @@ testInstalledPackages(scope = "recommended")
 @c It is possible to test the installed packages (but not the
 @c package-specific tests) by @code{testInstalledPackages} even if
 @c @command{make install-tests} was not run.
-@command{make install-tests}가 수행되지 않았을지라도 설치된 패키지들을 테스트 하는 것도 @code{testInstalledPackages}에 의하여 가능합니다.
+@command{make install-tests}가 수행되지 않았을지라도 설치된 패키지들을 테스트 하는 것도 @code{testInstalledPackages}에 의하여 가능합니다 (팩키지 고유의 테스트는 예외 입니다).
 
 @c Note that the results may depend on the language set for times and
 @c messages: for maximal similarity to reference results you may want to
