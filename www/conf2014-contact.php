@@ -145,7 +145,7 @@ Docs  </a></td>
     // Check for empty fields
     if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']))
     {
-    $errors .= "\n Error: all fields are required";
+    $errors .= "\n 에러: 첨부파일을 제외한 모든 항목이 채워져야 합니다";
     }
     // Get all the values from input
     $name = $_POST['name'];
@@ -154,7 +154,7 @@ Docs  </a></td>
     // Check the email address
     if (!eregi( "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email_address))
     {
-    $errors .= "\n Error: Invalid email address";
+    $errors .= "\n Error: 잘못된 이메일 주소입니다";
     }
     // Now Generate a random string to be used as the boundary marker
     $mime_boundary="==Multipart_Boundary_x".md5(mt_rand())."x";
@@ -164,7 +164,7 @@ Docs  </a></td>
     $file_name = $_FILES['filename']['name'];
     $size = $_FILES['filename']['size'];
     // Now here we setting up the message of the mail
-    $message = "\n\n Name: $name \n\n Email: $email_address \n\nMessage: \n\n $message \n\nHere is your file: $file_name";
+    $message = "\n\n 이름: $name \n\n 이메일: $email_address \n\n메시지: \n\n $message \n\nHere is your file: $file_name";
     // Check if the upload succeded, the file will exist
     if (file_exists($tmp_name)){
     // Check to make sure that it is an uploaded file and not a system file
@@ -186,7 +186,7 @@ Docs  </a></td>
     // Next, we'll build the message body note that we insert two dashes in front of the MIME boundary when we use it
     $message = "This is a multi-part message in MIME format.\n\n" .
     "--{$mime_boundary}\n" .
-    "Content-Type: text/plain; charset=\"iso-8859-1\"\n" .
+    "Content-Type: text/plain; charset=\"UTF-8\"\n" .
     "Content-Transfer-Encoding: 7bit\n\n" .
     $message . "\n\n";
     // Now we'll insert a boundary to indicate we're starting the attachment we have to specify the content type, file name, and disposition as an attachment, then add the file content and set another boundary to indicate that the end of the file has been reached
