@@ -91,7 +91,7 @@ Docs  </a></td>
 <h3> 문의 및 연락 </h3>
 
 <p>
-행사 전반에 관련한 모든 문의사항은 gnustats@gmail.com 으로 이메일을 보내주세요.
+다음의 내용을 포함하여 행사 전반에 대한 문의를 받습니다.
 <ul>
 	<li> 장소 추천 </li>
 	<li> 페이지 업데이트 </li>
@@ -104,8 +104,64 @@ Docs  </a></td>
 </p>
 
 <p>
-(문의사항 접수를 입력을 위한 폼을 생성중입니다.)
+
+<form name="htmlform" method="post" action="mail.php">
+<table width="450px">
+</tr>
+<tr>
+ <td valign="top">
+  <label for="first_name">이름 *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="first_name" maxlength="50" size="30">
+ </td>
+</tr>
+<!-- 
+<tr>
+ <td valign="top"">
+  <label for="last_name">성 *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="last_name" maxlength="50" size="30">
+ </td>
+</tr>
+-->
+<tr>
+ <td valign="top">
+  <label for="email">이메일 주소 *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="email" maxlength="80" size="30">
+ </td>
+ 
+</tr>
+<tr>
+ <td valign="top">
+  <label for="telephone">전화번호</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="telephone" maxlength="30" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="comments">문의내용 *</label>
+ </td>
+ <td valign="top">
+  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+ </td>
+ 
+</tr>
+<tr>
+ <td colspan="2" style="text-align:center">
+  <input type="submit" value="Submit">   
+  <!--( <a href="http://www.freecontactform.com/html_form.php">HTML Form</a> )-->
+ </td>
+</tr>
+</table>
+</form>
 </p>
+
 
 </article>
 
