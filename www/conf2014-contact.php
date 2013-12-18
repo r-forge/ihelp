@@ -145,7 +145,7 @@ Docs  </a></td>
     // Check for empty fields
     if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']))
     {
-    $errors .= "\n 에러: 첨부파일을 제외한 모든 항목이 채워져야 합니다";
+    $errors .= "\n 에러: 제외한 모든 항목이 채워져야 합니다";
     }
     // Get all the values from input
     $name = $_POST['name'];
@@ -164,7 +164,7 @@ Docs  </a></td>
     $file_name = $_FILES['filename']['name'];
     $size = $_FILES['filename']['size'];
     // Now here we setting up the message of the mail
-    $message = "\n\n 이름: $name \n\n 이메일: $email_address \n\n메시지: \n\n $message \n\nHere is your file: $file_name";
+    $message = "\n\n 이름: $name \n\n 이메일: $email_address \n\n메시지: \n\n $message \n\n첨부된 파일: $file_name";
     // Check if the upload succeded, the file will exist
     if (file_exists($tmp_name)){
     // Check to make sure that it is an uploaded file and not a system file
@@ -199,14 +199,15 @@ Docs  </a></td>
     $data . "\n\n" .
     "--{$mime_boundary}--\n";
     // Thats all.. Now we need to send this mail... :)
+	}
     if (@mail($to, $subject, $message, $headers))
     {
-    echo '<div><center><h1> 메일을 성공적으로 발송하였습니다.  빠른 시간내에 답변드리겠습니다.</h1></center></div>';
+    echo '<div><center><h3> 메일을 성공적으로 발송하였습니다.  빠른 시간내에 답변드리겠습니다.</h3></center></div>';
     }else
     {
-    echo '<div><center><h1> 에러!  메일을 발송하지 못했습니다..</h1></center></div>';
+    echo '<div><center><h3> 에러!  메일을 발송하지 못했습니다..</h3></center></div>';
     }
-    }
+    //}
     } 
 ?>
 </article>
