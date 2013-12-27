@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
+<head>
+<title> 통계 소프트웨어 R 한국어 지원 - The Korean R Development Translation Team - iHELP Project (R-ko) - R 한국어 한글 메시지 매뉴얼 튜토리얼 스터디 가이드 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>
+
+<body>
+<div id="setpage">
+<header>
+<table>
+<tr>
+<td valign="bottom"> <a href="index.html"> <img src="logo.png"> </a> </td>
+<td valign="bottom"> <a href="lang.html">  Language Support  </a></td>
+<td valign="bottom"> | <a href="shared.html"> We Share  </a></td>
+<td valign="bottom"> | <a href="contributeddocs.html"> Contributed Docs  
+</a></td>
+<td valign="bottom"> | <a href="members.html"> Members &amp; Donors </a></td>
+<td valign="bottom"> | <a href="conf2014.html"> TBA 2014 </a></td>
+</tr>
+</table>
+</header>
+
+<aside>
+<table>
+<th> 서브 카테고리 </th>
+<tr> <td> <a href="lang_howto.html"> 참여하기 </a> </td> </tr> 
+<tr> <td> <a href="lang_doc.html"> 매뉴얼 작업현황 </a> </td> </tr>
+<tr> <td> <a href="lang_doc_guide.html"> 매뉴얼 작업 가이드라인 </a> </td> </tr>
+<tr> <td> <a href="lang_msg.html"> 메시지 품질관리 프로그램 </a> </td> </tr>
+<tr> <td> <a href="lang_msg_worked.html"> 메시지 작업현황 </a> </td> </tr>
+<tr> <td> <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> 버그 리포트 </a> </td> </tr>
+</table>
+
+</aside>
+
+<article>
+<h1> R-iHELP - 사용에 불편을 드려 죄송합니다.</h1>
+<h1> 페이지를 복구하는 중에 있습니다. 시스템 정상운영을 위하여 최선을 다하겠습니다. (2013.12.27) </h1>	
+	
+<p> Modified on 2013-JUN-27 <br> by Chel Hee Lee </p>
+
+<p>
+R의 일반적인 사용법에 대한 질의응답 및 수정/제안과 과련된 토론을 위하여 이용되는 <a href="mailto:ihelp-urquestion@lists.r-forge.r-project.org"> <b> R-ko-ihelp </b> </a> (ihelp-urquestion@lists.r-forge.r-project.org) 메일링과 번역활동에 대한 기록 및 문서화 작업에 대한 논의를 위하여 이용되는  <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> <b> R-ko </b> </a> (ihelp-translators@lists.r-forge.r-project.org) 라는 메일링이 운영되고 있습니다.
+
+  <ul>
+    <li> 목적에 부합하는 메일링으르 이용해주세요. </li>
+    <li> 첨부파일을 허용하지 않습니다. </li>
+    <li> 좋은 질문이 좋은 답변과 빠른 답변을 받으므로, 질문을 구체적으로 적어주세요. </li>
+    <li> 질의응답 및 토론에 대한 매너를 지켜주세요. </li>
+  </ul>
+
+메일링의 가입은 목적에 맞추어 위의 메일링 주소로 "[가입희망]" 이라는 제목과 함께 이메일을 보내주시면 됩니다. 
+</p>
+
+<p>
+자세하고 끈기 있는 질의응답은 같은 문제를 겪는 다른 분들을 위한 정보창고가 될 수 있습니다.
+메일링의 기록은 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-urquestion/" target="_blank"> ihelp-urquestion 아카이브</a>에서 확인할 수 있습니다. 
+<b> 본 메일링은 분석의 방법론과 관계된 내용은 답변되지 않을 수 있습니다. </b>
+가장 큰 이유는 데이터의 특징에 따른 분석자의 관점과 분석모형의 선택에 따라 달라질 수 있습니다.
+만약, 분석방법에 대한 튜토리얼을 찾고 계신다면 <a href="shared_stat_models.html"> We Shared 내에 있는 통계모형의 이해 </a>라는 페이지를 참고해주세요. 
+</p>
+
+<p>
+다음은 사용예제입니다.
+
+<pre>
+To:   ihelp-urquestion@lists.r-forge.r-project.org
+제목: system() 함수를 사용할 때,
+
+메일링 사용자님들께, 
+
+현재 디렉토리에 있는 디렉토리와 파일의 목록을 확인해 보고 싶어서 아래와 같이 입력했습니다.
+
+system(ls)
+
+Error in system(ls): non-empty character argument expected 
+
+위와 같은 메시지가 나옵니다.  메시지의 뜻과 올바른 사용법은 어떻게 되나요?  
+
+감사합니다.
+</pre>
+</p>
+
+<p>
+메시지, 매뉴얼, 튜토리얼, 그리고 다양한 종류의 문서들에 대한 번역 및 버그리포트와 관련된 내용의 기록은 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 메일링 아카이브 </a>에서 확인할 수 있습니다. 
+<b> 이러한 메일링 리스트를 이용하는 이유는 참여자에 대한 기록을 보존하기 위함입니다 </b>.
+다음은 사용예입니다.
+
+<pre>
+
+To: 	ihelp-translators@lists.r-forge.r-project.org
+제목: R-FAQ 섹션 X-X.X. 의 일부분 
+
+문서주소: 
+
+http://korea.gnu.org/gnustats/docs/manual-ko/R-FAQ-ko.html
+
+원문:
+
+The core of R is an interpreted computer language which allows branching
+and looping as well as modular programming using functions. Most of the
+user-visible functions in R are written in R. It is possible for the user
+to interface to procedures written in the C, C++, or FORTRAN languages for
+efficiency. The R distribution contains functionality for a large number of
+statistical procedures. Among these are: linear and generalized linear
+models, nonlinear regression models, time series analysis, classical
+parametric and nonparametric tests, clustering and smoothing. There is also
+a large set of functions which provide a flexible graphical environment for
+creating various kinds of data presentations. Additional modules (“add-on
+packages”) are available for a variety of specific purposes (see R Add-On
+Packages<http://korea.gnu.org/gnustats/docs/manual-ko/R-FAQ-ko.html#R-Add_002dOn-Packages>).
+
+
+번역:
+R의 핵심은 통합적인 컴퓨터 언어라는 것에 있습니다. 이것은 분기(branching), 루핑(Looping) 그리고 함수를 이용한 모듈
+형태의 프로그래밍을 지원하고 있습니다. R에서 사용자가 찾아볼 수 있는 함수의 대부분은 R언어로 작성되었습니다. R은 사용자로 하여금
+C,C++, 혹은 포트란과 같은 언어와 효율적으로 연계할 수 있도록 지원하고 있습니다. R distribution은 많은 통계 관련
+기능을 가지고 있습니다. 그런 기능들 중에는 선형 모듈, 일반화 선형 모듈, 비선형 회귀 모델, 시계열 분석, 일반 모수 검정, 비모수
+검정, 클러스터링, 평활화 등이 포함되어 있습니다. 데이터를 시각적으로 나타내기 위한 유연한 그래픽 환경을 제공하는 많은 함수들을 R은
+제공하고 있습니다. 특정한 작업을 수행하기 위한  "add-on packages"로 알려진 부가 모듈 또한 제공되고 있습니다. (자세한
+부가 모듈에 대해서는 R Add-On Packages를 참조하세요)
+
+</pre>
+
+여기에서 <b>원문</b>은 단순히 복사해서 붙여넣기를 함으로서, 어느 부분을 작업하셨는가를 알기 위함입니다.
+현재의 진행사항은 <a href="lang_doc.html"> Language Support 내의 매뉴얼 작업현황</a>페이지에서 살펴보실 수 있습니다.
+</p>
+
+<!-- 
+<h3> 메시지 번역 참여 </h3>
+
+<p>
+메시지 번역에 대한 참여는 <a href="http://translation.r-project.org/pootle/" target="_blank"> http://translation.r-project.org/ </a>에 설치한 푸틀이라는 GUI 기반의 공동작업 시스템을 통해 이루어질 수있도록 해 두었습니다.
+이 시스템의 사용을 위해서는 반드시 아래의 방법을 통하여 시스템 관리자로부터 아이디를 제공받아야 합니다.
+<ul>
+<li> <a href="mailto:gnustats@korea.gnu.org"> 시스템 관리자에게 이메일 보내기 </a> </li>
+<li> <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 메일링 리스트 </a>에 아이디 발급요청을 위한 메시지를 남기기.
+</ul>
+</p>
+
+여러분의 친절한 참여에 대단히 감사드립니다.
+-->
+
+</article>
+<footer>
+@ 2008-2013 ihelp.r-forge.r-project.org. Copyright of individual papers resides with the authors</footer>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43388960-1', 'r-project.org');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
