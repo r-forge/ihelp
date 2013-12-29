@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
+<head>
+	<title> 통계 소프트웨어 R 한국어 지원 - The Korean R Development Translation Team - iHELP Project (R-ko) - R 한국어 한글 메시지 매뉴얼 튜토리얼 스터디 가이드 </title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+</head>
+<body>
+
+<div id="setpage">
+<header>
+	<table>
+		<tr>
+			<td valign="bottom"> <a href="index.html"> <img src="logo.png"> </a> </td>
+			<td valign="bottom"> <a href="lang.html">  Language Support  </a></td>
+			<td valign="bottom"> | <a href="shared.html"> We Share  </a></td>
+			<td valign="bottom"> | <a href="contributeddocs.html"> Contributed 
+Docs  </a></td>
+			<td valign="bottom"> | <a href="members.html"> Members &amp; Donors </a></td>
+		</tr>
+	</table>
+</header>
+
+<aside>
+<table>
+	<th> 서브 카테고리 </th>
+	<tr> <td> <a href="lang_howto.html"> 참여하기 </a> </td> </tr> 
+	<tr> <td> <a href="lang_doc.html"> 매뉴얼 작업현황 </a> </td> </tr>
+	<tr> <td> <a href="lang_doc_guide.html"> 매뉴얼 작업 가이드라인 </a> </td> </tr>
+	<tr> <td> <a href="lang_msg.html"> 메시지 품질관리 프로그램 </a> </td> </tr>
+	<tr> <td> <a href="lang_msg_worked.html"> 메시지 작업현황 </a> </td> </tr>
+<!--	<tr> <td> <a href="#"> 도움말 작업 </a> </td> </tr>  -->
+	<tr> <td> <a href="mailto:ihelp-translators@lists.r-forge.r-project.org"> 버그 리포트 </a> </td> </tr>
+</table>
+
+</aside>
+
+<article>
+	
+<h1> 사용에 불편을 드려 죄송합니다.  현재 페이지 복구 및 깨어진 링크를 수정하는 중에 있습니다. 정상적인 운영이 되도록 노력하겠습니다 (2013.12.29) </h1>	
+
+<p> Modified on 2013-JUN-20 <br> by Chel Hee Lee </p>
+
+	<h2> R 한국어 지원 품질관리 프로그램 </h2>
+	<p> 
+	iHELP는 <strong> 영문으로 되어 있는 R을 한국어 사용자가 모국어로서 사용이 편리하도록 한국어 지원을 위한 프로젝트의 이름</strong>입니다.
+	R의 한국어 지원은 R-2.1.0 부터 이루어져 왔으나, R-2.8.2에 이르러서는 과다한 양의 기계적 퍼지 번역 및 오역, 그리고 텍스트 처리상의 문제로 인한 버그로 인하여 사용의 불편함이 자주 제기되어 왔습니다. </p>
+	
+	<p> 
+	이러한 문제를 해결하기 위하여 R-2.9.x 부터 R-2.14.x을 통하여 R에서 사용되는 한국어 용어에 대한 데이터 베이스 구축하고, 이를 한국 통계용어 및 전산용어집과의 대조 및 R 사용자 매뉴얼과의 일치성을 주 핵심으로 하는 품질관리 검증 프로그램을 진행해왔습니다.
+	R-2.15.3 배포 직후의 한국어 언어파일의 대한 초기화를 통하여 R-3.0.0 부터는 모든 퍼지 번역을 제거한 뒤, 알맞은 그리고 오역이 적은 메시지들을 담고자 노력하고 있습니다.
+	</p>
+	
+	<p>
+	현재까지 작업된 내용을 확인하시고 싶으시다면 <a href="lang_msg_worked.html" target="_blank"> 메시지 작업현황 페이지</a>를 살펴보시길 부탁드립니다.
+	R-3.0.0부터는 관련 작업 진행 사항 및 오역 정정, 그리고 참여에 대한 제안과 기여를 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 메일링 리스트</a>를 통하여 하실수 있습니다.
+	</p>
+
+	<h3> 작업에 참여하기 </h3>
+	<p>
+	본 섹션은 프로젝트 참여자를 위하여 작성되었습니다.
+	메시지들에 대한 품질관리는 기본적으로 소스코드내에서 메시지들을 확인하여, R의 도움말 파일과 함께 그 사용의 여부가 일치하는가에 대한 검증을 통하여 이루어지게 됩니다.
+
+	<ul>
+		<li> 메시지들은 보통 에러, 경고, 중단, 지시사항, 그리고 패키지 설명과 관련되어 있습니다. </li>
+		<li> C로 작성된 소스, R로 작성된 소스, R 인터프리터와 관련된 부분, 그리고 사용자 인터페이스와 관련된 부분으로 작업영역이 나뉩니다. </li>
+		<li> 번역을 하여 의미가 불분명한 경우에는 영문을 그대로 출력하도록 합니다. </li>
+		<li> 통계 및 전산에서 사용되는 전문용어의 의미가 변경되지 않도록 한국어로 이미 많이 사용되어 발음나는대로 적어도 의미의 혼돈이 없는 경우 한국어를 사용하지만, R을 사용하는데 있어 개념상의 문제를 일으킬 수 있거나, 통계 분석에서 사용되는 전문용어인 경우 영문 그대로 출력하도록 작업을 합니다. </li>
+		<li> 도움말 파일과 사용법이 일치하도록 메시지의 꾸준한 정정작업을 진행합니다 </li>
+	</ul>
+
+	<p>
+	R에 포함되어 있는 모든 한국어 메시지는 아래와 같은 품질관리 프로그램에 의하여 작업 및 검증을 하고 있습니다. 
+	메시지와 관련하여 수정 및 변경, 그리고 더 나은 표현과 의미있는 표현을 위한 제안사항등을 <a href="http://lists.r-forge.r-project.org/pipermail/ihelp-translators/" target="_blank"> ihelp-translators 메일링 리스트</a>를 이용해주시면 감사드리겠습니다.
+	메일링의 사용법은 <a href="lang_howto.html"> 참여하는 방법 </a>에 대한 페이지를 살펴보시길 부탁드립니다.
+	이렇게 메일링을 통하여 접수된 내용들은 다음 배포판에 추가 및 삭제, 그리고 정정작업을 거쳐 반영되어 보다 나은 R을 사용하실 수 있게 됩니다. 
+	</p>
+
+	<h3> 예제를 통한 작업 요령 설명 </h3>
+	<p> 
+	<strong> R을 사용하면서 오역 및 잘못된 한국어 메시지로 인한 불편을 겪으셨다면, 이에 대한 문제를 보고해주시는 것은 다른 R 사용자들을 도와주는 역할을 하게 됩니다.</strong> 
+	이런 경우에는 아래의 규칙을 따라 주시면 대단히 감사드리겠습니다. 
+	다만, 본 프로젝트에서 요구되는 기술적 사항들(즉, 설치, 수정 및 추가, 그리고 확인)에 대해서는 스스로 해결할 수 있어야 합니다.
+	이곳에서는 최소한의 작업내용만을 기록합니다. 
+		
+	본 섹션의 설명은 R(&ge;3.0.0)에 적용되며, 그 이전의 R(&le; 2.15.3)에는 적용되지 않습니다.
+	
+	다음은 중에서 기본인 base 패키지를 예를 들어 설명합니다.
+	
+	<ol>
+	<li> 
+	<p> <a href="lang_msg_worked.html" target="_blank"> 메시지 작업현황 페이지</a>에 가면 <a href="msg/standard/src/library/base/po/ko.html" target="_blank">C 작업진전 확인해보기 </a>이라는 링크를 클릭하여 페이지를 들어가보면 아래와 같은 형식을 가지고 있는 것을 알 수 있습니다.
+	
+		<pre>
+		[영어]  "영어로 된 본래의 메시지가 있습니다"
+		[한국어] ""
+		</pre>
+	</p>
+	</li>
+		
+	<li> 
+	<p>
+	(현재 번역되어 있으나, 작업방식을 이해하기 위하여) 첫번째 두개의 메시지를 보도록 합니다.  
+	
+		<pre>
+		[영어] "REPORT must be > 0 (method = \"BFGS\")"
+		[한국어] ""
+		</pre>
+	
+		<pre>
+		[영어] "unknown 'type' in \"CG\" method of 'optim'"
+		[한국어] ""
+		</pre>
+	
+	메시지들을 보고 바로 단순직역을 할 수도 있지만, <strong> 이러한 과정은 피해주시길 바랍니다. </strong>
+	위의 메시지들은 통계학에서 주어진 함수에 대한 최대 또는 최소값을 찾아주는 최적화와 관련된 함수 <code> optim() </code>과 연관되어 있습니다. 
+	이 메시지의 확인은 <code> optim.c </code> 소스코드를 열어 봄으로 확인이 가능합니다
+</p>
+</li>
+
+<li>
+	<p>
+	소스코드 <code> optim.c </code>을 열고 코드를 쭈욱 읽어 봅니다</li>	
+	<pre>
+	/*
+	 *  R : A Computer Language for Statistical Data Analysis
+	 *  Copyright (C) 1999-2012  The R Core Team
+	
+	(필요하지 않으므로 중간부분 생략)
+
+	 *  You should have received a copy of the GNU General Public License
+	 *  along with this program; if not, a copy is available at
+	 *  http://www.r-project.org/Licenses/
+	 */
+
+	(중요하지 않으므로 생략) 
+	
+	#include <Defn.h>
+	#include <R_ext/Random.h>	/* for the random number generation in
+						 samin() */
+	#include <R_ext/Applic.h>
+	#include <R_ext/Print.h>	/* for Rprintf */
+
+	(중요하지 않으므로 생략)
+
+	void
+	vmmin(int n0, double *b, double *Fmin, optimfn fminfn, optimgr fmingr,
+				int maxit, int trace, int *mask,
+				double abstol, double reltol, int nREPORT, void *ex,
+				int *fncount, int *grcount, int *fail)
+	{
+		
+	(중요하지 않지만, 여기부터 코드를 잘 읽어야 함)
+
+			if (nREPORT <= 0)
+(136번째 줄)		error(_("REPORT must be > 0 (method = \"BFGS\")"));
+			l = (int *) R_alloc(n0, sizeof(int));
+			n = 0;
+	</pre>
+	
+	소스코드의 136번째 라인으로부터 첫번째 메시지를 확인할 수가 있습니다.  이때 단순히 "REPORT는 &gt; 0"이라고 하거나 "REPORT는 0보다 커야 합니다" 라는 단순번역은 피해 주시길 부탁드립니다. 
+	저 옆에 method 라는 것은 R 함수 <code> optim() </code>의 입력인자입니다. 
+	
+	<pre>
+	R	> args(optim)
+	function (par, fn, gr = NULL, ..., method = c("Nelder-Mead", 
+			"BFGS", "CG", "L-BFGS-B", "SANN", "Brent"), lower = -Inf, 
+			upper = Inf, control = list(), hessian = FALSE) 
+	NULL
+	</pre>
+	</p>
+	
+	따라서, 첫번째 메시지는 메시지는 아래와 같이 번역되어야 합니다. 
+
+	<pre>
+	[영어] "REPORT must be > 0 (method = \"BFGS\")"
+	[한국어] "method 에  \"BFGS\" 가 주어졌을때, REPORT 는 반드시 0 보다 큰 값이어야 합니다"
+	</pre>
+
+<li> <p>
+	그럼, 두번째 메시지에 대해서 살펴봅니다.  
+	이를 위해서 R의 <code>optim()</code>의 도움말을 살펴보고 소스코드를 한 번 살펴봅니다.
+	
+	<pre>
+	void cgmin(int n, double *Bvec, double *X, double *Fmin,
+			 optimfn fminfn, optimgr fmingr, int *fail,
+			 double abstol, double intol, void *ex, int type, int trace,
+			 int *fncount, int *grcount, int maxit)
+	{
+		(별로 중요하지 않으니 생략) 
+
+			if (trace) {
+		Rprintf("  Conjugate gradients function minimizer\n");
+		switch (type) {
+		case 1:	    Rprintf("Method: Fletcher Reeves\n");	break;
+		case 2:	    Rprintf("Method: Polak Ribiere\n");		break;
+		case 3:	    Rprintf("Method: Beale Sorenson\n");	break;
+		default:
+(489번째 줄)				error(_("unknown 'type' in \"CG\" method of 'optim'"));
+		}
+	</pre>
+
+	이 메시지는 <code>optim.c</code>에서 498번째 라인에서 확인이 가능합니다.  
+	그리고 R의 도움말에는 <code> 'type'</code> 에 대해서 아래와 같이 기록되어 있습니다. 
+
+	<pre>
+     ‘type’ for the conjugate-gradients method. Takes value ‘1’ for the
+          Fletcher-Reeves update, ‘2’ for Polak-Ribiere and ‘3’ for
+          Beale-Sorenson.
+	</pre>
+
+	따라서, 이 메시지는 아래와 같이 번역이 되어야 합니다. 
+	
+	<pre>
+	[영어] "unknown 'type' in \"CG\" method of 'optim'"
+	[한국어] "'optim'에서 사용하는 method 옵션 중 \"CG\" 에서는 정해지지 않은 'type' 입니다 "
+	</pre>
+</p>
+	</li>
+	</ol>
+
+<!--	
+<h3> 알면 도움이 되는 팁들 </h3>
+	<p>
+	번역되어 있는 메시지들을 보다 보면 아래와 같은 경우들을 만날 수 있습니다. 
+	그러나, 이는 잘 못된 것이 아니라 그렇게 해야지만 올바른 한국어 표기를 할 수 있는 기술적 요인입니다.
+	
+	<li> 한국어로 번역하면서 스트링의 순서가 바뀌어야 하는 경우</li>
+	예제 제공..... 
+	</p>
+-->	
+</article>
+<footer>
+@ 2008-2013 ihelp.r-forge.r-project.org. Copyright of individual papers resides with the authors
+<p align="left"> 본 웹사이트는 GNU 프로젝트의 하나로서 진행되는 통계 컴퓨팅 및 그래픽 환경이라고 불리우는 R (>=2.1.0)을 사용하는 한국어 사용자님들에게 참고의 목적으로서 도움이 되는 정보를 정리하고자 생성되었습니다. 웹사이트의 내용은 오류가 있을 수 있으며, 수시로 변경되어지므로 이러한 내용과 관련하여 어떠한 형태의 보증도 제공하지 않습니다. </p>
+
+</footer>
+
+
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43388960-1', 'r-project.org');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+<!--
+
+We may use the followings later.
+ 
+<li> 
+		관련 소스트리를 <a href="#" target="_blank"> 본 iHELP 프로젝트로부터 다운</a>받아 내용을 확인하거나, , 아래의 경로로 들어갑니다.
+		<pre>
+		cd /src/library/base/po/ 
+		</pre>
+		(NOTE: 현재 소스를 다운로드 받을 수 있게 준비중 - 2013-MAR-10)
+
+	
+	<code> ko.po </code>라는 파일을 열어봅니다. 복잡해 보일 수도 있으나, 다음과 같이 간단한 형식을 가지고 있음을 확인할 수 있습니다.
+		한국어 파일 (현재 2013년 2월 18일)은 초기화 되어 있기 때문에 msgstr 부분은 아무런 메시지도 없이 "" 라고 되어 있습니다 (이는 R-3.0.0 버전부터 가장 올바른 한국어 지원을 하기 위함입니다 ihelp-translators 알카이브를 확인하세요).  
+		이러한 작업을 위해서 Fedora 그룹에서는 poEdit 이라는 소프트웨어를 추천합니다. 
+		모든 작업파일은 UTF-8 인코딩으로 되어 있어야 합니다.
+		우리는 <code> GNU gettext </code>를 이용합니다. 
+	</li> 
+-->
