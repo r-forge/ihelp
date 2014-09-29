@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>gmailR 팩키지 소개</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>gmailR 팩키지 소개</h1>
+
+<p>이전에 R에서 메일을 보낼수있게 해주는 팩키지로 sendmailR팩키지를 소개한적이 있는데, 여기서 설명할 gmailR 팩키지는 sendmailR 팩키지의 취약점을 보충시켜줄수는 기능이있어서 소개하려고한다.  gmailR이 다른점은 사용자가 기존에 갖고있는 gmail 계정을 사용하여 메일을 보내므로 받는이가 스팸으로 오해하지 않는다는 점이다. 또, smtp서버중 ASPMX.L.GOOGLE.COM 처럼 서버에서 보내는 메일의 경우 사용자의 컴퓨터에 설치되어있는 보안프로그램이 포트를 막을경우가 있는데, gmailR에서는 smtp.gmail.com을 사용하므로 이런 문제가 없다는 점이다.</p>
+
+<p>하지만 gmailR을 처음 사용하려면 sendmailR보다 복잡한데, windows에서는 Rtools와 devtools가 먼저 설치되어있어야 한다. Rtools가 없다면 <a href="http://cran.r-project.org/bin/windows/Rtools/">http://cran.r-project.org/bin/windows/Rtools/</a> 에서 다운받은후 설치를 하면된다.</p>
+
+<p>그리고 R내에서 아래와같이 gmailR과 trinker를 github에서 다운받고 설치해준다.</p>
+
+<p>여기서 사용자의 컴퓨터에 Java가 설치되어 있어야하는데 없다면 <a href="http://www.java.com/en/download/chrome.jsp">http://www.java.com/en/download/chrome.jsp</a>에서 다운받아 설치하면된다. 만약 github에서 다운받는데 문제가있다면 최신버젼의 Java를 설치할 필요가 있을수있다.   </p>
+
+<pre><code>library(devtools)
+library(rjson)
+library(rJava)
+library(rJython)
+library(XML)
+install_github(&quot;gmailR&quot;, &quot;trinker&quot;)
+library(gmailR)
+</code></pre>
+
+<p>이렇게 필요한 도구들을 설치해주고나면 메일을 보내는것은 sendmailR보다 쉽다. 아래와 같이 gmail계정의 아이디나 메일주소를 username으로 정해주고 gmail계정의 암호를 password로 정해준다.</p>
+
+<pre><code>USER&lt;-&quot;gmail 주소&quot;
+PWD&lt;-&quot;gmail 암호&quot;
+
+To&lt;-&quot;받는이의 메일주소&quot;
+From&lt;-&quot;보내는이의 메일주소&quot;
+sub&lt;-&quot;메일 제목&quot;
+MSG&lt;-&quot;메일 내용&quot;
+ATT1&lt;-&quot;첨부파일이 있는 장소와 파일이름 - 예: C:/Documents and Settings/My Documents/Submission.doc&quot;
+</code></pre>
+
+<p>메일을 보내는 명령어는 아래와같다. server는 아래의 예에서 정해준  &ldquo;smtp.gmail.com:587&quot;를 그대로 쓰면된다. clear.username을 TRUE로 할경우 메일을 보낼때마다 gmail계정 아이디를 삽입해야한다.</p>
+
+<pre><code>gmail(to=To,subject=Sub,message=MSG,from=From,attachment=ATT1,username=USER,password=PWD,
+server=&quot;smtp.gmail.com:587&quot;,clear.username=FALSE)
+</code></pre>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43388960-1', 'r-project.org');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
+

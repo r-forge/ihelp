@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>기본 그래프 - plot() 함수</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>기본 그래프 - plot() 함수</h1>
+
+<pre><code class="r">Sys.setlocale(&quot;LC_CTYPE&quot;, &quot;Korean_Korea&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Korean_Korea.949&quot;
+</code></pre>
+
+<h2>기본 그래핑</h2>
+
+<p>R에서 그래프를 그릴때 사용되는 팩키지들은 여러가지가 있으며, 또 기본 그래프보다 더 많은 기능과 스타일을 제공한다. 하지만 기본 그래프도 많은 가지수의 그래프 종류를 제공하고있고, 또 제공되는 코딩을 잘 활용하면 고차원적인 그래프를 그리는것도 가능하다. 아래의 함수로 기본 그래프의 몇가지 샘플 데모를 볼수있다.</p>
+
+<pre><code>demo(graphics)
+</code></pre>
+
+<p>그래프를 그릴때 plot()이라는 함수를 사용하는데 데이터의 변수와 지정해준 x, y축들에 따라서 자동으로 그래프 스타일을 바꾸어주기도한다. </p>
+
+<p><em>2개의 수치 변수만 있는 데이터일 경우</em></p>
+
+<pre><code class="r">plot(cars)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"/> </p>
+
+<p><em>1개의 범주형 변수와 1개의 수치변수를 지정할경우</em></p>
+
+<pre><code class="r">plot(breaks ~ tension, warpbreaks)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEsUlEQVR4nO3djXabOBBA4Srv/9A9SeyGuOArGIFG4t79yWkKg/MtFrVptn8+7G1/ej+A7AkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQRVAJXvzn8sKWOg8vJx8TNzdCIQ7jtCAkFhoO01SKDY6EE6AQiXt6MLYpearUG7R+/aql9xoM3/7gI9B2wYCbQYsGYkEAzI/qXX5WUeEgjqDpSdUSBIIEggSCCoO1D2BIIEgroDZWcUCBIIEggSCOoOlD2BIIGgHvfF9jyA7nU/gwRqslW/BIIEgroDZU8gSCCoO1B2RoEggSCBIIGg7kDZEwgSCOoOlJ1RIKj792pMD1RePlaP3rVVvwSCugNl76o1qPW3Ql7WVVex3V/vxECr58B9gT4H1DzF9jyoQzucVAugsj5IoOcAgd4OKALRiFJW59wKqHydKoHRkwOVn7Xm4GiBYLRAMHpyoI+Ndbh+9OxA4dGTA5Wabd+OnhzIy/xW/55iB96fuRfQgQecHKjyPbkaoINv8uUGKpXHuO1VTKCK+Q2BEj3FWr3L33ANerzOSHiZv+BSN/ZrMYFabBRr7F9J5wHaNdL7YgdGzw5USsqr2AW5SMcOIZBAsUP8eqkRGT07UHj05ECHHsjNrmLB0bMDJXq7I9T+90puvAbV7TwE0K7fHVt9rjcF6nuZ73n67Vmku61BAsHePVf4+jfMOr6azw7U/cZhdiCYsIWXHeiiy3x5+bgxWiCBYIBAmxNcgw6WHajJqHb3xSIvp8YG+vxaKp5itwUqi3/ejE4IdOFVrAao6tFs7DA80PoggZYTvMzvryFQZAGre3xHt5oZaP/jWEmgMYBCh451GVDkJIgBxc6/q4BCWwWBztxbIIFiewskUGzvHP+jSYFaTxJozw6DA7kGNdhKoCaTtnYQCHbwtRjskA5o9TihJgOqHH3mpJnWoFMmzQTkVazBVgLRNmcus/CQhgCKdWegqp0HBwolUItDCNRio80dugO5BjXZKtLgr8UueCKGjixQbKtTgOrO7dAh2u3c/QwKJVD6Q5z/54uF6n+IhH86VLMFrPJw7386IVCzLlqDBMIJHdegUHe4ioXqBnTyqhlq/wp/4zOoLoGg+FVs8yQVCCYIBCMEotFzdB5QJeOYOz8TCBIIEggSCBIIEgg6H2jwBIIEggSCBIIEggSCBIIEggSCTgaK/Gq/RCaEdl6WGag8/3X4wALBgScHevwVOLBA2zvX3LGoaVqg8OEfCQSlBnr8ffzAAwAFVoJbAI2fQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQFAioJzfljYAUN/yAH3dHvq+R1Qev2fh+aPXz19ZHqDnTbDy/Vs6Fj96/fyl5QT6WN4z/O/zl5YM6Ps+7OsTS6Cvfp0zv08fgT5bfYoJ9NPyKvbyFHv5/JUlAsqZQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBA0F+5lX6pCSVunQAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-3"/> </p>
+
+<p><em>2개이상의 변수가있는 데이터에 x, y 축을 정해주지 않았을때</em></p>
+
+<pre><code class="r">plot(LifeCycleSavings)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-4"/> </p>
+
+<h2>그래핑 요소들을 지정할때</h2>
+
+<p>우선 아래의 기본 그래프가 그래핑 요소를 바꿀때 어떻게 변하는지 설명하겠다.</p>
+
+<pre><code class="r">x &lt;- c(0:100)
+y &lt;- 1/x
+plot(x, y)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfUlEQVR4nO3dgXKbMBAA0Yj//+hMYxsnLmiFEYfO7Ham7UzJ2X4FTIAkX5NV+zr7CYyeQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQFADULl1/HMZMgYqL39erD1A5TM6EAg/NkO7gdb3QQI1jsbVdOiOByr8KCPXDeg56GX3JhCMFohGuw96b3SSBIL2HyiuHnEKBBMEghEC7RudJIEggSCBIIEggSCBIIEggSCBIIEggSCBIIGgLhcOl087CzQPWL5wIdA8QCAYIFB1gvugY0YnSSDo+JsXkucaBAkEeQse5E2ckECQQJD7IMh3MUggSCBIIEggSCBIIEggSCBIIEggSCBIIEggqMsXs3i6oz6gLA8S6DFAIBggUH2Cp1yPGZ0kgSBvXoBcgyCBIN/FIC89QwJBAkHugyDfxSCBIIEggaA2oLc+r7oS0PTOd2r78+nr1g8epg2b2NaXWX7/Ja3QtjVo08u8EtC+fdAFgHaOvsg+qPPoJAkECQQJBAkEdQJaGiPQbYDf7JYmrB0HCjTPKALRFIH6j06SQJB3d0CuQZBAkFdWIa/NQwJBAkEx+6DE7/kxJ+35gYZNIEggKOZA0X3QG6OTJBAkECQQJBAkECQQFAWU9kgoCCjvsbRAUJfTHcuDBJoH/COCE2bX3QeV+++eUawP8PYXmiDQ3tFJ90JhQFnfx8JuXrg8EI0WiEZfdh/UfvNCSqLAS885NzKBoFighBtZ+D4om1DoKdeMG1k0ULqNLPakfcKNLPiqxsoP1By4aKB0W1n0dbGfn8qaaSsLB7ptZXmEwq+slvtP9s1CdMKl55koBdIZ1+bL41cGoVNuXnisQ1OC1eikuzuep2VH/+Ky025/ufM8t7ZBlc68P+g30d92PGrvIk93rH3sDLSoxVMOLfCE2dqA585oerUq/61b4WbnA90XXlyZKn/Ftjx67YnV/zn268WeL64K1GDYqsjE5+6DqhP/am0D6rN0w6s4/y7Xyn+wQGuDm5oGA6KbF4JrQwTin0H1xxlyDQpNIGjEd7GhOvI46DM6Doj+YetC3QZ1XEggas8+qPezyQrU5YEE6rCQQFGDBIpbqAfQZycQJBAkECQQJBAkECQQJBAkELQbCE/Jzd+5ob5gwzJNg3ihsuFZ7QcqE31Sc18CFpx/9EL9vBMO4oWe32iDn9UUATQ1PZVGoKaFqo/263JhJqAytQD1Wc0GBGp68bxMaVsVaVJGoNKG2GUfNCBQwQXvVwUuClSaFvzUNYgPJB7XjC56HPTxCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEjQzUdt3/4EYGetyJcWoCQUMDDeAzNpBrECRQPd/FMiQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBD0DV7Ff/EvvfEyAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-5"/> </p>
+
+<p><em>그래프의 점들을 다른 모양이나 스타일로 정할때</em>  </p>
+
+<p>pch를 0 에서 25 사이의 번호를 줄수도있고, 원하는 심벌을 정해줄수도있다. </p>
+
+<pre><code class="r">plot(x, y, pch = &quot;+&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEU0lEQVR4nO3dgW6bMBRA0Zr//+hpCkmalHBNMM9+cO80bdIcNzlygADtfiZb7af3Exg9gSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggaAKoHLr+OcyZAxU3v68WHuAyjk6EAgfm6HdQJ+3QQLtmzpJAUC5oZoBPSd637wJtDp1xZ5g6HyLQQJB7sWg/QeKH484BYIZBIIpBNo3dZIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEgppcOJy8cLg+wf33pqmTJBAkEOQ2CHIvBgkEBdy8kDtXECQQ5C14kDdxQgJBAkFugyD3YpBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAUJNvZvF0x/oEZXkige4TCAQTCLQ+g6dcj5k6SQJB3rwAuYIggSD3YpCXniGBIIEgt0GQezFIIEggSCCoDuirz1VXApqWv11l19RJ2vAW22pUFv6Wr20raNMrvRLQrm1Q7nNDIXuxvDwCYR4HQQJBAkECQY2AlqYR6DaBP+yWZvh0iC3QY44iEM0iUPupkyQQ5N0dkCsIEgjyyirktXlIIEggyG0QFLMXS2wlEBQBlPqw2hUECQT5UQMSCBIIEggSCBIIEgiKAkqrJRDU5HTH8kTlZUzWT2NNTpj9f/FwwiwpT7MziktX5wX6PYG3v9AMArWeOklxQEm94m5euDoQTJ32SMi3GBR34fCqQBsuPackEgiKA0q6mY68eWH5durBizySFgimTvkmi/0slnANCQQFA+V7k0Wf7vjwnUHjFgyUbwmFnzDLRhQPNP/KUodTrrc1lAWpyznpmSiFUB+gx2nZ8ZdRp6sad6LxN0ndLvu8rKIy7vFR5OmOvwOeSr8W01hQkWcUlx5cXpiei+nx1971BboNu6uUv8vpxarLAusPNA9+X0xrVh/gDnmb9twGLTziz0terAJoG+fi6FZAKy/36weuvojazgv0NssXa6JNNa9iyJ+8cPm3WIsEimqovdiIHXkcdI6OA6J/2Dqo2UQNBwlE7dkGtX42WYGafCGBGgwSKGoigeIGtQA6dwJBAkECQQJBAkECQQJBAkECQbuB8JTc4yc3rA+sGFM1EQ8qG57VfqAy0YeaeQQMfPzXC+vnnXAiHvT8QRv8rKYIoKnqqVQCVQ1a/Wrz9Z5sQGWqAWqzzAYEqnrxPKbULUWaKSNQqUNssg0aEKjgwPmqwEWBStXAs64gPpC4XzO66HHQ6RMIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBoZqO66/8GNDDSV/j4CUUMDDeAzNpArCBJoPfdiGRIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEgj6B+HPgKkGuHvnAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-6"/> </p>
+
+<pre><code class="r">plot(x, y, pch = 25)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAE/UlEQVR4nO3djXKbOBRA4Yj3f+h2EpPwf2QjLrr2OTOdpruKbH8rAwaa/RrssK+7n0DvCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQRVAJWfrn8uXcZAZfH7h3UGqLxHFwLh92boNND+NkigmqnrFmrHXQ30YDoxzc01A/qbaL55E4imLql9AoD+/y7Q4dSJt9BDCFDqBXQeaP+IM7XLbw0OFF+cOkkN3mJ7Uwh0buokCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQ1uXA4eOHweILx11NTJ0kgSCDIbRDkXgwSCLr85oXsuYIggSBvwYO8iRMSCBIIchsEuReDBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIKa/GUWT3ccT1C2JxJonEAgmECg4xk85XrN1EkSCPLmBcgVBAkEuReDvPQMCQQJBLkNgtyLQQJBAkECQXVAL32u+iSgYfuvq1RNnfyj6xNvsWdf5OwIKavPkyvoqZf5SUDntkElsU/MXizzj5qMAcrrE3QcJNALUydJIEggqBHQ1jQC/UzgD7ulGfYOsQX6nWP7QFCgySwCtZ86SQJB3t0BuYIggSCvrEJem4cEggSCIrZBqXf7EXuxUvNIvRZ0VYMfqdfCgJL6hF3VyOojEBX0USOtj5/FKIEggSCBIIGgoN183k9jkbe/ZPQJPQ76UKDHO+f4fFDeT2NNTpiVzds0y+IPHwy0/WFrAZTTp9kpV7z9JeUubGiyDdqbqBz8KU9Re7G0R0JRR9Jpj4Sibl4QiKbOeiQUB5R0KxR380LJuYjiLj3vfSLpvMBr8ykXUChQyo1Q3DbosRVK5hN6yjXljiz0nHRJuCeLPWmfcA1FAw3ZTg0FX/Yp6dZQ9HWxko3oFqBMb7PwK6ul5FpE8Zeev2HyEN0BNJREm6I7bl4YZVIg3XN3x5qoW6W7gH7+L+yr91t/TPcALXdmy8XUkVTk6Y7V9z1Wz+gzrJZTB1qBJ8zWA6Ymw7iYhvGfLg4IbkK7E+h7zLg5miyh+XJafLG7yC5yvBnoZ9xEZ/H1dF3NCIc13GKOJt25DVohDWuIbZQV6Mxl/WUF52TI9HH4VYTe5bp69WuIUg5e0OabcGuWQ87Z9H0B/X7j4nWu/isfLoUp0NH62JWdLaB2QHDzwoutXsbxith5oTh+Z/T8dW3W343ktBT+3lX4Bjt+22UFwgdds9W8s7ZG17wKf/LClcdB79F1QPQvnh3UbKKGgwSizmyDWj+brEBNHkigBoMEippIoLhBLYDeO4EggSCBIIEggSCBIIEggSCBoNNAeEpuHAEDK8ZUTcSDyhPP6jwQX3p7jICBpQw0pmoiHlRK3bhH1wMNVU+lEqhq0OGjTS4XZgIqQw1Qm2XWIVDVi+cxpW4p0kwZgUodYpNtUIdABQc+rgp8KFCpGviuK4gPJMZrRh96HPT2CQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkE9QxUd93/4noGGsr9PgJRXQN14NM3kCsIEug492IZEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCPoHx9l+5A15ujYAAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-6"/> </p>
+
+<p>cex (character expansion)를 이용하여 점의 크기를 바꿀수있다.</p>
+
+<pre><code class="r">plot(x, y, pch = 25, cex = 2)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-7"/> </p>
+
+<p><em>선을 사용할때</em>   </p>
+
+<p>점선은 lty 를 사용하여 원하는 모양의 점선으로 지정한다. 여기서 1은 실선이며 2이상은 각기 다른 모양의 점선들이다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEVElEQVR4nO3dgW7bNhRG4VDv/9BFa8eJG4nnKqIoXvEcYBiGqr/dD57sWZ7zsVi1j6vvwOgJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAWAyqPz78uQMVD57++TdQSo3KMTgfD3Zugw0PY5SKBj00kSCGoG9DX04/SWWqrHI0ggmBYIpgWC6bmBtl9xCgQLAsGEQNFpgWBaIJgWCKYFgmmBYFogmBYIpgWCaYFgWiCYFoimMwsJBAkENblwuMCFw6mByre/tqYFWh0S6DUgUHXBc9DhaYFgWqC3oZ9XygSCaYFgem6gwEfwpgaKfIhToNUhgd4GBNpc8Bx0eFogmBYIpgWCaYFgWiCYFgimBYJpgWBaIJgWCKYFgmmBYFogmJ4bqDze8ahNTw1Unhu+YbY9IBAMCFRfCHzzQmKhLs9iAtG0QPUPLwhE0wLB9NRAPovFBmqvgwRaHRLobUCgzQXPQcenBYJpgWBaIJi+PdCvvst2JqBl/X9XCU9PALTsN5oL6KGz6w86E5DnoK18FhMIEggSCBIIEghqBLQ2I9BjgL/sdm6gZfMltkCvjSIQrQh0cDqvkEBQn093CETTAsH0zEChnw41MVDo2rxAAuGAQJsLnoMaTAsE0wLBtEAwLRBMC0TTaYUEggSCBIIEggSCegGlFRIIEghq8nbH+pBAr4G/RAJVB9auzpfqP2ap1Vuu9Y+/BG5p1Bqcg7aGBNo3LRBN5xTq9OGFwE0Nmo8gqCNQTqFOFw4jtzVmnS49h25syASCugJlFOp5DpoUaNd0PqHOQPmEBIJ6A6UTEgjqDpRNqD/Q776l4LIuAMr1ILoEKJPQNUCJ/jW7CGjZ+B788boMKHbE9V0KlOFhdC3Qv8M23gwYpL5vd8DKnt/Qq75vmNHWJvZ1DQX0+p3f+vVIo4YEelv5WZPd8O3Xf7nbOWhPK2bnKV7/LHZSIcUA8W2BWtXxwws58xEECQRlfBbr2pmvg+7ReUD0C3sPajbU8CCBqCPnoNb3JitQkxsSqMFBAvUaEqjfQS2A7p1AkECQQJBAkECQQJBAkECQQNBhIHxL7vXNDfUDA8eEhvigsuNeHQcqC/1HzfMIOPD1oxfq7zvhEB/09UUbfK+WHkBL6K4EgUIHVW/t+RUS2YDKEgFq8zAbECj0h+djSuyhSEsZgUoMsck5aECgggc+rwpMClRCB971EcQvJD6vGU36Ouj2CQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEjQwUu+5/ciMDLWs/zKN3AkFDAw3gMzaQjyBIoHo+i2VIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEgg6A9tuIHxam3hMgAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-8"/> </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 3)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEQklEQVR4nO3dgU7bMBhFYZz3f2i0QQvr0hyncf/6NudIaJowpnyKk5BE5WOxzT5e/QJmTyBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCCoA6h99fzXMmUM1G7+PVlHgNp79EQg/NqEDgPd3wcJdGzqkASChgH9TPTf7i1aqmILEuihqUMSCHKJQcdPFO+ecQoEM0S7XBuwxO5NIVDv1NFSAkEe5iGBIJcYJBDkEoMEglxikECQSwwSCCoBSqYSCBpy43DxxuH2BJePXVOHVAKUTCUQ5D4I8jwI8jAPVTy8INBDU4ckEFTyCF4yVclDnAKtTpTM8pNAkPsgyBNFyMM8JBDkEoMEglxikECQSwwSCHKJQQJBLjFIIMglBg243PF1xWP31CGNuGDW1idyiV0mEAgmQKDkSi65JldzFAu2EggqeXghOU8UIZcYVHMUOzOQt547JxAIJtgECrZyHwR5mIcEgjwPggSC+oAe+r0qWOVXvVvQA797ngto2W90piV20dn1g54JyH3QvTwP8jAPCQS5xCCBIJcYNAhobRqBvibgN7uNbsQVxTvTCHSdo7nEaBaBxk8dkkBQ0dMduVhFW5BA+6cOyWcUoaKHF3KxBIJ8/AVyHwR5mIcEgjwPggSCXGJQ1RYUK+QSgwSCXGKQQJBLDBIIKgNK5RIIGnK5Y32iVJJ/G3LB7A+RQJsTrN2db5v/TWnUJVd+/OWsQFehvVOH5HkQVAiUCVb08ELHt5o0lxgkEFR54zBSrPTWc6KQ9+YhgaDahxcCzYqPYnlCHuYhgaByoDQ2gSCXGPQKoCi5l2xBSUIuMehVQDHv9PrKLSjC6KVLLEHoxfug+VfaBDvpvzeup4WqvdyxPc++8UXNdcFswo1pLqDLV7ZfHw/PMqYpgW6naTcflc2zD9rRLdjax7Dvtf3p3F81ehB7kN8WaFSFDy9k5hYECQRFHsUqe+Z50Hv0PCD6xN5BwyYaOEgg6sg+aPSrSQUa8o0EGjBIoKqJBKobNALovRMIEggSCBIIEggSCBIIEggSCDoMhJfkru/csD2wY0zXRDyo7XhVx4HaQr/UfI+Agdc/vbB93Qkn4kE/b7TBr2qpAFq6XkonUNegze/2/RYSaUBt6QEas5lNCNT1w/OY1rcp0kyJQK0Pccg+aEKghgO/7wqcFKh1DXzXLYhPJC73jE56HvT2CQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEzQzUd9//yc0MtKz9MY/qBIKmBprAZ24gtyBIoO08iiUkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQ9Ak8iIKEOyD9EwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-8"/> </p>
+
+<p>lwd는 선의 굵기를 정해준다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAACVBMVEX9/v0AAAD9/v3/vTJ9AAAAA3RSTlP//wDXyg1BAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfklEQVR4nO3djW6jSBQF4TTv/9BR5J/YCVCNaS596SpptdpZcmJ/YmyPsTJfk632dfYN6D2BIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBoAqgcuv429JlDFT+/Huw9gCVa3QgEH5thnYDLT8GCbRvOkkRQKmlmgH9Dv19eMMHuq4LOIMEgmmBYFogmB4caPkVp0CwIBBMCFQ5LRBMCwTTAsG0QDAtEEwLBNMCwbRAMC0QTAsE03ztpOdC3pMWaH1aIJgeHOjn7q9fOBwbqLz8szAtkEAwINDqgo9Be6cFgmmB3of+XSkTCKYFgunBgfgjeGMDVXyIU6D5IYHeBgRaXPAxaO+0QDAtEEwLBNMCwbRAMC0QTAsE0wLBtEAwLRBMCwTTAsG0QDA9OFBZ+oiUQI+BMj8k0GNAIBgQaH2h5i3XvEIRz2KpTyGBoIgPLwhE0wLB9NhAFT8/aGigikvPAs0PCfQ2INDigo9Bu6cFgmmBYFogmL4+0Ed3cCSgj+7jWEDT9rs5FtDtPm66nyMB+Ri0lM9iAkECQQJBAkECQY2A5mYEug38uwr2f3pooGnxJbZAz40iEK0gUFqhkGexzKeQQFDIpzsEommBYHpooIorq0MD1VybF2h2SKC3AYEWF3wM2j8tEEwLBNMCwbRAMJ34/Y4YoMSnkECQQJBAkEBQHFBSoSCgvKeQQJBAUJO3O+aHBHoO/Nx5Bsop1Ogdxbmr8++/MjjQ3NV5gd4WBNo5nfVBKAwo6ykU8+GF+y9vuWG9FHoGZRSKA0p6CsVcOHwcWH2z+inm0vPtv1MKBQLlPIWCgfIJBT4G5RQKfBabUv4mCwfKJhQLlFAoGCjfb7ITgHIJRQOlEzoFKJNQOFA2ohOApqVXll12BtDzLbUd42GdApSJ6CSglzdmO0c6DWh6NeqY6UygP0R9KoW+3bH29b06Rb5htjqz2JaVA+oF6PYVlW0e3lFXQI8vbNGn33zjvQh4DKqbP6Gqe3Hws9iHw5FCGYGqvnkjn8APLyTtqmdQswSCun8WO7sjXwddo+OA6H9sPajZUMODBKL2PAa1vjVZgZp8I4EaHCRQ1JBAcQe1ALp2AkECQQJBAkECQQJBAkECQQJBu4HwLbnnT25YP7DimKohPqhsuFX7gcpEf6i5HwEHPv/qhfX3nXCID/r9QRt8q6YIoKnqplQCVR20+t3uP0IiG1CZaoDanGYdAlXdeT6m1J2KtJQRqNQhNnkM6hCo4IH3qwKDApWqA696BvELicc1o0FfB10+gSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIGgnoHqrvsfXM9A09xf5hGdQFDXQB349A3kGQQJtJ7PYhkSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBII+gYi03996DSAlwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-9"/> </p>
+
+<p><em>색을 바꿀때</em>  </p>
+
+<p>col을 이용하여 번호를 입력하거나 색깔의 이름을 직접 적어준다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;p&quot;, pch = 16, cex = 1.5, col = 2)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAADFBMVEX9/v0AAAD9/v3/AABFUI1DAAAABHRSTlP//wD//gy7CwAAAAlwSFlzAAALEgAACxIB0t1+/AAABF9JREFUeJzt3Y1um0AQAOEcvP87V63/Gtswhzn2bs2MVEVq6cb5RICYs/Mz2Wo/vR/A6AkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEVQCVS8c/liFjoPL08WTtASrf0YFA14/zjEMGbjfQ8jHo8lfzvz54ZIO0HwhGC7Q+ep6TCzUDegz6dXgTiEYn9xGIOhzI0/yno5O0/0Jx8YpTIJggEIwQaN/oJAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkENblxOK3cOMxek1vPtz+bRidJIEggyGMQ5FkMEgg6evFC+tyDIIGgw5fgZS9gEWfuBIIEgjwGQZ7FIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIGgJi9m8emO9QHl/SCBbgMEggECrU/wKddjRidJIMjFC5B7ECQQ5FkM8tYzJBAkEOQxCPIsBgkECQSFAGV+D6o6oI9+rrr9n9zvYla7B33ws+e5gKbtRtetk7+T4rY9aJPQmYA8Bi3V5n0UBYLReXm8UMQEggSCBIIaAb0bI9BlgG92SxOWLrEFus8oAtEUgdqPTpJAkKs7IPcgSCDIO6uQ9+ahGKDEz5hFAKV+zjXiGHRyIByd+76PQFDEdVBmH4GomCvptDz+qIEJBAkECQRFAaU9TEedxdKe6AWCgtYH5RUSCGrydMf7QX6L3Qf8JRJodcC7u/Oe5v8fwMtfkhI1OAYtDXrag5J+k8VdSQu0NjrviT5o8YJANDqrTzBQQqK4xQtnBapdvJB1FwoHyiYUt/zlrEAbj0HphAKftM8pFHlXQyAYnXIXCr0vNickir1xKBCMnvPtQ8G3nudf7RgeVlegDEThixeeiUY36rC644VoaKZRgIZV6rI+aJloPKhOC6iIaBysbivM6on6mvV8vdgOozjFvq8XO5RobyMADY40BtDATE2AWr5mtTfIS02AFvt4nXRvlkf8VfRfSN7ZJ2rxQtNyAr3W9aUIjXi+F6hZQ53FRuzI66Dv6Dgg+oetGzUb1HAjgag9x6DWjyYrUJNPJFCDjQSKGiRQ3EYtgL47gSCBIIEggSCBIIEggSCBIIGg3UD4lNz9nRvWN6zYpmoQb1Q2PKr9QGWiH2quW8CG91+9sP68Ew7ijR5vtMGPaooAmqoeSiVQ1Uarn+36FhLZgMpUA9RmNxsQqOqL521K3a5IkzIClTrEJsegAYEKbni9K3BSoFK14bfuQXwhcbtndNLroK9PIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBoZKC6+/4HNzLQ9O6XeUQnEDQ00AA+YwO5B0ECredZLEMCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBfwA8/YmoNlpFlAAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-10"/> </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 2, col = 3)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAADFBMVEX9/v0AAAAAzQD9/v00Zh1UAAAABHRSTlP///8AQCqp9AAAAAlwSFlzAAALEgAACxIB0t1+/AAABEtJREFUeJzt3Y1u4jgYRuE6uf97HjH8tLSJj8GO4w+fI61G2s28ZR8xgSGUfq2W7evsGzB6AkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEFQOna8bdlyBgo/fp1smqA0md0IBD+3ghVA+2fgwSqmw6SQFAzoO+h36e3ZXnjdg1Tj3tQaCGBIIEggaD6J4q7zzgFggWBYEKg0mmBYFogmBYIpgWCaYFgWiCYFgimBYJpgWBaIJgWCKYFgmmBYHpyoMtrZfkLh3MDpR//7EwLJBAMCJRd8BxUOy0QTAv0PPTnSplAMC0QTE8OxG/Bmxuo4E2cAm0PCfQ0INDugueg6unIQgJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBTb6Zhb7reWqgdNvIvGAm0PaQQPcBgfIL/MkLcwMVTAsE0wI9Df39Nl+BYFogmJ4byEexsgGfB8GAQDAg0O6C56DqaYFgWiCYFgimPx/orc+ynQlo3f52ldLpGYDW143mArrqvCQ0E1DlOSiyUJdHMYFoWiCYFgimBYJpgWBaoK0Zga4D/GG3cwOtu0+xBXpsJIFoRaC6aYFgWqD8uzsEommBYHpqoJKfDjUzUMm1eYE2hwR6GhBod8FzUP20QDAtEE3HFRIIEggSCBIIEgjqBBRXSCBIIEggSCBIIKjJyx3bQ8//JqpQkxfMLkQCZQe2rs4L9HMg//aXdWKghxBNBxXq9SgmEE7PDpR988Kl2YF4OqaQQFCfC4fXQgr1ufR8TSCYXiIK9QQKeRfqeQ4KKdTxUWwN+YesL1DAu1BnoHhCAkG9gcIJnQAUi6g7UDSh/kDBHuzPAAp1JzoF6L9QEKRzgO5EFeu9OgvoUgikM4Huf9KGZjoV6NIyuFLflzt2W5ZRobq+YAYtW7060rqRgO5tQp1lNiLQzwjrcMVBzkGv9LbZW8SnP4odlEC96vfmhaB5D4IEggI+ivXtyOdBn9FxQPQfXj2o2VDDgwSias5BrW9NVKAmX0igBgcJ1GtIoH4HtQD67ASCBIIEggSCBIIEggSCBIIEgqqB8CW5xyc35A8sOKZoiA9KL9yqeqC00l9qbkfAgY8fvZB/3QmH+KDvD9rgW7X2AFqLbkohUNFB2a92+wiJaEBpLQFqczcbEKjof56PSWV3RVqKCJTKEJucgwYESnjg7arApECp6MBPvQfxE4n7NaNJnwd9fAJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQSMDlV33P7iRgdatH+bRO4GgoYEG8BkbyHsQJFA+H8UiJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkEPQPVdS/wtGMc54AAAAASUVORK5CYII=" alt="plot of chunk unnamed-chunk-10"/> </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 3, lwd = 1, col = &quot;blue&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAADFBMVEX9/v0AAAAAAP/9/v375jfPAAAABHRSTlP///8AQCqp9AAAAAlwSFlzAAALEgAACxIB0t1+/AAABEZJREFUeJzt3YFuo0gQANGM+f9/jryxHcUL1ABDM+2pkqKT9rhe3xONHZvNfk222tfVD6D3BIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIqgMpP5z+WLmOg8vbPwToCVD6jE4Hwv83QYaDla5BAx0YnSSCoGdDvoP8ub7ftD6ufIs4ggXaNTpJAkCsGHX+huPiKUyCY4IrBCIFqRw++YjxaoF2jkyQQ5IpBAkGuGCQQ5IpBAkGuGCQQFAKUeccEgpp8cDj5weH6gOfXptFJCgEaesUEwgleg84ZnSSf5qGImxcE2jU6SQJBIbfgDb1iNTdxCjQ7yBX7M0CgxQlegw6PFmjP6CQJBLlikECQKwYJBLlikECQKwYJBLlikECQKwY1+cMs/qnn9QFlfpAr9hwgEAxAoMyFvOWauZhnscQ7JhAUcvNC5nyhCLliUMyz2MhAfvRcOUAgGLAKNPKKeQ06a3SSBIJ8HQQJBNUB7fq+aqwV2/G951hA03ajkVbsqbNJaCQgr0FL+TrIp3lIIMgVgwSCXDGoEdDcGIF+BvAPu01di3cUF8YI9JpRXDGaIlD70UkSCAq6uyPvjgWdQQJtH50k71GEgm5eGHjFBKoc4PdiixO8BjUYPfCK1Y0WaPvoJAkEuWJQ1BmUVsgVgwSCXDFIIMgVgwSCwoCy7phAUJO3O+YHuWKvAXcigVYHzH06//YrSXes1VuufPvLqEAvoa2jk+TrICgQKOeOBd28cG9woM2jkyQQFPnBYcodC/3oOaOQn81DAkGxNy8k3LHgZ7F8Qj7NQwJB4UDZlkwgyBWDrgBKdRJdcgZlEnLFoKuAblnOoivPoBRGl65YBqGLr0H9b1oHF+k7Ur9Q/fxZjU6N+nrDrMOTqS+gR0+nf1+7p7SpS6A/3d7AgsX6uQZt6B1s7qtVHTyLnVMNYg3yxwK1KvDmhZx5BkECQSmfxSI783XQZ3QeEP2LrQc1G9TwIIGoI9eg1o8mK1CT30igBgcJFDVIoLiDWgB9dgJBAkECQQJBAkECQQJBAkECQYeB8C25109uWD+w4piqQXxQ2fCojgOVib6peRwBB77+6oX1951wEB/0+4M2+FFNEUBT1UOpBKo6aPV3e/wIiWxAZaoBanOadQhU9T/Px5S6U5EmZQQqdYhNrkEdAhU88PGpwKBAperATz2D+IXE8zOjQV8HfXwCQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkECQQJBAkE9A9V97n9yPQNNc3+ZR3QCQV0DdeDTN5BnECTQej6LZUggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCBIIEggSCDoGzBwwZD1YZsDAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-10"/> </p>
+
+<p><em>제목과 부제목을 삽입할때</em>    </p>
+
+<p>기본으로 제목(main)은 위에 부제목(sub)은 맨아래에 표시된다.  </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11"/> </p>
+
+<p><em>x, y 축에 이름을 삽입할때</em>   </p>
+
+<p>xlab은 x축의 이름. ylab은 y축의 이름</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, 
+    main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-12"/> </p>
+
+<p><em>제목과 부제목에 색을 넣을때</em>   </p>
+
+<p>col.main는 제목의 색깔. col.sub는 부제목의 색깔.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.main = 3, col.sub = 6, 
+    xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-13"/> </p>
+
+<p><em>x, y축의 이름과 단위에 색을 넣을때</em>  </p>
+
+<p>축의 이름은 col.lab을 축의 단위는 col.axis를 사용하여 색을 지정해준다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-14"/> </p>
+
+<p><em>텍스트 크기 바꾸기</em>  </p>
+
+<p>제목은 cex.main, 부제목은 cex.sub, 축의 이름은 cex.lab 그리고 축의 단위는 cex.axis를 사용하여 크기를 지정해준다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-15"/> </p>
+
+<p><em>글꼴 바꾸기</em>  </p>
+
+<p>제목, 부제목, 축의 이름과 축의 단위의 글꼴(font)들도 아래와 같이 바꾸어줄수 있다.  </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-16"/> </p>
+
+<p><em>텍스트 행 맞추기</em>  </p>
+
+<p>adj를 사용하여 그래프 제목, 부제목, 축 이름과 단위의 행을 조절할수있다. 0=왼쪽으로 맞추기, 1=오른쪽으로 맞추기, 0.5=중앙. 0과 1사이의 소숫점 값으로 그 외 위치를 조절한다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-17"/> </p>
+
+<p><em>축의 단위 조절</em>  </p>
+
+<p>lab를 이용하여 축의 단위가 보여지는 포맷을 바꿀수있다. lab=c(x축의 단위, y축의 단위, 보여지는 단위의 간격)</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-18"/> </p>
+
+<p><em>축의 단위의 방향 바꾸기</em>   </p>
+
+<p>las를 이용하여 축의 단위표시의 방향을 바꾸어준다. 0=축과 평행, 1=가로 방향, 2=세로 방향</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10), las = 2)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-19"/> </p>
+
+<p><em>축이름과 단위의 거리조절</em>  </p>
+
+<p>mgp를 사용하여 축이름과 단위가 축에서 얼마나 떨어진 더리에 표시되는지 지정해준다. mgp=c(축의 이름과 축의 거리, 축의 단위와 축의 거리, 축과 그래프 면의 거리)</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10), las = 2, mgp = c(3, 2, 1))
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-20"/> </p>
+
+<p><em>단위 표시점 (tick mark)의 길이</em>  </p>
+
+<p>tck를 이영하여 단위 표시점의 길이를 조절한다. tck값은 그래프 면적의 분수로 삽입한다. 여기서 그리드 라인의 값은 1로 기준하며, 표시점이 그래프안으로 보여질 경우는 양수로 밖으로 보여질경우는 음수로 삽입한다. </p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10), las = 2, mgp = c(3, 2, 1), tck = 0.01)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-21"/> </p>
+
+<p><em>그래프 면적 바꾸기</em>  </p>
+
+<p>기본으로 x, y축이 데이터 값의 범위보다 조금 더 크게 잡아서 여백을 남기는데 xaxs와 yaxs를 사용하여 여백을 없애 버릴수도있다. r=여백허용. i=여백불허.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10), las = 2, mgp = c(3, 2, 1), tck = 0.01, xaxs = &quot;i&quot;, yaxs = &quot;r&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-22"/> </p>
+
+<p><em>마진 설정</em>  </p>
+
+<p>mai=c(아랬쪽 마진, 왼쪽마진, 윗쪽 마진, 오른쪽 마진).</p>
+
+<p>mar은 mai와 같으나 마진의 측정값을 텍스트라인으로 정한다.</p>
+
+<pre><code class="r">plot(x, y, type = &quot;l&quot;, lty = 1, lwd = 3, col = 2, col.axis = 4, col.lab = 5, 
+    col.main = 3, col.sub = 6, cex.axis = 0.6, cex.main = 1.5, cex.sub = 1, 
+    cex.lab = 0.8, xlab = &quot;X&quot;, ylab = &quot;1/X&quot;, main = &quot;Test&quot;, sub = &quot;Hyperbola&quot;, 
+    font = 2, font.axis = 2, font.lab = 1, font.main = 4, font.sub = 3, adj = 0.7, 
+    lab = c(11, 3, 10), las = 2, mgp = c(3, 2, 1), tck = 0.01, xaxs = &quot;i&quot;, yaxs = &quot;r&quot;, 
+    mai = c(2, 1, 3, 0))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAbFBMVEX9/v0AAAAAAP8AzQAA//8REf4RzxEiIv4i0iIzM/4z1jNDRP1D2UNUVf1U3VRlZv1l4GV2d/1243aHh/2H5oeYmP2Y6Zipqf2p7am6uv268LrKy/zK88rb3Pzb99vs7fzs+uz9/v3/AAD/AP/ArG1hAAAAJHRSTlP///////////////////////////////////////////8A///LttZtAAAACXBIWXMAAAsSAAALEgHS3X78AAAGvklEQVR4nO3di1baWhgE4E4iqBzrpWq1qMdG3v8dmwtgSOIMyA5kk5muImbgRz53Nnads/BH5tD8OPYXMPQYSMRAIgYSMZCIgUQMJGIgEQOJGEjEQCIGEjGQiIFEDCRiIBEDiRhIxEAiBhIxkIiBRAwkEhfQa7rKVfcN5tevgR8yLqCrNVC3w/VXxfcTF1BWLqIvVk+eCwNlv9P0obzymi+X2by49jxL04v8YLW2Aj9edEAPafpcfHxen2oP1bVfBipzVZ1F+Zk2K5Cus2yao7ymV/m1X2k6D/140QFdVGvkNk3/lidVCXT9f9nNgq+fCIGWJ9F09XK2PNmuqm4W/PFiA3pdW1SZ5tefp5XQvNiIQic2oGrbqTaez/wul1IfW1B0QA/LV/nb4mPucnV7kb+q5evqotyeDHS9Qqg2oenf+fJcmy8PhX7A2IBm65+Vb6fp9DYrfmAsXsaKg/OZgQ4fA4kYSMRAIgYSMZCIgUQMJGIgEQOJGEjEQCIGEjGQiIFEDCRiIBEDiRhIxEAiBhIxkMg+QDiN9Ai0x32HE/DaQOC1gcDrbqCXSX5xn9yr0R/f+pKGFfC6G+gmyS8m75PmrM0dDR8fJyAEXn9xiiXl34TPGjtQxwpqfDpqoKRjD2rMGjPQVrMMJGYZSMwykJhlIDHLQGKWgcQsA4lZBhKzDCRmGUjMMpCYZSAxy0BiloHErAIofiHwei+gzEB0loHELAOJWQYSswwkZhlIzDKQmGUgMctAYpaBxCwDiVkGErMMJGYZSMwykJhlIDFrfEBnu80aE9DZ+mKHWWMCKnCkz6iBsjPtM2ogr6Av4j0IvParGHi9WkFb7ECjBiqIvAd1pX6KSSI0Px0Z0K6zDCRmjQnorMpus8YEtMVPie1ZBhKzRgX0nVkGErMMJGYZSMwykJhVAkUvBF7vB3QKSwi8NhB4bSDw2kDgtYHAawOB1wYCrw0EXhsIvDYQeG0g8NpA4LWBwGsDgdcGAq8NBF53AlVv7/aWqLcJHC1Q9QaBd4+tWdiYhtECVW8xeZ7c8FkYLVC1giZvPsXIHpRkj/KNJkcLtOUsGIjPgoH4LGSn8B/GwOs9gU5gCYHXBgKvDQReGwi8NhB4bSDw2kDgtYHAawOB1wYCrw0EXgcAilwIvN4XKP4lBF4bCLw2EHhtIPDaQOC1gcBrA4HXBgKvDQReGwi8NhB4HQIobiHwem+g6JcQeG0g8NpA4LWBwGsDgdcGAq8NBF4HAYpaCLzeHyj2JQReGwi8NhB4HQYoZiHwOgBQ5EsIvDYQeB0IKGIh8DoEUNxLCLw2EHgdCiheIfA6CFDUSwi8DgYUrRB4HQYoZiHwOhBQxCcZeB0QKFIh8DoUULxC4HUwoGhPMvA6KFCUROB1OKBYhcDrgECRCoHXIYHiJAKvwwJVQnERgdeBgZZCMSGB16GB4iMCr8MD1YiiQAKv+wAq8vERCxN43RdQg2jATOB1f0BFWkgDhAKv+wWq0sk0GC7w+hBAVSjTEdHA68MBrbID1EEgxbM4PNBmAnJ9M+JZHBuoK8MHqt5o8n6LN3k7ao4HtHybwPKynvYbTZ5AwOtOoOqNJqvL74+OJOD1Titot9GRBLz+cg9KOvag3UZHEvB6p1ex5ujTSH9Ao4iBRAwkYiARA4kYSMRAIgYSMZCIgUQMJGIgkb3+sbrVoSEd2/autfhf8z0CjSIGEjGQiIFEDCRiIBEDiRhIxEAiBhIxkIiBRAwkYiARA4nsAXQ/SSb38tCQjm1713r2AEres/dEHhrSsW3vWo9XUH8rKHzE/xN5lIQFmiRJ65fU3yR3rWd+kxRHN5N03DfJb9n89t6d37R+jXnS+s3v+WNM7pq3e8xXy1PjZoddQS/NrzwrTvLHy9YTf0tav4r85fJPawUlj+3bJe/tX2Oe/PzvT+u+L/mf5sNODrkHbZn7SfbnvHnsMjtvf9N/tr7Qt7vzSfN2T/m3vHksyZ5ad87XaHMF5Utv0ly4Ue1BQ8zogbq2zXpGD9S1bdYzeiAVA4kYSMRAIgYSMZCIgUQMJGIgkfiBzpZ/e0r8QLlOjz6nANSrj4FUTgDIpxiPN2mes9plH4keqO8YSMRAIgYSMZDI4IEW6wt2gy8/3TsGEhk60GJ5uVh9WFTXyg+L5ZGNQ6trgRIF0GL5xLOSp/HZYvMG62uBMnigMvXn/7mcPik2D2WjAlpefC6O6qSqqzWAlmWgxAPU1Kjv34uu24XJwIFqBoustQWtD/e3BUUEVF20XrE6X8TGA/SZwAtj60QCtJA/L/aVSICOFwOJ/ANHagnaegI9OwAAAABJRU5ErkJggg==" alt="plot of chunk unnamed-chunk-23"/> </p>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43388960-1', 'r-project.org');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
+
