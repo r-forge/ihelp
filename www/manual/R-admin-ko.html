@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for R, version Revision: 67204 (3.2.0 Under development (unstable)).
+<!-- This manual is for R, version Revision: 67221 (3.2.0 Under development (unstable)).
 
 Copyright (C) 2001-2014 R Core Team
 
@@ -334,7 +334,7 @@ p {
 
 <p>이 문서는 R의 설치와 관리에 대한 안내서입니다.
 </p>
-<p>This manual is for R, version Revision: 67204 (3.2.0 Under development (unstable)).
+<p>This manual is for R, version Revision: 67221 (3.2.0 Under development (unstable)).
 </p>
 <p>Copyright &copy; 2001&ndash;2014 R Core Team
 </p>
@@ -831,14 +831,14 @@ prefix 이며, <var>prefix</var>에 대한 기본값입니다. 그리고 환경�
 <p><code>configure</code> 또는 <code>make</code> 변수 <code>rdocdir</code>과 <code>rsharedir</code>는
 시스템-독립적인 <samp>doc</samp>과 <samp>share</samp> 디렉토리들을 <code>libdir</code>이 아닌 다른곳에 설치하게 할 수
 있습니다.  C 헤더파일들은  <code>rincludedir</code>의 값에 설치되어질 수 있습니다.헤더들은 하위디렉토리에 설치되지 않기
-때문에 아마도  <code>rincludedir=/usr/local/include/R-Revision: 67204 (3.2.0 Under development (unstable))</code> 와 같은 것을
+때문에 아마도  <code>rincludedir=/usr/local/include/R-Revision: 67221 (3.2.0 Under development (unstable))</code> 와 같은 것을
 원할 수 있습니다.
 </p>
 <p>만약 R 홈이 <samp><var>libdir</var>/R</samp>이 아닌 다른 곳으로 설정하기 원하다면 <samp>rhome</samp> 옵션을
 이용하세요.예를들면, 다음과 같습니다. 
 </p>
 <div class="example">
-<pre class="example">make install rhome=/usr/local/lib64/R-Revision: 67204 (3.2.0 Under development (unstable))
+<pre class="example">make install rhome=/usr/local/lib64/R-Revision: 67221 (3.2.0 Under development (unstable))
 </pre></div>
 
 <p>위의 명령어는 리눅스 64 비트 시스템에서 버전별 R 홈디렉토리를 이용하는 것입니다.
@@ -1140,7 +1140,7 @@ testInstalledPackages(scope = &quot;recommended&quot;)
 <p>사용자의 파일 시스템(file system)은 긴 파일명도 수용할수있어야 합니다 (혹시 있을수있는 네트워크에 연결된 몇몇의 시스템을
 제외하고 보통 다 가능함).
 </p>
-<p><samp>Revision: 67204 (3.2.0 Under development (unstable))-win.exe</samp> 라는 설치 프로그램을 <em>통해서</em> 설치하십시요. 아이콘을 더블
+<p><samp>Revision: 67221 (3.2.0 Under development (unstable))-win.exe</samp> 라는 설치 프로그램을 <em>통해서</em> 설치하십시요. 아이콘을 더블
 클릭하신후 나오는 설명서를 참조하시면 됩니다. 64-bit 윈도우즈에 설치하실때는 32-와 64-bit 두가지 버젼의 R이 옵션에
 있습니다 (기본은 두가지 버젼을 모두 설치하는 것입니다). 컨트럴 패널 (Control Panel) 안에서 R을 제거할수도
 있습니다, 
@@ -1199,11 +1199,11 @@ suitable distribution can be obtained from
 <p>다음과 같은 파일들을 얻어야 할 필요가 있습니다:
 </p><ul>
 <li> <acronym>CRAN</acronym>으로부터 먼저 타르볼 형식으로 된 R 소스코드 파일
-<samp>R-Revision: 67204 (3.2.0 Under development (unstable)).tar.gz</samp>을 얻어야 합니다.<var>R_HOME</var> 디렉토리에서 명령어 윈도우 (또는
+<samp>R-Revision: 67221 (3.2.0 Under development (unstable)).tar.gz</samp>을 얻어야 합니다.<var>R_HOME</var> 디렉토리에서 명령어 윈도우 (또는
 다른 쉘)을 열고 다음과 같이 실행합니다. 
 
 <div class="example">
-<pre class="example">tar -xf R-Revision: 67204 (3.2.0 Under development (unstable)).tar.gz
+<pre class="example">tar -xf R-Revision: 67221 (3.2.0 Under development (unstable)).tar.gz
 </pre></div>
 
 <p><strong>주의:</strong> 소스들을 압축으로부터 풀어내기 위하여 WinZip과 같이 심볼릭 링크를 이해하지 못하는 도구보다는
@@ -1211,7 +1211,7 @@ suitable distribution can be obtained from
 보이지 않게 할 수 있습니다.
 </p>
 <div class="example">
-<pre class="example">tar --no-same-owner -xf R-Revision: 67204 (3.2.0 Under development (unstable)).tar.gz
+<pre class="example">tar --no-same-owner -xf R-Revision: 67221 (3.2.0 Under development (unstable)).tar.gz
 </pre></div>
 
 <a name="index-TAR_005fOPTIONS-1"></a>
@@ -1482,7 +1482,7 @@ crandir <span class="roman">(the <acronym>CRAN</acronym> distribution directory,
 
 <p>이는 <samp>rootdir</samp>이 사용자 설치의 루트로의 경로입니다 (띄어쓰기나 백슬래쉬등이 있다면 큰 따옴표 내에 써야 합니다).
 </p>
-<p>위의 두 가지 방법들 모두 <samp>Revision: 67204 (3.2.0 Under development (unstable))-win.exe</samp>와 같은 표준이름과 함께 실행가능한 파일을 생성하기
+<p>위의 두 가지 방법들 모두 <samp>Revision: 67221 (3.2.0 Under development (unstable))-win.exe</samp>와 같은 표준이름과 함께 실행가능한 파일을 생성하기
 때문에 커스터마이즈 되었다는 것을 나타내는 이름으로 변경하세요. 만약 커스터마이즈된 인스톨러를 배포하고 싶다면 라이센스 요구사항이
 충족되는지 확인하시길 바랍니다. 인스톨러는 GPL-2에 의거하여 배포되고 완전한 소스들(R의 바이너리배포를 시작하더라도 소스를
 포함해야하며, (외부 소프트웨어를 포함된) 포함된 어떠한 추가적인 패키지들의 소스들도 포함)을 제공하는 것이 요구된다고 명시할
@@ -1529,16 +1529,16 @@ toolkit version 3.0 or 3.5을 사용합니다. WiX가 설치되면, <samp>MkRule
 make msi
 </pre></div>
 
-<p>이는 <samp>Revision: 67204 (3.2.0 Under development (unstable))-win32.msi</samp> 와 같은 이름을 가진 파일을 생성할 것입니다. 더블-클릭이
+<p>이는 <samp>Revision: 67221 (3.2.0 Under development (unstable))-win32.msi</samp> 와 같은 이름을 가진 파일을 생성할 것입니다. 더블-클릭이
 가능하지만, 이를 필요로 하는 사람들은 무엇을 해야 할 지 알것입니다 (일반적으로 추가적인 옵션들과 함께 <code>msiexec
 /i</code>를 실행함).사용자가 <code>msiexec</code> 명령줄에서 부터 지정하고자 하는 속성들은 &lsquo;<samp>ALLUSERS</samp>&rsquo;,
 (<samp>c:\Program Files\R\R-devel</samp>와 같은)  &lsquo;<samp>INSTALLDIR</samp>&rsquo; 그리고 (시작 메뉴에 있는 R
 폴더로의 경로인) &lsquo;<samp>RMENU</samp>&rsquo;, 그리고 (<samp>c:\Users\name\Documents\R</samp> 와 같은 것이 기본값인,
 R shortcut을 위한 시작 디렉토리) &lsquo;<samp>STARTDIR</samp>&rsquo;를 포함합니다. 
 </p>
-<p>MSI installer는 R 의 32 비트 빌드 (<samp>Revision: 67204 (3.2.0 Under development (unstable))-win32.msi</samp>)와 R의 64 비트
-빌드 (<samp>Revision: 67204 (3.2.0 Under development (unstable))-win64.msi</samp>, 선택적으로 이름이
-<samp>Revision: 67204 (3.2.0 Under development (unstable))-win.msi</samp>일 때, macro <code>HOME32</code>를 지정함으로써 32 비트 파일들을
+<p>MSI installer는 R 의 32 비트 빌드 (<samp>Revision: 67221 (3.2.0 Under development (unstable))-win32.msi</samp>)와 R의 64 비트
+빌드 (<samp>Revision: 67221 (3.2.0 Under development (unstable))-win64.msi</samp>, 선택적으로 이름이
+<samp>Revision: 67221 (3.2.0 Under development (unstable))-win.msi</samp>일 때, macro <code>HOME32</code>를 지정함으로써 32 비트 파일들을
 포함합니다), 두 가지 모두에서 빌드될 수 있습니다. 주요 installer와 다르게, 64 비트 MSI installer는 64 비트
 윈도우에서만 실행할 수 있습니다. 
 </p>
@@ -1598,14 +1598,14 @@ line endings.
 
 <p>The front page of a <acronym>CRAN</acronym> site has a link &lsquo;Download R for OS
 X&rsquo;. Click on that, then download the file
-<samp>R-Revision: 67204 (3.2.0 Under development (unstable))-snowleopard.pkg</samp> and install it.  This runs on OS
+<samp>R-Revision: 67221 (3.2.0 Under development (unstable))-snowleopard.pkg</samp> and install it.  This runs on OS
 X 10.6 and later (Snow Leopard, Lion, Mountain Lion, Mavericks, Yosemite,
 &hellip;); it is a 64-bit (&lsquo;<samp>x86_64</samp>&rsquo;) build which should run on all
 Macs from mid-2008 on.  For older Intel Macs and some older versions of the
 OS you can install R from the sources.
 </p>
 <p>There is a separate installer package,
-<samp>R-Revision: 67204 (3.2.0 Under development (unstable))-mavericks.pkg</samp>, for use on Mavericks and Yosemite:
+<samp>R-Revision: 67221 (3.2.0 Under development (unstable))-mavericks.pkg</samp>, for use on Mavericks and Yosemite:
 the &lsquo;Snow Leopard&rsquo; installer package also works there and may have more
 binary packages available (but there are a few packages using C++11 and only
 available for the Mavericks build).
@@ -5152,7 +5152,7 @@ LaTeX packages on first use.
 <a name="The-Inno-Setup-installer-1"></a>
 <h3 class="section">D.2 The Inno Setup installer</h3>
 
-<p>To make the installer package (<samp>Revision: 67204 (3.2.0 Under development (unstable))-win.exe</samp>) we
+<p>To make the installer package (<samp>Revision: 67221 (3.2.0 Under development (unstable))-win.exe</samp>) we
 currently require the Unicode version of Inno Setup 5.3.7 or later from
 <a href="http://jrsoftware.org/">http://jrsoftware.org/</a>. This is <em>not</em> included in
 <samp>Rtools*.exe</samp>.
