@@ -21,11 +21,14 @@ approved by the R Core Team.
  
 NOTE from the maintainer Chel Hee Lee <chl948@mail.usask.ca>
 
-This translation is updated on a day-by-day basis (Thu Dec 25 09:36:45 CST 2014).  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
+This translation is updated on a day-by-day basis (Thu Dec 25 09:36:45 CST 2014).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
 
 This work is a result of cumulative efforts made by the contributors listed in the below:
-Chel Hee Lee <chl948@mail.usask.ca>, 2008-2014
+Chel Hee Lee <chl948@mail.usask.ca>, 2009-2014
 Edward Kang <ewkang@hotmail.com>, Manager, Advanced Analytics, Australian Customs and Border Protection Services, Canberra, Australia, 2013
+
+If you wish to voluntarily participate in this translation project, please visit the page at http://r-forge.r-project.org/projects/ihelp/
+
   -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
@@ -371,13 +374,16 @@ approved by the R Core Team.
  
 <p><strong>NOTE</strong> from the maintainer Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;
 </p>
-<p>This translation is updated on a day-by-day basis (Thu Dec 25 09:36:45 CST 2014).  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
+<p>This translation is updated on a day-by-day basis (Thu Dec 25 09:36:45 CST 2014).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
 </p>
 <p>This work is a result of cumulative efforts made by the contributors listed in the below:
 </p><ul>
-<li> Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;, 2008&ndash;2014
+<li> Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;, 2009&ndash;2014
 </li><li> Edward Kang &lt;<a href="mailto:ewkang@hotmail.com">ewkang@hotmail.com</a>&gt;, Manager, Advanced Analytics, Australian Customs and Border Protection Services, Canberra, Australia, 2013
 </li></ul>
+
+<p>If you wish to voluntarily participate in this translation project, please visit the page at <a href="http://r-forge.r-project.org/projects/ihelp/">http://r-forge.r-project.org/projects/ihelp/</a>
+</p>
  
 
 
@@ -1995,7 +2001,7 @@ distribution의 bin 디렉토리를 필요로 합니다: R의 64빝 버전의 �
 모두를 가지는 것도 괜찮을 것입니다.
 </p>
 <p><code>R CMD INSTALL</code>은 여러분이 필요한 도구들을 설정해 놓았다면, source 패키지들을 설치하기위한 용도로
-윈도우즈에서 사용됩니다 (&lsquo;The Windowstoolset&rsquo;을 참조하세요). 패키지가 compile된 코드를 포함하고 있지
+윈도우즈에서 사용됩니다 (<a href="#The-Windows-toolset">The Windows toolset</a>을 참조하세요). 패키지가 compile된 코드를 포함하고 있지
 않다면 추가적인 도구들은 필요하지 않고, <code>install.packages(type=&quot;source&quot;)</code>는 그 런 패키지들을 위해
 (그리고 만약 도구들이 경로에 있다면 compile된 코드들을 가진 것들) 실행될 것입니다.
 <a name="index-R_005fINSTALL_005fTAR"></a>
@@ -2559,8 +2565,8 @@ define들을 선택합니다. (32-비트 윈도우즈에서의 제한을 주로�
 </li></ul>
 
 <p>그래서, 속도를 위해서라면 32-비트 구축을 쓸 수도 있지만, 큰 데이터 셋 들 (아마도 큰 파일들도) 다루기 위해서는 64-비트 구축을
-쓰기를 원할 것 입니다. 종종 같은 장소에 두 가지 모두를 구축하고 설치할 수도 있습니다: <a href="#Sub_002darchitectures">Sub-architectures</a> 를
-참조하세요. (이는OS X와 윈도우지의 이항분포들에서 행해졌습니다.)
+쓰기를 원할 것 입니다. 종종 같은 장소에 두 가지 모두를 구축하고 설치할 수도 있습니다: See <a href="#Sub_002darchitectures">Sub-architectures</a>
+를 참조하세요. (이는OS X와 윈도우지의 이항분포들에서 행해졌습니다.)
 </p>
 <p>R의 64-비트 구축에서도 (특히 FORTRAN 코드의) stem이 32-비트 정수들의 사용에서부터 나온 R object들의
 크기에대한 제한이 있습니다 (<code>help(&quot;Memory-limits&quot;)</code>를 참조하세요). 예를 들어, 하나의 array의 크기는
@@ -2768,7 +2774,7 @@ Borland와 비슷한 컴파일러에서도 실행할 것입니다.)
 <a name="Essential-programs-and-libraries-1"></a>
 <h3 class="section">A.1 Essential programs and libraries</h3>
 
-<p>여러분은 C와 포트란 90를 컴파일링 하는 수단이 필요합니다 (&lsquo;UsingnFORTRAN&rsquo;을 참조하세요). 몇몇의 add-on
+<p>여러분은 C와 포트란 90를 컴파일링 하는 수단이 필요합니다 (<a href="#Using-FORTRAN">Using FORTRAN</a>을 참조하세요). 몇몇의 add-on
 패키지들 또한 C++ 컴파일러를 필요로합니다. 당신의 C 컴파일러는 <acronym>ISO</acronym>/<acronym>IEC</acronym>
 &nbsp;60059<a name="DOCF20" href="#FOOT20"><sup>20</sup></a>, POSIX 1003.1,
 그리고 C99-compliant여야만 합니다. R은 인지하고있는 C 컴파일러들을 위한 알맞 은 flag들을 선택하려고 하지만,
@@ -2933,8 +2939,9 @@ ghostscript (<a href="http://www.cs.wisc.edu/~ghost">http://www.cs.wisc.edu/~gho
 <a name="Tcl_002fTk-1"></a>
 <h4 class="subsection">A.2.1 Tcl/Tk</h4>
 
-<p><strong>tcltk</strong>패키지는Tcl/Tk &gt;= 8.4의 설치를 필요로 합니다: 소스들은 <a href="http://www.tcl.tk/">http://www.tcl.tk/</a>에서
-이용 가능합니다.  Tcl/Tk 파일들의 위치를 지정하기 위해서는, configuration 옵션들이 필요할 수 있습니다.
+<p><strong>tcltk</strong>패키지는Tcl/Tk &gt;= 8.4의 설치를 필요로 합니다: 소스들은
+<a href="http://www.tcl.tk/">http://www.tcl.tk/</a>에서 이용 가능합니다.  Tcl/Tk 파일들의 위치를 지정하기 위해서는,
+configuration 옵션들이 필요할 수 있습니다.
 </p>
 <dl compact="compact">
 <dt><samp>--with-tcltk</samp></dt>
@@ -3769,7 +3776,7 @@ would need to use an external LAPACK library (such as CLAPACK from
 </p></dd>
 </dl>
 
-<p>codeLDFLAGS 안의 <samp>–L/lib/path</samp>처럼 명시된 라이브러리 경로는 
+<p><code>LDFLAGS</code> 안의 <samp>–L/lib/path</samp>처럼 명시된 라이브러리 경로는 
 <a name="index-LD_005fLIBRARY_005fPATH-3"></a>
 같이 수집되고 <code>LD_LIBRARY_PATH</code>로 prepend되기때문에 (혹은 여러분의 시스템 상의 동일한 것),
 <samp>-R</samp> 이나 <samp>–rpath</samp> flag들이 필요가 없어야 합니다.
