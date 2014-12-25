@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for R, version Revision: 67204 (3.2.0 Under development (unstable)).
+<!-- This manual is for R, version Revision: 67221 (3.2.0 Under development (unstable)).
 
 Copyright (C) 1990 W. N. Venables
  Copyright (C) 1992
@@ -25,15 +25,16 @@ into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the R Core Team.
 
+NOTE by the maintainer Chel Hee Lee <chl948@mail.usask.ca>:  
+This translation is updated on a day-by-day basis (Thu Dec 25 09:13:50 CST 2014).  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
+This work cannot be done without the continuous and cumulating efforts of contributors who are listed in the below:
 
-NOTE by the maintainer Chel Hee Lee <chl948@mail.usask.ca>:  The last translation is made on Tue Dec 23 18:31:26 CST 2014  based on the Revision: 67210.  This translation work cannot be done without cumulated efforts of contributors who are listed in the below: 
-
-Chel Hee Lee, 2008-2014, chl948@mail.usask.ca 
- Lijin Joo, 2009, 2012-2013, lijin.joo@nyu.edu 
- Youngha Jeong, 2009-2010, Pacific Biological Station, Department of Fisheries and Ocean, Canada 
- Heather Kim, 2012-2013, heatherkimca@gmail.com, University of Manitoba, Canada 
- Seyeon Lee, 2009, Ewha Women's University, Seoul, Korea 
- Woo June Jung, 2009, 2013, Seoul, Korea, whitelog6@gmail.com   -->
+Chel Hee Lee <chl948@mail.usask.ca>, 2008-2014
+Lijin Joo <lijin.joo.edu>, New York University, New York, New York, U.S.A., 2009, 2012, 2013
+Heather Kim, heatherkimca@gmail.com, University of Manitoba, Canada, 2009, 2012, 2013. 
+Johan Jung jungyha.com, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2011, 2013.  
+Woo June Jung whitelog6.com, Hongik University, Seoul, Korea, 2009, 2013.
+Seyeon Lee mandooms.com, Ewha Women's University, Seoul, Korea, 2009. -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>An Introduction to R</title>
@@ -151,6 +152,8 @@ p {
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <h1 class="settitle" align="center">An Introduction to R</h1>
+
+
 
 
 
@@ -411,7 +414,7 @@ laboratory)에서 John Chambers et al.(존 챔버스외 여러명의 참여자)�
 기본 요소들(programming elements), 그리고 통계 모델링(statistical modelling)과
 그래픽(graphics)에 대한 정보들이 이 문서에서 다루어 질 것입니다.
 </p>
-<p>This manual is for R, version Revision: 67204 (3.2.0 Under development (unstable)).
+<p>This manual is for R, version Revision: 67221 (3.2.0 Under development (unstable)).
 </p>
 <p>Copyright &copy; 1990 W. N. Venables<br> Copyright &copy; 1992
 W. N. Venables &amp; D. M. Smith<br> Copyright &copy; 1997 R.
@@ -432,18 +435,23 @@ permission notice identical to this one.
 into another language, under the above conditions for modified versions,
 except that this permission notice may be stated in a translation
 approved by the R Core Team.
-</p>
+</p></blockquote>
 
-<p><strong>NOTE</strong> by the maintainer Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;:  The last translation is made on Tue Dec 23 18:31:26 CST 2014  based on the Revision: 67210.  This translation work cannot be done without cumulated efforts of contributors who are listed in the below: 
+<blockquote>
+<p><strong>NOTE</strong> by the maintainer Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;:  
+This translation is updated on a day-by-day basis (Thu Dec 25 09:13:50 CST 2014).  The latest version is based on the Revision: 67221 (3.2.0 Under development (unstable)). 
+This work cannot be done without the continuous and cumulating efforts of contributors who are listed in the below:
 </p>
 <ul>
-<li> Chel Hee Lee, 2008-2014, <a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a> 
- </li><li> Lijin Joo, 2009, 2012-2013, <a href="mailto:lijin.joo@nyu.edu">lijin.joo@nyu.edu</a> 
- </li><li> Youngha Jeong, 2009-2010, Pacific Biological Station, Department of Fisheries and Ocean, Canada 
- </li><li> Heather Kim, 2012-2013, <a href="mailto:heatherkimca@gmail.com">heatherkimca@gmail.com</a>, University of Manitoba, Canada 
- </li><li> Seyeon Lee, 2009, Ewha Women&rsquo;s University, Seoul, Korea 
- </li><li> Woo June Jung, 2009, 2013, Seoul, Korea, <a href="mailto:whitelog6@gmail.com">whitelog6@gmail.com</a> </li></ul>
- 
+<li> Chel Hee Lee <a href="mailto:&lt;chl948@mail.usask.ca&gt;">&lt;chl948@mail.usask.ca&gt;</a>, 2008&ndash;2014
+</li><li> Lijin Joo <a href="mailto:&lt;lijin.joo.edu&gt;">&lt;lijin.joo.edu&gt;</a>, New York University, New York, New York, U.S.A., 2009, 2012, 2013
+</li><li> Heather Kim, <a href="mailto:heatherkimca@gmail.com">heatherkimca@gmail.com</a>, University of Manitoba, Canada, 2009, 2012, 2013. 
+</li><li> Johan Jung <a href="mailto:jungyha.com">jungyha.com</a>, Pacific Biological Station, Department of Fisheries and Ocean, Canada, 2011, 2013.  
+</li><li> Woo June Jung <a href="mailto:whitelog6.com">whitelog6.com</a>, Hongik University, Seoul, Korea, 2009, 2013.
+</li><li> Seyeon Lee <a href="mailto:mandooms.com">mandooms.com</a>, Ewha Women&rsquo;s University, Seoul, Korea, 2009.
+</li></ul>
+<blockquote>
+</blockquote>
 </blockquote>
 
 
