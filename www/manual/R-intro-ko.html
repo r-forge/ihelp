@@ -236,7 +236,7 @@ p {
     <li><a name="toc-Arrays-1" href="#Arrays">5.1 Arrays</a></li>
     <li><a name="toc-e_00b0_00b0i_0027-i_002ce_002b_002di_002b_002d_0028array-indexing_0029e31_002f4-eu_0021i_002b_002diii-i-ii--iSSi-_0028subsections_0029" href="#Array-indexing">5.2 배열 인덱싱(array indexing)과 구성요소의 선택적 지정(subsections)</a></li>
     <li><a name="toc-Index-matrices-1" href="#Index-matrices">5.3 Index matrices</a></li>
-    <li><a name="toc-array_0028_0029-i_0022i" href="#The-array_0028_0029-function">5.4 <code>array()</code> 함수</a>
+    <li><a name="toc-array_0028_0029-i_0022i" href="#array_0028_0029-_00ed_0095_00a8_00ec_0088_0098">5.4 <code>array()</code> 함수</a>
     <ul class="no-bullet">
       <li><a name="toc-Mixed-vector-and-array-arithmetic_002e-The-recycling-rule" href="#The-recycling-rule">5.4.1 Mixed vector and array arithmetic.  The recycling rule</a></li>
     </ul></li>
@@ -1746,7 +1746,7 @@ contrasts(대조)를 생성할 경우, 서로 다른 순서가 다른 결과물�
 차원벡터의 각 구성요소는 각 차원이 갖는 인덱스의 길이를 의미합니다.   
 </p>
 <p>이렇게 <code>dim</code>이라는 속성을 이용하는 방법 외에도 <code>matrix()</code>와 <code>array()</code>와 같은 함수를
-사용하면 <a href="#The-array_0028_0029-function">The array() function</a>편의 예제들처럼  좀 더 간단하고 쉽게 배열을 지정할 수 있습니다. 
+사용하면 <a href="#array_0028_0029-_00ed_0095_00a8_00ec_0088_0098">array() 함수</a>편의 예제들처럼  좀 더 간단하고 쉽게 배열을 지정할 수 있습니다. 
 </p>
 <p>배열을 구성하는 데이터 벡터의 구성요소의 값들은 FORTRAN 프로그램에서처럼 &ldquo;column major order&rdquo; 방법에 의해 나열
 됩니다. 이 방법은 차원벡터의 첫번째 인덱스부터 순서대로 배열되기 시작해서 마지막 인덱스가 가장 나중에 사용되는 배열되는 방식 입니다. 
@@ -1878,10 +1878,10 @@ matrix)를 생성한다고 가정합시다. 더 나아가, 이 실험은 <code>n
 됩니다.
 </p>
 <hr>
-<a name="The-array_0028_0029-function"></a>
+<a name="array_0028_0029-_00ed_0095_00a8_00ec_0088_0098"></a>
 <a name="array_0028_0029-i_0022i"></a>
 <h3 class="section">5.4 <code>array()</code> 함수</h3>
-<a name="index-e_00b0_00b0i_0027"></a>
+<a name="index-array"></a>
 
 <p>배열은 벡터에 <code>dim</code>이라는 속성을 부여하여 생성하는 방법 외에도, 아래와 같이 <code>array</code> 함수를 이용하여 생성할
 수도 있습니다.
@@ -7368,8 +7368,6 @@ $endif
  &nbsp; 
 <a class="summary-letter" href="#Function-and-variable-index_vr_letter-X"><b>X</b></a>
  &nbsp; 
-<a class="summary-letter" href="#Function-and-variable-index_vr_letter-�"><b>�</b></a>
- &nbsp; 
 <a class="summary-letter" href="#Function-and-variable-index_vr_letter-�"><b>�</b></a>
  &nbsp; 
 </td></tr></table>
@@ -7444,6 +7442,7 @@ $endif
 <tr><td></td><td valign="top"><a href="#index-anova-1"><code>anova</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#ANOVA-tables">ANOVA tables</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aov"><code>aov</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Analysis-of-variance-and-model-comparison">Analysis of variance and model comparison</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aperm"><code>aperm</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Generalized-transpose-of-an-array">Generalized transpose of an array</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-array"><code>array</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#array_0028_0029-_00ed_0095_00a8_00ec_0088_0098">array() 함수</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-as_002edata_002eframe"><code>as.data.frame</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Making-data-frames">Making data frames</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-as_002evector"><code>as.vector</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-concatenation-function-c_0028_0029-with-arrays">The concatenation function c() with arrays</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-attach"><code>attach</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#attach_0028_0029-and-detach_0028_0029">attach() and detach()</a></td></tr>
@@ -7672,9 +7671,6 @@ $endif
 <tr><th><a name="Function-and-variable-index_vr_letter-X">X</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-X11"><code>X11</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Device-drivers">Device drivers</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Function-and-variable-index_vr_letter-�">�</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-e_00b0_00b0i_0027"><code>배열</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#The-array_0028_0029-function">The array() function</a></td></tr>
-<tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Function-and-variable-index_vr_letter-�">�</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ii_0024_003f_0028levels_0029"><code>수준(levels)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Factors-_0028_00ec_009a_0094_00ec_009d_00b8_0029">Factors (요인)</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ii_002c_0028factor_0029"><code>요인(factor)</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Factors-_0028_00ec_009a_0094_00ec_009d_00b8_0029">Factors (요인)</a></td></tr>
@@ -7760,8 +7756,6 @@ $endif
 <a class="summary-letter" href="#Function-and-variable-index_vr_letter-W"><b>W</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-and-variable-index_vr_letter-X"><b>X</b></a>
- &nbsp; 
-<a class="summary-letter" href="#Function-and-variable-index_vr_letter-�"><b>�</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Function-and-variable-index_vr_letter-�"><b>�</b></a>
  &nbsp; 
