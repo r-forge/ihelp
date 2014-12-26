@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2014-12-25 18:47-0600\n"
+"POT-Creation-Date: 2014-12-26 00:18-0600\n"
 "PO-Revision-Date: 2014-12-25 13:27-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
@@ -2564,11 +2564,16 @@ msgid ""
 "one which overrules the default scoping rules by using explicit access to "
 "evaluation frames, as is of course possible in both R and S)."
 msgstr ""
+"적절한 클로져 연산자(closure operator)의 정의가 주어진다면 이것은 R과 S에서 "
+"모두 작동하며 substitute/eval을 활용한 것 (혹은 기본 스코핑 규칙(default "
+"scoping rule)을 평가 프레임(evaluation frame)에 대한 명시적 접근(explicit "
+"access)을 이용하여 무효화 하는 해결책, 물론 R과 S 모두 가능한) 보다 말끔한 해"
+"결책이라고 할 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1189
 msgid "For R, @code{MC()} simply is"
-msgstr ""
+msgstr "R에서는 @code{MC()}는 단순히 아래와 같습니다."
 
 #. type: example
 #: R-FAQ.texi:1192
@@ -2609,6 +2614,14 @@ msgid ""
 "is to add an extra parameter to the function and to the optimizer to pass in "
 "these extras, which however can only work if the optimizer supports this."
 msgstr ""
+"유사하게 대부분의 최적화 (optimization 또는 zero-finding) 루틴(rountine)들은 "
+"최적화 되어야 할 일부 인자들이 필요하며, 데이터에 의존하지만 최적화와 관련해"
+"서는 영향을 미치지 않는 다른 인자들을 가집니다.  이것은 R 스코핑 규칙"
+"(scoping rules)을 이용하면 단순하게 같은 환경내에서 필요한 정의들만을 가지고 "
+"함수를 만들게 되면 나머지는 스코핑이 알아서 처리하게 되므로 매우 간단한 문제"
+"입니다.  S를 이용한 한가지 방법은 별도의 인자(extra parameter)를 함수와 이러"
+"한 별도의 인자들이 넘겨지게 될 옵티마이저(optimizer)에 추가하는 것이지만, 이"
+"는 오로지 옵티마이저가 지원될 경우에만 가능합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1235
@@ -2622,6 +2635,16 @@ msgid ""
 "Computing'', @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal "
 "of Computational and Graphical Statistics}}, @strong{9}, 491--508."
 msgstr ""
+"중첩된 구조의 렉시컬 스코프를 따르는 함수들(nested lexically scoped "
+"functions)은 함수 클로져 (function closure)의 사용과 지역적 상태(local state)"
+"를 유지하는 것을 허용합니다. (Abelson과 Sussman으로부터 가져온) 간단한 예는 "
+"R 프롬프트에서 @kbd{demo(\"scoping\")}이라고 입력함으로서 확인해 볼 수 있습니"
+"다.  이에 대한 더 많은 정보는 표준 R 참고자료인 ``R: A Language for Data "
+"Analysis and Graphics'' (@pxref{What documentation exists for R?})과 Robert "
+"Gentleman and Ross Ihaka (2000), ``Lexical Scope and Statistical "
+"Computing'', @url{http://www.amstat.org/publications/jcgs/, , @emph{Journal "
+"of Computational and Graphical Statistics}}, @strong{9}, 491--508. 으로부터 "
+"찾아 볼 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1246
@@ -2636,6 +2659,16 @@ msgid ""
 "externally maintain all relevant ``environments'' of symbol/value pairs.  "
 "This difference also seems to make R @emph{faster} than S."
 msgstr ""
+"중첩된 구조의 렉시컬 스코프를 따르는 함수들 (nested lexically scoped "
+"functions)은 더 중요한 다른 점을 의미합니다. S는 모든 객체들을 디렉토리의 어"
+"딘가에 (보통은 현재 디렉토리내에  @file{.Data}의 형식으로) 각각 다른 파일들"
+"로 저장하는 반면, R은 그러하지 않습니다.  R의 모든 객체들은 내부적으로 저장됩"
+"니다.  R이 실행되었을때, R은 메모리(memory)의 한 조각을 붙잡고 이를 객체를 저"
+"장하는데 사용합니다. R은 이러한 메모리 사용을 위한 메모리 관리기능(memory "
+"management)을 수행하고, 필요한 만큼의 크기를 늘이고 줄이게 됩니다.  심볼과 값"
+"들간의 바인딩(symbol/value pairs)에 관련된 모든 ``환경(environments)''를 외부"
+"에서 유지하는 것은 거의 가능하지 않기 때문에 모든 것을 메모리내에서 관리할 필"
+"요가 있습니다. 이러한 차이 또한 R이 S보다 빠른 것 처럼 보이게 합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1260
@@ -2653,6 +2686,18 @@ msgid ""
 "sessions, or have your R commands stored in text files which can be read in "
 "using @code{source()}."
 msgstr ""
+"다소 불편한 점이 있다면 R이 크래쉬(crash)되면 현재 세션에서 작업하는 모든 것"
+"을 잃게 됩니다.  메모리를 저장하고 복원하는 ``images''(이미지라는 것은 R의 내"
+"부 메모리에 항시 저장되는 함수들과 데이터를 의미합니다)의 크기가 크다면 다소 "
+"느릴 수 있습니다.  S에서는 이와 같은 일이 발생하지 않습니다.  그 이유는 모든"
+"것이 디스크 파일의 형식으로 저장되기 때문입니다  (누군가는 S 개발자들이 렉시"
+"컬 스코프을 위한 공간을 제공하는 것이 지속적인 저장방식을 사용하는 것보다 더 "
+"많은 비용이 들것이라고 느꼈을 것이라고 추측할 수도 있습니다).   그래서, 중요"
+"한 작업을 할때에는 가능한 크래쉬(crash)들로부터 보호하기 위해서 자주 저장하"
+"는 것을 생각해 볼 수 있습니다 (@ref{How can I save my workspace?}를 살펴보세"
+"요).  또 다른 방법으로는 세션(session)을 기록(logging)하거나, @code{source()}"
+"를 이용하여 읽어들일 수 있는 텍스트 파일에 저장된 R 명령어들을 가지는 것입니"
+"다."
 
 #. type: quotation
 #: R-FAQ.texi:1261
@@ -2668,11 +2713,16 @@ msgid ""
 "using @code{ess-transcript-mode}, as well as save source copies of all "
 "functions and data used."
 msgstr ""
+"만약 R을 Emacs내에서 실행한다면 (@ref{R and Emacs}을 살펴보세요), 인터랙션버"
+"퍼(interaction buffer)안의 내용들(contents)를 파일에 저장하고 이들을 "
+"@code{ess-transcript-mode}를 이용하여 쉽게 조작할 수 있으며, 사용된 모든 함수"
+"와 데이터들의 원시복제(source copy)를 저장할 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1272
 msgid "There are some differences in the modeling code, such as"
 msgstr ""
+"모델링 코드(modeling code)에는 아래와 같이 몇가지 다른 점들을 볼 수 있습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1278
@@ -2681,6 +2731,10 @@ msgid ""
 "@code{x^3}, in R, you have to insulate powers of numeric vectors (using "
 "@code{I()}), i.e., you have to use @code{lm(y ~ I(x^3))}."
 msgstr ""
+"S에서는 @code{y}를 @code{x^3}을 이용하여 회귀(regress)하기 위해서는 "
+"@code{lm(y ~ x^3)}를 사용하는 반면, R에서는 수치벡터의 자승부분을 @code{I()}"
+"를 이용하여 따로 보호처리를 해야합니다.  즉, @code{lm(y ~ I(x^3))}이라고 사용"
+"해야 합니다."
 
 #. type: itemize
 #: R-FAQ.texi:1281
@@ -2688,6 +2742,9 @@ msgid ""
 "The glm family objects are implemented differently in R and S.  The same "
 "functionality is available but the components have different names."
 msgstr ""
+"일반선형화모델 페밀리 객체들(glm family objects)는 R과 S에서 다르게 구현되어 "
+"있습니다.  같은 기능을 이용할 수 있으나, 구성요소들은 서로 다른 이름들을 가지"
+"고 있습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1284
@@ -2695,6 +2752,8 @@ msgid ""
 "Option @code{na.action} is set to @code{\"na.omit\"} by default in R, but "
 "not set in S."
 msgstr ""
+"@code{na.action}이라는 옵션은 @code{\"na.omit\"}이라는 값으로 R에서는 기본적"
+"으로 설정되어 있으나, S에서는 그렇지 않습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1288
@@ -2703,6 +2762,10 @@ msgid ""
 "with attributes, in R it is a formula with attributes.  The attributes have "
 "the same names but are mostly stored differently."
 msgstr ""
+"항 객체(terms objects)들은 다른 방식으로 저장됩니다.  S에서는 항 객체(terms "
+"objects)은 속성(attributes)와 함께 이용된 표현식(expression)이지만, R에서는 "
+"속성과 함께 이용된 formula (공식 또는 포뮬러)입니다.  속성들은 같은 이름들을 "
+"가지고 있으나 대부분 다르게 저장됩니다."
 
 #. type: itemize
 #: R-FAQ.texi:1292
@@ -2711,6 +2774,9 @@ msgid ""
 "specifying a model with no intercept.  Models with no parameters at all can "
 "be specified by @code{y ~ 0}."
 msgstr ""
+"마지막으로 절편(intercept)가 없는 모델을 정의하기 위해서 R에서는 @code{y ~ x "
+"+ 0}이라는 표현은 @code{y ~ x - 1}의 또 다른 표현입니다.  아무런 파라미터들"
+"(parameters)를 없는 모델을 @code{y ~ 0}로 표현할 수 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1303
@@ -2722,11 +2788,17 @@ msgid ""
 "that R should help you detect programming errors, while at the same time "
 "being as compatible as possible with S."
 msgstr ""
+"렉시컬 스코핑(lexical scoping)과 이것의 의미를 떠나서, R은 Blue와 White 책에 "
+"있는 S 랭귀지 정의(language definition)을 가능하면 많이 본땄기 때문에 결과적"
+"으로는 S를 이용한 ``implementation''(구현물)입니다.  S의 작동방식(behaviour)"
+"가 ``not clean''(깔끔하지 못하다고) 고려되는 부분들에 있어서는 의도적인 다른 "
+"점들을 가지고 있습니다.  일반적 방침은 R은 S와 가능하면 호환될 수 있게 함과 "
+"동시에 사용자가 프로그래밍 에러를 찾을수 있게 도와주도록 하는 것입니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1305
 msgid "Some known differences are the following."
-msgstr ""
+msgstr "몇 가지 알려진 다른 점들을 아래에 설명하였습니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1313
@@ -2736,6 +2808,10 @@ msgid ""
 "incompatible with S, where it is a no-op.  (Note that you can set elements "
 "to @code{NULL} using @code{x[i] <- list(NULL)}.)"
 msgstr ""
+"R에서는 만약 @code{x}가 리스트(list)라면 @code{x[i] <- NULL}과 @code{x[[i]] "
+"<- NULL}이라고 하는 것은 @code{x}로부터 지정된 구성요소들을 삭제합니다.  이들"
+"중 첫번째 표현은 no-op인 곳에서는 S에서 사용할 수 없습니다.  (@code{x[i] <- "
+"list(NULL)}을 이용하여 @code{NULL}이라는 구성요소를 지정할 수 있습니다)."
 
 #. type: itemize
 #: R-FAQ.texi:1322
@@ -2744,6 +2820,9 @@ msgid ""
 "directory can be used for customizing, as they are executed at the very "
 "beginning and end of a session, respectively."
 msgstr ""
+"S에서, @file{.Data} 디렉토리 내에서 @code{.First}와 @code{.Last}라는 이름을 "
+"가진 함수들은 세션의 가장 처음과 마지막에서 실행되기 때문에 커스터마이징"
+"(customizing)을 위한 목적으로 사용될 수 있습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1340
@@ -2764,6 +2843,23 @@ msgid ""
 "should be defined in the appropriate startup profiles.  See the help pages "
 "for @code{.First} and @code{.Last} for more details."
 msgstr ""
+"R에서 스타트업(startup) 메카니즘은 다음과 같습니다. 만약 명령어 라인에 "
+"@option{--no-environ}이 주어지지 않았다면, R은 환경변수들(environment "
+"variables)들을 설정하기 위한 사이트와 사용자 파일들(site and user files)으르 "
+"찾습니다.  그리고 나서, 명령어 라인에 @option{--no-site-file}이 주어지지 않았"
+"다면, 사이트-와이드 스타트업 프로파일 (site-wide startup profile)을 탐색합니"
+"다.  이 코드는 패키지 @pkg{base}에 로드되어 있습니다.  그리고 나서, "
+"@option{--no-init-file}이 주어지지 않았다면 R은 사용자 프로파일 파일(user "
+"profile file)을 탐색하고 이를 사용자의 작업공간(user workspace)로 읽어"
+"(source)들입니다.  그런 후에, 만약 @option{--no-restore-data} 또는 @option{--"
+"no-restore}가 지정되지 않는 이상 @file{.RData}에 사용자 작업공간의 저장된 이"
+"미지가 있다면 이를 불러옵니다.  그런 다음, 함수 @code{.First()}가 검색경로"
+"(serach path)위에 있다면 실행됩니다.  마지막으로 패키지 @pkg{base} 내에 있는 "
+"함수 @code{.First.sys}가 실해됩니다. R 세션을 종료할 때, 만약 @code{.Last}가 "
+"검색경로에서 찾아진다면 이를 실행한 뒤에 @option{.Last.sys}가 실행됩니다. 만"
+"약 필요하다면 함수들 @code{.First()}와 @code{.Last()}들은 적절한 스타트업 프"
+"로파일에 정의되어야 합니다. 더 구체적인 내용은 @code{.First}와 @code{.Last}"
+"에 대한 도움말을 참고하세요."
 
 #. type: itemize
 #: R-FAQ.texi:1347
@@ -2774,6 +2870,11 @@ msgid ""
 "levels @code{\"T\"} or @code{\"F\"}.)  Hence, when writing code you should "
 "always use @code{TRUE} and @code{FALSE}."
 msgstr ""
+"R에서는 @code{T}와 @code{F}는 단순히 @code{TRUE}와 @code{FALSE}로 정해지는 변"
+"수들이지만, S에서는 예약어(reserved words)가 아니기 때문에 사용자에 의해서 덮"
+"어씌여질 수 있습니다.  (이는 @code{\"T\"}와 @code{\"F\"}라는 요인의 수준들을 "
+"이용할 때 유용합니다). 그러므로, 코드를 작성할 때 @code{TRUE}와 @code{FALSE}"
+"를 항상 이용해야만 합니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1351
@@ -2781,6 +2882,8 @@ msgid ""
 "In R, @code{dyn.load()} can only load @emph{shared objects}, as created for "
 "example by @kbd{R CMD SHLIB}."
 msgstr ""
+"R에서, @code{dyn.load()}는 오로지 공유된 객체들(shared objects)만을 불러옵니"
+"다. 예를들면, @kbd{R CMD SHLIB}에 의해 생성된 것들입니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1357
@@ -2790,6 +2893,11 @@ msgid ""
 "created with @code{save()}, which is analogous to attaching directories in "
 "S.)  Also, you cannot attach at position 1."
 msgstr ""
+"R에서 @code{attach()}는 현재의 리스트들과 데이터프레임들만을 결합하는데 이용"
+"되지만 디렉토리에는 적용되지 않습니다.  (실제로는 @code{attach()}는 "
+"@code{save()}에 의하여 생성된 R 데이터 파일들을 결합하는데, 이는 S에서 디렉토"
+"리를 결합하는 것과 유사합니다). 또한 위치 1(position 1)에서는 결합할 수 없습"
+"니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1361
@@ -2797,11 +2905,14 @@ msgid ""
 "Categories do not exist in R, and never will as they are deprecated now in "
 "S.  Use factors instead."
 msgstr ""
+"R에서는 카테고리 (categories)라는 개념은 존재하지 않으며, S에서 더 이상 사용"
+"을 하지 않기 때문에 앞으로도 존재하지 않을 것입니다.  대신에 요인 (factors)"
+"를 이용하시길 바랍니다."
 
 #. type: itemize
 #: R-FAQ.texi:1364
 msgid "In R, @code{For()} loops are not necessary and hence not supported."
-msgstr ""
+msgstr "R에서는 @code{For()} 루프는 필요하지 않으므로 지원되지 않습니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1368
@@ -2809,6 +2920,8 @@ msgid ""
 "In R, @code{assign()} uses the argument @option{envir=} rather than "
 "@option{where=} as in S."
 msgstr ""
+"R에서는 @code{assign()}은 S에서 인자 @option{where=}를 사용하는 것과는 달리 "
+"인자 @option{envir=}를 이용합니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1372
@@ -2816,6 +2929,8 @@ msgid ""
 "The random number generators are different, and the seeds have different "
 "length."
 msgstr ""
+"난수발생기(random number generators)가 다르며, 시드(seeds)의 길이가 다릅니"
+"다. "
 
 #. type: itemize
 #: R-FAQ.texi:1376
@@ -2823,6 +2938,8 @@ msgid ""
 "R passes integer objects to C as @code{int *} rather than @code{long *} as "
 "in S."
 msgstr ""
+"R은 정수형 객체를 C로 패스할 때 S가 @code{long *}를 사용하는 것과 달리 "
+"@code{int *}를 이용합니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1380
@@ -2830,6 +2947,8 @@ msgid ""
 "R has no single precision storage mode.  However, as of version 0.65.1, "
 "there is a single precision interface to C/@FORTRAN{} subroutines."
 msgstr ""
+"R은 단정도 (single precision) 저장모드 (storage mode). 그러나, 0.65.1부터는 "
+"C/@FORTRAN{} 서브루틴에 접속하는(interface) 단정도가 있습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1385
@@ -2837,6 +2956,9 @@ msgid ""
 "By default, @code{ls()} returns the names of the objects in the current "
 "(under R) and global (under S) environment, respectively.  For example, given"
 msgstr ""
+"기본적으로 @code{ls()}는 R에서 현재의 환경(current environment)에 있는 객체들"
+"의 이름을 반환하지만, S는 전역환경(global environment)에 있는 객체들의 이름"
+"을 반환합니다.  예를들면,"
 
 #. type: example
 #: R-FAQ.texi:1388
@@ -2850,6 +2972,8 @@ msgid ""
 "then @code{fun()} returns @code{\"y\"} in R and @code{\"x\"} (together with "
 "the rest of the global environment) in S."
 msgstr ""
+"@code{fun()}은 R에서는 @code{\"y\"}를 반환하고 S에서는 @code{\"x\"} 그리고 전"
+"역환경(global environment)에 있는 다른 객체들을 함께 반환합니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1402
@@ -2862,6 +2986,13 @@ msgid ""
 "tested for by checking whether their @code{length()} is zero (which works in "
 "both R and S), and not using @code{is.null()}."
 msgstr ""
+"R은 0의 크기를 가진 행렬 (zero-extent matrices)와 배열 (즉, @code{dim} 속성벡"
+"터(attribute vector)의 일부 구성요소가 0이 될 수 있습니다)를 허용합니다.  이"
+"것은 비어있는 부분집합 (empty subset)에 대한 특별한 테스트들의 필요성을 도움"
+"을 주기 때문에 유용한 기능이라고 여겨져 왔습니다.  만약, @code{x}가 행렬이"
+"며, @code{x[,FALSE]}는 @code{NULL}이 아니라, 아무런 행을 가지지 않는 ``행"
+"렬''입니다.  그러므로, 이러한 객체들은 @code{is.null()}을 이용하는 것이 아니"
+"라 @code{length()}가 0인지를 확인해야 합니다 (R과 S 둘 다 작동합니다)."
 
 #. type: itemize
 #: R-FAQ.texi:1407
@@ -2869,6 +3000,9 @@ msgid ""
 "Named vectors are considered vectors in R but not in S (e.g., @code{is."
 "vector(c(a = 1:3))} returns @code{FALSE} in S and @code{TRUE} in R)."
 msgstr ""
+"벡터의 구성요소에 이름이 있는 벡터(named vector)들은 R에서는 벡터로 여겨지지"
+"만, S에서는 그렇지 않습니다 (즉, @code{is.vector(c(a=1:3))}은 S에서 "
+"@code{FALSE}이지만, R에서는 @code{TRUE}입니다)."
 
 #. type: itemize
 #: R-FAQ.texi:1412
@@ -2877,6 +3011,9 @@ msgid ""
 "data frame, then @code{is.matrix(DF)} returns @code{FALSE} in R and "
 "@code{TRUE} in S)."
 msgstr ""
+"R에서는 데이터프레임은 행렬로 여겨지지 않습니다 (즉, 만약에 @code{DF}가 데이"
+"터 프레임이라면, @code{is.matrix(DF)}의 결과는 R에서는 @code{FALSE}이지만 S에"
+"서는 @code{TRUE}입니다)."
 
 #. type: itemize
 #: R-FAQ.texi:1417
@@ -2885,6 +3022,9 @@ msgid ""
 "the Helmert ones.  This is a deliberate difference reflecting the opinion "
 "that treatment contrasts are more natural."
 msgstr ""
+"R에서는 기본적으로 순서가 없는 경우(unordered case)에는 treatment contrast를 "
+"사용하는 반면 S는 Helmert 대조를 사용합니다. 이것은 treatment contrast가 더 "
+"자연스럽다는 의견이 반영된 다른 점입니다."
 
 #. type: itemize
 #: R-FAQ.texi:1423
@@ -2894,6 +3034,10 @@ msgid ""
 "as @code{a <- \"f<-\"(a, value = b)}.  S always takes the last argument, "
 "irrespective of its name."
 msgstr ""
+"R에서는 우변(right hand side)에 해당하는 치환함수의 인자는 @samp{value}라고 "
+"반드시 이름지어져야 합니다.  즉, @code{f(a) <- b}는 @code{a <- \"f<-\"(a, "
+"value = b)}처럼 평가됩니다.  S는 명칭에 관계없이 항상 마지막 인자를 취합니"
+"다. "
 
 #. type: itemize
 #: R-FAQ.texi:1432
@@ -2906,6 +3050,13 @@ msgid ""
 "or the default expressions, this is usually equivalent to S, until "
 "assignment takes place."
 msgstr ""
+"S에서는 @code{substitute()}는 주어진 표현(expression)으로부터 대체에 이용될 "
+"이름들을 검색합니다:  매칭호출(matching call)의 실제적(actual) 인자와 기본"
+"(default) 인자, 그리고 이의 순서에 따른 지역적 프레임(local frame).  R은 변수"
+"가 평가되지 않았다면, ``promise''를 사용하기 위한 특별한 규칙과 함께 지역적 "
+"프레임 내를 살펴보게 됩니다.  지역적 프레임은 할당(assignment)이 일어나기 전"
+"에 실제적 인자 (actual argument) 또는 디폴트 표현(default expression)으로 초"
+"기화 되기 때문에 이는 보통 S와 일치하게 됩니다."
 
 #. type: itemize
 #: R-FAQ.texi:1437
@@ -2914,6 +3065,9 @@ msgid ""
 "the loop.  In R it is local to the environment where the @code{for()} "
 "statement is executed."
 msgstr ""
+"S에서는 @code{for()} 루프내의 인덱스 변수(index variable)은 루프내에서 지역적"
+"으로 이용됩니다.  R에서는 @code{for()}문이 실행되어진 곳의 환경(environment)"
+"에 지역적입니다."
 
 #. type: itemize
 #: R-FAQ.texi:1441
@@ -2921,6 +3075,8 @@ msgid ""
 "In S, @code{tapply(simplify=TRUE)} returns a vector where R returns a one-"
 "dimensional array (which can have named dimnames)."
 msgstr ""
+"S에서는 @code{tapply(simplify=TRUE)}는 R이 1-차원 배열(dimnames이라고 이름을 "
+"가질 수도 있는)을 반환하는 벡터를 반환하게 됩니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1450
@@ -2933,6 +3089,12 @@ msgid ""
 "version 1.2.0 the locale can be (re-)set in R by the @code{Sys.setlocale()} "
 "function."
 msgstr ""
+"S(-@sc{Plus})에서는 C 로케일이 사용되는 반면 R은 현재 운영체제의 로케일이 문"
+"자들이 알파벳인지 어떻게 분류되는지를 결정하기 위해서 사용됩니다.  이것은 R "
+"객체에 유효한 이름들(예를들면, 엑센트가 있는 문자들도 R에서는 허용될 수도 있"
+"습니다), 정렬의 순서와 비교 (@code{\"aA\" < \"Bb\"}가 참 또는 거짓인지를 결"
+"정)에 영향을 줍니다.  1.2.0 버전부터는 로케일은 @code{Sys.setlocale()}함수를 "
+"이용하여 R내부에서 재설정될 수 있습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1454
@@ -2940,6 +3102,8 @@ msgid ""
 "In S, @code{missing(@var{arg})} remains @code{TRUE} if @var{arg} is "
 "subsequently modified; in R it doesn't."
 msgstr ""
+"S에서는 @code{missing(@var{arg})}는 만약 @var{arg}가 실제적으로 수정이 되면 "
+"@code{TRUE}로 남아있게 되나, R에서는 그렇지 않습니다. "
 
 #. type: itemize
 #: R-FAQ.texi:1458
@@ -2947,6 +3111,8 @@ msgid ""
 "From R version 1.3.0, @code{data.frame} strips @code{I()} when creating "
 "(column) names."
 msgstr ""
+"버전 1.3.0 부터는 @code{data.frame}은 (행의) 이름을 생성할때 @code{I()}를 분"
+"해합니다."
 
 #. type: itemize
 #: R-FAQ.texi:1463
@@ -2955,11 +3121,15 @@ msgid ""
 "character variable.  Use @code{as.character(NA)} to create a missing "
 "character value."
 msgstr ""
+"R에서는 문자열 @code{\"NA\"}는 문자형 변수에서 결측값(missing value)로 처리되"
+"지 않습니다.  결측을 의미하는 문자값(missing character value)를 생성하기 위해"
+"서는 @code{as.character(NA)}를 활용하세요."
 
 #. type: itemize
 #: R-FAQ.texi:1466
 msgid "R disallows repeated formal arguments in function calls."
 msgstr ""
+"R은 함수호출에서 중복되는 형식인자(formal argument)를 허용하지 않습니다."
 
 #. type: itemize
 #: R-FAQ.texi:1474
@@ -2971,6 +3141,12 @@ msgid ""
 "reproduce the object, whereas @code{dput()} and @code{deparse()} default to "
 "options for producing deparsed code that is readable."
 msgstr ""
+"S에서는 @code{dump()}, @code{dput()}, 그리고 @code{deparse()}는 같은 코드에 "
+"근본적으로 다른 인터페이스입니다.  R에서는 버전 2.0.0부터 같은 "
+"@code{control} 인자가 이용될 때에만 참(true)이지만, 기본적으로 그렇지는 않습"
+"니다.  기본적으로는 @code{dump()}는 색체를 재생산하기 위한 평가를 하는 코드"
+"를 작성하는 반면, @code{dput()}과  @code{deparse()}는 기본적으로 읽기가 가능"
+"한 구문분석이 되지 않은 코드(deparsed code)를 생성하기 위한 옵션들입니다."
 
 #. type: itemize
 #: R-FAQ.texi:1480
@@ -2979,6 +3155,10 @@ msgid ""
 "character vector index looks only for exact matches (whereas @code{[[} and "
 "@code{$} allow partial matches).  In S, @code{[} allows partial matches."
 msgstr ""
+"R에서는 문자벡터 인덱스(character vector index)를 이용하여 @code{[}와 함께 벡"
+"터, 행렬, 배열, 또는 데이터프레임을 인덱싱하는 것은 오로지 정확한 매치(exact "
+"matches)들만을 찾습니다 (그러나, @code{[[}와 @code{$}는 부분매치를 허용합니"
+"다)."
 
 #. type: itemize
 #: R-FAQ.texi:1489
@@ -2991,6 +3171,13 @@ msgid ""
 "argument @code{atan} with positional arguments, but this has been withdrawn "
 "to avoid further confusion.)"
 msgstr ""
+"S는 두개의 인자를 가지는 @code{atan}이 있으나, @code{atan2}는 없습니다.  S에"
+"서 @code{atan(x1, x2)}라고 호출을 하는 것은 R에서  @code{atan2(x1, x2)}라고 "
+"하는 것과 같습니다.   그러나, S의 코드 @code{atan(x=a, y=b)}는 R에서 "
+"@code{atan2(y=a, x=b)}이기 때문에 @code{x}와 @code{y}가 서로 바뀌어 있음을 아"
+"셔야 합니다.   (R은 위치인수(positional arguments)와 함께 사용되는 2개의 인자"
+"를 가지는 @code{atan}에 대하여 문서가 없이 지원을 했었으나, 이는 더이상의 혼"
+"란을 피하기 위하여 제거되었습니다)."
 
 #. type: itemize
 #: R-FAQ.texi:1493
@@ -2998,6 +3185,8 @@ msgid ""
 "Numeric constants with no fractional and exponent (i.e., only integer)  part "
 "are taken as integer in @SPLUS{} 6.x or later, but as double in R."
 msgstr ""
+"분수와 지수부분이 없는 숫자형 상수들은 in@SPLUS{} 6.x 또는 그 이후버전에서는 "
+"정수로 처리하지만, R에서는 이를 더블(double)로 처리합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1502
@@ -3008,12 +3197,17 @@ msgid ""
 "the difference as you see it).  Of course, it would be useful if you were to "
 "implement the change yourself and make sure it works."
 msgstr ""
+"의도하지 않았지만, R에서 잘못된 코드 또는 누락된 부분으로 인한 다른 점 또한 "
+"있을 수 있습니다. 개발자들은 사용자가 찾게 되는 어떠한 결점들에 대하여 (사용"
+"자가 찾은 다른 점들에 대해서 충분하게 문서화된 보고서의 형태로서) 듣는것을 매"
+"우 감사히 여깁니다. 물론, 스스로가 변경을 해 본뒤에 이 변경이 확실하게 작동하"
+"는가를 확인해준다면 더욱 유용합니다. "
 
 #. type: section
 #: R-FAQ.texi:1504
 #, no-wrap
 msgid "Is there anything R can do that @sc{S-Plus} cannot?"
-msgstr ""
+msgstr "@sc{S-Plus}는 할 수 없지만 R이 할 수 있는것이 있나요?"
 
 #. type: Plain text
 #: R-FAQ.texi:1510
@@ -3023,6 +3217,10 @@ msgid ""
 "you couldn't do in @SPLUS{} if you wanted to.  (Note that using lexical "
 "scoping may simplify matters considerably, though.)"
 msgstr ""
+"R에서 할 수 있는 거의 모든 것들은 약간의 노력만으로 @SPLUS{}로 포트할 수 있"
+"는 소스 코드들이 있기때문에 @SPLUS{}에서 하지 못하는 것을 R에서 할 수 있지는 "
+"않을 것입니다 (그러나, 렉시컬 스코핑을 이용하는 것은 상당히 문제를 단순화 시"
+"킬 수도 있습니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:1521
@@ -3037,11 +3235,20 @@ msgid ""
 "amstat.org/publications/jcgs/, , @emph{Journal of Computational and "
 "Graphical Statistics}}, @strong{9}, 582--599."
 msgstr ""
+"R은 @SPLUS{}에서는 없는 몇가지 그래픽 기능들을 제공합니다.  라인(line)의 종류"
+"를 다루는데 더 나은 처리, (팔레트를 통한) 더 편리한 색상 관리, 색의 감마 보"
+"정, 그리고 가장 중요한 것은 @TeX{}와 같은 입력을 이용하여 플랏 텍스트에 수학"
+"적 주석을 나타내는 것등입니다. 이러한 기능들을 볼 수 있는 좋은 예제들을 "
+"@code{plotmath} 도움말을 살펴보시길 바랍니다. 더 자세한 내용들은 Paul "
+"Murrell and Ross Ihaka (2000), ``An Approach to Providing Mathematical "
+"Annotation in Plots'', @url{http://www.amstat.org/publications/jcgs/, , "
+"@emph{Journal of Computational and Graphical Statistics}}, @strong{9}, "
+"582--599 에서 찾아 볼 수 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1526
 msgid "For a very long time, there was no such thing."
-msgstr ""
+msgstr "매우 오랜 기간동안 다음과 같은 것들은 존재하지 않았습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1530
@@ -3049,6 +3256,8 @@ msgid ""
 "@url{http://www.xlsolutions-corp.com/, XLSolutions Corporation} is currently "
 "beta testing a commercially supported version of R named R+ (read R plus)."
 msgstr ""
+"@url{http://www.xlsolutions-corp.com/, XLSolutions Corporation}은 R 플러스라"
+"고 읽는 R+라는 상업용 버전을 현재 베타 테스팅 하고 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1537
@@ -3059,6 +3268,10 @@ msgid ""
 "suitable for deployment in professional, commercial and regulated "
 "environments."
 msgstr ""
+"@url{http://www.revolution-computing.com/, REvolution Computing}은 R에 기초"
+"를 둔 기업용 통계시스템(enterprise-class statistical analysis system), 전문가"
+"용, 상업용, 그리고 규제된 환경 배치에 적합한 @url{http://www.revolution-"
+"computing.com/products/revolution-r.php, REvolution R}을 선보였습니다.  "
 
 #. type: Plain text
 #: R-FAQ.texi:1543
@@ -3069,6 +3282,10 @@ msgid ""
 "enterprise-level validation, documentation, software support, and consulting "
 "services, as well as related R-based products."
 msgstr ""
+"@url{http://www.random-technologies-llc.com/, Random Technologies}는 R을 기업"
+"수준의 밸리데이션, 문서화 및 소프트웨어 지원과 상담 서비스들, 그리고 R 기반"
+"의 제품들을 결합한 기업의 통계컴퓨팅 환경인 @url{http://random-technologies-"
+"llc.com/products/RStat/rstat, RStat}을 제공합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1547
@@ -3077,6 +3294,8 @@ msgid ""
 "R_programming_language#Commercialized_versions_of_R} for pointers to "
 "commercialized versions of R."
 msgstr ""
+"커머셜 버전의 R에 대해서는 @url{http://en.wikipedia.org/wiki/"
+"R_programming_language#Commercialized_versions_of_R} 를 참고하십시오."
 
 #. type: node
 #: R-FAQ.texi:1548
@@ -3105,6 +3324,14 @@ msgid ""
 "of the R language.  All of the Rweb versions can analyze Web accessible "
 "datasets if a @acronym{URL} is provided."
 msgstr ""
+"@strong{Rweb}은 @email{jeff@@math.montana.edu, Jeff Banfield}에 의해 개발되"
+"고 유지되고 있습니다.  @url{http://www.math.montana.edu/Rweb/, Rweb Home "
+"Page}는 다음과 같은 세가지 버전의 Rweb을 제공합니다 --- 결과물과 그래프를 반"
+"환해주는 간단한 텍스트 입력 방식, 여러 개의 창을 제공하며 좀 더 보기에 좋은 "
+"JavaScript 버전, 그리고 R 언어에 대한 지식이 요구되지 않고 기초 통계 과목들"
+"에 유요한 포인트와 클릭만으로 이루어진 버전들입니다.  만약 @acronym{URL}이 제"
+"공되어 있다면, 모든 Rweb 버전들은 웹에서 접근이 가능한 데이터들을 분석할 수 "
+"있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1565
@@ -3114,6 +3341,9 @@ msgid ""
 "works, was published in the Journal of Statistical Software (@url{http://www."
 "jstatsoft.org/v04/i01/})."
 msgstr ""
+"다른 버전들의 Rweb에 대한 자세한 설명과 Rweb이 어떻게 작동하는지에 대한 개요"
+"는 Journal of Statistical Software (@url{http://www.jstatsoft.org/v04/i01/})"
+"에서 출간된 ``Rweb: Web-based Statistical Analysis''에 설명되어 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1573
@@ -3125,6 +3355,12 @@ msgid ""
 "requirement for the user is a JavaScript capable browser.  See @url{http://"
 "osvisions.com/r-online/} for more information."
 msgstr ""
+"@email{ulfi@@cs.tu-berlin.de, Ulf Bartel}은 R을 이용한 통계 프로그래밍의 기"
+"초 단계들(특히 시계열에 이용이 가능한)을 가능한 쉽게 만들수 있도록 간단한 R "
+"온라인 프로그래밍 환경인 @strong{R-Online}을 개발하였습니다.  이를 사용하기 "
+"위해서는 사용자는 JavaScript가 가능한 브라우저만이 요구되기 때문에 추가적인 "
+"로컬 설치는 요구되지 않습니다. 더 많은 정보를 @url{http://osvisions.com/r-"
+"online/}에서 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1587
@@ -3140,6 +3376,16 @@ msgid ""
 "(bitmap) graphics and one without) as well as the original code are "
 "available from @url{http://www.ms.uky.edu/~statweb/}."
 msgstr ""
+"@strong{Rcgi}는 @email{mjr@@dsl.pipex.com, MJ Ray}에서 만들어진 CGI WWW 인터"
+"페이스입니다. 이는 @HTML{} 작성자가 CGI 스크립들을 쓰지 않고도 데이터 셋을 로"
+"드하는 것부터 사용자가 대부분의 명령어들을 입력하며, 사용자의 입력과 코드를 "
+"섞어 사용할 수 있는 ``embedded code''을 사용할 수 있었습니다. PostScript 또"
+"는 GIF 형식들의 그래픽적 결과물이 가능했으며, 실행된 코드는 사용자가 수정할 "
+"수 있도록 보여졌습니다. 그러나, 이 프로젝트가 아직도 진행중인지는 확실하지 않"
+"습니다.  현재 @email{mai@@ms.uky.edu, Mai Zhou}에 의한 수정된 버전의 "
+"@strong{Rcgi} (실제로는 (bitmap) 그래픽스가 있는 것과 없는 것 두가지가 존재합"
+"니다)가 있으며, 본래의 코드는 @url{http://www.ms.uky.edu/~statweb/}에서 찾아 "
+"볼 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1593
@@ -3150,6 +3396,10 @@ msgid ""
 "collection of links available from @url{http://biostat.mc.vanderbilt.edu/"
 "twiki/bin/view/Main/StatCompCourse}."
 msgstr ""
+"CGI에 기초한 웹 액세스 또한 @url{http://hermes.sdu.dk/cgi-bin/go/}에서 제공됩"
+"니다. 기본적으로 원격서버로 R코드를 보낼 수 있도록 해주는 웹 인터페이스 구현"
+"예들이 많이 있습니다. 예를들면, @url{http://biostat.mc.vanderbilt.edu/twiki/"
+"bin/view/Main/StatCompCourse}으로부터 링크들의 모음을 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1606
@@ -3167,6 +3417,18 @@ msgid ""
 "ucdavis.edu, Duncan Temple Lang} and has a web page at @url{http://www."
 "omegahat.org/CGIwithR/}."
 msgstr ""
+"@url{http://www.warwick.ac.uk/go/dfirth, David Firth}는 @CRAN{}으로부터 얻을 "
+"수 있는 R 애드온 패키지인 @CRANpkg{CGIwithR}을 작성하였습니다.  이것은 웹서버"
+"에 대한 CGI 인터페이스를 통하여 R script들을 실행할 수 있도록 하는 다소 간단"
+"한 R 익스텐션(extension)을 제공하며, GET과 POST 메소드들을 이용한 데이터의 서"
+"브미션 또한 가능합니다.  기본적으로 Linux의 Apache를 사용하여 쉽게 설치되고 R"
+"을 지원하는 모든 플랫폼과 인스톨러가 필요한 보안 권한(necessary security "
+"permissions)들을 모두 가지고 있는 있는 웹서버에서 작동을 해야 합니다.  이는 "
+"the Journal of Statistical Software (@url{http://www.jstatsoft.org/v08/i10/})"
+"에 출판된 David의 논문 ``CGIwithR: Facilities for Processing Web Forms Using "
+"R''에 있습니다.  현재 이 패키지는 @email{duncan@@wald.ucdavis.edu, Duncan "
+"Temple Lang}에 의하여 관리되고 있으며, 웹페이지는 @url{http://www.omegahat."
+"org/CGIwithR/}입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1612
@@ -3177,6 +3439,10 @@ msgid ""
 "for a @acronym{GUI}-like behavior (with sortable tables, clickable graphics, "
 "editable output), etc."
 msgstr ""
+"Tom Short에 의해 개발되고 활동적으로 관리되고 있는 @url{http://www.rpad.org/"
+"Rpad, Rpad}는 꽤 많은 양의 JaveScript와 @acronym{GUI}와 같이 작동하는 것들 "
+"(정렬이 가능한 테이블들, 클릭할 수 있는 그래픽들, 편집이 가능한 결과물) 등 이"
+"전 접근법들에 몇가지 기능들을 추가한 정교한 환경을 제공합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1617
@@ -3186,6 +3452,10 @@ msgid ""
 "available from the project web page at @url{http://biostat.mc.vanderbilt.edu/"
 "@/twiki/@/bin/@/view/@/Main/@/RApacheProject}."
 msgstr ""
+"Jeff Horner은 Apache 2(그리고 이후버전)내의 R 인터프리터(interpreter)를 보관"
+"하는 R/Apache 융합 프로젝트(Integration project)를 진행하고 있습니다.  튜토리"
+"얼과 프레젠테이션은 프로젝트 웹페이지 @url{http://biostat.mc.vanderbilt.edu/"
+"@/twiki/@/bin/@/view/@/Main/@/RApacheProject}에서 이용가능합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1623
@@ -3196,6 +3466,11 @@ msgid ""
 "the web site for Java and C++ (and could be written for other languages that "
 "support TCP/IP sockets)."
 msgstr ""
+"@url{http://stats.math.uni-augsburg.de/Rserve/, Rserve}는 Simon Urbanek에 의"
+"해 활발히 개발되는 프로젝트입니다.  이는 다른 프로그램들이 R의 기능들을 사용"
+"할 수 있도록 허용하는 TCP/IP 서버를 구현하는 것입니다.  Java와 C++ (TCP/IP "
+"socket들을 지원하는 다른 언어로도 쓰여질 수 있습니다) 클라이언트들은 웹사이트"
+"로부터 얻을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1629
@@ -3206,6 +3481,11 @@ msgid ""
 "(R, SAS, Matlab, etc) via a single well-defined client interface'' and to "
 "turn computational services into web services."
 msgstr ""
+"@url{http://openstatserver.org/index.html, OpenStatServer}는 Greg Warnes이 지"
+"휘하는 팀에의해 개발되고 있습니다;  이는 ``R, SAS, Matlab 등과 같은 다양한 컴"
+"퓨팅 환경으로부터 정의되어 있는 컴퓨팅 모듈들에 대하여 하나의 잘 정의된 클라"
+"이언트 인터페이스를 통하여 깔끔한 엑세스를 제공하는 것''과 이러한 컴퓨테이션 "
+"서비스를 웹서비스로 전환하는 것을 목표로 하고 있습니다"
 
 #. type: Plain text
 #: R-FAQ.texi:1637
@@ -3217,6 +3497,12 @@ msgid ""
 "Alfredo Pontillo and Angelo Mineo and provides both a web interface to R and "
 "a set of pre-specified analyses that need no R code input."
 msgstr ""
+"R 웹인터페이스를 제공하는데 PHP를 사용한 두 개의 프로젝트가 있습니다.  Steve "
+"Chen에 의해서 개발되는 @url{http://steve-chen.net/R_PHP/, R_PHP_Online}(이 프"
+"로젝트가 아직 진행중인지는 불분명합니다)는 위의 Rcgi와 Rweb과 다소 비슷합니"
+"다.  @url{http://dssm.unipa.it/R-php/?cmd=home, R-php}는  Alfredo Pontillo와 "
+"Angelo Mineo에 의해 활발히 개발중이며, R 코드 입력이 필요하지 않은 미리 정의"
+"된 특수한 분석도구들이 제공됩니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1642
@@ -3226,6 +3512,10 @@ msgid ""
 "and is designed to be installed at local sites as a shared computing "
 "resource."
 msgstr ""
+"@url{http://www.bioconductor.org/, webbioc}은 ``여러가지 Bioconductor 패키지"
+"들을 이용하여 마이크로어레이 분석 (microarray analysis)을 수행하는 통합적인 "
+"웹 인터페이스''이며, 마치 공유되어 있은 컴퓨팅 자원(computing resources)와 같"
+"이 로컬사이트(local site)에서 설치될 수있도록 설계되었습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1647
@@ -3235,6 +3525,10 @@ msgid ""
 "interface is created automatically.  There is no need for the user to do any "
 "extra scripting or learn any new scripting techniques."
 msgstr ""
+"@url{http://sysbio.mrc-bsu.cam.ac.uk/Rwui, Rwui}는 R 스크립트를 사용할 수 있"
+"도록 사용자 기반의 웹인터페이스를 생성해주는 웹 어플리케이션입니다.  웹 인터"
+"페이스에 대한 모든 코드가 자동으로 생성됩니다.  사용자가 추가적인 스크립트 작"
+"업을 하거나 새로운 스크립팅 기술들을 배울 필요가 없습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1656
@@ -3248,6 +3542,14 @@ msgid ""
 "@CRANpkg{brew} package with @url{http://rapache.net/, Rapache} with the "
 "advantage of cross-platform support and easy installation."
 msgstr ""
+"Henrik Bengtsson에 의해서 개발된 @CRANpkg{R.rsp}패키지는 ``R server "
+"Pages''를 소개합니다.  Java Server 페이지들과 유사하게, Rserver Pasge는 페이"
+"지가 요구되었을 때 평가된 R코드가 포함된 @HTML{} 페이지입니다.  이 패키지는 "
+"Tcl로 구현된 내부 클로스 플랫폼 HTTP 서버(internal cross-platform HTTP "
+"server)를 포함하고 있어, 웹 기반의 사용자 인터페이스를 포함하게 해주는 좋은 "
+"프레임워크를 제공합니다.   크로스 플랫폼(cross-platform)에 대한 지원과 쉬운 "
+"설치 이점이 있는 @url{http://rapache.net/, Rapache}와 함께 사용하는 "
+"@CRANpkg{brew}의 사용과 유사합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1659
@@ -3255,6 +3557,8 @@ msgid ""
 "The @CRANpkg{Rook} package by Jeffrey Horner provides a web server interface "
 "borrowing heavily from Ruby's Rack project."
 msgstr ""
+"Jeffrey Horner의 @CRANpkg{Rook} 패키지는 Ruby의 Rack project의 많은 부분을 가"
+"져와 사용하는 웹서버 인터페이스를 제공합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1672
@@ -3271,6 +3575,18 @@ msgid ""
 "the data), @uref{http://rstudio.org/, Rstudio} (R code designing and "
 "testing, file management), CKEditor (@HTML{} Layer design), and PHP."
 msgstr ""
+"마지막으로 @uref{http://code.google.com/p/concerto-platform/, Concerto}는 "
+"the Psychometrics Centre of Cambridge University에서 개발된 사용이 쉬운 오픈"
+"소스 웹 인터페이스 입니다.  이는 Computerized Adaptive Test를 디자인하고 작동"
+"하는 온라인 플랫폼과 같이 디자인 되었으나, 일반적인 목적의 R 웹 인터페이스로"
+"도 사용할 수 있습니다.  이는 프로그래밍이나 웹디자인의 기초 지식이 없는 R 사"
+"용자들이 융통성 있고 강력한 온라인 어플리케이션과 웹사이트, 그리고 심리측정 "
+"테스트(psychometrics tests)들을 빠르게 개발해 줄 수 있도록 해줍니다. 신뢰성"
+"(reliability), 보안성(security), 그리고 성능(performance)를 최대화 하기 위하"
+"여 Concerto는 MySQL 서버 (데이터의 교환과 저장), @uref{http://rstudio.org/, "
+"Rstudio} (R코드의 디자인, 테스트, 그리고 파일관리), CKEditor (@HTML{} Layer "
+"디자인), 그리고 PHP와 같은 인기있고 신뢰할 수 있는 오픈소스들로 구성되어 있습"
+"니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1675
@@ -3278,6 +3594,8 @@ msgid ""
 "See @url{http://rwiki.sciviews.org/doku.php?id=faq-r#web_interfaces} for "
 "additional information."
 msgstr ""
+"더 많은 정보를 @url{http://rwiki.sciviews.org/doku.php?id=faq-"
+"r#web_interfaces}에서 찾을 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:1677
@@ -3395,7 +3713,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:1704
 msgid "The R distribution comes with the following packages:"
-msgstr ""
+msgstr "R은 다음과 같은 패키지들과 함께 배포됩니다."
 
 #. type: item
 #: R-FAQ.texi:1708
@@ -3406,7 +3724,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1710
 msgid "Base R functions (and datasets before R 2.0.0)."
-msgstr ""
+msgstr "Base R 함수들 (그리고 R 2.0.0 전의 데이터셋들)."
 
 #. type: item
 #: R-FAQ.texi:1710
@@ -3417,7 +3735,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1712
 msgid "R byte code compiler (added in R 2.13.0)."
-msgstr ""
+msgstr "(R 2.13.0에서 더해진) R 바이트 코드 컴파일러(byte code compiler)."
 
 #. type: item
 #: R-FAQ.texi:1712
@@ -3428,7 +3746,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1714
 msgid "Base R datasets (added in R 2.0.0)."
-msgstr ""
+msgstr "(R 2.0.0에서 더해진) Base R 데이터셋들."
 
 #. type: item
 #: R-FAQ.texi:1714
@@ -3439,7 +3757,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1717
 msgid "Graphics devices for base and grid graphics (added in R 2.0.0)."
-msgstr ""
+msgstr "(R 2.0.0에 더해진) base와 grid 그래픽스를 위한 그래픽 장치들."
 
 #. type: item
 #: R-FAQ.texi:1717
@@ -3450,7 +3768,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1719
 msgid "R functions for base graphics."
-msgstr ""
+msgstr "base 그래픽스를 위한 R 함수들."
 
 #. type: item
 #: R-FAQ.texi:1719
@@ -3464,6 +3782,7 @@ msgid ""
 "A rewrite of the graphics layout capabilities, plus some support for "
 "interaction."
 msgstr ""
+"그래픽스 레이아웃 성능을 재작성하고 인터랙션을 위한 일부 지원이 추가됨."
 
 #. type: item
 #: R-FAQ.texi:1722
@@ -3477,6 +3796,8 @@ msgid ""
 "Formally defined methods and classes for R objects, plus other programming "
 "tools, as described in the Green Book."
 msgstr ""
+"그린북에 설명되어 있는 것과 같이 R 객체들에 대하여 형식적으로 정의된 메소드들"
+"과 클래스들, 그리고 다른 프로그래밍 툴들."
 
 #. type: item
 #: R-FAQ.texi:1725
@@ -3490,6 +3811,8 @@ msgid ""
 "Support for parallel computation, including by forking and by sockets, and "
 "random-number generation (added in R 2.14.0)."
 msgstr ""
+"포킹(forking), 소켓(sockets), 그리고 (R 2.14.0에 더해진) 난수생성(random-"
+"number generation) 기능을 포함한 병렬 연산(parallel computation)을 지원."
 
 #. type: item
 #: R-FAQ.texi:1728
@@ -3500,7 +3823,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1730
 msgid "Regression spline functions and classes."
-msgstr ""
+msgstr "리그레션 스플라인(regression spline)함수들과 클래스들."
 
 #. type: item
 #: R-FAQ.texi:1730
@@ -3511,7 +3834,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1732
 msgid "R statistical functions."
-msgstr ""
+msgstr "R 통계관련 함수들."
 
 #. type: item
 #: R-FAQ.texi:1732
@@ -3522,7 +3845,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1734
 msgid "Statistical functions using S4 classes."
-msgstr ""
+msgstr "S4 클래스들을 이용한 통계 함수들."
 
 #. type: item
 #: R-FAQ.texi:1734
@@ -3534,6 +3857,8 @@ msgstr ""
 #: R-FAQ.texi:1736
 msgid "Interface and language bindings to Tcl/Tk @acronym{GUI} elements."
 msgstr ""
+"Tcl/Tk @acronym{GUI} 구성요소들에 인터페이스와 랭귀지 바인딩 (interface and "
+"language bindings)."
 
 #. type: item
 #: R-FAQ.texi:1736
@@ -3544,7 +3869,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1738
 msgid "Tools for package development and administration."
-msgstr ""
+msgstr "패키지 개발과 관리를 위한 도구들. "
 
 #. type: item
 #: R-FAQ.texi:1738
@@ -3567,6 +3892,12 @@ msgid ""
 "were merged into @pkg{stats}, package @pkg{lqs} returned to the recommended "
 "package @CRANpkg{MASS}, and package @pkg{mle} moved to @pkg{stats4}."
 msgstr ""
+"``base packages''(베이스 패키지)은 R 1.9.0에서 크게 재구성되었습니다.  이전"
+"의 @pkg{base}는 @pkg{base}, @pkg{graphics}, @pkg{stats}, @pkg{utils}의 네가지"
+"로 나뉘어졌습니다.  @pkg{ctest}, @pkg{eda}, @pkg{modreg}, @pkg{mva}, "
+"@pkg{nls}, @pkg{stepfun}, @pkg{ts}는 @pkg{stats}로 병합되었으며, @pkg{lqs}는 "
+"추천패키지인 @CRANpkg{MASS}로 다시 옮겨지고, 패키지 @pkg{mle}는 @pkg{stats4}"
+"로 이동되었습니다."
 
 #. type: node
 #: R-FAQ.texi:1749
@@ -3590,6 +3921,9 @@ msgid ""
 "including the following @emph{recommended} packages which are to be included "
 "in all binary distributions of R."
 msgstr ""
+"@CRAN{}의 @file{src/contrib} 디렉토리는 R의 모든 바이너리 배포에 포함되어질 "
+"@emph{recommended}(추천) 패키지들을 포함하여 방대한 양의 애드온 패키지들을 포"
+"함하고 있습니다."
 
 #. type: item
 #: R-FAQ.texi:1759
@@ -3603,6 +3937,9 @@ msgid ""
 "Functions for kernel smoothing (and density estimation) corresponding to the "
 "book ``Kernel Smoothing'' by M. P. Wand and M. C. Jones, 1995."
 msgstr ""
+"1995년에 M. P. Wand와 M. C. Jones에 의해 쓰여진 책 ``Kernel Smoothing''을 바"
+"탕으로 한 Kernel smoothing(커널스무딩 또는 커널평활법)을 위한 함수들(그리고 "
+"밀도추정)을 포함합니다."
 
 #. type: item
 #: R-FAQ.texi:1762
@@ -3617,6 +3954,9 @@ msgid ""
 "``Modern Applied Statistics with S''.  (Contained in the @file{VR} bundle "
 "for R versions prior to 2.10.0.)"
 msgstr ""
+"Venables 와 Ripley의 핵심 패키지 ``Modern Applied Statistics with S''으로부터"
+"의 함수와 데이터셋들을 포함합니다 (2.10.0 이전의 R 버전들을 위한 @file{VR}번"
+"들에 포함되어 있습니다)."
 
 #. type: item
 #: R-FAQ.texi:1766
@@ -3627,7 +3967,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1769
 msgid "A Matrix package.  (Recommended for R 2.9.0 or later.)"
-msgstr ""
+msgstr "(R 2.9.0 또는 이후 버전에 권장되는) 행렬 패키지입니다."
 
 #. type: item
 #: R-FAQ.texi:1769
@@ -3642,6 +3982,10 @@ msgid ""
 "and Their Applications'' by A. C. Davison and D. V. Hinkley, 1997, Cambridge "
 "University Press."
 msgstr ""
+"1997년에 Cambridge University Press로부터 출판된 A. C. Davison과 D. V. "
+"Hinkley에 의해 쓰여진 ``Bootstrap Methods and Their Applications''이라는 책으"
+"로부터 부츠트랩핑(bootstrapping)에 이용된 함수들과 데이터셋들을 포함하고 있습"
+"니다."
 
 #. type: item
 #: R-FAQ.texi:1773
@@ -3655,6 +3999,9 @@ msgid ""
 "Functions for classification (@math{k}-nearest neighbor and LVQ).  "
 "(Contained in the @file{VR} bundle for R versions prior to 2.10.0.)"
 msgstr ""
+"(@math{k}-nearest neighbor와 LVQ 같은) 클래시피케이션에 사용되는 함수들을 포"
+"함하고 있습니다 (2.10.0 이전의 R 버전들에는 @file{VR} 번들내에 포함되어 있었"
+"습니다)."
 
 #. type: item
 #: R-FAQ.texi:1776
@@ -3665,7 +4012,7 @@ msgstr ""
 #. type: table
 #: R-FAQ.texi:1778
 msgid "Functions for cluster analysis."
-msgstr ""
+msgstr "클러스터 분석(cluster analysis)를 위한 함수들이 포함되어 있습니다."
 
 #. type: item
 #: R-FAQ.texi:1778
@@ -3677,6 +4024,8 @@ msgstr ""
 #: R-FAQ.texi:1781
 msgid "Code analysis tools.  (Recommended for R 2.5.0 or later.)"
 msgstr ""
+"(R 2.5.0 또는 그 이후의 버전들에 추천되는) 코드 분석 도구들이 포함되어 있습니"
+"다."
 
 #. type: item
 #: R-FAQ.texi:1781
@@ -3690,6 +4039,8 @@ msgid ""
 "Functions for reading and writing data stored by statistical software like "
 "Minitab, S, SAS, SPSS, Stata, Systat, etc."
 msgstr ""
+"Minitab, S, SAS, SPSS, Stata, Systat등과 같은 통계 소프트웨어에 의해 저장된 "
+"데이터르르 읽고 쓰는데 필요한 함수들이 포함되어 있습니다. "
 
 #. type: item
 #: R-FAQ.texi:1784
@@ -3701,6 +4052,8 @@ msgstr ""
 #: R-FAQ.texi:1786
 msgid "Lattice graphics, an implementation of Trellis Graphics functions."
 msgstr ""
+"트렐리스(Trellis) 그래픽 함수들의 구현체인 라띠스(lattice) 그래픽스가 포함되"
+"어 있습니다."
 
 #. type: item
 #: R-FAQ.texi:1786
@@ -3714,6 +4067,9 @@ msgid ""
 "Routines for GAMs and other generalized ridge regression problems with "
 "multiple smoothing parameter selection by GCV or UBRE."
 msgstr ""
+"GCV 또는 UBRE을 이용한 multiple soomthing parameter selection을 포함한 GAM 그"
+"리고 다른 generalized ridge regression 문제들을 위한 루틴들이 포함되어 있습니"
+"다. "
 
 #. type: item
 #: R-FAQ.texi:1789
@@ -3725,6 +4081,8 @@ msgstr ""
 #: R-FAQ.texi:1791
 msgid "Fit and compare Gaussian linear and nonlinear mixed-effects models."
 msgstr ""
+"가우시안(Gaussian) 선형과 비선형의 혼합 모델들(linear and nonlinear mixed-"
+"effects models)을 적합하고 비교하는 함수들이 포함되어 있습니다."
 
 #. type: item
 #: R-FAQ.texi:1791
@@ -3739,6 +4097,9 @@ msgid ""
 "networks''), and for multinomial log-linear models.  (Contained in the "
 "@file{VR} bundle for R versions prior to 2.10.0.)"
 msgstr ""
+"Single hideen perceptrons (``feed-forward neural networks'')와 다항로그선형모"
+"델(multinomial log-linear models)을 위한 소프트웨어입니다 (2.10.0 이전의 R 버"
+"전들에서는 @file{VR} 번들내에 포함되어 있었습니다)."
 
 #. type: item
 #: R-FAQ.texi:1795
@@ -3750,6 +4111,8 @@ msgstr ""
 #: R-FAQ.texi:1797
 msgid "Recursive PARTitioning and regression trees."
 msgstr ""
+"재귀적 파티셔닝(recursive partioning)과 회귀나무(regression trees)를 수행하"
+"는 함수들이 포함되어 있습니다."
 
 #. type: item
 #: R-FAQ.texi:1797
@@ -3764,6 +4127,10 @@ msgid ""
 "Statistics with S'' by W. Venables and B. Ripley.  (Contained in the "
 "@file{VR} bundle for R versions prior to 2.10.0.)"
 msgstr ""
+"W. Venables와 B. Ripley에 의하여 씌여진 ``Modern Applied Statistics with "
+"S''으로부터 크리깅과 포인트 패턴분석 (kriging and point pattern analysis)를 "
+"위한 함수들이 포함되어 있습니다 (2.10.0 이전의 R 버전들에서는 @file{VR} 번들"
+"내에 포함되어 있었습니다)."
 
 #. type: item
 #: R-FAQ.texi:1801
@@ -3775,6 +4142,8 @@ msgstr ""
 #: R-FAQ.texi:1803
 msgid "Functions for survival analysis, including penalized likelihood."
 msgstr ""
+"벌점가능성 함수(penalized likelihood)함수를 포함한 생존분석(survival "
+"analysis)에 필요한 함수들을 포함하고 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1807
@@ -3782,6 +4151,8 @@ msgid ""
 "See the @url{http://CRAN.R-project.org/web/packages/, , @CRAN{} contributed "
 "packages page} for more information."
 msgstr ""
+"더 많은 정보를 정보를 @url{http://CRAN.R-project.org/web/packages/, , "
+"@CRAN{} contributed packages page}에서 찾을 수 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1812
@@ -3791,6 +4162,9 @@ msgid ""
 "providing tools to automatically install all packages for special areas of "
 "interest."
 msgstr ""
+"많은 패키지들이 주제별로 검색이 가능하고 특정 주제에 대한 모든 패키지들을 자"
+"동적으로 설치할 수 있는 도구를 제공해주는 @url{http://CRAN.R-project.org/web/"
+"views/, @CRAN{} Task Views}내에 정리되어 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1821
@@ -3803,6 +4177,13 @@ msgid ""
 "Brian D. Ripley.  Note that this repository is a default repository for "
 "recent versions of R for Windows."
 msgstr ""
+"Windows에서 특수하게 빌드되어지지 않거나, 추가적인 소프트웨어를 필요로 하거"
+"나, 또는 Windows에 제삼의 라이브러리를 구입해야하는 일부 @CRAN{}패키지들은 "
+"Windows 바이너리 패키지의 형태로 이용할 수 없습니다.  그럼에도 불구하고, 이러"
+"한 패키지들의 일부는 Brian D. Ripley에 의하여 친절하게 제공되어지는 "
+"``@CRAN{} extras'' 저장소 @url{http://www.stats.ox.ac.uk/pub/RWin/}로부터 얻"
+"을 수 있습니다.  이 저장소는 Windows를 위한 최근의 R 버전들을 위한 기본저장소"
+"입니다."
 
 #. type: node
 #: R-FAQ.texi:1822
@@ -3824,6 +4205,13 @@ msgid ""
 "omegahat.org/} for information on most R packages available from the Omega "
 "project."
 msgstr ""
+"@url{http://www.omegahat.org/, Omega Project for Statistical Computing}은 웹"
+"기반의 소프트웨어에 특별한 주안점을 두고 있는 통계 어플리케이션, Java, Java "
+"버츄얼 머신, 그리고 분산 컴퓨팅(distributed computing)을 위한 다양한 오픈소"
+"스 소프트웨어를 제공하고 있습니다.  @acronym{CRAN} 스타일의 R 패키지 저장소"
+"는 @url{http://www.omegahat.org/R/}를 통하여 이용할 수 있습니다. Omega "
+"project로부터 가능한 대부분의 R 패키지들에 대한 정보는 @url{http://www."
+"omegahat.org/}에서 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1848
@@ -3840,6 +4228,17 @@ msgid ""
 "www.bioconductor.org/download/} for available packages and a complete "
 "taxonomy via BioC Views."
 msgstr ""
+"@url{http://www.bioconductor.org/, Bioconductor}는 오픈소스이며 게놈 데이터"
+"의 분석과 이해를 위한 오픈 개발 소프트웨어 프로젝트입니다.  대부분의 "
+"Bioconductor 구성요소들은 R 애드온 패키지들과 같이 배포됩니다.  대부분의 "
+"@url{http://www.bioconductor.org/packages/bioc/, Bioconductor software "
+"packages}들은 주로 DNA 마이크로어레이(microarray) 데이터 분석에 주력하였습니"
+"다.  프로젝트가 점점 발전하게 되면서, SAGE, sqeuence, 또는 SNP 데이터와 같은 "
+"모든 종류의 게놈 데이터 분석을 포함한 소프트웨어 패키지들의 기능적 범위가 넓"
+"어지게 되었습니다.  게다가 메타데이터(annotation, CDF, 그리고 probe)들과 실험"
+"데이터(experiment data) 패키지들도 존재합니다.  이용 가능한 패키지들과 BioC "
+"View를 통한 완전한 분류체계를 위해서는 @url{http://www.bioconductor.org/"
+"download/}를 살펴보세요."
 
 #. type: Plain text
 #: R-FAQ.texi:1856
@@ -3849,6 +4248,9 @@ msgid ""
 "particular, R-Forge provides a @CRAN{} style repository at @url{http://R-"
 "Forge.R-project.org/}."
 msgstr ""
+"더 많은 패키지들을 위에서 언급된 세가지 기본 저장소 (@CRAN{}, Bioconductor 그"
+"리고 Omegahat) 외에서도 찾을 수 있습니다. 특히, R-Forge는 @CRAN{} 스타일의 저"
+"장소 @url{http://R-Forge.R-project.org/}를 제공합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:1859
@@ -3856,6 +4258,8 @@ msgid ""
 "More code has been posted to the R-help mailing list, and can be obtained "
 "from the mailing list archive."
 msgstr ""
+"더 많은 코드들이 R-help 메일링 리스트에 올라오고 있으며, 메일링 리스트 보관소"
+"로부터 이들을 확인할 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:1860
@@ -3864,7 +4268,7 @@ msgstr ""
 #: R-FAQ.texi:1998
 #, no-wrap
 msgid "How can add-on packages be used?"
-msgstr ""
+msgstr "어떻게 애드온 패키지들을 설치할 수 있나요?"
 
 #. type: Plain text
 #: R-FAQ.texi:1868
@@ -3875,6 +4279,15 @@ msgid ""
 "such a package file.  Provided that @command{tar} and @command{gzip} are "
 "available on your system, type"
 msgstr ""
+"(Unix와 같은 환경에서만 사용할 수 있습니다) @CRAN{}의 애드온 패키지들은 실제"
+"로 한개 이상의 패키지들은 포함하는 ``bundles''(번들)과 같이 @code{@var{pkg}"
+"_@var{version}.tar.gz}의 이름을 가진 gzip으로 압축된 tar 파일로 제공되어집니"
+"다.  @var{path}를 그러한 패키지 파일에 대한 경로라고 가정합니다. 만약 "
+"@command{tar}와 @command{gzip}을 사용가능하다면, 라이브러리 검색경로 "
+"(library search path)내 첫번째 디렉토리에서 갈려져 나오는 라이브러리 트리"
+"(library tree)에 설치하고자 한다면 쉘프롬프트에서 아래와 같이 입력해 보세"
+"요.  (검색경로가 어떻게 결정되는지에 대한 자세한 사항은 @code{.libPahts()}에 "
+"대한 도움말 페이지를 살펴보시길 바랍니다)."
 
 #. type: example
 #: R-FAQ.texi:1871
@@ -3889,6 +4302,8 @@ msgid ""
 "directory in your library search path (see the help page for @code{."
 "libPaths()} for details on how the search path is determined)."
 msgstr ""
+"여기에서 @var{lib}는 설치를 하고자 하는 라이브러리 트리(library tree)에 대한 "
+"경로를 의미합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:1879
@@ -3913,6 +4328,10 @@ msgid ""
 "from within R if you have access to repositories such as @CRAN{}.  See the "
 "help page for @code{available.packages()} for more information."
 msgstr ""
+"만약 @CRAN{}과 같은 저장소들에 접근할 수 있다면, 더욱 더 편리하게 사용자는 R "
+"내에서 패키지들을 설치하고 이들을 자동으로 업데이트 할 수 있습니다.  이에 대"
+"한 더 많은 정보들을 @code{available.packages()}의 도움말 페이지로부터 찾을 "
+"수 있습니다. "
 
 #. type: node
 #: R-FAQ.texi:1918
@@ -3921,13 +4340,15 @@ msgstr ""
 #: R-FAQ.texi:2019
 #, no-wrap
 msgid "How can add-on packages be removed?"
-msgstr ""
+msgstr "어떻게 애드온 패키지들을 이용할 수 있나요?"
 
 #. type: Plain text
 #: R-FAQ.texi:1922
 msgid ""
 "To find out which additional packages are available on your system, type"
 msgstr ""
+"사용자의 시스템에 이용이 가능한 추가적인 패키지들을 확인하기 위해서는 R 프롬"
+"프트에 아래와 같이 입력해보세요."
 
 #. type: example
 #: R-FAQ.texi:1925
@@ -3943,7 +4364,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:1931
 msgid "This produces something like"
-msgstr ""
+msgstr "다음과 같은 결과를 생성해 줄 것입니다."
 
 #. type: smallexample
 #: R-FAQ.texi:1936
@@ -4008,7 +4429,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:1976
 msgid "You can ``load'' the installed package @var{pkg} by"
-msgstr ""
+msgstr "설치된 패키지 @var{pkg}를 다음과 같은 방법으로 로드할 수 있습니다."
 
 #. type: example
 #: R-FAQ.texi:1979
@@ -4020,6 +4441,8 @@ msgstr ""
 #: R-FAQ.texi:1982
 msgid "You can then find out which functions it provides by typing one of"
 msgstr ""
+"어떤 함수들이 해당 패키지들로부터 제공되는지 아래에 나열된 명령어들 중 하나"
+"를 입력해봄으로서 확인할 수 있습니다."
 
 #. type: example
 #: R-FAQ.texi:1986
@@ -4033,6 +4456,8 @@ msgstr ""
 #: R-FAQ.texi:1989
 msgid "You can unload the loaded package @var{pkg} by"
 msgstr ""
+"사용자는 다음과 같은 방법으로 패키지 @var{pkg}를 로드하거나 언로드 할 수 있습"
+"니다."
 
 #. type: example
 #: R-FAQ.texi:1992
@@ -4046,6 +4471,8 @@ msgid ""
 "(where @code{unload = TRUE} is needed only for packages with a namespace, "
 "see @code{?unload})."
 msgstr ""
+"(여기에서 @code{unload=TRUE}는 네임스페이스가 있는 패키지들에만 필요합니다. "
+"@code{?unload}를 살펴보세요)."
 
 #. type: node
 #: R-FAQ.texi:1998
@@ -4054,7 +4481,7 @@ msgstr ""
 #: R-FAQ.texi:2048
 #, no-wrap
 msgid "How can I create an R package?"
-msgstr ""
+msgstr "어떻게 애드온 패키지들을 제거할 수 있나요?"
 
 #. type: Plain text
 #: R-FAQ.texi:2002
@@ -4075,11 +4502,16 @@ msgid ""
 "non-null, and from the default library otherwise.  (Versions of R prior to "
 "1.3.0 removed from the default library by default.)"
 msgstr ""
+"만약, @env{R_LIBS}가 설정되어 null이 아니면, @env{R_LIBS}내에 주어진 첫번째 "
+"디렉토리부터 갈려나오는 라이브러리 트리로부터 @var{pkg_1}, @dots{}, "
+"@var{pkg_n}을 제거합니다. 그렇지 않다면 디폴트 라이브러리로부터 제거됩니다. "
+"(1.3.0 이전의 R 버전들은 기본적으로 디폴트 라이브러리로부터 제거되었습니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:2014
 msgid "To remove from library @var{lib}, do"
 msgstr ""
+"라이브러리 @var{lib}으로부터 제거하기 위해서는 아래와 같이 입력하세요. "
 
 #. type: example
 #: R-FAQ.texi:2017
@@ -4097,6 +4529,13 @@ msgid ""
 "@file{INDEX}, @file{NAMESPACE}, @file{configure}, @file{cleanup}, "
 "@file{LICENSE}, @file{LICENCE}, @file{COPYING} and @file{NEWS}."
 msgstr ""
+"패키지는 @file{DESCRIPTION}을 포함하는 서브디렉토리와 @file{R}, @file{data}, "
+"@file{demo}, @file{exec}, @file{inst}, @file{inst}, @file{man}, @file{po}, "
+"@file{src}, 그리고 @file{tests}라는 서브디렉토리들로 구성되어 있습니다 (이들 "
+"중 몇가지는 빠질 수도 있습니다).  패키지 서브디렉토리느느 또한 @file{INDEX}, "
+"@file{NAMESPACE}, @file{configure}, @file{cleanup}, @file{LICENSE}, "
+"@file{LICENCE}, @file{COPYING}, 그리고 @file{NEWS} 파일들을 포함할 수도 있습"
+"니다."
 
 #. type: ifclear
 #: R-FAQ.texi:2036
@@ -4107,6 +4546,11 @@ msgid ""
 "the configure and cleanup mechanisms, and on automated package checking and "
 "building."
 msgstr ""
+"더 자세한 사항은 @cite{Writing R Extensions} 문서의 ``Creating R packages'' "
+"섹션을 살펴보세요.  이 매뉴얼은 R 배포에 포함되어 있으며 @pxref{What "
+"documentation exists for R?}, 패키지의 구조, 설정(configure)과 클린업"
+"(cleanup) 메카니즘, 그리고 패키지의 확인(checking)과 구축(building)에 대한 정"
+"보를 제공합니다."
 
 #. type: ifset
 #: R-FAQ.texi:2040
@@ -4114,6 +4558,8 @@ msgid ""
 "@xref{Creating R packages, , Creating R packages, R-exts, Writing R "
 "Extensions}, for details."
 msgstr ""
+"더 자세한 사항은 @xref{Creating R packages, , Creating R packages, R-exts, "
+"Writing R Extensions}를 살펴보시길 바랍니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2045
@@ -4122,6 +4568,9 @@ msgid ""
 "set up directories, save data and code, and create skeleton help files for a "
 "set of R functions and datasets."
 msgstr ""
+"디렉토리들을 지정하고, 데이터와 코드를 저장하며, R함수들과 데이터세들에 대한 "
+"도움말 파일들의 구조를 생성하는데 사용되는 함수 @code{package.skeleton()}가 "
+"R 버전 1.3.0에서 추가되었습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2047
@@ -4137,6 +4586,10 @@ msgid ""
 "running R.  So, simply using it and communicating problems is certainly of "
 "great value."
 msgstr ""
+"R은 활발히 개발중이므로, 버그가 생길 수 있는 위험이 항상 존재합니다.  또한 개"
+"발자들은 R을 실행할 수 있는 모든 가능한 기계들에 대하여 접근하지 못합니다. 따"
+"라서, 이들을 이요하면서 문제들에 대해서 알려주는 것은 대단히 큰 가치를 가지"
+"고 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2060
@@ -4146,6 +4599,10 @@ msgid ""
 "statistical system.  It contains (pointers to) TODO lists, RFCs, various "
 "other writeups, ideas lists, and SVN miscellanea."
 msgstr ""
+"@url{http://developer.R-project.org/, R Developer Page}는 더도 아니고 덜도 아"
+"니게 R 통게시스템을 위한 아이디어들과 플랜들을 위한 중간 저장소와 같이 이용됩"
+"니다.  여기에는 TODO 목록, RFC, 다양한 기록들, 아이디어 목록, 그리고 SVN "
+"miscelanea등이 포함되어 있습니다. "
 
 #. type: node
 #: R-FAQ.texi:2061
@@ -4244,6 +4701,12 @@ msgid ""
 "dialects (R, S 3/4, and @SPLUS{} 3.x/4.x/5.x/6.x/7.x), LispStat dialects "
 "(XLispStat, ViSta), SAS, Stata, and BUGS."
 msgstr ""
+"통계 프로그램들과 통계 프로세스들 간의 기본 인터페이스를 제공하는 "
+"@acronym{ESS} (``Emacs Speaks Statistics'') 라고 불리는 패키지가 있습니다. 이"
+"는 통계 프로그래밍과 데이터 분석간의 쌍방향 소통을 위한 지원을 제공하는 것이 "
+"목적입니다. 지원되는 언어는 R, S 3/4, 그리고 S-Plus 3.x/4.x/5.x/6.x/7.x 와 같"
+"은 S 계열의 언어들(dialects), XLispStat, ViSta와 같은 LispStat계열의 언어들, "
+"SAS, Stata, 그리고 BUGS가 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2090
@@ -4258,6 +4721,14 @@ msgid ""
 "efficiency for statistical programming and data analysis, over the usual "
 "tools."
 msgstr ""
+"@acronym{ESS}는 버그 수정과  S/@SPLUS{} 버전 3만을 지원하는 @acronym{GNU} "
+"Emacs 확장에 대하나 필요성에 의해서 발달하였습니다. 현재의 개발자들은 "
+"XEmacs, R, S4, 그리고 MS Windows에 대한 지원을 갈망했습니다.  게다가, R, "
+"Stata, 그리고 SAS를 위한 개발되어질 새로운 방식과 사용자 인터페이스에 대해서 "
+"표준 이맥스 사용법을 따르는 두개의 그룹모두를 도움으로서 인터페이스와 프레임"
+"워크를 하나로 통합하는 것이 사용자와 개발자 모두에게 도움이 된다고 느꼈습니"
+"다. 그 결과로 일반적인 도구를 이용하는 것보다 통계 프로그래밍과 데이터 분석"
+"에 대한 능률이 증가되게 되었습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2103
@@ -4274,6 +4745,15 @@ msgid ""
 "manipulating and editing saved transcripts, and re-evaluating commands from "
 "transcript files)."
 msgstr ""
+"R에 대한 지원은 R 소스코드를 편집하는데 필요한 코드 (구문적 띄어쓰기, 소스코"
+"드의 하이라이팅, 코드의 부분적 평가, 코드의 로딩과 오류 체크, 그리고 소스코"
+"드 수정 관리)과 문서화 (구문적 띄어쓰기, 소스코드의 하이라이팅, 실행 중인 "
+"@acronym{ESS} 프로세스에 예제 보내기, 그리고 미리보기), Emacs 내에서 R 프로세"
+"스와의 소통 (명령어 라인 편집, 검색이 가능한 명령어 히스토리, R 개체와 파일명"
+"에 대한 명령어 완성기능, 객체와 검색목록들에 대한 빠른 엑세스, 트랜스크립트 "
+"레코딩, 그리고 도움말과의 인터페이스), 그리고 기록의 조작 (레코딩과 트랜스크"
+"립트 파일들의 저장, 저장된 트랜스크립트의 편집과 조작, 트랜스크립 파일로부터"
+"의 명령어에 대한 재평가)를 포함합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2107
@@ -4282,11 +4762,14 @@ msgid ""
 "@url{http://ESS.R-project.org/, ESS web page}.  The @HTML{} version of the "
 "documentation can be found at @url{http://stat.ethz.ch/ESS/}."
 msgstr ""
+"가장 안정적인 버전의 @acronym{ESS}은 @CRAN{} 또는 @url{http://ESS.R-project."
+"org/, ESS web page}를 통하여 얻을 수 있습니다. @HTML{} 버전의 문서는 "
+"@url{http://stat.ethz.ch/ESS/}로부터 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2109
 msgid "@acronym{ESS} comes with detailed installation instructions."
-msgstr ""
+msgstr "@acronym{ESS}는 자세한 설치 사항들고 함께 주어집니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2112
@@ -4294,6 +4777,8 @@ msgid ""
 "For help with @acronym{ESS}, send email to @email{ESS-help@@stat.math.ethz."
 "ch}."
 msgstr ""
+"@acronym{ESS}에 대한 도움이 필요하다면 @email{ESS-help@@stat.math.ethz.ch}로 "
+"이메일을 보내시길 바랍니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2117
@@ -4303,6 +4788,10 @@ msgid ""
 "by typing @kbd{M-x ess-submit-bug-report} or using the [ESS] or [iESS] "
 "pulldown menus."
 msgstr ""
+"@acronym{ESS}에 대한 버그 리포트 또는 제안사항들을 @email{ESS-bugs@@stat."
+"math.ethz.ch}로 보내주세요. 이를 위한 가장 쉬운 방법은 Emacs안에서 @kbd{M-x "
+"ess-submit-bug-report}을 입력하거나, [ESS] 또는 [iESS] 풀다운 메뉴를 이용하"
+"는 것입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2125
@@ -4312,6 +4801,9 @@ msgid ""
 "interaction buffer using Font Lock mode, as well as a very convenient "
 "interface to the R help system."
 msgstr ""
+"네, @emph{물론입니다}. Inferior R 모드는 readline/history 메카니즘, 객체이름 "
+"완성, 폰트락모드 (Font Lock mode)를 이용한 인터랙션 버퍼(interaction buffer)"
+"의 구문강조기능, 또한 R도움말로의 편리한 인터페이스를 제공합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2133
@@ -4323,6 +4815,11 @@ msgid ""
 "system, in order to maintain a log of changes in your programs and data, as "
 "well as to allow for the retrieval of past versions of the code."
 msgstr ""
+"물론, 이는 Emacs를 이용하여 R 소스를 편집하기 위한 메카니즘과도 잘 합쳐집니"
+"다.  Emacs 버퍼에 코드를 작성하고, 전체 또는 부분을 실행하기 위해 R로 보낼 "
+"수 있습니다.  이것은 데이터 분석과 프로그래밍에 도움이 됩니다.  프로그램과 데"
+"이터의 변경에 대한 기록을 잘 유지하고 또한 이전 버전의 코드들을 다시 복구하"
+"기 위하여 버전관리시스템(revision control system)과도 통합할 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2136
@@ -4330,6 +4827,8 @@ msgid ""
 "In addition, it allows you to keep a record of your session, which can also "
 "be used for error recovery through the use of the transcript mode."
 msgstr ""
+"추가로, 이는 트랜스크립트 모드(transcript mode)의 사용을 통하여 오류 복구"
+"(error recovery)에 이용될 수도 있는 세션의 기록을 보관하도록 허용합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2139
@@ -4337,6 +4836,8 @@ msgid ""
 "To specify command line arguments for the inferior R process, use @kbd{C-u M-"
 "x R} for starting R."
 msgstr ""
+"Inferior R 프로세스를 위하여 명령어 라인 인자들을 지정하기 위해서는 @kbd{C-u "
+"M-x R}을 이용하여 R을 시작하세요."
 
 #. type: Plain text
 #: R-FAQ.texi:2153
@@ -4349,6 +4850,13 @@ msgid ""
 "R/}, but see also below), and start the binary with the desired arguments (e."
 "g., @kbd{run --quiet})."
 msgstr ""
+"``from within Emacs''(이맥스 안쪽에서) R을 디버그하기 위해서는, 몇 가지 가능"
+"성들이 있습니다.  권장되어지는 디버거 GDB가 있는 Emacs GUD (Grand Unified "
+"Debugger) 라이브러리를 사용하기 위해서는 @kbd{M-x gdb}를 입력하고 R "
+"@emph{binary}에 인자로서 경로를 줍니다. @command{gdb} 프롬프트에서 "
+"@env{R_HOME}과 필요하다면 다른 환경변수들 (즉, @kbd{set env R_HOME /path/to/"
+"R}을 이용하여, 그러나 아래도 살펴보세요)를 설정하고, 요구되어지는 인자들과 함"
+"께 바이너리를 시작합니다 (즉, @kbd{run --quiet})."
 
 #. type: Plain text
 #: R-FAQ.texi:2157
@@ -4357,6 +4865,9 @@ msgid ""
 "g d b @key{RET}} to start an inferior R process with arguments @option{-d "
 "gdb}."
 msgstr ""
+"만약 @acronym{ESS}를 가지고 있다면, @option{-d gdb} 인자와 함께 inferior R 프"
+"로세스를 실행하기 위해서 @kbd{C-u M-x R @key{RET} - d @key{SPC} g d b "
+"@key{RET}}를 할 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2167
@@ -4370,6 +4881,14 @@ msgid ""
 "windows.  Within the @code{*R*} window you have all the @acronym{ESS} "
 "facilities, such as object-name completion, that we know and love."
 msgstr ""
+"세 번째 옵션은 @acronym{ESS}(@kbd{M-x R})를 통해 inferior R 프로세스를 시작하"
+"고나서 디버그 할 프로그램 R 바이너리 (전체경로의 이름을 사용함으로서)를 주는 "
+"GUD (@kbd{M-x gdb})를 시작합니다.  현재 실행되고있는 R 프로세스의 프로세스 번"
+"호를 찾기 위해서 프로그램 @command{ps}를 사용하고, 그 프로세스에 부착하기 위"
+"해서 gdb 내에서 @code{attach} 명령을 이용합니다. 이렇게 하는 하나의 장점은 사"
+"용자가 @code{*R*}과 @code{*gud-gdb*}이라는 분리된 창을 가진다는 것입니다. "
+"@code{*R*} 창에서는 객체명완성 (object-name completion)과 같이 우리가 알고 사"
+"랑하는 모든 @acronym{ESS} 기능들이 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2174
@@ -4381,6 +4900,12 @@ msgid ""
 "and be used to set up the environment and the search paths for the source, e."
 "g.@: as follows:"
 msgstr ""
+"Emacs 내에서 디버깅을 위하여 GUD 모드를 사용할 떄, 코드가 들어있는 디렉토리"
+"를 현재의 작업디렉토리로 사용하고 이로부터 R 바이너리에 심볼릭 링크(symbolic "
+"link)를 만드는 것이 가장 편리하다는 것을 아마도 알게 될 수도 있습니다.  그렇"
+"게 하면 다음의 예제에서 보이는 바와 같이 @file{.gdbinit}는 코드와 함께 디렉토"
+"리 안에 계속 있고, 소스에 대한 환경과 검색경로들을 설정하는데 사용될 수 있습"
+"니다."
 
 #. type: example
 #: R-FAQ.texi:2183
@@ -4663,6 +5188,11 @@ msgid ""
 "named components.  Do not set @code{x[i]} or @code{x[[i]]} to @code{NULL}, "
 "because this will remove the corresponding component from the list."
 msgstr ""
+"이렇게 하는 것은 리스트 @code{x}의 @code{i}번째 구성요소를 @code{NULL}로 지정"
+"하게 해줍니다.  동일한 방식이 구성요소의 이름을 이용할 때도 적용됩니다. 그러"
+"나, @code{x[i]} 또는 @code{x[[i]]}를 @code{NULL}의 값을 대입하지는 마시길 바"
+"랍니다.   그 이유는 이러한 대입은 해당 구성요소 자체를 리스트로부터 삭제합니"
+"다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2279
@@ -4670,6 +5200,8 @@ msgid ""
 "For dropping the row names of a matrix @code{x}, it may be easier to use "
 "@code{rownames(x) <- NULL}, similarly for column names."
 msgstr ""
+"행렬 @code{x}의 행의 이름들을 없애기 위해서는 @code{rownames(x) <- NULL}를 하"
+"세요. 이러한 방법은 열의 이름들을 없애는데에도 유사하게 적용됩니다."
 
 #. type: node
 #: R-FAQ.texi:2280
@@ -4688,6 +5220,10 @@ msgid ""
 "after @kbd{q(\"yes\")}.)  Using @code{save.image(@var{file})} one can save "
 "the image under a different name."
 msgstr ""
+"@code{save.image()} 함수는 사용자의 @code{.GlobalEnv}에 있는 객체들을 @file{."
+"RData}의 형식으로 R의 스타트업 디렉토리에 저장합니다. (이것은 @kbd{q(\"yes"
+"\")}라고 하는 것과 동일합니다).   @code{save.image(@var{file})}을 이용하여 다"
+"른 이름으로 저장하는 할 수도 있습니다. "
 
 #. type: node
 #: R-FAQ.texi:2288
@@ -4696,7 +5232,7 @@ msgstr ""
 #: R-FAQ.texi:2343
 #, no-wrap
 msgid "How can I get eval() and D() to work?"
-msgstr ""
+msgstr "어떻게 해야 나의 작업공간을 깨끗하게 비울 수 있나요?"
 
 #. type: Plain text
 #: R-FAQ.texi:2293
@@ -4704,6 +5240,8 @@ msgid ""
 "To remove all objects in the currently active environment (typically @code{."
 "GlobalEnv}), you can do"
 msgstr ""
+"현재 활성화 되어있는 프로그래밍 환경 (주로 @code{.GlobalEnv}를 의미함)에 있"
+"는 모든 객체를 지우려고 한다면 다음과 같이 하면 됩니다."
 
 #. type: example
 #: R-FAQ.texi:2296
@@ -4717,6 +5255,8 @@ msgid ""
 "(Without @option{all = TRUE}, only the objects with names not starting with "
 "a @samp{.} are removed.)"
 msgstr ""
+"(만약 @option{all = TRUE}을 사용하지 않는다면, @samp{.}으로 시작하지 않는 객"
+"체들만이 삭제됩니다.)"
 
 #. type: node
 #: R-FAQ.texi:2302
@@ -4735,6 +5275,10 @@ msgid ""
 "is not found, or print the value of the wrong @code{x}.  The other one will "
 "likely return zero if @code{x} exists, and an error otherwise."
 msgstr ""
+"만약 @code{eval(print(x), envir = e)} 또는 @code{D(x^2, \"x\")}를 실행하고자 "
+"한다면 예상치 않은 결과가 나타날 것입니다. 전자는 @code{x}를 찾을 수 없다고 "
+"하거나, 잘못된 @code{x}의 값을 출력할 것입니다.  후자는 만약 @code{x}가 존재"
+"한다면 0값을 돌려줄 수 있으며, 그렇지 않다면 에러를 보여줄 것입니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2317
@@ -4746,6 +5290,10 @@ msgid ""
 "``quoting'' the first argument upon surrounding it with "
 "@code{expression()}.  For example,"
 msgstr ""
+"두가지 경우 모두 다 불러들어온 환경 내에서 첫번째 인자가 평가되기 때문입니"
+"다.  객체의 모드가 반드시 @code{\"expression\"} 또는 @code{\"call\"}이어야 하"
+"고 그 결과가 평가되거나 미분된 것입니다. 이를 해결하기 위해서는 아래와 같이 "
+"반드시 첫번째 인자를 큰 따옴표로 묶어줘야 한다는것입니다. "
 
 #. type: example
 #: R-FAQ.texi:2321
@@ -4764,6 +5312,10 @@ msgid ""
 "passed as a parameter, or is the result of a function call.  Consider for "
 "instance the semantics in cases like"
 msgstr ""
+"이렇게 하는 것이 처음에는 다소 이상해 보일 수 있으나, 이것은 논리적으로인 것 "
+"뿐입니다.  직관적으로 작동하는 방식은 구현하기 쉬울 수도 있지만, 인자로서 변"
+"수를 포함하는 표현식 또는 호출하는 함수의 결과는 문제를 야기합니다.  예를들"
+"면, 다음과 같은 경우들입니다. "
 
 #. type: example
 #: R-FAQ.texi:2331
@@ -4791,6 +5343,7 @@ msgstr ""
 #: R-FAQ.texi:2342
 msgid "See the help page for @code{deriv()} for more examples."
 msgstr ""
+"더 많은 예제들을 @code{deriv()}의 도움말 페이지를 통하여 확인할 수 있습니다. "
 
 #. type: node
 #: R-FAQ.texi:2343
@@ -4811,6 +5364,12 @@ msgid ""
 "losing the unnecessary dimension.  After much discussion this has been "
 "determined to be a @emph{feature}."
 msgstr ""
+"하나의 열이나 행으로 이루어진 행렬은 서브스크립팅 연산(subscripting "
+"operation)에 의해 생성됩니다.  예를들면 @code{row <- mat[2,]}과 같습니다.  이"
+"는 기본적으로 벡터로 변환됩니다.  이와 유사하게 @w{2 x 3 x 1 x 4}이라는 차원"
+"을 가고 있는 배열을 서브스크립팅에 의해서 생성되어진다고 하면, 불필요한 차원"
+"을 삭제되어 @w{2 x 3 x 4}이라는 차원을 가진 배열로 강제변환이 되게 됩니다.  "
+"많은 논의를 거쳐 이는 @emph{feature}로 결정되었습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2355
@@ -4818,6 +5377,8 @@ msgid ""
 "To prevent this happening, add the option @option{drop = FALSE} to the "
 "subscripting.  For example,"
 msgstr ""
+"이러한 경우를 방지하기 위해는 서브스크립팅을 할 때 @option{drop=FALSE}를 사용"
+"해보세요."
 
 #. type: example
 #: R-FAQ.texi:2360
@@ -4834,6 +5395,9 @@ msgid ""
 "The @option{drop = FALSE} option should be used defensively when "
 "programming.  For example, the statement"
 msgstr ""
+"@option{drop = FALSE} 옵션은 프로그래밍을 할 때에 디펜시브하게(defensively) "
+"사용되어야만 합니다.  예를들어, 다음과 같은 표현에서 @code{index}의 길이가 1 "
+"이라면 행렬이 아닌 벡터를 반환하므로 에러를 불러일으킬 것입니다."
 
 #. type: example
 #: R-FAQ.texi:2367
@@ -4874,6 +5438,12 @@ msgid ""
 "it loads the corresponding package @var{pkg} and reevaluates @var{name} in "
 "the new package's environment."
 msgstr ""
+"R은 @code{.AutoloadEnv}이라고 불리는 특별한 환경(environment)가 있습니다.  "
+"@var{name}과  @var{pkg}가 객체의 이름과 이를 포함하는 패키지를 건네주는 문자"
+"열(string)인 곳에서 @kbd{autoload(@var{name}, @var{pkg})}를 이용하여 이 환경"
+"내에 정보를 저장하게 됩니다.  R이 @var{name}을 평가하려고 할때, 이에 해당하"
+"는 패키지 @var{pkg}를 로드하고 새로운 패키지의 환경내에서 @var{name}을 재 평"
+"가합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2391
@@ -4881,11 +5451,14 @@ msgid ""
 "Using this mechanism makes R behave as if the package was loaded, but does "
 "not occupy memory (yet)."
 msgstr ""
+"이러한 메카니즘을 이용하여 R은 만약 패키지가 로드되었더라도 (아직) 메모리를 "
+"차지않는 것과 같이 작동하도록 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2393
 msgid "See the help page for @code{autoload()} for a very nice example."
 msgstr ""
+"매우 좋은 예제들이 @code{autoload()} 도움말에 있으므로 살펴보시길 바랍니다."
 
 #. type: node
 #: R-FAQ.texi:2394
@@ -4905,11 +5478,17 @@ msgid ""
 "options, but should never directly be assigned to unless you want to drive "
 "yourself crazy---simply pretend that it is a ``read-only'' variable."
 msgstr ""
+"함수 @code{options()}는 R이 연산을 수행하고 이의 결과를 보여주는데 방법들에 "
+"있어서 영향을 미치는 다양한 전역(global) 옵션들을 설정하고 확인하도록 해줍니"
+"다.  @code{.Options}의 값은 이러한 옵션들의 현재 값을 가지고 있으나, 만약 당"
+"신이 미쳐버리고 싶지 않다면 (unless you want to drive yourself crazy) 가급적"
+"이면 이를 ``read-only''(읽기 전용)으로 두고, 직접적으로 조절하지 마시길 바랍"
+"니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2405
 msgid "For example, given"
-msgstr ""
+msgstr "예를들어, 아래의 예를 살펴보세요."
 
 #. type: example
 #: R-FAQ.texi:2415
@@ -4928,7 +5507,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2419
 msgid "we obtain:"
-msgstr ""
+msgstr "위의 예제로부터 우리는 아래의 결과를 얻을 것입니다."
 
 #. type: example
 #: R-FAQ.texi:2425
@@ -4948,6 +5527,10 @@ msgid ""
 "Options}, either in @code{.GlobalEnv} or in a function environment (frame), "
 "are just silently disregarded."
 msgstr ""
+"실제로 쓰여지는 것은 @code{.Options}가 가지고 있는 @emph{global}(전역)값이"
+"며, @kbd{options(OPT=VAL)}을 이용하여 이를 정확하게 업데이트 합니다.  @code{."
+"GlobalEnv} 또는 함수환경 (function frame, 즉 frame)내에 있는 @code{.Options}"
+"내의 로컬카피(local copies)들은 조용히 무시될 것입니다."
 
 #. type: node
 #: R-FAQ.texi:2432
@@ -4965,6 +5548,10 @@ msgid ""
 "character, so that for example one can enter a newline as @samp{\\n}.  When "
 "you really need a @samp{\\}, you have to escape it with another @samp{\\}."
 msgstr ""
+"R은 C-스타일의 문자열조작(string handling)을 이용하기 때문에, @samp{\\}를 이"
+"스케이프 문자(escape character)와 같이 처리하게 됩니다.  예를들면 @samp{\\n}"
+"은 개행문자(newline)을 입력하기 위해서 사용합니다.  @samp{\\}이라는 문자가 정"
+"말로 필요할 때는 또 다른 @samp{\\}을 이용하여 함께 사용해야 합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2442
@@ -4972,6 +5559,9 @@ msgid ""
 "Thus, in filenames use something like @code{\"c:\\\\data\\\\money.dat\"}.  "
 "You can also replace @samp{\\} by @samp{/} (@code{\"c:/data/money.dat\"})."
 msgstr ""
+"따라서, @code{\"c:\\\\data\\\\money.dat\"}와 같은 파일명을 작성하게 됩니다.  "
+"또한 @samp{\\}를 @samp{/}로 변경하여 @code{\"c:/data/money.dat\"}와 같이 사용"
+"할 수도 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2443
@@ -4991,6 +5581,12 @@ msgid ""
 "to R have used all the available colors.  (How many colors are available "
 "depends on the X configuration; sometimes only 256 colors can be used.)"
 msgstr ""
+"X11 장치를 이용할 때 @code{demo(\"image\")}와 같이 플랏팅(plotting) 할때 "
+"``Error: color allocation error'' (오류: 색상 할당 에러입니다)라는 메시지들 "
+"보게 될 때가 있습니다. 이것은 X의 문제이며 R과 간접적으로 관련이 있는 것입니"
+"다.  이것은 R을 실행하기 전에 어플리케이션들이 가능한 모든 색상들을 사용했을 "
+"때 발생하게 됩니다.  (얼마나 많은 색상의 사용이 가능한지는 X의 설정에 따라 다"
+"릅니다; 때때로 오로지 256색상만이 사용될 수도 있습니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:2457
@@ -5000,6 +5596,11 @@ msgid ""
 "the @option{-no-install} (to use the default colormap) or the @option{-"
 "install} (to install a private colormap) option."
 msgstr ""
+"``eating'' color (먹는 색, 즉 보여지지 않는 색)으로 악명이 높은 어플리케이션"
+"은  Netscape입니다.  만약 Netscape를 실행할때 이러한 문제가 발생한다면, 기본 "
+"컬러맵(default colormap)을 이용하는 @option{-no-install} 또는 특정컬러맵"
+"(private colormap)을 이용하는 @option{-install} 옵션을 이용하여 재시작을 시도"
+"해보세요."
 
 #. type: Plain text
 #: R-FAQ.texi:2461
@@ -5008,6 +5609,9 @@ msgid ""
 "cube\"} rather than the default @code{\"pseudo\"}.  See the help page for "
 "@code{X11()} for more information."
 msgstr ""
+"@code{X11()}의 기본값인 @code{\"pseudo\"}를 사용하기 대신에 @code{\"pseudo."
+"cube\"}로 설정할 수도 있습니다.  더 많은 내용에 대해서는 @code{X11()} 도움말 "
+"페이지를 참고해주세요."
 
 #. type: node
 #: R-FAQ.texi:2474
@@ -5025,6 +5629,9 @@ msgid ""
 "in a file), they come in as factors.  If @code{f} is such a factor object, "
 "you can use"
 msgstr ""
+"R로 수치형 데이터를 읽어 들일때 (일반적으로 파일을 읽을때), 이들은 요인형"
+"(factor)로 인식되어 읽어지는 경우가 있습니다. 만약 @code{f}가 이러한 요인형 "
+"객체라면, 아래와 같이 한다면 수치형으로 다시 돌려주게 됩니다. "
 
 #. type: example
 #: R-FAQ.texi:2483
@@ -5035,7 +5642,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2487
 msgid "to get the numbers back.  More efficient, but harder to remember, is"
-msgstr ""
+msgstr "좀 더 효율적이지만, 기억하기는 어려운 방법으로는 아래와 같이 합니다. "
 
 #. type: example
 #: R-FAQ.texi:2490
@@ -5050,6 +5657,9 @@ msgid ""
 "task at hand (as @code{as.numeric()} or @code{unclass()} give the internal "
 "codes)."
 msgstr ""
+"어떠한 경우라도 주어진 작업에 대해서 @code{as.numeric()} 또는 그 비슷한 것들"
+"을 호출하지 마시길 바랍니다 (그 이유는 @code{as.numeric()} 또는 "
+"@code{unclass()}는 내부코드들을 보여줄 것이기 때문입니다)."
 
 #. type: node
 #: R-FAQ.texi:2496
@@ -5067,6 +5677,9 @@ msgid ""
 "@pkg{grid}) provides graphical functionality that is compatible with most "
 "Trellis commands."
 msgstr ""
+"추천 패키지인 @CRANpkg{lattice}는 베이스 패키지인 @pkg{grid}에 기초를 두고 있"
+"습니다.  이 패키지는 대부분의 트렐리스(Trellis) 명령어와 호환되는 그래픽 기능"
+"을 제공하고 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2509
@@ -5078,6 +5691,11 @@ msgid ""
 "allowing to specify (and fix against device resizing) the aspect ratio of "
 "the plot."
 msgstr ""
+"사용자가 원하는 것들 중 적어도 몇 가지는 가능한 @code{coplot()}과 "
+"@code{dotchart()}를 살펴보세요.  R에서 제공하는 @code{pairs()}는 꽤 일반적이"
+"며, @code{splom()}의 대부분의 기능을 제공하고 있습니다. 또한, R의 기본적인 플"
+"랏 메소드는 플랏의 영상비(aspect ratio)를 지정 (및 장치의 크기에 따라 수정)"
+"할 수 있는 인자를 가지고 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:2513
@@ -5085,6 +5703,9 @@ msgid ""
 "(Because the word ``Trellis'' has been claimed as a trademark we do not use "
 "it in R.  The name ``lattice'' has been chosen for the R equivalent.)"
 msgstr ""
+"(단어 ``Trellis''라는 단어가 상표(trademark)와 같이 사용되기 때문에, R에서는 "
+"이 단어를 사용하지 않습니다.  R과 같은 것들에 대해서는 ``lattice''라는 단어"
+"를 사용합니다)."
 
 #. type: node
 #: R-FAQ.texi:2514
@@ -5102,6 +5723,9 @@ msgid ""
 "environments: the one that the function was defined in (``enclosing''), and "
 "the one it was invoked in (``parent'')."
 msgstr ""
+"함수내에서 당신은 아마도 두 개의 추가적인 환경들에 있는 변수들에 접근하고 싶"
+"을 수도 있습니다.  하나는 (``enclosing(인클로징)'')이라는 환경내에 정의된 함"
+"수이고, 다른 하나는 (``parent(패런트)'')로부터 실행된 환경입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2528
@@ -5113,6 +5737,12 @@ msgid ""
 "is fixed when the function is created.  You can find out the enclosing "
 "environment for a function @code{f()} using @code{environment(f)}."
 msgstr ""
+"만약 명령어 라인에서 함수를 생성하거나 패키지내에서 로드를 하였다면, 이것의 "
+"인클로징 환경은 글로벌 작업공간(global workspace)입니다.  만약 @code{f()}라"
+"는 함수를 @code{g()}라는 또 다른 함수내에서 정의를 했다면, 이것의 인클로징 환"
+"경은 @code{g()}내에 있는 환경입니다. 함수에 대한 인클로징 환경은 함수가 생설"
+"될때 고정됩니다. 함수 @code{f()}에 대한 인클로징 환경은 @code{envrionment(f)}"
+"를 이용하여 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2536
@@ -5124,6 +5754,12 @@ msgid ""
 "@code{f()}.  You can find out the parent environment for an invocation of a "
 "function by using @code{parent.frame()} or @code{sys.frame(sys.parent())}."
 msgstr ""
+"반면에 ``parent(패런트)''환경은 함수를 실행할 때 정의되어 집니다.  만약 명령"
+"어 라인에서 @code{lm()}를 실행하면, 이것의 패런트 환경은 글로벌 작업공간"
+"(global workspace)가 됩니다.  만약 함수 @code{f()}에서 이것이 실행된다면 이"
+"의 패런트 환경은 @code{f()}내에 있는 환경이 됩니다.  @code{parent.frame()} 또"
+"는 @code{sys.frame(sys.parent())}를 이용하여 함수의 실행에 대한 패런트 환경"
+"을 찾을 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2543
@@ -5135,6 +5771,12 @@ msgid ""
 "will probably be used inside @code{g()} as well, so its parent environment "
 "and enclosing environment will probably be the same."
 msgstr ""
+"여지까지 사용자가 볼 수 있는 함수들의 인클로징 환경은 글로벌 작업공간일 것입"
+"니다.  그 이유는 대부분의 함수들의 정의된 위치가 글로벌 작업공간이기 때문입니"
+"다. 패런트 환경은 함수가 불러지는 곳이면 어디든지 될 수 있습니다.  만약 함수 "
+"@code{f()}가 다른 함수 @code{g()}안에 정의 되어 있다고 한다면, 이것은 "
+"@code{g()}함수 내에서 사용될 수 있기 때문에 패런트 환경과 인클로징 환경은 아"
+"마도 동일할 것입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2548
@@ -5144,6 +5786,10 @@ msgid ""
 "where all the variables will be available.  This relies on the parent "
 "environment being potentially different with each invocation."
 msgstr ""
+"패런트 환경들은 모델 포뮬러(model formulas)와 같은 것들이 모든 변수들을 이용"
+"가능한 장소인, 즉, 함수가 호출된 환경에서 평가되는 것이 필요하므로 매우 중요"
+"합니다.  이것은 매번 실행에 따라 달라질 수도 있는 패런트 환경에 크게 영향을 "
+"받습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2555
@@ -5154,6 +5800,11 @@ msgid ""
 "relies on the enclosing environment being the same each time the function is "
 "invoked.  (In C this would be done with static variables.)"
 msgstr ""
+"인클로징 환경은 함수가 인크로징 환경내의 변수들을 다른 함수들 또는 자기 자신"
+"의 또다른 실행으로 가진 정보들을 공유하기 위하여 사용할 수 있기 때문에 중요합"
+"니다 (렉시컬 스코핑 섹션을 살펴보시길 바랍니다).  이는 함수가 매번 실행될때마"
+"다 동일한 인클로징 환경을 가져야 한다는 것을 필요로 합니다 (C에서는 이것을 정"
+"적변수(static variable)로 행하게 됩니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:2562
@@ -5165,6 +5816,10 @@ msgid ""
 "global workspace, but in R the enclosing environment is wherever the "
 "function was created."
 msgstr ""
+"스코핑(scoping)은 어렵습니다.  예제들을 살펴보는 것이 도움이 됩니다. 왜 R과 S"
+"에서 다르게 실행이 되며, 이들이 왜 다른가를 살펴보는 것이 중요합니다. R과 S"
+"의 스코핑이 다른 점을 설명하는 하나의 방법은 S는 인클로징 환경이 항상 클로벌 "
+"작업공간인데 반해 R은 인클로징 환경이 함수가 생성되는 곳에서 발생하게 됩니다."
 
 #. type: node
 #: R-FAQ.texi:2563
@@ -5186,6 +5841,12 @@ msgid ""
 "@code{substitute()} on an expression.  For example, if @code{ahat} is an "
 "estimator of your parameter @math{a} of interest, use"
 msgstr ""
+"종종 제목(title)과 같은 플랏 라벨(plot label)내에서 R 객체의 값을 사용하고자 "
+"할 때가 있습니다.  만약 라벨이 단순한 문자열이라면 @code{paste()}를 이용하여 "
+"쉽게 이루어지지만, 라벨이 정교한 수식을 가지는 표현일 경우에는 다소 어려움이 "
+"있습니다.  이 경우에는 연결된 문자열에 @code{parse()}를 이용하거나 수식에 대"
+"해서 @code{substitute()}를 이용합니다.  예를 들면, 만약 @code{hat}이 파라미"
+"터 @math{a}의 추정치라면, 다음과 같이 해 볼 수 있습니다."
 
 #. type: example
 #: R-FAQ.texi:2576
@@ -5199,6 +5860,8 @@ msgid ""
 "(note that it is @samp{==} and not @samp{=}).  Sometimes @code{bquote()} "
 "gives a more compact form, e.g.,"
 msgstr ""
+"(여기에서 @samp{==}는 @samp{=}이 아닙니다).  때때로 @code{bquote()}는 간결한 "
+"형식을 제공합니다."
 
 #. type: example
 #: R-FAQ.texi:2584
@@ -5210,12 +5873,12 @@ msgstr ""
 #: R-FAQ.texi:2589
 msgid ""
 "where subexpressions enclosed in @samp{.()} are replaced by their values."
-msgstr ""
+msgstr "여기에서 @samp{.()}내에 닫혀진 부분은 값으로 대체됩니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2591
 msgid "There are more examples in the mailing list archives."
-msgstr ""
+msgstr "더 많은 예제들이 메일링 리스트 저장소에 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2592
@@ -5234,6 +5897,11 @@ msgid ""
 "argument @option{check.names} to these functions controls whether variable "
 "names are checked and adjusted by @code{make.names()} if needed.)"
 msgstr ""
+"@code{data.frame()} 또는 @code{read.table()}을 이용하여 데이터 프레임을 생성"
+"하고자 할 때, R은 기본적으로 변수명이 구문상 (syntactically) 올바른지 확인하"
+"게 됩니다.  (이러한 함수들에 인자 @option{check.names}는 변수명을 확인할 것인"
+"지에 대한 여부를 조정하고 만약 필요하다면 @code{make.names()}을 이용하여 조정"
+"하게 됩니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:2604
@@ -5242,6 +5910,8 @@ msgid ""
 "the term ``name'' is used in several different (but related) ways in the "
 "language:"
 msgstr ""
+"어떠한 이름들이 ``유효한가''를 이해하기 위해서는 ``name''(이름)이 어떤 방법으"
+"로 사용되는가를 알아야 할 필요가 있습니다."
 
 #. type: enumerate
 #: R-FAQ.texi:2612
@@ -5251,6 +5921,10 @@ msgid ""
 "of R at least 1.9.0) underscore characters, and starts with either a letter "
 "or a dot not followed by a number.  Reserved words are not syntactic names."
 msgstr ""
+"@emph{syntatic name}(구문명)은 파서(parser)가 마치 표현식(expression)과 같은 "
+"유형으로 해석하게 되는 문자열을 의미합니다.  이것은 문자(letters), 숫자, 닷기"
+"호(dot), 언더스코어(underscore), 그리고 숫자바로 뒤에 오지 않는 문자 또는 닷"
+"기호로 시작하게 됩니다. 예약어(reserved words)는 구문명이 아닙니다."
 
 #. type: enumerate
 #: R-FAQ.texi:2619
@@ -5261,6 +5935,12 @@ msgid ""
 "is usually a syntactic name as well, but can be any non-empty string if it "
 "is quoted (and it is always quoted in the call to @code{assign()})."
 msgstr ""
+"@emph{object name}(객체명)은 표현식내에서 객체와 연관된 문자열을 의미합니"
+"다.  이 표현식은 할당연산자 (assignment operation)의 좌측에 있는 객체명을 가"
+"지거나 @code{assign()}함수에 이용되는 인자의 형태를 가지고 있습니다.  이것은 "
+"주로 구문명(syntatic name)이기도 하지만, 만약 따옴표로 묶인다면 공백을 가지"
+"지 않는 어떠한 문자열이라도 될 수 있습니다 (그리고 @code{assign()} 함수에 호"
+"출되는 된다면 이는 항상 따옴표로 묶이게 됩니다)."
 
 #. type: enumerate
 #: R-FAQ.texi:2625
@@ -5281,6 +5961,10 @@ msgid ""
 "in a call to @code{eval()} or @code{attach()}, the element names become "
 "object names.)"
 msgstr ""
+"@emph{argument name}(인자명)은 @code{f(trim=.5)}와 같이 함수호출(function "
+"call)에 사용되는 인자로서 등부호(equal sign) 좌측에 나타나는 것입니다.  인자"
+"명은 또한 구문명(syntactic name)이기도 하지만, 위와 마찬가지로 따옴표로 묶여"
+"진다면 어떤 것이든 될 수 있습니다."
 
 #. type: enumerate
 #: R-FAQ.texi:2639
@@ -5290,6 +5974,12 @@ msgid ""
 "names in the language, but it is traditional to call these strings file "
 "``names''."
 msgstr ""
+"@emph{element name}(구성요소의 명칭 또는 요소명)은 리스트의 구성요소와 같이 "
+"객체의 조각을 구분하기 위한 문자열입니다.  이것이 @samp{$}연산자의 우측에 사"
+"용될 때에는 반드시 구문명(syntactic name)이거나 따옴표로 묶여져야 합니다.  그"
+"렇지 않다면 요소명은 어떠한 문자열이든 될 수 있습니다.  (객체가 "
+"@code{eval()} 또는 @code{attach()}에 호출될 때와 같이 데이터베이스로서 사용"
+"될 때, 요소명은 객체의 이름이 됩니다)."
 
 #. type: node
 #: R-FAQ.texi:2641
@@ -5313,6 +6003,16 @@ msgid ""
 "regression splines you can use @code{glm()}.  For Gaussian GAMs you can use "
 "@code{bruto()} from package @CRANpkg{mda}."
 msgstr ""
+"@CRAN{}으로부터 얻을 수 있는 패키지 @CRANpkg{gam}은 화이트 북(the White book)"
+"의 GAM 챕터에 설명된 모든 Generalized Additive Models (GAM)을 구현하였습니"
+"다.  특히, 이는 local regression과 smoothing spline를 사용하는 백피팅"
+"(backfitting)을 구현하였고, 확장할 수있습니다.  패키지 @CRANpkg{mgcv}는 GAM"
+"을 위한 @code{gam()} 함수가 있는데, 이는 화이트북에 설명된 것과 완전히 동일하"
+"지는 않습니다 (예를들면 @code{lo()}라는 것은 없습니다).  패키지 @CRANpkg{gss}"
+"는 스플라인 기반(spline-based)의 GAM을 이용할 수 있습니다.  만약 리그레션 스"
+"플라인(regression spline)을 수용한다면, @code{glm()}을 사용할 수도 있습니"
+"다.  Gaussian GAM의 경우에는 @CRANpkg{mda}라는 패키지에 있는 @code{bruto()}"
+"를 사용할 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2654
@@ -5326,7 +6026,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2658
 msgid "Most R commands do not generate any output. The command"
-msgstr ""
+msgstr "대부분의 R 명령어들은 어떠한 결과물을 생성하지 않습니다."
 
 #. type: example
 #: R-FAQ.texi:2661
@@ -5352,6 +6052,9 @@ msgid ""
 "returns an object of class @code{\"summary.glm\"} (@pxref{How should I write "
 "summary methods?})."
 msgstr ""
+"위의 명령어는 로지스틱 리그레션 모델(logistic regression model)을 적합한뒤, "
+"요약된 정보를 산출한뒤 @code{\"summary.glm\"}이라는 클래스의 객체를 반환합니"
+"다 (@pxref{How should I write summary methods?})."
 
 #. type: Plain text
 #: R-FAQ.texi:2680
@@ -5362,11 +6065,16 @@ msgid ""
 "d file or inside a function it isn't printed unless you specifically print "
 "it."
 msgstr ""
+"만약 명령어 라인에서 @samp{1+1} 또는 @samp{summary(glm(y~x+z, "
+"family=binomial))} 이라고 입력한다면, 반환된 값들이 @code{invisible()}이 아"
+"닌 이상은 자동으로 출력됩니다.  그러나, @code{source()}를 이용하여 파일을 읽"
+"어들이거나 함수내에서 사용되는 경우에는 특별히 프린트라는 명령을 지정하지 않"
+"는 이상은 보여지지 않습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2682
 msgid "To print the value use"
-msgstr ""
+msgstr "이러한 값을 출력하기 위해서는 다음과 같이 해야 합니다."
 
 #. type: example
 #: R-FAQ.texi:2685
@@ -5383,7 +6091,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2696
 msgid "instead, or use @code{source(@var{file}, echo=TRUE)}."
-msgstr ""
+msgstr "혹은 @code{source(@var{file}, echo=TRUE)}라고 해야합니다."
 
 #. type: node
 #: R-FAQ.texi:2697
@@ -5405,6 +6113,13 @@ msgid ""
 "and then passes this to @code{FUN} all at once.  Your function probably "
 "cannot handle two large vectors as parameters."
 msgstr ""
+"@code{outer()}의 도움말에 명시된 것과 같이, 이는 @code{apply()}계열의 함수들"
+"이 작동하는 방식을 가지는 함수들과는 함께 쓰일 수 없습니다.  이를 사용하기 위"
+"해서는 배열의 구성요소단위별로 작동하는 벡터라이즈된 함수가 필요합니다.  코"
+"드 @code{outer(x,y, FUN)}를 보면 알 수 있듯이, 이는 @code{x}와 @code{y}의 모"
+"든 가능한 조합들을 포함하는 두 개의 큰 벡터들을 생성한 뒤, 이를 @code{FUN}에 "
+"전달하게 됩니다.  사용자의 함수는 아마도 이렇게 큰 두개의 벡터들을 파라미터로"
+"서 다룰 수 없을 것입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2712
@@ -5414,6 +6129,9 @@ msgid ""
 "your function up first, to simulate vectorized behavior.  Suppose your "
 "function is"
 msgstr ""
+"만약 두 개의 벡터를 다룰 수는 없지만 두개의 스칼라(scalars)를 다룰 수 있는 함"
+"수를 가지고 있다면, @code{outer()}를 사용할 수는 있으나, 사용자의 함수에 이"
+"를 둘러쌓아야만 합니다.  아래와 같은 사용자 함수를 생각해 봅니다."
 
 #. type: example
 #: R-FAQ.texi:2718
@@ -5429,6 +6147,8 @@ msgstr ""
 #: R-FAQ.texi:2722
 msgid "If you define the general function"
 msgstr ""
+"만약, 사용자가 다음과 같이 일반적인 함수를 정의한다면, @code{outer()}를 사용"
+"할 수 있습니다. "
 
 #. type: example
 #: R-FAQ.texi:2727
@@ -5476,6 +6196,14 @@ msgid ""
 "a non-orthogonal design (i.e., most unbalanced designs) these comparisons "
 "are (conceptually and numerically)  different."
 msgstr ""
+"@code{~A+B+A:B}와 같은 모델내에서, R은 @code{~1}, @code{~A}, @code{~A+B}, "
+"@code{~A+B+A:B} 모델들의 제곱합(sums of squares)를 모두 다르게 보여줄 것입니"
+"다. 만약, 모델이  @code{~B+A+A:B}이었다면 @code{~1}, @code{~B}, @code{~A+B}, "
+"@code{~A+B+A:B} 역시 다르게 보여줄 것입니다. 첫번째의 경우에는 @code{A}에 대"
+"한 제곱합은 @code{~1}과 @code{~A}에 비교되고, 두번째의 경우에는 @code{~B}와 "
+"@code{~B+A}와 비교됩니다. 대부분의 언밸런스드 디자인(unbalanced design)인 비"
+"직교디자인(Non-orthogonal design)에서는 이러한 비교는 개념상으로나 수치연산상"
+"으로 다릅니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2757
@@ -5486,6 +6214,11 @@ msgid ""
 "order of factors in the model.  The question of which set of sums of squares "
 "is the Right Thing provokes low-level holy wars on R-help from time to time."
 msgstr ""
+"일부 패키지들은 풀모델(full model)에서 요인(factor)를 한번에 하나씩 지워나가"
+"는 모델들과 비교한 제곱합 (예를들면, SAS 에서 `Type III sums of suqares')를 "
+"보고합니다.  이는 모델에서 사용된 요인의 순서에 영향을 받지 않습니다.  어떤 "
+"종류의 제곱합이 올바른것인지에 대한 질문은 때때로 R-help에서 많은 논쟁거리를 "
+"유발합니다 (provokes low-level holy wars). "
 
 #. type: Plain text
 #: R-FAQ.texi:2763
@@ -5496,6 +6229,11 @@ msgid ""
 "and @code{drop1(@var{model1})} will show the sums of squares resulting from "
 "dropping single terms."
 msgstr ""
+"R이 알려주는 특정한 제곱합에 대해서는 걱정할 필요는 없습니다.  사용자가 선호"
+"하는 제곱합을 손쉽게 계산할 수 있습니다.  두 모델은 "
+"@code{anova(@var{model1}, @var{model2})}을 이용하여 비교되어지고, "
+"@code{drop1(@var{model1})}은 한 개의 항을 빼낸뒤 얻어낸 제곱합을 보여줄 것입"
+"니다."
 
 #. type: node
 #: R-FAQ.texi:2764
@@ -5516,6 +6254,11 @@ msgid ""
 "@code{png()} by default uses the Quartz device on OS X, and that too works "
 "in batch mode."
 msgstr ""
+"Unix와 같은 환경에서 설치시 @code{png()} 장치에 대하여 @code{type=\"cairo\"}"
+"를 지원된다면, 아무런 문제가 없어야 하며 기본설정대로 작동해야합니다.  이 옵"
+"션은 2.7.0 이전 버전에서는 사용할 수 없거나, cario에 대한 지원이 없습니다.   "
+"R 2.7.0부터는 기본적으로 @code{png()}는 Mac OS X에서는 Quartz 장치를 이용하"
+"며 이는 배치모드에서도 실행됩니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2784
@@ -5530,6 +6273,15 @@ msgid ""
 "server that does not require a screen; and there is the @CRANpkg{GDD} "
 "package from @CRAN{}, which produces PNG, JPEG and GIF bitmaps without X11."
 msgstr ""
+"@code{png()}장치의 이전 버전들은 배치모드 또는 원격조작시에 문제가 되기도 하"
+"는 X11 드라이버를 사용합니다.  만약 Ghostscript를 가지고 있다면 Postscript나 "
+"PDF파일을 생성한뒤 고스트스크립트에 의하여 지원된는 어떠한 종류의 bitmap형식"
+"으로의 전환 할 수 있는 이미지를 @code{bitmap()}를 이용하여 생성할 수 있습니"
+"다.  일부 설치에서는 이는 보기에 좋지 않는 결과를 생성하기도 하고, 매우 만족"
+"스러운 결과를 생성하기도 합니다.  현재 많은 시스템들이  스크린을 필요로 하지 "
+"않는 X11 서버인 @url{http://www.x.org/Downloads.html, X.Org}와 함께 나옵니"
+"다.   그리고 X11 없이도 PNG, JPEG, 그리고 GIF 비트맵들을 생성해주는 "
+"@CRANpkg{GDD}를 @CRAN{}에서 얻을 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2785
@@ -5551,6 +6303,13 @@ msgid ""
 "Linux binary distributions will need to install packages such as "
 "@code{libreadline-dev} (Debian) or @code{readline-devel} (Red Hat)."
 msgstr ""
+"R과 함께 사용되는 Unix와 같은 커맨드라인은 오로지 빌트인 커맨드 라인 편집기"
+"(inbuilt command line editor)만을 제공합니다. 이 편집기는 만약 @acronym{GNU} "
+"readline 라이브러리가 컴파일에서 R에서 설정되었을때만 불러오기, 편집하기, 이"
+"전 명령어를 재실행할 수 있습니다.  이를 위해서는 적합한 헤더(headers)를 포함"
+"하고 있는 개발버전의 readline이 필요하므로, 리눅스 바이너리 배포를 사용하는 "
+"사용자들은 @code{libreadline-dev} (Debian) 또는 @code{readline-devel} (Red "
+"Hat)과 같은 패키지가 필요할 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2797
@@ -5564,7 +6323,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2801
 msgid "If you have"
-msgstr ""
+msgstr "만약 아래와 같은 명령을 실행했다고 가정합니다. "
 
 #. type: example
 #: R-FAQ.texi:2804
@@ -5575,7 +6334,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2808
 msgid "you can do"
-msgstr ""
+msgstr "다음과 같이 해보세요."
 
 #. type: example
 #: R-FAQ.texi:2811
@@ -5628,6 +6387,8 @@ msgid ""
 "At least in the first two cases it is often easier to just use a list, and "
 "then you can easily index it by name"
 msgstr ""
+"최소한 처음 두가지 경우에는 리스트(list)를 이용한 뒤, 아래와 같이 요소명을 이"
+"용하여 보다 쉽게 사용할 수 있습니다. "
 
 #. type: example
 #: R-FAQ.texi:2855
@@ -5663,6 +6424,14 @@ msgid ""
 "@code{source()} or inside your own functions you will need an explicit "
 "@code{print()} statement."
 msgstr ""
+"가장 큰 이유는 R에 그래프를 보여줄 것을 명령하는 것을 잊은 것입니다.  "
+"@code{xyplot()}과 같은 라띠스 함수(lattice function)들은 그래프 객체를 생성하"
+"지만, 보여주지는 않습니다.  (@CRANpkg{ggplot2} 그래픽스와 @SPLUS{}의 Trellis "
+"그래픽스 또한 마찬가지입니다).  그래프 객체를 실제적으로 보여주기 위해서는 "
+"@code{print()} 메소드를 이용해야 합니다.  커맨드 라인에서 이러한 함수들이 대"
+"화식으로 사용될때에는 자동적으로 보여지게 되지만, @code{source()}를 이용하거"
+"나 사용자가 작성한 함수내에서 이용될 때에는 명시적으로 @code{print()}를 사용"
+"해야 합니다."
 
 #. type: node
 #: R-FAQ.texi:2872
@@ -5681,6 +6450,10 @@ msgid ""
 "DF[[\"b\"]]), ]} to sort the data frame @code{DF} on columns named @code{a} "
 "and @code{b})."
 msgstr ""
+"데이터 프레임내에 있는 한 개 이상의 열들안에 있는 값들에 대해서 행들을 정렬하"
+"고자 한다면, @code{order()}를 이용하면 됩니다. (예를들어, @code{DF[order(DF"
+"$a, DF[[\"b\"]]), ]} 라고 하는 것은 데이터 프레임 @code{DF}을 @code{a}와 "
+"@code{b}라는 열들을 이용하여 정렬해줍니다)."
 
 #. type: node
 #: R-FAQ.texi:2880
@@ -5699,13 +6472,17 @@ msgid ""
 "Java must installed on your system and linked to your browser, and both Java "
 "@emph{and} JavaScript need to be enabled in your browser."
 msgstr ""
+"@code{help.start()}내의 브라우저 기반의 검색엔진은 Java applet을 이용합니"
+"다.  이것이 올바르게 작동하게하기 위해서는 Java와 호환가능한 버전이 설치되어"
+"야 하고, Java와 Javascript 모두 브라우저에서 사용가능하도록 설정되어 있어야 "
+"합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2890
 msgid ""
 "There have been a number of compatibility issues with versions of Java and "
 "of browsers."
-msgstr ""
+msgstr "Java와 브라우저의 버전들에 많은 호환성 문제들이 존재합니다."
 
 #. type: ifclear
 #: R-FAQ.texi:2896
@@ -5715,6 +6492,10 @@ msgid ""
 "R distribution, @pxref{What documentation exists for R?}, and its "
 "@acronym{HTML} version is linked from the @acronym{HTML} search page."
 msgstr ""
+"더 자세한 사항은 @cite{R Installation and Administration} 문서내의 "
+"``Enabling search in HTML help'' 섹션을 살펴보세요.  이 매뉴얼은 R 배포판에 "
+"포함 @pxref{What documentation exists for R?}되어 있으며, 이의 "
+"@acronym{HTML} 버전은 @acronym{HTML} 검색페이지와도 링크가 되어 있습니다."
 
 #. type: ifset
 #: R-FAQ.texi:2900
@@ -5722,6 +6503,9 @@ msgid ""
 "@xref{Enabling search in HTML help, , Enabling search in HTML help, R-admin, "
 "R Installation and Administration}, for further details."
 msgstr ""
+"R-admin, R Installation and Administration}, for further details. 더 자세한 "
+"사항은 @xref{Enabling search in HTML help, , Enabling search in HTML help, R-"
+"admin, R Installation and Administration}을 참고해주세요."
 
 #. type: node
 #: R-FAQ.texi:2902
@@ -5739,6 +6523,10 @@ msgid ""
 "@pkg{base} package you need to specify the correct package namespace, since "
 "the code will be run @emph{before} the packages are loaded.  E.g.,"
 msgstr ""
+"@file{NEWS} 파일을 읽어 보셨나요?  @pkg{base} 패키지에 없는 함수들을 이용하"
+"기 위해서는 올바른 패키지 네임스페이지를 지정해야만 합니다. 그 이유는 코드들"
+"은 패키지들이 로드되기 전에 실행될 것이기 때문입니다.  예를들면, 다음을 살펴"
+"보세요.\t"
 
 #. type: example
 #: R-FAQ.texi:2912
@@ -5751,7 +6539,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2916
 msgid "needs to be"
-msgstr ""
+msgstr "위의 코드들은 아래와 같이 될 필요가 있습니다."
 
 #. type: example
 #: R-FAQ.texi:2920
@@ -5782,11 +6570,16 @@ msgid ""
 "has the advantage that they cannot be called inadvertently with arguments of "
 "the wrong class, but it makes them harder to view."
 msgstr ""
+"현재 많은 함수들 (특히 S3 메소드들)은 네임스페이스(namespaces)에서 보여지지 "
+"않습니다.  이렇게 하는 것은 부주의하게 잘못된 클래스들을 인자로 호출되지 않"
+"게 하는 장점이 있지만 확인하기가 더 힘들어 지게 됩니다."
 
 #. type: Plain text
 #: R-FAQ.texi:2936
 msgid "To see the code for an S3 method (e.g., @code{[.terms}) use"
 msgstr ""
+"S3 메소드 (즉, @code{[.terms]})에 해당하는 원시코드를 확인하고 싶다면 아래의 "
+"함수를 이용해 보세요."
 
 #. type: example
 #: R-FAQ.texi:2939
@@ -5802,6 +6595,11 @@ msgid ""
 "to call unexported functions in your own code---they are probably unexported "
 "for a reason and may change without warning."
 msgstr ""
+"패키지 @code{\"bar\"}의 네임스페이스 내에서 아직 내보지지 않은 함수 "
+"@code{foo()}의 원시코드를 확인하기 위해서는 @code{foo()}를 이용하세요.  사용"
+"자가 작성한 코드내에서 내보어지지 않은 함수들을 호출하려고 할때는 이렇게 사용"
+"하지 마시길 바랍니다.  그들은 아마도 어떠한 이유에서 내보어내어지지 않았거나 "
+"경고가 없이 변경될 수도 있기 때문입니다."
 
 #. type: node
 #: R-FAQ.texi:2947
@@ -5819,6 +6617,9 @@ msgid ""
 "rather than @code{mtext()}, as the latter does not support @code{par(\"srt"
 "\")}."
 msgstr ""
+"(base 그래픽스를 이용하여) 축 라벨들을 회전시키기 위해서는 @code{mtext()} 보"
+"다는 @code{text()}를 사용해야 합니다.  그 이유는 @code{par(\"srt\")}를 지원하"
+"지 않기 때문입니다. "
 
 #. type: example
 #: R-FAQ.texi:2968
@@ -5848,6 +6649,11 @@ msgid ""
 "the value of the @code{0.25} offset as required to move the axis labels up "
 "or down relative to the x axis.  See @code{?par} for more information."
 msgstr ""
+"x 축라벨들을 플랏할때, 문자회전의 각도로 @code{srt=45}를 사용했고, 틱마크의 "
+"위치에 문자의 오른쪽 끝을 위치시키기 위해서 @code{adj=1}을 이용했으며, 플랏영"
+"역 바깥쪽의 텍스트를 위하여 @code{xpd=TRUE}가 사용되었습니다.  x축에 비례하"
+"여 위 또는 아래로 축라벨을 이동시키는데 필요한 @code{0.25} 오프셋의 값을 조정"
+"할 수도 있습니다.  더 많은 정보를 위해서는 @code{?par}를 살펴보세요."
 
 #. type: Plain text
 #: R-FAQ.texi:2981
@@ -5856,6 +6662,9 @@ msgid ""
 "grid Graphics Output with Base Graphics Output'', @emph{R News}, "
 "@strong{3/2}, 7--12."
 msgstr ""
+"Figure 1를 보시고, 이와 관련된 코드를 Paul Murrell (2003), ``Integrating "
+"grid Graphics Output with Base Graphics Output'', @emph{R News}, "
+"@strong{3/2}, 7--12 에서 찾아보시길 바랍니다."
 
 #. type: node
 #: R-FAQ.texi:2982
@@ -5876,6 +6685,11 @@ msgid ""
 "@code{colClasses} argument to specify the classes to be assumed for the "
 "columns of the table."
 msgstr ""
+"기본적으로 @code{read.table()}은 모든 것들을 문자형 데이터로서 읽어들인 뒤, "
+"어떤 변수가 숫자 또는 요인으로 변경되어야 하는지에 대하여 결정을 하게 됩니"
+"다.  크기가 큰 데이터셋의 경우에는 이러한 방식은 꽤 많은 시간과 메모리를 필요"
+"로 합니다. 테이블의 열들을 어떤 클래스로 읽어들일 것인지를 지정하는데 이용되"
+"는 @code{colClasses} 인자를 사용하면 성능이 상당히 향상될 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:2992
@@ -5897,6 +6711,12 @@ msgid ""
 "@code{library()} is employed to load a package from libraries containing "
 "packages."
 msgstr ""
+"@dfn{package}(패키지)는 표준화된 방식으로 코드, 데이터, 그리고 문서를 제공함"
+"으로서 R을 확장할 수 있는 자료들의 모음입니다.  @dfn{library}(라이브러리)는 R"
+"이 사용할 수 있는 (설치된) 패키지들을 찾는 디렉토리를 의미압니다.  R은 함수 "
+"@code{library}로의 호출을 통하여 패키지를 (``load(로드)''하고, 이를 검색경로"
+"에 추가하라고) 사용하라고 전달하게 됩니다.  즉, @code{library()}는 패키지들"
+"을 포함하고 있는 라이브러리들로부터 패키지를 로드하는데 쓰입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3006
@@ -5904,6 +6724,9 @@ msgid ""
 "@xref{R Add-On Packages}, for more details.  See also Uwe Ligges (2003), ``R "
 "Help Desk: Package Management'', @emph{R News}, @strong{3/3}, 37--39."
 msgstr ""
+"더 자세한 사항은 @ref{R Add-On Packages}을 살펴보시길 바랍니다. Uwe Ligges "
+"(2003), `R Help Desk: Package Management'', @emph{R News}, @strong{3/3}, "
+"37--39 또한 살펴보시면 도움이 됩니다."
 
 #. type: node
 #: R-FAQ.texi:3007
@@ -5920,6 +6743,8 @@ msgid ""
 "To actually @emph{use} the package, it needs to be @emph{loaded} using "
 "@code{library()}."
 msgstr ""
+"패키지를 실제적으로 이용하기 위해서는 @code{library()}를 이용하여 로드되어져"
+"야 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3015
@@ -5927,6 +6752,8 @@ msgid ""
 "See @ref{R Add-On Packages} and @ref{What is the difference between package "
 "and library?} for more information."
 msgstr ""
+"더 많은 정보는 @ref{R Add-On Packages}와 @ref{What is the difference between "
+"package and library?}를 살펴보시길 바랍니다."
 
 #. type: node
 #: R-FAQ.texi:3016
@@ -5946,6 +6773,11 @@ msgid ""
 "two floating point numbers will not reliably be equal unless they have been "
 "computed by the same algorithm, and not always even then.  For example"
 msgstr ""
+"R의 숫자의 유형들 중에서 정확하게 표현될 수 있는 숫자들은 정수(intergers)과 "
+"분모가 2의 자승(power of 2)인 분수(fractions) 뿐입니다.  다른 숫자들은 (일반"
+"적으로) 이진법으로 53자리숫자에서 반올림 되어집니다. 그 결과 같은 알고리즘에 "
+"의하여 얻어진 결과가 아니라면 두 부동소수점(floating point numbers)들은 같지 "
+"않을 것입니다. 예를들면, 다음과 같습니다. "
 
 #. type: example
 #: R-FAQ.texi:3032
@@ -5965,6 +6797,9 @@ msgid ""
 "tolerance of @code{.Machine$double.eps ^ 0.5}.  If you want much greater "
 "accuracy than this you will need to consider error propagation carefully."
 msgstr ""
+"함수 @code{all.equal()}은 @code{.Machine$double.eps ^ 0.5}의 오차범위내에서 "
+"두개의 객체를 비교합니다.  만약, 이보다 더 높은 수준의 정확도를 원한다면 에러"
+"전파(error propagation)을 조심스럽게 생각해보아야 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3043
@@ -5974,17 +6809,23 @@ msgid ""
 "Computing Surveys}, @strong{23/1}, 5--48, also available via @url{http://www."
 "validlab.com/goldberg/paper.pdf}."
 msgstr ""
+"더 많은 정보를 David Goldberg (1991), ``What Every Computer Scientist Should "
+"Know About Floating-Point Arithmetic'', @emph{ACM Computing Surveys}, "
+"@strong{23/1}, 5--48 에서 찾아 볼 수 있으며, 또한 @url{http://www.validlab."
+"com/goldberg/paper.pdf}에서도 볼 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3046
 msgid ""
 "To quote from ``The Elements of Programming Style'' by Kernighan and Plauger:"
 msgstr ""
+"Kernighan과 Plauger에 의해서 씌여진 ``The Elements of Programming Style''에"
+"서 인용을 하자면, 다음과 같습니다."
 
 #. type: quotation
 #: R-FAQ.texi:3049
 msgid "@emph{10.0 times 0.1 is hardly ever 1.0}."
-msgstr ""
+msgstr "10.0 곱하기 0.1은 1.0이 되기 어렵다."
 
 #. type: node
 #: R-FAQ.texi:3052
@@ -6002,6 +6843,12 @@ msgid ""
 "instead of an error, or preferably @code{tryCatch()}, where the return value "
 "can be configured more flexibly.  For example"
 msgstr ""
+"에러 대신에 @code{\"try-error\"}라는 클래스의 객체를 반환하고자 한다면 "
+"@code{try()}를 이용하거나, 좀 더 유연하게 다른 값을 반환할 수 있는 "
+"@code{tryCatch()}를 이용해 보세요. 예를들어, 다음의 예제는 성공적으로 수행된"
+"다면 @code{lm()}의 계수(coefficients)를 반환하고, 실패할 경우에는 "
+"@code{c(NaN, NaN, NaN, NaN)}을 돌려주게 됩니다 (이 경우에는 계수가 4개라고 가"
+"정했습니다)."
 
 #. type: example
 #: R-FAQ.texi:3062
@@ -6032,6 +6879,8 @@ msgstr ""
 #: R-FAQ.texi:3073
 msgid "You are probably seeing something like"
 msgstr ""
+"아마 다음과 같은 경우에 이러한 질문이 생길 수 있으며, 이는 R의 표현식에 대한 "
+"우선순위 규칙(precedence rules)를 잘 못 이해한 경우에 해당합니다."
 
 #. type: example
 #: R-FAQ.texi:3077
@@ -6045,6 +6894,8 @@ msgstr ""
 #: R-FAQ.texi:3082
 msgid "and misunderstanding the precedence rules for expressions in R.  Write"
 msgstr ""
+"올바른 결과를 얻기 위해서는 다음과 같이 해야 @math{-2}의 제곱에 대한 올바른 "
+"값을 얻을 수 있습니다."
 
 #. type: example
 #: R-FAQ.texi:3086
@@ -6065,6 +6916,8 @@ msgid ""
 "The precedence rules are documented in @code{?Syntax}, and to see how R "
 "interprets an expression you can look at the parse tree"
 msgstr ""
+"우선순위 규칙은 @code{?Syntax} 내에 정리되어 있으며, 어떻게 R이 해석하는지를 "
+"알기 위해서는 구문트리(parse tree)를 보시길 바랍니다. "
 
 #. type: example
 #: R-FAQ.texi:3098
@@ -6101,6 +6954,11 @@ msgid ""
 "@file{result100.rda} in the subdirectory @file{Results} of the current "
 "working directory, one can use"
 msgstr ""
+"이를 수행하는 한가지 방법으로는 @code{file.path()}로 경로를 지정해주면서 파일"
+"명과 각 반복단계를 나타내는 숫자를 한데 결합시켜줄 수 있는 @code{paste()} (또"
+"는 @code{sprintf()})를 이용하는 것입니다.  예를들면, 결과물을 현재의 작업디렉"
+"토리인 @file{Results}에 @file{result1.rda}, @dots{}, @file{result100.rda}이라"
+"는 파일에 저장하기 위해서는 다음과 같이 할 수 있습니다. "
 
 #. type: example
 #: R-FAQ.texi:3118
@@ -6134,6 +6992,9 @@ msgid ""
 "list, which can be reviewed at @uref{https://stat.ethz.ch/pipermail/r-"
 "help/2006-May/094765.html}."
 msgstr ""
+"r-help 리스트에 포스트된 이 질문에 대해서 Doug Bates는 매우 친절하게 폭넓은 "
+"응답을 해주었으며, 이는 @uref{https://stat.ethz.ch/pipermail/r-help/2006-"
+"May/094765.html}에서 확인할 수 있습니다."
 
 #. type: node
 #: R-FAQ.texi:3127
@@ -6159,6 +7020,11 @@ msgid ""
 "borders between the polygons even when setting the @code{border} argument to "
 "@code{NA} or @code{\"transparent\"}."
 msgstr ""
+"이것은 @code{polygon()}, @code{filled.contour()}, @code{image()}, 또는 이런 "
+"함수들을 내부적으로 호출하게 되는 함수들을 이용할 때 발생합니다.  "
+"@code{polygon()}의 경우에는 @code{border}인자를 @code{NA} 또는 "
+"@code{\"transparent\"}로 지정해주었음에도 다각형(polygon)들 사이에 원하지 않"
+"는 경계(border)가 생기는 것을 볼 수 있을 수도 있습니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3140
@@ -6168,6 +7034,12 @@ msgid ""
 "viewer used, the operating system and may change over time.  For some common "
 "viewers, consider the following:"
 msgstr ""
+"이 문제의 원인은 플랏이 anti-aliased되어 있을때 PS/PDF 뷰어에 있습니다.  이 "
+"문제들의 근원은 plot이 안티얼라이스드(anti-aliased, 그래픽에서 계단식 모양의 "
+"가장자리를 제거하는 처리 과정)되었을 때의 PS/PDF 뷰어입니다.  문제해결에 대"
+"한 자세한 사항은 사용하는 뷰어 및 운영체제에 따라 다르며, 시간이 지남에 따라"
+"서 달라질 수도 있습니다. 일부 일반적인 뷰어들에서는 다음과 같이 해 볼 수 있습"
+"니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3142
@@ -6186,6 +7058,9 @@ msgid ""
 "There are options in Preferences to enable/disable text smoothing, image "
 "smoothing and line art smoothing.  Disable line art smoothing."
 msgstr ""
+"개인설정(Preference)메뉴에 텍스트 스무딩(Text smoothing), 이미지 스무딩"
+"(image smoothing)과 라인아트 스무딩(line art smoothing)을 활성/비활성하는 옵"
+"션이 있습니다. 여기에서 라인아트 스무딩을 사용하지 않도록 조정하세요."
 
 #. type: item
 #: R-FAQ.texi:3146
@@ -6199,6 +7074,9 @@ msgid ""
 "There is an option in Preferences to enable/disable anti-aliasing of text "
 "and line art.  Disable this option."
 msgstr ""
+"개인설정(Preference)에서 텍스트(text)와 라인아트(line art)에 대한 안티얼라이"
+"싱(anti-aliasing)을 활성/비활성하는 옵션션이 있습니다.  이 옵션을 비활성화 하"
+"세요."
 
 #. type: item
 #: R-FAQ.texi:3150
@@ -6212,6 +7090,9 @@ msgid ""
 "There are settings for Text Alpha and Graphics Alpha.  Change Graphics Alpha "
 "from 4 bits to 1 bit to disable graphic anti-aliasing."
 msgstr ""
+"텍스트 알파(Text Alpha)와 그래픽 알파(Graphics Alpha)를 설정하도록 합니다.  "
+"그래픽 안티얼라이싱 (graphic anti-aliasing)을 비활성화 하기 위해서 그래픽 알"
+"파를 4비트에서 1비트로 변경하세요."
 
 #. type: item
 #: R-FAQ.texi:3154
@@ -6235,6 +7116,8 @@ msgstr ""
 #: R-FAQ.texi:3159
 msgid "There is not an option to disable anti-aliasing in this viewer."
 msgstr ""
+"안티얼라이싱(anti-aliasing)을 활성/비활성화하는 옵션이 있습니다.  이 옵션을 "
+"비활성화하세요."
 
 #. type: item
 #: R-FAQ.texi:3159
@@ -6248,6 +7131,8 @@ msgid ""
 "There is not an option in the GUI to enable/disable anti-aliasing.  From a "
 "console command line, use:"
 msgstr ""
+"GUI에서 안티얼라이싱의 활성/비활성을 조절하는 옵션이 없습니다. 콘솔상에서 명"
+"령어라인으로 아래와 같이 해보세요."
 
 #. type: smallexample
 #: R-FAQ.texi:3165
@@ -6263,6 +7148,8 @@ msgid ""
 "Then restart Okular.  Change the final word to @samp{Enabled} to restore the "
 "original setting."
 msgstr ""
+"Okular를 재실행 보세요. 본래의 설정으로 되돌리기 위해서는 마지막 단어를 "
+"@samp{Enabled}로 변경하세요."
 
 #. type: node
 #: R-FAQ.texi:3170
@@ -6281,6 +7168,10 @@ msgid ""
 "they cannot seem to put a single @samp{\\} character into a text string "
 "unless it happens to be followed by certain other characters."
 msgstr ""
+"이 질문은 종종 파일명과 관계되어 올라오곤 하지만 (@ref{How do file names "
+"work in Windows?}를 살펴보세요), 만약 어떤 특정 문자들에 뒤이어 일어나지 않"
+"는 이상 문자열로 단일 @samp{\\} 문자를 넣을 수 없는 것처럼 보일때 불평이 나오"
+"곤 합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3184
@@ -6291,6 +7182,12 @@ msgid ""
 "are strings that cannot be represented that way, e.g., strings that "
 "themselves contain the quote character.  So"
 msgstr ""
+"이를 이해하기 위해서는ㄴ 문자열(character strings)와 문자열의 리프레젠테이션"
+"(represenation of character strings)를 구분해야만 합니다.  대부분의 경우에는 "
+"R에서의 리프레젠테이션(representation)은 단순히 어느쪽이 끝이던지 작은 따옴"
+"표 또는 큰 따옴표가 함께 사용된 문자열입니다.  그러나, 이런 방법으로 사용할 "
+"수 없는 문자열들이 있습니다.  이러한 것에 해당하는 것은 따옴표 문자를 포함하"
+"고 있는 문자열들입니다. "
 
 #. type: example
 #: R-FAQ.texi:3191
@@ -6314,6 +7211,12 @@ msgid ""
 "is not actually in the string, it is just generated in the printed "
 "representation."
 msgstr ""
+"이스케이프 시퀀스(escape sequences) 문자인 @samp{\"}와 @samp{\n"
+"}은 큰 따옴표와 개행을 나타냅니다.  @code{print()} 또는 프롬프트에서 이름을 "
+"입력하여 텍스트 문자열을 출력하는 것 역시 이스케이프 시퀀스를 이용합니다.  그"
+"러나, @code{cat()}함수는 문자열 그대로를 보여줄 것입니다. @samp{\"\\n\"}은 두"
+"개가 아닌 하나의 문자임을 알아두시길 바랍니다.  백슬래쉬는 실제로 문자열내에 "
+"포함되는 것이 아니고 단지 프린트된 리프레젠테이션에서 생성된 것 뿐입니다."
 
 #. type: example
 #: R-FAQ.texi:3207
@@ -6331,6 +7234,8 @@ msgid ""
 "So how do you put a backslash in a string? For this, you have to escape the "
 "escape character. I.e., you have to double the backslash.  as in"
 msgstr ""
+"어떻게 백슬래쉬를 문자열 안에 표현할 수 있나요?  이렇게 하기 위해서는 이스케"
+"이프 문자를 피해야만 합니다.  즉, 백슬래쉬를 두번 사용해야 합니다."
 
 #. type: example
 #: R-FAQ.texi:3216
@@ -6348,6 +7253,10 @@ msgid ""
 "mechanism.  In those cases you may need a @emph{quadruple} backslash to "
 "represent a single literal one."
 msgstr ""
+"레귤러 익스프레이션 매칭 (regular expression matching)을 이용하는 종류의 일"
+"부 함수들은 백슬래쉬 메카니즘에 의하여 피해질 필요가 있는 메타문자들"
+"(metacharacters)들을 사용합니다.  그러한 경우에는 한개의 문자를 표현하기 위해"
+"서 4개의 백슬래쉬를 써야 할 경우도 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3226
@@ -6355,6 +7264,8 @@ msgid ""
 "In versions of R up to 2.4.1 an unknown escape sequence like @samp{\\p} was "
 "quietly interpreted as just @samp{p}.  Current versions of R emit a warning."
 msgstr ""
+"2.4.1Rkwlsms @samp{\\p}와 같은 알려지지 않는 이스케이프 문자들은 @samp{p}로 "
+"에러의 출력없이 해석되었습니다.  현재 버전의 R은 경고를 표시합니다. "
 
 #. type: node
 #: R-FAQ.texi:3227
@@ -6382,6 +7293,18 @@ msgid ""
 "above functions use the @code{arrows()} function in the base @pkg{graphics} "
 "package to draw the error bars."
 msgstr ""
+"특정한 종류의 플랏들에 대해서 에러바를 보여주는 일부 함수들이 있습니다.  "
+"@CRANpkg{agricolae} 패키지내의 @code{bar.err()} 함수, @CRANpkg{gplots} 패키지"
+"내의 @code{plotCI()} 함수, @CRANpkg{plotrix} 패키지내의 @code{plotCI()}와 "
+"@code{brkdn.plot()} 함수, @CRANpkg{psych} 패키지내의 @code{error.bars()}, "
+"@code{error.crosses()}, 그리고 @code{error.bars.by()} 함수가 있습니다.  이러"
+"한 유형의 함수 중 @code{plotCI()}과 같은 몇몇 함수들은 dispersion(분산)을 계"
+"산해주고, @code{bar.err}와 @code{brkdn.plot}와 같은 것들은 원래의 값들 (raw "
+"values)로부터의 dispersion measure(분산 측도)를 계산해주며, @code{error.bars}"
+"와 같은 것들은 두가지 모두를 제공합니다.  @code{plotrix} 패키지내에 있는 "
+"dispersion 함수와 같은 것들은 에러바들만을 보여주기도 합니다. 위에서 언급한 "
+"함수들의 대부분은 에러바를 그리기 위해서 base @pkg{graphics} 패키지 내에 있"
+"는 @code{arrows()}를 사용합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3255
@@ -6396,6 +7319,16 @@ msgid ""
 "@CRANpkg{Hmisc} package and @code{segplot()} in the @CRANpkg{latticeExtra} "
 "package."
 msgstr ""
+"위에서 언급한 함수 모두는 base graphics 시스템 (즉, base 배포에 있는 "
+"graphics 패키지를 이용한 그래픽 시스템)을 이용합니다.  grid와 lattice 그래픽 "
+"시스템들 또한 에러바를 보여주는데 필요한 특정한 함수들을 가지고 있습니다.  예"
+"를들면, @pkg{grid} 패키지내의 @code{grid.arrow()} 함수와 @CRANpkg{ggplot2} 패"
+"키지 내의 @code{geom_errorbar()}, @code{geom_errorbarh()}, "
+"@code{geom_pointrange()}, @code{geom_linerange()}, @code{geom_crossbar()}, 그"
+"리고 @code{geom_ribbon()}함수등입니다. 라띠스 시스템에서는 @CRANpkg{Hmisc} 패"
+"키지에 있는 @code{Dotplot()} 또는 @code{xYplot()} 함수들, "
+"@CRANpkg{latticeExtra} 패키지에 있는 @code{segplot()} 함수가 에러바를 보여줄 "
+"수 있습니다. "
 
 #. type: node
 #: R-FAQ.texi:3256
@@ -6420,6 +7353,15 @@ msgid ""
 "graphics-base:2yaxes} for more information, including strong arguments "
 "against this sort of graph."
 msgstr ""
+"예를들어, 두가지 다른 종류의 데이터가 같은 높이를 가지도록 스케일되어 있으"
+"되, 플랏의 좌측과 우측이 서로 다른 값의 범위를 가지는 두개의 y 축을 가지는 그"
+"래프를 생성하고자 한다면, 이는 R에서 가능합니다.  그러나, 권장되지는 않습니"
+"다.  이러한 그래프를 생성하기 위해서는 기본적으로 @code{par(new=TRUE)} "
+"(@code{?par}를 참조하세요)를 이용하는 것입니다.  @CRANpkg{plotrix} 패키지내"
+"의 @code{twoord.plot()} 함수와 @CRANpkg{latticeExtra} 패키지의 "
+"@code{doubleYScale()} 함수들이 어느정도 자동화 된 프로세스를 제공합니다.  더 "
+"많은 정보를 위해서는 @url{http://rwiki.sciviews.org/@/doku.php?id=tips:"
+"graphics-base:2yaxes}를 살펴보시길 바랍니다. "
 
 #. type: node
 #: R-FAQ.texi:3271
@@ -6439,6 +7381,12 @@ msgid ""
 "``Help Desk: Accessing the sources'', @emph{R News}, @strong{6/4}, 43--45 "
 "(@url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4.pdf})."
 msgstr ""
+"대부분의 경우에, 함수의 이름을 입력하면 원시 코드를 확인할 수 있습니다.  그런"
+"데, 네임스페이스 내에 있어 보여지지 않거나 컴파일되어 보여지지 않는 경우가 있"
+"습니다.  원시코드에 대한 접근을 어떻게 하는가에 대한 전반적인 개요는 Uwe "
+"Ligges (2006), ``Help Desk: Accessing the sources'', @emph{R News}, "
+"@strong{6/4}, 43--45 (@url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-4."
+"pdf})를 살펴보시길 바랍니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3286
@@ -6446,6 +7394,9 @@ msgid ""
 "As described in @code{?summary.lm}, when the intercept is zero (e.g., from "
 "@code{y ~ x - 1} or @code{y ~ x + 0}), @code{summary.lm()} uses the formula"
 msgstr ""
+"@code{?summary.lm}에 설명되어 있는 것과 같이 절편이 0일때 (즉, @code{y~x-1} "
+"또는 @code{y~x+0} 이라고 사용하는 경우), @code{summary.lm()}은 다음의 포뮬러"
+"를 사용합니다. "
 
 #. type: ifnottex
 #: R-FAQ.texi:3288
@@ -6461,7 +7412,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:3293
 msgid "which is different from the usual"
-msgstr ""
+msgstr "위의 포뮬러는 다음의 일반적인 포뮬러와 다릅니다."
 
 #. type: ifnottex
 #: R-FAQ.texi:3295
@@ -6477,7 +7428,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:3300
 msgid "There are several reasons for this:"
-msgstr ""
+msgstr "여기에는 다음과 같은 몇 가지의 이유들이 있습니다:"
 
 #. type: itemize
 #: R-FAQ.texi:3305
@@ -6486,6 +7437,8 @@ msgid ""
 "intercept can fit @emph{worse} than the constant-mean model it is implicitly "
 "compared to)."
 msgstr ""
+"@math{R^2}는 음수가 될 수 있습니다 (절편이 없는 모델은 비교되어지는 상수-평균"
+"(constant-mean) 모델보다 설명력이 안 좋게 적합될수도 있기 때문입니다)."
 
 #. type: itemize
 #: R-FAQ.texi:3308
@@ -6493,6 +7446,8 @@ msgid ""
 "If you set the slope to zero in the model with a line through the origin you "
 "get fitted values y*=0"
 msgstr ""
+"만약 원점을 지나는 직선을 가진 모델의 기울기가 0으로 설정되면, 적합된 값 y*=0"
+"를 가지게 됩니다. "
 
 #. type: itemize
 #: R-FAQ.texi:3311
@@ -6500,6 +7455,8 @@ msgid ""
 "The model with constant, non-zero mean is not nested in the model with a "
 "line through the origin."
 msgstr ""
+"원점을 지나는 직선을 가진 모델에 상수, 즉 0이 아닌 평균을 가지는 모델은 중첩"
+"되지 않습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3319
@@ -6511,6 +7468,11 @@ msgid ""
 "priori that @math{E[Y]=0} when @math{x=0}, then you probably shouldn't be "
 "fitting a line through the origin.)"
 msgstr ""
+"만약 @math{x=0}이면 @math{E[Y]=0}이라는 것을 미리 알고 있다면 적합된 직선에 "
+"비교해야 할 `null' 모델은 모든 곳에서 @math{E[Y]=0}인, 즉 @math{x}가 어떠한 "
+"분산도 설명할 수 없는 모델입니다 (만약 @math{x=0}일 때 @math{E[Y]=0}이라는 것"
+"을 사전에 모른다면 원점을 지나는 직선에 적합하는 것은 아마도 하지 말아야 할 "
+"것입니다)."
 
 #. type: Plain text
 #: R-FAQ.texi:3327
@@ -6519,6 +7481,9 @@ msgid ""
 "have removed objects in R and run @code{gc()} and yet @code{ps}/@code{top} "
 "still shows the R process using a lot of memory'', often on Linux machines."
 msgstr ""
+"종종 리눅스를 이용하는 사용자들은 ``R 내부의 객체들을 지우고 @code{gc()}를 실"
+"행하여 보니 @code{ps}/@code{top}에 따르면 R 프로세스가 많은 양의 메모리를 사"
+"용하는 것으로 보인다''라는 의미와는 다른 의미로 질문이 되어집니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3337
@@ -6532,6 +7497,14 @@ msgid ""
 "general such tools do @emph{not} report the actual memory usage of the "
 "process but rather what the OS is reserving for that process."
 msgstr ""
+"이것은 운영체제가 메모리를 인공적으로 할당하는 방법입니다.  일반적으로 운영체"
+"제가 사용되지 않은 모든 메모리를 풀어줄 수 없습니다. 극단적인 경우에, 만약 R"
+"이 거의 모든 메모리를 자유롭게 할지라도 운영체제는 자체 설계 때문에 이들 중 "
+"어떤 것이라도 풀수 없습니다.  따라서, @code{ps}와 @code{top}과 같은 도구들은 "
+"R이 메모리를 아예 사용하지 않을지라도 R 프로세스에 의하여 사용되어진 상주된 "
+"RAM의 실질적인 양을 보고하게 됩니다.  일반적으로 이러한 도구들은 프로세스의 "
+"실제 메모리 사용을 보고 하지 않고 운영체제가 해당 프로세스를 위하여 예약해 "
+"둔 것을 보고 합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3343
@@ -6542,6 +7515,10 @@ msgid ""
 "following paragraph gives more in-depth answer with technical details on how "
 "this happens."
 msgstr ""
+"간단히 말하면 이는 운영체제 내의 메모리 할당기(memory allocator)의 한계이며 "
+"이것과 관련하여 R이 할 수 있는 것은 아무것도 없습니다.  그 공간은 R이 나중에 "
+"물어볼 것이라는 기대하에 단순히 운영체제에 잡혀있습니다.  다음의 내용은 어떻"
+"게 이것이 발생되는지에 대한 다소 심도있는 답변을 줍니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3374
@@ -6576,6 +7553,34 @@ msgid ""
 "including the actually used memory as well as unused memory that cannot be "
 "released."
 msgstr ""
+"대부분의 시스템들은 메모리를 지정하기 위해 두 가지 다른 방법을 사용합니다. "
+"큰 청크(chunks, 즉 지정한 데이터의 양)의 할당에 대해서 그들은 프로세스 주소공"
+"간(process address space)로 맵 메모리(map memory)로 안내하기 위해서 "
+"@code{mmap}을 이용합니다.  이러한 조각들은 그들이 사용되지 않을때 즉각적으로 "
+"풀려집니다.  그러나, 이것은 상대적으로 비싼 연산에 해당되며 많은 운영체제들"
+"이 그러한 할당된 청크의 양에는 한계를 가지고 있으므로 이것은 오로지 큰 메모"
+"리 영역(memory regions)을 할당하는 목적으로만 사용됩니다. 작은 청크의 할당에 "
+"대해서는 시스템은 프로세스의 데이터 세그멘트(data segment)를 확장할 수 있습니"
+"다 (역사상으로는 @code{brk} 시스템 호출을 이용합니다).  그러나 이 전체 area"
+"는 항상 근접합니다.  운영체제는 이 공간의 끝만을 이동할 수 있고, 어떠한 "
+"``holes''를 생성할 수 없습니다.   이러한 작동에 대한 비용은 꽤 싼 편에 속하"
+"기 때문에 메모리의 작은 조작들에 대한 할당을 위한 목적으로 사용됩니다. 그러"
+"나, 부작용으로는 데이터 세그먼트의 끝에서 오로지 1 바이트만이 사용되고 있을지"
+"라도 운영체제는 어떠한 메모리라도 풀어주지 않습니다. 그 이유는 해당 바이트의 "
+"주소를 변경할 수 없기 때문입니다. 이것은 실제로 보기 흔합니다. 그 이유는 중간"
+"단계의 객체들을 할당하고 난뒤에 결과 객체를 할당하고 모든 중간단계의 객체를 "
+"삭제하는 것은 흔하기 때문입니다.  결과는 맨 마지막에 할당되기 때문에 중간단계"
+"의 객체에 의해서 사용된 어떤 메모리를 운영체제는 풀어주지 않습니다.  실제로 "
+"이것이 큰 문제가 되는 것은 아닙니다. 왜냐하면 현대의 운영체제는 쓰이지 않는 "
+"가상 메모리 부분을 페이지 아웃(page out)을 할 수 있어, 다른 어플리케이션에 이"
+"용될 실제 메모리의 양을 줄이는 것이 아니기 때문입니다.  일반적으로 문자열"
+"(strings)과 페어리스트(pairlists)와 같은 작은 객체들은 이러한 작동방식에 의하"
+"여 영향을 받을 것입니다. 반면에 긴 벡터와 같은 큰 객체들은 @code{mmap}을 이용"
+"하게 될것이므로 영향을 받지 않습니다. 리눅스 (그리고 Unix와 같은 시스템들)에"
+"서는 실제적으로 사용되지 않은 메모리, 풀어줄 수 없는 메모리를 포함하여 할당 "
+"레이아웃(layout of allocation)에 관하여 할당기(allocator)를 질의하기 위하여 "
+"@code{mallinfo} 시스템호출을 이용하는 것이 가능합니다 (@url{http://rforge."
+"net/mallinfo, mallinfo} 패키지를 살펴보세요) "
 
 #. type: node
 #: R-FAQ.texi:3375
@@ -6646,6 +7651,14 @@ msgid ""
 "as sometimes you need to grab something computed by @code{summary()} inside "
 "a function or similar.  In such cases you don't want anything printed."
 msgstr ""
+"만약 @code{\"foo\"}라는 클래스에 대한 summary 메소드를 만들고 싶다면, "
+"@code{summary.foo()}는 아무것도 출력해서는 안됩니다.  그러나, 클래스의 객체 "
+"@code{\"summary.foo\"}를 반환해야 하며, summary의 정보를 보기 좋게 출력해주"
+"며 이 객체를 보이지 않게 반환하는 @code{print.summary.foo()}라는 메소드를 작"
+"성해야 합니다. 이러한 접근은 요약정보를 출력하는 @code{summary.foo()} 보다 선"
+"호됩니다. 그 이유는 때때로 함수 또는 유사한 곳의 내부에서 @code{summary()}에 "
+"의하여 계산된 결과를 사용할 필요가 때때로 있기 때문입니다.  그런 경우에 메소"
+"드 작성자는 어떠한 것도 출력되기를 원하지 않을 것입니다."
 
 #. type: node
 #: R-FAQ.texi:3399
@@ -6662,6 +7675,8 @@ msgid ""
 "Roughly speaking, you need to start R inside the debugger, load the code, "
 "send an interrupt, and then set the required breakpoints."
 msgstr ""
+"대략적으로 말하면, 디버거 내에서 R을 시작할 필요가 있고, 코드를 로드하고, 인"
+"터럽트(interrupt)를 보내고, 브레이크포인트(breakpoint)을 설정해야만 합니다."
 
 #. type: ifclear
 #: R-FAQ.texi:3409
@@ -6670,6 +7685,9 @@ msgid ""
 "@cite{Writing R Extensions}.  This manual is included in the R distribution, "
 "@pxref{What documentation exists for R?}."
 msgstr ""
+"@cite{Writing R Extensions} 문서에서 ``Finding entry points in dynamically "
+"loaded code'' 섹션을 참고하시길 바랍니다. 이 매뉴얼은 R 배포에 포함되어 있습"
+"니다, @pxref{What documentation exists for R?}."
 
 #. type: ifset
 #: R-FAQ.texi:3413
@@ -6692,6 +7710,8 @@ msgstr ""
 msgid ""
 "The most convenient way is to call @code{R_PV} from the symbolic debugger."
 msgstr ""
+"가장 편리한 방법은 심볼릭 디버거(symbolic debugger)로부터 @code{R_PV}를 호출"
+"하는 것입니다."
 
 #. type: ifclear
 #: R-FAQ.texi:3424
@@ -6714,6 +7734,9 @@ msgid ""
 "@code{R CMD SHLIB} with compilation flags other than the default ones (which "
 "were determined when R was built)."
 msgstr ""
+"R로 dynloading하기위한 C 코드 파일이 있지만, 기본값(R이 빌드되었을때 정해놓"
+"은)이 아닌 컴파일레이션 플래그들을 가지고 있는 @code{R CMD SHLIB}를 사용하고 "
+"싶다고 가정합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3439
@@ -6721,6 +7744,8 @@ msgid ""
 "Starting with R 2.1.0, users can provide personal Makevars configuration "
 "files in @file{$@env{HOME}/.R} to override the default flags."
 msgstr ""
+"R 2.1.0 부터 사용자는 디폴트 플래그를 덮어쓰기 위하여 @file{$@env{HOME}/.R}내"
+"에 있는 개인 Makevars 설정파일을 제공합니다."
 
 #. type: ifclear
 #: R-FAQ.texi:3442
@@ -6743,6 +7768,9 @@ msgid ""
 "@acronym{GNU} Make) override them by the environment variable "
 "@env{MAKEFLAGS}."
 msgstr ""
+"이전 버전의 R에서는 개인설정을 반영하기 위하여 @file{@var{R_HOME}/etc/"
+"Makeconf} 파일을 변경할 수 있거나, (최소한 @acronym{GNU} Make를 이용하는 시스"
+"템들에서) 환경변수 @env{MAKEFLAGS}를 이용하여 값들을 덮어 쓸 수 있었습니다. "
 
 #. type: ifclear
 #: R-FAQ.texi:3454
@@ -6763,6 +7791,9 @@ msgid ""
 "to the browser or any other code to the method that will be dispatched for "
 "the corresponding signature.  See @code{?trace} for details."
 msgstr ""
+"브라우저로 호출을 추가하기 위하여 인자 @code{signature=}와 함께 "
+"@code{trace()} 함수를 이용하거나 상응하는 서명에 대해서 디스패치될 다른 코드"
+"를 이용하세요. 더 자세한 내용은 @code{?trace}를 참조하세요."
 
 #. type: menuentry
 #: R-FAQ.texi:3474
@@ -6796,6 +7827,12 @@ msgid ""
 "Internal()}) yourself (or in a function you wrote), you can always crash R "
 "by using wrong argument types (modes).  This is not a bug."
 msgstr ""
+"만약 R이 정의되어 있는 방식대로 작동하지 않거나, 운영체제로부터의 프로그램에 "
+"문제가 있다 (디스크가 꽉 찼다는 것과 반대)는 에러메시지와 함께 프로그램이 죽"
+"는다면 이는 확실히 버그입니다.  만약 @code{.C()}, @code{.Fortran()}, @code{."
+"External()}, 또는 @code{.Call()} (또는 @code{.Internal()}), 작성한 함수내에"
+"서 자기자신을 호출할때, 잘못된 인자유형을 사용하면 R은 작동하지 않을 수도 있"
+"습니다.  이것은 버그가 아닙니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3493
@@ -6806,6 +7843,12 @@ msgid ""
 "quickly, report a bug.  If you don't know whether the command should take a "
 "long time, find out by looking in the manual or by asking for assistance."
 msgstr ""
+"명령을 수행시 명령이 끝나지 않고 계속 지속되는 것은 버그일 수도 있으나, 이것"
+"이 정말 R의 잘못인지를 반드시 확인해 보아야 합니다. 일부 명령어들은 단순히 오"
+"랜 시간이 걸릴 수도 있기 때문입니다.  만약 입력이 빨리 프로세스 되어야 한다"
+"는 것을 명백히 알고 있다면, 버그로 보고하시길 바랍니다.  만약에 명령어가 오"
+"래 걸릴지 안 걸릴지를 확신할 수 없다면 도움을 청하거나 매뉴얼을 읽어보면서 이"
+"를 알아내길 바랍니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3506
@@ -6823,6 +7866,17 @@ msgid ""
 "= 0.3}, are not a bug.  @xref{Why doesn't R think these numbers are equal?}, "
 "for more details."
 msgstr ""
+"만약 익숙한 명령어가 정상적으로 작동해야 할 경우에 에러메시지를 발생시킨다"
+"면, 이것은 아마도 버그일 것입니다.  만약 명령어가 잘못된 작업을 수행한다면, "
+"이는 버그입니다.  그러나, 사용자는 반드시 무엇이 수행되어야 하는지를 반드시 "
+"알고 있어야 합니다.  만약 명령어가 익숙한 것이 아니라면 또는 어떻게 명령어가 "
+"작동되는가를 정확히 모른다면, 실제로 정상적으로 작동하는 것일 수도 있습니"
+"다.  예를들면, 일부 사용자들은 때때로 R의 수학적 연산에 버그가 있다고 생각합"
+"니다.  그러나, 이는 finite-precision arithmetic work를 이해하지 못하기 때문입"
+"니다. 결론을 내리기 전에 문제를 확실히 알고있는 누군가에게 보여주길 바랍니"
+"다.  예를들어 @code{0.28 * 100 != 28} 또는 @code{0.1 + 0.2 != 0.3}과 같은 것"
+"은 버그가 아닙니다.  더 자세한 사항은 @ref{Why doesn't R think these numbers "
+"are equal?}를 참고해주세요."
 
 #. type: Plain text
 #: R-FAQ.texi:3519
@@ -6840,6 +7894,17 @@ msgid ""
 "that the introductory documentation is seriously inadequate, so you don't "
 "need to report this."
 msgstr ""
+"마지막으로, 명령어의 계획된 정의가 통계분석에 가장 잘 맞는 것은 아닙니다.  이"
+"것은 매우 중요한 문제이기도 한데, 이는 또한 문제에 대한 판단의 문제이기도 합"
+"니다.  또한, 이들은 이전에 존재하는 기능들에 대해서 모르기 때문에 내리는 결론"
+"이기도 합니다.  이러한 종류의 문제에 대해서는 일반적인 방법으로 문서를 확인하"
+"고, 이를 제대로 이해했다고 확신한뒤, 원하는 무엇인가를 이용가능하지 않다는 것"
+"을 확실하게 알기전까지는 불평하지 않는 것이 좋습니다.  만약 매뉴얼을 정독한 "
+"후에도 명령어가 어떻게 무엇을 수행해야 하는지를 정확히 이해할 수 없다면, 이"
+"는 매뉴얼에 버그가 있음을 의미합니다.  매뉴얼의 역할은 모든 것을 확실히 보여"
+"주는 것입니다.  프로그램 버그도 중요하지만 문서의 버그를 보고하는 것도 중요합"
+"ㄴ디ㅏ.  그런데, introductory documentation은 심각하게 불충분하다는 것을 알"
+"고 이미 알고 있기 때문에 이것을 보고할 필요는 없습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3522
@@ -6847,6 +7912,8 @@ msgid ""
 "If the online argument list of a function disagrees with the manual, one of "
 "them must be wrong, so report the bug."
 msgstr ""
+"만약 함수의 온라인 인자목록이 매뉴얼과 일치하지 않는다면, 둘 중에 하나가 잘 "
+"못된 것이므로 버그로 보고해 주시길 바랍니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3532
@@ -6858,6 +7925,11 @@ msgid ""
 "and operating system that you are using; type @kbd{version} in R to print "
 "this."
 msgstr ""
+"버그가 있다고 판단될때, 이것을 보고하는 것도 중요하고, 어떻게 잘 보고하는가"
+"도 중요합니다.  가장 좋은 방법은 쉘 커맨드에서 R을 입력하면서부터 문제가 발생"
+"한 부분까지의 사용된 명령어들에 대한 설명을 제공하는 것입니다.  항상 사용하"
+"는 R의 버전, 사용기기, 운영체제를 함께 알려주시길 바랍니다. 이들에 대한 정보"
+"는 @kbd{version}이라고 입력하면 출력됨을 확인할 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3541
@@ -6871,6 +7943,13 @@ msgid ""
 "is impossible.  But in any case, it is unnecessary work for the ones trying "
 "to fix the problem."
 msgstr ""
+"버그를 보고할 때 가장 중요한 원칙은 가설이나 분류를 하지 않고 실제 일어난 사"
+"실들만을 보고 하는 것입니다.  사실만을 보고하는 것이 더 쉬움에도 불구하고, 많"
+"은 분들은 이러한 사실이 왜 일어났는가를 설명하곤 합니다.  만약 이러한 설명들"
+"이 R이 어떻게 구현되었는가에 대한 추측에 기초한 것이라면, 쓸모가 없을 것입니"
+"다. 그 이유는 그러한 추측이 나오게 된 어떤 사실들을 밝혀내야만 하기 때문입니"
+"다. 때때로 이것은 불가능합니다. 그러나, 대부분의 경우에는 문제를 고치려고 노"
+"력하는 사람에게는 불필요한 일입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3544
@@ -6878,6 +7957,8 @@ msgid ""
 "For example, suppose that on a data set which you know to be quite large the "
 "command"
 msgstr ""
+"예를들어, 꽤 큰 크기의 데이터셋을 가지고 있다고 가정하고, 다음과 같은 명령어"
+"를 입력합니다."
 
 #. type: example
 #: R-FAQ.texi:3547
@@ -6895,6 +7976,11 @@ msgid ""
 "variable name, and not see any problem.  There is no way in the world that "
 "others could guess that they should try a day of the week variable name."
 msgstr ""
+"이것은 절대로 반환되지 않습니다.  @code{data.frame()}이 큰 데이터셋에서 실패"
+"했다고 보고하지는 말아 주세요.  아마도 변수명이 요일로 되어 있을 때 실패하는 "
+"것일수도 있습니다. data.frame()이 큰 데이터에 대해 실패했다고 보고하지 마십시"
+"오.  만약 정말 그러하다면 다른 사람들이 보고되어진 것을 보았을때 요일명이 아"
+"닌 변수명을 이용하여 아무런 문제가 일어나지 않는 것을 확인할 것입니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3563
@@ -6905,6 +7991,10 @@ msgid ""
 "This is why others need to know what other commands you have typed (or read "
 "from your startup file)."
 msgstr ""
+"혹은 마지막으로 사용한 명령어가 내부 데이터 구조에 오류를 발생시키고 그 이후"
+"부터 @code{data.frame()} 명령어가 실패하게 되는 원인을 가진 버그를 가졌던 "
+"@code{\"[\"()}에 대한 메소드일 수도 있기 때문입니다.  이것은 왜 어떤 명령어들"
+"이 (시작파일부터) 이전에 입력되었는가를 알아야 하는 이유이기도 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3572
@@ -6917,6 +8007,14 @@ msgid ""
 "include an example that reproduces (e.g., @url{http://en.wikipedia.org/wiki/"
 "Reproducibility}) the problem, preferably the simplest one you have found."
 msgstr ""
+"겉으로 보기에 똑같은 버그를 생성하는 간단한 예제를 찾아 시도하는 것은 매우 유"
+"익합니다.  실제로는 버그가 아니지만 버그를 생성할 것이라고 예상되는 단순한 예"
+"제를 테스트 하는 것도 유용합니다.  만약 문제를 디버그하고 무엇이 문제를 야기"
+"하는지 정확히 찾아내고 싶다면, 이것은 매우 훌륭합니다.  당신은 실제로 일어난 "
+"사실만을 보고해야 하면서도 어떠한 설명 또는 해법을 함께 보고할 수 있습니다.  "
+"당신이 찾았던 문제들중에서 그 문제가 똑같이 일어남을 확인해 줄 수 있는 가장 "
+"단순한 예제를 꼭 포함해주시길 부탁드립니다  (즉, @url{http://en.wikipedia."
+"org/wiki/Reproducibility} 입니다). "
 
 #. type: Plain text
 #: R-FAQ.texi:3576
@@ -6924,6 +8022,9 @@ msgid ""
 "Invoking R with the @option{--vanilla} option may help in isolating a bug.  "
 "This ensures that the site profile and saved data files are not read."
 msgstr ""
+"@option{--vanilla} 옵션과 함께 R을 실행하는 것은 버그를 분리해 내는데 도움을 "
+"줄 것입니다.  이것은 사이트 프로파일과 저장된 데이터 파일들이 읽혀지지 않도"
+"록 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3591
@@ -6941,6 +8042,18 @@ msgid ""
 "package maintainer, and only submitted to the R-bugs repository by package "
 "maintainers, mentioning the package in the subject line."
 msgstr ""
+"버그리포트를 실제로 제출하기 전에, 해당 버그가 이미 보고되었거나 수정되었는지"
+"를 확인하시길 바랍니다.  제일 먼저 @url{http://bugs.R-project.org/}에 있는 검"
+"색 기능 또는 ``Show open bugs new-to-old''을 시도해보시길 바랍니다. 그리고 나"
+"서 버그트래커에는 고쳤다고 나오지 않았는지 혹은 다음에 배포되는 R에 변경사항"
+"을 기록한 @url{https://svn.R-project.org/@/R/@/trunk/@/doc/@/NEWS.Rd}에는 있"
+"는지 없는지 확인해 보시길 바랍니다. 세번째로 가능하다면 R의 현재 r-patched나 "
+"r-devel 버전을 시도해 보십시오.  만약 버그가 이미 보고되거나 고쳐졌다면, 추가"
+"적인 버그 보고서를 제출하지 말아주시길 바랍니다. 마지막으로 버그가 R에 존재하"
+"는지 기여 패키지에 존재하는지에 대해서 주의 깊게 확인해 주시길 부탁드립니다. "
+"기여된 패키지들에 대한 버그보고서는 가장 먼저 패키지 관리자에게 보내져야 하"
+"며, 패키지 관라자에 의해서 해당패키지명이 제목에 명시된 버그리포드만이 R-bug "
+"저장소에 제출될 수 있습니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3597
@@ -6950,6 +8063,10 @@ msgid ""
 "org/}: for a contributed package it will open the package's bug tracker Web "
 "page or help you compose an email to the maintainer."
 msgstr ""
+"버그 리포트는 함수 @code{bug.report()}을 이용하여 생성할 수 있습니다. 이것은 "
+"@url{http://bugs.R-project.org/}이라는 웹페이지를 열어줄 것입니다. 사용자 기"
+"여패키지(contributed package)에 대해서는 패키지의 버그 트래커 웹 페이지 또는 "
+"패키지 관리자에게 이메일을 작성할 수 있도록 도와줄 것입니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3603
@@ -6960,6 +8077,10 @@ msgid ""
 "is for the wishlist and not a bug report, for example by starting with "
 "@samp{Wishlist:}."
 msgstr ""
+"@samp{wishlist}라고 라벨과 함께 R의 기능강화에 관한 제안들을 위한 버그저장소 "
+"섹션이 있습니다.  제안사항들은 버그를 보고하는 것과 같은 방법으로 할 수 있으"
+"나, 제목에 반드시 이것은 wishlist 이지 버그리포트가 아니라는 것을 명시해주셔"
+"야 합니다.  예를들면, @samp{Wishlist:} 라고 시작해 주시면 됩니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3606
@@ -6967,6 +8088,8 @@ msgid ""
 "Comments on and suggestions for the Windows port of R should be sent to "
 "@email{R-windows@@R-project.org}."
 msgstr ""
+"R의 Windows 포트에 대한 조언 및 제안사항들은 @email{R-windows@@R-project.org}"
+"로 보내져야 합니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3611
@@ -6976,6 +8099,9 @@ msgid ""
 "to the translation team as listed at @url{http://developer.R-project.org/"
 "TranslationTeams.html}."
 msgstr ""
+"메시지 번역에 관련한 수정 및 제안사항들은 해당 내용을 담고 있는 @samp{.po} 파"
+"일 상단에 명시된 마지막 번역자 또는 @url{http://developer.R-project.org/"
+"TranslationTeams.html}에 나열되어 있는 번역팀에게 보내어져야 합니다. "
 
 #. type: Plain text
 #: R-FAQ.texi:3617
@@ -6992,8 +8118,13 @@ msgid ""
 "Ripley, Anthony Rossini, and Andreas Weingessel for their comments which "
 "helped me improve this @acronym{FAQ}."
 msgstr ""
+"R 시스템을 제공해 준 Robert와 Ross에게 감사의 말씀을 올리며, 패키지 작성자들"
+"과 포터(porters)들에게 또한 감사드립니다. 특히 본 @acronym{FAQ} 문서를 향상시"
+"킬 수 있는 코멘트를 제공해준 Doug Bates, Peter Dalgaard, Paul Gilbert, "
+"Stefano Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, "
+"Brian D. Ripley, Anthony Rossini, 그리고 Andreas Weingessel에게 감사드립니다."
 
 #. type: Plain text
 #: R-FAQ.texi:3624
 msgid "More to come soon @dots{}"
-msgstr ""
+msgstr "더 많은 내용들이 추가될 것입니다@dots{}"
