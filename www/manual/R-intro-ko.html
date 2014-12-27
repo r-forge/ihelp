@@ -6287,92 +6287,87 @@ external program).
 <a name="A-sample-session-1"></a>
 <h2 class="appendix">Appendix A A sample session</h2>
 
-<p>The following session is intended to introduce to you some features of the
-R environment by using them.  Many features of the system will be
-unfamiliar and puzzling at first, but this puzzlement will soon disappear.
+<p>다음 세션(session)은 R 환경(environment)의 일부 기능을 처음 접하는 사용자에게 소개할 목적으로
+준비되었습니다. 처음에는 시스템의 많은 기능들이 익숙하지 않고 혼란스러울 수 있으나, 이러한 불편함을 곧 사라지게 될 것입니다.
 </p>
 <dl compact="compact">
 <dt><code>사용자의 플랫폼에 맞추어 R을 올바르게 실행하도록 합니다 (see <a href="#Invoking-R-_0028R_00ec_009d_0084-_00ec_008b_00a4_00ed_0096_0089_00ed_0095_0098_00ea_00b8_00b0_0029">Invoking R (R을 실행하기)</a>)</code></dt>
 <dd>
-<p>The R program begins, with a banner.
+<p>R 프로그램이 배너와 함께 시작됩니다.
 </p>
-<p>(Within R code, the prompt on the left hand side will not be shown to
-avoid confusion.)
+<p>(혼돈을 피하기 위해서 R 코드를 표시할 때 왼쪽에 있는 프롬프트는 표시하지 않습니다.)
 </p>
 </dd>
 <dt><code>help.start()</code></dt>
-<dd><p>Start the <acronym>HTML</acronym> interface to on-line help (using a web browser available
-at your machine).  You should briefly explore the features of this facility
-with the mouse.
+<dd><p>사용자의 기계에서 이용이 가능한 인터넷 브라우저를 이용하여 <acronym>HTML</acronym> 인터페이스를 가진 온라인 도움말을 시작합니다. 마우스를 이용하여
+어떻게 이용하는 것인지 간단히 살펴보시길 바랍니다.
 </p>
-<p>Iconify the help window and move on to the next part.
+<p>다음의 내용들을 실습하기 위하여 도움말 창을 작게 만들어 놓습니다.
 </p>
 </dd>
 <dt><code>x &lt;- rnorm(50)</code></dt>
 <dt><code>y &lt;- rnorm(x)</code></dt>
-<dd><p>Generate two pseudo-random normal vectors of <em>x</em>- and
-<em>y</em>-coordinates.
+<dd><p>이것은 정규분포로부터 발생시킨 50개의 난수를 벡터 <em>x</em>와 <em>y</em>에 저장한 것입니다.
 </p>
 </dd>
 <dt><code>plot(x, y)</code></dt>
-<dd><p>Plot the points in the plane.  A graphics window will appear automatically.
+<dd><p>평면공간에 <em>x</em>와 <em>y</em>의 좌표로 이루어진 점들을 플랏해봅니다. 그패픽 창이 자동으로 나타나는 것을 볼 수 있습니다.
 </p>
 </dd>
 <dt><code>ls()</code></dt>
-<dd><p>See which R objects are now in the R workspace.
+<dd><p>R 작업공간(workspace)에 어떤 R 객체들이 있는지 확인해봅니다.
 </p>
 </dd>
 <dt><code>rm(x, y)</code></dt>
-<dd><p>Remove objects no longer needed. (Clean up).
+<dd><p>더 이상 사용하지 않는 객체들을 작업공간으로부터 제거합니다.
 </p>
 </dd>
 <dt><code>x &lt;- 1:20</code></dt>
-<dd><p>Make <em>x = (1, 2, &hellip;, 20)</em>.
+<dd><p><em>x = (1, 2, &hellip;, 20)</em>를 생성합니다
 </p>
 </dd>
 <dt><code>w &lt;- 1 + sqrt(x)/2</code></dt>
-<dd><p>A &lsquo;weight&rsquo; vector of standard deviations.
+<dd><p>표준편차(standard deviation)의 가중치(weight)를 생성합니다.
 </p>
 </dd>
 <dt><code>dummy &lt;- data.frame(x=x, y= x + rnorm(x)*w)</code></dt>
 <dt><code>dummy</code></dt>
-<dd><p>Make a <em>data frame</em> of two columns, <em>x</em> and <em>y</em>, and look at
-it.
+<dd><p><em>x</em>와 <em>y</em>의 두 개의 열을 가지는 데이터프레임(<em>data frame</em>)을 생성하고, 이를 살펴봅니다.
 </p>
 </dd>
 <dt><code>fm &lt;- lm(y ~ x, data=dummy)</code></dt>
 <dt><code>summary(fm)</code></dt>
-<dd><p>Fit a simple linear regression and look at the analysis.  With <code>y</code> to
-the left of the tilde, we are modelling <em>y</em> dependent on <em>x</em>.
+<dd><p>단순 선형회귀(simple linear regression)을 적합합니다. 틸다표시 좌측에 있는 <code>y</code>에 관하여, 우리는
+<em>y</em>가 <em>x</em>에 의존한다는 것을 모델한 것입니다.
 </p>
 </dd>
 <dt><code>fm1 &lt;- lm(y ~ x, data=dummy, weight=1/w^2)</code></dt>
 <dt><code>summary(fm1)</code></dt>
-<dd><p>Since we know the standard deviations, we can do a weighted regression.
+<dd><p>우리는 표준편차를 알고 있기 때문에, 가중회귀(weighted regression)분석을 수행합니다.
 </p>
 </dd>
 <dt><code>attach(dummy)</code></dt>
-<dd><p>Make the columns in the data frame visible as variables.
+<dd><p>데이터프레임 내에 있는 열들을 일반적인 변수와 같이 접근할 수 있도록 해주는 것입니다.
 </p>
 </dd>
 <dt><code>lrf &lt;- lowess(x, y)</code></dt>
-<dd><p>Make a nonparametric local regression function.
+<dd><p>비모수 국지회귀함수(nonparametric local regression)를 수행합니다.
 </p>
 </dd>
 <dt><code>plot(x, y)</code></dt>
-<dd><p>Standard point plot.
+<dd><p>일반적인 방법으로 <em>x</em>와 <em>y</em>를 플랏해 봅니다.
 </p>
 </dd>
 <dt><code>lines(x, lrf$y)</code></dt>
-<dd><p>Add in the local regression.
+<dd><p>그래프에 회귀분석으로부터 나온 결과를 이용하여 회귀선을 추가합니다.
 </p>
 </dd>
 <dt><code>abline(0, 1, lty=3)</code></dt>
-<dd><p>The true regression line: (intercept 0, slope 1).
+<dd><p>그래픽에 기울기가 1이고 절편이 0인 회귀선을 표시합니다.
 </p>
 </dd>
 <dt><code>abline(coef(fm))</code></dt>
-<dd><p>Unweighted regression line.
+<dd><p>가중치없이 수행한 회귀모형(unweighted regression)으로부터 얻은 회귀계수들을 이용하여 회귀선을 표시합니다.
 </p>
 </dd>
 <dt><code>abline(coef(fm1), col = &quot;red&quot;)</code></dt>
@@ -6380,20 +6375,20 @@ the left of the tilde, we are modelling <em>y</em> dependent on <em>x</em>.
 </p>
 </dd>
 <dt><code>detach()</code></dt>
-<dd><p>Remove data frame from the search path.
+<dd><p>탐색경로(search path)로부터 데이터프레임을 제거합니다.
 </p>
 </dd>
 <dt><code>plot(fitted(fm), resid(fm),</code></dt>
 <dt><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xlab=&quot;Fitted&nbsp;values&quot;<!-- /@w -->,</code></dt>
 <dt><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ylab=&quot;Residuals&quot;<!-- /@w -->,</code></dt>
 <dt><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main=&quot;Residuals&nbsp;vs&nbsp;Fitted&quot;)<!-- /@w --></code></dt>
-<dd><p>A standard regression diagnostic plot to check for heteroscedasticity.  Can
-you see it?
+<dd><p>이분산성(heteroscedasticity)을 확인하기 위해서 표준회귀 진단플랏(standard regression diagnostic
+plot)을 그립니다. 이를 볼 수 있나요?
 </p>
 </dd>
 <dt><code>qqnorm(resid(fm), main=&quot;Residuals Rankit Plot&quot;)</code></dt>
-<dd><p>A normal scores plot to check for skewness, kurtosis and outliers.  (Not
-very useful here.)
+<dd><p>비대칭도(skewness), 첨도(kurtosis), 그리고 이상치(outliers)를 찾기 위해서 정규스코어플랏(normal score
+plot)을 이용해 봅니다. (실제로는 이 문제에 대해서 별로 유용하지 않습니다).
 </p>
 </dd>
 <dt><code>rm(fm, fm1, lrf, x, dummy)</code></dt>
@@ -6401,10 +6396,9 @@ very useful here.)
 </p></dd>
 </dl>
 
-<p>The next section will look at data from the classical experiment of
-Michelson to measure the speed of light.  This dataset is available in the
-<code>morley</code> object, but we will read it to illustrate the
-<code>read.table</code> function.
+<p>다음 섹션에서는 Michelson이 빛의 속도를 측정하기 위해서 사용했던 실험으로부터 모은 데이터를 이용해 보도록 하겠습니다. 이
+데이터셋은 <code>morley</code>라고 객체명을 입력하면 이용이 가능하지만, 여기에서는 <code>read.table</code> 함수의 사용법을
+알아보기 위해서 직접 데이터를 불러보도록 하겠습니다.
 </p>
 <dl compact="compact">
 <dt><code>filepath &lt;- system.file(&quot;data&quot;, &quot;morley.tab&quot; , package=&quot;datasets&quot;)</code></dt>
