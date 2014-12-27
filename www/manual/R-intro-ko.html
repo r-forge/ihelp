@@ -396,7 +396,6 @@ p {
   <ul class="no-bullet">
     <li><a name="toc-Preliminaries" href="#Preliminaries">C.1 Preliminaries</a></li>
     <li><a name="toc-Editing-actions" href="#Editing-actions">C.2 Editing actions</a></li>
-    <li><a name="toc-Command_002dline-editor-summary" href="#Command_002dline-editor-summary">C.3 Command-line editor summary</a></li>
   </ul></li>
   <li><a name="toc-i_0022i-e_00b0-e3ii-e_0027e-_0022e-ii_002c" href="#g_t_00ed_0095_00a8_00ec_0088_0098-_00eb_00b0_008f-_00eb_00b3_0080_00ec_0088_0098_00ec_0099_0080-_00ea_00b4_0080_00eb-_00a8_00eb_0090_009c-_00ec_0083_0089_00ec_009d_00b8">Appendix D 함수 및 변수와 관련된 색인</a></li>
   <li><a name="toc-e_00b0e-e31_002f4-e_0027e-_0022e-ii_002c" href="#g_t_00ea_00b0_009c_00eb-_0090_00ea_00b3_00bc-_00ea_00b4_0080_00eb-_00a8_00eb_0090_009c-_00ec_0083_0089_00ec_009d_00b8">Appendix E 개념과 관련된 색인</a></li>
@@ -6403,134 +6402,134 @@ plot)을 이용해 봅니다. (실제로는 이 문제에 대해서 별로 유�
 <dl compact="compact">
 <dt><code>filepath &lt;- system.file(&quot;data&quot;, &quot;morley.tab&quot; , package=&quot;datasets&quot;)</code></dt>
 <dt><code>filepath</code></dt>
-<dd><p>Get the path to the data file.
+<dd><p>시스템내에 데이터 파일이 존재하는 위치에 대한 파일경로를 얻습니다.
 </p>
 </dd>
 <dt><code>file.show(filepath)</code></dt>
-<dd><p>Optional.  Look at the file.
+<dd><p>꼭 해보지 않아도 되지만, 파일의 내용을 살펴봅니다.
 </p>
 </dd>
 <dt><code>mm &lt;- read.table(filepath)</code></dt>
 <dt><code>mm</code></dt>
-<dd><p>Read in the Michelson data as a data frame, and look at it.  There are five
-experiments (column <code>Expt</code>) and each has 20 runs (column <code>Run</code>)
-and <code>sl</code> is the recorded speed of light, suitably coded.
+<dd><p>Michelson 데이터를 데이터프레임의 형식으로 읽어들인 뒤, 이를 확인해 보도록 합니다. 이 데이터셋은 <code>Expt</code> 변수에
+5가지 종류의 실험정보를 저장했고, <code>Run</code> 변수에 종류별로 각각 20번씩 실험되었다는 정보를 가지고 있음을
+보여줍니다. 그리고 <code>sl</code> 변수에 각 조건별 빛의 속도가 입력되어 있음을 알 수 있습니다.
 </p>
 </dd>
 <dt><code>mm$Expt &lt;- factor(mm$Expt)</code></dt>
 <dt><code>mm$Run &lt;- factor(mm$Run)</code></dt>
-<dd><p>Change <code>Expt</code> and <code>Run</code> into factors.
+<dd><p><code>Expt</code>와 <code>Run</code> 변수들에 대한 데이터형을 요인(factor)로 변경합니다.
 </p>
 </dd>
 <dt><code>attach(mm)</code></dt>
-<dd><p>Make the data frame visible at position 3 (the default).
+<dd><p>데이터프레임을 포지션 3 (기본값)에서 볼 수 있도록 합니다. 
 </p>
 </dd>
 <dt><code>plot(Expt, Speed, main=&quot;Speed of Light Data&quot;, xlab=&quot;Experiment No.&quot;)</code></dt>
-<dd><p>Compare the five experiments with simple boxplots.
+<dd><p>박스플랏(boxplot)을 이용하여 5가지 종류의 실험들을 서로 비교해보도록 합니다.
 </p>
 </dd>
 <dt><code>fm &lt;- aov(Speed ~ Run + Expt, data=mm)</code></dt>
 <dt><code>summary(fm)</code></dt>
-<dd><p>Analyze as a randomized block, with &lsquo;runs&rsquo; and &lsquo;experiments&rsquo; as factors.
+<dd><p>&lsquo;runs&rsquo;와 &lsquo;experiments&rsquo;를 요인으로 놓은 상태에서 랜덤마이즈된 블락(randomized block) 분석을 합니다.
 </p>
 </dd>
 <dt><code>fm0 &lt;- update(fm, . ~ . - Run)</code></dt>
 <dt><code>anova(fm0, fm)</code></dt>
-<dd><p>Fit the sub-model omitting &lsquo;runs&rsquo;, and compare using a formal analysis of
-variance.
+<dd><p>&lsquo;runs&rsquo;를 제외한 모델 (sub-model)을 이용하여 적합한뒤, 일반적인 분산분석(analysis of variance)와 비교를
+해봅니다.
 </p>
 </dd>
 <dt><code>detach()</code></dt>
 <dt><code>rm(fm, fm0)</code></dt>
-<dd><p>Clean up before moving on.
+<dd><p>다음 분석으로 넘어가기 전에 불필요한 객체들을 삭제합니다.
 </p>
 </dd>
 </dl>
 
-<p>We now look at some more graphical features: contour and image plots.
+<p>이제 컨투어(contour)와 이미지(image) 플랏이라는 그래픽 기능에 대해서 알아보도록 합니다.
 </p>
 <dl compact="compact">
 <dt><code>x &lt;- seq(-pi, pi, len=50)</code></dt>
 <dt><code>y &lt;- x</code></dt>
-<dd><p><em>x</em> is a vector of 50 equally spaced values in
+<dd><p><em>x</em>는  구간 [-pi\, pi]을 50등분한 값들을 가진 벡터입니다.
 the interval [-pi\, pi].
-<em>y</em> is the same.
+벡터 <em>y</em>는 벡터 <em>x</em>와 동일합니다.
 </p>
 </dd>
 <dt><code>f &lt;- outer(x, y, function(x, y) cos(y)/(1 + x^2))</code></dt>
-<dd><p><em>f</em> is a square matrix, with rows and columns indexed by <em>x</em> and
-<em>y</em> respectively, of values of the function cos(y)/(1 + x^2).
+<dd><p><em>f</em>는 <em>x</em>가 행이고, <em>y</em>가 열인 정방행렬입니다.  이 행렬의 구성요소는 <em>x</em>의 구성요소와
+<em>y</em>의 구성요소를 하나의 짝을 이루도록 하여 함수 cos(y)/(1 + x^2)를
+적용하여 얻은 값으로 얻어지게 됩니다.
 </p>
 </dd>
 <dt><code>oldpar &lt;- par(no.readonly = TRUE)</code></dt>
 <dt><code>par(pty=&quot;s&quot;)</code></dt>
-<dd><p>Save the plotting parameters and set the plotting region to &ldquo;square&rdquo;.
+<dd><p>현재 저장되어 있는 플랏팅 모수 (parameters)들을 보관한 뒤, 플랏팅 영역 (plotting region)을
+&ldquo;square&rdquo;로 설정합니다.
 </p>
 </dd>
 <dt><code>contour(x, y, f)</code></dt>
 <dt><code>contour(x, y, f, nlevels=15, add=TRUE)</code></dt>
-<dd><p>Make a contour map of <em>f</em>; add in more lines for more detail.
+<dd><p><em>f</em>의 컨투어 맵(contour map)을 생성하고, 15개의 컨투어 레벨(등고선)을 보여지도록 합니다.
 </p>
 </dd>
 <dt><code>fa &lt;- (f-t(f))/2</code></dt>
-<dd><p><code>fa</code> is the &ldquo;asymmetric part&rdquo; of <em>f</em>.  (<code>t()</code> is
-transpose).
+<dd><p><code>fa</code>는 <em>f</em>의 &ldquo;asymmetric part&rdquo;(비대칭 부분)입니다 (여기에서 <code>t()</code>는 행렬의
+전치를 의미합니다).
 </p>
 </dd>
 <dt><code>contour(x, y, fa, nlevels=15)</code></dt>
-<dd><p>Make a contour plot, &hellip;
+<dd><p>컨투어 플랏을 생성합니다.
 </p>
 </dd>
 <dt><code>par(oldpar)</code></dt>
-<dd><p>&hellip; and restore the old graphics parameters.
+<dd><p>이전에 보관한 그래픽 파라미터들을 원래대로 복구시킵니다.
 </p>
 </dd>
 <dt><code>image(x, y, f)</code></dt>
 <dt><code>image(x, y, fa)</code></dt>
-<dd><p>Make some high density image plots, (of which you can get hardcopies if you
-wish), &hellip;
+<dd><p>이미지 플랏을 생성합니다.
 </p>
 </dd>
 <dt><code>objects(); rm(x, y, f, fa)</code></dt>
-<dd><p>&hellip; and clean up before moving on.
+<dd><p>어떤 객체들이 워크스페이스에 있는지 확인한 뒤, 다음 분석을 수행하기 전에 불필요한 객체들을 제거합니다.
 </p></dd>
 </dl>
 
-<p>R can do complex arithmetic, also.
+<p>R에서는 복소수 연산(complex arithmetic) 또한 가능합니다.
 </p>
 <dl compact="compact">
 <dt><code>th &lt;- seq(-pi, pi, len=100)</code></dt>
 <dt><code>z &lt;- exp(1i*th)</code></dt>
-<dd><p><code>1i</code> is used for the complex number <em>i</em>.
+<dd><p><code>1i</code>는 복소수(complex number) <em>i</em>를 나타냅니다.
 </p>
 </dd>
 <dt><code>par(pty=&quot;s&quot;)</code></dt>
 <dt><code>plot(z, type=&quot;l&quot;)</code></dt>
-<dd><p>Plotting complex arguments means plot imaginary versus real parts.  This
-should be a circle.
+<dd><p>허수(imaginary part)와 실수(real part)부분을 플랏합니다. 반드시 원의 모양이어야 합니다.
 </p>
 </dd>
 <dt><code>w &lt;- rnorm(100) + rnorm(100)*1i</code></dt>
-<dd><p>Suppose we want to sample points within the unit circle.  One method would
-be to take complex numbers with standard normal real and imaginary parts
-&hellip;
+<dd><p>반지름이 1인 단위 원(unit circle) 안 쪽 부분으로부터 우리는 샘플링을 한다고 가정합니다. 한 가지 방법은 표준정규분포가
+실수와 허수부분에 적용된 복소수를 취하는 것입니다.
 </p>
 </dd>
 <dt><code>w &lt;- ifelse(Mod(w) &gt; 1, 1/w, w)</code></dt>
-<dd><p>&hellip; and to map any outside the circle onto their reciprocal.
+<dd><p>단위 원 밖에 놓여 있는 값들은 역수를 취하도록 합니다.
 </p>
 </dd>
 <dt><code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch=&quot;+&quot;,xlab=&quot;x&quot;, ylab=&quot;y&quot;)</code></dt>
 <dt><code>lines(z)</code></dt>
-<dd><p>All points are inside the unit circle, but the distribution is not uniform.
+<dd><p>단위 원(unit circle)내에 모든 점들이 있음을 알 수 있지만, 이들이 균일하게 분포(uniform distribution)된
+것이 아님을 알 수 있습니다. 
 </p>
 </dd>
 <dt><code>w &lt;- sqrt(runif(100))*exp(2*pi*runif(100)*1i)</code></dt>
 <dt><code>plot(w, xlim=c(-1,1), ylim=c(-1,1), pch=&quot;+&quot;, xlab=&quot;x&quot;, ylab=&quot;y&quot;)</code></dt>
 <dt><code>lines(z)</code></dt>
-<dd><p>The second method uses the uniform distribution.  The points should now look
-more evenly spaced over the disc.
+<dd><p>두 번째 방법으로는 균일분포(uniform distribution)를 이용하는 것입니다. 이것은 디스크에 점들이 균등하게 퍼져있는 것처럼
+보여야 합니다.
 </p>
 </dd>
 <dt><code>rm(th, w, z)</code></dt>
@@ -6538,9 +6537,8 @@ more evenly spaced over the disc.
 </p>
 </dd>
 <dt><code>q()</code></dt>
-<dd><p>Quit the R program.  You will be asked if you want to save the R
-workspace, and for an exploratory session like this, you probably do not
-want to save it.
+<dd><p>R 프로그램을 종료합니다. 이때,  R 작업공간(workspace)를 저장하고 싶은지에 대해서 물어보게 될
+것입니다. 기초사용법에 대한 설명을 목적으로 한 세션이므로 꼭 저장하고 싶지는 않을 것입니다.
 </p></dd>
 </dl>
 
@@ -6549,8 +6547,8 @@ want to save it.
 <a name="Invoking-R-_0028Ri-i_0024_003fiie_002c_00b0_0029"></a>
 <h2 class="appendix">Appendix B Invoking R (R을 실행하기)</h2>
 
-<p>Users of R on Windows or OS X should read the OS-specific section first,
-but command-line use is also supported.
+<p>Windows 또는 Mac OS X에서 R을 이용하는 사용자들은 특정 운영체제에 관한 설명이 되어 있는 섹션을 먼저 읽어보시길
+바랍니다.  그러나, 명령어를 이용한 사용 또한 지원되고 있습니다. 
 </p>
 
 <hr>
@@ -6558,246 +6556,209 @@ but command-line use is also supported.
 <a name="Invoking-R-from-the-command-line-1"></a>
 <h3 class="appendixsec">B.1 Invoking R from the command line</h3>
 
-<p>When working at a command line on UNIX or Windows, the command &lsquo;<samp>R</samp>&rsquo; can
-be used both for starting the main R program in the form
+<p>UNIX 또는 Windows 환경에서 명령어를 이용하여 작업을 할때, 명령어 &lsquo;<samp>R</samp>&rsquo;은 아래와 같은 형식으로 R 프로그램을
+실행하는데 사용될 수 있습니다.
 </p>
 <div class="display">
 <pre class="display"><code>R</code> [<var>options</var>] [<code>&lt;</code><var>infile</var>] [<code>&gt;</code><var>outfile</var>],
 </pre></div>
 
-<p>or, via the <code>R CMD</code> interface, as a wrapper to various R tools
-(e.g., for processing files in R documentation format or manipulating
-add-on packages) which are not intended to be called &ldquo;directly&rdquo;.
+<p>또한, <code>R CMD</code>라는 인터페이스를 통하여 다양한 R 도구들 (즉, R의 문서형식으로 되어 있는 파일들을
+프로세싱하거나 애드온 패키지들을 조작하는데 사용하기 위한 것들)을 직접 호출하지 않고도 사용할 수 있습니다.
 </p>
-<p>At the Windows command-line, <code>Rterm.exe</code> is preferred to
-<code>R</code>.
+<p>Windows 커맨드 라인에서는 <code>R</code>보다는 <code>Rterm.exe</code>를 이용하는 것을 선호합니다.
 </p>
-<p>You need to ensure that either the environment variable <code>TMPDIR</code> is
-unset or it points to a valid place to create temporary files and
-directories.
+<p>환경 변수(environment variable) <code>TMPDIR</code>이 지정되지 않았거나, 임시 파일과 디렉토리 생성을 하는데
+이용되는 공간을 올바르게 지정했는가에 대해서 확인하는 것이 필요합니다.
 </p>
-<p>Most options control what happens at the beginning and at the end of an R
-session.  The startup mechanism is as follows (see also the on-line help for
-topic &lsquo;<samp>Startup</samp>&rsquo; for more information, and the section below for some
-Windows-specific details).
+<p>대부분의 옵션들은 R 세션의 시작과 끝에서 어떤 것들을 해야하는가를 조절하게 됩니다. 스타트업 메카니즘 (startup
+mechanism)은 다음과 같습니다 (더 많은 정보를 &lsquo;<samp>Startup</samp>&rsquo;이라는 주제와 관련한 온라인 도움말에서 찾아볼 수
+있으며, 일부 Windows와 관련된 내용들은 아래의 섹션에서 찾아볼 수 있습니다).
 </p>
 <ul>
-<li> Unless <samp>--no-environ</samp> was given, R searches for user and site
-files to process for setting environment variables.  The name of the site
-file is the one pointed to by the environment variable <code>R_ENVIRON</code>; if
-this is unset, <samp><var>R_HOME</var>/etc/Renviron.site</samp> is used (if it
-exists).  The user file is the one pointed to by the environment variable
-<code>R_ENVIRON_USER</code> if this is set; otherwise, files <samp>.Renviron</samp> in
-the current or in the user&rsquo;s home directory (in that order) are searched
-for.  These files should contain lines of the form
-&lsquo;<samp><var>name</var>=<var>value</var></samp>&rsquo;.  (See <code>help(&quot;Startup&quot;)</code> for a precise
-description.)  Variables you might want to set include <code>R_PAPERSIZE</code>
-(the default paper size), <code>R_PRINTCMD</code> (the default print command) and
-<code>R_LIBS</code> (specifies the list of R library trees searched for add-on
-packages).
+<li> <samp>--no-environ</samp>이라는 옵션이 주어지지 않는다면, R은 환경변수들을 설정하기 위한 작업을 진행하기 위해서
+사용자와 사이트 파일들(user and site files)을 찾습니다.  사이트 파일의 이름은 환경변수 <code>R_ENVIRON</code>에
+의해 지정됩니다. 만약, 이것이 설정되어 있지 않다면, <samp><var>R_HOME</var>/etc/Renviron.site</samp>이 이용됩니다
+(만약 존재할 경우에 한합니다).사용자 파일은 <code>R_ENVIRON_USER</code>라는 환경변수가 설정되어 있다면 이 파일에 의해서
+지정됩니다. 그렇지 않다면 현재 또는 사용자의 홈디렉토리내에 있는 <samp>.Renviron</samp>이라는 파일을 찾습니다.  이러한 파일들은
+&lsquo;<samp><var>name</var>=<var>value</var></samp>&rsquo;이라는 형식을 가진 라인들을 포함해야 합니다. (구체적인 이해를 위해서
+<code>help(&quot;Startup&quot;)</code>을 살펴보시길 바랍니다) 설정하고 싶은 변수들은 아마도 기본 페이퍼의 크기를 정하는
+<code>R_PAPERSIZE</code>, 기본 프린터 명령을 정해주는 <code>R_PRINTCMD</code>, 그리고 애드온 패키지들을 찾는데 사용된
+R 라이브러리 트리(library tree)들의 목록을 지정하는 <code>R_LIBS</code>가 있습니다. 
 
-</li><li> Then R searches for the site-wide startup profile unless the command line
-option <samp>--no-site-file</samp> was given.  The name of this file is taken
-from the value of the <code>R_PROFILE</code> environment variable.  If that
-variable is unset, the default <samp><var>R_HOME</var>/etc/Rprofile.site</samp> is used
-if this exists.
+</li><li> 명령어 옵션 <samp>--no-site-file</samp>이 주어지지 않았다면, R은 사이트-와이드 스타트업 프로파일(site-wide
+startup profile)을 찾습니다. 이 파일의 이름은 <code>R_PROFILE</code> 환경 변수의 값으로부터 얻을 수 있습니다. 만약
+이 변수가 지정되지 않았다면 기본적으로 <samp><var>R_HOME</var>/etc/Rprofile.site</samp>이 이용됩니다 (만약
+존재한다면).
 
-</li><li> Then, unless <samp>--no-init-file</samp> was given, R searches for a user
-profile and sources it.  The name of this file is taken from the environment
-variable <code>R_PROFILE_USER</code>; if unset, a file called <samp>.Rprofile</samp> in
-the current directory or in the user&rsquo;s home directory (in that order) is
-searched for.
+</li><li> 만약 <samp>--no-init-file</samp>이 주어지지 않았다면 R은 사용자 프로파일(user profile)을 탐색 후 이를
+읽어들이게 됩니다. 이 파일의 이름은 환경변수 <code>R_PROFILE_USER</code>로 부터 얻을 수 있습니다. 이것이 설정되지 않았다면,
+현재 디렉토리에 있거나 사용자의 홈 디렉토리에 있는 <samp>.Rprofile</samp> 파일을 찾을 것입니다. 
 
-</li><li> It also loads a saved workspace from file <samp>.RData</samp> in the current
-directory if there is one (unless <samp>--no-restore</samp> or
-<samp>--no-restore-data</samp> was specified).
+</li><li> 또한, (<samp>--no-restore</samp> 또는 <samp>--no-restore-data</samp> 옵션이 지정되지 않았다면) 현재의
+디렉토리에 <samp>.RData</samp> 파일로부터 저장된 작업공간을 불러올 수 있습니다. 
 
-</li><li> Finally, if a function <code>.First()</code> exists, it is executed.  This
-function (as well as <code>.Last()</code> which is executed at the end of the R
-session) can be defined in the appropriate startup profiles, or reside in
-<samp>.RData</samp>.
+</li><li> 마지막으로 <code>.First()</code> 함수가 존재한다면, 이것은 실행될 것입니다. (R 세션의 끝부분에서 실행된
+<code>.Last()</code>함수와 같이) 이 함수는 적절한 스타트업 프로파일들 내에 정의될 수 있습니다.  또는 <samp>.RData</samp>에
+위치할 수도 있습니다. 
 </li></ul>
 
-<p>In addition, there are options for controlling the memory available to the
-R process (see the on-line help for topic &lsquo;<samp>Memory</samp>&rsquo; for more
-information).  Users will not normally need to use these unless they are
-trying to limit the amount of memory used by R.
+<p>추가적으로 R 처리과정에 이용되는 메모리를 조절하는 옵션들이 있습니다. (더 많은 정보를 원하신다면 &lsquo;<samp>Memory</samp>&rsquo;와
+관련된 온라인 도움말을 살펴보시길 바랍니다). R에 의하여 사용되는 메모리를 크기를 조절하고자 하지 않는다면 사용자는 이들을
+사용해야 할 필요는 없습니다. 
 </p>
-<p>R accepts the following command-line options.
+<p>R은 다음과 같은 명령어 옵션들을 제공합니다.
 </p>
 <dl compact="compact">
 <dt><samp>--help</samp></dt>
 <dt><samp>-h</samp></dt>
-<dd><p>Print short help message to standard output and exit successfully.
+<dd><p>표준 출력(standard output)으로 짧은 도움말 메시지를 보여주고 종료합니다. 
 </p>
 </dd>
 <dt><samp>--version</samp></dt>
-<dd><p>Print version information to standard output and exit successfully.
+<dd><p>표준 출력(standard output)으로 버전정보를 표시해주고 종료합니다.
 </p>
 </dd>
 <dt><samp>--encoding=<var>enc</var></samp></dt>
-<dd><p>Specify the encoding to be assumed for input from the console or
-<code>stdin</code>.  This needs to be an encoding known to <code>iconv</code>: see its
-help page.  (<code>--encoding <var>enc</var></code> is also accepted.)  The input is
-re-encoded to the locale R is running in and needs to be representable in
-the latter&rsquo;s encoding (so e.g.&nbsp;you cannot re-encode Greek text in a French
-locale unless that locale uses the UTF-8 encoding).
+<dd><p><code>stdin</code> 또는 콘솔로부터의 입력에 사용될 인코딩(encoding)을 지정합니다. 이것은 <code>iconv</code>에서 사용될
+수 있는 알려진 인코딩이어야 합니다. 도움말 페이지를 참고하시길 바랍니다. (<code>--encoding <var>enc</var></code>) 또한
+사용될 수 있습니다. 
 </p>
 </dd>
 <dt><samp>RHOME</samp></dt>
-<dd><p>Print the path to the R &ldquo;home directory&rdquo; to standard output and exit
-successfully.  Apart from the front-end shell script and the man page, R
-installation puts everything (executables, packages, etc.)  into this
-directory.
+<dd><p>표준출력에 R &ldquo;home directory&rdquo; (홈디렉토리)의 경로를 보여주고 종료합니다.  사용자가 직접 작성하는 쉘
+스크립트(shell script)와 도움말 페이지(man page)를 제외하고 실행이 가능한 파일들, 패키지 등 모두가 R이
+설치되어 집니다. 
 </p>
 </dd>
 <dt><samp>--save</samp></dt>
 <dt><samp>--no-save</samp></dt>
-<dd><p>Control whether data sets should be saved or not at the end of the R
-session.  If neither is given in an interactive session, the user is asked
-for the desired behavior when ending the session with <kbd>q()</kbd>; in
-non-interactive use one of these must be specified or implied by some other
-option (see below).
+<dd><p>R세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. 
 </p>
 </dd>
 <dt><samp>--no-environ</samp></dt>
-<dd><p>Do not read any user file to set environment variables.
+<dd><p>환경변수를 설정하기 위한 어떠한 유저파일(user file)을 읽어들이지 않습니다.
 </p>
 </dd>
 <dt><samp>--no-site-file</samp></dt>
-<dd><p>Do not read the site-wide profile at startup.
+<dd><p>스타트업(startup)에서 사이트-와이드 프로파일 (site-wide profile)을 읽어들이지 않습니다.
 </p>
 </dd>
 <dt><samp>--no-init-file</samp></dt>
-<dd><p>Do not read the user&rsquo;s profile at startup.
+<dd><p>스타트업(startup)에서 사용자의 프로파일을 읽어들이지 않습니다. 
 </p>
 </dd>
 <dt><samp>--restore</samp></dt>
 <dt><samp>--no-restore</samp></dt>
 <dt><samp>--no-restore-data</samp></dt>
-<dd><p>Control whether saved images (file <samp>.RData</samp> in the directory where R
-was started) should be restored at startup or not.  The default is to
-restore. (<samp>--no-restore</samp> implies all the specific
-<samp>--no-restore-*</samp> options.)
+<dd><p>스타트업(startup)할때 R이 시작된 디렉토리내에서 <samp>.RData</samp>의 형식으로 저장되어진 이미지들 복구할 것인지를
+조절합니다. 기본값은 복구하는 것입니다. (<samp>--no-restore</samp>는 좀 더 세부적인
+<samp>--no-restore-*</samp>과 같은 옵션들 모두를 의미합니다)
 </p>
 </dd>
 <dt><samp>--no-restore-history</samp></dt>
-<dd><p>Control whether the history file (normally file <samp>.Rhistory</samp> in the
-directory where R was started, but can be set by the environment variable
-<code>R_HISTFILE</code>) should be restored at startup or not.  The default is to
-restore.
+<dd><p>R이 시작된 디렉토리내에 일반적으로 <samp>.Rhistory</samp>로 되어 있는 작업기록파일 (history file)을 스타트업
+(startup)할때 복구할 것인지를 조절합니다. 이 파일은 환경변수 <code>R_HISTFILE</code>에 의해서 지정될 수도
+있습니다. 기본값은 복구하는 것입니다. 
 </p>
 </dd>
 <dt><samp>--no-Rconsole</samp></dt>
-<dd><p>(Windows only) Prevent loading the <samp>Rconsole</samp> file at startup.
+<dd><p>(Windows에만 적용되는 옵션입니다). 이는 스타트업시에 <samp>Rconsole</samp> 파일을 로딩하지 못하게 합니다.
 </p>
 </dd>
 <dt><samp>--vanilla</samp></dt>
-<dd><p>Combine <samp>--no-save</samp>, <samp>--no-environ</samp>, <samp>--no-site-file</samp>,
-<samp>--no-init-file</samp> and <samp>--no-restore</samp>.  Under Windows, this also
-includes <samp>--no-Rconsole</samp>.
+<dd><p><samp>--no-save</samp>, <samp>--no-environ</samp>, <samp>--no-site-file</samp>,
+<samp>--no-init-file</samp>, <samp>--no-restore</samp>를 모두 한데 묶은 것입니다. Windows상에서는 이
+옵션은 또한 <samp>--no-Rconsole</samp>을 포함합니다.
 </p>
 </dd>
 <dt><samp>-f <var>file</var></samp></dt>
 <dt><samp>--file=<var>file</var></samp></dt>
-<dd><p>(not <code>Rgui.exe</code>) Take input from <var>file</var>: &lsquo;<samp>-</samp>&rsquo; means
-<code>stdin</code>.  Implies <samp>--no-save</samp> unless <samp>--save</samp> has been
-set.  On a Unix-alike, shell metacharacters should be avoided in <var>file</var>
-(but spaces are allowed).
+<dd><p>(<code>Rgui.exe</code>에 적용되지 않습니다). <var>file</var>로부터 입력을 가져옵니다: &lsquo;<samp>-</samp>&rsquo;은
+<code>stdin</code>을 의미합니다. <samp>--save</samp>가 지정되지 않았다면 <samp>--no-save</samp>를 의미하게
+됩니다. Unix와 같은 환경에서는 쉡 메타문자(shell metacharacters)는 <var>file</var>내에서 사용을 피해야
+합니다. (그러나, R 2.14.0 부터 공백(spaces)들이 허용됩니다).
 </p>
 </dd>
 <dt><samp>-e <var>expression</var></samp></dt>
-<dd><p>(not <code>Rgui.exe</code>) Use <var>expression</var> as an input line.  One or more
-<samp>-e</samp> options can be used, but not together with <samp>-f</samp> or
-<samp>--file</samp>.  Implies <samp>--no-save</samp> unless <samp>--save</samp> has been
-set.  (There is a limit of 10,000 bytes on the total length of expressions
-used in this way.  Expressions containing spaces or shell metacharacters
-will need to be quoted.)
+<dd><p>(<code>Rgui.exe</code>에서는 사용할 수 없습니다). <var>expression</var>을 한줄의 입력라인 (input
+line)으로 이용하세요.하나 또는 그 이상의 <samp>-e</samp> 옵션들이 사용될 수 있으나, <samp>-f</samp> 또는
+<samp>--file</samp>과는 함께 사용할 수 없습니다. <samp>--save</samp>가 지정되어 있지 않다면
+<samp>--no-svae</samp>을 의미하게 됩니다. (이러한 방식으로 expression 부분에 들어갈 수 있는 최대 길이는
+10,000 바이트 입니다. 공백 또는 쉘 메타문자들을 포함하는 expressions들은 따옴표를 사용해야 할 필요가 있습니다)
 </p>
 </dd>
 <dt><samp>--no-readline</samp></dt>
-<dd><p>(UNIX only) Turn off command-line editing via <strong>readline</strong>.  This is
-useful when running R from within Emacs using the <acronym>ESS</acronym> (&ldquo;Emacs
-Speaks Statistics&rdquo;) package.  See <a href="#The-command_002dline-editor-_0028_00eb_00aa-_00eb-_00b9_00ec_0096_00b4_00eb_009d_00bc_00ec_009d_00b8-_00ed_008e_00b8_00ec_00a7_0091_00ea_00b8_00b0_0029">The command-line editor (명령어라인 편집기)</a>,
-for more information.  Command-line editing is enabled for default
-interactive use (see <samp>--interactive</samp>).  This option also affects
-tilde-expansion: see the help for <code>path.expand</code>.
+<dd><p>(UNIX에서만 사용됩니다) <strong>readline</strong>을 통해서 명령어줄(command-line)을 편집하는 것을 끕니다. 이것은
+<acronym>ESS</acronym>(&ldquo;Emacs Speaks Statistics&rdquo;) 패키지를 이용하여 Emacs상에서 R을 실행할 때
+유용합니다. 더 많은 정보를 원하시면 See <a href="#The-command_002dline-editor-_0028_00eb_00aa-_00eb-_00b9_00ec_0096_00b4_00eb_009d_00bc_00ec_009d_00b8-_00ed_008e_00b8_00ec_00a7_0091_00ea_00b8_00b0_0029">The command-line editor (명령어라인 편집기)</a>를 살펴보시길
+바랍니다. 명령어라인 편집은 기본적으로 대화식으로 사용합니다. (<samp>--interactive</samp>를 살펴보세요). 이 옵션은 또한
+틸데확장(tilde-expansion)에 영향을 미칩니다. 이것에 대해서는 <code>path.expand</code>에 대한 도움말을 살펴보시길
+바랍니다.
 </p>
 </dd>
 <dt><samp>--min-vsize=<var>N</var></samp></dt>
 <dt><samp>--min-nsize=<var>N</var></samp></dt>
-<dd><p>For expert use only: set the initial trigger sizes for garbage collection of
-vector heap (in bytes) and <em>cons cells</em> (number)  respectively.  Suffix
-&lsquo;<samp>M</samp>&rsquo; specifies megabytes or millions of cells respectively.  The
-defaults are 6Mb and 350k respectively and can also be set by environment
-variables <code>R_NSIZE</code> and <code>R_VSIZE</code>.
+<dd><p>고급사용자들에게만 권장됩니다. 바이트단위의 벡터 힙(vector heap)과 <em>cons cells</em> (numbers)에 대한
+가비지 컬렉션 (garbage collection)에 대한 초기 트리거 크기 (initial trigger sizes)를
+설정합니다. 접미사 &lsquo;<samp>M</samp>&rsquo;은 메가바이트 (megabytes)또는 수백만개의 셀 (millions of cells)을
+지정합니다.기본값은 6Mb 와 350k 입니다. 
 </p>
 </dd>
 <dt><samp>--max-ppsize=<var>N</var></samp></dt>
-<dd><p>Specify the maximum size of the pointer protection stack as <var>N</var>
-locations.  This defaults to 10000, but can be increased to allow large and
-complicated calculations to be done.  Currently the maximum value accepted
-is 100000.
+<dd><p><var>N</var>위치만큼 해당하는 포인터 프로텍션 스택(pointer protection stack)의 최대 크기를 지정합니다. 기본값은
+10000이지만, 대규모의 복잡한 연산을 위하여 증가될 수 있습니다. 현재의 최대값은 100000입니다.
 </p>
 </dd>
 <dt><samp>--max-mem-size=<var>N</var></samp></dt>
-<dd><p>(Windows only) Specify a limit for the amount of memory to be used both for
-R objects and working areas.  This is set by default to the smaller of
-the amount of physical RAM in the machine and for 32-bit R,
-1.5Gb<a name="DOCF25" href="#FOOT25"><sup>25</sup></a>, and must be between 32Mb and the maximum allowed on
-that version of Windows.
+<dd><p>(Windows에만 해당합니다) R객체들과 작업영역을 위해 사용되는 메모리의 양의 한계를 지정합니다. 기본적으로 이는 R
+32-비트를 기준으로 물리적인 RAM의 크기보다 작은 1.5Gb<a name="DOCF25" href="#FOOT25"><sup>25</sup></a>로 지정되어
+있습니다.  이는 반드시 32Mb와 Windows의 해당버전에서 허용하는 최고치 사이어야 합니다. 
 </p>
 </dd>
 <dt><samp>--quiet</samp></dt>
 <dt><samp>--silent</samp></dt>
 <dt><samp>-q</samp></dt>
-<dd><p>Do not print out the initial copyright and welcome messages.
+<dd><p>실행 초기에 보여지는 카피라이트(copyright)와 환영 메시지를 보여주지 않습니다.
 </p>
 </dd>
 <dt><samp>--slave</samp></dt>
-<dd><p>Make R run as quietly as possible.  This option is intended to support
-programs which use R to compute results for them.  It implies
-<samp>--quiet</samp> and <samp>--no-save</samp>.
+<dd><p>R를 가능한 조용히 실행합니다. 이 옵션은 R을 이용하여 연산을 수행하는 프로그램을 지원하기 위한 목적으로
+존재합니다. <samp>--quiet</samp>와 <samp>--no-save</samp>를 의미합니다.
 </p>
 </dd>
 <dt><samp>--interactive</samp></dt>
-<dd><p>(UNIX only) Assert that R really is being run interactively even if input
-has been redirected: use if input is from a FIFO or pipe and fed from an
-interactive program.  (The default is to deduce that R is being run
-interactively if and only if <samp>stdin</samp> is connected to a terminal or
-<code>pty</code>.)  Using <samp>-e</samp>, <samp>-f</samp> or <samp>--file</samp> asserts
-non-interactive use even if <samp>--interactive</samp> is given.
+<dd><p>(UNIX에서만 사용가능합니다) 입력의 방향이 설정되어 있을지라도 R이 대화식으로 사용되도록 하게 합니다. (기본적으로
+<samp>stdin</samp>이 터미널(terminal) 또는 <code>pty</code>에 연결되어 있을 때 R은 대화식으로 실행되도록 되어
+있습니다). 만약 <samp>--interactive</samp>이 주어져 있을지라도, <samp>-e</samp>, <samp>-f</samp>, 또는
+<samp>--file</samp>은 비대화식 모드로 사용하게 됩니다.
 </p>
 <p>Note that this does not turn on command-line editing.
 </p>
 </dd>
 <dt><samp>--ess</samp></dt>
-<dd><p>(Windows only) Set <code>Rterm</code> up for use by <code>R-inferior-mode</code> in
-<acronym>ESS</acronym>, including asserting interactive use (without the command-line
-editor) and no buffering of <samp>stdout</samp>.
+<dd><p>(Windows만 가능합니다) 명령어를 이용한 에디터 사용없이 대화식으로 사용할 수 있는 기능을 포함하여 <acronym>ESS</acronym> 내에서
+<code>R-inferior-mode</code>에 의해서 사용할 수 있도록 <code>Rterm</code>을 지정합니다. 
 </p>
 </dd>
 <dt><samp>--verbose</samp></dt>
-<dd><p>Print more information about progress, and in particular set R&rsquo;s option
-<code>verbose</code> to <code>TRUE</code>.  R code uses this option to control the
-printing of diagnostic messages.
+<dd><p>진행과정에 대한 정보를 출력하고, 특히 R의 옵션 <code>verbose</code>를 <code>TRUE</code>로 지정합니다. R 코드는
+이 옵션을 이용하여 진단 메시지 (diagnostic message)의 출력을 조정하게 됩니다. 
 </p>
 </dd>
 <dt><samp>--debugger=<var>name</var></samp></dt>
 <dt><samp>-d <var>name</var></samp></dt>
-<dd><p>(UNIX only) Run R through debugger <var>name</var>.  For most debuggers (the
-exceptions are <code>valgrind</code> and recent versions of <code>gdb</code>),
-further command line options are disregarded, and should instead be given
-when starting the R executable from inside the debugger.
+<dd><p>(UNIX에서만 이용이 가능합니다). <var>name</var>이라는 이름의 디버거(debugger)를 통해 R을
+실행합니다. <code>valgrind</code>와 최신버전의 <code>gdb</code>를 제외한 대부분의 디버거들에서, 추가적인 명령어 라인
+옵션 (command line options)들이 무시되는 대신에 R이 실행될 때 디버거 내에서 실행이 가능합니다. 
 </p>
 </dd>
 <dt><samp>--gui=<var>type</var></samp></dt>
 <dt><samp>-g <var>type</var></samp></dt>
-<dd><p>(UNIX only) Use <var>type</var> as graphical user interface (note that this also
-includes interactive graphics).  Currently, possible values for <var>type</var>
-are &lsquo;<samp>X11</samp>&rsquo; (the default) and, provided that &lsquo;<samp>Tcl/Tk</samp>&rsquo; support is
-available, &lsquo;<samp>Tk</samp>&rsquo;. (For back-compatibility, &lsquo;<samp>x11</samp>&rsquo; and &lsquo;<samp>tk</samp>&rsquo; are
-accepted.)
+<dd><p>(UNIX에서만 이용가능합니다) 그래픽 사용자 환경으로서 <var>type</var>을 이용합니다 (이것은 대화식 기능의 그래픽 또한
+포함합니다). 현재 <var>type</var>에서 사용가능한 값들은 기본적으로 &lsquo;<samp>X11</samp>&rsquo;이며, &lsquo;<samp>Tcl/Tk</samp>&rsquo;가 지원된다는
+가정하에 &lsquo;<samp>Tk</samp>&rsquo;입니다. (back-compatibility를 위해서 &lsquo;<samp>x11</samp>&rsquo;과 &lsquo;<samp>tk</samp>&rsquo;도 사용될 수
+있습니다).
 </p>
 </dd>
 <dt><samp>--arch=<var>name</var></samp></dt>
@@ -6805,91 +6766,85 @@ accepted.)
 </p>
 </dd>
 <dt><samp>--args</samp></dt>
-<dd><p>This flag does nothing except cause the rest of the command line to be
-skipped: this can be useful to retrieve values from it with
-<code>commandArgs(TRUE)</code>.
+<dd><p>이 플래그(flag)는 커맨드라인의 남은 부분을 건너뛰도록 유도하는 것을 제외하면 다른 기능은 없습니다.
+<code>commandArgs(TRUE)</code>와 함께 값을 검색 또는 다시 불러오는데 유용합니다. 
 </p></dd>
 </dl>
 
-<p>Note that input and output can be redirected in the usual way (using
-&lsquo;<samp>&lt;</samp>&rsquo; and &lsquo;<samp>&gt;</samp>&rsquo;), but the line length limit of 4095 bytes still
-applies.  Warning and error messages are sent to the error channel
-(<code>stderr</code>).
+<p>&lsquo;<samp>&lt;</samp>&rsquo;와 &lsquo;<samp>&gt;</samp>&rsquo;를 이용하여 일반적인 방법으로 입력과 출력의 방향을 조절할 수 있으나, 라인의 길인에 대한 4095
+바이트의 제한은 여전히 적용되게 됩니다.  경고와 에러메시들이 에러 채널인 <code>stderr</code>로 보내어지게 됩니다. 
 </p>
-<p>The command <code>R CMD</code> allows the invocation of various tools which are
-useful in conjunction with R, but not intended to be called
-&ldquo;directly&rdquo;.  The general form is
+<p>명령어 <code>R CMD</code>는 R과 함께 사용될 수 있는 유용한 도구들을 실행시키도록 해줍니다. 그러나 이것은 직접적으로
+실행시키기 보다는 다음과 같은 일반적인 형식을 가집니다. 
 </p>
 <div class="example">
 <pre class="example">R CMD <var>command</var> <var>args</var>
 </pre></div>
 
-<p>where <var>command</var> is the name of the tool and <var>args</var> the arguments
-passed on to it.
+<p>여기에서 <var>command</var>는 도구의 이름이고 <var>args</var>는 그 도구에 넘겨지게 될 입력인자들을 의미합니다.
 </p>
-<p>Currently, the following tools are available.
+<p>현재, 다음과 같은 도구들을 사용할 수 있습니다. 
 </p>
 <dl compact="compact">
 <dt><code>BATCH</code></dt>
-<dd><p>Run R in batch mode.  Runs <code>R --restore --save</code> with possibly
-further options (see <code>?BATCH</code>).
+<dd><p>R을 배치모드(batch mode)에서 실행시킵니다. <code>R --restore --save</code>와 추가적인 옵션들을 이용할
+수 있습니다. (<code>?BATCH</code>를 참조하기 바랍니다).
 </p></dd>
 <dt><code>COMPILE</code></dt>
-<dd><p>(UNIX only) Compile C, C++, Fortran &hellip; files for use with R.
+<dd><p>(UNIX에서만 사용할 수 있습니다) R과 함께 사용할 수 있는 C, C++, Fortran &hellip; 파일들을 컴파일합니다. 
 </p></dd>
 <dt><code>SHLIB</code></dt>
-<dd><p>Build shared library for dynamic loading.
+<dd><p>다이나믹 로딩을 위하여 공유된 라이브러리 (shared library)를 빌드(build)합니다.
 </p></dd>
 <dt><code>INSTALL</code></dt>
-<dd><p>Install add-on packages.
+<dd><p>애드온(add-on) 패키지들을 설치합니다.
 </p></dd>
 <dt><code>REMOVE</code></dt>
-<dd><p>Remove add-on packages.
+<dd><p>애드온(add-on) 패키지들을 제거합니다.
 </p></dd>
 <dt><code>build</code></dt>
-<dd><p>Build (that is, package) add-on packages.
+<dd><p>애드온(add-on) 패키지들을 빌드(build)합니다.
 </p></dd>
 <dt><code>check</code></dt>
-<dd><p>Check add-on packages.
+<dd><p>애드온(add-on) 패키지들을 체크(check)합니다.
 </p></dd>
 <dt><code>LINK</code></dt>
-<dd><p>(UNIX only) Front-end for creating executable programs.
+<dd><p>(UNIX에서만 사용가능합니다) 실행가능한 프로그램을 생성하기 위하여 전처리 (front-end)입니다. 
 </p></dd>
 <dt><code>Rprof</code></dt>
 <dd><p>Post-process R profiling files.
 </p></dd>
 <dt><code>Rdconv</code></dt>
 <dt><code>Rd2txt</code></dt>
-<dd><p>Convert Rd format to various other formats, including <acronym>HTML</acronym>, LaTeX,
-plain text, and extracting the examples.  <code>Rd2txt</code> can be used as
-shorthand for <code>Rd2conv -t txt</code>.
+<dd><p>Rd 포맷을 <acronym>HTML</acronym>, LaTex, 일반 텍스트, 그리고 예제들을 추출하는 등 다양한 포맷으로
+전환합니다. <code>Rd2txt</code>는 <code>Rd2conv -t txt</code>의 약식 표기입니다.
 </p></dd>
 <dt><code>Rd2pdf</code></dt>
-<dd><p>Convert Rd format to PDF.
+<dd><p>Rd 포맷을 PDF로 전환합니다.
 </p></dd>
 <dt><code>Stangle</code></dt>
-<dd><p>Extract S/R code from Sweave or other vignette documentation
+<dd><p>Sweave 문서로부터 S/R 코드를 추출합니다.
 </p></dd>
 <dt><code>Sweave</code></dt>
-<dd><p>Process Sweave or other vignette documentation
+<dd><p>Sweave 문서를 프로세스 합니다.
 </p></dd>
 <dt><code>Rdiff</code></dt>
 <dd><p>Diff R output ignoring headers etc
 </p></dd>
 <dt><code>config</code></dt>
-<dd><p>Obtain configuration information
+<dd><p>환경설정에 대한 정보 (configuration information)을 가져옵니다.
 </p></dd>
 <dt><code>javareconf</code></dt>
-<dd><p>(Unix only) Update the Java configuration variables
+<dd><p>(UNIX에서만 사용가능합니다) Java 설정 변수들을 업데이트 합니다.
 </p></dd>
 <dt><code>rtags</code></dt>
-<dd><p>(Unix only) Create Emacs-style tag files from C, R, and Rd files
+<dd><p>(UNIX에서만 사용가능합니다) C, R, 그리고 Rd 파일들로부터 이맥스 (Emacs)스타일의 태그 파일들을 생성합니다.
 </p></dd>
 <dt><code>open</code></dt>
-<dd><p>(Windows only) Open a file via Windows&rsquo; file associations
+<dd><p>(Windows에서만 사용가능합니다)  Windows의 파일연결(file association)을 이용하여 파일을 엽니다.
 </p></dd>
 <dt><code>texify</code></dt>
-<dd><p>(Windows only) Process (La)TeX files with R&rsquo;s style files
+<dd><p>(Windows에서만 사용가능합니다)  R 스타일 파일을 사용하는 (La)TeX 파일들을 프로세싱합니다.
 </p></dd>
 </dl>
 
@@ -6899,32 +6854,28 @@ shorthand for <code>Rd2conv -t txt</code>.
 <pre class="example">R CMD <var>command</var> --help
 </pre></div>
 
-<p>to obtain usage information for each of the tools accessible via the <code>R
-CMD</code> interface.
+<p><code>R CMD</code>를 통하여 사용이 가능한 도구들의 각각에 대한 사용방법을 알고 싶을 때는 다음과 같이 입력하세요. 
 </p>
-<p>In addition, you can use options <samp>--arch=</samp>, <samp>--no-environ</samp>,
-<samp>--no-init-file</samp>, <samp>--no-site-file</samp> and <samp>--vanilla</samp>
-between <code>R</code> and <code>CMD</code>: these affect any R processes run
-by the tools.  (Here <samp>--vanilla</samp> is equivalent to
-<samp>--no-environ --no-site-file --no-init-file</samp>.)  However, note that
-<code>R CMD</code> does not of itself use any R startup files (in
-particular, neither user nor site <samp>Renviron</samp> files), and all of the
-R processes run by these tools (except <code>BATCH</code>) use
-<samp>--no-restore</samp>.  Most use <samp>--vanilla</samp> and so invoke no R
-startup files: the current exceptions are <code>INSTALL</code>,
-<code>REMOVE</code>, <code>Sweave</code> and <code>SHLIB</code> (which uses
-<samp>--no-site-file --no-init-file</samp>).
+<p>추가적으로 도구들에 의해 실행되는 어떠한 R 프로세스들에 영향을 미칠 수 있는 <samp>--arch=</samp>,
+<samp>--no-environ</samp>, <samp>--no-init-file</samp>, <samp>--no-site-file</samp> 그리고
+<samp>--vanilla</samp> 옵션들을 <code>R</code>과 <code>CMD</code> 사이에 사용<a name="DOCF26" href="#FOOT26"><sup>26</sup></a>할 수 있습니다. (여기에서 <samp>--vanilla</samp>는 <samp>--no-environ
+--no-site-file --no-init-file</samp>과 동일합니다.)그러나, <code>R CMD</code> 이 자체로는 어떠한 R
+스타드업 파일들을 사용하지 않는다는 것을 알고 계셔야 합니다 (특히, 사용자 또는 사이트 <samp>Renviron</samp> 파일 모두 이용하지
+않습니다). 그리고, <code>BATCH</code>를 제외한 이러한 도구들에 의해서 실행되는 R 프로세스들의 모두는
+<samp>--no-restore</samp>를 사용합니다. 대부분은 <samp>--vanilla</samp>를 사용하고 R 스타트업 파일들을
+작동시키지 않습니다. 현재 예외라고 할 수 있는 것들은 <code>INSTALL</code>, <code>REMOVE</code>,
+<code>Sweave</code> 그리고 (<samp>--no-site-file --no-init-file</samp>을 이용하고 있는)
+<code>SHLIB</code> 입니다. 절대경로 (absolute filepath)에 의해서 주어진 또는 해당경로상에 있는 어떠한 다른
+실행가능한 <code><var>cmd</var></code>을 사용하기 위해서는 아래와 같이 사용합니다. 
 </p>
 <div class="example">
 <pre class="example">R CMD <var>cmd</var> <var>args</var>
 </pre></div>
 
-<p>for any other executable <code><var>cmd</var></code> on the path or given by an
-absolute filepath: this is useful to have the same environment as R or
-the specific commands run under, for example to run <code>ldd</code> or
-<code>pdflatex</code>.  Under Windows <var>cmd</var> can be an executable or a batch
-file, or if it has extension <code>.sh</code> or <code>.pl</code> the appropriate
-interpreter (if available) is called to run it.
+<p>이렇게 하는 것은 R 또는 <code>ldd</code> 또는  <code>pdflatex</code>와 같은 어떤 특정한 명령어가
+수행되어져야 하는 환경을 동일하게 해주는데 유용합니다. Windows 상에서 <var>cmd</var>는 실행이 가능할 수도 있고 배치파일
+(batch file)일수도 있으며, 만약 <code>.sh</code> 또는 <code>.pl</code>과 같은 확장자를 가진다면 적합한
+인터프리터(interpreter)가 이들을 실행시키기 위해서 호출되어집니다.
 </p>
 
 <hr>
@@ -6932,127 +6883,107 @@ interpreter (if available) is called to run it.
 <a name="Invoking-R-under-Windows-1"></a>
 <h3 class="appendixsec">B.2 Invoking R under Windows</h3>
 
-<p>There are two ways to run R under Windows.  Within a terminal window
-(e.g.&nbsp;<code>cmd.exe</code> or a more capable shell), the methods described in the
-previous section may be used, invoking by <code>R.exe</code> or more directly by
-<code>Rterm.exe</code>.  For interactive use, there is a console-based GUI
-(<code>Rgui.exe</code>).
+<p>Windows에서 R을 실행하는 방법은 두 가지가 있습니다. <code>cmd.exe</code> 또는 이보다 좀 더 많은 기능들을 가지고
+있는 쉘과 같은 터미널을 보여주는 윈도우 내에서는 이전 섹션에서 설명한 방법들이 사용될 수 있는데, 이는 <code>R.exe</code> 또는
+<code>Rterm.exe</code>를 실행하는 것입니다. 대화식으로 사용하기 위해서는 콘솔기반의 그래픽 사용자 환경인
+<code>Rgui.exe</code>가 있습니다. 
 </p>
-<p>The startup procedure under Windows is very similar to that under UNIX, but
-references to the &lsquo;home directory&rsquo; need to be clarified, as this is not
-always defined on Windows.  If the environment variable <code>R_USER</code> is
-defined, that gives the home directory.  Next, if the environment variable
-<code>HOME</code> is defined, that gives the home directory.  After those two
-user-controllable settings, R tries to find system defined home
-directories.  It first tries to use the Windows &quot;personal&quot; directory
-(typically <code>C:\Documents and Settings\username\My Documents</code> in Windows
-XP).  If that fails, and environment variables <code>HOMEDRIVE</code> and
-<code>HOMEPATH</code> are defined (and they normally are) these define the home
-directory.  Failing all those, the home directory is taken to be the
-starting directory.
+<p>Windows 상에서 스타트업 방식은 UNIX와 유사하지만, &rsquo;home directory&rsquo; (홈디렉토리)에 대한 참조는
+Windows상에서 항상 정의되는 것이 아니기 때문에 좀 더 명확히 정해줘야 합니다.환경변수(environment variable)
+<code>R_USER</code>을 정의하는 것은 홈디렉토리를 지정하는 것입니다.또한, 환경변수 <code>HOME</code>을 정의하는 것 역시 홈디렉토리를
+정하는 것입니다.사용자가 조절할 수 있는 이 두 변수들이 설정되면, R은 홈디렉토리를 지정하는 시스템을 찾으려고 합니다. 제일먼저,
+Windows 개인 디렉토리 (일반적으로 Windows XP의 경우에는 <code>C:\Documents and
+Settings\username\My Documents</code>를 의미합니다)를 지정합니다.실패시에는 환경변수 <code>HOMEDRIVE</code>와
+<code>HOMEPATH</code>가 지정하는 홈디렉토리를 사용하게 됩니다. 이 모든 과정이 실패할 경우에 홈디렉토리는 스타팅 디렉토리로 정해지게
+됩니다. 
 </p>
-<p>You need to ensure that either the environment variables <code>TMPDIR</code>,
-<code>TMP</code> and <code>TEMP</code> are either unset or one of them points to a valid
-place to create temporary files and directories.
+<p>환경변수 <code>TMPDIR</code>, <code>TMP</code> 혹은 <code>TEMP</code>가 결정되지 않거나, 이 둘 중 하나가 일시적인 파일 혹은
+디렉토리 생성을 위한 유효한 공간을 지정하게 끔 설정해야 합니다.
 </p>
-<p>Environment variables can be supplied as &lsquo;<samp><var>name</var>=<var>value</var></samp>&rsquo; pairs
-on the command line.
+<p>환경변수들은 명령어 라인에서 &lsquo;<samp><var>name</var>=<var>value</var></samp>&rsquo;와 같은 형식으로 제공됩니다.
 </p>
-<p>If there is an argument ending <samp>.RData</samp> (in any case) it is interpreted
-as the path to the workspace to be restored: it implies <samp>--restore</samp>
-and sets the working directory to the parent of the named file.  (This
-mechanism is used for drag-and-drop and file association with
-<code>RGui.exe</code>, but also works for <code>Rterm.exe</code>.  If the named file
-does not exist it sets the working directory if the parent directory
-exists.)
+<p>만약 어떠한 경우에라도 <samp>.RData</samp>로 끝나는 인자가 있다면, 이것은 불러오게 될 작업공간에 대한 경로로서
+인식되어집니다.이것은 <samp>--restore</samp>를 의미하는 것이고, 주어진 이름을 가진 파일의 상위디렉토리에 대한 작업 디렉토리를
+지정하는 것이기 때문입니다.(이러한 메카니즘은 드래그-앤-드랍(drag-and-drop)과 <code>RGui.exe</code>와 사용되는
+파일연결(file association)을 위해 사용됩니다.  그러나, 또한 <code>Rterm.exe</code>를 위해 사용되기도
+합니다. 만약 주어진 이름을 가진 파일이 존재하지 않는다면 이것은 작업디렉토리를 부모디렉토리가 있을경우에 지정하게 됩니다).
 </p>
-<p>The following additional command-line options are available when invoking
-<code>RGui.exe</code>.
+<p><code>RGui.exe</code>를 작동시킬때 다음과 같은 추가적인 명령어 옵션들이 이용가능합니다. 
 </p>
 <dl compact="compact">
 <dt><samp>--mdi</samp></dt>
 <dt><samp>--sdi</samp></dt>
 <dt><samp>--no-mdi</samp></dt>
-<dd><p>Control whether <code>Rgui</code> will operate as an MDI program (with multiple
-child windows within one main window) or an SDI application (with multiple
-top-level windows for the console, graphics and pager).  The command-line
-setting overrides the setting in the user&rsquo;s <samp>Rconsole</samp> file.
+<dd><p><code>Rgui</code>가 하나의 주 윈도우 상에 여러 개의 작은 윈도우 창을 이용하는 MDI 프로그램 혹은 콘솔, 그래픽, 또는 페이저를
+위한 다수의 최상의 윈도우들을 가진 SDI 어플리케이션으로 사용할 것인지를 조절합니다. 명령어라인을 이용한 설정은 사용자의
+<samp>Rconsole</samp> 파일에 있는 설정을 덮어쓰게 됩니다.
 </p>
 </dd>
 <dt><samp>--debug</samp></dt>
-<dd><p>Enable the &ldquo;Break to debugger&rdquo; menu item in <code>Rgui</code>, and trigger a
-break to the debugger during command line processing.
+<dd><p><code>Rgui</code>내에서 &ldquo;Break to debugger&rdquo;라는 메뉴 항목을 이용할 수 있게 해주고, 커맨드 라인이 프로세싱되는
+동안 디버거에게 브레이크를 작동시켜줍니다. 
 </p></dd>
 </dl>
 
-<p>Under Windows with <code>R CMD</code> you may also specify your own <samp>.bat</samp>,
-<samp>.exe</samp>, <samp>.sh</samp> or <samp>.pl</samp> file.  It will be run under the
-appropriate interpreter (Perl for <samp>.pl</samp>) with several environment
-variables set appropriately, including <code>R_HOME</code>, <code>R_OSTYPE</code>,
-<code>PATH</code>, <code>BSTINPUTS</code> and <code>TEXINPUTS</code>.  For example, if you
-already have <samp>latex.exe</samp> on your path, then
+<p>Windows에서 <code>R CMD</code>를 이용할 때 당신이 소유한  <samp>.bat</samp>, <samp>.exe</samp>, <samp>.sh</samp>
+또는 <samp>.pl</samp> 파일들 또한 지정할 수 있습니다. 이것은 적합한 인터프리터 (즉, <samp>.pl</samp>파일은 Perl을
+이용합니다)와 <code>R_HOME</code>, <code>R_OSTYPE</code>, <code>PATH</code>, <code>BSTINPUTS</code>, 그리고
+<code>TEXINPUTS</code>를 포함하여 올바르게 지정된 여러가지의 환경변수들과 함께 실행될 것입니다. 예를들면, 당신의 경로에
+<samp>latex.exe</samp>파일을 이미 가지고 있다면 아래와 같이 방법으로 <code>TEXINPUTS</code>에 추가되어 있는 R의
+<samp>share/texmf</samp> 매크로를 이용하여 <samp>mydoc.tex</samp>에 대해서 LaTeX를  실행시킬 수 있습니다. 
 </p>
 <div class="example">
 <pre class="example">R CMD latex.exe mydoc
 </pre></div>
-<p>will run LaTeX on <samp>mydoc.tex</samp>, with the path to R&rsquo;s
-<samp>share/texmf</samp> macros appended to <code>TEXINPUTS</code>.  (Unfortunately, this
-does not help with the MiKTeX build of LaTeX, but <code>R CMD texify
-mydoc</code> will work in that case.)
+<p>(안타깝게도, MiKTex LaTeX에서는 적용되지 않습니다. 그러나, <code>R CMD texify mydoc</code>은 작동할
+것입니다.)
 </p>
 <hr>
 <a name="Invoking-R-under-OS-X"></a>
 <a name="Invoking-R-under-OS-X-1"></a>
 <h3 class="appendixsec">B.3 Invoking R under OS X</h3>
 
-<p>There are two ways to run R under OS X.  Within a <code>Terminal.app</code>
-window by invoking <code>R</code>, the methods described in the first subsection
-apply.  There is also console-based GUI (<code>R.app</code>) that by default is
-installed in the <code>Applications</code> folder on your system.  It is a
-standard double-clickable OS X application.
+<p>Mac OS X 상에서 R을 실행하는 방법에는 두가지가 있습니다. 첫 번째 서브섹션에서 설명된 방법처럼
+<code>Terminal.app</code> 창을 이용하여 <code>R</code>을 작동하는 것입니다. 또 다른 방법은 당신의 시스템에 있는
+<code>Applications</code> 폴더에 기본적으로 설치된 콘솔기반의 GUI (<code>R.app</code>)을 이용하는것입니다. 이것은
+더블클릭이 가능한 Mac OS X 응용프로그램입니다.
 </p>
-<p>The startup procedure under OS X is very similar to that under UNIX, but
-<code>R.app</code> does not make use of command-line arguments.  The &lsquo;home
-directory&rsquo; is the one inside the R.framework, but the startup and current
-working directory are set as the user&rsquo;s home directory unless a different
-startup directory is given in the Preferences window accessible from within
-the GUI.
+<p>Mac OS X에 있는 스타트업 프로시져는 유닉스의 것과 유사합니다. &lsquo;home directory&rsquo; 는 R.framework 내부에
+있지만, GUI내로부터 접근이 가능한 Preference 창에 있는 스타트업 디렉토이와 다르지 않다면 스타트업과 현재 작업디렉토리는
+사용자의 홈디렉토리와 같이 지정됩니다.
 </p>
 <hr>
 <a name="Scripting-with-R"></a>
 <a name="Scripting-with-R-1"></a>
 <h3 class="appendixsec">B.4 Scripting with R</h3>
 
-<p>If you just want to run a file <samp>foo.R</samp> of R commands, the
-recommended way is to use <code>R CMD BATCH foo.R</code>.  If you want to run
-this in the background or as a batch job use OS-specific facilities to do
-so: for example in most shells on Unix-alike OSes <code>R CMD BATCH foo.R
-&amp;</code> runs a background job.
+<p>만약에 R 명령어들로 이루어진 <samp>foo.R</samp>라는 파일을 실행시키고자 한다면,  <code>R CMD BATCH
+foo.R</code>를 사용하길 권장합니다. 만약 당신이 이를 일괄처리 (batch job) 작업으로서 또는 후순위 작업 (background
+job, 백그라운드 작업)를 하고자 한다면, 당신의 운영체제에 맞는 기능을 사용하길 바랍니다. 예를들면, 유닉스와 같은 운영체제들은
+쉘상에서 <code>R CMD BATCH foo.R&amp;</code>라고 입력하게 되면 후순위작업 (background job)이 실행되게
+됩니다. 
 </p>
-<p>You can pass parameters to scripts via additional arguments on the command
-line: for example (where the exact quoting needed will depend on the shell
-in use)
+<p>명령어 라인을 사용할때 추가적인 인자들을 이용하여 스크립트에 파미미터 (또는 입력해야 할 인자들)에 값을 넣어줄 수 있습니다. 예를들면
+(어떤 쉘을 이용하는가에 따라 다르지만, 아래와 같이 큰 따옴표의 사용이 필요합니다).
 </p>
 <div class="example">
 <pre class="example">R CMD BATCH &quot;--args arg1 arg2&quot; foo.R &amp;
 </pre></div>
 
-<p>will pass arguments to a script which can be retrieved as a character vector
-by
+<p>위에서 사용된 명령어 라인은 아래와 같은 방법으로 다시 확인할 수 있는 문자형 벡터로서 스크립트에 인자들을 넘겨줄 수 있습니다. 
 </p>
 <div class="example">
 <pre class="example">args &lt;- commandArgs(TRUE)
 </pre></div>
 
-<p>This is made simpler by the alternative front-end <code>Rscript</code>, which
-can be invoked by
+<p>이렇게 하는 것은 사용자가 직접 아래와 같이 <code>Rscript</code>에 인자들을 전달할 수 있는 더 간단한 방법입니다. 
 </p>
 <div class="example">
 <pre class="example">Rscript foo.R arg1 arg2
 </pre></div>
 
-<p>and this can also be used to write executable script files like (at least on
-Unix-alikes, and in some Windows shells)
+<p>그리고 이렇게 하는 것은 (적어도 유닉스와 같은 환경 및 일부 Windows의 쉘상에서) 실행가능한 스크립트를 작성하는데 사용될 수
+있습니다.  예를들면, 아래와 같습니다. 
 </p>
 <div class="example">
 <pre class="example">#! /path/to/Rscript
@@ -7061,34 +6992,31 @@ args &lt;- commandArgs(TRUE)
 q(status=&lt;exit status code&gt;)
 </pre></div>
 
-<p>If this is entered into a text file <samp>runfoo</samp> and this is made
-executable (by <code>chmod 755 runfoo</code>), it can be invoked for different
-arguments by
+<p>만약에 <samp>runfoo</samp>라는 텍스트 파일에 입력하고, 이것을 <code>chmod 755 runfoo</code>라는 명령어를 이용하여
+실행가능하게 만들어 준다면, 아래와 같이 실행도 가능합니다. 
 </p>
 <div class="example">
 <pre class="example">runfoo arg1 arg2
 </pre></div>
 
-<p>For further options see <code>help(&quot;Rscript&quot;)</code>.  This writes R output
-to <samp>stdout</samp> and <samp>stderr</samp>, and this can be redirected in the usual
-way for the shell running the command.
+<p>더 많은 옵션들을 알아보고 싶으시다면 <code>help(&quot;Rscript&quot;)</code>를 살펴보시길 바랍니다. 이것은 R의 결과물을
+<samp>stdout</samp>과 <samp>stderr</samp>에 작성합니다.  그리고 이것은 명령어를 실행시키는 쉘상에서 일반적인 방법으로 다른
+방향으로 전환이 가능합니다. 
 </p>
-<p>If you do not wish to hardcode the path to <code>Rscript</code> but have it in
-your path (which is normally the case for an installed R except on
-Windows, but e.g. OS X users may need to add <samp>/usr/local/bin</samp> to
-their path), use
+<p>만약 당신이 <code>Rscript</code>에 경로를 쉽게 변경하고자 하면, 이를 아래와 같이 경로를 적어두어야
+합니다. (Windows를 제외한 경우 설치된 R의 일반적인 경우이지만  Mac OS X 사용자들은 아마도
+<samp>/usr/local/bin</samp> 이라고 할 수도 있습니다).
 </p>
 <div class="example">
 <pre class="example">#! /usr/bin/env Rscript
 ...
 </pre></div>
 
-<p>At least in Bourne and bash shells, the <code>#!</code> mechanism does
-<strong>not</strong> allow extra arguments like <code>#! /usr/bin/env Rscript
---vanilla</code>.
+<p>본(Bourne)과 bash(배쉬) 쉘상에서는 <code>#!</code> 메카니즘은 <code>#! /usr/bin/env Rscript
+--vanilla</code>와 같은 추가적인 인자의 사용을 허용하지 않습니다.
 </p>
-<p>One thing to consider is what <code>stdin()</code> refers to.  It is commonplace
-to write R scripts with segments like
+<p>한 가지 고려해야 할 점은 <code>stdin()</code>이 무엇을 의미하는지 알아야 합니다. R 스크립트를 아래와 같이 작성하는 것은
+매우 흔한일입니다.
 </p>
 <div class="example">
 <pre class="example">chem &lt;- scan(n=24)
@@ -7096,13 +7024,12 @@ to write R scripts with segments like
 5.28 3.37 3.03 3.03 28.95 3.77 3.40 2.20 3.50 3.60 3.70 3.70
 </pre></div>
 
-<p>and <code>stdin()</code> refers to the script file to allow such traditional
-usage.  If you want to refer to the process&rsquo;s <samp>stdin</samp>, use
-<code>&quot;stdin&quot;</code> as a <code>file</code> connection, e.g. <code>scan(&quot;stdin&quot;,
-...)</code>.
+<p>여기에서 <code>stdin()</code>이란 기존의 사용방법을 허용하는 스크립트 파일 자체를 의미합니다. 프로세스의 <samp>stdin</samp>을
+참조하고 싶다면, <code>&quot;stdin&quot;</code>을 <code>file</code> 커넥션과 같이 사용하시면 됩니다. 즉, 
+<code>scan(&quot;stdin&quot;, ...)</code>.
 </p>
-<p>Another way to write executable script files (suggested by Fran&ccedil;ois
-Pinard) is to use a <em>here document</em> like
+<p>또다른 방법으로 실행가능한 스크립트 파일들을 만드는 방법들은 (Fran&ccedil;ois Pinard에 의해 제안된) <em>이곳의
+문서</em>와 같이 사용하는 것입니다. 
 </p>
 <div class="example">
 <pre class="example">#!/bin/sh
@@ -7114,14 +7041,12 @@ R --slave [other options] &lt;&lt;EOF
 EOF
 </pre></div>
 
-<p>but here <code>stdin()</code> refers to the program source and <code>&quot;stdin&quot;</code> will
-not be usable.
+<p>그러나, 여기에서 <code>stdin()</code>은 프로그램 소스를 가리키며 <code>&quot;stdin&quot;</code>은 사용가능하지 않을 것입니다. 
 </p>
-<p>Short scripts can be passed to <code>Rscript</code> on the command-line
-<em>via</em> the <samp>-e</samp> flag.  (Empty scripts are not accepted.)
+<p>매우 짧은 길이의 스크립트는 <samp>-e</samp> 플래그를 이용하여 <code>Rscript</code>에 보낼 수도 있습니다. 
 </p>
-<p>Note that on a Unix-alike the input filename (such as <samp>foo.R</samp>)  should
-not contain spaces nor shell metacharacters.
+<p>유닉스와 같은 환경에서 <samp>foo.R</samp>와 같은 입력파일명은 반드시 공간을 포함해서도 안되며, 쉘의 메타문자 역시 포함해서는
+안됩니다. 
 </p>
 
 <hr>
@@ -7132,145 +7057,132 @@ not contain spaces nor shell metacharacters.
 <a name="Preliminaries"></a>
 <h3 class="appendixsection">C.1 Preliminaries</h3>
 
-<p>When the <acronym>GNU</acronym> <strong>readline</strong> library is available at the time
-R is configured for compilation under UNIX, an inbuilt command line
-editor allowing recall, editing and re-submission of prior commands is
-used.  Note that other versions of <strong>readline</strong> exist and may be used
-by the inbuilt command line editor: this used to happen on OS X.
+<p>UNIX 상에서 컴파일을 위하여 R의 환경설정을 할때 <acronym>GNU</acronym> <strong>readline</strong> 라이브러리가 사용가능
+할 때, 이전 명령어들의 기억기능(recall), 편집(editing), 그리고 재입력(resubmission) 기능을 허용하는 내재된
+커맨드기반의 에디터가 이용됩니다. 다른 버전의 <strong>readline</strong>이 존재 할 수 있고, 이들이 내재된 커맨드 기반의 명령어에
+의해서 사용될 수도 있습니다.보통 Mac OS X에서 이러합니다
 </p>
-<p>It can be disabled (useful for usage with <acronym>ESS</acronym> <a name="DOCF26" href="#FOOT26"><sup>26</sup></a>) using the startup option
-<samp>--no-readline</samp>.
+<p>스타트업 옵션 <samp>--no-readline</samp>을 이용하여 사용되지 않도록 할 수도 있습니다. (이렇게 하는 것은
+<acronym>ESS</acronym><a name="DOCF27" href="#FOOT27"><sup>27</sup></a>를 사용할 때 유용합니다).
 </p>
-<p>Windows versions of R have somewhat simpler command-line editing: see
-&lsquo;<samp>Console</samp>&rsquo; under the &lsquo;<samp>Help</samp>&rsquo; menu of the <acronym>GUI</acronym>, and the file
-<samp>README.Rterm</samp> for command-line editing under <code>Rterm.exe</code>.
+<p>Windows 버전에서 R은 다소 간단한 형식의 커맨드라인 편집기능을 가지고 있습니다. <acronym>GUI</acronym>에서
+&lsquo;<samp>Help</samp>&rsquo; 메뉴에 있는 &lsquo;<samp>Console</samp>&rsquo;을 살펴보시고, <code>Rterm.exe</code>내에 있는 커맨드라인을 위한 파일
+<samp>README.Rterm</samp>을 살펴보시길 바랍니다.
 </p>
-<p>When using R with <strong>readline</strong> capabilities, the functions described
-below are available, as well as others (probably) documented in <code>man
-readline</code> or <code>info readline</code> on your system.
+<p><strong>readline</strong>의 기능과 함께 R을 사용할 때, (아마도) 당신의 시스템에 있는 <code>man
+readline</code> 또는 <code>info readline</code>에 기술되어 있는 함수들과 아래에 기술된 함수들을 이용할 수 있습니다.
 </p>
-<p>Many of these use either Control or Meta characters.  Control characters,
-such as <kbd>Control-m</kbd>, are obtained by holding the <tt class="key">CTRL</tt> down while
-you press the <tt class="key">m</tt> key, and are written as <kbd>C-m</kbd> below.  Meta
-characters, such as <kbd>Meta-b</kbd>, are typed by holding down
-<tt class="key">META</tt><a name="DOCF27" href="#FOOT27"><sup>27</sup></a> and pressing <tt class="key">b</tt>, and written as <kbd>M-b</kbd> in the
-following.  If your terminal does not have a <tt class="key">META</tt> key enabled, you can
-still type Meta characters using two-character sequences starting with
-<kbd>ESC</kbd>.  Thus, to enter <kbd>M-b</kbd>, you could type <tt class="key">ESC</tt><tt class="key">b</tt>.  The
-<kbd>ESC</kbd> character sequences are also allowed on terminals with real Meta
-keys.  Note that case is significant for Meta characters.
+<p>이들중의 많은 것들이 컨트롤 (Control)과 메타(Meta) 문자들을 사용합니다. <kbd>Control-m</kbd>과 같은 형식으로 컨트롤
+문자들은 <tt class="key">CTRL</tt>키를 누른 상태에서 <tt class="key">m</tt>키를 누르는 것입니다.그리고 이것을 <kbd>C-m</kbd>이라고
+표시합니다.<kbd>Meta-b</kbd>와 같이 메타문자들은 <tt class="key">META</tt><a name="DOCF28" href="#FOOT28"><sup>28</sup></a>를 누른 상태에서
+<tt class="key">b</tt>를 누르는 것이며, 이는 <kbd>M-b</kbd>라고 씁니다.만약에 당신의 터미널이 활성화된 <tt class="key">META</tt>키를 가지고 있지
+않다면, 당신은 <kbd>ESC</kbd>를 사용하여 메타문자들을 입력할 수 있습니다.그러므로, <kbd>M-b</kbd>를 입력하기 위해서는, 당신은
+<tt class="key">ESC</tt><tt class="key">b</tt>라고 입력합니다.다음은 중요한 메타 문자들을 정리한 것입니다. 
 </p>
 <a name="Editing-actions"></a>
 <h3 class="appendixsection">C.2 Editing actions</h3>
 
-<p>The R program keeps a history of the command lines you type, including
-the erroneous lines, and commands in your history may be recalled, changed
-if necessary, and re-submitted as new commands.  In Emacs-style command-line
-editing any straight typing you do while in this editing phase causes the
-characters to be inserted in the command you are editing, displacing any
-characters to the right of the cursor.  In <em>vi</em> mode character
-insertion mode is started by <kbd>M-i</kbd> or <kbd>M-a</kbd>, characters are typed
-and insertion mode is finished by typing a further <tt class="key">ESC</tt>.  (The default
-is Emacs-style, and only that is described here: for <em>vi</em> mode see the
-<strong>readline</strong> documentation.)
+<p>R 프로그램은 당신이 입력한 명령어 라인들에 대한 기록을 보관합니다. 이때 잘못 입력한 명령어도 보관이 되며, 기록상에 보관된
+명령어들은 다시 불러올 수 있고, 필요하다면 변경하여, 새로운 명령어처럼 다시 사용될 수 있습니다. 이맥스
+스타일(Emacs-style)의 명령어라인 편집환경에서는 당신이 입력하는 것들이 편집하는 명령어 속에 삽입되거나, 커서의 오른쪽에 있는
+문자들을 변경하하기도 합니다. <em>vi</em> 모드에서는 <tt class="key">ESC</tt>를 입력함으로서 문자가 입력되거나 삽입모드를 종료할 수
+있습니다. (기본적으로는 이맥스 스타일이 사용되며, <em>vi</em> 모드에 대해서는 <strong>readline</strong> 문서를 확인하시길
+바랍니다).
 </p>
-<p>Pressing the <tt class="key">RET</tt> command at any time causes the command to be
-re-submitted.
+<p>어떤 상황이던지 간에 <tt class="key">RET</tt>키를 누르는 것은 명령어를 실행하도록 전달하는 것과 같습니다. 
 </p>
-<p>Other editing actions are summarized in the following table.
+<p>다른 편집 기능들은 아래의 표에 정리되어 있습니다.
 </p>
-<a name="Command_002dline-editor-summary"></a>
-<h3 class="appendixsection">C.3 Command-line editor summary</h3>
-
-<a name="Command-recall-and-vertical-motion"></a>
-<h4 class="subheading">Command recall and vertical motion</h4>
+<p>커맨드라인 에디터에 대한 요약 
+</p>
+<a name="i_00bb_0024_003fii-iii_0027ei-iuii_0021-e_00aa-e-1i_0027eY_003d1_002f4-eePeY_003d_0027e_002c_00b0"></a>
+<h4 class="subheading">커서의 상하이동을 통하여 명령어를 되부르기</h4>
 
 <dl compact="compact">
 <dt><kbd>C-p</kbd></dt>
-<dd><p>Go to the previous command (backwards in the history).
+<dd><p>이전에 사용한 명령어로 이동합니다 (히스토리 상에서 한 단계 뒤로 이동하는 것입니다).
 </p></dd>
 <dt><kbd>C-n</kbd></dt>
-<dd><p>Go to the next command (forwards in the history).
+<dd><p>다음 명령어로 이동합니다 (히스토리상에서 한 단계 다음으로 이동하는 것입니다).
 </p></dd>
 <dt><kbd>C-r <var>text</var></kbd></dt>
-<dd><p>Find the last command with the <var>text</var> string in it.
+<dd><p><var>text</var>를 포함하는 마지막 명령어를 찾습니다.
 </p></dd>
 </dl>
 
-<p>On most terminals, you can also use the up and down arrow keys instead of
-<kbd>C-p</kbd> and <kbd>C-n</kbd>, respectively.
+<p>대부분의 터미널에서 <kbd>C-p</kbd>와 <kbd>C-n</kbd>를 이용하는 대신에 당신은 위쪽 또는 아래쪽 방향의 화살표를 이용하여 이를 이용할
+수 있습니다. 
 </p>
-<a name="Horizontal-motion-of-the-cursor"></a>
-<h4 class="subheading">Horizontal motion of the cursor</h4>
+<a name="i_00bb_0024_003fieY_003d1_002f4-iC_002fi_00b0e_00a1-i_0027eii_0021-i-i-ie-e_00aa-e-1i_0027e_0024_003f"></a>
+<h4 class="subheading">커서를 좌우로 이동하여 할 수 있는 명령어들</h4>
 
 <dl compact="compact">
 <dt><kbd>C-a</kbd></dt>
-<dd><p>Go to the beginning of the command.
+<dd><p>명령어의 가장 처음으로 이동합니다.
 </p></dd>
 <dt><kbd>C-e</kbd></dt>
-<dd><p>Go to the end of the line.
+<dd><p>라인의 끝으로 이동합니다. 
 </p></dd>
 <dt><kbd>M-b</kbd></dt>
-<dd><p>Go back one word.
+<dd><p>한 단어 뒤로 이동합니다.
 </p></dd>
 <dt><kbd>M-f</kbd></dt>
-<dd><p>Go forward one word.
+<dd><p>한 단어 앞으로 이동합니다. 
 </p></dd>
 <dt><kbd>C-b</kbd></dt>
-<dd><p>Go back one character.
+<dd><p>한 문자 뒤로 이동합니다.
 </p></dd>
 <dt><kbd>C-f</kbd></dt>
-<dd><p>Go forward one character.
+<dd><p>한 문자 앞으로 이동합니다. 
 </p></dd>
 </dl>
 
-<p>On most terminals, you can also use the left and right arrow keys instead of
-<kbd>C-b</kbd> and <kbd>C-f</kbd>, respectively.
+<p>대부분의 터미널에서는 당신은 <kbd>C-b</kbd>와 <kbd>C-f</kbd>를 이용하는 대신에 좌측 또는 우측 화살표를 이용할 수 있습니다. 
 </p>
-<a name="Editing-and-re_002dsubmission"></a>
-<h4 class="subheading">Editing and re-submission</h4>
+<a name="i_002ciSS-i-i_0021i_0024_003fiie_002c_00b0"></a>
+<h4 class="subheading">편집 후 재실행하기</h4>
 
 <dl compact="compact">
 <dt><kbd><var>text</var></kbd></dt>
-<dd><p>Insert <var>text</var> at the cursor.
+<dd><p>커서의 위치에 <var>text</var> 삽입합니다.
 </p></dd>
 <dt><kbd>C-f <var>text</var></kbd></dt>
-<dd><p>Append <var>text</var> after the cursor.
+<dd><p>커서의 위치 다음부분 부터 <var>text</var>를 추가합니다.
 </p></dd>
 <dt><kbd><span class="key">DEL</span></kbd></dt>
-<dd><p>Delete the previous character (left of the cursor).
+<dd><p>커서의 왼쪽에 위한 문자를 삭제합니다
 </p></dd>
 <dt><kbd>C-d</kbd></dt>
-<dd><p>Delete the character under the cursor.
+<dd><p>커서의 바로 아래 있는 문자를 삭제합니다. 
 </p></dd>
 <dt><kbd>M-d</kbd></dt>
-<dd><p>Delete the rest of the word under the cursor, and &ldquo;save&rdquo; it.
+<dd><p>커서의 아래에 있는 위치하는 문자 이후의 모든 것을 삭제하고 &ldquo;저장&rdquo; 합니다. 
 </p></dd>
 <dt><kbd>C-k</kbd></dt>
-<dd><p>Delete from cursor to end of command, and &ldquo;save&rdquo; it.
+<dd><p>커서의 위치로부터 명령어의 끝 부분까지 삭제한 뒤, &ldquo;저장&rdquo; 합니다.
 </p></dd>
 <dt><kbd>C-y</kbd></dt>
-<dd><p>Insert (yank) the last &ldquo;saved&rdquo; text here.
+<dd><p>마지막으로 저장된 텍스트를 이곳에 삽입니다. 
 </p></dd>
 <dt><kbd>C-t</kbd></dt>
-<dd><p>Transpose the character under the cursor with the next.
+<dd><p>다음 문자를 커서 아래에 있는 문자와 전치합니다.
 </p></dd>
 <dt><kbd>M-l</kbd></dt>
-<dd><p>Change the rest of the word to lower case.
+<dd><p>단어의 남겨진 부분들을 소문자로 변경합니다.
 </p></dd>
 <dt><kbd>M-c</kbd></dt>
-<dd><p>Change the rest of the word to upper case.
+<dd><p>단어의 남겨진 부분들을 대문자로 변경합니다. 
 </p></dd>
 <dt><kbd><span class="key">RET</span></kbd></dt>
-<dd><p>Re-submit the command to R.
+<dd><p>R에 명령어를 다시 전달합니다.
 </p></dd>
 </dl>
 
-<p>The final <tt class="key">RET</tt> terminates the command line editing sequence.
+<p>마지막 <tt class="key">RET</tt> 키는 명령어 라인의 편집 시퀀스를 종료하는 것입니다.
 </p>
-<p>The <strong>readline</strong> key bindings can be customized in the usual way
-<em>via</em> a <samp>~/.inputrc</samp> file.  These customizations can be
-conditioned on application <code>R</code>, that is by including a section like
+<p><strong>Readline</strong> 키바인딩 (key binding)은  <samp>~/.inputrc</samp> 파일을 <em>통해서</em> 일반적인
+방법으로 조정될 수 있습니다.  R 2.12.0 부터는 이러한 개인설정 (customization)은 <code>R</code>에 따라
+조건적일 수 있습니다. 
 </p>
 <div class="example">
 <pre class="example">$if R
@@ -8116,17 +8028,17 @@ classification을 따로 명시하지는 않지만, 이 방법의 역시 보통 
 <p>물론 이 중 일부 그래픽
 파라미터들은 현재 디바이스의 크기 처럼, 오직 정보 확인의 목적만을 가진 것들도 있습니다.</p>
 <h3><a name="FOOT25" href="#DOCF25">(25)</a></h3>
-<p>2.5Gb on versions of Windows that support 3Gb per process and
-have the support enabled: see the <samp>rw-FAQ</samp> Q2.9; 3.5Gb on most 64-bit
-versions of Windows.</p>
+<p>프로세스당 3Gb를 지원하는 Windows에서는
+2.5Gb이며, 이는 <samp>rw-FAQ</samp> Q2.9를 살펴보세요; 일부 64 비트의 Windows는 3.5Gb입니다</p>
 <h3><a name="FOOT26" href="#DOCF26">(26)</a></h3>
-<p>The &lsquo;Emacs
-Speaks Statistics&rsquo; package; see the <acronym>URL</acronym>
-<a href="http://ESS.R-project.org">http://ESS.R-project.org</a></p>
+<p>R
+2.13.0부터</p>
 <h3><a name="FOOT27" href="#DOCF27">(27)</a></h3>
-<p>On a PC keyboard this is usually the Alt key,
-occasionally the &lsquo;Windows&rsquo; key.  On a Mac keyboard normally no meta key is
-available.</p>
+<p>&lsquo;Emacs Speaks Statistics&rsquo;패키지를 말하며, <acronym>URL</acronym>
+<a href="http://ESS.R-project.org">http://ESS.R-project.org</a>를 살펴보시길 바랍니다</p>
+<h3><a name="FOOT28" href="#DOCF28">(28)</a></h3>
+<p>PC 키보드에서는 이것은 일반적으로 Alt
+키이거나 가끔 &lsquo;Windows&rsquo;키이기도 합니다. Mac 키보드에서는 일반적으로 사용가능한 메타키가 없습니다</p>
 </div>
 <hr>
 
