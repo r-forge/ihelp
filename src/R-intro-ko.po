@@ -17361,7 +17361,7 @@ msgid ""
 "You need to ensure that either the environment variable @env{TMPDIR} is "
 "unset or it points to a valid place to create temporary files and "
 "directories."
-msgstr ""
+msgstr "환경 변수(environment variable) @env{TMPDIR}이 지정되지 않았거나, 임시 파일과 디렉토리 생성을 하는데 이용되는 공간을 올바르게 지정했는가에 대해서 확인하는 것이 필요합니다."
 
 #. type: Plain text
 #: R-intro.texi:7004
@@ -17370,7 +17370,7 @@ msgid ""
 "session.  The startup mechanism is as follows (see also the on-line help for "
 "topic @samp{Startup} for more information, and the section below for some "
 "Windows-specific details)."
-msgstr ""
+msgstr "대부분의 옵션들은 @R{} 세션의 시작과 끝에서 어떤 것들을 해야하는가를 조절하게 됩니다. 스타트업 메카니즘 (startup mechanism)은 다음과 같습니다 (더 많은 정보를 @samp{Startup}이라는 주제와 관련한 온라인 도움말에서 찾아볼 수 있으며, 일부 Windows와 관련된 내용들은 아래의 섹션에서 찾아볼 수 있습니다)."
 
 #. type: itemize
 #: R-intro.texi:7020
@@ -17387,7 +17387,7 @@ msgid ""
 "Variables you might want to set include @env{R_PAPERSIZE} (the default paper "
 "size), @env{R_PRINTCMD} (the default print command) and @env{R_LIBS} "
 "(specifies the list of @R{} library trees searched for add-on packages)."
-msgstr ""
+msgstr "@option{--no-environ}이라는 옵션이 주어지지 않는다면, @R{}은 환경변수들을 설정하기 위한 작업을 진행하기 위해서 사용자와 사이트 파일들(user and site files)을 찾습니다.  사이트 파일의 이름은 환경변수 @env{R_ENVIRON}에 의해 지정됩니다. 만약, 이것이 설정되어 있지 않다면, @file{@var{R_HOME}/etc/Renviron.site}이 이용됩니다 (만약 존재할 경우에 한합니다).사용자 파일은 @env{R_ENVIRON_USER}라는 환경변수가 설정되어 있다면 이 파일에 의해서 지정됩니다. 그렇지 않다면 현재 또는 사용자의 홈디렉토리내에 있는 @file{.Renviron}이라는 파일을 찾습니다.  이러한 파일들은 @samp{@var{name}=@var{value}}이라는 형식을 가진 라인들을 포함해야 합니다. (구체적인 이해를 위해서 @code{help(\"Startup\")}을 살펴보시길 바랍니다) 설정하고 싶은 변수들은 아마도 기본 페이퍼의 크기를 정하는 @env{R_PAPERSIZE}, 기본 프린터 명령을 정해주는 @env{R_PRINTCMD}, 그리고 애드온 패키지들을 찾는데 사용된 @R{} 라이브러리 트리(library tree)들의 목록을 지정하는 @env{R_LIBS}가 있습니다. "
 
 #. type: itemize
 #: R-intro.texi:7027
@@ -17397,7 +17397,7 @@ msgid ""
 "from the value of the @env{R_PROFILE} environment variable.  If that "
 "variable is unset, the default @file{@var{R_HOME}/etc/Rprofile.site} is used "
 "if this exists."
-msgstr ""
+msgstr "명령어 옵션 @option{--no-site-file}이 주어지지 않았다면, @R{}은 사이트-와이드 스타트업 프로파일(site-wide startup profile)을 찾습니다. 이 파일의 이름은 @env{R_PROFILE} 환경 변수의 값으로부터 얻을 수 있습니다. 만약 이 변수가 지정되지 않았다면 기본적으로 @file{@var{R_HOME}/etc/Rprofile.site}이 이용됩니다 (만약 존재한다면)."
 
 #. type: itemize
 #: R-intro.texi:7034
@@ -17407,7 +17407,7 @@ msgid ""
 "variable @env{R_PROFILE_USER}; if unset, a file called @file{.Rprofile} in "
 "the current directory or in the user's home directory (in that order) is "
 "searched for."
-msgstr ""
+msgstr "만약 @option{--no-init-file}이 주어지지 않았다면 @R{}은 사용자 프로파일(user profile)을 탐색 후 이를 읽어들이게 됩니다. 이 파일의 이름은 환경변수 @env{R_PROFILE_USER}로 부터 얻을 수 있습니다. 이것이 설정되지 않았다면, 현재 디렉토리에 있거나 사용자의 홈 디렉토리에 있는 @file{.Rprofile} 파일을 찾을 것입니다. "
 
 #. type: itemize
 #: R-intro.texi:7039
@@ -17415,7 +17415,7 @@ msgid ""
 "It also loads a saved workspace from file @file{.RData} in the current "
 "directory if there is one (unless @option{--no-restore} or @option{--no-"
 "restore-data} was specified)."
-msgstr ""
+msgstr "또한, (@option{--no-restore} 또는 @option{--no-restore-data} 옵션이 지정되지 않았다면) 현재의 디렉토리에 @file{.RData} 파일로부터 저장된 작업공간을 불러올 수 있습니다. "
 
 #. type: itemize
 #: R-intro.texi:7045
@@ -17424,7 +17424,7 @@ msgid ""
 "function (as well as @code{.Last()} which is executed at the end of the @R{} "
 "session) can be defined in the appropriate startup profiles, or reside in "
 "@file{.RData}."
-msgstr ""
+msgstr "마지막으로 @code{.First()} 함수가 존재한다면, 이것은 실행될 것입니다. (@R{} 세션의 끝부분에서 실행된 @code{.Last()}함수와 같이) 이 함수는 적절한 스타트업 프로파일들 내에 정의될 수 있습니다.  또는 @file{.RData}에 위치할 수도 있습니다. "
 
 #. type: Plain text
 #: R-intro.texi:7051
@@ -17433,12 +17433,12 @@ msgid ""
 "@R{} process (see the on-line help for topic @samp{Memory} for more "
 "information).  Users will not normally need to use these unless they are "
 "trying to limit the amount of memory used by @R{}."
-msgstr ""
+msgstr "추가적으로 @R{} 처리과정에 이용되는 메모리를 조절하는 옵션들이 있습니다. (더 많은 정보를 원하신다면 @samp{Memory}와 관련된 온라인 도움말을 살펴보시길 바랍니다). @R{}에 의하여 사용되는 메모리를 크기를 조절하고자 하지 않는다면 사용자는 이들을 사용해야 할 필요는 없습니다. "
 
 #. type: Plain text
 #: R-intro.texi:7053
 msgid "@R{} accepts the following command-line options."
-msgstr ""
+msgstr "@R{}은 다음과 같은 명령어 옵션들을 제공합니다."
 
 #. type: item
 #: R-intro.texi:7055
@@ -17455,7 +17455,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7058
 msgid "Print short help message to standard output and exit successfully."
-msgstr ""
+msgstr "표준 출력(standard output)으로 짧은 도움말 메시지를 보여주고 종료합니다. "
 
 #. type: item
 #: R-intro.texi:7059
@@ -17466,7 +17466,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7061
 msgid "Print version information to standard output and exit successfully."
-msgstr ""
+msgstr "표준 출력(standard output)으로 버전정보를 표시해주고 종료합니다."
 
 #. type: item
 #: R-intro.texi:7062
@@ -17483,7 +17483,7 @@ msgid ""
 "encoded to the locale @R{} is running in and needs to be representable in "
 "the latter's encoding (so e.g.@ you cannot re-encode Greek text in a French "
 "locale unless that locale uses the UTF-8 encoding)."
-msgstr ""
+msgstr "@code{stdin} 또는 콘솔로부터의 입력에 사용될 인코딩(encoding)을 지정합니다. 이것은 @code{iconv}에서 사용될 수 있는 알려진 인코딩이어야 합니다. 도움말 페이지를 참고하시길 바랍니다. (@code{--encoding @var{enc}}) 또한 사용될 수 있습니다. "
 
 #. type: item
 #: R-intro.texi:7071
@@ -17498,7 +17498,7 @@ msgid ""
 "successfully.  Apart from the front-end shell script and the man page, @R{} "
 "installation puts everything (executables, packages, etc.)  into this "
 "directory."
-msgstr ""
+msgstr "표준출력에 @R{} ``home directory'' (홈디렉토리)의 경로를 보여주고 종료합니다.  사용자가 직접 작성하는 쉘 스크립트(shell script)와 도움말 페이지(man page)를 제외하고 실행이 가능한 파일들, 패키지 등 모두가 @R{}이 설치되어 집니다. "
 
 #. type: item
 #: R-intro.texi:7077
@@ -17520,7 +17520,7 @@ msgid ""
 "for the desired behavior when ending the session with @kbd{q()}; in non-"
 "interactive use one of these must be specified or implied by some other "
 "option (see below)."
-msgstr ""
+msgstr "@R{}세션을 종료할때 데이터 셋들을 저장할 것인지에 대한 여부를 조절합니다. "
 
 #. type: item
 #: R-intro.texi:7085
@@ -17531,7 +17531,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7087
 msgid "Do not read any user file to set environment variables."
-msgstr ""
+msgstr "환경변수를 설정하기 위한 어떠한 유저파일(user file)을 읽어들이지 않습니다."
 
 #. type: item
 #: R-intro.texi:7088
@@ -17542,7 +17542,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7090
 msgid "Do not read the site-wide profile at startup."
-msgstr ""
+msgstr "스타트업(startup)에서 사이트-와이드 프로파일 (site-wide profile)을 읽어들이지 않습니다."
 
 #. type: item
 #: R-intro.texi:7091
@@ -17553,7 +17553,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7093
 msgid "Do not read the user's profile at startup."
-msgstr ""
+msgstr "스타트업(startup)에서 사용자의 프로파일을 읽어들이지 않습니다. "
 
 #. type: item
 #: R-intro.texi:7094
@@ -17580,7 +17580,7 @@ msgid ""
 "was started) should be restored at startup or not.  The default is to "
 "restore. (@option{--no-restore} implies all the specific @option{--no-"
 "restore-*} options.)"
-msgstr ""
+msgstr "스타트업(startup)할때 @R{}이 시작된 디렉토리내에서 @file{.RData}의 형식으로 저장되어진 이미지들 복구할 것인지를 조절합니다. 기본값은 복구하는 것입니다. (@option{--no-restore}는 좀 더 세부적인 @option{--no-restore-*}과 같은 옵션들 모두를 의미합니다)"
 
 #. type: item
 #: R-intro.texi:7102
@@ -17595,7 +17595,7 @@ msgid ""
 "directory where @R{} was started, but can be set by the environment variable "
 "@env{R_HISTFILE}) should be restored at startup or not.  The default is to "
 "restore."
-msgstr ""
+msgstr "@R{}이 시작된 디렉토리내에 일반적으로 @file{.Rhistory}로 되어 있는 작업기록파일 (history file)을 스타트업 (startup)할때 복구할 것인지를 조절합니다. 이 파일은 환경변수 @env{R_HISTFILE}에 의해서 지정될 수도 있습니다. 기본값은 복구하는 것입니다. "
 
 #. type: item
 #: R-intro.texi:7108
@@ -17606,7 +17606,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7110
 msgid "(Windows only) Prevent loading the @file{Rconsole} file at startup."
-msgstr ""
+msgstr "(Windows에만 적용되는 옵션입니다). 이는 스타트업시에 @file{Rconsole} 파일을 로딩하지 못하게 합니다."
 
 #. type: item
 #: R-intro.texi:7111
@@ -17620,7 +17620,7 @@ msgid ""
 "Combine @option{--no-save}, @option{--no-environ}, @option{--no-site-file}, "
 "@option{--no-init-file} and @option{--no-restore}.  Under Windows, this also "
 "includes @option{--no-Rconsole}."
-msgstr ""
+msgstr "@option{--no-save}, @option{--no-environ}, @option{--no-site-file}, @option{--no-init-file}, @option{--no-restore}를 모두 한데 묶은 것입니다. Windows상에서는 이 옵션은 또한 @option{--no-Rconsole}을 포함합니다."
 
 #. type: item
 #: R-intro.texi:7117
@@ -17641,7 +17641,7 @@ msgid ""
 "@code{stdin}.  Implies @option{--no-save} unless @option{--save} has been "
 "set.  On a Unix-alike, shell metacharacters should be avoided in @var{file} "
 "(but spaces are allowed)."
-msgstr ""
+msgstr "(@command{Rgui.exe}에 적용되지 않습니다). @var{file}로부터 입력을 가져옵니다: @samp{-}은 @code{stdin}을 의미합니다. @option{--save}가 지정되지 않았다면 @option{--no-save}를 의미하게 됩니다. Unix와 같은 환경에서는 쉡 메타문자(shell metacharacters)는 @var{file}내에서 사용을 피해야 합니다. (그러나, @R{} 2.14.0 부터 공백(spaces)들이 허용됩니다)."
 
 #. type: item
 #: R-intro.texi:7124
@@ -17658,7 +17658,7 @@ msgid ""
 "set.  (There is a limit of 10,000 bytes on the total length of expressions "
 "used in this way.  Expressions containing spaces or shell metacharacters "
 "will need to be quoted.)"
-msgstr ""
+msgstr "(@command{Rgui.exe}에서는 사용할 수 없습니다). @var{expression}을 한줄의 입력라인 (input line)으로 이용하세요.하나 또는 그 이상의 @option{-e} 옵션들이 사용될 수 있으나, @option{-f} 또는 @option{--file}과는 함께 사용할 수 없습니다. @option{--save}가 지정되어 있지 않다면 @option{--no-svae}을 의미하게 됩니다. (이러한 방식으로 expression 부분에 들어갈 수 있는 최대 길이는 10,000 바이트 입니다. 공백 또는 쉘 메타문자들을 포함하는 expressions들은 따옴표를 사용해야 할 필요가 있습니다)"
 
 #. type: item
 #: R-intro.texi:7132
@@ -17676,12 +17676,7 @@ msgid ""
 "(see @option{--interactive}).  This option also affects tilde-expansion: see "
 "the help for @code{path.expand}."
 msgstr ""
-"(UNIX only) Turn off command-line editing via @strong{readline}.  This is "
-"useful when running @R{} from within Emacs using the @acronym{ESS} (``Emacs "
-"Speaks Statistics'') package.  @xref{The command-line editor (명령어라인 편집"
-"기)}, for more information.  Command-line editing is enabled for default "
-"interactive use (see @option{--interactive}).  This option also affects "
-"tilde-expansion: see the help for @code{path.expand}."
+msgstr "(UNIX에서만 사용됩니다).@strong{readline}을 통해서 명령어줄(command-line)을 편집하는 것을 끕니다.이것은 @acronym{ESS}(``Emacs Speaks Statistics'') 패키지를 이용하여 Emacs상에서 @R{}을 실행할 때 유용합니다. 더 많은 정보를 원하시면 @ref{The command-line editor (명령어라인 편집기)}를 살펴보시길 바랍니다. 명령어라인 편집은 기본적으로 대화식으로 사용합니다. (@option{--interactive}를 살펴보세요). 이 옵션은 또한 틸데확장(tilde-expansion)에 영향을 미칩니다. 이것에 대해서는 @code{path.expand}에 대한 도움말을 살펴보시길 바랍니다."
 
 #. type: item
 #: R-intro.texi:7140
@@ -17703,7 +17698,7 @@ msgid ""
 "@samp{M} specifies megabytes or millions of cells respectively.  The "
 "defaults are 6Mb and 350k respectively and can also be set by environment "
 "variables @env{R_NSIZE} and @env{R_VSIZE}."
-msgstr ""
+msgstr "고급사용자들에게만 권장됩니다. 바이트단위의 벡터 힙(vector heap)과 @emph{cons cells} (numbers)에 대한 가비지 컬렉션 (garbage collection)에 대한 초기 트리거 크기 (initial trigger sizes)를 설정합니다. 접미사 @samp{M}은 메가바이트 (megabytes)또는 수백만개의 셀 (millions of cells)을 지정합니다.기본값은 6Mb 와 350k 입니다. "
 
 #. type: item
 #: R-intro.texi:7148
@@ -17718,7 +17713,7 @@ msgid ""
 "locations.  This defaults to 10000, but can be increased to allow large and "
 "complicated calculations to be done.  Currently the maximum value accepted "
 "is 100000."
-msgstr ""
+msgstr "@var{N}위치만큼 해당하는 포인터 프로텍션 스택(pointer protection stack)의 최대 크기를 지정합니다. 기본값은 10000이지만, 대규모의 복잡한 연산을 위하여 증가될 수 있습니다. 현재의 최대값은 100000입니다."
 
 #. type: item
 #: R-intro.texi:7154
@@ -17736,7 +17731,7 @@ msgid ""
 "have the support enabled: see the @file{rw-FAQ} Q2.9; 3.5Gb on most 64-bit "
 "versions of Windows.}, and must be between 32Mb and the maximum allowed on "
 "that version of Windows."
-msgstr ""
+msgstr "(Windows에만 해당합니다) @R{}객체들과 작업영역을 위해 사용되는 메모리의 양의 한계를 지정합니다. 기본적으로 이는 @R{} 32-비트를 기준으로 물리적인 RAM의 크기보다 작은 1.5Gb@footnote{프로세스당 3Gb를 지원하는 Windows에서는 2.5Gb이며, 이는 @file{rw-FAQ} Q2.9를 살펴보세요; 일부 64 비트의 Windows는 3.5Gb입니다}로 지정되어 있습니다.  이는 반드시 32Mb와 Windows의 해당버전에서 허용하는 최고치 사이어야 합니다. "
 
 #. type: item
 #: R-intro.texi:7163
@@ -17759,7 +17754,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7167
 msgid "Do not print out the initial copyright and welcome messages."
-msgstr ""
+msgstr "실행 초기에 보여지는 카피라이트(copyright)와 환영 메시지를 보여주지 않습니다."
 
 #. type: item
 #: R-intro.texi:7168
@@ -17773,7 +17768,7 @@ msgid ""
 "Make @R{} run as quietly as possible.  This option is intended to support "
 "programs which use @R{} to compute results for them.  It implies @option{--"
 "quiet} and @option{--no-save}."
-msgstr ""
+msgstr "@R{}를 가능한 조용히 실행합니다. 이 옵션은 @R{}을 이용하여 연산을 수행하는 프로그램을 지원하기 위한 목적으로 존재합니다. @option{--quiet}와 @option{--no-save}를 의미합니다."
 
 #. type: item
 #: R-intro.texi:7173
@@ -17790,7 +17785,7 @@ msgid ""
 "interactively if and only if @file{stdin} is connected to a terminal or "
 "@code{pty}.)  Using @option{-e}, @option{-f} or @option{--file} asserts non-"
 "interactive use even if @option{--interactive} is given."
-msgstr ""
+msgstr "(UNIX에서만 사용가능합니다) 입력의 방향이 설정되어 있을지라도 @R{}이 대화식으로 사용되도록 하게 합니다. (기본적으로 @file{stdin}이 터미널(terminal) 또는 @code{pty}에 연결되어 있을 때 @R{}은 대화식으로 실행되도록 되어 있습니다). 만약 @option{--interactive}이 주어져 있을지라도, @option{-e}, @option{-f}, 또는  @option{--file}은 비대화식 모드로 사용하게 됩니다."
 
 #. type: table
 #: R-intro.texi:7183
@@ -17809,7 +17804,7 @@ msgid ""
 "(Windows only) Set @code{Rterm} up for use by @code{R-inferior-mode} in "
 "@acronym{ESS}, including asserting interactive use (without the command-line "
 "editor) and no buffering of @file{stdout}."
-msgstr ""
+msgstr "(Windows만 가능합니다) 명령어를 이용한 에디터 사용없이 대화식으로 사용할 수 있는 기능을 포함하여 @acronym{ESS} 내에서 @code{R-inferior-mode}에 의해서 사용할 수 있도록 @code{Rterm}을 지정합니다. "
 
 #. type: item
 #: R-intro.texi:7189
@@ -17823,7 +17818,7 @@ msgid ""
 "Print more information about progress, and in particular set @R{}'s option "
 "@code{verbose} to @code{TRUE}.  @R{} code uses this option to control the "
 "printing of diagnostic messages."
-msgstr ""
+msgstr "진행과정에 대한 정보를 출력하고, 특히 @R{}의 옵션 @code{verbose}를 @code{TRUE}로 지정합니다. @R{} 코드는 이 옵션을 이용하여 진단 메시지 (diagnostic message)의 출력을 조정하게 됩니다. "
 
 #. type: item
 #: R-intro.texi:7194
@@ -17844,7 +17839,7 @@ msgid ""
 "exceptions are @command{valgrind} and recent versions of @command{gdb}), "
 "further command line options are disregarded, and should instead be given "
 "when starting the @R{} executable from inside the debugger."
-msgstr ""
+msgstr "(UNIX에서만 이용이 가능합니다). @var{name}이라는 이름의 디버거(debugger)를 통해 @R{}을 실행합니다. @command{valgrind}와 최신버전의 @command{gdb}를 제외한 대부분의 디버거들에서, 추가적인 명령어 라인 옵션 (command line options)들이 무시되는 대신에 @R{}이 실행될 때 디버거 내에서 실행이 가능합니다. "
 
 #. type: item
 #: R-intro.texi:7202
@@ -17866,7 +17861,7 @@ msgid ""
 "are @samp{X11} (the default) and, provided that @samp{Tcl/Tk} support is "
 "available, @samp{Tk}. (For back-compatibility, @samp{x11} and @samp{tk} are "
 "accepted.)"
-msgstr ""
+msgstr "(UNIX에서만 이용가능합니다) 그래픽 사용자 환경으로서 @var{type}을 이용합니다 (이것은 대화식 기능의 그래픽 또한 포함합니다). 현재 @var{type}에서 사용가능한 값들은 기본적으로 @samp{X11}이며, @samp{Tcl/Tk}가 지원된다는 가정하에 @samp{Tk}입니다. (back-compatibility를 위해서 @samp{x11}과 @samp{tk}도 사용될 수 있습니다)."
 
 #. type: item
 #: R-intro.texi:7210
@@ -17891,7 +17886,7 @@ msgid ""
 "This flag does nothing except cause the rest of the command line to be "
 "skipped: this can be useful to retrieve values from it with "
 "@code{commandArgs(TRUE)}."
-msgstr ""
+msgstr "이 플래그(flag)는 커맨드라인의 남은 부분을 건너뛰도록 유도하는 것을 제외하면 다른 기능은 없습니다.  @code{commandArgs(TRUE)}와 함께 값을 검색 또는 다시 불러오는데 유용합니다. "
 
 #. type: Plain text
 #: R-intro.texi:7223
@@ -17900,7 +17895,7 @@ msgid ""
 "@samp{<} and @samp{>}), but the line length limit of 4095 bytes still "
 "applies.  Warning and error messages are sent to the error channel "
 "(@code{stderr})."
-msgstr ""
+msgstr "@samp{<}와 @samp{>}를 이용하여 일반적인 방법으로 입력과 출력의 방향을 조절할 수 있으나, 라인의 길인에 대한 4095 바이트의 제한은 여전히 적용되게 됩니다.  경고와 에러메시들이 에러 채널인 @code{stderr}로 보내어지게 됩니다. "
 
 #. type: Plain text
 #: R-intro.texi:7227
@@ -17908,7 +17903,7 @@ msgid ""
 "The command @code{R CMD} allows the invocation of various tools which are "
 "useful in conjunction with @R{}, but not intended to be called "
 "``directly''.  The general form is"
-msgstr ""
+msgstr "명령어 @code{R CMD}는 @R{}과 함께 사용될 수 있는 유용한 도구들을 실행시키도록 해줍니다. 그러나 이것은 직접적으로 실행시키기 보다는 다음과 같은 일반적인 형식을 가집니다. "
 
 #. type: example
 #: R-intro.texi:7230
@@ -17921,12 +17916,12 @@ msgstr ""
 msgid ""
 "where @var{command} is the name of the tool and @var{args} the arguments "
 "passed on to it."
-msgstr ""
+msgstr "여기에서 @var{command}는 도구의 이름이고 @var{args}는 그 도구에 넘겨지게 될 입력인자들을 의미합니다."
 
 #. type: Plain text
 #: R-intro.texi:7237
 msgid "Currently, the following tools are available."
-msgstr ""
+msgstr "현재, 다음과 같은 도구들을 사용할 수 있습니다. "
 
 #. type: item
 #: R-intro.texi:7239
@@ -17939,7 +17934,7 @@ msgstr ""
 msgid ""
 "Run @R{} in batch mode.  Runs @command{R --restore --save} with possibly "
 "further options (see @code{?BATCH})."
-msgstr ""
+msgstr "@R{}을 배치모드(batch mode)에서 실행시킵니다. @command{R --restore --save}와 추가적인 옵션들을 이용할 수 있습니다. (@code{?BATCH}를 참조하기 바랍니다)."
 
 #. type: item
 #: R-intro.texi:7242
@@ -17950,7 +17945,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7244
 msgid "(UNIX only) Compile C, C++, Fortran @dots{} files for use with @R{}."
-msgstr ""
+msgstr "(UNIX에서만 사용할 수 있습니다) @R{}과 함께 사용할 수 있는 C, C++, Fortran @dots{} 파일들을 컴파일합니다. "
 
 #. type: item
 #: R-intro.texi:7244
@@ -17961,7 +17956,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7246
 msgid "Build shared library for dynamic loading."
-msgstr ""
+msgstr "다이나믹 로딩을 위하여 공유된 라이브러리 (shared library)를 빌드(build)합니다."
 
 #. type: item
 #: R-intro.texi:7246
@@ -17972,7 +17967,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7248
 msgid "Install add-on packages."
-msgstr ""
+msgstr "애드온(add-on) 패키지들을 설치합니다."
 
 #. type: item
 #: R-intro.texi:7248
@@ -17983,7 +17978,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7250
 msgid "Remove add-on packages."
-msgstr ""
+msgstr "애드온(add-on) 패키지들을 제거합니다."
 
 #. type: item
 #: R-intro.texi:7250
@@ -17994,7 +17989,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7252
 msgid "Build (that is, package) add-on packages."
-msgstr ""
+msgstr "애드온(add-on) 패키지들을 빌드(build)합니다."
 
 #. type: item
 #: R-intro.texi:7252
@@ -18005,7 +18000,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7254
 msgid "Check add-on packages."
-msgstr ""
+msgstr "애드온(add-on) 패키지들을 체크(check)합니다."
 
 #. type: item
 #: R-intro.texi:7254
@@ -18016,7 +18011,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7256
 msgid "(UNIX only) Front-end for creating executable programs."
-msgstr ""
+msgstr "(UNIX에서만 사용가능합니다) 실행가능한 프로그램을 생성하기 위하여 전처리 (front-end)입니다. "
 
 #. type: item
 #: R-intro.texi:7256
@@ -18047,7 +18042,7 @@ msgid ""
 "Convert Rd format to various other formats, including @HTML{}, @LaTeX{}, "
 "plain text, and extracting the examples.  @code{Rd2txt} can be used as "
 "shorthand for @code{Rd2conv -t txt}."
-msgstr ""
+msgstr "Rd 포맷을 @HTML{}, LaTex, 일반 텍스트, 그리고 예제들을 추출하는 등 다양한 포맷으로 전환합니다. @code{Rd2txt}는 @code{Rd2conv -t txt}의 약식 표기입니다."
 
 #. type: item
 #: R-intro.texi:7263
@@ -18058,7 +18053,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7265
 msgid "Convert Rd format to PDF."
-msgstr ""
+msgstr "Rd 포맷을 PDF로 전환합니다."
 
 #. type: item
 #: R-intro.texi:7265
@@ -18069,7 +18064,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7267
 msgid "Extract S/R code from Sweave or other vignette documentation"
-msgstr ""
+msgstr "Sweave 문서로부터 S/R 코드를 추출합니다."
 
 #. type: item
 #: R-intro.texi:7267
@@ -18080,7 +18075,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7269
 msgid "Process Sweave or other vignette documentation"
-msgstr ""
+msgstr "Sweave 문서를 프로세스 합니다."
 
 #. type: item
 #: R-intro.texi:7269
@@ -18102,7 +18097,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7273
 msgid "Obtain configuration information"
-msgstr ""
+msgstr "환경설정에 대한 정보 (configuration information)을 가져옵니다."
 
 #. type: item
 #: R-intro.texi:7273
@@ -18113,7 +18108,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7275
 msgid "(Unix only) Update the Java configuration variables"
-msgstr ""
+msgstr "(UNIX에서만 사용가능합니다) Java 설정 변수들을 업데이트 합니다."
 
 #. type: item
 #: R-intro.texi:7275
@@ -18124,7 +18119,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7277
 msgid "(Unix only) Create Emacs-style tag files from C, R, and Rd files"
-msgstr ""
+msgstr "(UNIX에서만 사용가능합니다) C, R, 그리고 Rd 파일들로부터 이맥스 (Emacs)스타일의 태그 파일들을 생성합니다."
 
 #. type: item
 #: R-intro.texi:7277
@@ -18135,7 +18130,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7279
 msgid "(Windows only) Open a file via Windows' file associations"
-msgstr ""
+msgstr "(Windows에서만 사용가능합니다)  Windows의 파일연결(file association)을 이용하여 파일을 엽니다."
 
 #. type: item
 #: R-intro.texi:7279
@@ -18146,7 +18141,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7281
 msgid "(Windows only) Process (La)TeX files with R's style files"
-msgstr ""
+msgstr "(Windows에서만 사용가능합니다)  R 스타일 파일을 사용하는 (La)TeX 파일들을 프로세싱합니다."
 
 #. type: example
 #: R-intro.texi:7287
@@ -18159,7 +18154,7 @@ msgstr ""
 msgid ""
 "to obtain usage information for each of the tools accessible via the @code{R "
 "CMD} interface."
-msgstr ""
+msgstr "@code{R CMD}를 통하여 사용이 가능한 도구들의 각각에 대한 사용방법을 알고 싶을 때는 다음과 같이 입력하세요. "
 
 #. type: Plain text
 #: R-intro.texi:7305
@@ -18175,7 +18170,7 @@ msgid ""
 "@option{--vanilla} and so invoke no @R{} startup files: the current "
 "exceptions are @command{INSTALL}, @command{REMOVE}, @command{Sweave} and "
 "@command{SHLIB} (which uses @option{--no-site-file --no-init-file})."
-msgstr ""
+msgstr "추가적으로 도구들에 의해 실행되는 어떠한 @R{} 프로세스들에 영향을 미칠 수 있는 @option{--arch=}, @option{--no-environ}, @option{--no-init-file}, @option{--no-site-file} 그리고 @option{--vanilla} 옵션들을 @command{R}과 @command{CMD} 사이에 사용@footnote{@R{} 2.13.0부터}할 수 있습니다. (여기에서 @option{--vanilla}는 @option{--no-environ --no-site-file --no-init-file}과 동일합니다.)그러나, @command{R CMD} 이 자체로는 어떠한 @R{} 스타드업 파일들을 사용하지 않는다는 것을 알고 계셔야 합니다 (특히, 사용자 또는 사이트 @file{Renviron} 파일 모두 이용하지 않습니다). 그리고, @command{BATCH}를 제외한 이러한 도구들에 의해서 실행되는 @R{} 프로세스들의 모두는 @option{--no-restore}를 사용합니다. 대부분은 @option{--vanilla}를 사용하고 @R{} 스타트업 파일들을 작동시키지 않습니다. 현재 예외라고 할 수 있는 것들은 @command{INSTALL}, @command{REMOVE}, @command{Sweave} 그리고 (@option{--no-site-file --no-init-file}을 이용하고 있는) @command{SHLIB} 입니다. 절대경로 (absolute filepath)에 의해서 주어진 또는 해당경로상에 있는 어떠한 다른 실행가능한 @command{@var{cmd}}을 사용하기 위해서는 아래와 같이 사용합니다. "
 
 #. type: example
 #: R-intro.texi:7308
@@ -18192,7 +18187,7 @@ msgid ""
 "@command{pdflatex}.  Under Windows @var{cmd} can be an executable or a batch "
 "file, or if it has extension @code{.sh} or @code{.pl} the appropriate "
 "interpreter (if available) is called to run it."
-msgstr ""
+msgstr "이렇게 하는 것은 @R{} 또는 @command{ldd} 또는  @command{pdflatex}와 같은 어떤 특정한 명령어가 수행되어져야 하는 환경을 동일하게 해주는데 유용합니다. Windows 상에서 @var{cmd}는 실행이 가능할 수도 있고 배치파일 (batch file)일수도 있으며, 만약 @code{.sh} 또는 @code{.pl}과 같은 확장자를 가진다면 적합한 인터프리터(interpreter)가 이들을 실행시키기 위해서 호출되어집니다."
 
 #. type: Plain text
 #: R-intro.texi:7327
@@ -18202,7 +18197,7 @@ msgid ""
 "previous section may be used, invoking by @code{R.exe} or more directly by "
 "@code{Rterm.exe}.  For interactive use, there is a console-based GUI "
 "(@code{Rgui.exe})."
-msgstr ""
+msgstr "Windows에서 @R{}을 실행하는 방법은 두 가지가 있습니다. @code{cmd.exe} 또는 이보다 좀 더 많은 기능들을 가지고 있는 쉘과 같은 터미널을 보여주는 윈도우 내에서는 이전 섹션에서 설명한 방법들이 사용될 수 있는데, 이는 @code{R.exe} 또는 @code{Rterm.exe}를 실행하는 것입니다. 대화식으로 사용하기 위해서는 콘솔기반의 그래픽 사용자 환경인 @code{Rgui.exe}가 있습니다. "
 
 #. type: Plain text
 #: R-intro.texi:7340
@@ -18218,7 +18213,7 @@ msgid ""
 "fails, and environment variables @env{HOMEDRIVE} and @env{HOMEPATH} are "
 "defined (and they normally are) these define the home directory.  Failing "
 "all those, the home directory is taken to be the starting directory."
-msgstr ""
+msgstr "Windows 상에서 스타트업 방식은 UNIX와 유사하지만, 'home directory' (홈디렉토리)에 대한 참조는 Windows상에서 항상 정의되는 것이 아니기 때문에 좀 더 명확히 정해줘야 합니다.환경변수(environment variable) @env{R_USER}을 정의하는 것은 홈디렉토리를 지정하는 것입니다.또한, 환경변수 @env{HOME}을 정의하는 것 역시 홈디렉토리를 정하는 것입니다.사용자가 조절할 수 있는 이 두 변수들이 설정되면, @R{}은 홈디렉토리를 지정하는 시스템을 찾으려고 합니다. 제일먼저, Windows 개인 디렉토리 (일반적으로 Windows XP의 경우에는 @code{C:\Documents and Settings\username\My Documents}를 의미합니다)를 지정합니다.실패시에는 환경변수 @env{HOMEDRIVE}와 @env{HOMEPATH}가 지정하는 홈디렉토리를 사용하게 됩니다. 이 모든 과정이 실패할 경우에 홈디렉토리는 스타팅 디렉토리로 정해지게 됩니다. "
 
 #. type: Plain text
 #: R-intro.texi:7344
@@ -18226,14 +18221,14 @@ msgid ""
 "You need to ensure that either the environment variables @env{TMPDIR}, "
 "@env{TMP} and @env{TEMP} are either unset or one of them points to a valid "
 "place to create temporary files and directories."
-msgstr ""
+msgstr "환경변수 @env{TMPDIR}, @env{TMP} 혹은 @env{TEMP}가 결정되지 않거나, 이 둘 중 하나가 일시적인 파일 혹은 디렉토리 생성을 위한 유효한 공간을 지정하게 끔 설정해야 합니다."
 
 #. type: Plain text
 #: R-intro.texi:7347
 msgid ""
 "Environment variables can be supplied as @samp{@var{name}=@var{value}} pairs "
 "on the command line."
-msgstr ""
+msgstr "환경변수들은 명령어 라인에서 @samp{@var{name}=@var{value}}와 같은 형식으로 제공됩니다."
 
 #. type: Plain text
 #: R-intro.texi:7355
@@ -18244,14 +18239,14 @@ msgid ""
 "mechanism is used for drag-and-drop and file association with @code{RGui."
 "exe}, but also works for @code{Rterm.exe}.  If the named file does not exist "
 "it sets the working directory if the parent directory exists.)"
-msgstr ""
+msgstr "만약 어떠한 경우에라도 @file{.RData}로 끝나는 인자가 있다면, 이것은 불러오게 될 작업공간에 대한 경로로서 인식되어집니다.이것은 @option{--restore}를 의미하는 것이고, 주어진 이름을 가진 파일의 상위디렉토리에 대한 작업 디렉토리를 지정하는 것이기 때문입니다.(이러한 메카니즘은 드래그-앤-드랍(drag-and-drop)과 @code{RGui.exe}와 사용되는 파일연결(file association)을 위해 사용됩니다.  그러나, 또한 @code{Rterm.exe}를 위해 사용되기도 합니다. 만약 주어진 이름을 가진 파일이 존재하지 않는다면 이것은 작업디렉토리를 부모디렉토리가 있을경우에 지정하게 됩니다)."
 
 #. type: Plain text
 #: R-intro.texi:7358
 msgid ""
 "The following additional command-line options are available when invoking "
 "@code{RGui.exe}."
-msgstr ""
+msgstr "@code{RGui.exe}를 작동시킬때 다음과 같은 추가적인 명령어 옵션들이 이용가능합니다. "
 
 #. type: item
 #: R-intro.texi:7360
@@ -18278,7 +18273,7 @@ msgid ""
 "child windows within one main window) or an SDI application (with multiple "
 "top-level windows for the console, graphics and pager).  The command-line "
 "setting overrides the setting in the user's @file{Rconsole} file."
-msgstr ""
+msgstr "@code{Rgui}가 하나의 주 윈도우 상에 여러 개의 작은 윈도우 창을 이용하는 MDI 프로그램 혹은 콘솔, 그래픽, 또는 페이저를 위한 다수의 최상의 윈도우들을 가진 SDI 어플리케이션으로 사용할 것인지를 조절합니다. 명령어라인을 이용한 설정은 사용자의 @file{Rconsole} 파일에 있는 설정을 덮어쓰게 됩니다."
 
 #. type: item
 #: R-intro.texi:7368
@@ -18291,7 +18286,7 @@ msgstr ""
 msgid ""
 "Enable the ``Break to debugger'' menu item in @code{Rgui}, and trigger a "
 "break to the debugger during command line processing."
-msgstr ""
+msgstr "@code{Rgui}내에서 ``Break to debugger''라는 메뉴 항목을 이용할 수 있게 해주고, 커맨드 라인이 프로세싱되는 동안 디버거에게 브레이크를 작동시켜줍니다. "
 
 #. type: Plain text
 #: R-intro.texi:7379
@@ -18302,7 +18297,7 @@ msgid ""
 "variables set appropriately, including @env{R_HOME}, @env{R_OSTYPE}, "
 "@env{PATH}, @env{BSTINPUTS} and @env{TEXINPUTS}.  For example, if you "
 "already have @file{latex.exe} on your path, then"
-msgstr ""
+msgstr "Windows에서 @code{R CMD}를 이용할 때 당신이 소유한  @file{.bat}, @file{.exe}, @file{.sh} 또는 @file{.pl} 파일들 또한 지정할 수 있습니다. 이것은 적합한 인터프리터 (즉, @file{.pl}파일은 Perl을 이용합니다)와 @env{R_HOME}, @env{R_OSTYPE}, @env{PATH}, @env{BSTINPUTS}, 그리고 @env{TEXINPUTS}를 포함하여 올바르게 지정된 여러가지의 환경변수들과 함께 실행될 것입니다. 예를들면, 당신의 경로에 @file{latex.exe}파일을 이미 가지고 있다면 아래와 같이 방법으로 @env{TEXINPUTS}에 추가되어 있는 @R{}의 @file{share/texmf} 매크로를 이용하여 @file{mydoc.tex}에 대해서 @LaTeX{}를  실행시킬 수 있습니다. "
 
 #. type: example
 #: R-intro.texi:7382
@@ -18317,7 +18312,7 @@ msgid ""
 "texmf} macros appended to @env{TEXINPUTS}.  (Unfortunately, this does not "
 "help with the MiKTeX build of @LaTeX{}, but @command{R CMD texify mydoc} "
 "will work in that case.)"
-msgstr ""
+msgstr "(안타깝게도, MiKTex @LaTeX{}에서는 적용되지 않습니다. 그러나, @command{R CMD texify mydoc}은 작동할 것입니다.)"
 
 #. type: Plain text
 #: R-intro.texi:7397
@@ -18327,7 +18322,7 @@ msgid ""
 "apply.  There is also console-based GUI (@code{R.app}) that by default is "
 "installed in the @code{Applications} folder on your system.  It is a "
 "standard double-clickable OS X application."
-msgstr ""
+msgstr "Mac OS X 상에서 @R{}을 실행하는 방법에는 두가지가 있습니다. 첫 번째 서브섹션에서 설명된 방법처럼 @code{Terminal.app} 창을 이용하여 @code{R}을 작동하는 것입니다. 또 다른 방법은 당신의 시스템에 있는 @code{Applications} 폴더에 기본적으로 설치된 콘솔기반의 GUI (@code{R.app})을 이용하는것입니다. 이것은 더블클릭이 가능한 Mac OS X 응용프로그램입니다."
 
 #. type: Plain text
 #: R-intro.texi:7404
@@ -18338,7 +18333,7 @@ msgid ""
 "working directory are set as the user's home directory unless a different "
 "startup directory is given in the Preferences window accessible from within "
 "the GUI."
-msgstr ""
+msgstr "Mac OS X에 있는 스타트업 프로시져는 유닉스의 것과 유사합니다. `home directory' 는 R.framework 내부에 있지만, GUI내로부터 접근이 가능한 Preference 창에 있는 스타트업 디렉토이와 다르지 않다면 스타트업과 현재 작업디렉토리는 사용자의 홈디렉토리와 같이 지정됩니다."
 
 #. type: Plain text
 #: R-intro.texi:7413
@@ -18348,7 +18343,8 @@ msgid ""
 "this in the background or as a batch job use OS-specific facilities to do "
 "so: for example in most shells on Unix-alike OSes @command{R CMD BATCH foo.R "
 "&} runs a background job."
-msgstr ""
+msgstr "만약에 @R{} 명령어들로 이루어진 @file{foo.R}라는 파일을 실행시키고자 한다면,  @command{R CMD BATCH foo.R}를 사용하길 권장합니다. 만약 당신이 이를 일괄처리 (batch job) 작업으로서 또는 후순위 작업 (background job, 백그라운드 작업)를 하고자 한다면, 당신의 운영체제에 맞는 기능을 사용하길 바랍니다. 예를들면, 유닉스와 같은 운영체제들은 쉘상에서 @command{R CMD BATCH foo.R&}라고 입력하게 되면 후순위작업 (background job)이 실행되게 됩니다. "
+
 
 #. type: Plain text
 #: R-intro.texi:7417
@@ -18356,7 +18352,7 @@ msgid ""
 "You can pass parameters to scripts via additional arguments on the command "
 "line: for example (where the exact quoting needed will depend on the shell "
 "in use)"
-msgstr ""
+msgstr "명령어 라인을 사용할때 추가적인 인자들을 이용하여 스크립트에 파미미터 (또는 입력해야 할 인자들)에 값을 넣어줄 수 있습니다. 예를들면 (어떤 쉘을 이용하는가에 따라 다르지만, 아래와 같이 큰 따옴표의 사용이 필요합니다)."
 
 #. type: example
 #: R-intro.texi:7420
@@ -18369,7 +18365,7 @@ msgstr ""
 msgid ""
 "will pass arguments to a script which can be retrieved as a character vector "
 "by"
-msgstr ""
+msgstr "위에서 사용된 명령어 라인은 아래와 같은 방법으로 다시 확인할 수 있는 문자형 벡터로서 스크립트에 인자들을 넘겨줄 수 있습니다. "
 
 #. type: example
 #: R-intro.texi:7428
@@ -18382,7 +18378,7 @@ msgstr ""
 msgid ""
 "This is made simpler by the alternative front-end @command{Rscript}, which "
 "can be invoked by"
-msgstr ""
+msgstr "이렇게 하는 것은 사용자가 직접 아래와 같이 @command{Rscript}에 인자들을 전달할 수 있는 더 간단한 방법입니다. "
 
 #. type: example
 #: R-intro.texi:7435
@@ -18395,7 +18391,7 @@ msgstr ""
 msgid ""
 "and this can also be used to write executable script files like (at least on "
 "Unix-alikes, and in some Windows shells)"
-msgstr ""
+msgstr "그리고 이렇게 하는 것은 (적어도 유닉스와 같은 환경 및 일부 Windows의 쉘상에서) 실행가능한 스크립트를 작성하는데 사용될 수 있습니다.  예를들면, 아래와 같습니다. "
 
 #. type: example
 #: R-intro.texi:7446
@@ -18413,7 +18409,7 @@ msgid ""
 "If this is entered into a text file @file{runfoo} and this is made "
 "executable (by @command{chmod 755 runfoo}), it can be invoked for different "
 "arguments by"
-msgstr ""
+msgstr "만약에 @file{runfoo}라는 텍스트 파일에 입력하고, 이것을 @command{chmod 755 runfoo}라는 명령어를 이용하여 실행가능하게 만들어 준다면, 아래와 같이 실행도 가능합니다. "
 
 #. type: example
 #: R-intro.texi:7455
@@ -18427,7 +18423,7 @@ msgid ""
 "For further options see @command{help(\"Rscript\")}.  This writes @R{} "
 "output to @file{stdout} and @file{stderr}, and this can be redirected in the "
 "usual way for the shell running the command."
-msgstr ""
+msgstr "더 많은 옵션들을 알아보고 싶으시다면 @command{help(\"Rscript\")}를 살펴보시길 바랍니다. 이것은 @R{}의 결과물을 @file{stdout}과 @file{stderr}에 작성합니다.  그리고 이것은 명령어를 실행시키는 쉘상에서 일반적인 방법으로 다른 방향으로 전환이 가능합니다. "
 
 #. type: Plain text
 #: R-intro.texi:7466
@@ -18436,7 +18432,7 @@ msgid ""
 "your path (which is normally the case for an installed @R{} except on "
 "Windows, but e.g.@: OS X users may need to add @file{/usr/local/bin} to "
 "their path), use"
-msgstr ""
+msgstr "만약 당신이 @command{Rscript}에 경로를 쉽게 변경하고자 하면, 이를 아래와 같이 경로를 적어두어야 합니다. (Windows를 제외한 경우 설치된 @R{}의 일반적인 경우이지만 @: Mac OS X 사용자들은 아마도 @file{/usr/local/bin} 이라고 할 수도 있습니다)."
 
 #. type: example
 #: R-intro.texi:7470
@@ -18452,14 +18448,14 @@ msgid ""
 "At least in Bourne and bash shells, the @code{#!} mechanism does "
 "@strong{not} allow extra arguments like @code{#! /usr/bin/env Rscript --"
 "vanilla}."
-msgstr ""
+msgstr "본(Bourne)과 bash(배쉬) 쉘상에서는 @code{#!} 메카니즘은 @code{#! /usr/bin/env Rscript --vanilla}와 같은 추가적인 인자의 사용을 허용하지 않습니다."
 
 #. type: Plain text
 #: R-intro.texi:7479
 msgid ""
 "One thing to consider is what @code{stdin()} refers to.  It is commonplace "
 "to write @R{} scripts with segments like"
-msgstr ""
+msgstr "한 가지 고려해야 할 점은 @code{stdin()}이 무엇을 의미하는지 알아야 합니다. @R{} 스크립트를 아래와 같이 작성하는 것은 매우 흔한일입니다."
 
 #. type: example
 #: R-intro.texi:7484
@@ -18476,14 +18472,14 @@ msgid ""
 "and @code{stdin()} refers to the script file to allow such traditional "
 "usage.  If you want to refer to the process's @file{stdin}, use @code{\"stdin"
 "\"} as a @code{file} connection, e.g.@: @code{scan(\"stdin\", ...)}."
-msgstr ""
+msgstr "여기에서 @code{stdin()}이란 기존의 사용방법을 허용하는 스크립트 파일 자체를 의미합니다. 프로세스의 @file{stdin}을 참조하고 싶다면, @code{\"stdin\"}을 @code{file} 커넥션과 같이 사용하시면 됩니다. 즉, @: @code{scan(\"stdin\", ...)}."
 
 #. type: Plain text
 #: R-intro.texi:7493
 msgid ""
 "Another way to write executable script files (suggested by Fran@,{c}ois "
 "Pinard) is to use a @emph{here document} like"
-msgstr ""
+msgstr "또다른 방법으로 실행가능한 스크립트 파일들을 만드는 방법들은 (Fran@,{c}ois Pinard에 의해 제안된) @emph{이곳의 문서}와 같이 사용하는 것입니다. "
 
 #. type: example
 #: R-intro.texi:7498
@@ -18514,21 +18510,21 @@ msgstr ""
 msgid ""
 "but here @code{stdin()} refers to the program source and @code{\"stdin\"} "
 "will not be usable."
-msgstr ""
+msgstr "그러나, 여기에서 @code{stdin()}은 프로그램 소스를 가리키며 @code{\"stdin\"}은 사용가능하지 않을 것입니다. "
 
 #. type: Plain text
 #: R-intro.texi:7510
 msgid ""
 "Short scripts can be passed to @command{Rscript} on the command-line "
 "@emph{via} the @option{-e} flag.  (Empty scripts are not accepted.)"
-msgstr ""
+msgstr "매우 짧은 길이의 스크립트는 @option{-e} 플래그를 이용하여 @command{Rscript}에 보낼 수도 있습니다. "
 
 #. type: Plain text
 #: R-intro.texi:7513
 msgid ""
 "Note that on a Unix-alike the input filename (such as @file{foo.R})  should "
 "not contain spaces nor shell metacharacters."
-msgstr ""
+msgstr "유닉스와 같은 환경에서 @file{foo.R}와 같은 입력파일명은 반드시 공간을 포함해서도 안되며, 쉘의 메타문자 역시 포함해서는 안됩니다. "
 
 #. type: Plain text
 #: R-intro.texi:7519
@@ -18543,7 +18539,7 @@ msgid ""
 "editor allowing recall, editing and re-submission of prior commands is "
 "used.  Note that other versions of @strong{readline} exist and may be used "
 "by the inbuilt command line editor: this used to happen on OS X."
-msgstr ""
+msgstr "UNIX 상에서 컴파일을 위하여 @R{}의 환경설정을 할때 @acronym{GNU} @strong{readline} 라이브러리가 사용가능 할 때, 이전 명령어들의 기억기능(recall), 편집(editing), 그리고 재입력(resubmission) 기능을 허용하는 내재된 커맨드기반의 에디터가 이용됩니다. 다른 버전의 @strong{readline}이 존재 할 수 있고, 이들이 내재된 커맨드 기반의 명령어에 의해서 사용될 수도 있습니다.보통 Mac OS X에서 이러합니다"
 
 #. type: Plain text
 #: R-intro.texi:7530
@@ -18551,7 +18547,7 @@ msgid ""
 "It can be disabled (useful for usage with @acronym{ESS} @footnote{The `Emacs "
 "Speaks Statistics' package; see the @acronym{URL} @uref{http://ESS.R-project."
 "org}}) using the startup option @option{--no-readline}."
-msgstr ""
+msgstr "스타트업 옵션 @option{--no-readline}을 이용하여 사용되지 않도록 할 수도 있습니다. (이렇게 하는 것은 @acronym{ESS}@footnote{`Emacs Speaks Statistics'패키지를 말하며, @acronym{URL} @uref{http://ESS.R-project.org}를 살펴보시길 바랍니다}를 사용할 때 유용합니다)."
 
 #. type: Plain text
 #: R-intro.texi:7535
@@ -18559,7 +18555,7 @@ msgid ""
 "Windows versions of @R{} have somewhat simpler command-line editing: see "
 "@samp{Console} under the @samp{Help} menu of the @acronym{GUI}, and the file "
 "@file{README.Rterm} for command-line editing under @code{Rterm.exe}."
-msgstr ""
+msgstr "Windows 버전에서 @R{}은 다소 간단한 형식의 커맨드라인 편집기능을 가지고 있습니다. @acronym{GUI}에서 @samp{Help} 메뉴에 있는 @samp{Console}을 살펴보시고, @code{Rterm.exe}내에 있는 커맨드라인을 위한 파일 @file{README.Rterm}을 살펴보시길 바랍니다."
 
 #. type: Plain text
 #: R-intro.texi:7539
@@ -18567,7 +18563,7 @@ msgid ""
 "When using @R{} with @strong{readline} capabilities, the functions described "
 "below are available, as well as others (probably) documented in @command{man "
 "readline} or @command{info readline} on your system."
-msgstr ""
+msgstr "@strong{readline}의 기능과 함께 @R{}을 사용할 때, (아마도) 당신의 시스템에 있는 @command{man readline} 또는 @command{info readline}에 기술되어 있는 함수들과 아래에 기술된 함수들을 이용할 수 있습니다."
 
 #. type: Plain text
 #: R-intro.texi:7553
@@ -18584,7 +18580,7 @@ msgid ""
 "enter @kbd{M-b}, you could type @key{ESC}@key{b}.  The @kbd{ESC} character "
 "sequences are also allowed on terminals with real Meta keys.  Note that case "
 "is significant for Meta characters."
-msgstr ""
+msgstr "이들중의 많은 것들이 컨트롤 (Control)과 메타(Meta) 문자들을 사용합니다. @kbd{Control-m}과 같은 형식으로 컨트롤 문자들은 @key{CTRL}키를 누른 상태에서 @key{m}키를 누르는 것입니다.그리고 이것을 @kbd{C-m}이라고 표시합니다.@kbd{Meta-b}와 같이 메타문자들은 @key{META}@footnote{PC 키보드에서는 이것은 일반적으로 Alt 키이거나 가끔 `Windows'키이기도 합니다. Mac 키보드에서는 일반적으로 사용가능한 메타키가 없습니다}를 누른 상태에서 @key{b}를 누르는 것이며, 이는 @kbd{M-b}라고 씁니다.만약에 당신의 터미널이 활성화된 @key{META}키를 가지고 있지 않다면, 당신은 @kbd{ESC}를 사용하여 메타문자들을 입력할 수 있습니다.그러므로, @kbd{M-b}를 입력하기 위해서는, 당신은 @key{ESC}@key{b}라고 입력합니다.다음은 중요한 메타 문자들을 정리한 것입니다. "
 
 #. type: Plain text
 #: R-intro.texi:7555
@@ -18604,30 +18600,30 @@ msgid ""
 "and insertion mode is finished by typing a further @key{ESC}.  (The default "
 "is Emacs-style, and only that is described here: for @emph{vi} mode see the "
 "@strong{readline} documentation.)"
-msgstr ""
+msgstr "@R{} 프로그램은 당신이 입력한 명령어 라인들에 대한 기록을 보관합니다. 이때 잘못 입력한 명령어도 보관이 되며, 기록상에 보관된 명령어들은 다시 불러올 수 있고, 필요하다면 변경하여, 새로운 명령어처럼 다시 사용될 수 있습니다. 이맥스 스타일(Emacs-style)의 명령어라인 편집환경에서는 당신이 입력하는 것들이 편집하는 명령어 속에 삽입되거나, 커서의 오른쪽에 있는 문자들을 변경하하기도 합니다. @emph{vi} 모드에서는 @key{ESC}를 입력함으로서 문자가 입력되거나 삽입모드를 종료할 수 있습니다. (기본적으로는 이맥스 스타일이 사용되며, @emph{vi} 모드에 대해서는 @strong{readline} 문서를 확인하시길 바랍니다)."
 
 #. type: Plain text
 #: R-intro.texi:7570
 msgid ""
 "Pressing the @key{RET} command at any time causes the command to be re-"
 "submitted."
-msgstr ""
+msgstr "어떤 상황이던지 간에 @key{RET}키를 누르는 것은 명령어를 실행하도록 전달하는 것과 같습니다. "
 
 #. type: Plain text
 #: R-intro.texi:7572
 msgid "Other editing actions are summarized in the following table."
-msgstr ""
+msgstr "다른 편집 기능들은 아래의 표에 정리되어 있습니다."
 
 #. type: Plain text
 #: R-intro.texi:7574
 msgid "@appendixsection Command-line editor summary"
-msgstr ""
+msgstr "커맨드라인 에디터에 대한 요약 "
 
 #. type: subheading
 #: R-intro.texi:7575
 #, no-wrap
 msgid "Command recall and vertical motion"
-msgstr ""
+msgstr "커서의 상하이동을 통하여 명령어를 되부르기"
 
 #. type: item
 #: R-intro.texi:7578
@@ -18638,7 +18634,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7580
 msgid "Go to the previous command (backwards in the history)."
-msgstr ""
+msgstr "이전에 사용한 명령어로 이동합니다 (히스토리 상에서 한 단계 뒤로 이동하는 것입니다)."
 
 #. type: item
 #: R-intro.texi:7580
@@ -18649,7 +18645,7 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7582
 msgid "Go to the next command (forwards in the history)."
-msgstr ""
+msgstr "다음 명령어로 이동합니다 (히스토리상에서 한 단계 다음으로 이동하는 것입니다)."
 
 #. type: item
 #: R-intro.texi:7582
@@ -18660,20 +18656,20 @@ msgstr ""
 #. type: table
 #: R-intro.texi:7584
 msgid "Find the last command with the @var{text} string in it."
-msgstr ""
+msgstr "@var{text}를 포함하는 마지막 명령어를 찾습니다."
 
 #. type: Plain text
 #: R-intro.texi:7588
 msgid ""
 "On most terminals, you can also use the up and down arrow keys instead of "
 "@kbd{C-p} and @kbd{C-n}, respectively."
-msgstr ""
+msgstr "대부분의 터미널에서 @kbd{C-p}와 @kbd{C-n}를 이용하는 대신에 당신은 위쪽 또는 아래쪽 방향의 화살표를 이용하여 이를 이용할 수 있습니다. "
 
 #. type: subheading
 #: R-intro.texi:7589
 #, no-wrap
 msgid "Horizontal motion of the cursor"
-msgstr ""
+msgstr "커서를 좌우로 이동하여 할 수 있는 명령어들"
 
 #. type: item
 #: R-intro.texi:7592
