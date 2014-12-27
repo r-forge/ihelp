@@ -19,10 +19,10 @@ except that this permission notice may be stated in a translation
 approved by the R Core Team. -->
 <!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>R Data Import/Export</title>
+<title>R Data Import/Export (translated in Korean)</title>
 
-<meta name="description" content="R Data Import/Export">
-<meta name="keywords" content="R Data Import/Export">
+<meta name="description" content="R Data Import/Export (translated in Korean)">
+<meta name="keywords" content="R Data Import/Export (translated in Korean)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -133,7 +133,7 @@ p {
 </head>
 
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">R Data Import/Export</h1>
+<h1 class="settitle" align="center">R Data Import/Export (translated in Korean)</h1>
 
 
 
@@ -234,8 +234,8 @@ p {
 
 
 <a name="Top"></a>
-<a name="R-Data-Import_002fExport"></a>
-<h1 class="top">R Data Import/Export</h1>
+<a name="R-Data-Import_002fExport-_0028translated-in-Korean_0029"></a>
+<h1 class="top">R Data Import/Export (translated in Korean)</h1>
 
 <p>이 문서는 데이터를 R로 불러들이거나 R에서 내보내는 안내입니다. 
 </p>
@@ -1341,10 +1341,15 @@ always has a limit of 255 chars.
 제공합니다. 모든 패키지들이 데이터베이스에서 <acronym>SQL</acronym> 쿼리를 통해 데이터를 선택하고 데이터 프레임이나 그 일부(보통은
 행들의 집합으로 구성된)로써 결과를 출력하기 위한 함수를 가지고 있습니다.  
 </p>
-<p>R 도움말을 위해 DBMSs 와 연계된 <acronym>CRAN</acronym> 에 관한 여러 종류의 패키지가 사용할 수 있습니다. 이것들은 여러
-수준의 추론(abstraction)을 제공합니다. 어떤 것은 데이터베이스로부터 그리고 데이터베이스로 전체 데이터로 복사하는 기능을
-제공합니다. 모든 패키지들이 데이터베이스에서 <acronym>SQL</acronym> 쿼리를 통해 데이터를 선택하고 데이터 프레임이나 그 일부(보통은
-행들의 집합으로 구성된)로써 결과를 출력하기 위한 함수를 가지고 있습니다.
+<p>All except <a href="http://CRAN.R-project.org/package=RODBC"><strong>RODBC</strong></a> are tied to one DBMS, but there has been a
+proposal for a unified &lsquo;front-end&rsquo; package <a href="http://CRAN.R-project.org/package=DBI"><strong>DBI</strong></a>
+(<a href="http://developer.r-project.org/db">http://developer.r-project.org/db</a>) in conjunction with a &lsquo;back-end&rsquo;,
+the most developed of which is <a href="http://CRAN.R-project.org/package=RMySQL"><strong>RMySQL</strong></a>.  Also on <acronym>CRAN</acronym> are
+the back-ends <a href="http://CRAN.R-project.org/package=ROracle"><strong>ROracle</strong></a>, <a href="http://CRAN.R-project.org/package=RPostgreSQL"><strong>RPostgreSQL</strong></a> and <a href="http://CRAN.R-project.org/package=RSQLite"><strong>RSQLite</strong></a>
+(which works with the bundled DBMS <code>SQLite</code>,
+<a href="http://www.sqlite.org">http://www.sqlite.org</a>), <a href="http://CRAN.R-project.org/package=RJDBC"><strong>RJDBC</strong></a> (which uses Java and can
+connect to any DBMS that has a JDBC driver) and <a href="http://CRAN.R-project.org/package=RpgSQL"><strong>RpgSQL</strong></a> (a
+specialist interface to PostgreSQL built on top of <a href="http://CRAN.R-project.org/package=RJDBC"><strong>RJDBC</strong></a>).
 </p>
 <p>초기의 두 개 패키지 RmSQL 과 RPgSQL 은 현재 지원되지 않고 <acronym>CRAN</acronym> 상의 아카이브 영역에 있습니다.
 </p>
