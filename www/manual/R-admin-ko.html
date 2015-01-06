@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for R, version Revision: 67242 (3.2.0 Under development (unstable)).
+<!-- This manual is for R, version Revision: 67332 (3.2.0 Under development (unstable)).
 
 Copyright (C) 2001-2014 R Core Team
 
@@ -21,7 +21,7 @@ approved by the R Core Team.
 
 NOTE from the maintainer Chel Hee Lee <chl948@mail.usask.ca>
 
-This translation is updated on a day-by-day basis (Sat Dec 27 17:32:42 CST 2014).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67242 (3.2.0 Under development (unstable)). 
+This translation is updated on a day-by-day basis (Tue Jan  6 01:17:00 CST 2015).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67332 (3.2.0 Under development (unstable)). 
 
 This work is a result of cumulative efforts made by the contributors listed in the below:
 Chel Hee Lee <chl948@mail.usask.ca>, University of Saskatchewan, Saskatoon, Saskatchewan, Canada, 2009-2014
@@ -351,7 +351,7 @@ p {
 
 <p>이 문서는 R의 설치와 관리에 대한 안내서입니다.
 </p>
-<p>This manual is for R, version Revision: 67242 (3.2.0 Under development (unstable)).
+<p>This manual is for R, version Revision: 67332 (3.2.0 Under development (unstable)).
 </p>
 <p>Copyright &copy; 2001&ndash;2014 R Core Team
 </p>
@@ -374,7 +374,7 @@ approved by the R Core Team.
 
 <p><strong>NOTE</strong> from the maintainer Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;
 </p>
-<p>This translation is updated on a day-by-day basis (Sat Dec 27 17:32:42 CST 2014).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67242 (3.2.0 Under development (unstable)). 
+<p>This translation is updated on a day-by-day basis (Tue Jan  6 01:17:00 CST 2015).  The initial work was done with R-2.9.2 (24-AUG-2009) by Chel Hee Lee.  The latest version is based on the Revision: 67332 (3.2.0 Under development (unstable)). 
 </p>
 <p>This work is a result of cumulative efforts made by the contributors listed in the below:
 </p><ul>
@@ -687,9 +687,14 @@ INSTALL</code> (즉, <code>install.packages</code>)이라는 명령이 <acronym>
 make info     <span class="roman">to create info files (not &lsquo;<samp>refman</samp>&rsquo; nor &lsquo;<samp>fullrefman</samp>&rsquo;).</span>
 </pre></div>
 
-<p>만약 <code>makeinfo</code> 버전 4.7 또는 그 이후버전이 설치되어 있지 않다면 이러한 문서들을 생성할 수 없으며, PDF
-문서를 생성하기 위해서는 반드시 <code>texi2dvi</code>와 <acronym>GNU</acronym> <strong>texinfo</strong> 배포의 일부분인
-<samp>texinfo.tex</samp>가 설치되어 있어야 합니다.
+<p>You will not be able to build any of these unless you have
+<code>texi2any</code> version 5.1 or later installed, and for PDF you must have
+<code>texi2dvi</code> and <samp>texinfo.tex</samp> installed (which are part of the
+<acronym>GNU</acronym> <strong>texinfo</strong> distribution but are, especially
+<samp>texinfo.tex</samp>, often made part of the TeX package in
+re-distributions).  For historical reasons, the path to <code>texi2any</code>
+can be set by macro &lsquo;<samp>MAKEINFO</samp>&rsquo; in <samp>config.site</samp>
+(<code>makeinfo</code> is nowadays a link to <code>texi2any</code>).
 </p>
 <p>PDF 버전의 문서는 최근에 나온 아무 종류의 PDF 뷰어를 이용하여 볼 수 있으며, 하이퍼링크 기능이 지원됩니다. info 파일들은
 이맥스 (Emacs) 또는 독립적인 <acronym>GNU</acronym> <code>info</code> 프로그램에서 사용되는데 적합합니다.  
@@ -743,11 +748,13 @@ NimbusRom, NimbusSans, 그리고 MimbusMon을 끼워넣는 것입니다.
 
 <p>기본값들은 <code>R_RD4PDF</code>이라는 환경변수를 조절함으로서 변경될 수 있습니다.
 <a name="index-R_005fRD4PDF"></a>
-(유닉스와 같은 환경에서는 이것은 설치하는 도중 조정되고 이는 <samp>etc/Renviron</samp> 파일에 저장될
-것입니다).<code>R_RD4PDF</code>에 대한 기본값은 &lsquo;<samp>times,inconsolata,hyper</samp>&rsquo;입니다.만약 하이퍼링크를
-원하지 않거나 LaTeX 패키지 <strong>hyperref</strong>를 가지고 있지 않다면 &lsquo;<samp>hyper</samp>&rsquo;를 지워버리세요 (즉, 
-매뉴얼을 프린트할 경우입니다). 또한 만약에 LaTeX 패키지 <strong>inconsolata</strong>가 설치되어 있지 않다면
-&lsquo;<samp>inconsolata</samp>&rsquo;를 삭제하세요.
+<code>R_RD4PDF</code>.  (On Unix-alikes, this will be picked up at install time and
+stored in <samp>etc/Renviron</samp>, but can still be overridden when the manuals
+are built, using <code>make -e</code>.)  The usual<a name="DOCF6" href="#FOOT6"><sup>6</sup></a> default
+value for <code>R_RD4PDF</code> is &lsquo;<samp>times,inconsolata,hyper</samp>&rsquo;: omit
+&lsquo;<samp>hyper</samp>&rsquo; if you do not want hyperlinks (e.g. for printing the manual)
+or do not have LaTeX package <strong>hyperref</strong>, and omit &lsquo;<samp>inconsolata</samp>&rsquo;
+if you do not have LaTeX package <strong>inconsolata</strong> installed.
 </p>
 <p>Further options, e.g for <strong>hyperref</strong>, can be included in a file
 <samp>Rd.cfg</samp> somewhere on your LaTeX search path.  For example if you
@@ -762,7 +769,7 @@ hyperlinked, use
 <pre class="example">\ifthenelse{\boolean{Rd@use@hyper}}{\hypersetup{linktoc=all}}{}
 </pre></div>
 
-<p>to hyperlink both text and page number<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>.
+<p>to hyperlink both text and page number<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>.
 </p>
 <p>Ebook versions in one or both of <samp>.epub</samp> and <samp>.mobi</samp> formats can
 be made by running in <samp>doc/manual</samp> one of
@@ -863,14 +870,14 @@ prefix 이며, <var>prefix</var>에 대한 기본값입니다. 그리고 환경�
 <p><code>configure</code> 또는 <code>make</code> 변수 <code>rdocdir</code>과 <code>rsharedir</code>는
 시스템-독립적인 <samp>doc</samp>과 <samp>share</samp> 디렉토리들을 <code>libdir</code>이 아닌 다른곳에 설치하게 할 수
 있습니다.  C 헤더파일들은  <code>rincludedir</code>의 값에 설치되어질 수 있습니다.헤더들은 하위디렉토리에 설치되지 않기
-때문에 아마도  <code>rincludedir=/usr/local/include/R-Revision: 67242 (3.2.0 Under development (unstable))</code> 와 같은 것을
+때문에 아마도  <code>rincludedir=/usr/local/include/R-Revision: 67332 (3.2.0 Under development (unstable))</code> 와 같은 것을
 원할 수 있습니다.
 </p>
 <p>만약 R 홈이 <samp><var>libdir</var>/R</samp>이 아닌 다른 곳으로 설정하기 원하다면 <samp>rhome</samp> 옵션을
 이용하세요.예를들면, 다음과 같습니다. 
 </p>
 <div class="example">
-<pre class="example">make install rhome=/usr/local/lib64/R-Revision: 67242 (3.2.0 Under development (unstable))
+<pre class="example">make install rhome=/usr/local/lib64/R-Revision: 67332 (3.2.0 Under development (unstable))
 </pre></div>
 
 <p>위의 명령어는 리눅스 64 비트 시스템에서 버전별 R 홈디렉토리를 이용하는 것입니다.
@@ -906,9 +913,10 @@ standard packages.
 make install-pdf
 </pre></div>
 
-<p>다시 언급하건데, <code>prefix</code>, <code>libdir</code> 또는 <code>rhome</code>을 지정하는 것은 선택사항입니다 (PDF
-매뉴얼들은 R 홈디렉토리에 설치됩니다). (<code>make install-info</code>는 만약
-<code>install-info</code> 명령이 시스템에 없다면 Perl 이 설치되어 있어야 합니다)
+<p>Once again, it is optional to specify <code>prefix</code>, <code>libdir</code> or
+<code>rhome</code> (the PDF manuals are installed under the R home directory).
+(<code>make install-info</code> needs <code>Perl</code> installed if there is no
+command <code>install-info</code> on the system.)
 </p>
 <p>좀 더 정교한 조절이 가능합니다. info의 경우에 사용된 설정은 <code>infodir</code>의 값입니다 (기본값은 환경설정 옵션
 <samp>--infodir</samp>에 의하여 조정되는 <samp><var>prefix</var>/info</samp>입니다).PDF 파일들은 R
@@ -1019,7 +1027,7 @@ make install-pdf
 <samp><var>R_HOME</var>/bin/Rscript.exe</samp>내에 실행파일들이 있습니다.
 <a name="index-R_005fARCH-1"></a>
 이들은 <code>R_ARCH</code> 환경변수에서 처음으로 취해진 서브디렉토리들중 하나로부터 실행 한뒤 <samp>--arch</samp> 커맨드라인
-옵션<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>으로부터 수행한 뒤 설치 기본설정으로부터 수행하게 됩니다.
+옵션<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>으로부터 수행한 뒤 설치 기본설정으로부터 수행하게 됩니다.
 </p>
 
 <hr>
@@ -1027,7 +1035,7 @@ make install-pdf
 <a name="Multilib-1"></a>
 <h4 class="subsection">2.6.1 Multilib</h4>
 
-<p>리눅스<a name="DOCF8" href="#FOOT8"><sup>8</sup></a> 상에서는 32비트와 64비트 라이브러리들을
+<p>리눅스<a name="DOCF9" href="#FOOT9"><sup>9</sup></a> 상에서는 32비트와 64비트 라이브러리들을
 혼용하기 위하여 <em>multilib</em>이라고 알려진 라이브러리라는 대체 메카니즘이 있습니다.만약 리눅스 배포가 multilib를
 지원한다면 R의 병렬빌드는 아마도 <samp>lib</samp>(32비트)와 <samp>lib64</samp>(64비트) 서브디렉토리내에 설치되어질
 것입니다.그러면, 실행될 빌드는 아마도 <code>setarch</code> 명령어를 이용하여 선택되어질 수 있습니다.  예를들면, 32비트
@@ -1076,7 +1084,7 @@ setarch i686 R CMD javareconf
 <p>Option <samp>--with-internal-tzcode</samp> makes use of R&rsquo;s own code and copy
 of the Olson database for managing timezones.  This will be preferred where
 there are issues with the system implementation, usually involving times
-after 2037 or before 1916.  An alternative time-zone directory<a name="DOCF9" href="#FOOT9"><sup>9</sup></a> can be used, pointed to
+after 2037 or before 1916.  An alternative time-zone directory<a name="DOCF10" href="#FOOT10"><sup>10</sup></a> can be used, pointed to
 by environment variable <code>TZDIR</code>: this should contain files such as
 <samp>Europe/London</samp>.  On all tested OSes the system timezone was deduced
 correctly, but if necessary it can be set as the value of environment
@@ -1165,14 +1173,14 @@ testInstalledPackages(scope = &quot;recommended&quot;)
 <a name="index-iei_00b0i_007cii-Ri_0024_003fi1ie_002c_00b0"></a>
 
 <p><acronym>CRAN</acronym> 사이트의 <samp>bin/windows</samp> 디렉토리에는 윈도우즈 XP나 그후에 나온 ix86
-<acronym>CPU</acronym>s (AMD64/Intel64<a name="DOCF10" href="#FOOT10"><sup>10</sup></a> 칩스와 윈도우즈 x64 포함)에서
+<acronym>CPU</acronym>s (AMD64/Intel64<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> 칩스와 윈도우즈 x64 포함)에서
 사용할수있는 기본 배포(base distribution)용 바이너리와 많은 양의 <acronym>CRAN</acronym>용 add-on 팩키지들이
 포함되어있습니다. 
 </p>
 <p>사용자의 파일 시스템(file system)은 긴 파일명도 수용할수있어야 합니다 (혹시 있을수있는 네트워크에 연결된 몇몇의 시스템을
 제외하고 보통 다 가능함).
 </p>
-<p><samp>Revision: 67242 (3.2.0 Under development (unstable))-win.exe</samp> 라는 설치 프로그램을 <em>통해서</em> 설치하십시요. 아이콘을 더블
+<p><samp>Revision: 67332 (3.2.0 Under development (unstable))-win.exe</samp> 라는 설치 프로그램을 <em>통해서</em> 설치하십시요. 아이콘을 더블
 클릭하신후 나오는 설명서를 참조하시면 됩니다. 64-bit 윈도우즈에 설치하실때는 32-와 64-bit 두가지 버젼의 R이 옵션에
 있습니다 (기본은 두가지 버젼을 모두 설치하는 것입니다). 컨트럴 패널 (Control Panel) 안에서 R을 제거할수도
 있습니다, 
@@ -1235,11 +1243,11 @@ or <a href="http://www.stats.ox.ac.uk/pub/Rtools/libs.html">http://www.stats.ox.
 <p>다음과 같은 파일들을 얻어야 할 필요가 있습니다:
 </p><ul>
 <li> <acronym>CRAN</acronym>으로부터 먼저 타르볼 형식으로 된 R 소스코드 파일
-<samp>R-Revision: 67242 (3.2.0 Under development (unstable)).tar.gz</samp>을 얻어야 합니다.<var>R_HOME</var> 디렉토리에서 명령어 윈도우 (또는
+<samp>R-Revision: 67332 (3.2.0 Under development (unstable)).tar.gz</samp>을 얻어야 합니다.<var>R_HOME</var> 디렉토리에서 명령어 윈도우 (또는
 다른 쉘)을 열고 다음과 같이 실행합니다. 
 
 <div class="example">
-<pre class="example">tar -xf R-Revision: 67242 (3.2.0 Under development (unstable)).tar.gz
+<pre class="example">tar -xf R-Revision: 67332 (3.2.0 Under development (unstable)).tar.gz
 </pre></div>
 
 <p><strong>주의:</strong> 소스들을 압축으로부터 풀어내기 위하여 WinZip과 같이 심볼릭 링크를 이해하지 못하는 도구보다는
@@ -1247,7 +1255,7 @@ or <a href="http://www.stats.ox.ac.uk/pub/Rtools/libs.html">http://www.stats.ox.
 보이지 않게 할 수 있습니다.
 </p>
 <div class="example">
-<pre class="example">tar --no-same-owner -xf R-Revision: 67242 (3.2.0 Under development (unstable)).tar.gz
+<pre class="example">tar --no-same-owner -xf R-Revision: 67332 (3.2.0 Under development (unstable)).tar.gz
 </pre></div>
 
 <a name="index-TAR_005fOPTIONS-1"></a>
@@ -1451,13 +1459,14 @@ make -f Makefile.win info
 </p>
 <p>페이퍼 사이즈 및 글꼴과 관계된 옵션들을 조정하는 것은 유닉스와 같은 환경에서 <a href="#Making-the-manuals">Making the manuals</a>을 참고하세요.
 </p>
-<p>Version 4.x of <code>makeinfo</code> from Rtools is assumed by default.  If you
-have version 5.x of <strong>texinfo</strong>, <code>makeinfo</code> has been replaced by a
-<code>Perl</code> script <code>texi2any</code>: file <samp>MkRules.dist</samp> contains
-alternative macros to allow that to be used (edit the copy
-<samp>MkRules.local</samp>).  (A package of <strong>texinfo</strong> 5.x for use on Windows
-is available at <a href="http://www.stats.ox.ac.uk/pub/Rtools/">http://www.stats.ox.ac.uk/pub/Rtools/</a>: you will also
-need to install <code>Perl</code>.)
+<p>Version 4.13 of <code>makeinfo</code> from Rtools is assumed by default.  In
+version 5.x of <strong>texinfo</strong>, <code>makeinfo</code> has been replaced by a
+<code>Perl</code> script <code>texi2any</code>: the comments in file
+<samp>MkRules.dist</samp> contains alternative settings to allow that to be used
+(edit the copy <samp>MkRules.local</samp>).  A package of <strong>texinfo</strong> 5.x for
+use on Windows is available at <a href="http://www.stats.ox.ac.uk/pub/Rtools/">http://www.stats.ox.ac.uk/pub/Rtools/</a>:
+you will also need to install <code>Perl</code>.  Its use is recommended as the
+manuals are rendered by <code>texi2any</code> on non-Windows systems.
 </p>
 <hr>
 <a name="Building-the-Inno-Setup-installer"></a>
@@ -1518,7 +1527,7 @@ crandir <span class="roman">(the <acronym>CRAN</acronym> distribution directory,
 
 <p>이는 <samp>rootdir</samp>이 사용자 설치의 루트로의 경로입니다 (띄어쓰기나 백슬래쉬등이 있다면 큰 따옴표 내에 써야 합니다).
 </p>
-<p>위의 두 가지 방법들 모두 <samp>Revision: 67242 (3.2.0 Under development (unstable))-win.exe</samp>와 같은 표준이름과 함께 실행가능한 파일을 생성하기
+<p>위의 두 가지 방법들 모두 <samp>Revision: 67332 (3.2.0 Under development (unstable))-win.exe</samp>와 같은 표준이름과 함께 실행가능한 파일을 생성하기
 때문에 커스터마이즈 되었다는 것을 나타내는 이름으로 변경하세요. 만약 커스터마이즈된 인스톨러를 배포하고 싶다면 라이센스 요구사항이
 충족되는지 확인하시길 바랍니다. 인스톨러는 GPL-2에 의거하여 배포되고 완전한 소스들(R의 바이너리배포를 시작하더라도 소스를
 포함해야하며, (외부 소프트웨어를 포함된) 포함된 어떠한 추가적인 패키지들의 소스들도 포함)을 제공하는 것이 요구된다고 명시할
@@ -1565,16 +1574,16 @@ toolkit version 3.0 or 3.5을 사용합니다. WiX가 설치되면, <samp>MkRule
 make msi
 </pre></div>
 
-<p>이는 <samp>Revision: 67242 (3.2.0 Under development (unstable))-win32.msi</samp> 와 같은 이름을 가진 파일을 생성할 것입니다. 더블-클릭이
+<p>이는 <samp>Revision: 67332 (3.2.0 Under development (unstable))-win32.msi</samp> 와 같은 이름을 가진 파일을 생성할 것입니다. 더블-클릭이
 가능하지만, 이를 필요로 하는 사람들은 무엇을 해야 할 지 알것입니다 (일반적으로 추가적인 옵션들과 함께 <code>msiexec
 /i</code>를 실행함).사용자가 <code>msiexec</code> 명령줄에서 부터 지정하고자 하는 속성들은 &lsquo;<samp>ALLUSERS</samp>&rsquo;,
 (<samp>c:\Program Files\R\R-devel</samp>와 같은)  &lsquo;<samp>INSTALLDIR</samp>&rsquo; 그리고 (시작 메뉴에 있는 R
 폴더로의 경로인) &lsquo;<samp>RMENU</samp>&rsquo;, 그리고 (<samp>c:\Users\name\Documents\R</samp> 와 같은 것이 기본값인,
 R shortcut을 위한 시작 디렉토리) &lsquo;<samp>STARTDIR</samp>&rsquo;를 포함합니다. 
 </p>
-<p>MSI installer는 R 의 32 비트 빌드 (<samp>Revision: 67242 (3.2.0 Under development (unstable))-win32.msi</samp>)와 R의 64 비트
-빌드 (<samp>Revision: 67242 (3.2.0 Under development (unstable))-win64.msi</samp>, 선택적으로 이름이
-<samp>Revision: 67242 (3.2.0 Under development (unstable))-win.msi</samp>일 때, macro <code>HOME32</code>를 지정함으로써 32 비트 파일들을
+<p>MSI installer는 R 의 32 비트 빌드 (<samp>Revision: 67332 (3.2.0 Under development (unstable))-win32.msi</samp>)와 R의 64 비트
+빌드 (<samp>Revision: 67332 (3.2.0 Under development (unstable))-win64.msi</samp>, 선택적으로 이름이
+<samp>Revision: 67332 (3.2.0 Under development (unstable))-win.msi</samp>일 때, macro <code>HOME32</code>를 지정함으로써 32 비트 파일들을
 포함합니다), 두 가지 모두에서 빌드될 수 있습니다. 주요 installer와 다르게, 64 비트 MSI installer는 64 비트
 윈도우에서만 실행할 수 있습니다. 
 </p>
@@ -1634,14 +1643,14 @@ line endings.
 
 <p>The front page of a <acronym>CRAN</acronym> site has a link &lsquo;Download R for OS
 X&rsquo;. Click on that, then download the file
-<samp>R-Revision: 67242 (3.2.0 Under development (unstable))-snowleopard.pkg</samp> and install it.  This runs on OS
+<samp>R-Revision: 67332 (3.2.0 Under development (unstable))-snowleopard.pkg</samp> and install it.  This runs on OS
 X 10.6 and later (Snow Leopard, Lion, Mountain Lion, Mavericks, Yosemite,
 &hellip;); it is a 64-bit (&lsquo;<samp>x86_64</samp>&rsquo;) build which should run on all
 Macs from mid-2008 on.  For older Intel Macs and some older versions of the
 OS you can install R from the sources.
 </p>
 <p>There is a separate installer package,
-<samp>R-Revision: 67242 (3.2.0 Under development (unstable))-mavericks.pkg</samp>, for use on Mavericks and Yosemite:
+<samp>R-Revision: 67332 (3.2.0 Under development (unstable))-mavericks.pkg</samp>, for use on Mavericks and Yosemite:
 the &lsquo;Snow Leopard&rsquo; installer package also works there and may have more
 binary packages available (but there are a few packages using C++11 and only
 available for the Mavericks build).
@@ -1692,10 +1701,9 @@ the personal library directory (under <samp>~/Library/R</samp>,
 e.g. <samp>~/Library/R/3.1/library</samp>), and that warnings, messages and other
 output to <samp>stderr</samp> are highlighted in bold.
 </p>
-<p>%% https://stat.ethz.ch/pipermail/r-sig-mac/2014-October/011131.html It has
-been reported that running <small>R.APP</small> under Yosemite may fail if no preferences
-are stored, so if it fails when launched for the very first time, try it
-again (the first attempt will store some preferences).
+<p>It has been reported that running <small>R.APP</small> under Yosemite may fail if no
+preferences are stored, so if it fails when launched for the very first
+time, try it again (the first attempt will store some preferences).
 </p>
 <p>Users of <small>R.APP</small> under Mavericks and later need to be aware of the &lsquo;App Nap&rsquo;
 feature
@@ -1882,7 +1890,7 @@ setting the environment variable <code>R_LIBS</code> or using the R function
 <p>R 패키지들은 라이브러리 안에 설치되는데, 이것은 각 패키들을 위한 서브 디렉토리를 포함한 파일시스탬내의 디렉토리입니다.
 </p>
 <p>R은 <samp><var>R_HOME</var>/library</samp>이라는 하나의 라이브러리가 따라오는데, 이는 기본 패키지와 추천 패키지들을
-포함한 &lsquo;<samp>.Library</samp>&rsquo; 이라는 R 객체의 값입니다 <a name="DOCF11" href="#FOOT11"><sup>11</sup></a>. 사이트들과 사용자들 모두는 R 세션에서 다른 것들을 생성하거나 그들을 활용할 (혹은 활용하지 않거나) 수
+포함한 &lsquo;<samp>.Library</samp>&rsquo; 이라는 R 객체의 값입니다 <a name="DOCF12" href="#FOOT12"><sup>12</sup></a>. 사이트들과 사용자들 모두는 R 세션에서 다른 것들을 생성하거나 그들을 활용할 (혹은 활용하지 않거나) 수
 있습니다. 가장 낮은 레벨인 &lsquo;<samp>.libPaths()</samp>&rsquo;는 라이브러리의 컬렉션으로나 현재 컬렉션을 리포트 하기위한 경로를 더하도록
 사용될 수도 있습니다. 
 </p>
@@ -2033,7 +2041,7 @@ zip 파일을 설치하십시오. 하지만, 이런 패키지는 추가의 도�
 external software by setting the <code>make</code> variable <code>LOCAL_SOFT</code>,
 to give an equivalent of <samp>/usr/local</samp> on a Unix-alike.  This can be set
 in <samp>src/gnuwin/MkRules.local</samp> when R is built from sources (see the
-comments in <samp>src/gnuwin/MkRules.dist</samp>), or in file<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> <samp>etc/i386/Makeconf</samp> or <samp>etc/x64/Makeconf</samp> for
+comments in <samp>src/gnuwin/MkRules.dist</samp>), or in file<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> <samp>etc/i386/Makeconf</samp> or <samp>etc/x64/Makeconf</samp> for
 an installed version of R.  The version used by <acronym>CRAN</acronym> can be
 installed as described in See <a href="#Building-from-source">Building from source</a>.
 </p>
@@ -2182,9 +2190,10 @@ CMD INSTALL --merge-multiarch</code>도 있습니다.OS X에서, 여러개의 su
 <a name="Byte_002dcompilation-1"></a>
 <h4 class="subsection">6.3.5 Byte-compilation</h4>
 
-<p>기본 패키지와 추천 패키지들은 기본적으로 byte-compiled입니다. 다른 패키지들은 <code>R CMD INSTALL</code>이나
-<code>install.packages(type = &quot;source&quot;)</code>을 가진 <samp>--byte-compile</samp> 옵션을
-사용함으로써 설치에서 byte-compiled가 될 수도 있습니다.
+<p>The base and recommended packages are byte-compiled by default.  Other
+packages can be byte-compiled on installation by using <code>R CMD
+INSTALL</code> with option <samp>--byte-compile</samp> or by
+<code>install.packages(type = &quot;source&quot;, INSTALL_opts = &quot;--byte-compile&quot;)</code>.
 </p>
 <p>모든 기여 패키지들이 바이트 컴파일드 일 때 정확하게 작동하는 것은 아닙니다 (예를 들어 이는 namespace들의 sealing을
 방해합니다). 대부분의 패키지들에서 (특히 compile된 코드의 사용을 대규모로 사용하는) 천천히 빨라집니다.. 패키지가 자주 사용되지
@@ -2276,7 +2285,7 @@ rgdal               rgdal  0.6-27     upgrade
 &rsquo;<samp>bin/macosx/leopard/contrib/x.y</samp>&rsquo; 에 위치하고 &rsquo;<samp>.tgz</samp>&rsquo; 파일들을 포함하고 있습니다.
 
 </li><li> <code>&quot;mac.binary.mavericks&quot;</code>: located at
-<samp>bin/macosx/mavericks/contrib/<var>3.y</var></samp> for R versions <var>3.1.z</var>
+<samp>bin/macosx/mavericks/contrib/<var>3.y</var></samp> for R versions <var>3.y.z</var>
 to be run under OS X 10.9 (Mavericks) and later, containing <samp>.tgz</samp>
 files.
 
@@ -2417,7 +2426,7 @@ DLL를 추가할 수 있습니다.
 <h4 class="subsection">7.1.1 리눅스에서의 로케일</h4>
 
 <p>현대의 리눅스는 &lsquo;<samp>en_GB</samp>&rsquo;, &lsquo;<samp>en_GB.UTF-8</samp>&rsquo;, &lsquo;<samp>aa_ER.UTF-8@saaho</samp>&rsquo;,
-&lsquo;<samp>de_AT.iso885915@euro</samp>&rsquo;와 같은 형식을 가지고 있는XPG<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> 로케일 지정을 사용합니다.(더 자세한 내용은 <code>man loacle</code>과
+&lsquo;<samp>de_AT.iso885915@euro</samp>&rsquo;와 같은 형식을 가지고 있는XPG<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> 로케일 지정을 사용합니다.(더 자세한 내용은 <code>man loacle</code>과
 <code>locale -a</code>을 살펴보세요). 대부분의 유닉스와 유사한 환경에서 비슷한 스킴이 사용됩니다: 일부 (리눅스를 포함)는
 &lsquo;<samp>.UTF-8</samp>&rsquo; 보다 &lsquo;<samp>.utf-8</samp>&rsquo;을 사용하기도 합니다.
 </p>
@@ -2471,7 +2480,7 @@ strings</samp>&rsquo;로 검색해보시길 바랍니다).
 <a name="index-LC_005fALL"></a>
 <a name="index-LC_005fMESSAGES"></a>
 <a name="index-LANG"></a>
-이것은 먼저 환경변수 <code>LANGUAGE</code>에 의해서 변경될 수 있으며<a name="DOCF14" href="#FOOT14"><sup>14</sup></a>, 이후에
+이것은 먼저 환경변수 <code>LANGUAGE</code>에 의해서 변경될 수 있으며<a name="DOCF15" href="#FOOT15"><sup>15</sup></a>, 이후에
 <code>LC_ALL</code>, <code>LC_MESSAGES</code>, <code>LANG</code>이라는 환경변수에 의하여서도 변경될 수 있습니다. (마지막
 세가지가 일반적으로 로케일을 설정하는데 사용되지만, 꼭 필요한 것은 아닙니다. 첫번째 것은 오로지 메시지의 언어를 선택하는데
 사용됩니다). 코드는 열심히 로케일을 언어에 매칭하려고 하지만 일부 시스템 (특히 윈도우즈)는 환경변수  <code>LC_ALL</code>에 필요한
@@ -2480,7 +2489,7 @@ strings</samp>&rsquo;로 검색해보시길 바랍니다).
 </p>
 <p>보통은 R이 실행중일때 <code>Sys.setlocale(&quot;LC_MESSAGES&quot;, &quot;new_locale&quot;)</code>을 이용하거나, 만약
 변경하고자 하는 언어가 현재의 문자셋이 제공된다면 <code>LANGUAGE</code>와 같은 환경변수를 이용하여 변경할 수 있습니다
-<a name="DOCF15" href="#FOOT15"><sup>15</sup></a>. 그러나, 이는 운영체제별로 다르며, 업그레이드시 중단되기도 한다고 알려져 있습니다.
+<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>. 그러나, 이는 운영체제별로 다르며, 업그레이드시 중단되기도 한다고 알려져 있습니다.
 </p>
 <p>메시지는 도메인들로 나뉘어지며, 각 도메인들에서 일부 또는 모든 메시지들에 대한 번역이 가능합니다. R은 다음과 같은 도메인을
 이용합니다.
@@ -2507,7 +2516,7 @@ strings are canonicalized before being passed for translation.
 <p>번역은 현재 가능한 정확하게 지정된 언어에 따라서 도메인에 의하여 찾아지게 됩니다.예를들면, 오스트리안 (&lsquo;<samp>de_AT</samp>&rsquo;) 번역
 카탈로그는 오스트리안 사용자들을 위하여 일반 독일어 (&lsquo;<samp>de</samp>&rsquo;)의 사용보다 우선합니다.그런데, 만약 특정한 번역 카탈로그가
 존재하지만 번역을 포함하고 있지 않다면 덜 정교한 번역이 보여집니다.예를들면, R은 Americanisms를
-English<a name="DOCF16" href="#FOOT16"><sup>16</sup></a>로 보여주는 카탈로그 &lsquo;<samp>en_GB</samp>&rsquo;를 가지고 있습니다.두가지 추가적인
+English<a name="DOCF17" href="#FOOT17"><sup>17</sup></a>로 보여주는 카탈로그 &lsquo;<samp>en_GB</samp>&rsquo;를 가지고 있습니다.두가지 추가적인
 예가 있습니다.스페인에서 사용되는 스패니쉬인 &lsquo;<samp>es</samp>&rsquo;이라는 카탈로그가 있는데, 이들은 기본적으로 Spanish-speaking
 Latin American 국가에서 사용됩니다. 그리고 브라질 로케일에서 사요되는 &lsquo;<samp>pt_BR</samp>&rsquo;은 포르투칼어를 지정하는
 로케일과는 다릅니다. 
@@ -2519,7 +2528,7 @@ Latin American 국가에서 사용됩니다. 그리고 브라질 로케일에서
 작은 따옴표 두개의 사용이 한 쪽 방향의 유니코드식 큰 따옴표로 표시되게 해주는 것입니다.
 </p>
 <p>만약 적합한 번역 카탈로그를 찾을 수 없거나 특정 메시지가 어떤 적합한 카탈로그에서 번역되어 있지 않다면 이는
-영어<a name="DOCF17" href="#FOOT17"><sup>17</sup></a>.가 사용되게 됩니다.
+영어<a name="DOCF18" href="#FOOT18"><sup>18</sup></a>.가 사용되게 됩니다.
 </p>
 <p>어떻게 번역 카탈로그를 준비하고 설치하는지 확인하기 위해서는
 <a href="http://developer.r-project.org/Translations.html">http://developer.r-project.org/Translations.html</a>를 살펴보시길 바랍니다.
@@ -2551,8 +2560,7 @@ address space 크기의 10%가 넘는 (300Mb 정도) 크기를 가진 object들 
 크기가 삼분의 일 (1Gb 정도)일 때 문제가 될 것입니다.
 </p>
 </li><li> Only 64-bit builds support &lsquo;long vectors&rsquo;, those with <em>2^{31}</em> or more
-elements (each of which needs at least 8GB of storage, 16GB for a numeric
-vector).
+elements (each of which needs 16GB of storage for a numeric vector).
 
 </li><li> 대부분이 32-비트 OS들은,  기본적으로 파일 크기를 2GB로 제한합니다 (그리고 이는 64-비트 OS들에서의 32 비트 구축에도
 적용될 수도 있습니다).이는 종종 해결될 수 있습니다:  만약 이가 가능하다면, <code>configure</code>은 알맞은
@@ -2582,7 +2590,7 @@ define들을 선택합니다. (32-비트 윈도우즈에서의 제한을 주로�
 <a name="The-standalone-Rmath-library-1"></a>
 <h2 class="chapter">9 The standalone Rmath library</h2>
 
-<p>배포를 지원하는 routine들과 R의 특정한 함수<a name="DOCF18" href="#FOOT18"><sup>18</sup></a>들 그리고 몇몇의 다른것들은 C header 파일 &rsquo;<samp>Rmath.h</samp>&rsquo; 안에서 표명됩니다. 이것 들은  다른
+<p>배포를 지원하는 routine들과 R의 특정한 함수<a name="DOCF19" href="#FOOT19"><sup>19</sup></a>들 그리고 몇몇의 다른것들은 C header 파일 &rsquo;<samp>Rmath.h</samp>&rsquo; 안에서 표명됩니다. 이것 들은  다른
 어플리케이션과 의 연결을 위해서 독립 라이브러리로 컴파일될 수 있습니다. (R이 구축될 때의, 이것들은  따로 떨어져 있는 라이브러리가
 아니고, 독립 버전 가지의 방법으로 차이가 있다는 것을 유의하십시오.)
 </p>
@@ -2698,7 +2706,7 @@ $(CC) `pkg-config --libs libRmath` test.o -o test
 <a name="Windows-1"></a>
 <h3 class="section">9.2 Windows</h3>
 
-<p>(유닉스 계열의 쉘에서) R을 만들기 위해서는 거의 모든 도구들을 설정up<a name="DOCF19" href="#FOOT19"><sup>19</sup></a>
+<p>(유닉스 계열의 쉘에서) R을 만들기 위해서는 거의 모든 도구들을 설정up<a name="DOCF20" href="#FOOT20"><sup>20</sup></a>
 하고 그리고 나서 실행해야 합니다.
 </p>
 <div class="example">
@@ -2781,7 +2789,7 @@ Borland와 비슷한 컴파일러에서도 실행할 것입니다.)
 
 <p>여러분은 C와 포트란 90를 컴파일링 하는 수단이 필요합니다 (<a href="#Using-FORTRAN">Using FORTRAN</a>을 참조하세요). 몇몇의 add-on
 패키지들 또한 C++ 컴파일러를 필요로합니다. 당신의 C 컴파일러는 <acronym>ISO</acronym>/<acronym>IEC</acronym>
-&nbsp;60059<a name="DOCF20" href="#FOOT20"><sup>20</sup></a>, POSIX 1003.1,
+&nbsp;60059<a name="DOCF21" href="#FOOT21"><sup>21</sup></a>, POSIX 1003.1,
 그리고 C99-compliant여야만 합니다. R은 인지하고있는 C 컴파일러들을 위한 알맞 은 flag들을 선택하려고 하지만,
 <code>CC</code> 혹은 <code>CFLAGS</code>를 알맞게 설정해야 할 수 도 있습니다. <code>Glibc</code>를 가진
 <code>gcc</code>의 최근 버전들에서, 이는 <samp>std=gnu99</samp>를 포함 하는 것을 뜻합니다. 만약 컴파일러가
@@ -2806,10 +2814,10 @@ Borland와 비슷한 컴파일러에서도 실행할 것입니다.)
 <acronym>GNU</acronym> <code>libiconv</code> 를 사용할 수 있습니다 (아마 plug-in 대체용처럼:
 <a href="http://www.gnu.org/software/libiconv/">http://www.gnu.org/software/libiconv/</a>를 참조하세요)
 </p>
-<p>OS는 wide-character types에 대해 충분한 지원<a name="DOCF21" href="#FOOT21"><sup>21</sup></a> 을 가지는 것이 필요합니다: 이는 configuration에서 체크됩니다.
+<p>OS는 wide-character types에 대해 충분한 지원<a name="DOCF22" href="#FOOT22"><sup>22</sup></a> 을 가지는 것이 필요합니다: 이는 configuration에서 체크됩니다.
 </p>
 <p><code>tar</code> 프로그램은 소스들과 (추천된 패키지들을 포함한) 패키지들을 풀기 위해 필요합니다. 압축된 아카이브 들을 자동으로
-감지할 수 있는 버전<a name="DOCF22" href="#FOOT22"><sup>22</sup></a> (from <a href="http://code.google.com/p/libarchive/">http://code.google.com/p/libarchive/</a>은
+감지할 수 있는 버전<a name="DOCF23" href="#FOOT23"><sup>23</sup></a> (from <a href="http://code.google.com/p/libarchive/">http://code.google.com/p/libarchive/</a>은
 <code>untar()</code>과 함께 사용하는 것이 선호됩니다: 는 <code>tar</code> 전에 <code>gtar</code>과
 <code>gnutar</code>을 찾습니다: 이를 무시하기 위해서는 환경값 <code>TAR</code>를 사용하세요.
 <a name="index-TAR"></a>
@@ -2819,13 +2827,15 @@ Borland와 비슷한 컴파일러에서도 실행할 것입니다.)
 variants들에 있습니다. <code>configure</code>는 알맞은 버전들을 찾으려고 노력할 것입니다 (몇몇의 상업용 유닉스들에서
 사용되는 <samp>/usr/xpg4/bin</samp>의 안을 찾아보는 것을 포함).
 </p>
-<p>버전 4.7 이상의 <code>makeinfo</code> 가 설치되어있지 않은 이상 매뉴얼들의 대부분을구축하는 것은 불가능 할 것이고, 만약
-그렇지 않다면 몇몇의 <acronym>HTML</acronym> 매뉴얼들은 <acronym>CRAN</acronym>으로 연결될 것입니다. 매뉴얼들의 PDF 버전들을 만들기위해서는
-<samp>texinfo.tex</samp>&rsquo; 파일의 설치와 (<acronym>GNU</acronym> <strong>textinfo</strong> 배포의 일부이지만 재배포에서는
-종종 TeX 패키지의 일부로 되어있습니다)<code>texi2dvi</code> 또한 필요할 것입니다. 더 나아가,쉘
-스크립트<a name="DOCF23" href="#FOOT23"><sup>23</sup></a>  는 호환가능해야합니다: 이전의
-TeX 배포들 (TeXLive 2007과 MiKTeX 2.8)이 <strong>texinfo</strong> 4.13과 함께 사용되었을 때의 문제들을
-보았습니다.
+<p>You will not be able to build most of the manuals unless you have
+<code>texi2any</code> version 5.1 or later installed, and if not most of the
+<acronym>HTML</acronym> manuals will be linked to a version on <acronym>CRAN</acronym>. To make PDF
+versions of the manuals you will also need file <samp>texinfo.tex</samp> installed
+(which is part of the <acronym>GNU</acronym> <strong>texinfo</strong> distribution but is often
+made part of the TeX package in re-distributions) as well as
+<code>texi2dvi</code>.<a name="DOCF24" href="#FOOT24"><sup>24</sup></a>
+Further, the versions of <code>texi2dvi</code> and <samp>texinfo.tex</samp> need to
+be compatible: we have seen problems with older TeX distributions.
 </p>
 <a name="index-Vignettes"></a>
 <p>PDF 문서 (&rsquo;<samp>doc/NEWS.pdf</samp>&rsquo;를 포함)와 vignette들의 구축은 <code>pdftex</code>와
@@ -2838,8 +2848,9 @@ LaTeX 패키지 <strong>hyperref</strong>의 버전들에 예민하여서, 사�
 </p>
 
 <a name="index-Subversion-1"></a>
-<p>만약 R Subversion 저장소로부터 구축하기를 원한다면, <code>makeinfo</code>와 <code>pdflatex</code> 두
-가지 모두가 필요합니다.
+<p>If you want to build from the R Subversion repository then
+<code>texi2any</code> is highly recommended as it is used to create files in
+the tarball but not under Subversion.
 </p>
 <a name="index-PATH"></a>
 <p>필수 프로그램은 <code>configure</code>이 실행되고 있을 때 <code>PATH</code>안에 있어야만 합니다: 이는 전체 경로를
@@ -2869,10 +2880,10 @@ R은 <code>pkg-config</code>를 체크하고, &lsquo;<samp>pangocairo</samp>&rsq
 때<code>pkg-config</code>가 아직 필요하고 이는 그의 소스들에서 설치될 수 있습니다.
 </p>
 <p>이 장비들로 최상의 글꼴 경험을 위해서는 알맞은 글꼴들의 설치가 필요합니다: 리눅스 사용자들은 <code>urw-fonts</code>
-패키지<a name="DOCF24" href="#FOOT24"><sup>24</sup></a>를 원할 것 입니다. 사용
+패키지<a name="DOCF25" href="#FOOT25"><sup>25</sup></a>를 원할 것 입니다. 사용
 가능 한 플랫폼들에서, <code>msttcorefonts</code> 패키지는Arial 과 Times New Roman 과 같은 Monotype
 글꼴들의TrueType 버전들을 제공 할 것입니다. 다른 유용한 글 꼴 세트는
-<a href="https://www.redhat.com/promo/fonts/">https://www.redhat.com/promo/fonts/</a><a name="DOCF25" href="#FOOT25"><sup>25</sup></a>에서
+<a href="https://www.redhat.com/promo/fonts/">https://www.redhat.com/promo/fonts/</a><a name="DOCF26" href="#FOOT26"><sup>26</sup></a>에서
 사용가능한Latin, Greek, Cyrillic alphabets과 더불어 상당한 양의 sign들을 커버하는 &lsquo;liberation&rsquo;
 TrueType 글꼴들 입니다. 이들은 Arial, Times New Roman 그리고 Courier New 와 metrics를 공유하고
 처음 두 개와 비슷한 글꼴들을 포함합니다
@@ -3195,9 +3206,9 @@ ACML의 multithread 된 Linux 버전이 <code>gfortran</code>의 최근 버전�
 
 <p>를 사용하기위한 다른 방법 (그리고 더 나은 방법들)을 위해서는  see <a href="#Shared-BLAS">Shared BLAS</a>를 참조하세요.
 </p>
-<p>이 프로젝트는 현재로써는 중단되었고, 그렇기 때문에 2010 중반부터 출시된 CPU들에 대한 업데이트는 없을 것이라는 것이 저희의
-생각입니다. 하지만,  OpenBLAS (<a href="http://xianyi.github.com/OpenBLAS/">http://xianyi.github.com/OpenBLAS/</a>)가 하위 프로젝트
-입니다.
+<p>OpenBLAS (<a href="http://xianyi.github.com/OpenBLAS/">http://xianyi.github.com/OpenBLAS/</a>) is a descendant project
+with support for some later CPUs (e.g. Intel Sandy Bridge).  Once
+installed it can be used by something like
 </p>
 <div class="example">
 <pre class="example">--with-blas=&quot;-lopenblas&quot;
@@ -3209,7 +3220,7 @@ ACML의 multithread 된 Linux 버전이 <code>gfortran</code>의 최근 버전�
 <a name="MKL"></a>
 <a name="Intel-MKL"></a>
 <h4 class="subsubsection">A.3.1.4 Intel MKL</h4>
-<p>리눅스에서의 인텔 프로세서들<a name="DOCF26" href="#FOOT26"><sup>26</sup></a>에대해서는, 인텔의 Math Kernel
+<p>리눅스에서의 인텔 프로세서들<a name="DOCF27" href="#FOOT27"><sup>27</sup></a>에대해서는, 인텔의 Math Kernel
 라이브러리(<a href="http://www.intel.com/software/products/mkl/">http://www.intel.com/software/products/mkl/</a>)가 존재합니다. MKL로의 연결을
 시도하기 전, 라이브러리와 함께 설치된 MKL 사용자 설명서를 읽어 보기를 강력하게 추천합니다. Mac OS X와 윈도우즈를 위한MKL
 버전도 있지만, 이 플랫폼들에서 R을 위해 사용된 기본 컴파일러들과는 작동하지 않았습니다.
@@ -3646,7 +3657,7 @@ Sun <code>make</code>와 같은 <code>VPATH</code> 값을 사용하는 <code>mak
 <code>pghpf</code>, <code>pgf90</code>, <code>epcf90</code>,<code>g77</code>,
 <code>f77</code>, <code>xlf</code>, <code>frt</code>, <code>pgf77</code>,
 <code>cf77</code>, <code>fort77</code>, <code>fl32</code>,
-<code>af77</code>,)<a name="DOCF27" href="#FOOT27"><sup>27</sup></a>, 를 찾고, 찾아진 첫 번째 것을 사용합니다; 만약 아무것도 찾아지지 않았다면, R은 컴파일 될 수
+<code>af77</code>,)<a name="DOCF28" href="#FOOT28"><sup>28</sup></a>, 를 찾고, 찾아진 첫 번째 것을 사용합니다; 만약 아무것도 찾아지지 않았다면, R은 컴파일 될 수
 없습니다. 하지만 만약 CC가 <code>gcc</code>라면, 맞는 FORTRAN 컴파일러 (<code>gcc</code>&nbsp;3는
 <code>g</code>77 그리고 <code>gcc4</code>는<code>gfortran</code>)가 사용이 가능하다면 이가 사용됩니다.
 </p>
@@ -3668,7 +3679,7 @@ precision</code>이 C <code>double</code> pointer와 같은지를 활실히 하�
 (만약 있다면)을 설정해야만 합니다. 이는 configuration 프로세스 동안 체크됩니다.
 </p>
 <p>몇몇의 FORTRAN 코드는 Fortran 90의 확장인 <code>COMPLEX*16</code> 값들을 활용합니다. 이는 configure
-시간<a name="DOCF28" href="#FOOT28"><sup>28</sup></a>에 확인되지만, FORTRAN 77 compliance를 주장하는
+시간<a name="DOCF29" href="#FOOT29"><sup>29</sup></a>에 확인되지만, FORTRAN 77 compliance를 주장하는
 compiler flag들은 피해야할 수도 있습니다.
 </p>
 <p>R 소스들 안의 LAPACK 버전을 컴파일하는 것도 몇몇의 Fortran 90 확장판 들에서 필요할 수도 있지만, 만약 외부
@@ -3887,7 +3898,7 @@ Windows: _WIN32, _WIN64
 섹션의 나머지 부분에서 언급되는 &lsquo;<samp>X11()</samp>&rsquo;에 대한 문제들보다는 잘 처리될 수 있습니다.
 </p>
 <p>X11이 디자인 되었을 때, 요즘에는 대략 100dpi 이상인 것에 비해, 대부분의 디스플레이들은 대략
-75dpi였습니다. <a name="DOCF29" href="#FOOT29"><sup>29</sup></a> 이름들과 세부사항들은 시스템에따라 다르지만, 대부분 Fedora에서의 다음과 같은 것들을 가지고 있을 것 입니다.
+75dpi였습니다. <a name="DOCF30" href="#FOOT30"><sup>30</sup></a> 이름들과 세부사항들은 시스템에따라 다르지만, 대부분 Fedora에서의 다음과 같은 것들을 가지고 있을 것 입니다.
 </p><div class="example">
 <pre class="example">xorg-x11-fonts-75dpi
 xorg-x11-fonts-100dpi
@@ -4149,7 +4160,7 @@ builds.
 <samp>--with-aqua</samp> (which is the default): <code>quartz()</code> then becomes
 the default device when running R at the console and X11 would only be
 used for the data editor/viewer.  (This needs an Objective-C
-compiler<a name="DOCF30" href="#FOOT30"><sup>30</sup></a> which can compile
+compiler<a name="DOCF31" href="#FOOT31"><sup>31</sup></a> which can compile
 the code for <code>quartz()</code>.)
 </p>
 <p>Use <samp>--without-aqua</samp> if you want a standard Unix-alike build: apart
@@ -4218,7 +4229,7 @@ OBJC=clang
 
 <p>with <code>clang</code> and <code>clang++</code> from Xcode 5, and the Fortran
 compiler from
-<a href="http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2">http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2</a>.<a name="DOCF31" href="#FOOT31"><sup>31</sup></a> Apple&rsquo;s
+<a href="http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2">http://r.research.att.com/libs/gfortran-4.8.2-darwin13.tar.bz2</a>.<a name="DOCF32" href="#FOOT32"><sup>32</sup></a> Apple&rsquo;s
 builds of <code>clang</code> currently have little or no OpenMP support.
 </p>
 <p>Pre-compiled versions of many of the <a href="#Useful-libraries-and-programs">Useful libraries and programs</a> are
@@ -4242,7 +4253,7 @@ options
 
 <p>to provide potentially higher-performance versions of the <acronym>BLAS</acronym> and
 LAPACK routines.  (Use of <code>Accelerate</code> with <samp>--with-lapack</samp> does
-not work on Snow Leopard: it may work there without.)<a name="DOCF32" href="#FOOT32"><sup>32</sup></a>
+not work on Snow Leopard: it may work there without.)<a name="DOCF33" href="#FOOT33"><sup>33</sup></a>
 </p>
 <p>Looking at the top of
 <samp>/Library/Frameworks/R.framework/Resources/etc/Makeconf</samp> will show the
@@ -4268,6 +4279,11 @@ this to about 380MB (or package <strong>texinfo</strong> and the collections
 <strong>collection-latexextra</strong> which will take this up to about 1GB).
 &lsquo;<samp>TeX Live Utility</samp>&rsquo; (available <em>via</em> the MacTeX front page)
 provides a graphical means to manage TeX packages.
+</p>
+<p>One OS X quirk is that the default path has <samp>/usr/local/bin</samp> after
+<samp>/usr/bin</samp>, contrary to common practice on Unix-alikes.  This means
+that if you install tools from the sources they will by default be installed
+under <samp>/usr/local</samp> and not supersede the system versions.
 </p>
 
 <hr>
@@ -4445,7 +4461,7 @@ from
 <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>);
 this is for Lion and later.
 </p>
-<p>You may need to install what Apple calls &lsquo;legacy Java&rsquo;<a name="DOCF33" href="#FOOT33"><sup>33</sup></a> to suppress pop-up messages, at least under
+<p>You may need to install what Apple calls &lsquo;legacy Java&rsquo;<a name="DOCF34" href="#FOOT34"><sup>34</sup></a> to suppress pop-up messages, at least under
 Yosemite, even if you have a current version installed.
 </p>
 <p>To see what compatible versions of Java are currently installed, run
@@ -4564,9 +4580,9 @@ used with them, and they will not be considered here.
 <code>make</code>, <code>ar</code> and <code>ld</code>) are in <samp>/usr/ccs/bin</samp>,
 so if using those tools ensure this is in your path.  A version of the
 preferred <acronym>GNU</acronym> <code>tar</code> is (if installed) in
-<samp>/usr/sfw/bin</samp>, as sometimes are tools like <code>makeinfo</code>.  It may
-be necessary to avoid the tools in <samp>/usr/ucb</samp>: POSIX-compliant versions
-of some tools can be found in <samp>/usr/xpg4/bin</samp> and <samp>/usr/xpg6/bin</samp>.
+<samp>/usr/sfw/bin</samp>.  It may be necessary to avoid the tools in
+<samp>/usr/ucb</samp>: POSIX-compliant versions of some tools can be found in
+<samp>/usr/xpg4/bin</samp> and <samp>/usr/xpg6/bin</samp>.
 </p>
 <p>A large selection of Open Source software can be installed from
 <a href="http://www.opencsw.org">http://www.opencsw.org</a>, by default installed under <samp>/opt/csw</samp>.
@@ -4599,7 +4615,7 @@ reporting in the non-existent DST variant.  Using <code>configure</code> option
 time-zone abbreviations being given odd values (as has been seen on 64-bit
 builds without it).
 </p>
-<p>When using the Oracle compilers<a name="DOCF34" href="#FOOT34"><sup>34</sup></a> do <em>not</em> specify <samp>-fast</samp>, as this disables
+<p>When using the Oracle compilers<a name="DOCF35" href="#FOOT35"><sup>35</sup></a> do <em>not</em> specify <samp>-fast</samp>, as this disables
 <acronym>IEEE</acronym> arithmetic and <code>make check</code> will fail.
 </p>
 <p>It has been reported that some Solaris installations need
@@ -4880,9 +4896,9 @@ running AIX 6.1, configuring with or without <samp>--enable-R-shlib</samp>
 </p>
 <p>It helps to describe the WU build environment first.  A small part of the
 software needed to build R and/or install packages is available directly
-from the AIX Installation DVDs, e.g., Java 6, X11, and Perl.  Additional
-open source software (OSS) is packaged for AIX in <samp>.rpm</samp> files and
-available from both IBM&rsquo;s &ldquo;AIX Toolbox for Linux Applications&rdquo;
+from the AIX Installation DVDs, e.g., Java 6 and X11.  Additional open
+source software (OSS) is packaged for AIX in <samp>.rpm</samp> files and available
+from both IBM&rsquo;s &ldquo;AIX Toolbox for Linux Applications&rdquo;
 (<a href="http://www-03.ibm.com/systems/power/software/aix/linux/">http://www-03.ibm.com/systems/power/software/aix/linux/</a>)
 and <a href="http://www.oss4aix.org/download/">http://www.oss4aix.org/download/</a>.  The latter website typically
 offers more recent versions of the available OSS.  All tools needed and
@@ -4981,7 +4997,7 @@ gives incorrect results, so we undefine <code>HAVE_CACOS</code> in
 C99 long double mathematical functions are missing, so configuring with
 <samp>--disable-long-double</samp> was required.
 </p>
-<p>Only building as a shared library can possibly work,<a name="DOCF35" href="#FOOT35"><sup>35</sup></a> so use e.g.
+<p>Only building as a shared library can possibly work,<a name="DOCF36" href="#FOOT36"><sup>36</sup></a> so use e.g.
 </p>
 <div class="example">
 <pre class="example">./configure --disable-nls --enable-R-shlib FLIBS=-lgfortran
@@ -5090,7 +5106,7 @@ details.)
 </p>
 <p>We have found that the build process for R is quite sensitive to the
 choice of tools: please follow our instructions <strong>exactly</strong>, even to
-the choice of particular versions of the tools.<a name="DOCF36" href="#FOOT36"><sup>36</sup></a> The build
+the choice of particular versions of the tools.<a name="DOCF37" href="#FOOT37"><sup>37</sup></a> The build
 process for add-on packages is somewhat more forgiving, but we recommend
 using the exact toolset at first, and only substituting other tools once you
 are familiar with the process.
@@ -5100,7 +5116,7 @@ result of bitter experience.  Please do not report problems to the R
 mailing lists unless you have followed all the prescriptions.</em>
 </p>
 <p>We have collected most of the necessary tools (unfortunately not all, due to
-license or size limitations) into an executable installer named<a name="DOCF37" href="#FOOT37"><sup>37</sup></a> <samp>Rtools31.exe</samp>, available from
+license or size limitations) into an executable installer named<a name="DOCF38" href="#FOOT38"><sup>38</sup></a> <samp>Rtools31.exe</samp>, available from
 <a href="http://CRAN.R-project.org/bin/windows/Rtools/">http://CRAN.R-project.org/bin/windows/Rtools/</a>. You should
 download and run it, choosing the default &ldquo;Package authoring installation&rdquo;
 to build add-on packages, or the &ldquo;full installation&rdquo; if you intend to
@@ -5113,8 +5129,7 @@ subsections below for detailed descriptions.
 </li><li> The MinGW-w64 32/64-bit toolchain to compile C, Fortran and C++.
 </li></ul>
 <p>For installing simple source packages containing data or R source but no
-compiled code, none of these are needed.  Perl is no longer needed to build
-R nor to install nor develop source packages.
+compiled code, none of these are needed.
 </p>
 <p>A complete build of R including PDF manuals, and producing the installer
 will also need the following:
@@ -5143,7 +5158,7 @@ containing spaces: you can always use the short forms (found by <code>dir
 
 <p>It is essential that the directory containing the command line tools comes
 first or second in the path: there are typically like-named
-tools<a name="DOCF38" href="#FOOT38"><sup>38</sup></a> in other directories, and they will <strong>not</strong> work. The
+tools<a name="DOCF39" href="#FOOT39"><sup>39</sup></a> in other directories, and they will <strong>not</strong> work. The
 ordering of the other directories is less important, but if in doubt, use
 the order above.
 </p>
@@ -5190,7 +5205,7 @@ LaTeX packages on first use.
 <a name="The-Inno-Setup-installer-1"></a>
 <h3 class="section">D.2 The Inno Setup installer</h3>
 
-<p>To make the installer package (<samp>Revision: 67242 (3.2.0 Under development (unstable))-win.exe</samp>) we
+<p>To make the installer package (<samp>Revision: 67332 (3.2.0 Under development (unstable))-win.exe</samp>) we
 currently require the Unicode version of Inno Setup 5.3.7 or later from
 <a href="http://jrsoftware.org/">http://jrsoftware.org/</a>. This is <em>not</em> included in
 <samp>Rtools*.exe</samp>.
@@ -5246,7 +5261,7 @@ runtime.
 </p>
 <p>This toolchain uses <em>multilib</em>: that is there is a single front-end
 such as <code>gcc.exe</code> for each of the compilers and 32-bit (the default)
-and 64-bit compilation are selected by the flags<a name="DOCF39" href="#FOOT39"><sup>39</sup></a> <samp>-m32</samp> and <samp>-m64</samp> respectively.  The tools are
+and 64-bit compilation are selected by the flags<a name="DOCF40" href="#FOOT40"><sup>40</sup></a> <samp>-m32</samp> and <samp>-m64</samp> respectively.  The tools are
 all 32-bit Windows executables and should be able to run on any current
 version of Windows&mdash;however you do need a 64-bit version of Windows to
 build 64-bit R as the build process runs R.
@@ -5642,106 +5657,111 @@ TeXLive를 이용하므로 &lsquo;<samp>texlive-fonts-extra</samp>&rsquo;이라�
 18이전의 버전들은 더 오래된 버전의 TeXLive를 사용하는데, 가장 좋은 방법은 소스로부터 TeXLive 2012로 업데이트 하거나
 <a href="http://fedoraproject.org/wiki/Features/TeXLive">http://fedoraproject.org/wiki/Features/TeXLive</a>를 살펴보시길 바랍니다.</p>
 <h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
+<p>on a Unix-alike,
+&lsquo;<samp>inconsolata</samp>&rsquo; is omitted if not found by <code>configure</code>.</p>
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
 <p>The <code>linktoc</code> settings
 require <strong>hyperref</strong> version 6.78f or newer; with older versions of
 <strong>hyperref</strong> use <code>linktocpage=false</code> to hyperlink the text.</p>
-<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
 <p>아마도 가능한 값들은 &lsquo;<samp>i386</samp>&rsquo;, &lsquo;<samp>x64</samp>&rsquo;, &lsquo;<samp>32</samp>&rsquo;, 그리고 &lsquo;<samp>64</samp>&rsquo;일
 것입니다</p>
-<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
-<p>여기에서는 주로 RedHat과 Fedora를 위주로 설명합니다</p>
 <h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
+<p>여기에서는 주로 RedHat과 Fedora를 위주로 설명합니다</p>
+<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
 <p>How
 to prepare such a directory is described in file
 <samp>src/extra/tzone/Notes</samp> in the R sources.</p>
-<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
-<p>이전 명칭으로 EM64T.</p>
 <h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
+<p>이전 명칭으로 EM64T.</p>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>만약 그렇지 않다면 그들은 빌드시에 제외될
 것입니다</p>
-<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
 <p>or by
 adding it in a file such as <samp>etc/i386/Makevars.site</samp>, which does not
 exist by default.</p>
-<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>여러개의 버전들을 가지고 있는
 &lsquo;X/Open Portability Guide&rsquo;</p>
-<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
+<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
 <p>일부 시스템에서는 <code>LC_ALL</code> 또는
 <code>LC_MESSAGES</code>를 &lsquo;<samp>C</samp>&rsquo;로 지정하는 것은 <code>LANGUAGE</code>를 사용하지 못하게 하기도 합니다</p>
-<h3><a name="FOOT15" href="#DOCF15">(15)</a></h3>
+<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
 <p>만약 불어에서 러시안으로 변경을 시도하는데 UTF-8 로케일이 빠져있다면, 영어로 된 메시지를 보게 될 가능성이
 있습니다</p>
-<h3><a name="FOOT16" href="#DOCF16">(16)</a></h3>
-<p>영국권에서 사용되는 영어: </p>
 <h3><a name="FOOT17" href="#DOCF17">(17)</a></h3>
-<p>미국식</p>
+<p>영국권에서 사용되는 영어: </p>
 <h3><a name="FOOT18" href="#DOCF18">(18)</a></h3>
+<p>미국식</p>
+<h3><a name="FOOT19" href="#DOCF19">(19)</a></h3>
 <p>e.g. Bessel, beta and gamma
 functions.</p>
-<h3><a name="FOOT19" href="#DOCF19">(19)</a></h3>
+<h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
 <p>including copying
 <samp>MkRules.dist</samp> to <samp>MkRule.local</samp>and selecting the architecture.</p>
-<h3><a name="FOOT20" href="#DOCF20">(20)</a></h3>
-<p>also known as <acronym>IEEE</acronym>&nbsp;754.</p>
 <h3><a name="FOOT21" href="#DOCF21">(21)</a></h3>
+<p>also known as <acronym>IEEE</acronym>&nbsp;754.</p>
+<h3><a name="FOOT22" href="#DOCF22">(22)</a></h3>
 <p>특별히 헤더의 C99 기능 <samp>wchar.h</samp>
 and <samp>wctype.h</samp>, types <code>wctans_t</code> and <code>mbstate_t</code> and
 functions <code>mbrtowc</code>,<code>mbstowcs</code>, <code>wcrtomb</code>,
 <code>wcscoll</code>,<code>wcstombs</code>,<code>wctrans</code>, <code>wctype</code>, and
 <code>iswctype</code>.</p>
-<h3><a name="FOOT22" href="#DOCF22">(22)</a></h3>
+<h3><a name="FOOT23" href="#DOCF23">(23)</a></h3>
 <p>Such as <acronym>GNU</acronym> <code>tar</code> 1.15 or later,
 <code>bsdtar</code></p>
-<h3><a name="FOOT23" href="#DOCF23">(23)</a></h3>
-<p><code>texi2dvi</code>와 &rsquo;<samp>texinfo.tex</samp>&rsquo;.</p>
 <h3><a name="FOOT24" href="#DOCF24">(24)</a></h3>
-<p>also known as <code>ttf-mscorefonts-installer.</code></p>
+<p><code>texi2dvi</code> is normally a shell script.
+Some versions (e.g. those from <strong>texinfo</strong> 4.13a and 5.2)  need to be
+run under <code>bash</code> rather than a Bourne shell as on, say, Solaris.</p>
 <h3><a name="FOOT25" href="#DOCF25">(25)</a></h3>
-<p><code>ttf-liberation</code></p>
+<p>also known as <code>ttf-mscorefonts-installer.</code></p>
 <h3><a name="FOOT26" href="#DOCF26">(26)</a></h3>
-<p>and perhaps others</p>
+<p><code>ttf-liberation</code></p>
 <h3><a name="FOOT27" href="#DOCF27">(27)</a></h3>
+<p>and perhaps others</p>
+<h3><a name="FOOT28" href="#DOCF28">(28)</a></h3>
 <p>On HP-UX <code>fort77</code> is the <acronym>POSIX</acronym>
 <code>g77</code>.</p>
-<h3><a name="FOOT28" href="#DOCF28">(28)</a></h3>
+<h3><a name="FOOT29" href="#DOCF29">(29)</a></h3>
 <p>as well as its equivalence to the <code>Rcomplex</code>structure
 defined in <samp>R_ext/Complex.h</samp>.</p>
-<h3><a name="FOOT29" href="#DOCF29">(29)</a></h3>
+<h3><a name="FOOT30" href="#DOCF30">(30)</a></h3>
 <p>만약 <code>X11()이 특히 큰 폰트 사이즈들의 실종을 리포트 하는 것을 알아낸다면</code>, 이는
 거의 대부분 여러분이 X11 폰트들의 100dpi 버정들을 설치하지 않았고 크기를 조절할 수 있는 폰트들 을 사용하지 않고 있는
 것입니다.</p>
-<h3><a name="FOOT30" href="#DOCF30">(30)</a></h3>
+<h3><a name="FOOT31" href="#DOCF31">(31)</a></h3>
 <p>These days that is defined by Apple&rsquo;s implementation of
 <code>clang</code>, so it is strongly recommended to use that.</p>
-<h3><a name="FOOT31" href="#DOCF31">(31)</a></h3>
+<h3><a name="FOOT32" href="#DOCF32">(32)</a></h3>
 <p>This
 is a tarball which needs to be unpacked in the Terminal by e.g.
 <code>sudo tar -zxf gfortran-4.8.2-darwin13.tar.bz2 -C /</code>.</p>
-<h3><a name="FOOT32" href="#DOCF32">(32)</a></h3>
+<h3><a name="FOOT33" href="#DOCF33">(33)</a></h3>
 <p>It is
 reported that for some non-Apple toolchains <code>CPPFLAGS</code> needed to
 contain <code>-D__ACCELERATE__</code>.</p>
-<h3><a name="FOOT33" href="#DOCF33">(33)</a></h3>
+<h3><a name="FOOT34" href="#DOCF34">(34)</a></h3>
 <p>e.g.
 <code>Java For OS X 2014-001</code>.</p>
-<h3><a name="FOOT34" href="#DOCF34">(34)</a></h3>
+<h3><a name="FOOT35" href="#DOCF35">(35)</a></h3>
 <p>including <code>gcc</code> for Sparc
 from Oracle.</p>
-<h3><a name="FOOT35" href="#DOCF35">(35)</a></h3>
+<h3><a name="FOOT36" href="#DOCF36">(36)</a></h3>
 <p>Windows DLLs
 need to have all links resolved at build time and so cannot resolve against
 <samp>R.bin</samp>.</p>
-<h3><a name="FOOT36" href="#DOCF36">(36)</a></h3>
+<h3><a name="FOOT37" href="#DOCF37">(37)</a></h3>
 <p>For example, the
 Cygwin version of <code>make 3.81</code> fails to work correctly.</p>
-<h3><a name="FOOT37" href="#DOCF37">(37)</a></h3>
+<h3><a name="FOOT38" href="#DOCF38">(38)</a></h3>
 <p>for
 R 3.0.0 and later.</p>
-<h3><a name="FOOT38" href="#DOCF38">(38)</a></h3>
+<h3><a name="FOOT39" href="#DOCF39">(39)</a></h3>
 <p>such as <code>sort</code>, <code>find</code> and perhaps
 <code>make</code>.</p>
-<h3><a name="FOOT39" href="#DOCF39">(39)</a></h3>
+<h3><a name="FOOT40" href="#DOCF40">(40)</a></h3>
 <p>these flags apply
 to the compilers: some of the tools use different flags.  32-bit builds are
 the default.</p>
