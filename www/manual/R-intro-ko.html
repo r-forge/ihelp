@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- 이 매뉴얼은 R Revision: 67242 (3.2.0 Under development (unstable))을 위하여 작성되었습니다.
+<!-- 이 매뉴얼은 R Revision: 67332 (3.2.0 Under development (unstable))을 위하여 작성되었습니다.
 
 Copyright (C) 1990 W. N. Venables
  Copyright (C) 1992
@@ -28,7 +28,7 @@ approved by the R Core Team.
  
 NOTE from the maintainer Chel Hee Lee <chl948@mail.usask.ca>
 
-This translation is updated on a day-by-day basis (Sat Dec 27 17:32:42 CST 2014).  The initial work was done with R-2.7.2 (25-AUG-2008) by Chel Hee Lee.  The latest version is based on the Revision: 67242 (3.2.0 Under development (unstable)). 
+This translation is updated on a day-by-day basis (Tue Jan  6 01:17:00 CST 2015).  The initial work was done with R-2.7.2 (25-AUG-2008) by Chel Hee Lee.  The latest version is based on the Revision: 67332 (3.2.0 Under development (unstable)). 
 
 This work is a result of cumulative efforts made by the contributors listed in the below:
 Chel Hee Lee <chl948@mail.usask.ca>, University of Saskatchewan, Saskatoon, Saskatchewan, Canada, 2008-2014
@@ -264,7 +264,7 @@ p {
     <li><a name="toc-Data-frames-_0028e_00b0i_0027i_00b0-ie-i_0029" href="#Data-frames-_0028_00eb_008d_00b0_00ec_009d_00b4_00ed_0084_00b0-_00ed_0094_0084_00eb-_0088_00ec_009e_0084_0029">6.3 Data frames (데이터 프레임)</a>
     <ul class="no-bullet">
       <li><a name="toc-e_00b0i_0027i_00b0-ie-i-ii_002b_002die_002c_00b0" href="#g_t_00eb_008d_00b0_00ec_009d_00b4_00ed_0084_00b0-_00ed_0094_0084_00eb-_0088_00ec_009e_0084-_00ec_0083_009d_00ec_0084_00b1_00ed_0095_0098_00ea_00b8_00b0">6.3.1 데이터 프레임 생성하기</a></li>
-      <li><a name="toc-attach_0028_0029-and-detach_0028_0029" href="#attach_0028_0029_00ec_0099_0080-detach_0028_0029">6.3.2 <code>attach() and <code>detach()</code></code></a></li>
+      <li><a name="toc-attach_0028_0029-and-detach_0028_0029" href="#attach_0028_0029_00ec_0099_0080-detach_0028_0029">6.3.2 <code>attach()</code> and <code>detach()</code></a></li>
       <li><a name="toc-e_00b0i_0027i_00b0-ie-i-ii_00a9ie_002c_00b0" href="#g_t_00eb_008d_00b0_00ec_009d_00b4_00ed_0084_00b0-_00ed_0094_0084_00eb-_0088_00ec_009e_0084-_00ed_0099_009c_00ec_009a_00a9_00ed_0095_0098_00ea_00b8_00b0">6.3.3 데이터 프레임 활용하기</a></li>
       <li><a name="toc-Attaching-arbitrary-lists-_0028iii-i_002c-e_007c_0021i_0024_003fi_002ceY_003d1_002f4-i_00b0e2_00b0ie_002c_00b0_0029" href="#Attaching-arbitrary-lists-_0028_00ec_009e_0084_00ec_009d_0098_00ec-_0081_00ec_009d_00b8-_00eb_00a6_00ac_00ec_008a_00a4_00ed_008a_00b8_00eb_00a5_00bc-_00ec_0097_00b0_00ea_00b2_00b0_00ed_0095_0098_00ea_00b8_00b0_0029">6.3.4 Attaching arbitrary lists (임의적인 리스트를 연결하기)</a></li>
       <li><a name="toc-iie21_002f2e_00a1eY_003d1_002f4-e_0027e_007c_0021ie_002c_00b0" href="#g_t_00ed_0083_0090_00ec_0083_0089_00ea_00b2_00bd_00eb_00a1_009c_00eb_00a5_00bc-_00ea_00b4_0080_00eb_00a6_00ac_00ed_0095_0098_00ea_00b8_00b0">6.3.5 탐색경로를 관리하기</a></li>
@@ -419,7 +419,7 @@ laboratory)에서 존 챔버스(John Chambers)와 그의 동료들에 의하여 
 <p>이 문서에서는 데이터형(data type), 프로그래밍 기본요소들(programming elements), 그리고 통계
 모델링(statistical modelling) 및 그래픽(graphics)에 대한 내용을 다룹니다.
 </p>
-<p>이 매뉴얼은 R Revision: 67242 (3.2.0 Under development (unstable))을 위하여 작성되었습니다.
+<p>이 매뉴얼은 R Revision: 67332 (3.2.0 Under development (unstable))을 위하여 작성되었습니다.
 </p>
 <p>Copyright &copy; 1990 W. N. Venables<br> Copyright &copy; 1992
 W. N. Venables &amp; D. M. Smith<br> Copyright &copy; 1997 R.
@@ -445,7 +445,7 @@ approved by the R Core Team.
  
 <p><strong>NOTE</strong> from the maintainer Chel Hee Lee &lt;<a href="mailto:chl948@mail.usask.ca">chl948@mail.usask.ca</a>&gt;
 </p>
-<p>This translation is updated on a day-by-day basis (Sat Dec 27 17:32:42 CST 2014).  The initial work was done with R-2.7.2 (25-AUG-2008) by Chel Hee Lee.  The latest version is based on the Revision: 67242 (3.2.0 Under development (unstable)). 
+<p>This translation is updated on a day-by-day basis (Tue Jan  6 01:17:00 CST 2015).  The initial work was done with R-2.7.2 (25-AUG-2008) by Chel Hee Lee.  The latest version is based on the Revision: 67332 (3.2.0 Under development (unstable)). 
 </p>
 <p>This work is a result of cumulative efforts made by the contributors listed in the below:
 </p><ul>
@@ -2545,7 +2545,7 @@ incomef   act nsw nt qld sa tas vic wa
 <hr>
 <a name="attach_0028_0029_00ec_0099_0080-detach_0028_0029"></a>
 <a name="attach_0028_0029-and-detach_0028_0029"></a>
-<h4 class="subsection">6.3.2 <code>attach() and <code>detach()</code></code></h4>
+<h4 class="subsection">6.3.2 <code>attach()</code> and <code>detach()</code></h4>
 <a name="index-attach"></a>
 <a name="index-detach"></a>
 
@@ -4387,7 +4387,7 @@ Criterion)값을 갖는 모형을 선택하게 됩니다.
 <h3 class="section">11.4 Analysis of variance and model comparison</h3>
 <a name="index-Analysis-of-variance"></a>
 
-<p>The model fitting function <code>aov(<code>formula</code>, data=<var>data.frame</var>)</code>
+<p>The model fitting function <code>aov(<var>formula</var>, data=<var>data.frame</var>)</code>
 <a name="index-aov"></a>
 분산분석(analysis of variance)을 수행하기 위해 <code>aov(<code>formula</code>,
 data=<var>data.frame</var>)</code> 함수를 사용할 수 있습니다. 이 함수는 <code>lm()</code> 함수와 대체로 비슷한 연산을
