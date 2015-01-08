@@ -1384,11 +1384,7 @@ msgid ""
 "say @file{commands.R} in the working directory @file{work}, they may be "
 "executed at any time in an @R{} session with the command"
 msgstr ""
-"만약 @file{work}이라는 작업 디렉토리내에 (매우 방대한 양의) 명령문들이 "
-"@file{commands.R} 라는 이름으로 외부파일에 위치하고 있다면, 다음과 같은 명령"
-"문을 사용하여 @R{} 세션 내 어느 때라도 이 명령문들을 실행할 수 있습니다.윈도"
-"우즈에서는 @strong{File} 메뉴 항목에 위치한 @strong{Source} 라는 기능도 동일"
-"한 작업을 수행합니다."
+"이제 명령어들이 @file{commands.R}이라는 외부파일에 저장되어 있고, 이 파일은 @file{work}라는 작업 디렉토리(working directory)에 놓여있다고 가정해 봅니다.  이 명령어들은 @R{} 세션내에서 다음의 명령어를 이용하여 언제든지 실행될 수 있습니다."
 
 #. type: example
 #: R-intro.texi:504
@@ -1408,8 +1404,8 @@ msgid ""
 "For Windows @strong{Source} is also available on the @strong{File} menu.  "
 "The function @code{sink},"
 msgstr ""
-"다음의 @code{sink} 라는 함수를 사용하면 앞으로의 모든 결과물이 현재 사용중인 "
-"콘솔이 아니라 @file{record.lis} 라는 외부파일에 저장 됩니다."
+"윈도우즈 환경에서는 @strong{File} 메뉴에 놓여 있는 @strong{Source} 항목을 사용할 수 있습니다." 
+"다음에 보이는 함수 @code{sink}는 추후에 생성하는 모든 결과들을 콘솔로부터 @file{record.lis}라는 외부파일로 저장하도록 합니다."
 
 #. type: example
 #: R-intro.texi:512
@@ -1421,7 +1417,7 @@ msgstr "> sink(\"record.lis\")\n"
 #: R-intro.texi:513
 #, no-wrap
 msgid "sink"
-msgstr ""
+msgstr "sink"
 
 #. type: Plain text
 #: R-intro.texi:518
@@ -1429,19 +1425,18 @@ msgid ""
 "will divert all subsequent output from the console to an external file, "
 "@file{record.lis}.  The command"
 msgstr ""
-"따라서, 이 함수가 사용된 이후로는 (명령문을 입력해도) 콘솔 상에 아무것도 출력"
-"되지 않게 됩니다.다음의 명령문을 입력하면, "
+"다음의 명령을 입력하면"
 
 #. type: example
 #: R-intro.texi:521
 #, no-wrap
 msgid "> sink()\n"
-msgstr ""
+msgstr "> sink()\n"
 
 #. type: Plain text
 #: R-intro.texi:525
 msgid "restores it to the console once again."
-msgstr "다시 결과값이 콘솔창에 나타나게 됩니다."
+msgstr "결과 출력의 방향이 다시 콘솔로 돌아오게 됩니다."
 
 #. type: Plain text
 #: R-intro.texi:533
