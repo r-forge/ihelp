@@ -1,16 +1,16 @@
 # Korean translations for R-manual-translation package
 # doc/manual/R-admin.texi
 # Copyright (C) 2008-2015 Chel Hee Lee, and R Translation Teams
-# 
+#
 # This file is distributed under the same license as the R distribution.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-01-10 23:17-0600\n"
-"PO-Revision-Date: 2015-01-10 23:17-0600\n"
+"POT-Creation-Date: 2015-01-13 09:53-0600\n"
+"PO-Revision-Date: 2015-01-13 09:53-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -1459,12 +1459,12 @@ msgid "See the @ref{Making the manuals} section in the Unix-alike section for se
 msgstr "페이퍼 사이즈 및 글꼴과 관계된 옵션들을 조정하는 것은 유닉스와 같은 환경에서 @ref{Making the manuals}을 참고하세요."
 #
 #. type: Plain text
-msgid "By default it is assumed that @pkg{texinfo} is not installed, and the manuals will not be built.  The comments in file @file{MkRules.dist} describe settings to build them.  (Copy that file to @file{MkRules.local} and edit it.)  The @pkg{texinfo} 5.x package for use on Windows is available at @uref{http://www.stats.ox.ac.uk/pub/Rtools/}: you will also need to install @command{Perl}."
+msgid "By default it is assumed that @pkg{texinfo} is not installed, and the manuals will not be built.  The comments in file @file{MkRules.dist} describe settings to build them.  (Copy that file to @file{MkRules.local} and edit it.)  The @pkg{texinfo} 5.x package for use on Windows is available at @uref{http://www.stats.ox.ac.uk/pub/Rtools/}: you will also need to install @command{Perl}@footnote{Suitable distributions include Strawberry Perl, @uref{http://strawberryperl.com/} and ActivePerl, @uref{http://www.activestate.com/activeperl}.}"
 msgstr ""
 #
 #. type: Plain text
-msgid "You need to have the files for a complete R build, including bitmap and Tcl/Tk support and the manuals, as well as the recommended packages and Inno Setup (@pxref{The Inno Setup installer})."
-msgstr "완전한 R을 구축하기 위해서는 bitmap과 Tcl/Tk의 지원, 매뉴얼을 포함하여 추천된 패키지들과 Inno Setup (@pxref{The Inno Setup installer})들이 필요합니다. @c Once everything is set up 모든 것들이 준비되었을때, 다음을 실행하는 것은 모든 조작들과 인스톨러를 생성할 것이고, 이들은 @file{gnuwin32/cran} 서브디렉토리에 놓이게 된 후 빌드를 확인할 것입니다."
+msgid "You need to have the files for a complete R build, including bitmap and Tcl/Tk support and the manuals (which requires @pkg{texinfo} installed), as well as the recommended packages and Inno Setup (@pxref{The Inno Setup installer})."
+msgstr ""
 #
 #. type: Plain text
 msgid "Once everything is set up"
@@ -3017,7 +3017,7 @@ msgid "The bitmapped graphics devices @code{jpeg()}, @code{png()} and @code{tiff
 msgstr "비트맵된 그래픽 장치들@code{jpeg()}, @code{png()} 와 @code{tiff()} 는 알맞은 헤더들과 라이브러리의 설치를 필요로 합니다: 순서대로, @code{jpeg} (버전 6b 이나 그 후 버전들, 혹은 @code{libjpeg-turbo}) 혹은 @code{libpng}(버전 1.2.7 이나 그 후 버전들,1.4.x 와 1.5.x 포함) 그리고  @code{zlib} 나 @code{libtiff} (모든 최근 버전 –3.9.[4567] 와 4.0.[23] 가 테스트 되었습니다)입니다.  그들은 @code{X11} 이나 @code{cairo}  둘 중 하나의 지원 또한 필요합니다 (위를 참조하세요). 대부분의 시스템 설치에서, TIFF 라이브러리들은 JPEG 라이브러리들이 존재하고 아마도 명백하게 링크 되어있는 것을 요함으로, @option{--without-jpeglib 는tiff()}장치 또한 disable할 수도 있습니다. @code{tiff()}장치는 @code{libtiff}의 기초 구축만을 요합니다 (JPEG의 지원 조차도 필요하지 않습니다). 최근 버전들은 존재되어 질 필요가 있을 수도 있는 @code{lzma}, @code{jbig} 그리고 @code{jpeg12}와 같은@code{libtiff}로 링크되어질 몇몇의 다른라이브러리들도 허용합니다.???"
 #
 #. type: Plain text
-msgid "If you have them installed (including the appropriate headers and of suitable versions), system versions of @code{zlib} (version 1.2.5 or later),, @code{libbz2} (version 1.0.6 or later: called @pkg{bzip2-libs}/@pkg{bzip2-devel} or @pkg{libbz2-1.0}/@pkg{libbz2-dev} by some Linux distributions) and PCRE (version 8.10 or later, preferably 8.32 or later@footnote{and not PCRE2, which started at version 10.0. PCRE must be built with UTF-8 support (not the default) and support for Unicode properties is assumed by some @R{} packages.  Neither are tested by @command{configure}. JIT support is desirable.}): will be used, otherwise versions in the @R{} sources will be compiled in.  The external versions can be avoided by configure options @option{--without-system-zlib}, @option{--without-system-bzlib} and or @option{--without-system-pcre}."
+msgid "If you have them installed (including the appropriate headers and of suitable versions), system versions of @code{zlib} (version 1.2.5 or later),, @code{libbz2} (version 1.0.6 or later: called @pkg{bzip2-libs}/@pkg{bzip2-devel} or @pkg{libbz2-1.0}/@pkg{libbz2-dev} by some Linux distributions) and PCRE (version 8.10 or later, preferably 8.32 or later@footnote{and not PCRE2, which started at version 10.0. PCRE must be built with UTF-8 support (not the default) and support for Unicode properties is assumed by some @R{} packages.  Only the first is tested by @command{configure}, but both can be checked at run-time by calling @code{pcre_config()}. JIT support is desirable for the best performance.}): will be used, otherwise versions in the @R{} sources will be compiled in.  The external versions can be avoided by configure options @option{--without-system-zlib}, @option{--without-system-bzlib} and or @option{--without-system-pcre}."
 msgstr ""
 #
 #. type: Plain text
@@ -5634,30 +5634,41 @@ msgid "The file @file{xzutils.zip} contains the program @command{xz} which can b
 msgstr ""
 #
 #
+#~ msgid "You need to have the files for a complete R build, including bitmap and Tcl/Tk support and the manuals, as well as the recommended packages and Inno Setup (@pxref{The Inno Setup installer})."
+#~ msgstr "완전한 R을 구축하기 위해서는 bitmap과 Tcl/Tk의 지원, 매뉴얼을 포함하여 추천된 패키지들과 Inno Setup (@pxref{The Inno Setup installer})들이 필요합니다. @c Once everything is set up 모든 것들이 준비되었을때, 다음을 실행하는 것은 모든 조작들과 인스톨러를 생성할 것이고, 이들은 @file{gnuwin32/cran} 서브디렉토리에 놓이게 된 후 빌드를 확인할 것입니다."
+#
+#
+#
 #~ msgid "What @code{install.packages} does by default is different on Unix-alikes (except OS X) and Windows.  On Unix-alikes it consults the list of available @emph{source} packages on @acronym{CRAN} (or other repository/ies), downloads the latest version of the package sources, and installs them (via @code{R CMD INSTALL}).  On Windows it looks (by default) at the list of @emph{binary} versions of packages available for your version of @R{} and downloads the latest versions (if any), although optionally it will also download and install a source package by setting the @code{type} argument."
 #~ msgstr "기본으로 @code{install.packages}가 유닉스 계열 (OS X를 제외한)에서와 윈도우즈에서 하는 것이 다릅니다. 유닉스 계열에서, 이는 @acronym{CRAN} (혹은 다른 저장소(들))에서 사용가능한 @emph{source} 패키지들의 리스트를 참고하고, 패키지 source들의 최신 버전을 다운로드하며, 그들을 (@code{R CMD INSTALL}을 통하여) 설치합니다. 윈도우즈에서는, (기본적으로) 여러분의 R 버전에서 사용가능한 패키지의 @emph{binary} 버전들의 리스트를 보고 (만약 있다면) 가장 최신 보전들을 다운로드 합니다. 선택적으로 이가 또한 @code{type} 인자를 설정함으로써 source 패키지를 다운로드하고 설치할 수도 있기는 합니다."
+#
 #
 #
 #~ msgid "The PDF manuals can be made by"
 #~ msgstr "PDF 매뉴얼들은 아래에 의해서 만들어 질 수 있습니다. "
 #
 #
+#
 #~ msgid "A few of the binary packages need other software to be installed on your system: see for example @uref{http://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/3.1/@/@@ReadMe}.  For 64-bit builds, packages using Gtk+ (@CRANpkg{Cairo}, @CRANpkg{RGtk2}, @CRANpkg{cairoDevice} and those that depend on them)  need the @file{bin} directory of a bundled distribution from @uref{http://www.gtk.org/@/download/@/win32.php} or @uref{http://www.gtk.org/@/download/@/win64.php} in the path: it should work to have both 32- and 64-bit Gtk+ @file{bin} directories in the path on a 64-bit version of @R{}."
 #~ msgstr "몇 몇의 binary 패키지들은 여러분의 시스템에 다른 소프트웨어들이 설치되는 것을 필요로 합니다: 예를 들면 : @uref{http://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/3.0/@/@@ReadMe}를 참조하세요. 64 비트 구축을 위해서, Gtk+ (@CRANpkg{Cairo}, @CRANpkg{RGtk2}, @CRANpkg{cairoDevice} 그리고 그들에 종속된 것들)를 사용하는 패키지들은 경로에서 @uref{http://www.gtk.org/@/download-windows-64bit.html} 에서의 bundled distribution의 bin 디렉토리를 필요로 합니다: R의 64빝 버전의 경로에서 Gtk+ 와 '@file{bin}' 두 가지 모두를 가지는 것도 괜찮을 것입니다."
+#
 #
 #
 #~ msgid "On OS X @code{install.packages} works as it does on other Unix-alike systems, but there is an additional type @code{mac.binary} (the default in the @acronym{CRAN} distribution but not when compiling from source: @code{mac.binary.mavericks} for a Mavericks build) which can be passed to @code{install.packages} in order to download and install binary packages from a suitable repository.  These OS X binary package files have the extension @samp{.tgz}.  The @Rapp{} GUI provides menus for installation of either binary or source packages, from @acronym{CRAN} or local files."
 #~ msgstr "@strong{NB:} OS X에 대한 정보는 R 3.0.0.의 출시되기 전에 바뀔 것이라고 예상됩니다.OS X에서 @code{install.packages}는 다른 유닉스 계열 시스템들에서처럼 작동하지만,알맞은 저장소로부터 binary 패키지들을 다운로드하고 설치할 수 있도록 @code{install.packages} 로 패스되어질 수 있는 @code{mac.binary*} (@acronym{CRAN}distribution에서 기본값인)와  @R{}의 @acronym{CRAN} 구축을 위한 기본값인 @code{mac.binary.leopard}의 추가적인 타입들이 있습니다. 이런 OS X binary 패키지 파일들은 확장자 @samp{tgz}을 가지고 있습니다. @Rapp{}[ GUI는 @acronym{CRAN}이나 로컬파일들로부터 binary나 source 패키지들 중 하나의 설치를 제공합니다."
 #
 #
+#
 #~ msgid "@code{\"mac.binary\"}: located at @file{bin/macosx/contrib/@var{3.y}} for @R{} versions @var{3.y.z} and containing @file{.tgz} files."
 #~ msgstr "@code{\"mac.binary.leopard\"}: @R{} 버전들 @var{x.y.z}을 위해 '@file{bin/macosx/leopard/contrib/x.y}' 에 위치하고 '@file{.tgz}' 파일들을 포함하고 있습니다."
+#
 #
 #
 #, fuzzy
 #~| msgid "@code{\"mac.binary\"}: located at @file{bin/macosx/contrib/@var{3.y}} for @R{} versions @var{3.y.z} and containing @file{.tgz} files."
 #~ msgid "@code{\"mac.binary.mavericks\"}: located at @file{bin/macosx/mavericks/contrib/@var{3.y}} for @R{} versions @var{3.y.z} to be run under OS X 10.9 (Mavericks) and later, containing @file{.tgz} files."
 #~ msgstr "@code{\"mac.binary.leopard\"}: @R{} 버전들 @var{x.y.z}을 위해 '@file{bin/macosx/leopard/contrib/x.y}' 에 위치하고 '@file{.tgz}' 파일들을 포함하고 있습니다."
+#
 #
 #
 #~ msgid "If you have them installed (including the appropriate headers and of suitable versions), system versions of @code{zlib} (version 1.2.5 or later),, @code{libbz2} (version 1.0.6 or later: called @pkg{bzip2-libs}/@pkg{bzip2-devel} or @pkg{libbz2-1.0}/@pkg{libbz2-dev} by some Linux distributions) and PCRE (version 8.10 or later, preferably 8.32 or later@footnote{PCRE must be built with UTF-8 support (not the default) and support for Unicode properties is assumed by some @R{} packages.  Neither are tested by @command{configure}. JIT support is desirable.}): will be used, otherwise versions in the @R{} sources will be compiled in.  The external versions can be avoided by configure options @option{--without-system-zlib}, @option{--without-system-bzlib} and or @option{--without-system-pcre}."
