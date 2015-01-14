@@ -1,91 +1,200 @@
-[32m# Korean translation for R parallel package[39;49m
-[32m# src/library/parallel/po/ko.po[39;49m
-[32m# Copyright (C) 1995-2015 The R Core Team[39;49m
-[32m#[39;49m
-[32m# This file is distributed under the same license as the R parallel package.[39;49m
-[32m# Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.[39;49m
-[32m#[39;49m
+# Korean translation for R methods package
+# src/library/methods/po/ko.po
+# Copyright (C) 1995-2014 The R Core Team
+# This file is distributed under the same license as the R methods package.
+# Chel Hee Lee <chl948@mail.usask.ca>, 2008-2014.
+#
 msgid ""
 msgstr ""
-"[34mProject-Id-Version: R 3.2.0\n"
-"[34mReport-Msgid-Bugs-To: bugs.r-project.org\n[39;49m"
-"[34mPOT-Creation-Date: 2015-01-14 11:38+0000\n[39;49m"
-"[34mPO-Revision-Date: 2015-01-14 17:24-0600\n"
-"[34mLast-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n[39;49m"
-"[34mLanguage-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
-"[34mLanguage: ko\n[39;49m"
-"[34mMIME-Version: 1.0\n[39;49m"
-"[34mContent-Type: text/plain; charset=UTF-8\n[39;49m"
-"[34mContent-Transfer-Encoding: 8bit\n[39;49m"
-"[34mPlural-Forms: nplurals=1; plural=0;\n[39;49m"
+"Project-Id-Version: R 3.1.0\n"
+"Report-Msgid-Bugs-To: bugs.r-project.org\n"
+"POT-Creation-Date: 2015-01-14 11:38+0000\n"
+"PO-Revision-Date: 2014-03-27 09:07-0600\n"
+"Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
+"Language-Team:  <chl948@mail.usask.ca>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: fork.c:253 fork.c:256
-msgid "[35munable to create a pipe[39;49m"
-msgstr "[34m파이프를 생성할 수 없습니다[39;49m"
+#: class_support.c:32
+msgid "calling the C routine used as an initializer for 'externalptr' objects"
+msgstr "'externalptr' 객체들에 대한 초기화 매체로서 사용될 C 루틴을 호출합니다"
 
-#: fork.c:274
-#, [4mc-format[24m
-msgid "[35munable to fork, possible reason: [1m%s[39;49m(B[m"
-msgstr "[34m포크할 수 없습니다. 가능한 이유는 다음과 같습니다: [1m%s[39;49m(B[m"
+#: do_substitute_direct.c:41
+msgid "invalid list for substitution"
+msgstr "대입에 유효하지 않은 목록입니다"
 
-#: fork.c:320
-msgid "[35mmemory allocation error[39;49m"
-msgstr "[34m메모리 할당 에러입니다[39;49m"
+#: methods_list_dispatch.c:149
+msgid ""
+"could not find the skeleton calls for 'methods' (package detached?): expect "
+"very bad things to happen"
+msgstr ""
+"'methods'에 대한 skeleton calls를 찾지 못했습니다 (패키지가 분리되어 있나"
+"요?):  매우 안 좋은 경우가 발생할 것 같습니다"
 
-#: fork.c:373
-msgid "[35monly children can send data to the master process[39;49m"
-msgstr "[34m오로지  자식들만이 데이터를 마스터 프로세스에 보낼 수 있습니다[39;49m"
+#: methods_list_dispatch.c:215
+#, c-format
+msgid ""
+"no \"allMethods\" slot found in object of class \"%s\" used as methods list "
+"for function '%s'"
+msgstr ""
+"함수 '%2$s'에 대한 메소드 목록으로서 사용될 클래스 \"%1$s\"의 객체 내에서 "
+"\"allMethods\" 슬롯을 찾을 수 없습니다"
 
-#: fork.c:375
-msgid "[35mthere is no pipe to the master process[39;49m"
-msgstr "[34m마스터 프로세스로 연결된 파이프가 없습니다[39;49m"
+#: methods_list_dispatch.c:443
+#, c-format
+msgid "no generic function definition found for '%s'"
+msgstr "'%s'을 위한 제네릭 함수정의를 찾을 수 없습니다"
 
-#: fork.c:377
-msgid "[35mcontent to send must be RAW, use serialize() if needed[39;49m"
-msgstr "[34m보내야할 컨텐츠는 반드시 RAW이어야 하며, 필요하다면 serialize()를 이용하세요[39;49m"
+#: methods_list_dispatch.c:446
+#, c-format
+msgid ""
+"no generic function definition found for '%s' in the supplied environment"
+msgstr "주어진 environment에서 '%s'를 위한 제네릭 함수정의를 찾을 수 없습니다"
 
-#: fork.c:386 fork.c:393 fork.c:717
-msgid "[35mwrite error, closing pipe to the master[39;49m"
-msgstr "[34m쓰기 에러입니다.  마스에 연결된 파이프를 닫습니다[39;49m"
+#: methods_list_dispatch.c:481
+#, c-format
+msgid ""
+"invalid generic function object for method selection for function '%s': "
+"expected a function or a primitive, got an object of class \"%s\""
+msgstr ""
+"함수 '%1$s'를 위한 메소드선택에 유효하지 않은 제네릭 함수객체입니다:  함수 또"
+"는 프리미티브가 와야하는데 클래스 \"%2$s\"의 객체를 얻었습니다"
 
-#: fork.c:406
-msgid "[35monly the master process can send data to a child process[39;49m"
-msgstr "[34m오로지 마스터 프로세스만이 데이터를 자식프로세스에 보낼 수 있습니다[39;49m"
+#: methods_list_dispatch.c:496
+#, c-format
+msgid "no direct or inherited method for function '%s' for this call"
+msgstr "이 호출을 위해 함수 '%s'에 대한 직접적 또는 상속적인 메소드가 없습니다"
 
-#: fork.c:413
-#, [4mc-format[24m
-msgid "[35mchild [1m%d(B[m[35m does not exist[39;49m"
-msgstr "[34mchild [1m%d(B[m[34m는 존재하지 않습니다[39;49m"
+#: methods_list_dispatch.c:522 methods_list_dispatch.c:1059
+msgid "invalid object (non-function) used as method"
+msgstr "메소드로서 사용된 유효하지 않은 객체입니다"
 
-#: fork.c:419
-msgid "[35mwrite error[39;49m"
-msgstr "[34m쓰기 에러입니다[39;49m"
+#: methods_list_dispatch.c:543
+#, c-format
+msgid "could not find symbol '%s' in frame of call"
+msgstr "호출 프레임에서 심볼 '%s'를 찾을 수 없었습니다"
 
-#: fork.c:487 fork.c:611
-#, [4mc-format[24m
-msgid "[35merror '[1m%s(B[m[35m' in select[39;49m"
-msgstr "[34m선택중 에러 '[1m%s(B[m[34m'가 발생했습니다[39;49m"
+#: methods_list_dispatch.c:551
+#, c-format
+msgid ""
+"invalid symbol in checking for missing argument in method dispatch: expected "
+"a name, got an object of class \"%s\""
+msgstr ""
+"메소드 디스패치에서 누락된 인자를 확인하는데 유효하지 않은 심볼입니다:  이름"
+"이 와야하는데 클래스 \"%s\"의 객체를 얻었습니다"
 
-#: fork.c:699
-msgid "[35m'mckill' failed[39;49m"
-msgstr "[34m'mckill' 실패했습니다[39;49m"
+#: methods_list_dispatch.c:554
+msgid "use of NULL environment is defunct"
+msgstr "NULL environment의 사용은 더이상 지원되지 않습니다"
 
-#: fork.c:709
-msgid "[35m'mcexit' can only be used in a child process[39;49m"
-msgstr "[34m'mcexit'는 오로지 자식 프로세스에서만 사용됩니다[39;49m"
+#: methods_list_dispatch.c:558
+#, c-format
+msgid ""
+"invalid environment in checking for missing argument, '%s', in methods "
+"dispatch: got an object of class \"%s\""
+msgstr ""
+"메소드 디스패치에 누락된 인자 '%1$s'를 확인하는데 유효하지 않은 environment인"
+"데, 클래스 \"%2$s\"의 객체를 얻었습니다"
 
-#: fork.c:730
-msgid "[35m'mcexit' failed[39;49m"
-msgstr "[34m'mcexit' 실패했습니다[39;49m"
+#: methods_list_dispatch.c:584
+#, c-format
+msgid ""
+"object of class \"%s\" used as methods list for function '%s' ( no "
+"'argument' slot)"
+msgstr ""
+"함수 '%2$s'를 위한 메소드 목록으로서 사용된 클래스 \"%1$s\"의 객체입니다 "
+"('argument' 슬롯이 없습니다)"
 
-#: fork.c:759 fork.c:768
-msgid "[35minvalid CPU affinity specification[39;49m"
-msgstr "[34m유효하지 않은 CPU affinity 지정입니다[39;49m"
+#: methods_list_dispatch.c:595
+#, c-format
+msgid ""
+"(in selecting a method for function '%s') '...' and related variables cannot "
+"be used for methods dispatch"
+msgstr ""
+"(함수 '%s'를 위한 메소드를 선택을 할 때) '...'와 관계가 있는 변수들은 메소드 "
+"디스패치에 사용될 수 없습니다"
 
-#: fork.c:779
-msgid "[35mrequested CPU set is too large for this system[39;49m"
-msgstr "[34m요청된 CPU 셋은 이 시스템에 너무 큽니다[39;49m"
+#: methods_list_dispatch.c:598
+#, c-format
+msgid ""
+"(in selecting a method for function '%s') the 'environment' argument for "
+"dispatch must be an R environment; got an object of class \"%s\""
+msgstr ""
+"(함수 '%1$s'를 위한 메소드를 선택할 때) 디스패치를 위한 'environment' 인자는 "
+"반드시 R environment이어야 하는데, 클래스 \"%2$s\"를 얻습니다"
 
-#: fork.c:802
-msgid "[35mretrieving CPU affinity set failed[39;49m"
-msgstr "[34mCPU affiniy 셋을 검색하는데 실패했습니다[39;49m"
+#: methods_list_dispatch.c:612 methods_list_dispatch.c:624
+#: methods_list_dispatch.c:1012
+#, c-format
+msgid ""
+"error in evaluating the argument '%s' in selecting a method for function "
+"'%s': %s"
+msgstr ""
+"함수 '%2$s'를 위한 메소드 선택시 인수 '%1$s'를 평가하는데 오류가 발생했습니"
+"다: %3$s"
+
+#: methods_list_dispatch.c:632
+#, c-format
+msgid "no matching method for function '%s' (argument '%s', with class \"%s\")"
+msgstr ""
+"함수 '%1$s'에 일치하는 메소드가 없습니다 (클래스 \"%3$s\"을 가지는 인자 "
+"'%2$s')"
+
+#: methods_list_dispatch.c:639
+#, c-format
+msgid ""
+"recursive use of function '%s' in method selection, with no default method"
+msgstr "메소드 선택시 기본 메소드가 없는 함수 '%s'의 재귀적 사용입니다"
+
+#: methods_list_dispatch.c:703
+msgid ""
+"in processing 'callNextMethod', found a '...' in the matched call, but no "
+"corresponding '...' argument"
+msgstr ""
+"'callNextMethod'를 처리중, 일치하는 호출에서 '...'를 찾았지만, 상응하느느 "
+"'...' 인자는 없었습니다"
+
+#: methods_list_dispatch.c:716
+#, c-format
+msgid "error in evaluating a 'primitive' next method: %s"
+msgstr "'primitive' 다음 메소드를 평가하는 중에 에러가 발생했습니다:%s"
+
+#: methods_list_dispatch.c:814
+#, c-format
+msgid "'%s' must be a single string (got a character vector of length %d)"
+msgstr ""
+"'%s'는 반드시 단일 문자열이어야 합니다 (길이가 %d인 문자형 벡터를 얻습니다)"
+
+#: methods_list_dispatch.c:818
+#, c-format
+msgid "'%s' must be a non-empty string; got an empty string"
+msgstr "'%s'는 반드시 빈 문자열이어야 하는데, 빈 문자열을 얻었습니다"
+
+#: methods_list_dispatch.c:822
+#, c-format
+msgid "'%s' must be a single string (got an object of class \"%s\")"
+msgstr ""
+"'%s'는 반드시 단일 문자열이어야 합니다 (클래스 \"%s\"의 객체를 얻었습니다)"
+
+#: methods_list_dispatch.c:893
+msgid "class should be either a character-string name or a class definition"
+msgstr "클래스는 문자열 이름 또는 클래스 정의 중 하나 이어야 합니다"
+
+#: methods_list_dispatch.c:972
+#, c-format
+msgid "failed to get the generic for the primitive \"%s\""
+msgstr "프리미티브 \"%s\"를 위한 제네릭을 얻는데 실패했습니다"
+
+#: methods_list_dispatch.c:978
+#, c-format
+msgid ""
+"expected a generic function or a primitive for dispatch, got an object of "
+"class \"%s\""
+msgstr ""
+"제네릭 함수 또는 디스패치를 위한 프리미티브가 와야 하는데, 클래스 \"%s\"의 객"
+"체를 얻었습니다"
