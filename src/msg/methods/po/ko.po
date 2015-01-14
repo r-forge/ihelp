@@ -1,199 +1,149 @@
-# Korean translation for R methods package
-# src/library/methods/po/ko.po
-# Copyright (C) 1995-2015 The R Core Team
-#
-# This file is distributed under the same license as the R methods package.
-# Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.
-#
+[32m# Korean translation for R methods package[39;49m
+[32m# src/library/methods/po/ko.po[39;49m
+[32m# Copyright (C) 1995-2015 The R Core Team[39;49m
+[32m#[39;49m
+[32m# This file is distributed under the same license as the R methods package.[39;49m
+[32m# Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.[39;49m
+[32m#[39;49m
 msgid ""
 msgstr ""
-"Project-Id-Version: R 3.2.0\n"
-"Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2014-12-30 15:52+0000\n"
-"PO-Revision-Date: 2015-01-11 08:50-0600\n"
-"Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
-"Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
-"Language: ko\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"[34mProject-Id-Version: R 3.2.0\n"
+"[34mReport-Msgid-Bugs-To: bugs.r-project.org\n[39;49m"
+"[34mPOT-Creation-Date: 2015-01-14 11:38+0000\n[39;49m"
+"[34mPO-Revision-Date: 2015-01-14 17:24-0600\n"
+"[34mLast-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n[39;49m"
+"[34mLanguage-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
+"[34mLanguage: ko\n[39;49m"
+"[34mMIME-Version: 1.0\n[39;49m"
+"[34mContent-Type: text/plain; charset=UTF-8\n[39;49m"
+"[34mContent-Transfer-Encoding: 8bit\n[39;49m"
+"[34mPlural-Forms: nplurals=1; plural=0;\n[39;49m"
 
 #: class_support.c:32
-msgid "calling the C routine used as an initializer for 'externalptr' objects"
-msgstr "'externalptr' 객체들에 대한 초기화 매체로서 사용될 C 루틴을 호출합니다"
+msgid "[35mcalling the C routine used as an initializer for 'externalptr' objects[39;49m"
+msgstr "[34m'externalptr' 객체들에 대한 초기화 매체로서 사용될 C 루틴을 호출합니다[39;49m"
 
 #: do_substitute_direct.c:41
-msgid "invalid list for substitution"
-msgstr "대입에 유효하지 않은 목록입니다"
+msgid "[35minvalid list for substitution[39;49m"
+msgstr "[34m대입에 유효하지 않은 목록입니다[39;49m"
 
 #: methods_list_dispatch.c:149
-msgid ""
-"could not find the skeleton calls for 'methods' (package detached?): expect "
-"very bad things to happen"
-msgstr ""
-"'methods'에 대한 skeleton calls를 찾지 못했습니다 (패키지가 분리되어 있나"
-"요?):  매우 안 좋은 경우가 발생할 것 같습니다"
+msgid "[35mcould not find the skeleton calls for 'methods' (package detached?): expect very bad things to happen[39;49m"
+msgstr "[34m'methods'에 대한 skeleton calls를 찾지 못했습니다 (패키지가 분리되어 있나요?):  매우 안 좋은 경우가 발생할 것 같습니다[39;49m"
 
 #: methods_list_dispatch.c:215
-#, c-format
-msgid ""
-"no \"allMethods\" slot found in object of class \"%s\" used as methods list "
-"for function '%s'"
-msgstr ""
-"함수 '%2$s'에 대한 메소드 목록으로서 사용될 클래스 \"%1$s\"의 객체 내에서 "
-"\"allMethods\" 슬롯을 찾을 수 없습니다"
+#, [4mc-format[24m
+msgid "[35mno \"allMethods\" slot found in object of class \"[1m%s(B[m[35m\" used as methods list for function '[1m%s(B[m[35m'[39;49m"
+msgstr "[34m함수 '[1m%2$s(B[m[34m'에 대한 메소드 목록으로서 사용될 클래스 \"[1m%1$s(B[m[34m\"의 객체 내에서 \"allMethods\" 슬롯을 찾을 수 없습니다[39;49m"
 
-#: methods_list_dispatch.c:434
-#, c-format
-msgid "no generic function definition found for '%s'"
-msgstr "'%s'을 위한 제네릭 함수정의를 찾을 수 없습니다"
+#: methods_list_dispatch.c:443
+#, [4mc-format[24m
+msgid "[35mno generic function definition found for '[1m%s(B[m[35m'[39;49m"
+msgstr "[34m'[1m%s(B[m[34m'을 위한 제네릭 함수정의를 찾을 수 없습니다[39;49m"
 
-#: methods_list_dispatch.c:437
-#, c-format
-msgid ""
-"no generic function definition found for '%s' in the supplied environment"
-msgstr "주어진 environment에서 '%s'를 위한 제네릭 함수정의를 찾을 수 없습니다"
+#: methods_list_dispatch.c:446
+#, [4mc-format[24m
+msgid "[35mno generic function definition found for '[1m%s(B[m[35m' in the supplied environment[39;49m"
+msgstr "[34m주어진 environment에서 '[1m%s(B[m[34m'를 위한 제네릭 함수정의를 찾을 수 없습니다[39;49m"
 
-#: methods_list_dispatch.c:472
-#, c-format
-msgid ""
-"invalid generic function object for method selection for function '%s': "
-"expected a function or a primitive, got an object of class \"%s\""
-msgstr ""
-"함수 '%1$s'를 위한 메소드선택에 유효하지 않은 제네릭 함수객체입니다:  함수 또"
-"는 프리미티브가 와야하는데 클래스 \"%2$s\"의 객체를 얻었습니다"
+#: methods_list_dispatch.c:481
+#, [4mc-format[24m
+msgid "[35minvalid generic function object for method selection for function '[1m%s(B[m[35m': expected a function or a primitive, got an object of class \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m함수 '[1m%1$s(B[m[34m'를 위한 메소드선택에 유효하지 않은 제네릭 함수객체입니다:  함수 또는 프리미티브가 와야하는데 클래스 \"[1m%2$s(B[m[34m\"의 객체를 얻었습니다[39;49m"
 
-#: methods_list_dispatch.c:487
-#, c-format
-msgid "no direct or inherited method for function '%s' for this call"
-msgstr "이 호출을 위해 함수 '%s'에 대한 직접적 또는 상속적인 메소드가 없습니다"
+#: methods_list_dispatch.c:496
+#, [4mc-format[24m
+msgid "[35mno direct or inherited method for function '[1m%s(B[m[35m' for this call[39;49m"
+msgstr "[34m이 호출을 위해 함수 '[1m%s(B[m[34m'에 대한 직접적 또는 상속적인 메소드가 없습니다[39;49m"
 
-#: methods_list_dispatch.c:513 methods_list_dispatch.c:1050
-msgid "invalid object (non-function) used as method"
-msgstr "메소드로서 사용된 유효하지 않은 객체입니다"
+#: methods_list_dispatch.c:522 methods_list_dispatch.c:1059
+msgid "[35minvalid object (non-function) used as method[39;49m"
+msgstr "[34m메소드로서 사용된 유효하지 않은 객체입니다[39;49m"
 
-#: methods_list_dispatch.c:534
-#, c-format
-msgid "could not find symbol '%s' in frame of call"
-msgstr "호출 프레임에서 심볼 '%s'를 찾을 수 없었습니다"
+#: methods_list_dispatch.c:543
+#, [4mc-format[24m
+msgid "[35mcould not find symbol '[1m%s(B[m[35m' in frame of call[39;49m"
+msgstr "[34m호출 프레임에서 심볼 '[1m%s(B[m[34m'를 찾을 수 없었습니다[39;49m"
 
-#: methods_list_dispatch.c:542
-#, c-format
-msgid ""
-"invalid symbol in checking for missing argument in method dispatch: expected "
-"a name, got an object of class \"%s\""
-msgstr ""
-"메소드 디스패치에서 누락된 인자를 확인하는데 유효하지 않은 심볼입니다:  이름"
-"이 와야하는데 클래스 \"%s\"의 객체를 얻었습니다"
+#: methods_list_dispatch.c:551
+#, [4mc-format[24m
+msgid "[35minvalid symbol in checking for missing argument in method dispatch: expected a name, got an object of class \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m메소드 디스패치에서 누락된 인자를 확인하는데 유효하지 않은 심볼입니다:  이름이 와야하는데 클래스 \"[1m%s(B[m[34m\"의 객체를 얻었습니다[39;49m"
 
-#: methods_list_dispatch.c:545
-msgid "use of NULL environment is defunct"
-msgstr "NULL environment의 사용은 더이상 지원되지 않습니다"
+#: methods_list_dispatch.c:554
+msgid "[35muse of NULL environment is defunct[39;49m"
+msgstr "[34mNULL environment의 사용은 더이상 지원되지 않습니다[39;49m"
 
-#: methods_list_dispatch.c:549
-#, c-format
-msgid ""
-"invalid environment in checking for missing argument, '%s', in methods "
-"dispatch: got an object of class \"%s\""
-msgstr ""
-"메소드 디스패치에 누락된 인자 '%1$s'를 확인하는데 유효하지 않은 environment인"
-"데, 클래스 \"%2$s\"의 객체를 얻었습니다"
+#: methods_list_dispatch.c:558
+#, [4mc-format[24m
+msgid "[35minvalid environment in checking for missing argument, '[1m%s(B[m[35m', in methods dispatch: got an object of class \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m메소드 디스패치에 누락된 인자 '[1m%1$s(B[m[34m'를 확인하는데 유효하지 않은 environment인데, 클래스 \"[1m%2$s(B[m[34m\"의 객체를 얻었습니다[39;49m"
 
-#: methods_list_dispatch.c:575
-#, c-format
-msgid ""
-"object of class \"%s\" used as methods list for function '%s' ( no "
-"'argument' slot)"
-msgstr ""
-"함수 '%2$s'를 위한 메소드 목록으로서 사용된 클래스 \"%1$s\"의 객체입니다 "
-"('argument' 슬롯이 없습니다)"
+#: methods_list_dispatch.c:584
+#, [4mc-format[24m
+msgid "[35mobject of class \"[1m%s(B[m[35m\" used as methods list for function '[1m%s(B[m[35m' ( no 'argument' slot)[39;49m"
+msgstr "[34m함수 '[1m%2$s(B[m[34m'를 위한 메소드 목록으로서 사용된 클래스 \"[1m%1$s(B[m[34m\"의 객체입니다 ('argument' 슬롯이 없습니다)[39;49m"
 
-#: methods_list_dispatch.c:586
-#, c-format
-msgid ""
-"(in selecting a method for function '%s') '...' and related variables cannot "
-"be used for methods dispatch"
-msgstr ""
-"(함수 '%s'를 위한 메소드를 선택을 할 때) '...'와 관계가 있는 변수들은 메소드 "
-"디스패치에 사용될 수 없습니다"
+#: methods_list_dispatch.c:595
+#, [4mc-format[24m
+msgid "[35m(in selecting a method for function '[1m%s(B[m[35m') '...' and related variables cannot be used for methods dispatch[39;49m"
+msgstr "[34m(함수 '[1m%s(B[m[34m'를 위한 메소드를 선택을 할 때) '...'와 관계가 있는 변수들은 메소드 디스패치에 사용될 수 없습니다[39;49m"
 
-#: methods_list_dispatch.c:589
-#, c-format
-msgid ""
-"(in selecting a method for function '%s') the 'environment' argument for "
-"dispatch must be an R environment; got an object of class \"%s\""
-msgstr ""
-"(함수 '%1$s'를 위한 메소드를 선택할 때) 디스패치를 위한 'environment' 인자는 "
-"반드시 R environment이어야 하는데, 클래스 \"%2$s\"를 얻습니다"
+#: methods_list_dispatch.c:598
+#, [4mc-format[24m
+msgid "[35m(in selecting a method for function '[1m%s(B[m[35m') the 'environment' argument for dispatch must be an R environment; got an object of class \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m(함수 '[1m%1$s(B[m[34m'를 위한 메소드를 선택할 때) 디스패치를 위한 'environment' 인자는 반드시 R environment이어야 하는데, 클래스 \"[1m%2$s(B[m[34m\"를 얻습니다[39;49m"
 
-#: methods_list_dispatch.c:603 methods_list_dispatch.c:615
-#: methods_list_dispatch.c:1003
-#, c-format
-msgid ""
-"error in evaluating the argument '%s' in selecting a method for function "
-"'%s': %s"
-msgstr ""
-"함수 '%2$s'를 위한 메소드 선택시 인수 '%1$s'를 평가하는데 오류가 발생했습니"
-"다: %3$s"
+#: methods_list_dispatch.c:612 methods_list_dispatch.c:624
+#: methods_list_dispatch.c:1012
+#, [4mc-format[24m
+msgid "[35merror in evaluating the argument '[1m%s(B[m[35m' in selecting a method for function '[1m%s(B[m[35m': [1m%s[39;49m(B[m"
+msgstr "[34m함수 '[1m%2$s(B[m[34m'를 위한 메소드 선택시 인수 '[1m%1$s(B[m[34m'를 평가하는데 오류가 발생했습니다: [1m%3$s[39;49m(B[m"
 
-#: methods_list_dispatch.c:623
-#, c-format
-msgid "no matching method for function '%s' (argument '%s', with class \"%s\")"
-msgstr ""
-"함수 '%1$s'에 일치하는 메소드가 없습니다 (클래스 \"%3$s\"을 가지는 인자 "
-"'%2$s')"
+#: methods_list_dispatch.c:632
+#, [4mc-format[24m
+msgid "[35mno matching method for function '[1m%s(B[m[35m' (argument '[1m%s(B[m[35m', with class \"[1m%s(B[m[35m\")[39;49m"
+msgstr "[34m함수 '[1m%1$s(B[m[34m'에 일치하는 메소드가 없습니다 (클래스 \"[1m%3$s(B[m[34m\"을 가지는 인자 '[1m%2$s(B[m[34m')[39;49m"
 
-#: methods_list_dispatch.c:630
-#, c-format
-msgid ""
-"recursive use of function '%s' in method selection, with no default method"
-msgstr "메소드 선택시 기본 메소드가 없는 함수 '%s'의 재귀적 사용입니다"
+#: methods_list_dispatch.c:639
+#, [4mc-format[24m
+msgid "[35mrecursive use of function '[1m%s(B[m[35m' in method selection, with no default method[39;49m"
+msgstr "[34m메소드 선택시 기본 메소드가 없는 함수 '[1m%s(B[m[34m'의 재귀적 사용입니다[39;49m"
 
-#: methods_list_dispatch.c:694
-msgid ""
-"in processing 'callNextMethod', found a '...' in the matched call, but no "
-"corresponding '...' argument"
-msgstr ""
-"'callNextMethod'를 처리중, 일치하는 호출에서 '...'를 찾았지만, 상응하느느 "
-"'...' 인자는 없었습니다"
+#: methods_list_dispatch.c:703
+msgid "[35min processing 'callNextMethod', found a '...' in the matched call, but no corresponding '...' argument[39;49m"
+msgstr "[34m'callNextMethod'를 처리중, 일치하는 호출에서 '...'를 찾았지만, 상응하느느 '...' 인자는 없었습니다[39;49m"
 
-#: methods_list_dispatch.c:707
-#, c-format
-msgid "error in evaluating a 'primitive' next method: %s"
-msgstr "'primitive' 다음 메소드를 평가하는 중에 에러가 발생했습니다:%s"
+#: methods_list_dispatch.c:716
+#, [4mc-format[24m
+msgid "[35merror in evaluating a 'primitive' next method: [1m%s[39;49m(B[m"
+msgstr "[34m'primitive' 다음 메소드를 평가하는 중에 에러가 발생했습니다:[1m%s[39;49m(B[m"
 
-#: methods_list_dispatch.c:805
-#, c-format
-msgid "'%s' must be a single string (got a character vector of length %d)"
-msgstr ""
-"'%s'는 반드시 단일 문자열이어야 합니다 (길이가 %d인 문자형 벡터를 얻습니다)"
+#: methods_list_dispatch.c:814
+#, [4mc-format[24m
+msgid "[35m'[1m%s(B[m[35m' must be a single string (got a character vector of length [1m%d(B[m[35m)[39;49m"
+msgstr "[34m'[1m%s(B[m[34m'는 반드시 단일 문자열이어야 합니다 (길이가 [1m%d(B[m[34m인 문자형 벡터를 얻습니다)[39;49m"
 
-#: methods_list_dispatch.c:809
-#, c-format
-msgid "'%s' must be a non-empty string; got an empty string"
-msgstr "'%s'는 반드시 빈 문자열이어야 하는데, 빈 문자열을 얻었습니다"
+#: methods_list_dispatch.c:818
+#, [4mc-format[24m
+msgid "[35m'[1m%s(B[m[35m' must be a non-empty string; got an empty string[39;49m"
+msgstr "[34m'[1m%s(B[m[34m'는 반드시 빈 문자열이어야 하는데, 빈 문자열을 얻었습니다[39;49m"
 
-#: methods_list_dispatch.c:813
-#, c-format
-msgid "'%s' must be a single string (got an object of class \"%s\")"
-msgstr ""
-"'%s'는 반드시 단일 문자열이어야 합니다 (클래스 \"%s\"의 객체를 얻었습니다)"
+#: methods_list_dispatch.c:822
+#, [4mc-format[24m
+msgid "[35m'[1m%s(B[m[35m' must be a single string (got an object of class \"[1m%s(B[m[35m\")[39;49m"
+msgstr "[34m'[1m%s(B[m[34m'는 반드시 단일 문자열이어야 합니다 (클래스 \"[1m%s(B[m[34m\"의 객체를 얻었습니다)[39;49m"
 
-#: methods_list_dispatch.c:884
-msgid "class should be either a character-string name or a class definition"
-msgstr "클래스는 문자열 이름 또는 클래스 정의 중 하나 이어야 합니다"
+#: methods_list_dispatch.c:893
+msgid "[35mclass should be either a character-string name or a class definition[39;49m"
+msgstr "[34m클래스는 문자열 이름 또는 클래스 정의 중 하나 이어야 합니다[39;49m"
 
-#: methods_list_dispatch.c:963
-#, c-format
-msgid "failed to get the generic for the primitive \"%s\""
-msgstr "프리미티브 \"%s\"를 위한 제네릭을 얻는데 실패했습니다"
+#: methods_list_dispatch.c:972
+#, [4mc-format[24m
+msgid "[35mfailed to get the generic for the primitive \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m프리미티브 \"[1m%s(B[m[34m\"를 위한 제네릭을 얻는데 실패했습니다[39;49m"
 
-#: methods_list_dispatch.c:969
-#, c-format
-msgid ""
-"expected a generic function or a primitive for dispatch, got an object of "
-"class \"%s\""
-msgstr ""
-"제네릭 함수 또는 디스패치를 위한 프리미티브가 와야 하는데, 클래스 \"%s\"의 객"
-"체를 얻었습니다"
+#: methods_list_dispatch.c:978
+#, [4mc-format[24m
+msgid "[35mexpected a generic function or a primitive for dispatch, got an object of class \"[1m%s(B[m[35m\"[39;49m"
+msgstr "[34m제네릭 함수 또는 디스패치를 위한 프리미티브가 와야 하는데, 클래스 \"[1m%s(B[m[34m\"의 객체를 얻었습니다[39;49m"
