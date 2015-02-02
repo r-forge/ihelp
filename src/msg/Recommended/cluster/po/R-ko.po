@@ -1,7 +1,7 @@
 # Korean translations for cluster package.
 # Recommended/cluster/po/R-ko.po
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
-# 
+#
 # This file is distributed under the same license as the R cluster package.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
 #
@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cluster 1.15.2\n"
-"POT-Creation-Date: 2014-03-26 21:02\n"
-"PO-Revision-Date: 2015-01-28 01:32-0600\n"
+"POT-Creation-Date: 2015-01-30 12:14\n"
+"PO-Revision-Date: 2015-02-01 22:59-0600\n"
 "Last-Translator:Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -187,6 +187,9 @@ msgstr "결측되지 않은 모든 값들이 동일한 변수가 발견되어 �
 msgid "No clustering performed, all variables have at least one missing value."
 msgstr "모든 변수들이 적어도 하나 이상의 결측값을 가지기 때문에 군집화 과정이 수행되지 않았습니다."
 
+msgid "Cannot keep data when 'x' is a dissimilarity!"
+msgstr ""
+
 msgid "Number of clusters 'k' must be in {1,2, .., n-1}; hence n >= 2"
 msgstr "군집(clusters)의 개수 'k'는 반드시 {1,2, .., n-1}내에 존재해야 하므로 n >= 2 입니다."
 
@@ -232,8 +235,12 @@ msgstr "군집벡터(clustering vector)의 길이가 올바르지 않습니다."
 msgid "NA-values are not allowed in clustering vector"
 msgstr "군집벡터(clustering vector)에서는 NA가 허용되지 않습니다."
 
-msgid "Error in Fortran routine for the spanning ellipsoid,\n rank problem??"
-msgstr "스패닝 타원(spanning ellipsoid)를 생성하는 포트란 루틴(Fortran routine)에서 에러가 발생했습니다. \n 위수(rank) 문제인가요??"
+msgid ""
+"Error in Fortran routine for the spanning ellipsoid,\n"
+" rank problem??"
+msgstr ""
+"스패닝 타원(spanning ellipsoid)를 생성하는 포트란 루틴(Fortran routine)에서 에러가 발생했습니다. \n"
+" 위수(rank) 문제인가요??"
 
 msgid "'col.clus' should have length 4 when color is TRUE"
 msgstr "color가 TRUE일 때, 'col.clus'의 길이는 반드시 4이어야 합니다."
@@ -259,7 +266,7 @@ msgstr "dissimilarity 'dist' 또는 diss.matrix 'dmatrix' 둘 중에 하나가 �
 msgid "'dmatrix' is not a dissimilarity matrix compatible to 'x'"
 msgstr "'dmatrix'는 'x'에 부합하는 (또는 사용할 수 있는) 비유사성 행렬(dissimilarity matrix)이 아닙니다."
 
-msgid "clustering 'x' and dissimilarity 'dist' are incompatible" 
+msgid "clustering 'x' and dissimilarity 'dist' are incompatible"
 msgstr "'x'와 'dist'가 서로 부합하지 않습니다."
 
 msgid "invalid silhouette structure"
@@ -271,14 +278,14 @@ msgstr "'silhouette' 객체가 올바르지 않습니다."
 msgid "No valid silhouette information (#{clusters} =? 1)"
 msgstr "유효한 silhouette 정보가 없습니다 (#{clusters} =? 1)"
 
-msgid        "Observation %s has *only* NAs --> omit it for clustering"
+msgid "Observation %s has *only* NAs --> omit it for clustering"
 msgid_plural "Observations %s have *only* NAs --> omit them for clustering!"
-msgstr[0]    "관측값 %s는 *오로지* NA만을 가집니다 --> 군집화를 위하여 이것들을 제거합니다!"
+msgstr[0] "관측값 %s는 *오로지* NA만을 가집니다 --> 군집화를 위하여 이것들을 제거합니다!"
 
-msgid        "%d observation (%s) has *only* NAs --> omit them for clustering!"
+msgid "%d observation (%s) has *only* NAs --> omit them for clustering!"
 msgid_plural "%d observations (%s ...) have *only* NAs --> omit them for clustering!"
-msgstr[0]    "%d개의 관측값들이 (%s) *오로지* NA만을 가집니다 --> 군집화를 위하여 이들을 제거합니다!"
+msgstr[0] "%d개의 관측값들이 (%s) *오로지* NA만을 가집니다 --> 군집화를 위하여 이들을 제거합니다!"
 
-msgid        "setting 'logical' variable %s to type 'asymm'"
+msgid "setting 'logical' variable %s to type 'asymm'"
 msgid_plural "setting 'logical' variables %s to type 'asymm'"
-msgstr[0]    "'logical' 변수 %s를 유형(type) 'asymm'으로 설정합니다."
+msgstr[0] "'logical' 변수 %s를 유형(type) 'asymm'으로 설정합니다."

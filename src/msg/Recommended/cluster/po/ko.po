@@ -1,7 +1,7 @@
 # Korean translations for cluster package.
 # Recommended/cluster/po/ko.po
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
-# 
+#
 # This file is distributed under the same license as the R cluster package.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
 # Reviewing process is completed (15-JAN-2015)
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cluster 1.15.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-27 11:59+0100\n"
-"PO-Revision-Date: 2015-01-28 01:32-0600\n"
+"POT-Creation-Date: 2015-01-30 12:14+0100\n"
+"PO-Revision-Date: 2015-02-01 22:59-0600\n"
 "Last-Translator:Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -36,12 +36,21 @@ msgstr "clara()'s C level dysta2(nsam=%d, p=%d, nbest=%d, n=%d) gave 'toomany_NA
 msgid "C level dysta2(): nsel[%s= %d] = %d is outside 0..n, n=%d"
 msgstr "C level dysta2(): nsel[%s= %d] = %d is outside 0..n, n=%d"
 
-#: pam.c:460
+#: pam.c:153
+msgid "Invalid 'medoids'"
+msgstr ""
+
+#: pam.c:642
 #, c-format
 msgid "pam(): Bug in C level cstat(), k=%d: ntt=0"
 msgstr "pam(): Bug in C level cstat(), k=%d: ntt=0"
 
-#: twins.c:225
+#: twins.c:153
+#, c-format
+msgid "agnes(method=%d, par.method=*) lead to invalid merge; step %d, D(.,.)=%g"
+msgstr ""
+
+#: twins.c:260
 #, c-format
 msgid "invalid method (code %d)"
 msgstr "메소드가 올바르지 않습니다 (code %d)."
