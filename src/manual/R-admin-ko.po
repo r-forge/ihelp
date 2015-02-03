@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-01-13 09:53-0600\n"
-"PO-Revision-Date: 2015-01-13 09:53-0600\n"
+"POT-Creation-Date: 2015-02-02 20:50-0600\n"
+"PO-Revision-Date: 2015-02-02 20:50-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -307,6 +307,10 @@ msgstr ""
 #. type: Plain text
 msgid "In addition, binary distributions are available for some common Linux distributions and for OS X (formerly Mac OS).  See the @acronym{FAQ} for current details.  These are installed in platform-specific ways, so for the rest of this chapter we consider only building from the sources."
 msgstr "또한, 일부 많이 쓰이는 리눅스 배포들과 OS X (이전의 Mac OS)를 위한 바이너리 배포들이 있습니다. 더 자세한 사항은 @acronym{FAQ}를 살펴보세요. 이들은 플랫폼에 맞춘 특정한 방식으로 설치됩니다. 이 챕터의 나머지 부분에서는 소스로부터 직접 구축하는 것에 대해서만 알아볼 것입니다."
+#
+#. type: Plain text
+msgid "Cross-building is not possible: installing @R{} builds a minimal version of @R{} and then runs many @R{} scripts to complete the build."
+msgstr ""
 #
 #. type: node
 #, no-wrap
@@ -1190,6 +1194,11 @@ msgstr ""
 #
 #. type: node
 #, no-wrap
+msgid "Support for libcurl"
+msgstr ""
+#
+#. type: node
+#, no-wrap
 msgid "Checking the build"
 msgstr ""
 #
@@ -1395,6 +1404,18 @@ msgstr ""
 #
 #. type: Plain text
 msgid "Unlike on a Unix-alike, it is normally necessary to call @code{icuSetCollate} to set a locale before ICU is actually used for collation, or set the environment variable @env{R_ICU_LOCALE}."
+msgstr ""
+#
+#. type: Plain text
+msgid "@code{libcurl} version 7.28.0 or later can be used to support @code{curlGetHeaders} and the @code{\"libcurl\"} methods of @code{download.file} and @code{url}."
+msgstr ""
+#
+#. type: Plain text
+msgid "A suitable distribution can be found @emph{via} @uref{http://www.stats.ox.ac.uk/pub/Rtools/libs.html} and its unpacked location should be specified in file @file{MkRules.local}."
+msgstr ""
+#
+#. type: Plain text
+msgid "For secure use of e.g.@: @samp{https://} URLs Windows users may need to specify the path to up-to-date @emph{CA root certificates}: see @code{?download.file}."
 msgstr ""
 #
 #. type: Plain text
@@ -2129,7 +2150,7 @@ msgid "There is provision to make use of a system-wide library of installed exte
 msgstr ""
 #
 #. type: Plain text
-msgid "On OS X @code{install.packages} works as it does on other Unix-alike systems, but there are additional types starting with @code{mac.binary} (available for the @acronym{CRAN} distribution but not when compiling from source: @code{mac.binary.mavericks} for a `Mavericks' build and @code{mac.binary} for a `Snow Leopard' build with @code{\"default\"} a synonym for the apppriate variant) which can be passed to @code{install.packages} in order to download and install binary packages from a suitable repository.  These OS X binary package files have the extension @samp{.tgz}.  The @Rapp{} GUI provides menus for installation of either binary or source packages, from @acronym{CRAN} or local files."
+msgid "On OS X @code{install.packages} works as it does on other Unix-alike systems, but there are additional types starting with @code{mac.binary} (available for the @acronym{CRAN} distribution but not when compiling from source: @code{mac.binary.mavericks} for a `Mavericks' build and @code{mac.binary} for a `Snow Leopard' build with @code{\"default\"} a synonym for the appropriate variant) which can be passed to @code{install.packages} in order to download and install binary packages from a suitable repository.  These OS X binary package files have the extension @samp{.tgz}.  The @Rapp{} GUI provides menus for installation of either binary or source packages, from @acronym{CRAN} or local files."
 msgstr ""
 #
 #. type: Plain text
@@ -2913,8 +2934,8 @@ msgid "This appendix gives details of programs you will need to build @R{} on Un
 msgstr "이 appendix는 유닉스 계열의 플랫폼들에서 R을 구축하기 위해서 필요할 설명들과,@R{} 안에서 @command{configure}를 통해 검색할 수 있는 프로그램들의 자세한 설명을 줄 것입니다."
 #
 #. type: Plain text
-msgid "Remember that some package management systems (such as @acronym{RPM} and deb) make a distinction between the user version of a package and the development version.  The latter usually has the same name but with the extension @samp{-devel} or @samp{-dev}: you need both versions installed."
-msgstr "@acronym{RPM}과 deb와 같은 몇몇의 패키지 관리 시스템들은 기억하시고  패키지의 사용자 버전과 개발자 버전을 구분하십시오. 개발자 버전은 보통같은 이름을 가지고 있지만,extension @samp{-devel} 혹은 @samp{-dev} 가집니다:여러분은 두 가지 모두의 버전들을 설치해야 합니다."
+msgid "Remember that some package management systems (such as @acronym{RPM} and Debian/Ubuntu's) make a distinction between the user version of a package and the development version.  The latter usually has the same name but with the extension @samp{-devel} or @samp{-dev}: you need both versions installed."
+msgstr ""
 #
 #. type: node
 #, no-wrap
@@ -3017,7 +3038,7 @@ msgid "The bitmapped graphics devices @code{jpeg()}, @code{png()} and @code{tiff
 msgstr "비트맵된 그래픽 장치들@code{jpeg()}, @code{png()} 와 @code{tiff()} 는 알맞은 헤더들과 라이브러리의 설치를 필요로 합니다: 순서대로, @code{jpeg} (버전 6b 이나 그 후 버전들, 혹은 @code{libjpeg-turbo}) 혹은 @code{libpng}(버전 1.2.7 이나 그 후 버전들,1.4.x 와 1.5.x 포함) 그리고  @code{zlib} 나 @code{libtiff} (모든 최근 버전 –3.9.[4567] 와 4.0.[23] 가 테스트 되었습니다)입니다.  그들은 @code{X11} 이나 @code{cairo}  둘 중 하나의 지원 또한 필요합니다 (위를 참조하세요). 대부분의 시스템 설치에서, TIFF 라이브러리들은 JPEG 라이브러리들이 존재하고 아마도 명백하게 링크 되어있는 것을 요함으로, @option{--without-jpeglib 는tiff()}장치 또한 disable할 수도 있습니다. @code{tiff()}장치는 @code{libtiff}의 기초 구축만을 요합니다 (JPEG의 지원 조차도 필요하지 않습니다). 최근 버전들은 존재되어 질 필요가 있을 수도 있는 @code{lzma}, @code{jbig} 그리고 @code{jpeg12}와 같은@code{libtiff}로 링크되어질 몇몇의 다른라이브러리들도 허용합니다.???"
 #
 #. type: Plain text
-msgid "If you have them installed (including the appropriate headers and of suitable versions), system versions of @code{zlib} (version 1.2.5 or later),, @code{libbz2} (version 1.0.6 or later: called @pkg{bzip2-libs}/@pkg{bzip2-devel} or @pkg{libbz2-1.0}/@pkg{libbz2-dev} by some Linux distributions) and PCRE (version 8.10 or later, preferably 8.32 or later@footnote{and not PCRE2, which started at version 10.0. PCRE must be built with UTF-8 support (not the default) and support for Unicode properties is assumed by some @R{} packages.  Only the first is tested by @command{configure}, but both can be checked at run-time by calling @code{pcre_config()}. JIT support is desirable for the best performance.}): will be used, otherwise versions in the @R{} sources will be compiled in.  The external versions can be avoided by configure options @option{--without-system-zlib}, @option{--without-system-bzlib} and or @option{--without-system-pcre}."
+msgid "If you have them installed (including the appropriate headers and of suitable versions), system versions of @code{zlib} (version 1.2.5 or later),, @code{libbz2} (version 1.0.6 or later: called @pkg{bzip2-libs}/@pkg{bzip2-devel} or @pkg{libbz2-1.0}/@pkg{libbz2-dev} by some Linux distributions) and PCRE (version 8.10 or later, preferably 8.32 or later@footnote{and not PCRE2, which started at version 10.0. PCRE must be built with UTF-8 support (not the default) and support for Unicode properties is assumed by some @R{} packages.  Only the first is tested by @command{configure}, but both can be checked at run-time by calling @code{pcre_config()}. JIT support is desirable for the best performance.}): will be used, otherwise versions in the @R{} sources will be compiled in.  The external versions can be avoided by configure options @option{--without-system-zlib}, @option{--without-system-bzlib} and @option{--without-system-pcre}."
 msgstr ""
 #
 #. type: Plain text
@@ -3025,8 +3046,8 @@ msgid "Option @option{--with-system-tre} is also available: it needs a recent ve
 msgstr ""
 #
 #. type: Plain text
-msgid "@code{liblzma} from @code{xz-utils} version 5.0.3 or later will be used if installed: the version in the @R{} sources can be selected instead by configuring with @option{--without-system-xz}.  Systems differ in what they call the package including this: e.g.@: on Fedora the library is in @samp{xz-libs} and the headers in @samp{xz-devel}."
-msgstr "@code{xz-utils}버전 4.999 혹은 그 이후 버전 (가급적이면 5.0.0 혹은 이후 버전)에서의 @code{liblzma} 는 만약 설치되었다면 사용될 것입니다: @R{} 소스들에서의 버전은@option{--with-system-xz=no}로 설정함으로써 대신 선택될 수 있습니다. X11 클립보드 선택의 사용은 @code{Xmu} 헤더들과 라이브러리들을 요합니다.이들은 보통 X11 설치의 일부이지만 (예로 Debian meta-package @samp{xorg-dev}),몇몇의 배포들은 이를 더 작은 파트들로 나누었으므로, 예를 들어 Fedora의 최근 버전들은 @samp{libXmu} 와 @samp{libXmu-devel} RPM들을 필요로 합니다."
+msgid "Library @code{liblzma} from @code{xz-utils} version 5.0.3 or later will be used if installed: the version in the @R{} sources can be selected instead by configuring with @option{--without-system-xz}.  Systems differ in what they call the package including this: e.g.@: on Fedora the library is in @samp{xz-libs} and the headers in @samp{xz-devel}."
+msgstr ""
 #
 #. type: Plain text
 msgid "An implementation of @acronym{XDR} is required, and the @R{} sources contain one which is likely to suffice (although a system version may have higher performance).  @acronym{XDR} is part of @acronym{RPC} and historically has been part of @file{libc} on a Unix-alike.  However some builds of @code{glibc} hide it with the intention that the @acronym{TI-RPC} library be used instead, in which case @code{libtirpc} (and its development version) needs to be installed, and its headers need to be on the C include path or in @file{/usr/include/tirpc}."
@@ -3039,6 +3060,10 @@ msgstr ""
 #. type: Plain text
 msgid "Some systems (notably OS X and at least some FreeBSD systems) have inadequate support for collation in multibyte locales.  It is possible to replace the OS's collation support by that from ICU (International Components for Unicode, @uref{http://site.icu-project.org/}), and this provides much more precise control over collation on all systems.  ICU is available as sources and as binary distributions for (at least) most Linux distributions, Solaris, FreeBSD and AIX, usually as @code{libicu} or @code{icu4c}.  It will be used by default where available (including on OS X >= 10.4): should a very old or broken version of ICU be found this can be suppressed by @option{--without-ICU}."
 msgstr "몇몇의 시스템들은 (특히 OS X와 적어도 몇몇의 FreeBSD 시스템들)multibyte locale들에서의 collation에 대한 불충분한 지원을 합니다. ICU(International Components for Unicode, @uref{http://site.icu-project.org/})에서부터 지원되는 OS의 collation을 바꾸는 것이 가능하고, 이는 collation의 모든 시스템 상의 훨씬 더 정확한 컨드롤을 제공합니다. ICU는 (적어도) 대부분의 리눅스 배포들, Solaris, FreeBSD 그리고 AIX에서, 보통 @code{libicu} 이 나 @code{icu4c}처럼 소스들과 바이너리 distribution들 처럼 사용이 가능합니다. (OS X >= 10.4 에서 포함)이는 사용이 가능한 곳에서 디폴트로 쓰일 것입니다: 매우 오래된 혹은 고장난 ICU 버전이 찾아진다면, 이는 @option{--without-ICU}에 의해 억제될 수 있습니다."
+#
+#. type: Plain text
+msgid "If @code{libcurl} version 7.28.0 or later is available (including its development files), it will be linked in to support @code{curlGetHeaders} and the @code{\"libcurl\"} methods of @code{download.file} and @code{url}.  This is recommended as it gives access to @samp{https://} and @samp{ftps://} URLs."
+msgstr ""
 #
 #. type: Plain text
 msgid "The @code{bitmap} and @code{dev2bitmap} devices and function @code{embedFonts()} use ghostscript (@uref{http://www.ghostscript.com/}).  This should either be in your path when the command is run, or its full path specified by the environment variable @env{R_GSCMD} at that time."
@@ -3750,6 +3775,10 @@ msgstr ""
 #. type: Plain text
 msgid "If you need to re-configure @R{} with different options you may need to run @code{make clean} or even @code{make distclean} before doing so."
 msgstr "만약 @R{}을 다른 옵션들로 re-configure해야한다면, 그 전에 @code{make clean} 혹은 @code{make distclean}을 실행해야 할 수도 있습니다."
+#
+#. type: Plain text
+msgid "The @file{configure} script has other generic options added by @command{autoconf} and which are not supported for @R{}: in particular building for one architecture on a different host is not possible."
+msgstr ""
 #
 #. type: Plain text
 msgid "Translation of messages is supported via @acronym{GNU} @code{gettext} unless disabled by the configure option @option{--disable-nls}.  The @code{configure} report will show @code{NLS} as one of the `Additional capabilities' if support has been compiled in, and running in an English locale (but not the @code{C} locale) will include"
@@ -5634,8 +5663,18 @@ msgid "The file @file{xzutils.zip} contains the program @command{xz} which can b
 msgstr ""
 #
 #
+#~ msgid "Remember that some package management systems (such as @acronym{RPM} and deb) make a distinction between the user version of a package and the development version.  The latter usually has the same name but with the extension @samp{-devel} or @samp{-dev}: you need both versions installed."
+#~ msgstr "@acronym{RPM}과 deb와 같은 몇몇의 패키지 관리 시스템들은 기억하시고  패키지의 사용자 버전과 개발자 버전을 구분하십시오. 개발자 버전은 보통같은 이름을 가지고 있지만,extension @samp{-devel} 혹은 @samp{-dev} 가집니다:여러분은 두 가지 모두의 버전들을 설치해야 합니다."
+#
+#
+#~ msgid "@code{liblzma} from @code{xz-utils} version 5.0.3 or later will be used if installed: the version in the @R{} sources can be selected instead by configuring with @option{--without-system-xz}.  Systems differ in what they call the package including this: e.g.@: on Fedora the library is in @samp{xz-libs} and the headers in @samp{xz-devel}."
+#~ msgstr "@code{xz-utils}버전 4.999 혹은 그 이후 버전 (가급적이면 5.0.0 혹은 이후 버전)에서의 @code{liblzma} 는 만약 설치되었다면 사용될 것입니다: @R{} 소스들에서의 버전은@option{--with-system-xz=no}로 설정함으로써 대신 선택될 수 있습니다. X11 클립보드 선택의 사용은 @code{Xmu} 헤더들과 라이브러리들을 요합니다.이들은 보통 X11 설치의 일부이지만 (예로 Debian meta-package @samp{xorg-dev}),몇몇의 배포들은 이를 더 작은 파트들로 나누었으므로, 예를 들어 Fedora의 최근 버전들은 @samp{libXmu} 와 @samp{libXmu-devel} RPM들을 필요로 합니다."
+#
+#
+#
 #~ msgid "You need to have the files for a complete R build, including bitmap and Tcl/Tk support and the manuals, as well as the recommended packages and Inno Setup (@pxref{The Inno Setup installer})."
 #~ msgstr "완전한 R을 구축하기 위해서는 bitmap과 Tcl/Tk의 지원, 매뉴얼을 포함하여 추천된 패키지들과 Inno Setup (@pxref{The Inno Setup installer})들이 필요합니다. @c Once everything is set up 모든 것들이 준비되었을때, 다음을 실행하는 것은 모든 조작들과 인스톨러를 생성할 것이고, 이들은 @file{gnuwin32/cran} 서브디렉토리에 놓이게 된 후 빌드를 확인할 것입니다."
+#
 #
 #
 #
@@ -5644,8 +5683,10 @@ msgstr ""
 #
 #
 #
+#
 #~ msgid "The PDF manuals can be made by"
 #~ msgstr "PDF 매뉴얼들은 아래에 의해서 만들어 질 수 있습니다. "
+#
 #
 #
 #
@@ -5654,8 +5695,10 @@ msgstr ""
 #
 #
 #
+#
 #~ msgid "On OS X @code{install.packages} works as it does on other Unix-alike systems, but there is an additional type @code{mac.binary} (the default in the @acronym{CRAN} distribution but not when compiling from source: @code{mac.binary.mavericks} for a Mavericks build) which can be passed to @code{install.packages} in order to download and install binary packages from a suitable repository.  These OS X binary package files have the extension @samp{.tgz}.  The @Rapp{} GUI provides menus for installation of either binary or source packages, from @acronym{CRAN} or local files."
 #~ msgstr "@strong{NB:} OS X에 대한 정보는 R 3.0.0.의 출시되기 전에 바뀔 것이라고 예상됩니다.OS X에서 @code{install.packages}는 다른 유닉스 계열 시스템들에서처럼 작동하지만,알맞은 저장소로부터 binary 패키지들을 다운로드하고 설치할 수 있도록 @code{install.packages} 로 패스되어질 수 있는 @code{mac.binary*} (@acronym{CRAN}distribution에서 기본값인)와  @R{}의 @acronym{CRAN} 구축을 위한 기본값인 @code{mac.binary.leopard}의 추가적인 타입들이 있습니다. 이런 OS X binary 패키지 파일들은 확장자 @samp{tgz}을 가지고 있습니다. @Rapp{}[ GUI는 @acronym{CRAN}이나 로컬파일들로부터 binary나 source 패키지들 중 하나의 설치를 제공합니다."
+#
 #
 #
 #
@@ -5664,10 +5707,12 @@ msgstr ""
 #
 #
 #
+#
 #, fuzzy
 #~| msgid "@code{\"mac.binary\"}: located at @file{bin/macosx/contrib/@var{3.y}} for @R{} versions @var{3.y.z} and containing @file{.tgz} files."
 #~ msgid "@code{\"mac.binary.mavericks\"}: located at @file{bin/macosx/mavericks/contrib/@var{3.y}} for @R{} versions @var{3.y.z} to be run under OS X 10.9 (Mavericks) and later, containing @file{.tgz} files."
 #~ msgstr "@code{\"mac.binary.leopard\"}: @R{} 버전들 @var{x.y.z}을 위해 '@file{bin/macosx/leopard/contrib/x.y}' 에 위치하고 '@file{.tgz}' 파일들을 포함하고 있습니다."
+#
 #
 #
 #
