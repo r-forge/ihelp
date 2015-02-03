@@ -1,7 +1,7 @@
 # Korean translations for R-manual-translation package
 # doc/manual/R-exts.texi
 # Copyright (C) 2008-2015 Chel Hee Lee, and R Translation Teams
-# 
+#
 # This file is distributed under the same license as the R distribution.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.
 #
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-01-10 23:18-0600\n"
-"PO-Revision-Date: 2015-01-13 09:54-0600\n"
+"POT-Creation-Date: 2015-02-02 20:50-0600\n"
+"PO-Revision-Date: 2015-02-02 20:50-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -847,7 +847,7 @@ msgid "The @file{R} subdirectory contains @R{} code files, only.  The code files
 msgstr ""
 #
 #. type: Plain text
-msgid "Two exceptions are allowed: if the @file{R} subdirectory contains a file @file{sysdata.rda} (a saved image of one or more @R{} objects: please use suitable compression as suggested by @code{tools::resaveRdaFiles}, and see also @samp{SysDataCompression} @file{DESCRIPTION} field.)  this will be lazy-loaded into the namespace environment -- this is intended for system datasets that are not intended to be user-accessible @emph{via} @code{data}.  Also, files ending in @samp{.in} will be allowed in the @file{R} directory to allow a @file{configure} script to generate suitable files."
+msgid "Two exceptions are allowed: if the @file{R} subdirectory contains a file @file{sysdata.rda} (a saved image of one or more @R{} objects: please use suitable compression as suggested by @code{tools::resaveRdaFiles}, and see also the @samp{SysDataCompression} @file{DESCRIPTION} field.)  this will be lazy-loaded into the namespace environment -- this is intended for system datasets that are not intended to be user-accessible @emph{via} @code{data}.  Also, files ending in @samp{.in} will be allowed in the @file{R} directory to allow a @file{configure} script to generate suitable files."
 msgstr ""
 #
 #. type: Plain text
@@ -1017,7 +1017,7 @@ msgid "Data files can have one of three types as indicated by their extension: p
 msgstr ""
 #
 #. type: Plain text
-msgid "Images (extensions @file{.RData} or @file{.rda}) can contain references to the namespaces of packages that were used to create them.  Preferably there should be no such references in data files, and in any case they should only be to packages listed in the @code{Depends} and @code{Imports} fields, as otherwise it may be impossible to install the package.  To check for such references, load all the images into a vanilla @R{} session, and look at the output of @code{loadedNamespaces()}."
+msgid "Images (extensions @file{.RData}@footnote{People who have trouble with case are advised to use @file{.rda} as a common error is to refer to @file{abc.RData} as @file{abc.Rdata}!} or @file{.rda}) can contain references to the namespaces of packages that were used to create them.  Preferably there should be no such references in data files, and in any case they should only be to packages listed in the @code{Depends} and @code{Imports} fields, as otherwise it may be impossible to install the package.  To check for such references, load all the images into a vanilla @R{} session, and look at the output of @code{loadedNamespaces()}."
 msgstr ""
 #
 #. type: Plain text
@@ -3374,7 +3374,7 @@ msgid "and checking if any of the symbols marked @code{U} is unexpected is a goo
 msgstr ""
 #
 #. type: itemize
-msgid "Linkers have a lot of freedom in how to resolve entry points in dynamically-loaded code, so the results may differ by platform.  One area that has caused grief is packages including copies of standard system software such as @code{libz} (especially those already linked into @R{}).  In the case in point, entry point @code{gzgets} was sometimes resolved against the old version compiled into the package, sometimes against the copy compiled into @R{} and sometimes against the system dynamic library.  The only safe solution is to rename the entry points in the copy in the package."
+msgid "Linkers have a lot of freedom in how to resolve entry points in dynamically-loaded code, so the results may differ by platform.  One area that has caused grief is packages including copies of standard system software such as @code{libz} (especially those already linked into @R{}).  In the case in point, entry point @code{gzgets} was sometimes resolved against the old version compiled into the package, sometimes against the copy compiled into @R{} and sometimes against the system dynamic library.  The only safe solution is to rename the entry points in the copy in the package.  We have even seen problems with entry point name @code{myprintf}, which is a system entry point@footnote{in @file{libselinux}.} on some Linux systems."
 msgstr ""
 #
 #. type: itemize
@@ -3398,7 +3398,7 @@ msgid "It is bad practice for package code to alter the search path using @code{
 msgstr ""
 #
 #. type: itemize
-msgid "Examples can be run interactively @emph{via} @code{example} as well as in batch mode when checking.  So they should behave appropriately in both scenarios, conditioning by @code{interactive()} the parts which need an operator or observer.  For instance, progress bars are only appropriate in interactive use, as is displaying help pages or calling @code{View()} (see below)."
+msgid "Examples can be run interactively @emph{via} @code{example} as well as in batch mode when checking.  So they should behave appropriately in both scenarios, conditioning by @code{interactive()} the parts which need an operator or observer.  For instance, progress bars@footnote{except perhaps the simplest kind as used by @code{download.file()} on non-Windows OSes.} are only appropriate in interactive use, as is displaying help pages or calling @code{View()} (see below)."
 msgstr ""
 #
 #. type: Plain text
@@ -11899,6 +11899,25 @@ msgstr ""
 #
 #. type: Plain text
 msgid "(If remapping is suppressed, the Normal distribution names are @code{Rf_dnorm4}, @code{Rf_pnorm5} and @code{Rf_qnorm5}.)"
+msgstr ""
+#
+#. type: Plain text
+msgid "For the negative binomial distribution (@samp{nbinom}), in addition to the @code{(size, prob)} parametrization, the alternative @code{(size, mu)} parametrization is provided as well by functions @samp{[dpqr]nbinom_mu()}, see @kbd{?NegBinomial} in @R{}."
+msgstr ""
+#
+#. type: Plain text
+msgid "Functions @code{dpois_raw(x, *)} and @code{dbinom_raw(x, *)} are versions of the Poisson and binomial probability mass functions which work continuously in @code{x}, whereas @code{dbinom(x,*)} and @code{dpois(x,*)} only return non zero values for integer @code{x}."
+msgstr ""
+#
+#. type: group
+#, no-wrap
+msgid ""
+"double dbinom_raw(double x, double n, double p, double q, int give_log)\n"
+"double dpois_raw (double x, double lambda, int give_log)\n"
+msgstr ""
+#
+#. type: Plain text
+msgid "Note that @code{dbinom_raw()} gets both @eqn{p, p} and @eqn{q = 1-p, q = 1-p} which may be advantageous when one of them is close to @eqn{1, 1}."
 msgstr ""
 #
 #. type: findex
