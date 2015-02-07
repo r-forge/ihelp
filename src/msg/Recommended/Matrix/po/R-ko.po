@@ -3,8 +3,13 @@
 # Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>, Martin Maechler <mmaechler+Matrix at gmail.com>
 #
 # This file is distributed under the same license as the R Matrix package.
-# Chel Hee Lee <chl948@mail.usask.ca>, 2015.
+# Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
 #
+# Reviewing process is in progress (06-FEB-2015)
+# Source code review is in progress (06-FEB-2015)
+# QC: PASS
+# Freezing on 06-FEB-2015 for R-3.1.3
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Matrix 1.1-3\n"
@@ -25,6 +30,8 @@ msgid ""
 "not-yet-implemented method for %s(<%s>).\n"
 " ->>  Ask the package authors to implement the missing feature."
 msgstr ""
+"%s(<%s>)의 경우에 대하여 아직 구현되지 않은 메소드입니다.\n"
+" ->> 패키지 저자에게 이 기능에 대한 구현을 문의하시길 부탁드립니다."
 
 msgid ""
 "not-yet-implemented method for %s(<%s>, <%s>).\n"
@@ -59,16 +66,16 @@ msgid "[[ suppressing %d column names %s ]]"
 msgstr ""
 
 msgid "'x' must be \"sparseMatrix\""
-msgstr ""
+msgstr "'x'는 반드시 \"sparseMatrix\"이어야 합니다."
 
 msgid "not yet implemented for class %s"
-msgstr ""
+msgstr "클래스 %s의 경우에 아직 구현되지 않았습니다."
 
 msgid "not a triangular matrix"
-msgstr ""
+msgstr "삼각행렬(triangular matrix)가 아닙니다."
 
 msgid "not a symmetric matrix; consider forceSymmetric() or symmpart()"
-msgstr ""
+msgstr "대칭행렬(symmetric matrix)가 아닙니다.  forceSymmtric() 또는 symmpart() 함수의 사용을 고려해 보시길 바랍니다."
 
 msgid "not yet implemented for matrix with typeof %s"
 msgstr ""
@@ -581,7 +588,7 @@ msgid "'nearPD()' did not converge in %d iterations"
 msgstr ""
 
 msgid "cannot coerce 'NA's to \"nsparseMatrix\""
-msgstr ""
+msgstr "'NA'를 \"nsparseMatrix\"으로 강제변환(coerce)할 수 없습니다."
 
 msgid "temporarily disabled"
 msgstr ""
@@ -590,7 +597,7 @@ msgid "coercion to \"pMatrix\" only works from integer numeric"
 msgstr ""
 
 msgid "not a square matrix"
-msgstr ""
+msgstr "정방행렬(square matrix)이 아닙니다."
 
 msgid "not-yet-implemented method for <%s> %%*%% <%s>"
 msgstr ""
@@ -619,22 +626,22 @@ msgid "variable '%s' is absent, its contrast will be ignored"
 msgstr ""
 
 msgid "only 2-dimensional tables can be directly coerced to sparse matrices"
-msgstr ""
+msgstr "오로지 2차원 테이블만이 희소행렬(sparse matrice)로 강제변환(coerced)될 수 있습니다."
 
 msgid "exactly one of 'i', 'j', or 'p' must be missing from call"
 msgstr ""
 
 msgid "'p' must be a non-decreasing vector (0, ...)"
-msgstr ""
+msgstr "'p'는 반드시 감소하지 않는(non-decreasing) 벡터 (0, ...)이어야 합니다."
 
 msgid "NA's in (i,j) are not allowed"
-msgstr ""
+msgstr "(i,j) 위치에 있는 요소에 NA를 사용할 수 없습니다."
 
 msgid "symmetric matrix must be square"
-msgstr ""
+msgstr "대칭행렬(symmetric matrix)는 반드시 정방(square)이어야 합니다."
 
 msgid "length(i) is not a multiple of length(x)"
-msgstr ""
+msgstr "length(i)는 length(x)의 배수가 아닙니다."
 
 msgid "only square matrices can be used as incidence matrices for graphs"
 msgstr ""
@@ -655,7 +662,7 @@ msgid "rcond(.) via sparse -> dense coercion"
 msgstr ""
 
 msgid "'V' is not a *square* matrix"
-msgstr ""
+msgstr "'V'는 정방행렬(square matrix)가 아닙니다."
 
 msgid "number of non zeros is smaller than 'nnz' because of duplicated (i,j)s"
 msgstr ""
@@ -664,34 +671,34 @@ msgid "qr.R(<sparse>) may differ from qr.R(<dense>) because of permutations.  Po
 msgstr ""
 
 msgid "cannot coerce 'NA's to \"nsparseVector\""
-msgstr ""
+msgstr "'NA'를 \"nsparseVector\"로 강제변환(coerce) 할 수 없습니다."
 
 msgid "'x' must inherit from \"sparseVector\""
-msgstr ""
+msgstr "'x'는 \"sparseVector\"로부터의 상속(inherit)이어야 합니다."
 
 msgid "'ncol' must be >= 0"
-msgstr ""
+msgstr "'ncol'은 반드시 >= 0 이어야 합니다. "
 
 msgid "'nrow' must be >= 0"
-msgstr ""
+msgstr "'nrow'는 반드시 >= 0 이어야 합니다."
 
 msgid "Must specify 'nrow' when 'symmetric' is true"
-msgstr ""
+msgstr "'symmetric'이 참인 경우에는 반드시 'nrow'를 지정해 주어야 합니다."
 
 msgid "'nrow' and 'ncol' must be the same when 'symmetric' is true"
-msgstr ""
+msgstr "'symmetric'이 참인 경우에는 반드시 'nrow'와 'ncol'을 지정해 주어야 합니다."
 
 msgid "'x' must have length nrow^2 when 'symmetric' is true"
-msgstr ""
+msgstr "'symmetric'이 참인 경우에는 'x'의 길이는 반드시 nrow^2와 같아야 합니다."
 
 msgid "'ncol' is not a factor of length(x)"
-msgstr ""
+msgstr "'ncol'는 길이가 length(x)인 요인(factor)가 아닙니다."
 
 msgid "'nrow' is not a factor of length(x)"
-msgstr ""
+msgstr "'nrow'는 길이가 length(x)인 요인(factor)가 아닙니다."
 
 msgid "Class %s is not yet implemented"
-msgstr ""
+msgstr "클래스 %s는 아직 구현되지 않았습니다."
 
 msgid "index must be numeric, logical or sparseVector for indexing sparseVectors"
 msgstr ""
@@ -703,7 +710,7 @@ msgid "(un)packing only applies to dense matrices, class(x)='%s'"
 msgstr ""
 
 msgid "'x' is not symmetric nor triangular"
-msgstr ""
+msgstr "'x'는 대칭(symmetric)도 아니고 삼각(triangular)도 아닙니다."
 
 msgid ""
 "extra argument %s will be disregarded in\n"
