@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-02-02 20:50-0600\n"
-"PO-Revision-Date: 2015-02-03 20:25-0600\n"
+"POT-Creation-Date: 2015-02-09 01:53-0600\n"
+"PO-Revision-Date: 2015-02-09 01:53-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+#
+#. type: Plain text
+msgid "f\\input texinfo"
+msgstr ""
 #
 #. type: top
 #, no-wrap
@@ -436,7 +440,7 @@ msgid "The @samp{Package}, @samp{Version}, @samp{License}, @samp{Description}, @
 msgstr ""
 #
 #. type: Plain text
-msgid "The mandatory @samp{Package} field gives the name of the package.  This should contain only (@acronym{ASCII}) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot."
+msgid "The mandatory @samp{Package} field gives the name of the package.  This should contain only (@acronym{ASCII}) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot.  If it needs explaining, this should be done in the @samp{Description} field (and not the @samp{Title} field)."
 msgstr ""
 #
 #. type: Plain text
@@ -452,7 +456,7 @@ msgid "The mandatory @samp{Description} field should give a @emph{comprehensive}
 msgstr ""
 #
 #. type: Plain text
-msgid "The mandatory @samp{Title} field should give a short description of the package.  Some package listings may truncate the title to 65 characters.  It should use @emph{title case} (that is, use capitals for the principal words), not use any markup, not have any continuation lines, and not end in a period."
+msgid "The mandatory @samp{Title} field should give a @emph{short} description of the package.  Some package listings may truncate the title to 65 characters.  It should use @emph{title case} (that is, use capitals for the principal words: @code{tools::toTitleCase} can help you with this), not use any markup, not have any continuation lines, and not end in a period (unless part of @dots{}).  Do not repeat the package name: it is often used prefixed by the name."
 msgstr ""
 #
 #. type: Plain text
@@ -939,7 +943,7 @@ msgid "The @file{data} subdirectory is for data files: @xref{Data in packages}."
 msgstr ""
 #
 #. type: Plain text
-msgid "The @file{demo} subdirectory is for @R{} scripts (for running @emph{via} @code{demo()}) that demonstrate some of the functionality of the package.  Demos may be interactive and are not checked automatically, so if testing is desired use code in the @file{tests} directory to achieve this.  The script files must start with a (lower or upper case) letter and have one of the extensions @file{.R} or @file{.r}.  If present, the @file{demo} subdirectory should also have a @file{00Index} file with one line for each demo, giving its name and a description separated by white space. (Note that it is not possible to generate this index file automatically.)  Note that a demo does not have a specified encoding and so should be an @acronym{ASCII} file (@pxref{Encoding issues}).  As from @R{} 3.0.0 @code{demo()} will use the package encoding if there is one, but this is mainly useful for non-@acronym{ASCII} comments."
+msgid "The @file{demo} subdirectory is for @R{} scripts (for running @emph{via} @code{demo()}) that demonstrate some of the functionality of the package.  Demos may be interactive and are not checked automatically, so if testing is desired use code in the @file{tests} directory to achieve this.  The script files must start with a (lower or upper case) letter and have one of the extensions @file{.R} or @file{.r}.  If present, the @file{demo} subdirectory should also have a @file{00Index} file with one line for each demo, giving its name and a description separated by a tab or at least three spaces. (This index file is not generated automatically.)  Note that a demo does not have a specified encoding and so should be an @acronym{ASCII} file (@pxref{Encoding issues}).  As from @R{} 3.0.0 @code{demo()} will use the package encoding if there is one, but this is mainly useful for non-@acronym{ASCII} comments."
 msgstr ""
 #
 #. type: cindex
@@ -1654,7 +1658,7 @@ msgid "There is nothing to say what version of OpenMP is supported: version 3.0 
 msgstr ""
 #
 #. type: Plain text
-msgid "The performance of OpenMP varies substantially between platforms.  Both the Windows and the Apple OS X@footnote{using the @code{libgomp} from @command{g++} 4.2: using @code{libiomp} versions seems better.} implementations have substantial overheads and are only beneficial if quite substantial tasks are run in parallel."
+msgid "The performance of OpenMP varies substantially between platforms.  Both the Windows and the Apple OS X@footnote{using the @code{libgomp} from @command{g++} 4.2: versions using @code{libiomp} seem better.} implementations have substantial overheads and are only beneficial if quite substantial tasks are run in parallel.  Also, on Windows new threads are started with the default@footnote{Windows, not MinGW-w64 default.} FPU control word, so computations done on OpenMP threads will not make use of extended-precision arithmetic which is the default for the main process."
 msgstr ""
 #
 #. type: Plain text
