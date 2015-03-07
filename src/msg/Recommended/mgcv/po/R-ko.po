@@ -4,7 +4,7 @@
 #
 # This file is distributed under the same license as the R mgcv package.
 # Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
-# 
+#
 # Reviewing process is in progress (06-FEB-2015)
 # The original source code review is in progress (06-FEB-2015)
 # QC: PASS
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.1.3\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2014-07-21 09:50\n"
-"PO-Revision-Date: 2015-02-28 17:06-0600\n"
+"POT-Creation-Date: 2015-03-02 20:44\n"
+"PO-Revision-Date: 2015-03-06 20:53-0600\n"
 "Last-Translator:Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -72,6 +72,9 @@ msgstr "AR.start는 반드시 논리형(logical)이어야 합니다."
 msgid "Model has more coefficients than data"
 msgstr "모형(model)이 가진 계수(coefficients)가 데이터의 개수보다 많습니다."
 
+msgid "chunk.size < number of coefficients. Reset to %d"
+msgstr ""
+
 msgid "model matrix too dense for any possible benefit from sparse"
 msgstr ""
 
@@ -89,6 +92,9 @@ msgstr "모델을 업데이트할 수 없습니다."
 
 msgid "link not available for coxph family; available link is \"identity\""
 msgstr "coxph 페밀리(family)에 사용할 수 있는 링크(link)가 아닙니다.  사용가능한 링크(link)는 \"identity\"입니다."
+
+msgid "NA times supplied for cox.ph prediction"
+msgstr ""
 
 msgid "link not available for ordered categorical family; available links are \"identity\""
 msgstr "순서범주형 페밀리(ordered categorical family)에 사용할 수 있는 링크(link)가 아닙니다.  사용가능한 링크(link)는  \"identity\"입니다."
@@ -131,6 +137,12 @@ msgstr "영과잉(zero inflated)모형에 사용할 수 있는 링크(link)가 �
 
 msgid "negative values not allowed for the zero inflated Poisson family"
 msgstr "영과잉 포아송 페밀리(zero inflated Poisson family)에는 음의 값을 사용할 수 없습니다."
+
+msgid "Non-integer response variables are not allowed with ziP"
+msgstr ""
+
+msgid "Using ziP for binary data makes no sense"
+msgstr ""
 
 msgid "fast REML optimizer reached iteration limit"
 msgstr ""
@@ -300,6 +312,9 @@ msgstr ""
 msgid "iteration limit reached: max abs grad = %g"
 msgstr "최대반복(iteration limit)에 도달했습니다: max abs grad = %g"
 
+msgid "dist not recognised"
+msgstr "dist의 정보를 찾을 수 없습니다."
+
 msgid "gaulss requires 2 links specified as character strings"
 msgstr "gaulss 모형은 문자열로 표현된 2개의 링크(link)를 필요로 합니다."
 
@@ -317,6 +332,12 @@ msgstr "링크는"
 
 msgid "parameter of ziplss"
 msgstr "(ziplss의 모수)에 사용할 수 없습니다."
+
+msgid "Non-integer response variables are not allowed with ziplss"
+msgstr ""
+
+msgid "Using ziplss for binary data makes no sense"
+msgstr ""
 
 msgid "An object of length %d does not match the required parameter size"
 msgstr "object의 길이 %d는 요구되어지는 모수의 크기와 일치하지 않습니다."
@@ -408,8 +429,44 @@ msgstr ""
 msgid "Nested smooths must be fully random"
 msgstr ""
 
-msgid "dist not recognised"
-msgstr "dist의 정보를 찾을 수 없습니다."
+msgid "sorry link not yet handled"
+msgstr ""
+
+msgid "weights ignored"
+msgstr ""
+
+#, fuzzy
+msgid "family not implemented yet"
+msgstr "family에 대한 정보를 찾을 수 없습니다."
+
+msgid "jagam requires a file for the JAGS model specification"
+msgstr ""
+
+msgid "smoothing parameter prior choise not recognised, reset to gamma"
+msgstr ""
+
+msgid "coefficient simulation data is missing"
+msgstr ""
+
+msgid "burnin too large, reset"
+msgstr ""
+
+msgid "rho missing from simulation data edf.type reset to 2"
+msgstr ""
+
+#, fuzzy
+msgid "residuals argument not supported"
+msgstr "plot.gam에 전달되는 인자 residuals의 길이가 올바르지 않아 무시되었습니다. "
+
+#, fuzzy
+msgid "unconditional argument not meaningful here"
+msgstr "실행가능(feasible)한 초기모수값(initial parameters)이 아닙니다."
+
+msgid "by.resids argument not supported"
+msgstr ""
+
+msgid "all.terms argument not supported"
+msgstr ""
 
 msgid "silly tolerance supplied"
 msgstr "허용오차(tolerance)의 값이 올바르게 지정되지 않았습니다."
