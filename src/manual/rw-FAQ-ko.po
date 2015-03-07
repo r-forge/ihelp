@@ -2205,7 +2205,7 @@ msgstr "설치프로그램이 내 언어를 지원하지 않습니다."
 #: rw-FAQ.texi:968
 #, no-wrap
 msgid "I want R in English!"
-msgstr ""
+msgstr "R을 영어로 설치하기 원합니다!"
 
 #
 #. type: node
@@ -2215,7 +2215,7 @@ msgstr ""
 #: rw-FAQ.texi:1005
 #, no-wrap
 msgid "I want to run R in Chinese/Japanese/Korean"
-msgstr ""
+msgstr "R을 중국어/일본어/한국어로 실행하기 원합니다."
 
 #
 #. type: node
@@ -2225,7 +2225,7 @@ msgstr ""
 #: rw-FAQ.texi:1019
 #, no-wrap
 msgid "I selected English for installation but R runs in Chinese"
-msgstr ""
+msgstr "설치는 영어를 선택하였으나 R이 중국어로 실행됩니다."
 
 #
 #. type: node
@@ -2235,7 +2235,7 @@ msgstr ""
 #: rw-FAQ.texi:1042
 #, no-wrap
 msgid "I would like to be able to use Japanese fonts"
-msgstr ""
+msgstr "일본어 폰트를 사용 가능하게 하고 싶습니다."
 
 #
 #. type: node
@@ -2245,7 +2245,7 @@ msgstr ""
 #: rw-FAQ.texi:1055
 #, no-wrap
 msgid "I don't see characters with accents at the R console"
-msgstr ""
+msgstr "R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다."
 
 #
 #. type: node
@@ -2254,14 +2254,14 @@ msgstr ""
 #: rw-FAQ.texi:1055
 #, no-wrap
 msgid "The dialog buttons are not translated"
-msgstr ""
+msgstr "대화버튼이 번역되어 있지 않습니다."
 
 #
 #. type: section
 #: rw-FAQ.texi:930
 #, no-wrap
 msgid "The installer does not offer my language."
-msgstr ""
+msgstr "설치프로그램이 내 언어를 지원하지 않습니다."
 
 #
 #. type: Plain text
@@ -2273,13 +2273,19 @@ msgid ""
 "Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, "
 "Spanish (Spain)  and Ukranian."
 msgstr ""
+"제한된 언어들만 지원되고 있습니다. 현재는 카탈로니아어, "
+"중국어(간체와 번체), 체코어, 덴마크어, 네덜란드어, 핀란드어, 불어, "
+"독일어, 그리스어, 히브리어, 헝가리어, 이탈리아어, 일본어, 한국어, 노르웨이어, "
+"폴란드어, 포르투갈어(브라질), 포르투갈어(포르투갈), 러시아어, 슬로베니아어, "
+"스페인어(스페인)와 우크라이나어 입니다."
+
 
 #
 #. type: section
 #: rw-FAQ.texi:957
 #, no-wrap
 msgid "I want R in English (and not in French/Chinese/...)!"
-msgstr ""
+msgstr "R을 영어로 원합니다(불어/중국어/…가 아닌)!"
 
 #
 #. type: Plain text
@@ -2287,7 +2293,7 @@ msgstr ""
 msgid ""
 "The default behaviour of R is to try to run in the language you run Windows "
 "in."
-msgstr ""
+msgstr "R은 디폴트(default)로 윈도우와 동일한 언어로 운영되도록 설정 되어있습니다."
 
 #
 #. type: Plain text
@@ -2298,13 +2304,16 @@ msgid ""
 "native language, but not R.  To do so, set @code{LANGUAGE=en} as discussed "
 "in Q2.2 and Q2.15, or in the @file{Rconsole} file."
 msgstr ""
+"분명히 어떤 사용자들은 윈도우가 특정한 언어에 묶여있어 선택권이 없는 경우 " 
+" 또는 윈도우는 모국어로 사용하기 원하지만 R은 그렇지 않을 수 있습니다. 그렇다면 Q2.2와 Q2.15에서 논의된 것처럼 @code{LANGUAGE=en}으로 설정하시거나,"
+" @file{Rconsole} file에 설정하시면 됩니다."
 
 #
 #. type: section
 #: rw-FAQ.texi:969
 #, no-wrap
 msgid "I want to run R in Chinese/Japanese/Korean."
-msgstr ""
+msgstr "R을 중국어/일본어/한국어로 실행하기 원합니다."
 
 #
 #. type: Plain text
@@ -2314,6 +2323,9 @@ msgid ""
 "but e.g.@: Western installations of Windows often do not have such support.  "
 "So we need to assume that your copy of Windows does."
 msgstr ""
+"적합한 윈도우 버전은 동아시아(East Asian) 언어를 지원합니다만 "
+"예를 들어, 외국어로 설치된 윈도우(e.g.@: Western installations of Windows)는 종종 지원하지 않습니다. "
+"그래서 당신이 사용하고 있는 윈도우가 그런지 생각해볼 필요가 있습니다."
 
 #
 #. type: Plain text
@@ -2328,6 +2340,14 @@ msgid ""
 "@file{Rdevga} only applies to Windows graphics devices and not, say, to "
 "@code{pdf}.)"
 msgstr ""
+"@command{Rterm.exe}와 @command{Rgui.exe}는 싱글 너비(single-width)와 더블 너비(double-width)"
+"문자를 지원합니다. @file{Rconsole} and @file{Rdevga}에서 적합한 폰트를 선택할 필요가 있습니다."
+"(@code{?Rconsole} 또는 파일 내 주석을 참조하세요: "
+"시스템 버전은 @file{etc} 폴더 안에 있습니다.); "
+"나중에 @code{Arial}을 @code{Arial Unicode MS}로 바꿀 수 있으며, "
+"@code{FixedSys}와 @code{MS Mincho} 폰트를 @file{Rconsole}에 설정 하도록 시도하였습니다.  (Note that "
+"(@file{Rdevga}는 윈도우 그래픽 파일(Windows graphics devices)에만 적용될 수 있음을 기억하시기 바랍니다. "
+"@code{pdf}와 같은 파일에는 적용되지 않습니다.)"
 
 #
 #. type: Plain text
