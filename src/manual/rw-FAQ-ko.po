@@ -2395,13 +2395,17 @@ msgid ""
 "OEM raster fonts) and a suitable codepage (which for the Windows Cmd shell "
 "can be done using @command{chcp})."
 msgstr ""
+" @command{Rterm}사용 시, 운영되는 윈도우는 적합한 폰트"
+"(예. OEM raster 폰트가 아닌 @code{Lucida Console} 또는 @code{Consolas})"
+"와 적합한 코드페이지(Windows Cmd shell을 위한 것으로, @command{chcp}로 정의할 수 있습니다.)"
+"를 사용할 수 있도록 설정되어야 합니다."
 
 #
 #. type: section
 #: rw-FAQ.texi:1006
 #, no-wrap
 msgid "I selected English for installation but R runs in Chinese."
-msgstr ""
+msgstr "설치는 영어를 선택하였으나 R이 중국어로 실행됩니다."
 
 #
 #. type: Plain text
@@ -2412,6 +2416,10 @@ msgid ""
 "completely standard Windows practice (and necessary as different users of "
 "the computer may use different languages)."
 msgstr ""
+"정확하게 말하자면 설치를 위한(@strong{for installation}) 영어를 선택한 것입니다! 설치 프로그램의 언어는"
+"R을 실행하는 데 사용하는 언어와는 아무 상관이 없습니다: 이것은 전적으로 윈도우 실행의 표준입니다"
+"(그리고 여러 사용자들의 컴퓨터는"
+" 필요에 따라서 다른 언어를 사용할 수 있습니다)."
 
 #
 #. type: Plain text
@@ -2423,13 +2431,18 @@ msgid ""
 "messages by appending @code{LANGUAGE=en} to the shortcut you use to start R, "
 "or setting it in the @file{Rconsole} file."
 msgstr ""
+"메뉴와 메시지에 대해 R언어는 사용 장소(@emph{locale})에 의해 결정된 것을 사용합니다: "
+"자세한 내용은 적절한 매뉴얼을 읽어보시기 바랍니다 (`R Installation and "
+"Administration'). R이 영어 메시지를 사용하기 위해서는 "
+"R을 시작하기 위해 사용하는 단축아이콘(shortcut)에 @code{LANGUAGE=en}를 덧붙이거나, "
+"또는 @file{Rconsole} 파일에 정의하여야 함을 기억하시기 바랍니다."
 
 #
 #. type: section
 #: rw-FAQ.texi:1020
 #, no-wrap
 msgid "I would like to be able to use Japanese fonts."
-msgstr ""
+msgstr "일본어 폰트를 사용 가능하게 하고 싶습니다."
 
 #
 #. type: Plain text
@@ -2438,6 +2451,8 @@ msgid ""
 "for example, in the console and to annotate graphs.  Similar comments apply "
 "to any non-Western-European language."
 msgstr ""
+"콘솔에서와 그래프에 주석 다는 것을 예를 들어 보겠습니다."
+" Western-European이 아닌 어떤 언어에도 유사한 설명이 적용됩니다."
 
 #
 #. type: Plain text
@@ -2452,6 +2467,13 @@ msgid ""
 "item.)  The help for @code{windowsFonts} has examples of selecting Japanese "
 "fonts for the @code{windows()} family of devices."
 msgstr ""
+"적절한 폰트라면 제대로 작동할 것입니다. MS Mincho나 "
+"MS Gothic을 console 폰트로써 확실하게 싱글과 더블 너비(single- and double-width) 문자로 올바르게 취급될 수 있도록 지정할 필요가 있습니다. "
+"@code{windows()} graphics device을 위한 디폴트 그래픽 폰트는 "
+"대부분의 일반적인 일본어 문자를 다룰 수 있습니다만, "
+"좀 더 특별한 폰트들은 정의되어야 할 수도 있습니다. (어떻게 폰트를 지정해야 하는가에 대해서는 Q5.2를 참고하시기 바랍니다: "
+"콘솔 폰트는 `GUI preferences' 메뉴 항목에서도 정의할 수 있습니다.)"
+"@code{windowsFonts}에 대한 도움말은 @code{windows()} family of devices에 대한 일본어 폰트 선택하기의 예를 포함합니다."
 
 #
 #. type: Plain text
@@ -2461,6 +2483,8 @@ msgid ""
 "and @code{demo(Japanese)}) can be used on any graphics device to display "
 "Japanese characters."
 msgstr ""
+"추가로, Hershey 벡터 폰트(@code{?Hershey}, @code{?Japanese}와 @code{demo(Japanese)}를 참조)는"
+"일본 문자를 표시(display)할 수 있는 graphics device라면 사용될 수 있습니다."
 
 #
 #. type: Plain text
