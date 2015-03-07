@@ -2358,6 +2358,8 @@ msgid ""
 "is true for the fonts intended for CJK locales but not for example for "
 "@code{Lucida Console} or @code{Consolas}."
 msgstr ""
+"명심하실 것은 콘솔 폰트는 모든 CJK 문자(사용된 너비 테이블로 추정)에 대해 더블 너비 문자(double-width characters)만을 사용한다는 점입니다: "
+"이것은 CJK를 사용하는 곳을 위해 개발된 폰트들에 대해서는 사실이지만, @code{Lucida Console} 이나 @code{Consolas}의 예에는 해당되지 않습니다."
 
 #
 #. type: Plain text
@@ -2374,6 +2376,15 @@ msgid ""
 "Big5) and @code{\"chs\"} is needed for Simplified Chinese (code page 936, "
 "GB2312)."
 msgstr ""
+"R은 적합한 환경에서만 운영이 되고 있다는 점을 확실히 해야 할 필요가 있습니다: "
+"@code{Sys.getlocale()}에서 알아보십시오. (CJK 사용자들은 소위 ‘Unicode’ Windows applications라고 불리는 케이스가 가능한 곳에서는 항상 그들의 언어 문자가 사용될 수 있습니다."
+"하지만, R은 본래 Unix와 유사한 환경(Unix-alikes)을 위해서 쓰여진 것이므로 윈도우 감각에 맞는 ‘Unicode’를 위한 것은 아닙니다.)"
+"올바른 장소의 이름은 다음에서 찾을 수 있습니다."
+" @uref{http://msdn.microsoft.com/@/library/@/default.asp?"
+"url=/@/library/@/en-us/@/vccore98/@/html/@/_crt_language_and_country_strings."
+"asp}: 주의하실 점은 @code{\"Chinese\"}은 중국어 번체(code page 950, "
+"Big5)이며, @code{\"chs\"}은 중국어 간체를 위해 필요합니다(code page 936, "
+"GB2312)."
 
 #
 #. type: Plain text
