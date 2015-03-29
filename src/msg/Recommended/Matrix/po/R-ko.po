@@ -5,10 +5,10 @@
 # Maintained by Chel Hee Lee <chl948@mail.usask.ca>, 2013-2015.
 #
 # Notes:
-# Source code review is in progress (28-FEB-2015)
+# Source code review is completed (29-MAR-2015)
 # 
+# Freezing on 30-MAR-2015 for R-3.2.0, QC: PASS
 # Freezing on 28-FEB-2015 for R-3.1.3, QC: PASS
-# Freezing on 31-MAR-2015 for R-3.2.0, QC: PASS
 # 
 msgid ""
 msgstr ""
@@ -585,40 +585,40 @@ msgid "not a skinny matrix"
 msgstr ""
 
 msgid "the number of non-zero entries differs from nrow(.)"
-msgstr ""
+msgstr "영이 아닌 항목들의 개수가 nrow(.)와 다릅니다."
 
 msgid "must have exactly one non-zero entry per row"
-msgstr ""
+msgstr "각 행마다 반드시 정확히 하나의 영이 아닌 항목을 가지고 있어야 합니다."
 
 msgid "kronecker method must use default 'FUN'"
-msgstr ""
+msgstr "크로넥커 메소드(kronecker method)는 반드시 기본 'FUN'을 사용해야 합니다."
 
 msgid "replacing \"indMatrix\" entries is not allowed, as rarely sensible"
 msgstr ""
 
 msgid "\"lMatrix\" object with NAs cannot be coerced to \"nMatrix\""
-msgstr ""
+msgstr "NA를 가진 \"lMatrix\" 객체는 \"nMatrix\"로 강제변환(coerced) 될 수 없습니다."
 
 msgid "Matrix seems negative semi-definite"
-msgstr ""
+msgstr "음의 반정치(negative semi-definite) 행렬 같습니다."
 
 msgid "'nearPD()' did not converge in %d iterations"
-msgstr ""
+msgstr "'nearPD()'는 %d 번째 반복에서도 수렴하지 않았습니다."
 
 msgid "cannot coerce 'NA's to \"nsparseMatrix\""
 msgstr "'NA'를 \"nsparseMatrix\"으로 강제변환(coerce)할 수 없습니다."
 
 msgid "temporarily disabled"
-msgstr ""
+msgstr "일시적으로 사용할 수 없습니다."
 
 msgid "coercion to \"pMatrix\" only works from integer numeric"
-msgstr ""
+msgstr "\"pMatrix\"로의 강제변환(coercion)은 오로지 정수값을 가진 숫자(integer numeric)인 경우로부터만 가능합니다."
 
 msgid "not a square matrix"
 msgstr "정방행렬(square matrix)이 아닙니다."
 
 msgid "not-yet-implemented method for <%s> %%*%% <%s>"
-msgstr ""
+msgstr "<%s> %%*%% <%s>에 사용할 수 있는 메소드가 아직 구현되지 않았습니다."
 
 msgid "non-conformable arguments"
 msgstr ""
@@ -629,31 +629,31 @@ msgid ""
 msgstr ""
 
 msgid "rankMatrix(x, method='qr'): computing t(x) as nrow(x) < ncol(x)"
-msgstr ""
+msgstr "rankMatrix(x, method='qr'): nrow(x) < ncol(x)이므로 t(x)를 계산합니다."
 
 msgid "model frame and formula mismatch in model.matrix()"
-msgstr ""
+msgstr "model.matrix()를 사용할 때 모델프레임(model frame)과 모델식(formula)가 일치하지 않습니다."
 
 msgid "variable '%s' converted to a factor"
-msgstr ""
+msgstr "변수 '%s'가 요인(factor)로 변환되었습니다."
 
 msgid "invalid 'contrasts.arg' argument"
-msgstr ""
+msgstr "'contrasts.arg' 인자가 올바르지 않습니다."
 
 msgid "variable '%s' is absent, its contrast will be ignored"
-msgstr ""
+msgstr "변수 '%s'를 찾을 수 없어 관련 대비(contrast)는 계산되지 않을 것입니다."
 
 msgid "only 2-dimensional tables can be directly coerced to sparse matrices"
 msgstr "오로지 2차원 테이블만이 희소행렬(sparse matrice)로 강제변환(coerced)될 수 있습니다."
 
 msgid "exactly one of 'i', 'j', or 'p' must be missing from call"
-msgstr ""
+msgstr "'i', 'j', 또는 'p' 중 하나가 호출(call)로부터 누락된 것 같습니다. "
 
 msgid "'p' must be a non-decreasing vector (0, ...)"
 msgstr "'p'는 반드시 감소하지 않는(non-decreasing) 벡터 (0, ...)이어야 합니다."
 
 msgid "NA's in (i,j) are not allowed"
-msgstr "(i,j) 위치에 있는 요소에 NA를 사용할 수 없습니다."
+msgstr "(i,j) 위치에 NA는 사용될 수 없습니다."
 
 msgid "symmetric matrix must be square"
 msgstr "대칭행렬(symmetric matrix)는 반드시 정방(square)이어야 합니다."
@@ -662,31 +662,31 @@ msgid "length(i) is not a multiple of length(x)"
 msgstr "length(i)는 length(x)의 배수가 아닙니다."
 
 msgid "only square matrices can be used as incidence matrices for graphs"
-msgstr ""
+msgstr "오로지 정방(square) 행렬만이 그래프를 위한 접속행렬(incidence matrices)로서 사용할 수 있습니다."
 
 msgid "Matrix-internal error in <sparseM>[i,,d]; please report"
-msgstr ""
+msgstr "<sparseM>[i,,d]를 사용중 행렬-내부 오류(matrix-internal error)가 발생했습니다.  이를 꼭 보고 부탁드립니다."
 
 msgid "invalid 'col.names' string: %s"
 msgstr ""
 
 msgid "logic programming error in printSpMatrix2(), please report"
-msgstr ""
+msgstr "printSpMatrix2()를 이용 도중 논리적 프로그래밍 에러(logic programming error)가 발생했습니다.  이를 꼭 보고를 부탁드립니다."
 
 msgid "invalid 'type'"
-msgstr ""
+msgstr "올바르지 않은 'type'입니다."
 
 msgid "rcond(.) via sparse -> dense coercion"
 msgstr ""
 
 msgid "'V' is not a *square* matrix"
-msgstr "'V'는 정방행렬(square matrix)가 아닙니다."
+msgstr "'V'는 정방행렬(square matrix)이 아닙니다."
 
 msgid "number of non zeros is smaller than 'nnz' because of duplicated (i,j)s"
-msgstr ""
+msgstr "중복된 (i,j)에 위치한 값들 때문에 영이 아닌 요소의 개수가 'nnz' 보다 작습니다."
 
 msgid "qr.R(<sparse>) may differ from qr.R(<dense>) because of permutations.  Possibly use our qrR() instead"
-msgstr ""
+msgstr "qr.R(<sparse>)은 아마도 순열(permutations) 때문에 qr.R(<dense>)와 다를 수 있습니다.   따라서, qrR()을 사용하시길 바랍니다."
 
 msgid "cannot coerce 'NA's to \"nsparseVector\""
 msgstr "'NA'를 \"nsparseVector\"로 강제변환(coerce) 할 수 없습니다."
@@ -719,10 +719,10 @@ msgid "Class %s is not yet implemented"
 msgstr "클래스 %s는 아직 구현되지 않았습니다."
 
 msgid "index must be numeric, logical or sparseVector for indexing sparseVectors"
-msgstr ""
+msgstr "sparseVectors를 인덱싱하기 위해서는 인덱스는 반드시 수치형, 논리형 또는 sparseVectors이어야 합니다."
 
 msgid "'times >= 0' is required"
-msgstr ""
+msgstr "'times >= 0'이 요구되어집니다."
 
 msgid "(un)packing only applies to dense matrices, class(x)='%s'"
 msgstr ""
@@ -737,3 +737,5 @@ msgid_plural ""
 "extra arguments %s will be disregarded in\n"
 " %s"
 msgstr[0] ""
+"추가 인자들(extra arguments) %s는 %s에서 사용되지 않을 것입니다."
+ 
