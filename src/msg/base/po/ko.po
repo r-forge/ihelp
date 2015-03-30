@@ -629,10 +629,10 @@ msgid "shared object '%s' was not loaded"
 msgstr "공유된 객체 '%s'는 로드되지 않았습니다"
 
 #: src/main/Rdynload.c:979
-#, fuzzy, c-format
+#, c-format
 msgid "cannot allocate memory for registered native symbol (%d byte)"
 msgid_plural "cannot allocate memory for registered native symbol (%d bytes)"
-msgstr[0] "%d 바이트가 필요한 등록된 네이티브 심볼에 메모리를 할당할 수 없습니다"
+msgstr[0] "%d 바이트가 필요한 등록된 고유기호(registered native symbol)에 메모리를 할당할 수 없습니다."
 
 #: src/main/Rdynload.c:1102 src/main/Rdynload.c:1323
 msgid "must pass package name or DllInfo reference"
@@ -666,9 +666,9 @@ msgid "problem in setting variable '%s' in Renviron"
 msgstr "Renviron 내에 변수 '%s'를 지정하는데 문제가 발생했습니다"
 
 #: src/main/Renviron.c:311 src/main/objects.c:1127 src/main/raw.c:150
-#, fuzzy, c-format
+#, c-format
 msgid "argument '%s' must be a character string"
-msgstr "인자 'x'는 반드시 문자열이어야 합니다"
+msgstr "인자 '%s'는 반드시 문자열(character string)이어야 합니다."
 
 #: src/main/Renviron.c:315
 #, c-format
@@ -871,10 +871,10 @@ msgid "unimplemented real function of %d numeric arguments"
 msgstr "%d개의 수치형 인수를 가지는 실수형함수이나 구현되지 않았습니다"
 
 #: src/main/arithmetic.c:1513
-#, fuzzy, c-format
+#, c-format
 msgid "%d argument passed to '%s' which requires 1 or 2 arguments"
 msgid_plural "%d arguments passed to '%s'which requires 1 or 2 arguments"
-msgstr[0] "'%2$s'는 1 또는 2개의 인자만을 필요로하지만 %1$d개의 인자들이 전달되었습니다"
+msgstr[0] "'1 또는 2개의 인자들을 필요로 하는 '%2$s'에 %1$d개의 인자들이 전달되었습니다."
 
 #: src/main/arithmetic.c:1532
 msgid "invalid second argument of length 0"
@@ -2223,9 +2223,8 @@ msgstr "파일(\"\")은 오로지 open = \"w+\"과 open = \"w+b\"만을 지원�
 
 #: src/main/connections.c:5168 src/modules/internet/internet.c:150
 #: src/modules/internet/internet.c:271
-#, fuzzy
 msgid "URL scheme unsupported by this method"
-msgstr "이 빌드에서는 ICU는 지원되지 않습니다"
+msgstr "이 메소드에 의하여 지원되는 URL scheme이 아닙니다."
 
 #: src/main/connections.c:5259
 msgid "file stream does not have gzip magic number"
@@ -2401,9 +2400,9 @@ msgid "argument must be a function"
 msgstr "인자는 반드시 함수이어야 합니다"
 
 #: src/main/debug.c:111
-#, fuzzy, c-format
+#, c-format
 msgid "Value for '%s' must be TRUE or FALSE"
-msgstr "'all.x'는 반드시 TRUE 또는 FALSE이어야 합니다"
+msgstr "'%s'에 대한 값은 반드시 TRUE 또는 FALSE 이어야 합니다."
 
 #: src/main/debug.c:139 src/main/debug.c:167 src/main/debug.c:237
 msgid "argument must not be a function"
@@ -2446,9 +2445,8 @@ msgid "deparse may be not be source()able in R < 2.7.0"
 msgstr "deparse는 R < 2.7.0 에서는 source()할 수 없는 것 같습니다"
 
 #: src/main/deparse.c:346 src/main/deparse.c:396 src/main/source.c:206
-#, fuzzy
 msgid "'file' must be a character string or connection"
-msgstr "'what'은 반드시 문자열 또는 함수이어야 합니다"
+msgstr "'file'은 반드시 문자열(character string) 또는 커넥션(connection)이어야 합니다."
 
 #: src/main/deparse.c:374 src/main/deparse.c:468 src/main/deparse.c:474
 msgid "wrote too few characters"
@@ -3166,14 +3164,13 @@ msgid "(converted from warning) %s"
 msgstr ""
 
 #: src/main/errors.c:357
-#, fuzzy
 msgid "Warning:"
-msgstr "경고: %s\n"
+msgstr "경고:"
 
 #: src/main/errors.c:359
-#, fuzzy, c-format
+#, c-format
 msgid "Warning in %s :"
-msgstr "%1$s에서 경고가 발생했습니다 : %2$s\n"
+msgstr "%s에서 경고가 발생했습니다 : "
 
 #: src/main/errors.c:368 src/main/errors.c:382 src/main/errors.c:695
 msgid "Calls:"
@@ -3184,10 +3181,9 @@ msgid "Lost warning messages\n"
 msgstr "경고메시지들이 손실되었습니다\n"
 
 #: src/main/errors.c:460
-#, fuzzy
 msgid "Warning message:"
 msgid_plural "Warning messages:"
-msgstr[0] "경고메시지:\n"
+msgstr[0] "경고메시지(들): "
 
 #: src/main/errors.c:470 src/main/errors.c:498
 #, c-format
@@ -3195,15 +3191,15 @@ msgid "In %s :"
 msgstr ""
 
 #: src/main/errors.c:523
-#, fuzzy, c-format
+#, c-format
 msgid "There was %d warning (use warnings() to see it)"
 msgid_plural "There were %d warnings (use warnings() to see them)"
-msgstr[0] "%d건의 경고들이 있습니다 (이들을 확인하기 위해서는 warnings()를 이용하세요)\n"
+msgstr[0] "%d건의 경고들이 발견되었습니다 (이를 확인하기 위해서는 warnings()를 이용하시길 바랍니다)."
 
 #: src/main/errors.c:528
-#, fuzzy, c-format
+#, c-format
 msgid "There were %d or more warnings (use warnings() to see the first %d)"
-msgstr "%d건 이상의 경고들이 있습니다 (처음 %d건의 경고들을 확인하기 위해서는 warnings()를 이용하세요)\n"
+msgstr "%d건 이상의 경고들을 발견되었습니다 (이들 중 처음 %d건을 확인하기 위해서는 warnings()를 이용하시길 바랍니다)."
 
 #: src/main/errors.c:601
 msgid "Error during wrapup: "
@@ -3214,14 +3210,14 @@ msgid "Error in "
 msgstr "다음에 오류가 있습니다"
 
 #: src/main/errors.c:648 src/main/errors.c:655
-#, fuzzy, c-format
+#, c-format
 msgid "Error in %s (from %s) : "
-msgstr " (%s로부터) : "
+msgstr ""
 
 #: src/main/errors.c:657
-#, fuzzy, c-format
+#, c-format
 msgid "Error in %s : "
-msgstr "다음에 오류가 있습니다"
+msgstr ""
 
 #: src/main/errors.c:677 src/main/errors.c:683
 #, c-format
@@ -3242,9 +3238,9 @@ msgstr "실행이 정지되었습니다\n"
 
 #: src/main/errors.c:1046 src/main/errors.c:1048 src/main/options.c:336
 #: src/main/unique.c:1577
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' must be a character string"
-msgstr "'sep'는 반드시 문자열이어야 합니다"
+msgstr "'%s'는 반드시 문자열(character string)이어야 합니다."
 
 #: src/main/errors.c:1145
 msgid " [invalid string in stop(.)]"
@@ -3595,9 +3591,8 @@ msgid "not byte code profiling"
 msgstr ""
 
 #: src/main/eval.c:6374 src/main/eval.c:6377 src/main/eval.c:6380
-#, fuzzy
 msgid "byte code profiling is not supported in this build"
-msgstr "이 빌드에서는 ICU는 지원되지 않습니다"
+msgstr "이 빌드에서는 바이트 코드 프로파일링(byte code profiling)이 지원되지 않습니다."
 
 #: src/main/gevents.c:43
 #, c-format
@@ -3651,39 +3646,39 @@ msgid "contextstack overflow"
 msgstr ""
 
 #: src/main/gram.y:1907 src/main/gram.y:1913
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected input"
-msgstr "예기치 않은 %s입니다"
+msgstr "예상하지 못한 입력입니다."
 
 #: src/main/gram.y:1910
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected end of input"
-msgstr "입력의 끝입니다"
+msgstr "예상하지 못한 입력의 끝(end of input)입니다."
 
 #: src/main/gram.y:1916
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected string constant"
-msgstr "문자열 상수"
+msgstr "예상하지 못한 문자열 상수(string constant)입니다."
 
 #: src/main/gram.y:1919
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected numeric constant"
-msgstr "숫자형 상수"
+msgstr "예상하지 못한 수치형 상수(numeric constant)입니다."
 
 #: src/main/gram.y:1922
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected symbol"
-msgstr "예기치 않은 %s입니다"
+msgstr "예상하지 못한 기호(symbol)입니다."
 
 #: src/main/gram.y:1925
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected assignment"
-msgstr "예기치 않은 %s입니다"
+msgstr "예상하지 못한 할당(assignment)입니다."
 
 #: src/main/gram.y:1928
-#, fuzzy, c-format
+#, c-format
 msgid "unexpected end of line"
-msgstr "라인의 끝"
+msgstr "예상하지 못한 라인의 끝(end of line)입니다."
 
 #: src/main/gram.y:1931 src/main/gram.y:1939
 #, c-format
@@ -3717,9 +3712,9 @@ msgstr ""
 
 #: src/main/gram.y:2347 src/main/gram.y:2370 src/main/gram.y:2407
 #: src/main/gram.y:2443
-#, fuzzy, c-format
+#, c-format
 msgid "nul character not allowed (line %d)"
-msgstr "구문분석중 라인 %d에서 유효하지 않은 멀티바이트 문자를 찾았습니다"
+msgstr "(라인 %d) 널 문자(nul character)는 사용할 수 없습니다."
 
 #: src/main/gram.y:2363
 #, c-format
@@ -4381,9 +4376,8 @@ msgid "C level MAKE_CLASS macro called with NULL string pointer"
 msgstr "C 레벨 MAKE_CLASS 매크로가 NULL 문자열 포인터와 함께 호출되었습니다"
 
 #: src/main/objects.c:1461
-#, fuzzy
 msgid "'methods' package not yet loaded"
-msgstr "Hershey 글꼴들은 로드되어질 수 없습니다"
+msgstr "아직 로드되지 않은 'methods' 패키지입니다."
 
 #: src/main/objects.c:1471
 msgid "R_getClassDef(.) called with NULL string pointer"
@@ -4819,9 +4813,8 @@ msgid "NA in probability vector"
 msgstr "확률벡터에 NA가 있습니다"
 
 #: src/main/random.c:437
-#, fuzzy
 msgid "negative probability"
-msgstr "확률값이 양수가 아닙니다"
+msgstr "확률값이 음수입니다."
 
 #: src/main/random.c:444
 msgid "too few positive probabilities"
@@ -5200,17 +5193,17 @@ msgstr "결과적으로 너무 긴 벡터일 것입니다"
 
 #: src/main/seq.c:159
 msgid "argument of length 0"
-msgstr "길이가 0인 인자입니다"
+msgstr "인자의 길이가 0입니다."
 
 #: src/main/seq.c:162 src/main/seq.c:167
-#, fuzzy, c-format
+#, c-format
 msgid "numerical expression has %d element: only the first used"
 msgid_plural "numerical expression has %d elements: only the first used"
-msgstr[0] "수치형 표현식은 %d개의 구성요소들을 가지고 있으나, 오로지 첫번째것만 사용됩니다"
+msgstr[0] "수치형 표현식(numerical expression)은 %d개의 구성요소들을 가지고 있기 때문에 오로지 첫번째 것만을 사용합니다."
 
 #: src/main/seq.c:173
 msgid "NA/NaN argument"
-msgstr "NA/NaN 인자입니다"
+msgstr "인자의 값이 NA/NaN 입니다."
 
 #: src/main/seq.c:337
 msgid "incorrect type for second argument"
@@ -5898,9 +5891,9 @@ msgid "no 'fileext'"
 msgstr "'fileext'가 없습니다"
 
 #: src/main/sysutils.c:322
-#, fuzzy, c-format
+#, c-format
 msgid "system call failed: %s"
-msgstr "%s에서 시크가 실패했습니다"
+msgstr "시스템 호출에 실패했습니다: %s"
 
 #: src/main/sysutils.c:351 src/main/sysutils.c:354 src/main/sysutils.c:445
 #: src/main/sysutils.c:447 src/main/sysutils.c:483
@@ -5947,19 +5940,18 @@ msgid "translating strings with \"bytes\" encoding is not allowed"
 msgstr "\"bytes\" 인코딩으로 된 문자열을 번역하는 것은 허용되지 않습니다"
 
 #: src/main/sysutils.c:812
-#, fuzzy
 msgid "internal error: no translation needed"
-msgstr "라인 %d에서 내부 구문분석 에러입니다"
+msgstr "내부오류: 번역이 필요하지 않습니다."
 
 #: src/main/sysutils.c:1065
 #, c-format
 msgid "unsupported conversion to '%s' from codepage %d"
-msgstr ""
+msgstr "코드페이지(codepage) %d로부터 '%s'는 지원되지 않는 변환입니다."
 
 #: src/main/sysutils.c:1480
 #, c-format
 msgid "invalid Unicode point %u"
-msgstr "유니코드 %u가 올바르지 않습니다"
+msgstr "유니코드 %u는 올바르지 않습니다"
 
 #: src/main/sysutils.c:1582
 msgid "cannot create 'R_TempDir'"
@@ -6033,9 +6025,8 @@ msgid "... used in a situation where it does not exist"
 msgstr "... 가 존재하지 않는 경우에 사용되었습니다"
 
 #: src/main/unique.c:1242
-#, fuzzy
 msgid "... is not a pairlist"
-msgstr "객체가 행렬이 아닙니다"
+msgstr "...는 pairlist가 아닙니다."
 
 #: src/main/unique.c:1470
 msgid "non-numeric data frame in rowsum"
@@ -6529,14 +6520,13 @@ msgid "InternetOpenUrl failed: '%s'"
 msgstr ""
 
 #: src/modules/internet/libcurl.c:136
-#, fuzzy
 msgid "curlGetHeaders is not supported on this platform"
-msgstr "이 플랫폼에서는 nsl()가 지원되지 않습니다"
+msgstr "이 플랫폼에서는 curlGetHeaders를 사용할 수 없습니다."
 
 #: src/modules/internet/libcurl.c:145 src/modules/internet/libcurl.c:148
-#, fuzzy, c-format
+#, c-format
 msgid "invalid %s argument"
-msgstr "'%s' 인자가 잘못되었습니다"
+msgstr "인자 '%s'가 올바르지 않습니다."
 
 #: src/modules/internet/libcurl.c:165
 #, c-format
@@ -6546,19 +6536,16 @@ msgid ""
 msgstr ""
 
 #: src/modules/internet/libcurl.c:299
-#, fuzzy
 msgid "download.file(method = \"libcurl\") is not supported on this platform"
-msgstr "이 플랫폼에서는 nsl()가 지원되지 않습니다"
+msgstr "이 플랫폼에서는 download.file(method = \"libcurl\")를 사용할 수 없습니다."
 
 #: src/modules/internet/libcurl.c:315
-#, fuzzy
 msgid "lengths of 'url' and 'destfile' must match"
-msgstr "불러오기와 내보내기의 이름들의 길이는 반드시 일치해야 합니다"
+msgstr "'url'의 길이와 'destfile'의 길이는 일치해야 합니다."
 
 #: src/modules/internet/libcurl.c:682
-#, fuzzy
 msgid "url(method = \"libcurl\") is not supported on this platform"
-msgstr "이 플랫폼에서는 nsl()가 지원되지 않습니다"
+msgstr "이 플랫폼에서는 url(method = \"libcurl\")를 사용할 수 없습니다."
 
 #: src/modules/internet/nanoftp.c:290 src/modules/internet/nanoftp.c:303
 #: src/modules/internet/nanoftp.c:314 src/modules/internet/nanoftp.c:348
