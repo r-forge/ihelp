@@ -28,9 +28,8 @@ msgid "Reading %s failed with message: %s"
 msgstr ""
 "다음과 같은 이유로 %s를 읽는데 실패했습니다: %s"
 
-#, fuzzy
 msgid "Checking %s"
-msgstr "%s를 확인합니다 ..."
+msgstr "%s를 확인합니다."
 
 msgid "argument 'package' must be of length 1"
 msgstr "인자 'package'는 반드시 길이가 1 이어야 합니다"
@@ -234,9 +233,8 @@ msgstr ""
 msgid "Malformed Description field: should contain one or more complete sentences."
 msgstr ""
 
-#, fuzzy
 msgid "See section 'The DESCRIPTION file' in the 'Writing R Extensions' manual."
-msgstr "'Writing R Extensions' 매뉴얼에 'Creating R packages' 섹션을 보면 DESCRIPTION 파일에 대한 정보를 얻을 수 있습니다."
+msgstr "매뉴얼 'Writing R Extensions'에 있는 섹션 'The DESCRIPTION file'을 살펴보시길 바랍니다."
 
 msgid "Malformed Authors@R field:"
 msgstr "Authors@R 항목이 잘못되었습니다:"
@@ -245,7 +243,7 @@ msgid "Cannot extract Author field from Authors@R field:"
 msgstr "Author 항목을 Authors@R 항목으로부터 추출할 수 없습니다:"
 
 msgid "Authors@R field gives no person with author role."
-msgstr ""
+msgstr "Authors@R 항목으로부터 저자의 역할(author role)을 가진 개발자를 찾을 수 없습니다."
 
 msgid "Authors@R field gives persons with no valid roles:"
 msgstr ""
@@ -260,13 +258,13 @@ msgid "Authors@R field gives no person with maintainer role, valid email address
 msgstr ""
 
 msgid "Encoding '%s' is not portable"
-msgstr "인코딩 '%s'은  포터블하지 않습니다"
+msgstr "인코딩 '%s'은 포터블(portable)하지 않습니다."
 
 msgid "Unknown encoding with non-ASCII data"
 msgstr "ASCII가 아닌 데이터에 이용된 인코딩을 알 수 없습니다"
 
 msgid "Non-standard license specification:"
-msgstr "비표준 라이센스 지정입니다:"
+msgstr "비표준 라이센스 지정(non-standard license specification)입니다:"
 
 msgid "Standardizable: %s"
 msgstr ""
@@ -298,9 +296,8 @@ msgstr "패키지 %s는 존재하지만 버전 2.10.0 이상의 R에 설치되�
 msgid "Missing link or links in documentation object '%s':"
 msgstr "다큐멘테이션 객체 '%s'내에서 빠져있는 링크(들)은 다음과 같습니다:"
 
-#, fuzzy
 msgid "See section 'Cross-references' in the 'Writing R Extensions' manual."
-msgstr "'Writing R Extensions' 매뉴얼에서 'Cross-references' 섹션의 내용을 살펴보세요."
+msgstr "매뉴얼 'Writing R Extensions'에 있는 섹션 'Cross-references'을 살펴보시길 바랍니다."
 
 msgid "File %s:"
 msgstr "파일 %s:"
@@ -326,9 +323,8 @@ msgstr "패키지 스타트업 함수들은 %s를 호출해서는 안됩니다."
 msgid "See section %s in '%s'."
 msgstr "'%2$s'에서 섹션 %1$s를 살펴보세요."
 
-#, fuzzy
 msgid "Package detach functions should have one argument with name starting with %s."
-msgstr "패키지 분리(detach)와 관계된 함수들은 %s로 시작하는 이름을 가진 인자 한개를 반드시 가지고 있어야 합니다."
+msgstr "패키지 분리(package detach)와 관계된 함수들은 %s로 시작하는 이름을 가진 인자 하나만을 가져야 합니다."
 
 msgid "Package detach functions should not call %s."
 msgstr "패키지 분리와 관계된 함수들은 %s를 호출하면 안됩니다."
@@ -349,18 +345,16 @@ msgid "'::' or ':::' import not declared from: %s"
 msgstr "다음으로부터 선언되지 않은 '::' 또는 ':::' 임포트입니다: %s"
 
 msgid "'library' or 'require' calls not declared from:"
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다:"
+msgstr "'library' 또는 'require'은 다음으로부터 선언되지 않은 호출입니다:"
 
 msgid "'library' or 'require' call not declared from: %s"
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다: %s"
+msgstr "'library' 또는 'require'은 다음으로부터 선언되지 않은 호출입니다: %s"
 
-#, fuzzy
 msgid "'loadNamespace' or 'requireNamespace' calls not declared from:"
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다:"
+msgstr "'loadNamespace' 또는 'requireNamespace'은 다음으로부터 선언되지 않은 호출입니다:"
 
-#, fuzzy
 msgid "'loadNamespace' or 'requireNamespace' call not declared from: %s"
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다: %s"
+msgstr "'loadNamespace' 또는 'requireNamespace'는 다음으로부터 선언되지 않은 호출입니다: %s"
 
 msgid "'library' or 'require' calls to packages already attached by Depends:"
 msgstr "다음은 Depends에 의하여 이미 부착된 패키지로의 'library' 또는 'require' 호출입니다 :"
@@ -368,13 +362,11 @@ msgstr "다음은 Depends에 의하여 이미 부착된 패키지로의 'library
 msgid "'library' or 'require' call to %s which was already attached by Depends."
 msgstr "Depends에 의하여 이미 부착된 %s로의 'library' 또는 'require' 호출입니다."
 
-#, fuzzy
 msgid "'library' or 'require' calls in package code:"
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다:"
+msgstr "다음의 패키지 코드(package code)내 'library' 또는 'require' 호출입니다:"
 
-#, fuzzy
 msgid "'library' or 'require' call to %s in package code."
-msgstr "다음으로부터 선언되지 않은 'library' 또는 'require' 호출입니다:"
+msgstr "패키지 코드(package code)내 %s로의 'library' 또는 'require' 호출입니다."
 
 msgid "Namespaces in Imports field not imported from:"
 msgstr "Imports 항목 내에 있는 네임스페이스들은 다음으로부터 불러온 것이 아닙니다:"
@@ -489,12 +481,11 @@ msgstr ""
 msgid "Macro file %s should only contain Rd macro definitions and comments"
 msgstr ""
 
-#, fuzzy
 msgid "No Rd macros in package '%s'."
-msgstr "패키지 %s에 대한 문서를 찾을 수 없습니다"
+msgstr "패키지 %s로부터 Rd macro를 찾을 수 없습니다."
 
 msgid "more than one \\examples section, using the first"
-msgstr "한 개이상의 \\examples 섹션이 발견되었으며, 이중 첫번째것을 사용합니다"
+msgstr "한 개이상의 \\examples 섹션이 발견되었기 때문에 첫 번째 것을 이용합니다."
 
 msgid "Converting Rd files to LaTeX ..."
 msgstr "Rd 파일들을 LaTeX 로 변환하고 있습니다..."
@@ -1111,18 +1102,17 @@ msgstr "'%2$s'에 '%1$s'를 실행할 수 없습니다"
 msgid "unable to run %s on '%s'"
 msgstr "'%2$s'에 %1$s를 실행할 수 없습니다"
 
-#, fuzzy
 msgid "cannot coerce %s to logical"
-msgstr "강제변환을 할 수 없습니다"
+msgstr "%s를 논리형(logical)로 강제변환을 할 수 없습니다."
 
 msgid "File 'DESCRIPTION' is missing."
-msgstr "파일 'DESCRIPTION'이 없습니다."
+msgstr "'DESCRIPTION' 파일을 찾을 수 없습니다."
 
 msgid "Files 'DESCRIPTION' and 'DESCRIPTION.in' are missing."
-msgstr "파일 'DESCRIPTION'과 'DESCRIPTION.in'이 없습니다."
+msgstr "'DESCRIPTION'과 'DESCRIPTION.in' 파일들을 찾을 수 없습니다."
 
 msgid "invalid package layout"
-msgstr "패키지 레이아웃이 잘못되었습니다."
+msgstr "올바른 패키지 레이아웃(package layout)이 아닙니다."
 
 msgid "file '%s' is not in valid DCF format"
 msgstr "파일 '%s'는 유효한 DCF 형식을 가지고 있지 않습니다."
@@ -1131,19 +1121,19 @@ msgid "contains a blank line"
 msgstr "비어있는 라인을 포함하고 있습니다"
 
 msgid "Unknown encoding with non-ASCII data: converting to ASCII"
-msgstr ""
+msgstr "ASCII가 아닌 데이터에 대한 인코딩을 알 수 없으므로 ASCII로의 변환을 시도합니다."
 
 msgid "cannot source package code"
-msgstr "패키지 코드를 소스할 수 없습니다"
+msgstr "패키지 코드를 읽어(source)들일 수 없습니다."
 
 msgid "Call sequence:"
 msgstr "호출 시퀀스: "
 
 msgid "'text' must be a character vector"
-msgstr ""
+msgstr "'text'는 반드시 문자형 벡터이어야 합니다."
 
 msgid "parsing '%s'"
-msgstr "'%s'을 파싱합니다"
+msgstr "'%s'을 파싱(parsing)합니다"
 
 msgid "Obsolete package %s in Rd xrefs"
 msgid_plural "Obsolete packages %s in Rd xrefs"
@@ -1264,7 +1254,6 @@ msgstr[0] ""
 #~ msgid "Authors@R field gives no person with maintainer role and email address."
 #~ msgstr "Authors@R 항목에서 유지보수의 역할을 담당하고 이메일 주소를 가진 개발자를 찾을 수 없습니다."
 
-#, fuzzy
 #~ msgid "Inconsistent encoding specifications: %s with %%\\SweaveUTF8"
 #~ msgstr "다음은 일치하지 않는 인코딩 지정들입니다:"
 
