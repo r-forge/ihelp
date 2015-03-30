@@ -1,13 +1,13 @@
 # Korean translation for R methods package
 # src/library/methods/po/R-ko.po
+# 
 # Copyright (C) 1995-2015 The R Core Team
 #
 # This file is distributed under the same license as the R methods package.
-# Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.
+# Maintained by Chel Hee Lee <chl948@mail.usask.ca>, 2008-2015.
 #
-# Reviewing process is in progress (15-JAN-2015)
-#
-# Freezed on 31-MAR-2015 for R-3.2.0 - QC: TBA
+# Notes:
+# Freezed on 30-MAR-2015 for R-3.2.0 - QC: PASS
 # Freezed on 06-FEB-2015 for R-3.1.3 - QC: PASS 
 #
 msgid ""
@@ -220,11 +220,10 @@ msgid "Function %s is already a group generic; no change"
 msgstr "함수 %s는 이미 그룹제네릭입니다; 변경하지 않습니다"
 
 msgid "Function %s is a group generic; do not call it directly"
-msgstr "함수 %s는 그룹제네릭입니다; 직접적으로 호출할 수 없습니다"
+msgstr "함수 %s는 그룹제네릭(group generic)이므로 직접적으로 호출하지 말아야 합니다."
 
-#, fuzzy
 msgid "callGeneric() must be called from within a method body"
-msgstr "'callGeneric'은 반드시 제네릭 함수 또는 메소드로부터 호출되어야 합니다"
+msgstr "'callGeneric'은 반드시 메소드 본체(method body)의 내부로부터 호출되어야 합니다."
 
 msgid "expected a non-empty character string for argument name"
 msgstr "인자의 이름에는 빈 문자열이 와서는 안됩니다"
@@ -277,9 +276,8 @@ msgstr "인자 %s는 반드시 제네릭 함수이거나 단일 문자열이어�
 msgid "non-generic function '%s' given to findMethods()"
 msgstr "findMethods()에 제네릭이 아닌 함수 '%s'가 주어졌습니다"
 
-#, fuzzy
 msgid "only FALSE is meaningful for 'inherited', when 'where' is supplied (got %s)"
-msgstr "'where'이 주어졌을 때, 'inherited'에 대해서 오로지 FALSE만이 의미가 있습니다 (다음이 주어졌습니다"
+msgstr "'where'가 주어진 경우 (%s를 가짐), 'inherited'은 오로지 FALSE 인 경우에만 의미가 있습니다."
 
 msgid "argument 'f' must be a generic function or %s"
 msgstr "인자 'f'는 반드시 제네릭 함수 또는 %s이어야 합니다"
@@ -374,9 +372,8 @@ msgstr "패키지 %2$s로부터 클래스 %1$s에 대한 클래스 생성함수"
 msgid "the names in signature for method (%s) do not match %s's arguments (%s)"
 msgstr "메소드 (%s)에 대한 서명내에 있는 이름들이 %s의 인자들 (%s)과 일치하지 않습니다"
 
-#, fuzzy
 msgid "the names in signature for method (%s) do not match function's arguments (%s)"
-msgstr "메소드 (%s)에 대한 서명내에 있는 이름들이 %s의 인자들 (%s)과 일치하지 않습니다"
+msgstr "메소드에 대한 서명(signature)내에 있는 이름(%s)들이 함수의 인자(%s)들과 일치하지 않습니다."
 
 msgid "a call to callNextMethod() appears in a call to %s, but the call does not seem to come from either a generic function or another 'callNextMethod'"
 msgstr "%s에 호출하는 동안 callNextMethod()에 호출이 이루어진 것으로 보입니다, 그러나 이 호출은 제네릭 함수 또는 또다른 'callNextMethod'으로부터 온 것으로 보여지지 않습니다"
@@ -864,9 +861,8 @@ msgstr ""
 msgid "invalid object in methods table (%s), expected a method, got an object of class %s"
 msgstr "메소드 테이블 (%s)내에 잘못된 객체가 있습니다, 메소드가 와야 하는데, 클래스 %s 객체를 가집니다"
 
-#, fuzzy
 msgid "invalid or unset methods table in generic function %s"
-msgstr "인자 'f'는 반드시 제네릭 함수 또는 %s이어야 합니다"
+msgstr "제네릭 함수 %s내에 있는 메소드 테이블이 올바르지 않거나 설정되지 않았습니다."
 
 msgid "trying to find a methods table in a non-generic function"
 msgstr ""
