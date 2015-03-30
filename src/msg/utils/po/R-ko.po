@@ -1089,12 +1089,11 @@ msgstr "다운로드 메소드(download method)를 찾을 수 없습니다"
 msgid "'url' must be a length-one character vector"
 msgstr "'url'은 반드시 길이가 1인 문자형 벡터이어야 합니다."
 
-#, fuzzy
 msgid "'destfile' must be a length-one character vector"
-msgstr "'title'은 반드시 NULL 또는 길이가 1인 문자형 벡터이어야 합니다"
+msgstr "'destfile'은 반드시 길이가 1인 문자형 벡터이어야 합니다."
 
 msgid "download had nonzero exit status"
-msgstr "다운로드가 0 이 아닌 종료상태를 가졌습니다"
+msgstr "다운로드의 종료상태(exit status)가 0이 아닙니다."
 
 msgid "'tar' returned non-zero exit code %d"
 msgstr "'tar'는 0 이 아닌 종료코드 %d를 반환했습니다"
@@ -1109,11 +1108,9 @@ msgid ""
 "ERROR: failed to lock directory %s for modifying\n"
 "Try removing %s"
 msgstr ""
-"에러: 수정을 위해 디렉토리 %s를 잠그는데 실패했습니다\n"
-"%s를 지워보려고 합니다"
 
 msgid "ERROR: failed to create lock directory %s"
-msgstr "에러: 잠긴 디렉토리 %s를 생성하는데 실패했습니다"
+msgstr ""
 
 msgid "restored %s"
 msgstr "%s를 복구하였습니다"
@@ -1155,10 +1152,9 @@ msgstr "winDialog()는 인터랙티브하게 사용되어져야 합니다"
 msgid "winDialogString() cannot be used non-interactively"
 msgstr "winDialogString()는 인터랙티브하게 사용되어져야 합니다"
 
-#, fuzzy
 msgid "%d Sweave file for basename %s found"
 msgid_plural "%d Sweave files for basename %s found"
-msgstr[0] "basename %2$s에 대한 %1$d Sweave 파일들을 찾았습니다"
+msgstr[0] ""
 
 msgid "%d occurrence in %s"
 msgid_plural "%d occurrences in %s"
@@ -1166,12 +1162,12 @@ msgstr[0] "%d는 %s내에서 발생하였습니다"
 
 msgid "Invalid role specification: %s."
 msgid_plural "Invalid role specifications: %s."
-msgstr[0] "역할지정이 잘못되었습니다: %s."
+msgstr[0] "올바르지 않은 역할지정(role specification)입니다: %s."
 
 msgid "A bibentry of bibtype %s has to specify the field: %s"
 msgid_plural "A bibentry of bibtype %s has to specify the fields: %s"
 msgstr[0] ""
-"비브타입 %1$s의 비브항목은 다음 항목을 반드시 지정해야만 합니다: %2$s"
+"%1$s이라는 종류의 출판물은 다음 항목을 반드시 지정해야 합니다: %2$s"
 
 msgid "class discarded from column %s"
 msgid_plural "classes discarded from columns %s"
@@ -1195,18 +1191,17 @@ msgstr[0] ""
 "패키지(들)을 %s으로부터 제거합니다\n"
 "(왜냐하면 %s가 지정되지 않았기 때문입니다)"
 
-#, fuzzy
 msgid "package %s is not available (%s)"
 msgid_plural "packages %s are not available (%s)"
-msgstr[0] "패키지 %s (들)은 사용가능하지 않습니다 (그 이유는 %s 입니다)"
+msgstr[0] "패키지 %s(들)이 사용가능하지 않습니다 (그 이유는 %s 입니다)"
 
 msgid "dependency %s is not available"
 msgid_plural "dependencies %s are not available"
-msgstr[0] ""
+msgstr[0] "%s(들)이 사용가능하지 않습니다."
 
 msgid "also installing the dependency %s"
 msgid_plural "also installing the dependencies %s"
-msgstr[0] ""
+msgstr[0] "%s(들)을 또한 설치합니다."
 
 msgid ""
 "Installing package into %s\n"
@@ -1215,7 +1210,7 @@ msgid_plural ""
 "Installing packages into %s\n"
 "(as %s is unspecified)"
 msgstr[0] ""
-"패키지(들)을 %s에 설치합니다\n"
+"%s의 위치에 패키지(들)을 설치합니다.\n"
 "(왜냐하면 %s가 지정되지 않았기 때문입니다)"
 
 msgid "'lib' element %s is not a writable directory"
@@ -1227,14 +1222,12 @@ msgid_plural ""
 "There are binary versions available but the source versions are later"
 msgstr[0] ""
 
-#, fuzzy
 msgid ""
 "Do you want to install from sources the package which needs compilation?"
 msgid_plural ""
 "Do you want to install from sources the packages which need compilation?"
-msgstr[0] "컴파일이 필요한 패키지를 소스로부터 직접 설치하기를 원하시나요?"
+msgstr[0] "컴파일(compilation)이 요구되는 패키지를 소스(source)로부터 바로 설치하기를 원하나요?"
 
-#, fuzzy
 msgid ""
 "Package which is only available in source form, and may need compilation of "
 "C/C++/Fortran"
@@ -1242,16 +1235,15 @@ msgid_plural ""
 "Packages which are only available in source form, and may need compilation "
 "of C/C++/Fortran"
 msgstr[0] ""
-"오로지 소스의 형태로만 패키지가 제공되므로,  C/C++/Fortran 의 컴파일이 필요"
-"할 수 있습니다"
+"오로지 소스형태로만 제공되는 패키지이므로 C/C++/Fortran으로 작성된 코드들에 대한 컴파일이 필요할 수도 있습니다."
 
 msgid "installing the source package %s"
 msgid_plural "installing the source packages %s"
-msgstr[0] ""
+msgstr[0] "소스형태의 패키지 %s(들)를 설치합니다."
 
 msgid "package %s is available as a source package but not as a binary"
 msgid_plural "packages %s are available as source packages but not as binaries"
-msgstr[0] ""
+msgstr[0] "패키지 %s(들)은 바이너리(binary)가 아닌 소스(source)의 형태로서 이용할 수 있습니다."
 
 msgid ""
 "There is a binary version available (and will be installed) but the source "
