@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-04-01 20:02-0600\n"
-"PO-Revision-Date: 2015-04-01 20:02-0600\n"
+"POT-Creation-Date: 2015-04-01 21:14-0600\n"
+"PO-Revision-Date: 2015-04-01 21:14-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -2943,6 +2943,20 @@ msgstr ""
 #
 #. type: Plain text
 #: R-FAQ.texi:1256
+#, fuzzy
+#| msgid ""
+#| "The down side is that if R crashes you will lose all the work for the "
+#| "current session.  Saving and restoring the memory ``images'' (the "
+#| "functions and data stored in R's internal memory at any time) can be a "
+#| "bit slow, especially if they are big.  In S this does not happen, because "
+#| "everything is saved in disk files and if you crash nothing is likely to "
+#| "happen to them.  (In fact, one might conjecture that the S developers "
+#| "felt that the price of changing their approach to persistent storage just "
+#| "to accommodate lexical scope was far too expensive.)  Hence, when doing "
+#| "important work, you might consider saving often (see @ref{작업공간을 어떻"
+#| "게 저장할 수 있나요?}) to safeguard against possible crashes.  Other "
+#| "possibilities are logging your sessions, or have your R commands stored "
+#| "in text files which can be read in using @code{source()}."
 msgid ""
 "The down side is that if R crashes you will lose all the work for the "
 "current session.  Saving and restoring the memory ``images'' (the functions "
@@ -2965,10 +2979,10 @@ msgstr ""
 "컬 스코프을 위한 공간을 제공하는 것이 지속적인 저장방식을 사용하는 것보다 더 "
 "많은 비용이 들것이라고 느꼈을 것이라고 추측할 수도 있습니다).   그래서, 중요"
 "한 작업을 할때에는 가능한 크래쉬(crash)들로부터 보호하기 위해서 자주 저장하"
-"는 것을 생각해 볼 수 있습니다 (@ref{How can I save my workspace?}를 살펴보세"
-"요).  또 다른 방법으로는 세션(session)을 기록(logging)하거나, @code{source()}"
-"를 이용하여 읽어들일 수 있는 텍스트 파일에 저장된 R 명령어들을 가지는 것입니"
-"다."
+"는 것을 생각해 볼 수 있습니다 (@ref{작업공간을 어떻게 저장할 수 있나요?}를 살"
+"펴보세요).  또 다른 방법으로는 세션(session)을 기록(logging)하거나, "
+"@code{source()}를 이용하여 읽어들일 수 있는 텍스트 파일에 저장된 R 명령어들"
+"을 가지는 것입니다."
 
 #
 #. type: quotation
@@ -3995,7 +4009,7 @@ msgstr "Bioconductor로부터 얻을 수 있는 애드온 패키지::"
 #: R-FAQ.texi:1853
 #, no-wrap
 msgid "Other add-on packages"
-msgstr ""
+msgstr "다른 애드온 패키지"
 
 #
 #. type: node
@@ -4004,7 +4018,7 @@ msgstr ""
 #: R-FAQ.texi:1752
 #, no-wrap
 msgid "Add-on packages in R"
-msgstr "애드온 패키지"
+msgstr "R에서 사용할 수 있는 애드온 패키지"
 
 #
 #. type: node
@@ -4013,7 +4027,7 @@ msgstr "애드온 패키지"
 #: R-FAQ.texi:1825
 #, no-wrap
 msgid "Add-on packages from CRAN"
-msgstr "CRAN에서 제공되는 애드온 패키지"
+msgstr "CRAN으로부터 얻을 수 있는 애드온 패키지"
 
 #
 #. type: Plain text
@@ -4242,14 +4256,14 @@ msgstr ""
 #: R-FAQ.texi:1836
 #, no-wrap
 msgid "Add-on packages from Omegahat"
-msgstr "오메가햇에서 제공되는 애드온 패키지"
+msgstr "Omegahat으로부터 얻을 수 있는 애드온 패키지"
 
 #
 #. type: subsection
 #: R-FAQ.texi:1753
 #, no-wrap
 msgid "Add-on packages from @acronym{CRAN}"
-msgstr ""
+msgstr "@acronym{CRAN}으로부터 얻을 수 있는 애드온 패키지"
 
 #
 #. type: Plain text
@@ -4564,7 +4578,7 @@ msgstr ""
 #: R-FAQ.texi:1852
 #, no-wrap
 msgid "Add-on packages from Bioconductor"
-msgstr "바이오컨덕터에서 제공되는 애드온 패키지"
+msgstr "Bioconductor로부터 얻을 수 있는 애드온 패키지"
 
 #
 #. type: Plain text
@@ -4645,7 +4659,7 @@ msgstr ""
 #: R-FAQ.texi:2001
 #, no-wrap
 msgid "How can add-on packages be used?"
-msgstr "어떻게 애드온 패키지들을 설치할 수 있나요?"
+msgstr "애드온 패키지는 어떻게 사용하나요?"
 
 #
 #. type: Plain text
@@ -4725,7 +4739,7 @@ msgstr ""
 #: R-FAQ.texi:2022
 #, no-wrap
 msgid "How can add-on packages be removed?"
-msgstr "어떻게 애드온 패키지들을 이용할 수 있나요?"
+msgstr "애드온 패키지는 어떻게 제거할 수 있나요?"
 
 #
 #. type: Plain text
@@ -4882,7 +4896,7 @@ msgstr ""
 #: R-FAQ.texi:2051
 #, no-wrap
 msgid "How can I create an R package?"
-msgstr "어떻게 애드온 패키지들을 제거할 수 있나요?"
+msgstr "R 패키지는 어떻게 작성하나요?"
 
 #
 #. type: Plain text
@@ -5073,13 +5087,13 @@ msgstr "R 기타사항들(Miscellanea)"
 #. type: menuentry
 #: R-FAQ.texi:2071
 msgid "Is there Emacs support for R?::"
-msgstr ""
+msgstr "이맥스에서 R을 사용할 수 있나요?::"
 
 #
 #. type: menuentry
 #: R-FAQ.texi:2071
 msgid "Should I run R from within Emacs?::"
-msgstr ""
+msgstr "이맥스 내부로부터 R을 실행해야 하나요?::"
 
 #
 #. type: section
@@ -5089,7 +5103,7 @@ msgstr ""
 #: R-FAQ.texi:2147
 #, no-wrap
 msgid "Debugging R from within Emacs"
-msgstr ""
+msgstr "이맥스 내부로부터 R 디버깅하기"
 
 #
 #. type: node
@@ -5098,7 +5112,7 @@ msgstr ""
 #: R-FAQ.texi:2121
 #, no-wrap
 msgid "Is there Emacs support for R?"
-msgstr ""
+msgstr "이맥스에서 R을 사용할 수 있나요?"
 
 #
 #. type: node
@@ -5108,7 +5122,7 @@ msgstr ""
 #: R-FAQ.texi:2146
 #, no-wrap
 msgid "Should I run R from within Emacs?"
-msgstr ""
+msgstr "이맥스 내부로부터 R을 실행해야 하나요?"
 
 #
 #. type: Plain text
@@ -5374,25 +5388,25 @@ msgstr "R 프로그래밍(Programming)"
 #. type: menuentry
 #: R-FAQ.texi:2234
 msgid "How can I set components of a list to NULL?::"
-msgstr ""
+msgstr "리스트의 구성요소를 어떻게 NULL로 설정하나요?::"
 
 #
 #. type: menuentry
 #: R-FAQ.texi:2234
 msgid "How can I save my workspace?::"
-msgstr ""
+msgstr "작업공간을 어떻게 저장할 수 있나요?::"
 
 #
 #. type: menuentry
 #: R-FAQ.texi:2234
 msgid "How can I clean up my workspace?::"
-msgstr ""
+msgstr "작업공간을 어떻게 정리할 수 있나요?::"
 
 #
 #. type: menuentry
 #: R-FAQ.texi:2234
 msgid "How can I get eval() and D() to work?::"
-msgstr ""
+msgstr "eval()과 D()를 어떻게 사용해야 하나요?::"
 
 #
 #. type: menuentry
@@ -5638,7 +5652,7 @@ msgstr ""
 #: R-FAQ.texi:2283
 #, no-wrap
 msgid "How can I set components of a list to NULL?"
-msgstr ""
+msgstr "리스트의 구성요소를 어떻게 NULL로 설정하나요?"
 
 #
 #. type: node
@@ -5648,7 +5662,7 @@ msgstr ""
 #: R-FAQ.texi:2291
 #, no-wrap
 msgid "How can I save my workspace?"
-msgstr "작업공간을 어떻게 저장하나요?"
+msgstr "작업공간을 어떻게 저장할 수 있나요?"
 
 #
 #. type: Plain text
@@ -5695,7 +5709,7 @@ msgstr ""
 #: R-FAQ.texi:2305
 #, no-wrap
 msgid "How can I clean up my workspace?"
-msgstr "작업공간을 어떻게 깨끗히 비울 수 있나요?"
+msgstr "작업공간을 어떻게 정리할 수 있나요?"
 
 #
 #. type: Plain text
@@ -5719,7 +5733,7 @@ msgstr ""
 #: R-FAQ.texi:2346
 #, no-wrap
 msgid "How can I get eval() and D() to work?"
-msgstr ""
+msgstr "eval()과 D()를 어떻게 사용해야 하나요?"
 
 #
 #. type: Plain text
