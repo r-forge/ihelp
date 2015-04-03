@@ -687,7 +687,7 @@ msgstr ""
 "의 @url{http://www.cs.indiana.edu/scheme-repository/home.html, Scheme}으로부"
 "터 크게 영향을 받았습니다. 결과적으로 보이는 언어는 S의 외형과 매우 흡사하지"
 "만, 근본적인 구현방법과 시맨틱스(sematics)는 Scheme으로부터 유래되었습니다. "
-"더 많은 내용을 알고 싶으시다면 @ref{R과 S 사이에 다른 점이 있나요?}를 참고하"
+"더 많은 내용을 알고 싶으시다면 @xref{R과 S 사이에 다른 점이 있나요?}를 참고하"
 "시길 바랍니다."
 
 #
@@ -722,7 +722,7 @@ msgstr ""
 "한 그래픽 환경을 제공해주는 방대한 양의 함수들의 집합이 있습니다.  특수한 목"
 "적을 달성하기 위해서 개발된 애드온 패키지(``add-on packages'')로 알려져 있는 "
 "부가적인 모듈들 역시 이용이 가능합니다.  (이들에 대해서 더 알고 싶으시면 "
-"@ref{R 애드온 패키지(Add-On Packages)}를 참고해주세요)."
+"@pxref{R 애드온 패키지(Add-On Packages)}를 참고해주세요)."
 
 #
 #. type: Plain text
@@ -978,7 +978,7 @@ msgid ""
 "details."
 msgstr ""
 "그렇지 않다면, R을 직접 컴파일하여 설치하여야 합니다.  일반적인 Unix와 같은 "
-"플랫폼(@ref{What machines does R run on?}를 참고해주세요)에서 이 과정을 수행"
+"플랫폼(@ref{R은 어떤 플랫폼에서 사용가능한가요?}를 참고해주세요)에서 이 과정을 수행"
 "하는 것은 매우 쉽쉽니다.  R의 배포판과 함께 제공되는 @file{INSTALL} 파일은 간"
 "단한 설치지침을 포함하고 있으면 ``R Installation and Administration''라는 가"
 "이드는 설치와 관련한 자세한 내용들이 잘 문서화 되어 있습니다 (@ref{What "
@@ -1415,8 +1415,7 @@ msgid ""
 "available for web browsing at @url{http://stat.ethz.ch/R-manual/}."
 msgstr ""
 "본 문서 또한 @HTML{}과 PDF 형식으로 온라인으로 읽을 수 있는 하나의 참고메뉴얼"
-"(reference manual)이며, @LaTeX{}를 통하여 출력할 수도 있습니다.  @ref{How "
-"can R be installed?}를 참고하시길 바랍니다.  가장 최신버전의 @HTML{} 버전은 "
+"(reference manual)이며, @LaTeX{}를 통하여 출력할 수도 있습니다.  @ref{R의 설치는 어떻게 하나요?}를 참고하시길 바랍니다.  가장 최신버전의 @HTML{} 버전은 "
 "항상 @url{http://stat.ethz.ch/R-manual/}에서 확인해 보실수 있습니다."
 
 #
@@ -1861,12 +1860,6 @@ msgstr ""
 #
 #. type: Plain text
 #: R-FAQ.texi:745
-#, fuzzy
-#| msgid ""
-#| "Of course, in the case of bug reports it would be very helpful to have "
-#| "code which reliably reproduces the problem.  Also, make sure that you "
-#| "include information on the system and version of R being used.  See "
-#| "@ref{R 버그(Bugs)} for more details."
 msgid ""
 "Of course, in the case of bug reports it would be very helpful to have code "
 "which reliably reproduces the problem.  Also, make sure that you include "
@@ -2945,20 +2938,6 @@ msgstr ""
 #
 #. type: Plain text
 #: R-FAQ.texi:1256
-#, fuzzy
-#| msgid ""
-#| "The down side is that if R crashes you will lose all the work for the "
-#| "current session.  Saving and restoring the memory ``images'' (the "
-#| "functions and data stored in R's internal memory at any time) can be a "
-#| "bit slow, especially if they are big.  In S this does not happen, because "
-#| "everything is saved in disk files and if you crash nothing is likely to "
-#| "happen to them.  (In fact, one might conjecture that the S developers "
-#| "felt that the price of changing their approach to persistent storage just "
-#| "to accommodate lexical scope was far too expensive.)  Hence, when doing "
-#| "important work, you might consider saving often (see @ref{작업공간을 어떻"
-#| "게 저장할 수 있나요?}) to safeguard against possible crashes.  Other "
-#| "possibilities are logging your sessions, or have your R commands stored "
-#| "in text files which can be read in using @code{source()}."
 msgid ""
 "The down side is that if R crashes you will lose all the work for the "
 "current session.  Saving and restoring the memory ``images'' (the functions "
@@ -2996,12 +2975,6 @@ msgstr ""
 #
 #. type: quotation
 #: R-FAQ.texi:1262
-#, fuzzy
-#| msgid ""
-#| "If you run R from within Emacs (see @ref{R과 이맥스(Emacs)}), you can "
-#| "save the contents of the interaction buffer to a file and conveniently "
-#| "manipulate it using @code{ess-transcript-mode}, as well as save source "
-#| "copies of all functions and data used."
 msgid ""
 "If you run R from within Emacs (see @ref{R and Emacs}), you can save the "
 "contents of the interaction buffer to a file and conveniently manipulate it "
@@ -4971,8 +4944,7 @@ msgid ""
 "building."
 msgstr ""
 "더 자세한 사항은 @cite{Writing R Extensions} 문서의 ``Creating R packages'' "
-"섹션을 살펴보세요.  이 매뉴얼은 R 배포에 포함되어 있으며 @pxref{What "
-"documentation exists for R?}, 패키지의 구조, 설정(configure)과 클린업"
+"섹션을 살펴보세요.  이 매뉴얼은 R 배포에 포함되어 있으며 @pxref{R에 관련한 어떤 문서가 존재하나요?}, 패키지의 구조, 설정(configure)과 클린업"
 "(cleanup) 메카니즘, 그리고 패키지의 확인(checking)과 구축(building)에 대한 정"
 "보를 제공합니다."
 
@@ -7369,16 +7341,11 @@ msgstr ""
 #
 #. type: Plain text
 #: R-FAQ.texi:3009
-#, fuzzy
-#| msgid ""
-#| "@xref{R 애드온 패키지(Add-On Packages)}, for more details.  See also Uwe "
-#| "Ligges (2003), ``R Help Desk: Package Management'', @emph{R News}, "
-#| "@strong{3/3}, 37--39."
 msgid ""
 "@xref{R Add-On Packages}, for more details.  See also Uwe Ligges (2003), ``R "
 "Help Desk: Package Management'', @emph{R News}, @strong{3/3}, 37--39."
 msgstr ""
-"더 자세한 사항은 @ref{R 애드온 패키지(Add-On Packages)}을 살펴보시길 바랍니"
+"더 자세한 사항은 @xref{R 애드온 패키지(Add-On Packages)}을 살펴보시길 바랍니"
 "다. Uwe Ligges (2003), `R Help Desk: Package Management'', @emph{R News}, "
 "@strong{3/3}, 37--39 또한 살펴보시면 도움이 됩니다."
 
@@ -7876,8 +7843,7 @@ msgid ""
 "they cannot seem to put a single @samp{\\} character into a text string "
 "unless it happens to be followed by certain other characters."
 msgstr ""
-"이 질문은 종종 파일명과 관계되어 올라오곤 하지만 (@ref{How do file names "
-"work in Windows?}를 살펴보세요), 만약 어떤 특정 문자들에 뒤이어 일어나지 않"
+"이 질문은 종종 파일명과 관계되어 올라오곤 하지만 (@ref{윈도우즈에서 파일명을 어떻게 사용해야 하나요?}를 살펴보세요), 만약 어떤 특정 문자들에 뒤이어 일어나지 않"
 "는 이상 문자열로 단일 @samp{\\} 문자를 넣을 수 없는 것처럼 보일때 불평이 나오"
 "곤 합니다. "
 
@@ -8644,8 +8610,7 @@ msgstr ""
 "니다.  그러나, 이는 finite-precision arithmetic work를 이해하지 못하기 때문입"
 "니다. 결론을 내리기 전에 문제를 확실히 알고있는 누군가에게 보여주길 바랍니"
 "다.  예를들어 @code{0.28 * 100 != 28} 또는 @code{0.1 + 0.2 != 0.3}과 같은 것"
-"은 버그가 아닙니다.  더 자세한 사항은 @ref{Why doesn't R think these numbers "
-"are equal?}를 참고해주세요."
+"은 버그가 아닙니다.  더 자세한 사항은 @xref{왜 R은 이 숫자들이 서로 같다고 하지 않는 것인가요?}를 참고해주세요."
 
 #
 #. type: Plain text
