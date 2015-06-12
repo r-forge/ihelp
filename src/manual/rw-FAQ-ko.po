@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R-manual-translation-ko 0.3.0.1\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-04-09 21:42-0600\n"
-"PO-Revision-Date: 2015-04-09 21:42-0600\n"
+"POT-Creation-Date: 2015-06-12 00:28-0600\n"
+"PO-Revision-Date: 2015-06-12 00:28-0600\n"
 "Last-Translator: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -2778,9 +2778,11 @@ msgid ""
 "package is a simple one involving no compiled code (and binary versions are "
 "usually available for simple packages)."
 msgstr ""
-"네, 하지만 CRAN내 @file{bin/windows/contrib} 섹션의 저자나 유지보수자가 윈도우를 위한 바이너리 버전이 @code{.zip} 파일로 충분히 제공하지 않거나, " 
-"또는 패키지가 컴파일된 코드를 포함하지 않는 심플한 것(그리고 바이너리 버전들이 보통 심플 패키지들에 대해 이용 가능한 경우)이 아니라면, "
-"그렇게 하기 위해서는 많은 도구들이 필요합니다."
+"네, 하지만 CRAN내 @file{bin/windows/contrib} 섹션의 저자나 유지보수자가 윈도"
+"우를 위한 바이너리 버전이 @code{.zip} 파일로 충분히 제공하지 않거나, 또는 패"
+"키지가 컴파일된 코드를 포함하지 않는 심플한 것(그리고 바이너리 버전들이 보통 "
+"심플 패키지들에 대해 이용 가능한 경우)이 아니라면, 그렇게 하기 위해서는 많은 "
+"도구들이 필요합니다."
 
 #
 #. type: Plain text
@@ -2793,11 +2795,12 @@ msgid ""
 "x.?) version will be stored in a separate area, so for R 3.1.? the files are "
 "in @file{bin/windows/contrib/3.1}."
 msgstr ""
-"바이너리 패키지는 CRAN과 같은 저장소(repository)로부터 "
-"또는 @code{install.packages}: (도움말 페이지 참조)에 의해 사용되는 로컬 @code{.zip} 파일로부터 설치할 수 있습니다."
-"@code{Packages} 메뉴에 패키지 설치를 위한 point-and-click interface 를 제공하는 메뉴 항목들이 있습니다."
-"각각의 마이너 버전 (3.x.?)에 대한 패키지는 분리된 영역에 저장될 것이며,"
-"R 3.1.?을 위한 파일들은 @file{bin/windows/contrib/3.1} 내에 저장될 것입니다."     
+"바이너리 패키지는 CRAN과 같은 저장소(repository)로부터 또는 @code{install."
+"packages}: (도움말 페이지 참조)에 의해 사용되는 로컬 @code{.zip} 파일로부터 "
+"설치할 수 있습니다.@code{Packages} 메뉴에 패키지 설치를 위한 point-and-click "
+"interface 를 제공하는 메뉴 항목들이 있습니다.각각의 마이너 버전 (3.x.?)에 대"
+"한 패키지는 분리된 영역에 저장될 것이며,R 3.1.?을 위한 파일들은 @file{bin/"
+"windows/contrib/3.1} 내에 저장될 것입니다."
 
 #
 #. type: Plain text
@@ -2807,8 +2810,9 @@ msgid ""
 "r-project.org/@/bin/@/windows/@/contrib/@/3.1/@/ReadMe}, which also gives "
 "the locations of a few other binary packages."
 msgstr ""
-"CRAN 내 바이너리 버전은 지원되지 않는 것을 참고하시기 바랍니다: "
-"@uref{http://cran.r-project.org/@/bin/@/windows/@/contrib/@/3.1/@/ReadMe}를 참조하십시오. 또한, 여러 다른 바이너리 패키지의 위치도 제공해 줄 것입니다."
+"CRAN 내 바이너리 버전은 지원되지 않는 것을 참고하시기 바랍니다: @uref{http://"
+"cran.r-project.org/@/bin/@/windows/@/contrib/@/3.1/@/ReadMe}를 참조하십시오. "
+"또한, 여러 다른 바이너리 패키지의 위치도 제공해 줄 것입니다."
 
 #
 #. type: Plain text
@@ -2827,15 +2831,18 @@ msgid ""
 "the examples on its help pages and in its test suite, if any) use @command{R "
 "CMD check pkgname}: see the @emph{`Writing R Extensions'} manual."
 msgstr ""
-"바이너리 패키지가 없거나, 최신의 것이 아니거나 "
-"또는 소스(source)로 부터 컴파일하는 것을 선호한다면, `R Installation and Administration' 매뉴얼의 "
-" `Add-on Packages' 부분을 읽어보십시오. 컴파일이 필요한 C/C++/Fortran 코드를 포함하지 않은 소스 패키지는"
-"@code{install.packages(type = \"source\")}나 윈도우 프롬프트 창에서 @command{R CMD INSTALL pkgname}에 의해 간단하게 설치될 수 있습니다."
-"컴파일이 필요한 코드를 가진 패키지를 위해서는 여러 가지의 도구를 모으고 설치할 필요가 있습니다: "
-" @uref{http://www.murdoch-sutherland.com/Rtools/} 포털 사이트를 통해서 도구를 다운로드 받을 수 있습니다."
-"일단 위의 작업을 마치고 나면, 윈도우 프롬프트 창에서 @command{R CMD INSTALL pkgname}를 실행하십시오."
-"(도움말 페이지의 모든 예와 실행을 포함하는 시험조(test suits)가 있다면) 패키지를 확인하기 위해"
-" @command{R CMD check pkgname}를 사용하세요: @emph{`Writing R Extensions'} 매뉴얼을 참조하시기 바랍니다."
+"바이너리 패키지가 없거나, 최신의 것이 아니거나 또는 소스(source)로 부터 컴파"
+"일하는 것을 선호한다면, `R Installation and Administration' 매뉴얼의  `Add-"
+"on Packages' 부분을 읽어보십시오. 컴파일이 필요한 C/C++/Fortran 코드를 포함하"
+"지 않은 소스 패키지는@code{install.packages(type = \"source\")}나 윈도우 프롬"
+"프트 창에서 @command{R CMD INSTALL pkgname}에 의해 간단하게 설치될 수 있습니"
+"다.컴파일이 필요한 코드를 가진 패키지를 위해서는 여러 가지의 도구를 모으고 설"
+"치할 필요가 있습니다:  @uref{http://www.murdoch-sutherland.com/Rtools/} 포털 "
+"사이트를 통해서 도구를 다운로드 받을 수 있습니다.일단 위의 작업을 마치고 나"
+"면, 윈도우 프롬프트 창에서 @command{R CMD INSTALL pkgname}를 실행하십시오.(도"
+"움말 페이지의 모든 예와 실행을 포함하는 시험조(test suits)가 있다면) 패키지"
+"를 확인하기 위해 @command{R CMD check pkgname}를 사용하세요: @emph{`Writing "
+"R Extensions'} 매뉴얼을 참조하시기 바랍니다."
 
 #
 #. type: Plain text
@@ -2846,9 +2853,10 @@ msgid ""
 "instructions @strong{exactly}.  At least 90% of the questions asked are "
 "because people have not done so."
 msgstr ""
-"컴파일이 필요한 소스패키지를 설치하기 위해 윈도우를 설정하는 것은 상당히 까다로운 일임을 참고하시기 바랍니다; "
-"반드시 매뉴얼의 설명을 @strong{정확하게} 따라 해 주시기 바랍니다. 적어도 90%의 질문들은 "
-"사용자들이 그렇게 하지 않기 때문에 발생합니다."
+"컴파일이 필요한 소스패키지를 설치하기 위해 윈도우를 설정하는 것은 상당히 까다"
+"로운 일임을 참고하시기 바랍니다; 반드시 매뉴얼의 설명을 @strong{정확하게} 따"
+"라 해 주시기 바랍니다. 적어도 90%의 질문들은 사용자들이 그렇게 하지 않기 때문"
+"에 발생합니다."
 
 #
 #. type: Plain text
@@ -2859,8 +2867,8 @@ msgid ""
 "@url{http://win-builder.r-project.org}."
 msgstr ""
 "유닉스와 같은 시스템에서 작동하는 것이 알려진 소스 패키지를 가지고 있다면,"
-"@url{http://win-builder.r-project.org}에 문서로 기록되어 있는"
-"자동화된 윈도우 바이너리 패키지 빌더를 시도해 보시기 바랍니다."
+"@url{http://win-builder.r-project.org}에 문서로 기록되어 있는자동화된 윈도우 "
+"바이너리 패키지 빌더를 시도해 보시기 바랍니다."
 
 #
 #. type: section
@@ -2878,8 +2886,9 @@ msgid ""
 "@env{R_LIBS} (@pxref{How do I set environment variables?}) to point to the "
 "library location(s)."
 msgstr ""
-"어디든지 패키지를 설치할 수 있으며 라이브러리의 위치를 알려주기 위해 환경변수 "
-"@env{R_LIBS} (@pxref{How do I set environment variables?})를 사용할 수 있습니다."
+"어디든지 패키지를 설치할 수 있으며 라이브러리의 위치를 알려주기 위해 환경변"
+"수 @env{R_LIBS} (@pxref{How do I set environment variables?})를 사용할 수 있"
+"습니다."
 
 #
 #. type: Plain text
@@ -2908,8 +2917,7 @@ msgstr "또는 다음의 예에 의해 패키지를 사용할 수 있습니다. 
 #: rw-FAQ.texi:1157
 #, no-wrap
 msgid "library(mypkg, lib.loc=\"p:/myRlib\")\n"
-msgstr ""
-"library(mypkg, lib.loc=\"p:/myRlib\")\n"
+msgstr "library(mypkg, lib.loc=\"p:/myRlib\")\n"
 
 #
 #. type: Plain text
@@ -2922,10 +2930,12 @@ msgid ""
 "getenv(\"R_LIBS_USER\")}.  This will only be used if it exists so you may "
 "need to create it: you can use"
 msgstr ""
-"또한 R의x.y.z버전에 대한 당신의 홈 디렉토리의 @file{R\\win-library\\@var{x.y}} 디렉토리가 되는 개인 라이브러리를 가질 수도 있습니다."
-"이 위치는 환경변수 @env{R_LIBS_USER} 설정에 의해 변경될 수 있으며, "
-"@code{Sys.getenv(\"R_LIBS_USER\")} 실행에 의해 R의 내부로부터 파악될 수 있다."
-"이것은 존재하고 있을 때만 사용될 수 있기 때문에 그것을 만들 필요가 있습니다: 그렇게 하기 위해서 다음을 사용할 수 있습니다."
+"또한 R의x.y.z버전에 대한 당신의 홈 디렉토리의 @file{R\\win-library\\@var{x."
+"y}} 디렉토리가 되는 개인 라이브러리를 가질 수도 있습니다.이 위치는 환경변수 "
+"@env{R_LIBS_USER} 설정에 의해 변경될 수 있으며, @code{Sys."
+"getenv(\"R_LIBS_USER\")} 실행에 의해 R의 내부로부터 파악될 수 있다.이것은 존"
+"재하고 있을 때만 사용될 수 있기 때문에 그것을 만들 필요가 있습니다: 그렇게 하"
+"기 위해서 다음을 사용할 수 있습니다."
 
 #
 #. type: example
@@ -2944,9 +2954,11 @@ msgid ""
 "@code{update.packages} offers to update packages for you in a library where "
 "you do not have write permission."
 msgstr ""
-"만약 @code{install.packages}를 사용하고 메인 라이브러리나 해당 라이브러리에 쓰기가 허용되지 않는 경우, "
-"사용자를 위한 개인 라이브러리를 만들어야 하며 거기에 패키지를 설치해야 합니다."
-"또한 이러한 경우는 쓰기가 허용되지 않은 라이브러리에 @code{update.packages}가 패키지 업데이트를 제공하는 경우에도 발생할 수 있습니다."
+"만약 @code{install.packages}를 사용하고 메인 라이브러리나 해당 라이브러리에 "
+"쓰기가 허용되지 않는 경우, 사용자를 위한 개인 라이브러리를 만들어야 하며 거기"
+"에 패키지를 설치해야 합니다.또한 이러한 경우는 쓰기가 허용되지 않은 라이브러"
+"리에 @code{update.packages}가 패키지 업데이트를 제공하는 경우에도 발생할 수 "
+"있습니다."
 
 #
 #. type: Plain text
@@ -2958,9 +2970,9 @@ msgid ""
 "so we recommend that you do create a personal directory yourself."
 msgstr ""
 "윈도우 비스타와 이후 버전 하에 추가적인 보안 문제들이 있을 수 있습니다: "
-"@xref{Does R run under Windows Vista?}를 보시기 바랍니다. "
-"특히, 비스타 환경 하에서는 일반 사용자들이 가지는 적합한 권한이 신뢰할 수 없게 나타나는 것이 발견되기 때문에"
-"각 개인의 디렉토리 만드는 것을 권장합니다."
+"@xref{Does R run under Windows Vista?}를 보시기 바랍니다. 특히, 비스타 환경 "
+"하에서는 일반 사용자들이 가지는 적합한 권한이 신뢰할 수 없게 나타나는 것이 발"
+"견되기 때문에각 개인의 디렉토리 만드는 것을 권장합니다."
 
 #
 #. type: section
@@ -2975,8 +2987,7 @@ msgstr "설치한 패키지가 HTML 도움말 시스템에 보이지 않습니�
 msgid ""
 "This question applied to the pre-2.10.0 HTML help system, which has been "
 "replaced."
-msgstr ""
-"이 질문은 대체된 pre-2.10.0 HTML 도움말 시스템에 적용됩니다. "
+msgstr "이 질문은 대체된 pre-2.10.0 HTML 도움말 시스템에 적용됩니다. "
 
 #
 #. type: Plain text
@@ -2984,8 +2995,7 @@ msgstr ""
 msgid ""
 "This question applied to the pre-2.10.0 search system, which has been "
 "replaced."
-msgstr ""
-"이 질문은 대체된 pre-2.10.0 HTML 검색 시스템에 적용됩니다. "
+msgstr "이 질문은 대체된 pre-2.10.0 HTML 검색 시스템에 적용됩니다. "
 
 #
 #. type: Plain text
@@ -2995,8 +3005,9 @@ msgid ""
 "prepared for R 2.10.0 or later, and packages containing compiled code for R "
 "2.12.0 or later."
 msgstr ""
-"이 버전의 R에 대한 패키지가 설치되었습니까? 패키지는 R 2.10.0 또는 이후 버전에 대한"
-" 준비가 필요하며, R 2.10.0 또는 이후 버전에 대한 컴파일된 코드를 포함한 패키지들이 필요합니다."
+"이 버전의 R에 대한 패키지가 설치되었습니까? 패키지는 R 2.10.0 또는 이후 버전"
+"에 대한 준비가 필요하며, R 2.10.0 또는 이후 버전에 대한 컴파일된 코드를 포함"
+"한 패키지들이 필요합니다."
 
 #
 #. type: Plain text
@@ -3005,8 +3016,8 @@ msgid ""
 "You can tell the version the package was compiled for by looking at the "
 "@samp{Built:} line in its @file{DESCRIPTION} file."
 msgstr ""
-"@file{DESCRIPTION} 파일 내 @samp{Built:} 라인을 검토해 봄으로써"
-"컴파일된 패키지 버전을 알 수 있을 것입니다."
+"@file{DESCRIPTION} 파일 내 @samp{Built:} 라인을 검토해 봄으로써컴파일된 패키"
+"지 버전을 알 수 있을 것입니다."
 
 #
 #. type: Plain text
@@ -3021,10 +3032,11 @@ msgid ""
 "the packages connecting to databases)."
 msgstr ""
 "몇 가지 바이너리 패키지에 대해 추가적인 소프트웨어 설치가 필요하며, "
-"@code{PATH}에DLL을 가질 필요가 있습니다."
-"윈도우는 보통 찾을 수 없는 특정한 DLL에 대해 유용한 정보를 줄 것입니다. "
-"이러한 패키지들(특히, @code{RGtk2}, @code{cairoDevice}, @code{rggobi}, @code{rJava}, @code{rjags}와 데이터베이스와 연결된 패키지들)의 목록을 위해 "
-"@uref{http://cran.r-project.org/@/bin/@/windows/@/contrib/@/3.1/@/ReadMe}을 보시기 바랍니다. "
+"@code{PATH}에DLL을 가질 필요가 있습니다.윈도우는 보통 찾을 수 없는 특정한 DLL"
+"에 대해 유용한 정보를 줄 것입니다. 이러한 패키지들(특히, @code{RGtk2}, "
+"@code{cairoDevice}, @code{rggobi}, @code{rJava}, @code{rjags}와 데이터베이스"
+"와 연결된 패키지들)의 목록을 위해 @uref{http://cran.r-project.org/@/bin/@/"
+"windows/@/contrib/@/3.1/@/ReadMe}을 보시기 바랍니다. "
 
 #
 #. type: Plain text
@@ -3035,9 +3047,8 @@ msgid ""
 "installed.  This part of the R installation, so it should be there."
 msgstr ""
 "패키지 @code{tcltk}가 작동하기 위해서는(@code{demo(tkdensity)} 또는 "
-"@code{library(tcltk)} 후에 @code{demo(tkttest)}를 시도해 보십시오), "
-"Tcl/Tk 설치를 할 필요가 있습니다."
-"R 설치의 이 부분은 반드시 있어야 합니다."
+"@code{library(tcltk)} 후에 @code{demo(tkttest)}를 시도해 보십시오), Tcl/Tk 설"
+"치를 할 필요가 있습니다.R 설치의 이 부분은 반드시 있어야 합니다."
 
 #
 #. type: Plain text
@@ -3053,10 +3064,12 @@ msgid ""
 "build will work: it depends on the layout it uses.)"
 msgstr ""
 "하지만, 환경변수 @env{MY_TCLTK} set을 non-empty 값에 가지고 있다면, "
-"@env{MY_TCLTK}의 값에 의해 주어진 @file{bin} 경로를 가진 다른 Tcl/Tk 8.5.x설치를 사용하기 원하는 것으로 추정되며, (필요하다면 @env{TCL_LIBRARY} set과 함께) 올바르게 설정된 것으로 추정됩니다. "
-"8.4.x와 8.6.0이 아닌 8.5.x가 필요한 것과 "
-" Tcl/Tk의 32비트 또는 64비트 빌드와 사용 중인 R 빌드가 일치하는 구조를 필요로 하는 것을 참고하시기 바랍니다. "
-"(64비트 빌드가 작동할 것인지는 보장할 수 없습니다: 사용하는 레이아웃에 따라 다릅니다.) "
+"@env{MY_TCLTK}의 값에 의해 주어진 @file{bin} 경로를 가진 다른 Tcl/Tk 8.5.x설"
+"치를 사용하기 원하는 것으로 추정되며, (필요하다면 @env{TCL_LIBRARY} set과 함"
+"께) 올바르게 설정된 것으로 추정됩니다. 8.4.x와 8.6.0이 아닌 8.5.x가 필요한 것"
+"과  Tcl/Tk의 32비트 또는 64비트 빌드와 사용 중인 R 빌드가 일치하는 구조를 필"
+"요로 하는 것을 참고하시기 바랍니다. (64비트 빌드가 작동할 것인지는 보장할 수 "
+"없습니다: 사용하는 레이아웃에 따라 다릅니다.) "
 
 #
 #. type: Plain text
@@ -3068,19 +3081,18 @@ msgid ""
 "@code{TkTable} and @code{BWidget} extensions).  This could be used by "
 "setting (for a default install)"
 msgstr ""
-"과거에는 여러 패키지 저자들이Tcl/Tk 확장(하지만, 지원 파일들은 대부분 가장 공통적으로 사용되는 @code{TkTable} 와 @code{BWidget} 확장을 포함합니다.)"
-"을 얻을 방법으로 ActiveTcl" 
-"(@uref{http://www.activestate.com/@/Products/@/activetcl/})"
-"사용을 제안해 왔습니다. "
-"이것은 다음 설정(디폴트 설치를 위한)에 의해 사용될 수 있습니다."
+"과거에는 여러 패키지 저자들이Tcl/Tk 확장(하지만, 지원 파일들은 대부분 가장 공"
+"통적으로 사용되는 @code{TkTable} 와 @code{BWidget} 확장을 포함합니다.)을 얻"
+"을 방법으로 ActiveTcl(@uref{http://www.activestate.com/@/Products/@/"
+"activetcl/})사용을 제안해 왔습니다. 이것은 다음 설정(디폴트 설치를 위한)에 의"
+"해 사용될 수 있습니다."
 
 #
 #. type: example
 #: rw-FAQ.texi:1242
 #, no-wrap
 msgid "MY_TCLTK=c:/Tcl/bin\n"
-msgstr ""
-"MY_TCLTK=c:/Tcl/bin\n"
+msgstr "MY_TCLTK=c:/Tcl/bin\n"
 
 #
 #. type: Plain text
@@ -3091,8 +3103,8 @@ msgid ""
 "only works for 32-bit R."
 msgstr ""
 "@strong{하지만} 현재 버전은 디폴트에 의해 어떤 추가 확장을 포함하지 않으며 "
-"(@code{Teacup} facility 를 통해 다운로드가 가능할 수 있음에도 불구하고), "
-"32비트 R에서만 작동합니다."
+"(@code{Teacup} facility 를 통해 다운로드가 가능할 수 있음에도 불구하고), 32비"
+"트 R에서만 작동합니다."
 
 #
 #. type: section
@@ -3114,7 +3126,6 @@ msgid ""
 "They may still not work between packages installed in different libraries if "
 "the HTTP server has been disabled: the remedy is not to do that!"
 msgstr ""
-
 
 #
 #. type: section
