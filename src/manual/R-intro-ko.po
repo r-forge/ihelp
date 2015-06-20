@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: R-manual 0.1.0\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
 "POT-Creation-Date: 2015-06-12 09:06-0600\n"
-"PO-Revision-Date: 2015-06-20 10:46+1000\n"
+"PO-Revision-Date: 2015-06-20 15:57+1000\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -13568,11 +13568,16 @@ msgid ""
 "utilities @command{touch} and @command{mkdir}.)  For temporary files and directories in the @R{} session directory see "
 "@code{tempfile}."
 msgstr ""
+"비어있는 파일이나 디렉터리를 만들고 싶은 경우 @code{file.create} 이나 @code{create.dir} 를 사용합니다. (이 함수들은 POSIX "
+"utilities 의 @command{touch} 및@command{mkdir} 과 유사합니다.) @R{} 세션 디렉터리에서 임시적으로 만든 파일이나 디렉터리일 경"
+"우 @code{tempfile} 을 참고 하십시요."
 
 #. type: Plain text
 #: R-intro.texi:6579
 msgid "Files can be removed by either @code{file.remove} or @code{unlink}: the latter can remove directory trees."
 msgstr ""
+"파일을 삭제할 때 @code{file.remove} 이나 @code{unlink} 를 사용할수있습니다: 디렉터리 트리도 같이 삭제 시키고 싶은 경우 "
+"@code{unlink} 를 사용 하면 됩니다."
 
 #. type: Plain text
 #: R-intro.texi:6583
@@ -13580,6 +13585,9 @@ msgid ""
 "For directory listings use @code{list.files} (also available as @code{dir}) or @code{list.dirs}. These can select files "
 "using a regular expression: to select by wildcards use @code{Sys.glob}."
 msgstr ""
+"디렉터리 리스트 출력을 원할경우 @code{list.files} (@code{dir} 로도 사용가능) 이나 @code{list.dirs} 를 사용합니다. 이 함수들"
+"은 정규 표현식 (regular expression) 을 사용해 파일들을 찾을 수 있습니다: 와일드 카드를 사용할경우 @code{Sys.glob} 를 사용합"
+"니다."
 
 #. type: Plain text
 #: R-intro.texi:6586
