@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: R-manual 0.1.0\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
 "POT-Creation-Date: 2015-06-20 02:36-0600\n"
-"PO-Revision-Date: 2015-06-20 21:06+1000\n"
+"PO-Revision-Date: 2015-06-20 22:15+1000\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -13570,13 +13570,13 @@ msgid ""
 msgstr ""
 "비어있는 파일이나 디렉터리를 만들고 싶은 경우 @code{file.create} 이나 @code{dir.create} 를 사용합니다. (이 함수들은 POSIX "
 "utilities 의 @command{touch} 및@command{mkdir} 과 유사합니다.) @R{} 세션 디렉터리에서 임시적으로 만든 파일이나 디렉터리일 경"
-"우 @code{tempfile} 을 참고 하십시요."
+"우 @code{tempfile} 을 참조 하십시요."
 
 #. type: Plain text
 #: R-intro.texi:6579
 msgid "Files can be removed by either @code{file.remove} or @code{unlink}: the latter can remove directory trees."
 msgstr ""
-"파일을 삭제할 때 @code{file.remove} 이나 @code{unlink} 를 사용할수있습니다: 디렉터리 트리도 같이 삭제 시키고 싶은 경우 "
+"파일을 삭제할 때 @code{file.remove} 이나 @code{unlink} 를 사용할수 있습니다: 디렉터리 트리도 같이 삭제 시키고 싶은 경우 "
 "@code{unlink} 를 사용 하면 됩니다."
 
 #. type: Plain text
@@ -13610,7 +13610,7 @@ msgstr ""
 #. type: Plain text
 #: R-intro.texi:6596
 msgid "Function @code{file.copy} is the @R{} analogue of the POSIX command @command{cp}."
-msgstr "@R{} 의 @code{file.copy} 라는 함수는 POSIX 명령어인 @command{cp} 의 유사물 입니다."
+msgstr "@R{} 의 @code{file.copy} 라는 함수는 POSIX 명령어인 @command{cp} 의 유사체 입니다."
 
 #. type: Plain text
 #: R-intro.texi:6601
@@ -13635,7 +13635,7 @@ msgstr ""
 #. type: Plain text
 #: R-intro.texi:6609
 msgid "There is some support for @emph{links} in the filesystem: see functions @code{file.link} and @code{Sys.readlink}."
-msgstr "파일 시스템에 있는 @emph{links} 일부 지원 하고 있습니다: @code {file.link} 와 {@code Sys.readlink}를 참조하십시오."
+msgstr "파일 시스템에 있는 @emph{links} 를 일부 지원 하고 있습니다: @code {file.link} 와 {@code Sys.readlink}를 참조하십시오."
 
 #. type: Plain text
 #: R-intro.texi:6620
@@ -13653,7 +13653,7 @@ msgstr ""
 #. type: Plain text
 #: R-intro.texi:6622
 msgid "The following are some issues which have been encountered with filepaths."
-msgstr ""
+msgstr "다음은 filepaths 에 관해서 발생 된 몇 가지 문제들 입니다."
 
 #. type: itemize
 #: R-intro.texi:6630
@@ -13662,6 +13662,9 @@ msgid ""
 "Windows and OS X are to be case-insensitive, and FAT filesystems (commonly used on removable storage) are not normally case-"
 "sensitive (and all filepaths may be mapped to lower case)."
 msgstr ""
+"POSIX 파일 시스템은 대소 문자를 구분합니다, 그래서 @file{foo.png} 와 @file{Foo.PNG} 는 다른 파일이 됩니다. 그러나, 윈도우즈"
+"와 OS X에서 기본값은 대소 문자를 구별하지 않게 되있습니다, 그리고 FAT 파일 시스템은 (일반적으로 이동식 저장 장치에 사용됨) "
+"보통 대소 문자를 구분하지 않습니다 (그리고 모든 filepaths가 소문자로 매핑이 되 있습니다)."
 
 #. type: itemize
 #: R-intro.texi:6635
@@ -13669,6 +13672,8 @@ msgid ""
 "Almost all the Windows' OS services support the use of slash or backslash as the filepath separator, and @R{} converts the "
 "known exceptions to the form required by Windows."
 msgstr ""
+"거의 모든 윈도우즈 기본 운영체제 서비스는 filepath 구분 기호(separator)로 슬래시 또는 백 슬래시의 사용을 지원하고, @R{} 은 "
+"윈도우에서 요구하는 양식으로 알려진 예외를 변환합니다."
 
 #. type: itemize
 #: R-intro.texi:6641
@@ -13677,6 +13682,9 @@ msgid ""
 "expected to work.  POSIX-2008 requires such paths to match only directories, but earlier versions allowed them to also "
 "match files.  So they are best avoided."
 msgstr ""
+"filepaths 끝에 추가되는 슬래시가 작용하는 효과는 기본 운영체제에 따라 다릅니다. 윈도우즈에서 이런 paths는 유효하지 않으며 작"
+"동하지도 않을것 입니다. POSIX-2008에서 이런 paths는 디렉터리일때만 유효하지만, 예전 버전에서는 파일일 경우에도 유효했습니"
+"다. 그러므로 이런 형식의 filepaths는 사용하지 않는게 최선일 것입니다. "
 
 #. type: itemize
 #: R-intro.texi:6647
@@ -13685,6 +13693,9 @@ msgid ""
 "slash.  They are @emph{usually} accepted by Windows' OS functions.  However, leading double slashes may have a different "
 "meaning."
 msgstr ""
+"@file{/abc//def} 처럼 중복된 슬래시가 있는 filepaths는 POSIX 파일 시스템에서 유효합니다, 그리고 이런 경우 중복되 있더라도 하"
+"나의 슬래시로 취급됩니다. 윈도우즈 기본 운영체제 기능은 @emph{일반적으로} 이런 filepaths를 수용하고 있습니다. 하지만 앞에 추"
+"가되는 이중 슬래시는 다른 의미를 갖고있습니다."
 
 #. type: itemize
 #: R-intro.texi:6653
@@ -13693,6 +13704,9 @@ msgid ""
 "not supported, but they may work in some @R{} functions.  POSIX filesystems are allowed to treat a leading double slash "
 "specially."
 msgstr ""
+"윈도우즈에서 사용하는 UNC filepaths (@file{\\\\server\\dir1\\dir2\\file} 와 @file{\\\\?\\UNC\\server\\dir1\\dir2\\file} 같"
+"은 path) 는 지원되지 않습니다, 그러나 일부 @R{} 함수에서는 사용될수도 있습니다. POXIS 파일 시스템들은 앞에 추가되는 이중 슬"
+"래시를 특별히 취급하도록 되있습니다.  "
 
 #. type: itemize
 #: R-intro.texi:6660
@@ -13701,6 +13715,9 @@ msgid ""
 "to @file{d:/a/b/c/foo/bar} if the current directory @emph{on drive @file{d:}} is @file{/a/b/c}.  It is intended that these "
 "work, but the use of absolute paths is safer."
 msgstr ""
+"윈도우즈에서는 filepaths에 드라이브가 추가되있어도 유효하고, 드라이브 없이 현제 디렉토리에 비례되어도 유효합니다. 예: "
+"@file{d:foo/bar} 는 @file{d:/a/b/c/foo/bar} 를 가리킵니다, 만약 @emph{@file{d:} 드라이브에 있는} 현제 디렉터리가 @file{/a/b/"
+"c} 일 경우.  이런식으로 작동을 하게 의도되 있지만, 안전하게 작업을 하려면 완전한 paths 를 사용하십시요."
 
 #. type: Plain text
 #: R-intro.texi:6667
