@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: R-manual 0.1.0\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
 "POT-Creation-Date: 2015-06-20 10:09-0600\n"
-"PO-Revision-Date: 2015-06-21 10:45+1000\n"
+"PO-Revision-Date: 2015-06-21 21:55+1000\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -13770,6 +13770,8 @@ msgid ""
 "Functions @code{system} and @code{system2} are used to invoke a system command and optionally collect its output.  "
 "@code{system2} is a little more general but its main advantage is that it is easier to write cross-platform code using it."
 msgstr ""
+"@code{system} 과 @code{system2} 함수들은 시스템 명령을 호출하고 선택적으로 출력을 수집하는데 사용됩니다. @code{system2}는 "
+"좀 더 일반적이지만, 그것의 주요 장점은 그것을 사용하는 크로스 플랫폼 코드를 작성하기가 더 쉽다는 것입니다."
 
 #. type: Plain text
 #: R-intro.texi:6698
@@ -13777,6 +13779,9 @@ msgid ""
 "@code{system} behaves differently on Windows from other OSes (because the API C call of that name does).  Elsewhere it "
 "invokes a shell to run the command: the Windows port of @R{} has a function @code{shell} to do that."
 msgstr ""
+"@code{system} 은 윈도우즈에서 다른 운영체제들과  다르게 작용합니다  (이것과 같은 이름의 API C 명령이 이작업을 하기 때문입니"
+"다) . 다른 곳에서 이 함수는 명령을 실행하는 쉘을 호출합니다: @R{} 의 윈도우즈 포트에서 쉘을 호줄 하려면 @code{shell} 함수를 "
+"사용합니다."
 
 #. type: Plain text
 #: R-intro.texi:6702
@@ -13784,11 +13789,13 @@ msgid ""
 "To find out if the OS includes a command, use @code{Sys.which}, which attempts to do this in a cross-platform way "
 "(unfortunately it is not a standard OS service)."
 msgstr ""
+"운영 체제가 명령을 포함하고 있는지 확인하려면, 크로스 플랫폼 방식으로이 작업을 수행하려고하는 @code{Sys.which} 를 사용합니"
+"다 (불행하게도 이것은 운영체제의 표준 서비스가 아닙니다)."
 
 #. type: Plain text
 #: R-intro.texi:6705
 msgid "Function @code{shQuote} will quote filepaths as needed for commands in the current OS."
-msgstr ""
+msgstr "@code{shQuote} 함수는 사용하고있는 운영체제 내에서의 명령을 위하여 필요에 따라 filepaths를 인용합니다."
 
 #. type: Plain text
 #: R-intro.texi:6715
@@ -13797,6 +13804,9 @@ msgid ""
 "files in @R{} is to a vey large extent done by @emph{connections}, and the @code{file} function which is used to open a "
 "connection to a file (or a URL) and is able to identify the compression used from the `magic' header of the file."
 msgstr ""
+"@R{} 의 최신 버전은 종종 투명하게, 압축 파일을 읽고 쓸 수있는 광범위한 시설들이 있습니다.  @R{} 에서 파일을 읽는 작업은 "
+"@emph{연결 (connections)} 과  @code{file} 함수에 의해 대부분 수행 됩니다. @code{file} 함수는 파일 (또는 URL)의 연결을 열어줄"
+"때 사용하고, 파일의 'magic' 헤더로 부터 사용된 압축방식을 식별할수도 있습니다. "
 
 #. type: Plain text
 #: R-intro.texi:6724
@@ -13807,6 +13817,10 @@ msgid ""
 "generally achieve higher rates of compression (depending on the file, much higher) at the expense of slower decompression "
 "and much slower compression."
 msgstr ""
+"압축방식 중 지원된지 가장 오래된 방식은 @command{gzip} 압축이고 이것은 적합하고 일반적인 절충안으로 남아있습니다. 예전 리눅"
+"스의 @command{compress} 유틸리티로 압축된 파일들 또한 읽어질수 있지만 이런 경우는 드물어 지고 있습니다. 두 가지 다른 압축 방"
+"식으로 @command{bzip2} 와 @command{xz} 유틸리티들이 이용될수 있습니다. 이 방식들은 보통 더 높은 압축률을 이루지만 (파일에 따"
+"라서 훨씬 더 높을 수도 있음) 느린 감압시간과 훨씬 더 느린 압축시간을 감수해야 합니다. "
 
 #. type: Plain text
 #: R-intro.texi:6729
@@ -13814,6 +13828,8 @@ msgid ""
 "There is some confusion between @command{xz} and @command{lzma} compression (see @uref{http://en.wikipedia.org/wiki/Xz} and "
 "@uref{http://en.wikipedia.org/wiki/LZMA}): @R{} can read files compressed by most versions of either."
 msgstr ""
+"@command{xz} 와 @command{lzma} 압축 사이에 일부 혼란이 있습니다 (@uref{http://en.wikipedia.org/wiki/Xz} 와@uref{http://en."
+"wikipedia.org/wiki/LZMA} 참조): @R{} 은 양쪽 대다수의 버전으로 압축된 파일들을 읽을 수 있습니다."
 
 #. type: Plain text
 #: R-intro.texi:6735
@@ -13822,6 +13838,9 @@ msgid ""
 "used to distribute @R{} packages.  @R{} can list and unpack both (see functions @code{untar} and @code{unzip}) and create "
 "both (for @command{zip} with the help of an external program)."
 msgstr ""
+"파일 아카이브란 파일들을 수집한 단일의 파일로, @R{} 패키지들을 배포할때 사용되듯이, 'tarballs' 과 zip 파일들이 가장 일반적으"
+"로 사용됩니다. @R{} 은 이 두 가지 파일형태를 등재할수도 풀수도 있습니다 (@code{untar} 와 @code{unzip} 함수 참조), 그리고 두 "
+"가지 형태를 모두 생산할수도 있습니다 (@command{zip} 같은 경우 외부 프로그램의 도움이 있어야 합니다). "
 
 #. type: Plain text
 #: R-intro.texi:6745
