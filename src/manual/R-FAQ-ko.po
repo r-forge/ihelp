@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: translation.ko_0.0.1.4\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
 "POT-Creation-Date: 2015-07-09 11:23-0600\n"
-"PO-Revision-Date: 2015-07-10 16:13+1000\n"
+"PO-Revision-Date: 2015-07-10 16:46+1000\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -5873,7 +5873,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2811
 msgid "you can do"
-msgstr "다음과 같이 해보세요."
+msgstr "아래의 명령문은"
 
 #
 #. type: example
@@ -5886,7 +5886,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2818 R-FAQ.texi:2832 R-FAQ.texi:2847
 msgid "for"
-msgstr ""
+msgstr "아래와 같은 역할을 합니다."
 
 #
 #. type: example
@@ -5947,7 +5947,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2862
 msgid "without any of this messing about."
-msgstr ""
+msgstr "이렇게 난잡하지 않게 정리할수 있습니다."
 
 #
 #. type: node
@@ -6084,7 +6084,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:2930
 msgid "(@code{graphics::ps.options(horizontal = FALSE)} in R 1.9.x)."
-msgstr ""
+msgstr "(@code{graphics::ps.options(horizontal = FALSE)} 는 R 1.9 이후 버젼에서 가능합니다)."
 
 #
 #. type: node
@@ -6165,6 +6165,19 @@ msgid ""
 "## @r{Plot x axis label at line 6 (of 7)}\n"
 "mtext(1, text = \"X Axis Label\", line = 6)\n"
 msgstr ""
+"## @r{회전된 라벨에 공간을 주기위해 아랫쪽 마진을 넓혀줌}\n"
+"par(mar = c(7, 4, 4, 2) + 0.1)\n"
+"## @r{x 축과 x 축 레이블이 없는 도면 (plot)을 만듬}\n"
+"plot(1 : 8, xaxt = \"n\",  xlab = \"\")\n"
+"## @r{x 축에서 라벨없이 틱 마크 (tick marks)만 보이게 설정 함}\n"
+"axis(1, labels = FALSE)\n"
+"## @r{텍스트 라벨을 만듬}\n"
+"labels <- paste(\"Label\", 1:8, sep = \" \")\n"
+"## @r{x 축을 따라 라벨을 기본의 틱 마크 (tick marks) 에 맞춰 출력 함}\n"
+"text(1:8, par(\"usr\")[3] - 0.25, srt = 45, adj = 1,\n"
+"     labels = labels, xpd = TRUE)\n"
+"## @r{x 축 레이블을 (7개 중) 6 번째 줄에 출력 함}\n"
+"mtext(1, text = \"X Axis Label\", line = 6)\n"
 
 #
 #. type: Plain text
@@ -6352,9 +6365,7 @@ msgid ""
 "@code{tryCatch()}, where the return value can be configured more flexibly.  For example"
 msgstr ""
 "에러 대신에 @code{\"try-error\"}라는 클래스의 객체를 반환하고자 한다면 @code{try()}를 이용하거나, 좀 더 유연하게 "
-"다른 값을 반환할 수 있는 @code{tryCatch()}를 이용해 보세요. 예를들어, 다음의 예제는 성공적으로 수행된다면 "
-"@code{lm()}의 계수(coefficients)를 반환하고, 실패할 경우에는 @code{c(NaN, NaN, NaN, NaN)}을 돌려주게 됩니다 (이 "
-"경우에는 계수가 4개라고 가정했습니다)."
+"다른 값을 반환할 수 있는 @code{tryCatch()}를 이용해 보세요. 예를들어, "
 
 #
 #. type: example
@@ -6372,6 +6383,8 @@ msgid ""
 "would return the coefficients if the @code{lm()} call succeeded and would return @code{c(NaN, NaN, NaN, NaN)} if "
 "it failed (presumably there are supposed to be 4 coefficients in this example)."
 msgstr ""
+"위의 예제는 성공적으로 수행된다면 @code{lm()}의 계수(coefficients)를 반환하고, 실패할 경우에는 @code{c(NaN, NaN, "
+"NaN, NaN)}을 돌려주게 됩니다 (이 경우에는 계수가 4개라고 가정했습니다)."
 
 #
 #. type: node
@@ -6384,9 +6397,7 @@ msgstr "어떻게 해야 반복문의 매 과정으로부터 생성되는 결과
 #. type: Plain text
 #: R-FAQ.texi:3076
 msgid "You are probably seeing something like"
-msgstr ""
-"아마 다음과 같은 경우에 이러한 질문이 생길 수 있으며, 이는 R의 표현식에 대한 우선순위 규칙(precedence rules)를 "
-"잘 못 이해한 경우에 해당합니다."
+msgstr "아마 다음과 같은 경우에 이러한 질문이 생길 수 있니다."
 
 #
 #. type: example
@@ -6401,7 +6412,9 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:3085
 msgid "and misunderstanding the precedence rules for expressions in R.  Write"
-msgstr "올바른 결과를 얻기 위해서는 다음과 같이 해야 @math{-2}의 제곱에 대한 올바른 값을 얻을 수 있습니다."
+msgstr ""
+"이는 R의 표현식에 대한 우선순위 규칙(precedence rules)를 잘 못 이해한 경우에 해당합니다.  올바른 결과를 얻기 위해"
+"서는 다음과 같이 해야"
 
 #
 #. type: example
@@ -6416,7 +6429,7 @@ msgstr ""
 #. type: Plain text
 #: R-FAQ.texi:3093
 msgid "to get the square of @math{-2}."
-msgstr ""
+msgstr "@math{-2}의 제곱에 대한 올바른 값을 얻을 수 있습니다."
 
 #
 #. type: Plain text
