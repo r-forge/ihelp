@@ -25,8 +25,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: translation.ko_0.0.1.4\n"
 "Report-Msgid-Bugs-To: chl948@mail.usask.ca\n"
-"POT-Creation-Date: 2015-08-03 07:57-0600\n"
-"PO-Revision-Date: 2015-08-03 07:57-0600\n"
+"POT-Creation-Date: 2015-09-29 17:38-0600\n"
+"PO-Revision-Date: 2015-09-29 17:38-0600\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -185,9 +185,9 @@ msgstr ""
 #: R-FAQ.texi:1683
 #: R-FAQ.texi:2067
 #: R-FAQ.texi:2191
-#: R-FAQ.texi:3410
-#: R-FAQ.texi:3503
-#: R-FAQ.texi:3647
+#: R-FAQ.texi:3420
+#: R-FAQ.texi:3513
+#: R-FAQ.texi:3657
 #, no-wrap
 msgid "Top"
 msgstr ""
@@ -271,9 +271,9 @@ msgstr "R 버그(Bugs)::"
 #
 #. type: chapter
 #: R-FAQ.texi:104
-#: R-FAQ.texi:3503
-#: R-FAQ.texi:3647
-#: R-FAQ.texi:3648
+#: R-FAQ.texi:3513
+#: R-FAQ.texi:3657
+#: R-FAQ.texi:3658
 #, no-wrap
 msgid "Acknowledgments"
 msgstr "감사의 말씀(Acknowledgements)"
@@ -941,9 +941,14 @@ msgstr ""
 #
 #. type: Plain text
 #: R-FAQ.texi:339
+#, fuzzy
+#| msgid ""
+#| "Tarballs with daily snapshots of the r-devel and r-patched development "
+#| "versions of R can be found at @url{ftp://ftp.stat.math.ethz.ch/Software/"
+#| "R/}."
 msgid ""
 "Tarballs with daily snapshots of the r-devel and r-patched development "
-"versions of R can be found at @url{ftp://ftp.stat.math.ethz.ch/Software/R/}."
+"versions of R can be found at @url{https://stat.ethz.ch/R/daily}."
 msgstr ""
 "개발자 버전의 R인 r-devel 과 r-patched 파일들이 Tarballs 형식으로 압축되어 "
 "@url{ftp://ftp.stat.math.ethz.ch/Software/R/} 에 매일 업데이트 됩니다.  "
@@ -5350,7 +5355,7 @@ msgstr ""
 #: R-FAQ.texi:3288
 #: R-FAQ.texi:3328
 #: R-FAQ.texi:3383
-#: R-FAQ.texi:3410
+#: R-FAQ.texi:3420
 #, no-wrap
 msgid "R Miscellanea"
 msgstr "R 기타사항들(Miscellanea)"
@@ -5644,14 +5649,14 @@ msgstr ""
 #
 #. type: node
 #: R-FAQ.texi:2191
-#: R-FAQ.texi:3410
-#: R-FAQ.texi:3411
+#: R-FAQ.texi:3420
 #: R-FAQ.texi:3421
-#: R-FAQ.texi:3434
-#: R-FAQ.texi:3450
-#: R-FAQ.texi:3465
-#: R-FAQ.texi:3495
-#: R-FAQ.texi:3503
+#: R-FAQ.texi:3431
+#: R-FAQ.texi:3444
+#: R-FAQ.texi:3460
+#: R-FAQ.texi:3475
+#: R-FAQ.texi:3505
+#: R-FAQ.texi:3513
 #, no-wrap
 msgid "R Programming"
 msgstr "R 프로그래밍(Programming)"
@@ -8677,15 +8682,26 @@ msgstr ""
 "net/mallinfo, mallinfo} 패키지를 살펴보세요) "
 
 #. type: Plain text
-#: R-FAQ.texi:3393
+#: R-FAQ.texi:3396
+#, fuzzy
+#| msgid ""
+#| "When R transfers files over @acronym{HTTP} (e.g., using the @code{install."
+#| "packages()} or @code{download.file()} function), a download method is "
+#| "chosen based on the @option{download.file.method} option.  There are "
+#| "several methods available and the default behavior if no option is "
+#| "explicitly specified is to use R's internal @acronym{HTTP} "
+#| "implementation.  In many circumstances this internal method will not "
+#| "support @acronym{HTTPS} connections so you'll need to override the "
+#| "default."
 msgid ""
 "When R transfers files over @acronym{HTTP} (e.g., using the @code{install."
 "packages()} or @code{download.file()} function), a download method is chosen "
 "based on the @option{download.file.method} option.  There are several "
 "methods available and the default behavior if no option is explicitly "
-"specified is to use R's internal @acronym{HTTP} implementation.  In many "
-"circumstances this internal method will not support @acronym{HTTPS} "
-"connections so you'll need to override the default."
+"specified is to use R's internal @acronym{HTTP} implementation.  In most "
+"circumstances this internal method will not support @acronym{HTTPS} URLs so "
+"you will need to override the default: this is done automatically for such "
+"URLs as from R 3.2.2."
 msgstr ""
 "R 에서 @acronym{HTTP} 를 통해서 파일들을 전송할때 (예: @code{install."
 "packages()} 나 @code{download.file()} 함수들을 사용할때), @option{download."
@@ -8695,12 +8711,18 @@ msgstr ""
 "지원하지 않는 경우가 많으므로 기본작동을 직접 재정하여야 할때도 있습니다. "
 
 #. type: Plain text
-#: R-FAQ.texi:3398
+#: R-FAQ.texi:3401
+#, fuzzy
+#| msgid ""
+#| "R versions 3.2.0 and greater include two download methods (@code{\"libcurl"
+#| "\"} and @code{\"wininet\"}) that both support @acronym{HTTPS} "
+#| "connections.  We recommend that you use these methods.  The requisite "
+#| "code to add to @file{.Rprofile} or @file{Rprofile.site} is as follows:"
 msgid ""
 "R versions 3.2.0 and greater include two download methods (@code{\"libcurl"
-"\"} and @code{\"wininet\"}) that both support @acronym{HTTPS} connections.  "
-"We recommend that you use these methods.  The requisite code to add to "
-"@file{.Rprofile} or @file{Rprofile.site} is as follows:"
+"\"} and @code{\"wininet\"}) that both support @acronym{HTTPS} connections: "
+"we recommend that you use these methods.  The requisite code to add to "
+"@file{.Rprofile} or @file{Rprofile.site} is:"
 msgstr ""
 "R 버젼 3.2.0 이나 그 이후 버젼들은 @acronym{HTTPS} 연결을 지원하는 두 가지의 "
 "다운로드 방법  (@code{\"libcurl\"} 과 @code{\"wininet\"})을 포함하고 있습니"
@@ -8708,20 +8730,35 @@ msgstr ""
 "@file{Rprofile.site}에 추가 할때 필요한 코드는 다음과 같습니다:"
 
 #. type: example
-#: R-FAQ.texi:3402
+#: R-FAQ.texi:3405
 #, no-wrap
 msgid ""
-"options(download.file.method = \"wininet\")     @r{(Windows)}\n"
-"options(download.file.method = \"libcurl\")     @r{(Linux and OS X)}\n"
+"options(download.file.method = \"wininet\", url.method = \"wininet\")     @r{(Windows)}\n"
+"options(download.file.method = \"libcurl\", url.method = \"libcurl\")     @r{(Linux and OS X)}\n"
 msgstr ""
 
 #. type: Plain text
-#: R-FAQ.texi:3408
+#: R-FAQ.texi:3409
+msgid "(Method @code{\"wininet\"} is the default on Windows as from R 3.2.2.)"
+msgstr ""
+
+#. type: Plain text
+#: R-FAQ.texi:3418
+#, fuzzy
+#| msgid ""
+#| "Note that if you built R from source the @code{\"libcurl\"} method may or "
+#| "may not have been compiled in.  In the case that it wasn't, i.e.. "
+#| "@code{capabilities(\"libcurl\") == FALSE}, we recommend method "
+#| "@code{\"wget\"} on Linux and @code{\"curl\"} on OS X."
 msgid ""
-"Note that if you built R from source the @code{\"libcurl\"} method may or "
-"may not have been compiled in.  In the case that it wasn't, i.e.. "
-"@code{capabilities(\"libcurl\") == FALSE}, we recommend method @code{\"wget"
-"\"} on Linux and @code{\"curl\"} on OS X."
+"Note that the @code{\"libcurl\"} method may or may not have been compiled "
+"in.  In the case that it was not, i.e.. @code{capabilities(\"libcurl\") == "
+"FALSE}, we recommend method @code{\"wget\"} on Linux and @code{\"curl\"} on "
+"OS X.  It is possible that system versions of @code{\"libcurl\"}, "
+"@command{wget} or @command{curl} may have been compiled without "
+"@acronym{HTTPS} support, but this is unlikely.  As from R 3.3.0 "
+"@code{\"libcurl\"} with @acronym{HTTPS} support is required except on "
+"Windows."
 msgstr ""
 "만약 소스에서 R을 빌드하였다면  @code{\"libcurl\"}  방법은 컴파일이 될수도 않"
 "될수도 있다는 점을 유의하십시요. 않되어 있을 경우, 즉 "
@@ -8730,72 +8767,72 @@ msgstr ""
 
 #
 #. type: node
-#: R-FAQ.texi:3410
-#: R-FAQ.texi:3503
-#: R-FAQ.texi:3504
-#: R-FAQ.texi:3511
-#: R-FAQ.texi:3558
-#: R-FAQ.texi:3647
+#: R-FAQ.texi:3420
+#: R-FAQ.texi:3513
+#: R-FAQ.texi:3514
+#: R-FAQ.texi:3521
+#: R-FAQ.texi:3568
+#: R-FAQ.texi:3657
 #, no-wrap
 msgid "R Bugs"
 msgstr "R 버그(Bugs)"
 
 #
 #. type: menuentry
-#: R-FAQ.texi:3419
+#: R-FAQ.texi:3429
 msgid "How should I write summary methods?::"
 msgstr "summary 메소드를 어떻게 작성해야 하나요?::"
 
 #
 #. type: menuentry
-#: R-FAQ.texi:3419
+#: R-FAQ.texi:3429
 msgid "How can I debug dynamically loaded code?::"
 msgstr "동적으로 로드된 코드를 어떻게 디버그 할 수 있나요?::"
 
 #
 #. type: menuentry
-#: R-FAQ.texi:3419
+#: R-FAQ.texi:3429
 msgid "How can I inspect R objects when debugging?::"
 msgstr "디버깅을 할 때 어떻게 R 객체들을 점검할 수 있나요?::"
 
 #
 #. type: menuentry
-#: R-FAQ.texi:3419
+#: R-FAQ.texi:3429
 msgid "How can I change compilation flags?::"
 msgstr "어떻게 해야 컴파일 플래그를 변경할 수 있나요?::"
 
 #
 #. type: section
-#: R-FAQ.texi:3419
-#: R-FAQ.texi:3465
-#: R-FAQ.texi:3495
-#: R-FAQ.texi:3496
+#: R-FAQ.texi:3429
+#: R-FAQ.texi:3475
+#: R-FAQ.texi:3505
+#: R-FAQ.texi:3506
 #, no-wrap
 msgid "How can I debug S4 methods?"
 msgstr "어떻게 S4 메소드를 디버그 할 수 있나요?"
 
 #
 #. type: node
-#: R-FAQ.texi:3421
-#: R-FAQ.texi:3422
-#: R-FAQ.texi:3434
+#: R-FAQ.texi:3431
+#: R-FAQ.texi:3432
+#: R-FAQ.texi:3444
 #, no-wrap
 msgid "How should I write summary methods?"
 msgstr "summary 메소드를 어떻게 작성해야 하나요?"
 
 #
 #. type: node
-#: R-FAQ.texi:3421
-#: R-FAQ.texi:3434
-#: R-FAQ.texi:3435
-#: R-FAQ.texi:3450
+#: R-FAQ.texi:3431
+#: R-FAQ.texi:3444
+#: R-FAQ.texi:3445
+#: R-FAQ.texi:3460
 #, no-wrap
 msgid "How can I debug dynamically loaded code?"
 msgstr "동적으로 로드된 코드를 어떻게 디버그 할 수 있나요?"
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3433
+#: R-FAQ.texi:3443
 msgid ""
 "Suppose you want to provide a summary method for class @code{\"foo\"}.  Then "
 "@code{summary.foo()} should not print anything, but return an object of "
@@ -8817,17 +8854,17 @@ msgstr ""
 
 #
 #. type: node
-#: R-FAQ.texi:3434
-#: R-FAQ.texi:3450
-#: R-FAQ.texi:3451
-#: R-FAQ.texi:3465
+#: R-FAQ.texi:3444
+#: R-FAQ.texi:3460
+#: R-FAQ.texi:3461
+#: R-FAQ.texi:3475
 #, no-wrap
 msgid "How can I inspect R objects when debugging?"
 msgstr "디버깅을 할 때 어떻게 R 객체들을 점검할 수 있나요?"
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3439
+#: R-FAQ.texi:3449
 msgid ""
 "Roughly speaking, you need to start R inside the debugger, load the code, "
 "send an interrupt, and then set the required breakpoints."
@@ -8837,7 +8874,7 @@ msgstr ""
 
 #
 #. type: ifclear
-#: R-FAQ.texi:3444
+#: R-FAQ.texi:3454
 msgid ""
 "See section ``Finding entry points in dynamically loaded code'' in "
 "@cite{Writing R Extensions}.  This manual is included in the R distribution, "
@@ -8849,7 +8886,7 @@ msgstr ""
 
 #
 #. type: ifset
-#: R-FAQ.texi:3448
+#: R-FAQ.texi:3458
 msgid ""
 "@xref{Finding entry points, , Finding entry points in dynamically loaded "
 "code, R-exts, Writing R Extensions}."
@@ -8857,17 +8894,17 @@ msgstr ""
 
 #
 #. type: node
-#: R-FAQ.texi:3450
-#: R-FAQ.texi:3465
-#: R-FAQ.texi:3466
-#: R-FAQ.texi:3495
+#: R-FAQ.texi:3460
+#: R-FAQ.texi:3475
+#: R-FAQ.texi:3476
+#: R-FAQ.texi:3505
 #, no-wrap
 msgid "How can I change compilation flags?"
 msgstr "어떻게 해야 컴파일 플래그를 변경할 수 있나요?"
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3455
+#: R-FAQ.texi:3465
 msgid ""
 "The most convenient way is to call @code{R_PV} from the symbolic debugger."
 msgstr ""
@@ -8876,7 +8913,7 @@ msgstr ""
 
 #
 #. type: ifclear
-#: R-FAQ.texi:3459
+#: R-FAQ.texi:3469
 msgid ""
 "See section ``Inspecting R objects when debugging'' in @cite{Writing R "
 "Extensions}."
@@ -8886,7 +8923,7 @@ msgstr ""
 
 #
 #. type: ifset
-#: R-FAQ.texi:3463
+#: R-FAQ.texi:3473
 msgid ""
 "@xref{Inspecting R objects, , Inspecting R objects when debugging, R-exts, "
 "Writing R Extensions}."
@@ -8894,7 +8931,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3471
+#: R-FAQ.texi:3481
 msgid ""
 "Suppose you have C code file for dynloading into R, but you want to use "
 "@code{R CMD SHLIB} with compilation flags other than the default ones (which "
@@ -8906,7 +8943,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3474
+#: R-FAQ.texi:3484
 msgid ""
 "Starting with R 2.1.0, users can provide personal Makevars configuration "
 "files in @file{$@env{HOME}/.R} to override the default flags."
@@ -8916,14 +8953,14 @@ msgstr ""
 
 #
 #. type: ifclear
-#: R-FAQ.texi:3477
+#: R-FAQ.texi:3487
 msgid ""
 "See section ``Add-on packages'' in @cite{R Installation and Administration}."
 msgstr ""
 
 #
 #. type: ifset
-#: R-FAQ.texi:3481
+#: R-FAQ.texi:3491
 msgid ""
 "@xref{Add-on packages, , Add-on packages, R-admin, R Installation and "
 "Administration}."
@@ -8931,7 +8968,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3487
+#: R-FAQ.texi:3497
 msgid ""
 "For earlier versions of R, you could change the file @file{@var{R_HOME}/etc/"
 "Makeconf} to reflect your preferences, or (at least for systems using "
@@ -8944,7 +8981,7 @@ msgstr ""
 
 #
 #. type: ifclear
-#: R-FAQ.texi:3489
+#: R-FAQ.texi:3499
 msgid "See section ``Creating shared objects'' in @cite{Writing R Extensions}."
 msgstr ""
 "@cite{Writing R Extensions} 문서에서 ``Creating shared objects''  섹션을 참"
@@ -8952,7 +8989,7 @@ msgstr ""
 
 #
 #. type: ifset
-#: R-FAQ.texi:3493
+#: R-FAQ.texi:3503
 msgid ""
 "@xref{Creating shared objects, , Creating shared objects, R-exts, Writing R "
 "Extensions}."
@@ -8960,7 +8997,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3502
+#: R-FAQ.texi:3512
 msgid ""
 "Use the @code{trace()} function with argument @code{signature=} to add calls "
 "to the browser or any other code to the method that will be dispatched for "
@@ -8972,32 +9009,32 @@ msgstr ""
 
 #
 #. type: menuentry
-#: R-FAQ.texi:3509
+#: R-FAQ.texi:3519
 msgid "What is a bug?::"
 msgstr "버그가 무엇인가요?::"
 
 #
 #. type: section
-#: R-FAQ.texi:3509
-#: R-FAQ.texi:3511
-#: R-FAQ.texi:3558
-#: R-FAQ.texi:3559
+#: R-FAQ.texi:3519
+#: R-FAQ.texi:3521
+#: R-FAQ.texi:3568
+#: R-FAQ.texi:3569
 #, no-wrap
 msgid "How to report a bug"
 msgstr "버그를 보고하는 방법"
 
 #
 #. type: node
-#: R-FAQ.texi:3511
-#: R-FAQ.texi:3512
-#: R-FAQ.texi:3558
+#: R-FAQ.texi:3521
+#: R-FAQ.texi:3522
+#: R-FAQ.texi:3568
 #, no-wrap
 msgid "What is a bug?"
 msgstr "버그가 무엇인가요?"
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3521
+#: R-FAQ.texi:3531
 msgid ""
 "If R executes an illegal instruction, or dies with an operating system error "
 "message that indicates a problem in the program (as opposed to something "
@@ -9015,7 +9052,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3528
+#: R-FAQ.texi:3538
 msgid ""
 "Taking forever to complete a command can be a bug, but you must make certain "
 "that it was really R's fault.  Some commands simply take a long time.  If "
@@ -9032,7 +9069,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3541
+#: R-FAQ.texi:3551
 msgid ""
 "If a command you are familiar with causes an R error message in a case where "
 "its usual definition ought to be reasonable, it is probably a bug.  If a "
@@ -9061,7 +9098,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3554
+#: R-FAQ.texi:3564
 msgid ""
 "Finally, a command's intended definition may not be best for statistical "
 "analysis.  This is a very important sort of problem, but it is also a matter "
@@ -9090,7 +9127,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3557
+#: R-FAQ.texi:3567
 msgid ""
 "If the online argument list of a function disagrees with the manual, one of "
 "them must be wrong, so report the bug."
@@ -9100,7 +9137,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3567
+#: R-FAQ.texi:3577
 msgid ""
 "When you decide that there is a bug, it is important to report it and to "
 "report it in a way which is useful.  What is most useful is an exact "
@@ -9117,7 +9154,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3576
+#: R-FAQ.texi:3586
 msgid ""
 "The most important principle in reporting a bug is to report @emph{facts}, "
 "not hypotheses or categorizations.  It is always easier to report the facts, "
@@ -9138,7 +9175,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3579
+#: R-FAQ.texi:3589
 msgid ""
 "For example, suppose that on a data set which you know to be quite large the "
 "command"
@@ -9148,14 +9185,14 @@ msgstr ""
 
 #
 #. type: example
-#: R-FAQ.texi:3582
+#: R-FAQ.texi:3592
 #, no-wrap
 msgid "R> data.frame(x, y, z, monday, tuesday)\n"
 msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3592
+#: R-FAQ.texi:3602
 msgid ""
 "never returns.  Do not report that @code{data.frame()} fails for large data "
 "sets.  Perhaps it fails when a variable name is a day of the week.  If this "
@@ -9172,7 +9209,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3598
+#: R-FAQ.texi:3608
 msgid ""
 "Or perhaps the command fails because the last command you used was a method "
 "for @code{\"[\"()} that had a bug causing R's internal data structures to be "
@@ -9187,7 +9224,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3607
+#: R-FAQ.texi:3617
 #, fuzzy
 #| msgid ""
 #| "It is very useful to try and find simple examples that produce apparently "
@@ -9218,7 +9255,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3611
+#: R-FAQ.texi:3621
 msgid ""
 "Invoking R with the @option{--vanilla} option may help in isolating a bug.  "
 "This ensures that the site profile and saved data files are not read."
@@ -9229,7 +9266,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3626
+#: R-FAQ.texi:3636
 #, fuzzy
 #| msgid ""
 #| "Before you actually submit a bug report, you should check whether the bug "
@@ -9274,7 +9311,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3632
+#: R-FAQ.texi:3642
 msgid ""
 "A bug report can be generated using the function @code{bug.report()}.  For "
 "reports on R this will open the Web page at @url{http://bugs.R-project."
@@ -9288,7 +9325,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3638
+#: R-FAQ.texi:3648
 msgid ""
 "There is a section of the bug repository for suggestions for enhancements "
 "for R labelled @samp{wishlist}.  Suggestions can be submitted in the same "
@@ -9303,7 +9340,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3641
+#: R-FAQ.texi:3651
 msgid ""
 "Comments on and suggestions for the Windows port of R should be sent to "
 "@email{R-windows@@R-project.org}."
@@ -9313,7 +9350,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3646
+#: R-FAQ.texi:3656
 #, fuzzy
 #| msgid ""
 #| "Corrections to and comments on message translations should be sent to the "
@@ -9332,7 +9369,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3652
+#: R-FAQ.texi:3662
 msgid ""
 "Of course, many many thanks to Robert and Ross for the R system, and to the "
 "package writers and porters for adding to it."
@@ -9343,7 +9380,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3657
+#: R-FAQ.texi:3667
 msgid ""
 "Special thanks go to Doug Bates, Peter Dalgaard, Paul Gilbert, Stefano "
 "Iacus, Fritz Leisch, Jim Lindsey, Thomas Lumley, Martin Maechler, Brian D. "
@@ -9357,7 +9394,7 @@ msgstr ""
 
 #
 #. type: Plain text
-#: R-FAQ.texi:3659
+#: R-FAQ.texi:3669
 msgid "More to come soon @dots{}"
 msgstr "더 많은 내용들이 추가될 것입니다@dots{}"
 
