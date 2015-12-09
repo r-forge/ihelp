@@ -9,7 +9,7 @@
 # Notes:
 # Under development (unstable) starting from 31-MAR-2015 for R-3.3.0 - QC: TBA
 # Freezed on 30-MAR-2015 for R-3.2.0 - QC: PASS
-# Freezed on 06-FEB-2015 for R-3.1.3 - QC: PASS 
+# Freezed on 06-FEB-2015 for R-3.1.3 - QC: PASS
 # Freezed on 13-AUG-2013 for R-3.1.0 - QC: PASS
 # Freezed on 08-MAR-2012 for R-2.15.0 - QC: PASS
 # Freezed on 20-APR-2010 for R-2.11.0 (25-MAR-2010 as well)
@@ -21,14 +21,15 @@ msgstr ""
 "Project-Id-Version: R 3.3.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2015-06-06 13:51+0100\n"
-"PO-Revision-Date: 2015-07-15 17:13-0600\n"
+"PO-Revision-Date: 2015-12-10 03:00+0900\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
-"Language-Team: Chel Hee Lee  <chl948@mail.usask.ca>\n"
+"Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: src/appl/optim.c:60
 msgid "non-finite value supplied by 'optim'"
@@ -1572,7 +1573,7 @@ msgstr "요인이 아닌 것으로 강제형변환을 시도하고 있습니다"
 
 #: src/main/coerce.c:1362 src/main/coerce.c:1372
 msgid "malformed factor"
-msgstr ""
+msgstr "잘못된 요소"
 
 #: src/main/coerce.c:1515
 msgid "list argument expected"
@@ -1604,7 +1605,7 @@ msgstr "타입 \"single\"은 R에서 구현되지 않았습니다"
 
 #: src/main/coerce.c:1901
 msgid "unimplemented predicate"
-msgstr ""
+msgstr "구현되지 않은 조건자"
 
 #: src/main/coerce.c:2053
 #, c-format
@@ -1995,7 +1996,7 @@ msgstr "원래 커넥션의 범위를 넘어 검색을 시도합니다"
 #: src/main/connections.c:2606 src/main/connections.c:2610
 #: src/main/connections.c:2616 src/main/connections.c:2642
 msgid "allocation of raw connection failed"
-msgstr ""
+msgstr "원시 커넥션의 할당 실패"
 
 #: src/main/connections.c:2695
 msgid "'con' is not a rawConnection"
@@ -2232,7 +2233,7 @@ msgstr "%d라는 커넥션은 없습니다"
 
 #: src/main/connections.c:5026
 msgid "method = \"wininet\" is only supported on Windows"
-msgstr ""
+msgstr "메소드 \"wininet\"은 윈도우즈에서만 지원됩니다."
 
 #: src/main/connections.c:5116
 msgid "file(\"\") only supports open = \"w+\" and open = \"w+b\": using the former"
@@ -2350,7 +2351,7 @@ msgstr "쿼리를 위한 브라우저 컨텍스트가 없습니다"
 
 #: src/main/context.c:561
 msgid "not that many calls to browser are active"
-msgstr ""
+msgstr "활성화된 브라우저 호출이 많지는 않습니다. "
 
 #: src/main/context.c:575
 msgid "not that many functions on the call stack"
@@ -2738,7 +2739,7 @@ msgstr "'function'에 대한 formal arguments들이 유효하지 않습니다"
 
 #: src/main/dstruct.c:100
 msgid "invalid body argument for 'function'"
-msgstr ""
+msgstr "함수에 대한 유효하지 않은 body 인자"
 
 #: src/main/edit.c:110
 msgid "invalid argument to edit()"
@@ -2815,7 +2816,7 @@ msgstr "라인의 끝이 잘못되었습니다"
 #: src/main/engine.c:508 src/main/engine.c:513 src/main/engine.c:521
 #: src/main/engine.c:528 src/main/engine.c:542 src/modules/X11/devX11.c:1175
 msgid "invalid line join"
-msgstr ""
+msgstr "유효하지 않은 줄 결합 "
 
 #: src/main/engine.c:761 src/main/engine.c:865 src/main/engine.c:1098
 #: src/main/engine.c:1205 src/main/engine.c:1328 src/main/engine.c:1392
@@ -2883,7 +2884,7 @@ msgstr " .. GEPretty(.): new *up = %g > %g = x2"
 
 #: src/main/engine.c:2773
 msgid "display list redraw incomplete"
-msgstr ""
+msgstr "디스플레이 목록의 재호출이 불완전합니다."
 
 #: src/main/engine.c:2777
 msgid "invalid display list"
@@ -2936,11 +2937,11 @@ msgstr "R_GetGlobalCache에는 유효하지 않은 캐쉬된 값이 있습니다
 
 #: src/main/envir.c:836
 msgid "cannot unbind in the base namespace"
-msgstr ""
+msgstr "베이스 네임스페이스에 바인딩할 수 없습니다."
 
 #: src/main/envir.c:838
 msgid "unbind in the base environment is unimplemented"
-msgstr ""
+msgstr "기본 환경 언바인드가 수행되지 않았습니다."
 
 #: src/main/envir.c:840 src/main/envir.c:1816
 msgid "cannot remove bindings from a locked environment"
@@ -2959,7 +2960,7 @@ msgstr "... 목록은 %d개의 구성요소들을 가지고 있지 않습니다"
 #: src/main/envir.c:1374
 #, c-format
 msgid "..%d used in an incorrect context, no ... to look in"
-msgstr ""
+msgstr "부정확한 콘텍스트에서 사용된 %d,  안을 볼 수 없는 "
 
 #: src/main/envir.c:1467
 #, c-format
@@ -3098,7 +3099,7 @@ msgstr "심볼이 아닙니다"
 #: src/main/envir.c:3307
 #, c-format
 msgid "no binding for \"%s\""
-msgstr ""
+msgstr "\"%s\"에 대한 바인딩이 아님 "
 
 #: src/main/envir.c:3238
 msgid "not a function"
@@ -3106,7 +3107,7 @@ msgstr "함수가 아닙니다"
 
 #: src/main/envir.c:3246 src/main/envir.c:3262
 msgid "symbol already has a regular binding"
-msgstr ""
+msgstr "심볼은 이미 규칙적 바인딩을 가집니다."
 
 #: src/main/envir.c:3248 src/main/envir.c:3264
 msgid "cannot change active binding if binding is locked"
