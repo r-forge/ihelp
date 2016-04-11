@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: R-3.3.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2016-04-01 09:50\n"
-"PO-Revision-Date: 2016-04-11 09:48-0600\n"
+"PO-Revision-Date: 2016-04-11 10:01-0600\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -876,6 +876,8 @@ msgstr ""
 msgid ""
 "Further information is available in the following vignettes in directory %s:"
 msgstr ""
+"디렉토리 %s에 존재하는 다음과 같은 비그네트로부터 더 많은 내용을 찾을 수 있습"
+"니다:"
 
 msgid "Description:"
 msgstr "설명:"
@@ -899,7 +901,7 @@ msgid "package %s could not be loaded"
 msgstr "패키지 %s는 로드되어질 수 없습니다"
 
 msgid "empty (zero-byte) input file"
-msgstr ""
+msgstr "입력파일의 내용이 비어있습니다."
 
 msgid "input has been corrupted, with LF replaced by CR"
 msgstr ""
@@ -950,7 +952,7 @@ msgid "FUN"
 msgstr "FUN"
 
 msgid "may not have argument(s) named"
-msgstr ""
+msgstr "아마도 이름이 주어진 인자를 가지고 있지 않은 것 같습니다."
 
 msgid ","
 msgstr ","
@@ -999,6 +1001,8 @@ msgstr "'trim'은 반드시 길이가 1인 수치형이어야 합니다"
 
 msgid "trimmed means are not defined for complex data"
 msgstr ""
+"복소수형 데이터에 사용할 수 있는 절삭평균(trimmed means)는 정의되지 않았습니"
+"다."
 
 msgid "'by' must match numbers of columns"
 msgstr "'by'는 반드시 열의 개수와 일치해야 합니다"
@@ -1008,6 +1012,8 @@ msgstr "by'는 반드시 열의 개수와 일치해야 합니다"
 
 msgid "'by' must specify one or more columns as numbers, names or logical"
 msgstr ""
+"'by'는 반드시 숫자, 이름, 또는 논리값을 이용하여 하나 이상의 열들을 지정해야 "
+"합니다."
 
 msgid "long vectors are not supported"
 msgstr ""
@@ -1035,12 +1041,14 @@ msgid ""
 "namespace %s is not available and has been replaced\n"
 "by .GlobalEnv when processing object %s"
 msgstr ""
+"네임스페이스 %s를 사용할 수 없으며\n"
+"객체 %s를 프로세싱할 때 .GlobalEnv에 의하여 대체되었습니다."
 
 msgid "'%s' is not an exported object from 'namespace:%s'"
 msgstr "'%s'는 'namespace:%s'로부터 내보내어진 객체가 아닙니다"
 
 msgid "namespace is already attached"
-msgstr ""
+msgstr "네임스페이스가 이미 연결되어 있습니다."
 
 msgid "%s not found"
 msgstr "%s를 찾을 수 없습니다"
@@ -1206,7 +1214,7 @@ msgid "no arguments"
 msgstr "인자들이 없습니다"
 
 msgid "an argument will be fractionally recycled"
-msgstr ""
+msgstr "인자가 부분적으로 재활용될 것입니다."
 
 msgid "invalid ncol(x)"
 msgstr "유효하지 않은 ncol(x)입니다"
@@ -1215,7 +1223,7 @@ msgid "too large a matrix for LINPACK"
 msgstr "LINPACK에 너무 큰 행렬입니다"
 
 msgid "first argument must be a QR decomposition"
-msgstr ""
+msgstr "첫번째 인자는 반드시 QR 분해이어야 합니다. "
 
 msgid "invalid nrow(qr$qr)"
 msgstr "유효하지 않은 nrow(qr$qr)입니다"
@@ -1284,7 +1292,7 @@ msgid "either specify 'nmax' or 'n', but not both."
 msgstr "'nmax' 또는 'n' 중 하나는 지정되어야 하지만 모두는 아닙니다"
 
 msgid "'from' cannot be NA, NaN or infinite"
-msgstr ""
+msgstr "'from'은 NA, NaN 또는 infinite이어서는 안됩니다."
 
 msgid "argument 'length.out' must be of length 1"
 msgstr "인자 'length.out'은 반드시 길이가 1이어야 합니다"
@@ -1293,7 +1301,7 @@ msgid "first element used of 'length.out' argument"
 msgstr "'length.out' 인자에 사용된 첫번째 요소입니다"
 
 msgid "'to' cannot be NA, NaN or infinite"
-msgstr ""
+msgstr "'to'는 NA, NaN 또는 infinite이어서는 안됩니다."
 
 msgid "invalid (to - from)/by in seq(.)"
 msgstr "seq(.)내에 유효하지 않은 (to - from)/by 입니다"
@@ -1311,7 +1319,7 @@ msgid "too many arguments"
 msgstr "너무 많은 인자들이 있습니다"
 
 msgid "invalid 'compress' argument:"
-msgstr ""
+msgstr "올바른 'compress' 인자가 아닙니다:"
 
 msgid "'compress' is ignored unless 'file' is a file name"
 msgstr "만약 'file'이 파일명이 아니라면 'compress'는 무시되어 집니다"
@@ -1347,18 +1355,20 @@ msgid ""
 "'decreasing' must be a length-1 logical vector.\n"
 "Did you intend to set 'partial'?"
 msgstr ""
+"'decreasing'은 반드시 길이가 1인 논리형 벡터이어야 합니다.\n"
+"의도적으로 'partial'로 설정하고자 하나요?"
 
 msgid "'partial' sorting not supported by radix method"
-msgstr ""
+msgstr "radix 방법에 의하여 지원되는 'partial' 정렬이 아닙니다."
 
 msgid "'index.return' only for non-factors"
-msgstr ""
+msgstr "'index.return'은 오로지 요인이 아닌 경우에만 사용할 수 있습니다."
 
 msgid "'x' must be atomic"
 msgstr "'x'는 반드시 atomic이어야 합니다"
 
 msgid "'index.return' only for 'na.last = NA'"
-msgstr ""
+msgstr "'index.return'은 오로지 'na.last = NA'인 경우에만 사용할 수 있습니다. "
 
 msgid "unsupported options for partial sorting"
 msgstr "부분정렬에 지원되지 않는 옵션입니다"
@@ -1376,6 +1386,7 @@ msgstr ""
 
 msgid "method = \"quick\" is only for numeric 'x'"
 msgstr ""
+"method = \"quick\" 는 오로지 수치형 'x'인 경우에만 사용할 수 있습니다. "
 
 msgid "'local' must be TRUE, FALSE or an environment"
 msgstr "'local'은 반드시 TRUE, FALSE 또는 environment 이어야 합니다"
