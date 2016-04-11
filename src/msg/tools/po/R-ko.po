@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: R-3.3.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2016-04-01 09:50\n"
-"PO-Revision-Date: 2016-04-11 11:15-0600\n"
+"PO-Revision-Date: 2016-04-11 11:41-0600\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -26,12 +26,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Checking %s"
 msgstr "%s를 확인합니다."
 
 msgid "Processing %s ..."
-msgstr ""
+msgstr "%s를 프로세싱 중입니다..."
 
 msgid "argument 'package' must be of length 1"
 msgstr "인자 'package'는 반드시 길이가 1 이어야 합니다"
@@ -264,11 +265,13 @@ msgstr ""
 "들은 반드시 R이 인식할 수 있도록 해야합니다."
 
 msgid "Malformed Title field: should not end in a period."
-msgstr ""
+msgstr "Title 항목이 올바르지 않습니다: 마침표로 끝나면 안됩니다."
 
 msgid ""
 "Malformed Description field: should contain one or more complete sentences."
 msgstr ""
+"Description 항목이 올바르지 않습니다: 하나 이상의 완전한 문장을 포함하고 있어"
+"야 합니다. "
 
 msgid ""
 "See section 'The DESCRIPTION file' in the 'Writing R Extensions' manual."
@@ -288,13 +291,15 @@ msgstr ""
 "니다."
 
 msgid "Authors@R field gives persons with no valid roles:"
-msgstr ""
+msgstr "Authors@R 항목으로부터 다음의 저자들에 대한 역할을 찾을 수 없습니다:"
 
 msgid "Cannot extract Maintainer field from Authors@R field:"
 msgstr "Maintainer의 항목을 Authors@R 항목으로부터 추출할 수 없습니다:"
 
 msgid "Authors@R field gives more than one person with maintainer role:"
 msgstr ""
+"Authors@R 항목에서 메인테이너의 역할을 담당하는 저자의 수가 한명이상임을 확인"
+"하게 되었습니다:"
 
 msgid ""
 "Authors@R field gives no person with maintainer role, valid email address "
@@ -522,7 +527,7 @@ msgid ""
 msgstr ""
 
 msgid "Rd object required"
-msgstr ""
+msgstr "Rd 객체가 필요합니다."
 
 msgid "missing/empty %s field in '%s'"
 msgstr "'%2$s'내에 %1$s 항목이 없습니다"
@@ -553,10 +558,11 @@ msgid "No help on %s found in RdDB %s"
 msgstr "RdDB %2$s 로부터 %1$s와 관계된 도움말을 찾을 수 없습니다"
 
 msgid "'macros' must be TRUE or must specify existing macros"
-msgstr ""
+msgstr "'macros'가 반드시 TRUE 이거나 이미 존재하는 매크로를 사용해야 합니다."
 
 msgid "Macro file %s should only contain Rd macro definitions and comments"
 msgstr ""
+"매크로 파일 %s는 오로지 Rd 매크로 정의와 주석만을 포함하고 있어야 합니다."
 
 msgid "No Rd macros in package '%s'."
 msgstr "패키지 %s로부터 Rd macro를 찾을 수 없습니다."
@@ -604,6 +610,7 @@ msgstr ""
 
 msgid "DESCRIPTION file is for package '%s', not '%s'"
 msgstr ""
+"DESCRIPTION 파일은 패키지 '%1$s'에 관한 것이지 '%2$s'에 관한 것이 아닙니다."
 
 msgid "Vignette product %s does not have a known filename extension (%s)"
 msgstr "비니에트 프로덕트 %s는 알려진 파일확장자 (%s)를 가지고 있지 않습니다"
@@ -627,6 +634,8 @@ msgstr "임시디렉토리 %s를 생성하지 못했습니다"
 
 msgid "Vignette '%s' is non-ASCII but has no declared encoding"
 msgstr ""
+"비그네트 '%s'는 ASCII 형식이 아니며 이에 대하여 선언된 인코딩을 찾을 수 없습"
+"니다."
 
 msgid "Running"
 msgstr "실행중입니다"
@@ -807,7 +816,7 @@ msgid "cannot link from %s"
 msgstr "%s로부터 연결할 수 없습니다"
 
 msgid "-l option without value"
-msgstr ""
+msgstr "-l 옵션에 대한 값이 주어지지 않았습니다."
 
 msgid "configuration files are not supported as from R 2.12.0"
 msgstr "R 2.12.0 부터는 환경설정 파일들이 지원되지 않습니다"
@@ -822,7 +831,7 @@ msgid "Error: no packages were specified"
 msgstr "에러: 지정된 패키지들이 없습니다"
 
 msgid "ERROR: cannot create check dir %s"
-msgstr ""
+msgstr "에러: check dir %s를 생성할 수 없습니다."
 
 msgid "package directory %s does not exist"
 msgstr "패키지 디렉토리 %s가 존재하지 않습니다"
@@ -949,7 +958,7 @@ msgid "empty 'data' directory"
 msgstr "비어있는 'data' 디렉토리입니다"
 
 msgid "cannot create unique directory for build"
-msgstr ""
+msgstr "build를 위한 고유의 디렉토리를 생성할 수 없습니다."
 
 msgid "cannot create temporary directory"
 msgstr "임시 디렉토리를 생성할 수 없습니다"
@@ -1016,10 +1025,10 @@ msgid ""
 msgstr ""
 
 msgid "DESCRIPTION file not found"
-msgstr ""
+msgstr "DESCRIPTION 파일을 찾을 수 없습니다."
 
 msgid "NEWS file not found"
-msgstr ""
+msgstr "NEWS 파일을 찾을 수 없습니다."
 
 msgid "No news found in given file using old-style R-like format."
 msgstr ""
@@ -1062,7 +1071,7 @@ msgid ""
 msgstr ""
 
 msgid "%s must be a character string or a file/raw connection"
-msgstr ""
+msgstr "%s는 문자열 또는 파일/raw 커넥션이어야 합니다."
 
 msgid "PDF header not found"
 msgstr "PDF 헤더를 찾을 수 없습니다"

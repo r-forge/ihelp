@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: R-3.3.0\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
 "POT-Creation-Date: 2016-04-01 10:01-0700\n"
-"PO-Revision-Date: 2016-04-11 11:15-0600\n"
+"PO-Revision-Date: 2016-04-11 11:47-0600\n"
 "Last-Translator: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language-Team: Chel Hee Lee <chl948@mail.usask.ca>\n"
 "Language: ko\n"
@@ -26,6 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: Srunmed.c:54
 msgid "bandwidth/span of running medians is larger than n"
@@ -124,7 +125,7 @@ msgstr "함수 '%s'는 미분함수 목록에 없습니다"
 
 #: deriv.c:641
 msgid "'expr' must be an expression or call"
-msgstr ""
+msgstr "'expr'는 표현식(expression) 또는 호출(call)이어야 합니다."
 
 #: deriv.c:644
 msgid "variable must be a character string"
@@ -209,7 +210,9 @@ msgstr "'%s'의 길이는 반드시 1이어야 합니다."
 
 #: ksmooth.c:68
 msgid "only 2500 rows are allowed for sm.method=\"spline\""
-msgstr "sm.method에 \"spline\"이 주어졌을 때에는 최대로 사용할 수 있는 행의 개수는 2500개입니다"
+msgstr ""
+"sm.method에 \"spline\"이 주어졌을 때에는 최대로 사용할 수 있는 행의 개수는 "
+"2500개입니다"
 
 #: lm.c:57
 msgid "'x' is not a matrix"
@@ -344,7 +347,9 @@ msgstr "행렬은 %.0g 열들을 필요로 합니다"
 #: model.c:575
 #, c-format
 msgid "problem with term %d in model.matrix: no columns are assigned"
-msgstr "model.matrix에 있는 항 %d에 문제가 있습니다: 아무런 열들도 할당되지 않았습니다"
+msgstr ""
+"model.matrix에 있는 항 %d에 문제가 있습니다: 아무런 열들도 할당되지 않았습니"
+"다"
 
 #: model.c:624 model.c:629 model.c:635 model.c:646 model.c:652 model.c:658
 msgid "term names will be truncated"
@@ -488,7 +493,7 @@ msgstr "변수 '%s'는 수치형이 아닙니다"
 
 #: optim.c:80 optim.c:107
 msgid "non-finite value supplied by optim"
-msgstr ""
+msgstr "optim으로부터 유한(finite)하지 않은 값이 생성되었습니다."
 
 #: optim.c:87
 #, c-format
@@ -690,7 +695,7 @@ msgstr ""
 #: optimize.c:745 optimize.c:750 optimize.c:754 optimize.c:758 optimize.c:762
 #: optimize.c:766 optimize.c:771
 msgid "invalid NA value in parameter"
-msgstr ""
+msgstr "파라미터에는 NA를 사용할 수 없습니다."
 
 #: optimize.c:800
 msgid "hessian supplied is of the wrong length or mode, so ignored"
@@ -735,7 +740,8 @@ msgstr "gradient function은 반드시 길이가 %d인 수치형 벡터를 반�
 #: port.c:325
 #, c-format
 msgid "Hessian function must return a square numeric matrix of order %d"
-msgstr "Hessian function은 반드시 사이즈가 %d인 수치형 정방행렬을 반환해야 합니다"
+msgstr ""
+"Hessian function은 반드시 사이즈가 %d인 수치형 정방행렬을 반환해야 합니다"
 
 #: port.c:380
 msgid "'rho' must be an environment"
@@ -752,7 +758,8 @@ msgstr "Hessian이 정의되었다면, 반드시 gradient 또한 정의되어져
 #: port.c:387
 #, c-format
 msgid "environment 'rho' must contain a numeric vector '.par' of length %d"
-msgstr "environment 'rho'는 반드시 길이가 %d인 수치형 벡터 '.par'를 포함해야 합니다"
+msgstr ""
+"environment 'rho'는 반드시 길이가 %d인 수치형 벡터 '.par'를 포함해야 합니다"
 
 #: port.c:401
 msgid "'lower' and 'upper' must be numeric vectors"
@@ -760,7 +767,9 @@ msgstr "'lower'와 'upper'는 반드시 수치형 벡터들이어야 합니다."
 
 #: port.c:460
 msgid "'getElement' applies only to named lists"
-msgstr "'getElement'는 오로지 원소에 이름이 주어진 리스트(list)들에만 적용할 수 있습니다."
+msgstr ""
+"'getElement'는 오로지 원소에 이름이 주어진 리스트(list)들에만 적용할 수 있습"
+"니다."
 
 #: port.c:481
 #, c-format
@@ -775,7 +784,9 @@ msgstr "'gradient'는 반드시 크기가 (%d,%d)인 수치형 행렬이어야 �
 #: port.c:515
 #, c-format
 msgid "fcn produced mode %d, length %d - wanted mode %d, length %d"
-msgstr "fcn은 본래 모드 %3$d와 길이 %4$d이어야 하는데 모드 %1$d와 길이 %2$d를 생성하였습니다."
+msgstr ""
+"fcn은 본래 모드 %3$d와 길이 %4$d이어야 하는데 모드 %1$d와 길이 %2$d를 생성하"
+"였습니다."
 
 #: port.c:528
 msgid "invalid type for eval_check_store"
@@ -833,7 +844,8 @@ msgstr "두 번째 인자 'size'가 올바르지 않습니다."
 #: rcont.c:83
 #, c-format
 msgid "rcont2 [%d,%d]: exp underflow to 0; algorithm failure"
-msgstr "rcont2 [%d,%d]: exp의 값이 0보다 작기(underflow)하므로 알고리즘 실패입니다."
+msgstr ""
+"rcont2 [%d,%d]: exp의 값이 0보다 작기(underflow)하므로 알고리즘 실패입니다."
 
 #: smooth.c:107
 #, c-format
@@ -843,4 +855,4 @@ msgstr ""
 #: starma.c:364
 #, c-format
 msgid "missing value in last %d observations"
-msgstr ""
+msgstr "마지막 %d개의 관측치들이 결측입니다."
